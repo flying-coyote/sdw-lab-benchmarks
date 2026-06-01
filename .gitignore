@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# generated corpora — large, reproducible from the generators, not checked in
+_work/
+*.parquet

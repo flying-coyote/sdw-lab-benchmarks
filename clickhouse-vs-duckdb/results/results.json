@@ -1,0 +1,539 @@
+{
+  "benchmark": "clickhouse-vs-duckdb-ocsf (C3)",
+  "evidence_tier": "B (reproducible corpus + cross-engine-verified answers; latencies are machine-specific, not a production claim)",
+  "environment": {
+    "duckdb_version": "1.5.3",
+    "chdb_version": "4.1.8",
+    "clickhouse_engine": "chDB (embedded ClickHouse)",
+    "cpu_count": 12,
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "note": "single host, both engines in-process; WSL2 \u2014 treat absolute ms as machine-specific"
+  },
+  "corpus_deterministic": true,
+  "answers_agree_all": true,
+  "disagreements": [],
+  "scales": [
+    {
+      "n_events": 1000000,
+      "parquet_bytes": 35457527,
+      "configs": {
+        "parquet_in_place": {
+          "queries": [
+            {
+              "id": "q1_scan_rollup",
+              "title": "Full-scan rollup: count + bytes by class and activity",
+              "note": "wide sequential scan, tiny grouping \u2014 favours vectorised scans",
+              "answers_agree": true,
+              "result_rows": 12,
+              "duckdb": {
+                "median_ms": 11.642,
+                "min_ms": 10.887,
+                "max_ms": 12.16,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 11.835,
+                "min_ms": 11.215,
+                "max_ms": 32.716,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.02
+            },
+            {
+              "id": "q2_top_talkers",
+              "title": "Top-20 talkers: high-cardinality group-by + order/limit",
+              "note": "millions of groups collapsed to 20 \u2014 hash-aggregation pressure",
+              "answers_agree": true,
+              "result_rows": 20,
+              "duckdb": {
+                "median_ms": 41.673,
+                "min_ms": 36.017,
+                "max_ms": 43.697,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 54.571,
+                "min_ms": 49.525,
+                "max_ms": 70.364,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.31
+            },
+            {
+              "id": "q3_selective_window",
+              "title": "Selective lookup: one user inside a six-hour window",
+              "note": "selective time predicate \u2014 favours a time-ordered native store",
+              "answers_agree": true,
+              "result_rows": 1,
+              "duckdb": {
+                "median_ms": 5.123,
+                "min_ms": 4.441,
+                "max_ms": 6.954,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 13.414,
+                "min_ms": 12.836,
+                "max_ms": 35.258,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 2.62
+            },
+            {
+              "id": "q4_time_buckets",
+              "title": "Time-bucketed rate: events per 5-minute bucket",
+              "note": "the one dialect difference \u2014 `//` vs `intDiv(...)`",
+              "answers_agree": true,
+              "result_rows": 288,
+              "duckdb": {
+                "median_ms": 10.397,
+                "min_ms": 10.274,
+                "max_ms": 12.61,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 11.497,
+                "min_ms": 10.812,
+                "max_ms": 12.05,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.11
+            },
+            {
+              "id": "q5_failed_auth_burst",
+              "title": "Failed-auth burst: filter + group + having",
+              "note": "predicate then grouped threshold \u2014 classic detection shape",
+              "answers_agree": true,
+              "result_rows": 50,
+              "duckdb": {
+                "median_ms": 4.014,
+                "min_ms": 3.455,
+                "max_ms": 7.508,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 8.445,
+                "min_ms": 7.896,
+                "max_ms": 9.545,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 2.1
+            }
+          ]
+        },
+        "native_store": {
+          "queries": [
+            {
+              "id": "q1_scan_rollup",
+              "title": "Full-scan rollup: count + bytes by class and activity",
+              "note": "wide sequential scan, tiny grouping \u2014 favours vectorised scans",
+              "answers_agree": true,
+              "result_rows": 12,
+              "duckdb": {
+                "median_ms": 9.675,
+                "min_ms": 7.781,
+                "max_ms": 11.696,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 8.864,
+                "min_ms": 8.153,
+                "max_ms": 30.144,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "clickhouse",
+              "speed_ratio": 1.09
+            },
+            {
+              "id": "q2_top_talkers",
+              "title": "Top-20 talkers: high-cardinality group-by + order/limit",
+              "note": "millions of groups collapsed to 20 \u2014 hash-aggregation pressure",
+              "answers_agree": true,
+              "result_rows": 20,
+              "duckdb": {
+                "median_ms": 29.007,
+                "min_ms": 27.566,
+                "max_ms": 32.004,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 50.712,
+                "min_ms": 45.515,
+                "max_ms": 67.714,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.75
+            },
+            {
+              "id": "q3_selective_window",
+              "title": "Selective lookup: one user inside a six-hour window",
+              "note": "selective time predicate \u2014 favours a time-ordered native store",
+              "answers_agree": true,
+              "result_rows": 1,
+              "duckdb": {
+                "median_ms": 2.339,
+                "min_ms": 2.196,
+                "max_ms": 2.509,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 5.494,
+                "min_ms": 5.15,
+                "max_ms": 24.132,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 2.35
+            },
+            {
+              "id": "q4_time_buckets",
+              "title": "Time-bucketed rate: events per 5-minute bucket",
+              "note": "the one dialect difference \u2014 `//` vs `intDiv(...)`",
+              "answers_agree": true,
+              "result_rows": 288,
+              "duckdb": {
+                "median_ms": 12.139,
+                "min_ms": 9.547,
+                "max_ms": 24.329,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 11.68,
+                "min_ms": 10.38,
+                "max_ms": 14.843,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "clickhouse",
+              "speed_ratio": 1.04
+            },
+            {
+              "id": "q5_failed_auth_burst",
+              "title": "Failed-auth burst: filter + group + having",
+              "note": "predicate then grouped threshold \u2014 classic detection shape",
+              "answers_agree": true,
+              "result_rows": 50,
+              "duckdb": {
+                "median_ms": 4.987,
+                "min_ms": 4.695,
+                "max_ms": 8.757,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 8.859,
+                "min_ms": 7.327,
+                "max_ms": 11.017,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.78
+            }
+          ],
+          "ingest": {
+            "duckdb_native_load": {
+              "median_ms": 61.575,
+              "min_ms": 60.778,
+              "max_ms": 67.118,
+              "trials": 3,
+              "warmup": 1
+            },
+            "clickhouse_mergetree_load": {
+              "median_ms": 429.96,
+              "min_ms": 428.964,
+              "max_ms": 434.297,
+              "trials": 3,
+              "warmup": 1
+            }
+          }
+        }
+      },
+      "corpus_fingerprint_sha256_16": "c571ad0c5cac1871"
+    },
+    {
+      "n_events": 10000000,
+      "parquet_bytes": 354434232,
+      "configs": {
+        "parquet_in_place": {
+          "queries": [
+            {
+              "id": "q1_scan_rollup",
+              "title": "Full-scan rollup: count + bytes by class and activity",
+              "note": "wide sequential scan, tiny grouping \u2014 favours vectorised scans",
+              "answers_agree": true,
+              "result_rows": 12,
+              "duckdb": {
+                "median_ms": 74.704,
+                "min_ms": 68.669,
+                "max_ms": 112.567,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 90.166,
+                "min_ms": 75.522,
+                "max_ms": 92.167,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.21
+            },
+            {
+              "id": "q2_top_talkers",
+              "title": "Top-20 talkers: high-cardinality group-by + order/limit",
+              "note": "millions of groups collapsed to 20 \u2014 hash-aggregation pressure",
+              "answers_agree": true,
+              "result_rows": 20,
+              "duckdb": {
+                "median_ms": 427.2,
+                "min_ms": 410.3,
+                "max_ms": 512.072,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 546.946,
+                "min_ms": 509.031,
+                "max_ms": 573.417,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.28
+            },
+            {
+              "id": "q3_selective_window",
+              "title": "Selective lookup: one user inside a six-hour window",
+              "note": "selective time predicate \u2014 favours a time-ordered native store",
+              "answers_agree": true,
+              "result_rows": 1,
+              "duckdb": {
+                "median_ms": 39.244,
+                "min_ms": 33.639,
+                "max_ms": 46.17,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 81.78,
+                "min_ms": 78.398,
+                "max_ms": 91.481,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 2.08
+            },
+            {
+              "id": "q4_time_buckets",
+              "title": "Time-bucketed rate: events per 5-minute bucket",
+              "note": "the one dialect difference \u2014 `//` vs `intDiv(...)`",
+              "answers_agree": true,
+              "result_rows": 288,
+              "duckdb": {
+                "median_ms": 66.142,
+                "min_ms": 60.014,
+                "max_ms": 77.935,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 71.607,
+                "min_ms": 66.733,
+                "max_ms": 81.255,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.08
+            },
+            {
+              "id": "q5_failed_auth_burst",
+              "title": "Failed-auth burst: filter + group + having",
+              "note": "predicate then grouped threshold \u2014 classic detection shape",
+              "answers_agree": true,
+              "result_rows": 50,
+              "duckdb": {
+                "median_ms": 18.606,
+                "min_ms": 17.863,
+                "max_ms": 25.384,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 39.624,
+                "min_ms": 36.57,
+                "max_ms": 41.124,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 2.13
+            }
+          ]
+        },
+        "native_store": {
+          "queries": [
+            {
+              "id": "q1_scan_rollup",
+              "title": "Full-scan rollup: count + bytes by class and activity",
+              "note": "wide sequential scan, tiny grouping \u2014 favours vectorised scans",
+              "answers_agree": true,
+              "result_rows": 12,
+              "duckdb": {
+                "median_ms": 47.344,
+                "min_ms": 45.676,
+                "max_ms": 48.264,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 61.588,
+                "min_ms": 52.617,
+                "max_ms": 75.468,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.3
+            },
+            {
+              "id": "q2_top_talkers",
+              "title": "Top-20 talkers: high-cardinality group-by + order/limit",
+              "note": "millions of groups collapsed to 20 \u2014 hash-aggregation pressure",
+              "answers_agree": true,
+              "result_rows": 20,
+              "duckdb": {
+                "median_ms": 290.865,
+                "min_ms": 274.762,
+                "max_ms": 350.104,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 588.488,
+                "min_ms": 541.473,
+                "max_ms": 660.261,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 2.02
+            },
+            {
+              "id": "q3_selective_window",
+              "title": "Selective lookup: one user inside a six-hour window",
+              "note": "selective time predicate \u2014 favours a time-ordered native store",
+              "answers_agree": true,
+              "result_rows": 1,
+              "duckdb": {
+                "median_ms": 12.615,
+                "min_ms": 12.095,
+                "max_ms": 13.583,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 17.206,
+                "min_ms": 16.435,
+                "max_ms": 22.392,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.36
+            },
+            {
+              "id": "q4_time_buckets",
+              "title": "Time-bucketed rate: events per 5-minute bucket",
+              "note": "the one dialect difference \u2014 `//` vs `intDiv(...)`",
+              "answers_agree": true,
+              "result_rows": 288,
+              "duckdb": {
+                "median_ms": 48.01,
+                "min_ms": 43.086,
+                "max_ms": 55.318,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 41.735,
+                "min_ms": 38.941,
+                "max_ms": 46.505,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "clickhouse",
+              "speed_ratio": 1.15
+            },
+            {
+              "id": "q5_failed_auth_burst",
+              "title": "Failed-auth burst: filter + group + having",
+              "note": "predicate then grouped threshold \u2014 classic detection shape",
+              "answers_agree": true,
+              "result_rows": 50,
+              "duckdb": {
+                "median_ms": 23.217,
+                "min_ms": 19.757,
+                "max_ms": 44.737,
+                "trials": 7,
+                "warmup": 2
+              },
+              "clickhouse": {
+                "median_ms": 43.718,
+                "min_ms": 39.085,
+                "max_ms": 46.174,
+                "trials": 7,
+                "warmup": 2
+              },
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.88
+            }
+          ],
+          "ingest": {
+            "duckdb_native_load": {
+              "median_ms": 457.082,
+              "min_ms": 444.204,
+              "max_ms": 581.464,
+              "trials": 3,
+              "warmup": 1
+            },
+            "clickhouse_mergetree_load": {
+              "median_ms": 3934.402,
+              "min_ms": 3859.85,
+              "max_ms": 4020.318,
+              "trials": 3,
+              "warmup": 1
+            }
+          }
+        }
+      },
+      "corpus_fingerprint_sha256_16": "84f3460b5c922450"
+    }
+  ]
+}

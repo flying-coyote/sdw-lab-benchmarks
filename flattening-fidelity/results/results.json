@@ -1,0 +1,212 @@
+{
+  "benchmark": "ocsf-flattening-fidelity (C2)",
+  "evidence_tier": "B (reproducible, first-party, controlled synthetic corpus; NOT a production claim)",
+  "environment": {
+    "duckdb_version": "1.5.3",
+    "master_seed": 20260601
+  },
+  "determinism_verified": true,
+  "results": {
+    "absence_null": {
+      "name": "absence_vs_null_silent_miss",
+      "title": "Absence-vs-NULL collapse \u2192 silent detection miss",
+      "scales": [
+        {
+          "n_events": 1000,
+          "planted_true_positives": 141,
+          "flattened_naive": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 141,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "flattened_null_aware": {
+            "tp": 141,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "preserved_json": {
+            "tp": 141,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "silent_miss_rate_naive": 1.0
+        },
+        {
+          "n_events": 10000,
+          "planted_true_positives": 1392,
+          "flattened_naive": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 1392,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "flattened_null_aware": {
+            "tp": 1392,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "preserved_json": {
+            "tp": 1392,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "silent_miss_rate_naive": 1.0
+        },
+        {
+          "n_events": 100000,
+          "planted_true_positives": 14140,
+          "flattened_naive": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 14140,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "flattened_null_aware": {
+            "tp": 14140,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "preserved_json": {
+            "tp": 14140,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "silent_miss_rate_naive": 1.0
+        }
+      ]
+    },
+    "grain": {
+      "name": "grain_loss_timing_destroyed",
+      "title": "Grain loss \u2192 timing-based adversary queries destroyed, volumetric queries exact",
+      "scales": [
+        {
+          "n_beacons": 8,
+          "n_decoys": 16,
+          "n_noise_pairs": 200,
+          "n_rows": 2315,
+          "adversary_query_beacon_hunt": {
+            "atomic_grain": {
+              "tp": 8,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "coarse_grain": {
+              "tp": 8,
+              "fp": 16,
+              "fn": 0,
+              "precision": 0.3333,
+              "recall": 1.0,
+              "f1": 0.5
+            },
+            "f1_degradation": 0.5
+          },
+          "routine_queries": {
+            "bytes_per_host_exact": true,
+            "pair_counts_exact": true,
+            "degradation": 0.0
+          },
+          "headline_adversary_minus_routine_degradation": 0.5
+        },
+        {
+          "n_beacons": 16,
+          "n_decoys": 32,
+          "n_noise_pairs": 400,
+          "n_rows": 4671,
+          "adversary_query_beacon_hunt": {
+            "atomic_grain": {
+              "tp": 16,
+              "fp": 0,
+              "fn": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "coarse_grain": {
+              "tp": 16,
+              "fp": 32,
+              "fn": 0,
+              "precision": 0.3333,
+              "recall": 1.0,
+              "f1": 0.5
+            },
+            "f1_degradation": 0.5
+          },
+          "routine_queries": {
+            "bytes_per_host_exact": true,
+            "pair_counts_exact": true,
+            "degradation": 0.0
+          },
+          "headline_adversary_minus_routine_degradation": 0.5
+        }
+      ]
+    },
+    "timestamps": {
+      "name": "floating_timestamp_correlation_break",
+      "title": "Floating (zone-naive) timestamps \u2192 cross-zone correlation silently lost",
+      "scales": [
+        {
+          "n_chains": 200,
+          "cross_zone_chains": 108,
+          "same_zone_chains": 92,
+          "utc_normalized": {
+            "chains": 200,
+            "correlated_within_window": 200,
+            "correlation_recall": 1.0,
+            "order_correct_of_correlated": 200
+          },
+          "floating_local": {
+            "chains": 200,
+            "correlated_within_window": 92,
+            "correlation_recall": 0.46,
+            "order_correct_of_correlated": 92
+          }
+        },
+        {
+          "n_chains": 1000,
+          "cross_zone_chains": 501,
+          "same_zone_chains": 499,
+          "utc_normalized": {
+            "chains": 1000,
+            "correlated_within_window": 1000,
+            "correlation_recall": 1.0,
+            "order_correct_of_correlated": 1000
+          },
+          "floating_local": {
+            "chains": 1000,
+            "correlated_within_window": 499,
+            "correlation_recall": 0.499,
+            "order_correct_of_correlated": 499
+          }
+        }
+      ]
+    }
+  }
+}

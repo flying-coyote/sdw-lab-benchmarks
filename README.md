@@ -1,0 +1,52 @@
+# SDW Lab benchmarks
+
+First-party, reproducible benchmarks behind [securitydataworks.com/lab](https://securitydataworks.com/lab).
+The site's premise is that security-data claims should be measured rather than
+asserted — these are the measurements. Each is a small, deterministic experiment
+that a skeptic can re-run, scored against a known ground truth or checked
+engine-against-engine, and labelled at an honest evidence tier.
+
+## The benchmarks
+
+| dir | what it measures | tier | state |
+|---|---|---|---|
+| [`flattening-fidelity/`](flattening-fidelity/) | which detections silently break when semi-structured OCSF/CloudTrail logs are flattened or rolled up to a coarse grain | B | published |
+| [`clickhouse-vs-duckdb/`](clickhouse-vs-duckdb/) | whether ClickHouse and DuckDB are interchangeable over OCSF-shaped data — same answers? what does swapping cost in latency? | B | published |
+| [`ocsf-mapping-fidelity/`](ocsf-mapping-fidelity/) | how completely and how losslessly real vendor schemas map into OCSF 1.8.0 | B | scaffolded — blocked on real vendor schemas |
+
+## How they are kept honest
+
+- **One determinism core.** [`lib/common.py`](lib/common.py) holds a single
+  `MASTER_SEED`, a fixed epoch anchor, and the scoring/timing helpers every
+  benchmark shares. No `datetime.now()`, no unseeded randomness in any corpus
+  generator, so a re-run reproduces the corpus — and therefore the answers —
+  exactly.
+- **The reproducible part vs the measured part.** Where a benchmark produces a
+  deterministic result (a recall, an F1, an answer-set), `run.py` re-runs it and
+  asserts the output is identical. Where it produces a wall-clock latency, that is
+  reported as a median on named hardware, never as a constant.
+- **Tier B, stated plainly.** These are controlled measurements on synthetic
+  corpora, not production telemetry. Each benchmark's `METHODOLOGY.md` states the
+  tier, the corpus design, and every magnitude that is a corpus parameter (a
+  ratio chosen for the experiment) rather than a universal constant.
+
+## Reproduce
+
+```bash
+python3 -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+cd flattening-fidelity && python run.py     # or clickhouse-vs-duckdb/
+```
+
+Each benchmark is self-contained and reads the shared `lib/` via a path shim, so
+it runs from its own directory.
+
+## Layout
+
+```
+lib/common.py           shared seeds, epoch anchor, scoring + timing helpers
+flattening-fidelity/    benchmark: OCSF flattening fidelity (3 failure modes)
+clickhouse-vs-duckdb/   benchmark: engine interchangeability on OCSF data
+ocsf-mapping-fidelity/  benchmark scaffold: vendor-schema -> OCSF 1.8.0 fidelity
+requirements.txt        duckdb, chdb (pinned)
+```
