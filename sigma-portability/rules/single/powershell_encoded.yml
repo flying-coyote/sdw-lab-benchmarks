@@ -1,0 +1,13 @@
+title: PowerShell Encoded Command
+name: powershell_encoded
+status: experimental
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  sel:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - ' -enc '
+      - ' -EncodedCommand '
+  condition: sel

@@ -1,0 +1,10 @@
+title: New Windows Service Installed
+name: service_install
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  sel:
+    EventID: 7045
+  condition: sel

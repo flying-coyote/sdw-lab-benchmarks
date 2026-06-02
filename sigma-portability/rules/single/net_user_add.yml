@@ -1,0 +1,13 @@
+title: Local User Added via net.exe
+name: net_user_add
+status: experimental
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  sel:
+    Image|endswith: '\net.exe'
+    CommandLine|contains|all:
+      - ' user '
+      - ' /add'
+  condition: sel

@@ -1,0 +1,10 @@
+title: Failed Windows Logon
+name: failed_logon
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  sel:
+    EventID: 4625
+  condition: sel

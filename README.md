@@ -12,6 +12,7 @@ engine-against-engine, and labelled at an honest evidence tier.
 |---|---|---|---|
 | [`flattening-fidelity/`](flattening-fidelity/) | which detections silently break when semi-structured OCSF/CloudTrail logs are flattened or rolled up to a coarse grain | B | published |
 | [`clickhouse-vs-duckdb/`](clickhouse-vs-duckdb/) | whether ClickHouse and DuckDB are interchangeable over OCSF-shaped data — same answers? what does swapping cost in latency? | B | published |
+| [`sigma-portability/`](sigma-portability/) | how much of a Sigma correlation rule survives compilation to four open backends (Splunk SPL, ES&#124;QL, Lucene, OpenSearch PPL) | B | published |
 | [`ocsf-mapping-fidelity/`](ocsf-mapping-fidelity/) | how completely and how losslessly real vendor schemas map into OCSF 1.8.0 | B | scaffolded — blocked on real vendor schemas |
 
 ## How they are kept honest
@@ -34,8 +35,16 @@ engine-against-engine, and labelled at an honest evidence tier.
 
 ```bash
 python3 -m venv .venv && . .venv/bin/activate
-pip install -r requirements.txt
-cd flattening-fidelity && python run.py     # or clickhouse-vs-duckdb/
+pip install -r requirements.txt                 # duckdb + chdb (the two engine/fidelity benchmarks)
+cd flattening-fidelity && python run.py          # or clickhouse-vs-duckdb/
+```
+
+`sigma-portability/` has a different dependency set (the pySigma stack), so it
+carries its own `requirements.txt`:
+
+```bash
+pip install -r sigma-portability/requirements.txt
+cd sigma-portability && python run.py
 ```
 
 Each benchmark is self-contained and reads the shared `lib/` via a path shim, so
@@ -47,6 +56,7 @@ it runs from its own directory.
 lib/common.py           shared seeds, epoch anchor, scoring + timing helpers
 flattening-fidelity/    benchmark: OCSF flattening fidelity (3 failure modes)
 clickhouse-vs-duckdb/   benchmark: engine interchangeability on OCSF data
+sigma-portability/      benchmark: Sigma correlation-rule portability across 4 backends
 ocsf-mapping-fidelity/  benchmark scaffold: vendor-schema -> OCSF 1.8.0 fidelity
-requirements.txt        duckdb, chdb (pinned)
+requirements.txt        duckdb, chdb (pinned) — sigma-portability has its own
 ```

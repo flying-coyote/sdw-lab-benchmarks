@@ -1,0 +1,35 @@
+title: Successful Logon (base)
+name: successful_logon
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  sel:
+    EventID: 4624
+  condition: sel
+---
+title: Local User Added via net.exe (base)
+name: net_user_add
+status: experimental
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  sel:
+    Image|endswith: '\net.exe'
+    CommandLine|contains|all:
+      - ' user '
+      - ' /add'
+  condition: sel
+---
+title: Logon Then Local User Creation on One Host in 10 minutes
+status: experimental
+correlation:
+  type: temporal_ordered
+  rules:
+    - successful_logon
+    - net_user_add
+  group-by:
+    - ComputerName
+  timespan: 10m

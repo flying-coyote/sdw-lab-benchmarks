@@ -1,0 +1,35 @@
+title: Whoami Execution (base)
+name: whoami_exec
+status: experimental
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  sel:
+    Image|endswith: '\whoami.exe'
+  condition: sel
+---
+title: PowerShell Encoded Command (base)
+name: powershell_encoded
+status: experimental
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  sel:
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - ' -enc '
+      - ' -EncodedCommand '
+  condition: sel
+---
+title: Recon Then Encoded Execution on One Host in 5 minutes
+status: experimental
+correlation:
+  type: temporal
+  rules:
+    - whoami_exec
+    - powershell_encoded
+  group-by:
+    - ComputerName
+  timespan: 5m

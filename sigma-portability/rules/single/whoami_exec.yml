@@ -1,0 +1,10 @@
+title: Whoami Execution
+name: whoami_exec
+status: experimental
+logsource:
+  product: windows
+  category: process_creation
+detection:
+  sel:
+    Image|endswith: '\whoami.exe'
+  condition: sel

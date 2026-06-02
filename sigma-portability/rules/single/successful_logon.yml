@@ -1,0 +1,10 @@
+title: Successful Windows Logon
+name: successful_logon
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  sel:
+    EventID: 4624
+  condition: sel

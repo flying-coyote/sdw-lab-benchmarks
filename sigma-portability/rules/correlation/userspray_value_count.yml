@@ -1,0 +1,23 @@
+title: Failed Logon (base)
+name: failed_logon
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  sel:
+    EventID: 4625
+  condition: sel
+---
+title: Account Spray — 10+ distinct target users per source in 10 minutes
+status: experimental
+correlation:
+  type: value_count
+  rules:
+    - failed_logon
+  group-by:
+    - IpAddress
+  timespan: 10m
+  condition:
+    gte: 10
+    field: TargetUserName

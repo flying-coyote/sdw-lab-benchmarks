@@ -1,0 +1,595 @@
+{
+  "benchmark": "sigma-correlation-portability (C4)",
+  "evidence_tier": "B (reproducible, first-party; compiler-output fidelity, not target-SIEM execution)",
+  "environment": {
+    "pySigma_version": "1.3.3",
+    "backends": {
+      "splunk_spl": "Splunk SPL",
+      "es_esql": "Elasticsearch ES|QL",
+      "es_lucene": "Elasticsearch Lucene",
+      "os_ppl": "OpenSearch PPL"
+    },
+    "note": "all four backends emit text; no commercial software runs"
+  },
+  "determinism_verified": true,
+  "rule_kinds": {
+    "failed_logon": "single",
+    "net_user_add": "single",
+    "powershell_encoded": "single",
+    "service_install": "single",
+    "successful_logon": "single",
+    "whoami_exec": "single",
+    "bruteforce_event_count": "correlation",
+    "logon_exec_temporal_ordered": "correlation",
+    "passwordspray_event_count": "correlation",
+    "recon_exec_temporal": "correlation",
+    "userspray_value_count": "correlation"
+  },
+  "correlation_meta": {
+    "bruteforce_event_count": {
+      "type": "event_count",
+      "group_by": [
+        "TargetUserName"
+      ],
+      "timespan": "5m",
+      "threshold": 10,
+      "value_field": null
+    },
+    "logon_exec_temporal_ordered": {
+      "type": "temporal_ordered",
+      "group_by": [
+        "ComputerName"
+      ],
+      "timespan": "10m",
+      "threshold": null,
+      "value_field": null
+    },
+    "passwordspray_event_count": {
+      "type": "event_count",
+      "group_by": [
+        "IpAddress"
+      ],
+      "timespan": "10m",
+      "threshold": 30,
+      "value_field": null
+    },
+    "recon_exec_temporal": {
+      "type": "temporal",
+      "group_by": [
+        "ComputerName"
+      ],
+      "timespan": "5m",
+      "threshold": null,
+      "value_field": null
+    },
+    "userspray_value_count": {
+      "type": "value_count",
+      "group_by": [
+        "IpAddress"
+      ],
+      "timespan": "10m",
+      "threshold": 10,
+      "value_field": "TargetUserName"
+    }
+  },
+  "grid": {
+    "splunk_spl": {
+      "failed_logon": {
+        "output": [
+          "source=\"WinEventLog:Security\" EventCode=4625"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "net_user_add": {
+        "output": [
+          "Image=\"*\\\\net.exe\" CommandLine=\"* user *\" CommandLine=\"* /add*\""
+        ],
+        "error": null,
+        "translated": true
+      },
+      "powershell_encoded": {
+        "output": [
+          "Image=\"*\\\\powershell.exe\" CommandLine IN (\"* -enc *\", \"* -EncodedCommand *\")"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "service_install": {
+        "output": [
+          "source=\"WinEventLog:Security\" EventCode=7045"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "successful_logon": {
+        "output": [
+          "source=\"WinEventLog:Security\" EventCode=4624"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "whoami_exec": {
+        "output": [
+          "Image=\"*\\\\whoami.exe\""
+        ],
+        "error": null,
+        "translated": true
+      },
+      "bruteforce_event_count": {
+        "output": [
+          "source=\"WinEventLog:Security\" EventCode=4625\n\n| bin _time span=5m\n| stats count as event_count by _time TargetUserName\n\n| search event_count >= 10"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "TargetUserName": true
+          },
+          "group_by_preserved": true,
+          "time_window": true,
+          "threshold": true,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          3,
+          3
+        ]
+      },
+      "logon_exec_temporal_ordered": {
+        "output": null,
+        "error": "NotImplementedError: Correlation type 'temporal_ordered' is not supported by backend.",
+        "translated": false
+      },
+      "passwordspray_event_count": {
+        "output": [
+          "source=\"WinEventLog:Security\" EventCode=4625\n\n| bin _time span=10m\n| stats count as event_count by _time IpAddress\n\n| search event_count >= 30"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "IpAddress": true
+          },
+          "group_by_preserved": true,
+          "time_window": true,
+          "threshold": true,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          3,
+          3
+        ]
+      },
+      "recon_exec_temporal": {
+        "output": [
+          "| multisearch\n[ search Image=\"*\\\\whoami.exe\" | eval event_type=\"whoami_exec\" ]\n[ search Image=\"*\\\\powershell.exe\" CommandLine IN (\"* -enc *\", \"* -EncodedCommand *\") | eval event_type=\"powershell_encoded\" ]\n\n| bin _time span=5m\n| stats dc(event_type) as event_type_count by _time ComputerName\n\n| search event_type_count >= 2"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "ComputerName": true
+          },
+          "group_by_preserved": true,
+          "time_window": true,
+          "threshold": null,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          2,
+          2
+        ]
+      },
+      "userspray_value_count": {
+        "output": [
+          "source=\"WinEventLog:Security\" EventCode=4625\n\n| bin _time span=10m\n| stats dc(TargetUserName) as value_count by _time IpAddress\n\n| search value_count >= 10"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "IpAddress": true
+          },
+          "group_by_preserved": true,
+          "time_window": true,
+          "threshold": true,
+          "value_field_distinct": true
+        },
+        "fidelity_fraction": [
+          4,
+          4
+        ]
+      }
+    },
+    "es_esql": {
+      "failed_logon": {
+        "output": [
+          "from * metadata _id, _index, _version | where winlog.channel==\"Security\" and event.code==\"4625\""
+        ],
+        "error": null,
+        "translated": true
+      },
+      "net_user_add": {
+        "output": [
+          "from * metadata _id, _index, _version | where ends_with(process.executable, \"\\\\net.exe\") and process.command_line like \"* user *\" and process.command_line like \"* /add*\""
+        ],
+        "error": null,
+        "translated": true
+      },
+      "powershell_encoded": {
+        "output": [
+          "from * metadata _id, _index, _version | where ends_with(process.executable, \"\\\\powershell.exe\") and (process.command_line like \"* -enc *\" or process.command_line like \"* -EncodedCommand *\")"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "service_install": {
+        "output": [
+          "from * metadata _id, _index, _version | where winlog.channel==\"Security\" and event.code==\"7045\""
+        ],
+        "error": null,
+        "translated": true
+      },
+      "successful_logon": {
+        "output": [
+          "from * metadata _id, _index, _version | where winlog.channel==\"Security\" and event.code==\"4624\""
+        ],
+        "error": null,
+        "translated": true
+      },
+      "whoami_exec": {
+        "output": [
+          "from * metadata _id, _index, _version | where ends_with(process.executable, \"\\\\whoami.exe\")"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "bruteforce_event_count": {
+        "output": [
+          "from * metadata _id, _index, _version | where winlog.channel==\"Security\" and event.code==\"4625\"\n| eval timebucket=date_trunc(5minutes, @timestamp) | stats event_count=count() by timebucket, winlog.event_data.TargetUserName\n| where event_count >= 10"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "TargetUserName": true
+          },
+          "group_by_preserved": true,
+          "time_window": true,
+          "threshold": true,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          3,
+          3
+        ]
+      },
+      "logon_exec_temporal_ordered": {
+        "output": null,
+        "error": "NotImplementedError: Correlation type 'temporal_ordered' is not supported by backend.",
+        "translated": false
+      },
+      "passwordspray_event_count": {
+        "output": [
+          "from * metadata _id, _index, _version | where winlog.channel==\"Security\" and event.code==\"4625\"\n| eval timebucket=date_trunc(10minutes, @timestamp) | stats event_count=count() by timebucket, source.ip\n| where event_count >= 30"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "IpAddress": false
+          },
+          "group_by_preserved": false,
+          "time_window": true,
+          "threshold": true,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          3,
+          3
+        ]
+      },
+      "recon_exec_temporal": {
+        "output": [
+          "from * metadata _id, _index, _version | where (ends_with(process.executable, \"\\\\whoami.exe\")) or (ends_with(process.executable, \"\\\\powershell.exe\") and (process.command_line like \"* -enc *\" or process.command_line like \"* -EncodedCommand *\"))\n| eval event_type=case(ends_with(process.executable, \"\\\\whoami.exe\"), \"whoami_exec\", ends_with(process.executable, \"\\\\powershell.exe\") and (process.command_line like \"* -enc *\" or process.command_line like \"* -EncodedCommand *\"), \"powershell_encoded\")\n| eval timebucket=date_trunc(5minutes, @timestamp) | stats event_type_count=count_distinct(event_type) by timebucket, winlog.computer_name\n| where event_type_count >= 2"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "ComputerName": false
+          },
+          "group_by_preserved": false,
+          "time_window": true,
+          "threshold": null,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          2,
+          2
+        ]
+      },
+      "userspray_value_count": {
+        "output": [
+          "from * metadata _id, _index, _version | where winlog.channel==\"Security\" and event.code==\"4625\"\n| eval timebucket=date_trunc(10minutes, @timestamp) | stats value_count=count_distinct(winlog.event_data.TargetUserName) by timebucket, source.ip\n| where value_count >= 10"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "IpAddress": false
+          },
+          "group_by_preserved": false,
+          "time_window": true,
+          "threshold": true,
+          "value_field_distinct": true
+        },
+        "fidelity_fraction": [
+          4,
+          4
+        ]
+      }
+    },
+    "es_lucene": {
+      "failed_logon": {
+        "output": [
+          "winlog.channel:Security AND event.code:4625"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "net_user_add": {
+        "output": [
+          "process.executable:*\\\\net.exe AND (process.command_line:*\\ user\\ * AND process.command_line:*\\ \\/add*)"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "powershell_encoded": {
+        "output": [
+          "process.executable:*\\\\powershell.exe AND (process.command_line:(*\\ \\-enc\\ * OR *\\ \\-EncodedCommand\\ *))"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "service_install": {
+        "output": [
+          "winlog.channel:Security AND event.code:7045"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "successful_logon": {
+        "output": [
+          "winlog.channel:Security AND event.code:4624"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "whoami_exec": {
+        "output": [
+          "process.executable:*\\\\whoami.exe"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "bruteforce_event_count": {
+        "output": null,
+        "error": "NotImplementedError: Backend does not support correlation rules.",
+        "translated": false
+      },
+      "logon_exec_temporal_ordered": {
+        "output": null,
+        "error": "NotImplementedError: Backend does not support correlation rules.",
+        "translated": false
+      },
+      "passwordspray_event_count": {
+        "output": null,
+        "error": "NotImplementedError: Backend does not support correlation rules.",
+        "translated": false
+      },
+      "recon_exec_temporal": {
+        "output": null,
+        "error": "NotImplementedError: Backend does not support correlation rules.",
+        "translated": false
+      },
+      "userspray_value_count": {
+        "output": null,
+        "error": "NotImplementedError: Backend does not support correlation rules.",
+        "translated": false
+      }
+    },
+    "os_ppl": {
+      "failed_logon": {
+        "output": [
+          "source=windows-security-* | where `winlog.channel`=\"Security\" AND `event.code`=\"4625\""
+        ],
+        "error": null,
+        "translated": true
+      },
+      "net_user_add": {
+        "output": [
+          "source=windows-process_creation-* | where LIKE(`process.executable`, \"%net.exe\") AND LIKE(`process.command_line`, \"% user %\") AND LIKE(`process.command_line`, \"% /add%\")"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "powershell_encoded": {
+        "output": [
+          "source=windows-process_creation-* | where LIKE(`process.executable`, \"%powershell.exe\") AND (LIKE(`process.command_line`, \"% -enc %\") OR LIKE(`process.command_line`, \"% -EncodedCommand %\"))"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "service_install": {
+        "output": [
+          "source=windows-security-* | where `winlog.channel`=\"Security\" AND `event.code`=\"7045\""
+        ],
+        "error": null,
+        "translated": true
+      },
+      "successful_logon": {
+        "output": [
+          "source=windows-security-* | where `winlog.channel`=\"Security\" AND `event.code`=\"4624\""
+        ],
+        "error": null,
+        "translated": true
+      },
+      "whoami_exec": {
+        "output": [
+          "source=windows-process_creation-* | where LIKE(`process.executable`, \"%whoami.exe\")"
+        ],
+        "error": null,
+        "translated": true
+      },
+      "bruteforce_event_count": {
+        "output": [
+          "| search source=windows-security-* | where `winlog.channel`=\"Security\" AND `event.code`=\"4625\" | stats count() as event_count by TargetUserName | where event_count >= 10"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "TargetUserName": true
+          },
+          "group_by_preserved": true,
+          "time_window": false,
+          "threshold": true,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          2,
+          3
+        ]
+      },
+      "logon_exec_temporal_ordered": {
+        "output": [
+          "| multisearch [search source=windows-security-* | where `winlog.channel`=\"Security\" AND `event.code`=\"4624\"] [search source=windows-process_creation-* | where LIKE(`process.executable`, \"%net.exe\") AND LIKE(`process.command_line`, \"% user %\") AND LIKE(`process.command_line`, \"% /add%\")] | stats dc(EventID) as unique_rules by span(@timestamp, 10m), ComputerName | where unique_rules >= 2"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "ComputerName": true
+          },
+          "group_by_preserved": true,
+          "time_window": true,
+          "threshold": null,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          2,
+          2
+        ]
+      },
+      "passwordspray_event_count": {
+        "output": [
+          "| search source=windows-security-* | where `winlog.channel`=\"Security\" AND `event.code`=\"4625\" | stats count() as event_count by IpAddress | where event_count >= 30"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "IpAddress": true
+          },
+          "group_by_preserved": true,
+          "time_window": false,
+          "threshold": true,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          2,
+          3
+        ]
+      },
+      "recon_exec_temporal": {
+        "output": [
+          "| multisearch [search source=windows-process_creation-* | where LIKE(`process.executable`, \"%whoami.exe\")] [search source=windows-process_creation-* | where LIKE(`process.executable`, \"%powershell.exe\") AND (LIKE(`process.command_line`, \"% -enc %\") OR LIKE(`process.command_line`, \"% -EncodedCommand %\"))] | stats dc(EventID) as unique_rules by span(@timestamp, 5m), ComputerName | where unique_rules >= 2"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "ComputerName": true
+          },
+          "group_by_preserved": true,
+          "time_window": true,
+          "threshold": null,
+          "value_field_distinct": null
+        },
+        "fidelity_fraction": [
+          2,
+          2
+        ]
+      },
+      "userspray_value_count": {
+        "output": [
+          "| search source=windows-security-* | where `winlog.channel`=\"Security\" AND `event.code`=\"4625\" | stats dc(TargetUserName) as value_count by IpAddress | where value_count >= 10"
+        ],
+        "error": null,
+        "translated": true,
+        "fidelity": {
+          "aggregation": true,
+          "group_by_fields": {
+            "IpAddress": true
+          },
+          "group_by_preserved": true,
+          "time_window": false,
+          "threshold": true,
+          "value_field_distinct": true
+        },
+        "fidelity_fraction": [
+          3,
+          4
+        ]
+      }
+    }
+  },
+  "summary": {
+    "n_single": 6,
+    "n_correlation": 5,
+    "per_backend": {
+      "splunk_spl": {
+        "single_translated": 6,
+        "corr_full": 4,
+        "corr_partial": 0,
+        "corr_refused": 1,
+        "silent_window_drop": 0
+      },
+      "es_esql": {
+        "single_translated": 6,
+        "corr_full": 4,
+        "corr_partial": 0,
+        "corr_refused": 1,
+        "silent_window_drop": 0
+      },
+      "es_lucene": {
+        "single_translated": 6,
+        "corr_full": 0,
+        "corr_partial": 0,
+        "corr_refused": 5,
+        "silent_window_drop": 0
+      },
+      "os_ppl": {
+        "single_translated": 6,
+        "corr_full": 2,
+        "corr_partial": 3,
+        "corr_refused": 0,
+        "silent_window_drop": 3
+      }
+    }
+  }
+}
