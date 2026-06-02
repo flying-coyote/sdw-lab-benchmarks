@@ -1,0 +1,21 @@
+{
+  "_comment": "Cisco Umbrella DNS log field inventory, scored against OCSF DNS Activity (4003). Umbrella DNS logs are gzip CSV written every 10 minutes to a managed/self-managed S3 bucket; this inventory is the documented v3+ DNS-log column set (13 columns), corroborated by a real sample line in the Cyderes parser mirror. Newer schema versions add identity-UUID and DNS-over-HTTPS columns and the proxy-log Request Method; those are out of scope here and noted in PROVENANCE. Proxy/IP/cloud-firewall logs are separate Umbrella log types scored to other OCSF classes. Field names are Umbrella's documented column headers. Transcribed from the Cisco Umbrella 'Log Formats and Versioning' / 'DNS Log Formats' docs; corroborated against the Cyderes and Google SecOps (Chronicle) Umbrella-DNS parsers. See PROVENANCE.md.",
+  "source": "cisco_umbrella",
+  "source_schema": "Cisco Umbrella DNS log (CSV, v3+ column set)",
+  "scored_against_class": "dns_activity (4003)",
+  "fields": [
+    {"field": "timestamp", "type": "timestamp", "detection_relevant": false, "note": "time the DNS request was made (UTC)"},
+    {"field": "most_granular_identity", "type": "string", "detection_relevant": true, "note": "the most specific identity that made the request (heterogeneous: a roaming computer, AD user, network, site, ...)"},
+    {"field": "identities", "type": "string(list)", "detection_relevant": true, "note": "comma-list of ALL identities associated with the request (device + user + network + AD groups)"},
+    {"field": "internal_ip", "type": "ip", "detection_relevant": true, "note": "internal client IP that made the request"},
+    {"field": "external_ip", "type": "ip", "detection_relevant": true, "note": "egress / NAT public IP the request came from"},
+    {"field": "action", "type": "string(enum)", "detection_relevant": true, "note": "Allowed / Blocked"},
+    {"field": "query_type", "type": "string", "detection_relevant": true, "note": "DNS record type queried, e.g. '1 (A)', '28 (AAAA)', '15 (MX)'"},
+    {"field": "response_code", "type": "string(enum)", "detection_relevant": true, "note": "DNS response code: NOERROR / NXDOMAIN / SERVFAIL / ..."},
+    {"field": "domain", "type": "string", "detection_relevant": true, "note": "the domain queried (FQDN, trailing dot)"},
+    {"field": "categories", "type": "string(list)", "detection_relevant": true, "note": "Umbrella content/security categories the domain matched (comma-list, Umbrella taxonomy)"},
+    {"field": "most_granular_identity_type", "type": "string", "detection_relevant": true, "note": "type of the most granular identity: Roaming Computer / AD User / AD Computer / Network / Site / Mobile Device / ..."},
+    {"field": "identity_types", "type": "string(list)", "detection_relevant": true, "note": "comma-list of the types of all associated identities"},
+    {"field": "blocked_categories", "type": "string(list)", "detection_relevant": true, "note": "the categories that triggered the block (Umbrella taxonomy)"}
+  ]
+}

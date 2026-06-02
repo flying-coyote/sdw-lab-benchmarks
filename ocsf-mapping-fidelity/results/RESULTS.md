@@ -20,6 +20,7 @@
 | crowdstrike | detection_finding (2004) | 43 | 30 | 9 | 4 | 70% | 30% |
 | palo_alto | network_activity (4001) | 83 | 46 | 8 | 29 | 55% | 45% |
 | cisco_asa | network_activity (4001) | 26 | 16 | 3 | 7 | 62% | 38% |
+| cisco_umbrella | dns_activity (4003) | 13 | 6 | 2 | 5 | 46% | 54% |
 
 ## Okta: the schema gap vs the shipped-mapper gap
 
@@ -56,6 +57,11 @@ Detection-breaking = a field a named detection needs that does not map cleanly (
 | Session-teardown reason analysis | cisco_asa | `teardown_reason` (coerced), `action` (coerced) |
 | ICMP tunneling / covert channel | cisco_asa | `icmp_type` (unmapped), `icmp_code` (unmapped) |
 | Byte-volume exfil by destination | cisco_asa | — (all fields typed) |
+| DNS tunneling by query characteristics | cisco_umbrella | — (all fields typed) |
+| Identity-attributed DNS risk | cisco_umbrella | `most_granular_identity` (coerced), `most_granular_identity_type` (coerced) |
+| Content-category / blocked-category policy | cisco_umbrella | `categories` (unmapped), `blocked_categories` (unmapped) |
+| Egress-IP correlation | cisco_umbrella | `external_ip` (unmapped) |
+| Blocked-domain hunt | cisco_umbrella | — (all fields typed) |
 
 ## Field-by-field (auditable)
 
@@ -165,4 +171,17 @@ The full per-field mapping, status and rationale is in `results.json` and `mappi
 - `teardown_initiator` — which side initiated the teardown; no OCSF attribute
 - `icmp_type` — ICMP type; OCSF Network Activity has no ICMP type/code attributes
 - `icmp_code` — ICMP code; OCSF Network Activity has no ICMP type/code attributes
+
+### cisco_umbrella — coerced (2)
+
+- `most_granular_identity` → `src_endpoint.name` — the requesting identity is heterogeneous (roaming computer / AD user / network / site); flattening it to a single endpoint name loses the type-discriminated meaning that most_granular_identity_type carries [heterogeneous identity]
+- `most_granular_identity_type` → `src_endpoint.type_id` — Umbrella identity-type (Roaming Computer/AD User/Network/Site/...) -> endpoint type_id enum; the taxonomy does not align, and types like 'AD User'/'Network'/'Site' are not endpoint types at all [identity-type taxonomy]
+
+### cisco_umbrella — unmapped (5)
+
+- `identities` — comma-list of ALL associated identities (device + user + network + AD groups at once); OCSF DNS Activity has no multi-identity list [structure collapse / heterogeneous]
+- `external_ip` — egress/NAT public IP of the same requester; src_endpoint.ip already holds the internal client, and there is no second-address slot for the post-NAT egress [pre/post-NAT collapse]
+- `categories` — Umbrella content/security categories matched by the domain (Umbrella taxonomy); OCSF DNS Activity has no domain-category attribute (url.categories is HTTP/url-bound, and DNS Activity has no url) [content-category taxonomy seam]
+- `identity_types` — comma-list of the types of all associated identities; no OCSF home [structure collapse]
+- `blocked_categories` — the categories that caused the block (Umbrella taxonomy); OCSF DNS Activity has no blocked-category/domain-category attribute [content-category taxonomy seam]
 

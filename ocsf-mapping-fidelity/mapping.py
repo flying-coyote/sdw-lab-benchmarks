@@ -343,6 +343,33 @@ CISCO_ASA_MAPPING = {
     "icmp_code": {"ocsf": "unmapped", "status": "unmapped", "note": "ICMP code; OCSF Network Activity has no ICMP type/code attributes"},
 }
 
+# --- Cisco Umbrella DNS log -> OCSF DNS Activity (4003) ----------------------
+# Best-effort against the real OCSF 1.8.0 schema; no public Umbrella-DNS -> OCSF
+# field crosswalk exists to anchor an `official` flag on. The requester is
+# src_endpoint; the lookup is the dns_query object.
+
+CISCO_UMBRELLA_MAPPING = {
+    "timestamp": {"ocsf": "time", "status": "typed", "note": "request time (UTC) -> time"},
+    "most_granular_identity": {"ocsf": "src_endpoint.name", "status": "coerced",
+                               "note": "the requesting identity is heterogeneous (roaming computer / AD user / network / site); flattening it to a single endpoint name loses the type-discriminated meaning that most_granular_identity_type carries [heterogeneous identity]"},
+    "identities": {"ocsf": "unmapped", "status": "unmapped",
+                   "note": "comma-list of ALL associated identities (device + user + network + AD groups at once); OCSF DNS Activity has no multi-identity list [structure collapse / heterogeneous]"},
+    "internal_ip": {"ocsf": "src_endpoint.ip", "status": "typed", "note": "internal client IP -> src_endpoint.ip (the requester)"},
+    "external_ip": {"ocsf": "unmapped", "status": "unmapped",
+                    "note": "egress/NAT public IP of the same requester; src_endpoint.ip already holds the internal client, and there is no second-address slot for the post-NAT egress [pre/post-NAT collapse]"},
+    "action": {"ocsf": "action_id", "status": "typed", "note": "Allowed/Blocked -> action_id (Allowed/Denied); clean binary"},
+    "query_type": {"ocsf": "query.type", "status": "typed", "note": "DNS record type -> dns_query.type"},
+    "response_code": {"ocsf": "rcode", "status": "typed", "note": "DNS response code (NOERROR/NXDOMAIN/...) -> rcode"},
+    "domain": {"ocsf": "query.hostname", "status": "typed", "note": "queried domain -> dns_query.hostname"},
+    "categories": {"ocsf": "unmapped", "status": "unmapped",
+                   "note": "Umbrella content/security categories matched by the domain (Umbrella taxonomy); OCSF DNS Activity has no domain-category attribute (url.categories is HTTP/url-bound, and DNS Activity has no url) [content-category taxonomy seam]"},
+    "most_granular_identity_type": {"ocsf": "src_endpoint.type_id", "status": "coerced",
+                                    "note": "Umbrella identity-type (Roaming Computer/AD User/Network/Site/...) -> endpoint type_id enum; the taxonomy does not align, and types like 'AD User'/'Network'/'Site' are not endpoint types at all [identity-type taxonomy]"},
+    "identity_types": {"ocsf": "unmapped", "status": "unmapped", "note": "comma-list of the types of all associated identities; no OCSF home [structure collapse]"},
+    "blocked_categories": {"ocsf": "unmapped", "status": "unmapped",
+                           "note": "the categories that caused the block (Umbrella taxonomy); OCSF DNS Activity has no blocked-category/domain-category attribute [content-category taxonomy seam]"},
+}
+
 # --- Named detections: the fields each one depends on -----------------------
 # detection-breaking = the lossy (status != typed) fields a named detection needs.
 # Two detections here are clean (all fields typed) on purpose — the result is not
@@ -414,4 +441,19 @@ DETECTIONS = [
     {"name": "Byte-volume exfil by destination", "source": "cisco_asa",
      "desc": "high total bytes to a destination over a single connection",
      "fields": ["dst_ip", "dst_port", "bytes", "duration", "protocol"]},
+    {"name": "DNS tunneling by query characteristics", "source": "cisco_umbrella",
+     "desc": "flag tunneling via record type, domain length/entropy and rcode",
+     "fields": ["query_type", "domain", "response_code"]},
+    {"name": "Identity-attributed DNS risk", "source": "cisco_umbrella",
+     "desc": "attribute a malicious-domain lookup to the specific user or device",
+     "fields": ["most_granular_identity", "most_granular_identity_type", "domain"]},
+    {"name": "Content-category / blocked-category policy", "source": "cisco_umbrella",
+     "desc": "analyze blocks by Umbrella content category",
+     "fields": ["categories", "blocked_categories", "action"]},
+    {"name": "Egress-IP correlation", "source": "cisco_umbrella",
+     "desc": "correlate DNS activity by external egress / NAT IP",
+     "fields": ["external_ip", "internal_ip"]},
+    {"name": "Blocked-domain hunt", "source": "cisco_umbrella",
+     "desc": "find blocked resolutions of a specific domain",
+     "fields": ["domain", "action", "response_code"]},
 ]
