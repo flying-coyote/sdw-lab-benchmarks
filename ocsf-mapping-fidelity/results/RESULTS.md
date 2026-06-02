@@ -21,6 +21,7 @@
 | palo_alto | network_activity (4001) | 83 | 46 | 8 | 29 | 55% | 45% |
 | cisco_asa | network_activity (4001) | 26 | 16 | 3 | 7 | 62% | 38% |
 | cisco_umbrella | dns_activity (4003) | 13 | 6 | 2 | 5 | 46% | 54% |
+| zscaler | http_activity (4002) | 36 | 21 | 4 | 11 | 58% | 42% |
 
 ## Okta: the schema gap vs the shipped-mapper gap
 
@@ -62,6 +63,11 @@ Detection-breaking = a field a named detection needs that does not map cleanly (
 | Content-category / blocked-category policy | cisco_umbrella | `categories` (unmapped), `blocked_categories` (unmapped) |
 | Egress-IP correlation | cisco_umbrella | `external_ip` (unmapped) |
 | Blocked-domain hunt | cisco_umbrella | — (all fields typed) |
+| URL-category exfil / policy evasion | zscaler | `urlcategory` (coerced), `urlclass` (unmapped), `urlsupercategory` (unmapped) |
+| Cloud-app shadow-IT (CASB) | zscaler | `appclass` (unmapped) |
+| DLP incident triage | zscaler | `dlpdictionaries` (unmapped), `dlpengine` (unmapped) |
+| Malware download by file type | zscaler | `filetype` (unmapped), `fileclass` (unmapped) |
+| HTTP error-rate / response monitoring | zscaler | — (all fields typed) |
 
 ## Field-by-field (auditable)
 
@@ -184,4 +190,25 @@ The full per-field mapping, status and rationale is in `results.json` and `mappi
 - `categories` — Umbrella content/security categories matched by the domain (Umbrella taxonomy); OCSF DNS Activity has no domain-category attribute (url.categories is HTTP/url-bound, and DNS Activity has no url) [content-category taxonomy seam]
 - `identity_types` — comma-list of the types of all associated identities; no OCSF home [structure collapse]
 - `blocked_categories` — the categories that caused the block (Umbrella taxonomy); OCSF DNS Activity has no blocked-category/domain-category attribute [content-category taxonomy seam]
+
+### zscaler — coerced (4)
+
+- `department` → `src_endpoint.owner.org.ou_name` — user department -> organization unit name; OCSF user has no dedicated department attribute, so it maps to the org-unit field
+- `urlcategory` → `http_request.url.categories` — Zscaler URL category (Zscaler taxonomy) -> url.categories (string preserved), but OCSF's typed url.category_ids enum uses a different taxonomy, so a category-id pivot loses it [URL-category taxonomy seam]
+- `reason` → `status_detail` — policy reason (the action taken + the policy applied, a composite) -> status_detail free string; the rule reference and the action collapse into one detail string
+- `riskscore` → `risk_score` — Zscaler Page Risk Index (0-100) is the destination URL's risk rating -> risk_score, which OCSF defines as the EVENT's risk; the semantics shift (page risk vs event risk)
+
+### zscaler — unmapped (11)
+
+- `location` — Zscaler gateway location / sub-location is a topology/policy object name, not geo; mapping it to src_endpoint.location (a geo object) would be wrong, and there is no OCSF home for the gateway name
+- `urlclass` — Zscaler URL class (a second taxonomy level, e.g. Bandwidth Loss); OCSF url has one category concept, so the class level has no home [URL-category taxonomy seam]
+- `urlsupercategory` — Zscaler URL super-category (third taxonomy level); no OCSF home [URL-category taxonomy seam]
+- `appclass` — cloud-app class/category (CASB taxonomy); OCSF HTTP Activity has no application-taxonomy attribute [app taxonomy]
+- `clientpublicip` — client public (egress/NAT) IP; src_endpoint.ip already holds the internal client and there is no second-address slot for the egress [pre/post-NAT collapse]
+- `threatcategory` — Zscaler malware category (Zscaler taxonomy); no confirmed OCSF malware-category home on HTTP Activity [threat taxonomy]
+- `threatsupercategory` — Zscaler malware super-category; no OCSF home [threat taxonomy]
+- `dlpdictionaries` — DLP dictionaries matched; OCSF HTTP Activity has no DLP attributes (a DLP finding is a different class) [signal OCSF HTTP Activity lacks]
+- `dlpengine` — DLP engine matched; no OCSF HTTP Activity home [signal OCSF HTTP Activity lacks]
+- `filetype` — Zscaler file-type (a content classification, distinct from the MIME content_type already mapped); OCSF file.type_id is a filesystem-object enum, not a content taxonomy, so there is no faithful home [file taxonomy]
+- `fileclass` — Zscaler file class (Zscaler taxonomy); no OCSF home [file taxonomy]
 

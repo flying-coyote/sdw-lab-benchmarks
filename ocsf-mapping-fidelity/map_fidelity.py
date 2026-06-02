@@ -21,7 +21,7 @@ SCHEMAS_DIR = os.path.join(HERE, "schemas")
 
 from mapping import (  # noqa: E402
     OKTA_MAPPING, CROWDSTRIKE_MAPPING, PALO_ALTO_MAPPING, CISCO_ASA_MAPPING,
-    CISCO_UMBRELLA_MAPPING, DETECTIONS,
+    CISCO_UMBRELLA_MAPPING, ZSCALER_MAPPING, DETECTIONS,
 )
 
 SOURCES = {
@@ -30,6 +30,7 @@ SOURCES = {
     "palo_alto": {"class": "network_activity", "mapping": PALO_ALTO_MAPPING, "has_official": False},
     "cisco_asa": {"class": "network_activity", "mapping": CISCO_ASA_MAPPING, "has_official": False},
     "cisco_umbrella": {"class": "dns_activity", "mapping": CISCO_UMBRELLA_MAPPING, "has_official": False},
+    "zscaler": {"class": "http_activity", "mapping": ZSCALER_MAPPING, "has_official": False},
 }
 
 

@@ -370,6 +370,58 @@ CISCO_UMBRELLA_MAPPING = {
                            "note": "the categories that caused the block (Umbrella taxonomy); OCSF DNS Activity has no blocked-category/domain-category attribute [content-category taxonomy seam]"},
 }
 
+# --- Zscaler ZIA Web log -> OCSF HTTP Activity (4002) ------------------------
+# Best-effort against the real OCSF 1.8.0 schema. An official Zscaler ZIA->OCSF
+# mapping exists for AWS Security Lake (Web Logs -> HTTP Activity 4002, OCSF
+# v1.5.0), but its field-level carry list is not publicly retrievable, so no
+# per-field `official` flag is carried (has_official=False); see PROVENANCE.
+
+ZSCALER_MAPPING = {
+    "datetime": {"ocsf": "time", "status": "typed", "note": "transaction time -> time"},
+    "login": {"ocsf": "src_endpoint.owner.email_addr", "status": "typed", "note": "user login (email) -> owner of the source endpoint, email_addr"},
+    "department": {"ocsf": "src_endpoint.owner.org.ou_name", "status": "coerced",
+                   "note": "user department -> organization unit name; OCSF user has no dedicated department attribute, so it maps to the org-unit field"},
+    "location": {"ocsf": "unmapped", "status": "unmapped",
+                 "note": "Zscaler gateway location / sub-location is a topology/policy object name, not geo; mapping it to src_endpoint.location (a geo object) would be wrong, and there is no OCSF home for the gateway name"},
+    "url": {"ocsf": "http_request.url.url_string", "status": "typed", "note": "destination URL -> http_request.url.url_string"},
+    "host": {"ocsf": "http_request.url.hostname", "status": "typed", "note": "destination hostname -> http_request.url.hostname"},
+    "urlcategory": {"ocsf": "http_request.url.categories", "status": "coerced",
+                    "note": "Zscaler URL category (Zscaler taxonomy) -> url.categories (string preserved), but OCSF's typed url.category_ids enum uses a different taxonomy, so a category-id pivot loses it [URL-category taxonomy seam]"},
+    "urlclass": {"ocsf": "unmapped", "status": "unmapped", "note": "Zscaler URL class (a second taxonomy level, e.g. Bandwidth Loss); OCSF url has one category concept, so the class level has no home [URL-category taxonomy seam]"},
+    "urlsupercategory": {"ocsf": "unmapped", "status": "unmapped", "note": "Zscaler URL super-category (third taxonomy level); no OCSF home [URL-category taxonomy seam]"},
+    "appname": {"ocsf": "app_name", "status": "typed", "note": "cloud application name -> app_name"},
+    "appclass": {"ocsf": "unmapped", "status": "unmapped", "note": "cloud-app class/category (CASB taxonomy); OCSF HTTP Activity has no application-taxonomy attribute [app taxonomy]"},
+    "action": {"ocsf": "action_id", "status": "typed", "note": "Allowed/Blocked -> action_id (Allowed/Denied); clean binary"},
+    "reason": {"ocsf": "status_detail", "status": "coerced",
+               "note": "policy reason (the action taken + the policy applied, a composite) -> status_detail free string; the rule reference and the action collapse into one detail string"},
+    "requestmethod": {"ocsf": "http_request.http_method", "status": "typed", "note": "HTTP method -> http_request.http_method"},
+    "requestsize": {"ocsf": "http_request.length", "status": "typed", "note": "request size in bytes -> http_request.length"},
+    "responsesize": {"ocsf": "http_response.length", "status": "typed", "note": "response size in bytes -> http_response.length"},
+    "totalsize": {"ocsf": "traffic.bytes", "status": "typed", "note": "total transaction size -> traffic.bytes"},
+    "respcode": {"ocsf": "http_status", "status": "typed", "note": "HTTP response code -> http_status"},
+    "useragent": {"ocsf": "http_request.user_agent", "status": "typed", "note": "user-agent -> http_request.user_agent"},
+    "referer": {"ocsf": "http_request.referrer", "status": "typed", "note": "referrer URL -> http_request.referrer"},
+    "clientip": {"ocsf": "src_endpoint.ip", "status": "typed", "note": "client IP -> src_endpoint.ip"},
+    "clientpublicip": {"ocsf": "unmapped", "status": "unmapped",
+                       "note": "client public (egress/NAT) IP; src_endpoint.ip already holds the internal client and there is no second-address slot for the egress [pre/post-NAT collapse]"},
+    "serverip": {"ocsf": "dst_endpoint.ip", "status": "typed", "note": "destination server IP -> dst_endpoint.ip"},
+    "contenttype": {"ocsf": "http_response.content_type", "status": "typed", "note": "response content type (MIME) -> http_response.content_type"},
+    "threatname": {"ocsf": "malware.name", "status": "typed", "note": "detected threat name -> malware.name"},
+    "threatcategory": {"ocsf": "unmapped", "status": "unmapped", "note": "Zscaler malware category (Zscaler taxonomy); no confirmed OCSF malware-category home on HTTP Activity [threat taxonomy]"},
+    "threatsupercategory": {"ocsf": "unmapped", "status": "unmapped", "note": "Zscaler malware super-category; no OCSF home [threat taxonomy]"},
+    "riskscore": {"ocsf": "risk_score", "status": "coerced",
+                  "note": "Zscaler Page Risk Index (0-100) is the destination URL's risk rating -> risk_score, which OCSF defines as the EVENT's risk; the semantics shift (page risk vs event risk)"},
+    "dlpdictionaries": {"ocsf": "unmapped", "status": "unmapped", "note": "DLP dictionaries matched; OCSF HTTP Activity has no DLP attributes (a DLP finding is a different class) [signal OCSF HTTP Activity lacks]"},
+    "dlpengine": {"ocsf": "unmapped", "status": "unmapped", "note": "DLP engine matched; no OCSF HTTP Activity home [signal OCSF HTTP Activity lacks]"},
+    "filetype": {"ocsf": "unmapped", "status": "unmapped",
+                 "note": "Zscaler file-type (a content classification, distinct from the MIME content_type already mapped); OCSF file.type_id is a filesystem-object enum, not a content taxonomy, so there is no faithful home [file taxonomy]"},
+    "fileclass": {"ocsf": "unmapped", "status": "unmapped", "note": "Zscaler file class (Zscaler taxonomy); no OCSF home [file taxonomy]"},
+    "rulelabel": {"ocsf": "policy.name", "status": "typed", "note": "applied policy-rule name -> policy.name"},
+    "devicehostname": {"ocsf": "device.hostname", "status": "typed", "note": "user device hostname -> device.hostname"},
+    "deviceowner": {"ocsf": "device.owner.name", "status": "typed", "note": "device owner -> device.owner.name"},
+    "protocol": {"ocsf": "app_protocol_name", "status": "typed", "note": "transaction protocol (HTTP/HTTPS) -> app_protocol_name (it is the application protocol, not the IP protocol)"},
+}
+
 # --- Named detections: the fields each one depends on -----------------------
 # detection-breaking = the lossy (status != typed) fields a named detection needs.
 # Two detections here are clean (all fields typed) on purpose — the result is not
@@ -456,4 +508,19 @@ DETECTIONS = [
     {"name": "Blocked-domain hunt", "source": "cisco_umbrella",
      "desc": "find blocked resolutions of a specific domain",
      "fields": ["domain", "action", "response_code"]},
+    {"name": "URL-category exfil / policy evasion", "source": "zscaler",
+     "desc": "data egress to a risky URL category across the category hierarchy",
+     "fields": ["urlcategory", "urlclass", "urlsupercategory", "action"]},
+    {"name": "Cloud-app shadow-IT (CASB)", "source": "zscaler",
+     "desc": "flag risky or unsanctioned cloud-app usage by app class",
+     "fields": ["appname", "appclass", "action"]},
+    {"name": "DLP incident triage", "source": "zscaler",
+     "desc": "investigate a DLP match: which dictionary/engine fired, on which URL",
+     "fields": ["dlpdictionaries", "dlpengine", "url", "login"]},
+    {"name": "Malware download by file type", "source": "zscaler",
+     "desc": "flag a malicious download of a given file type/class",
+     "fields": ["threatname", "filetype", "fileclass", "contenttype"]},
+    {"name": "HTTP error-rate / response monitoring", "source": "zscaler",
+     "desc": "monitor response codes and sizes per host and method",
+     "fields": ["respcode", "host", "responsesize", "requestmethod"]},
 ]

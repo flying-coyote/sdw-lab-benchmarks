@@ -116,6 +116,36 @@
         "category_name": null, "class_name": null, "type_name": null, "enrichments": "enrichment",
         "unmapped": null, "raw_data": null, "raw_data_size": null, "raw_data_hash": "fingerprint"
       }
+    },
+    "http_activity": {
+      "uid": 4002,
+      "category": 4,
+      "attrs": {
+        "activity_id": null, "category_uid": null, "class_uid": null, "type_uid": null,
+        "metadata": "metadata", "time": null, "severity_id": null, "cloud": "cloud",
+        "device": "device", "actor": "actor", "src_endpoint": "network_endpoint",
+        "dst_endpoint": "network_endpoint", "connection_info": "network_connection_info",
+        "traffic": "network_traffic", "cumulative_traffic": "network_traffic",
+        "proxy_traffic": "network_traffic", "proxy_connection_info": "network_connection_info",
+        "proxy": "network_proxy", "proxy_endpoint": "network_proxy",
+        "http_request": "http_request", "http_response": "http_response", "http_status": null,
+        "http_cookies": "http_cookie", "proxy_http_request": "http_request",
+        "proxy_http_response": "http_response", "proxy_tls": "tls", "tls": "tls", "file": "file",
+        "trace": "trace", "app_name": null, "app_protocol_name": null,
+        "firewall_rule": "firewall_rule", "load_balancer": "load_balancer", "packet_list": "packet",
+        "ja4_fingerprint_list": "ja4_fingerprint", "attacks": "attack", "action": null, "action_id": null,
+        "disposition": null, "disposition_id": null, "status": null, "status_id": null,
+        "status_code": null, "status_detail": null, "start_time": null, "end_time": null,
+        "start_time_dt": null, "end_time_dt": null, "time_dt": null, "duration": null, "count": null,
+        "timezone_offset": null, "is_alert": null, "observation_point": null, "observation_point_id": null,
+        "network_observation_point": "network_endpoint", "severity": null, "confidence": null,
+        "confidence_id": null, "confidence_score": null, "risk_level": null, "risk_level_id": null,
+        "risk_score": null, "risk_details": null, "message": null, "observables": "observable",
+        "osint": "osint", "api": "api", "authorizations": "authorization", "malware": "malware",
+        "malware_scan_info": "malware_scan_info", "policy": "policy", "activity_name": null,
+        "category_name": null, "class_name": null, "type_name": null, "enrichments": "enrichment",
+        "unmapped": null, "raw_data": null, "raw_data_size": null, "raw_data_hash": "fingerprint"
+      }
     }
   },
   "objects": {
@@ -245,6 +275,10 @@
     "dns_answer": {
       "rdata": null, "type": null, "class": null, "ttl": null, "flags": null, "flag_ids": null,
       "packet_uid": null
+    },
+    "http_response": {
+      "code": null, "message": null, "status": null, "length": null, "content_type": null,
+      "body_length": null, "http_headers": "http_header", "latency": null
     }
   }
 }
