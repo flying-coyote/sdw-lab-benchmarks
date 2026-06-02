@@ -304,6 +304,45 @@ PALO_ALTO_MAPPING = {
     "sanctioned_state_of_app": {"ocsf": "unmapped", "status": "unmapped", "note": "App-ID sanctioned-SaaS indicator; no OCSF home"},
 }
 
+# --- Cisco ASA connection-event syslog -> OCSF Network Activity (4001) -------
+# Best-effort against the real OCSF 1.8.0 schema; no public ASA-syslog -> OCSF
+# field crosswalk exists to anchor an `official` flag on. Same endpoint model as
+# Palo Alto: ASA is the observing `device`, the flow peers are src/dst_endpoint.
+
+CISCO_ASA_MAPPING = {
+    "timestamp": {"ocsf": "time", "status": "typed", "note": "syslog event time -> time"},
+    "device": {"ocsf": "device.hostname", "status": "typed", "note": "ASA hostname -> device.hostname (firewall as the observing device)"},
+    "message_id": {"ocsf": "metadata.event_code", "status": "typed", "note": "ASA message number (302013/...) -> metadata.event_code"},
+    "severity_level": {"ocsf": "severity_id", "status": "coerced",
+                       "note": "ASA/syslog severity 0-7 (8 levels) -> severity_id enum (~6 levels); 8->6 remap"},
+    "action": {"ocsf": "action_id", "status": "coerced",
+               "note": "Built/Teardown/Deny -> action_id (Allowed/Denied); Built and Teardown both collapse to Allowed, so the connection-lifecycle distinction OCSF would put in activity_id is lost from this single field"},
+    "direction": {"ocsf": "connection_info.direction_id", "status": "typed",
+                  "note": "inbound/outbound -> network_connection_info.direction_id (Inbound/Outbound)"},
+    "protocol": {"ocsf": "connection_info.protocol_name", "status": "typed", "note": "TCP/UDP/ICMP/SCTP -> network_connection_info.protocol_name"},
+    "connection_id": {"ocsf": "connection_info.uid", "status": "typed", "note": "ASA connection-slot id -> network_connection_info.uid"},
+    "src_interface": {"ocsf": "src_endpoint.interface_name", "status": "typed", "note": "source nameif -> src_endpoint.interface_name"},
+    "src_ip": {"ocsf": "src_endpoint.ip", "status": "typed", "note": "real (pre-NAT) source IP -> src_endpoint.ip"},
+    "src_port": {"ocsf": "src_endpoint.port", "status": "typed", "note": "real source port -> src_endpoint.port"},
+    "mapped_src_ip": {"ocsf": "unmapped", "status": "unmapped", "note": "NAT-mapped source IP; Network Activity has no translated-address slot [pre/post-NAT collapse]"},
+    "mapped_src_port": {"ocsf": "unmapped", "status": "unmapped", "note": "NAT-mapped source port; no translated-port slot [pre/post-NAT collapse]"},
+    "dst_interface": {"ocsf": "dst_endpoint.interface_name", "status": "typed", "note": "destination nameif -> dst_endpoint.interface_name"},
+    "dst_ip": {"ocsf": "dst_endpoint.ip", "status": "typed", "note": "real (pre-NAT) destination IP -> dst_endpoint.ip"},
+    "dst_port": {"ocsf": "dst_endpoint.port", "status": "typed", "note": "real destination port -> dst_endpoint.port"},
+    "mapped_dst_ip": {"ocsf": "unmapped", "status": "unmapped", "note": "NAT-mapped destination IP; no translated-address slot [pre/post-NAT collapse]"},
+    "mapped_dst_port": {"ocsf": "unmapped", "status": "unmapped", "note": "NAT-mapped destination port; no translated-port slot [pre/post-NAT collapse]"},
+    "user": {"ocsf": "src_endpoint.owner.name", "status": "typed", "note": "identity-firewall user -> owner of the source endpoint"},
+    "duration": {"ocsf": "duration", "status": "typed", "note": "connection lifetime -> duration"},
+    "bytes": {"ocsf": "traffic.bytes", "status": "typed",
+              "note": "total connection bytes -> traffic.bytes; ASA reports only a total (no directional bytes_in/out), so the total maps cleanly but the direction split PA carries is absent at the source"},
+    "teardown_reason": {"ocsf": "status_detail", "status": "coerced",
+                        "note": "teardown reason enum (TCP FINs/TCP Reset/SYN Timeout/Connection timeout/...) -> status_detail free string; OCSF Network Activity has no typed session-termination enum"},
+    "teardown_initiator": {"ocsf": "unmapped", "status": "unmapped", "note": "which side initiated the teardown; no OCSF attribute"},
+    "acl_id": {"ocsf": "firewall_rule.name", "status": "typed", "note": "matched access-group/ACL name -> firewall_rule.name"},
+    "icmp_type": {"ocsf": "unmapped", "status": "unmapped", "note": "ICMP type; OCSF Network Activity has no ICMP type/code attributes"},
+    "icmp_code": {"ocsf": "unmapped", "status": "unmapped", "note": "ICMP code; OCSF Network Activity has no ICMP type/code attributes"},
+}
+
 # --- Named detections: the fields each one depends on -----------------------
 # detection-breaking = the lossy (status != typed) fields a named detection needs.
 # Two detections here are clean (all fields typed) on purpose — the result is not
@@ -360,4 +399,19 @@ DETECTIONS = [
     {"name": "Long-lived high-volume beacon", "source": "palo_alto",
      "desc": "long-duration flow with directional byte/packet asymmetry to a destination",
      "fields": ["dst", "dport", "proto", "elapsed", "bytes_sent", "bytes_received", "pkts_sent"]},
+    {"name": "NAT-aware true-source attribution (ASA)", "source": "cisco_asa",
+     "desc": "tie a NAT-translated flow back to the real internal host and port",
+     "fields": ["mapped_src_ip", "mapped_src_port", "src_ip"]},
+    {"name": "Connection-lifecycle correlation", "source": "cisco_asa",
+     "desc": "pair a Built with its Teardown to reason over the full connection",
+     "fields": ["action", "connection_id", "duration", "bytes"]},
+    {"name": "Session-teardown reason analysis", "source": "cisco_asa",
+     "desc": "classify why connections ended (reset vs fin vs timeout)",
+     "fields": ["teardown_reason", "action"]},
+    {"name": "ICMP tunneling / covert channel", "source": "cisco_asa",
+     "desc": "detect anomalous ICMP type/code patterns",
+     "fields": ["icmp_type", "icmp_code", "protocol"]},
+    {"name": "Byte-volume exfil by destination", "source": "cisco_asa",
+     "desc": "high total bytes to a destination over a single connection",
+     "fields": ["dst_ip", "dst_port", "bytes", "duration", "protocol"]},
 ]

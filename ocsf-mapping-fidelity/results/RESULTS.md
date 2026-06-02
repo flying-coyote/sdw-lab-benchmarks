@@ -19,6 +19,7 @@
 | okta | authentication (3002) | 50 | 29 | 7 | 14 | 58% | 42% |
 | crowdstrike | detection_finding (2004) | 43 | 30 | 9 | 4 | 70% | 30% |
 | palo_alto | network_activity (4001) | 83 | 46 | 8 | 29 | 55% | 45% |
+| cisco_asa | network_activity (4001) | 26 | 16 | 3 | 7 | 62% | 38% |
 
 ## Okta: the schema gap vs the shipped-mapper gap
 
@@ -50,6 +51,11 @@ Detection-breaking = a field a named detection needs that does not map cleanly (
 | Shadow-IT unsanctioned SaaS | palo_alto | `sanctioned_state_of_app` (unmapped), `is_saas_of_app` (unmapped), `category_of_app` (unmapped) |
 | Firewall action / session-teardown audit | palo_alto | `action` (coerced), `session_end_reason` (coerced) |
 | Long-lived high-volume beacon | palo_alto | — (all fields typed) |
+| NAT-aware true-source attribution (ASA) | cisco_asa | `mapped_src_ip` (unmapped), `mapped_src_port` (unmapped) |
+| Connection-lifecycle correlation | cisco_asa | `action` (coerced) |
+| Session-teardown reason analysis | cisco_asa | `teardown_reason` (coerced), `action` (coerced) |
+| ICMP tunneling / covert channel | cisco_asa | `icmp_type` (unmapped), `icmp_code` (unmapped) |
+| Byte-volume exfil by destination | cisco_asa | — (all fields typed) |
 
 ## Field-by-field (auditable)
 
@@ -143,4 +149,20 @@ The full per-field mapping, status and rationale is in `results.json` and `mappi
 - `tunneled_app` — tunneled application carried inside the parent app; no OCSF home [app-id taxonomy seam]
 - `is_saas_of_app` — App-ID SaaS indicator; no OCSF home
 - `sanctioned_state_of_app` — App-ID sanctioned-SaaS indicator; no OCSF home
+
+### cisco_asa — coerced (3)
+
+- `severity_level` → `severity_id` — ASA/syslog severity 0-7 (8 levels) -> severity_id enum (~6 levels); 8->6 remap
+- `action` → `action_id` — Built/Teardown/Deny -> action_id (Allowed/Denied); Built and Teardown both collapse to Allowed, so the connection-lifecycle distinction OCSF would put in activity_id is lost from this single field
+- `teardown_reason` → `status_detail` — teardown reason enum (TCP FINs/TCP Reset/SYN Timeout/Connection timeout/...) -> status_detail free string; OCSF Network Activity has no typed session-termination enum
+
+### cisco_asa — unmapped (7)
+
+- `mapped_src_ip` — NAT-mapped source IP; Network Activity has no translated-address slot [pre/post-NAT collapse]
+- `mapped_src_port` — NAT-mapped source port; no translated-port slot [pre/post-NAT collapse]
+- `mapped_dst_ip` — NAT-mapped destination IP; no translated-address slot [pre/post-NAT collapse]
+- `mapped_dst_port` — NAT-mapped destination port; no translated-port slot [pre/post-NAT collapse]
+- `teardown_initiator` — which side initiated the teardown; no OCSF attribute
+- `icmp_type` — ICMP type; OCSF Network Activity has no ICMP type/code attributes
+- `icmp_code` — ICMP code; OCSF Network Activity has no ICMP type/code attributes
 

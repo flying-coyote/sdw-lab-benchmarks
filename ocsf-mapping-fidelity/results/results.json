@@ -1715,6 +1715,257 @@
           "note": "App-ID sanctioned-SaaS indicator; no OCSF home"
         }
       ]
+    },
+    "cisco_asa": {
+      "summary": {
+        "class": "network_activity (4001)",
+        "total_fields": 26,
+        "typed": 16,
+        "coerced": 3,
+        "unmapped": 7,
+        "coverage": 0.6154,
+        "coverage_incl_coerced": 0.7308,
+        "lossy": 10,
+        "lossy_fraction": 0.3846,
+        "detection_relevant_fields": 23,
+        "detection_relevant_lossy": 9
+      },
+      "fields": [
+        {
+          "field": "timestamp",
+          "type": "timestamp",
+          "detection_relevant": false,
+          "ocsf": "time",
+          "status": "typed",
+          "resolution": "full",
+          "note": "syslog event time -> time"
+        },
+        {
+          "field": "device",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "device.hostname",
+          "status": "typed",
+          "resolution": "full",
+          "note": "ASA hostname -> device.hostname (firewall as the observing device)"
+        },
+        {
+          "field": "message_id",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "metadata.event_code",
+          "status": "typed",
+          "resolution": "full",
+          "note": "ASA message number (302013/...) -> metadata.event_code"
+        },
+        {
+          "field": "severity_level",
+          "type": "integer(enum)",
+          "detection_relevant": false,
+          "ocsf": "severity_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "ASA/syslog severity 0-7 (8 levels) -> severity_id enum (~6 levels); 8->6 remap"
+        },
+        {
+          "field": "action",
+          "type": "string(enum)",
+          "detection_relevant": true,
+          "ocsf": "action_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "Built/Teardown/Deny -> action_id (Allowed/Denied); Built and Teardown both collapse to Allowed, so the connection-lifecycle distinction OCSF would put in activity_id is lost from this single field"
+        },
+        {
+          "field": "direction",
+          "type": "string(enum)",
+          "detection_relevant": true,
+          "ocsf": "connection_info.direction_id",
+          "status": "typed",
+          "resolution": "full",
+          "note": "inbound/outbound -> network_connection_info.direction_id (Inbound/Outbound)"
+        },
+        {
+          "field": "protocol",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "connection_info.protocol_name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "TCP/UDP/ICMP/SCTP -> network_connection_info.protocol_name"
+        },
+        {
+          "field": "connection_id",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "connection_info.uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "ASA connection-slot id -> network_connection_info.uid"
+        },
+        {
+          "field": "src_interface",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.interface_name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "source nameif -> src_endpoint.interface_name"
+        },
+        {
+          "field": "src_ip",
+          "type": "ip",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.ip",
+          "status": "typed",
+          "resolution": "full",
+          "note": "real (pre-NAT) source IP -> src_endpoint.ip"
+        },
+        {
+          "field": "src_port",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.port",
+          "status": "typed",
+          "resolution": "full",
+          "note": "real source port -> src_endpoint.port"
+        },
+        {
+          "field": "mapped_src_ip",
+          "type": "ip",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "NAT-mapped source IP; Network Activity has no translated-address slot [pre/post-NAT collapse]"
+        },
+        {
+          "field": "mapped_src_port",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "NAT-mapped source port; no translated-port slot [pre/post-NAT collapse]"
+        },
+        {
+          "field": "dst_interface",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.interface_name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "destination nameif -> dst_endpoint.interface_name"
+        },
+        {
+          "field": "dst_ip",
+          "type": "ip",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.ip",
+          "status": "typed",
+          "resolution": "full",
+          "note": "real (pre-NAT) destination IP -> dst_endpoint.ip"
+        },
+        {
+          "field": "dst_port",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.port",
+          "status": "typed",
+          "resolution": "full",
+          "note": "real destination port -> dst_endpoint.port"
+        },
+        {
+          "field": "mapped_dst_ip",
+          "type": "ip",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "NAT-mapped destination IP; no translated-address slot [pre/post-NAT collapse]"
+        },
+        {
+          "field": "mapped_dst_port",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "NAT-mapped destination port; no translated-port slot [pre/post-NAT collapse]"
+        },
+        {
+          "field": "user",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.owner.name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "identity-firewall user -> owner of the source endpoint"
+        },
+        {
+          "field": "duration",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "duration",
+          "status": "typed",
+          "resolution": "full",
+          "note": "connection lifetime -> duration"
+        },
+        {
+          "field": "bytes",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "traffic.bytes",
+          "status": "typed",
+          "resolution": "full",
+          "note": "total connection bytes -> traffic.bytes; ASA reports only a total (no directional bytes_in/out), so the total maps cleanly but the direction split PA carries is absent at the source"
+        },
+        {
+          "field": "teardown_reason",
+          "type": "string(enum)",
+          "detection_relevant": true,
+          "ocsf": "status_detail",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "teardown reason enum (TCP FINs/TCP Reset/SYN Timeout/Connection timeout/...) -> status_detail free string; OCSF Network Activity has no typed session-termination enum"
+        },
+        {
+          "field": "teardown_initiator",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "which side initiated the teardown; no OCSF attribute"
+        },
+        {
+          "field": "acl_id",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "firewall_rule.name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "matched access-group/ACL name -> firewall_rule.name"
+        },
+        {
+          "field": "icmp_type",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "ICMP type; OCSF Network Activity has no ICMP type/code attributes"
+        },
+        {
+          "field": "icmp_code",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "ICMP code; OCSF Network Activity has no ICMP type/code attributes"
+        }
+      ]
     }
   },
   "detections": [
@@ -2004,6 +2255,100 @@
         "bytes_sent",
         "bytes_received",
         "pkts_sent"
+      ],
+      "breaking": [],
+      "survives_clean": true
+    },
+    {
+      "name": "NAT-aware true-source attribution (ASA)",
+      "source": "cisco_asa",
+      "desc": "tie a NAT-translated flow back to the real internal host and port",
+      "fields_required": [
+        "mapped_src_ip",
+        "mapped_src_port",
+        "src_ip"
+      ],
+      "breaking": [
+        {
+          "field": "mapped_src_ip",
+          "status": "unmapped"
+        },
+        {
+          "field": "mapped_src_port",
+          "status": "unmapped"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Connection-lifecycle correlation",
+      "source": "cisco_asa",
+      "desc": "pair a Built with its Teardown to reason over the full connection",
+      "fields_required": [
+        "action",
+        "connection_id",
+        "duration",
+        "bytes"
+      ],
+      "breaking": [
+        {
+          "field": "action",
+          "status": "coerced"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Session-teardown reason analysis",
+      "source": "cisco_asa",
+      "desc": "classify why connections ended (reset vs fin vs timeout)",
+      "fields_required": [
+        "teardown_reason",
+        "action"
+      ],
+      "breaking": [
+        {
+          "field": "teardown_reason",
+          "status": "coerced"
+        },
+        {
+          "field": "action",
+          "status": "coerced"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "ICMP tunneling / covert channel",
+      "source": "cisco_asa",
+      "desc": "detect anomalous ICMP type/code patterns",
+      "fields_required": [
+        "icmp_type",
+        "icmp_code",
+        "protocol"
+      ],
+      "breaking": [
+        {
+          "field": "icmp_type",
+          "status": "unmapped"
+        },
+        {
+          "field": "icmp_code",
+          "status": "unmapped"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Byte-volume exfil by destination",
+      "source": "cisco_asa",
+      "desc": "high total bytes to a destination over a single connection",
+      "fields_required": [
+        "dst_ip",
+        "dst_port",
+        "bytes",
+        "duration",
+        "protocol"
       ],
       "breaking": [],
       "survives_clean": true
