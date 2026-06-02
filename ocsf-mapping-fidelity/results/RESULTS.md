@@ -18,6 +18,7 @@
 |---|---|--:|--:|--:|--:|--:|--:|
 | okta | authentication (3002) | 50 | 29 | 7 | 14 | 58% | 42% |
 | crowdstrike | detection_finding (2004) | 43 | 30 | 9 | 4 | 70% | 30% |
+| palo_alto | network_activity (4001) | 83 | 46 | 8 | 29 | 55% | 45% |
 
 ## Okta: the schema gap vs the shipped-mapper gap
 
@@ -44,6 +45,11 @@ Detection-breaking = a field a named detection needs that does not map cleanly (
 | IOC pivot on indicator type | crowdstrike | `event.IOCType` (coerced) |
 | Response-action audit | crowdstrike | `event.PatternDispositionValue` (coerced) |
 | Known-bad hash | crowdstrike | — (all fields typed) |
+| NAT-aware true-source attribution | palo_alto | `natsrc` (unmapped), `natsport` (unmapped) |
+| App-ID evasion / tunneled-app | palo_alto | `tunneled_app` (unmapped), `technology_of_app` (unmapped), `characteristic_of_app` (unmapped) |
+| Shadow-IT unsanctioned SaaS | palo_alto | `sanctioned_state_of_app` (unmapped), `is_saas_of_app` (unmapped), `category_of_app` (unmapped) |
+| Firewall action / session-teardown audit | palo_alto | `action` (coerced), `session_end_reason` (coerced) |
+| Long-lived high-volume beacon | palo_alto | — (all fields typed) |
 
 ## Field-by-field (auditable)
 
@@ -94,4 +100,47 @@ The full per-field mapping, status and rationale is in `results.json` and `mappi
 - `event.GrandparentCommandLine` — ancestry/lineage carry path only, not a command line for ancestor processes; grandparent cmd line has no home
 - `event.PatternDispositionFlags` — named boolean flags object; no typed home
 - `event.ScanResults` — AV scan results array; no clean Detection Finding home
+
+### palo_alto — coerced (8)
+
+- `subtype` → `activity_id` — start/end/drop/deny -> activity_id enum; drop/deny are actions not lifecycle states, so they collapse
+- `action` → `action_id` — allow/deny/drop/drop-icmp/reset-client/reset-server/reset-both/drop-all -> action_id (Allowed/Denied/...); the drop-vs-reset-vs-deny distinction collapses [firewall action-enum narrowing]
+- `category` → `url.categories` — PA URL-category (single PANW-taxonomy value) -> url.categories (string preserved), but OCSF's typed url.category_ids enum uses a different category taxonomy, so an OCSF-category-id pivot loses the value [URL-category taxonomy seam]
+- `session_end_reason` → `status_detail` — PA session-end-reason enum (tcp-fin/tcp-rst-from-client/tcp-rst-from-server/threat/policy-deny/aged-out/...) -> status_detail free string; OCSF Network Activity has no typed session-termination enum
+- `dynusergroup_name` → `src_endpoint.owner.groups.name` — single PA dynamic-user-group name -> source user's groups[]; PA's policy-evaluated dynamic membership flattens to a static group name
+- `xff_ip` → `src_endpoint.intermediate_ips` — X-Forwarded-For true-client IP -> intermediate_ips; Network Activity has no http_request (only proxy_http_request), so the real client lands in the proxy-hop list and loses its 'true source' meaning
+- `src_category` → `src_endpoint.type_id` — Device-ID source category -> endpoint type_id enum; the Device-ID category taxonomy and OCSF's endpoint-type enum do not align [device-id taxonomy]
+- `dst_category` → `dst_endpoint.type_id` — Device-ID destination category -> endpoint type_id enum; taxonomy mismatch [device-id taxonomy]
+
+### palo_alto — unmapped (29)
+
+- `natsrc` — post-NAT source IP; Network Activity models ONE src_endpoint (the original) with no translated-address attribute, so the post-NAT address has no typed home [pre/post-NAT collapse]
+- `natdst` — post-NAT destination IP; no translated-address slot on dst_endpoint [pre/post-NAT collapse]
+- `vsys` — virtual-system partition id; no OCSF home
+- `logset` — log-forwarding profile name (config metadata); no OCSF home
+- `natsport` — post-NAT source port; no translated-port slot [pre/post-NAT collapse]
+- `natdport` — post-NAT destination port; no translated-port slot [pre/post-NAT collapse]
+- `flags` — 32-bit PA session-characteristics bitfield (NAT-applied, decrypted, proxy-session, captive-portal, pcap) — NOT TCP flags; high-signal bits like decrypted/NAT-applied have no OCSF home
+- `actionflags` — Panorama log-forwarding bitfield (internal); no OCSF home
+- `vsys_name` — named virtual system; no OCSF home
+- `action_source` — action provenance (from-policy / from-application); no OCSF home
+- `tunnel` — tunnel encapsulation type (GRE/IPSec/GTP); Network Activity 4001 has no tunnel-type attribute
+- `parent_session_id` — parent-tunnel session linkage for inner flows; no OCSF parent-session attribute [structure collapse]
+- `parent_start_time` — parent-tunnel session start; no home
+- `src_profile` — granular Device-ID profile (e.g. 'Apple iPhone'); OCSF has no device-profile attribute
+- `dst_profile` — granular Device-ID destination profile; no OCSF device-profile attribute
+- `src_edl` — source-IP External Dynamic List membership (threat-intel list name); OCSF endpoint has no list-membership attribute
+- `dst_edl` — destination-IP External Dynamic List membership; no OCSF home
+- `src_dag` — source Dynamic Address Group membership; no OCSF home
+- `dst_dag` — destination Dynamic Address Group membership; no OCSF home
+- `flow_type` — proxy vs non-proxy flow type; OCSF expresses proxy presence structurally (proxy_endpoint set), not as an enum, so the label has no home
+- `subcategory_of_app` — App-ID subcategory; OCSF has no application-taxonomy attributes [app-id taxonomy seam]
+- `category_of_app` — App-ID category; no OCSF application-taxonomy home [app-id taxonomy seam]
+- `technology_of_app` — App-ID technology (browser-based/client-server/network-protocol/peer-to-peer); no OCSF home [app-id taxonomy seam]
+- `risk_of_app` — App-ID static application-risk rating (1-5); distinct from event risk_level_id (the event's risk, not the app's inherent rating), so no faithful home
+- `characteristic_of_app` — App-ID characteristics (evasive/tunnels-other-apps/used-by-malware/...); no OCSF home [app-id taxonomy seam]
+- `container_of_app` — App-ID parent application; OCSF has no application-hierarchy attribute
+- `tunneled_app` — tunneled application carried inside the parent app; no OCSF home [app-id taxonomy seam]
+- `is_saas_of_app` — App-ID SaaS indicator; no OCSF home
+- `sanctioned_state_of_app` — App-ID sanctioned-SaaS indicator; no OCSF home
 

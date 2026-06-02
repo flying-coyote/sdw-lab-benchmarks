@@ -951,6 +951,770 @@
           "note": "AV scan results array; no clean Detection Finding home"
         }
       ]
+    },
+    "palo_alto": {
+      "summary": {
+        "class": "network_activity (4001)",
+        "total_fields": 83,
+        "typed": 46,
+        "coerced": 8,
+        "unmapped": 29,
+        "coverage": 0.5542,
+        "coverage_incl_coerced": 0.6506,
+        "lossy": 37,
+        "lossy_fraction": 0.4458,
+        "detection_relevant_fields": 68,
+        "detection_relevant_lossy": 32
+      },
+      "fields": [
+        {
+          "field": "receive_time",
+          "type": "timestamp",
+          "detection_relevant": false,
+          "ocsf": "metadata.logged_time",
+          "status": "typed",
+          "resolution": "full",
+          "note": "management-plane log receipt -> metadata.logged_time"
+        },
+        {
+          "field": "serial",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "device.uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "reporting firewall serial -> device.uid (firewall as the observing device)"
+        },
+        {
+          "field": "type",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "metadata.log_name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "log type 'TRAFFIC' -> metadata.log_name"
+        },
+        {
+          "field": "subtype",
+          "type": "string(enum)",
+          "detection_relevant": true,
+          "ocsf": "activity_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "start/end/drop/deny -> activity_id enum; drop/deny are actions not lifecycle states, so they collapse"
+        },
+        {
+          "field": "time_generated",
+          "type": "timestamp",
+          "detection_relevant": false,
+          "ocsf": "time",
+          "status": "typed",
+          "resolution": "full",
+          "note": "dataplane event time -> time"
+        },
+        {
+          "field": "src",
+          "type": "ip",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.ip",
+          "status": "typed",
+          "resolution": "full",
+          "note": "original (pre-NAT) source IP -> src_endpoint.ip"
+        },
+        {
+          "field": "dst",
+          "type": "ip",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.ip",
+          "status": "typed",
+          "resolution": "full",
+          "note": "original (pre-NAT) destination IP -> dst_endpoint.ip"
+        },
+        {
+          "field": "natsrc",
+          "type": "ip",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "post-NAT source IP; Network Activity models ONE src_endpoint (the original) with no translated-address attribute, so the post-NAT address has no typed home [pre/post-NAT collapse]"
+        },
+        {
+          "field": "natdst",
+          "type": "ip",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "post-NAT destination IP; no translated-address slot on dst_endpoint [pre/post-NAT collapse]"
+        },
+        {
+          "field": "rule",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "firewall_rule.name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "matched security-rule name -> firewall_rule.name"
+        },
+        {
+          "field": "srcuser",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.owner.name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "User-ID source user -> owner of the source endpoint"
+        },
+        {
+          "field": "dstuser",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.owner.name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "User-ID destination user -> owner of the destination endpoint"
+        },
+        {
+          "field": "app",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "app_name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "App-ID application name -> app_name"
+        },
+        {
+          "field": "vsys",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "virtual-system partition id; no OCSF home"
+        },
+        {
+          "field": "from",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.zone",
+          "status": "typed",
+          "resolution": "full",
+          "note": "source security zone -> src_endpoint.zone"
+        },
+        {
+          "field": "to",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.zone",
+          "status": "typed",
+          "resolution": "full",
+          "note": "destination security zone -> dst_endpoint.zone"
+        },
+        {
+          "field": "inbound_if",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "src_endpoint.interface_name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "ingress interface -> src_endpoint.interface_name"
+        },
+        {
+          "field": "outbound_if",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "dst_endpoint.interface_name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "egress interface -> dst_endpoint.interface_name"
+        },
+        {
+          "field": "logset",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "log-forwarding profile name (config metadata); no OCSF home"
+        },
+        {
+          "field": "sessionid",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "connection_info.uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "firewall session id -> network_connection_info.uid"
+        },
+        {
+          "field": "repeatcnt",
+          "type": "integer",
+          "detection_relevant": false,
+          "ocsf": "count",
+          "status": "typed",
+          "resolution": "full",
+          "note": "repeat count of same-5-tuple sessions -> count"
+        },
+        {
+          "field": "sport",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.port",
+          "status": "typed",
+          "resolution": "full",
+          "note": "source port -> src_endpoint.port"
+        },
+        {
+          "field": "dport",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.port",
+          "status": "typed",
+          "resolution": "full",
+          "note": "destination port -> dst_endpoint.port"
+        },
+        {
+          "field": "natsport",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "post-NAT source port; no translated-port slot [pre/post-NAT collapse]"
+        },
+        {
+          "field": "natdport",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "post-NAT destination port; no translated-port slot [pre/post-NAT collapse]"
+        },
+        {
+          "field": "flags",
+          "type": "integer(bitfield)",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "32-bit PA session-characteristics bitfield (NAT-applied, decrypted, proxy-session, captive-portal, pcap) \u2014 NOT TCP flags; high-signal bits like decrypted/NAT-applied have no OCSF home"
+        },
+        {
+          "field": "proto",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "connection_info.protocol_name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "IP protocol name -> network_connection_info.protocol_name"
+        },
+        {
+          "field": "action",
+          "type": "string(enum)",
+          "detection_relevant": true,
+          "ocsf": "action_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "allow/deny/drop/drop-icmp/reset-client/reset-server/reset-both/drop-all -> action_id (Allowed/Denied/...); the drop-vs-reset-vs-deny distinction collapses [firewall action-enum narrowing]"
+        },
+        {
+          "field": "bytes",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "traffic.bytes",
+          "status": "typed",
+          "resolution": "full",
+          "note": "total bytes -> traffic.bytes"
+        },
+        {
+          "field": "bytes_sent",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "traffic.bytes_out",
+          "status": "typed",
+          "resolution": "full",
+          "note": "client-to-server (source->dest) bytes -> traffic.bytes_out"
+        },
+        {
+          "field": "bytes_received",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "traffic.bytes_in",
+          "status": "typed",
+          "resolution": "full",
+          "note": "server-to-client (dest->source) bytes -> traffic.bytes_in"
+        },
+        {
+          "field": "packets",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "traffic.packets",
+          "status": "typed",
+          "resolution": "full",
+          "note": "total packets -> traffic.packets"
+        },
+        {
+          "field": "start",
+          "type": "timestamp",
+          "detection_relevant": false,
+          "ocsf": "start_time",
+          "status": "typed",
+          "resolution": "full",
+          "note": "session start -> start_time"
+        },
+        {
+          "field": "elapsed",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "duration",
+          "status": "typed",
+          "resolution": "full",
+          "note": "session duration -> duration"
+        },
+        {
+          "field": "category",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "url.categories",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "PA URL-category (single PANW-taxonomy value) -> url.categories (string preserved), but OCSF's typed url.category_ids enum uses a different category taxonomy, so an OCSF-category-id pivot loses the value [URL-category taxonomy seam]"
+        },
+        {
+          "field": "seqno",
+          "type": "integer",
+          "detection_relevant": false,
+          "ocsf": "metadata.uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "unique 64-bit log-entry id -> metadata.uid"
+        },
+        {
+          "field": "actionflags",
+          "type": "integer(bitfield)",
+          "detection_relevant": false,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "Panorama log-forwarding bitfield (internal); no OCSF home"
+        },
+        {
+          "field": "srcloc",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.location.country",
+          "status": "typed",
+          "resolution": "full",
+          "note": "source country/region -> src_endpoint.location.country"
+        },
+        {
+          "field": "dstloc",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.location.country",
+          "status": "typed",
+          "resolution": "full",
+          "note": "destination country/region -> dst_endpoint.location.country"
+        },
+        {
+          "field": "pkts_sent",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "traffic.packets_out",
+          "status": "typed",
+          "resolution": "full",
+          "note": "client-to-server packets -> traffic.packets_out"
+        },
+        {
+          "field": "pkts_received",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "traffic.packets_in",
+          "status": "typed",
+          "resolution": "full",
+          "note": "server-to-client packets -> traffic.packets_in"
+        },
+        {
+          "field": "session_end_reason",
+          "type": "string(enum)",
+          "detection_relevant": true,
+          "ocsf": "status_detail",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "PA session-end-reason enum (tcp-fin/tcp-rst-from-client/tcp-rst-from-server/threat/policy-deny/aged-out/...) -> status_detail free string; OCSF Network Activity has no typed session-termination enum"
+        },
+        {
+          "field": "vsys_name",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "named virtual system; no OCSF home"
+        },
+        {
+          "field": "device_name",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "device.hostname",
+          "status": "typed",
+          "resolution": "full",
+          "note": "reporting firewall hostname -> device.hostname"
+        },
+        {
+          "field": "action_source",
+          "type": "string(enum)",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "action provenance (from-policy / from-application); no OCSF home"
+        },
+        {
+          "field": "src_uuid",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.instance_uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "NSX source VM UUID -> src_endpoint.instance_uid"
+        },
+        {
+          "field": "dst_uuid",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.instance_uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "NSX destination VM UUID -> dst_endpoint.instance_uid"
+        },
+        {
+          "field": "tunnel",
+          "type": "string(enum)",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "tunnel encapsulation type (GRE/IPSec/GTP); Network Activity 4001 has no tunnel-type attribute"
+        },
+        {
+          "field": "parent_session_id",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "parent-tunnel session linkage for inner flows; no OCSF parent-session attribute [structure collapse]"
+        },
+        {
+          "field": "parent_start_time",
+          "type": "timestamp",
+          "detection_relevant": false,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "parent-tunnel session start; no home"
+        },
+        {
+          "field": "rule_uuid",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "firewall_rule.uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "permanent rule UUID -> firewall_rule.uid"
+        },
+        {
+          "field": "dynusergroup_name",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.owner.groups.name",
+          "status": "coerced",
+          "resolution": "deep",
+          "note": "single PA dynamic-user-group name -> source user's groups[]; PA's policy-evaluated dynamic membership flattens to a static group name"
+        },
+        {
+          "field": "xff_ip",
+          "type": "ip",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.intermediate_ips",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "X-Forwarded-For true-client IP -> intermediate_ips; Network Activity has no http_request (only proxy_http_request), so the real client lands in the proxy-hop list and loses its 'true source' meaning"
+        },
+        {
+          "field": "src_category",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.type_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "Device-ID source category -> endpoint type_id enum; the Device-ID category taxonomy and OCSF's endpoint-type enum do not align [device-id taxonomy]"
+        },
+        {
+          "field": "src_profile",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "granular Device-ID profile (e.g. 'Apple iPhone'); OCSF has no device-profile attribute"
+        },
+        {
+          "field": "src_model",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.hw_info.model",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "Device-ID source model -> src_endpoint.hw_info.model"
+        },
+        {
+          "field": "src_vendor",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.hw_info.vendor_name",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "Device-ID source vendor -> src_endpoint.hw_info.vendor_name"
+        },
+        {
+          "field": "src_osfamily",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.os.name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Device-ID source OS family -> src_endpoint.os.name"
+        },
+        {
+          "field": "src_osversion",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.os.version",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Device-ID source OS version -> src_endpoint.os.version"
+        },
+        {
+          "field": "src_host",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.hostname",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Device-ID source hostname -> src_endpoint.hostname"
+        },
+        {
+          "field": "src_mac",
+          "type": "mac",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.mac",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Device-ID source MAC -> src_endpoint.mac"
+        },
+        {
+          "field": "dst_category",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.type_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "Device-ID destination category -> endpoint type_id enum; taxonomy mismatch [device-id taxonomy]"
+        },
+        {
+          "field": "dst_profile",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "granular Device-ID destination profile; no OCSF device-profile attribute"
+        },
+        {
+          "field": "dst_model",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.hw_info.model",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "Device-ID destination model -> dst_endpoint.hw_info.model"
+        },
+        {
+          "field": "dst_vendor",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.hw_info.vendor_name",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "Device-ID destination vendor -> dst_endpoint.hw_info.vendor_name"
+        },
+        {
+          "field": "dst_osfamily",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.os.name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Device-ID destination OS family -> dst_endpoint.os.name"
+        },
+        {
+          "field": "dst_osversion",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.os.version",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Device-ID destination OS version -> dst_endpoint.os.version"
+        },
+        {
+          "field": "dst_host",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.hostname",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Device-ID destination hostname -> dst_endpoint.hostname"
+        },
+        {
+          "field": "dst_mac",
+          "type": "mac",
+          "detection_relevant": true,
+          "ocsf": "dst_endpoint.mac",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Device-ID destination MAC -> dst_endpoint.mac"
+        },
+        {
+          "field": "src_edl",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "source-IP External Dynamic List membership (threat-intel list name); OCSF endpoint has no list-membership attribute"
+        },
+        {
+          "field": "dst_edl",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "destination-IP External Dynamic List membership; no OCSF home"
+        },
+        {
+          "field": "src_dag",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "source Dynamic Address Group membership; no OCSF home"
+        },
+        {
+          "field": "dst_dag",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "destination Dynamic Address Group membership; no OCSF home"
+        },
+        {
+          "field": "flow_type",
+          "type": "string(enum)",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "proxy vs non-proxy flow type; OCSF expresses proxy presence structurally (proxy_endpoint set), not as an enum, so the label has no home"
+        },
+        {
+          "field": "subcategory_of_app",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "App-ID subcategory; OCSF has no application-taxonomy attributes [app-id taxonomy seam]"
+        },
+        {
+          "field": "category_of_app",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "App-ID category; no OCSF application-taxonomy home [app-id taxonomy seam]"
+        },
+        {
+          "field": "technology_of_app",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "App-ID technology (browser-based/client-server/network-protocol/peer-to-peer); no OCSF home [app-id taxonomy seam]"
+        },
+        {
+          "field": "risk_of_app",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "App-ID static application-risk rating (1-5); distinct from event risk_level_id (the event's risk, not the app's inherent rating), so no faithful home"
+        },
+        {
+          "field": "characteristic_of_app",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "App-ID characteristics (evasive/tunnels-other-apps/used-by-malware/...); no OCSF home [app-id taxonomy seam]"
+        },
+        {
+          "field": "container_of_app",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "App-ID parent application; OCSF has no application-hierarchy attribute"
+        },
+        {
+          "field": "tunneled_app",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "tunneled application carried inside the parent app; no OCSF home [app-id taxonomy seam]"
+        },
+        {
+          "field": "is_saas_of_app",
+          "type": "boolean",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "App-ID SaaS indicator; no OCSF home"
+        },
+        {
+          "field": "sanctioned_state_of_app",
+          "type": "boolean",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "App-ID sanctioned-SaaS indicator; no OCSF home"
+        }
+      ]
     }
   },
   "detections": [
@@ -1130,6 +1894,116 @@
       "fields_required": [
         "event.SHA256String",
         "event.MD5String"
+      ],
+      "breaking": [],
+      "survives_clean": true
+    },
+    {
+      "name": "NAT-aware true-source attribution",
+      "source": "palo_alto",
+      "desc": "tie a post-NAT flow back to the real internal host and port",
+      "fields_required": [
+        "natsrc",
+        "natsport",
+        "src",
+        "sessionid"
+      ],
+      "breaking": [
+        {
+          "field": "natsrc",
+          "status": "unmapped"
+        },
+        {
+          "field": "natsport",
+          "status": "unmapped"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "App-ID evasion / tunneled-app",
+      "source": "palo_alto",
+      "desc": "flag an app tunneling another app or using an evasive technology",
+      "fields_required": [
+        "tunneled_app",
+        "technology_of_app",
+        "characteristic_of_app",
+        "app"
+      ],
+      "breaking": [
+        {
+          "field": "tunneled_app",
+          "status": "unmapped"
+        },
+        {
+          "field": "technology_of_app",
+          "status": "unmapped"
+        },
+        {
+          "field": "characteristic_of_app",
+          "status": "unmapped"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Shadow-IT unsanctioned SaaS",
+      "source": "palo_alto",
+      "desc": "flag use of an unsanctioned SaaS application",
+      "fields_required": [
+        "sanctioned_state_of_app",
+        "is_saas_of_app",
+        "category_of_app",
+        "app"
+      ],
+      "breaking": [
+        {
+          "field": "sanctioned_state_of_app",
+          "status": "unmapped"
+        },
+        {
+          "field": "is_saas_of_app",
+          "status": "unmapped"
+        },
+        {
+          "field": "category_of_app",
+          "status": "unmapped"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Firewall action / session-teardown audit",
+      "source": "palo_alto",
+      "desc": "distinguish drop vs reset vs deny and why a session ended",
+      "fields_required": [
+        "action",
+        "session_end_reason"
+      ],
+      "breaking": [
+        {
+          "field": "action",
+          "status": "coerced"
+        },
+        {
+          "field": "session_end_reason",
+          "status": "coerced"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Long-lived high-volume beacon",
+      "source": "palo_alto",
+      "desc": "long-duration flow with directional byte/packet asymmetry to a destination",
+      "fields_required": [
+        "dst",
+        "dport",
+        "proto",
+        "elapsed",
+        "bytes_sent",
+        "bytes_received",
+        "pkts_sent"
       ],
       "breaking": [],
       "survives_clean": true

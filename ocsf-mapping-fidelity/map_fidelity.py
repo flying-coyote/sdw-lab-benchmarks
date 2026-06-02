@@ -19,11 +19,14 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 SCHEMAS_DIR = os.path.join(HERE, "schemas")
 
-from mapping import OKTA_MAPPING, CROWDSTRIKE_MAPPING, DETECTIONS  # noqa: E402
+from mapping import (  # noqa: E402
+    OKTA_MAPPING, CROWDSTRIKE_MAPPING, PALO_ALTO_MAPPING, DETECTIONS,
+)
 
 SOURCES = {
     "okta": {"class": "authentication", "mapping": OKTA_MAPPING, "has_official": True},
     "crowdstrike": {"class": "detection_finding", "mapping": CROWDSTRIKE_MAPPING, "has_official": False},
+    "palo_alto": {"class": "network_activity", "mapping": PALO_ALTO_MAPPING, "has_official": False},
 }
 
 
