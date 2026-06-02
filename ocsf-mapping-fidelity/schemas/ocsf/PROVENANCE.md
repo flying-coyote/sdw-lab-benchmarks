@@ -20,13 +20,23 @@ three ways, all agreeing:
 Every class and object attribute set is transcribed from the version-pinned JSON
 API:
 
-- Classes: `https://schema.ocsf.io/1.8.0/api/classes/{authentication,detection_finding}` (and `account_change`, `api_activity`, `base_event` for the class-uid confirmations)
-- Objects: `https://schema.ocsf.io/1.8.0/api/objects/{user,actor,network_endpoint,device,process,file,finding_info,attack,observable,metadata,session,http_request,location,os,fingerprint,enrichment}`
+- Classes: `https://schema.ocsf.io/1.8.0/api/classes/{authentication,detection_finding,network_activity,dns_activity,http_activity}` (and `account_change`, `api_activity`, `base_event` for the class-uid confirmations)
+- Objects: `https://schema.ocsf.io/1.8.0/api/objects/{user,actor,network_endpoint,device,process,file,finding_info,attack,observable,metadata,session,http_request,location,os,fingerprint,enrichment,network_connection_info,network_traffic,url,firewall_rule,dns_query,dns_answer,http_response}`
 - Catch-alls (`unmapped`, `raw_data`, `enrichments`) and their verbatim definitions from `https://schema.ocsf.io/1.8.0/api/classes/base_event`
 
 Confirmed class UIDs: Authentication = 3002 (category 3, IAM), Account Change =
 3001 (category 3), API Activity = 6003 (category 6), Detection Finding = 2004
-(category 2).
+(category 2), Network Activity = 4001, DNS Activity = 4003, HTTP Activity = 4002
+(all category 4, Network Activity). The three Network-category classes share a large
+common attribute base (the `proxy_*` set, `observation_point`, `load_balancer`,
+`ja4_fingerprint_list`, `connection_info`, `traffic`); that the three transcriptions
+agree on it is a consistency check on the transcription.
+
+The objects added for the network/DNS/proxy classes —
+`network_connection_info`, `network_traffic`, `url`, `firewall_rule`, `dns_query`,
+`dns_answer`, `http_response` — are the ones the new mappings descend into; objects
+referenced but not descended into (e.g. `tls`, `network_proxy`, `malware`, `policy`,
+`http_header`) remain absent and are deep-accepted, as before.
 
 ## What is deliberately not reproduced
 

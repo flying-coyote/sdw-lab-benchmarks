@@ -8,7 +8,11 @@
 
 - **Okta** — System Log LogEvent -> Authentication (3002); anchored on Okta's okta/okta-ocsf-syslog reference mapper where it maps
 - **CrowdStrike** — Detection Summary Event (Event Streams) -> Detection Finding (2004); best-effort vs OCSF 1.8.0 (no public vendor field mapping)
-- Okta inventory is the documented typed schema; CrowdStrike inventory is the publicly-reproduced Detection Summary Event, NOT the gated full FDR schema. Coverage is over each scoped field set, not all telemetry.
+- **Palo Alto** — PAN-OS TRAFFIC core traffic-session record -> Network Activity (4001); best-effort; five license/platform-gated field families excluded with stated counts (see provenance)
+- **Cisco ASA** — ASA connection-event message family (Built/Teardown/Deny across TCP/UDP/ICMP/SCTP) -> Network Activity (4001); best-effort
+- **Cisco Umbrella** — Umbrella v3+ DNS-log columns -> DNS Activity (4003); best-effort
+- **Zscaler** — ZIA standard NSS Web-log set -> HTTP Activity (4002); best-effort; an official ZIA->OCSF Security Lake mapping exists at class level (v1.5.0) but its field-level carry list is not publicly retrievable
+- Coverage is over each source's scoped field set, not all of that vendor's telemetry. Okta is the only source with a publicly-readable field-level shipped OCSF mapper (the implementation gap below); the rest are best-effort against the real OCSF 1.8.0 schema, every target validated. Per-source authoritative source + >=2 mirrors are in each PROVENANCE.md.
 
 ## Coverage per source
 

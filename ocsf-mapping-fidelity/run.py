@@ -44,9 +44,20 @@ def main():
                     "okta/okta-ocsf-syslog reference mapper where it maps",
             "crowdstrike": "Detection Summary Event (Event Streams) -> Detection Finding "
                            "(2004); best-effort vs OCSF 1.8.0 (no public vendor field mapping)",
-            "note": "Okta inventory is the documented typed schema; CrowdStrike inventory "
-                    "is the publicly-reproduced Detection Summary Event, NOT the gated full "
-                    "FDR schema. Coverage is over each scoped field set, not all telemetry.",
+            "palo_alto": "PAN-OS TRAFFIC core traffic-session record -> Network Activity "
+                         "(4001); best-effort; five license/platform-gated field families "
+                         "excluded with stated counts (see provenance)",
+            "cisco_asa": "ASA connection-event message family (Built/Teardown/Deny across "
+                         "TCP/UDP/ICMP/SCTP) -> Network Activity (4001); best-effort",
+            "cisco_umbrella": "Umbrella v3+ DNS-log columns -> DNS Activity (4003); best-effort",
+            "zscaler": "ZIA standard NSS Web-log set -> HTTP Activity (4002); best-effort; an "
+                       "official ZIA->OCSF Security Lake mapping exists at class level (v1.5.0) "
+                       "but its field-level carry list is not publicly retrievable",
+            "note": "Coverage is over each source's scoped field set, not all of that "
+                    "vendor's telemetry. Okta is the only source with a publicly-readable "
+                    "field-level shipped OCSF mapper (the implementation gap below); the rest "
+                    "are best-effort against the real OCSF 1.8.0 schema, every target validated. "
+                    "Per-source authoritative source + >=2 mirrors are in each PROVENANCE.md.",
         },
         "per_source": {s: first["per_source"][s] for s in first["per_source"]},
         "detections": first["detections"],
@@ -85,8 +96,11 @@ def _write_markdown(results):
       "subset; an invented attribute would fail the run.\n")
 
     a("## Scope\n")
-    a(f"- **Okta** — {results['scope']['okta']}")
-    a(f"- **CrowdStrike** — {results['scope']['crowdstrike']}")
+    labels = {"okta": "Okta", "crowdstrike": "CrowdStrike", "palo_alto": "Palo Alto",
+              "cisco_asa": "Cisco ASA", "cisco_umbrella": "Cisco Umbrella", "zscaler": "Zscaler"}
+    for src in results["per_source"]:
+        if src in results["scope"]:
+            a(f"- **{labels.get(src, src)}** — {results['scope'][src]}")
     a(f"- {results['scope']['note']}\n")
 
     a("## Coverage per source\n")
