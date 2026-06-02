@@ -1,0 +1,160 @@
+{
+  "_comment": "Subset of the real OCSF 1.8.0 schema, used as the validation target for the C1 mapping. Every OCSF attribute path a mapping points at must resolve against this graph, or the harness raises. Attribute names and object references are transcribed from the version-pinned schema server (schema.ocsf.io/1.8.0/api/...) and the OCSF 1.8.0 release; see PROVENANCE.md. Per-attribute requirement (required/recommended/optional) and data types are not reproduced here because fidelity scoring does not use them; they live at schema.ocsf.io. A value of null means the attribute is a scalar (no object to descend into); a string value is the name of the OCSF object the attribute references.",
+  "version": "1.8.0",
+  "released": "2026-03-18",
+  "catch_alls": ["unmapped", "raw_data", "enrichments"],
+  "other_classes_not_scored_here": {"account_change": 3001, "api_activity": 6003, "base_event": 0},
+  "classes": {
+    "authentication": {
+      "uid": 3002,
+      "category": 3,
+      "attrs": {
+        "activity_id": null, "category_uid": null, "class_uid": null, "cloud": "cloud",
+        "metadata": "metadata", "osint": "osint", "severity_id": null, "time": null,
+        "type_uid": null, "user": "user", "account_switch_type": null, "account_switch_type_id": null,
+        "action_id": null, "actor": "actor", "auth_protocol": null, "auth_protocol_id": null,
+        "certificate": "certificate", "confidence_id": null, "device": "device", "disposition_id": null,
+        "dst_endpoint": "network_endpoint", "is_alert": null, "is_mfa": null, "is_remote": null,
+        "logon_type": null, "logon_type_id": null, "message": null, "observables": "observable",
+        "service": "service", "session": "session", "src_endpoint": "network_endpoint", "status": null,
+        "status_code": null, "status_detail": null, "status_id": null, "timezone_offset": null,
+        "action": null, "activity_name": null, "api": "api", "attacks": "attack",
+        "auth_factors": "auth_factor", "authentication_token": "authentication_token",
+        "authorizations": "authorization", "category_name": null, "class_name": null, "confidence": null,
+        "confidence_score": null, "count": null, "disposition": null, "duration": null, "end_time": null,
+        "end_time_dt": null, "enrichments": "enrichment", "firewall_rule": "firewall_rule",
+        "http_request": "http_request", "http_response": "http_response", "is_cleartext": null,
+        "is_new_logon": null, "logon_process": "process", "malware": "malware",
+        "malware_scan_info": "malware_scan_info", "policy": "policy", "raw_data": null,
+        "raw_data_hash": "fingerprint", "raw_data_size": null, "risk_details": null, "risk_level": null,
+        "risk_level_id": null, "risk_score": null, "severity": null, "start_time": null,
+        "start_time_dt": null, "time_dt": null, "type_name": null, "unmapped": null
+      }
+    },
+    "detection_finding": {
+      "uid": 2004,
+      "category": 2,
+      "attrs": {
+        "activity_id": null, "category_uid": null, "class_uid": null, "cloud": "cloud",
+        "finding_info": "finding_info", "metadata": "metadata", "osint": "osint", "severity_id": null,
+        "time": null, "type_uid": null, "action_id": null, "confidence_id": null, "disposition_id": null,
+        "evidences": "evidences", "is_alert": null, "message": null, "observables": "observable",
+        "priority_id": null, "resources": "resource_details", "src_url": null, "status_code": null,
+        "status_detail": null, "status_id": null, "timezone_offset": null, "verdict": null,
+        "verdict_id": null, "action": null, "activity_name": null, "actor": "actor",
+        "anomaly_analyses": "anomaly_analysis", "api": "api", "assignee": "user",
+        "assignee_group": "group", "attacks": "attack", "authorizations": "authorization",
+        "category_name": null, "class_name": null, "comment": null, "confidence": null,
+        "confidence_score": null, "count": null, "device": "device", "disposition": null,
+        "duration": null, "end_time": null, "end_time_dt": null, "enrichments": "enrichment",
+        "firewall_rule": "firewall_rule", "impact": null, "impact_id": null, "impact_score": null,
+        "is_suspected_breach": null, "malware": "malware", "malware_scan_info": "malware_scan_info",
+        "policy": "policy", "priority": null, "raw_data": null, "raw_data_hash": "fingerprint",
+        "raw_data_size": null, "remediation": "remediation", "risk_details": null, "risk_level": null,
+        "risk_level_id": null, "risk_score": null, "severity": null, "start_time": null,
+        "start_time_dt": null, "status": null, "ticket": "ticket", "tickets": "ticket",
+        "time_dt": null, "type_name": null, "unmapped": null, "vendor_attributes": "vendor_attributes",
+        "vulnerabilities": "vulnerability"
+      }
+    }
+  },
+  "objects": {
+    "user": {
+      "has_mfa": null, "name": null, "type_id": null, "uid": null, "account": "account",
+      "credential_uid": null, "display_name": null, "domain": null, "email_addr": null,
+      "forward_addr": null, "full_name": null, "groups": "group", "ldap_person": "ldap_person",
+      "org": "organization", "phone_number": null, "programmatic_credentials": "programmatic_credential",
+      "risk_level": null, "risk_level_id": null, "risk_score": null, "type": null, "uid_alt": null
+    },
+    "actor": {
+      "process": "process", "user": "user", "app_name": null, "app_uid": null,
+      "authorizations": "authorization", "idp": "idp", "invoked_by": null, "session": "session"
+    },
+    "network_endpoint": {
+      "container": "container", "hostname": null, "instance_uid": null, "interface_name": null,
+      "interface_uid": null, "ip": null, "name": null, "namespace_pid": null, "owner": "user",
+      "port": null, "svc_name": null, "type_id": null, "uid": null, "agent_list": "agent",
+      "autonomous_system": "autonomous_system", "domain": null, "fingerprints": "fingerprint",
+      "hw_info": "device_hw_info", "intermediate_ips": null, "isp": null, "isp_org": null,
+      "location": "location", "mac": null, "mac_vendor": null, "network_scope": null,
+      "network_scope_id": null, "os": "os", "pool": "group", "proxy_endpoint": "network_proxy",
+      "subnet_uid": null, "type": null, "vlan_uid": null, "vpc_uid": null, "zone": null
+    },
+    "device": {
+      "type_id": null, "container": "container", "hostname": null, "instance_uid": null,
+      "interface_name": null, "interface_uid": null, "namespace_pid": null, "owner": "user",
+      "region": null, "type": null, "uid": null, "vendor_name": null, "agent_list": "agent",
+      "domain": null, "groups": "group", "hw_info": "device_hw_info", "ip": null,
+      "is_compliant": null, "is_managed": null, "is_personal": null, "is_trusted": null,
+      "location": "location", "mac": null, "model": null, "name": null,
+      "network_interfaces": "network_interface", "org": "organization", "os": "os",
+      "os_machine_uuid": null, "risk_level": null, "risk_level_id": null, "risk_score": null,
+      "udid": null, "uid_alt": null, "zone": null
+    },
+    "process": {
+      "cmd_line": null, "container": "container", "cpid": null, "created_time": null, "file": "file",
+      "group": "group", "name": null, "namespace_pid": null, "parent_process": "process", "pid": null,
+      "uid": null, "user": "user", "ancestry": "process_entity", "auid": null, "egid": null,
+      "integrity": null, "integrity_id": null, "lineage": null, "loaded_modules": null, "path": null,
+      "ptid": null, "session": "session", "terminated_time": null, "tid": null, "working_directory": null,
+      "xattributes": null
+    },
+    "file": {
+      "name": null, "type_id": null, "ext": null, "hashes": "fingerprint", "path": null,
+      "accessed_time": null, "company_name": null, "created_time": null, "desc": null,
+      "is_deleted": null, "mime_type": null, "modified_time": null, "owner": "user",
+      "parent_folder": null, "product": "product", "signature": "digital_signature",
+      "signatures": "digital_signature", "size": null, "type": null, "uid": null, "uri": null,
+      "url": "url", "version": null, "volume": null, "xattributes": null
+    },
+    "finding_info": {
+      "uid": null, "analytic": "analytic", "title": null, "attack_graph": "graph", "attacks": "attack",
+      "created_time": null, "data_sources": null, "desc": null, "first_seen_time": null,
+      "kill_chain": "kill_chain_phase", "last_seen_time": null, "modified_time": null, "product": "product",
+      "product_uid": null, "related_analytics": "analytic", "related_events": "related_event",
+      "related_events_count": null, "src_url": null, "tags": "key_value_object", "traits": "trait",
+      "types": null, "uid_alt": null
+    },
+    "attack": {
+      "sub_technique": "sub_technique", "tactic": "tactic", "technique": "technique", "version": null,
+      "mitigation": "mitigation", "tactics": "tactic"
+    },
+    "observable": {
+      "type_id": null, "name": null, "event_uid": null, "reputation": "reputation", "type": null,
+      "type_uid": null, "value": null
+    },
+    "metadata": {
+      "product": "product", "version": null, "data_classification": "data_classification",
+      "log_name": null, "original_time": null, "reporter": "reporter", "tenant_uid": null,
+      "correlation_uid": null, "event_code": null, "labels": null, "log_format": null,
+      "log_level": null, "log_provider": null, "log_source": null, "log_version": null,
+      "logged_time": null, "original_event_uid": null, "processed_time": null, "profiles": null,
+      "sequence": null, "source": null, "tags": "key_value_object", "uid": null
+    },
+    "session": {
+      "created_time": null, "is_remote": null, "issuer": null, "uid": null, "count": null,
+      "credential_uid": null, "expiration_reason": null, "expiration_time": null, "is_mfa": null,
+      "is_vpn": null, "terminal": null, "uid_alt": null, "uuid": null
+    },
+    "http_request": {
+      "http_headers": "http_header", "http_method": null, "url": "url", "user_agent": null,
+      "version": null, "args": null, "body_length": null, "length": null, "referrer": null,
+      "uid": null, "x_forwarded_for": null
+    },
+    "location": {
+      "city": null, "continent": null, "country": null, "coordinates": null, "desc": null,
+      "geohash": null, "is_on_premises": null, "isp": null, "lat": null, "long": null,
+      "postal_code": null, "provider": null, "region": null
+    },
+    "os": {
+      "name": null, "type_id": null, "build": null, "country": null, "cpe_name": null,
+      "cpu_bits": null, "edition": null, "kernel_release": null, "lang": null, "type": null,
+      "version": null
+    },
+    "fingerprint": {"algorithm_id": null, "value": null, "algorithm": null},
+    "enrichment": {
+      "data": null, "name": null, "value": null, "created_time": null, "provider": null,
+      "short_desc": null, "src_url": null, "type": null
+    }
+  }
+}

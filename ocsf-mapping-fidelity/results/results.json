@@ -1,0 +1,1138 @@
+{
+  "benchmark": "ocsf-mapping-fidelity (C1)",
+  "evidence_tier": "B (reproducible, first-party mapping judgement against real documented vendor schemas and the real OCSF 1.8.0 schema; not production telemetry)",
+  "ocsf_version": "1.8.0",
+  "scope": {
+    "okta": "System Log LogEvent -> Authentication (3002); anchored on Okta's okta/okta-ocsf-syslog reference mapper where it maps",
+    "crowdstrike": "Detection Summary Event (Event Streams) -> Detection Finding (2004); best-effort vs OCSF 1.8.0 (no public vendor field mapping)",
+    "note": "Okta inventory is the documented typed schema; CrowdStrike inventory is the publicly-reproduced Detection Summary Event, NOT the gated full FDR schema. Coverage is over each scoped field set, not all telemetry."
+  },
+  "per_source": {
+    "okta": {
+      "summary": {
+        "class": "authentication (3002)",
+        "total_fields": 50,
+        "typed": 29,
+        "coerced": 7,
+        "unmapped": 14,
+        "coverage": 0.58,
+        "coverage_incl_coerced": 0.72,
+        "lossy": 21,
+        "lossy_fraction": 0.42,
+        "detection_relevant_fields": 44,
+        "detection_relevant_lossy": 19,
+        "official_mapped": 18,
+        "official_unmapped": 32,
+        "implementation_gap_fields": [
+          "uuid",
+          "eventType",
+          "version",
+          "actor.id",
+          "actor.type",
+          "client.id",
+          "client.userAgent.rawUserAgent",
+          "client.userAgent.os",
+          "client.zone",
+          "request.ipChain",
+          "transaction.id",
+          "authenticationContext.credentialProvider",
+          "authenticationContext.credentialType",
+          "authenticationContext.issuer.id",
+          "securityContext.asNumber",
+          "securityContext.asOrg",
+          "securityContext.isp",
+          "securityContext.domain"
+        ],
+        "implementation_gap": 18
+      },
+      "fields": [
+        {
+          "field": "uuid",
+          "type": "String",
+          "detection_relevant": false,
+          "ocsf": "metadata.uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "event id -> metadata.uid",
+          "official": false
+        },
+        {
+          "field": "published",
+          "type": "Date",
+          "detection_relevant": false,
+          "ocsf": "time",
+          "status": "typed",
+          "resolution": "full",
+          "note": "publish timestamp -> time/ref_time",
+          "official": true
+        },
+        {
+          "field": "eventType",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "metadata.event_code",
+          "status": "typed",
+          "resolution": "full",
+          "note": "raw type string preserved in event_code; its semantics also drive class/activity selection",
+          "official": false
+        },
+        {
+          "field": "version",
+          "type": "String",
+          "detection_relevant": false,
+          "ocsf": "metadata.log_version",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Okta log schema version -> metadata.log_version",
+          "official": false
+        },
+        {
+          "field": "severity",
+          "type": "String(enum)",
+          "detection_relevant": false,
+          "ocsf": "severity_id",
+          "status": "typed",
+          "resolution": "full",
+          "note": "DEBUG/INFO/WARN/ERROR -> severity_id enum; faithful enum remap",
+          "official": true
+        },
+        {
+          "field": "legacyEventType",
+          "type": "String",
+          "detection_relevant": false,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "deprecated; no typed home",
+          "official": false
+        },
+        {
+          "field": "displayMessage",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "message",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> message",
+          "official": true
+        },
+        {
+          "field": "actor.id",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "user.uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "actor is the authenticating user for a login",
+          "official": false
+        },
+        {
+          "field": "actor.type",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "user.type",
+          "status": "typed",
+          "resolution": "full",
+          "note": "User/SystemPrincipal -> user.type (free string preserves it)",
+          "official": false
+        },
+        {
+          "field": "actor.alternateId",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "user.email_addr",
+          "status": "typed",
+          "resolution": "full",
+          "note": "login/email -> user.email_addr",
+          "official": true
+        },
+        {
+          "field": "actor.displayName",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "user.full_name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> user.full_name",
+          "official": true
+        },
+        {
+          "field": "actor.detailEntry",
+          "type": "Map[String->Object]",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "free-form map; no typed home",
+          "official": false
+        },
+        {
+          "field": "client.id",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "actor.app_uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "OAuth client id -> actor.app_uid",
+          "official": false
+        },
+        {
+          "field": "client.userAgent.rawUserAgent",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "http_request.user_agent",
+          "status": "typed",
+          "resolution": "full",
+          "note": "raw UA -> http_request.user_agent",
+          "official": false
+        },
+        {
+          "field": "client.userAgent.os",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.os.name",
+          "status": "typed",
+          "resolution": "full",
+          "note": "OS parsed from UA -> src_endpoint.os.name",
+          "official": false
+        },
+        {
+          "field": "client.userAgent.browser",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "OCSF has no parsed-browser attribute; only the raw UA has a home",
+          "official": false
+        },
+        {
+          "field": "client.geographicalContext.geolocation.lat",
+          "type": "Double",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.location.lat",
+          "status": "typed",
+          "resolution": "full",
+          "note": "geo carried (Okta puts it in enrichments; typed home is src_endpoint.location)",
+          "official": true
+        },
+        {
+          "field": "client.geographicalContext.geolocation.lon",
+          "type": "Double",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.location.long",
+          "status": "typed",
+          "resolution": "full",
+          "note": "geo carried via enrichments",
+          "official": true
+        },
+        {
+          "field": "client.geographicalContext.city",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.location.city",
+          "status": "typed",
+          "resolution": "full",
+          "note": "geo carried via enrichments",
+          "official": true
+        },
+        {
+          "field": "client.geographicalContext.state",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.location.region",
+          "status": "typed",
+          "resolution": "full",
+          "note": "state -> location.region",
+          "official": true
+        },
+        {
+          "field": "client.geographicalContext.country",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.location.country",
+          "status": "typed",
+          "resolution": "full",
+          "note": "geo carried via enrichments",
+          "official": true
+        },
+        {
+          "field": "client.geographicalContext.postalCode",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.location.postal_code",
+          "status": "typed",
+          "resolution": "full",
+          "note": "geo carried via enrichments",
+          "official": true
+        },
+        {
+          "field": "client.zone",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.zone",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Okta network zone -> network_endpoint.zone; shipped mapper drops it",
+          "official": false
+        },
+        {
+          "field": "client.ipAddress",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.ip",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> src_endpoint.ip",
+          "official": true
+        },
+        {
+          "field": "client.device",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "device.type",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "device label (Computer/Mobile) -> device.type; shipped mapper puts it in src_endpoint.interface_id, a coercion either way",
+          "official": true
+        },
+        {
+          "field": "request.ipChain",
+          "type": "Array<IpAddress>",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.intermediate_ips",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "proxy chain -> ip list; per-hop geo and ordering are lost; shipped mapper drops it",
+          "official": false
+        },
+        {
+          "field": "outcome.result",
+          "type": "String(enum)",
+          "detection_relevant": true,
+          "ocsf": "status_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "7-value enum (SUCCESS/FAILURE/CHALLENGE/SKIPPED/ALLOW/DENY/UNKNOWN) -> ~3-value status_id; CHALLENGE/SKIPPED/ALLOW/DENY collapse",
+          "official": true
+        },
+        {
+          "field": "outcome.reason",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "status_detail",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> status_detail (free string)",
+          "official": true
+        },
+        {
+          "field": "target.id",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "Authentication 3002 has no target/resource array; heterogeneous target[] (app/user/group) has no faithful home",
+          "official": false
+        },
+        {
+          "field": "target.type",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "no target array on Authentication",
+          "official": false
+        },
+        {
+          "field": "target.alternateId",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "no target array on Authentication",
+          "official": false
+        },
+        {
+          "field": "target.displayName",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "no target array on Authentication",
+          "official": false
+        },
+        {
+          "field": "target.detailEntry",
+          "type": "Map[String->Object]",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "free-form map; no typed home",
+          "official": false
+        },
+        {
+          "field": "transaction.id",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "metadata.correlation_uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> metadata.correlation_uid",
+          "official": false
+        },
+        {
+          "field": "transaction.type",
+          "type": "String(enum)",
+          "detection_relevant": true,
+          "ocsf": "logon_type_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "WEB/JOB -> logon_type enum; shipped mapper maps WEB->99 (Other)",
+          "official": true
+        },
+        {
+          "field": "transaction.detail",
+          "type": "Map[String->Object]",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "free-form map; no typed home",
+          "official": false
+        },
+        {
+          "field": "debugContext.debugData",
+          "type": "Map[String->Object]",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "free-form map carrying risk/threat signals, deviceFingerprint, behaviors; shipped mapper extracts only requestUri+url, the rest lands in unmapped",
+          "official": false
+        },
+        {
+          "field": "authenticationContext.authenticationProvider",
+          "type": "String(enum)",
+          "detection_relevant": true,
+          "ocsf": "auth_protocol_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "provider enum -> auth_protocol enum; shipped mapper maps FACTOR->Other",
+          "official": true
+        },
+        {
+          "field": "authenticationContext.authenticationStep",
+          "type": "Integer",
+          "detection_relevant": false,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "currently always 0; no home",
+          "official": false
+        },
+        {
+          "field": "authenticationContext.credentialProvider",
+          "type": "String(enum)",
+          "detection_relevant": true,
+          "ocsf": "auth_factors",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "RSA/DUO/YUBIKEY -> auth_factors[]; provider->factor mapping is lossy; shipped mapper drops it",
+          "official": false
+        },
+        {
+          "field": "authenticationContext.credentialType",
+          "type": "String(enum)",
+          "detection_relevant": true,
+          "ocsf": "auth_factors",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "12-value scheme enum (OTP/SMS/PASSWORD/PUSH...) collapses to is_mfa + factor_type; PUSH-vs-OTP distinction lost; shipped mapper drops it",
+          "official": false
+        },
+        {
+          "field": "authenticationContext.issuer.id",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "session.issuer",
+          "status": "typed",
+          "resolution": "full",
+          "note": "SAML/token issuer -> session.issuer",
+          "official": false
+        },
+        {
+          "field": "authenticationContext.issuer.type",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "issuer source info; no typed home",
+          "official": false
+        },
+        {
+          "field": "authenticationContext.externalSessionId",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "session.uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> session.uid; session-correlation key",
+          "official": true
+        },
+        {
+          "field": "authenticationContext.interface",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "third-party UI string; no typed home",
+          "official": false
+        },
+        {
+          "field": "securityContext.asNumber",
+          "type": "Integer",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.autonomous_system.number",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "ASN -> network_endpoint.autonomous_system.number; shipped mapper drops the whole securityContext",
+          "official": false
+        },
+        {
+          "field": "securityContext.asOrg",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.autonomous_system.name",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "AS org -> autonomous_system.name; shipped mapper drops it",
+          "official": false
+        },
+        {
+          "field": "securityContext.isp",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.isp",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> network_endpoint.isp; shipped mapper drops it",
+          "official": false
+        },
+        {
+          "field": "securityContext.domain",
+          "type": "String",
+          "detection_relevant": true,
+          "ocsf": "src_endpoint.domain",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> network_endpoint.domain; shipped mapper drops it",
+          "official": false
+        },
+        {
+          "field": "securityContext.isProxy",
+          "type": "Bool",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "OCSF endpoint has no boolean is-proxy flag (proxy_endpoint is an address, not a flag); high-signal fraud bit has no typed home",
+          "official": false
+        }
+      ]
+    },
+    "crowdstrike": {
+      "summary": {
+        "class": "detection_finding (2004)",
+        "total_fields": 43,
+        "typed": 30,
+        "coerced": 9,
+        "unmapped": 4,
+        "coverage": 0.6977,
+        "coverage_incl_coerced": 0.907,
+        "lossy": 13,
+        "lossy_fraction": 0.3023,
+        "detection_relevant_fields": 34,
+        "detection_relevant_lossy": 12
+      },
+      "fields": [
+        {
+          "field": "metadata.eventType",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "metadata.event_code",
+          "status": "typed",
+          "resolution": "full",
+          "note": "raw type preserved; semantics also drive class selection"
+        },
+        {
+          "field": "metadata.eventCreationTime",
+          "type": "timestamp",
+          "detection_relevant": false,
+          "ocsf": "time",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> time"
+        },
+        {
+          "field": "metadata.offset",
+          "type": "integer",
+          "detection_relevant": false,
+          "ocsf": "metadata.sequence",
+          "status": "typed",
+          "resolution": "full",
+          "note": "stream position -> metadata.sequence"
+        },
+        {
+          "field": "metadata.customerIDString",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "metadata.tenant_uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "CID -> tenant_uid"
+        },
+        {
+          "field": "metadata.version",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "metadata.log_version",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> metadata.log_version"
+        },
+        {
+          "field": "event.DetectName",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "finding_info.title",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> finding_info.title"
+        },
+        {
+          "field": "event.DetectDescription",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "finding_info.desc",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> finding_info.desc"
+        },
+        {
+          "field": "event.Severity",
+          "type": "number",
+          "detection_relevant": true,
+          "ocsf": "severity_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "CrowdStrike numeric severity scale -> OCSF severity_id enum; scale remap"
+        },
+        {
+          "field": "event.SeverityName",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "severity",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> severity (string)"
+        },
+        {
+          "field": "event.Tactic",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "attacks.tactic",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "tactic name string -> attack.tactic object {name,uid}; the TA-id is absent, only name populates"
+        },
+        {
+          "field": "event.Technique",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "attacks.technique",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "technique name/label -> attack.technique object {name,uid}; name and T-id do not both survive a flat string"
+        },
+        {
+          "field": "event.Objective",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "adversary objective; no OCSF Detection Finding attribute"
+        },
+        {
+          "field": "event.FileName",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.file.name",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> evidences[].process.file.name"
+        },
+        {
+          "field": "event.FilePath",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.file.path",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> evidences[].process.file.path"
+        },
+        {
+          "field": "event.CommandLine",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.cmd_line",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> evidences[].process.cmd_line"
+        },
+        {
+          "field": "event.MD5String",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.file.hashes",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> file.hashes[] fingerprint{algorithm_id, value}"
+        },
+        {
+          "field": "event.SHA1String",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.file.hashes",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> file.hashes[]"
+        },
+        {
+          "field": "event.SHA256String",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.file.hashes",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> file.hashes[]; also observables[] type_id=8"
+        },
+        {
+          "field": "event.ComputerName",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "device.hostname",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> device.hostname"
+        },
+        {
+          "field": "event.UserName",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.actor.user.name",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> evidences[].actor.user.name"
+        },
+        {
+          "field": "event.LocalIP",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "device.ip",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> device.ip"
+        },
+        {
+          "field": "event.MACAddress",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "device.mac",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> device.mac"
+        },
+        {
+          "field": "event.SensorId",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "device.agent_list",
+          "status": "typed",
+          "resolution": "full",
+          "note": "Falcon AID -> device.agent_list[].uid (the sensor, distinct from device identity)"
+        },
+        {
+          "field": "event.MachineDomain",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "device.domain",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> device.domain"
+        },
+        {
+          "field": "event.ProcessId",
+          "type": "string|integer",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.pid",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> evidences[].process.pid"
+        },
+        {
+          "field": "event.ParentProcessId",
+          "type": "string|integer",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.parent_process.pid",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> parent_process.pid"
+        },
+        {
+          "field": "event.ParentImageFileName",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.parent_process.file.path",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> parent_process.file.path"
+        },
+        {
+          "field": "event.ParentCommandLine",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.parent_process.cmd_line",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> parent_process.cmd_line"
+        },
+        {
+          "field": "event.GrandparentImageFileName",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "evidences.process.ancestry",
+          "status": "coerced",
+          "resolution": "deep",
+          "note": "OCSF process models one parent level + ancestry[]/lineage path; grandparent has no named slot, flattens into ancestry"
+        },
+        {
+          "field": "event.GrandparentCommandLine",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "ancestry/lineage carry path only, not a command line for ancestor processes; grandparent cmd line has no home"
+        },
+        {
+          "field": "event.IOCType",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "observables.type_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "free string (hash_sha256/domain/ipv4) -> observable.type_id integer enum; IOC types outside the enum fail the lookup"
+        },
+        {
+          "field": "event.IOCValue",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "observables.value",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> observables[].value"
+        },
+        {
+          "field": "event.PatternDispositionDescription",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "disposition",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> disposition (string)"
+        },
+        {
+          "field": "event.PatternDispositionValue",
+          "type": "integer",
+          "detection_relevant": true,
+          "ocsf": "disposition_id",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "bitmask of multiple actions taken -> single-valued disposition_id; the multi-action set collapses to one"
+        },
+        {
+          "field": "event.PatternDispositionFlags",
+          "type": "object",
+          "detection_relevant": true,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "named boolean flags object; no typed home"
+        },
+        {
+          "field": "event.FalconHostLink",
+          "type": "string",
+          "detection_relevant": false,
+          "ocsf": "finding_info.src_url",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> finding_info.src_url"
+        },
+        {
+          "field": "event.ProcessStartTime",
+          "type": "timestamp",
+          "detection_relevant": false,
+          "ocsf": "evidences.process.created_time",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> process.created_time"
+        },
+        {
+          "field": "event.ProcessEndTime",
+          "type": "timestamp",
+          "detection_relevant": false,
+          "ocsf": "evidences.process.terminated_time",
+          "status": "typed",
+          "resolution": "deep",
+          "note": "-> process.terminated_time"
+        },
+        {
+          "field": "event.DetectId",
+          "type": "string",
+          "detection_relevant": true,
+          "ocsf": "finding_info.uid",
+          "status": "typed",
+          "resolution": "full",
+          "note": "-> finding_info.uid"
+        },
+        {
+          "field": "event.NetworkAccesses",
+          "type": "array",
+          "detection_relevant": true,
+          "ocsf": "evidences",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "array of {RemoteAddress,...} -> evidences[]; inner structure only partially modeled"
+        },
+        {
+          "field": "event.ExecutablesWritten",
+          "type": "array",
+          "detection_relevant": true,
+          "ocsf": "evidences",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "array of written executables w/ hashes -> evidences[]; partial"
+        },
+        {
+          "field": "event.DnsRequests",
+          "type": "array",
+          "detection_relevant": true,
+          "ocsf": "evidences",
+          "status": "coerced",
+          "resolution": "full",
+          "note": "array of DNS objects -> evidences[]/observables[]; partial"
+        },
+        {
+          "field": "event.ScanResults",
+          "type": "array",
+          "detection_relevant": false,
+          "ocsf": "unmapped",
+          "status": "unmapped",
+          "resolution": "full",
+          "note": "AV scan results array; no clean Detection Finding home"
+        }
+      ]
+    }
+  },
+  "detections": [
+    {
+      "name": "Anonymizing-proxy / Tor login",
+      "source": "okta",
+      "desc": "flag a login from a known anonymizing proxy",
+      "fields_required": [
+        "securityContext.isProxy",
+        "securityContext.asOrg",
+        "client.ipAddress"
+      ],
+      "breaking": [
+        {
+          "field": "securityContext.isProxy",
+          "status": "unmapped"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Impossible travel",
+      "source": "okta",
+      "desc": "two logins too far apart in space for the time between them",
+      "fields_required": [
+        "client.geographicalContext.city",
+        "client.geographicalContext.country",
+        "client.geographicalContext.geolocation.lat",
+        "client.geographicalContext.geolocation.lon",
+        "client.ipAddress",
+        "published"
+      ],
+      "breaking": [],
+      "survives_clean": true
+    },
+    {
+      "name": "MFA fatigue / push bombing",
+      "source": "okta",
+      "desc": "repeated MFA challenges of a specific factor type against one user",
+      "fields_required": [
+        "authenticationContext.credentialType",
+        "outcome.result",
+        "actor.alternateId"
+      ],
+      "breaking": [
+        {
+          "field": "authenticationContext.credentialType",
+          "status": "coerced"
+        },
+        {
+          "field": "outcome.result",
+          "status": "coerced"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "ThreatInsight / risk-based signal",
+      "source": "okta",
+      "desc": "act on Okta's risk and threat signals for a sign-in",
+      "fields_required": [
+        "debugContext.debugData",
+        "client.ipAddress"
+      ],
+      "breaking": [
+        {
+          "field": "debugContext.debugData",
+          "status": "unmapped"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Suspicious ASN",
+      "source": "okta",
+      "desc": "match the source autonomous system against a threat-intel ASN list",
+      "fields_required": [
+        "securityContext.asNumber",
+        "securityContext.asOrg",
+        "client.ipAddress"
+      ],
+      "breaking": [],
+      "survives_clean": true
+    },
+    {
+      "name": "True source IP behind proxy",
+      "source": "okta",
+      "desc": "recover the real client IP and per-hop geo from the forwarding chain",
+      "fields_required": [
+        "request.ipChain",
+        "client.ipAddress"
+      ],
+      "breaking": [
+        {
+          "field": "request.ipChain",
+          "status": "coerced"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "ATT&CK technique hunt",
+      "source": "crowdstrike",
+      "desc": "pivot on a specific ATT&CK technique id across detections",
+      "fields_required": [
+        "event.Technique",
+        "event.Tactic"
+      ],
+      "breaking": [
+        {
+          "field": "event.Technique",
+          "status": "coerced"
+        },
+        {
+          "field": "event.Tactic",
+          "status": "coerced"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Multi-stage process lineage",
+      "source": "crowdstrike",
+      "desc": "reconstruct grandparent->parent->process chains for a detection",
+      "fields_required": [
+        "event.GrandparentImageFileName",
+        "event.GrandparentCommandLine",
+        "event.ParentImageFileName"
+      ],
+      "breaking": [
+        {
+          "field": "event.GrandparentImageFileName",
+          "status": "coerced"
+        },
+        {
+          "field": "event.GrandparentCommandLine",
+          "status": "unmapped"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "IOC pivot on indicator type",
+      "source": "crowdstrike",
+      "desc": "search by indicator type and value across detections",
+      "fields_required": [
+        "event.IOCType",
+        "event.IOCValue"
+      ],
+      "breaking": [
+        {
+          "field": "event.IOCType",
+          "status": "coerced"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Response-action audit",
+      "source": "crowdstrike",
+      "desc": "audit exactly which actions Falcon took on a detection",
+      "fields_required": [
+        "event.PatternDispositionValue"
+      ],
+      "breaking": [
+        {
+          "field": "event.PatternDispositionValue",
+          "status": "coerced"
+        }
+      ],
+      "survives_clean": false
+    },
+    {
+      "name": "Known-bad hash",
+      "source": "crowdstrike",
+      "desc": "match the executable hash against a reputation feed",
+      "fields_required": [
+        "event.SHA256String",
+        "event.MD5String"
+      ],
+      "breaking": [],
+      "survives_clean": true
+    }
+  ]
+}

@@ -13,7 +13,7 @@ engine-against-engine, and labelled at an honest evidence tier.
 | [`flattening-fidelity/`](flattening-fidelity/) | which detections silently break when semi-structured OCSF/CloudTrail logs are flattened or rolled up to a coarse grain | B | published |
 | [`clickhouse-vs-duckdb/`](clickhouse-vs-duckdb/) | whether ClickHouse and DuckDB are interchangeable over OCSF-shaped data — same answers? what does swapping cost in latency? | B | published |
 | [`sigma-portability/`](sigma-portability/) | how much of a Sigma correlation rule survives compilation to four open backends (Splunk SPL, ES&#124;QL, Lucene, OpenSearch PPL) | B | published |
-| [`ocsf-mapping-fidelity/`](ocsf-mapping-fidelity/) | how completely and how losslessly real vendor schemas map into OCSF 1.8.0 | B | scaffolded — blocked on real vendor schemas |
+| [`ocsf-mapping-fidelity/`](ocsf-mapping-fidelity/) | how completely and how losslessly real vendor schemas (Okta, CrowdStrike) map into OCSF 1.8.0 — typed vs coerced vs unmapped, field by field | B | published |
 
 ## How they are kept honest
 
@@ -57,6 +57,6 @@ lib/common.py           shared seeds, epoch anchor, scoring + timing helpers
 flattening-fidelity/    benchmark: OCSF flattening fidelity (3 failure modes)
 clickhouse-vs-duckdb/   benchmark: engine interchangeability on OCSF data
 sigma-portability/      benchmark: Sigma correlation-rule portability across 4 backends
-ocsf-mapping-fidelity/  benchmark scaffold: vendor-schema -> OCSF 1.8.0 fidelity
+ocsf-mapping-fidelity/  benchmark: vendor-schema (Okta, CrowdStrike) -> OCSF 1.8.0 fidelity
 requirements.txt        duckdb, chdb (pinned) — sigma-portability has its own
 ```
