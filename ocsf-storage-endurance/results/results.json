@@ -1,0 +1,39 @@
+{
+  "benchmark": "ocsf-storage-endurance",
+  "dwpd_projection": [
+    {
+      "daily_ingest_TB": 0.1,
+      "dwpd_4TB_drive": 0.0108,
+      "dwpd_8TB_drive": 0.0054
+    },
+    {
+      "daily_ingest_TB": 0.5,
+      "dwpd_4TB_drive": 0.0541,
+      "dwpd_8TB_drive": 0.027
+    },
+    {
+      "daily_ingest_TB": 1.0,
+      "dwpd_4TB_drive": 0.1081,
+      "dwpd_8TB_drive": 0.0541
+    },
+    {
+      "daily_ingest_TB": 5.0,
+      "dwpd_4TB_drive": 0.5406,
+      "dwpd_8TB_drive": 0.2703
+    }
+  ],
+  "evidence_tier": "B (write-amp measured; DWPD projected)",
+  "measured": {
+    "compaction_write_factor": 2.0,
+    "compression_ratio": 4.62,
+    "logical_bytes": 695510937,
+    "stored_zstd_bytes": 150394775,
+    "write_amplification_physical_per_logical": 0.4325
+  },
+  "projection_assumptions": {
+    "read_intensive_dwpd": 1.0,
+    "streaming_chunks_before_compaction": 20,
+    "write_intensive_dwpd": 10.0
+  },
+  "rows": 5000000
+}
