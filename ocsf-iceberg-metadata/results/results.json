@@ -1,0 +1,45 @@
+{
+  "benchmark": "ocsf-iceberg-metadata",
+  "compacted": {
+    "appends": 1,
+    "data_files": 1,
+    "metadata_files": 4,
+    "plan_ms": 3.253,
+    "rows": 1000000,
+    "scan_ms": 63.664
+  },
+  "evidence_tier": "B (single machine; latencies medians)",
+  "fragmented": [
+    {
+      "appends": 50,
+      "data_files": 50,
+      "metadata_files": 151,
+      "plan_ms": 87.016,
+      "rows": 250000,
+      "scan_ms": 154.682
+    },
+    {
+      "appends": 100,
+      "data_files": 100,
+      "metadata_files": 301,
+      "plan_ms": 151.445,
+      "rows": 500000,
+      "scan_ms": 305.993
+    },
+    {
+      "appends": 200,
+      "data_files": 200,
+      "metadata_files": 601,
+      "plan_ms": 488.231,
+      "rows": 1000000,
+      "scan_ms": 843.398
+    }
+  ],
+  "headline": {
+    "fragmented_appends": 200,
+    "fragmented_data_files": 200,
+    "plan_speedup_compacted_vs_fragmented": 150.1,
+    "scan_speedup_compacted_vs_fragmented": 13.2
+  },
+  "rows_per_append": 5000
+}
