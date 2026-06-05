@@ -28,6 +28,8 @@ import duckdb
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORK = os.path.join(HERE, "_work")
 TRIALS = 3   # median elapsed for stability; one trial's discrete start/end is recorded too
+sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+from common import configure_duckdb  # noqa: E402
 
 
 def stopwatch(fn):
@@ -44,7 +46,7 @@ class Lakehouse:
         self.pq = os.path.join(WORK, "corpus.parquet").replace("'", "''")
 
     def _con(self):
-        c = duckdb.connect(); c.execute(f"CREATE VIEW c AS SELECT * FROM '{self.pq}'"); return c
+        c = configure_duckdb(duckdb.connect()); c.execute(f"CREATE VIEW c AS SELECT * FROM '{self.pq}'"); return c
 
     def a_retention(self):
         c = self._con()

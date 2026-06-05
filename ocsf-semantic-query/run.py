@@ -26,6 +26,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 STORE_F = os.path.join(HERE, "..", "bench-a-context-collapse", "_work", "store_f")
 GT = os.path.join(HERE, "..", "ocsf-semantic-testbed", "_work", "ground_truth.json")
 OLLAMA = "http://localhost:11434/api/generate"
+sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+from common import configure_duckdb  # noqa: E402
 
 # Adversary-tail concept queries (subset with clean truth comparison). Each: the NL
 # question the model sees, and a scorer(result_rows, truth) -> "correct"|"silent".
@@ -52,7 +54,7 @@ def schema_context(con):
 
 
 def connect():
-    con = duckdb.connect(":memory:")
+    con = configure_duckdb(duckdb.connect(":memory:"))
     for t in ("auth", "session", "network", "dns", "process", "api", "asset"):
         con.execute(f"CREATE VIEW f_{t} AS SELECT * FROM '{STORE_F}/{t}.parquet'")
     return con

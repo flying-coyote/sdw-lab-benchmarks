@@ -21,7 +21,7 @@ import duckdb
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "lib"))
-from common import BASE_EPOCH, time_trials  # noqa: E402
+from common import BASE_EPOCH, configure_duckdb, time_trials  # noqa: E402
 
 N_ROWS = 10_000_000
 PORTS = "[80, 443, 22, 53, 3389, 445, 8080, 3306]"
@@ -75,7 +75,7 @@ def setup_ducklake(work, con, tbl_arrow):
 def run():
     work = tempfile.mkdtemp(prefix="bench_e_")
     try:
-        con = duckdb.connect()
+        con = configure_duckdb(duckdb.connect())
         con.execute("INSTALL iceberg; LOAD iceberg")
         print(f"  generating {N_ROWS:,}-row OCSF corpus…")
         arrow = gen_arrow(con, N_ROWS)

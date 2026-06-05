@@ -12,6 +12,7 @@ timings. Each benchmark says so in its own METHODOLOGY.
 """
 
 import json
+import os
 import random
 import time
 
@@ -31,15 +32,58 @@ def new_rng(sub_seed: int) -> random.Random:
     return random.Random(MASTER_SEED + sub_seed)
 
 
+def _default_memory_limit() -> str:
+    """A DuckDB memory_limit that auto-scales to the host (≈60% of RAM), so the
+    same harness is safe under a 24GB WSL cap and opens up after the .wslconfig
+    bump to 48GB with no edit. ``SDW_DUCK_MEMORY_LIMIT`` overrides it."""
+    env = os.environ.get("SDW_DUCK_MEMORY_LIMIT")
+    if env:
+        return env
+    try:
+        with open("/proc/meminfo") as f:
+            for line in f:
+                if line.startswith("MemTotal:"):
+                    gb = int(line.split()[1]) / 1024 / 1024
+                    return f"{max(2, int(gb * 0.6))}GB"
+    except Exception:
+        pass
+    return "12GB"
+
+
+# Shared DuckDB resource defaults. ``memory_limit`` makes a heavy bench spill to
+# disk instead of OOM-ing the whole WSL VM; ``temp_directory`` puts that spill on
+# native ext4 (never /mnt/c, which is slow 9p and nearly full). Neither changes
+# query results — they only govern where and when DuckDB spills — so wiring them
+# into every harness is determinism-safe. ``threads`` is deliberately NOT set:
+# changing it reorders parallel output and the Parquet byte-layout (see
+# ocsf-parquet-determinism), which would churn file sizes for no benefit.
+DUCK_MEMORY_LIMIT = _default_memory_limit()
+DUCK_TEMP_DIR = os.environ.get(
+    "SDW_DUCK_TEMP_DIR", os.path.join(os.path.expanduser("~"), ".duckdb_tmp"))
+
+
+def configure_duckdb(con: duckdb.DuckDBPyConnection) -> duckdb.DuckDBPyConnection:
+    """Apply the shared resource limits to a connection and return it (chainable):
+    ``con = configure_duckdb(duckdb.connect(...))``."""
+    try:
+        os.makedirs(DUCK_TEMP_DIR, exist_ok=True)
+        con.execute(f"SET memory_limit='{DUCK_MEMORY_LIMIT}'")
+        con.execute(f"SET temp_directory='{DUCK_TEMP_DIR}'")
+    except Exception:
+        pass  # never let a resource hint break a benchmark run
+    return con
+
+
 def connect() -> duckdb.DuckDBPyConnection:
-    """An in-memory DuckDB connection with the JSON functions available."""
+    """An in-memory DuckDB connection with the JSON functions available and the
+    shared resource limits applied."""
     con = duckdb.connect(database=":memory:")
     # json_extract_string et al. ship in core DuckDB; this is belt-and-braces.
     try:
         con.execute("INSTALL json; LOAD json;")
     except Exception:
         pass
-    return con
+    return configure_duckdb(con)
 
 
 def prf1(true_set, predicted_set):

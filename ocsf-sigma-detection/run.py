@@ -24,6 +24,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RULES_DIR = os.path.join(HERE, "rules")
 STORE_F = os.path.join(HERE, "..", "bench-a-context-collapse", "_work", "store_f")
 GT = os.path.join(HERE, "..", "ocsf-semantic-testbed", "_work", "ground_truth.json")
+sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+from common import configure_duckdb  # noqa: E402
 
 # rule file -> (Store F table it runs against, the ground-truth needle it should catch)
 RULES = {
@@ -39,7 +41,7 @@ RULES = {
 
 
 def connect():
-    con = duckdb.connect(":memory:")
+    con = configure_duckdb(duckdb.connect(":memory:"))
     for t in ("process", "api", "network", "dns"):
         con.execute(f"CREATE VIEW {t} AS SELECT * FROM '{STORE_F}/{t}.parquet'")
     return con

@@ -23,7 +23,7 @@ import pyarrow as pa
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "lib"))
-from common import BASE_EPOCH, new_rng, time_trials  # noqa: E402
+from common import BASE_EPOCH, configure_duckdb, new_rng, time_trials  # noqa: E402
 
 ROWS_PER_APPEND = 5_000
 CHECKPOINTS = [50, 100, 200]          # measure planning at these append counts
@@ -75,7 +75,7 @@ def _duckdb_iceberg_ms(metadata_location):
     root = os.path.dirname(os.path.dirname(meta))
     with open(os.path.join(root, "metadata", "version-hint.text"), "w") as f:
         f.write(os.path.basename(meta)[:-len(".metadata.json")])
-    con = duckdb.connect(); con.execute("INSTALL iceberg; LOAD iceberg")
+    con = configure_duckdb(duckdb.connect()); con.execute("INSTALL iceberg; LOAD iceberg")
     t = time_trials(lambda: con.execute(
         f"SELECT count(*) FROM iceberg_scan('{root}') WHERE dst_port = 443").fetchone(),
         warmup=1, trials=3)

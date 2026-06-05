@@ -18,6 +18,8 @@ import duckdb
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORK = os.path.join(HERE, "_work")
+sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+from common import configure_duckdb  # noqa: E402
 
 
 def main():
@@ -25,7 +27,7 @@ def main():
     tn = gt["truth_needles"]
     idl = gt["truth_identity_links"]
     ioc = gt.get("ioc", {"c2_ip": "203.0.113.66"})   # chain indicators (chain-A fallback)
-    con = duckdb.connect(":memory:")
+    con = configure_duckdb(duckdb.connect(":memory:"))
 
     def pq(src):
         return os.path.join(WORK, "parquet", f"{src}.parquet").replace("'", "''")

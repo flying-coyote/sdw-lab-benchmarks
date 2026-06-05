@@ -31,7 +31,7 @@ import pyarrow as pa
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "lib"))
-from common import BASE_EPOCH, new_rng  # noqa: E402
+from common import BASE_EPOCH, configure_duckdb, new_rng  # noqa: E402
 
 PORTS = [80, 443, 22, 53, 3389, 445, 8080, 3306]
 
@@ -98,7 +98,7 @@ def run_iceberg(batches, work):
 
 
 def run_ducklake(batches, work):
-    con = duckdb.connect(); con.execute("INSTALL ducklake; LOAD ducklake")
+    con = configure_duckdb(duckdb.connect()); con.execute("INSTALL ducklake; LOAD ducklake")
     dpath = os.path.join(work, "dl_data"); os.makedirs(dpath)
     con.execute(f"ATTACH 'ducklake:{work}/dl.ducklake' AS dl (DATA_PATH '{dpath}')")
     con.execute("USE dl")
@@ -121,7 +121,7 @@ def run_ducklake(batches, work):
 
 def read_coherence(ice_meta, work, expect_rows):
     """One engine (DuckDB) reads each tier; assert identical answers for the same data."""
-    con = duckdb.connect()
+    con = configure_duckdb(duckdb.connect())
     con.execute("INSTALL iceberg; LOAD iceberg; INSTALL ducklake; LOAD ducklake")
     out = {}
     try:

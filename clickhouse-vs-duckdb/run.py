@@ -30,7 +30,7 @@ sys.path.insert(0, HERE)
 import chdb  # noqa: E402
 import duckdb  # noqa: E402
 
-from common import canonical  # noqa: E402
+from common import canonical, configure_duckdb  # noqa: E402
 import corpus  # noqa: E402
 import bench  # noqa: E402
 
@@ -41,7 +41,7 @@ DEFAULT_SCALES = [1_000_000, 10_000_000]
 
 def _corpus_is_deterministic(scales):
     """Generate each scale's fingerprint twice; both must match."""
-    con = duckdb.connect()
+    con = configure_duckdb(duckdb.connect())
     digests = {}
     ok = True
     for n in scales:

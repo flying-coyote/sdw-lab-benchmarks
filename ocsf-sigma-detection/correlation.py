@@ -31,6 +31,9 @@ BACKENDS = {"sql_sqlite": "sigma.backends.sqlite:sqliteBackend",
             "elasticsearch": "sigma.backends.elasticsearch:LuceneBackend",
             "opensearch": "sigma.backends.opensearch:OpensearchLuceneBackend"}
 
+sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+from common import configure_duckdb  # noqa: E402
+
 
 def load_backend(spec):
     import importlib
@@ -59,7 +62,7 @@ def main():
     gt = json.load(open(GT))
     results = {"benchmark": "ocsf-sigma-detection / correlation", "evidence_tier": "B",
                "rules": {}}
-    con = duckdb.connect()
+    con = configure_duckdb(duckdb.connect())
     unified_logs_view(con)
 
     for rf in sorted(os.listdir(RULES)):

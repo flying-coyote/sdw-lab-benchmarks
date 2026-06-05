@@ -31,6 +31,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RAW = os.path.join(HERE, "..", "ocsf-semantic-testbed", "_work", "raw")
 WORK = os.path.join(HERE, "_work")
 GT = os.path.join(HERE, "..", "ocsf-semantic-testbed", "_work", "ground_truth.json")
+import sys  # noqa: E402
+sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+from common import configure_duckdb  # noqa: E402
 
 
 def _ioc():
@@ -189,7 +192,7 @@ def _dir_bytes(path):
 def build(con=None):
     own = con is None
     if own:
-        con = duckdb.connect(":memory:")
+        con = configure_duckdb(duckdb.connect(":memory:"))
     _views(con)
     f_dir = build_store_f(con)
     n_dir = build_store_n(con)

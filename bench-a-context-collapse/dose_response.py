@@ -18,6 +18,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import bench    # noqa: E402
 import stores   # noqa: E402
+sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+from common import configure_duckdb  # noqa: E402
 
 RESULTS = os.path.join(HERE, "results")
 
@@ -32,7 +34,7 @@ LADDER = [
 
 
 def run():
-    con = duckdb.connect(":memory:")
+    con = configure_duckdb(duckdb.connect(":memory:"))
     stores._views(con)
     stores.build_store_f(con)           # constant fidelity store, once
     rungs = []

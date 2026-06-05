@@ -21,7 +21,7 @@ import duckdb
 
 import sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
-from common import prf1  # noqa: E402
+from common import configure_duckdb, prf1  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORK = os.path.join(HERE, "_work")
@@ -31,7 +31,7 @@ CHAIN_WINDOW_S = 70 * 60   # A10 true-event-time window: t0 .. t0+70min
 
 
 def _connect():
-    con = duckdb.connect(":memory:")
+    con = configure_duckdb(duckdb.connect(":memory:"))
     f = os.path.join(WORK, "store_f")
     con.execute(f"CREATE VIEW f_auth    AS SELECT * FROM '{f}/auth.parquet'")
     con.execute(f"CREATE VIEW f_session AS SELECT * FROM '{f}/session.parquet'")

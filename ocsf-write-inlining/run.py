@@ -26,7 +26,7 @@ import pyarrow as pa
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "lib"))
-from common import BASE_EPOCH, new_rng  # noqa: E402
+from common import BASE_EPOCH, configure_duckdb, new_rng  # noqa: E402
 
 N_COMMITS = 100
 ROWS_PER_COMMIT = 200
@@ -76,7 +76,7 @@ def run_iceberg(work, batches):
 
 def run_ducklake(work, batches, inline_limit, tag):
     dpath = os.path.join(work, f"dl_{tag}_data"); os.makedirs(dpath)
-    con = duckdb.connect(); con.execute("INSTALL ducklake; LOAD ducklake")
+    con = configure_duckdb(duckdb.connect()); con.execute("INSTALL ducklake; LOAD ducklake")
     con.execute(f"ATTACH 'ducklake:{work}/dl_{tag}.ducklake' AS dl "
                 f"(DATA_PATH '{dpath}', DATA_INLINING_ROW_LIMIT {inline_limit})")
     con.execute("USE dl")

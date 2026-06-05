@@ -23,7 +23,7 @@ import duckdb
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "lib"))
-from common import BASE_EPOCH  # noqa: E402
+from common import BASE_EPOCH, configure_duckdb  # noqa: E402
 
 N_ROWS = 5_000_000
 STREAM_CHUNKS = 20             # streaming writes this many small files before compaction
@@ -51,7 +51,7 @@ def gen(con, n):
 def run():
     work = tempfile.mkdtemp(prefix="endurance_")
     try:
-        con = duckdb.connect()
+        con = configure_duckdb(duckdb.connect())
         sel = gen(con, N_ROWS)
         # logical (uncompressed) size proxy: in-memory Arrow bytes of the data
         logical = con.execute(f"SELECT * FROM ({sel})").fetch_arrow_table().nbytes

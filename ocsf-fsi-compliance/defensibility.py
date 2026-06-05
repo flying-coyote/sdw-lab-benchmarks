@@ -20,13 +20,15 @@ import duckdb
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORK = os.path.join(HERE, "_work")
+sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+from common import configure_duckdb  # noqa: E402
 
 
 def _lakehouse_checks():
     """Mechanically produce sections a/b/d against the corpus; PASS = matches ground truth.
     This is the lakehouse-side defensibility evidence (reproducible, machine-checkable)."""
     gt = json.load(open(os.path.join(WORK, "ground_truth.json")))
-    con = duckdb.connect()
+    con = configure_duckdb(duckdb.connect())
     pq = os.path.join(WORK, "corpus.parquet").replace("'", "''")
     con.execute(f"CREATE VIEW c AS SELECT * FROM '{pq}'")
     checks = {}

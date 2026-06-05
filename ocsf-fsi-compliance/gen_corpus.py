@@ -21,7 +21,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
-from common import BASE_EPOCH, canonical, new_rng  # noqa: E402
+from common import BASE_EPOCH, canonical, configure_duckdb, new_rng  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORK = os.path.join(HERE, "_work")
@@ -105,7 +105,7 @@ def write(rows, gt):
     # convenience parquet for whichever substrate wants it
     try:
         import duckdb
-        con = duckdb.connect()
+        con = configure_duckdb(duckdb.connect())
         src = os.path.join(WORK, "corpus.jsonl").replace("'", "''")
         con.execute(f"COPY (SELECT * FROM read_json_auto('{src}', sample_size=-1)) "
                     f"TO '{os.path.join(WORK, 'corpus.parquet')}' (FORMAT parquet)")

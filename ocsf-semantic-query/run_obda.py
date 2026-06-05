@@ -22,6 +22,8 @@ WORK = os.path.join(HERE, "_work")
 STORE_F = os.path.join(HERE, "..", "bench-a-context-collapse", "_work", "store_f")
 GT = os.path.join(HERE, "..", "ocsf-semantic-testbed", "_work", "ground_truth.json")
 ONTOP = os.environ.get("ONTOP_HOME", "/tmp/ontop-bench/ontop-cli")
+sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+from common import configure_duckdb  # noqa: E402
 
 # Queries OWL2QL can express (filters/joins) — expected provably correct on coverage.
 EXPRESSIBLE = {
@@ -45,7 +47,7 @@ def build_duckdb():
     dbf = os.path.join(WORK, "storef.duckdb")
     if os.path.exists(dbf):
         os.remove(dbf)
-    con = duckdb.connect(dbf)
+    con = configure_duckdb(duckdb.connect(dbf))
     for t in ("network", "process", "api", "auth", "dns", "session", "asset"):
         con.execute(f"CREATE TABLE {t} AS SELECT * FROM '{STORE_F}/{t}.parquet'")
     con.close()

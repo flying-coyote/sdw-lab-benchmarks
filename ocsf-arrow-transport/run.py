@@ -25,7 +25,7 @@ import duckdb
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "lib"))
-from common import BASE_EPOCH, time_trials  # noqa: E402
+from common import BASE_EPOCH, configure_duckdb, time_trials  # noqa: E402
 
 WORK = os.path.join(HERE, "_work")
 JDBC_JAR = os.environ.get("DUCKDB_JDBC_JAR", os.path.join(HERE, "..", ".jars", "duckdb_jdbc.jar"))
@@ -35,7 +35,7 @@ SIZES = [100_000, 1_000_000]
 
 def gen_parquet(n, path):
     """A mixed-type OCSF-shaped result set (the columns a tool actually pulls), deterministic."""
-    con = duckdb.connect()
+    con = configure_duckdb(duckdb.connect())
     con.execute(f"""COPY (
         SELECT i AS id,
                {BASE_EPOCH * 1000} + i AS time,
@@ -120,7 +120,7 @@ def parquet_encoding_arm():
     n = 1_000_000
     base = os.path.join(WORK, "enc_src.parquet")
     gen_parquet(n, base)
-    con = duckdb.connect()
+    con = configure_duckdb(duckdb.connect())
     out = {}
     for codec in ("uncompressed", "snappy", "zstd"):
         path = os.path.join(WORK, f"enc_{codec}.parquet")
@@ -141,7 +141,7 @@ def parquet_encoding_arm():
 
 def edge_case_arm():
     """Hunter's 'important errors early on': fetch awkward types via both transports, report breakage."""
-    con = duckdb.connect()
+    con = configure_duckdb(duckdb.connect())
     pq = os.path.join(WORK, "edge.parquet")
     con.execute(f"""COPY (SELECT
         (123456789012345678)::HUGEINT AS big_id,

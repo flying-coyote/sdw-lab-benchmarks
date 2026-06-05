@@ -34,7 +34,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
-from common import BASE_EPOCH, MASTER_SEED, canonical, new_rng  # noqa: E402
+from common import BASE_EPOCH, MASTER_SEED, canonical, configure_duckdb, new_rng  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WORK = os.path.join(HERE, "_work")
@@ -571,7 +571,7 @@ def materialize_parquet():
     raw_dir = os.path.join(WORK, "raw")
     pq_dir = os.path.join(WORK, "parquet")
     os.makedirs(pq_dir, exist_ok=True)
-    con = duckdb.connect(":memory:")
+    con = configure_duckdb(duckdb.connect(":memory:"))
     written = []
     for fn in sorted(os.listdir(raw_dir)):
         if not fn.endswith(".jsonl"):

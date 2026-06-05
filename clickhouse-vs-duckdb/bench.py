@@ -21,7 +21,7 @@ import sys
 from chdb import session as chs
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
-from common import BASE_EPOCH, time_trials  # noqa: E402
+from common import BASE_EPOCH, configure_duckdb, time_trials  # noqa: E402
 import corpus  # noqa: E402
 
 BASE_MS = BASE_EPOCH * 1000
@@ -119,7 +119,7 @@ def run_scale(n, parquet_path, warmup=2, trials=7, ingest_trials=3):
     benchmark rather than a query benchmark; the session removes that artifact."""
     import duckdb
 
-    con = duckdb.connect()
+    con = configure_duckdb(duckdb.connect())
     corpus.write_parquet(con, n, parquet_path)
     file_bytes = os.path.getsize(parquet_path)
 
