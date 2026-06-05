@@ -1,0 +1,8 @@
+title: Known C2 Domain Resolution
+status: experimental
+logsource:
+  category: dns
+detection:
+  sel:
+    query_hostname: 'cdn-telemetry-sync.net'
+  condition: sel

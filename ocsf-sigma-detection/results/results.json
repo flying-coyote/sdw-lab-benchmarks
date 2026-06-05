@@ -1,0 +1,56 @@
+{
+  "benchmark": "ocsf-sigma-detection",
+  "evidence_tier": "B (synthetic testbed, single machine)",
+  "per_rule": [
+    {
+      "att_ck": "T1059.001",
+      "compiled": true,
+      "detected": true,
+      "false_positives": 0,
+      "matches": 1,
+      "precision": 1.0,
+      "rule": "encoded_powershell.yml",
+      "sql": "SELECT * FROM <TABLE_NAME> WHERE cmd_line LIKE '%-EncodedCommand%' ESCAPE '\\' AND device_hostname='WS1'",
+      "stage": "execution",
+      "true_positive": 1
+    },
+    {
+      "att_ck": "T1098",
+      "compiled": true,
+      "detected": true,
+      "false_positives": 0,
+      "matches": 1,
+      "precision": 1.0,
+      "rule": "nomfa_privesc.yml",
+      "sql": "SELECT * FROM <TABLE_NAME> WHERE api_operation='AttachUserPolicy' AND (NOT mfa_present=true)",
+      "stage": "priv-esc",
+      "true_positive": 1
+    },
+    {
+      "att_ck": "T1021",
+      "compiled": true,
+      "detected": true,
+      "false_positives": 2959,
+      "matches": 2960,
+      "precision": 0.0003,
+      "rule": "rdp_lateral.yml",
+      "sql": "SELECT * FROM <TABLE_NAME> WHERE dst_port=3389",
+      "stage": "lateral movement",
+      "true_positive": 1
+    },
+    {
+      "att_ck": "T1071",
+      "compiled": true,
+      "detected": true,
+      "false_positives": 0,
+      "matches": 1,
+      "precision": 1.0,
+      "rule": "c2_domain.yml",
+      "sql": "SELECT * FROM <TABLE_NAME> WHERE query_hostname='cdn-telemetry-sync.net'",
+      "stage": "C2",
+      "true_positive": 1
+    }
+  ],
+  "rules": 4,
+  "stages_detected": "4/4"
+}

@@ -1,0 +1,8 @@
+title: RDP Connection (possible lateral movement)
+status: experimental
+logsource:
+  category: network_connection
+detection:
+  sel:
+    dst_port: 3389
+  condition: sel
