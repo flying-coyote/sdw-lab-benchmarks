@@ -1,0 +1,64 @@
+{
+  "benchmark": "ocsf-fsi-compliance (BENCH-F) \u2014 automated operator-elapsed timing",
+  "caveat": "Machine time-to-produce, dominated by substrate query primitives; under-captures the manual toil the human-hours claim is about. Author-built arms (self-design bias). Does not validate H-FSI-01's >=40% human-hours claim; the named-FSI human run remains the Tier-A gate.",
+  "lakehouse": {
+    "a_retention": {
+      "acceptance_pass": true,
+      "elapsed_s_median": 0.0134,
+      "end_time": 1780650761.115211,
+      "start_time": 1780650761.100106
+    },
+    "b_timeline": {
+      "acceptance_pass": true,
+      "elapsed_s_median": 0.0131,
+      "end_time": 1780650761.154148,
+      "start_time": 1780650761.140782
+    },
+    "c_lineage": {
+      "acceptance_pass": true,
+      "elapsed_s_median": 0.0338,
+      "end_time": 1780650761.512191,
+      "start_time": 1780650761.179887
+    },
+    "d_point_in_time": {
+      "acceptance_pass": true,
+      "elapsed_s_median": 0.0122,
+      "end_time": 1780650761.58904,
+      "start_time": 1780650761.576364
+    }
+  },
+  "metric": "AUTOMATED operator-elapsed seconds (timestamp-bracketed). NOT human-hours.",
+  "siem_standin": {
+    "a_retention": {
+      "acceptance_pass": true,
+      "elapsed_s_median": 0.0966,
+      "end_time": 1780650761.708412,
+      "start_time": 1780650761.611832
+    },
+    "b_timeline": {
+      "acceptance_pass": true,
+      "elapsed_s_median": 0.0941,
+      "end_time": 1780650761.995373,
+      "start_time": 1780650761.901322
+    },
+    "c_lineage": {
+      "acceptance_pass": true,
+      "elapsed_s_median": 0.3595,
+      "end_time": 1780650762.540509,
+      "start_time": 1780650762.182585
+    },
+    "d_point_in_time": {
+      "acceptance_pass": true,
+      "elapsed_s_median": 0.0945,
+      "end_time": 1780650763.358332,
+      "start_time": 1780650763.264065
+    }
+  },
+  "totals": {
+    "automated_reduction_pct": 88.8,
+    "concentrated_in_cd": true,
+    "lakehouse_elapsed_s": 0.0725,
+    "siem_elapsed_s": 0.6447
+  },
+  "trials_per_section": 3
+}

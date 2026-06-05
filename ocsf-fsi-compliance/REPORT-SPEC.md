@@ -72,6 +72,28 @@ The one-time lakehouse build cost is excluded from the per-cycle human-hours (th
 about recurring annual-review cost), and that exclusion is stated because it favors the
 lakehouse — the SIEM incumbent has already amortized its build.
 
+### The stopwatch
+
+The stopwatch is a discrete timestamp bracket: capture a wall-clock timestamp the instant
+before a section's production sequence starts, run the sequence to its acceptance definition,
+capture a timestamp the instant it finishes, and record elapsed = end − start. Whether the
+operator is a person at a keyboard or an automated agent, the bracket is the same primitive;
+what changes is what the elapsed *means*.
+
+### Automated-operator proxy (and what it is not)
+
+`timed_run.py` applies that stopwatch with an automated operator: it produces every section on
+both substrate arms (a DuckDB-over-Parquet lakehouse with partition columns and keyed
+lineage/time-travel lookups; a schema-on-read SIEM stand-in that scans raw JSONL with no
+engine, index, or time-travel) and brackets each. This yields a reproducible **automated
+operator-elapsed** metric. It is **not** the human-hours H-FSI-01 is about: an automated
+operator never pays the manual toil (export, screenshot, narrative assembly) where the human
+gap actually lives, so the automated metric is dominated by the substrate's query primitives
+and reads far larger, far faster, than any human ratio. It is reported as a distinct,
+honestly-labelled proxy; the named-FSI human run under this same stopwatch remains the
+Tier-A gate for the human-hours claim, and both arms being author-built keeps the self-design
+bias caveat in force.
+
 ## Defensibility, scored separately
 
 "Cheaper" and "more defensible" are two different claims and must not be blended. Per section,

@@ -21,12 +21,30 @@ everything around the human-hours measurement and leaves that to the operator.
   "machine-checkable provenance" is shown rather than asserted. Human-hours stay as operator
   placeholders.
 
-## What's pending (the operator's part)
+- **`timed_run.py`** — applies the timestamp-bracket stopwatch (discrete timestamp before the
+  sequence, discrete timestamp after, elapsed = the difference) with an *automated* operator,
+  producing every section on both arms and timing it. This yields a reproducible **automated
+  operator-elapsed** metric — emphatically *not* human-hours (see below).
+
+## The stopwatch, and the automated proxy vs human-hours
+
+The stopwatch is a discrete timestamp bracket: capture wall-clock the instant before a
+section's production starts, run it to its acceptance definition, capture wall-clock the
+instant it finishes, record the difference. `timed_run.py` runs that with an automated
+operator across both arms and currently measures the lakehouse producing the four sections in
+a small fraction of the SIEM stand-in's time, concentrated in the lineage/time-travel sections.
+That number is **automated machine-time**, dominated by query primitives (Parquet + SQL +
+keyed lookups versus a raw-JSONL scan), and it is *not* the human-hours H-FSI-01 claims: an
+automated operator never pays the manual export/screenshot/narrative toil where the human gap
+lives, so the automated ratio reads far larger and faster than any human ratio would. It is a
+reproducible proxy, labelled as one, not validation of the ≥40% human-hours claim.
+
+## What's pending (the human-hours part)
 
 The human-hours headline needs both substrates built to comparable finish and the report
-produced on each under the stopwatch protocol — that's a person at a keyboard, not a script,
-and it carries the self-timed confound the spec is built around. `defensibility.score()`
-applies the decision rule once the per-section hours are filled into the template.
+produced on each by a person under the same stopwatch — that carries the self-timed confound
+the spec is built around, and it is the Tier-A gate. `defensibility.score()` applies the
+decision rule once the per-section human-hours are filled into the template.
 
 ## Run it
 
