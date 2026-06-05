@@ -1,0 +1,27 @@
+{
+  "arms": {
+    "phi3_reject": {
+      "coverage": 0.3121,
+      "path_correct": 0.0071,
+      "silent_error_rate": 0.0
+    },
+    "phi3_snap": {
+      "coverage": 0.6525,
+      "path_correct": 0.0213,
+      "silent_error_rate": 0.0
+    },
+    "raw_phi3": {
+      "coverage": 1.0,
+      "path_correct": 0.0071,
+      "silent_error_rate": 0.6879
+    }
+  },
+  "benchmark": "ocsf-deterministic-mapper / LLM-behind-constraint",
+  "deterministic_alias_mapper": {
+    "coverage": 0.6667,
+    "path_correct": 0.1631,
+    "silent_error_rate": 0.0
+  },
+  "model": "phi3:latest",
+  "n_fields": 141
+}

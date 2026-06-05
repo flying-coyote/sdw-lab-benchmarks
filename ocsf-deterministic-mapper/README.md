@@ -15,6 +15,18 @@ rather than guessing). The lesson isn't "rules beat models" — it's that the **
 harness** does the safety work, and a model is only safe behind the same constraint. Full numbers in
 [results/RESULTS.md](results/RESULTS.md).
 
+### The model behind the constraint (`llm_behind_constraint.py`)
+
+The maturity step the first pass promised: put phi3 *behind* the same schema constraint and see whether
+the model then adds value. It does not, on this task. Constrained two ways — reject an invalid path to
+unmapped, or snap it to the nearest valid path — phi3's silent-error rate goes to **0.00** (the
+constraint makes it safe), but its path-correctness is **0.01–0.02** at coverage 0.31–0.65, versus the
+deterministic alias mapper's **0.16** at coverage 0.67. So behind the same harness the weak model is
+~8× *worse* than simple alias rules: the constraint provides the safety, and for field-mapping a
+deterministic mapper out-covers a sub-frontier model. Whether a frontier model behind the constraint adds
+coverage the alias rules miss is the open question (the frontier leg). This sharpens the conclusion — the
+value is in the harness, not the model, at least at this capability tier.
+
 ## Run it
 
 ```bash

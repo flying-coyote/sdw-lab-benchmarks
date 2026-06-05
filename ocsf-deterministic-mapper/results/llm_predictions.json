@@ -1,0 +1,989 @@
+[
+  {
+    "class": "authentication",
+    "field": "uuid",
+    "gold": "metadata.uid",
+    "raw_pred": ".authentication(3002).actor().uuid",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "eventType",
+    "gold": "metadata.event_code",
+    "raw_pred": "activity_name",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "version",
+    "gold": "metadata.log_version",
+    "raw_pred": "api.version",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "actor.id",
+    "gold": "user.uid",
+    "raw_pred": "actor.id",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "actor.type",
+    "gold": "user.type",
+    "raw_pred": "actor.type",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "actor.alternateId",
+    "gold": "user.email_addr",
+    "raw_pred": "actor.alternateId",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "actor.displayName",
+    "gold": "user.full_name",
+    "raw_pred": "actor.displayName",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.id",
+    "gold": "actor.app_uid",
+    "raw_pred": "actor.user",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.userAgent.rawUserAgent",
+    "gold": "http_request.user_agent",
+    "raw_pred": "device.browser",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.userAgent.os",
+    "gold": "src_endpoint.os.name",
+    "raw_pred": ".cloudsim.device.os",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.geographicalContext.geolocation.lat",
+    "gold": "src_endpoint.location.lat",
+    "raw_pred": "api.location",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.geographicalContext.geolocation.lon",
+    "gold": "src_endpoint.location.long",
+    "raw_pred": "device.location",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.geographicalContext.city",
+    "gold": "src_endpoint.location.city",
+    "raw_pred": "device.location",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.geographicalContext.state",
+    "gold": "src_endpoint.location.region",
+    "raw_pred": "device.location",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.geographicalContext.country",
+    "gold": "src_endpoint.location.country",
+    "raw_pred": "api.geoip",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.geographicalContext.postalCode",
+    "gold": "src_endpoint.location.postal_code",
+    "raw_pred": "device.location",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.zone",
+    "gold": "src_endpoint.zone",
+    "raw_pred": ".authz.client.zone",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.ipAddress",
+    "gold": "src_endpoint.ip",
+    "raw_pred": "device.ip",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "client.device",
+    "gold": "device.type",
+    "raw_pred": "cloud.devices",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "request.ipChain",
+    "gold": "src_endpoint.intermediate_ips",
+    "raw_pred": "device.ip",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "transaction.id",
+    "gold": "metadata.correlation_uid",
+    "raw_pred": "transaction.id",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "authenticationContext.issuer.id",
+    "gold": "session.issuer",
+    "raw_pred": "actor.authorizations[0].authenticationProtocolId",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "authenticationContext.externalSessionId",
+    "gold": "session.uid",
+    "raw_pred": "actor.session",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "securityContext.asNumber",
+    "gold": "src_endpoint.autonomous_system.number",
+    "raw_pred": ".securityContext.authenticationProtocol",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "securityContext.asOrg",
+    "gold": "src_endpoint.autonomous_system.name",
+    "raw_pred": "securityContext.asOrganization",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "securityContext.isp",
+    "gold": "src_endpoint.isp",
+    "raw_pred": ".securityContext.isp",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "authentication",
+    "field": "securityContext.domain",
+    "gold": "src_endpoint.domain",
+    "raw_pred": ".securityContext.domain",
+    "source": "Okta System Log"
+  },
+  {
+    "class": "detection_finding",
+    "field": "metadata.eventType",
+    "gold": "metadata.event_code",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "metadata.offset",
+    "gold": "metadata.sequence",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "metadata.customerIDString",
+    "gold": "metadata.tenant_uid",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "metadata.version",
+    "gold": "metadata.log_version",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.DetectName",
+    "gold": "finding_info.title",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.DetectDescription",
+    "gold": "finding_info.desc",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.Tactic",
+    "gold": "attacks.tactic",
+    "raw_pred": "activity_id.technique",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.Technique",
+    "gold": "attacks.technique",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.FileName",
+    "gold": "evidences.process.file.name",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.FilePath",
+    "gold": "evidences.process.file.path",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.CommandLine",
+    "gold": "evidences.process.cmd_line",
+    "raw_pred": "action",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.MD5String",
+    "gold": "evidences.process.file.hashes",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.SHA1String",
+    "gold": "evidences.process.file.hashes",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.SHA256String",
+    "gold": "evidences.process.file.hashes",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.ComputerName",
+    "gold": "device.hostname",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.UserName",
+    "gold": "evidences.actor.user.name",
+    "raw_pred": "actor.user",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.LocalIP",
+    "gold": "device.ip",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.MACAddress",
+    "gold": "device.mac",
+    "raw_pred": "activity_id.mac_address",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.SensorId",
+    "gold": "device.agent_list",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.MachineDomain",
+    "gold": "device.domain",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.ProcessId",
+    "gold": "evidences.process.pid",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.ParentProcessId",
+    "gold": "evidences.process.parent_process.pid",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.ParentImageFileName",
+    "gold": "evidences.process.parent_process.file.path",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.ParentCommandLine",
+    "gold": "evidences.process.parent_process.cmd_line",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.GrandparentImageFileName",
+    "gold": "evidences.process.ancestry",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.IOCType",
+    "gold": "observables.type_id",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.IOCValue",
+    "gold": "observables.value",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.FalconHostLink",
+    "gold": "finding_info.src_url",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.ProcessStartTime",
+    "gold": "evidences.process.created_time",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.ProcessEndTime",
+    "gold": "evidences.process.terminated_time",
+    "raw_pred": "activity_id.processes[*].end",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "detection_finding",
+    "field": "event.DetectId",
+    "gold": "finding_info.uid",
+    "raw_pred": "activity_id",
+    "source": "CrowdStrike Detection Summary"
+  },
+  {
+    "class": "network_activity",
+    "field": "receive_time",
+    "gold": "metadata.logged_time",
+    "raw_pred": ".network_activity[0].connection_info[0].receive_time",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "serial",
+    "gold": "device.uid",
+    "raw_pred": ".network_activity[0:1].source",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "type",
+    "gold": "metadata.log_name",
+    "raw_pred": ".network_activity[0:1].type",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "src",
+    "gold": "src_endpoint.ip",
+    "raw_pred": ".network_activity[0:1].source",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst",
+    "gold": "dst_endpoint.ip",
+    "raw_pred": ".//network_activity/connection_info[./ip='dst']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "rule",
+    "gold": "firewall_rule.name",
+    "raw_pred": ".network_activity[action='malicious']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "srcuser",
+    "gold": "src_endpoint.owner.name",
+    "raw_pred": ".network_activity[0:1].srcuser",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dstuser",
+    "gold": "dst_endpoint.owner.name",
+    "raw_pred": ".network_activity[action='destination user']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "from",
+    "gold": "src_endpoint.zone",
+    "raw_pred": ".network_activity[0:1].connection_info[2]",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "to",
+    "gold": "dst_endpoint.zone",
+    "raw_pred": ".network_activity[0:4].connection_info",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "inbound_if",
+    "gold": "src_endpoint.interface_name",
+    "raw_pred": ".network_activity[0]['connection_info'][0]['protocol_name']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "outbound_if",
+    "gold": "dst_endpoint.interface_name",
+    "raw_pred": ".network_activity[0]['connection_info'][0]['tcp_flags']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "sessionid",
+    "gold": "connection_info.uid",
+    "raw_pred": "network_activity.session",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "sport",
+    "gold": "src_endpoint.port",
+    "raw_pred": ".network_activity[0:1].connection_info[26:34]",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dport",
+    "gold": "dst_endpoint.port",
+    "raw_pred": ".network_activity[0:4].dport",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "proto",
+    "gold": "connection_info.protocol_name",
+    "raw_pred": ".network_activity[0]['proto']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "bytes",
+    "gold": "traffic.bytes",
+    "raw_pred": ".network_activity[0]['bytes']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "bytes_sent",
+    "gold": "traffic.bytes_out",
+    "raw_pred": ".network_activity[0:1].cumulative_traffic[26:34].bytes",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "bytes_received",
+    "gold": "traffic.bytes_in",
+    "raw_pred": ".network_activity[0]['cumulative_traffic']['bytes_received']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "packets",
+    "gold": "traffic.packets",
+    "raw_pred": ".network_activity[0]['packets']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "category",
+    "gold": "url.categories",
+    "raw_pred": ".network_activity[0:1].category",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "seqno",
+    "gold": "metadata.uid",
+    "raw_pred": ".network_activity[0].connection_info[0].seqno",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "srcloc",
+    "gold": "src_endpoint.location.country",
+    "raw_pred": ".network_activity[0:1].srcloc",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dstloc",
+    "gold": "dst_endpoint.location.country",
+    "raw_pred": ".//network_activity/connection_info[./boundary='dstloc']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "pkts_sent",
+    "gold": "traffic.packets_out",
+    "raw_pred": ".network_activity[0]['connection_info'][0]['packets']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "pkts_received",
+    "gold": "traffic.packets_in",
+    "raw_pred": ".network_activity[0]['cumulative_traffic']['packets']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "device_name",
+    "gold": "device.hostname",
+    "raw_pred": ".network_activity[0].device",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_uuid",
+    "gold": "src_endpoint.instance_uid",
+    "raw_pred": ".network_activity[0:1].src",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_uuid",
+    "gold": "dst_endpoint.instance_uid",
+    "raw_pred": ".//network_activity/connection_info[./uid='dst_uuid']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "rule_uuid",
+    "gold": "firewall_rule.uid",
+    "raw_pred": ".network_activity[0].connection_info",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dynusergroup_name",
+    "gold": "src_endpoint.owner.groups.name",
+    "raw_pred": ".network_activity[0]['actor']['dynusergroup']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "xff_ip",
+    "gold": "src_endpoint.intermediate_ips",
+    "raw_pred": ".network_activity[0:1].connection_info[26:34].boundary",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_category",
+    "gold": "src_endpoint.type_id",
+    "raw_pred": ".network_activity[0:1].src_category",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_model",
+    "gold": "src_endpoint.hw_info.model",
+    "raw_pred": ".//network_activity/source[action='inbound']",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_vendor",
+    "gold": "src_endpoint.hw_info.vendor_name",
+    "raw_pred": ".network_activity[0:1].src_vendors",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_osfamily",
+    "gold": "src_endpoint.os.name",
+    "raw_pred": ".network_activity[0:1].src_osfamily",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_osversion",
+    "gold": "src_endpoint.os.version",
+    "raw_pred": ".network_activity[0:1].src_osversion",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_host",
+    "gold": "src_endpoint.hostname",
+    "raw_pred": ".network_activity[0:1].src_ip",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_mac",
+    "gold": "src_endpoint.mac",
+    "raw_pred": ".network_activity[0:1].src_mac",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_category",
+    "gold": "dst_endpoint.type_id",
+    "raw_pred": ".//network_activity/attacks[.]technique",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_model",
+    "gold": "dst_endpoint.hw_info.model",
+    "raw_pred": ".//network_activity/connection_info",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_vendor",
+    "gold": "dst_endpoint.hw_info.vendor_name",
+    "raw_pred": ".network_activity[0:1].dst_vendors",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_osfamily",
+    "gold": "dst_endpoint.os.name",
+    "raw_pred": ".network_activity[0:1].attacks.technique",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_osversion",
+    "gold": "dst_endpoint.os.version",
+    "raw_pred": ".network_activity[0:1].dst_osversion",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_host",
+    "gold": "dst_endpoint.hostname",
+    "raw_pred": ".network_activity[0:1].dst_ip",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_mac",
+    "gold": "dst_endpoint.mac",
+    "raw_pred": ".network_activity[0:1].connection_info[5:6].",
+    "source": "Palo Alto PAN-OS TRAFFIC"
+  },
+  {
+    "class": "network_activity",
+    "field": "device",
+    "gold": "device.hostname",
+    "raw_pred": "network_activity.device",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "message_id",
+    "gold": "metadata.event_code",
+    "raw_pred": "network_activity.message_id",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "direction",
+    "gold": "connection_info.direction_id",
+    "raw_pred": "network_activity.connection_info[direction]",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "protocol",
+    "gold": "connection_info.protocol_name",
+    "raw_pred": "network_activity.protocol",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "connection_id",
+    "gold": "connection_info.uid",
+    "raw_pred": "network_activity.connection_info",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_interface",
+    "gold": "src_endpoint.interface_name",
+    "raw_pred": "connection.src_interface",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_ip",
+    "gold": "src_endpoint.ip",
+    "raw_pred": "network_activity.src_ip",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "src_port",
+    "gold": "src_endpoint.port",
+    "raw_pred": "connection.src_port",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_interface",
+    "gold": "dst_endpoint.interface_name",
+    "raw_pred": "network_activity.connection_info[dst_interface]",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_ip",
+    "gold": "dst_endpoint.ip",
+    "raw_pred": "network_activity.connection_info.dst_ip",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "dst_port",
+    "gold": "dst_endpoint.port",
+    "raw_pred": "network_activity.connection_info.dst_port",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "user",
+    "gold": "src_endpoint.owner.name",
+    "raw_pred": "network_activity.actor.user",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "bytes",
+    "gold": "traffic.bytes",
+    "raw_pred": "network_activity.cumulative_traffic.bytes",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "network_activity",
+    "field": "acl_id",
+    "gold": "firewall_rule.name",
+    "raw_pred": ".network-activity[action='access control list (ACL) creation')]",
+    "source": "Cisco ASA connection syslog"
+  },
+  {
+    "class": "dns_activity",
+    "field": "most_granular_identity",
+    "gold": "src_endpoint.name",
+    "raw_pred": ".dns-activity[0:1].answers[*]",
+    "source": "Cisco Umbrella DNS"
+  },
+  {
+    "class": "dns_activity",
+    "field": "internal_ip",
+    "gold": "src_endpoint.ip",
+    "raw_pred": "activity.answers[0].rdata",
+    "source": "Cisco Umbrella DNS"
+  },
+  {
+    "class": "dns_activity",
+    "field": "query_type",
+    "gold": "query.type",
+    "raw_pred": "dns_activity.query_type",
+    "source": "Cisco Umbrella DNS"
+  },
+  {
+    "class": "dns_activity",
+    "field": "domain",
+    "gold": "query.hostname",
+    "raw_pred": "dns_activity.answers.rdata",
+    "source": "Cisco Umbrella DNS"
+  },
+  {
+    "class": "dns_activity",
+    "field": "most_granular_identity_type",
+    "gold": "src_endpoint.type_id",
+    "raw_pred": ".dns-activity[0:].most_granular_identity_type",
+    "source": "Cisco Umbrella DNS"
+  },
+  {
+    "class": "http_activity",
+    "field": "login",
+    "gold": "src_endpoint.owner.email_addr",
+    "raw_pred": ".http-activity[0].actor.user",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "department",
+    "gold": "src_endpoint.owner.org.ou_name",
+    "raw_pred": ".http-activity[0].actor.department",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "url",
+    "gold": "http_request.url.url_string",
+    "raw_pred": ".http-activity[0].api",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "host",
+    "gold": "http_request.url.hostname",
+    "raw_pred": ".http-activity[0].connectionInfo[0].boundary",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "urlcategory",
+    "gold": "http_request.url.categories",
+    "raw_pred": ".http-activity[0].attacks[0].technique",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "requestmethod",
+    "gold": "http_request.http_method",
+    "raw_pred": ".http-activity[*].requestMethod",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "requestsize",
+    "gold": "http_request.length",
+    "raw_pred": "http_activity.requestSize",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "responsesize",
+    "gold": "http_response.length",
+    "raw_pred": "api.cumulative_traffic.bytes",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "totalsize",
+    "gold": "traffic.bytes",
+    "raw_pred": "totalsize",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "useragent",
+    "gold": "http_request.user_agent",
+    "raw_pred": ".http-activity[0].userAgent",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "referer",
+    "gold": "http_request.referrer",
+    "raw_pred": ".http-activity[*].referer",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "clientip",
+    "gold": "src_endpoint.ip",
+    "raw_pred": "connection_info.clientip",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "serverip",
+    "gold": "dst_endpoint.ip",
+    "raw_pred": "connection_info.boundary",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "contenttype",
+    "gold": "http_response.content_type",
+    "raw_pred": ".//contenttype",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "threatname",
+    "gold": "malware.name",
+    "raw_pred": ".//threat[contains(., 'threatname')]/following-sibling::http_activity[1]",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "rulelabel",
+    "gold": "policy.name",
+    "raw_pred": ".//ruleLabel",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "devicehostname",
+    "gold": "device.hostname",
+    "raw_pred": "device.hostname",
+    "source": "Zscaler ZIA Web"
+  },
+  {
+    "class": "http_activity",
+    "field": "deviceowner",
+    "gold": "device.owner.name",
+    "raw_pred": "device.deviceowner",
+    "source": "Zscaler ZIA Web"
+  }
+]
