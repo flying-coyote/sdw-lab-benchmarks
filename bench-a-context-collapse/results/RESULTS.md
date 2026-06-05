@@ -63,8 +63,8 @@ believable, not more.
 
 ## Cost of the fix
 
-Store F is **1.93×** the size of Store N on this corpus
-(5,359,973 vs 2,780,438 bytes). Fidelity is not free; the
+Store F is **1.92×** the size of Store N on this corpus
+(5,359,973 vs 2,785,680 bytes). Fidelity is not free; the
 benchmark reports the price alongside the recovery so "Store F recovers the gap" is
 weighed against what it costs to keep.
 
@@ -75,7 +75,7 @@ python ../ocsf-semantic-testbed/generate.py     # the shared corpus (determinist
 python run.py                                    # build stores, score, write results
 ```
 
-Corpus fingerprint: `820a5d18ed1656217474d98c` · determinism re-check: **identical**.
+Corpus fingerprint: `46af223bf406ee3be09bc024` · determinism re-check: **identical**.
 
 ## Caveats that travel on this result
 

@@ -1,0 +1,39 @@
+{
+  "benchmark": "ocsf-context-collapse second-chain",
+  "both_routine_clean": true,
+  "canonical_restored": true,
+  "chain_A": {
+    "chain": "A",
+    "chain_name": "A \u2014 APT29-style, RDP lateral (T1021.001)",
+    "delta_adversary": 0.719,
+    "delta_routine": 0.0,
+    "fingerprint": "46af223bf406ee3b",
+    "headline": 0.719,
+    "per_mechanism": {
+      "bounded-context": 0.55,
+      "grain": 1.0,
+      "structural": 0.9926,
+      "time": 0.5244
+    },
+    "validate": "14/14 passed",
+    "void": false
+  },
+  "chain_B": {
+    "chain": "B",
+    "chain_name": "B \u2014 different actor/subnet, SMB lateral (T1021.002)",
+    "delta_adversary": 0.7095,
+    "delta_routine": 0.0,
+    "fingerprint": "d2cc29eac4ba8e10",
+    "headline": 0.7095,
+    "per_mechanism": {
+      "bounded-context": 0.55,
+      "grain": 1.0,
+      "structural": 0.9926,
+      "time": 0.5007
+    },
+    "validate": "14/14 passed",
+    "void": false
+  },
+  "headline_delta_A_vs_B": 0.0095,
+  "tier": "B"
+}

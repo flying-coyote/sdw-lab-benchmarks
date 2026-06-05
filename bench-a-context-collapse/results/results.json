@@ -4,7 +4,7 @@
   "delta_routine": 0.0,
   "determinism_verified": true,
   "environment": {
-    "corpus_fingerprint": "820a5d18ed1656217474d98c",
+    "corpus_fingerprint": "46af223bf406ee3be09bc024",
     "duckdb_version": "1.5.3"
   },
   "evidence_tier": "B (synthetic controlled testbed, single machine, one planted chain; NOT a production rate)",
@@ -194,9 +194,9 @@
     }
   ],
   "store_cost": {
-    "fidelity_overhead_x": 1.93,
+    "fidelity_overhead_x": 1.92,
     "store_f_bytes": 5359973,
-    "store_n_bytes": 2780438
+    "store_n_bytes": 2785680
   },
   "void": false
 }

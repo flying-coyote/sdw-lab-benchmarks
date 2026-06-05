@@ -22,6 +22,7 @@ follow the canonical OCSF `process` / `actor` / `api` object semantics; BENCH-A 
 fidelity against ground truth, not OCSF-path existence (that is BENCH-B's metric).
 """
 
+import json
 import os
 
 import duckdb
@@ -29,6 +30,12 @@ import duckdb
 HERE = os.path.dirname(os.path.abspath(__file__))
 RAW = os.path.join(HERE, "..", "ocsf-semantic-testbed", "_work", "raw")
 WORK = os.path.join(HERE, "_work")
+GT = os.path.join(HERE, "..", "ocsf-semantic-testbed", "_work", "ground_truth.json")
+
+
+def _ioc():
+    """The chain's indicators from ground truth, so the stores track whichever chain was generated."""
+    return json.load(open(GT))["ioc"]
 
 ROLLUP_MS = 300_000        # Store N network rollup window: 5 minutes
 CMDLINE_TRUNC = 64         # Store N command-line truncation
@@ -104,13 +111,16 @@ def build_store_f(con):
         FROM raw_cloudtrail) TO '{d}/api.parquet' (FORMAT parquet)""")
 
     # Asset-inventory observable — the named chain assets resolved across their
-    # hostname / IP / instance-id aliases. A fidelity store keeps this as an
+    # hostname / IP / instance-id aliases, read from the ground-truth IOC block so it tracks
+    # whichever chain was generated (not hardcoded). A fidelity store keeps this as an
     # enrichment/observable; it is what lets A9 count machines rather than identifiers.
-    # (Background hosts aren't enumerated here; A9 concerns only the actor's assets.)
+    ioc = _ioc()
+    rows = ",\n            ".join(
+        f"('{ioc[f'{w}_host']}','{ioc[f'{w}_ip']}','{ioc[f'{w}_instance']}','{ioc[f'{w}_host']}')"
+        for w in ("ws1", "ws2"))
     con.execute(f"""COPY (
         SELECT * FROM (VALUES
-            ('WS1','10.10.1.21','i-0a1b2c3d4e5f6071','WS1'),
-            ('WS2','10.10.1.22','i-0e4f5a6b7c8d9012','WS2')
+            {rows}
         ) AS t(hostname, ip, instance_uid, canonical_asset)
     ) TO '{d}/asset.parquet' (FORMAT parquet)""")
     return d

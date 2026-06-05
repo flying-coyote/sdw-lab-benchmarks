@@ -24,6 +24,7 @@ def main():
     gt = json.load(open(os.path.join(WORK, "ground_truth.json")))
     tn = gt["truth_needles"]
     idl = gt["truth_identity_links"]
+    ioc = gt.get("ioc", {"c2_ip": "203.0.113.66"})   # chain indicators (chain-A fallback)
     con = duckdb.connect(":memory:")
 
     def pq(src):
@@ -41,7 +42,7 @@ def main():
     gaps = sorted((ts[i + 1] - ts[i]) / 1000 for i in range(len(ts) - 1))
     median_gap = gaps[len(gaps) // 2] if gaps else 0
     fp = q(f"SELECT count(*) FROM '{pq('zeek_conn')}' "
-           f"WHERE resp_h='203.0.113.66' AND _needle_id IS NULL")[0][0]
+           f"WHERE resp_h='{ioc['c2_ip']}' AND _needle_id IS NULL")[0][0]
     checks.append(("A1 beacon count == 60", len(ts) == 60, f"{len(ts)} conns"))
     checks.append(("A1 beacon cadence ~60s", 55 <= median_gap <= 65, f"median {median_gap:.0f}s"))
     checks.append(("A1 no background conn to C2 IP (no false positive)", fp == 0, f"{fp} background"))
