@@ -14,6 +14,7 @@ timings. Each benchmark says so in its own METHODOLOGY.
 import json
 import os
 import random
+import statistics
 import time
 
 import duckdb
@@ -131,10 +132,16 @@ def time_trials(fn, warmup: int = 2, trials: int = 7):
     samples.sort()
     n = len(samples)
     median = samples[n // 2] if n % 2 else (samples[n // 2 - 1] + samples[n // 2]) / 2
+    mean = sum(samples) / n
+    # Coefficient of variation — the stability metric the methodology requires: a measured
+    # delta below the CV is not a real difference (db-benchmarks principle). Reported on every
+    # timed result so callers never quote a single median as if it were stable.
+    cv = (statistics.pstdev(samples) / mean * 100.0) if n > 1 and mean > 0 else 0.0
     return {
         "median_ms": round(median, 3),
         "min_ms": round(samples[0], 3),
         "max_ms": round(samples[-1], 3),
+        "cv_pct": round(cv, 1),
         "trials": n,
         "warmup": warmup,
     }
