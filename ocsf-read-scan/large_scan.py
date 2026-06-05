@@ -111,14 +111,14 @@ def run(total_rows, batch):
             "ducklake": {"storage_bytes": _dir_bytes(dpath) + os.path.getsize(f"{work}/dl.ducklake"),
                          "data_files": _n_files(dpath, ".parquet"), "queries": {}},
         }
-        print("  scanning (warmup 1, 2 trials)…", flush=True)
+        print("  scanning (warmup 1, 3 trials)…", flush=True)
         for qid, sql in QUERIES.items():
             ice_sql = sql.format(t=f"iceberg_scan('{root}')")
             dl_sql = sql.format(t="dl.events")
-            it = time_trials(lambda: con.execute(ice_sql).fetchall(), warmup=1, trials=2)
-            dt = time_trials(lambda: con.execute(dl_sql).fetchall(), warmup=1, trials=2)
-            results["iceberg"]["queries"][qid] = it["median_ms"]
-            results["ducklake"]["queries"][qid] = dt["median_ms"]
+            it = time_trials(lambda: con.execute(ice_sql).fetchall(), warmup=1, trials=3)
+            dt = time_trials(lambda: con.execute(dl_sql).fetchall(), warmup=1, trials=3)
+            results["iceberg"]["queries"][qid] = {"median_ms": it["median_ms"], "cv_pct": it["cv_pct"]}
+            results["ducklake"]["queries"][qid] = {"median_ms": dt["median_ms"], "cv_pct": dt["cv_pct"]}
             ratio = round(it["median_ms"] / max(dt["median_ms"], 0.01), 2)
             print(f"  {qid:14}: iceberg {it['median_ms']:.0f}ms  ducklake {dt['median_ms']:.0f}ms  "
                   f"(ice/dl {ratio}×)", flush=True)
@@ -138,18 +138,26 @@ def run(total_rows, batch):
 
 
 def render_md(res):
+    def m(side, q):
+        v = res[side]["queries"][q]
+        return v["median_ms"] if isinstance(v, dict) else v
+    def cvp(side, q):
+        v = res[side]["queries"][q]
+        return v["cv_pct"] if isinstance(v, dict) else 0.0
     rows = "\n".join(
-        f"| {q} | {res['iceberg']['queries'][q]:.0f} | {res['ducklake']['queries'][q]:.0f} | "
-        f"{round(res['iceberg']['queries'][q]/max(res['ducklake']['queries'][q],0.01),2)}× |"
+        f"| {q} | {m('iceberg',q):.0f} ({cvp('iceberg',q):.0f}%) | {m('ducklake',q):.0f} ({cvp('ducklake',q):.0f}%) | "
+        f"{round(m('iceberg',q)/max(m('ducklake',q),0.01),2)}× |"
         for q in res["iceberg"]["queries"])
     return f"""# BENCH-E large-scan arm — DuckLake vs Iceberg at {res['n_rows']:,} rows (results)
 
 **Tier B · single machine.** {res['n_rows']:,} rows ingested in {res['n_batches']} batches of
 {res['batch_rows']:,} (peak memory = one batch), materialized in both formats and read by the same
-engine (DuckDB, memory_limit {res['memory_limit']}, spilling to native ext4). The only variable is the
-format's read path. Latencies are machine-specific medians (warmup 1, 2 trials).
+engine (DuckDB, memory_limit {res['memory_limit']}, spilling to native ext4). Latencies are medians
+with CV (warmup 1, 3 trials). **This is the default-config comparison — the two writers differ in
+codec/encoding, so the gap mixes the writer's compression with the format.** See SAME-FILES.md for the
+byte-identical comparison that isolates the format (the read difference collapses to ~parity there).
 
-| query | Iceberg ms | DuckLake ms | Iceberg/DuckLake |
+| query | Iceberg ms (cv) | DuckLake ms (cv) | Iceberg/DuckLake |
 |---|---|---|---|
 {rows}
 

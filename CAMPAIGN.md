@@ -66,10 +66,17 @@ Status: [ ] pending · [~] running · [x] done. Each is single-box and dependenc
   chDB's Parquet equality (`=`/`IN`) filter drops matching rows in tail row groups, while `LIKE`,
   chDB's own MergeTree, and DuckDB all match the generator's ground truth. The gate is the only reason
   it surfaced. Strongest vindication of the lab's method.
-- [ ] **R4 ZSTD schema-seeded dictionary on OCSF Parquet** (moderate, ~45m) — H-MV-ZSTD-01: schema-trained
-  dict vs generic zstd vs snappy vs Parquet-native dict; size + read latency, held-out training set.
-- [ ] **R5 Materialized-view acceleration** (moderate) — H-MV-SECURITY-01: pre-aggregated SOC-dashboard
-  views vs base scan; ratio + write-amplification + storage cost. Reuses R4 corpus.
+- [x] **R4 ZSTD schema-trained dictionary on OCSF data** — DONE (`60c5c22`). Regime crossover, measured:
+  per-event dict lift 2.74× (zstd-19 1.36→3.72×), decaying to ~1.0× by 1000-event blocks; columnar
+  Parquet 9.45× (zstd-3 no-dict) beats every per-event approach. The regime sets the right compression,
+  not the codec name — and security ingestion's per-event hot path is exactly where the trained dict
+  pays. Held-out trained dictionary (disjoint row range). Reframed honestly: not "dict on Parquet" but
+  "dict in the streaming regime; the lake gets it from the format."
+- [x] **R5 Materialized-view acceleration** — DONE (`12253c9`). Read speedup is the robust win (45–77×
+  serving a 12–2000-row MV vs scanning 20M); incremental maintenance is scale-dependent (2.9× cheaper
+  than recompute for low-cardinality, break-even for high-cardinality at this base — the win grows with
+  base:batch); storage negligible (+0.0–0.002%). MV is a bet on a fixed question set; ad-hoc still pays
+  the base scan. Maintenance aggregates the in-hand batch, not regenerated rows.
 - [ ] **R6 Iceberg-vs-DuckLake planning baseline at 1M/10M/100M** (moderate) — isolate catalog-traversal
   from scan; the clean current-Iceberg baseline the V4 tracking priority needs.
 - [ ] **R7 Streaming write-contract** (moderate-heavy) — micro-batch cadence (5–500 rows), throughput +
