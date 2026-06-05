@@ -116,8 +116,12 @@ def build_store_f(con):
     return d
 
 
-def build_store_n(con):
-    """Normalized/coarse single event store — the documented volume-driven default."""
+def build_store_n(con, rollup_ms=ROLLUP_MS, cmdline_trunc=CMDLINE_TRUNC, dns_rare_min=DNS_RARE_MIN):
+    """Normalized/coarse single event store — the documented volume-driven default.
+
+    The three coarsening knobs are parameters (defaulting to the documented values) so the
+    dose-response harness can sweep them: a larger rollup window, a shorter cmdline cap, and a
+    higher rare-DNS threshold are all "lazier" normalization."""
     d = os.path.join(WORK, "store_n")
     os.makedirs(d, exist_ok=True)
 
@@ -139,7 +143,7 @@ def build_store_n(con):
         FROM raw_okta_auth
         UNION ALL
         -- network: 5-min flow rollup per (src,dst,port); device_host = source-native IP (NDR)
-        SELECT (_ingest_time_ms / {ROLLUP_MS})::BIGINT * {ROLLUP_MS}, 4001,
+        SELECT (_ingest_time_ms / {rollup_ms})::BIGINT * {rollup_ms}, 4001,
                NULL, orig_h, orig_h, resp_h, resp_p,
                sum(orig_bytes)::BIGINT, sum(resp_bytes)::BIGINT, count(*)::INTEGER,
                NULL, NULL, NULL, NULL, NULL, NULL, false, NULL
@@ -150,11 +154,11 @@ def build_store_n(con):
         SELECT _ingest_time_ms, 4003, NULL, orig_h, orig_h, NULL, NULL,
                NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, false, query
         FROM raw_zeek_dns
-        WHERE query IN (SELECT query FROM raw_zeek_dns GROUP BY query HAVING count(*) >= {DNS_RARE_MIN})
+        WHERE query IN (SELECT query FROM raw_zeek_dns GROUP BY query HAVING count(*) >= {dns_rare_min})
         UNION ALL
         -- process: cmd_line truncated; device_host = hostname (EDR); SID is the flat user_uid
         SELECT _ingest_time_ms, 1007, user_sid, host, NULL, NULL, NULL,
-               NULL, NULL, NULL, image_name, left(command_line, {CMDLINE_TRUNC}),
+               NULL, NULL, NULL, image_name, left(command_line, {cmdline_trunc}),
                NULL, NULL, NULL, NULL, false, NULL
         FROM raw_sysmon_process
         UNION ALL

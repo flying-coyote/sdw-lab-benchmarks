@@ -1,0 +1,83 @@
+{
+  "benchmark": "ocsf-context-collapse dose-response",
+  "knobs": [
+    "network rollup window",
+    "cmdline truncation",
+    "rare-DNS sampling threshold"
+  ],
+  "rungs": [
+    {
+      "delta_adversary": 0.719,
+      "delta_routine": 0.0,
+      "headline": 0.719,
+      "per_mechanism": {
+        "bounded-context": 0.55,
+        "grain": 1.0,
+        "structural": 0.9926,
+        "time": 0.5244
+      },
+      "setting": {
+        "cmdline_trunc": 256,
+        "dns_rare_min": 2,
+        "label": "light",
+        "rollup_ms": 60000
+      },
+      "void": false
+    },
+    {
+      "delta_adversary": 0.719,
+      "delta_routine": 0.0,
+      "headline": 0.719,
+      "per_mechanism": {
+        "bounded-context": 0.55,
+        "grain": 1.0,
+        "structural": 0.9926,
+        "time": 0.5244
+      },
+      "setting": {
+        "cmdline_trunc": 64,
+        "dns_rare_min": 3,
+        "label": "documented",
+        "rollup_ms": 300000
+      },
+      "void": false
+    },
+    {
+      "delta_adversary": 0.8293,
+      "delta_routine": 0.0,
+      "headline": 0.8293,
+      "per_mechanism": {
+        "bounded-context": 0.55,
+        "grain": 1.0,
+        "structural": 0.9926,
+        "time": 0.8
+      },
+      "setting": {
+        "cmdline_trunc": 24,
+        "dns_rare_min": 6,
+        "label": "heavy",
+        "rollup_ms": 900000
+      },
+      "void": false
+    },
+    {
+      "delta_adversary": 0.8293,
+      "delta_routine": 0.0,
+      "headline": 0.8293,
+      "per_mechanism": {
+        "bounded-context": 0.55,
+        "grain": 1.0,
+        "structural": 0.9926,
+        "time": 0.8
+      },
+      "setting": {
+        "cmdline_trunc": 12,
+        "dns_rare_min": 12,
+        "label": "very_heavy",
+        "rollup_ms": 3600000
+      },
+      "void": false
+    }
+  ],
+  "tier": "B"
+}
