@@ -1,0 +1,54 @@
+{
+  "anchors": {
+    "BIRD_sota": 0.8167,
+    "NL2KQL_result_accuracy": 0.58
+  },
+  "arms": {
+    "graphrag": {
+      "blocker": "no graph+vector GraphRAG stack installed",
+      "status": "pending"
+    },
+    "obda_ontop": {
+      "blocker": "Ontop CLI not installed (JVM present); R2RML mappings to author",
+      "status": "pending"
+    },
+    "text_to_sql": {
+      "counts": {
+        "correct": 2,
+        "loud": 2,
+        "silent": 0
+      },
+      "result_accuracy": 0.5,
+      "rows": [
+        {
+          "id": "A1",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT DISTINCT f_network.event_uid\nFROM f_network\nWHERE (f_network.bytes_out < 100 AND f_network.bytes_in < 100)\nAND EXISTS (\n    SELECT 1\n    FROM f_network AS fn2\n    WHERE fn2.src_ip = f_network.src_ip\n    AND fn2.dst_ip = f_network.dst_ip\n    AND ABS(EXTRACT(EPOCH FROM (fn2.time - f_network.tim"
+        },
+        {
+          "id": "A2",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT cmd_line FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%-EncodedCommand%'"
+        },
+        {
+          "id": "A6",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT event_uid FROM f_api WHERE api_operation = 'AttachUserPolicy' AND mfa_present = FALSE"
+        },
+        {
+          "id": "A8",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT query_hostname FROM f_dns WHERE src_hostname = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1 ORDER BY time LIMIT 1"
+        }
+      ],
+      "silent_error_rate": 0.0
+    }
+  },
+  "benchmark": "ocsf-semantic-query (BENCH-C, first pass \u2014 text-to-SQL arm)",
+  "evidence_tier": "B (text-to-SQL baseline arm only; OBDA + GraphRAG arms pending infra)",
+  "model": "phi4:latest"
+}
