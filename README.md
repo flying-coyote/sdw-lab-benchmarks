@@ -20,6 +20,10 @@ engine-against-engine, and labelled at an honest evidence tier.
 | [`ocsf-semantic-query/`](ocsf-semantic-query/) | OBDA vs GraphRAG vs text-to-SQL on adversary-tail concept queries — silent-error rate the decisive metric (text-to-SQL arm first; OBDA/GraphRAG pending) | B | first pass (1 of 3 arms) |
 | [`ocsf-write-contract/`](ocsf-write-contract/) | hot-tier write contract under streaming OCSF ingest: file-write (Iceberg) vs SQL-transaction (DuckLake) — commit latency, write amplification, read-contract coherence (ISK never-write arm pending) | B | first pass (2 of 3 arms) |
 | [`ocsf-fsi-compliance/`](ocsf-fsi-compliance/) | human-hours to produce a §1003(b)/Reg-SCI evidence report on a lakehouse vs a schema-on-read SIEM — corpus + frozen spec + defensibility demonstrated; human-hours pending an operator run | B | scaffold |
+| [`ocsf-arrow-transport/`](ocsf-arrow-transport/) | the connectivity layer for moving OCSF result sets — ADBC (Arrow columnar) vs JDBC (row-oriented) + a Parquet encoding sweep + an edge-case type battery | B | first pass |
+| [`ocsf-iceberg-metadata/`](ocsf-iceberg-metadata/) | the small-files tax — scan-planning time as a table accumulates small appends, and what compaction recovers (~148× planning) | B | first pass |
+| [`ocsf-read-scan/`](ocsf-read-scan/) | BENCH-E: DuckLake vs Iceberg large-scan reads (10M rows, same engine) — interchangeable on read, latencies within ~2× by query shape | B | first pass |
+| [`ocsf-sigma-detection/`](ocsf-sigma-detection/) | do compiled Sigma rules *fire correctly* over the OCSF store — detection of the planted chain (recall) + precision, the execution complement to sigma-portability | B | first pass |
 
 ## How they are kept honest
 
@@ -70,5 +74,9 @@ ocsf-mapping-oracle/    benchmark: BENCH-B mapping oracle (4 conditions, silent-
 ocsf-semantic-query/    benchmark: BENCH-C semantic-query head-to-head (text-to-SQL arm)
 ocsf-write-contract/    benchmark: BENCH-D hot-tier write contract (Iceberg vs DuckLake; own reqs)
 ocsf-fsi-compliance/    scaffold:  BENCH-F §1003(b) human-hours (corpus + spec + defensibility)
+ocsf-arrow-transport/   benchmark: ADBC vs JDBC transport + Parquet encoding (own reqs)
+ocsf-iceberg-metadata/  benchmark: Iceberg metadata/compaction scaling (own reqs)
+ocsf-read-scan/         benchmark: BENCH-E DuckLake vs Iceberg large-scan reads (own reqs)
+ocsf-sigma-detection/   benchmark: Sigma rules executed over the OCSF store (own reqs)
 requirements.txt        duckdb, chdb (pinned) — sigma-portability + ocsf-write-contract have their own
 ```
