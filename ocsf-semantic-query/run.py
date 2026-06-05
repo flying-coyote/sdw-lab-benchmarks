@@ -157,7 +157,22 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", default="phi3:latest")
     ap.add_argument("--render-only", action="store_true")
+    ap.add_argument("--determinism", action="store_true")
     args = ap.parse_args()
+    if args.determinism:
+        import hashlib
+        con = connect()
+        s1, s2 = schema_context(con), schema_context(con)
+        gt = json.load(open(GT))["truth_needles"]
+        # scorer is a pure function of (query, rows, truth); verify it's stable on a fixed input
+        fixed = [("x",), ("y",)]
+        stable = score(QUERIES[0], fixed, gt[QUERIES[0]["truth_key"]]) == score(QUERIES[0], fixed, gt[QUERIES[0]["truth_key"]])
+        con.close()
+        print(f"schema context reproduces: {s1 == s2}")
+        print(f"scorer + ground-truth load reproduce: {stable}")
+        print("NOTE: schema context, ground truth, and the correct/silent/loud scorer are deterministic; "
+              "the SQL the model composes is temperature-0 greedy decode (reproducible in practice, not asserted).")
+        sys.exit(0 if (s1 == s2 and stable) else 1)
 
     if args.render_only:
         res = json.load(open(os.path.join(HERE, "results", "results.json")))

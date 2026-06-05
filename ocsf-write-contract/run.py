@@ -193,10 +193,37 @@ def run():
     return results
 
 
+def _fingerprint_batches(batches):
+    """Order-sensitive content hash of the seeded ingest corpus (the reproducible part)."""
+    import hashlib
+    h = hashlib.sha256()
+    for b in batches:
+        h.update(json.dumps(b.to_pydict(), sort_keys=True, default=str).encode())
+    return h.hexdigest()
+
+
+def check_determinism():
+    """The corpus is seeded, so it reproduces exactly; latencies are not deterministic and are
+    reported as medians. Assert the corpus (both rungs) is byte-identical across two generations."""
+    ok = True
+    for rung, cfg in (("small", (50, 100)), ("large", (10, 5000))):
+        a = _fingerprint_batches(gen_batches(*cfg))
+        b = _fingerprint_batches(gen_batches(*cfg))
+        same = a == b
+        ok = ok and same
+        print(f"  {rung}-batch corpus: {'identical' if same else 'DIFFERS'}  {a[:16]}…")
+    print(f"determinism (corpus): {'OK' if ok else 'FAIL'}  "
+          f"(commit latencies are machine-specific medians, not asserted)")
+    return ok
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--render-only", action="store_true")
+    ap.add_argument("--determinism", action="store_true", help="assert the seeded corpus reproduces")
     args = ap.parse_args()
+    if args.determinism:
+        sys.exit(0 if check_determinism() else 1)
     rdir = os.path.join(HERE, "results"); os.makedirs(rdir, exist_ok=True)
     if args.render_only:
         res = json.load(open(os.path.join(rdir, "results.json")))
