@@ -1,0 +1,124 @@
+{
+  "arms_measured": [
+    "iceberg_file_write",
+    "ducklake_sql_transaction"
+  ],
+  "arms_pending": {
+    "isk_never_write": "vendor-published, seed-stage; no independent deployment to measure"
+  },
+  "benchmark": "ocsf-write-contract (BENCH-D)",
+  "environment": {
+    "duckdb": "1.5.3"
+  },
+  "evidence_tier": "B (single machine, synthetic OCSF ingest; latencies are machine-specific medians, not constants)",
+  "headline": {
+    "files_per_commit_dl": 1.0,
+    "files_per_commit_ice": 4.02,
+    "read_contract_holds": true,
+    "small_commit_latency_ratio_ice_over_dl": 2.04
+  },
+  "rungs": {
+    "large_batch": {
+      "config": {
+        "n_commits": 10,
+        "rows_per_commit": 5000
+      },
+      "ducklake": {
+        "files_per_commit": 1.0,
+        "latency_ms": {
+          "max": 17.31,
+          "min": 15.32,
+          "p50": 16.67,
+          "p95": 17.31,
+          "p99": 17.31
+        },
+        "rows": 50000,
+        "storage": {
+          "bytes": 1166824,
+          "files": 10,
+          "metadata_files": 0
+        }
+      },
+      "iceberg": {
+        "files_per_commit": 4.1,
+        "latency_ms": {
+          "max": 25.18,
+          "min": 20.63,
+          "p50": 23.31,
+          "p95": 25.18,
+          "p99": 25.18
+        },
+        "metadata_location": "file:///tmp/claude-1000/benchd_large_batch_y22341m2/ice_wh/b/net/metadata/00010-948eca49-0e42-4737-bfd1-f914ce3102c1.metadata.json",
+        "rows": 50000,
+        "storage": {
+          "bytes": 1101464,
+          "files": 41,
+          "metadata_files": 31
+        }
+      },
+      "read_coherence": {
+        "coherent": true,
+        "ducklake_via_duckdb": {
+          "count": 50000,
+          "sum_bytes": 12506212450
+        },
+        "iceberg_via_duckdb": {
+          "count": 50000,
+          "note": "needed a written version-hint (pyiceberg/DuckDB metadata convention gap)",
+          "sum_bytes": 12506212450
+        }
+      }
+    },
+    "small_batch": {
+      "config": {
+        "n_commits": 50,
+        "rows_per_commit": 100
+      },
+      "ducklake": {
+        "files_per_commit": 1.0,
+        "latency_ms": {
+          "max": 29.92,
+          "min": 13.53,
+          "p50": 14.97,
+          "p95": 19.96,
+          "p99": 29.92
+        },
+        "rows": 5000,
+        "storage": {
+          "bytes": 200036,
+          "files": 50,
+          "metadata_files": 0
+        }
+      },
+      "iceberg": {
+        "files_per_commit": 4.02,
+        "latency_ms": {
+          "max": 88.58,
+          "min": 20.38,
+          "p50": 30.47,
+          "p95": 42.5,
+          "p99": 88.58
+        },
+        "metadata_location": "file:///tmp/claude-1000/benchd_small_batch_ktscn39c/ice_wh/b/net/metadata/00050-ef9d8d8f-9d2c-4e9f-9459-97c69354415d.metadata.json",
+        "rows": 5000,
+        "storage": {
+          "bytes": 1671226,
+          "files": 201,
+          "metadata_files": 151
+        }
+      },
+      "read_coherence": {
+        "coherent": true,
+        "ducklake_via_duckdb": {
+          "count": 5000,
+          "sum_bytes": 1252818414
+        },
+        "iceberg_via_duckdb": {
+          "count": 5000,
+          "note": "needed a written version-hint (pyiceberg/DuckDB metadata convention gap)",
+          "sum_bytes": 1252818414
+        }
+      }
+    }
+  }
+}
