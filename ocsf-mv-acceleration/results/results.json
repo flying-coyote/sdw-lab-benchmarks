@@ -1,0 +1,55 @@
+{
+  "base_bytes": 708880015,
+  "benchmark": "ocsf-mv-acceleration (R5)",
+  "evidence_tier": "B (single machine; latencies medians w/ CV; sizes exact)",
+  "hypothesis": "H-MV-SECURITY-01",
+  "n_batches": 20,
+  "n_rows": 20000000,
+  "panels": {
+    "class_rollup": {
+      "answers_agree": true,
+      "base_scan_cv": 39.5,
+      "base_scan_ms": 69.807,
+      "full_recompute_ms": 84.942,
+      "incremental_maintenance_per_batch_ms": 29.61,
+      "incremental_maintenance_total_ms": 592.3,
+      "incremental_vs_recompute_x": 2.9,
+      "mv_bytes": 905,
+      "mv_rows": 12,
+      "mv_serve_cv": 6.7,
+      "mv_serve_ms": 0.909,
+      "read_speedup": 76.8,
+      "storage_overhead_pct": 0.0
+    },
+    "failed_auth_by_user": {
+      "answers_agree": true,
+      "base_scan_cv": 11.2,
+      "base_scan_ms": 31.916,
+      "full_recompute_ms": 31.222,
+      "incremental_maintenance_per_batch_ms": 31.65,
+      "incremental_maintenance_total_ms": 633.0,
+      "incremental_vs_recompute_x": 1.0,
+      "mv_bytes": 11611,
+      "mv_rows": 2000,
+      "mv_serve_cv": 3.6,
+      "mv_serve_ms": 0.705,
+      "read_speedup": 45.3,
+      "storage_overhead_pct": 0.002
+    },
+    "time_series_5m": {
+      "answers_agree": true,
+      "base_scan_cv": 7.2,
+      "base_scan_ms": 65.382,
+      "full_recompute_ms": 62.434,
+      "incremental_maintenance_per_batch_ms": 32.78,
+      "incremental_maintenance_total_ms": 655.6,
+      "incremental_vs_recompute_x": 1.9,
+      "mv_bytes": 3775,
+      "mv_rows": 288,
+      "mv_serve_cv": 3.5,
+      "mv_serve_ms": 1.22,
+      "read_speedup": 53.6,
+      "storage_overhead_pct": 0.001
+    }
+  }
+}
