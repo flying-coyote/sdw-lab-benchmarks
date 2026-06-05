@@ -62,9 +62,9 @@ def tree_counts(work, name):
 
 
 def plan_and_scan(tbl):
-    plan = time_trials(lambda: list(tbl.scan().plan_files()), warmup=1, trials=3)
-    scan = time_trials(lambda: tbl.scan().to_arrow(), warmup=1, trials=2)
-    return plan["median_ms"], scan["median_ms"]
+    plan = time_trials(lambda: list(tbl.scan().plan_files()), warmup=1, trials=5)
+    scan = time_trials(lambda: tbl.scan().to_arrow(), warmup=1, trials=5)
+    return plan, scan
 
 
 def _duckdb_iceberg_ms(metadata_location):
@@ -78,9 +78,9 @@ def _duckdb_iceberg_ms(metadata_location):
     con = configure_duckdb(duckdb.connect()); con.execute("INSTALL iceberg; LOAD iceberg")
     t = time_trials(lambda: con.execute(
         f"SELECT count(*) FROM iceberg_scan('{root}') WHERE dst_port = 443").fetchone(),
-        warmup=1, trials=3)
+        warmup=1, trials=5)
     con.close()
-    return t["median_ms"]
+    return t["median_ms"], t["cv_pct"]
 
 
 def run():
@@ -95,12 +95,13 @@ def run():
             tbl.append(batch(seq))
             if (seq + 1) in CHECKPOINTS:
                 tbl = cat.load_table("b.events")
-                plan_ms, scan_ms = plan_and_scan(tbl)
+                plan, scan = plan_and_scan(tbl)
                 c = tree_counts(work, "frag")
                 fragmented.append({"appends": seq + 1, "rows": (seq + 1) * ROWS_PER_APPEND,
-                                   "plan_ms": plan_ms, "scan_ms": scan_ms, **c})
+                                   "plan_ms": plan["median_ms"], "plan_cv": plan["cv_pct"],
+                                   "scan_ms": scan["median_ms"], "scan_cv": scan["cv_pct"], **c})
                 print(f"  [fragmented] {seq+1} appends ({c['data_files']} data, {c['metadata_files']} meta files): "
-                      f"plan {plan_ms:.1f}ms  scan {scan_ms:.0f}ms")
+                      f"plan {plan['median_ms']:.1f}ms (cv {plan['cv_pct']:.0f}%)  scan {scan['median_ms']:.0f}ms")
 
         # Compacted: the same rows written as one append (one data file).
         total = max(CHECKPOINTS) * ROWS_PER_APPEND
@@ -110,19 +111,21 @@ def run():
         tbl2 = cat2.create_table("b.events", schema=allrows.schema)
         tbl2.append(allrows)
         tbl2 = cat2.load_table("b.events")
-        plan_ms, scan_ms = plan_and_scan(tbl2)
+        plan, scan = plan_and_scan(tbl2)
         cc = tree_counts(work, "compact")
-        compacted = {"appends": 1, "rows": total, "plan_ms": plan_ms, "scan_ms": scan_ms, **cc}
+        compacted = {"appends": 1, "rows": total, "plan_ms": plan["median_ms"], "plan_cv": plan["cv_pct"],
+                     "scan_ms": scan["median_ms"], "scan_cv": scan["cv_pct"], **cc}
         print(f"  [compacted]  1 append ({cc['data_files']} data, {cc['metadata_files']} meta files): "
-              f"plan {plan_ms:.1f}ms  scan {scan_ms:.0f}ms")
+              f"plan {plan['median_ms']:.1f}ms (cv {plan['cv_pct']:.0f}%)  scan {scan['median_ms']:.0f}ms")
 
         # Real-engine cross-check: DuckDB's iceberg reader over the same two tables, so the small-files
         # tax is shown on a production-representative engine, not only pyiceberg's Python planner.
-        real = {"fragmented_ms": _duckdb_iceberg_ms(tbl.metadata_location),
-                "compacted_ms": _duckdb_iceberg_ms(tbl2.metadata_location)}
+        fm, fcv = _duckdb_iceberg_ms(tbl.metadata_location)
+        cm, ccv = _duckdb_iceberg_ms(tbl2.metadata_location)
+        real = {"fragmented_ms": fm, "fragmented_cv": fcv, "compacted_ms": cm, "compacted_cv": ccv}
         real["speedup_compacted_vs_fragmented"] = round(real["fragmented_ms"] / max(real["compacted_ms"], 0.01), 1)
-        print(f"  [DuckDB iceberg_scan] fragmented {real['fragmented_ms']:.0f}ms  "
-              f"compacted {real['compacted_ms']:.0f}ms  ({real['speedup_compacted_vs_fragmented']}×)")
+        print(f"  [DuckDB iceberg_scan] fragmented {fm:.0f}ms (cv {fcv:.0f}%)  "
+              f"compacted {cm:.0f}ms (cv {ccv:.0f}%)  ({real['speedup_compacted_vs_fragmented']}×)")
 
         worst = fragmented[-1]
         return {"benchmark": "ocsf-iceberg-metadata", "evidence_tier": "B (single machine; latencies medians)",
@@ -141,36 +144,36 @@ def run():
 def render_md(res):
     h = res["headline"]
     r = res.get("real_engine_duckdb", {"fragmented_ms": float("nan"), "compacted_ms": float("nan")})
-    frag = "\n".join(f"| {r['appends']} | {r['data_files']} | {r['metadata_files']} | {r['plan_ms']:.1f} | {r['scan_ms']:.0f} |"
+    frag = "\n".join(f"| {r['appends']} | {r['data_files']} | {r['metadata_files']} | {r['plan_ms']:.1f} ({r.get('plan_cv',0):.0f}%) | {r['scan_ms']:.0f} ({r.get('scan_cv',0):.0f}%) |"
                      for r in res["fragmented"])
     c = res["compacted"]
     return f"""# Iceberg metadata & compaction scaling (results)
 
 **Tier B.** How scan-planning cost grows as a table accumulates small appends (snapshots / data
 files / manifests), and what compaction buys back. Planning is `scan().plan_files()` — reading
-manifests to enumerate the files a query must touch; latencies are machine-specific medians.
+manifests to enumerate the files a query must touch; latencies are machine-specific medians with CV.
 
 ## Fragmented table (many small appends)
 
-| appends | data files | metadata files | plan ms | scan ms |
+| appends | data files | metadata files | plan ms (cv) | scan ms (cv) |
 |---|---|---|---|---|
 {frag}
 
 ## Compacted (same rows, one append)
 
-| appends | data files | metadata files | plan ms | scan ms |
+| appends | data files | metadata files | plan ms (cv) | scan ms (cv) |
 |---|---|---|---|---|
-| {c['appends']} | {c['data_files']} | {c['metadata_files']} | {c['plan_ms']:.1f} | {c['scan_ms']:.0f} |
+| {c['appends']} | {c['data_files']} | {c['metadata_files']} | {c['plan_ms']:.1f} ({c.get('plan_cv',0):.0f}%) | {c['scan_ms']:.0f} ({c.get('scan_cv',0):.0f}%) |
 
 ## Real-engine cross-check (DuckDB iceberg_scan)
 
 A filtered scan through DuckDB's iceberg reader over the same two tables — a production query engine, not
 pyiceberg's Python planner:
 
-| table | DuckDB iceberg_scan ms |
+| table | DuckDB iceberg_scan ms (cv) |
 |---|---|
-| fragmented ({h['fragmented_data_files']} files) | {r['fragmented_ms']:.0f} |
-| compacted (1 file) | {r['compacted_ms']:.0f} |
+| fragmented ({h['fragmented_data_files']} files) | {r['fragmented_ms']:.0f} ({r.get('fragmented_cv',0):.0f}%) |
+| compacted (1 file) | {r['compacted_ms']:.0f} ({r.get('compacted_cv',0):.0f}%) |
 
 DuckDB is **{h.get('real_engine_speedup_compacted_vs_fragmented','—')}×** faster on the compacted table —
 so the small-files tax is real on a production engine too, not a pyiceberg artifact. The magnitude differs
