@@ -1,0 +1,33 @@
+{
+  "arms": {
+    "ducklake_inline": {
+      "data_files": 0,
+      "metadata_files": 0,
+      "queryable": true,
+      "rows": 20000
+    },
+    "ducklake_no_inline": {
+      "data_files": 100,
+      "metadata_files": 0,
+      "queryable": true,
+      "rows": 20000
+    },
+    "iceberg": {
+      "data_files": 100,
+      "metadata_files": 301,
+      "queryable": true,
+      "rows": 20000
+    }
+  },
+  "benchmark": "ocsf-write-inlining",
+  "commits": 100,
+  "evidence_tier": "B (single machine)",
+  "headline": {
+    "ducklake_inline_data_files": 0,
+    "ducklake_no_inline_data_files": 100,
+    "iceberg_data_files": 100,
+    "small_files_avoided": 100
+  },
+  "inline_row_limit": 10000,
+  "rows_per_commit": 200
+}
