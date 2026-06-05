@@ -20,12 +20,18 @@ manifests to enumerate the files a query must touch; latencies are machine-speci
 
 ## Headline
 
-A table fed by 200 small appends carries 200 data files, and
-compacting it back to one file makes scan-planning **150.1× faster** and the
-scan **13.2× faster**. That gap is the small-files tax that streaming
-ingest into Iceberg pays if compaction doesn't keep up: planning has to read every manifest before it
-can touch data, so the cost scales with file count, not data volume. It's the practical reason a
-naive streaming-append pattern degrades, the maintenance job (compaction) every real deployment runs,
-and the planning-speed gap H-ICEBERG-V4-METADATA-EFFICIENCY-01 says V4 metadata targets. Tier B,
-single machine; the magnitudes are this host's, the monotone growth and the compaction recovery are
-the transferable findings.
+The directional, transferable finding is that **scan-planning and scan cost grow monotonically with
+file/manifest count, and compaction recovers them** — the small-files tax: planning has to read every
+manifest before touching data, so cost scales with file count, not data volume. That is the
+mechanism H-ICEBERG-V4-METADATA-EFFICIENCY-01 says V4 metadata targets, and the maintenance job
+(compaction) every real deployment runs.
+
+The specific ratios (200 micro-batch appends / 200 data files →
+plan 150.1×, scan 13.2×) are
+**illustrative of the mechanism under deliberate fragmentation, not production figures**. They are measured
+by pyiceberg's own Python `plan_files()` on this machine with artificially small 5k-row files — a real
+query engine (Trino, Spark) plans differently and faster, and the file size is a worst-case streaming
+micro-batch — so the magnitude is planner-, file-size-, and host-specific. This is a *within-Iceberg*
+fragmentation cost; it is **not** a query-runtime number and **not** the DuckLake-vs-Iceberg format
+comparison (that is BENCH-E, where the two are roughly interchangeable on read) or any vendor
+format-war speedup claim. Do not conflate them. Tier B, single machine.

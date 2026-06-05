@@ -7,12 +7,19 @@ what compacting back to one file recovers.
 
 ## Result (Tier B)
 
-Planning grows super-linearly with file count — 87ms at 50 appends, 151ms at 100, **488ms at 200**
-(200 data + 601 metadata files), because `plan_files()` reads every manifest. Compacting the same
-rows to a single file: **planning ~148× faster (3.3ms), scan ~13× faster**. That gap is the tax a
-naive streaming-append-into-Iceberg pattern pays if compaction doesn't keep up, and the mechanism
-H-ICEBERG-V4-METADATA-EFFICIENCY-01 says V4 metadata targets. Full numbers in
-[results/RESULTS.md](results/RESULTS.md).
+The transferable finding is the **mechanism**: scan-planning cost grows monotonically with
+file/manifest count (because `plan_files()` reads every manifest before touching data, so cost
+scales with file count, not data volume), and compaction recovers it. The specific ratios are
+**illustrative of the mechanism, not production figures** — measured by pyiceberg's own Python
+`plan_files()` on artificially small 5k-row micro-batch files on one machine, so a real query engine
+(Trino, Spark) plans differently and faster, and the magnitude is planner-, file-size-, and
+host-specific.
+
+This is a **within-Iceberg fragmentation cost**: it is *not* a query-runtime number and *not* the
+DuckLake-vs-Iceberg format comparison (that is [BENCH-E](../ocsf-read-scan/), where the two are
+roughly interchangeable on read), nor any vendor format-war speedup claim — do not conflate them.
+Full numbers in [results/RESULTS.md](results/RESULTS.md). It informs
+H-ICEBERG-V4-METADATA-EFFICIENCY-01 (the planning-speed gap V4 metadata targets).
 
 ## Run it
 

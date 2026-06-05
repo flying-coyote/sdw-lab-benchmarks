@@ -137,15 +137,21 @@ manifests to enumerate the files a query must touch; latencies are machine-speci
 
 ## Headline
 
-A table fed by {h['fragmented_appends']} small appends carries {h['fragmented_data_files']} data files, and
-compacting it back to one file makes scan-planning **{h['plan_speedup_compacted_vs_fragmented']}× faster** and the
-scan **{h['scan_speedup_compacted_vs_fragmented']}× faster**. That gap is the small-files tax that streaming
-ingest into Iceberg pays if compaction doesn't keep up: planning has to read every manifest before it
-can touch data, so the cost scales with file count, not data volume. It's the practical reason a
-naive streaming-append pattern degrades, the maintenance job (compaction) every real deployment runs,
-and the planning-speed gap H-ICEBERG-V4-METADATA-EFFICIENCY-01 says V4 metadata targets. Tier B,
-single machine; the magnitudes are this host's, the monotone growth and the compaction recovery are
-the transferable findings.
+The directional, transferable finding is that **scan-planning and scan cost grow monotonically with
+file/manifest count, and compaction recovers them** — the small-files tax: planning has to read every
+manifest before touching data, so cost scales with file count, not data volume. That is the
+mechanism H-ICEBERG-V4-METADATA-EFFICIENCY-01 says V4 metadata targets, and the maintenance job
+(compaction) every real deployment runs.
+
+The specific ratios ({h['fragmented_appends']} micro-batch appends / {h['fragmented_data_files']} data files →
+plan {h['plan_speedup_compacted_vs_fragmented']}×, scan {h['scan_speedup_compacted_vs_fragmented']}×) are
+**illustrative of the mechanism under deliberate fragmentation, not production figures**. They are measured
+by pyiceberg's own Python `plan_files()` on this machine with artificially small 5k-row files — a real
+query engine (Trino, Spark) plans differently and faster, and the file size is a worst-case streaming
+micro-batch — so the magnitude is planner-, file-size-, and host-specific. This is a *within-Iceberg*
+fragmentation cost; it is **not** a query-runtime number and **not** the DuckLake-vs-Iceberg format
+comparison (that is BENCH-E, where the two are roughly interchangeable on read) or any vendor
+format-war speedup claim. Do not conflate them. Tier B, single machine.
 """
 
 

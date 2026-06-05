@@ -21,7 +21,7 @@ engine-against-engine, and labelled at an honest evidence tier.
 | [`ocsf-write-contract/`](ocsf-write-contract/) | hot-tier write contract under streaming OCSF ingest: file-write (Iceberg) vs SQL-transaction (DuckLake) — commit latency, write amplification, read-contract coherence (ISK never-write arm pending) | B | first pass (2 of 3 arms) |
 | [`ocsf-fsi-compliance/`](ocsf-fsi-compliance/) | human-hours to produce a §1003(b)/Reg-SCI evidence report on a lakehouse vs a schema-on-read SIEM — corpus + frozen spec + defensibility demonstrated; human-hours pending an operator run | B | scaffold |
 | [`ocsf-arrow-transport/`](ocsf-arrow-transport/) | the connectivity layer for moving OCSF result sets — ADBC (Arrow columnar) vs JDBC (row-oriented) + a Parquet encoding sweep + an edge-case type battery | B | first pass |
-| [`ocsf-iceberg-metadata/`](ocsf-iceberg-metadata/) | the small-files tax — scan-planning time as a table accumulates small appends, and what compaction recovers (~148× planning) | B | first pass |
+| [`ocsf-iceberg-metadata/`](ocsf-iceberg-metadata/) | the small-files tax — scan-planning cost grows with file/manifest count and compaction recovers it (within-Iceberg; pyiceberg-planner microbench, illustrative not production) | B | first pass |
 | [`ocsf-read-scan/`](ocsf-read-scan/) | BENCH-E: DuckLake vs Iceberg large-scan reads (10M rows, same engine) — interchangeable on read, latencies within ~2× by query shape | B | first pass |
 | [`ocsf-sigma-detection/`](ocsf-sigma-detection/) | do compiled Sigma rules *fire correctly* over the OCSF store — detection of the planted chain (recall) + precision, the execution complement to sigma-portability | B | first pass |
 
