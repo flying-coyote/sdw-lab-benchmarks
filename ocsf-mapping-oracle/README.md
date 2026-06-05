@@ -25,13 +25,18 @@ checked against the closure of the checked-in
 [OCSF 1.8.0 subset](../ocsf-mapping-fidelity/schemas/ocsf/ocsf_1.8.0_subset.json), so an
 invented attribute is caught as a silent error.
 
-## State — first pass (local leg)
+## State — local leg, 6 sources, with the wrong-grounding control
 
-This runs the **local weak-model leg** via Ollama. It resolves the within-weak-model
-lifts (does schema/formal/skill change the silent-error rate for a sub-frontier model).
-It does **not** resolve the weak-vs-frontier capability gap
-(H-PRACTITIONER-OWNED-AGENTIC-01) — that needs the independent frontier leg, which needs
-an API key, and is the next step. Results in [results/RESULTS.md](results/RESULTS.md).
+Runs the five conditions over all 141 real-path gold mappings across six vendor sources via
+Ollama. Key finding on phi3 (3.8B): schema-in-context cuts the silent-error rate 0.99 → 0.69,
+the ontology-thinking **skill** discipline cuts it most (→ 0.60) and lifts path-correctness
+highest, while **conceptual grounding is inert — `formal` (0.72) equals `wrong_grounding` (0.72)
+and is no better than schema-alone**, so the control shows the grounding-note *content* did no
+work; the reasoning discipline is the lever, not the note. That corroborates the §9 grounding-value
+verdict (the formal layer pays ~null over schema-conformance for field-mapping). The weak-vs-frontier
+capability gap (H-PRACTITIONER-OWNED-AGENTIC-01) is approached by a local model ladder (phi3 → phi4)
+rather than resolved; an independent frontier leg (needs an API key) closes it. Results in
+[results/RESULTS.md](results/RESULTS.md).
 
 ## Run it
 

@@ -1,41 +1,219 @@
 {
-  "benchmark": "ocsf-mapping-oracle (BENCH-B, first-pass local leg)",
-  "evidence_tier": "B (local weak-model leg; frontier leg + larger gold set pending)",
+  "benchmark": "ocsf-mapping-oracle (BENCH-B)",
+  "conditions": [
+    "none",
+    "schema",
+    "formal",
+    "skill",
+    "wrong_grounding"
+  ],
+  "evidence_tier": "B (local model ladder; frontier leg still pending an API key)",
   "models": {
     "phi3:latest": {
       "cells": {
         "formal": {
-          "n": 28,
-          "path_correct": 0.0,
-          "silent_error_rate": 0.8214
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.0714,
+              "silent_rate": 0.6429
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.0,
+              "silent_rate": 0.3226
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.0,
+              "silent_rate": 0.6296
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.0556,
+              "silent_rate": 0.8333
+            }
+          },
+          "n": 141,
+          "path_correct": 0.0142,
+          "silent_error_rate": 0.7234
         },
         "none": {
-          "n": 28,
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.0,
+              "silent_rate": 0.9677
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            }
+          },
+          "n": 141,
           "path_correct": 0.0,
-          "silent_error_rate": 1.0
+          "silent_error_rate": 0.9929
         },
         "schema": {
-          "n": 28,
-          "path_correct": 0.0,
-          "silent_error_rate": 0.8929
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.0,
+              "silent_rate": 0.7143
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.0,
+              "silent_rate": 0.8
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.0,
+              "silent_rate": 0.0968
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.0,
+              "silent_rate": 0.6667
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.0556,
+              "silent_rate": 0.8889
+            }
+          },
+          "n": 141,
+          "path_correct": 0.0071,
+          "silent_error_rate": 0.6879
         },
         "skill": {
-          "n": 28,
-          "path_correct": 0.0,
-          "silent_error_rate": 0.5
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.0714,
+              "silent_rate": 0.7857
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.0645,
+              "silent_rate": 0.7097
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.0,
+              "silent_rate": 0.5556
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0435,
+              "silent_rate": 0.4565
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.0556,
+              "silent_rate": 0.5556
+            }
+          },
+          "n": 141,
+          "path_correct": 0.0426,
+          "silent_error_rate": 0.5957
+        },
+        "wrong_grounding": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.0,
+              "silent_rate": 0.6429
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.0,
+              "silent_rate": 1.0
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.0323,
+              "silent_rate": 0.9032
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.0,
+              "silent_rate": 0.7037
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0,
+              "silent_rate": 0.6304
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.0556,
+              "silent_rate": 0.6111
+            }
+          },
+          "n": 141,
+          "path_correct": 0.0142,
+          "silent_error_rate": 0.7163
         }
       },
       "lifts": {
-        "formal_minus_schema": 0.0,
-        "schema_minus_none": 0.0,
-        "silent_schema_minus_none": -0.1071,
-        "skill_minus_schema": 0.0
+        "pathcorrect_skill_minus_schema": 0.0355,
+        "silent_formal_minus_none": -0.2695,
+        "silent_formal_minus_wrong": 0.0071,
+        "silent_schema_minus_none": -0.305,
+        "silent_skill_minus_none": -0.3972
       }
     }
   },
-  "n_fields": 28,
+  "n_fields": 141,
+  "per_source_cap": "all",
   "sources": [
     "Okta System Log",
-    "Palo Alto PAN-OS TRAFFIC"
+    "CrowdStrike Detection Summary",
+    "Palo Alto PAN-OS TRAFFIC",
+    "Cisco ASA connection syslog",
+    "Cisco Umbrella DNS",
+    "Zscaler ZIA Web"
   ]
 }
