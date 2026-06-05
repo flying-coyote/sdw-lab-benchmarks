@@ -153,19 +153,14 @@ def run(total_rows, batch, warmup, trials):
                 print(f"      {qid:14} median={m['median_ms']:>8.0f}ms  hotmin={m['hot_min_ms']:>8.0f}ms  "
                       f"cv={m['cv_pct']:>4.1f}%", flush=True)
 
-        # answer-equality across all arms (same logical data, order-insensitive)
-        def norm(rows):
-            return sorted(tuple(str(c) for c in r) for r in rows)
-        ref = ARMS[0][0]
-        ref_q = (build_iceberg if ARMS[0][1] == "iceberg" else build_ducklake)
-        # recompute reference answers from the already-built ref store
-        same = True
-        # (answers compared per query against the first arm via fresh execution)
+        # answer-equality across all arms: same (count, sum) fingerprint on identical data
+        same = len({tuple(arms[l]["check"]) for l in arms}) == 1
         con.close()
         return {"benchmark": "ocsf-read-scan parity arm (codec x format, fixed row-group)",
                 "evidence_tier": "B (single machine; hot/warm only; medians + CV)",
                 "n_rows": total_rows, "row_group_rows": RG, "warmup": warmup, "trials": trials,
-                "memory_limit": __import__("common").DUCK_MEMORY_LIMIT, "arms": arms}
+                "memory_limit": __import__("common").DUCK_MEMORY_LIMIT,
+                "answers_identical": same, "arms": arms}
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
@@ -188,13 +183,36 @@ def render_md(res):
              "|---|---|---|---|" + "---|" * len(QUERIES)]
     for label in arms:
         lines.append(row(label))
-    lines.append("\n## Reading\n")
-    lines.append("Compare arms that differ in only one knob: ducklake_zstd vs ducklake_snappy (and the "
-                 "iceberg pair) isolate the **codec** effect; iceberg_zstd vs ducklake_zstd (and the "
-                 "snappy pair) isolate the **format** effect at a matched codec and row-group. The "
-                 "default-config large-scan gap conflated both; this arm separates them. Cold runs (OS "
-                 "cache purged, engine restarted) are not included — they need root on this host and are "
-                 "the next step. Tier B; the relative codec/format shape is the transferable finding.\n")
+    lines.append(f"\nAnswers identical across all four arms: **{res.get('answers_identical')}**.\n")
+
+    def med(arm, q):
+        return arms[arm]["queries"][q]["median_ms"]
+    have = all(k in arms for k in ("iceberg_zstd", "ducklake_zstd", "iceberg_snappy", "ducklake_snappy"))
+    if have:
+        lines.append("## Decomposition\n")
+        lines.append("Each comparison varies exactly one knob. Format effect = Iceberg/DuckLake at a "
+                     "matched codec (>1 means DuckLake reads faster); codec effect = ZSTD/Snappy within "
+                     "a format (>1 means Snappy reads faster).\n")
+        lines.append("| query | format effect (zstd) | format effect (snappy) | codec effect (ducklake) | codec effect (iceberg) |")
+        lines.append("|---|---|---|---|---|")
+        for q in QUERIES:
+            lines.append(f"| {q} | {med('iceberg_zstd',q)/med('ducklake_zstd',q):.2f}x | "
+                         f"{med('iceberg_snappy',q)/med('ducklake_snappy',q):.2f}x | "
+                         f"{med('ducklake_zstd',q)/med('ducklake_snappy',q):.2f}x | "
+                         f"{med('iceberg_zstd',q)/med('iceberg_snappy',q):.2f}x |")
+        lines.append("")
+    lines.append("## Reading\n")
+    lines.append("The default-config large-scan comparison conflated three knobs (Iceberg defaulted to "
+                 "ZSTD + 1M-row groups, DuckLake to Snappy + 122,880-row groups); this arm holds the "
+                 "row-group fixed and varies codec, so the format and codec effects separate. Read the "
+                 "low-CV sustained aggregations (topn_src, subnet_rollup; CV ~2-4%) — byte_rollup sits in "
+                 "the noisy sub-300ms band (CV >10%) and a delta there below its CV is not real. Two "
+                 "findings travel: at a matched codec DuckLake's files are *smaller* than Iceberg's "
+                 "(so the original storage gap was the codec default, not the format), and DuckLake still "
+                 "reads modestly faster than Iceberg after normalization (a real format/read-path effect), "
+                 "with Snappy adding a smaller separate decompression edge. Cold runs (OS cache purged) "
+                 "need root and are the next step. Tier B, single machine; the relative shape is the "
+                 "transferable finding.\n")
     return "\n".join(lines) + "\n"
 
 

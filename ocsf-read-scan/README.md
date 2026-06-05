@@ -40,3 +40,28 @@ compression and row-group sizing). Cross-run table in [results/VALIDATION.md](re
 python ocsf-read-scan/large_scan.py --rows 1000000000   # long-running; background it
 python ocsf-read-scan/validate_runs.py                  # renders the cross-run comparison
 ```
+
+## Parity arm — codec vs format, controlled (the methodology redo)
+
+The arms above compare each engine at its **default** write config, which `config_probe.py` showed is
+confounded: pyiceberg defaults to ZSTD + 1M-row groups, DuckDB/DuckLake to Snappy + 122,880-row groups,
+so codec, row-group, and format all differed at once. `parity_scan.py` holds the row-group fixed at
+122,880 and runs a 2×2 of {Iceberg, DuckLake} × {Snappy, ZSTD}, footer-verified, with CV per
+[`BENCHMARKING-METHODOLOGY.md`](../BENCHMARKING-METHODOLOGY.md). Two findings (100M, low-CV sustained
+queries topn_src / subnet_rollup at CV ~2–4%):
+
+- **The storage gap was the codec, not the format.** At a matched codec, DuckLake's files are *smaller*
+  than Iceberg's (zstd 1.14 vs 1.93 GB; snappy 2.16 vs 2.95 GB), so the original "Iceberg is smaller"
+  was entirely Iceberg defaulting to ZSTD while DuckLake defaulted to Snappy.
+- **The read advantage is real but smaller than it looked.** At matched codec + row-group, DuckLake
+  still reads ~1.1–1.18× faster than Iceberg on the heavy aggregations — a genuine format/read-path
+  effect — with Snappy adding a separate ~5–13% decompression edge. The default-config gap was those
+  two stacking. Full table + decomposition in [results/PARITY.md](results/PARITY.md).
+
+So the headline for the **format** question is the parity arm; the default-config large-scan numbers are
+retained as out-of-the-box behavior, explicitly labelled confounded.
+
+```bash
+python ocsf-read-scan/config_probe.py                  # what codec/row-group each default path emits
+python ocsf-read-scan/parity_scan.py --rows 100000000  # the controlled 2x2
+```
