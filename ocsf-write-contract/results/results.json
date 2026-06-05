@@ -15,7 +15,7 @@
     "files_per_commit_dl": 1.0,
     "files_per_commit_ice": 4.02,
     "read_contract_holds": true,
-    "small_commit_latency_ratio_ice_over_dl": 2.04
+    "small_commit_latency_ratio_ice_over_dl": 2.32
   },
   "rungs": {
     "large_batch": {
@@ -26,11 +26,12 @@
       "ducklake": {
         "files_per_commit": 1.0,
         "latency_ms": {
-          "max": 17.31,
-          "min": 15.32,
-          "p50": 16.67,
-          "p95": 17.31,
-          "p99": 17.31
+          "cv_pct": 5.5,
+          "max": 14.67,
+          "min": 12.28,
+          "p50": 13.43,
+          "p95": 14.67,
+          "p99": 14.67
         },
         "rows": 50000,
         "storage": {
@@ -42,16 +43,17 @@
       "iceberg": {
         "files_per_commit": 4.1,
         "latency_ms": {
-          "max": 25.18,
-          "min": 20.63,
-          "p50": 23.31,
-          "p95": 25.18,
-          "p99": 25.18
+          "cv_pct": 7.0,
+          "max": 19.16,
+          "min": 15.44,
+          "p50": 18.43,
+          "p95": 19.16,
+          "p99": 19.16
         },
-        "metadata_location": "file:///tmp/claude-1000/benchd_large_batch_y22341m2/ice_wh/b/net/metadata/00010-948eca49-0e42-4737-bfd1-f914ce3102c1.metadata.json",
+        "metadata_location": "file:///tmp/benchd_large_batch_ue59hh6v/ice_wh/b/net/metadata/00010-4a18fdb3-3202-4aed-b4d0-f1f145adde3c.metadata.json",
         "rows": 50000,
         "storage": {
-          "bytes": 1101464,
+          "bytes": 1099782,
           "files": 41,
           "metadata_files": 31
         }
@@ -77,11 +79,12 @@
       "ducklake": {
         "files_per_commit": 1.0,
         "latency_ms": {
-          "max": 29.92,
-          "min": 13.53,
-          "p50": 14.97,
-          "p95": 19.96,
-          "p99": 29.92
+          "cv_pct": 26.1,
+          "max": 33.44,
+          "min": 10.31,
+          "p50": 11.66,
+          "p95": 12.79,
+          "p99": 33.44
         },
         "rows": 5000,
         "storage": {
@@ -93,16 +96,17 @@
       "iceberg": {
         "files_per_commit": 4.02,
         "latency_ms": {
-          "max": 88.58,
-          "min": 20.38,
-          "p50": 30.47,
-          "p95": 42.5,
-          "p99": 88.58
+          "cv_pct": 37.4,
+          "max": 81.02,
+          "min": 15.11,
+          "p50": 27.04,
+          "p95": 36.01,
+          "p99": 81.02
         },
-        "metadata_location": "file:///tmp/claude-1000/benchd_small_batch_ktscn39c/ice_wh/b/net/metadata/00050-ef9d8d8f-9d2c-4e9f-9459-97c69354415d.metadata.json",
+        "metadata_location": "file:///tmp/benchd_small_batch_3hjaqutn/ice_wh/b/net/metadata/00050-03bc99e5-d1ff-4709-95f6-df2733978139.metadata.json",
         "rows": 5000,
         "storage": {
-          "bytes": 1671226,
+          "bytes": 1638924,
           "files": 201,
           "metadata_files": 151
         }

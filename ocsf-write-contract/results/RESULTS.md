@@ -9,7 +9,7 @@ independent deployment to measure and is recorded as pending, not estimated.
 - Iceberg file-write costs **4.02 files per commit** vs DuckLake's
   **1.0** — the metadata churn the file-write contract pays on every
   small batch.
-- Small-commit latency ratio (Iceberg p50 / DuckLake p50): **2.04×**.
+- Small-commit latency ratio (Iceberg p50 / DuckLake p50): **2.32×**.
 - Read-contract coherence (one engine reads both tiers, identical answers): **True**.
 
 ## Rungs
@@ -18,15 +18,15 @@ independent deployment to measure and is recorded as pending, not estimated.
 
 | contract | commit p50 | p95 | p99 | files/commit | storage bytes |
 |---|---|---|---|---|---|
-| Iceberg (file-write) | 30.47 | 42.5 | 88.58 | 4.02 | 1,671,226 |
-| DuckLake (SQL-txn) | 14.97 | 19.96 | 29.92 | 1.0 | 200,036 |
+| Iceberg (file-write) | 27.04 | 36.01 | 81.02 | 4.02 | 1,638,924 |
+| DuckLake (SQL-txn) | 11.66 | 12.79 | 33.44 | 1.0 | 200,036 |
 
 ### large_batch (10 commits × 5000 rows)
 
 | contract | commit p50 | p95 | p99 | files/commit | storage bytes |
 |---|---|---|---|---|---|
-| Iceberg (file-write) | 23.31 | 25.18 | 25.18 | 4.1 | 1,101,464 |
-| DuckLake (SQL-txn) | 16.67 | 17.31 | 17.31 | 1.0 | 1,166,824 |
+| Iceberg (file-write) | 18.43 | 19.16 | 19.16 | 4.1 | 1,099,782 |
+| DuckLake (SQL-txn) | 13.43 | 14.67 | 14.67 | 1.0 | 1,166,824 |
 
 
 ## Reading

@@ -64,8 +64,10 @@ def _pctiles(xs):
     xs = sorted(xs)
     def p(q):
         return round(xs[min(len(xs) - 1, int(q * len(xs)))], 2)
+    mean = sum(xs) / len(xs) if xs else 0.0
+    cv = (sum((x - mean) ** 2 for x in xs) / len(xs)) ** 0.5 / mean * 100 if mean > 0 and len(xs) > 1 else 0.0
     return {"p50": p(0.50), "p95": p(0.95), "p99": p(0.99),
-            "min": round(xs[0], 2), "max": round(xs[-1], 2)}
+            "min": round(xs[0], 2), "max": round(xs[-1], 2), "cv_pct": round(cv, 1)}
 
 
 def _tree_stats(root):
