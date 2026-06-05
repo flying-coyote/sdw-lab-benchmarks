@@ -2,16 +2,18 @@
 
 **Tier B · single machine.** 1,000,000,000 rows ingested in 20 batches of
 50,000,000 (peak memory = one batch), materialized in both formats and read by the same
-engine (DuckDB, memory_limit 28GB, spilling to native ext4). The only variable is the
-format's read path. Latencies are machine-specific medians (warmup 1, 2 trials).
+engine (DuckDB, memory_limit 28GB, spilling to native ext4). Latencies are medians
+with CV (warmup 1, 3 trials). **This is the default-config comparison — the two writers differ in
+codec/encoding, so the gap mixes the writer's compression with the format.** See SAME-FILES.md for the
+byte-identical comparison that isolates the format (the read difference collapses to ~parity there).
 
-| query | Iceberg ms | DuckLake ms | Iceberg/DuckLake |
+| query | Iceberg ms (cv) | DuckLake ms (cv) | Iceberg/DuckLake |
 |---|---|---|---|
-| full_count | 5 | 5 | 1.04× |
-| filtered | 458 | 394 | 1.16× |
-| topn_src | 84834 | 74144 | 1.14× |
-| byte_rollup | 2805 | 1642 | 1.71× |
-| subnet_rollup | 20934 | 18923 | 1.11× |
+| full_count | 5 (32%) | 4 (10%) | 1.15× |
+| filtered | 445 (4%) | 407 (2%) | 1.09× |
+| topn_src | 90514 (0%) | 79304 (5%) | 1.14× |
+| byte_rollup | 2745 (3%) | 1771 (6%) | 1.55× |
+| subnet_rollup | 21361 (1%) | 19435 (1%) | 1.1× |
 
 - Storage: Iceberg 13.29 GB (100 data files) ·
   DuckLake 21.62 GB (40 data files)
