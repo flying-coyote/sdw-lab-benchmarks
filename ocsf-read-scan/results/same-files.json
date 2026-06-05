@@ -1,0 +1,57 @@
+{
+  "answers_identical": true,
+  "benchmark": "ocsf-read-scan same-files arm (byte-identical data, two catalogs)",
+  "bytes_identical_across_catalogs": true,
+  "data_bytes": 1141408234,
+  "evidence_tier": "B (single machine; hot/warm only; medians + CV)",
+  "memory_limit": "28GB",
+  "n_rows": 100000000,
+  "queries": {
+    "ducklake": {
+      "byte_rollup": {
+        "cv_pct": 6.4,
+        "hot_min_ms": 219.3,
+        "median_ms": 238.1
+      },
+      "filtered": {
+        "cv_pct": 1.1,
+        "hot_min_ms": 46.5,
+        "median_ms": 47.3
+      },
+      "subnet_rollup": {
+        "cv_pct": 1.1,
+        "hot_min_ms": 1928.0,
+        "median_ms": 1979.8
+      },
+      "topn_src": {
+        "cv_pct": 3.9,
+        "hot_min_ms": 2732.2,
+        "median_ms": 2879.5
+      }
+    },
+    "iceberg": {
+      "byte_rollup": {
+        "cv_pct": 5.8,
+        "hot_min_ms": 247.2,
+        "median_ms": 273.5
+      },
+      "filtered": {
+        "cv_pct": 1.6,
+        "hot_min_ms": 43.9,
+        "median_ms": 45.3
+      },
+      "subnet_rollup": {
+        "cv_pct": 1.9,
+        "hot_min_ms": 1935.7,
+        "median_ms": 1970.9
+      },
+      "topn_src": {
+        "cv_pct": 4.7,
+        "hot_min_ms": 2919.6,
+        "median_ms": 3029.1
+      }
+    }
+  },
+  "row_group_rows": 122880,
+  "trials": 5
+}

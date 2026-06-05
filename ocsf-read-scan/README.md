@@ -65,3 +65,35 @@ retained as out-of-the-box behavior, explicitly labelled confounded.
 python ocsf-read-scan/config_probe.py                  # what codec/row-group each default path emits
 python ocsf-read-scan/parity_scan.py --rows 100000000  # the controlled 2x2
 ```
+
+## Same-files arm — byte-identical data, two catalogs (definitive)
+
+`compression_probe.py` showed the two writers can't be config-matched: at the same codec, level, and
+dictionary setting, DuckDB writes 114 MB where PyArrow/pyiceberg writes 193 MB on identical 10M-row data,
+because PyArrow dictionary-encodes high-cardinality columns (id/time/bytes_out) while DuckDB uses PLAIN +
+ZSTD — and pyiceberg exposes no per-column encoding control. The only way to remove compression as a
+variable is to remove the writer: `same_files_scan.py` writes the Parquet once (DuckDB ZSTD-3), registers
+the **same bytes** into both catalogs (Iceberg `add_files`, DuckLake `ducklake_add_data_files`), and reads
+both with DuckDB. Verified byte-identical (1.14 GB each) and answer-identical.
+
+Result (100M): with compression fully controlled, the format effect **collapses to parity** — subnet_rollup
+1.00× (CV ~1–2%, the most stable query), topn_src 1.05× (within CV), filtered 0.96× (Iceberg slightly
+ahead), byte_rollup 1.15× (noisiest, CV ~6%). Full table in [results/SAME-FILES.md](results/SAME-FILES.md).
+
+### The decomposition (the answer to "DuckLake reads faster")
+
+| rung | what still differs | DuckLake vs Iceberg, heavy aggregations |
+|---|---|---|
+| default-config (large_scan, 1B) | codec + row-group + writer + format | DuckLake ~1.1–1.7× faster *(confounded)* |
+| parity (matched codec + row-group) | writer encoding + format | DuckLake ~1.1–1.18× faster |
+| same-files (byte-identical data) | catalog / read-path only | **~parity (1.00–1.05×)** |
+
+The original "DuckLake reads faster" was almost entirely the **Parquet writer**, not the table format:
+DuckDB's writer produces smaller, cheaper-to-scan files than PyArrow's, and DuckLake got that for free by
+writing with DuckDB. When both formats read the exact same bytes, Iceberg and DuckLake are
+read-performance-neutral — the read-speed lever is the encoder, not the format.
+
+```bash
+python ocsf-read-scan/compression_probe.py             # why same-codec sizes still differ
+python ocsf-read-scan/same_files_scan.py --rows 100000000  # the definitive byte-identical comparison
+```
