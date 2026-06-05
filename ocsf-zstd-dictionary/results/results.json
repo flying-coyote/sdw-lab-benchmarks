@@ -1,0 +1,237 @@
+{
+  "benchmark": "ocsf-zstd-dictionary (R4)",
+  "columnar_reference": {
+    "parquet": {
+      "parquet snappy + dict": {
+        "bytes": 4155998,
+        "ratio_vs_json": 5.32
+      },
+      "parquet zstd-19 + dict": {
+        "bytes": 2766680,
+        "ratio_vs_json": 7.99
+      },
+      "parquet zstd-3 + dict": {
+        "bytes": 2945139,
+        "ratio_vs_json": 7.5
+      },
+      "parquet zstd-3 no-dict": {
+        "bytes": 2337940,
+        "ratio_vs_json": 9.45
+      }
+    },
+    "raw_arrow_bytes": 9679031
+  },
+  "dict_size_bytes": 112640,
+  "evidence_tier": "B (sizes exact + reproducible; latencies machine-specific medians w/ CV)",
+  "hypothesis": "H-MV-ZSTD-01 (compression regime, not codec name)",
+  "n_test_events": 100000,
+  "n_train_events_heldout": 50000,
+  "raw_json_bytes": 22095837,
+  "raw_json_bytes_per_event": 221.0,
+  "regimes": {
+    "block_1": {
+      "codecs": {
+        "zlib-6": {
+          "comp_bytes": 15810806,
+          "comp_cv": 0.7,
+          "comp_ms": 771.596,
+          "decomp_cv": 0.3,
+          "decomp_ms": 234.825,
+          "ratio": 1.4,
+          "roundtrip_ok": true
+        },
+        "zstd-19": {
+          "comp_bytes": 16253453,
+          "comp_cv": 0.6,
+          "comp_ms": 1879.787,
+          "decomp_cv": 2.0,
+          "decomp_ms": 187.781,
+          "ratio": 1.36,
+          "roundtrip_ok": true
+        },
+        "zstd-19+dict": {
+          "comp_bytes": 5941477,
+          "comp_cv": 5.2,
+          "comp_ms": 5681.534,
+          "decomp_cv": 1.5,
+          "decomp_ms": 70.937,
+          "ratio": 3.72,
+          "roundtrip_ok": true
+        },
+        "zstd-3": {
+          "comp_bytes": 16622382,
+          "comp_cv": 0.8,
+          "comp_ms": 384.815,
+          "decomp_cv": 0.7,
+          "decomp_ms": 187.444,
+          "ratio": 1.33,
+          "roundtrip_ok": true
+        },
+        "zstd-3+dict": {
+          "comp_bytes": 6194354,
+          "comp_cv": 0.6,
+          "comp_ms": 157.818,
+          "decomp_cv": 1.0,
+          "decomp_ms": 71.954,
+          "ratio": 3.57,
+          "roundtrip_ok": true
+        }
+      },
+      "events_per_block": 1,
+      "n_blocks": 100000
+    },
+    "block_10": {
+      "codecs": {
+        "zlib-6": {
+          "comp_bytes": 5192467,
+          "comp_cv": 0.8,
+          "comp_ms": 254.403,
+          "decomp_cv": 0.8,
+          "decomp_ms": 61.464,
+          "ratio": 4.26,
+          "roundtrip_ok": true
+        },
+        "zstd-19": {
+          "comp_bytes": 4903284,
+          "comp_cv": 0.7,
+          "comp_ms": 4425.877,
+          "decomp_cv": 0.8,
+          "decomp_ms": 55.344,
+          "ratio": 4.51,
+          "roundtrip_ok": true
+        },
+        "zstd-19+dict": {
+          "comp_bytes": 3448583,
+          "comp_cv": 2.5,
+          "comp_ms": 5269.379,
+          "decomp_cv": 1.7,
+          "decomp_ms": 42.536,
+          "ratio": 6.41,
+          "roundtrip_ok": true
+        },
+        "zstd-3": {
+          "comp_bytes": 5212295,
+          "comp_cv": 0.8,
+          "comp_ms": 100.827,
+          "decomp_cv": 0.6,
+          "decomp_ms": 56.948,
+          "ratio": 4.24,
+          "roundtrip_ok": true
+        },
+        "zstd-3+dict": {
+          "comp_bytes": 4201168,
+          "comp_cv": 4.6,
+          "comp_ms": 85.875,
+          "decomp_cv": 1.6,
+          "decomp_ms": 44.408,
+          "ratio": 5.26,
+          "roundtrip_ok": true
+        }
+      },
+      "events_per_block": 10,
+      "n_blocks": 10000
+    },
+    "block_100": {
+      "codecs": {
+        "zlib-6": {
+          "comp_bytes": 3746765,
+          "comp_cv": 0.9,
+          "comp_ms": 254.003,
+          "decomp_cv": 1.2,
+          "decomp_ms": 38.492,
+          "ratio": 5.9,
+          "roundtrip_ok": true
+        },
+        "zstd-19": {
+          "comp_bytes": 3012459,
+          "comp_cv": 1.0,
+          "comp_ms": 6352.364,
+          "decomp_cv": 2.8,
+          "decomp_ms": 31.063,
+          "ratio": 7.33,
+          "roundtrip_ok": true
+        },
+        "zstd-19+dict": {
+          "comp_bytes": 2873820,
+          "comp_cv": 0.8,
+          "comp_ms": 4346.715,
+          "decomp_cv": 1.8,
+          "decomp_ms": 31.862,
+          "ratio": 7.69,
+          "roundtrip_ok": true
+        },
+        "zstd-3": {
+          "comp_bytes": 3509690,
+          "comp_cv": 7.5,
+          "comp_ms": 45.712,
+          "decomp_cv": 9.9,
+          "decomp_ms": 16.879,
+          "ratio": 6.3,
+          "roundtrip_ok": true
+        },
+        "zstd-3+dict": {
+          "comp_bytes": 3752349,
+          "comp_cv": 0.9,
+          "comp_ms": 75.185,
+          "decomp_cv": 15.5,
+          "decomp_ms": 17.843,
+          "ratio": 5.89,
+          "roundtrip_ok": true
+        }
+      },
+      "events_per_block": 100,
+      "n_blocks": 1000
+    },
+    "block_1000": {
+      "codecs": {
+        "zlib-6": {
+          "comp_bytes": 3549318,
+          "comp_cv": 0.2,
+          "comp_ms": 332.864,
+          "decomp_cv": 0.9,
+          "decomp_ms": 33.499,
+          "ratio": 6.23,
+          "roundtrip_ok": true
+        },
+        "zstd-19": {
+          "comp_bytes": 2778916,
+          "comp_cv": 1.4,
+          "comp_ms": 6899.102,
+          "decomp_cv": 0.9,
+          "decomp_ms": 27.736,
+          "ratio": 7.95,
+          "roundtrip_ok": true
+        },
+        "zstd-19+dict": {
+          "comp_bytes": 2717642,
+          "comp_cv": 2.2,
+          "comp_ms": 4382.443,
+          "decomp_cv": 1.7,
+          "decomp_ms": 28.493,
+          "ratio": 8.13,
+          "roundtrip_ok": true
+        },
+        "zstd-3": {
+          "comp_bytes": 3760634,
+          "comp_cv": 0.7,
+          "comp_ms": 51.195,
+          "decomp_cv": 1.8,
+          "decomp_ms": 30.633,
+          "ratio": 5.88,
+          "roundtrip_ok": true
+        },
+        "zstd-3+dict": {
+          "comp_bytes": 3617968,
+          "comp_cv": 1.0,
+          "comp_ms": 63.672,
+          "decomp_cv": 1.5,
+          "decomp_ms": 32.776,
+          "ratio": 6.11,
+          "roundtrip_ok": true
+        }
+      },
+      "events_per_block": 1000,
+      "n_blocks": 100
+    }
+  }
+}
