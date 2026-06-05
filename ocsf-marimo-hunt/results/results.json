@@ -1,0 +1,29 @@
+{
+  "benchmark": "ocsf-marimo-hunt",
+  "evidence_tier": "B/C (reproducibility/portability demonstration)",
+  "lock_in_surface": {
+    "jupyter_ipynb": {
+      "cells": 4,
+      "embedded_output_blocks": 0,
+      "execution_count_fields": 4,
+      "format": "JSON"
+    },
+    "marimo_py": {
+      "embedded_outputs": 0,
+      "execution_counts": 0,
+      "format": "pure python source",
+      "lines": 64
+    }
+  },
+  "portability": {
+    "plain_sql_over_duckdb": true,
+    "runtime_lockin_apis_present": false
+  },
+  "reproducibility": {
+    "hunt_result": {
+      "beacon_conns": 60,
+      "no_mfa_attachpolicy": 1
+    },
+    "two_headless_runs_identical": true
+  }
+}
