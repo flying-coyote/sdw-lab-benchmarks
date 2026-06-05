@@ -1,0 +1,25 @@
+title: Encoded PowerShell (base)
+name: ps_exec
+status: experimental
+logsource:
+  category: process_creation
+detection:
+  sel: {cmd_line|contains: '-EncodedCommand'}
+  condition: sel
+---
+title: RDP connection (base)
+name: rdp_lat
+status: experimental
+logsource:
+  category: network_connection
+detection:
+  sel: {dst_port: 3389}
+  condition: sel
+---
+title: Encoded PowerShell then RDP lateral movement
+status: experimental
+correlation:
+  type: temporal_ordered
+  rules: [ps_exec, rdp_lat]
+  group-by: [host]
+  timespan: 2h

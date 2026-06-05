@@ -1,0 +1,38 @@
+{
+  "benchmark": "ocsf-sigma-detection / correlation",
+  "evidence_tier": "B",
+  "rules": {
+    "brute_force.yml": {
+      "execution": {
+        "ran": true,
+        "result_rows": 49,
+        "sample": [
+          "('user0274@acme.example', 20)",
+          "('user0120@acme.example', 27)",
+          "('user0047@acme.example', 11)"
+        ]
+      },
+      "portability": {
+        "elasticsearch": "unsupported (NotImplementedError)",
+        "opensearch": "unsupported (NotImplementedError)",
+        "splunk": "compiles",
+        "sql_sqlite": "compiles"
+      }
+    },
+    "exec_then_lateral.yml": {
+      "execution": {
+        "ran": true,
+        "result_rows": 1,
+        "sample": [
+          "('WS1', 'ps_exec,rdp_lat', 2, datetime.datetime(2026, 1, 8, 10, 5), datetime.datetime(2026, 1, 8, 11, 10, 5))"
+        ]
+      },
+      "portability": {
+        "elasticsearch": "unsupported (NotImplementedError)",
+        "opensearch": "unsupported (NotImplementedError)",
+        "splunk": "unsupported (NotImplementedError)",
+        "sql_sqlite": "compiles"
+      }
+    }
+  }
+}
