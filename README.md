@@ -16,6 +16,8 @@ engine-against-engine, and labelled at an honest evidence tier.
 | [`ocsf-mapping-fidelity/`](ocsf-mapping-fidelity/) | how completely and how losslessly real vendor schemas (Okta, CrowdStrike) map into OCSF 1.8.0 — typed vs coerced vs unmapped, field by field | B | published |
 | [`bench-a-context-collapse/`](bench-a-context-collapse/) | whether normalizing multi-source telemetry into one coarse OCSF store degrades adversary-relevant queries more than routine ones (two stores, one planted-chain corpus, 16 frozen queries) | B | first pass |
 | [`ocsf-semantic-testbed/`](ocsf-semantic-testbed/) | the shared planted-chain corpus + ground truth feeding BENCH-A/B/C — the build-once foundation, not a benchmark itself | — | foundation |
+| [`ocsf-mapping-oracle/`](ocsf-mapping-oracle/) | does schema / formal grounding / an ontology-thinking discipline cut the OCSF attributes a model invents — silent-error rate across four conditions on a local model | B | first pass (local leg) |
+| [`ocsf-semantic-query/`](ocsf-semantic-query/) | OBDA vs GraphRAG vs text-to-SQL on adversary-tail concept queries — silent-error rate the decisive metric (text-to-SQL arm first; OBDA/GraphRAG pending) | B | first pass (1 of 3 arms) |
 
 ## How they are kept honest
 
@@ -62,5 +64,7 @@ sigma-portability/      benchmark: Sigma correlation-rule portability across 4 b
 ocsf-mapping-fidelity/  benchmark: vendor-schema (Okta, CrowdStrike) -> OCSF 1.8.0 fidelity
 ocsf-semantic-testbed/  shared planted-chain corpus + ground truth (feeds BENCH-A/B/C)
 bench-a-context-collapse/  benchmark: OCSF context-collapse (Store F vs Store N)
+ocsf-mapping-oracle/    benchmark: BENCH-B mapping oracle (4 conditions, silent-error)
+ocsf-semantic-query/    benchmark: BENCH-C semantic-query head-to-head (text-to-SQL arm)
 requirements.txt        duckdb, chdb (pinned) — sigma-portability has its own
 ```
