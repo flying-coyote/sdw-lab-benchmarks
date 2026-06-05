@@ -1,0 +1,41 @@
+{
+  "benchmark": "ocsf-mapping-oracle (BENCH-B, first-pass local leg)",
+  "evidence_tier": "B (local weak-model leg; frontier leg + larger gold set pending)",
+  "models": {
+    "phi3:latest": {
+      "cells": {
+        "formal": {
+          "n": 28,
+          "path_correct": 0.0,
+          "silent_error_rate": 0.8214
+        },
+        "none": {
+          "n": 28,
+          "path_correct": 0.0,
+          "silent_error_rate": 1.0
+        },
+        "schema": {
+          "n": 28,
+          "path_correct": 0.0,
+          "silent_error_rate": 0.8929
+        },
+        "skill": {
+          "n": 28,
+          "path_correct": 0.0,
+          "silent_error_rate": 0.5
+        }
+      },
+      "lifts": {
+        "formal_minus_schema": 0.0,
+        "schema_minus_none": 0.0,
+        "silent_schema_minus_none": -0.1071,
+        "skill_minus_schema": 0.0
+      }
+    }
+  },
+  "n_fields": 28,
+  "sources": [
+    "Okta System Log",
+    "Palo Alto PAN-OS TRAFFIC"
+  ]
+}
