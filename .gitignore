@@ -5,3 +5,4 @@ __pycache__/
 # generated corpora — large, reproducible from the generators, not checked in
 _work/
 *.parquet
+.jars/

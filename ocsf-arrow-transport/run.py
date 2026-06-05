@@ -28,7 +28,8 @@ sys.path.insert(0, os.path.join(HERE, "..", "lib"))
 from common import BASE_EPOCH, time_trials  # noqa: E402
 
 WORK = os.path.join(HERE, "_work")
-JDBC_JAR = os.environ.get("DUCKDB_JDBC_JAR", "/tmp/ontop-bench/ontop-cli/jdbc/duckdb_jdbc.jar")
+JDBC_JAR = os.environ.get("DUCKDB_JDBC_JAR", os.path.join(HERE, "..", ".jars", "duckdb_jdbc.jar"))
+JAVA_SRC = os.path.join(HERE, "JdbcBench.java")   # native-JVM JDBC baseline (single-file source launch)
 SIZES = [100_000, 1_000_000]
 
 
@@ -73,6 +74,15 @@ def jdbc_fetch(path):
         conn.close()
 
 
+def jdbc_native_jvm_ms(path):
+    """Median ms for a native-JVM JDBC row fetch via the single-file source launcher (no JPype)."""
+    import subprocess
+    r = subprocess.run(["java", "-cp", JDBC_JAR, JAVA_SRC, path, "1", "3"],
+                       capture_output=True, text=True, timeout=600)
+    out = [l for l in r.stdout.strip().splitlines() if l.strip().isdigit()]
+    return float(out[-1]) if out else None
+
+
 def transport_arm():
     os.makedirs(WORK, exist_ok=True)
     out = {}
@@ -88,15 +98,20 @@ def transport_arm():
         def _j():
             nonlocal nrows_jdbc
             nrows_jdbc = jdbc_fetch(pq)
-        jdbc_t = time_trials(_j, warmup=1, trials=2)
-        speedup = round(jdbc_t["median_ms"] / adbc_t["median_ms"], 1) if adbc_t["median_ms"] else None
+        jdbc_py = time_trials(_j, warmup=1, trials=2)
+        jdbc_jvm = jdbc_native_jvm_ms(pq)        # the honest row-transport cost, no Python bridge
+        honest = round(jdbc_jvm / adbc_t["median_ms"], 1) if jdbc_jvm and adbc_t["median_ms"] else None
+        py_infl = round(jdbc_py["median_ms"] / adbc_t["median_ms"], 1) if adbc_t["median_ms"] else None
         out[str(n)] = {
-            "adbc_median_ms": adbc_t["median_ms"], "jdbc_median_ms": jdbc_t["median_ms"],
-            "jdbc_over_adbc_speedup": speedup,
+            "adbc_median_ms": adbc_t["median_ms"],
+            "jdbc_native_jvm_median_ms": jdbc_jvm,
+            "jdbc_python_jpype_median_ms": jdbc_py["median_ms"],
+            "adbc_speedup_vs_native_jdbc": honest,
+            "adbc_speedup_vs_python_jdbc": py_infl,
             "correct": nrows_arrow == nrows_jdbc == n,
             "arrow_table_bytes": nbytes}
-        print(f"  n={n:>9}: ADBC {adbc_t['median_ms']:.0f}ms  JDBC {jdbc_t['median_ms']:.0f}ms  "
-              f"ADBC {speedup}× faster  correct={out[str(n)]['correct']}")
+        print(f"  n={n:>9}: ADBC {adbc_t['median_ms']:.0f}ms  native-JVM-JDBC {jdbc_jvm:.0f}ms  "
+              f"Python-JDBC {jdbc_py['median_ms']:.0f}ms  | ADBC {honest}× vs native (vs {py_infl}× vs Python)")
     return out
 
 
@@ -151,8 +166,9 @@ def edge_case_arm():
 
 def render_md(res):
     t = res["transport"]; e = res["encoding"]; ec = res["edge_cases"]
-    trows = "\n".join(f"| {n} | {t[n]['adbc_median_ms']:.0f} | {t[n]['jdbc_median_ms']:.0f} | "
-                      f"{t[n]['jdbc_over_adbc_speedup']}× | {t[n]['correct']} |" for n in t)
+    trows = "\n".join(f"| {n} | {t[n]['adbc_median_ms']:.0f} | {t[n]['jdbc_native_jvm_median_ms']:.0f} | "
+                      f"{t[n]['jdbc_python_jpype_median_ms']:.0f} | {t[n]['adbc_speedup_vs_native_jdbc']}× | "
+                      f"{t[n]['adbc_speedup_vs_python_jdbc']}× |" for n in t)
     erows = "\n".join(f"| {c} | {e[c]['file_bytes']/1e6:.1f} | {e[c]['compression_ratio_vs_uncompressed']}× | "
                       f"{e[c]['scan_median_ms']:.0f} |" for c in e)
     edge = "\n".join(f"- **{k}**: {'OK' if v['ok'] else 'ERROR — ' + v.get('error','')}" for k, v in ec.items())
@@ -163,13 +179,17 @@ Latencies are machine-specific medians, not constants. ODBC is a pending third l
 
 ## Transport: ADBC (Arrow, columnar) vs JDBC (row-oriented)
 
-| rows | ADBC ms | JDBC ms | ADBC speedup | correct |
-|---|---|---|---|---|
+| rows | ADBC ms | JDBC native-JVM ms | JDBC Python/JPype ms | ADBC vs native | ADBC vs Python |
+|---|---|---|---|---|---|
 {trows}
 
-ADBC returns Arrow record batches with no per-row marshaling; JDBC deserializes row by row over
-the JVM bridge, and the gap widens with result-set size — which is the columnar-transport
-advantage for analytical bulk fetches, measured rather than asserted.
+The honest columnar-vs-row advantage is **ADBC vs native-JVM JDBC** — single digits, not hundreds:
+ADBC returns Arrow record batches with no per-row marshaling, where JDBC deserializes row by row. The
+Python/JPype JDBC column is the cautionary one: running JDBC through the Python bridge inflates the gap by
+roughly 40× (the per-row JNI crossing), which is why the first pass's ~276× was overstated — that number
+measured the bridge, not the transport. A cross-runtime caveat remains and is stated plainly: ADBC here is
+Python-Arrow and the native JDBC is Java-rows, so the ratio is the columnar-vs-row paradigm difference in
+each one's idiomatic runtime, not a single-language isolation. Row counts matched across transports.
 
 ## Parquet encoding / compression (1M-row OCSF result set)
 
@@ -188,19 +208,19 @@ happy path:
 ## Reading
 
 The columnar transport wins on bulk analytical fetches because it returns Arrow record batches
-with no per-row marshaling, and the win scales with result-set size. Two honest caveats travel
-with the magnitude. First, the JDBC leg here is **Python-mediated** (jaydebeapi over JPype), which
-pays a per-row JNI crossing that a native JVM-to-JVM JDBC client would not, so the measured 100–275×
-gap overstates what a pure-Java JDBC path would see — the *structural* advantage (columnar bulk
-transfer vs row-by-row deserialization) is the robust finding, the exact multiplier is
-transport-and-binding-specific. Second, the edge-case battery (HUGEINT, DECIMAL, microsecond
-timestamp, NULL, a 5KB string, an array, a map) came back clean on **both** transports here, so the
-"important errors early on" a practitioner hit are most likely driver-, version-, or backend-specific
-(the ADBC driver ecosystem's maturity varies by backend) rather than universal — this bench found
-none against DuckDB's ADBC path, and says so rather than manufacturing a failure. The encoding sweep
-shows the ordinary trade: zstd is ~3.7× smaller than uncompressed but scans slower (decompression
-cost), snappy sits in between. Tier B, single machine; ODBC pending (needs a DuckDB ODBC driver).
-Advances H-ARROW-SECURITY-STACK-01.
+with no per-row marshaling, and the win scales with result-set size — but the honest magnitude is
+**single digits (~5–10×), not hundreds**. The native-JVM JDBC baseline added here is what de-inflates
+the first pass: running JDBC through the Python/JPype bridge had reported ~234× at a million rows, but
+that measured the per-row JNI crossing of the bridge, not the transport — a native Java JDBC client over
+the same driver is ~40–50× faster than the Python path, leaving ADBC ~5–10× ahead of *it*. That
+remaining gap is the real columnar-vs-row advantage. The one caveat left is cross-runtime: ADBC here is
+Python-Arrow and the native JDBC is Java-rows, so the ratio is the paradigm difference in each one's
+idiomatic runtime, not a single-language isolation. The edge-case battery (HUGEINT, DECIMAL, microsecond
+timestamp, NULL, a 5KB string, an array, a map) came back clean on both transports, so the "important
+errors early on" a practitioner hit are driver-/version-/backend-specific (the ADBC ecosystem's maturity
+varies) rather than universal — this bench found none against DuckDB's ADBC path and says so. The encoding
+sweep shows the ordinary trade: zstd is ~3.7× smaller than uncompressed but scans slower (decompression
+cost). Tier B, single machine; ODBC pending (needs a DuckDB ODBC driver). Advances H-ARROW-SECURITY-STACK-01.
 """
 
 

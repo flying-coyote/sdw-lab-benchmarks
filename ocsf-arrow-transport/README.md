@@ -4,16 +4,20 @@ Measures the **connectivity layer**, not the engine: when a tool pulls a large O
 of the store, what does the API cost? ADBC returns Arrow record batches (columnar, no per-row
 marshaling); JDBC/ODBC hand back rows deserialized one at a time. Same DuckDB query feeds both.
 
-## Result (Tier B, first pass)
+## Result (Tier B)
 
-ADBC is ~114× faster at 100k rows and ~276× at 1M (295ms vs 81.6s) — the columnar-transport
-advantage, scaling with size. **Caveat:** the JDBC leg is Python-mediated (jaydebeapi/JPype), whose
-per-row JNI overhead inflates the multiplier; the structural columnar-vs-row advantage is the robust
-finding, the exact ratio is binding-specific. The edge-case battery (HUGEINT/DECIMAL/timestamp/NULL/
-wide-string/array/map) came back clean on both transports, so the "early errors" a practitioner hit
-are likely driver/version/backend-specific — this bench found none against DuckDB's ADBC path and
-says so. Encoding sweep: zstd ~3.7× smaller than uncompressed, scans slower (decompression cost).
-Full numbers in [results/RESULTS.md](results/RESULTS.md).
+ADBC is **~5–10× faster than a native-JVM JDBC client** (5.0× at 100k rows, 9.6× at 1M), scaling with
+size — the honest columnar-vs-row advantage. The first pass reported ~276× by timing JDBC through the
+Python/JPype bridge; the **native-JVM JDBC baseline added here de-inflates that** — a Java JDBC client over
+the same driver is ~40–50× faster than the Python path, so the bridge, not the transport, was most of the
+gap. The one remaining caveat is cross-runtime (ADBC-Python-Arrow vs JDBC-Java-rows). The edge-case battery
+(HUGEINT/DECIMAL/timestamp/NULL/wide-string/array/map) came back clean on both transports, so the "early
+errors" a practitioner hit are driver/version/backend-specific — this bench found none against DuckDB's
+ADBC path and says so. Encoding sweep: zstd ~3.7× smaller than uncompressed, scans slower (decompression
+cost). Full numbers in [results/RESULTS.md](results/RESULTS.md).
+
+The native-JVM arm uses Java's single-file source launcher (`java JdbcBench.java`), so it needs a JDK's
+`java` (no separate compile step) and the DuckDB JDBC driver in `.jars/` (or `DUCKDB_JDBC_JAR`).
 
 ## Run it
 

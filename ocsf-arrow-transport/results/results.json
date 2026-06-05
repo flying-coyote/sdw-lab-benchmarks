@@ -14,17 +14,17 @@
     "snappy": {
       "compression_ratio_vs_uncompressed": 2.08,
       "file_bytes": 45244799,
-      "scan_median_ms": 7.064
+      "scan_median_ms": 3.272
     },
     "uncompressed": {
       "compression_ratio_vs_uncompressed": 1.0,
       "file_bytes": 94214323,
-      "scan_median_ms": 4.173
+      "scan_median_ms": 2.552
     },
     "zstd": {
       "compression_ratio_vs_uncompressed": 3.68,
       "file_bytes": 25619257,
-      "scan_median_ms": 13.543
+      "scan_median_ms": 5.465
     }
   },
   "environment": {
@@ -34,18 +34,22 @@
   "odbc": "pending (DuckDB ODBC driver + unixODBC)",
   "transport": {
     "100000": {
-      "adbc_median_ms": 56.282,
+      "adbc_median_ms": 35.926,
+      "adbc_speedup_vs_native_jdbc": 5.0,
+      "adbc_speedup_vs_python_jdbc": 82.1,
       "arrow_table_bytes": 9794689,
       "correct": true,
-      "jdbc_median_ms": 6435.053,
-      "jdbc_over_adbc_speedup": 114.3
+      "jdbc_native_jvm_median_ms": 179.0,
+      "jdbc_python_jpype_median_ms": 2948.524
     },
     "1000000": {
-      "adbc_median_ms": 295.45,
+      "adbc_median_ms": 151.376,
+      "adbc_speedup_vs_native_jdbc": 9.6,
+      "adbc_speedup_vs_python_jdbc": 234.3,
       "arrow_table_bytes": 98949142,
       "correct": true,
-      "jdbc_median_ms": 81624.579,
-      "jdbc_over_adbc_speedup": 276.3
+      "jdbc_native_jvm_median_ms": 1450.0,
+      "jdbc_python_jpype_median_ms": 35469.24
     }
   }
 }
