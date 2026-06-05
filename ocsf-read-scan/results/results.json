@@ -1,0 +1,24 @@
+{
+  "answers_identical": false,
+  "benchmark": "ocsf-read-scan (BENCH-E)",
+  "ducklake": {
+    "queries": {
+      "byte_rollup": 61.294,
+      "filtered": 17.164,
+      "full_count": 6.878,
+      "topn_src": 738.519
+    },
+    "storage_bytes": 216261799
+  },
+  "evidence_tier": "B (single machine; latencies medians)",
+  "iceberg": {
+    "queries": {
+      "byte_rollup": 93.589,
+      "filtered": 17.709,
+      "full_count": 3.474,
+      "topn_src": 704.308
+    },
+    "storage_bytes": 132901557
+  },
+  "n_rows": 10000000
+}
