@@ -141,9 +141,15 @@ def _background_host(i, n_hosts):
 # _ingest_time_ms / _needle_id(None) plus a stable _uid.                        #
 # --------------------------------------------------------------------------- #
 
+# Background reseed offset for robustness runs: shifts the BACKGROUND generators only (not the
+# planted chain at new_rng(200)+, which stays fixed), so a re-run draws different noise around the
+# same needles. Default 0 reproduces the canonical corpus exactly.
+BG_SEED_OFFSET = 0
+
+
 def gen_auth(cfg):
     """Okta-shaped sign-in events → R1 (per user/day), R3 (failed by country)."""
-    rng = new_rng(101)
+    rng = new_rng(101 + BG_SEED_OFFSET)
     countries = [c[0] for c in COUNTRIES]
     cweights = [c[1] for c in COUNTRIES]
     cfail = {c[0]: c[2] for c in COUNTRIES}
@@ -171,7 +177,7 @@ def gen_auth(cfg):
 
 def gen_sessions(cfg):
     """Sign-in sessions with start+end (valid-time) → A4 point-in-time support."""
-    rng = new_rng(106)
+    rng = new_rng(106 + BG_SEED_OFFSET)
     out = []
     for s in range(cfg["sessions"]):
         u = f"user{rng.randint(0, cfg['users']-1):04d}@acme.example"
@@ -189,7 +195,7 @@ def gen_sessions(cfg):
 
 def gen_conn(cfg):
     """Zeek conn.log → R2 (top dst ports), R4 (egress bytes per host/day)."""
-    rng = new_rng(102)
+    rng = new_rng(102 + BG_SEED_OFFSET)
     out = []
     for i in range(cfg["conn"]):
         host, ip = _background_host(i, cfg["n_hosts"])
@@ -210,7 +216,7 @@ def gen_conn(cfg):
 
 def gen_dns(cfg):
     """Zeek dns.log → background for A8 first-seen (the C2 domain is the needle)."""
-    rng = new_rng(103)
+    rng = new_rng(103 + BG_SEED_OFFSET)
     tlds = ["com", "net", "org", "io", "co"]
     words = ["cdn", "api", "mail", "update", "static", "img", "auth", "cloud",
              "vpn", "sync", "telemetry", "metrics", "assets", "edge"]
@@ -231,7 +237,7 @@ def gen_dns(cfg):
 
 def gen_process(cfg):
     """Sysmon process-creation (EventID 1) → R5 (top images)."""
-    rng = new_rng(104)
+    rng = new_rng(104 + BG_SEED_OFFSET)
     out = []
     for i in range(cfg["process"]):
         host, ip = _background_host(i, cfg["n_hosts"])
@@ -251,7 +257,7 @@ def gen_process(cfg):
 
 def gen_cloud(cfg):
     """CloudTrail-shaped API events → R6 (API volume by service per day)."""
-    rng = new_rng(105)
+    rng = new_rng(105 + BG_SEED_OFFSET)
     out = []
     for i in range(cfg["cloud"]):
         svc, names = rng.choice(CLOUD_SERVICES)

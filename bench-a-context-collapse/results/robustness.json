@@ -1,0 +1,39 @@
+{
+  "all_routine_clean": true,
+  "benchmark": "ocsf-context-collapse robustness (background draws)",
+  "canonical_restored": true,
+  "headline_max": 0.719,
+  "headline_min": 0.7095,
+  "headline_spread": 0.0095,
+  "offsets": [
+    {
+      "bg_seed_offset": 0,
+      "delta_adversary": 0.719,
+      "delta_routine": 0.0,
+      "headline": 0.719,
+      "void": false
+    },
+    {
+      "bg_seed_offset": 1000,
+      "delta_adversary": 0.719,
+      "delta_routine": 0.0,
+      "headline": 0.719,
+      "void": false
+    },
+    {
+      "bg_seed_offset": 2000,
+      "delta_adversary": 0.7095,
+      "delta_routine": 0.0,
+      "headline": 0.7095,
+      "void": false
+    },
+    {
+      "bg_seed_offset": 3000,
+      "delta_adversary": 0.719,
+      "delta_routine": 0.0,
+      "headline": 0.719,
+      "void": false
+    }
+  ],
+  "tier": "B"
+}
