@@ -1,0 +1,60 @@
+{
+  "benchmark": "ocsf-deterministic-mapper",
+  "deterministic": {
+    "by_source": {
+      "Cisco ASA connection syslog": {
+        "coverage": 0.6429,
+        "path_correct": 0.5
+      },
+      "Cisco Umbrella DNS": {
+        "coverage": 0.4,
+        "path_correct": 0.2
+      },
+      "CrowdStrike Detection Summary": {
+        "coverage": 0.9032,
+        "path_correct": 0.0968
+      },
+      "Okta System Log": {
+        "coverage": 0.8519,
+        "path_correct": 0.0741
+      },
+      "Palo Alto PAN-OS TRAFFIC": {
+        "coverage": 0.413,
+        "path_correct": 0.1304
+      },
+      "Zscaler ZIA Web": {
+        "coverage": 0.7222,
+        "path_correct": 0.2222
+      }
+    },
+    "coverage_mapped": 0.6667,
+    "n": 141,
+    "path_correct": 0.1631,
+    "path_correct_of_mapped": 0.2447,
+    "silent_error_rate": 0.0
+  },
+  "evidence_tier": "B",
+  "llm_phi3_conditions": {
+    "formal": {
+      "path_correct": 0.0142,
+      "silent_error_rate": 0.7234
+    },
+    "none": {
+      "path_correct": 0.0,
+      "silent_error_rate": 0.9929
+    },
+    "schema": {
+      "path_correct": 0.0071,
+      "silent_error_rate": 0.6879
+    },
+    "skill": {
+      "path_correct": 0.0426,
+      "silent_error_rate": 0.5957
+    },
+    "wrong_grounding": {
+      "path_correct": 0.0142,
+      "silent_error_rate": 0.7163
+    }
+  },
+  "n_fields": 141
+}
