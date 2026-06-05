@@ -1,0 +1,51 @@
+{
+  "benchmark": "ocsf-arrow-transport",
+  "edge_cases": {
+    "adbc": {
+      "ok": true,
+      "rows": 1
+    },
+    "jdbc": {
+      "ok": true,
+      "rows": 1
+    }
+  },
+  "encoding": {
+    "snappy": {
+      "compression_ratio_vs_uncompressed": 2.08,
+      "file_bytes": 45244799,
+      "scan_median_ms": 7.064
+    },
+    "uncompressed": {
+      "compression_ratio_vs_uncompressed": 1.0,
+      "file_bytes": 94214323,
+      "scan_median_ms": 4.173
+    },
+    "zstd": {
+      "compression_ratio_vs_uncompressed": 3.68,
+      "file_bytes": 25619257,
+      "scan_median_ms": 13.543
+    }
+  },
+  "environment": {
+    "duckdb": "1.5.3"
+  },
+  "evidence_tier": "B (single machine; latencies medians)",
+  "odbc": "pending (DuckDB ODBC driver + unixODBC)",
+  "transport": {
+    "100000": {
+      "adbc_median_ms": 56.282,
+      "arrow_table_bytes": 9794689,
+      "correct": true,
+      "jdbc_median_ms": 6435.053,
+      "jdbc_over_adbc_speedup": 114.3
+    },
+    "1000000": {
+      "adbc_median_ms": 295.45,
+      "arrow_table_bytes": 98949142,
+      "correct": true,
+      "jdbc_median_ms": 81624.579,
+      "jdbc_over_adbc_speedup": 276.3
+    }
+  }
+}

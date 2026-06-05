@@ -1,0 +1,4 @@
+duckdb==1.5.3
+adbc_driver_manager==1.11.0
+jaydebeapi==1.2.3
+pyarrow
