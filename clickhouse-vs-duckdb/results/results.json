@@ -5,7 +5,7 @@
     "duckdb_version": "1.5.3",
     "chdb_version": "4.1.8",
     "clickhouse_engine": "chDB (embedded ClickHouse)",
-    "cpu_count": 12,
+    "cpu_count": 14,
     "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
     "note": "single host, both engines in-process; WSL2 \u2014 treat absolute ms as machine-specific"
   },
@@ -26,21 +26,23 @@
               "answers_agree": true,
               "result_rows": 12,
               "duckdb": {
-                "median_ms": 11.642,
-                "min_ms": 10.887,
-                "max_ms": 12.16,
+                "median_ms": 11.901,
+                "min_ms": 10.948,
+                "max_ms": 13.432,
+                "cv_pct": 6.1,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 11.835,
-                "min_ms": 11.215,
-                "max_ms": 32.716,
+                "median_ms": 12.292,
+                "min_ms": 11.893,
+                "max_ms": 37.455,
+                "cv_pct": 55.3,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.02
+              "speed_ratio": 1.03
             },
             {
               "id": "q2_top_talkers",
@@ -49,21 +51,23 @@
               "answers_agree": true,
               "result_rows": 20,
               "duckdb": {
-                "median_ms": 41.673,
-                "min_ms": 36.017,
-                "max_ms": 43.697,
+                "median_ms": 44.223,
+                "min_ms": 39.986,
+                "max_ms": 46.753,
+                "cv_pct": 4.7,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 54.571,
-                "min_ms": 49.525,
-                "max_ms": 70.364,
+                "median_ms": 53.931,
+                "min_ms": 51.755,
+                "max_ms": 69.387,
+                "cv_pct": 10.4,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.31
+              "speed_ratio": 1.22
             },
             {
               "id": "q3_selective_window",
@@ -72,21 +76,23 @@
               "answers_agree": true,
               "result_rows": 1,
               "duckdb": {
-                "median_ms": 5.123,
-                "min_ms": 4.441,
-                "max_ms": 6.954,
+                "median_ms": 5.055,
+                "min_ms": 4.425,
+                "max_ms": 9.314,
+                "cv_pct": 28.1,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 13.414,
-                "min_ms": 12.836,
-                "max_ms": 35.258,
+                "median_ms": 13.188,
+                "min_ms": 12.843,
+                "max_ms": 33.164,
+                "cv_pct": 43.1,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 2.62
+              "speed_ratio": 2.61
             },
             {
               "id": "q4_time_buckets",
@@ -95,21 +101,23 @@
               "answers_agree": true,
               "result_rows": 288,
               "duckdb": {
-                "median_ms": 10.397,
-                "min_ms": 10.274,
-                "max_ms": 12.61,
+                "median_ms": 11.602,
+                "min_ms": 10.391,
+                "max_ms": 14.172,
+                "cv_pct": 10.3,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 11.497,
-                "min_ms": 10.812,
-                "max_ms": 12.05,
+                "median_ms": 11.946,
+                "min_ms": 11.238,
+                "max_ms": 12.568,
+                "cv_pct": 3.9,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.11
+              "speed_ratio": 1.03
             },
             {
               "id": "q5_failed_auth_burst",
@@ -118,21 +126,23 @@
               "answers_agree": true,
               "result_rows": 50,
               "duckdb": {
-                "median_ms": 4.014,
-                "min_ms": 3.455,
-                "max_ms": 7.508,
+                "median_ms": 6.045,
+                "min_ms": 3.918,
+                "max_ms": 6.673,
+                "cv_pct": 17.0,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 8.445,
-                "min_ms": 7.896,
-                "max_ms": 9.545,
+                "median_ms": 8.493,
+                "min_ms": 8.329,
+                "max_ms": 9.176,
+                "cv_pct": 3.0,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 2.1
+              "speed_ratio": 1.4
             }
           ]
         },
@@ -145,21 +155,23 @@
               "answers_agree": true,
               "result_rows": 12,
               "duckdb": {
-                "median_ms": 9.675,
-                "min_ms": 7.781,
-                "max_ms": 11.696,
+                "median_ms": 8.054,
+                "min_ms": 7.747,
+                "max_ms": 12.074,
+                "cv_pct": 17.1,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 8.864,
-                "min_ms": 8.153,
-                "max_ms": 30.144,
+                "median_ms": 8.702,
+                "min_ms": 7.974,
+                "max_ms": 28.389,
+                "cv_pct": 54.9,
                 "trials": 7,
                 "warmup": 2
               },
-              "faster_engine": "clickhouse",
-              "speed_ratio": 1.09
+              "faster_engine": "duckdb",
+              "speed_ratio": 1.08
             },
             {
               "id": "q2_top_talkers",
@@ -168,21 +180,23 @@
               "answers_agree": true,
               "result_rows": 20,
               "duckdb": {
-                "median_ms": 29.007,
-                "min_ms": 27.566,
-                "max_ms": 32.004,
+                "median_ms": 27.984,
+                "min_ms": 26.757,
+                "max_ms": 33.377,
+                "cv_pct": 7.2,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 50.712,
-                "min_ms": 45.515,
-                "max_ms": 67.714,
+                "median_ms": 49.456,
+                "min_ms": 46.416,
+                "max_ms": 77.121,
+                "cv_pct": 19.0,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.75
+              "speed_ratio": 1.77
             },
             {
               "id": "q3_selective_window",
@@ -191,21 +205,23 @@
               "answers_agree": true,
               "result_rows": 1,
               "duckdb": {
-                "median_ms": 2.339,
-                "min_ms": 2.196,
-                "max_ms": 2.509,
+                "median_ms": 2.345,
+                "min_ms": 2.273,
+                "max_ms": 2.714,
+                "cv_pct": 6.1,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 5.494,
-                "min_ms": 5.15,
-                "max_ms": 24.132,
+                "median_ms": 5.896,
+                "min_ms": 5.316,
+                "max_ms": 23.699,
+                "cv_pct": 74.2,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 2.35
+              "speed_ratio": 2.51
             },
             {
               "id": "q4_time_buckets",
@@ -214,21 +230,23 @@
               "answers_agree": true,
               "result_rows": 288,
               "duckdb": {
-                "median_ms": 12.139,
-                "min_ms": 9.547,
-                "max_ms": 24.329,
+                "median_ms": 8.749,
+                "min_ms": 7.993,
+                "max_ms": 9.598,
+                "cv_pct": 5.6,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 11.68,
-                "min_ms": 10.38,
-                "max_ms": 14.843,
+                "median_ms": 7.335,
+                "min_ms": 6.892,
+                "max_ms": 8.376,
+                "cv_pct": 7.6,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "clickhouse",
-              "speed_ratio": 1.04
+              "speed_ratio": 1.19
             },
             {
               "id": "q5_failed_auth_burst",
@@ -237,35 +255,39 @@
               "answers_agree": true,
               "result_rows": 50,
               "duckdb": {
-                "median_ms": 4.987,
-                "min_ms": 4.695,
-                "max_ms": 8.757,
+                "median_ms": 4.309,
+                "min_ms": 4.063,
+                "max_ms": 7.285,
+                "cv_pct": 22.1,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 8.859,
-                "min_ms": 7.327,
-                "max_ms": 11.017,
+                "median_ms": 8.771,
+                "min_ms": 8.0,
+                "max_ms": 9.803,
+                "cv_pct": 6.7,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.78
+              "speed_ratio": 2.04
             }
           ],
           "ingest": {
             "duckdb_native_load": {
-              "median_ms": 61.575,
-              "min_ms": 60.778,
-              "max_ms": 67.118,
+              "median_ms": 64.216,
+              "min_ms": 59.757,
+              "max_ms": 66.389,
+              "cv_pct": 4.4,
               "trials": 3,
               "warmup": 1
             },
             "clickhouse_mergetree_load": {
-              "median_ms": 429.96,
-              "min_ms": 428.964,
-              "max_ms": 434.297,
+              "median_ms": 434.695,
+              "min_ms": 428.884,
+              "max_ms": 443.353,
+              "cv_pct": 1.4,
               "trials": 3,
               "warmup": 1
             }
@@ -287,21 +309,23 @@
               "answers_agree": true,
               "result_rows": 12,
               "duckdb": {
-                "median_ms": 74.704,
-                "min_ms": 68.669,
-                "max_ms": 112.567,
+                "median_ms": 67.456,
+                "min_ms": 66.148,
+                "max_ms": 70.434,
+                "cv_pct": 2.1,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 90.166,
-                "min_ms": 75.522,
-                "max_ms": 92.167,
+                "median_ms": 78.02,
+                "min_ms": 76.817,
+                "max_ms": 79.598,
+                "cv_pct": 1.1,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.21
+              "speed_ratio": 1.16
             },
             {
               "id": "q2_top_talkers",
@@ -310,21 +334,23 @@
               "answers_agree": true,
               "result_rows": 20,
               "duckdb": {
-                "median_ms": 427.2,
-                "min_ms": 410.3,
-                "max_ms": 512.072,
+                "median_ms": 395.146,
+                "min_ms": 392.438,
+                "max_ms": 407.824,
+                "cv_pct": 1.2,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 546.946,
-                "min_ms": 509.031,
-                "max_ms": 573.417,
+                "median_ms": 512.017,
+                "min_ms": 491.07,
+                "max_ms": 534.216,
+                "cv_pct": 2.9,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.28
+              "speed_ratio": 1.3
             },
             {
               "id": "q3_selective_window",
@@ -333,21 +359,23 @@
               "answers_agree": true,
               "result_rows": 1,
               "duckdb": {
-                "median_ms": 39.244,
-                "min_ms": 33.639,
-                "max_ms": 46.17,
+                "median_ms": 29.809,
+                "min_ms": 29.218,
+                "max_ms": 36.038,
+                "cv_pct": 9.0,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 81.78,
-                "min_ms": 78.398,
-                "max_ms": 91.481,
+                "median_ms": 79.758,
+                "min_ms": 76.88,
+                "max_ms": 89.106,
+                "cv_pct": 5.3,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 2.08
+              "speed_ratio": 2.68
             },
             {
               "id": "q4_time_buckets",
@@ -356,21 +384,23 @@
               "answers_agree": true,
               "result_rows": 288,
               "duckdb": {
-                "median_ms": 66.142,
-                "min_ms": 60.014,
-                "max_ms": 77.935,
+                "median_ms": 64.855,
+                "min_ms": 58.742,
+                "max_ms": 75.838,
+                "cv_pct": 8.4,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 71.607,
-                "min_ms": 66.733,
-                "max_ms": 81.255,
+                "median_ms": 74.066,
+                "min_ms": 65.586,
+                "max_ms": 77.097,
+                "cv_pct": 6.0,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.08
+              "speed_ratio": 1.14
             },
             {
               "id": "q5_failed_auth_burst",
@@ -379,21 +409,23 @@
               "answers_agree": true,
               "result_rows": 50,
               "duckdb": {
-                "median_ms": 18.606,
-                "min_ms": 17.863,
-                "max_ms": 25.384,
+                "median_ms": 16.478,
+                "min_ms": 15.349,
+                "max_ms": 20.029,
+                "cv_pct": 9.1,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 39.624,
-                "min_ms": 36.57,
-                "max_ms": 41.124,
+                "median_ms": 39.316,
+                "min_ms": 36.308,
+                "max_ms": 42.391,
+                "cv_pct": 5.6,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 2.13
+              "speed_ratio": 2.39
             }
           ]
         },
@@ -406,21 +438,23 @@
               "answers_agree": true,
               "result_rows": 12,
               "duckdb": {
-                "median_ms": 47.344,
-                "min_ms": 45.676,
-                "max_ms": 48.264,
+                "median_ms": 52.026,
+                "min_ms": 50.706,
+                "max_ms": 77.186,
+                "cv_pct": 15.8,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 61.588,
-                "min_ms": 52.617,
-                "max_ms": 75.468,
+                "median_ms": 56.087,
+                "min_ms": 50.578,
+                "max_ms": 59.445,
+                "cv_pct": 4.8,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.3
+              "speed_ratio": 1.08
             },
             {
               "id": "q2_top_talkers",
@@ -429,21 +463,23 @@
               "answers_agree": true,
               "result_rows": 20,
               "duckdb": {
-                "median_ms": 290.865,
-                "min_ms": 274.762,
-                "max_ms": 350.104,
+                "median_ms": 282.618,
+                "min_ms": 269.772,
+                "max_ms": 295.403,
+                "cv_pct": 2.9,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 588.488,
-                "min_ms": 541.473,
-                "max_ms": 660.261,
+                "median_ms": 586.952,
+                "min_ms": 565.06,
+                "max_ms": 608.899,
+                "cv_pct": 2.4,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 2.02
+              "speed_ratio": 2.08
             },
             {
               "id": "q3_selective_window",
@@ -452,21 +488,23 @@
               "answers_agree": true,
               "result_rows": 1,
               "duckdb": {
-                "median_ms": 12.615,
-                "min_ms": 12.095,
-                "max_ms": 13.583,
+                "median_ms": 13.071,
+                "min_ms": 11.674,
+                "max_ms": 17.176,
+                "cv_pct": 12.6,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 17.206,
-                "min_ms": 16.435,
-                "max_ms": 22.392,
+                "median_ms": 18.949,
+                "min_ms": 17.656,
+                "max_ms": 20.943,
+                "cv_pct": 5.6,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.36
+              "speed_ratio": 1.45
             },
             {
               "id": "q4_time_buckets",
@@ -475,21 +513,23 @@
               "answers_agree": true,
               "result_rows": 288,
               "duckdb": {
-                "median_ms": 48.01,
-                "min_ms": 43.086,
-                "max_ms": 55.318,
+                "median_ms": 50.549,
+                "min_ms": 44.616,
+                "max_ms": 58.746,
+                "cv_pct": 8.5,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 41.735,
-                "min_ms": 38.941,
-                "max_ms": 46.505,
+                "median_ms": 41.105,
+                "min_ms": 37.96,
+                "max_ms": 42.128,
+                "cv_pct": 3.1,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "clickhouse",
-              "speed_ratio": 1.15
+              "speed_ratio": 1.23
             },
             {
               "id": "q5_failed_auth_burst",
@@ -498,35 +538,39 @@
               "answers_agree": true,
               "result_rows": 50,
               "duckdb": {
-                "median_ms": 23.217,
-                "min_ms": 19.757,
-                "max_ms": 44.737,
+                "median_ms": 19.95,
+                "min_ms": 18.095,
+                "max_ms": 29.376,
+                "cv_pct": 17.3,
                 "trials": 7,
                 "warmup": 2
               },
               "clickhouse": {
-                "median_ms": 43.718,
-                "min_ms": 39.085,
-                "max_ms": 46.174,
+                "median_ms": 44.562,
+                "min_ms": 42.324,
+                "max_ms": 45.822,
+                "cv_pct": 3.2,
                 "trials": 7,
                 "warmup": 2
               },
               "faster_engine": "duckdb",
-              "speed_ratio": 1.88
+              "speed_ratio": 2.23
             }
           ],
           "ingest": {
             "duckdb_native_load": {
-              "median_ms": 457.082,
-              "min_ms": 444.204,
-              "max_ms": 581.464,
+              "median_ms": 481.307,
+              "min_ms": 445.349,
+              "max_ms": 547.268,
+              "cv_pct": 8.6,
               "trials": 3,
               "warmup": 1
             },
             "clickhouse_mergetree_load": {
-              "median_ms": 3934.402,
-              "min_ms": 3859.85,
-              "max_ms": 4020.318,
+              "median_ms": 4047.152,
+              "min_ms": 4042.352,
+              "max_ms": 4259.228,
+              "cv_pct": 2.5,
               "trials": 3,
               "warmup": 1
             }
