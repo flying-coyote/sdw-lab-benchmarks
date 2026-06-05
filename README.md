@@ -24,6 +24,11 @@ engine-against-engine, and labelled at an honest evidence tier.
 | [`ocsf-iceberg-metadata/`](ocsf-iceberg-metadata/) | the small-files tax — scan-planning cost grows with file/manifest count and compaction recovers it (within-Iceberg; pyiceberg-planner microbench, illustrative not production) | B | first pass |
 | [`ocsf-read-scan/`](ocsf-read-scan/) | BENCH-E: DuckLake vs Iceberg large-scan reads (10M rows, same engine) — interchangeable on read, latencies within ~2× by query shape | B | first pass |
 | [`ocsf-sigma-detection/`](ocsf-sigma-detection/) | do compiled Sigma rules *fire correctly* over the OCSF store — detection of the planted chain (recall) + precision, the execution complement to sigma-portability | B | first pass |
+| [`ocsf-write-inlining/`](ocsf-write-inlining/) | does DuckLake inlining avoid the small-files problem at the source — data files left by 100 small commits (inline 0, no-inline/Iceberg 100) | B | first pass |
+| [`ocsf-storage-endurance/`](ocsf-storage-endurance/) | is write-intensive NVMe over-specified for security data — measured write amplification (~0.43) → projected DWPD far under 1 | B | first pass |
+| [`ocsf-deterministic-mapper/`](ocsf-deterministic-mapper/) | harness vs model: a schema-constrained deterministic OCSF mapper (silent-error 0 by construction) vs BENCH-B's LLM (0.60–0.99) | B | first pass |
+| [`ocsf-marimo-hunt/`](ocsf-marimo-hunt/) | notebook substrate — a marimo OCSF hunt: reproducible headless, plain-`.py` (0 vs the `.ipynb`'s execution-count slots), portable SQL | B/C | demonstration |
+| [`ocsf-vortex-format/`](ocsf-vortex-format/) | Vortex vs Parquet on OCSF data — design recorded; install-blocked (vortex-array yanked on PyPI) | — | pending |
 
 ## How they are kept honest
 
@@ -78,5 +83,10 @@ ocsf-arrow-transport/   benchmark: ADBC vs JDBC transport + Parquet encoding (ow
 ocsf-iceberg-metadata/  benchmark: Iceberg metadata/compaction scaling (own reqs)
 ocsf-read-scan/         benchmark: BENCH-E DuckLake vs Iceberg large-scan reads (own reqs)
 ocsf-sigma-detection/   benchmark: Sigma rules executed over the OCSF store (own reqs)
+ocsf-write-inlining/    benchmark: DuckLake inlining vs Iceberg small-files (own reqs)
+ocsf-storage-endurance/ benchmark: write-amplification -> projected DWPD (own reqs)
+ocsf-deterministic-mapper/ benchmark: schema-constrained mapper vs LLM grounding
+ocsf-marimo-hunt/       demonstration: marimo notebook reproducibility/portability (own reqs)
+ocsf-vortex-format/     pending: Vortex vs Parquet (install-blocked)
 requirements.txt        duckdb, chdb (pinned) — sigma-portability + ocsf-write-contract have their own
 ```
