@@ -29,7 +29,7 @@ PORTS = "[80, 443, 22, 53, 3389, 445, 8080, 3306]"
 QUERIES = {
     "full_count":   "SELECT count(*) FROM {t}",
     "filtered":     "SELECT count(*) FROM {t} WHERE dst_port = 443",
-    "topn_src":     "SELECT src_ip, count(*) c FROM {t} GROUP BY 1 ORDER BY c DESC LIMIT 20",
+    "topn_src":     "SELECT src_ip, count(*) c FROM {t} GROUP BY 1 ORDER BY c DESC, src_ip LIMIT 20",
     "byte_rollup":  "SELECT dst_port, sum(bytes_out) FROM {t} GROUP BY 1 ORDER BY 2 DESC",
 }
 
@@ -94,9 +94,13 @@ def run():
             ratio = round(it["median_ms"] / max(dt["median_ms"], 0.01), 2)
             print(f"  {qid:12}: iceberg {it['median_ms']:.0f}ms  ducklake {dt['median_ms']:.0f}ms  (ice/dl {ratio}×)")
 
-        # correctness: both formats must return identical answers for the same logical data
-        same = all(con.execute(QUERIES[q].format(t=f"iceberg_scan('{ice_root}')")).fetchall()
-                   == con.execute(QUERIES[q].format(t="dl.events")).fetchall() for q in QUERIES)
+        # correctness: both formats must return the same answer for the same logical data,
+        # compared order-insensitively (every query has a deterministic ordering, but compare as
+        # a sorted multiset so a tie-stable re-order can't masquerade as a discrepancy)
+        def _norm(rows):
+            return sorted(tuple(str(c) for c in r) for r in rows)
+        same = all(_norm(con.execute(QUERIES[q].format(t=f"iceberg_scan('{ice_root}')")).fetchall())
+                   == _norm(con.execute(QUERIES[q].format(t="dl.events")).fetchall()) for q in QUERIES)
         con.close()
         return {"benchmark": "ocsf-read-scan (BENCH-E)", "evidence_tier": "B (single machine; latencies medians)",
                 "n_rows": N_ROWS, "answers_identical": same, **results}

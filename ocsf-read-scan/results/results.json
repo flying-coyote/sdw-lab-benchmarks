@@ -1,24 +1,24 @@
 {
-  "answers_identical": false,
+  "answers_identical": true,
   "benchmark": "ocsf-read-scan (BENCH-E)",
   "ducklake": {
     "queries": {
-      "byte_rollup": 61.294,
-      "filtered": 17.164,
-      "full_count": 6.878,
-      "topn_src": 738.519
+      "byte_rollup": 66.788,
+      "filtered": 38.902,
+      "full_count": 12.589,
+      "topn_src": 647.619
     },
-    "storage_bytes": 216261799
+    "storage_bytes": 216262418
   },
   "evidence_tier": "B (single machine; latencies medians)",
   "iceberg": {
     "queries": {
-      "byte_rollup": 93.589,
-      "filtered": 17.709,
-      "full_count": 3.474,
-      "topn_src": 704.308
+      "byte_rollup": 129.323,
+      "filtered": 46.458,
+      "full_count": 5.763,
+      "topn_src": 781.451
     },
-    "storage_bytes": 132901557
+    "storage_bytes": 132901552
   },
   "n_rows": 10000000
 }

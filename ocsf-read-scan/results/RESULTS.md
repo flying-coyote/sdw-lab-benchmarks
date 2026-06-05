@@ -5,13 +5,13 @@ engine (DuckDB), so the variable is the format's read path. Latencies are machin
 
 | query | Iceberg ms | DuckLake ms | Iceberg/DuckLake |
 |---|---|---|---|
-| full_count | 3 | 7 | 0.51× |
-| filtered | 18 | 17 | 1.03× |
-| topn_src | 704 | 739 | 0.95× |
-| byte_rollup | 94 | 61 | 1.53× |
+| full_count | 6 | 13 | 0.46× |
+| filtered | 46 | 39 | 1.19× |
+| topn_src | 781 | 648 | 1.21× |
+| byte_rollup | 129 | 67 | 1.94× |
 
 - Storage: Iceberg 133 MB · DuckLake 216 MB
-- Answers identical across both formats: **False**
+- Answers identical across both formats: **True**
 
 ## Reading
 
