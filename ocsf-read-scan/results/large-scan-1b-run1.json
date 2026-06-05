@@ -1,0 +1,31 @@
+{
+  "answers_identical": true,
+  "batch_rows": 50000000,
+  "benchmark": "ocsf-read-scan large-scan arm (BENCH-E, >1B)",
+  "ducklake": {
+    "data_files": 40,
+    "queries": {
+      "byte_rollup": 1677.479,
+      "filtered": 381.839,
+      "full_count": 4.497,
+      "subnet_rollup": 18659.005,
+      "topn_src": 81418.795
+    },
+    "storage_bytes": 21624905181
+  },
+  "evidence_tier": "B (single machine; latencies medians)",
+  "iceberg": {
+    "data_files": 100,
+    "queries": {
+      "byte_rollup": 2789.114,
+      "filtered": 479.535,
+      "full_count": 8.524,
+      "subnet_rollup": 20695.706,
+      "topn_src": 95170.498
+    },
+    "storage_bytes": 13287953668
+  },
+  "memory_limit": "28GB",
+  "n_batches": 20,
+  "n_rows": 1000000000
+}
