@@ -1,0 +1,2 @@
+PREFIX : <http://sdw.example/ocsf#>
+SELECT ?e WHERE { ?x a :ApiEvent ; :operation "AttachUserPolicy" ; :mfaPresent ?m ; :eventUid ?e . FILTER(?m = false) }

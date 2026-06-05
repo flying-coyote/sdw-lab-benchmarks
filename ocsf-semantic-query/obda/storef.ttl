@@ -1,0 +1,18 @@
+@prefix :     <http://sdw.example/ocsf#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+: a owl:Ontology .
+
+:Process a owl:Class .
+:ApiEvent a owl:Class .
+:Session a owl:Class .
+
+:eventUid a owl:DatatypeProperty .
+:cmdLine a owl:DatatypeProperty .
+:host a owl:DatatypeProperty .
+:operation a owl:DatatypeProperty .
+:mfaPresent a owl:DatatypeProperty .
+:actor a owl:DatatypeProperty .
+:startTime a owl:DatatypeProperty .
+:endTime a owl:DatatypeProperty .

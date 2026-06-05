@@ -1,0 +1,2 @@
+PREFIX : <http://sdw.example/ocsf#>
+SELECT ?c WHERE { ?x a :Process ; :host "WS1" ; :cmdLine ?c . FILTER(CONTAINS(?c, "-EncodedCommand")) }

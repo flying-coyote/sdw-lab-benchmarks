@@ -114,6 +114,39 @@ def run_text_to_sql(model):
             "result_accuracy": round(counts["correct"] / n, 4)}
 
 
+def _obda_section(results):
+    o = results.get("arms", {}).get("obda_ontop")
+    if not o or o.get("status") != "measured":
+        return "\n## OBDA / Ontop arm\n\nPending.\n"
+    pq = o["per_query"]
+    expr = "\n".join(f"| {q} | {pq[q]['outcome']} | {pq[q].get('rows_returned','—')} |"
+                     for q in o["expressible_queries"])
+    oob = "\n".join(f"| {q} | out-of-OWL2QL (loud by design) | {why} |"
+                    for q, why in o["out_of_owl2ql"].items())
+    return f"""
+## OBDA / Ontop arm ({o['engine']})
+
+On the queries OWL2QL can express, the formal rewrite is exact; on the rest it is out of
+expressivity and refuses rather than guessing. **{int(o['result_accuracy_on_expressible']*100)}% correct on the
+expressible set, {int(o['silent_error_rate_on_expressible']*100)}% silent, refusal-honest = {o['refusal_honest']}.** Coverage: {o['coverage']}.
+
+| query | outcome | rows |
+|---|---|---|
+{expr}
+
+| query | outcome | why it's out of OWL2QL |
+|---|---|---|
+{oob}
+
+The contrast is the whole point: the OBDA arm answers fewer adversary-tail queries but is
+**never silently wrong** on the ones it answers, and its failures are loud (an out-of-expressivity
+boundary), where a frontier LLM's failures on this tail are silent (plausible-but-wrong) and the
+local text-to-SQL's are loud-but-broken. Whether the formal rewrite's narrow-but-clean coverage
+beats the LLM's broad-but-unverified coverage is the decision the third (GraphRAG) arm and a
+frontier text-to-SQL leg would complete.
+"""
+
+
 def render_md(results):
     t = results["arms"]["text_to_sql"]
     rows = "\n".join(f"| {r['id']} | {r['outcome']} | {r['rows_returned']} |" for r in t["rows"])
@@ -148,8 +181,9 @@ avoids the plausible-but-wrong answers an LLM gives — needs a model strong eno
 produce silent errors in the first place (the frontier leg) and the OBDA arm to compare
 against. Both are the next steps.
 
-Pending arms: OBDA/Ontop ({results['arms']['obda_ontop']['blocker']}); GraphRAG
-({results['arms']['graphrag']['blocker']}). Tier B, single machine, one planted chain.
+{_obda_section(results)}
+GraphRAG arm still pending ({results['arms'].get('graphrag', {}).get('blocker', 'no graph+vector stack installed')}).
+Tier B, single machine, one planted chain.
 """
 
 

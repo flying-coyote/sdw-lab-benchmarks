@@ -1,0 +1,17 @@
+[PrefixDeclaration]
+:		http://sdw.example/ocsf#
+xsd:		http://www.w3.org/2001/XMLSchema#
+
+[MappingDeclaration] @collection [[
+mappingId	m-process
+target		:proc/{event_uid} a :Process ; :eventUid {event_uid} ; :cmdLine {cmd_line} ; :host {device_hostname} .
+source		SELECT event_uid, cmd_line, device_hostname FROM process
+
+mappingId	m-api
+target		:api/{event_uid} a :ApiEvent ; :eventUid {event_uid} ; :operation {api_operation} ; :mfaPresent {mfa_present} ; :actor {actor_user_uid} .
+source		SELECT event_uid, api_operation, mfa_present, actor_user_uid FROM api
+
+mappingId	m-session
+target		:sess/{event_uid} a :Session ; :eventUid {event_uid} ; :startTime {start_time} ; :endTime {end_time} ; :host {host} .
+source		SELECT event_uid, start_time, end_time, host FROM session
+]]

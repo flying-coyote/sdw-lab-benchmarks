@@ -9,8 +9,66 @@
       "status": "pending"
     },
     "obda_ontop": {
-      "blocker": "Ontop CLI not installed (JVM present); R2RML mappings to author",
-      "status": "pending"
+      "coverage": "3/8 adversary queries expressible in OWL2QL",
+      "engine": "Ontop 5.5.0 (OWL2QL) over DuckDB",
+      "expressible_queries": [
+        "A2",
+        "A4",
+        "A6"
+      ],
+      "out_of_owl2ql": {
+        "A1": "~60s beacon cadence \u2014 needs window/aggregation; OWL2QL is first-order-rewritable (no aggregation)",
+        "A3": "cross-source kill-chain ordering \u2014 needs sort/aggregation over joins",
+        "A5": "recursive identity closure \u2014 OWL2QL is non-recursive (no transitive closure)",
+        "A7": "dwell-time delta \u2014 needs aggregation across events",
+        "A9": "distinct-asset count \u2014 needs aggregation"
+      },
+      "per_query": {
+        "A1": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "~60s beacon cadence \u2014 needs window/aggregation; OWL2QL is first-order-rewritable (no aggregation)"
+        },
+        "A2": {
+          "expressible": true,
+          "outcome": "correct",
+          "rows_returned": 1
+        },
+        "A3": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "cross-source kill-chain ordering \u2014 needs sort/aggregation over joins"
+        },
+        "A4": {
+          "expressible": true,
+          "outcome": "correct",
+          "rows_returned": 35
+        },
+        "A5": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "recursive identity closure \u2014 OWL2QL is non-recursive (no transitive closure)"
+        },
+        "A6": {
+          "expressible": true,
+          "outcome": "correct",
+          "rows_returned": 1
+        },
+        "A7": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "dwell-time delta \u2014 needs aggregation across events"
+        },
+        "A9": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "distinct-asset count \u2014 needs aggregation"
+        }
+      },
+      "refusal_honest": true,
+      "result_accuracy_on_expressible": 1.0,
+      "silent_error_rate_on_expressible": 0.0,
+      "status": "measured"
     },
     "text_to_sql": {
       "counts": {

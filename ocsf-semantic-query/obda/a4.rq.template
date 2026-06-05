@@ -1,0 +1,2 @@
+PREFIX : <http://sdw.example/ocsf#>
+SELECT ?e WHERE { ?x a :Session ; :startTime ?s ; :endTime ?en ; :eventUid ?e . FILTER(?s <= __PIT__ && ?en >= __PIT__) }
