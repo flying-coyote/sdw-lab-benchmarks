@@ -18,6 +18,8 @@ engine-against-engine, and labelled at an honest evidence tier.
 | [`ocsf-semantic-testbed/`](ocsf-semantic-testbed/) | the shared planted-chain corpus + ground truth feeding BENCH-A/B/C — the build-once foundation, not a benchmark itself | — | foundation |
 | [`ocsf-mapping-oracle/`](ocsf-mapping-oracle/) | does schema / formal grounding / an ontology-thinking discipline cut the OCSF attributes a model invents — silent-error rate across four conditions on a local model | B | first pass (local leg) |
 | [`ocsf-semantic-query/`](ocsf-semantic-query/) | OBDA vs GraphRAG vs text-to-SQL on adversary-tail concept queries — silent-error rate the decisive metric (text-to-SQL arm first; OBDA/GraphRAG pending) | B | first pass (1 of 3 arms) |
+| [`ocsf-write-contract/`](ocsf-write-contract/) | hot-tier write contract under streaming OCSF ingest: file-write (Iceberg) vs SQL-transaction (DuckLake) — commit latency, write amplification, read-contract coherence (ISK never-write arm pending) | B | first pass (2 of 3 arms) |
+| [`ocsf-fsi-compliance/`](ocsf-fsi-compliance/) | human-hours to produce a §1003(b)/Reg-SCI evidence report on a lakehouse vs a schema-on-read SIEM — corpus + frozen spec + defensibility demonstrated; human-hours pending an operator run | B | scaffold |
 
 ## How they are kept honest
 
@@ -66,5 +68,7 @@ ocsf-semantic-testbed/  shared planted-chain corpus + ground truth (feeds BENCH-
 bench-a-context-collapse/  benchmark: OCSF context-collapse (Store F vs Store N)
 ocsf-mapping-oracle/    benchmark: BENCH-B mapping oracle (4 conditions, silent-error)
 ocsf-semantic-query/    benchmark: BENCH-C semantic-query head-to-head (text-to-SQL arm)
-requirements.txt        duckdb, chdb (pinned) — sigma-portability has its own
+ocsf-write-contract/    benchmark: BENCH-D hot-tier write contract (Iceberg vs DuckLake; own reqs)
+ocsf-fsi-compliance/    scaffold:  BENCH-F §1003(b) human-hours (corpus + spec + defensibility)
+requirements.txt        duckdb, chdb (pinned) — sigma-portability + ocsf-write-contract have their own
 ```

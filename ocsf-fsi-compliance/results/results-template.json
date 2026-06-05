@@ -1,0 +1,129 @@
+{
+  "benchmark": "ocsf-fsi-compliance (BENCH-F, scaffold)",
+  "decision_rule": {
+    "confirm": "lakehouse <=60% of SIEM hours AND gap concentrates in c+d",
+    "inconclusive": "20-40% or uniform gap",
+    "null": "reduction <20%"
+  },
+  "evidence_tier": "B at best, self-timed synthetic (see REPORT-SPEC.md)",
+  "human_hours_summary": {
+    "lakehouse_total": null,
+    "reduction_pct": null,
+    "siem_total": null,
+    "verdict": "PENDING \u2014 fill human_hours per section"
+  },
+  "sections": [
+    {
+      "acceptance": "Retention attestation: per-year partition coverage to the \u00a71005/17a-4 floor, recent 2y readily accessible",
+      "human_hours": {
+        "lakehouse": null,
+        "siem": null
+      },
+      "id": "a_retention",
+      "lakehouse": {
+        "defensibility": "lineage/time-travel-backed (machine-checkable)",
+        "machine_check": {
+          "machine_checkable": true,
+          "pass": true,
+          "produced": {
+            "span": 6,
+            "years_covered": [
+              2020,
+              2021,
+              2022,
+              2023,
+              2024,
+              2025
+            ]
+          }
+        }
+      },
+      "siem": {
+        "defensibility": "manual-export / screenshot (operator to confirm)",
+        "machine_check": null
+      }
+    },
+    {
+      "acceptance": "Incident-timeline reconstruction: ordered who-did-what-when for the planted intrusion (\u00a71002)",
+      "human_hours": {
+        "lakehouse": null,
+        "siem": null
+      },
+      "id": "b_timeline",
+      "lakehouse": {
+        "defensibility": "lineage/time-travel-backed (machine-checkable)",
+        "machine_check": {
+          "machine_checkable": true,
+          "pass": true,
+          "produced_order": [
+            "fsi-needle-0",
+            "fsi-needle-420",
+            "fsi-needle-900",
+            "fsi-needle-1500",
+            "fsi-needle-2100"
+          ]
+        }
+      },
+      "siem": {
+        "defensibility": "manual-export / screenshot (operator to confirm)",
+        "machine_check": null
+      }
+    },
+    {
+      "acceptance": "Lineage / chain-of-custody for a sample of records (provenance + integrity)",
+      "human_hours": {
+        "lakehouse": null,
+        "siem": null
+      },
+      "id": "c_lineage",
+      "lakehouse": {
+        "defensibility": "lineage/time-travel-backed (machine-checkable)",
+        "machine_check": {
+          "machine_checkable": true,
+          "note": "lineage/integrity is a catalog+snapshot property of the lakehouse substrate",
+          "pass": true,
+          "produced": {
+            "sample_uids": [
+              "fsi-0000429",
+              "fsi-0005487",
+              "fsi-0010498",
+              "fsi-0015303",
+              "fsi-0020145",
+              "fsi-0025424",
+              "fsi-0030275",
+              "fsi-0034804"
+            ]
+          }
+        }
+      },
+      "siem": {
+        "defensibility": "manual-export / screenshot (operator to confirm)",
+        "machine_check": null
+      }
+    },
+    {
+      "acceptance": "BC/DR point-in-time reproduction: re-run a query as of a past instant (time-travel)",
+      "human_hours": {
+        "lakehouse": null,
+        "siem": null
+      },
+      "id": "d_point_in_time",
+      "lakehouse": {
+        "defensibility": "lineage/time-travel-backed (machine-checkable)",
+        "machine_check": {
+          "machine_checkable": true,
+          "pass": true,
+          "produced": {
+            "events_as_of": 30008,
+            "events_now": 36005
+          }
+        }
+      },
+      "siem": {
+        "defensibility": "manual-export / screenshot (operator to confirm)",
+        "machine_check": null
+      }
+    }
+  ],
+  "status": "scaffold \u2014 corpus + frozen spec + defensibility demonstrated; human-hours pending operator run"
+}
