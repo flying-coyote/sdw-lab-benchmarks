@@ -3,22 +3,46 @@
   "benchmark": "ocsf-read-scan (BENCH-E)",
   "ducklake": {
     "queries": {
-      "byte_rollup": 66.788,
-      "filtered": 38.902,
-      "full_count": 12.589,
-      "topn_src": 647.619
+      "byte_rollup": {
+        "cv_pct": 9.1,
+        "median_ms": 21.535
+      },
+      "filtered": {
+        "cv_pct": 2.4,
+        "median_ms": 10.817
+      },
+      "full_count": {
+        "cv_pct": 2.1,
+        "median_ms": 4.078
+      },
+      "topn_src": {
+        "cv_pct": 1.9,
+        "median_ms": 277.921
+      }
     },
-    "storage_bytes": 216262418
+    "storage_bytes": 216262293
   },
   "evidence_tier": "B (single machine; latencies medians)",
   "iceberg": {
     "queries": {
-      "byte_rollup": 129.323,
-      "filtered": 46.458,
-      "full_count": 5.763,
-      "topn_src": 781.451
+      "byte_rollup": {
+        "cv_pct": 9.6,
+        "median_ms": 46.852
+      },
+      "filtered": {
+        "cv_pct": 2.9,
+        "median_ms": 9.119
+      },
+      "full_count": {
+        "cv_pct": 3.8,
+        "median_ms": 1.743
+      },
+      "topn_src": {
+        "cv_pct": 5.1,
+        "median_ms": 346.154
+      }
     },
-    "storage_bytes": 132901552
+    "storage_bytes": 132901485
   },
   "n_rows": 10000000
 }

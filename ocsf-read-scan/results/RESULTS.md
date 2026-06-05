@@ -1,14 +1,18 @@
 # BENCH-E — DuckLake vs Iceberg large-scan reads (results)
 
 **Tier B.** 10,000,000-row OCSF corpus materialized in both formats and read by the same
-engine (DuckDB), so the variable is the format's read path. Latencies are machine-specific medians.
+engine (DuckDB). Latencies are medians with coefficient of variation. **This is the default-config
+comparison and is confounded**: the two writers differ in codec and per-column encoding (pyiceberg
+ZSTD/dictionary vs DuckDB ZSTD/PLAIN), so the gap mixes the writer's compression with the format. See
+[PARITY.md](PARITY.md) (matched codec) and [SAME-FILES.md](SAME-FILES.md) (byte-identical data) for the
+controlled result that isolates the format — where the read difference collapses to ~parity.
 
-| query | Iceberg ms | DuckLake ms | Iceberg/DuckLake |
+| query | Iceberg ms (cv) | DuckLake ms (cv) | Iceberg/DuckLake |
 |---|---|---|---|
-| full_count | 6 | 13 | 0.46× |
-| filtered | 46 | 39 | 1.19× |
-| topn_src | 781 | 648 | 1.21× |
-| byte_rollup | 129 | 67 | 1.94× |
+| full_count | 2 (4%) | 4 (2%) | 0.43× |
+| filtered | 9 (3%) | 11 (2%) | 0.84× |
+| topn_src | 346 (5%) | 278 (2%) | 1.25× |
+| byte_rollup | 47 (10%) | 22 (9%) | 2.18× |
 
 - Storage: Iceberg 133 MB · DuckLake 216 MB
 - Answers identical across both formats: **True**

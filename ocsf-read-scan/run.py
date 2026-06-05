@@ -89,8 +89,8 @@ def run():
             dl_sql = sql.format(t="dl.events")
             it = time_trials(lambda: con.execute(ice_sql).fetchall(), warmup=1, trials=3)
             dt = time_trials(lambda: con.execute(dl_sql).fetchall(), warmup=1, trials=3)
-            results["iceberg"]["queries"][qid] = it["median_ms"]
-            results["ducklake"]["queries"][qid] = dt["median_ms"]
+            results["iceberg"]["queries"][qid] = {"median_ms": it["median_ms"], "cv_pct": it["cv_pct"]}
+            results["ducklake"]["queries"][qid] = {"median_ms": dt["median_ms"], "cv_pct": dt["cv_pct"]}
             ratio = round(it["median_ms"] / max(dt["median_ms"], 0.01), 2)
             print(f"  {qid:12}: iceberg {it['median_ms']:.0f}ms  ducklake {dt['median_ms']:.0f}ms  (ice/dl {ratio}×)")
 
@@ -109,16 +109,24 @@ def run():
 
 
 def render_md(res):
+    def m(side, q):
+        return res[side]["queries"][q]["median_ms"]
+    def cvp(side, q):
+        return res[side]["queries"][q]["cv_pct"]
     rows = "\n".join(
-        f"| {q} | {res['iceberg']['queries'][q]:.0f} | {res['ducklake']['queries'][q]:.0f} | "
-        f"{round(res['iceberg']['queries'][q]/max(res['ducklake']['queries'][q],0.01),2)}× |"
+        f"| {q} | {m('iceberg',q):.0f} ({cvp('iceberg',q):.0f}%) | {m('ducklake',q):.0f} ({cvp('ducklake',q):.0f}%) | "
+        f"{round(m('iceberg',q)/max(m('ducklake',q),0.01),2)}× |"
         for q in res["iceberg"]["queries"])
     return f"""# BENCH-E — DuckLake vs Iceberg large-scan reads (results)
 
 **Tier B.** {res['n_rows']:,}-row OCSF corpus materialized in both formats and read by the same
-engine (DuckDB), so the variable is the format's read path. Latencies are machine-specific medians.
+engine (DuckDB). Latencies are medians with coefficient of variation. **This is the default-config
+comparison and is confounded**: the two writers differ in codec and per-column encoding (pyiceberg
+ZSTD/dictionary vs DuckDB ZSTD/PLAIN), so the gap mixes the writer's compression with the format. See
+[PARITY.md](PARITY.md) (matched codec) and [SAME-FILES.md](SAME-FILES.md) (byte-identical data) for the
+controlled result that isolates the format — where the read difference collapses to ~parity.
 
-| query | Iceberg ms | DuckLake ms | Iceberg/DuckLake |
+| query | Iceberg ms (cv) | DuckLake ms (cv) | Iceberg/DuckLake |
 |---|---|---|---|
 {rows}
 
