@@ -98,14 +98,16 @@ def transport_arm():
         def _j():
             nonlocal nrows_jdbc
             nrows_jdbc = jdbc_fetch(pq)
-        jdbc_py = time_trials(_j, warmup=1, trials=2)
+        jdbc_py = time_trials(_j, warmup=1, trials=5)
         jdbc_jvm = jdbc_native_jvm_ms(pq)        # the honest row-transport cost, no Python bridge
         honest = round(jdbc_jvm / adbc_t["median_ms"], 1) if jdbc_jvm and adbc_t["median_ms"] else None
         py_infl = round(jdbc_py["median_ms"] / adbc_t["median_ms"], 1) if adbc_t["median_ms"] else None
         out[str(n)] = {
             "adbc_median_ms": adbc_t["median_ms"],
+            "adbc_cv_pct": adbc_t["cv_pct"],
             "jdbc_native_jvm_median_ms": jdbc_jvm,
             "jdbc_python_jpype_median_ms": jdbc_py["median_ms"],
+            "jdbc_python_cv_pct": jdbc_py["cv_pct"],
             "adbc_speedup_vs_native_jdbc": honest,
             "adbc_speedup_vs_python_jdbc": py_infl,
             "correct": nrows_arrow == nrows_jdbc == n,

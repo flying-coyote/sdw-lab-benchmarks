@@ -7,8 +7,8 @@ Latencies are machine-specific medians, not constants. ODBC is a pending third l
 
 | rows | ADBC ms | JDBC native-JVM ms | JDBC Python/JPype ms | ADBC vs native | ADBC vs Python |
 |---|---|---|---|---|---|
-| 100000 | 36 | 179 | 2949 | 5.0× | 82.1× |
-| 1000000 | 151 | 1450 | 35469 | 9.6× | 234.3× |
+| 100000 | 35 | 222 | 3049 | 6.3× | 86.9× |
+| 1000000 | 158 | 1285 | 32505 | 8.1× | 205.2× |
 
 The honest columnar-vs-row advantage is **ADBC vs native-JVM JDBC** — single digits, not hundreds:
 ADBC returns Arrow record batches with no per-row marshaling, where JDBC deserializes row by row. The
@@ -22,8 +22,8 @@ each one's idiomatic runtime, not a single-language isolation. Row counts matche
 
 | codec | file MB | compression | scan ms |
 |---|---|---|---|
-| snappy | 45.2 | 2.08× | 3 |
 | uncompressed | 94.2 | 1.0× | 3 |
+| snappy | 45.2 | 2.08× | 3 |
 | zstd | 25.6 | 3.68× | 5 |
 
 ## Edge-case battery (Hunter's "important errors early on")
