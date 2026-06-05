@@ -24,15 +24,25 @@ caveat. Heavy runs are serialized (never co-run a timing bench — it inflates C
    plan drops CV 5.8%→0.8% (sustained) and 19.8%→2.7% (short). A power-plan setting, not a migration.
 7. **"Compression choice is a storage decision."** It's also a read-latency lever (~5–13%, Snappy
    decompresses cheaper) and a determinism lever (order-sensitive encoding).
+8. **"Context-collapse imposes a uniform fidelity tax on detection."** No — it splits into two distinct
+   failure modes that land on whichever rule keys the field a given coarsening knob touched (R1): a rule
+   either goes *blind* (dropped evidence → recall→0, the rare-DNS-sampled C2) or *cries wolf* (flattened
+   distinction → precision collapse, MFA-absence coerced to false). Fidelity has to be evaluated against
+   the detections you actually run, not as one number; and the worst case is silent (recall→0 raises no
+   alert at all). Strengthens H-OCSF-CONTEXT-COLLAPSE-01 with a SOC-facing metric.
 
 ## Campaign backlog — resource-ordered (ascending)
 
 Status: [ ] pending · [~] running · [x] done. Each is single-box and dependency-light unless noted.
 
-- [~] **R0 large_scan 1B CV redo** — the audit's last item; 3 trials + CV + confound caveat. (running)
-- [ ] **R1 Sigma precision over Store N** (light, ~5m) — same rules, coarsened store; does OCSF
-  normalization degrade detection *precision* (noise) as well as the adversary-tail F1? Bridges
-  context-collapse × sigma. Store N already on disk.
+- [x] **R0 large_scan 1B CV redo** — DONE (`18a7873`). Signal queries CV 0–6% (stable); full_count
+  sub-5ms noise (CV 32%, discounted). Reproduces the codec-default confound at 1B: Iceberg 13.3 GB
+  (ZSTD) reads 1.1–1.55× slower than DuckLake 21.6 GB (Snappy); same_files isolates it to ~parity.
+- [x] **R1 Sigma over Store N** — DONE. The same portable Sigma rules that fire cleanly on Store F
+  split two ways on the coarse store: **rare-DNS sampling → C2 recall 1→0** (the one C2 resolution is
+  the only sub-3 query in the corpus, dropped), **absence-coercion → no-MFA precision 1.0→0.0037**
+  (267 routine MFA-failures join the 1 needle), while truncation (indicator at char 26 < 64 cap) and
+  flow rollup (RDP traffic already temporally sparse) leave their rules untouched (controls).
 - [ ] **R2 BENCH-A second corpus / dose-response** (light, ~20m) — a second seeded chain + a
   normalization-severity sweep; turns H-OCSF-CONTEXT-COLLAPSE-01 from one chain into a curve.
 - [ ] **R3 clickhouse-vs-duckdb at 100M** (moderate, chdb) — re-run at the scale the 10M CV said we need;

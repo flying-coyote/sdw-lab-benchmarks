@@ -1,0 +1,88 @@
+{
+  "benchmark": "ocsf-sigma-detection store-N coarse arm (R1)",
+  "evidence_tier": "B (synthetic testbed, single machine; one planted chain)",
+  "headline": {
+    "cried_wolf_precision_collapse": [
+      "nomfa_privesc.yml"
+    ],
+    "survived_controls": [
+      "encoded_powershell.yml",
+      "rdp_lateral.yml"
+    ],
+    "went_blind_recall_to_0": [
+      "c2_domain.yml"
+    ]
+  },
+  "hypothesis": "H-OCSF-CONTEXT-COLLAPSE-01 (detection-as-code corollary)",
+  "per_rule": [
+    {
+      "degraded": true,
+      "fp_multiplier_N_over_F": 0.0,
+      "ioc_rule": true,
+      "matches_F": 1,
+      "matches_N": 0,
+      "mechanism": "rare-DNS sampling",
+      "precision_F": 1.0,
+      "precision_N": 0.0,
+      "precision_delta": -1.0,
+      "recall_F": 1,
+      "recall_N": 0,
+      "recall_delta": -1,
+      "rule": "c2_domain.yml",
+      "tp_F": 1,
+      "tp_N": 0
+    },
+    {
+      "degraded": false,
+      "fp_multiplier_N_over_F": 1.0,
+      "ioc_rule": false,
+      "matches_F": 1,
+      "matches_N": 1,
+      "mechanism": "cmd-line truncation",
+      "precision_F": 1.0,
+      "precision_N": 1.0,
+      "precision_delta": 0.0,
+      "recall_F": 1,
+      "recall_N": 1,
+      "recall_delta": 0,
+      "rule": "encoded_powershell.yml",
+      "tp_F": 1,
+      "tp_N": 1
+    },
+    {
+      "degraded": true,
+      "fp_multiplier_N_over_F": 268.0,
+      "ioc_rule": false,
+      "matches_F": 1,
+      "matches_N": 268,
+      "mechanism": "absence-coercion (MFA absent -> false)",
+      "precision_F": 1.0,
+      "precision_N": 0.0037,
+      "precision_delta": -0.9963,
+      "recall_F": 1,
+      "recall_N": 1,
+      "recall_delta": 0,
+      "rule": "nomfa_privesc.yml",
+      "tp_F": 1,
+      "tp_N": 1
+    },
+    {
+      "degraded": false,
+      "fp_multiplier_N_over_F": 1.0,
+      "ioc_rule": false,
+      "matches_F": 2960,
+      "matches_N": 2960,
+      "mechanism": "flow rollup",
+      "precision_F": 0.0003,
+      "precision_N": 0.0003,
+      "precision_delta": 0.0,
+      "recall_F": 1,
+      "recall_N": 1,
+      "recall_delta": 0,
+      "rule": "rdp_lateral.yml",
+      "tp_F": 1,
+      "tp_N": 1
+    }
+  ],
+  "rules": 4
+}
