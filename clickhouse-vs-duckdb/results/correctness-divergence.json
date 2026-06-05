@@ -1,0 +1,113 @@
+{
+  "benchmark": "clickhouse-vs-duckdb correctness divergence (C3 gate finding)",
+  "chdb_eq_diverged_values": 6,
+  "chdb_eq_total_undercount": 52,
+  "chdb_like_correct": true,
+  "chdb_mergetree_correct": true,
+  "corpus_rows": 10000000,
+  "duckdb_matches_ground_truth": true,
+  "environment": {
+    "chdb": "4.1.8",
+    "duckdb": "1.5.3"
+  },
+  "evidence_tier": "B (single machine; ground-truth-verified, deterministic, reproducible)",
+  "predicate_path": {
+    "=": "undercounts (Parquet reader)",
+    "IN": "undercounts (Parquet reader)",
+    "LIKE": "correct",
+    "MergeTree native": "correct"
+  },
+  "probe_values": 8,
+  "probes": [
+    {
+      "chdb_eq_undercount": 7,
+      "chdb_mergetree": 5099,
+      "chdb_parquet_eq": 5092,
+      "chdb_parquet_in": 5092,
+      "chdb_parquet_like": 5099,
+      "duckdb_correct": true,
+      "duckdb_parquet": 5099,
+      "truth": 5099,
+      "value": "user42"
+    },
+    {
+      "chdb_eq_undercount": 6,
+      "chdb_mergetree": 4972,
+      "chdb_parquet_eq": 4966,
+      "chdb_parquet_in": 4966,
+      "chdb_parquet_like": 4972,
+      "duckdb_correct": true,
+      "duckdb_parquet": 4972,
+      "truth": 4972,
+      "value": "user1337"
+    },
+    {
+      "chdb_eq_undercount": 7,
+      "chdb_mergetree": 5108,
+      "chdb_parquet_eq": 5101,
+      "chdb_parquet_in": 5101,
+      "chdb_parquet_like": 5108,
+      "duckdb_correct": true,
+      "duckdb_parquet": 5108,
+      "truth": 5108,
+      "value": "user7"
+    },
+    {
+      "chdb_eq_undercount": 0,
+      "chdb_mergetree": 5055,
+      "chdb_parquet_eq": 5055,
+      "chdb_parquet_in": 5055,
+      "chdb_parquet_like": 5055,
+      "duckdb_correct": true,
+      "duckdb_parquet": 5055,
+      "truth": 5055,
+      "value": "user999"
+    },
+    {
+      "chdb_eq_undercount": 10,
+      "chdb_mergetree": 5106,
+      "chdb_parquet_eq": 5096,
+      "chdb_parquet_in": 5096,
+      "chdb_parquet_like": 5106,
+      "duckdb_correct": true,
+      "duckdb_parquet": 5106,
+      "truth": 5106,
+      "value": "user1500"
+    },
+    {
+      "chdb_eq_undercount": 12,
+      "chdb_mergetree": 5000,
+      "chdb_parquet_eq": 4988,
+      "chdb_parquet_in": 4988,
+      "chdb_parquet_like": 5000,
+      "duckdb_correct": true,
+      "duckdb_parquet": 5000,
+      "truth": 5000,
+      "value": "user256"
+    },
+    {
+      "chdb_eq_undercount": 10,
+      "chdb_mergetree": 5022,
+      "chdb_parquet_eq": 5012,
+      "chdb_parquet_in": 5012,
+      "chdb_parquet_like": 5022,
+      "duckdb_correct": true,
+      "duckdb_parquet": 5022,
+      "truth": 5022,
+      "value": "user1023"
+    },
+    {
+      "chdb_eq_undercount": 0,
+      "chdb_mergetree": 5144,
+      "chdb_parquet_eq": 5144,
+      "chdb_parquet_in": 5137,
+      "chdb_parquet_like": 5144,
+      "duckdb_correct": true,
+      "duckdb_parquet": 5144,
+      "truth": 5144,
+      "value": "user64"
+    }
+  ],
+  "row_group_size": 12288,
+  "row_groups": 814
+}

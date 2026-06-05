@@ -30,6 +30,13 @@ caveat. Heavy runs are serialized (never co-run a timing bench — it inflates C
    distinction → precision collapse, MFA-absence coerced to false). Fidelity has to be evaluated against
    the detections you actually run, not as one number; and the worst case is silent (recall→0 raises no
    alert at all). Strengthens H-OCSF-CONTEXT-COLLAPSE-01 with a SOC-facing metric.
+9. **"Over an open format the query engine is interchangeable; the answers always agree."** Falsified at
+   scale (R3). chDB 4.1.8's Parquet equality-filter silently undercounts in tail row groups of a
+   many-group file — a deterministic wrong answer, no error, that a timing-only benchmark would have
+   published as a win. Interchangeability holds for SQL portability and ~latency, but carries a
+   *correctness* asterisk; the cross-engine answer-equality gate is essential, not ceremony. For
+   security data a `count(*) WHERE` is a detection threshold or compliance figure, so silent-and-fast is
+   worse than slow-and-right. (Candidate upstream bug report — Jeremy to file with the reproduction.)
 
 ## Campaign backlog — resource-ordered (ascending)
 
@@ -43,10 +50,22 @@ Status: [ ] pending · [~] running · [x] done. Each is single-box and dependenc
   the only sub-3 query in the corpus, dropped), **absence-coercion → no-MFA precision 1.0→0.0037**
   (267 routine MFA-failures join the 1 needle), while truncation (indicator at char 26 < 64 cap) and
   flow rollup (RDP traffic already temporally sparse) leave their rules untouched (controls).
-- [ ] **R2 BENCH-A second corpus / dose-response** (light, ~20m) — a second seeded chain + a
-  normalization-severity sweep; turns H-OCSF-CONTEXT-COLLAPSE-01 from one chain into a curve.
-- [ ] **R3 clickhouse-vs-duckdb at 100M** (moderate, chdb) — re-run at the scale the 10M CV said we need;
-  resolves the noise-dominated micro-query ratios with stable CV.
+- [x] **R2 BENCH-A second corpus / dose-response** — DONE (already built+committed earlier this
+  session). Dose-response is **flat-then-step**: headline +0.719 from light through the documented
+  default, stepping to +0.829 only under heavy/very-heavy coarsening, routine control clean (0.000) at
+  every rung — most of the adversary-tail gap is binary (atomic detail kept-or-gone), the step is the
+  timing-tolerant queries failing once the rollup window perturbs order. Second chain: chain B
+  (different actor/subnet, SMB lateral T1021.002) tracks chain A within **0.0095** (0.7095 vs 0.719),
+  both routine-clean, canonical corpus fingerprint-restored. The +0.72 result isn't an artifact of one
+  attack instance.
+- [x] **R3 clickhouse-vs-duckdb at 1M/10M/100M** — DONE. (a) CV collapses with scale: mean CV ~19% (1M)
+  → ~5% (10M) → ~4% (100M); sub-100ms micro-queries are noise below 10M. (b) **The headline is a silent
+  correctness bug.** At 100M the cross-engine answer-equality gate *failed*: chDB 4.1.8 returned a
+  selective-lookup count 49 rows short of DuckDB over the same Parquet, no error. Isolated + reproduced
+  (`correctness_divergence.py`, cheap at 10M/rg=12288 → 814 groups, −52 rows across 6/8 probe values):
+  chDB's Parquet equality (`=`/`IN`) filter drops matching rows in tail row groups, while `LIKE`,
+  chDB's own MergeTree, and DuckDB all match the generator's ground truth. The gate is the only reason
+  it surfaced. Strongest vindication of the lab's method.
 - [ ] **R4 ZSTD schema-seeded dictionary on OCSF Parquet** (moderate, ~45m) — H-MV-ZSTD-01: schema-trained
   dict vs generic zstd vs snappy vs Parquet-native dict; size + read latency, held-out training set.
 - [ ] **R5 Materialized-view acceleration** (moderate) — H-MV-SECURITY-01: pre-aggregated SOC-dashboard
@@ -67,8 +86,13 @@ R2RML setup), BENCH-B frontier leg (needs ANTHROPIC_API_KEY), BENCH-A named-prac
 - **The encoder is the read lever** (lakehouse) — formats are read-neutral on identical bytes; pick on
   write path, not a read benchmark. Backed by same-files arm.
 - **Same codec, different sizes** (lakehouse) — codec name ≠ compression; the encoder variable. compression_probe.
+- **The query engine returned the wrong answer and didn't tell you** (detection / economics) — the C3
+  100M divergence: chDB's Parquet equality-filter silently undercounts; DuckDB matches ground truth; the
+  cross-engine answer-equality gate is the only thing that caught it. The campaign's strongest piece —
+  verify across engines, don't trust the speed. Backed by correctness_divergence.py. **(highest priority)**
 - **How to run a benchmark that doesn't lie to you** (economics) — the CV/parity/same-files/power-plan
-  methodology; companion to independent-measurement. BENCHMARKING-METHODOLOGY + env_characterize.
+  methodology, with the C3 gate-catch as its opening case; companion to independent-measurement.
+  BENCHMARKING-METHODOLOGY + env_characterize + correctness_divergence.
 - **Parquet files don't hash the way security tools assume** (detection) — chain-of-custody/WORM/dedup
   break on byte-hashing; hash logical content. ocsf-parquet-determinism.
 - **Scale before you measure** (economics) — chdb 55% CV at 10M; know your noise floor. env_characterize.

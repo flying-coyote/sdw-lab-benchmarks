@@ -16,9 +16,9 @@ full-scan rollup, a high-cardinality top-N, a selective time-window lookup, a
 the Parquet file in place, and querying each engine's native store. Every query's
 answer is asserted identical across engines before any latency is reported.
 
-## Results (DuckDB 1.5.3, chDB 4.1.8, 12 vCPU WSL2)
+## Results (DuckDB 1.5.3, chDB 4.1.8, WSL2)
 
-Every cross-engine answer matched, in both configs, at 1M and 10M events. The
+Every cross-engine answer matched, in both configs, at 1M and 10M events, and the
 latencies traded by workload, modestly. At 10M events, native store:
 
 | query | DuckDB ms | ClickHouse ms | faster | × |
@@ -34,11 +34,34 @@ ClickHouse MergeTree insert **3.9 s** (~8.6×). Full per-scale, both-config tabl
 in [`results/RESULTS.md`](results/RESULTS.md); machine-readable in
 [`results/results.json`](results/results.json).
 
-The honest reading: for single-node, in-process OCSF analytics at this scale, the
-SQL and the answers port cleanly (four of five queries are byte-identical SQL;
-one needs `//` → `intDiv`), the swap costs a modest, workload-dependent latency
-delta (≤ ~2.6× here), and DuckDB was generally ahead. That is the cost-paradox
-"engines are interchangeable" claim with a measurement under it.
+Two things showed up when the run was extended to 100M events. The first is a
+measurement-discipline point: coefficient of variation collapses with scale (mean
+CV ~19% at 1M, ~5% at 10M, ~4% at 100M), so the sub-100ms micro-queries that read as
+wins or ties at 1M are mostly noise, and only at 10M and above does the per-query
+ranking hold still — scale the corpus until the signal clears the noise floor before
+trusting a ratio.
+
+The second is sharper, and it is the headline. At 100M the answer-equality gate
+*failed*: on the selective-lookup query chDB returned a count 49 rows short of
+DuckDB's over the same Parquet file, with no error raised. The cause, isolated and
+reproduced in [`correctness_divergence.py`](correctness_divergence.py), is a silent
+defect in chDB 4.1.8's Parquet reader on an exact string-equality filter — it drops a
+handful of genuinely-matching rows in the tail row groups of a many-group file, while
+the same predicate via `LIKE`, the same data in chDB's own MergeTree store, and
+DuckDB's read of the same bytes all match the generator's ground truth exactly. It is
+a narrow, real bug in one read path, not a general indictment of ClickHouse, but it is
+exactly the kind of thing a timing-only benchmark publishes as a "win" without ever
+noticing the number was wrong.
+
+So the honest reading of "is the engine interchangeable" has two layers. The SQL and
+the answers port cleanly up to 10M (four of five queries byte-identical, one needs
+`//` → `intDiv`), the swap costs a modest workload-dependent latency delta (≤ ~3×
+here), and DuckDB was generally ahead. But interchangeability carries a correctness
+asterisk at scale, because the cross-engine answer-equality gate is the only reason
+the chDB miscount surfaced at all, and for security data — where `count(*)` under a
+filter is a detection threshold or a compliance figure — a fast engine that is
+silently wrong is worse than a slow engine that is right. Full divergence detail in
+[`results/CORRECTNESS-DIVERGENCE.md`](results/CORRECTNESS-DIVERGENCE.md).
 
 ## Honesty boundary
 
