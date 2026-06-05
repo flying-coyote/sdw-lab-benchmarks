@@ -14,6 +14,8 @@ engine-against-engine, and labelled at an honest evidence tier.
 | [`clickhouse-vs-duckdb/`](clickhouse-vs-duckdb/) | whether ClickHouse and DuckDB are interchangeable over OCSF-shaped data — same answers? what does swapping cost in latency? | B | published |
 | [`sigma-portability/`](sigma-portability/) | how much of a Sigma correlation rule survives compilation to four open backends (Splunk SPL, ES&#124;QL, Lucene, OpenSearch PPL) | B | published |
 | [`ocsf-mapping-fidelity/`](ocsf-mapping-fidelity/) | how completely and how losslessly real vendor schemas (Okta, CrowdStrike) map into OCSF 1.8.0 — typed vs coerced vs unmapped, field by field | B | published |
+| [`bench-a-context-collapse/`](bench-a-context-collapse/) | whether normalizing multi-source telemetry into one coarse OCSF store degrades adversary-relevant queries more than routine ones (two stores, one planted-chain corpus, 16 frozen queries) | B | first pass |
+| [`ocsf-semantic-testbed/`](ocsf-semantic-testbed/) | the shared planted-chain corpus + ground truth feeding BENCH-A/B/C — the build-once foundation, not a benchmark itself | — | foundation |
 
 ## How they are kept honest
 
@@ -58,5 +60,7 @@ flattening-fidelity/    benchmark: OCSF flattening fidelity (3 failure modes)
 clickhouse-vs-duckdb/   benchmark: engine interchangeability on OCSF data
 sigma-portability/      benchmark: Sigma correlation-rule portability across 4 backends
 ocsf-mapping-fidelity/  benchmark: vendor-schema (Okta, CrowdStrike) -> OCSF 1.8.0 fidelity
+ocsf-semantic-testbed/  shared planted-chain corpus + ground truth (feeds BENCH-A/B/C)
+bench-a-context-collapse/  benchmark: OCSF context-collapse (Store F vs Store N)
 requirements.txt        duckdb, chdb (pinned) — sigma-portability has its own
 ```
