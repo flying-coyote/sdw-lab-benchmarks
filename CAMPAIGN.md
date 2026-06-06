@@ -163,11 +163,12 @@ Added 2026-06-06 from the post-R8 review. Resource-light unless noted; each maps
   nothing lab-authored. Caveats: modest fired sample (54 rules; APT29 exercises a subset of techniques),
   one dataset/coarsening config, recall-loss vs the fidelity store (not absolute labels), and the
   independent-reviewer "is Store N realistic" gate stays open. Strengthens H-OCSF-CONTEXT-COLLAPSE-01.
-- **R8 `topn_src` divergence chase** — separate scan-path from spill. Re-run the heavy high-cardinality
-  aggregate three ways on byte-identical files (Iceberg extension · DuckLake · a bare `read_parquet(glob)`
-  baseline) and again with spill disabled / a higher memory cap, to tell whether the 1.30× is the two DuckDB
-  extensions' read path or a 28 GB-cap × drvfs-spill interaction. Feeds H-ICEBERG-INTERFACE-01's
-  "not-unconditional" caution. Medium (1B is heavy; can characterize the shape at 100M first).
+- [x] **R8 `topn_src` divergence chase — DONE (T2.5, `ocsf-read-scan/topn_isolation.py`)**: three arms on
+  byte-identical 100M Parquet (Iceberg ext · DuckLake · bare `read_parquet(glob)`) under a high cap vs a
+  forced-spill low cap. **It's spill, not the read path** — no-spill arms at parity (iceberg/ducklake 0.93×,
+  Iceberg even slightly faster), gap appears only under forced spill (1.15× toward DuckLake). R8's 1.30× at
+  1B was the 28 GB-cap × drvfs-spill interaction; same-files read-neutrality holds for in-memory aggregates,
+  resolving H-ICEBERG-INTERFACE-01's "not-unconditional" caution to a spill-regime caveat.
 - **Broader Parquet-writer encoding comparison** — DuckDB vs PyArrow vs the pyiceberg writer on identical
   data, the encoder-is-the-read-lever finding generalized beyond the two writers already compared. Backs the
   "encoder is the read lever" + "same codec, different sizes" essays. Resource-light.
