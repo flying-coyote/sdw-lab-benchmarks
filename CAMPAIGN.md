@@ -150,6 +150,19 @@ Added 2026-06-06 from the post-R8 review. Resource-light unless noted; each maps
     backend — only s3/gcs/azblob; reader is arrow-rs), Feldera (per-file SQL-program compile; arrow-rs reader).
   - **Upstream report drafted** for a human to file (`CHDB-UPSTREAM-BUG-REPORT.md`); fastparquet note records
     the retired-engine guidance (use pyarrow).
+- [x] **De-gamed BENCH-A — DONE** (`ocsf-context-collapse-apt29/`). The R1/R2 context-collapse finding was
+  re-run with every gameability lever removed: **unmodified upstream SigmaHQ rules** (cloned verbatim, run
+  via pySigma→SQL), on the **real MITRE ATT&CK APT29 evaluation** telemetry (OTRF/Mordor day 1), with the
+  adversary/routine split coming from each rule's **own `attack.tXXXX` tags** vs MITRE's published APT29
+  technique set, against a **documented** Store-N coarsening applied blind to the rules. Metric (no lab
+  needle): per rule firing on the fidelity store, `recall_loss = 1 − matches_N/matches_F`, decomposed into
+  blinding vs over-match. **Result: the disproportionality replicates de-gamed** — adversary-tail rules
+  mean recall-loss **0.35 / 31% went fully blind** vs routine **0.16 / 16%** (Δ +0.19), and the blinded
+  adversary rules are the expected ones (Base64/encoded-PowerShell + long-script-block rules killed by
+  command-line/script-block truncation — APT29's encoded-PowerShell tradecraft). Mechanism validated with
+  nothing lab-authored. Caveats: modest fired sample (54 rules; APT29 exercises a subset of techniques),
+  one dataset/coarsening config, recall-loss vs the fidelity store (not absolute labels), and the
+  independent-reviewer "is Store N realistic" gate stays open. Strengthens H-OCSF-CONTEXT-COLLAPSE-01.
 - **R8 `topn_src` divergence chase** — separate scan-path from spill. Re-run the heavy high-cardinality
   aggregate three ways on byte-identical files (Iceberg extension · DuckLake · a bare `read_parquet(glob)`
   baseline) and again with spill disabled / a higher memory cap, to tell whether the 1.30× is the two DuckDB

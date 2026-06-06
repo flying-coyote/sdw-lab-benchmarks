@@ -1,0 +1,747 @@
+{
+  "adversary_tail": {
+    "blind_pct": 31.0,
+    "mean_recall_loss": 0.3477,
+    "mean_signed": -0.0316,
+    "over_match_pct": 3.4,
+    "over_matched": 1,
+    "rules_fired": 29,
+    "went_blind": 9
+  },
+  "benchmark": "de-gamed BENCH-A \u2014 upstream SigmaHQ over APT29 eval, fidelity vs documented coarsening",
+  "dataset": "OTRF Security-Datasets APT29 evals day 1 (MITRE ATT&CK Evals Round 1)",
+  "delta_mean_recall_loss": 0.1877,
+  "evidence_tier": "B (real public attack data + unmodified upstream rules; single machine)",
+  "hypothesis": "H-OCSF-CONTEXT-COLLAPSE-01",
+  "routine": {
+    "blind_pct": 16.0,
+    "mean_recall_loss": 0.16,
+    "mean_signed": 0.16,
+    "over_match_pct": 0.0,
+    "over_matched": 0,
+    "rules_fired": 25,
+    "went_blind": 4
+  },
+  "scored": [
+    {
+      "blind": true,
+      "class": "adversary-tail",
+      "matches_f": 10,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/network_connection/net_connection_win_adws_unusual_connection.yml",
+      "table": "network_connection",
+      "techniques": [
+        "t1087"
+      ],
+      "title": "Uncommon Connection to Active Directory Web Services"
+    },
+    {
+      "blind": true,
+      "class": "adversary-tail",
+      "matches_f": 2,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_capture_screenshots.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1113"
+      ],
+      "title": "Windows Screen Capture with CopyFromScreen"
+    },
+    {
+      "blind": true,
+      "class": "adversary-tail",
+      "matches_f": 2,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_frombase64string_archive.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1132"
+      ],
+      "title": "Suspicious FromBase64String Usage On Gzip Archive - Ps Script"
+    },
+    {
+      "blind": true,
+      "class": "adversary-tail",
+      "matches_f": 2,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_malicious_keywords.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1059"
+      ],
+      "title": "Malicious PowerShell Keywords"
+    },
+    {
+      "blind": true,
+      "class": "adversary-tail",
+      "matches_f": 3,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_keywords.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1059"
+      ],
+      "title": "Potential Suspicious PowerShell Keywords"
+    },
+    {
+      "blind": true,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_new_psdrive.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1021"
+      ],
+      "title": "Suspicious New-PSDrive to Admin Share"
+    },
+    {
+      "blind": true,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_powershell_base64_frombase64string.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1059",
+        "t1140"
+      ],
+      "title": "PowerShell Base64 Encoded FromBase64String Cmdlet"
+    },
+    {
+      "blind": true,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_powershell_base64_hidden_flag.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1059"
+      ],
+      "title": "Malicious Base64 Encoded PowerShell Keywords in Command Lines"
+    },
+    {
+      "blind": true,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_powershell_encode.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1059"
+      ],
+      "title": "Suspicious Execution of Powershell with Base64"
+    },
+    {
+      "blind": true,
+      "class": "routine",
+      "matches_f": 2,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_dotnet_assembly_from_file.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1620"
+      ],
+      "title": "Potential In-Memory Execution Using Reflection.Assembly"
+    },
+    {
+      "blind": true,
+      "class": "routine",
+      "matches_f": 1,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_export_certificate.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1552"
+      ],
+      "title": "Certificate Exported Via PowerShell - ScriptBlock"
+    },
+    {
+      "blind": true,
+      "class": "routine",
+      "matches_f": 1,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_windowstyle.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1564"
+      ],
+      "title": "Suspicious PowerShell WindowStyle Option"
+    },
+    {
+      "blind": true,
+      "class": "routine",
+      "matches_f": 4,
+      "matches_n": 0,
+      "recall_loss": 1.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_sysinternals_psexec_remote_execution.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1587"
+      ],
+      "title": "Potential PsExec Remote Execution"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 4,
+      "matches_n": 1,
+      "recall_loss": 0.75,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_get_current_user.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1033"
+      ],
+      "title": "Suspicious PowerShell Get Current User"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 6,
+      "matches_n": 4,
+      "recall_loss": 0.3333,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_get_process.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1057"
+      ],
+      "title": "Suspicious Process Discovery With Get-Process"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/create_remote_thread/create_remote_thread_win_powershell_lsass.yml",
+      "table": "create_remote_thread",
+      "techniques": [
+        "t1003"
+      ],
+      "title": "Potential Credential Dumping Attempt Via PowerShell Remote Thread"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 2,
+      "matches_n": 2,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/file/file_event/file_event_win_cred_dump_tools_dropped_files.yml",
+      "table": "file_event",
+      "techniques": [
+        "t1003"
+      ],
+      "title": "Cred Dump Tools Dropped Files"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 2,
+      "matches_n": 2,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/file/file_event/file_event_win_csharp_compile_artefact.yml",
+      "table": "file_event",
+      "techniques": [
+        "t1027"
+      ],
+      "title": "Dynamic CSharp Compile Artefact"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/file/file_event/file_event_win_powershell_startup_shortcuts.yml",
+      "table": "file_event",
+      "techniques": [
+        "t1547"
+      ],
+      "title": "Potential Startup Shortcut Persistence Via PowerShell.EXE"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/file/file_event/file_event_win_startup_folder_file_write.yml",
+      "table": "file_event",
+      "techniques": [
+        "t1547"
+      ],
+      "title": "Startup Folder File Write"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 16,
+      "matches_n": 16,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/pipe_created/pipe_created_powershell_execution_pipe.yml",
+      "table": "pipe_created",
+      "techniques": [
+        "t1059"
+      ],
+      "title": "New PowerShell Instance Created"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_invoke_command_remote.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1021"
+      ],
+      "title": "Execute Invoke-command on Remote Host"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 2,
+      "matches_n": 2,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_keylogging.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1056"
+      ],
+      "title": "Powershell Keylogging"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 2,
+      "matches_n": 2,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_malicious_commandlets.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1059",
+        "t1069",
+        "t1087",
+        "t1482"
+      ],
+      "title": "Malicious PowerShell Commandlets - ScriptBlock"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_access/proc_access_win_lsass_remote_access_trough_winrm.yml",
+      "table": "process_access",
+      "techniques": [
+        "t1003",
+        "t1021",
+        "t1059"
+      ],
+      "title": "Remote LSASS Process Access Through Windows Remote Management"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_powershell_susp_parameter_variation.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1059"
+      ],
+      "title": "Suspicious PowerShell Parameter Substring"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_rar_compress_data.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1560"
+      ],
+      "title": "Files Added To An Archive Using Rar.EXE"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_rar_compression_with_password.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1560"
+      ],
+      "title": "Rar Usage with Password and Compression Level"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_rundll32_without_parameters.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1021",
+        "t1569",
+        "t1570"
+      ],
+      "title": "Rundll32 Execution Without Parameters"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_winrm_remote_powershell_session_process.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1021",
+        "t1059"
+      ],
+      "title": "Remote PowerShell Session Host Process (WinRM)"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 2,
+      "matches_n": 2,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_delete/registry_delete_runmru.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1070"
+      ],
+      "title": "RunMRU Registry Key Deletion - Registry"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 4,
+      "matches_n": 4,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_set/registry_set_new_application_appcompat.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1204"
+      ],
+      "title": "New Application in AppCompat"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 292,
+      "matches_n": 292,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/file/file_event/file_event_win_powershell_drop_binary_or_script.yml",
+      "table": "file_event",
+      "techniques": [],
+      "title": "Potential Binary Or Script Dropper Via PowerShell"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 10,
+      "matches_n": 10,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/file/file_event/file_event_win_powershell_module_creation.yml",
+      "table": "file_event",
+      "techniques": [],
+      "title": "PowerShell Module File Created"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 4,
+      "matches_n": 4,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/file/file_event/file_event_win_ps_script_policy_test_creation_by_uncommon_process.yml",
+      "table": "file_event",
+      "techniques": [],
+      "title": "PSScriptPolicyTest Creation By Uncommon Process"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 4,
+      "matches_n": 4,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/file/file_event/file_event_win_sysinternals_psexec_service.yml",
+      "table": "file_event",
+      "techniques": [
+        "t1569"
+      ],
+      "title": "PsExec Service File Creation"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 24,
+      "matches_n": 24,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_access/proc_access_win_hktl_sysmonente.yml",
+      "table": "process_access",
+      "techniques": [
+        "t1685"
+      ],
+      "title": "HackTool - SysmonEnte Execution"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 6,
+      "matches_n": 6,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_conhost_legacy_option.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1202"
+      ],
+      "title": "Suspicious High IntegrityLevel Conhost Legacy Option"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_netsh_packet_capture.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1040"
+      ],
+      "title": "New Network Trace Capture Started Via Netsh.EXE"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 5,
+      "matches_n": 5,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_rundll32_webdav_client_execution.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1048"
+      ],
+      "title": "WebDav Client Execution Via Rundll32.EXE"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_sdclt_child_process.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1548"
+      ],
+      "title": "Sdclt Child Processes"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 10,
+      "matches_n": 10,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_sysinternals_eula_accepted.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1588"
+      ],
+      "title": "Potential Execution of Sysinternals Tools"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/process_creation/proc_creation_win_uac_bypass_sdclt.yml",
+      "table": "process_creation",
+      "techniques": [
+        "t1548"
+      ],
+      "title": "Potential UAC Bypass Via Sdclt.EXE"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 2,
+      "matches_n": 2,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_delete/registry_delete_removal_com_hijacking_registry_key.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1112"
+      ],
+      "title": "Removal of Potential COM Hijacking Registry Keys"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 14,
+      "matches_n": 14,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_delete/registry_delete_schtasks_hide_task_via_index_value_removal.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1685"
+      ],
+      "title": "Removal Of Index Value to Hide Schedule Task - Registry"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 2,
+      "matches_n": 2,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_delete/registry_delete_schtasks_hide_task_via_sd_value_removal.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1685"
+      ],
+      "title": "Removal Of SD Value to Hide Schedule Task - Registry"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_set/registry_set_bypass_uac_using_delegateexecute.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1548"
+      ],
+      "title": "Bypass UAC Using DelegateExecute"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 13,
+      "matches_n": 13,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_set/registry_set_defender_exclusions.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1685"
+      ],
+      "title": "Windows Defender Exclusions Added - Registry"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 3,
+      "matches_n": 3,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_set/registry_set_install_root_or_ca_certificat.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1490"
+      ],
+      "title": "New Root or CA or AuthRoot Certificate to Store"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 10,
+      "matches_n": 10,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_set/registry_set_pua_sysinternals_execution_via_eula.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1588"
+      ],
+      "title": "PUA - Sysinternal Tool Execution - Registry"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 6,
+      "matches_n": 6,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_set/registry_set_pua_sysinternals_renamed_execution_via_eula.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1588"
+      ],
+      "title": "Suspicious Execution Of Renamed Sysinternals Tools - Registry"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 10,
+      "matches_n": 10,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_set/registry_set_pua_sysinternals_susp_execution_via_eula.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1588"
+      ],
+      "title": "PUA - Sysinternals Tools Execution - Registry"
+    },
+    {
+      "blind": false,
+      "class": "routine",
+      "matches_f": 1,
+      "matches_n": 1,
+      "recall_loss": 0.0,
+      "rule": "rules/windows/registry/registry_set/registry_set_windows_defender_tamper.yml",
+      "table": "registry_event",
+      "techniques": [
+        "t1685"
+      ],
+      "title": "Disable Windows Defender Functionalities Via Registry Keys"
+    },
+    {
+      "blind": false,
+      "class": "adversary-tail",
+      "matches_f": 3,
+      "matches_n": 36,
+      "recall_loss": -11.0,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_set_alias.yml",
+      "table": "ps_script",
+      "techniques": [
+        "t1027",
+        "t1059"
+      ],
+      "title": "Potential PowerShell Obfuscation Using Alias Cmdlets"
+    }
+  ],
+  "sigma_rules_scanned": 2853,
+  "stats": {
+    "compile_error": 1,
+    "compiled": 2276,
+    "exec_error": 465,
+    "fired_on_f": 54,
+    "routed": 2277,
+    "rule_files": 2853,
+    "skipped_unrouted": 576
+  },
+  "store_bytes": {
+    "store_f_bytes": 1888601,
+    "store_n_bytes": 1049655
+  }
+}
