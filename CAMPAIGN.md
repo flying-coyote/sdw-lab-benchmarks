@@ -119,6 +119,31 @@ Status: [ ] pending · [~] running · [x] done. Each is single-box and dependenc
 Deferred (need external deps / humans, not in the autonomous single-box run): BENCH-C OBDA arm (Ontop +
 R2RML setup), BENCH-B frontier leg (needs ANTHROPIC_API_KEY), BENCH-A named-practitioner realism sign-off.
 
+## New benchmark work the findings spawned (Phase E backlog)
+
+Added 2026-06-06 from the post-R8 review. Resource-light unless noted; each maps to a hypothesis.
+
+- **Cross-engine Parquet equality-filter correctness probe** — does the R3 chDB undercount *generalize*?
+  Run the `correctness_divergence.py` shape (many small row groups + `=`/`IN` pushdown against a generator
+  ground truth) across DataFusion, Polars, Trino, and a newer chDB build. Pre-register the probe values;
+  **report the engines that pass as loudly as any that fail** (the method is the finding, not a vendor name).
+  This is what moves H-ENGINE-ANSWER-EQUIVALENCE-01 from one clean datapoint toward a pattern (or refutes the
+  generality and keeps it a one-engine bug). Resource-light. **+ file the upstream chDB bug report** with the
+  reproduction (contribute-don't-own).
+- **R8 `topn_src` divergence chase** — separate scan-path from spill. Re-run the heavy high-cardinality
+  aggregate three ways on byte-identical files (Iceberg extension · DuckLake · a bare `read_parquet(glob)`
+  baseline) and again with spill disabled / a higher memory cap, to tell whether the 1.30× is the two DuckDB
+  extensions' read path or a 28 GB-cap × drvfs-spill interaction. Feeds H-ICEBERG-INTERFACE-01's
+  "not-unconditional" caution. Medium (1B is heavy; can characterize the shape at 100M first).
+- **Broader Parquet-writer encoding comparison** — DuckDB vs PyArrow vs the pyiceberg writer on identical
+  data, the encoder-is-the-read-lever finding generalized beyond the two writers already compared. Backs the
+  "encoder is the read lever" + "same codec, different sizes" essays. Resource-light.
+- **R9 DWPD on native-Linux / AWS** — the deferred device-measured endurance (true `smartctl -A`
+  Data-Units-Written), the only path to promote H-STORAGE-ENDURANCE-01 D→A; not viable under WSL2.
+  External system.
+- **BENCH-B frontier leg** (needs ANTHROPIC_API_KEY) and **BENCH-C OBDA arm** (Ontop + R2RML) — external-dep
+  gated, as above.
+
 ## Essay slate (findings → /writing pillars)
 
 - **The encoder is the read lever** (lakehouse) — formats are read-neutral on identical bytes; pick on
