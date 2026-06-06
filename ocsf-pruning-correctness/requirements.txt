@@ -1,0 +1,8 @@
+# Five engines, pinned to the versions pruning soundness was measured on (2026-06-06).
+# Re-run on any engine upgrade — pushdown paths (bloom, page-index, late-materialization) are where a
+# soundness regression would first surface as a quiet under-count.
+pyarrow==23.0.1
+duckdb==1.5.3
+polars==1.41.2
+datafusion==53.0.0
+chdb==4.1.8

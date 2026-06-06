@@ -1,0 +1,114 @@
+{
+  "arm1_minmax_pageindex": {
+    "ab_evidence": {
+      "row_groups": 100,
+      "shuffled_rg0_range": [
+        88,
+        999993
+      ],
+      "sorted_rg0_range": [
+        0,
+        9999
+      ]
+    },
+    "shuffled": {
+      "chdb": {
+        "correct": true,
+        "wrong": []
+      },
+      "datafusion": {
+        "correct": true,
+        "wrong": []
+      },
+      "duckdb": {
+        "correct": true,
+        "wrong": []
+      },
+      "polars": {
+        "correct": true,
+        "wrong": []
+      },
+      "pyarrow": {
+        "correct": true,
+        "wrong": []
+      }
+    },
+    "sorted": {
+      "chdb": {
+        "correct": true,
+        "wrong": []
+      },
+      "datafusion": {
+        "correct": true,
+        "wrong": []
+      },
+      "duckdb": {
+        "correct": true,
+        "wrong": []
+      },
+      "polars": {
+        "correct": true,
+        "wrong": []
+      },
+      "pyarrow": {
+        "correct": true,
+        "wrong": []
+      }
+    }
+  },
+  "arm2_bloom_filter": {
+    "available": true,
+    "bloom": {
+      "chdb": {
+        "correct": true,
+        "wrong": []
+      },
+      "datafusion": {
+        "correct": true,
+        "wrong": []
+      },
+      "duckdb": {
+        "correct": true,
+        "wrong": []
+      },
+      "polars": {
+        "correct": true,
+        "wrong": []
+      },
+      "pyarrow": {
+        "correct": true,
+        "wrong": []
+      }
+    }
+  },
+  "benchmark": "row-group / page / bloom pruning soundness (lower-level bake-off #3)",
+  "environment": {
+    "chdb": "4.1.8",
+    "datafusion": "53.0.0",
+    "duckdb": "1.5.3",
+    "polars": "1.41.2",
+    "pyarrow": "23.0.1"
+  },
+  "evidence_tier": "B (single machine; identical-data A/B; exact ground truth)",
+  "needles": [
+    0,
+    9999,
+    10000,
+    10001,
+    49999,
+    50000,
+    50001,
+    369999,
+    370000,
+    370001,
+    500000,
+    989999,
+    990000,
+    990001,
+    999999,
+    1000007
+  ],
+  "row_group_size": 10000,
+  "rows": 1000000,
+  "seed": 1729
+}
