@@ -1,0 +1,7 @@
+# Three SQL engines + Polars (dataframe) + pyarrow (corpus writer), pinned to the versions the nested-access
+# table was measured on (2026-06-06). Nested struct / list<struct> support moves across releases — re-check.
+pyarrow==23.0.1
+duckdb==1.5.3
+datafusion==53.0.0
+chdb==4.1.8
+polars==1.41.2

@@ -1,0 +1,231 @@
+{
+  "artifact": {
+    "bytes_sha256": "1718ddac895673584024792999e74e07760e5c20ce5e302178b8d90271340720",
+    "columns": [
+      "time",
+      "class_uid",
+      "src_endpoint",
+      "dst_endpoint",
+      "observables"
+    ],
+    "leaf_paths": [
+      "class_uid",
+      "dst_endpoint, ip",
+      "dst_endpoint, port",
+      "observables, list, element, name",
+      "observables, list, element, type_id",
+      "src_endpoint, ip",
+      "src_endpoint, port",
+      "time"
+    ],
+    "logical_fingerprint": "10c8b03e4c8bcae971cc6aa829bddaaf",
+    "n_row_groups": 1,
+    "n_rows": 1000,
+    "path": "nested_ocsf.parquet"
+  },
+  "benchmark": "cross-engine nested-OCSF type fidelity (struct + list<struct> access)",
+  "environment": {
+    "chdb": "4.1.8",
+    "datafusion": "53.0.0",
+    "duckdb": "1.5.3",
+    "polars": "1.41.2",
+    "pyarrow": "23.0.1"
+  },
+  "evidence_tier": "B (single machine; deterministic; explicit ground-truth counts)",
+  "questions": [
+    {
+      "engines": {
+        "chdb": {
+          "got": 1000,
+          "status": "ok",
+          "truth": 1000
+        },
+        "datafusion": {
+          "got": 1000,
+          "status": "ok",
+          "truth": 1000
+        },
+        "duckdb": {
+          "got": 1000,
+          "status": "ok",
+          "truth": 1000
+        },
+        "polars": {
+          "got": 1000,
+          "status": "ok",
+          "truth": 1000
+        }
+      },
+      "kind": "baseline",
+      "label": "count(*)",
+      "note": "all rows",
+      "truth": 1000
+    },
+    {
+      "engines": {
+        "chdb": {
+          "got": 500,
+          "status": "ok",
+          "truth": 500
+        },
+        "datafusion": {
+          "got": 500,
+          "status": "ok",
+          "truth": 500
+        },
+        "duckdb": {
+          "got": 500,
+          "status": "ok",
+          "truth": 500
+        },
+        "polars": {
+          "got": 500,
+          "status": "ok",
+          "truth": 500
+        }
+      },
+      "kind": "struct string",
+      "label": "src_endpoint.ip = '10.0.0.1'",
+      "note": "scalar field inside a struct",
+      "truth": 500
+    },
+    {
+      "engines": {
+        "chdb": {
+          "got": 125,
+          "status": "ok",
+          "truth": 125
+        },
+        "datafusion": {
+          "got": 125,
+          "status": "ok",
+          "truth": 125
+        },
+        "duckdb": {
+          "got": 125,
+          "status": "ok",
+          "truth": 125
+        },
+        "polars": {
+          "got": 125,
+          "status": "ok",
+          "truth": 125
+        }
+      },
+      "kind": "struct int",
+      "label": "dst_endpoint.port = 3389",
+      "note": "the RDP hunt, but on a nested port",
+      "truth": 125
+    },
+    {
+      "engines": {
+        "chdb": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "datafusion": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "duckdb": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "polars": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        }
+      },
+      "kind": "struct int",
+      "label": "src_endpoint.port = 30000",
+      "note": "second struct field",
+      "truth": 250
+    },
+    {
+      "engines": {
+        "chdb": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "datafusion": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "duckdb": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "polars": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        }
+      },
+      "kind": "list length",
+      "label": "len(observables) = 3",
+      "note": "cardinality of a list<struct>",
+      "truth": 250
+    },
+    {
+      "engines": {
+        "chdb": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "datafusion": {
+          "detail": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument",
+          "status": "errored"
+        },
+        "duckdb": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "polars": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        }
+      },
+      "kind": "list<struct> predicate",
+      "label": "any observable.type_id = 21",
+      "note": "field predicate across a list of structs (the OCSF observables hunt)",
+      "truth": 250
+    },
+    {
+      "engines": {
+        "chdb": {
+          "got": 1000,
+          "status": "ok",
+          "truth": 1000
+        },
+        "datafusion": {
+          "detail": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument",
+          "status": "errored"
+        },
+        "duckdb": {
+          "got": 1000,
+          "status": "ok",
+          "truth": 1000
+        },
+        "polars": {
+          "got": 1000,
+          "status": "ok",
+          "truth": 1000
+        }
+      },
+      "kind": "list<struct> predicate",
+      "label": "any observable.type_id = 2",
+      "note": "same shape, present in every row",
+      "truth": 1000
+    }
+  ]
+}
