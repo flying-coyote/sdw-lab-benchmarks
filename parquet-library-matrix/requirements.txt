@@ -1,0 +1,9 @@
+# Six Parquet libraries + pandas (fastparquet's frame layer), pinned to the versions the matrix was measured
+# on (2026-06-06). Re-check every cell on any upgrade — encoding support is actively moving.
+pyarrow==23.0.1
+duckdb==1.5.3
+polars==1.41.2
+datafusion==53.0.0
+chdb==4.1.8
+fastparquet==2026.5.0
+pandas==3.0.3

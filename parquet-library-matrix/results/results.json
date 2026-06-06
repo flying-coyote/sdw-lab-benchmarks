@@ -1,0 +1,586 @@
+{
+  "arm1_reader_x_encoding": {
+    "double": {
+      "BYTE_STREAM_SPLIT": {
+        "emitted": [
+          "RLE",
+          "BYTE_STREAM_SPLIT"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "detail": "NotImplementedError: Encoding 9",
+            "status": "errored"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      },
+      "PLAIN": {
+        "emitted": [
+          "RLE",
+          "PLAIN"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      },
+      "RLE_DICTIONARY": {
+        "emitted": [
+          "PLAIN",
+          "RLE",
+          "RLE_DICTIONARY"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      }
+    },
+    "int64": {
+      "BYTE_STREAM_SPLIT": {
+        "emitted": [
+          "RLE",
+          "BYTE_STREAM_SPLIT"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "detail": "Error: BYTE_STREAM_SPLIT encoding is only supported for FLOAT or DOUBLE data",
+            "status": "errored"
+          },
+          "fastparquet": {
+            "detail": "NotImplementedError: Encoding 9",
+            "status": "errored"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      },
+      "DELTA_BINARY_PACKED": {
+        "emitted": [
+          "RLE",
+          "DELTA_BINARY_PACKED"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      },
+      "PLAIN": {
+        "emitted": [
+          "RLE",
+          "PLAIN"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      },
+      "RLE_DICTIONARY": {
+        "emitted": [
+          "PLAIN",
+          "RLE",
+          "RLE_DICTIONARY"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      }
+    },
+    "string": {
+      "DELTA_BYTE_ARRAY": {
+        "emitted": [
+          "RLE",
+          "DELTA_BYTE_ARRAY"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "detail": "NotImplementedError: Encoding 7",
+            "status": "errored"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      },
+      "DELTA_LENGTH_BYTE_ARRAY": {
+        "emitted": [
+          "RLE",
+          "DELTA_LENGTH_BYTE_ARRAY"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "detail": "NotImplementedError: Encoding 6",
+            "status": "errored"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      },
+      "PLAIN": {
+        "emitted": [
+          "RLE",
+          "PLAIN"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      },
+      "RLE_DICTIONARY": {
+        "emitted": [
+          "PLAIN",
+          "RLE",
+          "RLE_DICTIONARY"
+        ],
+        "readers": {
+          "chdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "datafusion": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "duckdb": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "fastparquet": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "polars": {
+            "n": 20000,
+            "status": "ok"
+          },
+          "pyarrow": {
+            "n": 20000,
+            "status": "ok"
+          }
+        },
+        "writer": "ok"
+      }
+    }
+  },
+  "arm2_writer_defaults": {
+    "duckdb": {
+      "default_encoding": {
+        "double": [
+          "PLAIN"
+        ],
+        "int64": [
+          "PLAIN"
+        ],
+        "string": [
+          "PLAIN_DICTIONARY"
+        ]
+      },
+      "write": "ok"
+    },
+    "fastparquet": {
+      "default_encoding": {
+        "double": [
+          "PLAIN"
+        ],
+        "int64": [
+          "PLAIN"
+        ],
+        "string": [
+          "PLAIN"
+        ]
+      },
+      "write": "ok"
+    },
+    "polars": {
+      "default_encoding": {
+        "double": [
+          "PLAIN",
+          "RLE"
+        ],
+        "int64": [
+          "PLAIN",
+          "RLE"
+        ],
+        "string": [
+          "PLAIN",
+          "RLE",
+          "RLE_DICTIONARY"
+        ]
+      },
+      "write": "ok"
+    },
+    "pyarrow": {
+      "default_encoding": {
+        "double": [
+          "PLAIN",
+          "RLE",
+          "RLE_DICTIONARY"
+        ],
+        "int64": [
+          "PLAIN",
+          "RLE",
+          "RLE_DICTIONARY"
+        ],
+        "string": [
+          "PLAIN",
+          "RLE",
+          "RLE_DICTIONARY"
+        ]
+      },
+      "write": "ok"
+    }
+  },
+  "arm3_writer_x_reader_roundtrip": {
+    "duckdb": {
+      "chdb": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "datafusion": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "duckdb": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "fastparquet": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "polars": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "pyarrow": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      }
+    },
+    "fastparquet": {
+      "chdb": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "datafusion": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "duckdb": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "fastparquet": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "polars": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "pyarrow": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      }
+    },
+    "polars": {
+      "chdb": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "datafusion": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "duckdb": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "fastparquet": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "polars": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "pyarrow": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      }
+    },
+    "pyarrow": {
+      "chdb": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "datafusion": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "duckdb": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "fastparquet": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "polars": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      },
+      "pyarrow": {
+        "double": "ok",
+        "int64": "ok",
+        "string": "ok"
+      }
+    }
+  },
+  "benchmark": "parquet encoding x library correctness matrix (lower-level bake-off #2)",
+  "environment": {
+    "chdb": "4.1.8",
+    "datafusion": "53.0.0",
+    "duckdb": "1.5.3",
+    "fastparquet": "2026.5.0",
+    "pandas": "3.0.3",
+    "polars": "1.41.2",
+    "pyarrow": "23.0.1"
+  },
+  "evidence_tier": "B (single machine; exact ground truth; order-independent value compare)",
+  "rows": 20000
+}

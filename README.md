@@ -30,6 +30,7 @@ engine-against-engine, and labelled at an honest evidence tier.
 | [`ocsf-marimo-hunt/`](ocsf-marimo-hunt/) | notebook substrate — a marimo OCSF hunt: reproducible headless, plain-`.py` (0 vs the `.ipynb`'s execution-count slots), portable SQL | B/C | demonstration |
 | [`ocsf-vortex-format/`](ocsf-vortex-format/) | Vortex vs Parquet on OCSF data — design recorded; install-blocked (vortex-array yanked on PyPI) | — | pending |
 | [`parquet-checksum-integrity/`](parquet-checksum-integrity/) | do Parquet readers verify page checksums — a bit-flip in a checksummed page caught (chDB) vs silently returned as a wrong sum (DuckDB/DataFusion; pyarrow/Polars off by default) | B | first pass |
+| [`parquet-library-matrix/`](parquet-library-matrix/) | encoding × library decode correctness (6 libs × PLAIN/RLE_DICTIONARY/DELTA/BYTE_STREAM_SPLIT) — empirical companion to the Apache support matrix; exotic encodings fail safe (errors), not silent, on current versions | B | first pass |
 
 ## How they are kept honest
 
@@ -90,5 +91,6 @@ ocsf-deterministic-mapper/ benchmark: schema-constrained mapper vs LLM grounding
 ocsf-marimo-hunt/       demonstration: marimo notebook reproducibility/portability (own reqs)
 ocsf-vortex-format/     pending: Vortex vs Parquet (install-blocked)
 parquet-checksum-integrity/ benchmark: do Parquet readers verify page CRCs (own reqs)
+parquet-library-matrix/ benchmark: encoding x library decode-correctness matrix (own reqs)
 requirements.txt        duckdb, chdb (pinned) — sigma-portability + ocsf-write-contract have their own
 ```
