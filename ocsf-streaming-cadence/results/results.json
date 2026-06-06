@@ -1,0 +1,117 @@
+{
+  "benchmark": "ocsf-streaming-cadence (R7)",
+  "cadences": [
+    5,
+    50,
+    500
+  ],
+  "evidence_tier": "B (single machine; throughput + commit percentiles; file counts exact)",
+  "inline_edge_largest_at_cadence": 5,
+  "inline_edge_smallest_at_cadence": 500,
+  "inline_row_limit": 10000,
+  "n_commits": 200,
+  "rungs": [
+    {
+      "cadence_rows_per_commit": 5,
+      "commits": 200,
+      "ducklake_inline": {
+        "catalog_bytes": 12288,
+        "commit_p50_ms": 10.246599999845785,
+        "commit_p95_ms": 11.942661999455595,
+        "data_files": 0,
+        "final_count_correct": true,
+        "read_while_write_coherent": true,
+        "storage_bytes": 12288,
+        "throughput_rows_s": 273.3,
+        "wall_s": 3.66
+      },
+      "ducklake_no_inline": {
+        "catalog_bytes": 12288,
+        "commit_p50_ms": 11.918023999896832,
+        "commit_p95_ms": 13.535623999814561,
+        "data_files": 200,
+        "storage_bytes": 184920,
+        "throughput_rows_s": 345.4,
+        "wall_s": 2.89
+      },
+      "files_avoided_inline_vs_iceberg": 200,
+      "iceberg": {
+        "commit_p50_ms": 66.05368400050793,
+        "commit_p95_ms": 132.92526200075372,
+        "data_files": 200,
+        "storage_bytes": 17539996,
+        "throughput_rows_s": 69.5,
+        "wall_s": 14.38
+      },
+      "throughput_ratio_inline_over_iceberg": 3.93
+    },
+    {
+      "cadence_rows_per_commit": 50,
+      "commits": 200,
+      "ducklake_inline": {
+        "catalog_bytes": 12288,
+        "commit_p50_ms": 12.0687580001686,
+        "commit_p95_ms": 13.692926999283372,
+        "data_files": 0,
+        "final_count_correct": true,
+        "read_while_write_coherent": true,
+        "storage_bytes": 12288,
+        "throughput_rows_s": 2426.7,
+        "wall_s": 4.12
+      },
+      "ducklake_no_inline": {
+        "catalog_bytes": 12288,
+        "commit_p50_ms": 12.240615999871807,
+        "commit_p95_ms": 13.9706110003317,
+        "data_files": 200,
+        "storage_bytes": 407848,
+        "throughput_rows_s": 3382.9,
+        "wall_s": 2.96
+      },
+      "files_avoided_inline_vs_iceberg": 200,
+      "iceberg": {
+        "commit_p50_ms": 65.85071399968001,
+        "commit_p95_ms": 132.31547100076568,
+        "data_files": 200,
+        "storage_bytes": 17784765,
+        "throughput_rows_s": 729.1,
+        "wall_s": 13.72
+      },
+      "throughput_ratio_inline_over_iceberg": 3.33
+    },
+    {
+      "cadence_rows_per_commit": 500,
+      "commits": 200,
+      "ducklake_inline": {
+        "catalog_bytes": 12288,
+        "commit_p50_ms": 24.035464000007778,
+        "commit_p95_ms": 26.362882000285026,
+        "data_files": 0,
+        "final_count_correct": true,
+        "read_while_write_coherent": true,
+        "storage_bytes": 12288,
+        "throughput_rows_s": 15237.5,
+        "wall_s": 6.56
+      },
+      "ducklake_no_inline": {
+        "catalog_bytes": 12288,
+        "commit_p50_ms": 12.469067999518302,
+        "commit_p95_ms": 14.758717999939108,
+        "data_files": 200,
+        "storage_bytes": 2205069,
+        "throughput_rows_s": 32970.1,
+        "wall_s": 3.03
+      },
+      "files_avoided_inline_vs_iceberg": 200,
+      "iceberg": {
+        "commit_p50_ms": 66.82193799952074,
+        "commit_p95_ms": 135.80148799974268,
+        "data_files": 200,
+        "storage_bytes": 19144173,
+        "throughput_rows_s": 7144.1,
+        "wall_s": 14.0
+      },
+      "throughput_ratio_inline_over_iceberg": 2.13
+    }
+  ]
+}
