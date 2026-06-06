@@ -1,0 +1,6 @@
+# Three SQL engines + pyarrow (corpus writer), pinned to the versions the behavior table was measured on
+# (2026-06-06). Re-check per version — NULL/coercion/timezone semantics can move across releases.
+pyarrow==23.0.1
+duckdb==1.5.3
+datafusion==53.0.0
+chdb==4.1.8

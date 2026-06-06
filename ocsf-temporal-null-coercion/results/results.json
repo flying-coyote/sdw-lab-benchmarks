@@ -1,0 +1,286 @@
+{
+  "arm_a_timezone": {
+    "engines": {
+      "chdb": {
+        "ts_naive": {
+          "got": 0,
+          "status": "shifted",
+          "truth": 600
+        },
+        "ts_utc": {
+          "got": 0,
+          "status": "shifted",
+          "truth": 600
+        }
+      },
+      "datafusion": {
+        "ts_naive": {
+          "got": 600,
+          "status": "ok",
+          "truth": 600
+        },
+        "ts_utc": {
+          "got": 600,
+          "status": "ok",
+          "truth": 600
+        }
+      },
+      "duckdb": {
+        "ts_naive": {
+          "got": 600,
+          "status": "ok",
+          "truth": 600
+        },
+        "ts_utc": {
+          "got": 0,
+          "status": "shifted",
+          "truth": 600
+        }
+      }
+    },
+    "session_tz": "America/New_York",
+    "utc_truth_window": 600
+  },
+  "arm_b_null_coercion": {
+    "count(*)": {
+      "engines": {
+        "chdb": {
+          "got": 370,
+          "status": "ok",
+          "truth": 370
+        },
+        "datafusion": {
+          "got": 370,
+          "status": "ok",
+          "truth": 370
+        },
+        "duckdb": {
+          "got": 370,
+          "status": "ok",
+          "truth": 370
+        }
+      },
+      "note": "all rows",
+      "truth": 370
+    },
+    "count(s) excludes NULL": {
+      "engines": {
+        "chdb": {
+          "got": 330,
+          "status": "ok",
+          "truth": 330
+        },
+        "datafusion": {
+          "got": 330,
+          "status": "ok",
+          "truth": 330
+        },
+        "duckdb": {
+          "got": 330,
+          "status": "ok",
+          "truth": 330
+        }
+      },
+      "note": "count(col) drops the 40 NULLs",
+      "truth": 330
+    },
+    "i = '5' (string literal)": {
+      "engines": {
+        "chdb": {
+          "got": 60,
+          "status": "ok",
+          "truth": 60
+        },
+        "datafusion": {
+          "got": 60,
+          "status": "ok",
+          "truth": 60
+        },
+        "duckdb": {
+          "got": 60,
+          "status": "ok",
+          "truth": 60
+        }
+      },
+      "note": "coercion: standard coerces '5'->5; engines may differ/err",
+      "truth": 60
+    },
+    "i = 5 (int literal)": {
+      "engines": {
+        "chdb": {
+          "got": 60,
+          "status": "ok",
+          "truth": 60
+        },
+        "datafusion": {
+          "got": 60,
+          "status": "ok",
+          "truth": 60
+        },
+        "duckdb": {
+          "got": 60,
+          "status": "ok",
+          "truth": 60
+        }
+      },
+      "note": "baseline",
+      "truth": 60
+    },
+    "s <> 'allow1'": {
+      "engines": {
+        "chdb": {
+          "got": 230,
+          "status": "ok",
+          "truth": 230
+        },
+        "datafusion": {
+          "got": 230,
+          "status": "ok",
+          "truth": 230
+        },
+        "duckdb": {
+          "got": 230,
+          "status": "ok",
+          "truth": 230
+        }
+      },
+      "note": "<> silently excludes the 40 NULLs",
+      "truth": 230
+    },
+    "s = '' (empty != NULL)": {
+      "engines": {
+        "chdb": {
+          "got": 30,
+          "status": "ok",
+          "truth": 30
+        },
+        "datafusion": {
+          "got": 30,
+          "status": "ok",
+          "truth": 30
+        },
+        "duckdb": {
+          "got": 30,
+          "status": "ok",
+          "truth": 30
+        }
+      },
+      "note": "empty string is not NULL",
+      "truth": 30
+    },
+    "s = 'allow1'": {
+      "engines": {
+        "chdb": {
+          "got": 100,
+          "status": "ok",
+          "truth": 100
+        },
+        "datafusion": {
+          "got": 100,
+          "status": "ok",
+          "truth": 100
+        },
+        "duckdb": {
+          "got": 100,
+          "status": "ok",
+          "truth": 100
+        }
+      },
+      "note": "baseline equality",
+      "truth": 100
+    },
+    "s IN (allow1,allow2)": {
+      "engines": {
+        "chdb": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "datafusion": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        },
+        "duckdb": {
+          "got": 250,
+          "status": "ok",
+          "truth": 250
+        }
+      },
+      "note": "IN excludes NULLs (inverse check)",
+      "truth": 250
+    },
+    "s IS NULL": {
+      "engines": {
+        "chdb": {
+          "got": 40,
+          "status": "ok",
+          "truth": 40
+        },
+        "datafusion": {
+          "got": 40,
+          "status": "ok",
+          "truth": 40
+        },
+        "duckdb": {
+          "got": 40,
+          "status": "ok",
+          "truth": 40
+        }
+      },
+      "note": "the NULLs",
+      "truth": 40
+    },
+    "s NOT IN (...,NULL) TRAP": {
+      "engines": {
+        "chdb": {
+          "got": 80,
+          "status": "DIVERGES",
+          "truth": 0
+        },
+        "datafusion": {
+          "got": 0,
+          "status": "ok",
+          "truth": 0
+        },
+        "duckdb": {
+          "got": 0,
+          "status": "ok",
+          "truth": 0
+        }
+      },
+      "note": "a NULL in the allowlist => matches NOTHING (detection bypass)",
+      "truth": 0
+    },
+    "s NOT IN (allow1,allow2)": {
+      "engines": {
+        "chdb": {
+          "got": 80,
+          "status": "ok",
+          "truth": 80
+        },
+        "datafusion": {
+          "got": 80,
+          "status": "ok",
+          "truth": 80
+        },
+        "duckdb": {
+          "got": 80,
+          "status": "ok",
+          "truth": 80
+        }
+      },
+      "note": "excludes NULLs too (evil+empty=80)",
+      "truth": 80
+    }
+  },
+  "benchmark": "cross-engine NULL / type-coercion / timezone correctness",
+  "environment": {
+    "chdb": "4.1.8",
+    "datafusion": "53.0.0",
+    "duckdb": "1.5.3",
+    "pyarrow": "23.0.1"
+  },
+  "evidence_tier": "B (single machine; deterministic; SQL-standard / known-UTC ground truth)",
+  "session_tz": "America/New_York"
+}

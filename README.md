@@ -33,6 +33,7 @@ engine-against-engine, and labelled at an honest evidence tier.
 | [`parquet-library-matrix/`](parquet-library-matrix/) | encoding × library decode correctness (6 libs × PLAIN/RLE_DICTIONARY/DELTA/BYTE_STREAM_SPLIT) — empirical companion to the Apache support matrix; exotic encodings fail safe (errors), not silent, on current versions | B | first pass |
 | [`ocsf-pruning-correctness/`](ocsf-pruning-correctness/) | does row-group / page-index / bloom pruning ever drop the needle (the chDB Bloom-bug layer) — sorted-vs-shuffled A/B + chDB-written bloom file, 5 engines; all sound on current versions | B | first pass |
 | [`parquet-determinism-encryption/`](parquet-determinism-encryption/) | float-aggregate determinism (SIMD byte-identical; cross-engine float sum splits 3 ways while int/min/max/count agree) + Parquet Modular Encryption interop (only the implementer-with-key can read it) | B | first pass |
+| [`ocsf-temporal-null-coercion/`](ocsf-temporal-null-coercion/) | cross-engine NULL / coercion / timezone semantics — the `NOT IN (…,NULL)` allowlist footgun diverges (chDB 80 vs DuckDB/DataFusion 0) and time-window counts disagree under a non-UTC session; the answer-equivalence risk in the parts of SQL detections actually use | B | first pass |
 
 ## How they are kept honest
 
