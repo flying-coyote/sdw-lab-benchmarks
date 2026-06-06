@@ -1,5 +1,7 @@
 # Extended benchmark campaign — plan, findings, corrections
 
+> Read-together narrative + thesis mapping: [`SYNTHESIS.md`](SYNTHESIS.md).
+
 A standing record for the high-performance benchmark campaign: what we run (resource-ordered), what we
 find, which prior assumptions the results correct, and the essays the findings could feed. Every run is
 under [`BENCHMARKING-METHODOLOGY.md`](BENCHMARKING-METHODOLOGY.md): CV reported, config-parity (or
@@ -77,8 +79,11 @@ Status: [ ] pending · [~] running · [x] done. Each is single-box and dependenc
   than recompute for low-cardinality, break-even for high-cardinality at this base — the win grows with
   base:batch); storage negligible (+0.0–0.002%). MV is a bet on a fixed question set; ad-hoc still pays
   the base scan. Maintenance aggregates the in-hand batch, not regenerated rows.
-- [ ] **R6 Iceberg-vs-DuckLake planning baseline at 1M/10M/100M** (moderate) — isolate catalog-traversal
-  from scan; the clean current-Iceberg baseline the V4 tracking priority needs.
+- [x] **R6 Iceberg-vs-DuckLake planning baseline** — DONE (`653c4b8`). Engine held constant (DuckDB reads
+  both formats), commit ladder 10→200 files at 5M rows: Iceberg end-to-end grows **6.5×** and its
+  planning (pyiceberg `plan_files`) **17.6×** as files accumulate, while DuckLake's SQL-catalog
+  resolution (`ducklake_list_files`) stays flat (~3 ms, 1.2×). The small-files tax is a metadata-location
+  property; DuckLake's catalog is the architectural answer to what Iceberg V4 targets. Answers identical.
 - [ ] **R7 Streaming write-contract** (moderate-heavy) — micro-batch cadence (5–500 rows), throughput +
   commit p50/p95 + concurrent read-while-write coherence; where does DuckLake inlining invert?
 - [ ] **R8 same-files at 1B** (heavy) — the definitive format-neutrality result at scale, not just 100M.
