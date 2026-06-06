@@ -11,6 +11,7 @@ determinism guarantee covers the corpus and the query answers, never the
 timings. Each benchmark says so in its own METHODOLOGY.
 """
 
+import hashlib
 import json
 import os
 import random
@@ -145,3 +146,66 @@ def time_trials(fn, warmup: int = 2, trials: int = 7):
         "trials": n,
         "warmup": warmup,
     }
+
+
+# --- Reproducibility hardening: pin the artifact, sweep the scale ----------------------------------------
+# The chDB Bloom-pushdown undercount taught both lessons the hard way. (1) It was layout-dependent: a fresh
+# DuckDB write rolls a different row-group composition each run (the parallel writer isn't byte-reproducible),
+# so "regenerate with the generator + versions" does not pin a finding — the *artifact* does. (2) It was
+# scale-dependent: it reproduced at 100M / ~8k row groups and not at 10M / ~800, so a "cheap" smaller-scale
+# isolation can hide a real correctness bug. These helpers make both first-class: fingerprint the logical
+# content (order-independent, since the bytes aren't reproducible), record the structural manifest a
+# reproducibility-critical finding should pin, and sweep a probe across scales so scale-dependence shows up.
+
+def logical_fingerprint(con: duckdb.DuckDBPyConnection, relation_sql: str) -> str:
+    """Order-independent hash of a relation's logical content. Hashes each row and aggregates the row-hashes
+    sorted, so two Parquet files with the same rows in any physical (row-group) order fingerprint identically
+    — the 'hash the rows, not the bytes' rule, since a parallel-written Parquet isn't byte-reproducible."""
+    return con.execute(
+        f"SELECT md5(string_agg(rh, '' ORDER BY rh)) FROM "
+        f"(SELECT md5(to_json(_r)::VARCHAR) AS rh FROM ({relation_sql}) _r)").fetchone()[0]
+
+
+def sha256_file(path: str) -> str:
+    """SHA-256 of the raw bytes — pins exact reproducibility *when* the writer is deterministic
+    (single-threaded / ORDER BY); otherwise prefer logical_fingerprint, which survives layout shuffles."""
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def parquet_manifest(con: duckdb.DuckDBPyConnection, path: str) -> dict:
+    """The structural manifest a reproducibility-critical finding should pin next to its result: row count,
+    row-group count, and per-column encodings + bloom-filter presence. Two artifacts with the same logical
+    fingerprint but different manifests can behave differently (the chDB bug needed enough row groups), so the
+    manifest is what makes a finding's preconditions explicit instead of implicit in 'the generator'."""
+    n_rows, n_rgs = con.execute(
+        f"SELECT num_rows, num_row_groups FROM parquet_file_metadata('{path}')").fetchone()
+    cols = {}
+    for name, encs, has_bloom in con.execute(
+            f"""SELECT path_in_schema,
+                       list_sort(list_distinct(array_agg(CAST(encodings AS VARCHAR)))) AS encs,
+                       bool_or(bloom_filter_offset IS NOT NULL) AS has_bloom
+                FROM parquet_metadata('{path}')
+                GROUP BY path_in_schema ORDER BY path_in_schema""").fetchall():
+        cols[name] = {"encodings": list(encs), "has_bloom": bool(has_bloom)}
+    return {"n_rows": int(n_rows), "n_row_groups": int(n_rgs), "columns": cols}
+
+
+def pin_artifact(con: duckdb.DuckDBPyConnection, path: str) -> dict:
+    """Everything needed to re-identify an artifact a finding depends on: its logical fingerprint (survives a
+    layout reshuffle), its structural manifest (the preconditions), and the byte hash (exact, when the write
+    was made deterministic). Record this in a result JSON so the finding is reproducible by construction."""
+    return {"path": os.path.basename(path),
+            "logical_fingerprint": logical_fingerprint(con, f"SELECT * FROM read_parquet('{path}')"),
+            "manifest": parquet_manifest(con, path),
+            "bytes_sha256": sha256_file(path)}
+
+
+def scale_sweep(probe, scales):
+    """Run ``probe(scale)`` across a list of scales and return ``{scale: result}``. The discipline the chDB
+    case earned: don't trust one 'cheap' scale — sweep, because a correctness bug can be scale-dependent and a
+    smaller scale can report clean while a larger one undercounts."""
+    return {scale: probe(scale) for scale in scales}

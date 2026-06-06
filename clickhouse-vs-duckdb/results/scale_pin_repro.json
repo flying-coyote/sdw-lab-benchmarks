@@ -1,0 +1,67 @@
+{
+  "benchmark": "chDB Bloom undercount \u2014 pinned + scale-swept (reproducibility-by-construction)",
+  "by_scale": {
+    "10000000": {
+      "artifact": {
+        "bytes_sha256": "975aa97278a52894f9afe45758db4305e25f749c7cd8fa3791b60bd1b5d434d1",
+        "logical_fingerprint": "7a264cdabea02ac716ba12a7864cffcd",
+        "n_row_groups": 814,
+        "user_name_bloom": true
+      },
+      "examples": [],
+      "sampled": 64,
+      "scale": 10000000,
+      "undercounts": 0
+    },
+    "100000000": {
+      "artifact": {
+        "bytes_sha256": "da7372f656cd6a04d69ccad45fe7fe13a82bb5f4e3cc7bf5d1f45176940f79c9",
+        "logical_fingerprint": "e0a123d0b49498f37c41bcc7c86268f4",
+        "n_row_groups": 8139,
+        "user_name_bloom": true
+      },
+      "examples": [
+        {
+          "bloom_off": 50309,
+          "default": 50307,
+          "short": 2,
+          "value": "user4"
+        },
+        {
+          "bloom_off": 50243,
+          "default": 50238,
+          "short": 5,
+          "value": "user12"
+        },
+        {
+          "bloom_off": 49639,
+          "default": 49629,
+          "short": 10,
+          "value": "user13"
+        },
+        {
+          "bloom_off": 49751,
+          "default": 49739,
+          "short": 12,
+          "value": "user16"
+        },
+        {
+          "bloom_off": 50085,
+          "default": 50078,
+          "short": 7,
+          "value": "user33"
+        }
+      ],
+      "sampled": 64,
+      "scale": 100000000,
+      "undercounts": 9
+    }
+  },
+  "distinct_values": 2000,
+  "environment": {
+    "chdb": "4.1.8",
+    "duckdb": "1.5.3"
+  },
+  "method": "lib.common.pin_artifact (layout-independent fingerprint + structural manifest) + scale_sweep",
+  "row_group_size": 12288
+}

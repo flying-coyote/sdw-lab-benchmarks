@@ -79,6 +79,21 @@ Performance and confirm with `env_characterize.py`; CV reporting (§4) catches a
 - **Cold runs** need a root OS-cache purge (`echo 3 > /proc/sys/vm/drop_caches`); unprivileged runs are
   labelled hot/warm only rather than pretending to be cold.
 
+### 9. Pin the artifact, sweep the scale (the chDB lesson) — ENFORCED for correctness findings
+The chDB Bloom-pushdown undercount made both halves of this concrete, after a near-miss in each direction.
+- **Pin the artifact, not the generator.** Parquet from a parallel writer is not byte-reproducible (the
+  row-group composition shuffles run to run — see `ocsf-parquet-determinism/`), so "regenerate with the
+  generator + pinned versions" does *not* pin a finding that depends on the file's layout. A
+  reproducibility-critical result records `lib.common.pin_artifact()`: a layout-independent **logical
+  fingerprint** (hash the rows, not the bytes), the **structural manifest** (row count, row-group count,
+  per-column encodings, bloom-filter presence — i.e. the finding's *preconditions*, made explicit instead of
+  left implicit in "the generator"), and the byte hash (exact, when the write was forced deterministic).
+- **Sweep the scale; don't trust one "cheap" point.** The undercount reproduced at 100M rows / ~8k row groups
+  and *not* at 10M / ~800 — a smaller scale chosen to make the bug cheap to study reported clean. Correctness
+  findings run through `lib.common.scale_sweep()` across at least two scales, and the isolation scale is
+  validated against the scale the bug was first seen at rather than assumed to shrink. Worked example:
+  `clickhouse-vs-duckdb/scale_pin_repro.py`.
+
 ## Reporting checklist (every comparative bench)
 - [ ] Per query: cold (if privileged) and hot-min, plus **median + CV over ≥3 trials**.
 - [ ] On-disk size, file count, row-group count, **and the footer-verified codec/row-group** per arm.
@@ -86,6 +101,7 @@ Performance and confirm with `env_characterize.py`; CV reporting (§4) catches a
 - [ ] Relative ratios within a single hardware+tuning class (cross-class comparison is invalid).
 - [ ] Tier label, single-machine caveat, and the explicit list of what was held constant vs varied.
 - [ ] Logical answer-equality across arms.
+- [ ] For a correctness finding: the **pinned artifact** (logical fingerprint + manifest) and the **scales swept**.
 
 ## Sources
 - ClickBench — github.com/ClickHouse/ClickBench (run protocol, scoring weights, self-acknowledged biases)
