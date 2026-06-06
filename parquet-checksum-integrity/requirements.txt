@@ -1,0 +1,7 @@
+# Five Parquet readers, pinned to the versions the result was measured on (2026-06-06).
+# Re-check the per-reader verify/ignore class on any upgrade — checksum verification is actively being added.
+pyarrow==23.0.1
+duckdb==1.5.3
+polars==1.41.2
+datafusion==53.0.0
+chdb==4.1.8

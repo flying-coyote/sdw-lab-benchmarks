@@ -1,0 +1,125 @@
+{
+  "benchmark": "parquet page-checksum write-vs-verify (lower-level correctness bake-off)",
+  "capability": {
+    "chdb": {
+      "class": "default",
+      "note": "ClickHouse Parquet reader verifies the page CRC by default in this version"
+    },
+    "datafusion": {
+      "class": "none",
+      "note": "no datafusion.execution.parquet.* checksum key (v53)"
+    },
+    "duckdb": {
+      "class": "none",
+      "note": "no Parquet page-checksum read setting (debug_verify_blocks/_vector cover DuckDB's own storage)"
+    },
+    "polars": {
+      "class": "opt-in",
+      "knob": "use_pyarrow=True + pyarrow_options={'page_checksum_verification': True}",
+      "note": "native reader has no knob; verification only via the pyarrow passthrough"
+    },
+    "pyarrow": {
+      "class": "opt-in",
+      "knob": "page_checksum_verification=True",
+      "note": "read_table / ParquetFile arg; default False"
+    }
+  },
+  "environment": {
+    "chdb": "4.1.8",
+    "datafusion": "53.0.0",
+    "duckdb": "1.5.3",
+    "polars": "1.41.2",
+    "pyarrow": "23.0.1"
+  },
+  "evidence_tier": "B (single machine; deterministic byte-flip; ground-truth-verified)",
+  "no_checksum_control": {
+    "chdb": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "datafusion": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "duckdb": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "polars": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "pyarrow": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    }
+  },
+  "opt_in_verification": {
+    "polars(via pyarrow)": {
+      "error": "OSError: could not verify page integrity, CRC checksum verification failed for page_ordinal 0",
+      "result": null,
+      "verdict": "ERRORED (caught it)",
+      "verifies": true
+    },
+    "pyarrow": {
+      "error": "OSError: could not verify page integrity, CRC checksum verification failed for page_ordinal 0",
+      "result": null,
+      "verdict": "ERRORED (caught it)",
+      "verifies": true
+    }
+  },
+  "readers_silently_wrong_stock": [
+    "datafusion",
+    "duckdb",
+    "polars",
+    "pyarrow"
+  ],
+  "readers_that_verify_by_default": [
+    "chdb"
+  ],
+  "rows": 100000,
+  "sentinel": "0x102030405060708",
+  "truth_sum": 72623864790332856,
+  "with_checksum_stock": {
+    "chdb": {
+      "error": "RuntimeError: Code: 40. DB::Exception: Page CRC checksum verification failed: read stage: ColumnData: co",
+      "result": null,
+      "verdict": "ERRORED (caught it)",
+      "verifies": true
+    },
+    "datafusion": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "duckdb": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "polars": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "pyarrow": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    }
+  }
+}
