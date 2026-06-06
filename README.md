@@ -6,6 +6,11 @@ asserted — these are the measurements. Each is a small, deterministic experime
 that a skeptic can re-run, scored against a known ground truth or checked
 engine-against-engine, and labelled at an honest evidence tier.
 
+Each bench backs an essay: the reasoning lives in [securitydataworks.com/writing](https://securitydataworks.com/writing)
+and the [lab page](https://securitydataworks.com/lab) maps each benchmark to the essay it comes from (and links
+back here). The reference MOAR stack that runs several of these tiers end-to-end is in
+[security-data-that-works](https://github.com/flying-coyote/security-data-that-works).
+
 ## The benchmarks
 
 | dir | what it measures | tier | state |
