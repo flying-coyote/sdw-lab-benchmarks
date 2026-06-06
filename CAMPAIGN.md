@@ -84,9 +84,17 @@ Status: [ ] pending · [~] running · [x] done. Each is single-box and dependenc
   planning (pyiceberg `plan_files`) **17.6×** as files accumulate, while DuckLake's SQL-catalog
   resolution (`ducklake_list_files`) stays flat (~3 ms, 1.2×). The small-files tax is a metadata-location
   property; DuckLake's catalog is the architectural answer to what Iceberg V4 targets. Answers identical.
-- [ ] **R7 Streaming write-contract** (moderate-heavy) — micro-batch cadence (5–500 rows), throughput +
-  commit p50/p95 + concurrent read-while-write coherence; where does DuckLake inlining invert?
-- [ ] **R8 same-files at 1B** (heavy) — the definitive format-neutrality result at scale, not just 100M.
+- [x] **R7 Streaming write-contract / cadence** — DONE (`1fca206`, `ocsf-streaming-cadence/`). Inlining's
+  throughput edge is largest at the tiniest cadence (3.93× at 5 rows/commit, p95 12ms vs Iceberg 133ms)
+  and narrows monotonically to 2.13× at 500 — the inversion *direction*; inline still leads at 500 so the
+  crossover is beyond the swept range (the small-files penalty is a tiny-batch phenomenon). Iceberg commit
+  p95 is ~constant (~133ms) regardless of batch (fixed file+manifest+metadata per-commit overhead); inline
+  writes 0 files; read-while-write coherent at every cadence (running count exact throughout).
+- [~] **R8 same-files at 1B** (heavy) — the definitive format-neutrality result at scale, not just 100M.
+  Runs the existing `same_files_scan.py --rows 1000000000` with `TMPDIR` + `SDW_DUCK_TEMP_DIR` routed to
+  the E: SSD (`/mnt/e`) so ~40GB (canonical + two byte-identical copies + spill) stays off the 94%-full
+  C: VHD. drvfs inflates absolute latencies; the relative neutrality ratio is the part that survives.
+  Held for isolation until the parallel lit-review agent finishes (heavy I/O + timing, runs alone).
 - [ ] **R9 DWPD under sustained ingest** (heavy, 4–6h, run ALONE) — measured device bytes-written via
   smartctl across a multi-hour ingest + compaction; converts H-STORAGE-ENDURANCE-01 B/C→A.
 
