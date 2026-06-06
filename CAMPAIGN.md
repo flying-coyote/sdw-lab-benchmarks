@@ -94,9 +94,14 @@ Status: [ ] pending · [~] running · [x] done. Each is single-box and dependenc
   Runs the existing `same_files_scan.py --rows 1000000000` with `TMPDIR` + `SDW_DUCK_TEMP_DIR` routed to
   the E: SSD (`/mnt/e`) so ~40GB (canonical + two byte-identical copies + spill) stays off the 94%-full
   C: VHD. drvfs inflates absolute latencies; the relative neutrality ratio is the part that survives.
-  Held for isolation until the parallel lit-review agent finishes (heavy I/O + timing, runs alone).
-- [ ] **R9 DWPD under sustained ingest** (heavy, 4–6h, run ALONE) — measured device bytes-written via
-  smartctl across a multi-hour ingest + compaction; converts H-STORAGE-ENDURANCE-01 B/C→A.
+  RUNNING isolated (`--trials 3`) after the lit-review agent finished.
+- [DEFERRED] **R9 DWPD under sustained ingest** — Tier-A (device-measured) **not viable on this box**:
+  WSL2 doesn't expose the physical NVMe (no `/dev/nvme*`; only VHDX-backed `sd*` virtual disks with no
+  real SMART), so `smartctl` can't read the SSD's Data-Units-Written counter. `/proc/diskstats` gives a
+  guest-level write-volume proxy (FS-level amplification, a lower bound) but can't reach the physical-NAND
+  figure, so it can't promote H-STORAGE-ENDURANCE-01 to A. Decision (Jeremy, 2026-06-05): **defer to
+  another system — native-Linux boot or AWS**, where `/dev/nvme0` + `smartctl -A` give true, isolated
+  Data-Units-Written. Not run here; no proxy run.
 
 Deferred (need external deps / humans, not in the autonomous single-box run): BENCH-C OBDA arm (Ontop +
 R2RML setup), BENCH-B frontier leg (needs ANTHROPIC_API_KEY), BENCH-A named-practitioner realism sign-off.
