@@ -1,0 +1,92 @@
+{
+  "benchmark": "ocsf-read-scan writer-as-read-lever (T2.6)",
+  "evidence_tier": "B (single machine; hot/warm; medians + CV; sizes exact)",
+  "hypothesis": "encoder-is-the-read-lever (generalized across writers)",
+  "n_rows": 20000000,
+  "relative_to_duckdb": {
+    "pyarrow_default": {
+      "read_x_vs_duckdb": {
+        "filter_count": 1.16,
+        "scan_sum": 1.41,
+        "topn_src": 1.13
+      },
+      "size_x_vs_duckdb": 1.6
+    },
+    "pyarrow_dict": {
+      "read_x_vs_duckdb": {
+        "filter_count": 1.15,
+        "scan_sum": 1.48,
+        "topn_src": 1.06
+      },
+      "size_x_vs_duckdb": 1.6
+    },
+    "pyiceberg": {
+      "read_x_vs_duckdb": {
+        "filter_count": 0.64,
+        "scan_sum": 0.83,
+        "topn_src": 0.61
+      },
+      "size_x_vs_duckdb": 0.93
+    }
+  },
+  "row_group_rows": 122880,
+  "trials": 5,
+  "writers": {
+    "duckdb": {
+      "cv": {
+        "filter_count": 21.8,
+        "scan_sum": 3.0,
+        "topn_src": 1.7
+      },
+      "file_mb": 228.3,
+      "queries": {
+        "filter_count": 10.3,
+        "scan_sum": 37.3,
+        "topn_src": 628.9
+      },
+      "src_ip_encoding": "PLAIN"
+    },
+    "pyarrow_default": {
+      "cv": {
+        "filter_count": 24.7,
+        "scan_sum": 6.8,
+        "topn_src": 1.7
+      },
+      "file_mb": 365.1,
+      "queries": {
+        "filter_count": 11.9,
+        "scan_sum": 52.7,
+        "topn_src": 708.1
+      },
+      "src_ip_encoding": "PLAIN+RLE+RLE_DICTIONARY"
+    },
+    "pyarrow_dict": {
+      "cv": {
+        "filter_count": 1.6,
+        "scan_sum": 3.9,
+        "topn_src": 1.4
+      },
+      "file_mb": 365.1,
+      "queries": {
+        "filter_count": 11.8,
+        "scan_sum": 55.3,
+        "topn_src": 668.8
+      },
+      "src_ip_encoding": "PLAIN+RLE+RLE_DICTIONARY"
+    },
+    "pyiceberg": {
+      "cv": {
+        "filter_count": 45.9,
+        "scan_sum": 10.3,
+        "topn_src": 0.9
+      },
+      "file_mb": 212.4,
+      "queries": {
+        "filter_count": 6.6,
+        "scan_sum": 30.8,
+        "topn_src": 381.2
+      },
+      "src_ip_encoding": "PLAIN+RLE+RLE_DICTIONARY"
+    }
+  }
+}

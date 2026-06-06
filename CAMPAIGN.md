@@ -169,9 +169,15 @@ Added 2026-06-06 from the post-R8 review. Resource-light unless noted; each maps
   Iceberg even slightly faster), gap appears only under forced spill (1.15× toward DuckLake). R8's 1.30× at
   1B was the 28 GB-cap × drvfs-spill interaction; same-files read-neutrality holds for in-memory aggregates,
   resolving H-ICEBERG-INTERFACE-01's "not-unconditional" caution to a spill-regime caveat.
-- **Broader Parquet-writer encoding comparison** — DuckDB vs PyArrow vs the pyiceberg writer on identical
-  data, the encoder-is-the-read-lever finding generalized beyond the two writers already compared. Backs the
-  "encoder is the read lever" + "same codec, different sizes" essays. Resource-light.
+- [x] **Broader Parquet-writer encoding comparison — DONE (T2.6, `ocsf-read-scan/writer_read_lever.py`)**:
+  one OCSF table (20M) written by DuckDB, PyArrow (default + dict-forced), and pyiceberg at a matched
+  codec/row-group, read by the same engine. The writer's encoding **is** a read lever — it moves the
+  high-cardinality group-by **~1.65×** (DuckDB-written 629 ms vs pyiceberg-written 381 ms) with everything
+  but the encoding held constant — but the effect is **not size-monotonic**: pyiceberg's RLE-dictionary
+  `src_ip` is smallest (212 MB) *and* fastest, DuckDB's PLAIN is mid-size (228 MB) but slower on the
+  group-by, PyArrow-default is biggest (365 MB) and slowest. So "pick the writer, not just the codec" now
+  rests on read latency, not only bytes; the lever's direction is query/data-shape-dependent. Backs the
+  encoder-is-the-read-lever / same-codec-different-sizes essays.
 - **R9 DWPD on native-Linux / AWS** — the deferred device-measured endurance (true `smartctl -A`
   Data-Units-Written), the only path to promote H-STORAGE-ENDURANCE-01 D→A; not viable under WSL2.
   External system.
