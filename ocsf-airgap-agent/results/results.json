@@ -1,0 +1,114 @@
+{
+  "airgap_ledger": {
+    "external_egress": "none \u2014 model weights local (Ollama), OCSF store local Parquet, Sigma ruleset a local clone; no component reaches the internet",
+    "network_endpoints_contacted": [
+      "http://localhost:11434 (Ollama \u2014 on-host, loopback only)"
+    ],
+    "offline_content": {
+      "mirrored_sigma_rules": 3132,
+      "ocsf_tables": [
+        "process_creation",
+        "network_connection",
+        "dns_query",
+        "authentication",
+        "ps_script"
+      ]
+    },
+    "stdio_mcp_note": "the DuckDB tool is in-process here; an stdio MCP server exposes the identical tool over stdio (no socket), which is offline by construction \u2014 the air-gap property is the transport, demonstrated by the loopback-only ledger."
+  },
+  "benchmark": "ocsf-airgap-agent (Adj.15)",
+  "evidence_tier": "B for buildability/air-gap mechanics; D for hard-SOC-reasoning capability",
+  "ground_truth": {
+    "dropper_cmdline": "\"C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr\" /S",
+    "user": "DMEVALS\\pbeesly"
+  },
+  "hypothesis": "H-PRACTITIONER-OWNED-AGENTIC-01",
+  "models": [
+    {
+      "final_answer": "The initial dropper is the executable with CommandLine: \"C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr\" /S, and it ran under the user account: DMEVALS\\pbeesly.",
+      "found_dropper": true,
+      "found_user": true,
+      "gen_seconds": 172.0,
+      "model": "gemma4:e4b",
+      "steps_taken": 5,
+      "transcript": [
+        {
+          "action": "SELECT CommandLine, User, Image FROM process_creation WHERE Image LIKE 'C:\\\\ProgramData\\\\%' ORDER BY _event_ms ASC LIMIT 1",
+          "gen_s": 24.0,
+          "obs": "(no rows)",
+          "step": 0
+        },
+        {
+          "action": "SELECT CommandLine, User, Image FROM process_creation WHERE Image LIKE 'C:\\\\Windows\\\\Temp\\\\%' ORDER BY _event_ms ASC LIMIT 1",
+          "gen_s": 27.9,
+          "obs": "(no rows)",
+          "step": 1
+        },
+        {
+          "action": "SELECT CommandLine, User, Image FROM process_creation WHERE Image LIKE 'C:\\\\Users\\\\Public\\\\%' ORDER BY _event_ms ASC LIMIT 1",
+          "gen_s": 28.4,
+          "obs": "(no rows)",
+          "step": 2
+        },
+        {
+          "action": "SELECT CommandLine, User, Image FROM process_creation ORDER BY _event_ms ASC LIMIT 5",
+          "gen_s": 21.4,
+          "obs": "(None, None, None)\n('\"C:\\\\ProgramData\\\\victim\\\\\u00e2\u20ac\u00aecod.3aka3.scr\" /S', 'DMEVALS\\\\pbeesly', 'C:\\\\ProgramData\\\\victim\\\\\u00e2\u20ac\u00aecod.3aka3.scr')\n('\\\\\\\\?\\\\C:\\\\windows\\\\system32\\\\conhost.exe --headless --width 80 --height 25 --signal 0x54c --server 0x540', 'DMEVALS\\\\pbeesly', 'C:\\\\Windows\\\\System32\\\\conhost.exe",
+          "step": 3
+        },
+        {
+          "answer": "The initial dropper is the executable with CommandLine: \"C:\\ProgramData\\victim\\\u00e2\u20ac\u00aecod.3aka3.scr\" /S, and it ran under the user account: DMEVALS\\pbeesly.",
+          "gen_s": 70.3,
+          "step": 4
+        }
+      ]
+    },
+    {
+      "final_answer": null,
+      "found_dropper": false,
+      "found_user": false,
+      "gen_seconds": 198.1,
+      "model": "phi4:latest",
+      "steps_taken": 6,
+      "transcript": [
+        {
+          "action": "SELECT Image, CommandLine, User  LIMIT 20",
+          "gen_s": 69.0,
+          "obs": "ERROR: Binder Error: Referenced column \"Image\" was not found because the FROM clause is missing\n\nLINE 1: SELECT Image, CommandLine, User  LIMIT 20\n          ",
+          "step": 0
+        },
+        {
+          "action": "SELECT Image, CommandLine, User  LIMIT 20",
+          "gen_s": 23.3,
+          "obs": "ERROR: Binder Error: Referenced column \"Image\" was not found because the FROM clause is missing\n\nLINE 1: SELECT Image, CommandLine, User  LIMIT 20\n          ",
+          "step": 1
+        },
+        {
+          "action": "SELECT process_creation.Image, process_creation.CommandLine, process_creation.User  LIMIT 20",
+          "gen_s": 27.3,
+          "obs": "ERROR: Binder Error: Referenced table \"process_creation\" not found!\n\nLINE 1: SELECT process_creation.Image, process_creation.CommandLine, proce...\n          ",
+          "step": 2
+        },
+        {
+          "action": "SELECT Image, CommandLine, User  LIMIT 20",
+          "gen_s": 23.3,
+          "obs": "ERROR: Binder Error: Referenced column \"Image\" was not found because the FROM clause is missing\n\nLINE 1: SELECT Image, CommandLine, User  LIMIT 20\n          ",
+          "step": 3
+        },
+        {
+          "action": "SELECT pc.Image, pc.CommandLine, pc.User  LIMIT 20",
+          "gen_s": 25.2,
+          "obs": "ERROR: Binder Error: Referenced table \"pc\" not found!\n\nLINE 1: SELECT pc.Image, pc.CommandLine, pc.User  LIMIT 20\n               ^",
+          "step": 4
+        },
+        {
+          "action": "SELECT Image, CommandLine, User  LIMIT 20",
+          "gen_s": 29.9,
+          "obs": "ERROR: Binder Error: Referenced column \"Image\" was not found because the FROM clause is missing\n\nLINE 1: SELECT Image, CommandLine, User  LIMIT 20\n          ",
+          "step": 5
+        }
+      ]
+    }
+  ],
+  "task": "Find the FIRST suspicious executable that was run on the host (the initial dropper) and the user account it ran under. Suspicious executables often live in unusual paths like C:\\ProgramData and may have odd names. Report the executable's CommandLine and the User."
+}
