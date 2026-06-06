@@ -1,18 +1,22 @@
 # Draft upstream bug report — ClickHouse/chDB Parquet Bloom-filter pushdown silently undercounts
 
-> **⚠️ DO NOT FILE — does not reproduce on re-test (2026-06-06).** A full sweep of all 2,000 distinct probe
-> values on chdb **4.1.8** (embedded ClickHouse **26.3.9.1**), against a DuckDB-1.5.3-written file with Bloom
-> filters confirmed present (813 of 814 row groups carry a Bloom filter), returned **0 undercounts** — every
-> value matched the DuckDB ground truth under the v3 reader's default Bloom-pushdown path. The precondition is
-> valid (the Bloom path is exercised), so this is a genuine non-reproduction, not a missing trigger. Most
-> likely the defect was fixed in a chDB/ClickHouse point build, or the original campaign-R3 observation was
-> run/thread-nondeterministic and does not reliably recur. Either way the report must **not** be filed as a
-> live bug. Kept as a record of the original finding + the re-test; see the hypothesis tracker
-> (H-ENGINE-ANSWER-EQUIVALENCE-01) for the bounded-evidence note. Re-test: `mechanism_chdb_bloom.py` / the
-> 2,000-value sweep.
+> **✅ REPRODUCES AT SCALE — fileable, but it is SCALE-DEPENDENT (re-tested 2026-06-06).** Two full
+> 2,000-value sweeps on chdb **4.1.8** (embedded ClickHouse **26.3.9.1**) over DuckDB-1.5.3-written files with
+> Bloom filters confirmed present:
+> - **10M rows / ~814 row groups → 0 / 2,000 undercount** (does NOT reproduce)
+> - **100M rows / ~8,139 row groups → 285 / 2,000 undercount** (reproduces; shortfalls of 3–13 rows each, e.g.
+>   user102: 50369 vs 50380)
+>
+> So the bug is real and the report is fileable, but it is **scale- (row-group-count-) dependent**, and the
+> original draft's "reproduced cheaply at 10M" claim is unreliable — at 10M it does not reliably trigger. **A
+> filer must reproduce at ~100M (~8,000 row groups), not 10M.** The repro below is updated to 100M. This is
+> itself the methodology lesson: a "cheap" smaller-scale isolation can hide a scale-dependent correctness bug,
+> so the isolation scale has to be validated against the scale the bug was first seen at. See the hypothesis
+> tracker (H-ENGINE-ANSWER-EQUIVALENCE-01) for the corrected note.
 
-**Status (original draft, superseded by the non-reproduction notice above):** was drafted for a human to file
-at <https://github.com/ClickHouse/ClickHouse/issues> (and reference <https://github.com/chdb-io/chdb>).
+**Status:** draft, **fileable** at <https://github.com/ClickHouse/ClickHouse/issues> (and reference
+<https://github.com/chdb-io/chdb>), reproducing at 100M per the notice above. Filing left to Jeremy per the
+contribute-don't-own posture — this is the reproduction and the isolation packaged so a maintainer can act on it.
 
 ---
 
@@ -73,7 +77,8 @@ import duckdb
 from chdb import session as chs
 
 PQ = "/tmp/ch_bloom_repro.parquet"
-N, RG = 10_000_000, 12_288   # ~814 row groups
+N, RG = 100_000_000, 12_288   # ~8,139 row groups — SCALE MATTERS: at 10M / ~814 groups it does NOT
+                              # reliably trigger; at 100M ~285/2000 values undercount. Use the larger scale.
 con = duckdb.connect()
 gen = ("SELECT ('user' || (hash(i::VARCHAR || 'u') % 2000)::VARCHAR) AS user_name "
        "FROM range(0, %d) t(i)" % N)
