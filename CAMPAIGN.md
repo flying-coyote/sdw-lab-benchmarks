@@ -123,13 +123,33 @@ R2RML setup), BENCH-B frontier leg (needs ANTHROPIC_API_KEY), BENCH-A named-prac
 
 Added 2026-06-06 from the post-R8 review. Resource-light unless noted; each maps to a hypothesis.
 
-- **Cross-engine Parquet equality-filter correctness probe** — does the R3 chDB undercount *generalize*?
-  Run the `correctness_divergence.py` shape (many small row groups + `=`/`IN` pushdown against a generator
-  ground truth) across DataFusion, Polars, Trino, and a newer chDB build. Pre-register the probe values;
-  **report the engines that pass as loudly as any that fail** (the method is the finding, not a vendor name).
-  This is what moves H-ENGINE-ANSWER-EQUIVALENCE-01 from one clean datapoint toward a pattern (or refutes the
-  generality and keeps it a one-engine bug). Resource-light. **+ file the upstream chDB bug report** with the
-  reproduction (contribute-don't-own).
+- [x] **Cross-engine Parquet correctness probe — DONE** (`clickhouse-vs-duckdb/multi_engine_correctness.py`,
+  `MULTI-ENGINE-CORRECTNESS.md`). The R3 chDB undercount was generalized across **13 distinct Parquet
+  readers/executors** reading byte-identical Parquet (the ~814-row-group trigger), all via SQL, vs the
+  generator's ground truth: DuckDB, DataFusion, Polars, pyarrow/Acero, Daft, fastparquet (in-process) +
+  Trino, ClickHouse-server, Spark, StarRocks, Dremio, Postgres-native-load (containerized). Engine set
+  chosen by *distinct reader* per `ENGINE-LANDSCAPE-SURVEY.md`. **Result: 11 readers correct; 2 distinct
+  readers silently wrong** — and both isolated to a mechanism and confirmed default-config, not
+  misconfiguration:
+  - **chDB / ClickHouse v3 Parquet reader** undercounts `=`/`IN` via **default-on Bloom-filter pushdown**
+    (`input_format_parquet_bloom_filter_push_down=1`). `LIKE` is correct (no Bloom probe), MergeTree is
+    correct. **Disambiguated:** clickhouse-server **25.10** (older reader) reads the same file correctly, and
+    `use_native_reader_v3=0` fixes it — so DuckDB's Bloom filter is conformant and the defect is the **v3
+    reader's Bloom probe** (v3 default since 25.11; chDB 4.1.8 embeds CH 26.3). `mechanism_chdb_bloom.py`,
+    `CHDB-UPSTREAM-BUG-REPORT.md`.
+  - **fastparquet** (pure-Python, non-Arrow, retired) silently **mis-decodes DuckDB's `PLAIN_DICTIONARY`**
+    string column (4,672/1M rows wrong on all three predicates); a pyarrow-written copy of the same data
+    reads perfectly → a writer×reader decode bug. `mechanism_fastparquet_dict.py`, `FASTPARQUET-DECODE-NOTE.md`.
+  - **Cross-engine-without-ground-truth (alternative-hypothesis test):** every divergence was a single
+    reader against a unanimous rest (no ambiguous split), so a ≥3-engine majority catches it even without a
+    generator — but two engines agreeing on a wrong answer would defeat majority, so the durable control is
+    *validate against ground truth where you can, cross-engine majority where you can't*.
+  - **Both bugs vanish under pyarrow's encoding** → the writer's encoding choices (Bloom filters,
+    `PLAIN_DICTIONARY`) are a *correctness* variable across readers, not just performance. Ties to
+    encoder-is-the-read-lever. Deferred (recorded, not skipped): RisingWave (`file_scan` has no local-FS
+    backend — only s3/gcs/azblob; reader is arrow-rs), Feldera (per-file SQL-program compile; arrow-rs reader).
+  - **Upstream report drafted** for a human to file (`CHDB-UPSTREAM-BUG-REPORT.md`); fastparquet note records
+    the retired-engine guidance (use pyarrow).
 - **R8 `topn_src` divergence chase** — separate scan-path from spill. Re-run the heavy high-cardinality
   aggregate three ways on byte-identical files (Iceberg extension · DuckLake · a bare `read_parquet(glob)`
   baseline) and again with spill disabled / a higher memory cap, to tell whether the 1.30× is the two DuckDB

@@ -1,0 +1,1038 @@
+{
+  "benchmark": "multi-engine Parquet correctness probe (Phase E generalization of R3)",
+  "cells": [
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5099,
+        "chdb_parquet": 5092,
+        "clickhouse_server": 5099,
+        "daft": 5099,
+        "datafusion": 5099,
+        "dremio": 5099,
+        "duckdb": 5099,
+        "fastparquet": 5096,
+        "polars": 5099,
+        "postgres": 5099,
+        "pyarrow": 5099,
+        "spark": 5099,
+        "starrocks": 5099,
+        "trino": 5099
+      },
+      "cross_engine_consensus": 5099,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "=",
+      "truth": 5099,
+      "value": "user42"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5099,
+        "chdb_parquet": 5092,
+        "clickhouse_server": 5099,
+        "daft": 5099,
+        "datafusion": 5099,
+        "dremio": 5099,
+        "duckdb": 5099,
+        "fastparquet": 5096,
+        "polars": 5099,
+        "postgres": 5099,
+        "pyarrow": 5099,
+        "spark": 5099,
+        "starrocks": 5099,
+        "trino": 5099
+      },
+      "cross_engine_consensus": 5099,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "IN",
+      "truth": 5099,
+      "value": "user42"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5099,
+        "chdb_parquet": 5099,
+        "clickhouse_server": 5099,
+        "daft": 5099,
+        "datafusion": 5099,
+        "dremio": 5099,
+        "duckdb": 5099,
+        "fastparquet": 5096,
+        "polars": 5099,
+        "postgres": 5099,
+        "pyarrow": 5099,
+        "spark": 5099,
+        "starrocks": 5099,
+        "trino": 5099
+      },
+      "cross_engine_consensus": 5099,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "LIKE",
+      "truth": 5099,
+      "value": "user42"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 4972,
+        "chdb_parquet": 4966,
+        "clickhouse_server": 4972,
+        "daft": 4972,
+        "datafusion": 4972,
+        "dremio": 4972,
+        "duckdb": 4972,
+        "fastparquet": 4971,
+        "polars": 4972,
+        "postgres": 4972,
+        "pyarrow": 4972,
+        "spark": 4972,
+        "starrocks": 4972,
+        "trino": 4972
+      },
+      "cross_engine_consensus": 4972,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "=",
+      "truth": 4972,
+      "value": "user1337"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 4972,
+        "chdb_parquet": 4966,
+        "clickhouse_server": 4972,
+        "daft": 4972,
+        "datafusion": 4972,
+        "dremio": 4972,
+        "duckdb": 4972,
+        "fastparquet": 4971,
+        "polars": 4972,
+        "postgres": 4972,
+        "pyarrow": 4972,
+        "spark": 4972,
+        "starrocks": 4972,
+        "trino": 4972
+      },
+      "cross_engine_consensus": 4972,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "IN",
+      "truth": 4972,
+      "value": "user1337"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 4972,
+        "chdb_parquet": 4972,
+        "clickhouse_server": 4972,
+        "daft": 4972,
+        "datafusion": 4972,
+        "dremio": 4972,
+        "duckdb": 4972,
+        "fastparquet": 4971,
+        "polars": 4972,
+        "postgres": 4972,
+        "pyarrow": 4972,
+        "spark": 4972,
+        "starrocks": 4972,
+        "trino": 4972
+      },
+      "cross_engine_consensus": 4972,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "LIKE",
+      "truth": 4972,
+      "value": "user1337"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5108,
+        "chdb_parquet": 5101,
+        "clickhouse_server": 5108,
+        "daft": 5108,
+        "datafusion": 5108,
+        "dremio": 5108,
+        "duckdb": 5108,
+        "fastparquet": 5102,
+        "polars": 5108,
+        "postgres": 5108,
+        "pyarrow": 5108,
+        "spark": 5108,
+        "starrocks": 5108,
+        "trino": 5108
+      },
+      "cross_engine_consensus": 5108,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "=",
+      "truth": 5108,
+      "value": "user7"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5108,
+        "chdb_parquet": 5101,
+        "clickhouse_server": 5108,
+        "daft": 5108,
+        "datafusion": 5108,
+        "dremio": 5108,
+        "duckdb": 5108,
+        "fastparquet": 5102,
+        "polars": 5108,
+        "postgres": 5108,
+        "pyarrow": 5108,
+        "spark": 5108,
+        "starrocks": 5108,
+        "trino": 5108
+      },
+      "cross_engine_consensus": 5108,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "IN",
+      "truth": 5108,
+      "value": "user7"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5108,
+        "chdb_parquet": 5108,
+        "clickhouse_server": 5108,
+        "daft": 5108,
+        "datafusion": 5108,
+        "dremio": 5108,
+        "duckdb": 5108,
+        "fastparquet": 5102,
+        "polars": 5108,
+        "postgres": 5108,
+        "pyarrow": 5108,
+        "spark": 5108,
+        "starrocks": 5108,
+        "trino": 5108
+      },
+      "cross_engine_consensus": 5108,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "LIKE",
+      "truth": 5108,
+      "value": "user7"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5055,
+        "chdb_parquet": 5055,
+        "clickhouse_server": 5055,
+        "daft": 5055,
+        "datafusion": 5055,
+        "dremio": 5055,
+        "duckdb": 5055,
+        "fastparquet": 5050,
+        "polars": 5055,
+        "postgres": 5055,
+        "pyarrow": 5055,
+        "spark": 5055,
+        "starrocks": 5055,
+        "trino": 5055
+      },
+      "cross_engine_consensus": 5055,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "=",
+      "truth": 5055,
+      "value": "user999"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5055,
+        "chdb_parquet": 5055,
+        "clickhouse_server": 5055,
+        "daft": 5055,
+        "datafusion": 5055,
+        "dremio": 5055,
+        "duckdb": 5055,
+        "fastparquet": 5050,
+        "polars": 5055,
+        "postgres": 5055,
+        "pyarrow": 5055,
+        "spark": 5055,
+        "starrocks": 5055,
+        "trino": 5055
+      },
+      "cross_engine_consensus": 5055,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "IN",
+      "truth": 5055,
+      "value": "user999"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5055,
+        "chdb_parquet": 5055,
+        "clickhouse_server": 5055,
+        "daft": 5055,
+        "datafusion": 5055,
+        "dremio": 5055,
+        "duckdb": 5055,
+        "fastparquet": 5050,
+        "polars": 5055,
+        "postgres": 5055,
+        "pyarrow": 5055,
+        "spark": 5055,
+        "starrocks": 5055,
+        "trino": 5055
+      },
+      "cross_engine_consensus": 5055,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "LIKE",
+      "truth": 5055,
+      "value": "user999"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5106,
+        "chdb_parquet": 5096,
+        "clickhouse_server": 5106,
+        "daft": 5106,
+        "datafusion": 5106,
+        "dremio": 5106,
+        "duckdb": 5106,
+        "fastparquet": 5100,
+        "polars": 5106,
+        "postgres": 5106,
+        "pyarrow": 5106,
+        "spark": 5106,
+        "starrocks": 5106,
+        "trino": 5106
+      },
+      "cross_engine_consensus": 5106,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "=",
+      "truth": 5106,
+      "value": "user1500"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5106,
+        "chdb_parquet": 5106,
+        "clickhouse_server": 5106,
+        "daft": 5106,
+        "datafusion": 5106,
+        "dremio": 5106,
+        "duckdb": 5106,
+        "fastparquet": 5100,
+        "polars": 5106,
+        "postgres": 5106,
+        "pyarrow": 5106,
+        "spark": 5106,
+        "starrocks": 5106,
+        "trino": 5106
+      },
+      "cross_engine_consensus": 5106,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "IN",
+      "truth": 5106,
+      "value": "user1500"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5106,
+        "chdb_parquet": 5106,
+        "clickhouse_server": 5106,
+        "daft": 5106,
+        "datafusion": 5106,
+        "dremio": 5106,
+        "duckdb": 5106,
+        "fastparquet": 5100,
+        "polars": 5106,
+        "postgres": 5106,
+        "pyarrow": 5106,
+        "spark": 5106,
+        "starrocks": 5106,
+        "trino": 5106
+      },
+      "cross_engine_consensus": 5106,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "LIKE",
+      "truth": 5106,
+      "value": "user1500"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5000,
+        "chdb_parquet": 4988,
+        "clickhouse_server": 5000,
+        "daft": 5000,
+        "datafusion": 5000,
+        "dremio": 5000,
+        "duckdb": 5000,
+        "fastparquet": 4997,
+        "polars": 5000,
+        "postgres": 5000,
+        "pyarrow": 5000,
+        "spark": 5000,
+        "starrocks": 5000,
+        "trino": 5000
+      },
+      "cross_engine_consensus": 5000,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "=",
+      "truth": 5000,
+      "value": "user256"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5000,
+        "chdb_parquet": 4988,
+        "clickhouse_server": 5000,
+        "daft": 5000,
+        "datafusion": 5000,
+        "dremio": 5000,
+        "duckdb": 5000,
+        "fastparquet": 4997,
+        "polars": 5000,
+        "postgres": 5000,
+        "pyarrow": 5000,
+        "spark": 5000,
+        "starrocks": 5000,
+        "trino": 5000
+      },
+      "cross_engine_consensus": 5000,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "IN",
+      "truth": 5000,
+      "value": "user256"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5000,
+        "chdb_parquet": 5000,
+        "clickhouse_server": 5000,
+        "daft": 5000,
+        "datafusion": 5000,
+        "dremio": 5000,
+        "duckdb": 5000,
+        "fastparquet": 4997,
+        "polars": 5000,
+        "postgres": 5000,
+        "pyarrow": 5000,
+        "spark": 5000,
+        "starrocks": 5000,
+        "trino": 5000
+      },
+      "cross_engine_consensus": 5000,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "LIKE",
+      "truth": 5000,
+      "value": "user256"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5022,
+        "chdb_parquet": 5012,
+        "clickhouse_server": 5022,
+        "daft": 5022,
+        "datafusion": 5022,
+        "dremio": 5022,
+        "duckdb": 5022,
+        "fastparquet": 5019,
+        "polars": 5022,
+        "postgres": 5022,
+        "pyarrow": 5022,
+        "spark": 5022,
+        "starrocks": 5022,
+        "trino": 5022
+      },
+      "cross_engine_consensus": 5022,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "=",
+      "truth": 5022,
+      "value": "user1023"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5022,
+        "chdb_parquet": 5012,
+        "clickhouse_server": 5022,
+        "daft": 5022,
+        "datafusion": 5022,
+        "dremio": 5022,
+        "duckdb": 5022,
+        "fastparquet": 5019,
+        "polars": 5022,
+        "postgres": 5022,
+        "pyarrow": 5022,
+        "spark": 5022,
+        "starrocks": 5022,
+        "trino": 5022
+      },
+      "cross_engine_consensus": 5022,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "IN",
+      "truth": 5022,
+      "value": "user1023"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5022,
+        "chdb_parquet": 5022,
+        "clickhouse_server": 5022,
+        "daft": 5022,
+        "datafusion": 5022,
+        "dremio": 5022,
+        "duckdb": 5022,
+        "fastparquet": 5019,
+        "polars": 5022,
+        "postgres": 5022,
+        "pyarrow": 5022,
+        "spark": 5022,
+        "starrocks": 5022,
+        "trino": 5022
+      },
+      "cross_engine_consensus": 5022,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "LIKE",
+      "truth": 5022,
+      "value": "user1023"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5144,
+        "chdb_parquet": 5137,
+        "clickhouse_server": 5144,
+        "daft": 5144,
+        "datafusion": 5144,
+        "dremio": 5144,
+        "duckdb": 5144,
+        "fastparquet": 5137,
+        "polars": 5144,
+        "postgres": 5144,
+        "pyarrow": 5144,
+        "spark": 5144,
+        "starrocks": 5144,
+        "trino": 5144
+      },
+      "cross_engine_consensus": 5144,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "=",
+      "truth": 5144,
+      "value": "user64"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5144,
+        "chdb_parquet": 5137,
+        "clickhouse_server": 5144,
+        "daft": 5144,
+        "datafusion": 5144,
+        "dremio": 5144,
+        "duckdb": 5144,
+        "fastparquet": 5137,
+        "polars": 5144,
+        "postgres": 5144,
+        "pyarrow": 5144,
+        "spark": 5144,
+        "starrocks": 5144,
+        "trino": 5144
+      },
+      "cross_engine_consensus": 5144,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "IN",
+      "truth": 5144,
+      "value": "user64"
+    },
+    {
+      "ambiguous_split_without_truth": false,
+      "answers": {
+        "chdb_mergetree": 5144,
+        "chdb_parquet": 5144,
+        "clickhouse_server": 5144,
+        "daft": 5144,
+        "datafusion": 5144,
+        "dremio": 5144,
+        "duckdb": 5144,
+        "fastparquet": 5137,
+        "polars": 5144,
+        "postgres": 5144,
+        "pyarrow": 5144,
+        "spark": 5144,
+        "starrocks": 5144,
+        "trino": 5144
+      },
+      "cross_engine_consensus": 5144,
+      "cross_engine_consensus_matches_truth": true,
+      "cross_engine_unanimous": false,
+      "errors": {},
+      "predicate": "LIKE",
+      "truth": 5144,
+      "value": "user64"
+    }
+  ],
+  "corpus_rows": 10000000,
+  "cross_engine_any_ambiguous_split": false,
+  "cross_engine_any_divergence": true,
+  "cross_engine_catches_every_divergence_without_truth": true,
+  "engines_errored": [],
+  "environment": {
+    "chdb": "4.1.8",
+    "clickhouse_server": "25.10.2.65",
+    "daft": "0.7.14",
+    "datafusion": "53.0.0",
+    "dremio": "26.0.5-202509091642240013-f5051a07",
+    "duckdb": "1.5.3",
+    "fastparquet": "2026.5.0",
+    "polars": "1.41.2",
+    "postgres": "PostgreSQL 17.10",
+    "pyarrow": "23.0.1",
+    "spark": "3.5.0",
+    "starrocks": "4.1.1-14b7e3f",
+    "trino": "481"
+  },
+  "evidence_tier": "B (single machine; ground-truth-verified, deterministic, reproducible)",
+  "ground_truth_failers": [
+    "chdb_parquet",
+    "fastparquet"
+  ],
+  "ground_truth_passers": [
+    "clickhouse_server",
+    "daft",
+    "datafusion",
+    "dremio",
+    "duckdb",
+    "polars",
+    "postgres",
+    "pyarrow",
+    "spark",
+    "starrocks",
+    "trino"
+  ],
+  "hypothesis": "H-ENGINE-ANSWER-EQUIVALENCE-01",
+  "predicate_classes": [
+    "=",
+    "IN",
+    "LIKE"
+  ],
+  "probe_values": 8,
+  "row_group_size": 12288,
+  "row_groups": 814,
+  "scorecard": {
+    "chdb_mergetree": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": false,
+      "reader": "ClickHouse MergeTree native store (within-engine control, not Parquet)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "chdb_parquet": {
+      "all_correct": false,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 13,
+      "in_vote": true,
+      "reader": "ClickHouse C++ v3 reader (embedded chDB; CH 26.3, v3 default)",
+      "total_abs_error": 108,
+      "wrong_cells": [
+        {
+          "error": -7,
+          "predicate": "=",
+          "value": "user42"
+        },
+        {
+          "error": -7,
+          "predicate": "IN",
+          "value": "user42"
+        },
+        {
+          "error": -6,
+          "predicate": "=",
+          "value": "user1337"
+        },
+        {
+          "error": -6,
+          "predicate": "IN",
+          "value": "user1337"
+        },
+        {
+          "error": -7,
+          "predicate": "=",
+          "value": "user7"
+        },
+        {
+          "error": -7,
+          "predicate": "IN",
+          "value": "user7"
+        },
+        {
+          "error": -10,
+          "predicate": "=",
+          "value": "user1500"
+        },
+        {
+          "error": -12,
+          "predicate": "=",
+          "value": "user256"
+        },
+        {
+          "error": -12,
+          "predicate": "IN",
+          "value": "user256"
+        },
+        {
+          "error": -10,
+          "predicate": "=",
+          "value": "user1023"
+        },
+        {
+          "error": -10,
+          "predicate": "IN",
+          "value": "user1023"
+        },
+        {
+          "error": -7,
+          "predicate": "=",
+          "value": "user64"
+        },
+        {
+          "error": -7,
+          "predicate": "IN",
+          "value": "user64"
+        }
+      ]
+    },
+    "clickhouse_server": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "ClickHouse C++ older reader (server 25.10; v3 not default)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "daft": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "Daft (Rust; arrow-rs-derived I/O)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "datafusion": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "arrow-rs parquet (Rust)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "dremio": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "Dremio Java (own vectorized)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "duckdb": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "DuckDB C++ (own)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "fastparquet": {
+      "all_correct": false,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 24,
+      "in_vote": true,
+      "reader": "fastparquet (pure-Python, non-Arrow)",
+      "total_abs_error": 102,
+      "wrong_cells": [
+        {
+          "error": -3,
+          "predicate": "=",
+          "value": "user42"
+        },
+        {
+          "error": -3,
+          "predicate": "IN",
+          "value": "user42"
+        },
+        {
+          "error": -3,
+          "predicate": "LIKE",
+          "value": "user42"
+        },
+        {
+          "error": -1,
+          "predicate": "=",
+          "value": "user1337"
+        },
+        {
+          "error": -1,
+          "predicate": "IN",
+          "value": "user1337"
+        },
+        {
+          "error": -1,
+          "predicate": "LIKE",
+          "value": "user1337"
+        },
+        {
+          "error": -6,
+          "predicate": "=",
+          "value": "user7"
+        },
+        {
+          "error": -6,
+          "predicate": "IN",
+          "value": "user7"
+        },
+        {
+          "error": -6,
+          "predicate": "LIKE",
+          "value": "user7"
+        },
+        {
+          "error": -5,
+          "predicate": "=",
+          "value": "user999"
+        },
+        {
+          "error": -5,
+          "predicate": "IN",
+          "value": "user999"
+        },
+        {
+          "error": -5,
+          "predicate": "LIKE",
+          "value": "user999"
+        },
+        {
+          "error": -6,
+          "predicate": "=",
+          "value": "user1500"
+        },
+        {
+          "error": -6,
+          "predicate": "IN",
+          "value": "user1500"
+        },
+        {
+          "error": -6,
+          "predicate": "LIKE",
+          "value": "user1500"
+        },
+        {
+          "error": -3,
+          "predicate": "=",
+          "value": "user256"
+        },
+        {
+          "error": -3,
+          "predicate": "IN",
+          "value": "user256"
+        },
+        {
+          "error": -3,
+          "predicate": "LIKE",
+          "value": "user256"
+        },
+        {
+          "error": -3,
+          "predicate": "=",
+          "value": "user1023"
+        },
+        {
+          "error": -3,
+          "predicate": "IN",
+          "value": "user1023"
+        },
+        {
+          "error": -3,
+          "predicate": "LIKE",
+          "value": "user1023"
+        },
+        {
+          "error": -7,
+          "predicate": "=",
+          "value": "user64"
+        },
+        {
+          "error": -7,
+          "predicate": "IN",
+          "value": "user64"
+        },
+        {
+          "error": -7,
+          "predicate": "LIKE",
+          "value": "user64"
+        }
+      ]
+    },
+    "polars": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "polars-parquet (Rust, own)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "postgres": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "Postgres heap (corpus loaded \u2014 independent executor, NOT a Parquet read)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "pyarrow": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "Arrow C++ (Acero)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "spark": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "parquet-mr Java (the reference reader)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "starrocks": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "StarRocks C++ (own)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    },
+    "trino": {
+      "all_correct": true,
+      "cells_errored": 0,
+      "cells_graded": 24,
+      "cells_total": 24,
+      "cells_wrong": 0,
+      "in_vote": true,
+      "reader": "Trino Java (own, not parquet-mr)",
+      "total_abs_error": 0,
+      "wrong_cells": []
+    }
+  },
+  "shared_bytes_engines": [
+    "duckdb",
+    "chdb_parquet",
+    "datafusion",
+    "polars",
+    "pyarrow",
+    "daft",
+    "fastparquet",
+    "clickhouse_server",
+    "spark",
+    "starrocks",
+    "trino",
+    "dremio",
+    "postgres"
+  ],
+  "startup_unavailable": {
+    "feldera": "RuntimeError: feldera SDK not installed; skipping (reader rides arrow-rs, redundant with DataFusion per survey \u2014 high-setup, low reader-distinctness). [No module named 'feldera']",
+    "risingwave": "RuntimeError: risingwave file_scan: no working signature \u2014 file_scan('parquet', 'posix_fs', '', '/d: Failed to run the query\n\nCaused by:\n  Bind error: file_scan function supports th | file_scan('parquet', 'posix_fs', '/data/: Failed to run the query\n\nCaused by:\n  Bind error: file_scan function suppo"
+  }
+}

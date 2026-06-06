@@ -1,2 +1,16 @@
 duckdb==1.5.3
 chdb==4.1.8
+
+# multi-engine answer-equality probe (clickhouse-vs-duckdb/multi_engine_correctness.py)
+# in-process engines (distinct Parquet readers):
+datafusion==53.0.0
+polars==1.41.2
+pyarrow==23.0.1
+getdaft==0.7.14
+fastparquet==2026.5.0
+# clients for the containerized engines (Trino / ClickHouse-server / StarRocks / Dremio / Postgres):
+trino==0.337.0
+clickhouse-connect==1.1.1
+pymysql==2.2.8
+psycopg[binary]==3.3.4
+requests==2.34.2
