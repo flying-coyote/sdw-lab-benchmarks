@@ -1,0 +1,93 @@
+{
+  "benchmark": "ocsf-read-scan topn isolation (T2.5)",
+  "bytes_identical": true,
+  "configs": {
+    "high_cap_no_spill": {
+      "ducklake": {
+        "filtered": {
+          "cv_pct": 33.8,
+          "hot_min_ms": 55.7,
+          "median_ms": 58.2
+        },
+        "topn_src": {
+          "cv_pct": 3.6,
+          "hot_min_ms": 3466.9,
+          "median_ms": 3689.9
+        }
+      },
+      "iceberg_ext": {
+        "filtered": {
+          "cv_pct": 49.3,
+          "hot_min_ms": 59.7,
+          "median_ms": 152.9
+        },
+        "topn_src": {
+          "cv_pct": 5.6,
+          "hot_min_ms": 3388.9,
+          "median_ms": 3434.6
+        }
+      },
+      "read_parquet_glob": {
+        "filtered": {
+          "cv_pct": 40.0,
+          "hot_min_ms": 50.8,
+          "median_ms": 98.8
+        },
+        "topn_src": {
+          "cv_pct": 4.0,
+          "hot_min_ms": 3766.8,
+          "median_ms": 4050.3
+        }
+      }
+    },
+    "low_cap_forced_spill": {
+      "ducklake": {
+        "filtered": {
+          "cv_pct": 6.4,
+          "hot_min_ms": 53.4,
+          "median_ms": 58.9
+        },
+        "topn_src": {
+          "cv_pct": 2.2,
+          "hot_min_ms": 6956.4,
+          "median_ms": 7091.6
+        }
+      },
+      "iceberg_ext": {
+        "filtered": {
+          "cv_pct": 4.8,
+          "hot_min_ms": 50.6,
+          "median_ms": 52.7
+        },
+        "topn_src": {
+          "cv_pct": 1.9,
+          "hot_min_ms": 7918.2,
+          "median_ms": 8151.8
+        }
+      },
+      "read_parquet_glob": {
+        "filtered": {
+          "cv_pct": 1.9,
+          "hot_min_ms": 49.3,
+          "median_ms": 50.8
+        },
+        "topn_src": {
+          "cv_pct": 2.0,
+          "hot_min_ms": 7910.4,
+          "median_ms": 7999.4
+        }
+      }
+    }
+  },
+  "distinct_src_ip_groups": 16733960,
+  "evidence_tier": "B (single machine; hot/warm; medians + CV)",
+  "hypothesis": "H-ICEBERG-INTERFACE-01 (R8 topn_src divergence isolation)",
+  "n_rows": 100000000,
+  "trials": 5,
+  "verdict": {
+    "topn_dl_over_glob_high_cap": 0.91,
+    "topn_ice_over_dl_forced_spill": 1.15,
+    "topn_ice_over_dl_high_cap": 0.93,
+    "topn_ice_over_glob_high_cap": 0.85
+  }
+}
