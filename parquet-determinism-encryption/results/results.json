@@ -1,0 +1,181 @@
+{
+  "armA_cross_engine_aggregates": {
+    "exact_controls": {
+      "count_all_equal": true,
+      "count_value": [
+        2000000
+      ],
+      "int_sum_all_equal": true,
+      "int_sum_value": [
+        1999999000000
+      ]
+    },
+    "max": {
+      "distinct_bit_patterns": 1,
+      "groups": {
+        "00a08fd0a6e1c141": [
+          "chdb",
+          "datafusion",
+          "duckdb",
+          "polars",
+          "pyarrow"
+        ]
+      }
+    },
+    "mean": {
+      "distinct_bit_patterns": 3,
+      "groups": {
+        "01e08fd6a5e1b141": [
+          "datafusion",
+          "polars",
+          "pyarrow"
+        ],
+        "f1c08fd6a5e1b141": [
+          "duckdb"
+        ],
+        "fedf8fd6a5e1b141": [
+          "chdb"
+        ]
+      }
+    },
+    "min": {
+      "distinct_bit_patterns": 1,
+      "groups": {
+        "0000000000000000": [
+          "chdb",
+          "datafusion",
+          "duckdb",
+          "polars",
+          "pyarrow"
+        ]
+      }
+    },
+    "raw_values": {
+      "chdb": {
+        "count": 2000000,
+        "isum": 1999999000000,
+        "max": "00a08fd0a6e1c141",
+        "mean": "fedf8fd6a5e1b141",
+        "min": "0000000000000000",
+        "sum": "ba4dd3cb950d0143"
+      },
+      "datafusion": {
+        "count": 2000000,
+        "isum": 1999999000000,
+        "max": "00a08fd0a6e1c141",
+        "mean": "01e08fd6a5e1b141",
+        "min": "0000000000000000",
+        "sum": "bc4dd3cb950d0143"
+      },
+      "duckdb": {
+        "count": 2000000,
+        "isum": 1999999000000,
+        "max": "00a08fd0a6e1c141",
+        "mean": "f1c08fd6a5e1b141",
+        "min": "0000000000000000",
+        "sum": "1d30d3cb950d0143"
+      },
+      "polars": {
+        "count": 2000000,
+        "isum": 1999999000000,
+        "max": "00a08fd0a6e1c141",
+        "mean": "01e08fd6a5e1b141",
+        "min": "0000000000000000",
+        "sum": "bc4dd3cb950d0143"
+      },
+      "pyarrow": {
+        "count": 2000000,
+        "isum": 1999999000000,
+        "max": "00a08fd0a6e1c141",
+        "mean": "01e08fd6a5e1b141",
+        "min": "0000000000000000",
+        "sum": "bc4dd3cb950d0143"
+      }
+    },
+    "sum": {
+      "distinct_bit_patterns": 3,
+      "groups": {
+        "1d30d3cb950d0143": [
+          "duckdb"
+        ],
+        "ba4dd3cb950d0143": [
+          "chdb"
+        ],
+        "bc4dd3cb950d0143": [
+          "datafusion",
+          "polars",
+          "pyarrow"
+        ]
+      }
+    }
+  },
+  "armA_simd_determinism": {
+    "byte_identical_across_levels": true,
+    "distinct_results": [
+      "bc4dd3cb950d0143"
+    ],
+    "per_level": {
+      "avx2": {
+        "runtime_simd": "avx2",
+        "sum_bits": "bc4dd3cb950d0143"
+      },
+      "none": {
+        "runtime_simd": "none",
+        "sum_bits": "bc4dd3cb950d0143"
+      },
+      "sse4_2": {
+        "runtime_simd": "sse4_2",
+        "sum_bits": "bc4dd3cb950d0143"
+      }
+    }
+  },
+  "armB_encryption_interop": {
+    "file_bytes": 1314,
+    "pyarrow_with_key": {
+      "read": true,
+      "values": [
+        1.0,
+        2.0,
+        3.0
+      ]
+    },
+    "without_the_key": {
+      "chdb": {
+        "error": "RuntimeError: Code: 636. DB::Exception: The table structure cannot be extracted from",
+        "read": false
+      },
+      "datafusion": {
+        "error": "Exception: DataFusion error: Parquet error: Parquet error: Parquet file has an en",
+        "read": false
+      },
+      "duckdb": {
+        "error": "InvalidInputException: Invalid Input Error: File '/tmp/detenc__0pav9a0/enc.parquet' is encryp",
+        "read": false
+      },
+      "polars": {
+        "error": "ComputeError: parquet: File out of specification: The file must end with PAR1",
+        "read": false
+      },
+      "pyarrow (no key)": {
+        "error": "OSError: Error creating dataset. Could not read schema from '/tmp/detenc__0pav9",
+        "read": false
+      }
+    }
+  },
+  "benchmark": "compute determinism (SIMD + cross-engine float) and PME interop (lower-level #5)",
+  "cpu_simd_levels_tested": [
+    "none",
+    "sse4_2",
+    "avx2"
+  ],
+  "environment": {
+    "chdb": "4.1.8",
+    "datafusion": "53.0.0",
+    "duckdb": "1.5.3",
+    "polars": "1.41.2",
+    "pyarrow": "23.0.1"
+  },
+  "evidence_tier": "B (single machine; bit-pattern compare; exact integer controls)",
+  "note_avx512": "absent on this CPU",
+  "rows": 2000000
+}

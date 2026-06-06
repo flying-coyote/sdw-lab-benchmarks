@@ -1,0 +1,7 @@
+# Five engines, pinned to the versions determinism + PME interop were measured on (2026-06-06).
+# Re-check per version: reduction algorithms and encryption support both move.
+pyarrow==23.0.1
+duckdb==1.5.3
+polars==1.41.2
+datafusion==53.0.0
+chdb==4.1.8
