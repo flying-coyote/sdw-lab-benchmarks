@@ -1,0 +1,124 @@
+{
+  "batch_rows": 200,
+  "benchmark": "ocsf-catalog-contention (T1.3) \u2014 concurrent writers, Postgres-backed catalog",
+  "catalog_backend": "PostgreSQL 17 (shared, port 5434) for both engines",
+  "commits_per_writer": 20,
+  "ducklake_scaling": {
+    "errors_total": 0,
+    "p95_growth_x": 45.78,
+    "retries_at_max_writers": 0,
+    "throughput_at_max_writers": 9531.0
+  },
+  "evidence_tier": "B (single machine; concurrent processes; commit percentiles + retry counts)",
+  "hypothesis": "H-DUCKLAKE-02 (the untested concurrent-write / catalog-bottleneck leg)",
+  "iceberg_scaling": {
+    "errors_total": 142,
+    "p95_growth_x": 7.25,
+    "retries_at_max_writers": 1505,
+    "throughput_at_max_writers": 2450.0
+  },
+  "trials": [
+    {
+      "commit_p50_ms": 11.1,
+      "commit_p95_ms": 14.47,
+      "commits": 20,
+      "engine": "ducklake",
+      "errors": 0,
+      "retries": 0,
+      "retry_per_commit": 0.0,
+      "throughput_rows_s": 10770.0,
+      "wall_s": 0.37,
+      "writers": 1
+    },
+    {
+      "commit_p50_ms": 21.92,
+      "commit_p95_ms": 25.58,
+      "commits": 20,
+      "engine": "iceberg",
+      "errors": 0,
+      "retries": 0,
+      "retry_per_commit": 0.0,
+      "throughput_rows_s": 7835.5,
+      "wall_s": 0.51,
+      "writers": 1
+    },
+    {
+      "commit_p50_ms": 10.81,
+      "commit_p95_ms": 19.67,
+      "commits": 80,
+      "engine": "ducklake",
+      "errors": 0,
+      "retries": 0,
+      "retry_per_commit": 0.0,
+      "throughput_rows_s": 9391.0,
+      "wall_s": 1.7,
+      "writers": 4
+    },
+    {
+      "commit_p50_ms": 34.29,
+      "commit_p95_ms": 52.6,
+      "commits": 80,
+      "engine": "iceberg",
+      "errors": 3,
+      "retries": 45,
+      "retry_per_commit": 0.562,
+      "throughput_rows_s": 5322.6,
+      "wall_s": 3.01,
+      "writers": 4
+    },
+    {
+      "commit_p50_ms": 11.23,
+      "commit_p95_ms": 303.83,
+      "commits": 160,
+      "engine": "ducklake",
+      "errors": 0,
+      "retries": 0,
+      "retry_per_commit": 0.0,
+      "throughput_rows_s": 8705.6,
+      "wall_s": 3.68,
+      "writers": 8
+    },
+    {
+      "commit_p50_ms": 70.85,
+      "commit_p95_ms": 109.54,
+      "commits": 160,
+      "engine": "iceberg",
+      "errors": 23,
+      "retries": 303,
+      "retry_per_commit": 1.894,
+      "throughput_rows_s": 3355.2,
+      "wall_s": 9.54,
+      "writers": 8
+    },
+    {
+      "commit_p50_ms": 10.95,
+      "commit_p95_ms": 662.38,
+      "commits": 320,
+      "engine": "ducklake",
+      "errors": 0,
+      "retries": 0,
+      "retry_per_commit": 0.0,
+      "throughput_rows_s": 9531.0,
+      "wall_s": 6.71,
+      "writers": 16
+    },
+    {
+      "commit_p50_ms": 131.57,
+      "commit_p95_ms": 185.57,
+      "commits": 320,
+      "engine": "iceberg",
+      "errors": 116,
+      "retries": 1505,
+      "retry_per_commit": 4.703,
+      "throughput_rows_s": 2450.0,
+      "wall_s": 26.12,
+      "writers": 16
+    }
+  ],
+  "writer_counts": [
+    1,
+    4,
+    8,
+    16
+  ]
+}
