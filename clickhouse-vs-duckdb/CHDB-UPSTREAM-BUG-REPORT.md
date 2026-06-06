@@ -1,8 +1,18 @@
 # Draft upstream bug report — ClickHouse/chDB Parquet Bloom-filter pushdown silently undercounts
 
-**Status:** draft, for a human to file at <https://github.com/ClickHouse/ClickHouse/issues> (and reference
-<https://github.com/chdb-io/chdb>). Filing left to Jeremy per the contribute-don't-own posture — this is the
-reproduction and the isolation packaged so a maintainer can act on it.
+> **⚠️ DO NOT FILE — does not reproduce on re-test (2026-06-06).** A full sweep of all 2,000 distinct probe
+> values on chdb **4.1.8** (embedded ClickHouse **26.3.9.1**), against a DuckDB-1.5.3-written file with Bloom
+> filters confirmed present (813 of 814 row groups carry a Bloom filter), returned **0 undercounts** — every
+> value matched the DuckDB ground truth under the v3 reader's default Bloom-pushdown path. The precondition is
+> valid (the Bloom path is exercised), so this is a genuine non-reproduction, not a missing trigger. Most
+> likely the defect was fixed in a chDB/ClickHouse point build, or the original campaign-R3 observation was
+> run/thread-nondeterministic and does not reliably recur. Either way the report must **not** be filed as a
+> live bug. Kept as a record of the original finding + the re-test; see the hypothesis tracker
+> (H-ENGINE-ANSWER-EQUIVALENCE-01) for the bounded-evidence note. Re-test: `mechanism_chdb_bloom.py` / the
+> 2,000-value sweep.
+
+**Status (original draft, superseded by the non-reproduction notice above):** was drafted for a human to file
+at <https://github.com/ClickHouse/ClickHouse/issues> (and reference <https://github.com/chdb-io/chdb>).
 
 ---
 
