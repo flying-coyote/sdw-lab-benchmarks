@@ -2,56 +2,56 @@
   "answers_identical": true,
   "benchmark": "ocsf-read-scan same-files arm (byte-identical data, two catalogs)",
   "bytes_identical_across_catalogs": true,
-  "data_bytes": 1141408234,
+  "data_bytes": 11413900324,
   "evidence_tier": "B (single machine; hot/warm only; medians + CV)",
   "memory_limit": "28GB",
-  "n_rows": 100000000,
+  "n_rows": 1000000000,
   "queries": {
     "ducklake": {
       "byte_rollup": {
-        "cv_pct": 6.4,
-        "hot_min_ms": 219.3,
-        "median_ms": 238.1
+        "cv_pct": 0.9,
+        "hot_min_ms": 10080.8,
+        "median_ms": 10112.5
       },
       "filtered": {
-        "cv_pct": 1.1,
-        "hot_min_ms": 46.5,
-        "median_ms": 47.3
+        "cv_pct": 0.8,
+        "hot_min_ms": 9355.3,
+        "median_ms": 9388.0
       },
       "subnet_rollup": {
-        "cv_pct": 1.1,
-        "hot_min_ms": 1928.0,
-        "median_ms": 1979.8
+        "cv_pct": 2.5,
+        "hot_min_ms": 30119.3,
+        "median_ms": 31178.2
       },
       "topn_src": {
-        "cv_pct": 3.9,
-        "hot_min_ms": 2732.2,
-        "median_ms": 2879.5
+        "cv_pct": 9.3,
+        "hot_min_ms": 857002.0,
+        "median_ms": 986383.5
       }
     },
     "iceberg": {
       "byte_rollup": {
-        "cv_pct": 5.8,
-        "hot_min_ms": 247.2,
-        "median_ms": 273.5
+        "cv_pct": 0.3,
+        "hot_min_ms": 10148.2,
+        "median_ms": 10181.3
       },
       "filtered": {
-        "cv_pct": 1.6,
-        "hot_min_ms": 43.9,
-        "median_ms": 45.3
+        "cv_pct": 0.5,
+        "hot_min_ms": 9333.6,
+        "median_ms": 9367.0
       },
       "subnet_rollup": {
-        "cv_pct": 1.9,
-        "hot_min_ms": 1935.7,
-        "median_ms": 1970.9
+        "cv_pct": 1.0,
+        "hot_min_ms": 31238.5,
+        "median_ms": 31560.8
       },
       "topn_src": {
-        "cv_pct": 4.7,
-        "hot_min_ms": 2919.6,
-        "median_ms": 3029.1
+        "cv_pct": 1.2,
+        "hot_min_ms": 1258093.6,
+        "median_ms": 1280927.0
       }
     }
   },
   "row_group_rows": 122880,
-  "trials": 5
+  "trials": 3
 }

@@ -158,11 +158,40 @@ def run(total_rows, batch, warmup, trials):
 
 
 def render_md(r):
+    q = r["queries"]
+
+    def ratio(qq):
+        return q["iceberg"][qq]["median_ms"] / max(q["ducklake"][qq]["median_ms"], 0.01)
+
     rows = "\n".join(
-        f"| {q} | {r['queries']['iceberg'][q]['median_ms']:.0f} ({r['queries']['iceberg'][q]['cv_pct']:.0f}%) | "
-        f"{r['queries']['ducklake'][q]['median_ms']:.0f} ({r['queries']['ducklake'][q]['cv_pct']:.0f}%) | "
-        f"{r['queries']['iceberg'][q]['median_ms']/max(r['queries']['ducklake'][q]['median_ms'],0.01):.2f}x |"
-        for q in QUERIES)
+        f"| {qq} | {q['iceberg'][qq]['median_ms']:.0f} ({q['iceberg'][qq]['cv_pct']:.0f}%) | "
+        f"{q['ducklake'][qq]['median_ms']:.0f} ({q['ducklake'][qq]['cv_pct']:.0f}%) | "
+        f"{ratio(qq):.2f}x |"
+        for qq in QUERIES)
+
+    # Auto-classify each query: a gap wider than the combined CV band is beyond noise.
+    parity, diverged = [], []
+    for qq in QUERIES:
+        gap_pct = abs(ratio(qq) - 1.0) * 100
+        band = q["iceberg"][qq]["cv_pct"] + q["ducklake"][qq]["cv_pct"]
+        (diverged if gap_pct > band else parity).append(qq)
+    if diverged:
+        worst = max(diverged, key=lambda x: abs(ratio(x) - 1.0))
+        rr = ratio(worst)
+        faster = "DuckLake" if rr > 1 else "Iceberg"
+        div_note = (
+            f"Most queries sit at parity within CV ({', '.join(parity) or 'none'}) — the expected "
+            f"format-neutrality result on identical bytes. But **{worst}** diverged **{rr:.2f}×** toward "
+            f"{faster}, a gap wider than the combined CV. With compression removed and (for a full-scan "
+            f"aggregate) no predicate to plan around, the residual isolates to the two DuckDB extensions' "
+            f"scan/spill path over identical bytes, not the format's data. Treat the mechanism as a "
+            f"candidate, not isolated: a heavy high-cardinality aggregate can spill to the temp dir at this "
+            f"memory cap, and the elevated CV on the diverging arm is consistent with variable spill — a "
+            f"bare `read_parquet(glob)` arm and a no-spill re-run would separate scan-path from spill.")
+    else:
+        div_note = (
+            "Every query sits at parity within CV — the format-neutrality result on identical bytes: with "
+            "compression removed, the catalog/read path adds no measurable difference.")
     return f"""# BENCH-E same-files arm — byte-identical data, two catalogs ({r['n_rows']:,} rows)
 
 **Tier B, single machine, hot/warm only.** The data files are written ONCE (DuckDB, ZSTD-3,
@@ -182,9 +211,9 @@ identical by construction — every factor but the catalog/read path is accounte
 
 With the Parquet bytes literally identical in both catalogs, any latency difference here is the
 metadata/read-path effect alone — the true format difference, with compression fully removed as a
-confound. Read the low-CV sustained aggregations (topn_src, subnet_rollup); discount byte_rollup if its
-CV is high. Compare against PARITY.md (matched-codec, different writers) and the default-config
-large-scan to see how much of the original gap was the writer's compression versus the format. Tier B.
+confound. {div_note} Read each query's ratio against its own CV; compare against PARITY.md (matched-codec,
+different writers) and the default-config large-scan to see how much of the original gap was the writer's
+compression versus the format. Tier B.
 """
 
 

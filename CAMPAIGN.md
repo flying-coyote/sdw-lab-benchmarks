@@ -11,8 +11,13 @@ caveat. Heavy runs are serialized (never co-run a timing bench — it inflates C
 ## Corrected assumptions (from the audit + the format decomposition)
 
 1. **"DuckLake reads faster than Iceberg."** Real under defaults (~1.1–1.7×) but confounded. Matched
-   codec+row-group narrows it to ~1.1–1.18×; byte-identical data collapses it to **~parity (1.00–1.05×)**.
-   The read-speed lever is the Parquet **writer/encoder**, not the table format.
+   codec+row-group narrows it to ~1.1–1.18×; byte-identical data collapses it to **~parity (1.00–1.05×)**
+   for the filter and the low/moderate-cardinality rollups. The read-speed lever is the Parquet
+   **writer/encoder**, not the table format — *with one measured exception at 1B (R8): a heavy
+   high-cardinality aggregation (16.7M-distinct GROUP BY) ran 1.30× faster on DuckLake over byte-identical
+   data, beyond CV. With the encoder gone that residual is the engine's per-format read/spill path (the two
+   DuckDB extensions), not the format's bytes — so "~parity on identical bytes" is query-shape-dependent,
+   not unconditional (mechanism a candidate, not isolated — see R8).*
 2. **"Matched codec = fair format comparison."** No. At the same codec+level, PyArrow writes 193 MB
    where DuckDB writes 114 MB on identical data (PyArrow dictionary-encodes high-cardinality columns;
    pyiceberg exposes no per-column control). Only same-files registration removes the encoder variable.
@@ -90,11 +95,19 @@ Status: [ ] pending · [~] running · [x] done. Each is single-box and dependenc
   crossover is beyond the swept range (the small-files penalty is a tiny-batch phenomenon). Iceberg commit
   p95 is ~constant (~133ms) regardless of batch (fixed file+manifest+metadata per-commit overhead); inline
   writes 0 files; read-while-write coherent at every cadence (running count exact throughout).
-- [~] **R8 same-files at 1B** (heavy) — the definitive format-neutrality result at scale, not just 100M.
-  Runs the existing `same_files_scan.py --rows 1000000000` with `TMPDIR` + `SDW_DUCK_TEMP_DIR` routed to
-  the E: SSD (`/mnt/e`) so ~40GB (canonical + two byte-identical copies + spill) stays off the 94%-full
-  C: VHD. drvfs inflates absolute latencies; the relative neutrality ratio is the part that survives.
-  RUNNING isolated (`--trials 3`) after the lit-review agent finished.
+- [x] **R8 same-files at 1B** (heavy) — DONE (E: SSD, `--trials 3`, 28GB cap, 11.41 GB/copy). Bytes AND
+  answers identical across catalogs (the cross-engine equality gate held at 1B). **Three of four queries at
+  parity on byte-identical data** — filtered 1.00×, byte_rollup 1.01×, subnet_rollup 1.01× (CV ≤2.5%) —
+  confirming format-neutrality at 1B, not just 100M. The fourth diverged: **topn_src (16.7M-distinct GROUP
+  BY) ran 1.30× faster on DuckLake** (Iceberg 1,280,927ms CV 1.2% vs DuckLake 986,384ms CV 9.3%), a gap
+  wider than the combined CV. With the encoder removed and no predicate to plan around, the residual
+  isolates to the two DuckDB *extensions'* scan/spill path over identical bytes — but at a 28GB cap a
+  16.7M-group hash aggregate likely spills to the (drvfs) temp dir, and DuckLake's elevated CV (9.3%) is
+  consistent with variable spill, so the 1.30× may be an extension × memory-cap × drvfs-spill interaction,
+  not a pure format property. Real, beyond-CV, direction-reproducible; mechanism a candidate, not isolated.
+  drvfs inflates the absolute ms; the parity ratios and the one divergence are what transfer. Follow-up →
+  Phase E (bare `read_parquet(glob)` third arm + a no-spill / higher-cap re-run to separate scan-path from
+  spill).
 - [DEFERRED] **R9 DWPD under sustained ingest** — Tier-A (device-measured) **not viable on this box**:
   WSL2 doesn't expose the physical NVMe (no `/dev/nvme*`; only VHDX-backed `sd*` virtual disks with no
   real SMART), so `smartctl` can't read the SSD's Data-Units-Written counter. `/proc/diskstats` gives a
