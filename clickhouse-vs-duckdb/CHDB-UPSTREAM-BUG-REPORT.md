@@ -1,4 +1,4 @@
-# Draft upstream bug report — ClickHouse/chDB Parquet Bloom-filter pushdown silently undercounts
+# Bug report (FILED: chdb-io/chdb#587) — chDB embedded-ClickHouse Parquet Bloom-filter pushdown silently undercounts
 
 > **✅ REPRODUCES AT SCALE — fileable, but it is SCALE-DEPENDENT (re-tested 2026-06-06).** Two full
 > 2,000-value sweeps on chdb **4.1.8** (embedded ClickHouse **26.3.9.1**) over DuckDB-1.5.3-written files with
@@ -13,10 +13,16 @@
 > itself the methodology lesson: a "cheap" smaller-scale isolation can hide a scale-dependent correctness bug,
 > so the isolation scale has to be validated against the scale the bug was first seen at. See the hypothesis
 > tracker (H-ENGINE-ANSWER-EQUIVALENCE-01) for the corrected note.
+>
+> **Version finding (decides the repo):** ClickHouse **26.5.1.882** (`clickhouse-local`) reads the *same* 100M
+> file correctly on all 2,000 values, so the v3-reader regression is **already fixed upstream** between
+> 26.3.9.1 and 26.5. The live surface is therefore chDB's *pinned embedded* ClickHouse (4.1.8 ships 26.3.9.1),
+> not ClickHouse/ClickHouse (an issue there would be closed as already-fixed). So it's filed against chDB with
+> a "bump the embedded ClickHouse" ask.
 
-**Status:** draft, **fileable** at <https://github.com/ClickHouse/ClickHouse/issues> (and reference
-<https://github.com/chdb-io/chdb>), reproducing at 100M per the notice above. Filing left to Jeremy per the
-contribute-don't-own posture — this is the reproduction and the isolation packaged so a maintainer can act on it.
+**Status: FILED 2026-06-06 — [chdb-io/chdb#587](https://github.com/chdb-io/chdb/issues/587).** The defect is
+in chDB 4.1.8's embedded ClickHouse 26.3.9.1, reproduces at 100M (285/2,000 undercount), and is fixed in
+ClickHouse 26.5.1.882 on the same file — so the ask is for chDB to bump its embedded ClickHouse.
 
 ---
 
