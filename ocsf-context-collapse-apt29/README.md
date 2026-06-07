@@ -48,14 +48,31 @@ Each knob is a documented volume-driven normalization behavior, not a choice to 
 Both stores carry identical columns (canonical Sigma field names) so one compiled rule runs against either;
 the only variable is the coarsening.
 
+## Reproducibility
+
+**pySigma 1.3.3 / sigma-cli 3.0.2 / pySigma-backend-sqlite 1.1.3** — pinned in `requirements.txt`.
+These versions determine which rules compile and which SQL is emitted; a SigmaHQ rule-set update can
+shift the set of rules that parse cleanly, which changes the fired-rule counts and the headline recall
+numbers. To reproduce exactly: pin the SigmaHQ rule-set to a specific commit rather than using
+`--depth 1` against `HEAD`. The run that produced these results used the tip of the `main` branch as
+of the benchmark date (see `results/RESULTS.md` for the exact commit hash logged at run time). For
+byte-stable reproduction, replace the `git clone --depth 1` step below with a pinned commit:
+
+```bash
+git clone https://github.com/SigmaHQ/sigma _work/sigma
+git -C _work/sigma checkout <commit-hash-from-results>
+```
+
 ## Reproduce
 
 ```bash
+# 0. install pinned deps
+pip install -r requirements.txt
 # 1. data: OTRF Security-Datasets APT29 day 1 (14 MB zip -> 385 MB JSONL) into _work/
 curl -sL -o _work/apt29_day1.zip \
   https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/compound/apt29/day1/apt29_evals_day1_manual.zip
 python -c "import zipfile; zipfile.ZipFile('_work/apt29_day1.zip').extractall('_work')"
-# 2. rules: clone SigmaHQ verbatim into _work/sigma
+# 2. rules: clone SigmaHQ verbatim into _work/sigma (pin commit for exact replay -- see Reproducibility)
 git clone --depth 1 https://github.com/SigmaHQ/sigma _work/sigma
 # 3. project -> build stores -> score
 python prepare_corpus.py

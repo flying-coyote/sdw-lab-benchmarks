@@ -97,3 +97,27 @@ read-performance-neutral — the read-speed lever is the encoder, not the format
 python ocsf-read-scan/compression_probe.py             # why same-codec sizes still differ
 python ocsf-read-scan/same_files_scan.py --rows 100000000  # the definitive byte-identical comparison
 ```
+
+## Cold-cache arm — posix_fadvise(DONTNEED), no root required
+
+Every arm above is hot/warm only, which structurally favours whatever fits in the OS page cache.
+Forensic and incident queries in a SOC run genuinely cold. `cold_cache_scan.py` adds the cold
+measurement without root, using `os.posix_fadvise(fd, 0, 0, POSIX_FADV_DONTNEED)` to evict each
+data file's pages from the page cache before timing the first post-eviction run.  It is more
+precise than `echo 3 > /proc/sys/vm/drop_caches` because it isolates eviction to the named data
+files, leaving DuckDB's connection state and the SQLite catalog intact.
+
+Method: write data once (DuckDB, ZSTD-3) and register byte-identical copies into both Iceberg and
+DuckLake (same-files approach — compression not a confound), then for each query run COLD_ROUNDS
+evict+cold-shot cycles followed by WARM_TRIALS warm runs; report cold median, warm median,
+cold/warm ratio, and CV on warm.
+
+Results at 20M rows: eviction confirmed (max cold/warm 1.55× on `filtered`); scan-heavy queries
+(`filtered`, `byte_rollup`) show 1.3–1.55× cold penalty; `full_count` and `topn_src` show little
+or no cold gap, consistent with Iceberg's metadata-only count path and DuckDB caching the
+high-cardinality sort internally.  Full table in [results/COLD-CACHE.md](results/COLD-CACHE.md).
+
+```bash
+python ocsf-read-scan/cold_cache_scan.py               # default 20M rows
+python ocsf-read-scan/cold_cache_scan.py --rows 50000000
+```
