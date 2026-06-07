@@ -1,0 +1,6 @@
+# Pinned to the versions the Vortex-vs-Parquet table was measured on (2026-06). The Vortex on-disk format is
+# backward-compatible since v0.36.0, but the vortex-data Python/Rust API still ships breaking changes, so pin it.
+pyarrow==23.0.1
+duckdb==1.5.3
+numpy
+vortex-data==0.74.0

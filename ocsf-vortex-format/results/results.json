@@ -1,0 +1,57 @@
+{
+  "answers_agree": true,
+  "benchmark": "Vortex vs Parquet on OCSF data (footprint / write / decode / needle)",
+  "environment": {
+    "duckdb": "1.5.3",
+    "pyarrow": "23.0.1",
+    "vortex_data": "0.74.0"
+  },
+  "evidence_tier": "B (single machine; deterministic corpus; native reader per format)",
+  "logical_fingerprint": "4fa5fe0f6b3a40b483a8584f5f9a3169",
+  "needle_rows_truth": 55758,
+  "parquet": {
+    "bytes": 11847345,
+    "codec": "zstd",
+    "full_scan": {
+      "cv_pct": 11.1,
+      "max_ms": 51.895,
+      "median_ms": 40.409,
+      "min_ms": 38.513,
+      "trials": 5,
+      "warmup": 1
+    },
+    "needle": {
+      "cv_pct": 5.5,
+      "max_ms": 38.038,
+      "median_ms": 36.855,
+      "min_ms": 32.894,
+      "trials": 5,
+      "warmup": 1
+    },
+    "needle_rows": 55758,
+    "write_ms": 195
+  },
+  "rows": 1000000,
+  "size_ratio_parquet_over_vortex": 0.79,
+  "vortex": {
+    "bytes": 14916824,
+    "full_scan": {
+      "cv_pct": 16.7,
+      "max_ms": 31.98,
+      "median_ms": 24.547,
+      "min_ms": 21.289,
+      "trials": 5,
+      "warmup": 1
+    },
+    "needle": {
+      "cv_pct": 2.9,
+      "max_ms": 11.221,
+      "median_ms": 10.777,
+      "min_ms": 10.251,
+      "trials": 5,
+      "warmup": 1
+    },
+    "needle_rows": 55758,
+    "write_ms": 414
+  }
+}

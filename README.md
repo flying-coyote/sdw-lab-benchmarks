@@ -33,7 +33,7 @@ back here). The reference MOAR stack that runs several of these tiers end-to-end
 | [`ocsf-storage-endurance/`](ocsf-storage-endurance/) | is write-intensive NVMe over-specified for security data — measured write amplification (~0.43) → projected DWPD far under 1 | B | first pass |
 | [`ocsf-deterministic-mapper/`](ocsf-deterministic-mapper/) | harness vs model: a schema-constrained deterministic OCSF mapper (silent-error 0 by construction) vs BENCH-B's LLM (0.60–0.99) | B | first pass |
 | [`ocsf-marimo-hunt/`](ocsf-marimo-hunt/) | notebook substrate — a marimo OCSF hunt: reproducible headless, plain-`.py` (0 vs the `.ipynb`'s execution-count slots), portable SQL | B/C | demonstration |
-| [`ocsf-vortex-format/`](ocsf-vortex-format/) | Vortex vs Parquet on OCSF data — design recorded; install-blocked (vortex-array yanked on PyPI) | — | pending |
+| [`ocsf-vortex-format/`](ocsf-vortex-format/) | Vortex vs Parquet on OCSF data — Vortex reads faster (decode ~1.7–2.6×, needle ~3.3–4×) at a write cost and a scale-dependent size cost (~9% smaller at 100K, ~26% larger at 1M), answers identical; single-digit× not the vendor's 10–100×. Unblocked: `vortex-array` was renamed to `vortex-data` | B | first pass |
 | [`parquet-checksum-integrity/`](parquet-checksum-integrity/) | do Parquet readers verify page checksums — a bit-flip in a checksummed page caught (chDB) vs silently returned as a wrong sum (DuckDB/DataFusion; pyarrow/Polars off by default) | B | first pass |
 | [`parquet-library-matrix/`](parquet-library-matrix/) | encoding × library decode correctness (6 libs × PLAIN/RLE_DICTIONARY/DELTA/BYTE_STREAM_SPLIT) — empirical companion to the Apache support matrix; exotic encodings fail safe (errors), not silent, on current versions | B | first pass |
 | [`ocsf-pruning-correctness/`](ocsf-pruning-correctness/) | does row-group / page-index / bloom pruning ever drop the needle (the chDB Bloom-bug layer) — sorted-vs-shuffled A/B + chDB-written bloom file, 5 engines; all sound on current versions | B | first pass |
@@ -98,7 +98,7 @@ ocsf-write-inlining/    benchmark: DuckLake inlining vs Iceberg small-files (own
 ocsf-storage-endurance/ benchmark: write-amplification -> projected DWPD (own reqs)
 ocsf-deterministic-mapper/ benchmark: schema-constrained mapper vs LLM grounding
 ocsf-marimo-hunt/       demonstration: marimo notebook reproducibility/portability (own reqs)
-ocsf-vortex-format/     pending: Vortex vs Parquet (install-blocked)
+ocsf-vortex-format/     benchmark: Vortex vs Parquet on OCSF data (own reqs: vortex-data)
 parquet-checksum-integrity/ benchmark: do Parquet readers verify page CRCs (own reqs)
 parquet-library-matrix/ benchmark: encoding x library decode-correctness matrix (own reqs)
 ocsf-pruning-correctness/ benchmark: row-group/page/bloom pruning soundness (own reqs)
