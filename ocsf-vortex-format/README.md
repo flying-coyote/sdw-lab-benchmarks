@@ -7,6 +7,14 @@ decode to Arrow, and a low-selectivity needle (`dst_port = 3389`) via each forma
 corpus is seeded-random (deterministic but not artificially regular — a monotonic/modular synthetic corpus
 flatters zstd's ratio in a way real telemetry doesn't).
 
+> **ECOSYSTEM-STATUS + FIRST-LOOK READ — not a settled format-performance claim.** The read comparison
+> measures each format's *native reader* to Arrow (pyarrow for Parquet, `vortex-data` for Vortex), not
+> a single common engine over both — that is a native-reader confound. A fair settled comparison requires
+> a common engine (DuckDB 1.5+ once the Vortex extension builds against that line); until then
+> decode-to-Arrow is the fairest available variable but the confound is real and acknowledged. The
+> vendor's headline 10–100× speedup was **not replicated** — observed gains are single-digit× (1.7–2.6×
+> decode, ~3.3–4× needle). Run your own numbers before citing the launch post.
+
 ## Result (Tier B)
 
 `vortex-data` 0.74.0, pyarrow 23.0.1, one host. Parquet written zstd; Vortex written with its adaptive

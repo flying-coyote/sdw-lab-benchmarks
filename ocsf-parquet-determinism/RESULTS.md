@@ -1,5 +1,11 @@
 # Same data, different file: Parquet reproducibility is a configuration choice
 
+> **METHODOLOGY INFRASTRUCTURE** — this probe is not a hypothesis test. It underpins the lab's
+> determinism discipline: the logical-fingerprinting approach (sorted-set SHA over row content, not
+> file bytes) and the `pin_artifact` convention used across all benchmarks were validated here.
+> Results do not map to a hypothesis ID; they establish why the lab hashes logical content rather than
+> raw files, and when a reproducible physical file is needed, what settings to ask for.
+
 **Tier B · single machine · synthetic corpus.** This one surfaced as a nuisance and turned out to
 be worth writing down. While building the two stores for the context-collapse benchmark, the
 normalized store's file size moved between runs — a few tenths of a percent — even though the

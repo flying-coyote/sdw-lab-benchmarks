@@ -1,0 +1,152 @@
+{
+  "benchmark": "ocsf-data-health: cross-tool assurance gap",
+  "corpus_integrity": {
+    "all_attributes_present": true,
+    "all_passed": true,
+    "criticality_in_domain": true,
+    "ids_contiguous_unique": true,
+    "is_managed_determined_by_kind": true,
+    "last_seen_in_range": true,
+    "os_in_domain": true,
+    "row_count_ok": true,
+    "vuln_count_nonneg": true
+  },
+  "determinism_verified": true,
+  "environment": {
+    "duckdb_version": "1.5.3",
+    "master_seed": 20260601
+  },
+  "evidence_tier": "B (reproducible, first-party, controlled synthetic estate; exact set-based accuracy over planted ground truth; NOT production telemetry)",
+  "measures": {
+    "attributes": [
+      "owner",
+      "business_criticality",
+      "os_version",
+      "ip_address",
+      "last_seen",
+      "open_vuln_count",
+      "is_managed"
+    ],
+    "best_single_recovery": 0.4768,
+    "best_single_tool": "cmdb",
+    "cross_minus_best_single": 0.2794,
+    "cross_tool_ceiling": 0.7562,
+    "cross_tool_correct_cells": 105874,
+    "cross_tool_recovery": 0.7562,
+    "lever": {
+      "lever_gain": 0.251,
+      "naive_authority_merge_recovery": 0.5052,
+      "note": "scored = freshness-decayed confidence + authority bonus; naive = fixed authority, no freshness. The gap is the lever.",
+      "scored_merge_recovery": 0.7562
+    },
+    "n_assets": 20000,
+    "per_attribute": {
+      "business_criticality": {
+        "authority_source": "cmdb",
+        "best_single_correct": 18245,
+        "best_single_recovery": 0.9123,
+        "best_single_tool": "cmdb",
+        "cross_minus_best_single": 0.0,
+        "cross_tool_correct": 18245,
+        "cross_tool_recovery": 0.9123,
+        "residual_gap": 0.0877
+      },
+      "ip_address": {
+        "authority_source": "cmdb",
+        "best_single_correct": 14990,
+        "best_single_recovery": 0.7495,
+        "best_single_tool": "edr",
+        "cross_minus_best_single": 0.052,
+        "cross_tool_correct": 16029,
+        "cross_tool_recovery": 0.8014,
+        "residual_gap": 0.1986
+      },
+      "is_managed": {
+        "authority_source": "cmdb",
+        "best_single_correct": 18245,
+        "best_single_recovery": 0.9123,
+        "best_single_tool": "cmdb",
+        "cross_minus_best_single": 0.0,
+        "cross_tool_correct": 18245,
+        "cross_tool_recovery": 0.9123,
+        "residual_gap": 0.0877
+      },
+      "last_seen": {
+        "authority_source": "cmdb",
+        "best_single_correct": 14990,
+        "best_single_recovery": 0.7495,
+        "best_single_tool": "edr",
+        "cross_minus_best_single": 0.0,
+        "cross_tool_correct": 14990,
+        "cross_tool_recovery": 0.7495,
+        "residual_gap": 0.2505
+      },
+      "open_vuln_count": {
+        "authority_source": "vuln",
+        "best_single_correct": 3978,
+        "best_single_recovery": 0.1989,
+        "best_single_tool": "vuln",
+        "cross_minus_best_single": 0.0,
+        "cross_tool_correct": 3978,
+        "cross_tool_recovery": 0.1989,
+        "residual_gap": 0.8011
+      },
+      "os_version": {
+        "authority_source": "cmdb",
+        "best_single_correct": 14990,
+        "best_single_recovery": 0.7495,
+        "best_single_tool": "edr",
+        "cross_minus_best_single": 0.0576,
+        "cross_tool_correct": 16142,
+        "cross_tool_recovery": 0.8071,
+        "residual_gap": 0.1929
+      },
+      "owner": {
+        "authority_source": "cmdb",
+        "best_single_correct": 18245,
+        "best_single_recovery": 0.9123,
+        "best_single_tool": "cmdb",
+        "cross_minus_best_single": 0.0,
+        "cross_tool_correct": 18245,
+        "cross_tool_recovery": 0.9123,
+        "residual_gap": 0.0877
+      }
+    },
+    "per_tool_single_recovery": {
+      "cmdb": {
+        "accuracy_where_reported": 0.6097,
+        "correct_cells": 66747,
+        "recovery": 0.4768,
+        "reported_cells": 109470
+      },
+      "edr": {
+        "accuracy_where_reported": 1.0,
+        "correct_cells": 59960,
+        "recovery": 0.4283,
+        "reported_cells": 59960
+      },
+      "idp": {
+        "accuracy_where_reported": 1.0,
+        "correct_cells": 6849,
+        "recovery": 0.0489,
+        "reported_cells": 6849
+      },
+      "vuln": {
+        "accuracy_where_reported": 0.2557,
+        "correct_cells": 3978,
+        "recovery": 0.0284,
+        "reported_cells": 15556
+      }
+    },
+    "residual_cells": 34126,
+    "residual_gap": 0.2438,
+    "sources": [
+      "cmdb",
+      "edr",
+      "vuln",
+      "idp"
+    ],
+    "total_cells": 140000
+  },
+  "n_observations": 191835
+}
