@@ -1,0 +1,1518 @@
+{
+  "battery_adversary_tail": {
+    "battery_f_ms": 493.081,
+    "battery_n_ms": 142.608,
+    "battery_ratio_f_over_n": 3.458,
+    "median_per_rule_ratio": 1.329,
+    "rules": 29,
+    "subset": "adversary-tail",
+    "worst_cv_pct": 68.9
+  },
+  "battery_all": {
+    "battery_f_ms": 1664.732,
+    "battery_n_ms": 1316.456,
+    "battery_ratio_f_over_n": 1.265,
+    "median_per_rule_ratio": 1.135,
+    "rules": 54,
+    "subset": "all",
+    "worst_cv_pct": 68.9
+  },
+  "battery_routine": {
+    "battery_f_ms": 1171.651,
+    "battery_n_ms": 1173.848,
+    "battery_ratio_f_over_n": 0.998,
+    "median_per_rule_ratio": 1.054,
+    "rules": 25,
+    "subset": "routine",
+    "worst_cv_pct": 68.8
+  },
+  "benchmark": "context-collapse cost curve \u2014 COMPUTE half (query latency, Store F vs Store N)",
+  "by_table": {
+    "create_remote_thread": {
+      "battery_f_ms": 0.785,
+      "battery_n_ms": 0.708,
+      "battery_ratio_f_over_n": 1.109,
+      "median_per_rule_ratio": 1.109,
+      "rules": 1,
+      "subset": "create_remote_thread",
+      "worst_cv_pct": 7.0
+    },
+    "file_event": {
+      "battery_f_ms": 31.897,
+      "battery_n_ms": 29.234,
+      "battery_ratio_f_over_n": 1.091,
+      "median_per_rule_ratio": 1.068,
+      "rules": 8,
+      "subset": "file_event",
+      "worst_cv_pct": 18.6
+    },
+    "network_connection": {
+      "battery_f_ms": 0.965,
+      "battery_n_ms": 0.724,
+      "battery_ratio_f_over_n": 1.333,
+      "median_per_rule_ratio": 1.333,
+      "rules": 1,
+      "subset": "network_connection",
+      "worst_cv_pct": 9.3
+    },
+    "pipe_created": {
+      "battery_f_ms": 0.654,
+      "battery_n_ms": 0.657,
+      "battery_ratio_f_over_n": 0.995,
+      "median_per_rule_ratio": 0.995,
+      "rules": 1,
+      "subset": "pipe_created",
+      "worst_cv_pct": 7.7
+    },
+    "process_access": {
+      "battery_f_ms": 3.924,
+      "battery_n_ms": 3.556,
+      "battery_ratio_f_over_n": 1.103,
+      "median_per_rule_ratio": 1.163,
+      "rules": 2,
+      "subset": "process_access",
+      "worst_cv_pct": 18.3
+    },
+    "process_creation": {
+      "battery_f_ms": 23.692,
+      "battery_n_ms": 17.895,
+      "battery_ratio_f_over_n": 1.324,
+      "median_per_rule_ratio": 1.183,
+      "rules": 15,
+      "subset": "process_creation",
+      "worst_cv_pct": 68.9
+    },
+    "ps_script": {
+      "battery_f_ms": 379.739,
+      "battery_n_ms": 31.196,
+      "battery_ratio_f_over_n": 12.173,
+      "median_per_rule_ratio": 3.799,
+      "rules": 14,
+      "subset": "ps_script",
+      "worst_cv_pct": 23.8
+    },
+    "registry_event": {
+      "battery_f_ms": 1223.076,
+      "battery_n_ms": 1232.486,
+      "battery_ratio_f_over_n": 0.992,
+      "median_per_rule_ratio": 1.012,
+      "rules": 12,
+      "subset": "registry_event",
+      "worst_cv_pct": 24.9
+    }
+  },
+  "evidence_tier": "B (real public APT29 data + unmodified upstream SigmaHQ rules; single host, DuckDB-on-Parquet)",
+  "host_note": "single host, DuckDB in-memory over local Parquet; one public dataset (~143k events); latency at this scale is dominated by fixed Parquet open/planning overhead \u2014 read the CV.",
+  "hypothesis": "H-OCSF-CONTEXT-COLLAPSE-01",
+  "ps_script_string_scan_micro": {
+    "query": "ScriptBlockText ILIKE '%frombase64string%'",
+    "ratio_f_over_n": 3.978,
+    "store_f": {
+      "cv_pct": 7.7,
+      "max_ms": 3.147,
+      "median_ms": 2.88,
+      "min_ms": 2.521,
+      "trials": 7,
+      "warmup": 2
+    },
+    "store_n": {
+      "cv_pct": 5.2,
+      "max_ms": 0.773,
+      "median_ms": 0.724,
+      "min_ms": 0.662,
+      "trials": 7,
+      "warmup": 2
+    }
+  },
+  "rows_per_table": {
+    "create_remote_thread": {
+      "f": 95,
+      "n": 95
+    },
+    "file_event": {
+      "f": 1649,
+      "n": 1649
+    },
+    "network_connection": {
+      "f": 1229,
+      "n": 1229
+    },
+    "pipe_created": {
+      "f": 446,
+      "n": 446
+    },
+    "process_access": {
+      "f": 39283,
+      "n": 39283
+    },
+    "process_creation": {
+      "f": 447,
+      "n": 447
+    },
+    "ps_script": {
+      "f": 414,
+      "n": 414
+    },
+    "registry_event": {
+      "f": 78692,
+      "n": 78692
+    }
+  },
+  "storage_leg": {
+    "storage_ratio_f_over_n": 1.799,
+    "store_f_bytes": 1888601,
+    "store_n_bytes": 1049655
+  },
+  "timed": [
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE (ScriptBlockText ILIKE '%Add-Exfiltration%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Add-Persistence%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Add-RegBackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Add-RemoteRegBackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Add-ScrnSaveBackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%ConvertTo-Rc4ByteStream%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Decrypt-Hash%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Disable-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Do-Exfiltration%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Enable-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Enabled-DuplicateToken%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Exploit-Jboss%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRCSV%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRExcel%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRHTML%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRJSON%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRXML%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Find-Fruit%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Find-GPOLocation%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Find-TrustedDocuments%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSNodeAttribute%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSNodeOwner%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSNodeTombstoned%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSPermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSZone%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ChromeDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ClipboardContents%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-FoxDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-GPPPassword%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-IndexedItem%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-KerberosAESKey%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-Keystrokes%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-LSASecret%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-PassHashes%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RegAlwaysInstallElevated%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RegAutoLogon%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteBootKey%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteCachedCredential%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteLocalAccountHash%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteLSAKey%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteMachineAccountHash%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteNLKMKey%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RickAstley%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-SecurityPackages%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ServiceFilePermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ServicePermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ServiceUnquoted%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-SiteListPassword%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-System%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-TimedScreenshot%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-UnattendedInstallFile%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-Unconstrained%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-USBKeystrokes%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-VaultCredential%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-VulnAutoRun%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-VulnSchTask%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Grant-ADIDNSPermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Gupt-Backdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ACLScanner%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ADRecon%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ADSBackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-AgentSmith%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-AllChecks%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ARPScan%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-AzureHound%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-BackdoorLNK%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-BadPotato%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-BetterSafetyKatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-BypassUAC%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Carbuncle%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Certify%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ConPtyShell%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-CredentialInjection%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DAFT%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DCSync%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DinvokeKatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DllInjection%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DNSUpdate%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DNSExfiltrator%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DomainPasswordSpray%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DowngradeAccount%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-EgressCheck%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Eyewitness%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-FakeLogonScreen%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Farmer%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Get-RBCD-Threaded%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Gopher%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Grouper%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-HandleKatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ImpersonatedProcess%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ImpersonateSystem%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-InteractiveSystemPowerShell%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Internalmonologue%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Inveigh%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-InveighRelay%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-KrbRelay%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-LdapSignCheck%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Lockless%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-MalSCCM%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Mimikatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Mimikittenz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-MITM6%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-NanoDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-NetRipper%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Nightmare%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-NinjaCopy%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-OfficeScrape%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-OxidResolver%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-P0wnedshell%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Paranoia%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PortScan%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PoshRatHttp%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PostExfil%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PowerDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PowerDPAPI%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PowerShellTCP%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PowerShellWMI%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PPLDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PsExec%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PSInject%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PsUaCme%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ReflectivePEInjection%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ReverseDNSLookup%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Rubeus%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-RunAs%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SafetyKatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SauronEye%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SCShell%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Seatbelt%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ServiceAbuse%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ShadowSpray%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Sharp%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Shellcode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SMBScanner%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Snaffler%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Spoolsample%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SpraySinglePassword%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SSHCommand%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-StandIn%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-StickyNotesExtract%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SystemCommand%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Tasksbackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Tater%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Thunderfox%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ThunderStruck%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-TokenManipulation%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Tokenvator%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-TotalExec%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-UrbanBishop%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-UserHunter%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-VoiceTroll%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Whisker%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WinEnum%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-winPEAS%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WireTap%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WmiCommand%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WMIExec%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WScriptBypassUAC%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Zerologon%' ESCAPE '\\' OR ScriptBlockText ILIKE '%MailRaider%' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-HoneyHash%' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-InMemoryModule%' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-SOASerialNumberArray%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Out-Minidump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%PowerBreach%' ESCAPE '\\' OR ScriptBlockText ILIKE '%powercat %' ESCAPE '\\' OR ScriptBlockText ILIKE '%PowerUp%' ESCAPE '\\' OR ScriptBlockText ILIKE '%PowerView%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Remove-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Remove-Update%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Rename-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Revoke-ADIDNSPermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Set-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Show-TargetScreen%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Start-CaptureServer%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Start-Dnscat2%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Start-WebcamRecorder%' ESCAPE '\\' OR ScriptBlockText ILIKE '%VolumeShadowCopyTools%' ESCAPE '\\') AND (NOT (ScriptBlockText ILIKE '%Get-SystemDriveInfo%' ESCAPE '\\' OR ScriptBlockText ILIKE '%C:\\\\ProgramData\\\\Amazon\\\\EC2-Windows\\\\Launch\\\\Module\\\\%' ESCAPE '\\'))",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE (ScriptBlockText ILIKE '%Add-Exfiltration%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Add-Persistence%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Add-RegBackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Add-RemoteRegBackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Add-ScrnSaveBackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%ConvertTo-Rc4ByteStream%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Decrypt-Hash%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Disable-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Do-Exfiltration%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Enable-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Enabled-DuplicateToken%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Exploit-Jboss%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRCSV%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRExcel%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRHTML%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRJSON%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-ADRXML%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Find-Fruit%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Find-GPOLocation%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Find-TrustedDocuments%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSNodeAttribute%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSNodeOwner%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSNodeTombstoned%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSPermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ADIDNSZone%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ChromeDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ClipboardContents%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-FoxDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-GPPPassword%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-IndexedItem%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-KerberosAESKey%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-Keystrokes%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-LSASecret%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-PassHashes%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RegAlwaysInstallElevated%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RegAutoLogon%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteBootKey%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteCachedCredential%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteLocalAccountHash%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteLSAKey%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteMachineAccountHash%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RemoteNLKMKey%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-RickAstley%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-SecurityPackages%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ServiceFilePermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ServicePermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-ServiceUnquoted%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-SiteListPassword%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-System%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-TimedScreenshot%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-UnattendedInstallFile%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-Unconstrained%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-USBKeystrokes%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-VaultCredential%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-VulnAutoRun%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Get-VulnSchTask%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Grant-ADIDNSPermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Gupt-Backdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ACLScanner%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ADRecon%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ADSBackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-AgentSmith%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-AllChecks%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ARPScan%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-AzureHound%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-BackdoorLNK%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-BadPotato%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-BetterSafetyKatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-BypassUAC%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Carbuncle%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Certify%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ConPtyShell%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-CredentialInjection%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DAFT%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DCSync%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DinvokeKatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DllInjection%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DNSUpdate%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DNSExfiltrator%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DomainPasswordSpray%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-DowngradeAccount%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-EgressCheck%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Eyewitness%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-FakeLogonScreen%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Farmer%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Get-RBCD-Threaded%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Gopher%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Grouper%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-HandleKatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ImpersonatedProcess%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ImpersonateSystem%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-InteractiveSystemPowerShell%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Internalmonologue%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Inveigh%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-InveighRelay%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-KrbRelay%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-LdapSignCheck%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Lockless%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-MalSCCM%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Mimikatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Mimikittenz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-MITM6%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-NanoDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-NetRipper%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Nightmare%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-NinjaCopy%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-OfficeScrape%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-OxidResolver%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-P0wnedshell%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Paranoia%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PortScan%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PoshRatHttp%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PostExfil%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PowerDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PowerDPAPI%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PowerShellTCP%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PowerShellWMI%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PPLDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PsExec%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PSInject%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-PsUaCme%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ReflectivePEInjection%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ReverseDNSLookup%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Rubeus%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-RunAs%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SafetyKatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SauronEye%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SCShell%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Seatbelt%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ServiceAbuse%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ShadowSpray%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Sharp%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Shellcode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SMBScanner%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Snaffler%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Spoolsample%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SpraySinglePassword%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SSHCommand%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-StandIn%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-StickyNotesExtract%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-SystemCommand%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Tasksbackdoor%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Tater%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Thunderfox%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-ThunderStruck%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-TokenManipulation%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Tokenvator%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-TotalExec%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-UrbanBishop%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-UserHunter%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-VoiceTroll%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Whisker%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WinEnum%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-winPEAS%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WireTap%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WmiCommand%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WMIExec%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-WScriptBypassUAC%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Invoke-Zerologon%' ESCAPE '\\' OR ScriptBlockText ILIKE '%MailRaider%' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-HoneyHash%' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-InMemoryModule%' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-SOASerialNumberArray%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Out-Minidump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%PowerBreach%' ESCAPE '\\' OR ScriptBlockText ILIKE '%powercat %' ESCAPE '\\' OR ScriptBlockText ILIKE '%PowerUp%' ESCAPE '\\' OR ScriptBlockText ILIKE '%PowerView%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Remove-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Remove-Update%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Rename-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Revoke-ADIDNSPermission%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Set-ADIDNSNode%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Show-TargetScreen%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Start-CaptureServer%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Start-Dnscat2%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Start-WebcamRecorder%' ESCAPE '\\' OR ScriptBlockText ILIKE '%VolumeShadowCopyTools%' ESCAPE '\\') AND (NOT (ScriptBlockText ILIKE '%Get-SystemDriveInfo%' ESCAPE '\\' OR ScriptBlockText ILIKE '%C:\\\\ProgramData\\\\Amazon\\\\EC2-Windows\\\\Launch\\\\Module\\\\%' ESCAPE '\\'))",
+      "f": {
+        "cv_pct": 17.6,
+        "max_ms": 435.711,
+        "median_ms": 285.432,
+        "min_ms": 267.332,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 18.7,
+        "max_ms": 23.874,
+        "median_ms": 16.285,
+        "min_ms": 14.828,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 17.527,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_malicious_commandlets.yml",
+      "table": "ps_script",
+      "title": "Malicious PowerShell Commandlets - ScriptBlock"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%AdjustTokenPrivileges%' ESCAPE '\\' OR ScriptBlockText ILIKE '%IMAGE\\_NT\\_OPTIONAL\\_HDR64\\_MAGIC%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Metasploit%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Microsoft.Win32.UnsafeNativeMethods%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Mimikatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%MiniDumpWriteDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%PAGE\\_EXECUTE\\_READ%' ESCAPE '\\' OR ScriptBlockText ILIKE '%ReadProcessMemory.Invoke%' ESCAPE '\\' OR ScriptBlockText ILIKE '%SE\\_PRIVILEGE\\_ENABLED%' ESCAPE '\\' OR ScriptBlockText ILIKE '%SECURITY\\_DELEGATION%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_ADJUST\\_PRIVILEGES%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_ALL\\_ACCESS%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_ASSIGN\\_PRIMARY%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_DUPLICATE%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_ELEVATION%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_IMPERSONATE%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_INFORMATION\\_CLASS%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_PRIVILEGES%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_QUERY%' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%AdjustTokenPrivileges%' ESCAPE '\\' OR ScriptBlockText ILIKE '%IMAGE\\_NT\\_OPTIONAL\\_HDR64\\_MAGIC%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Metasploit%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Microsoft.Win32.UnsafeNativeMethods%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Mimikatz%' ESCAPE '\\' OR ScriptBlockText ILIKE '%MiniDumpWriteDump%' ESCAPE '\\' OR ScriptBlockText ILIKE '%PAGE\\_EXECUTE\\_READ%' ESCAPE '\\' OR ScriptBlockText ILIKE '%ReadProcessMemory.Invoke%' ESCAPE '\\' OR ScriptBlockText ILIKE '%SE\\_PRIVILEGE\\_ENABLED%' ESCAPE '\\' OR ScriptBlockText ILIKE '%SECURITY\\_DELEGATION%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_ADJUST\\_PRIVILEGES%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_ALL\\_ACCESS%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_ASSIGN\\_PRIMARY%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_DUPLICATE%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_ELEVATION%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_IMPERSONATE%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_INFORMATION\\_CLASS%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_PRIVILEGES%' ESCAPE '\\' OR ScriptBlockText ILIKE '%TOKEN\\_QUERY%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 3.4,
+        "max_ms": 35.383,
+        "median_ms": 33.31,
+        "min_ms": 31.786,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 9.2,
+        "max_ms": 3.058,
+        "median_ms": 2.737,
+        "min_ms": 2.39,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 12.17,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_malicious_keywords.yml",
+      "table": "ps_script",
+      "title": "Malicious PowerShell Keywords"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%System.Reflection.Assembly.Load($%' ESCAPE '\\' OR ScriptBlockText ILIKE '%[System.Reflection.Assembly]::Load($%' ESCAPE '\\' OR ScriptBlockText ILIKE '%[Reflection.Assembly]::Load($%' ESCAPE '\\' OR ScriptBlockText ILIKE '%System.Reflection.AssemblyName%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Reflection.Emit.AssemblyBuilderAccess%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Reflection.Emit.CustomAttributeBuilder%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Runtime.InteropServices.UnmanagedType%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Runtime.InteropServices.DllImportAttribute%' ESCAPE '\\' OR ScriptBlockText ILIKE '%SuspendThread%' ESCAPE '\\' OR ScriptBlockText ILIKE '%rundll32%' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%System.Reflection.Assembly.Load($%' ESCAPE '\\' OR ScriptBlockText ILIKE '%[System.Reflection.Assembly]::Load($%' ESCAPE '\\' OR ScriptBlockText ILIKE '%[Reflection.Assembly]::Load($%' ESCAPE '\\' OR ScriptBlockText ILIKE '%System.Reflection.AssemblyName%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Reflection.Emit.AssemblyBuilderAccess%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Reflection.Emit.CustomAttributeBuilder%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Runtime.InteropServices.UnmanagedType%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Runtime.InteropServices.DllImportAttribute%' ESCAPE '\\' OR ScriptBlockText ILIKE '%SuspendThread%' ESCAPE '\\' OR ScriptBlockText ILIKE '%rundll32%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 23.8,
+        "max_ms": 37.05,
+        "median_ms": 22.849,
+        "min_ms": 18.888,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 18.2,
+        "max_ms": 3.433,
+        "median_ms": 2.515,
+        "min_ms": 1.815,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 9.085,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_keywords.yml",
+      "table": "ps_script",
+      "title": "Potential Suspicious PowerShell Keywords"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%[System.Environment]::UserName%' ESCAPE '\\' OR ScriptBlockText ILIKE '%$env:UserName%' ESCAPE '\\' OR ScriptBlockText ILIKE '%[System.Security.Principal.WindowsIdentity]::GetCurrent()%' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%[System.Environment]::UserName%' ESCAPE '\\' OR ScriptBlockText ILIKE '%$env:UserName%' ESCAPE '\\' OR ScriptBlockText ILIKE '%[System.Security.Principal.WindowsIdentity]::GetCurrent()%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 4.0,
+        "max_ms": 6.391,
+        "median_ms": 6.054,
+        "min_ms": 5.63,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 10.7,
+        "max_ms": 1.146,
+        "median_ms": 1.013,
+        "min_ms": 0.857,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 5.976,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_get_current_user.yml",
+      "table": "ps_script",
+      "title": "Suspicious PowerShell Get Current User"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%Get-Keystrokes%' ESCAPE '\\' OR (ScriptBlockText ILIKE '%Get-ProcAddress user32.dll GetAsyncKeyState%' ESCAPE '\\' AND ScriptBlockText ILIKE '%Get-ProcAddress user32.dll GetForegroundWindow%' ESCAPE '\\')",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%Get-Keystrokes%' ESCAPE '\\' OR (ScriptBlockText ILIKE '%Get-ProcAddress user32.dll GetAsyncKeyState%' ESCAPE '\\' AND ScriptBlockText ILIKE '%Get-ProcAddress user32.dll GetForegroundWindow%' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 5.6,
+        "max_ms": 4.725,
+        "median_ms": 4.237,
+        "min_ms": 3.957,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 4.0,
+        "max_ms": 0.897,
+        "median_ms": 0.831,
+        "min_ms": 0.781,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 5.099,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_keylogging.yml",
+      "table": "ps_script",
+      "title": "Powershell Keylogging"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE (ScriptBlockText ILIKE '%Export-PfxCertificate%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-Certificate%' ESCAPE '\\') AND (NOT ScriptBlockText ILIKE '%CmdletsToExport = @(%' ESCAPE '\\')",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE (ScriptBlockText ILIKE '%Export-PfxCertificate%' ESCAPE '\\' OR ScriptBlockText ILIKE '%Export-Certificate%' ESCAPE '\\') AND (NOT ScriptBlockText ILIKE '%CmdletsToExport = @(%' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 2.7,
+        "max_ms": 4.431,
+        "median_ms": 4.244,
+        "min_ms": 4.09,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 8.8,
+        "max_ms": 1.107,
+        "median_ms": 0.929,
+        "min_ms": 0.835,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 4.568,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_export_certificate.yml",
+      "table": "ps_script",
+      "title": "Certificate Exported Via PowerShell - ScriptBlock"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE (ScriptBlockText ILIKE '%Set-Alias %' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-Alias %' ESCAPE '\\') AND (NOT (ScriptBlockText='Set-Alias -Name ncms -Value New-CimSession -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name gcls -Value Get-CimClass -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name ncso -Value New-CimSessionOption -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name gcms -Value Get-CimSession -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name rcms -Value Remove-cimSession -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name rcie -Value Register-CimIndicationEvent -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name gcai -Value Get-CimAssociatedInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name gcim -Value Get-CimInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name scim -Value Set-CimInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name ncim -Value New-CimInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name rcim -Value Remove-cimInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name icim -Value Invoke-CimMethod -Option ReadOnly, AllScope -ErrorAction SilentlyContinue'))",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE (ScriptBlockText ILIKE '%Set-Alias %' ESCAPE '\\' OR ScriptBlockText ILIKE '%New-Alias %' ESCAPE '\\') AND (NOT (ScriptBlockText='Set-Alias -Name ncms -Value New-CimSession -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name gcls -Value Get-CimClass -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name ncso -Value New-CimSessionOption -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name gcms -Value Get-CimSession -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name rcms -Value Remove-cimSession -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name rcie -Value Register-CimIndicationEvent -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name gcai -Value Get-CimAssociatedInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name gcim -Value Get-CimInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name scim -Value Set-CimInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name ncim -Value New-CimInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name rcim -Value Remove-cimInstance -Option ReadOnly, AllScope -ErrorAction SilentlyContinue' OR ScriptBlockText='Set-Alias -Name icim -Value Invoke-CimMethod -Option ReadOnly, AllScope -ErrorAction SilentlyContinue'))",
+      "f": {
+        "cv_pct": 6.3,
+        "max_ms": 4.999,
+        "median_ms": 4.479,
+        "min_ms": 4.139,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 9.0,
+        "max_ms": 1.417,
+        "median_ms": 1.179,
+        "min_ms": 1.036,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 3.799,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_set_alias.yml",
+      "table": "ps_script",
+      "title": "Potential PowerShell Obfuscation Using Alias Cmdlets"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%.CopyFromScreen%' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%.CopyFromScreen%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 6.0,
+        "max_ms": 2.641,
+        "median_ms": 2.503,
+        "min_ms": 2.191,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 4.0,
+        "max_ms": 0.752,
+        "median_ms": 0.684,
+        "min_ms": 0.678,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 3.659,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_capture_screenshots.yml",
+      "table": "ps_script",
+      "title": "Windows Screen Capture with CopyFromScreen"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE (ScriptBlockText ILIKE '%powershell%' ESCAPE '\\' AND ScriptBlockText ILIKE '%WindowStyle%' ESCAPE '\\' AND ScriptBlockText ILIKE '%Hidden%' ESCAPE '\\') AND (NOT (ScriptBlockText ILIKE '%:\\\\Program Files\\\\Amazon\\\\WorkSpacesConfig\\\\Scripts\\\\%' ESCAPE '\\' AND ScriptBlockText ILIKE '%$PSScriptRoot\\\\Module\\\\WorkspaceScriptModule\\\\WorkspaceScriptModule%' ESCAPE '\\'))",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE (ScriptBlockText ILIKE '%powershell%' ESCAPE '\\' AND ScriptBlockText ILIKE '%WindowStyle%' ESCAPE '\\' AND ScriptBlockText ILIKE '%Hidden%' ESCAPE '\\') AND (NOT (ScriptBlockText ILIKE '%:\\\\Program Files\\\\Amazon\\\\WorkSpacesConfig\\\\Scripts\\\\%' ESCAPE '\\' AND ScriptBlockText ILIKE '%$PSScriptRoot\\\\Module\\\\WorkspaceScriptModule\\\\WorkspaceScriptModule%' ESCAPE '\\'))",
+      "f": {
+        "cv_pct": 5.5,
+        "max_ms": 3.245,
+        "median_ms": 3.056,
+        "min_ms": 2.717,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 10.1,
+        "max_ms": 1.014,
+        "median_ms": 0.847,
+        "min_ms": 0.734,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 3.608,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_windowstyle.yml",
+      "table": "ps_script",
+      "title": "Suspicious PowerShell WindowStyle Option"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%invoke-command %' ESCAPE '\\' AND ScriptBlockText ILIKE '% -ComputerName %' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%invoke-command %' ESCAPE '\\' AND ScriptBlockText ILIKE '% -ComputerName %' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 5.0,
+        "max_ms": 2.636,
+        "median_ms": 2.446,
+        "min_ms": 2.254,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 8.3,
+        "max_ms": 0.831,
+        "median_ms": 0.718,
+        "min_ms": 0.669,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 3.407,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_invoke_command_remote.yml",
+      "table": "ps_script",
+      "title": "Execute Invoke-command on Remote Host"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%Get-Process%' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%Get-Process%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 20.7,
+        "max_ms": 5.249,
+        "median_ms": 3.231,
+        "min_ms": 3.029,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 20.1,
+        "max_ms": 1.277,
+        "median_ms": 0.967,
+        "min_ms": 0.752,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 3.341,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_get_process.yml",
+      "table": "ps_script",
+      "title": "Suspicious Process Discovery With Get-Process"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%[Reflection.Assembly]::load%' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%[Reflection.Assembly]::load%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 4.5,
+        "max_ms": 2.398,
+        "median_ms": 2.219,
+        "min_ms": 2.133,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 2.3,
+        "max_ms": 0.723,
+        "median_ms": 0.691,
+        "min_ms": 0.671,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 3.211,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_dotnet_assembly_from_file.yml",
+      "table": "ps_script",
+      "title": "Potential In-Memory Execution Using Reflection.Assembly"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%New-PSDrive%' ESCAPE '\\' AND ScriptBlockText ILIKE '%-psprovider %' ESCAPE '\\' AND ScriptBlockText ILIKE '%filesystem%' ESCAPE '\\' AND ScriptBlockText ILIKE '%-root %' ESCAPE '\\' AND ScriptBlockText ILIKE '%\\\\\\\\%' ESCAPE '\\' AND ScriptBlockText ILIKE '%$%' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%New-PSDrive%' ESCAPE '\\' AND ScriptBlockText ILIKE '%-psprovider %' ESCAPE '\\' AND ScriptBlockText ILIKE '%filesystem%' ESCAPE '\\' AND ScriptBlockText ILIKE '%-root %' ESCAPE '\\' AND ScriptBlockText ILIKE '%\\\\\\\\%' ESCAPE '\\' AND ScriptBlockText ILIKE '%$%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 18.4,
+        "max_ms": 4.696,
+        "median_ms": 3.261,
+        "min_ms": 3.054,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 8.0,
+        "max_ms": 1.101,
+        "median_ms": 1.021,
+        "min_ms": 0.864,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 3.194,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_susp_new_psdrive.yml",
+      "table": "ps_script",
+      "title": "Suspicious New-PSDrive to Admin Share"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/ps_script.parquet' WHERE ScriptBlockText ILIKE '%FromBase64String%' ESCAPE '\\' AND ScriptBlockText ILIKE '%MemoryStream%' ESCAPE '\\' AND ScriptBlockText ILIKE '%H4sI%' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/ps_script.parquet' WHERE ScriptBlockText ILIKE '%FromBase64String%' ESCAPE '\\' AND ScriptBlockText ILIKE '%MemoryStream%' ESCAPE '\\' AND ScriptBlockText ILIKE '%H4sI%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 3.5,
+        "max_ms": 2.585,
+        "median_ms": 2.418,
+        "min_ms": 2.328,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 11.1,
+        "max_ms": 0.923,
+        "median_ms": 0.779,
+        "min_ms": 0.681,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 3.104,
+      "rule": "rules/windows/powershell/powershell_script/posh_ps_frombase64string_archive.yml",
+      "table": "ps_script",
+      "title": "Suspicious FromBase64String Usage On Gzip Archive - Ps Script"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE (Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND (CommandLine ILIKE '% -windowstyle h %' ESCAPE '\\' OR CommandLine ILIKE '% -windowstyl h%' ESCAPE '\\' OR CommandLine ILIKE '% -windowsty h%' ESCAPE '\\' OR CommandLine ILIKE '% -windowst h%' ESCAPE '\\' OR CommandLine ILIKE '% -windows h%' ESCAPE '\\' OR CommandLine ILIKE '% -windo h%' ESCAPE '\\' OR CommandLine ILIKE '% -wind h%' ESCAPE '\\' OR CommandLine ILIKE '% -win h%' ESCAPE '\\' OR CommandLine ILIKE '% -wi h%' ESCAPE '\\' OR CommandLine ILIKE '% -win h %' ESCAPE '\\' OR CommandLine ILIKE '% -win hi %' ESCAPE '\\' OR CommandLine ILIKE '% -win hid %' ESCAPE '\\' OR CommandLine ILIKE '% -win hidd %' ESCAPE '\\' OR CommandLine ILIKE '% -win hidde %' ESCAPE '\\' OR CommandLine ILIKE '% -NoPr %' ESCAPE '\\' OR CommandLine ILIKE '% -NoPro %' ESCAPE '\\' OR CommandLine ILIKE '% -NoProf %' ESCAPE '\\' OR CommandLine ILIKE '% -NoProfi %' ESCAPE '\\' OR CommandLine ILIKE '% -NoProfil %' ESCAPE '\\' OR CommandLine ILIKE '% -nonin %' ESCAPE '\\' OR CommandLine ILIKE '% -nonint %' ESCAPE '\\' OR CommandLine ILIKE '% -noninte %' ESCAPE '\\' OR CommandLine ILIKE '% -noninter %' ESCAPE '\\' OR CommandLine ILIKE '% -nonintera %' ESCAPE '\\' OR CommandLine ILIKE '% -noninterac %' ESCAPE '\\' OR CommandLine ILIKE '% -noninteract %' ESCAPE '\\' OR CommandLine ILIKE '% -noninteracti %' ESCAPE '\\' OR CommandLine ILIKE '% -noninteractiv %' ESCAPE '\\' OR CommandLine ILIKE '% -ec %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedComman %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedComma %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedComm %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedCom %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedCo %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedC %' ESCAPE '\\' OR CommandLine ILIKE '% -encoded %' ESCAPE '\\' OR CommandLine ILIKE '% -encode %' ESCAPE '\\' OR CommandLine ILIKE '% -encod %' ESCAPE '\\' OR CommandLine ILIKE '% -enco %' ESCAPE '\\' OR CommandLine ILIKE '% -en %' ESCAPE '\\' OR CommandLine ILIKE '% -executionpolic %' ESCAPE '\\' OR CommandLine ILIKE '% -executionpoli %' ESCAPE '\\' OR CommandLine ILIKE '% -executionpol %' ESCAPE '\\' OR CommandLine ILIKE '% -executionpo %' ESCAPE '\\' OR CommandLine ILIKE '% -executionp %' ESCAPE '\\' OR CommandLine ILIKE '% -execution bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -executio bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -executi bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -execut bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -execu bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -exec bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -exe bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -ex bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -ep bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /windowstyle h %' ESCAPE '\\' OR CommandLine ILIKE '% /windowstyl h%' ESCAPE '\\' OR CommandLine ILIKE '% /windowsty h%' ESCAPE '\\' OR CommandLine ILIKE '% /windowst h%' ESCAPE '\\' OR CommandLine ILIKE '% /windows h%' ESCAPE '\\' OR CommandLine ILIKE '% /windo h%' ESCAPE '\\' OR CommandLine ILIKE '% /wind h%' ESCAPE '\\' OR CommandLine ILIKE '% /win h%' ESCAPE '\\' OR CommandLine ILIKE '% /wi h%' ESCAPE '\\' OR CommandLine ILIKE '% /win h %' ESCAPE '\\' OR CommandLine ILIKE '% /win hi %' ESCAPE '\\' OR CommandLine ILIKE '% /win hid %' ESCAPE '\\' OR CommandLine ILIKE '% /win hidd %' ESCAPE '\\' OR CommandLine ILIKE '% /win hidde %' ESCAPE '\\' OR CommandLine ILIKE '% /NoPr %' ESCAPE '\\' OR CommandLine ILIKE '% /NoPro %' ESCAPE '\\' OR CommandLine ILIKE '% /NoProf %' ESCAPE '\\' OR CommandLine ILIKE '% /NoProfi %' ESCAPE '\\' OR CommandLine ILIKE '% /NoProfil %' ESCAPE '\\' OR CommandLine ILIKE '% /nonin %' ESCAPE '\\' OR CommandLine ILIKE '% /nonint %' ESCAPE '\\' OR CommandLine ILIKE '% /noninte %' ESCAPE '\\' OR CommandLine ILIKE '% /noninter %' ESCAPE '\\' OR CommandLine ILIKE '% /nonintera %' ESCAPE '\\' OR CommandLine ILIKE '% /noninterac %' ESCAPE '\\' OR CommandLine ILIKE '% /noninteract %' ESCAPE '\\' OR CommandLine ILIKE '% /noninteracti %' ESCAPE '\\' OR CommandLine ILIKE '% /noninteractiv %' ESCAPE '\\' OR CommandLine ILIKE '% /ec %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedComman %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedComma %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedComm %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedCom %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedCo %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedC %' ESCAPE '\\' OR CommandLine ILIKE '% /encoded %' ESCAPE '\\' OR CommandLine ILIKE '% /encode %' ESCAPE '\\' OR CommandLine ILIKE '% /encod %' ESCAPE '\\' OR CommandLine ILIKE '% /enco %' ESCAPE '\\' OR CommandLine ILIKE '% /en %' ESCAPE '\\' OR CommandLine ILIKE '% /executionpolic %' ESCAPE '\\' OR CommandLine ILIKE '% /executionpoli %' ESCAPE '\\' OR CommandLine ILIKE '% /executionpol %' ESCAPE '\\' OR CommandLine ILIKE '% /executionpo %' ESCAPE '\\' OR CommandLine ILIKE '% /executionp %' ESCAPE '\\' OR CommandLine ILIKE '% /execution bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /executio bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /executi bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /execut bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /execu bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /exec bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /exe bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /ex bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /ep bypass%' ESCAPE '\\')",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE (Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND (CommandLine ILIKE '% -windowstyle h %' ESCAPE '\\' OR CommandLine ILIKE '% -windowstyl h%' ESCAPE '\\' OR CommandLine ILIKE '% -windowsty h%' ESCAPE '\\' OR CommandLine ILIKE '% -windowst h%' ESCAPE '\\' OR CommandLine ILIKE '% -windows h%' ESCAPE '\\' OR CommandLine ILIKE '% -windo h%' ESCAPE '\\' OR CommandLine ILIKE '% -wind h%' ESCAPE '\\' OR CommandLine ILIKE '% -win h%' ESCAPE '\\' OR CommandLine ILIKE '% -wi h%' ESCAPE '\\' OR CommandLine ILIKE '% -win h %' ESCAPE '\\' OR CommandLine ILIKE '% -win hi %' ESCAPE '\\' OR CommandLine ILIKE '% -win hid %' ESCAPE '\\' OR CommandLine ILIKE '% -win hidd %' ESCAPE '\\' OR CommandLine ILIKE '% -win hidde %' ESCAPE '\\' OR CommandLine ILIKE '% -NoPr %' ESCAPE '\\' OR CommandLine ILIKE '% -NoPro %' ESCAPE '\\' OR CommandLine ILIKE '% -NoProf %' ESCAPE '\\' OR CommandLine ILIKE '% -NoProfi %' ESCAPE '\\' OR CommandLine ILIKE '% -NoProfil %' ESCAPE '\\' OR CommandLine ILIKE '% -nonin %' ESCAPE '\\' OR CommandLine ILIKE '% -nonint %' ESCAPE '\\' OR CommandLine ILIKE '% -noninte %' ESCAPE '\\' OR CommandLine ILIKE '% -noninter %' ESCAPE '\\' OR CommandLine ILIKE '% -nonintera %' ESCAPE '\\' OR CommandLine ILIKE '% -noninterac %' ESCAPE '\\' OR CommandLine ILIKE '% -noninteract %' ESCAPE '\\' OR CommandLine ILIKE '% -noninteracti %' ESCAPE '\\' OR CommandLine ILIKE '% -noninteractiv %' ESCAPE '\\' OR CommandLine ILIKE '% -ec %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedComman %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedComma %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedComm %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedCom %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedCo %' ESCAPE '\\' OR CommandLine ILIKE '% -encodedC %' ESCAPE '\\' OR CommandLine ILIKE '% -encoded %' ESCAPE '\\' OR CommandLine ILIKE '% -encode %' ESCAPE '\\' OR CommandLine ILIKE '% -encod %' ESCAPE '\\' OR CommandLine ILIKE '% -enco %' ESCAPE '\\' OR CommandLine ILIKE '% -en %' ESCAPE '\\' OR CommandLine ILIKE '% -executionpolic %' ESCAPE '\\' OR CommandLine ILIKE '% -executionpoli %' ESCAPE '\\' OR CommandLine ILIKE '% -executionpol %' ESCAPE '\\' OR CommandLine ILIKE '% -executionpo %' ESCAPE '\\' OR CommandLine ILIKE '% -executionp %' ESCAPE '\\' OR CommandLine ILIKE '% -execution bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -executio bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -executi bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -execut bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -execu bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -exec bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -exe bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -ex bypass%' ESCAPE '\\' OR CommandLine ILIKE '% -ep bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /windowstyle h %' ESCAPE '\\' OR CommandLine ILIKE '% /windowstyl h%' ESCAPE '\\' OR CommandLine ILIKE '% /windowsty h%' ESCAPE '\\' OR CommandLine ILIKE '% /windowst h%' ESCAPE '\\' OR CommandLine ILIKE '% /windows h%' ESCAPE '\\' OR CommandLine ILIKE '% /windo h%' ESCAPE '\\' OR CommandLine ILIKE '% /wind h%' ESCAPE '\\' OR CommandLine ILIKE '% /win h%' ESCAPE '\\' OR CommandLine ILIKE '% /wi h%' ESCAPE '\\' OR CommandLine ILIKE '% /win h %' ESCAPE '\\' OR CommandLine ILIKE '% /win hi %' ESCAPE '\\' OR CommandLine ILIKE '% /win hid %' ESCAPE '\\' OR CommandLine ILIKE '% /win hidd %' ESCAPE '\\' OR CommandLine ILIKE '% /win hidde %' ESCAPE '\\' OR CommandLine ILIKE '% /NoPr %' ESCAPE '\\' OR CommandLine ILIKE '% /NoPro %' ESCAPE '\\' OR CommandLine ILIKE '% /NoProf %' ESCAPE '\\' OR CommandLine ILIKE '% /NoProfi %' ESCAPE '\\' OR CommandLine ILIKE '% /NoProfil %' ESCAPE '\\' OR CommandLine ILIKE '% /nonin %' ESCAPE '\\' OR CommandLine ILIKE '% /nonint %' ESCAPE '\\' OR CommandLine ILIKE '% /noninte %' ESCAPE '\\' OR CommandLine ILIKE '% /noninter %' ESCAPE '\\' OR CommandLine ILIKE '% /nonintera %' ESCAPE '\\' OR CommandLine ILIKE '% /noninterac %' ESCAPE '\\' OR CommandLine ILIKE '% /noninteract %' ESCAPE '\\' OR CommandLine ILIKE '% /noninteracti %' ESCAPE '\\' OR CommandLine ILIKE '% /noninteractiv %' ESCAPE '\\' OR CommandLine ILIKE '% /ec %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedComman %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedComma %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedComm %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedCom %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedCo %' ESCAPE '\\' OR CommandLine ILIKE '% /encodedC %' ESCAPE '\\' OR CommandLine ILIKE '% /encoded %' ESCAPE '\\' OR CommandLine ILIKE '% /encode %' ESCAPE '\\' OR CommandLine ILIKE '% /encod %' ESCAPE '\\' OR CommandLine ILIKE '% /enco %' ESCAPE '\\' OR CommandLine ILIKE '% /en %' ESCAPE '\\' OR CommandLine ILIKE '% /executionpolic %' ESCAPE '\\' OR CommandLine ILIKE '% /executionpoli %' ESCAPE '\\' OR CommandLine ILIKE '% /executionpol %' ESCAPE '\\' OR CommandLine ILIKE '% /executionpo %' ESCAPE '\\' OR CommandLine ILIKE '% /executionp %' ESCAPE '\\' OR CommandLine ILIKE '% /execution bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /executio bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /executi bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /execut bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /execu bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /exec bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /exe bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /ex bypass%' ESCAPE '\\' OR CommandLine ILIKE '% /ep bypass%' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 12.1,
+        "max_ms": 8.193,
+        "median_ms": 6.558,
+        "min_ms": 5.909,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 9.1,
+        "max_ms": 3.882,
+        "median_ms": 3.26,
+        "min_ms": 2.946,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 2.012,
+      "rule": "rules/windows/process_creation/proc_creation_win_powershell_susp_parameter_variation.yml",
+      "table": "process_creation",
+      "title": "Suspicious PowerShell Parameter Substring"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE CommandLine ILIKE '% -hp%' ESCAPE '\\' AND (CommandLine ILIKE '% -m%' ESCAPE '\\' OR CommandLine ILIKE '% a %' ESCAPE '\\')",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE CommandLine ILIKE '% -hp%' ESCAPE '\\' AND (CommandLine ILIKE '% -m%' ESCAPE '\\' OR CommandLine ILIKE '% a %' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 10.8,
+        "max_ms": 1.248,
+        "median_ms": 1.14,
+        "min_ms": 0.931,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 5.9,
+        "max_ms": 0.966,
+        "median_ms": 0.851,
+        "min_ms": 0.807,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.34,
+      "rule": "rules/windows/process_creation/proc_creation_win_rar_compression_with_password.yml",
+      "table": "process_creation",
+      "title": "Rar Usage with Password and Compression Level"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/network_connection.parquet' WHERE (Initiated=true AND DestinationPort=9389) AND (NOT (Image ILIKE 'C:\\\\Windows\\\\system32\\\\dsac.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files\\\\Microsoft Monitoring Agent\\\\' ESCAPE '\\' OR (Image ILIKE 'C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe%' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files\\\\PowerShell\\\\7-preview\\\\pwsh.ex%' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\%' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\%' ESCAPE '\\')))",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/network_connection.parquet' WHERE (Initiated=true AND DestinationPort=9389) AND (NOT (Image ILIKE 'C:\\\\Windows\\\\system32\\\\dsac.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files\\\\Microsoft Monitoring Agent\\\\' ESCAPE '\\' OR (Image ILIKE 'C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe%' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files\\\\PowerShell\\\\7-preview\\\\pwsh.ex%' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\%' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\%' ESCAPE '\\')))",
+      "f": {
+        "cv_pct": 9.3,
+        "max_ms": 1.132,
+        "median_ms": 0.965,
+        "min_ms": 0.847,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 7.5,
+        "max_ms": 0.836,
+        "median_ms": 0.724,
+        "min_ms": 0.652,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.333,
+      "rule": "rules/windows/network_connection/net_connection_win_adws_unusual_connection.yml",
+      "table": "network_connection",
+      "title": "Uncommon Connection to Active Directory Web Services"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE Image ILIKE '%\\\\rar.exe' ESCAPE '\\' AND CommandLine ILIKE '% a %' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE Image ILIKE '%\\\\rar.exe' ESCAPE '\\' AND CommandLine ILIKE '% a %' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 10.0,
+        "max_ms": 1.26,
+        "median_ms": 1.07,
+        "min_ms": 0.938,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 11.3,
+        "max_ms": 1.032,
+        "median_ms": 0.805,
+        "min_ms": 0.758,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.329,
+      "rule": "rules/windows/process_creation/proc_creation_win_rar_compress_data.yml",
+      "table": "process_creation",
+      "title": "Files Added To An Archive Using Rar.EXE"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE CommandLine ILIKE '%OjpGcm9tQmFzZTY0U3RyaW5n%' ESCAPE '\\' OR CommandLine ILIKE '%o6RnJvbUJhc2U2NFN0cmluZ%' ESCAPE '\\' OR CommandLine ILIKE '%6OkZyb21CYXNlNjRTdHJpbm%' ESCAPE '\\' OR (CommandLine ILIKE '%OgA6AEYAcgBvAG0AQgBhAHMAZQA2ADQAUwB0AHIAaQBuAGcA%' ESCAPE '\\' OR CommandLine ILIKE '%oAOgBGAHIAbwBtAEIAYQBzAGUANgA0AFMAdAByAGkAbgBnA%' ESCAPE '\\' OR CommandLine ILIKE '%6ADoARgByAG8AbQBCAGEAcwBlADYANABTAHQAcgBpAG4AZw%' ESCAPE '\\')",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE CommandLine ILIKE '%OjpGcm9tQmFzZTY0U3RyaW5n%' ESCAPE '\\' OR CommandLine ILIKE '%o6RnJvbUJhc2U2NFN0cmluZ%' ESCAPE '\\' OR CommandLine ILIKE '%6OkZyb21CYXNlNjRTdHJpbm%' ESCAPE '\\' OR (CommandLine ILIKE '%OgA6AEYAcgBvAG0AQgBhAHMAZQA2ADQAUwB0AHIAaQBuAGcA%' ESCAPE '\\' OR CommandLine ILIKE '%oAOgBGAHIAbwBtAEIAYQBzAGUANgA0AFMAdAByAGkAbgBnA%' ESCAPE '\\' OR CommandLine ILIKE '%6ADoARgByAG8AbQBCAGEAcwBlADYANABTAHQAcgBpAG4AZw%' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 6.3,
+        "max_ms": 2.201,
+        "median_ms": 1.943,
+        "min_ms": 1.805,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 8.0,
+        "max_ms": 1.747,
+        "median_ms": 1.494,
+        "min_ms": 1.39,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.301,
+      "rule": "rules/windows/process_creation/proc_creation_win_powershell_base64_frombase64string.yml",
+      "table": "process_creation",
+      "title": "PowerShell Base64 Encoded FromBase64String Cmdlet"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE CommandLine ILIKE '% -accepteula%' ESCAPE '\\' OR CommandLine ILIKE '% /accepteula%' ESCAPE '\\' OR CommandLine ILIKE '% \u2013accepteula%' ESCAPE '\\' OR CommandLine ILIKE '% \u2014accepteula%' ESCAPE '\\' OR CommandLine ILIKE '% \u2015accepteula%' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE CommandLine ILIKE '% -accepteula%' ESCAPE '\\' OR CommandLine ILIKE '% /accepteula%' ESCAPE '\\' OR CommandLine ILIKE '% \u2013accepteula%' ESCAPE '\\' OR CommandLine ILIKE '% \u2014accepteula%' ESCAPE '\\' OR CommandLine ILIKE '% \u2015accepteula%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 5.3,
+        "max_ms": 1.882,
+        "median_ms": 1.665,
+        "min_ms": 1.604,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 5.6,
+        "max_ms": 1.513,
+        "median_ms": 1.376,
+        "min_ms": 1.279,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.21,
+      "rule": "rules/windows/process_creation/proc_creation_win_sysinternals_eula_accepted.yml",
+      "table": "process_creation",
+      "title": "Potential Execution of Sysinternals Tools"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE ((Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') OR (OriginalFileName='PowerShell.EXE' OR OriginalFileName='pwsh.dll')) AND CommandLine ILIKE '% hidden %' ESCAPE '\\' AND (CommandLine ILIKE '%AGkAdABzAGEAZABtAGkAbgAgAC8AdAByAGEAbgBzAGYAZQByA%' ESCAPE '\\' OR CommandLine ILIKE '%aXRzYWRtaW4gL3RyYW5zZmVy%' ESCAPE '\\' OR CommandLine ILIKE '%IAaQB0AHMAYQBkAG0AaQBuACAALwB0AHIAYQBuAHMAZgBlAHIA%' ESCAPE '\\' OR CommandLine ILIKE '%JpdHNhZG1pbiAvdHJhbnNmZX%' ESCAPE '\\' OR CommandLine ILIKE '%YgBpAHQAcwBhAGQAbQBpAG4AIAAvAHQAcgBhAG4AcwBmAGUAcg%' ESCAPE '\\' OR CommandLine ILIKE '%Yml0c2FkbWluIC90cmFuc2Zlc%' ESCAPE '\\' OR CommandLine ILIKE '%AGMAaAB1AG4AawBfAHMAaQB6AGUA%' ESCAPE '\\' OR CommandLine ILIKE '%JABjAGgAdQBuAGsAXwBzAGkAegBlA%' ESCAPE '\\' OR CommandLine ILIKE '%JGNodW5rX3Npem%' ESCAPE '\\' OR CommandLine ILIKE '%QAYwBoAHUAbgBrAF8AcwBpAHoAZQ%' ESCAPE '\\' OR CommandLine ILIKE '%RjaHVua19zaXpl%' ESCAPE '\\' OR CommandLine ILIKE '%Y2h1bmtfc2l6Z%' ESCAPE '\\' OR CommandLine ILIKE '%AE8ALgBDAG8AbQBwAHIAZQBzAHMAaQBvAG4A%' ESCAPE '\\' OR CommandLine ILIKE '%kATwAuAEMAbwBtAHAAcgBlAHMAcwBpAG8Abg%' ESCAPE '\\' OR CommandLine ILIKE '%lPLkNvbXByZXNzaW9u%' ESCAPE '\\' OR CommandLine ILIKE '%SQBPAC4AQwBvAG0AcAByAGUAcwBzAGkAbwBuA%' ESCAPE '\\' OR CommandLine ILIKE '%SU8uQ29tcHJlc3Npb2%' ESCAPE '\\' OR CommandLine ILIKE '%Ty5Db21wcmVzc2lvb%' ESCAPE '\\' OR CommandLine ILIKE '%AE8ALgBNAGUAbQBvAHIAeQBTAHQAcgBlAGEAbQ%' ESCAPE '\\' OR CommandLine ILIKE '%kATwAuAE0AZQBtAG8AcgB5AFMAdAByAGUAYQBtA%' ESCAPE '\\' OR CommandLine ILIKE '%lPLk1lbW9yeVN0cmVhb%' ESCAPE '\\' OR CommandLine ILIKE '%SQBPAC4ATQBlAG0AbwByAHkAUwB0AHIAZQBhAG0A%' ESCAPE '\\' OR CommandLine ILIKE '%SU8uTWVtb3J5U3RyZWFt%' ESCAPE '\\' OR CommandLine ILIKE '%Ty5NZW1vcnlTdHJlYW%' ESCAPE '\\' OR CommandLine ILIKE '%4ARwBlAHQAQwBoAHUAbgBrA%' ESCAPE '\\' OR CommandLine ILIKE '%5HZXRDaHVua%' ESCAPE '\\' OR CommandLine ILIKE '%AEcAZQB0AEMAaAB1AG4Aaw%' ESCAPE '\\' OR CommandLine ILIKE '%LgBHAGUAdABDAGgAdQBuAGsA%' ESCAPE '\\' OR CommandLine ILIKE '%LkdldENodW5r%' ESCAPE '\\' OR CommandLine ILIKE '%R2V0Q2h1bm%' ESCAPE '\\' OR CommandLine ILIKE '%AEgAUgBFAEEARABfAEkATgBGAE8ANgA0A%' ESCAPE '\\' OR CommandLine ILIKE '%QASABSAEUAQQBEAF8ASQBOAEYATwA2ADQA%' ESCAPE '\\' OR CommandLine ILIKE '%RIUkVBRF9JTkZPNj%' ESCAPE '\\' OR CommandLine ILIKE '%SFJFQURfSU5GTzY0%' ESCAPE '\\' OR CommandLine ILIKE '%VABIAFIARQBBAEQAXwBJAE4ARgBPADYANA%' ESCAPE '\\' OR CommandLine ILIKE '%VEhSRUFEX0lORk82N%' ESCAPE '\\' OR CommandLine ILIKE '%AHIAZQBhAHQAZQBSAGUAbQBvAHQAZQBUAGgAcgBlAGEAZA%' ESCAPE '\\' OR CommandLine ILIKE '%cmVhdGVSZW1vdGVUaHJlYW%' ESCAPE '\\' OR CommandLine ILIKE '%MAcgBlAGEAdABlAFIAZQBtAG8AdABlAFQAaAByAGUAYQBkA%' ESCAPE '\\' OR CommandLine ILIKE '%NyZWF0ZVJlbW90ZVRocmVhZ%' ESCAPE '\\' OR CommandLine ILIKE '%Q3JlYXRlUmVtb3RlVGhyZWFk%' ESCAPE '\\' OR CommandLine ILIKE '%QwByAGUAYQB0AGUAUgBlAG0AbwB0AGUAVABoAHIAZQBhAGQA%' ESCAPE '\\' OR CommandLine ILIKE '%0AZQBtAG0AbwB2AGUA%' ESCAPE '\\' OR CommandLine ILIKE '%1lbW1vdm%' ESCAPE '\\' OR CommandLine ILIKE '%AGUAbQBtAG8AdgBlA%' ESCAPE '\\' OR CommandLine ILIKE '%bQBlAG0AbQBvAHYAZQ%' ESCAPE '\\' OR CommandLine ILIKE '%bWVtbW92Z%' ESCAPE '\\' OR CommandLine ILIKE '%ZW1tb3Zl%' ESCAPE '\\')",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE ((Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') OR (OriginalFileName='PowerShell.EXE' OR OriginalFileName='pwsh.dll')) AND CommandLine ILIKE '% hidden %' ESCAPE '\\' AND (CommandLine ILIKE '%AGkAdABzAGEAZABtAGkAbgAgAC8AdAByAGEAbgBzAGYAZQByA%' ESCAPE '\\' OR CommandLine ILIKE '%aXRzYWRtaW4gL3RyYW5zZmVy%' ESCAPE '\\' OR CommandLine ILIKE '%IAaQB0AHMAYQBkAG0AaQBuACAALwB0AHIAYQBuAHMAZgBlAHIA%' ESCAPE '\\' OR CommandLine ILIKE '%JpdHNhZG1pbiAvdHJhbnNmZX%' ESCAPE '\\' OR CommandLine ILIKE '%YgBpAHQAcwBhAGQAbQBpAG4AIAAvAHQAcgBhAG4AcwBmAGUAcg%' ESCAPE '\\' OR CommandLine ILIKE '%Yml0c2FkbWluIC90cmFuc2Zlc%' ESCAPE '\\' OR CommandLine ILIKE '%AGMAaAB1AG4AawBfAHMAaQB6AGUA%' ESCAPE '\\' OR CommandLine ILIKE '%JABjAGgAdQBuAGsAXwBzAGkAegBlA%' ESCAPE '\\' OR CommandLine ILIKE '%JGNodW5rX3Npem%' ESCAPE '\\' OR CommandLine ILIKE '%QAYwBoAHUAbgBrAF8AcwBpAHoAZQ%' ESCAPE '\\' OR CommandLine ILIKE '%RjaHVua19zaXpl%' ESCAPE '\\' OR CommandLine ILIKE '%Y2h1bmtfc2l6Z%' ESCAPE '\\' OR CommandLine ILIKE '%AE8ALgBDAG8AbQBwAHIAZQBzAHMAaQBvAG4A%' ESCAPE '\\' OR CommandLine ILIKE '%kATwAuAEMAbwBtAHAAcgBlAHMAcwBpAG8Abg%' ESCAPE '\\' OR CommandLine ILIKE '%lPLkNvbXByZXNzaW9u%' ESCAPE '\\' OR CommandLine ILIKE '%SQBPAC4AQwBvAG0AcAByAGUAcwBzAGkAbwBuA%' ESCAPE '\\' OR CommandLine ILIKE '%SU8uQ29tcHJlc3Npb2%' ESCAPE '\\' OR CommandLine ILIKE '%Ty5Db21wcmVzc2lvb%' ESCAPE '\\' OR CommandLine ILIKE '%AE8ALgBNAGUAbQBvAHIAeQBTAHQAcgBlAGEAbQ%' ESCAPE '\\' OR CommandLine ILIKE '%kATwAuAE0AZQBtAG8AcgB5AFMAdAByAGUAYQBtA%' ESCAPE '\\' OR CommandLine ILIKE '%lPLk1lbW9yeVN0cmVhb%' ESCAPE '\\' OR CommandLine ILIKE '%SQBPAC4ATQBlAG0AbwByAHkAUwB0AHIAZQBhAG0A%' ESCAPE '\\' OR CommandLine ILIKE '%SU8uTWVtb3J5U3RyZWFt%' ESCAPE '\\' OR CommandLine ILIKE '%Ty5NZW1vcnlTdHJlYW%' ESCAPE '\\' OR CommandLine ILIKE '%4ARwBlAHQAQwBoAHUAbgBrA%' ESCAPE '\\' OR CommandLine ILIKE '%5HZXRDaHVua%' ESCAPE '\\' OR CommandLine ILIKE '%AEcAZQB0AEMAaAB1AG4Aaw%' ESCAPE '\\' OR CommandLine ILIKE '%LgBHAGUAdABDAGgAdQBuAGsA%' ESCAPE '\\' OR CommandLine ILIKE '%LkdldENodW5r%' ESCAPE '\\' OR CommandLine ILIKE '%R2V0Q2h1bm%' ESCAPE '\\' OR CommandLine ILIKE '%AEgAUgBFAEEARABfAEkATgBGAE8ANgA0A%' ESCAPE '\\' OR CommandLine ILIKE '%QASABSAEUAQQBEAF8ASQBOAEYATwA2ADQA%' ESCAPE '\\' OR CommandLine ILIKE '%RIUkVBRF9JTkZPNj%' ESCAPE '\\' OR CommandLine ILIKE '%SFJFQURfSU5GTzY0%' ESCAPE '\\' OR CommandLine ILIKE '%VABIAFIARQBBAEQAXwBJAE4ARgBPADYANA%' ESCAPE '\\' OR CommandLine ILIKE '%VEhSRUFEX0lORk82N%' ESCAPE '\\' OR CommandLine ILIKE '%AHIAZQBhAHQAZQBSAGUAbQBvAHQAZQBUAGgAcgBlAGEAZA%' ESCAPE '\\' OR CommandLine ILIKE '%cmVhdGVSZW1vdGVUaHJlYW%' ESCAPE '\\' OR CommandLine ILIKE '%MAcgBlAGEAdABlAFIAZQBtAG8AdABlAFQAaAByAGUAYQBkA%' ESCAPE '\\' OR CommandLine ILIKE '%NyZWF0ZVJlbW90ZVRocmVhZ%' ESCAPE '\\' OR CommandLine ILIKE '%Q3JlYXRlUmVtb3RlVGhyZWFk%' ESCAPE '\\' OR CommandLine ILIKE '%QwByAGUAYQB0AGUAUgBlAG0AbwB0AGUAVABoAHIAZQBhAGQA%' ESCAPE '\\' OR CommandLine ILIKE '%0AZQBtAG0AbwB2AGUA%' ESCAPE '\\' OR CommandLine ILIKE '%1lbW1vdm%' ESCAPE '\\' OR CommandLine ILIKE '%AGUAbQBtAG8AdgBlA%' ESCAPE '\\' OR CommandLine ILIKE '%bQBlAG0AbQBvAHYAZQ%' ESCAPE '\\' OR CommandLine ILIKE '%bWVtbW92Z%' ESCAPE '\\' OR CommandLine ILIKE '%ZW1tb3Zl%' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 5.1,
+        "max_ms": 2.575,
+        "median_ms": 2.435,
+        "min_ms": 2.225,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 9.9,
+        "max_ms": 2.473,
+        "median_ms": 2.023,
+        "min_ms": 1.792,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.204,
+      "rule": "rules/windows/process_creation/proc_creation_win_powershell_base64_hidden_flag.yml",
+      "table": "process_creation",
+      "title": "Malicious Base64 Encoded PowerShell Keywords in Command Lines"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE ParentImage ILIKE '%\\\\sdclt.exe' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE ParentImage ILIKE '%\\\\sdclt.exe' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 5.4,
+        "max_ms": 0.806,
+        "median_ms": 0.771,
+        "min_ms": 0.686,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 5.4,
+        "max_ms": 0.729,
+        "median_ms": 0.651,
+        "min_ms": 0.62,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.184,
+      "rule": "rules/windows/process_creation/proc_creation_win_sdclt_child_process.yml",
+      "table": "process_creation",
+      "title": "Sdclt Child Processes"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE (CommandLine ILIKE '%accepteula%' ESCAPE '\\' AND CommandLine ILIKE '% -u %' ESCAPE '\\' AND CommandLine ILIKE '% -p %' ESCAPE '\\' AND CommandLine ILIKE '% \\\\\\\\%' ESCAPE '\\') AND (NOT (CommandLine ILIKE '%\\\\\\\\localhost%' ESCAPE '\\' OR CommandLine ILIKE '%\\\\\\\\127.%' ESCAPE '\\'))",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE (CommandLine ILIKE '%accepteula%' ESCAPE '\\' AND CommandLine ILIKE '% -u %' ESCAPE '\\' AND CommandLine ILIKE '% -p %' ESCAPE '\\' AND CommandLine ILIKE '% \\\\\\\\%' ESCAPE '\\') AND (NOT (CommandLine ILIKE '%\\\\\\\\localhost%' ESCAPE '\\' OR CommandLine ILIKE '%\\\\\\\\127.%' ESCAPE '\\'))",
+      "f": {
+        "cv_pct": 11.7,
+        "max_ms": 1.384,
+        "median_ms": 1.165,
+        "min_ms": 0.928,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 10.1,
+        "max_ms": 1.163,
+        "median_ms": 0.985,
+        "min_ms": 0.86,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.183,
+      "rule": "rules/windows/process_creation/proc_creation_win_sysinternals_psexec_remote_execution.yml",
+      "table": "process_creation",
+      "title": "Potential PsExec Remote Execution"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE ((Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND (CommandLine ILIKE '% -e %' ESCAPE '\\' OR CommandLine ILIKE '% -en %' ESCAPE '\\' OR CommandLine ILIKE '% -enc %' ESCAPE '\\' OR CommandLine ILIKE '% -enco%' ESCAPE '\\' OR CommandLine ILIKE '% -ec %' ESCAPE '\\')) AND (NOT (CommandLine ILIKE '% -Encoding %' ESCAPE '\\' OR (ParentImage ILIKE '%C:\\\\Packages\\\\Plugins\\\\Microsoft.GuestConfiguration.ConfigurationforWindows\\\\%' ESCAPE '\\' OR ParentImage ILIKE '%\\\\gc\\_worker.exe%' ESCAPE '\\')))",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE ((Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND (CommandLine ILIKE '% -e %' ESCAPE '\\' OR CommandLine ILIKE '% -en %' ESCAPE '\\' OR CommandLine ILIKE '% -enc %' ESCAPE '\\' OR CommandLine ILIKE '% -enco%' ESCAPE '\\' OR CommandLine ILIKE '% -ec %' ESCAPE '\\')) AND (NOT (CommandLine ILIKE '% -Encoding %' ESCAPE '\\' OR (ParentImage ILIKE '%C:\\\\Packages\\\\Plugins\\\\Microsoft.GuestConfiguration.ConfigurationforWindows\\\\%' ESCAPE '\\' OR ParentImage ILIKE '%\\\\gc\\_worker.exe%' ESCAPE '\\')))",
+      "f": {
+        "cv_pct": 7.9,
+        "max_ms": 1.49,
+        "median_ms": 1.252,
+        "min_ms": 1.174,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 3.4,
+        "max_ms": 1.127,
+        "median_ms": 1.061,
+        "min_ms": 0.997,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.18,
+      "rule": "rules/windows/process_creation/proc_creation_win_powershell_encode.yml",
+      "table": "process_creation",
+      "title": "Suspicious Execution of Powershell with Base64"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_access.parquet' WHERE (TargetImage ILIKE '%\\\\lsass.exe' ESCAPE '\\' AND SourceImage ILIKE '%:\\\\Windows\\\\system32\\\\wsmprovhost.exe' ESCAPE '\\') AND (NOT GrantedAccess='0x80000000')",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_access.parquet' WHERE (TargetImage ILIKE '%\\\\lsass.exe' ESCAPE '\\' AND SourceImage ILIKE '%:\\\\Windows\\\\system32\\\\wsmprovhost.exe' ESCAPE '\\') AND (NOT GrantedAccess='0x80000000')",
+      "f": {
+        "cv_pct": 8.1,
+        "max_ms": 1.461,
+        "median_ms": 1.267,
+        "min_ms": 1.115,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 10.1,
+        "max_ms": 1.253,
+        "median_ms": 1.089,
+        "min_ms": 0.928,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.163,
+      "rule": "rules/windows/process_access/proc_access_win_lsass_remote_access_trough_winrm.yml",
+      "table": "process_access",
+      "title": "Remote LSASS Process Access Through Windows Remote Management"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/file_event.parquet' WHERE TargetFilename ILIKE '%\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\StartUp%' ESCAPE '\\' AND (NOT ((Image ILIKE 'C:\\\\Windows\\\\System32\\\\wuauclt.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\uus\\\\ARM64\\\\wuaucltcore.exe' ESCAPE '\\') OR (TargetFilename ILIKE 'C:\\\\$WINDOWS.~BT\\\\NewOS\\\\%' ESCAPE '\\' OR TargetFilename ILIKE 'C:\\\\$WinREAgent\\\\Scratch\\\\Mount\\\\%' ESCAPE '\\'))) AND (NOT (Image ILIKE '%\\\\ONENOTE.EXE' ESCAPE '\\' AND TargetFilename ILIKE '%\\\\Send to OneNote.lnk' ESCAPE '\\'))",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/file_event.parquet' WHERE TargetFilename ILIKE '%\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\StartUp%' ESCAPE '\\' AND (NOT ((Image ILIKE 'C:\\\\Windows\\\\System32\\\\wuauclt.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\uus\\\\ARM64\\\\wuaucltcore.exe' ESCAPE '\\') OR (TargetFilename ILIKE 'C:\\\\$WINDOWS.~BT\\\\NewOS\\\\%' ESCAPE '\\' OR TargetFilename ILIKE 'C:\\\\$WinREAgent\\\\Scratch\\\\Mount\\\\%' ESCAPE '\\'))) AND (NOT (Image ILIKE '%\\\\ONENOTE.EXE' ESCAPE '\\' AND TargetFilename ILIKE '%\\\\Send to OneNote.lnk' ESCAPE '\\'))",
+      "f": {
+        "cv_pct": 6.6,
+        "max_ms": 2.091,
+        "median_ms": 1.878,
+        "min_ms": 1.672,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 3.9,
+        "max_ms": 1.747,
+        "median_ms": 1.634,
+        "min_ms": 1.547,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.149,
+      "rule": "rules/windows/file/file_event/file_event_win_startup_folder_file_write.yml",
+      "table": "file_event",
+      "title": "Startup Folder File Write"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE (TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\SystemCertificates\\\\Root\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\SystemCertificates\\\\Root\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\EnterpriseCertificates\\\\Root\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\SystemCertificates\\\\CA\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\SystemCertificates\\\\CA\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\EnterpriseCertificates\\\\CA\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\SystemCertificates\\\\AuthRoot\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\SystemCertificates\\\\AuthRoot\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\EnterpriseCertificates\\\\AuthRoot\\\\Certificates\\\\%' ESCAPE '\\') AND TargetObject ILIKE '%\\\\Blob' ESCAPE '\\' AND Details='Binary Data'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE (TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\SystemCertificates\\\\Root\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\SystemCertificates\\\\Root\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\EnterpriseCertificates\\\\Root\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\SystemCertificates\\\\CA\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\SystemCertificates\\\\CA\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\EnterpriseCertificates\\\\CA\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\SystemCertificates\\\\AuthRoot\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\SystemCertificates\\\\AuthRoot\\\\Certificates\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\EnterpriseCertificates\\\\AuthRoot\\\\Certificates\\\\%' ESCAPE '\\') AND TargetObject ILIKE '%\\\\Blob' ESCAPE '\\' AND Details='Binary Data'",
+      "f": {
+        "cv_pct": 24.9,
+        "max_ms": 217.806,
+        "median_ms": 125.687,
+        "min_ms": 108.546,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 4.0,
+        "max_ms": 119.108,
+        "median_ms": 110.734,
+        "min_ms": 107.336,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.135,
+      "rule": "rules/windows/registry/registry_set/registry_set_install_root_or_ca_certificat.yml",
+      "table": "registry_event",
+      "title": "New Root or CA or AuthRoot Certificate to Store"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/file_event.parquet' WHERE (TargetFilename ILIKE '%\\\\fgdump-log%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\kirbi%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\pwdump%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\pwhashes%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\wce\\_ccache%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\wce\\_krbtkts%' ESCAPE '\\') OR (TargetFilename ILIKE '%\\\\cachedump.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\cachedump64.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\DumpExt.dll' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\DumpSvc.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\Dumpy.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\fgexec.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\lsremora.dll' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\lsremora64.dll' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\NTDS.out' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\procdump.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\procdump64.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\procdump64a.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\pstgdump.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\pwdump.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\SAM.out' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\SECURITY.out' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\servpw.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\servpw64.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\SYSTEM.out' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\test.pwd' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\wceaux.dll' ESCAPE '\\')",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/file_event.parquet' WHERE (TargetFilename ILIKE '%\\\\fgdump-log%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\kirbi%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\pwdump%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\pwhashes%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\wce\\_ccache%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\wce\\_krbtkts%' ESCAPE '\\') OR (TargetFilename ILIKE '%\\\\cachedump.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\cachedump64.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\DumpExt.dll' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\DumpSvc.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\Dumpy.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\fgexec.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\lsremora.dll' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\lsremora64.dll' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\NTDS.out' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\procdump.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\procdump64.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\procdump64a.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\pstgdump.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\pwdump.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\SAM.out' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\SECURITY.out' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\servpw.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\servpw64.exe' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\SYSTEM.out' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\test.pwd' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\wceaux.dll' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 13.9,
+        "max_ms": 25.146,
+        "median_ms": 19.322,
+        "min_ms": 16.734,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 1.1,
+        "max_ms": 17.556,
+        "median_ms": 17.073,
+        "min_ms": 16.981,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.132,
+      "rule": "rules/windows/file/file_event/file_event_win_cred_dump_tools_dropped_files.yml",
+      "table": "file_event",
+      "title": "Cred Dump Tools Dropped Files"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/create_remote_thread.parquet' WHERE (SourceImage ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR SourceImage ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND TargetImage ILIKE '%\\\\lsass.exe' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/create_remote_thread.parquet' WHERE (SourceImage ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR SourceImage ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND TargetImage ILIKE '%\\\\lsass.exe' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 7.0,
+        "max_ms": 0.865,
+        "median_ms": 0.785,
+        "min_ms": 0.7,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 6.1,
+        "max_ms": 0.807,
+        "median_ms": 0.708,
+        "min_ms": 0.673,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.109,
+      "rule": "rules/windows/create_remote_thread/create_remote_thread_win_powershell_lsass.yml",
+      "table": "create_remote_thread",
+      "title": "Potential Credential Dumping Attempt Via PowerShell Remote Thread"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/file_event.parquet' WHERE (Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND TargetFilename ILIKE '%\\\\start menu\\\\programs\\\\startup\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%.lnk' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/file_event.parquet' WHERE (Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND TargetFilename ILIKE '%\\\\start menu\\\\programs\\\\startup\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%.lnk' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 18.6,
+        "max_ms": 1.574,
+        "median_ms": 1.154,
+        "min_ms": 0.994,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 5.0,
+        "max_ms": 1.159,
+        "median_ms": 1.048,
+        "min_ms": 0.982,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.101,
+      "rule": "rules/windows/file/file_event/file_event_win_powershell_startup_shortcuts.yml",
+      "table": "file_event",
+      "title": "Potential Startup Shortcut Persistence Via PowerShell.EXE"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE ParentImage ILIKE '%\\\\svchost.exe' ESCAPE '\\' AND (Image ILIKE '%\\\\rundll32.exe' ESCAPE '\\' OR OriginalFileName='RUNDLL32.EXE') AND CommandLine ILIKE '%C:\\\\windows\\\\system32\\\\davclnt.dll,DavSetCookie%' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE ParentImage ILIKE '%\\\\svchost.exe' ESCAPE '\\' AND (Image ILIKE '%\\\\rundll32.exe' ESCAPE '\\' OR OriginalFileName='RUNDLL32.EXE') AND CommandLine ILIKE '%C:\\\\windows\\\\system32\\\\davclnt.dll,DavSetCookie%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 68.8,
+        "max_ms": 3.817,
+        "median_ms": 1.051,
+        "min_ms": 0.817,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 6.5,
+        "max_ms": 1.078,
+        "median_ms": 0.973,
+        "min_ms": 0.869,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.08,
+      "rule": "rules/windows/process_creation/proc_creation_win_rundll32_webdav_client_execution.yml",
+      "table": "process_creation",
+      "title": "WebDav Client Execution Via Rundll32.EXE"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_access.parquet' WHERE (((TargetImage ILIKE '%:\\\\Windows\\\\Sysmon.exe%' ESCAPE '\\' OR TargetImage ILIKE '%:\\\\Windows\\\\Sysmon64.exe%' ESCAPE '\\') AND GrantedAccess='0x1400') AND (NOT ((SourceImage ILIKE '%:\\\\Program Files (x86)\\\\%' ESCAPE '\\' OR SourceImage ILIKE '%:\\\\Program Files\\\\%' ESCAPE '\\' OR SourceImage ILIKE '%:\\\\Windows\\\\System32\\\\%' ESCAPE '\\' OR SourceImage ILIKE '%:\\\\Windows\\\\SysWOW64\\\\%' ESCAPE '\\') OR (SourceImage ILIKE '%:\\\\ProgramData\\\\Microsoft\\\\Windows Defender\\\\Platform\\\\%' ESCAPE '\\' AND SourceImage ILIKE '%\\\\MsMpEng.exe' ESCAPE '\\')))) OR CallTrace='Ente'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_access.parquet' WHERE (((TargetImage ILIKE '%:\\\\Windows\\\\Sysmon.exe%' ESCAPE '\\' OR TargetImage ILIKE '%:\\\\Windows\\\\Sysmon64.exe%' ESCAPE '\\') AND GrantedAccess='0x1400') AND (NOT ((SourceImage ILIKE '%:\\\\Program Files (x86)\\\\%' ESCAPE '\\' OR SourceImage ILIKE '%:\\\\Program Files\\\\%' ESCAPE '\\' OR SourceImage ILIKE '%:\\\\Windows\\\\System32\\\\%' ESCAPE '\\' OR SourceImage ILIKE '%:\\\\Windows\\\\SysWOW64\\\\%' ESCAPE '\\') OR (SourceImage ILIKE '%:\\\\ProgramData\\\\Microsoft\\\\Windows Defender\\\\Platform\\\\%' ESCAPE '\\' AND SourceImage ILIKE '%\\\\MsMpEng.exe' ESCAPE '\\')))) OR CallTrace='Ente'",
+      "f": {
+        "cv_pct": 18.3,
+        "max_ms": 3.638,
+        "median_ms": 2.657,
+        "min_ms": 2.326,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 8.4,
+        "max_ms": 2.836,
+        "median_ms": 2.467,
+        "min_ms": 2.162,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.077,
+      "rule": "rules/windows/process_access/proc_access_win_hktl_sysmonente.yml",
+      "table": "process_access",
+      "title": "HackTool - SysmonEnte Execution"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE (Image ILIKE '%\\\\netsh.exe' ESCAPE '\\' OR OriginalFileName='netsh.exe') AND (CommandLine ILIKE '%trace%' ESCAPE '\\' AND CommandLine ILIKE '%start%' ESCAPE '\\')",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE (Image ILIKE '%\\\\netsh.exe' ESCAPE '\\' OR OriginalFileName='netsh.exe') AND (CommandLine ILIKE '%trace%' ESCAPE '\\' AND CommandLine ILIKE '%start%' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 9.1,
+        "max_ms": 1.238,
+        "median_ms": 1.061,
+        "min_ms": 0.942,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 8.7,
+        "max_ms": 1.098,
+        "median_ms": 0.992,
+        "min_ms": 0.85,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.07,
+      "rule": "rules/windows/process_creation/proc_creation_win_netsh_packet_capture.yml",
+      "table": "process_creation",
+      "title": "New Network Trace Capture Started Via Netsh.EXE"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/file_event.parquet' WHERE TargetFilename ILIKE '%.cmdline' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/file_event.parquet' WHERE TargetFilename ILIKE '%.cmdline' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 5.5,
+        "max_ms": 1.52,
+        "median_ms": 1.433,
+        "min_ms": 1.337,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 4.2,
+        "max_ms": 1.409,
+        "median_ms": 1.342,
+        "min_ms": 1.231,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.068,
+      "rule": "rules/windows/file/file_event/file_event_win_csharp_compile_artefact.yml",
+      "table": "file_event",
+      "title": "Dynamic CSharp Compile Artefact"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Explorer\\\\RunMRU' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Explorer\\\\RunMRU' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 22.3,
+        "max_ms": 71.475,
+        "median_ms": 42.782,
+        "min_ms": 40.012,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 7.7,
+        "max_ms": 47.861,
+        "median_ms": 40.287,
+        "min_ms": 39.133,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.062,
+      "rule": "rules/windows/registry/registry_delete/registry_delete_runmru.yml",
+      "table": "registry_event",
+      "title": "RunMRU Registry Key Deletion - Registry"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE (IntegrityLevel='High' OR IntegrityLevel='S-1-16-12288') AND (CommandLine ILIKE '%conhost.exe%' ESCAPE '\\' AND CommandLine ILIKE '%0xffffffff%' ESCAPE '\\' AND CommandLine ILIKE '%-ForceV1%' ESCAPE '\\')",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE (IntegrityLevel='High' OR IntegrityLevel='S-1-16-12288') AND (CommandLine ILIKE '%conhost.exe%' ESCAPE '\\' AND CommandLine ILIKE '%0xffffffff%' ESCAPE '\\' AND CommandLine ILIKE '%-ForceV1%' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 20.3,
+        "max_ms": 1.609,
+        "median_ms": 1.071,
+        "min_ms": 0.976,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 11.0,
+        "max_ms": 1.243,
+        "median_ms": 1.014,
+        "min_ms": 0.886,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.056,
+      "rule": "rules/windows/process_creation/proc_creation_win_conhost_legacy_option.yml",
+      "table": "process_creation",
+      "title": "Suspicious High IntegrityLevel Conhost Legacy Option"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE Image ILIKE '%sdclt.exe' ESCAPE '\\' AND (IntegrityLevel='High' OR IntegrityLevel='S-1-16-12288')",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE Image ILIKE '%sdclt.exe' ESCAPE '\\' AND (IntegrityLevel='High' OR IntegrityLevel='S-1-16-12288')",
+      "f": {
+        "cv_pct": 6.6,
+        "max_ms": 0.998,
+        "median_ms": 0.908,
+        "min_ms": 0.817,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 9.9,
+        "max_ms": 1.041,
+        "median_ms": 0.861,
+        "min_ms": 0.774,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.055,
+      "rule": "rules/windows/process_creation/proc_creation_win_uac_bypass_sdclt.yml",
+      "table": "process_creation",
+      "title": "Potential UAC Bypass Via Sdclt.EXE"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/file_event.parquet' WHERE (Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND (TargetFilename ILIKE '%\\\\WindowsPowerShell\\\\Modules\\\\%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\PowerShell\\\\7\\\\Modules\\\\%' ESCAPE '\\')",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/file_event.parquet' WHERE (Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND (TargetFilename ILIKE '%\\\\WindowsPowerShell\\\\Modules\\\\%' ESCAPE '\\' OR TargetFilename ILIKE '%\\\\PowerShell\\\\7\\\\Modules\\\\%' ESCAPE '\\')",
+      "f": {
+        "cv_pct": 5.5,
+        "max_ms": 1.201,
+        "median_ms": 1.149,
+        "min_ms": 1.014,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 7.2,
+        "max_ms": 1.263,
+        "median_ms": 1.09,
+        "min_ms": 1.013,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.054,
+      "rule": "rules/windows/file/file_event/file_event_win_powershell_module_creation.yml",
+      "table": "file_event",
+      "title": "PowerShell Module File Created"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\open\\\\command\\\\DelegateExecute' ESCAPE '\\' AND Details='(Empty)'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\open\\\\command\\\\DelegateExecute' ESCAPE '\\' AND Details='(Empty)'",
+      "f": {
+        "cv_pct": 14.1,
+        "max_ms": 18.326,
+        "median_ms": 13.108,
+        "min_ms": 12.457,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 14.1,
+        "max_ms": 17.765,
+        "median_ms": 12.436,
+        "min_ms": 12.332,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.054,
+      "rule": "rules/windows/registry/registry_set/registry_set_bypass_uac_using_delegateexecute.yml",
+      "table": "registry_event",
+      "title": "Bypass UAC Using DelegateExecute"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE Image ILIKE '%\\\\wsmprovhost.exe' ESCAPE '\\' OR ParentImage ILIKE '%\\\\wsmprovhost.exe' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE Image ILIKE '%\\\\wsmprovhost.exe' ESCAPE '\\' OR ParentImage ILIKE '%\\\\wsmprovhost.exe' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 5.8,
+        "max_ms": 0.96,
+        "median_ms": 0.877,
+        "min_ms": 0.803,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 68.9,
+        "max_ms": 3.165,
+        "median_ms": 0.835,
+        "min_ms": 0.811,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.05,
+      "rule": "rules/windows/process_creation/proc_creation_win_winrm_remote_powershell_session_process.yml",
+      "table": "process_creation",
+      "title": "Remote PowerShell Session Host Process (WinRM)"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE ((TargetObject ILIKE '%\\\\Active Directory Explorer%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Handle%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\LiveKd%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\ProcDump%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Process Explorer%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsExec%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsLoggedon%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsLoglist%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsPasswd%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsPing%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsService%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SDelete%' ESCAPE '\\') AND TargetObject ILIKE '%\\\\EulaAccepted' ESCAPE '\\') AND (NOT (Image ILIKE '%\\\\ADExplorer.exe' ESCAPE '\\' OR Image ILIKE '%\\\\ADExplorer64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\handle.exe' ESCAPE '\\' OR Image ILIKE '%\\\\handle64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\livekd.exe' ESCAPE '\\' OR Image ILIKE '%\\\\livekd64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\procdump.exe' ESCAPE '\\' OR Image ILIKE '%\\\\procdump64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\procexp.exe' ESCAPE '\\' OR Image ILIKE '%\\\\procexp64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsExec.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsExec64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsLoggedon.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsLoggedon64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\psloglist.exe' ESCAPE '\\' OR Image ILIKE '%\\\\psloglist64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pspasswd.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pspasswd64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsPing.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsPing64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsService.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsService64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\sdelete.exe' ESCAPE '\\'))",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE ((TargetObject ILIKE '%\\\\Active Directory Explorer%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Handle%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\LiveKd%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\ProcDump%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Process Explorer%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsExec%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsLoggedon%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsLoglist%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsPasswd%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsPing%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsService%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SDelete%' ESCAPE '\\') AND TargetObject ILIKE '%\\\\EulaAccepted' ESCAPE '\\') AND (NOT (Image ILIKE '%\\\\ADExplorer.exe' ESCAPE '\\' OR Image ILIKE '%\\\\ADExplorer64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\handle.exe' ESCAPE '\\' OR Image ILIKE '%\\\\handle64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\livekd.exe' ESCAPE '\\' OR Image ILIKE '%\\\\livekd64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\procdump.exe' ESCAPE '\\' OR Image ILIKE '%\\\\procdump64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\procexp.exe' ESCAPE '\\' OR Image ILIKE '%\\\\procexp64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsExec.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsExec64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsLoggedon.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsLoggedon64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\psloglist.exe' ESCAPE '\\' OR Image ILIKE '%\\\\psloglist64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pspasswd.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pspasswd64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsPing.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsPing64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsService.exe' ESCAPE '\\' OR Image ILIKE '%\\\\PsService64.exe' ESCAPE '\\' OR Image ILIKE '%\\\\sdelete.exe' ESCAPE '\\'))",
+      "f": {
+        "cv_pct": 7.7,
+        "max_ms": 479.432,
+        "median_ms": 396.046,
+        "min_ms": 378.492,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 6.0,
+        "max_ms": 442.253,
+        "median_ms": 381.519,
+        "min_ms": 369.246,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.038,
+      "rule": "rules/windows/registry/registry_set/registry_set_pua_sysinternals_renamed_execution_via_eula.yml",
+      "table": "registry_event",
+      "title": "Suspicious Execution Of Renamed Sysinternals Tools - Registry"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\Microsoft\\\\Windows Defender\\\\Exclusions%' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\Microsoft\\\\Windows Defender\\\\Exclusions%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 5.9,
+        "max_ms": 42.685,
+        "median_ms": 37.954,
+        "min_ms": 35.837,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 3.0,
+        "max_ms": 39.602,
+        "median_ms": 36.961,
+        "min_ms": 36.056,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.027,
+      "rule": "rules/windows/registry/registry_set/registry_set_defender_exclusions.yml",
+      "table": "registry_event",
+      "title": "Windows Defender Exclusions Added - Registry"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/process_creation.parquet' WHERE CommandLine='rundll32.exe' OR CommandLine='rundll32'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/process_creation.parquet' WHERE CommandLine='rundll32.exe' OR CommandLine='rundll32'",
+      "f": {
+        "cv_pct": 6.1,
+        "max_ms": 0.794,
+        "median_ms": 0.725,
+        "min_ms": 0.646,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 5.6,
+        "max_ms": 0.789,
+        "median_ms": 0.714,
+        "min_ms": 0.656,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.015,
+      "rule": "rules/windows/process_creation/proc_creation_win_rundll32_without_parameters.yml",
+      "table": "process_creation",
+      "title": "Rundll32 Execution Without Parameters"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/file_event.parquet' WHERE TargetFilename ILIKE '%\\\\PSEXESVC.exe' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/file_event.parquet' WHERE TargetFilename ILIKE '%\\\\PSEXESVC.exe' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 3.8,
+        "max_ms": 1.44,
+        "median_ms": 1.343,
+        "min_ms": 1.292,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 5.8,
+        "max_ms": 1.442,
+        "median_ms": 1.327,
+        "min_ms": 1.222,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.012,
+      "rule": "rules/windows/file/file_event/file_event_win_sysinternals_psexec_service.yml",
+      "table": "file_event",
+      "title": "PsExec Service File Creation"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Schedule\\\\TaskCache\\\\Tree\\\\%' ESCAPE '\\' AND TargetObject ILIKE '%SD%' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Schedule\\\\TaskCache\\\\Tree\\\\%' ESCAPE '\\' AND TargetObject ILIKE '%SD%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 1.5,
+        "max_ms": 40.309,
+        "median_ms": 39.374,
+        "min_ms": 38.334,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 1.7,
+        "max_ms": 40.604,
+        "median_ms": 38.892,
+        "min_ms": 38.474,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.012,
+      "rule": "rules/windows/registry/registry_delete/registry_delete_schtasks_hide_task_via_sd_value_removal.yml",
+      "table": "registry_event",
+      "title": "Removal Of SD Value to Hide Schedule Task - Registry"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\shell\\\\open\\\\command' ESCAPE '\\' AND (NOT (Image ILIKE '%C:\\\\Windows\\\\explorer.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\system32\\\\svchost.exe' ESCAPE '\\' OR (Image ILIKE 'C:\\\\Windows\\\\System32\\\\msiexec.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\msiexec.exe' ESCAPE '\\') OR (Image ILIKE 'C:\\\\Program Files\\\\%' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files (x86)\\\\%' ESCAPE '\\') OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\OpenWith.exe' ESCAPE '\\')) AND (NOT ((Image ILIKE '%\\\\Dropbox.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Dropbox.%' ESCAPE '\\') OR (Image ILIKE '%\\\\AppData\\\\Local\\\\Temp\\\\Wireshark\\_uninstaller.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\wireshark-capture-file\\\\%' ESCAPE '\\') OR (Image ILIKE '%peazip%' ESCAPE '\\' AND TargetObject ILIKE '%\\\\PeaZip.%' ESCAPE '\\') OR (Image ILIKE '%\\\\Everything.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Everything.%' ESCAPE '\\') OR Image ILIKE 'C:\\\\Windows\\\\Installer\\\\MSI%' ESCAPE '\\' OR (Image ILIKE 'C:\\\\Program Files (x86)\\\\Java\\\\%' ESCAPE '\\' AND Image ILIKE '%\\\\installer.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Classes\\\\WOW6432Node\\\\CLSID\\\\{4299124F-F2C3-41b4-9C73-9236B2AD0E8F}%' ESCAPE '\\') OR Image ILIKE '%\\\\Microsoft\\\\EdgeUpdate\\\\Install%' ESCAPE '\\' OR ((Image ILIKE 'C:\\\\Program Files (x86)\\\\Avira\\\\Antivirus\\\\' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files\\\\Avira\\\\Antivirus\\\\' ESCAPE '\\') AND (TargetObject ILIKE '%\\\\CLSID\\\\{305CA226-D286-468e-B848-2B2E8E697B74}\\\\Shell\\\\Open\\\\Command' ESCAPE '\\' OR TargetObject ILIKE '%\\\\AntiVir.Keyfile\\\\shell\\\\open\\\\command' ESCAPE '\\')) OR ((Image ILIKE '%AppData\\\\Local\\\\Temp%' ESCAPE '\\' AND Image ILIKE '%\\\\setup.exe%' ESCAPE '\\') OR (Image ILIKE '%\\\\Temp\\\\is-%' ESCAPE '\\' AND Image ILIKE '%\\\\target.tmp%' ESCAPE '\\')) OR Image ILIKE '%\\\\ninite.exe' ESCAPE '\\' OR (Image ILIKE '%\\\\reg.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Discord\\\\shell\\\\open\\\\command' ESCAPE '\\') OR (Image ILIKE '%\\\\Spotify.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Spotify\\\\shell\\\\open\\\\command' ESCAPE '\\') OR (Image ILIKE '%C:\\\\eclipse\\\\eclipse.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\_Classes\\\\eclipse+%' ESCAPE '\\') OR (Image ILIKE '%\\\\Temp%' ESCAPE '\\' AND Image ILIKE '%\\\\TeamViewer%' ESCAPE '\\')))",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\shell\\\\open\\\\command' ESCAPE '\\' AND (NOT (Image ILIKE '%C:\\\\Windows\\\\explorer.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\system32\\\\svchost.exe' ESCAPE '\\' OR (Image ILIKE 'C:\\\\Windows\\\\System32\\\\msiexec.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\msiexec.exe' ESCAPE '\\') OR (Image ILIKE 'C:\\\\Program Files\\\\%' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files (x86)\\\\%' ESCAPE '\\') OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\OpenWith.exe' ESCAPE '\\')) AND (NOT ((Image ILIKE '%\\\\Dropbox.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Dropbox.%' ESCAPE '\\') OR (Image ILIKE '%\\\\AppData\\\\Local\\\\Temp\\\\Wireshark\\_uninstaller.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\wireshark-capture-file\\\\%' ESCAPE '\\') OR (Image ILIKE '%peazip%' ESCAPE '\\' AND TargetObject ILIKE '%\\\\PeaZip.%' ESCAPE '\\') OR (Image ILIKE '%\\\\Everything.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Everything.%' ESCAPE '\\') OR Image ILIKE 'C:\\\\Windows\\\\Installer\\\\MSI%' ESCAPE '\\' OR (Image ILIKE 'C:\\\\Program Files (x86)\\\\Java\\\\%' ESCAPE '\\' AND Image ILIKE '%\\\\installer.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Classes\\\\WOW6432Node\\\\CLSID\\\\{4299124F-F2C3-41b4-9C73-9236B2AD0E8F}%' ESCAPE '\\') OR Image ILIKE '%\\\\Microsoft\\\\EdgeUpdate\\\\Install%' ESCAPE '\\' OR ((Image ILIKE 'C:\\\\Program Files (x86)\\\\Avira\\\\Antivirus\\\\' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files\\\\Avira\\\\Antivirus\\\\' ESCAPE '\\') AND (TargetObject ILIKE '%\\\\CLSID\\\\{305CA226-D286-468e-B848-2B2E8E697B74}\\\\Shell\\\\Open\\\\Command' ESCAPE '\\' OR TargetObject ILIKE '%\\\\AntiVir.Keyfile\\\\shell\\\\open\\\\command' ESCAPE '\\')) OR ((Image ILIKE '%AppData\\\\Local\\\\Temp%' ESCAPE '\\' AND Image ILIKE '%\\\\setup.exe%' ESCAPE '\\') OR (Image ILIKE '%\\\\Temp\\\\is-%' ESCAPE '\\' AND Image ILIKE '%\\\\target.tmp%' ESCAPE '\\')) OR Image ILIKE '%\\\\ninite.exe' ESCAPE '\\' OR (Image ILIKE '%\\\\reg.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Discord\\\\shell\\\\open\\\\command' ESCAPE '\\') OR (Image ILIKE '%\\\\Spotify.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\\\Spotify\\\\shell\\\\open\\\\command' ESCAPE '\\') OR (Image ILIKE '%C:\\\\eclipse\\\\eclipse.exe' ESCAPE '\\' AND TargetObject ILIKE '%\\_Classes\\\\eclipse+%' ESCAPE '\\') OR (Image ILIKE '%\\\\Temp%' ESCAPE '\\' AND Image ILIKE '%\\\\TeamViewer%' ESCAPE '\\')))",
+      "f": {
+        "cv_pct": 7.9,
+        "max_ms": 33.873,
+        "median_ms": 27.97,
+        "min_ms": 26.66,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 9.0,
+        "max_ms": 35.259,
+        "median_ms": 27.81,
+        "min_ms": 27.306,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.006,
+      "rule": "rules/windows/registry/registry_delete/registry_delete_removal_com_hijacking_registry_key.yml",
+      "table": "registry_event",
+      "title": "Removal of Potential COM Hijacking Registry Keys"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/file_event.parquet' WHERE ((Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\powershell\\_ise.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND (TargetFilename ILIKE '%.bat' ESCAPE '\\' OR TargetFilename ILIKE '%.chm' ESCAPE '\\' OR TargetFilename ILIKE '%.cmd' ESCAPE '\\' OR TargetFilename ILIKE '%.com' ESCAPE '\\' OR TargetFilename ILIKE '%.dll' ESCAPE '\\' OR TargetFilename ILIKE '%.exe' ESCAPE '\\' OR TargetFilename ILIKE '%.hta' ESCAPE '\\' OR TargetFilename ILIKE '%.jar' ESCAPE '\\' OR TargetFilename ILIKE '%.js' ESCAPE '\\' OR TargetFilename ILIKE '%.ocx' ESCAPE '\\' OR TargetFilename ILIKE '%.scr' ESCAPE '\\' OR TargetFilename ILIKE '%.sys' ESCAPE '\\' OR TargetFilename ILIKE '%.vbe' ESCAPE '\\' OR TargetFilename ILIKE '%.vbs' ESCAPE '\\' OR TargetFilename ILIKE '%.wsf' ESCAPE '\\')) AND (NOT ((TargetFilename ILIKE 'C:\\\\Users\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%\\\\AppData\\\\Local\\\\Temp\\\\%' ESCAPE '\\' AND (TargetFilename ILIKE '%.dll' ESCAPE '\\' OR TargetFilename ILIKE '%.exe' ESCAPE '\\')) OR ((TargetFilename ILIKE 'C:\\\\Windows\\\\Temp\\\\%' ESCAPE '\\' OR TargetFilename ILIKE 'C:\\\\Windows\\\\SystemTemp\\\\%' ESCAPE '\\') AND (TargetFilename ILIKE '%.dll' ESCAPE '\\' OR TargetFilename ILIKE '%.exe' ESCAPE '\\')) OR (TargetFilename ILIKE 'C:\\\\Users\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%\\\\WindowsPowerShell\\\\Modules\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%.dll' ESCAPE '\\') OR (TargetFilename ILIKE 'C:\\\\Program Files\\\\PackageManagement\\\\ProviderAssemblies\\\\nuget\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%\\\\Microsoft.PackageManagement.NuGetProvider.dll' ESCAPE '\\')))",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/file_event.parquet' WHERE ((Image ILIKE '%\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE '%\\\\powershell\\_ise.exe' ESCAPE '\\' OR Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') AND (TargetFilename ILIKE '%.bat' ESCAPE '\\' OR TargetFilename ILIKE '%.chm' ESCAPE '\\' OR TargetFilename ILIKE '%.cmd' ESCAPE '\\' OR TargetFilename ILIKE '%.com' ESCAPE '\\' OR TargetFilename ILIKE '%.dll' ESCAPE '\\' OR TargetFilename ILIKE '%.exe' ESCAPE '\\' OR TargetFilename ILIKE '%.hta' ESCAPE '\\' OR TargetFilename ILIKE '%.jar' ESCAPE '\\' OR TargetFilename ILIKE '%.js' ESCAPE '\\' OR TargetFilename ILIKE '%.ocx' ESCAPE '\\' OR TargetFilename ILIKE '%.scr' ESCAPE '\\' OR TargetFilename ILIKE '%.sys' ESCAPE '\\' OR TargetFilename ILIKE '%.vbe' ESCAPE '\\' OR TargetFilename ILIKE '%.vbs' ESCAPE '\\' OR TargetFilename ILIKE '%.wsf' ESCAPE '\\')) AND (NOT ((TargetFilename ILIKE 'C:\\\\Users\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%\\\\AppData\\\\Local\\\\Temp\\\\%' ESCAPE '\\' AND (TargetFilename ILIKE '%.dll' ESCAPE '\\' OR TargetFilename ILIKE '%.exe' ESCAPE '\\')) OR ((TargetFilename ILIKE 'C:\\\\Windows\\\\Temp\\\\%' ESCAPE '\\' OR TargetFilename ILIKE 'C:\\\\Windows\\\\SystemTemp\\\\%' ESCAPE '\\') AND (TargetFilename ILIKE '%.dll' ESCAPE '\\' OR TargetFilename ILIKE '%.exe' ESCAPE '\\')) OR (TargetFilename ILIKE 'C:\\\\Users\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%\\\\WindowsPowerShell\\\\Modules\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%.dll' ESCAPE '\\') OR (TargetFilename ILIKE 'C:\\\\Program Files\\\\PackageManagement\\\\ProviderAssemblies\\\\nuget\\\\%' ESCAPE '\\' AND TargetFilename ILIKE '%\\\\Microsoft.PackageManagement.NuGetProvider.dll' ESCAPE '\\')))",
+      "f": {
+        "cv_pct": 12.9,
+        "max_ms": 5.045,
+        "median_ms": 3.699,
+        "min_ms": 3.452,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 5.6,
+        "max_ms": 4.071,
+        "median_ms": 3.679,
+        "min_ms": 3.41,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 1.005,
+      "rule": "rules/windows/file/file_event/file_event_win_powershell_drop_binary_or_script.yml",
+      "table": "file_event",
+      "title": "Potential Binary Or Script Dropper Via PowerShell"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Schedule\\\\TaskCache\\\\Tree\\\\%' ESCAPE '\\' AND TargetObject ILIKE '%Index%' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Schedule\\\\TaskCache\\\\Tree\\\\%' ESCAPE '\\' AND TargetObject ILIKE '%Index%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 1.4,
+        "max_ms": 40.935,
+        "median_ms": 39.948,
+        "min_ms": 39.526,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 2.3,
+        "max_ms": 41.734,
+        "median_ms": 40.03,
+        "min_ms": 38.535,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 0.998,
+      "rule": "rules/windows/registry/registry_delete/registry_delete_schtasks_hide_task_via_index_value_removal.yml",
+      "table": "registry_event",
+      "title": "Removal Of Index Value to Hide Schedule Task - Registry"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/pipe_created.parquet' WHERE PipeName ILIKE '\\\\PSHost%' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/pipe_created.parquet' WHERE PipeName ILIKE '\\\\PSHost%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 3.7,
+        "max_ms": 0.685,
+        "median_ms": 0.654,
+        "min_ms": 0.611,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 7.7,
+        "max_ms": 0.753,
+        "median_ms": 0.657,
+        "min_ms": 0.617,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 0.995,
+      "rule": "rules/windows/pipe_created/pipe_created_powershell_execution_pipe.yml",
+      "table": "pipe_created",
+      "title": "New PowerShell Instance Created"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\EulaAccepted' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\EulaAccepted' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 2.6,
+        "max_ms": 36.663,
+        "median_ms": 34.755,
+        "min_ms": 34.033,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 3.6,
+        "max_ms": 37.69,
+        "median_ms": 35.426,
+        "min_ms": 33.576,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 0.981,
+      "rule": "rules/windows/registry/registry_set/registry_set_pua_sysinternals_execution_via_eula.yml",
+      "table": "registry_event",
+      "title": "PUA - Sysinternal Tool Execution - Registry"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE (TargetObject ILIKE '%\\\\Active Directory Explorer%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Handle%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\LiveKd%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Process Explorer%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\ProcDump%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsExec%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsLoglist%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsPasswd%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SDelete%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Sysinternals%' ESCAPE '\\') AND TargetObject ILIKE '%\\\\EulaAccepted' ESCAPE '\\'",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE (TargetObject ILIKE '%\\\\Active Directory Explorer%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Handle%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\LiveKd%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Process Explorer%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\ProcDump%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsExec%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsLoglist%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PsPasswd%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SDelete%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Sysinternals%' ESCAPE '\\') AND TargetObject ILIKE '%\\\\EulaAccepted' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 4.7,
+        "max_ms": 355.091,
+        "median_ms": 320.214,
+        "min_ms": 306.316,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 8.9,
+        "max_ms": 412.028,
+        "median_ms": 333.677,
+        "min_ms": 312.535,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 0.96,
+      "rule": "rules/windows/registry/registry_set/registry_set_pua_sysinternals_susp_execution_via_eula.yml",
+      "table": "registry_event",
+      "title": "PUA - Sysinternals Tools Execution - Registry"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\AppCompatFlags\\\\Compatibility Assistant\\\\Store\\\\%' ESCAPE '\\'",
+      "class": "adversary-tail",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE TargetObject ILIKE '%\\\\AppCompatFlags\\\\Compatibility Assistant\\\\Store\\\\%' ESCAPE '\\'",
+      "f": {
+        "cv_pct": 2.8,
+        "max_ms": 39.3,
+        "median_ms": 36.621,
+        "min_ms": 35.792,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 9.7,
+        "max_ms": 47.32,
+        "median_ms": 38.274,
+        "min_ms": 36.085,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 0.957,
+      "rule": "rules/windows/registry/registry_set/registry_set_new_application_appcompat.yml",
+      "table": "registry_event",
+      "title": "New Application in AppCompat"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/file_event.parquet' WHERE TargetFilename ILIKE '%\\_\\_PSScriptPolicyTest\\_%' ESCAPE '\\' AND (NOT ((Image ILIKE 'C:\\\\Program Files\\\\PowerShell\\\\7-preview\\\\pwsh.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell\\_ise.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell\\_ise.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe' ESCAPE '\\') OR ((Image ILIKE '%C:\\\\Program Files\\\\WindowsApps\\\\Microsoft.PowerShellPreview%' ESCAPE '\\' OR Image ILIKE '%\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\Microsoft.PowerShellPreview%' ESCAPE '\\') AND Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') OR (Image ILIKE 'C:\\\\Windows\\\\System32\\\\dsac.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\sdiagnhost.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\ServerManager.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\wsmprovhost.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\sdiagnhost.exe' ESCAPE '\\')))",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/file_event.parquet' WHERE TargetFilename ILIKE '%\\_\\_PSScriptPolicyTest\\_%' ESCAPE '\\' AND (NOT ((Image ILIKE 'C:\\\\Program Files\\\\PowerShell\\\\7-preview\\\\pwsh.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell\\_ise.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell\\_ise.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe' ESCAPE '\\') OR ((Image ILIKE '%C:\\\\Program Files\\\\WindowsApps\\\\Microsoft.PowerShellPreview%' ESCAPE '\\' OR Image ILIKE '%\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\Microsoft.PowerShellPreview%' ESCAPE '\\') AND Image ILIKE '%\\\\pwsh.exe' ESCAPE '\\') OR (Image ILIKE 'C:\\\\Windows\\\\System32\\\\dsac.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\sdiagnhost.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\ServerManager.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\System32\\\\wsmprovhost.exe' ESCAPE '\\' OR Image ILIKE 'C:\\\\Windows\\\\SysWOW64\\\\sdiagnhost.exe' ESCAPE '\\')))",
+      "f": {
+        "cv_pct": 4.4,
+        "max_ms": 2.077,
+        "median_ms": 1.919,
+        "min_ms": 1.828,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 11.4,
+        "max_ms": 2.712,
+        "median_ms": 2.041,
+        "min_ms": 1.974,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 0.94,
+      "rule": "rules/windows/file/file_event/file_event_win_ps_script_policy_test_creation_by_uncommon_process.yml",
+      "table": "file_event",
+      "title": "PSScriptPolicyTest Creation By Uncommon Process"
+    },
+    {
+      "cf": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_f/registry_event.parquet' WHERE (TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\Windows Defender\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows Defender Security Center\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows Defender\\\\%' ESCAPE '\\') AND (((TargetObject ILIKE '%\\\\DisableAntiSpyware' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableAntiVirus' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableBehaviorMonitoring' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableBlockAtFirstSeen' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableEnhancedNotifications' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableIntrusionPreventionSystem' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableIOAVProtection' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableOnAccessProtection' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableRealtimeMonitoring' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableScanOnRealtimeEnable' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableScriptScanning' ESCAPE '\\') AND Details='DWORD (0x00000001)') OR ((TargetObject ILIKE '%\\\\DisallowExploitProtectionOverride' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Features\\\\TamperProtection' ESCAPE '\\' OR TargetObject ILIKE '%\\\\MpEngine\\\\MpEnablePus' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PUAProtection' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Signature Update\\\\ForceUpdateFromMU' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SpyNet\\\\SpynetReporting' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SpyNet\\\\SubmitSamplesConsent' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Windows Defender Exploit Guard\\\\Controlled Folder Access\\\\EnableControlledFolderAccess' ESCAPE '\\') AND Details='DWORD (0x00000000)')) AND (NOT (Image ILIKE 'C:\\\\Program Files\\\\Symantec\\\\Symantec Endpoint Protection\\\\%' ESCAPE '\\' AND Image ILIKE '%\\\\sepWscSvc64.exe' ESCAPE '\\'))",
+      "class": "routine",
+      "cn": "SELECT count(*) FROM '/home/jerem/sdw-lab-benchmarks/ocsf-context-collapse-apt29/_work/store_n/registry_event.parquet' WHERE (TargetObject ILIKE '%\\\\SOFTWARE\\\\Microsoft\\\\Windows Defender\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows Defender Security Center\\\\%' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SOFTWARE\\\\Policies\\\\Microsoft\\\\Windows Defender\\\\%' ESCAPE '\\') AND (((TargetObject ILIKE '%\\\\DisableAntiSpyware' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableAntiVirus' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableBehaviorMonitoring' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableBlockAtFirstSeen' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableEnhancedNotifications' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableIntrusionPreventionSystem' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableIOAVProtection' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableOnAccessProtection' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableRealtimeMonitoring' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableScanOnRealtimeEnable' ESCAPE '\\' OR TargetObject ILIKE '%\\\\DisableScriptScanning' ESCAPE '\\') AND Details='DWORD (0x00000001)') OR ((TargetObject ILIKE '%\\\\DisallowExploitProtectionOverride' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Features\\\\TamperProtection' ESCAPE '\\' OR TargetObject ILIKE '%\\\\MpEngine\\\\MpEnablePus' ESCAPE '\\' OR TargetObject ILIKE '%\\\\PUAProtection' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Signature Update\\\\ForceUpdateFromMU' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SpyNet\\\\SpynetReporting' ESCAPE '\\' OR TargetObject ILIKE '%\\\\SpyNet\\\\SubmitSamplesConsent' ESCAPE '\\' OR TargetObject ILIKE '%\\\\Windows Defender Exploit Guard\\\\Controlled Folder Access\\\\EnableControlledFolderAccess' ESCAPE '\\') AND Details='DWORD (0x00000000)')) AND (NOT (Image ILIKE 'C:\\\\Program Files\\\\Symantec\\\\Symantec Endpoint Protection\\\\%' ESCAPE '\\' AND Image ILIKE '%\\\\sepWscSvc64.exe' ESCAPE '\\'))",
+      "f": {
+        "cv_pct": 1.0,
+        "max_ms": 109.956,
+        "median_ms": 108.617,
+        "min_ms": 106.374,
+        "trials": 7,
+        "warmup": 2
+      },
+      "n": {
+        "cv_pct": 8.7,
+        "max_ms": 160.89,
+        "median_ms": 136.44,
+        "min_ms": 116.93,
+        "trials": 7,
+        "warmup": 2
+      },
+      "ratio_f_over_n": 0.796,
+      "rule": "rules/windows/registry/registry_set/registry_set_windows_defender_tamper.yml",
+      "table": "registry_event",
+      "title": "Disable Windows Defender Functionalities Via Registry Keys"
+    }
+  ]
+}
