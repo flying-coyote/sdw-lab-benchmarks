@@ -7,8 +7,204 @@
     "skill",
     "wrong_grounding"
   ],
-  "evidence_tier": "B (local model ladder; frontier leg still pending an API key)",
+  "evidence_tier": "B (local model ladder + claude-opus-4-8 frontier proxy run via subagents; a fair stand-in for a paid-SaaS-API frontier model \u2014 same prompts, model swapped)",
   "models": {
+    "claude-opus-4-8 (frontier proxy)": {
+      "cells": {
+        "formal": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.7143,
+              "silent_rate": 0.0
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.8,
+              "silent_rate": 0.0
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.3871,
+              "silent_rate": 0.3226
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.6296,
+              "silent_rate": 0.1111
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.6087,
+              "silent_rate": 0.0652
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.6667,
+              "silent_rate": 0.2778
+            }
+          },
+          "n": 141,
+          "path_correct": 0.5887,
+          "silent_error_rate": 0.1489
+        },
+        "none": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.8571,
+              "silent_rate": 0.0714
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.6,
+              "silent_rate": 0.2
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.2903,
+              "silent_rate": 0.6452
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.5556,
+              "silent_rate": 0.1481
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.5652,
+              "silent_rate": 0.1304
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.7222,
+              "silent_rate": 0.1111
+            }
+          },
+          "n": 141,
+          "path_correct": 0.5532,
+          "silent_error_rate": 0.2411
+        },
+        "schema": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.5714,
+              "silent_rate": 0.0
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.8,
+              "silent_rate": 0.0
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.4839,
+              "silent_rate": 0.3871
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.5926,
+              "silent_rate": 0.1481
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.5652,
+              "silent_rate": 0.0
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.6667,
+              "silent_rate": 0.1111
+            }
+          },
+          "n": 141,
+          "path_correct": 0.5745,
+          "silent_error_rate": 0.1277
+        },
+        "skill": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.7857,
+              "silent_rate": 0.0
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.8,
+              "silent_rate": 0.0
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.3548,
+              "silent_rate": 0.3871
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.6296,
+              "silent_rate": 0.1111
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.6304,
+              "silent_rate": 0.1304
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.7222,
+              "silent_rate": 0.1111
+            }
+          },
+          "n": 141,
+          "path_correct": 0.6028,
+          "silent_error_rate": 0.1631
+        },
+        "wrong_grounding": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.7143,
+              "silent_rate": 0.0714
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.6,
+              "silent_rate": 0.2
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.3548,
+              "silent_rate": 0.4194
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.4074,
+              "silent_rate": 0.1481
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.6739,
+              "silent_rate": 0.0652
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.7222,
+              "silent_rate": 0.1111
+            }
+          },
+          "n": 141,
+          "path_correct": 0.5603,
+          "silent_error_rate": 0.1702
+        }
+      },
+      "lifts": {
+        "pathcorrect_skill_minus_schema": 0.0283,
+        "silent_formal_minus_none": -0.0922,
+        "silent_formal_minus_wrong": -0.0213,
+        "silent_schema_minus_none": -0.1134,
+        "silent_skill_minus_none": -0.078
+      }
+    },
     "gemma4:26b": {
       "cells": {
         "formal": {
