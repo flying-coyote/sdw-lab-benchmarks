@@ -11,44 +11,49 @@ Detection Summary, Palo Alto PAN-OS TRAFFIC, Cisco ASA connection syslog, Cisco 
 DNS, Zscaler ZIA Web). Conditions: none, schema, formal, skill, wrong_grounding.
 
 The **wrong_grounding** condition gives a grounding note for the *wrong* OCSF class —
-the control that separates correct grounding from extra tokens.
+the control that separates correct grounding from extra tokens. Both phi3 (3.8B) and
+gemma4:26b (26B) are now run on the **full 141-item set, all 5 conditions** (705
+inferences each). The earlier gemma4 20-item stratified sample is retained in
+`results.json` as `gemma4:26b-sample20` and is superseded by the full run below.
 
-> **Scope note — larger LOCAL model, not frontier SaaS.** The gemma4:26b leg is a
-> 26B-parameter local model run on a Beelink WSL2 host (ollama, temperature 0). It
-> is NOT a frontier-SaaS leg (no Claude/GPT-4o/Gemini key available). It directly
-> addresses H-PRACTITIONER-OWNED-AGENTIC-01: the sub-frontier / local-inference
-> capability gradient. The frontier leg remains open pending an API key.
+> **Scope note — larger LOCAL model, not frontier SaaS.** gemma4:26b is a 26B-parameter
+> local model on a Beelink WSL2 host (ollama, temperature 0). It is NOT a frontier-SaaS
+> leg (no Claude/GPT-4o/Gemini key available). It addresses H-PRACTITIONER-OWNED-AGENTIC-01
+> (the sub-frontier / local-inference capability gradient). The frontier leg — which is
+> what would settle whether grounding is a *moat* or a *crutch a stronger model wouldn't
+> need* — remains open pending an API key.
 
 ---
 
-## Comparison table — all 5 conditions
+## Comparison table — full 141-item set, both models
 
-phi3 was run on the full 141-item gold set. gemma4:26b was run on a 20-item
-stratified sample (first 3 per source sorted by field name; Cisco Umbrella DNS all 5).
-Rates are comparable in direction but not in precision — the sample-size difference
-inflates gemma4's variance considerably. See Sampling below.
-
-| condition | phi3:latest (n=141) silent-error | phi3:latest path-correct | gemma4:26b (n=20) silent-error | gemma4:26b path-correct |
+| condition | phi3 (3.8B) silent-error | phi3 path-correct | gemma4:26b silent-error | gemma4:26b path-correct |
 |---|---|---|---|---|
-| none | 0.99 | 0.00 | 0.90 | 0.10 |
-| schema | 0.69 | 0.01 | 0.15 | 0.05 |
-| formal | 0.72 | 0.01 | 0.15 | 0.00 |
-| skill | 0.60 | 0.04 | 0.35 | 0.00 |
-| wrong_grounding | 0.72 | 0.01 | 0.20 | 0.00 |
+| none | 0.99 | 0.00 | 0.83 | 0.03 |
+| schema | 0.69 | 0.01 | 0.18 | 0.08 |
+| formal | 0.72 | 0.01 | 0.19 | 0.08 |
+| skill | 0.60 | 0.04 | 0.30 | 0.05 |
+| wrong_grounding | 0.72 | 0.01 | 0.18 | 0.06 |
 
 ### Lifts (negative = fewer invented paths)
 
-| lift | phi3:latest | gemma4:26b |
+| lift | phi3 (n=141) | gemma4:26b (n=141) |
 |---|---|---|
-| silent, schema − none | -0.31 | -0.75 |
-| silent, skill − none | -0.40 | -0.55 |
-| silent, formal − none | -0.27 | -0.75 |
-| **formal − wrong_grounding (control)** | **+0.01** | **-0.05** |
-| path-correct, skill − schema | +0.04 | -0.05 |
+| silent, schema − none | -0.31 | **-0.65** |
+| silent, skill − none | -0.40 | -0.52 |
+| silent, formal − none | -0.27 | -0.64 |
+| **formal − wrong_grounding (control)** | **+0.01** | **+0.01** |
+| path-correct, skill − schema | +0.04 | -0.03 |
+
+The control row is the headline: at full n=141 the formal-minus-wrong_grounding gap is
+**+0.007 (phi3)** and **+0.014 (gemma4:26b)** — both essentially zero, both with the
+*correct* grounding note a hair *worse* than the deliberately-wrong one. The 20-item
+sample's −0.05 (correct grounding marginally ahead) was noise; it does not survive the
+full set.
 
 ---
 
-## phi3:latest (3.8B, n=141, full gold set)
+## phi3:latest (3.8B, n=141)
 
 | condition | silent-error | path-correct |
 |---|---|---|
@@ -58,96 +63,90 @@ inflates gemma4's variance considerably. See Sampling below.
 | skill | 0.60 | 0.04 |
 | wrong_grounding | 0.72 | 0.01 |
 
-- silent-error, schema − none: -0.30 (negative = fewer invented paths)
-- silent-error, skill − none: -0.40
-- silent-error, formal − none: -0.27
-- **control** silent-error, formal − wrong_grounding: +0.01 (negative = correct grounding beats wrong grounding; ~0 = the lift was tokens, not content)
+Schema captures most of the (small) lift; the formal grounding note adds nothing over
+wrong grounding (+0.01); the ontology-thinking *skill* prompt is the only thing that
+beats schema for this weak model (0.60 vs 0.69).
 
 ---
 
-## gemma4:26b (26B, n=20, stratified sample)
-
-> Larger LOCAL model — NOT the frontier-SaaS leg. Addresses the sub-frontier
-> capability gradient only. All 5 conditions run on a 20-item stratified sample;
-> full 141-item run at ~40 s/inference would take approximately 470 minutes.
+## gemma4:26b (26B, n=141 — full run)
 
 | condition | silent-error | path-correct |
 |---|---|---|
-| none | 0.90 | 0.10 |
-| schema | 0.15 | 0.05 |
-| formal | 0.15 | 0.00 |
-| skill | 0.35 | 0.00 |
-| wrong_grounding | 0.20 | 0.00 |
+| none | 0.83 | 0.03 |
+| schema | 0.18 | 0.08 |
+| formal | 0.19 | 0.08 |
+| skill | 0.30 | 0.05 |
+| wrong_grounding | 0.18 | 0.06 |
 
-- silent-error, schema − none: -0.75 (negative = fewer invented paths)
-- silent-error, skill − none: -0.55
-- silent-error, formal − none: -0.75
-- **control** silent-error, formal − wrong_grounding: -0.05 (a 1-item difference on n=20; within noise — closer to "tokens" than "correct grounding" in the same direction as phi3)
+- silent-error, schema − none: **-0.65** (the dominant lever, far larger than phi3's -0.31)
+- silent-error, formal − none: -0.64
+- silent-error, skill − none: -0.52
+- **control** silent-error, formal − wrong_grounding: **+0.01** (correct grounding ≈ wrong grounding — the lift is the schema constraint, not the conceptual note)
+- path-correct, skill − schema: -0.03 (the skill prompt *hurts* the strong model)
 
-### gemma4:26b by source (schema condition; representative of grounded conditions)
+### gemma4:26b by source (schema condition)
 
 | source | n | silent-rate | path-correct |
 |---|---|---|---|
-| Cisco ASA connection syslog | 3 | 0.00 | 0.00 |
+| Cisco ASA connection syslog | 14 | 0.00 | 0.07 |
+| Palo Alto PAN-OS TRAFFIC | 46 | 0.04 | 0.04 |
 | Cisco Umbrella DNS | 5 | 0.20 | 0.00 |
-| CrowdStrike Detection Summary | 3 | 0.33 | 0.33 |
-| Okta System Log | 3 | 0.00 | 0.00 |
-| Palo Alto PAN-OS TRAFFIC | 3 | 0.00 | 0.00 |
-| Zscaler ZIA Web | 3 | 0.33 | 0.00 |
+| Okta System Log | 27 | 0.22 | 0.04 |
+| Zscaler ZIA Web | 18 | 0.33 | 0.06 |
+| CrowdStrike Detection Summary | 31 | 0.35 | 0.19 |
+
+The network/connection sources (ASA, PAN-OS) map almost cleanly; the finding/identity
+sources (CrowdStrike, Zscaler, Okta) are where the model still invents attributes — the
+same sources C1 flagged as the lossiest for human mapping, so the model's failures track
+the genuinely hard mappings rather than being uniform noise.
 
 ---
 
-## Sampling
+## Run / timing
 
-**gemma4:26b:** stratified deterministic sample. For each of the 6 vendor sources, the
-first 3 fields sorted by field name were taken; Cisco Umbrella DNS (only 5 real-path
-mappings total) contributed all 5. Total: 20 items, all 5 conditions, 100 inferences.
-At the observed ~40 s/inference on a local Beelink/WSL2 host (ollama), a full
-141-item × 5-condition run would take approximately 470 minutes — well beyond a
-reasonable runtime bound. One inference (`event.ComputerName`, none condition) ran to
-106 s due to a verbose "thinking aloud" response; the extracted path was not a valid
-OCSF attribute, so it scored as a silent error. The skill condition produced two None
-responses (timeout/incoherence), both scored as silent errors.
+Full 141-item × 5-condition run = **705 inferences, ~143 minutes** wall-clock on the
+local WSL2 host (gemma4:26b via ollama, temperature 0, `keep_alive=15m`). Median
+inference **2.1 s**, mean 12.1 s, max 258 s — far under the 40 s/inference the 20-item
+sample assumed, because keeping the model warm avoids a cold reload per call. The run
+is checkpointed per inference (`results/gemma4_full_checkpoint.jsonl`) and resumable.
 
-**phi3:latest:** full 141-item gold set, all 5 conditions, 705 inferences; no sampling.
+**No-parse (None) responses, 60 of 705**, concentrated where the prompt is least
+constrained or most verbose: 32 in `none` (no schema to anchor to — the model rambles or
+refuses) and 21 in `skill` (the long ontology-thinking instruction pushes the 26B model
+into incoherence/timeouts), versus 2 in `schema`, 2 in `formal`, 3 in `wrong_grounding`.
+This is the mechanism behind `skill` underperforming `schema` for gemma4:26b.
 
 ---
 
 ## Reading
 
-Silent-error rate is the headline because path-correctness on sub-frontier local models
-stays low — they rarely land the exact gold OCSF path. Where schema, grounding, and the
-ontology-thinking discipline cut the silent-error rate, that is the security-relevant
-signal: fewer invented attributes. The wrong-grounding control is the honesty check — if
-`formal` beats `wrong_grounding`, correct grounding content is doing work; if they tie,
-the lift was just more tokens.
+**The central question — is the *content* of formal grounding the lever, or just the
+schema constraint and the extra tokens?** Answered, now at full n=141 and across an
+order of magnitude of model size: the **formal − wrong_grounding control is ≈ 0 at both
+scales** (+0.007 phi3, +0.014 gemma4:26b). A grounding note for the *correct* OCSF class
+does not beat a grounding note for the *wrong* class. What cuts invented attributes is
+the **schema constraint** (the list of valid paths) plus the model's own reasoning — not
+the conceptual grounding prose. This tempers any "formal grounding is the moat" framing
+for H-CONCEPT-GRAPH-01: at the sub-frontier/local tier the harness (schema-validity
+enforcement), not the ontological note, is doing the safety work. The frontier-SaaS leg
+is the one that could still overturn this — a model strong enough to *use* the conceptual
+note rather than just the path list — and it remains the open question pending an API key.
 
-**What changes from phi3 to gemma4:26b:** the 26B model enters with a substantially
-lower silent-error rate when grounding is provided — 0.15 vs phi3's 0.69 under schema
-alone. The absolute none→schema reduction (−0.75 vs phi3's −0.31) looks dramatic, but
-the sample-size difference means those figures carry wide confidence intervals. The
-direction is consistent: grounding still helps, schema alone captures most of the lift,
-and the skill condition underperforms schema for gemma4:26b (0.35 vs 0.15), possibly
-because the ontology-thinking discipline adds token length that occasionally pushes the
-model into timeouts or incoherence (two None responses in the skill condition, versus
-zero in schema/formal/wrong_grounding).
+**The local capability gradient (H-PRACTITIONER-OWNED-AGENTIC-01) is real and large.**
+Under schema grounding the 26B model invents a path 18% of the time versus the 3.8B
+model's 69% — the none→schema drop is −0.65 vs −0.31. Exact-path correctness is also ~8×
+higher (0.08 vs 0.01), though still low because the metric is strict. A 26B local model
+is meaningfully more usable for schema-constrained OCSF mapping than a 3.8B one; whether
+0.18 silent-error under schema is acceptable for unattended use is a practitioner call,
+and the residual is concentrated in the genuinely hard finding/identity sources.
 
-**The formal-vs-wrong_grounding gap (the central "is formal grounding inert?" question):**
-for phi3 the gap was effectively zero (+0.01), confirming that the grounding lift in the
-3.8B model was extra tokens, not correct content. For gemma4:26b the gap is −0.05 —
-formal marginally beats wrong_grounding — but on n=20 that is a single-item difference
-and well within noise. The tentative reading is that the "formal grounding is inert; the
-reasoning discipline is the lever" finding survives the scale-up from 3.8B to 26B on
-this sample. That conclusion requires confirmation on the full 141-item set before it
-carries any weight.
-
-**H-PRACTITIONER-OWNED-AGENTIC-01:** the sub-frontier gradient is real in the sense
-that gemma4:26b hallucinates substantially less than phi3 under schema grounding. Whether
-the improvement is large enough to make local-only deployment practical for OCSF mapping
-work is a practitioner judgment the bench can't resolve on 20 items. The frontier leg,
-pending an API key, would determine whether the residual 0.15 silent-error rate under
-schema is a ceiling for the local-inference regime or is mostly noise.
+**Capability-dependent prompt interaction.** The ontology-thinking *skill* prompt helps
+the weak model (phi3 skill 0.60 < schema 0.69) but *hurts* the strong one (gemma4 skill
+0.30 > schema 0.18), because its verbosity triggers incoherence/timeouts (21 no-parse
+responses vs 2 under schema). More instruction is not monotonically better — the right
+prompt depends on the model's capability.
 
 Tier B: local models, single-shot, temperature 0; exact-match undercounts valid
-alternatives; the gold set is curated. Tier-A needs a published larger gold set, a
-named reviewer on the ambiguous calls, and an independent frontier model.
+alternatives; the gold set is curated. Tier-A needs a published larger gold set, a named
+reviewer on the ambiguous calls, and an independent frontier model.
