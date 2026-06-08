@@ -332,6 +332,16 @@ def serialize_subgraph(g, keep, seed_rank):
     return "\n".join(lines)
 
 
+def serialize_flat(g, keep, seed_rank):
+    """flat_retrieval CONTROL: the SAME retrieved node facts as serialize_subgraph, but as a flat
+    list with NO relationships / graph structure. This isolates retrieval-value (which facts get
+    pulled) from graph-structure-value (how they connect). If the flat arm scores ~= the structured
+    arm, the graph structure adds nothing over plain retrieval of the same facts — the Phase-B
+    control the program plan requires before any grounding claim is publishable."""
+    nodes = sorted(keep, key=lambda n: (seed_rank.get(n, 10 ** 9), n))[:NODE_BUDGET]
+    return "\n".join(["FACTS:"] + [f"- {g.nodes[n]['doc']}" for n in nodes])
+
+
 # ---------------------------------------------------------------------------- generation
 def ask(model, question, context):
     prompt = (
@@ -355,7 +365,7 @@ def ask(model, question, context):
 
 
 # ---------------------------------------------------------------------------- arm driver
-def run_arm(model, embed_model):
+def run_arm(model, embed_model, flat=False):
     truth = load_truth()
     con = connect()
     g = build_graph(con)
@@ -370,7 +380,7 @@ def run_arm(model, embed_model):
         seeds = vector_topk(qvec, mat, ids, K_SEED)
         seed_rank = {nid: i for i, nid in enumerate(seeds)}
         keep = retrieve(g, seeds, sameadj)
-        context = serialize_subgraph(g, keep, seed_rank)
+        context = (serialize_flat if flat else serialize_subgraph)(g, keep, seed_rank)
         answer = ask(model, q["nl"], context)
         if not answer:
             outcome = "loud"                                   # empty / refusal / parse fail
@@ -381,14 +391,17 @@ def run_arm(model, embed_model):
         rows.append((q["id"], outcome, len(answer)))
         print(f"  {q['id']}: {outcome} ({len(answer)} cells)")
 
+    mode_desc = ("flat_retrieval CONTROL (same facts, NO graph structure)" if flat
+                 else "structured entity-layer retrieval")
     n = len(QUERIES)
     counts = {k: sum(1 for r in rows if r[1] == k) for k in ("correct", "silent", "loud")}
     return {
         "status": "measured",
-        "engine": f"GraphRAG (structured entity-layer retrieval): NetworkX MultiDiGraph, {embed_model} "
+        "engine": f"GraphRAG ({mode_desc}): NetworkX MultiDiGraph, {embed_model} "
                   f"cosine over ENTITY nodes only (k={K_SEED}, hops={HOPS}); events pulled by 2-hop "
                   f"traversal, not embedded; + {model}",
         "generator_model": model, "embed_model": embed_model,
+        "retrieval_mode": "flat" if flat else "structured",
         "graph_fingerprint": fp, "graph_nodes": g.number_of_nodes(), "graph_edges": g.number_of_edges(),
         "embedded_entities": len(ids),
         "retrieval": {"k_seed": K_SEED, "hops": HOPS, "node_budget": NODE_BUDGET, "edge_budget": EDGE_BUDGET},
@@ -401,11 +414,11 @@ def run_arm(model, embed_model):
     }
 
 
-def merge(arm):
+def merge(arm, name="graphrag"):
     rpath = os.path.join(HERE, "results", "results.json")
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
     full = json.load(open(rpath)) if os.path.exists(rpath) else {"arms": {}}
-    full.setdefault("arms", {})["graphrag"] = arm
+    full.setdefault("arms", {})[name] = arm
     json.dump(full, open(rpath, "w"), indent=2, sort_keys=True)
 
 
@@ -433,6 +446,8 @@ def main():
     ap.add_argument("--determinism", action="store_true")
     ap.add_argument("--render-only", action="store_true",
                     help="defer to run.py --render-only (it reads the merged results.json)")
+    ap.add_argument("--flat", action="store_true",
+                    help="run the flat_retrieval CONTROL (same retrieved facts, NO graph structure)")
     args = ap.parse_args()
 
     if args.determinism:
@@ -445,11 +460,12 @@ def main():
         print("Store F not built — run bench-a-context-collapse/run.py first.", file=sys.stderr)
         sys.exit(2)
 
-    arm = run_arm(args.model, args.embed_model)
-    merge(arm)
-    print(f"\nGraphRAG ({args.model}): {arm['counts']}  "
+    arm_name = "flat_retrieval" if args.flat else "graphrag"
+    arm = run_arm(args.model, args.embed_model, flat=args.flat)
+    merge(arm, arm_name)
+    print(f"\n{arm_name} ({args.model}): {arm['counts']}  "
           f"silent-error={arm['silent_error_rate']:.2f}  result-acc={arm['result_accuracy']:.2f}")
-    print("merged into results/results.json")
+    print(f"merged into results/results.json as arm '{arm_name}'")
 
 
 if __name__ == "__main__":
