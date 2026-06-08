@@ -17,6 +17,51 @@
     "master_seed": 20260601
   },
   "evidence_tier": "B (reproducible, first-party, controlled synthetic estate; exact set-based accuracy over planted ground truth; NOT production telemetry)",
+  "identities_contested_key": {
+    "corpus_integrity": {
+      "all_attributes_present": true,
+      "all_passed": true,
+      "dept_in_domain": true,
+      "email_unique": true,
+      "employee_id_unique": true,
+      "ids_contiguous_unique": true,
+      "last_logon_in_range": true,
+      "row_count_ok": true,
+      "sam_flag_consistent": true,
+      "sam_unique_where_present": true,
+      "title_in_domain": true
+    },
+    "measures": {
+      "attributes": [
+        "department",
+        "title",
+        "manager",
+        "account_enabled",
+        "last_logon"
+      ],
+      "clean_key_oracle_recovery": 0.9628,
+      "contested_key_recovery": 0.862,
+      "entity": "identities (contested join key)",
+      "n_attr_rows": 98210,
+      "n_identities": 12000,
+      "n_key_rows": 79144,
+      "naive_single_key_recovery": 0.6,
+      "resolution_diagnostics": {
+        "fragmented_people": 3770,
+        "n_planted_people_with_records": 12000,
+        "n_resolved_clusters": 16073,
+        "over_merged_clusters": 0
+      },
+      "resolution_tax": 0.1008,
+      "tool_keys": {
+        "dir": "sam (+ upn bridge)",
+        "edr": "upn (+ sometimes sam)",
+        "hr": "employee_id (+ sometimes-stale email)",
+        "idp": "email (+ upn bridge)"
+      },
+      "total_cells": 60000
+    }
+  },
   "measures": {
     "attributes": [
       "owner",
@@ -148,5 +193,234 @@
     ],
     "total_cells": 140000
   },
-  "n_observations": 191835
+  "n_observations": 191835,
+  "parameter_sweep": {
+    "grid_axes": {
+      "coverage_mult": [
+        0.8,
+        1.0,
+        1.15
+      ],
+      "staleness_mult": [
+        0.6,
+        1.0,
+        1.4
+      ]
+    },
+    "half_life_probe": {
+      "cross_tool_recovery_distinct": [
+        0.7562
+      ],
+      "half_life_days": [
+        7.0,
+        14.0,
+        28.0,
+        90.0
+      ],
+      "inert_on_this_corpus": true,
+      "lever_gain_distinct": [
+        0.251
+      ],
+      "note": "freshness half-life swept 7-90d at v1 staleness+coverage; the metrics do not move because the fresh source (EDR) is also the higher-confidence one, so decay never flips a per-cell winner. The lever here is the confidence+authority ordering, not the decay rate \u2014 reported as a null, not hidden."
+    },
+    "metric_ranges": {
+      "best_single_recovery": {
+        "max": 0.5209,
+        "max_at": {
+          "coverage_mult": 1.15,
+          "staleness_mult": 0.6
+        },
+        "min": 0.4551,
+        "min_at": {
+          "coverage_mult": 0.8,
+          "staleness_mult": 1.4
+        }
+      },
+      "cross_minus_best_single": {
+        "max": 0.3193,
+        "max_at": {
+          "coverage_mult": 1.15,
+          "staleness_mult": 1.4
+        },
+        "min": 0.1938,
+        "min_at": {
+          "coverage_mult": 0.8,
+          "staleness_mult": 0.6
+        }
+      },
+      "cross_tool_recovery": {
+        "max": 0.7851,
+        "max_at": {
+          "coverage_mult": 1.15,
+          "staleness_mult": 0.6
+        },
+        "min": 0.6939,
+        "min_at": {
+          "coverage_mult": 0.8,
+          "staleness_mult": 1.4
+        }
+      },
+      "lever_gain": {
+        "max": 0.2865,
+        "max_at": {
+          "coverage_mult": 1.15,
+          "staleness_mult": 1.4
+        },
+        "min": 0.1702,
+        "min_at": {
+          "coverage_mult": 0.8,
+          "staleness_mult": 0.6
+        }
+      },
+      "residual_gap": {
+        "max": 0.3061,
+        "max_at": {
+          "coverage_mult": 0.8,
+          "staleness_mult": 1.4
+        },
+        "min": 0.2149,
+        "min_at": {
+          "coverage_mult": 1.15,
+          "staleness_mult": 0.6
+        }
+      }
+    },
+    "n_grid_points": 9,
+    "ordering_holds": {
+      "all_invariants_hold": true,
+      "cross_tool_gt_best_single": true,
+      "min_cross_minus_best_single": 0.1938,
+      "min_lever_gain": 0.1702,
+      "residual_gap_positive": true,
+      "scored_merge_gt_naive": true
+    },
+    "points": [
+      {
+        "best_single_recovery": 0.5208,
+        "best_single_tool": "cmdb",
+        "coverage_mult": 0.8,
+        "cross_minus_best_single": 0.1938,
+        "cross_tool_recovery": 0.7146,
+        "half_life_days": 14.0,
+        "lever_gain": 0.1702,
+        "n_observations": 174903,
+        "naive_authority_merge_recovery": 0.5444,
+        "residual_gap": 0.2854,
+        "scored_merge_recovery": 0.7146,
+        "staleness_mult": 0.6
+      },
+      {
+        "best_single_recovery": 0.5204,
+        "best_single_tool": "cmdb",
+        "coverage_mult": 1.0,
+        "cross_minus_best_single": 0.2433,
+        "cross_tool_recovery": 0.7637,
+        "half_life_days": 14.0,
+        "lever_gain": 0.2136,
+        "n_observations": 191473,
+        "naive_authority_merge_recovery": 0.5501,
+        "residual_gap": 0.2364,
+        "scored_merge_recovery": 0.7637,
+        "staleness_mult": 0.6
+      },
+      {
+        "best_single_recovery": 0.5209,
+        "best_single_tool": "cmdb",
+        "coverage_mult": 1.15,
+        "cross_minus_best_single": 0.2642,
+        "cross_tool_recovery": 0.7851,
+        "half_life_days": 14.0,
+        "lever_gain": 0.2297,
+        "n_observations": 199588,
+        "naive_authority_merge_recovery": 0.5554,
+        "residual_gap": 0.2149,
+        "scored_merge_recovery": 0.7851,
+        "staleness_mult": 0.6
+      },
+      {
+        "best_single_recovery": 0.4745,
+        "best_single_tool": "cmdb",
+        "coverage_mult": 0.8,
+        "cross_minus_best_single": 0.2251,
+        "cross_tool_recovery": 0.6996,
+        "half_life_days": 14.0,
+        "lever_gain": 0.201,
+        "n_observations": 175054,
+        "naive_authority_merge_recovery": 0.4986,
+        "residual_gap": 0.3004,
+        "scored_merge_recovery": 0.6996,
+        "staleness_mult": 1.0
+      },
+      {
+        "best_single_recovery": 0.4768,
+        "best_single_tool": "cmdb",
+        "coverage_mult": 1.0,
+        "cross_minus_best_single": 0.2794,
+        "cross_tool_recovery": 0.7562,
+        "half_life_days": 14.0,
+        "lever_gain": 0.251,
+        "n_observations": 191835,
+        "naive_authority_merge_recovery": 0.5052,
+        "residual_gap": 0.2438,
+        "scored_merge_recovery": 0.7562,
+        "staleness_mult": 1.0
+      },
+      {
+        "best_single_recovery": 0.4751,
+        "best_single_tool": "cmdb",
+        "coverage_mult": 1.15,
+        "cross_minus_best_single": 0.3044,
+        "cross_tool_recovery": 0.7795,
+        "half_life_days": 14.0,
+        "lever_gain": 0.2702,
+        "n_observations": 199549,
+        "naive_authority_merge_recovery": 0.5093,
+        "residual_gap": 0.2205,
+        "scored_merge_recovery": 0.7795,
+        "staleness_mult": 1.0
+      },
+      {
+        "best_single_recovery": 0.4551,
+        "best_single_tool": "cmdb",
+        "coverage_mult": 0.8,
+        "cross_minus_best_single": 0.2388,
+        "cross_tool_recovery": 0.6939,
+        "half_life_days": 14.0,
+        "lever_gain": 0.215,
+        "n_observations": 175547,
+        "naive_authority_merge_recovery": 0.4789,
+        "residual_gap": 0.3061,
+        "scored_merge_recovery": 0.6939,
+        "staleness_mult": 1.4
+      },
+      {
+        "best_single_recovery": 0.4555,
+        "best_single_tool": "cmdb",
+        "coverage_mult": 1.0,
+        "cross_minus_best_single": 0.2975,
+        "cross_tool_recovery": 0.753,
+        "half_life_days": 14.0,
+        "lever_gain": 0.2672,
+        "n_observations": 191715,
+        "naive_authority_merge_recovery": 0.4858,
+        "residual_gap": 0.247,
+        "scored_merge_recovery": 0.753,
+        "staleness_mult": 1.4
+      },
+      {
+        "best_single_recovery": 0.459,
+        "best_single_tool": "edr",
+        "coverage_mult": 1.15,
+        "cross_minus_best_single": 0.3193,
+        "cross_tool_recovery": 0.7783,
+        "half_life_days": 14.0,
+        "lever_gain": 0.2865,
+        "n_observations": 199656,
+        "naive_authority_merge_recovery": 0.4918,
+        "residual_gap": 0.2217,
+        "scored_merge_recovery": 0.7783,
+        "staleness_mult": 1.4
+      }
+    ]
+  }
 }

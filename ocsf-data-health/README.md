@@ -46,6 +46,36 @@ result (a naive authority merge gets only 50.5%). Full per-attribute numbers in
 [`results/RESULTS.md`](results/RESULTS.md); machine-readable in
 [`results/results.json`](results/results.json).
 
+## Two extensions — the order's robustness, and a harder entity
+
+The four headline numbers above are one point in a parameter space, on the
+easiest entity (assets, one clean key). Two extensions test whether the *finding*
+survives past that point. Both preserve the v1 numbers bit-for-bit and fold into
+the same build-twice determinism assert.
+
+**EXT-1 — parameter sweep (is the ORDER robust, not just the magnitude?)** The v1
+magnitudes are functions of the flaw-model parameters. We sweep the two that move
+them — a **staleness-window** multiplier on the CMDB's stale inventory (×0.6 /
+×1.0 / ×1.4) and a **per-tool coverage** multiplier (×0.8 / ×1.0 / ×1.15) — across
+a 9-point grid and recompute all four measures at every cell. The three orderings
+the thesis rests on hold at **every** grid point: cross-tool > best-single
+(smallest margin +19.4%), residual > 0, scored merge > naive (smallest lever
++17.0%), with cross-tool ranging 69.4–78.5% and the lever 17.0–28.6% as the
+parameters move. The **freshness half-life** is swept separately (7–90 days) and
+turns out **inert on this corpus** — the fresh source is also the higher-confidence
+one, so decay never flips a winner; that null is reported, not hidden.
+
+**EXT-2 — identities with a contested join key (entity resolution is part of the
+gap).** v1 assets share one clean key. Identities do not: HR keys on
+`employee_id`, the IdP on `email`, EDR on `upn`, the directory on
+`sAMAccountName`, and those keys disagree, so the merge must reconcile *which
+records are the same human* before it can recover an attribute. Over 12,000
+planted identities × 5 attributes, a clean-key oracle (the asset-style join)
+recovers **96.3%**; resolving identity from the disagreeing key *values* only and
+then merging recovers **86.2%** — a **−10.1%** entity-resolution tax, the part of
+the assurance gap that is *join*, not *coverage*. A naive "just pick `employee_id`"
+single-key join collapses to **60.0%**.
+
 ## Which thesis pillar
 
 **Well-connected** (and, through it, **trustworthy**). The SDW program POV is to
@@ -62,13 +92,21 @@ measurement. It is not production telemetry and makes no production claim. The
 corpus is built to isolate the cross-tool mechanism, so the corpus *is* the
 argument — read [`METHODOLOGY.md`](METHODOLOGY.md) before trusting any number. The
 flaw-model magnitudes (CMDB staleness window, EDR managed-only coverage, scanner
-cadence, IDP owner overlap) are corpus *parameters*, not universal constants, and
-are labelled as such there. The transferable, parameter-independent finding is the
-**order**: cross-tool recovery > best single tool, the residual gap is small but
-nonzero, and the freshness/confidence score is the lever over a naive authority
-merge. The merge never invents coverage no tool has — that is what the residual
-gap measures, and on a single-source attribute (`open_vuln_count`) cross-tool
-equals best single by construction.
+cadence, IDP owner overlap, and the per-key missing/garbled rates for identities)
+are corpus *parameters*, not universal constants, and are labelled as such there.
+The transferable, parameter-independent finding is the **order**: cross-tool
+recovery > best single tool, the residual gap is small but nonzero, and the
+freshness/confidence score is the lever over a naive authority merge. The merge
+never invents coverage no tool has — that is what the residual gap measures, and
+on a single-source attribute (`open_vuln_count`) cross-tool equals best single by
+construction.
+
+What the extensions add and do **not** add: EXT-1 shows the *ordering* is robust
+across a 3×3 staleness×coverage grid (it never inverts), not that the magnitudes
+are universal — they move, on purpose. EXT-2 shows a contested join key degrades
+cross-tool recovery by a measurable amount (−10.1% here) and that entity
+resolution is therefore part of the assurance gap, not that any particular linker
+is optimal or that this is a real organisation's resolution accuracy.
 
 ## Reproduce
 
@@ -86,8 +124,9 @@ integrity check first. Same code, same seed, same numbers, every run.
 
 ```
 run.py        corpus + flaw models + DuckDB scoring + determinism/integrity asserts
+              + EXT-1 parameter sweep + EXT-2 contested-join-key identities
 results/      RESULTS.md + results.json (generated)
-METHODOLOGY.md  flaw models, the four measures, the falsification condition
+METHODOLOGY.md  flaw models, the four measures, the two extensions, falsification
 ```
 
 The seeds, fixed time anchor, and scoring helpers (`new_rng`, `prf1`, `canonical`,
