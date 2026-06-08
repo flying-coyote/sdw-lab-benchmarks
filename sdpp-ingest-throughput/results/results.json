@@ -1,0 +1,669 @@
+{
+  "benchmark": "sdpp-ingest-throughput",
+  "scope": "generic ingest/transform/output throughput (NOT normalization fidelity)",
+  "evidence_tier": "B (single WSL2 host; wall-clock medians; Cribl + Splunk-UF rows are Tier-C docs-only)",
+  "host": {
+    "nproc": 14,
+    "mem_limit_env": "12GB",
+    "note": "WSL2; run on Windows High Performance power plan per lab methodology"
+  },
+  "corpus": {
+    "events": 1000000,
+    "bytes": 396861886,
+    "bytes_per_event": 396.9,
+    "format": "Zeek conn.log NDJSON (idiomatic field names)",
+    "fingerprint_prefix_sha256": "637190cf8b354b16eb489cb8535c11dece2dfc77427f179f46ba60c306ce1740",
+    "drop_fraction": 0.3802,
+    "expected_survivors": 619777,
+    "expected_survivors_basis": "EXACT count over the full corpus",
+    "filter": "drop conn_state in ['S0', 'REJ', 'RSTO']"
+  },
+  "method": {
+    "input_path": "stdin-drain engines: cat FILE | engine (identical bytes); tailing daemons: native file tailer on the same bytes",
+    "timing_models": {
+      "stdin": "cat FILE | engine under /usr/bin/time -v; exits at EOF; wall=drain time",
+      "daemon": "tailing daemon polled to completion (file: emitted survivor count==exact expected; discard: corpus read-offset reaches EOF via /proc/<pid>/fdinfo, then CPU settles as the pipeline drains), processing wall-clock via perf_counter, then SIGTERM the engine child; RSS/CPU from time -v"
+    },
+    "cache": "warm (corpus pre-read; cold needs root drop_caches, not available)",
+    "trials": 3,
+    "warmup": 1,
+    "isolation": "one engine at a time",
+    "parallelism": "each engine default (not pinned)"
+  },
+  "engines": {
+    "vector": {
+      "version": "vector 0.40.0 (x86_64-unknown-linux-gnu 1167aa9 2024-07-29 15:08:44.028365803)",
+      "kind": "stdin",
+      "modes": {
+        "discard": {
+          "ran": true,
+          "mode": "discard",
+          "kind": "stdin",
+          "wall_s": {
+            "median": 8.31,
+            "min": 8.24,
+            "max": 9.37,
+            "cv_pct": 6.0,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 120336.943,
+            "min": 106723.586,
+            "max": 121359.223,
+            "cv_pct": 5.7,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 47.757,
+            "min": 42.355,
+            "max": 48.163,
+            "cv_pct": 5.7,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 688.246,
+            "min": 676.82,
+            "max": 698.121,
+            "cv_pct": 1.3,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 166,
+            "min": 148,
+            "max": 168,
+            "cv_pct": 5.6,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": 619777,
+          "survivors_expected": 619777,
+          "survivors_match": true
+        },
+        "file": {
+          "ran": true,
+          "mode": "file",
+          "kind": "stdin",
+          "wall_s": {
+            "median": 38.26,
+            "min": 38.03,
+            "max": 41.38,
+            "cv_pct": 3.9,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 26136.958,
+            "min": 24166.264,
+            "max": 26295.03,
+            "cv_pct": 3.8,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 10.373,
+            "min": 9.591,
+            "max": 10.435,
+            "cv_pct": 3.8,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 541.117,
+            "min": 519.371,
+            "max": 586.32,
+            "cv_pct": 5.1,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 156,
+            "min": 154,
+            "max": 157,
+            "cv_pct": 0.8,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": 619777,
+          "survivors_expected": 619777,
+          "survivors_match": true
+        }
+      }
+    },
+    "tenzir": {
+      "version": "tenzir 6.0.0",
+      "kind": "stdin",
+      "modes": {
+        "discard": {
+          "ran": true,
+          "mode": "discard",
+          "kind": "stdin",
+          "wall_s": {
+            "median": 11.32,
+            "min": 11.14,
+            "max": 12.72,
+            "cv_pct": 6.0,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 88339.223,
+            "min": 78616.352,
+            "max": 89766.607,
+            "cv_pct": 5.8,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 35.058,
+            "min": 31.2,
+            "max": 35.625,
+            "cv_pct": 5.8,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 371.121,
+            "min": 369.238,
+            "max": 373.938,
+            "cv_pct": 0.5,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 122,
+            "min": 112,
+            "max": 123,
+            "cv_pct": 4.2,
+            "trials": 3
+          },
+          "crash_retries": 1,
+          "survivors_observed": null,
+          "survivors_expected": 619777,
+          "survivors_match": null
+        },
+        "file": {
+          "ran": true,
+          "mode": "file",
+          "kind": "stdin",
+          "wall_s": {
+            "median": 11.16,
+            "min": 10.83,
+            "max": 11.29,
+            "cv_pct": 1.7,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 89605.735,
+            "min": 88573.959,
+            "max": 92336.103,
+            "cv_pct": 1.8,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 35.561,
+            "min": 35.152,
+            "max": 36.645,
+            "cv_pct": 1.8,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 400.066,
+            "min": 395.172,
+            "max": 413.863,
+            "cv_pct": 2.0,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 156,
+            "min": 156,
+            "max": 157,
+            "cv_pct": 0.3,
+            "trials": 3
+          },
+          "crash_retries": 1,
+          "survivors_observed": 619777,
+          "survivors_expected": 619777,
+          "survivors_match": true
+        }
+      }
+    },
+    "otelcol-contrib": {
+      "version": "otelcol-contrib 0.153.0",
+      "kind": "daemon",
+      "modes": {
+        "discard": {
+          "ran": true,
+          "mode": "discard",
+          "kind": "daemon",
+          "wall_s": {
+            "median": 9.632,
+            "min": 9.632,
+            "max": 9.833,
+            "cv_pct": 1.0,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 103823.514,
+            "min": 101698.123,
+            "max": 103823.769,
+            "cv_pct": 1.0,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 41.204,
+            "min": 40.36,
+            "max": 41.204,
+            "cv_pct": 1.0,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 216.5,
+            "min": 216.125,
+            "max": 217.625,
+            "cv_pct": 0.3,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 140,
+            "min": 127,
+            "max": 143,
+            "cv_pct": 5.1,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": null,
+          "survivors_expected": 619777,
+          "survivors_match": null
+        },
+        "file": {
+          "ran": true,
+          "mode": "file",
+          "kind": "daemon",
+          "wall_s": {
+            "median": 32.791,
+            "min": 32.229,
+            "max": 42.54,
+            "cv_pct": 13.2,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 30495.771,
+            "min": 23507.122,
+            "max": 31027.83,
+            "cv_pct": 12.1,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 12.103,
+            "min": 9.329,
+            "max": 12.314,
+            "cv_pct": 12.1,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 218.125,
+            "min": 217.375,
+            "max": 218.75,
+            "cv_pct": 0.3,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 48,
+            "min": 38,
+            "max": 48,
+            "cv_pct": 10.6,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": 619777,
+          "survivors_expected": 619777,
+          "survivors_match": true
+        }
+      }
+    },
+    "alloy": {
+      "version": "alloy v1.16.3",
+      "kind": "daemon",
+      "modes": {
+        "discard": {
+          "ran": true,
+          "mode": "discard",
+          "kind": "daemon",
+          "wall_s": {
+            "median": 15.645,
+            "min": 15.454,
+            "max": 15.649,
+            "cv_pct": 0.6,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 63918.677,
+            "min": 63903.682,
+            "max": 64706.456,
+            "cv_pct": 0.6,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 25.367,
+            "min": 25.361,
+            "max": 25.68,
+            "cv_pct": 0.6,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 264.75,
+            "min": 263.75,
+            "max": 265.875,
+            "cv_pct": 0.3,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 136,
+            "min": 135,
+            "max": 144,
+            "cv_pct": 2.9,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": null,
+          "survivors_expected": 619777,
+          "survivors_match": null
+        },
+        "file": {
+          "ran": true,
+          "mode": "file",
+          "kind": "daemon",
+          "wall_s": {
+            "median": 45.258,
+            "min": 40.627,
+            "max": 45.372,
+            "cv_pct": 5.1,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 22095.54,
+            "min": 22039.934,
+            "max": 24614.383,
+            "cv_pct": 5.2,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 8.769,
+            "min": 8.747,
+            "max": 9.769,
+            "cv_pct": 5.2,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 264.625,
+            "min": 263.75,
+            "max": 265.0,
+            "cv_pct": 0.2,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 48,
+            "min": 46,
+            "max": 54,
+            "cv_pct": 6.9,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": 619777,
+          "survivors_expected": 619777,
+          "survivors_match": true
+        }
+      }
+    },
+    "rsyslog (raw-line-match)": {
+      "version": "rsyslog 8.2312.0",
+      "kind": "daemon",
+      "modes": {
+        "discard": {
+          "ran": true,
+          "mode": "discard",
+          "kind": "daemon",
+          "wall_s": {
+            "median": 4.832,
+            "min": 4.628,
+            "max": 5.037,
+            "cv_pct": 3.5,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 206970.308,
+            "min": 198531.181,
+            "max": 216095.504,
+            "cv_pct": 3.5,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 82.139,
+            "min": 78.789,
+            "max": 85.76,
+            "cv_pct": 3.5,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 9.0,
+            "min": 9.0,
+            "max": 9.418,
+            "cv_pct": 2.2,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 150,
+            "min": 148,
+            "max": 151,
+            "cv_pct": 0.8,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": null,
+          "survivors_expected": 619777,
+          "survivors_match": null
+        },
+        "file": {
+          "ran": true,
+          "mode": "file",
+          "kind": "daemon",
+          "wall_s": {
+            "median": 6.703,
+            "min": 6.228,
+            "max": 6.865,
+            "cv_pct": 4.1,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 149181.525,
+            "min": 145657.378,
+            "max": 160557.786,
+            "cv_pct": 4.2,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 59.204,
+            "min": 57.806,
+            "max": 63.719,
+            "cv_pct": 4.2,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 9.25,
+            "min": 9.125,
+            "max": 9.309,
+            "cv_pct": 0.8,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 119,
+            "min": 106,
+            "max": 129,
+            "cv_pct": 8.0,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": 619777,
+          "survivors_expected": 619777,
+          "survivors_match": true
+        }
+      }
+    },
+    "rsyslog (json-parse)": {
+      "version": "rsyslog 8.2312.0",
+      "kind": "daemon",
+      "modes": {
+        "discard": {
+          "ran": true,
+          "mode": "discard",
+          "kind": "daemon",
+          "wall_s": {
+            "median": 9.039,
+            "min": 8.24,
+            "max": 9.644,
+            "cv_pct": 6.4,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 110626.75,
+            "min": 103694.047,
+            "max": 121362.969,
+            "cv_pct": 6.5,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 43.904,
+            "min": 41.152,
+            "max": 48.164,
+            "cv_pct": 6.5,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 231.523,
+            "min": 229.582,
+            "max": 232.023,
+            "cv_pct": 0.5,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 235,
+            "min": 215,
+            "max": 236,
+            "cv_pct": 4.2,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": null,
+          "survivors_expected": 619777,
+          "survivors_match": null
+        },
+        "file": {
+          "ran": true,
+          "mode": "file",
+          "kind": "daemon",
+          "wall_s": {
+            "median": 10.668,
+            "min": 10.343,
+            "max": 10.738,
+            "cv_pct": 1.6,
+            "trials": 3
+          },
+          "events_per_s": {
+            "median": 93740.097,
+            "min": 93124.389,
+            "max": 96687.666,
+            "cv_pct": 1.6,
+            "trials": 3
+          },
+          "mb_per_s": {
+            "median": 37.202,
+            "min": 36.958,
+            "max": 38.372,
+            "cv_pct": 1.6,
+            "trials": 3
+          },
+          "peak_rss_mb": {
+            "median": 229.617,
+            "min": 229.465,
+            "max": 230.562,
+            "cv_pct": 0.2,
+            "trials": 3
+          },
+          "cpu_pct": {
+            "median": 201,
+            "min": 186,
+            "max": 206,
+            "cv_pct": 4.3,
+            "trials": 3
+          },
+          "crash_retries": 0,
+          "survivors_observed": 619777,
+          "survivors_expected": 619777,
+          "survivors_match": true
+        }
+      }
+    }
+  },
+  "_engine_order": [
+    "vector",
+    "tenzir",
+    "otelcol-contrib",
+    "alloy",
+    "rsyslog (raw-line-match)",
+    "rsyslog (json-parse)"
+  ],
+  "cribl_reference": {
+    "engine": "Cribl Stream",
+    "ran": false,
+    "reason": "commercial / license-gated; not installed or run in this WSL env",
+    "source_tier": "C (vendor docs)",
+    "published_throughput": {
+      "per_worker_process": "Cribl sizes a single worker process at ~400 GB/day in / ~200-400 GB/day out as the planning rule of thumb (Cribl 'Sizing and Scaling' / Worker Process guidance). ~400 GB/day \u2248 4.6 MB/s sustained per worker process.",
+      "note": "Cribl's model is horizontal: a Worker Node runs N worker processes (\u2248 one per vCPU, minus headroom), and you add nodes to scale. So a single-process number is not comparable to a single-process Vector/Tenzir run without normalizing by process count \u2014 stated, not asserted as faster/slower."
+    },
+    "pricing_note": "Cribl Stream is free up to 1 TB/day ingest; above that it is a paid commercial license (Cribl pricing is credit/GB-based, contract-gated \u2014 no public per-GB list price to quote, so we do not invent one).",
+    "caveat": "Tier C, vendor-published, per-worker-process. Do NOT compare directly to the measured OSS rows; it documents the commercial reference point only."
+  },
+  "splunk_uf_reference": {
+    "engine": "Splunk Universal Forwarder",
+    "ran": false,
+    "category": "proprietary-but-free agent (installable, ecosystem-gated)",
+    "reason": "forwarder, not a transform pipeline \u2014 no parse and no generic file/null sink (output is Splunk S2S to an indexer), so the read->filter->sink modes A\u2013D do not apply.",
+    "source_tier": "C (vendor docs / capability matrix)",
+    "natural_metric": "forwarding throughput (KBps self-reported in metrics.log) file -> S2S -> a Splunk receiver \u2014 a different test requiring a Splunk indexer, not run here.",
+    "eula_note": "Splunk software: any published throughput number is subject to the project's Splunk EULA (1.2(v)/3(f)) and must be genericized ('schema-on-read SIEM forwarder') or cleared.",
+    "strengths": "small footprint, robust at-least-once delivery (persistent queue + useACK), best-in-class Windows Event Log collection.",
+    "caveat": "Documented reference only. Not comparable to the OSS pipeline rows; it solves a different problem (durable forwarding) and is measured by a different test."
+  },
+  "pending_sudo_install": [
+    {
+      "engine": "Fluent Bit",
+      "license": "Apache-2.0",
+      "why_pending": "no clean no-sudo static binary on GitHub releases (source-only); host has no cmake for a source build. Official path is apt/yum/container.",
+      "install_cmd": "curl -fsSL https://raw.githubusercontent.com/fluent/fluent-bit/master/install.sh | sh   # (apt/yum under the hood; needs root)"
+    },
+    {
+      "engine": "syslog-ng OSE",
+      "license": "LGPL-2.1 + GPL-2",
+      "why_pending": "distro package; no first-party no-sudo static binary.",
+      "install_cmd": "sudo apt-get install -y syslog-ng-core   # Debian/Ubuntu"
+    },
+    {
+      "engine": "AxoSyslog (syslog-ng fork)",
+      "license": "GPL-3.0-or-later",
+      "why_pending": "Axoflow apt/container repo; no no-sudo static binary.",
+      "install_cmd": "curl -sSf https://pkg.axoflow.io/axosyslog/deb/install.sh | sudo bash && sudo apt-get install -y axosyslog"
+    },
+    {
+      "engine": "Fluentd (td-agent / fluent-package)",
+      "license": "Apache-2.0",
+      "why_pending": "Ruby runtime + gems; distro/calyptia package. No no-sudo static binary.",
+      "install_cmd": "curl -fsSL https://toolbelt.treasuredata.com/sh/install-ubuntu-noble-fluent-package5.sh | sh   # (apt; needs root)"
+    },
+    {
+      "engine": "Logstash",
+      "license": "Apache-2.0 (Elastic)",
+      "why_pending": "JVM; Elastic apt/yum repo or tarball that expects a JDK. Heavy; needs root for the package path. (A tarball+JDK no-sudo route is possible but out of scope here.)",
+      "install_cmd": "sudo apt-get install -y logstash   # after adding the Elastic apt repo + a JDK"
+    },
+    {
+      "engine": "NXLog CE",
+      "license": "NXLog Public License (source-available, not OSI)",
+      "why_pending": "account-gated .deb/.msi download; no open no-sudo static binary.",
+      "install_cmd": "sudo dpkg -i nxlog-ce_<ver>_amd64.deb   # download is account-gated at nxlog.co"
+    }
+  ],
+  "timestamp_run": "2026-06-08T16:01:11Z"
+}

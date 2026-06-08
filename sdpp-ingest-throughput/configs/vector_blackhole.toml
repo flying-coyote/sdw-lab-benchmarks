@@ -1,0 +1,26 @@
+# Vector pipeline — read NDJSON from stdin, drop low-value conn_states, discard.
+# stdin source exits at EOF, so the run is finite and wall-clock is the time to
+# drain the whole corpus. blackhole sink reports the surviving event count, which
+# the harness reads back to verify the filter selectivity matches Tenzir.
+#
+# Parallelism: default. Vector's stdin source is single-stream; transforms/sink
+# run on Vector's async runtime over the host's cores. Not pinned (documented).
+
+data_dir = "/tmp/vector_sdpp_data"
+
+[sources.in]
+type = "stdin"
+decoding.codec = "json"
+
+[transforms.filt]
+type = "filter"
+inputs = ["in"]
+# Drop the low-value short-lived/rejected connection states.
+condition = '!includes(["S0","REJ","RSTO"], .conn_state)'
+
+[sinks.out]
+type = "blackhole"
+inputs = ["filt"]
+# 1s interval makes blackhole emit a cumulative "events=N" line at shutdown, which
+# the harness reads back to verify the surviving event count matches Tenzir.
+print_interval_secs = 1

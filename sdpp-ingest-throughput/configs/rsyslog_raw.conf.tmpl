@@ -1,0 +1,22 @@
+# rsyslog — RAW-LINE-MATCH sub-mode (no JSON parse). imfile tails the corpus, the
+# filter is a substring match on the raw line for the low-value conn_state tokens, and
+# survivors go to omfile. This is the fair rsyslog mode-A/B point the capability matrix
+# §2c/§4 calls out: WITHOUT mmjsonparse rsyslog is a line-oriented matcher, NOT a JSON
+# field filter, so it is NOT directly comparable to the JSON-native engines on parse
+# cost — it is labelled separately. It works here only because the corpus is one JSON
+# object per line and the field appears verbatim as `"conn_state":"S0"` etc.
+#
+# rsyslog is a daemon: imfile TAILS and the process does not exit at EOF, so the harness
+# times it by polling the omfile output to the expected survivor count, then SIGTERMs
+# the daemon (see run.py daemon runner). workDirectory + the imfile state file are kept
+# under _work so the run is self-contained and needs no root.
+module(load="__MODDIR__/imfile.so")
+global(workDirectory="__WORKDIR__")
+template(name="rawline" type="string" string="%rawmsg%\n")
+input(type="imfile" File="__CORPUS__" Tag="conn" ruleset="r" readMode="0")
+ruleset(name="r") {
+  if ($msg contains "\"conn_state\":\"S0\"") then stop
+  if ($msg contains "\"conn_state\":\"REJ\"") then stop
+  if ($msg contains "\"conn_state\":\"RSTO\"") then stop
+  action(type="omfile" File="__OUT__" template="rawline" flushOnTXEnd="off" asyncWriting="on" ioBufferSize="64k")
+}

@@ -1,0 +1,37 @@
+# OTel Collector (contrib) — filelog receiver -> json parse -> filter (drop low-value
+# conn_states) -> file exporter (full route: re-serialize + write). The file exporter
+# writes OTLP-JSON batches (one batch object per line, each holding many logRecords),
+# so the harness verifies survivors by summing logRecords across the file, NOT by line
+# count. Same tailing-daemon timing model as the discard config.
+receivers:
+  filelog:
+    include: [ "__CORPUS__" ]
+    start_at: beginning
+    storage: file_storage
+    operators:
+      - type: json_parser
+extensions:
+  file_storage:
+    directory: "__STORAGE__"
+processors:
+  filter/drop:
+    logs:
+      log_record:
+        - 'attributes["conn_state"] == "S0"'
+        - 'attributes["conn_state"] == "REJ"'
+        - 'attributes["conn_state"] == "RSTO"'
+exporters:
+  file:
+    path: "__OUT__"
+service:
+  extensions: [file_storage]
+  telemetry:
+    metrics:
+      level: none
+    logs:
+      level: warn
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [filter/drop]
+      exporters: [file]

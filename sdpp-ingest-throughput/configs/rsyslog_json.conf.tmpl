@@ -1,0 +1,21 @@
+# rsyslog — JSON-PARSE sub-mode (mmjsonparse). imfile tails the corpus, mmjsonparse
+# lifts the NDJSON into the structured ($!) tree, the filter drops on the parsed
+# $!conn_state field, and survivors go to omfile. This is the rsyslog point that IS
+# comparable to the JSON-native engines (it pays the JSON-parse cost), per the
+# capability matrix §4 mode-B fairness note. mmjsonparse requires a complete top-level
+# JSON object per line (no streaming/partial JSON) — satisfied by the NDJSON corpus.
+#
+# Same tailing-daemon timing model as rsyslog_raw: poll omfile to expected survivors,
+# then SIGTERM. The %rawmsg% template re-emits the original line so the file-mode output
+# is one survivor per line (wc -l == survivors), matching the other engines' file mode.
+module(load="__MODDIR__/imfile.so")
+module(load="__MODDIR__/mmjsonparse.so")
+global(workDirectory="__WORKDIR__")
+template(name="rawline" type="string" string="%rawmsg%\n")
+input(type="imfile" File="__CORPUS__" Tag="conn" ruleset="r" readMode="0")
+ruleset(name="r") {
+  action(type="mmjsonparse" cookie="")
+  if ($!conn_state != "S0" and $!conn_state != "REJ" and $!conn_state != "RSTO") then {
+    action(type="omfile" File="__OUT__" template="rawline" flushOnTXEnd="off" asyncWriting="on" ioBufferSize="64k")
+  }
+}
