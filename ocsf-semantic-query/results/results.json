@@ -4,9 +4,264 @@
     "NL2KQL_result_accuracy": 0.58
   },
   "arms": {
+    "flat_retrieval_opus": {
+      "counts": {
+        "correct": 0,
+        "loud": 5,
+        "silent": 4
+      },
+      "engine": "BENCH-C flat context (entity-seeded retrieval, same facts, NO relationships) answered by claude-opus-4-8",
+      "per_query": {
+        "A1": {
+          "cells": 0,
+          "kind": "uidset",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A2": {
+          "cells": 0,
+          "kind": "substring",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A3": {
+          "cells": 13,
+          "kind": "order",
+          "outcome": "silent",
+          "sample": [
+            "dns-needle-c2",
+            "conn-needle-beacon-00",
+            "conn-needle-beacon-01",
+            "conn-needle-beacon-02",
+            "conn-needle-beacon-03"
+          ]
+        },
+        "A4": {
+          "cells": 0,
+          "kind": "count",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A5": {
+          "cells": 6,
+          "kind": "set",
+          "outcome": "silent",
+          "sample": [
+            "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+            "jdoe@acme.example",
+            "WS1",
+            "WS2",
+            "10.10.1.21"
+          ]
+        },
+        "A6": {
+          "cells": 0,
+          "kind": "uid",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A7": {
+          "cells": 1,
+          "kind": "scalar",
+          "outcome": "silent",
+          "sample": [
+            "5555"
+          ]
+        },
+        "A8": {
+          "cells": 0,
+          "kind": "substring",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A9": {
+          "cells": 1,
+          "kind": "exact_scalar",
+          "outcome": "silent",
+          "sample": [
+            "3"
+          ]
+        }
+      },
+      "result_accuracy": 0.0,
+      "retrieval_mode": "flat",
+      "silent_error_rate": 0.4444,
+      "status": "measured (frontier proxy: claude-opus-4-8 subagents)"
+    },
     "graphrag": {
-      "blocker": "no graph+vector GraphRAG stack installed",
-      "status": "pending"
+      "counts": {
+        "correct": 0,
+        "loud": 9,
+        "silent": 0
+      },
+      "decode_caveat": "graph + cached embeddings are deterministic and asserted; the LLM answer is temperature-0 greedy decode \u2014 reproducible in practice, not asserted",
+      "embed_model": "nomic-embed-text",
+      "embedded_entities": 2504,
+      "engine": "GraphRAG (structured entity-layer retrieval): NetworkX MultiDiGraph, nomic-embed-text cosine over ENTITY nodes only (k=20, hops=1); events pulled by 2-hop traversal, not embedded; + phi3:latest",
+      "generator_model": "phi3:latest",
+      "graph_edges": 355077,
+      "graph_fingerprint": "e45433f09231ecca4ae94c95dd23b9af7303d79fe8ddd102a318f1661d38b1ea",
+      "graph_nodes": 234212,
+      "per_query": {
+        "A1": {
+          "answer_sample": [],
+          "cells_returned": 0,
+          "kind": "uidset",
+          "outcome": "loud"
+        },
+        "A2": {
+          "answer_sample": [],
+          "cells_returned": 0,
+          "kind": "substring",
+          "outcome": "loud"
+        },
+        "A3": {
+          "answer_sample": [],
+          "cells_returned": 0,
+          "kind": "order",
+          "outcome": "loud"
+        },
+        "A4": {
+          "answer_sample": [],
+          "cells_returned": 0,
+          "kind": "count",
+          "outcome": "loud"
+        },
+        "A5": {
+          "answer_sample": [],
+          "cells_returned": 0,
+          "kind": "set",
+          "outcome": "loud"
+        },
+        "A6": {
+          "answer_sample": [],
+          "cells_returned": 0,
+          "kind": "uid",
+          "outcome": "loud"
+        },
+        "A7": {
+          "answer_sample": [],
+          "cells_returned": 0,
+          "kind": "scalar",
+          "outcome": "loud"
+        },
+        "A8": {
+          "answer_sample": [],
+          "cells_returned": 0,
+          "kind": "substring",
+          "outcome": "loud"
+        },
+        "A9": {
+          "answer_sample": [],
+          "cells_returned": 0,
+          "kind": "exact_scalar",
+          "outcome": "loud"
+        }
+      },
+      "queries": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9"
+      ],
+      "result_accuracy": 0.0,
+      "retrieval": {
+        "edge_budget": 300,
+        "hops": 1,
+        "k_seed": 20,
+        "node_budget": 150
+      },
+      "silent_error_rate": 0.0,
+      "status": "measured"
+    },
+    "graphrag_opus": {
+      "counts": {
+        "correct": 1,
+        "loud": 5,
+        "silent": 3
+      },
+      "engine": "BENCH-C structured context (entity-seeded retrieval, facts+relationships) answered by claude-opus-4-8",
+      "per_query": {
+        "A1": {
+          "cells": 0,
+          "kind": "uidset",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A2": {
+          "cells": 0,
+          "kind": "substring",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A3": {
+          "cells": 13,
+          "kind": "order",
+          "outcome": "silent",
+          "sample": [
+            "dns-needle-c2",
+            "conn-needle-beacon-00",
+            "conn-needle-beacon-01",
+            "conn-needle-beacon-02",
+            "conn-needle-beacon-03"
+          ]
+        },
+        "A4": {
+          "cells": 0,
+          "kind": "count",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A5": {
+          "cells": 8,
+          "kind": "set",
+          "outcome": "silent",
+          "sample": [
+            "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+            "jdoe@acme.example",
+            "WS1",
+            "WS2",
+            "10.10.1.21"
+          ]
+        },
+        "A6": {
+          "cells": 0,
+          "kind": "uid",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A7": {
+          "cells": 1,
+          "kind": "scalar",
+          "outcome": "silent",
+          "sample": [
+            "5555"
+          ]
+        },
+        "A8": {
+          "cells": 0,
+          "kind": "substring",
+          "outcome": "loud",
+          "sample": []
+        },
+        "A9": {
+          "cells": 1,
+          "kind": "exact_scalar",
+          "outcome": "correct",
+          "sample": [
+            "2"
+          ]
+        }
+      },
+      "result_accuracy": 0.1111,
+      "retrieval_mode": "structured",
+      "silent_error_rate": 0.3333,
+      "status": "measured (frontier proxy: claude-opus-4-8 subagents)"
     },
     "obda_ontop": {
       "coverage": "3/8 adversary queries expressible in OWL2QL",
