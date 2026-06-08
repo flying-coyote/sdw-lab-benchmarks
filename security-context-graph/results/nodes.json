@@ -2716,6 +2716,11 @@
     "label": "Access Control Group"
   },
   {
+    "id": "d3f:AccessControlList",
+    "ntype": "artifact",
+    "label": "Access Control List"
+  },
+  {
     "id": "d3f:AccessMediation",
     "ntype": "defense",
     "label": "Access Mediation",
@@ -4989,6 +4994,11 @@
     "label": "Digital Fingerprint"
   },
   {
+    "id": "d3f:DigitalIdentity",
+    "ntype": "artifact",
+    "label": "Digital Identity"
+  },
+  {
     "id": "d3f:DigitalSystem",
     "ntype": "artifact",
     "label": "Digital System"
@@ -5037,6 +5047,11 @@
     "ntype": "defense",
     "label": "",
     "d3fend_id": "D3-DAM"
+  },
+  {
+    "id": "d3f:DomainName",
+    "ntype": "artifact",
+    "label": "Domain Name"
   },
   {
     "id": "d3f:DomainNameReputationAnalysis",
@@ -5347,6 +5362,11 @@
     "label": "Hardware Device"
   },
   {
+    "id": "d3f:HardwareDriver",
+    "ntype": "artifact",
+    "label": "Hardware Driver"
+  },
+  {
     "id": "d3f:HomoglyphDetection",
     "ntype": "defense",
     "label": "",
@@ -5380,6 +5400,11 @@
     "ntype": "defense",
     "label": "",
     "d3fend_id": "D3-IPRA"
+  },
+  {
+    "id": "d3f:Identifier",
+    "ntype": "artifact",
+    "label": "Identifier"
   },
   {
     "id": "d3f:IdentifierAnalysis",
@@ -5480,6 +5505,11 @@
     "label": "Job Schedule"
   },
   {
+    "id": "d3f:JobSchedulerSoftware",
+    "ntype": "artifact",
+    "label": "Job Scheduler Software"
+  },
+  {
     "id": "d3f:KerberosTicket",
     "ntype": "artifact",
     "label": "Kerberos Ticket"
@@ -5514,6 +5544,11 @@
     "id": "d3f:KernelModuleEvent",
     "ntype": "d3fend_event",
     "label": "Kernel Module Event"
+  },
+  {
+    "id": "d3f:KernelProcessTable",
+    "ntype": "artifact",
+    "label": "Kernel Process Table"
   },
   {
     "id": "d3f:KeyboardInputDevice",
@@ -5773,9 +5808,19 @@
     "label": "MacOS Keychain"
   },
   {
+    "id": "d3f:MailNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Mail Network Traffic"
+  },
+  {
     "id": "d3f:MailServer",
     "ntype": "artifact",
     "label": "Mail Server"
+  },
+  {
+    "id": "d3f:MemoryAddress",
+    "ntype": "artifact",
+    "label": "Memory Address"
   },
   {
     "id": "d3f:MemoryBoundaryTracking",
@@ -5787,6 +5832,11 @@
     "id": "d3f:MemoryEvent",
     "ntype": "d3fend_event",
     "label": "Memory Event"
+  },
+  {
+    "id": "d3f:MemoryExtent",
+    "ntype": "artifact",
+    "label": "Memory Extent"
   },
   {
     "id": "d3f:MessageAnalysis",
@@ -6502,6 +6552,11 @@
     "label": "NTP Event"
   },
   {
+    "id": "d3f:NetworkCardFirmware",
+    "ntype": "artifact",
+    "label": "Network Card Firmware"
+  },
+  {
     "id": "d3f:NetworkConnectionEvent",
     "ntype": "d3fend_event",
     "label": "Network Connection Event"
@@ -6550,6 +6605,11 @@
     "d3fend_id": "D3-NNI"
   },
   {
+    "id": "d3f:NetworkPacket",
+    "ntype": "artifact",
+    "label": "Network Packet"
+  },
+  {
     "id": "d3f:NetworkResource",
     "ntype": "artifact",
     "label": "Network Resource"
@@ -6558,6 +6618,11 @@
     "id": "d3f:NetworkSession",
     "ntype": "d3fend_event",
     "label": "Network Session"
+  },
+  {
+    "id": "d3f:NetworkTimeServer",
+    "ntype": "artifact",
+    "label": "Network Time Server"
   },
   {
     "id": "d3f:NetworkTraffic",
@@ -6624,6 +6689,11 @@
     "id": "d3f:OperatingSystem",
     "ntype": "d3fend_event",
     "label": "Operating System"
+  },
+  {
+    "id": "d3f:OperatingSystemClock",
+    "ntype": "artifact",
+    "label": "Operating System Clock"
   },
   {
     "id": "d3f:OperatingSystemConfigurationComponent",
@@ -6838,6 +6908,11 @@
     "d3fend_id": ""
   },
   {
+    "id": "d3f:ProcessImage",
+    "ntype": "artifact",
+    "label": "Process Image"
+  },
+  {
     "id": "d3f:ProcessLineageAnalysis",
     "ntype": "defense",
     "label": "",
@@ -6887,6 +6962,11 @@
     "id": "d3f:ProxyServer",
     "ntype": "d3fend_event",
     "label": "Proxy Server"
+  },
+  {
+    "id": "d3f:PublicKey",
+    "ntype": "artifact",
+    "label": "Public Key"
   },
   {
     "id": "d3f:RDPEvent",
@@ -6943,6 +7023,11 @@
     "label": "Remote Authentication Service"
   },
   {
+    "id": "d3f:RemoteCommand",
+    "ntype": "artifact",
+    "label": "Remote Command"
+  },
+  {
     "id": "d3f:RemoteFileAccessMediation",
     "ntype": "defense",
     "label": "",
@@ -6968,6 +7053,11 @@
     "id": "d3f:RemovableMediaDevice",
     "ntype": "artifact",
     "label": "Removable Media Device"
+  },
+  {
+    "id": "d3f:Resource",
+    "ntype": "artifact",
+    "label": "Resource"
   },
   {
     "id": "d3f:ResourceAccessPatternAnalysis",
@@ -7155,6 +7245,11 @@
     "label": "Shim Database"
   },
   {
+    "id": "d3f:Software",
+    "ntype": "artifact",
+    "label": "Software"
+  },
+  {
     "id": "d3f:SoftwareDeploymentTool",
     "ntype": "artifact",
     "label": "Software Deployment Tool"
@@ -7340,6 +7435,11 @@
     "label": "TPM Boot Integrity"
   },
   {
+    "id": "d3f:Thread",
+    "ntype": "artifact",
+    "label": "Thread"
+  },
+  {
     "id": "d3f:Token-basedAuthentication",
     "ntype": "defense",
     "label": "",
@@ -7437,6 +7537,11 @@
     "id": "d3f:UserInitScript",
     "ntype": "artifact",
     "label": "User Init Script"
+  },
+  {
+    "id": "d3f:UserProcess",
+    "ntype": "artifact",
+    "label": "User Process"
   },
   {
     "id": "d3f:UserSessionInitConfigAnalysis",

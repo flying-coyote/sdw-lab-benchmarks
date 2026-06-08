@@ -1,0 +1,424 @@
+{
+  "all_answers_identical": true,
+  "benchmark": "ocsf-rls-overhead",
+  "caveat_lower_bound": "DuckDB evaluates RLS predicates as ordinary WHERE clauses after parsing. Real catalog systems (Polaris, Unity Catalog, AWS Lake Formation) enforce policy at the catalog protocol layer before the engine plans \u2014 adding token-validation, policy-evaluation, and protocol round-trip cost. Cross-reference q3-catalog-benchmark for the catalog-layer component.",
+  "corpus_logical_fingerprint": "92d8ed21b4e8253b6b9733f5d704d508",
+  "environment": {
+    "cpu_count": 14,
+    "duckdb_version": "1.5.3",
+    "note": "single host, embedded DuckDB in-process; run under Windows High-Performance power plan per BENCHMARKING-METHODOLOGY.md",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+  },
+  "evidence_tier": "B (single machine; latencies are medians with CV; corpus and answers are deterministic; this is engine-side overhead only \u2014 catalog-layer enforcement (Polaris/Unity/Lake Formation) adds further cost not measured here)",
+  "hypothesis": "H-SECURITY-02 (federated catalog RBAC / centralized governance \u2014 engine-side predicate overhead lower bound)",
+  "n_rows": 1000000,
+  "needle_event_id": 24,
+  "tiers": {
+    "tier_10pct": {
+      "queries": {
+        "count_all": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 35.7,
+            "max_ms": 1.505,
+            "median_ms": 0.697,
+            "min_ms": 0.549,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 15.1,
+            "max_ms": 1.665,
+            "median_ms": 1.164,
+            "min_ms": 1.097,
+            "overhead_pct_vs_baseline": 67.0,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 13.2,
+            "max_ms": 1.5,
+            "median_ms": 1.151,
+            "min_ms": 1.053,
+            "overhead_pct_vs_baseline": 65.1,
+            "trials": 7,
+            "warmup": 2
+          }
+        },
+        "group_by_act": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 12.3,
+            "max_ms": 2.349,
+            "median_ms": 2.095,
+            "min_ms": 1.738,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 11.2,
+            "max_ms": 2.451,
+            "median_ms": 2.027,
+            "min_ms": 1.826,
+            "overhead_pct_vs_baseline": -3.2,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 10.8,
+            "max_ms": 2.348,
+            "median_ms": 2.024,
+            "min_ms": 1.651,
+            "overhead_pct_vs_baseline": -3.4,
+            "trials": 7,
+            "warmup": 2
+          }
+        },
+        "needle": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 11.6,
+            "max_ms": 1.135,
+            "median_ms": 0.952,
+            "min_ms": 0.798,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 10.6,
+            "max_ms": 1.161,
+            "median_ms": 0.945,
+            "min_ms": 0.845,
+            "overhead_pct_vs_baseline": -0.7,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 6.2,
+            "max_ms": 0.915,
+            "median_ms": 0.804,
+            "min_ms": 0.742,
+            "overhead_pct_vs_baseline": -15.5,
+            "trials": 7,
+            "warmup": 2
+          }
+        },
+        "top_talkers": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 7.1,
+            "max_ms": 32.346,
+            "median_ms": 26.703,
+            "min_ms": 26.442,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 9.4,
+            "max_ms": 9.282,
+            "median_ms": 8.241,
+            "min_ms": 6.832,
+            "overhead_pct_vs_baseline": -69.1,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 15.5,
+            "max_ms": 9.898,
+            "median_ms": 7.874,
+            "min_ms": 6.345,
+            "overhead_pct_vs_baseline": -70.5,
+            "trials": 7,
+            "warmup": 2
+          }
+        }
+      },
+      "selectivity_actual": 0.1003,
+      "tier": "tier_10pct",
+      "visible_tenants": 10
+    },
+    "tier_1pct": {
+      "queries": {
+        "count_all": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 13.2,
+            "max_ms": 0.84,
+            "median_ms": 0.692,
+            "min_ms": 0.576,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 16.9,
+            "max_ms": 1.673,
+            "median_ms": 1.253,
+            "min_ms": 0.993,
+            "overhead_pct_vs_baseline": 81.1,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 13.1,
+            "max_ms": 1.643,
+            "median_ms": 1.345,
+            "min_ms": 1.126,
+            "overhead_pct_vs_baseline": 94.4,
+            "trials": 7,
+            "warmup": 2
+          }
+        },
+        "group_by_act": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 15.6,
+            "max_ms": 2.868,
+            "median_ms": 1.941,
+            "min_ms": 1.872,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 21.7,
+            "max_ms": 3.46,
+            "median_ms": 2.516,
+            "min_ms": 1.947,
+            "overhead_pct_vs_baseline": 29.6,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 9.7,
+            "max_ms": 2.29,
+            "median_ms": 1.978,
+            "min_ms": 1.752,
+            "overhead_pct_vs_baseline": 1.9,
+            "trials": 7,
+            "warmup": 2
+          }
+        },
+        "needle": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 17.2,
+            "max_ms": 1.006,
+            "median_ms": 0.756,
+            "min_ms": 0.625,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 11.5,
+            "max_ms": 1.094,
+            "median_ms": 0.839,
+            "min_ms": 0.772,
+            "overhead_pct_vs_baseline": 11.0,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 9.3,
+            "max_ms": 1.023,
+            "median_ms": 0.816,
+            "min_ms": 0.77,
+            "overhead_pct_vs_baseline": 7.9,
+            "trials": 7,
+            "warmup": 2
+          }
+        },
+        "top_talkers": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 5.2,
+            "max_ms": 34.422,
+            "median_ms": 32.982,
+            "min_ms": 28.926,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 27.9,
+            "max_ms": 8.491,
+            "median_ms": 4.756,
+            "min_ms": 3.782,
+            "overhead_pct_vs_baseline": -85.6,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 26.7,
+            "max_ms": 8.385,
+            "median_ms": 4.613,
+            "min_ms": 4.009,
+            "overhead_pct_vs_baseline": -86.0,
+            "trials": 7,
+            "warmup": 2
+          }
+        }
+      },
+      "selectivity_actual": 0.0099,
+      "tier": "tier_1pct",
+      "visible_tenants": 1
+    },
+    "tier_50pct": {
+      "queries": {
+        "count_all": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 35.8,
+            "max_ms": 1.531,
+            "median_ms": 0.685,
+            "min_ms": 0.64,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 9.8,
+            "max_ms": 1.31,
+            "median_ms": 1.057,
+            "min_ms": 1.004,
+            "overhead_pct_vs_baseline": 54.3,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 14.1,
+            "max_ms": 1.681,
+            "median_ms": 1.341,
+            "min_ms": 1.098,
+            "overhead_pct_vs_baseline": 95.8,
+            "trials": 7,
+            "warmup": 2
+          }
+        },
+        "group_by_act": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 8.2,
+            "max_ms": 2.736,
+            "median_ms": 2.306,
+            "min_ms": 2.135,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 14.4,
+            "max_ms": 3.43,
+            "median_ms": 2.583,
+            "min_ms": 2.214,
+            "overhead_pct_vs_baseline": 12.0,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 4.4,
+            "max_ms": 2.796,
+            "median_ms": 2.643,
+            "min_ms": 2.407,
+            "overhead_pct_vs_baseline": 14.6,
+            "trials": 7,
+            "warmup": 2
+          }
+        },
+        "needle": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 20.6,
+            "max_ms": 1.429,
+            "median_ms": 0.996,
+            "min_ms": 0.757,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 7.6,
+            "max_ms": 1.189,
+            "median_ms": 1.049,
+            "min_ms": 0.977,
+            "overhead_pct_vs_baseline": 5.3,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 10.2,
+            "max_ms": 1.135,
+            "median_ms": 0.969,
+            "min_ms": 0.841,
+            "overhead_pct_vs_baseline": -2.7,
+            "trials": 7,
+            "warmup": 2
+          }
+        },
+        "top_talkers": {
+          "answers_identical_predicate_vs_view": true,
+          "baseline": {
+            "approach": "baseline",
+            "cv_pct": 6.5,
+            "max_ms": 33.841,
+            "median_ms": 29.144,
+            "min_ms": 28.094,
+            "trials": 7,
+            "warmup": 2
+          },
+          "predicate": {
+            "approach": "predicate",
+            "cv_pct": 7.7,
+            "max_ms": 20.955,
+            "median_ms": 19.758,
+            "min_ms": 17.133,
+            "overhead_pct_vs_baseline": -32.2,
+            "trials": 7,
+            "warmup": 2
+          },
+          "view": {
+            "approach": "view",
+            "cv_pct": 33.2,
+            "max_ms": 40.343,
+            "median_ms": 19.925,
+            "min_ms": 15.162,
+            "overhead_pct_vs_baseline": -31.6,
+            "trials": 7,
+            "warmup": 2
+          }
+        }
+      },
+      "selectivity_actual": 0.4998,
+      "tier": "tier_50pct",
+      "visible_tenants": 50
+    }
+  },
+  "total_tenants": 100
+}

@@ -84169,6 +84169,15 @@
   },
   {
     "src": "d3f:AccessControlGroup",
+    "dst": "d3f:AccessControlList",
+    "rel": "event_restricted_by",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:AccessControlGroup",
     "dst": "ocsf:object/group",
     "rel": "seeAlso",
     "tier": "A",
@@ -90271,6 +90280,15 @@
   },
   {
     "src": "d3f:Application",
+    "dst": "d3f:ApplicationConfiguration",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Application",
     "dst": "ocsf:object/application",
     "rel": "seeAlso",
     "tier": "A",
@@ -91501,6 +91519,15 @@
     "proxy_quality": "skos_typed",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (SKOS, exactly-one-control-endpoint)",
     "proxy_note": ""
+  },
+  {
+    "src": "d3f:ApplicationEvent",
+    "dst": "d3f:Application",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:ApplicationEvent",
@@ -94555,6 +94582,15 @@
   },
   {
     "src": "d3f:AuthenticationEvent",
+    "dst": "d3f:Credential",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:AuthenticationEvent",
     "dst": "ocsf:class/authentication",
     "rel": "seeAlso",
     "tier": "A",
@@ -94777,6 +94813,24 @@
     "proxy_quality": "curated",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (ATTACKEnterpriseMitigation d3f:related)",
     "proxy_note": "D3FEND's hand-authored ATT&CK-mitigation relation"
+  },
+  {
+    "src": "d3f:Certificate",
+    "dst": "d3f:Identifier",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Certificate",
+    "dst": "d3f:PublicKey",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:Certificate",
@@ -107695,6 +107749,15 @@
   },
   {
     "src": "d3f:DHCPEvent",
+    "dst": "d3f:DHCPNetworkTraffic",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:DHCPEvent",
     "dst": "ocsf:class/dhcp_activity",
     "rel": "seeAlso",
     "tier": "A",
@@ -107773,6 +107836,15 @@
     "proxy_quality": "curated",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (ATTACKEnterpriseMitigation d3f:related)",
     "proxy_note": "D3FEND's hand-authored ATT&CK-mitigation relation"
+  },
+  {
+    "src": "d3f:DNSEvent",
+    "dst": "d3f:DNSNetworkTraffic",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:DNSEvent",
@@ -115219,12 +115291,39 @@
   },
   {
     "src": "d3f:Email",
+    "dst": "d3f:File",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Email",
+    "dst": "d3f:URL",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Email",
     "dst": "ocsf:object/email",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:EmailEvent",
+    "dst": "d3f:MailNetworkTraffic",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:EmailEvent",
@@ -117610,6 +117709,15 @@
     "proxy_quality": "artifact_cooccurrence",
     "source_file": "d3fend-wall/data/matrix_long.csv",
     "proxy_note": "reproduces D3FEND's own artifact-overlap inference (subclass-walked); coverage != detection: an inferred edge means a defense COULD observe the artifact, not that it counters the attack in a deployment"
+  },
+  {
+    "src": "d3f:EventLogEvent",
+    "dst": "d3f:EventLog",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:EventLogEvent",
@@ -122608,6 +122716,15 @@
   },
   {
     "src": "d3f:FTPEvent",
+    "dst": "d3f:FileTransferNetworkTraffic",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:FTPEvent",
     "dst": "ocsf:class/ftp_activity",
     "rel": "seeAlso",
     "tier": "A",
@@ -125818,6 +125935,15 @@
     "proxy_quality": "curated",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (ATTACKEnterpriseMitigation d3f:related)",
     "proxy_note": "D3FEND's hand-authored ATT&CK-mitigation relation"
+  },
+  {
+    "src": "d3f:FileEvent",
+    "dst": "d3f:File",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:FileEvent",
@@ -129106,12 +129232,30 @@
   },
   {
     "src": "d3f:GroupManagementEvent",
+    "dst": "d3f:AccessControlGroup",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:GroupManagementEvent",
     "dst": "ocsf:class/group_management",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:HTTPEvent",
+    "dst": "d3f:WebNetworkTraffic",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:HTTPEvent",
@@ -131560,6 +131704,15 @@
     "proxy_quality": "artifact_cooccurrence",
     "source_file": "d3fend-wall/data/matrix_long.csv",
     "proxy_note": "reproduces D3FEND's own artifact-overlap inference (subclass-walked); coverage != detection: an inferred edge means a defense COULD observe the artifact, not that it counters the attack in a deployment"
+  },
+  {
+    "src": "d3f:Host",
+    "dst": "d3f:Application",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:Host",
@@ -134038,6 +134191,60 @@
   },
   {
     "src": "d3f:Kernel",
+    "dst": "d3f:Application",
+    "rel": "event_loads",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Kernel",
+    "dst": "d3f:HardwareDriver",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Kernel",
+    "dst": "d3f:KernelModule",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Kernel",
+    "dst": "d3f:KernelProcessTable",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Kernel",
+    "dst": "d3f:OperatingSystemProcess",
+    "rel": "event_manages",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Kernel",
+    "dst": "d3f:UserProcess",
+    "rel": "event_manages",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Kernel",
     "dst": "ocsf:object/kernel",
     "rel": "seeAlso",
     "tier": "A",
@@ -134425,6 +134632,15 @@
   },
   {
     "src": "d3f:KernelEvent",
+    "dst": "d3f:Kernel",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:KernelEvent",
     "dst": "ocsf:class/kernel_activity",
     "rel": "seeAlso",
     "tier": "A",
@@ -134443,12 +134659,39 @@
   },
   {
     "src": "d3f:KernelModuleEvent",
+    "dst": "d3f:HardwareDriver",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:KernelModuleEvent",
+    "dst": "d3f:KernelModule",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:KernelModuleEvent",
     "dst": "ocsf:class/kernel_extension_activity",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:LoadLibraryEvent",
+    "dst": "d3f:SharedLibraryFile",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:LoadLibraryEvent",
@@ -136432,6 +136675,24 @@
   },
   {
     "src": "d3f:MemoryEvent",
+    "dst": "d3f:MemoryAddress",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:MemoryEvent",
+    "dst": "d3f:MemoryExtent",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:MemoryEvent",
     "dst": "ocsf:class/memory_activity",
     "rel": "seeAlso",
     "tier": "A",
@@ -137071,12 +137332,30 @@
   },
   {
     "src": "d3f:NTPEvent",
+    "dst": "d3f:NetworkTimeServer",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:NTPEvent",
     "dst": "ocsf:class/ntp_activity",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:NetworkConnectionEvent",
+    "dst": "d3f:NetworkSession",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:NetworkConnectionEvent",
@@ -137089,12 +137368,30 @@
   },
   {
     "src": "d3f:NetworkEvent",
+    "dst": "d3f:NetworkTraffic",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:NetworkEvent",
     "dst": "ocsf:other/https://schema.ocsf.io/categories/network",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:NetworkInterfaceCard",
+    "dst": "d3f:NetworkCardFirmware",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:NetworkInterfaceCard",
@@ -139438,12 +139735,48 @@
   },
   {
     "src": "d3f:NetworkSession",
+    "dst": "d3f:NetworkTraffic",
+    "rel": "event_produces",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:NetworkSession",
     "dst": "ocsf:object/network_connection_info",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:NetworkTraffic",
+    "dst": "d3f:DomainName",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:NetworkTraffic",
+    "dst": "d3f:NetworkPacket",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:NetworkTraffic",
+    "dst": "d3f:RemoteCommand",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:NetworkTraffic",
@@ -149959,6 +150292,51 @@
   },
   {
     "src": "d3f:OperatingSystem",
+    "dst": "d3f:Kernel",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:OperatingSystem",
+    "dst": "d3f:LocalUserAccount",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:OperatingSystem",
+    "dst": "d3f:OperatingSystemClock",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:OperatingSystem",
+    "dst": "d3f:OperatingSystemConfigurationComponent",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:OperatingSystem",
+    "dst": "d3f:SystemServiceSoftware",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:OperatingSystem",
     "dst": "ocsf:object/os",
     "rel": "seeAlso",
     "tier": "A",
@@ -150631,6 +151009,15 @@
     "proxy_quality": "artifact_cooccurrence",
     "source_file": "d3fend-wall/data/matrix_long.csv",
     "proxy_note": "reproduces D3FEND's own artifact-overlap inference (subclass-walked); coverage != detection: an inferred edge means a defense COULD observe the artifact, not that it counters the attack in a deployment"
+  },
+  {
+    "src": "d3f:OutboundInternetWebTraffic",
+    "dst": "d3f:URL",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:OutboundInternetWebTraffic",
@@ -157789,6 +158176,60 @@
   },
   {
     "src": "d3f:Process",
+    "dst": "d3f:ExecutableBinary",
+    "rel": "event_process_image_path",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Process",
+    "dst": "d3f:ProcessImage",
+    "rel": "event_contains",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Process",
+    "dst": "d3f:Resource",
+    "rel": "event_uses",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Process",
+    "dst": "d3f:Software",
+    "rel": "event_instructed_by",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Process",
+    "dst": "d3f:Thread",
+    "rel": "event_may_execute",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Process",
+    "dst": "d3f:UserAccount",
+    "rel": "event_process_user",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:Process",
     "dst": "ocsf:object/process",
     "rel": "seeAlso",
     "tier": "A",
@@ -159577,6 +160018,15 @@
     "proxy_quality": "artifact_cooccurrence",
     "source_file": "d3fend-wall/data/matrix_long.csv",
     "proxy_note": "reproduces D3FEND's own artifact-overlap inference (subclass-walked); coverage != detection: an inferred edge means a defense COULD observe the artifact, not that it counters the attack in a deployment"
+  },
+  {
+    "src": "d3f:ProcessEvent",
+    "dst": "d3f:Process",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:ProcessEvent",
@@ -163447,6 +163897,15 @@
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:RDPEvent",
+    "dst": "d3f:RDPSession",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:RDPEvent",
@@ -172162,6 +172621,15 @@
   },
   {
     "src": "d3f:SMBEvent",
+    "dst": "d3f:FileTransferNetworkTraffic",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:SMBEvent",
     "dst": "ocsf:class/smb_activity",
     "rel": "seeAlso",
     "tier": "A",
@@ -172171,12 +172639,48 @@
   },
   {
     "src": "d3f:SSHEvent",
+    "dst": "d3f:SSHSession",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:SSHEvent",
     "dst": "ocsf:class/ssh_activity",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:ScheduledJob",
+    "dst": "d3f:JobSchedule",
+    "rel": "event_contained_by",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:ScheduledJob",
+    "dst": "d3f:JobSchedulerSoftware",
+    "rel": "event_created_by",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:ScheduledJob",
+    "dst": "d3f:JobSchedulerSoftware",
+    "rel": "event_modified_by",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:ScheduledJob",
@@ -172276,6 +172780,15 @@
     "proxy_quality": "artifact_cooccurrence",
     "source_file": "d3fend-wall/data/matrix_long.csv",
     "proxy_note": "reproduces D3FEND's own artifact-overlap inference (subclass-walked); coverage != detection: an inferred edge means a defense COULD observe the artifact, not that it counters the attack in a deployment"
+  },
+  {
+    "src": "d3f:ScheduledJobEvent",
+    "dst": "d3f:ScheduledJob",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:ScheduledJobEvent",
@@ -176419,6 +176932,15 @@
   },
   {
     "src": "d3f:URL",
+    "dst": "d3f:Resource",
+    "rel": "event_addresses",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:URL",
     "dst": "ocsf:object/url",
     "rel": "seeAlso",
     "tier": "A",
@@ -179497,6 +180019,15 @@
   },
   {
     "src": "d3f:UnloadLibraryEvent",
+    "dst": "d3f:SharedLibraryFile",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:UnloadLibraryEvent",
     "dst": "ocsf:class/module_activity",
     "rel": "seeAlso",
     "tier": "A",
@@ -179722,12 +180253,30 @@
   },
   {
     "src": "d3f:UserAccount",
+    "dst": "d3f:DigitalIdentity",
+    "rel": "event_identified_by",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:UserAccount",
     "dst": "ocsf:object/user",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:UserAccountEvent",
+    "dst": "d3f:UserAccount",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:UserAccountEvent",
@@ -183637,12 +184186,39 @@
   },
   {
     "src": "d3f:WindowsRegistryKey",
+    "dst": "d3f:WindowsRegistryKey",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:WindowsRegistryKey",
+    "dst": "d3f:WindowsRegistryValue",
+    "rel": "event_may_contain",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:WindowsRegistryKey",
     "dst": "ocsf:object/registry_key",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:WindowsRegistryKeyEvent",
+    "dst": "d3f:WindowsRegistryKey",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:WindowsRegistryKeyEvent",
@@ -183655,12 +184231,30 @@
   },
   {
     "src": "d3f:WindowsRegistryValue",
+    "dst": "d3f:WindowsRegistryKey",
+    "rel": "event_contained_by",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+  },
+  {
+    "src": "d3f:WindowsRegistryValue",
     "dst": "ocsf:object/registry_value",
     "rel": "seeAlso",
     "tier": "A",
     "proxy_quality": "doc_link",
     "source_file": "d3fend-wall/cache/d3fend_ontology.json (rdfs:seeAlso -> schema.ocsf.io)",
     "proxy_note": "reciprocal hyperlink, not an owl:equivalentClass axiom and not a per-record field"
+  },
+  {
+    "src": "d3f:WindowsRegistryValueEvent",
+    "dst": "d3f:WindowsRegistryValue",
+    "rel": "event_has_participant",
+    "tier": "A",
+    "proxy_quality": "ontology_axiom",
+    "source_file": "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)",
+    "proxy_note": "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
   },
   {
     "src": "d3f:WindowsRegistryValueEvent",
