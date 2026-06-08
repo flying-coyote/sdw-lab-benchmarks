@@ -14,6 +14,215 @@
         "formal": {
           "by_source": {
             "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.1429,
+              "silent_rate": 0.0
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.0,
+              "silent_rate": 0.2
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.1613,
+              "silent_rate": 0.1935
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.0,
+              "silent_rate": 0.3333
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0652,
+              "silent_rate": 0.1087
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.0556,
+              "silent_rate": 0.3333
+            }
+          },
+          "n": 141,
+          "path_correct": 0.078,
+          "silent_error_rate": 0.1915
+        },
+        "none": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.0,
+              "silent_rate": 0.9286
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.2,
+              "silent_rate": 0.8
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.0,
+              "silent_rate": 0.9677
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.037,
+              "silent_rate": 0.8519
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0,
+              "silent_rate": 0.6957
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.1111,
+              "silent_rate": 0.8333
+            }
+          },
+          "n": 141,
+          "path_correct": 0.0284,
+          "silent_error_rate": 0.8298
+        },
+        "schema": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.0714,
+              "silent_rate": 0.0
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.0,
+              "silent_rate": 0.2
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.1935,
+              "silent_rate": 0.3548
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.037,
+              "silent_rate": 0.2222
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0435,
+              "silent_rate": 0.0435
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.0556,
+              "silent_rate": 0.3333
+            }
+          },
+          "n": 141,
+          "path_correct": 0.078,
+          "silent_error_rate": 0.1844
+        },
+        "skill": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.0,
+              "silent_rate": 0.0714
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.0,
+              "silent_rate": 0.4
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.129,
+              "silent_rate": 0.3226
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.0,
+              "silent_rate": 0.2593
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0652,
+              "silent_rate": 0.2826
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.0,
+              "silent_rate": 0.5556
+            }
+          },
+          "n": 141,
+          "path_correct": 0.0496,
+          "silent_error_rate": 0.305
+        },
+        "wrong_grounding": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
+              "n": 14,
+              "path_correct": 0.0714,
+              "silent_rate": 0.1429
+            },
+            "Cisco Umbrella DNS": {
+              "n": 5,
+              "path_correct": 0.0,
+              "silent_rate": 0.2
+            },
+            "CrowdStrike Detection Summary": {
+              "n": 31,
+              "path_correct": 0.1613,
+              "silent_rate": 0.129
+            },
+            "Okta System Log": {
+              "n": 27,
+              "path_correct": 0.0,
+              "silent_rate": 0.2222
+            },
+            "Palo Alto PAN-OS TRAFFIC": {
+              "n": 46,
+              "path_correct": 0.0435,
+              "silent_rate": 0.1087
+            },
+            "Zscaler ZIA Web": {
+              "n": 18,
+              "path_correct": 0.0556,
+              "silent_rate": 0.3889
+            }
+          },
+          "n": 141,
+          "path_correct": 0.0638,
+          "silent_error_rate": 0.1773
+        }
+      },
+      "lifts": {
+        "pathcorrect_skill_minus_schema": -0.0284,
+        "silent_formal_minus_none": -0.6383,
+        "silent_formal_minus_wrong": 0.0142,
+        "silent_schema_minus_none": -0.6454,
+        "silent_skill_minus_none": -0.5248
+      },
+      "sampling": {
+        "conditions_complete": [
+          "none",
+          "schema",
+          "formal",
+          "skill",
+          "wrong_grounding"
+        ],
+        "full_gold_n": 141,
+        "method": "full",
+        "n": 141,
+        "note": "Full gold set, all 5 conditions; resumable checkpoint run."
+      }
+    },
+    "gemma4:26b-sample20": {
+      "cells": {
+        "formal": {
+          "by_source": {
+            "Cisco ASA connection syslog": {
               "n": 3,
               "path_correct": 0.0,
               "silent_rate": 0.0

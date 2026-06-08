@@ -229,8 +229,8 @@ def main():
             "note": "Full 141-item run estimated ~470 min at ~40s/inference on local WSL2 host"
         }}
 
-    # Merge into existing
-    existing["models"][MODEL] = model_result
+    # Merge into existing (20-item preview key; the full 141 run owns the plain MODEL key)
+    existing["models"][MODEL + "-sample20"] = model_result
 
     with open(results_path, "w") as f:
         json.dump(existing, f, indent=2, sort_keys=True)
