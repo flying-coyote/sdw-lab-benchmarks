@@ -1,0 +1,8188 @@
+[
+  {
+    "id": "attack:T1001",
+    "ntype": "attack",
+    "label": "Data Obfuscation",
+    "base": "T1001"
+  },
+  {
+    "id": "attack:T1001.001",
+    "ntype": "attack",
+    "label": "Junk Data",
+    "base": "T1001"
+  },
+  {
+    "id": "attack:T1001.002",
+    "ntype": "attack",
+    "label": "Steganography",
+    "base": "T1001"
+  },
+  {
+    "id": "attack:T1001.003",
+    "ntype": "attack",
+    "label": "Protocol or Service Impersonation",
+    "base": "T1001"
+  },
+  {
+    "id": "attack:T1003",
+    "ntype": "attack",
+    "label": "OS Credential Dumping",
+    "base": "T1003"
+  },
+  {
+    "id": "attack:T1003.001",
+    "ntype": "attack",
+    "label": "LSASS Memory",
+    "base": "T1003"
+  },
+  {
+    "id": "attack:T1003.002",
+    "ntype": "attack",
+    "label": "Security Account Manager",
+    "base": "T1003"
+  },
+  {
+    "id": "attack:T1003.003",
+    "ntype": "attack",
+    "label": "NTDS",
+    "base": "T1003"
+  },
+  {
+    "id": "attack:T1003.004",
+    "ntype": "attack",
+    "label": "LSA Secrets",
+    "base": "T1003"
+  },
+  {
+    "id": "attack:T1003.005",
+    "ntype": "attack",
+    "label": "Cached Domain Credentials",
+    "base": "T1003"
+  },
+  {
+    "id": "attack:T1003.006",
+    "ntype": "attack",
+    "label": "DCSync",
+    "base": "T1003"
+  },
+  {
+    "id": "attack:T1003.007",
+    "ntype": "attack",
+    "label": "Proc Filesystem",
+    "base": "T1003"
+  },
+  {
+    "id": "attack:T1003.008",
+    "ntype": "attack",
+    "label": "/etc/passwd and /etc/shadow",
+    "base": "T1003"
+  },
+  {
+    "id": "attack:T1005",
+    "ntype": "attack",
+    "label": "Data from Local System",
+    "base": "T1005"
+  },
+  {
+    "id": "attack:T1007",
+    "ntype": "attack",
+    "label": "System Service Discovery",
+    "base": "T1007"
+  },
+  {
+    "id": "attack:T1008",
+    "ntype": "attack",
+    "label": "Fallback Channels",
+    "base": "T1008"
+  },
+  {
+    "id": "attack:T1010",
+    "ntype": "attack",
+    "label": "Application Window Discovery",
+    "base": "T1010"
+  },
+  {
+    "id": "attack:T1011",
+    "ntype": "attack",
+    "label": "Exfiltration Over Other Network Medium",
+    "base": "T1011"
+  },
+  {
+    "id": "attack:T1011.001",
+    "ntype": "attack",
+    "label": "Exfiltration Over Bluetooth",
+    "base": "T1011"
+  },
+  {
+    "id": "attack:T1012",
+    "ntype": "attack",
+    "label": "Query Registry",
+    "base": "T1012"
+  },
+  {
+    "id": "attack:T1014",
+    "ntype": "attack",
+    "label": "Rootkit",
+    "base": "T1014"
+  },
+  {
+    "id": "attack:T1016",
+    "ntype": "attack",
+    "label": "System Network Configuration Discovery",
+    "base": "T1016"
+  },
+  {
+    "id": "attack:T1016.001",
+    "ntype": "attack",
+    "label": "Internet Connection Discovery",
+    "base": "T1016"
+  },
+  {
+    "id": "attack:T1016.002",
+    "ntype": "attack",
+    "label": "Wi-Fi Discovery",
+    "base": "T1016"
+  },
+  {
+    "id": "attack:T1018",
+    "ntype": "attack",
+    "label": "Remote System Discovery",
+    "base": "T1018"
+  },
+  {
+    "id": "attack:T1020",
+    "ntype": "attack",
+    "label": "Automated Exfiltration",
+    "base": "T1020"
+  },
+  {
+    "id": "attack:T1020.001",
+    "ntype": "attack",
+    "label": "Traffic Duplication",
+    "base": "T1020"
+  },
+  {
+    "id": "attack:T1021",
+    "ntype": "attack",
+    "label": "Remote Services",
+    "base": "T1021"
+  },
+  {
+    "id": "attack:T1021.001",
+    "ntype": "attack",
+    "label": "Remote Desktop Protocol",
+    "base": "T1021"
+  },
+  {
+    "id": "attack:T1021.002",
+    "ntype": "attack",
+    "label": "SMB/Windows Admin Shares",
+    "base": "T1021"
+  },
+  {
+    "id": "attack:T1021.003",
+    "ntype": "attack",
+    "label": "Distributed Component Object Model",
+    "base": "T1021"
+  },
+  {
+    "id": "attack:T1021.004",
+    "ntype": "attack",
+    "label": "SSH",
+    "base": "T1021"
+  },
+  {
+    "id": "attack:T1021.005",
+    "ntype": "attack",
+    "label": "VNC",
+    "base": "T1021"
+  },
+  {
+    "id": "attack:T1021.006",
+    "ntype": "attack",
+    "label": "Windows Remote Management",
+    "base": "T1021"
+  },
+  {
+    "id": "attack:T1021.007",
+    "ntype": "attack",
+    "label": "Cloud Services",
+    "base": "T1021"
+  },
+  {
+    "id": "attack:T1021.008",
+    "ntype": "attack",
+    "label": "Direct Cloud VM Connections",
+    "base": "T1021"
+  },
+  {
+    "id": "attack:T1025",
+    "ntype": "attack",
+    "label": "Data from Removable Media",
+    "base": "T1025"
+  },
+  {
+    "id": "attack:T1027",
+    "ntype": "attack",
+    "label": "Obfuscated Files or Information",
+    "base": "T1027"
+  },
+  {
+    "id": "attack:T1027.001",
+    "ntype": "attack",
+    "label": "Binary Padding",
+    "base": "T1027"
+  },
+  {
+    "id": "attack:T1027.002",
+    "ntype": "attack",
+    "label": "Software Packing",
+    "base": "T1027"
+  },
+  {
+    "id": "attack:T1027.004",
+    "ntype": "attack",
+    "label": "Compile After Delivery",
+    "base": "T1027"
+  },
+  {
+    "id": "attack:T1029",
+    "ntype": "attack",
+    "label": "Scheduled Transfer",
+    "base": "T1029"
+  },
+  {
+    "id": "attack:T1030",
+    "ntype": "attack",
+    "label": "Data Transfer Size Limits",
+    "base": "T1030"
+  },
+  {
+    "id": "attack:T1033",
+    "ntype": "attack",
+    "label": "System Owner/User Discovery",
+    "base": "T1033"
+  },
+  {
+    "id": "attack:T1036",
+    "ntype": "attack",
+    "label": "Masquerading",
+    "base": "T1036"
+  },
+  {
+    "id": "attack:T1036.001",
+    "ntype": "attack",
+    "label": "Invalid Code Signature",
+    "base": "T1036"
+  },
+  {
+    "id": "attack:T1036.003",
+    "ntype": "attack",
+    "label": "Rename Legitimate Utilities",
+    "base": "T1036"
+  },
+  {
+    "id": "attack:T1036.004",
+    "ntype": "attack",
+    "label": "Masquerade Task or Service",
+    "base": "T1036"
+  },
+  {
+    "id": "attack:T1036.005",
+    "ntype": "attack",
+    "label": "Match Legitimate Resource Name or Location",
+    "base": "T1036"
+  },
+  {
+    "id": "attack:T1036.006",
+    "ntype": "attack",
+    "label": "Space after Filename",
+    "base": "T1036"
+  },
+  {
+    "id": "attack:T1037",
+    "ntype": "attack",
+    "label": "Boot or Logon Initialization Scripts",
+    "base": "T1037"
+  },
+  {
+    "id": "attack:T1037.001",
+    "ntype": "attack",
+    "label": "Logon Script (Windows)",
+    "base": "T1037"
+  },
+  {
+    "id": "attack:T1037.002",
+    "ntype": "attack",
+    "label": "Login Hook",
+    "base": "T1037"
+  },
+  {
+    "id": "attack:T1037.003",
+    "ntype": "attack",
+    "label": "Network Logon Script",
+    "base": "T1037"
+  },
+  {
+    "id": "attack:T1037.004",
+    "ntype": "attack",
+    "label": "RC Scripts",
+    "base": "T1037"
+  },
+  {
+    "id": "attack:T1037.005",
+    "ntype": "attack",
+    "label": "Startup Items",
+    "base": "T1037"
+  },
+  {
+    "id": "attack:T1039",
+    "ntype": "attack",
+    "label": "Data from Network Shared Drive",
+    "base": "T1039"
+  },
+  {
+    "id": "attack:T1040",
+    "ntype": "attack",
+    "label": "Network Sniffing",
+    "base": "T1040"
+  },
+  {
+    "id": "attack:T1041",
+    "ntype": "attack",
+    "label": "Exfiltration Over C2 Channel",
+    "base": "T1041"
+  },
+  {
+    "id": "attack:T1047",
+    "ntype": "attack",
+    "label": "Windows Management Instrumentation",
+    "base": "T1047"
+  },
+  {
+    "id": "attack:T1048",
+    "ntype": "attack",
+    "label": "Exfiltration Over Alternative Protocol",
+    "base": "T1048"
+  },
+  {
+    "id": "attack:T1048.001",
+    "ntype": "attack",
+    "label": "Exfiltration Over Symmetric Encrypted Non-C2 Protocol",
+    "base": "T1048"
+  },
+  {
+    "id": "attack:T1048.002",
+    "ntype": "attack",
+    "label": "Exfiltration Over Asymmetric Encrypted Non-C2 Protocol",
+    "base": "T1048"
+  },
+  {
+    "id": "attack:T1048.003",
+    "ntype": "attack",
+    "label": "Exfiltration Over Unencrypted Non-C2 Protocol",
+    "base": "T1048"
+  },
+  {
+    "id": "attack:T1049",
+    "ntype": "attack",
+    "label": "System Network Connections Discovery",
+    "base": "T1049"
+  },
+  {
+    "id": "attack:T1052",
+    "ntype": "attack",
+    "label": "Exfiltration Over Physical Medium",
+    "base": "T1052"
+  },
+  {
+    "id": "attack:T1052.001",
+    "ntype": "attack",
+    "label": "Exfiltration over USB",
+    "base": "T1052"
+  },
+  {
+    "id": "attack:T1053",
+    "ntype": "attack",
+    "label": "Scheduled Task/Job",
+    "base": "T1053"
+  },
+  {
+    "id": "attack:T1053.001",
+    "ntype": "attack",
+    "label": "At (Linux) Execution",
+    "base": "T1053"
+  },
+  {
+    "id": "attack:T1053.002",
+    "ntype": "attack",
+    "label": "At",
+    "base": "T1053"
+  },
+  {
+    "id": "attack:T1053.003",
+    "ntype": "attack",
+    "label": "Cron",
+    "base": "T1053"
+  },
+  {
+    "id": "attack:T1053.004",
+    "ntype": "attack",
+    "label": "Launchd",
+    "base": "T1053"
+  },
+  {
+    "id": "attack:T1053.005",
+    "ntype": "attack",
+    "label": "Scheduled Task",
+    "base": "T1053"
+  },
+  {
+    "id": "attack:T1053.006",
+    "ntype": "attack",
+    "label": "Systemd Timers",
+    "base": "T1053"
+  },
+  {
+    "id": "attack:T1053.007",
+    "ntype": "attack",
+    "label": "Container Orchestration Job",
+    "base": "T1053"
+  },
+  {
+    "id": "attack:T1055",
+    "ntype": "attack",
+    "label": "Process Injection",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.001",
+    "ntype": "attack",
+    "label": "Dynamic-link Library Injection",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.002",
+    "ntype": "attack",
+    "label": "Portable Executable Injection",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.003",
+    "ntype": "attack",
+    "label": "Thread Execution Hijacking",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.004",
+    "ntype": "attack",
+    "label": "Asynchronous Procedure Call",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.005",
+    "ntype": "attack",
+    "label": "Thread Local Storage",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.008",
+    "ntype": "attack",
+    "label": "Ptrace System Calls",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.009",
+    "ntype": "attack",
+    "label": "Proc Memory",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.012",
+    "ntype": "attack",
+    "label": "Process Hollowing",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.013",
+    "ntype": "attack",
+    "label": "Process Doppelg\u00e4nging",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1055.014",
+    "ntype": "attack",
+    "label": "VDSO Hijacking",
+    "base": "T1055"
+  },
+  {
+    "id": "attack:T1056",
+    "ntype": "attack",
+    "label": "Input Capture",
+    "base": "T1056"
+  },
+  {
+    "id": "attack:T1056.001",
+    "ntype": "attack",
+    "label": "Keylogging",
+    "base": "T1056"
+  },
+  {
+    "id": "attack:T1056.003",
+    "ntype": "attack",
+    "label": "Web Portal Capture",
+    "base": "T1056"
+  },
+  {
+    "id": "attack:T1056.004",
+    "ntype": "attack",
+    "label": "Credential API Hooking",
+    "base": "T1056"
+  },
+  {
+    "id": "attack:T1057",
+    "ntype": "attack",
+    "label": "Process Discovery",
+    "base": "T1057"
+  },
+  {
+    "id": "attack:T1059",
+    "ntype": "attack",
+    "label": "Command and Scripting Interpreter",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.001",
+    "ntype": "attack",
+    "label": "PowerShell",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.002",
+    "ntype": "attack",
+    "label": "AppleScript",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.003",
+    "ntype": "attack",
+    "label": "Windows Command Shell",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.004",
+    "ntype": "attack",
+    "label": "Unix Shell",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.005",
+    "ntype": "attack",
+    "label": "Visual Basic",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.006",
+    "ntype": "attack",
+    "label": "Python",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.007",
+    "ntype": "attack",
+    "label": "JavaScript",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.008",
+    "ntype": "attack",
+    "label": "Network Device CLI",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.009",
+    "ntype": "attack",
+    "label": "Cloud API",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.010",
+    "ntype": "attack",
+    "label": "AutoHotKey & AutoIT",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.011",
+    "ntype": "attack",
+    "label": "Lua",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.012",
+    "ntype": "attack",
+    "label": "Hypervisor CLI",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1059.013",
+    "ntype": "attack",
+    "label": "Container CLI/API",
+    "base": "T1059"
+  },
+  {
+    "id": "attack:T1068",
+    "ntype": "attack",
+    "label": "Exploitation for Privilege Escalation",
+    "base": "T1068"
+  },
+  {
+    "id": "attack:T1070",
+    "ntype": "attack",
+    "label": "Indicator Removal",
+    "base": "T1070"
+  },
+  {
+    "id": "attack:T1070.001",
+    "ntype": "attack",
+    "label": "Clear Windows Event Logs",
+    "base": "T1070"
+  },
+  {
+    "id": "attack:T1070.002",
+    "ntype": "attack",
+    "label": "Clear Linux or Mac System Logs",
+    "base": "T1070"
+  },
+  {
+    "id": "attack:T1070.003",
+    "ntype": "attack",
+    "label": "Clear Command History",
+    "base": "T1070"
+  },
+  {
+    "id": "attack:T1070.004",
+    "ntype": "attack",
+    "label": "File Deletion",
+    "base": "T1070"
+  },
+  {
+    "id": "attack:T1070.005",
+    "ntype": "attack",
+    "label": "Network Share Connection Removal",
+    "base": "T1070"
+  },
+  {
+    "id": "attack:T1071",
+    "ntype": "attack",
+    "label": "Application Layer Protocol",
+    "base": "T1071"
+  },
+  {
+    "id": "attack:T1071.001",
+    "ntype": "attack",
+    "label": "Web Protocols",
+    "base": "T1071"
+  },
+  {
+    "id": "attack:T1071.002",
+    "ntype": "attack",
+    "label": "File Transfer Protocols",
+    "base": "T1071"
+  },
+  {
+    "id": "attack:T1071.003",
+    "ntype": "attack",
+    "label": "Mail Protocols",
+    "base": "T1071"
+  },
+  {
+    "id": "attack:T1071.004",
+    "ntype": "attack",
+    "label": "DNS",
+    "base": "T1071"
+  },
+  {
+    "id": "attack:T1071.005",
+    "ntype": "attack",
+    "label": "Publish/Subscribe Protocols",
+    "base": "T1071"
+  },
+  {
+    "id": "attack:T1072",
+    "ntype": "attack",
+    "label": "Software Deployment Tools",
+    "base": "T1072"
+  },
+  {
+    "id": "attack:T1074",
+    "ntype": "attack",
+    "label": "Data Staged",
+    "base": "T1074"
+  },
+  {
+    "id": "attack:T1074.001",
+    "ntype": "attack",
+    "label": "Local Data Staging",
+    "base": "T1074"
+  },
+  {
+    "id": "attack:T1074.002",
+    "ntype": "attack",
+    "label": "Remote Data Staging",
+    "base": "T1074"
+  },
+  {
+    "id": "attack:T1078",
+    "ntype": "attack",
+    "label": "Valid Accounts",
+    "base": "T1078"
+  },
+  {
+    "id": "attack:T1078.001",
+    "ntype": "attack",
+    "label": "Default Accounts",
+    "base": "T1078"
+  },
+  {
+    "id": "attack:T1078.002",
+    "ntype": "attack",
+    "label": "Domain Accounts",
+    "base": "T1078"
+  },
+  {
+    "id": "attack:T1078.003",
+    "ntype": "attack",
+    "label": "Local Accounts",
+    "base": "T1078"
+  },
+  {
+    "id": "attack:T1078.004",
+    "ntype": "attack",
+    "label": "Cloud Accounts",
+    "base": "T1078"
+  },
+  {
+    "id": "attack:T1080",
+    "ntype": "attack",
+    "label": "Taint Shared Content",
+    "base": "T1080"
+  },
+  {
+    "id": "attack:T1082",
+    "ntype": "attack",
+    "label": "System Information Discovery",
+    "base": "T1082"
+  },
+  {
+    "id": "attack:T1083",
+    "ntype": "attack",
+    "label": "File and Directory Discovery",
+    "base": "T1083"
+  },
+  {
+    "id": "attack:T1087",
+    "ntype": "attack",
+    "label": "Account Discovery",
+    "base": "T1087"
+  },
+  {
+    "id": "attack:T1087.001",
+    "ntype": "attack",
+    "label": "Local Account",
+    "base": "T1087"
+  },
+  {
+    "id": "attack:T1087.002",
+    "ntype": "attack",
+    "label": "Domain Account",
+    "base": "T1087"
+  },
+  {
+    "id": "attack:T1087.004",
+    "ntype": "attack",
+    "label": "Cloud Account",
+    "base": "T1087"
+  },
+  {
+    "id": "attack:T1090",
+    "ntype": "attack",
+    "label": "Proxy",
+    "base": "T1090"
+  },
+  {
+    "id": "attack:T1090.001",
+    "ntype": "attack",
+    "label": "Internal Proxy",
+    "base": "T1090"
+  },
+  {
+    "id": "attack:T1090.002",
+    "ntype": "attack",
+    "label": "External Proxy",
+    "base": "T1090"
+  },
+  {
+    "id": "attack:T1090.003",
+    "ntype": "attack",
+    "label": "Multi-hop Proxy",
+    "base": "T1090"
+  },
+  {
+    "id": "attack:T1090.004",
+    "ntype": "attack",
+    "label": "Domain Fronting",
+    "base": "T1090"
+  },
+  {
+    "id": "attack:T1091",
+    "ntype": "attack",
+    "label": "Replication Through Removable Media",
+    "base": "T1091"
+  },
+  {
+    "id": "attack:T1092",
+    "ntype": "attack",
+    "label": "Communication Through Removable Media",
+    "base": "T1092"
+  },
+  {
+    "id": "attack:T1095",
+    "ntype": "attack",
+    "label": "Non-Application Layer Protocol",
+    "base": "T1095"
+  },
+  {
+    "id": "attack:T1098",
+    "ntype": "attack",
+    "label": "Account Manipulation",
+    "base": "T1098"
+  },
+  {
+    "id": "attack:T1098.001",
+    "ntype": "attack",
+    "label": "Additional Cloud Credentials",
+    "base": "T1098"
+  },
+  {
+    "id": "attack:T1098.002",
+    "ntype": "attack",
+    "label": "Additional Email Delegate Permissions",
+    "base": "T1098"
+  },
+  {
+    "id": "attack:T1098.003",
+    "ntype": "attack",
+    "label": "Additional Cloud Roles",
+    "base": "T1098"
+  },
+  {
+    "id": "attack:T1098.004",
+    "ntype": "attack",
+    "label": "SSH Authorized Keys",
+    "base": "T1098"
+  },
+  {
+    "id": "attack:T1098.005",
+    "ntype": "attack",
+    "label": "Device Registration",
+    "base": "T1098"
+  },
+  {
+    "id": "attack:T1098.006",
+    "ntype": "attack",
+    "label": "Additional Container Cluster Roles",
+    "base": "T1098"
+  },
+  {
+    "id": "attack:T1098.007",
+    "ntype": "attack",
+    "label": "Additional Local or Domain Groups",
+    "base": "T1098"
+  },
+  {
+    "id": "attack:T1102",
+    "ntype": "attack",
+    "label": "Web Service",
+    "base": "T1102"
+  },
+  {
+    "id": "attack:T1102.001",
+    "ntype": "attack",
+    "label": "Dead Drop Resolver",
+    "base": "T1102"
+  },
+  {
+    "id": "attack:T1102.002",
+    "ntype": "attack",
+    "label": "Bidirectional Communication",
+    "base": "T1102"
+  },
+  {
+    "id": "attack:T1102.003",
+    "ntype": "attack",
+    "label": "One-Way Communication",
+    "base": "T1102"
+  },
+  {
+    "id": "attack:T1104",
+    "ntype": "attack",
+    "label": "Multi-Stage Channels",
+    "base": "T1104"
+  },
+  {
+    "id": "attack:T1105",
+    "ntype": "attack",
+    "label": "Ingress Tool Transfer",
+    "base": "T1105"
+  },
+  {
+    "id": "attack:T1106",
+    "ntype": "attack",
+    "label": "Native API",
+    "base": "T1106"
+  },
+  {
+    "id": "attack:T1110",
+    "ntype": "attack",
+    "label": "Brute Force",
+    "base": "T1110"
+  },
+  {
+    "id": "attack:T1110.001",
+    "ntype": "attack",
+    "label": "Password Guessing",
+    "base": "T1110"
+  },
+  {
+    "id": "attack:T1110.002",
+    "ntype": "attack",
+    "label": "Password Cracking",
+    "base": "T1110"
+  },
+  {
+    "id": "attack:T1110.003",
+    "ntype": "attack",
+    "label": "Password Spraying",
+    "base": "T1110"
+  },
+  {
+    "id": "attack:T1110.004",
+    "ntype": "attack",
+    "label": "Credential Stuffing",
+    "base": "T1110"
+  },
+  {
+    "id": "attack:T1111",
+    "ntype": "attack",
+    "label": "Multi-Factor Authentication Interception",
+    "base": "T1111"
+  },
+  {
+    "id": "attack:T1112",
+    "ntype": "attack",
+    "label": "Modify Registry",
+    "base": "T1112"
+  },
+  {
+    "id": "attack:T1113",
+    "ntype": "attack",
+    "label": "Screen Capture",
+    "base": "T1113"
+  },
+  {
+    "id": "attack:T1114",
+    "ntype": "attack",
+    "label": "Email Collection",
+    "base": "T1114"
+  },
+  {
+    "id": "attack:T1114.001",
+    "ntype": "attack",
+    "label": "Local Email Collection",
+    "base": "T1114"
+  },
+  {
+    "id": "attack:T1114.002",
+    "ntype": "attack",
+    "label": "Remote Email Collection",
+    "base": "T1114"
+  },
+  {
+    "id": "attack:T1114.003",
+    "ntype": "attack",
+    "label": "Email Forwarding Rule",
+    "base": "T1114"
+  },
+  {
+    "id": "attack:T1119",
+    "ntype": "attack",
+    "label": "Automated Collection",
+    "base": "T1119"
+  },
+  {
+    "id": "attack:T1123",
+    "ntype": "attack",
+    "label": "Audio Capture",
+    "base": "T1123"
+  },
+  {
+    "id": "attack:T1124",
+    "ntype": "attack",
+    "label": "System Time Discovery",
+    "base": "T1124"
+  },
+  {
+    "id": "attack:T1125",
+    "ntype": "attack",
+    "label": "Video Capture",
+    "base": "T1125"
+  },
+  {
+    "id": "attack:T1127",
+    "ntype": "attack",
+    "label": "Trusted Developer Utilities Proxy Execution",
+    "base": "T1127"
+  },
+  {
+    "id": "attack:T1127.001",
+    "ntype": "attack",
+    "label": "MSBuild",
+    "base": "T1127"
+  },
+  {
+    "id": "attack:T1132",
+    "ntype": "attack",
+    "label": "Data Encoding",
+    "base": "T1132"
+  },
+  {
+    "id": "attack:T1132.001",
+    "ntype": "attack",
+    "label": "Standard Encoding",
+    "base": "T1132"
+  },
+  {
+    "id": "attack:T1132.002",
+    "ntype": "attack",
+    "label": "Non-Standard Encoding",
+    "base": "T1132"
+  },
+  {
+    "id": "attack:T1133",
+    "ntype": "attack",
+    "label": "External Remote Services",
+    "base": "T1133"
+  },
+  {
+    "id": "attack:T1134",
+    "ntype": "attack",
+    "label": "Access Token Manipulation",
+    "base": "T1134"
+  },
+  {
+    "id": "attack:T1134.001",
+    "ntype": "attack",
+    "label": "Token Impersonation/Theft",
+    "base": "T1134"
+  },
+  {
+    "id": "attack:T1134.002",
+    "ntype": "attack",
+    "label": "Create Process with Token",
+    "base": "T1134"
+  },
+  {
+    "id": "attack:T1134.003",
+    "ntype": "attack",
+    "label": "Make and Impersonate Token",
+    "base": "T1134"
+  },
+  {
+    "id": "attack:T1134.004",
+    "ntype": "attack",
+    "label": "Parent PID Spoofing",
+    "base": "T1134"
+  },
+  {
+    "id": "attack:T1134.005",
+    "ntype": "attack",
+    "label": "SID-History Injection",
+    "base": "T1134"
+  },
+  {
+    "id": "attack:T1136",
+    "ntype": "attack",
+    "label": "Create Account",
+    "base": "T1136"
+  },
+  {
+    "id": "attack:T1136.001",
+    "ntype": "attack",
+    "label": "Local Account",
+    "base": "T1136"
+  },
+  {
+    "id": "attack:T1136.002",
+    "ntype": "attack",
+    "label": "Domain Account",
+    "base": "T1136"
+  },
+  {
+    "id": "attack:T1136.003",
+    "ntype": "attack",
+    "label": "Cloud Account",
+    "base": "T1136"
+  },
+  {
+    "id": "attack:T1137",
+    "ntype": "attack",
+    "label": "Office Application Startup",
+    "base": "T1137"
+  },
+  {
+    "id": "attack:T1137.001",
+    "ntype": "attack",
+    "label": "Office Template Macros",
+    "base": "T1137"
+  },
+  {
+    "id": "attack:T1137.002",
+    "ntype": "attack",
+    "label": "Office Test",
+    "base": "T1137"
+  },
+  {
+    "id": "attack:T1137.003",
+    "ntype": "attack",
+    "label": "Outlook Forms",
+    "base": "T1137"
+  },
+  {
+    "id": "attack:T1137.004",
+    "ntype": "attack",
+    "label": "Outlook Home Page",
+    "base": "T1137"
+  },
+  {
+    "id": "attack:T1137.005",
+    "ntype": "attack",
+    "label": "Outlook Rules",
+    "base": "T1137"
+  },
+  {
+    "id": "attack:T1137.006",
+    "ntype": "attack",
+    "label": "Add-ins",
+    "base": "T1137"
+  },
+  {
+    "id": "attack:T1140",
+    "ntype": "attack",
+    "label": "Deobfuscate/Decode Files or Information",
+    "base": "T1140"
+  },
+  {
+    "id": "attack:T1142",
+    "ntype": "attack",
+    "label": "Keychain",
+    "base": "T1142"
+  },
+  {
+    "id": "attack:T1176",
+    "ntype": "attack",
+    "label": "Software Extensions",
+    "base": "T1176"
+  },
+  {
+    "id": "attack:T1176.001",
+    "ntype": "attack",
+    "label": "Browser Extensions",
+    "base": "T1176"
+  },
+  {
+    "id": "attack:T1176.002",
+    "ntype": "attack",
+    "label": "IDE Extensions",
+    "base": "T1176"
+  },
+  {
+    "id": "attack:T1185",
+    "ntype": "attack",
+    "label": "Browser Session Hijacking",
+    "base": "T1185"
+  },
+  {
+    "id": "attack:T1187",
+    "ntype": "attack",
+    "label": "Forced Authentication",
+    "base": "T1187"
+  },
+  {
+    "id": "attack:T1189",
+    "ntype": "attack",
+    "label": "Drive-by Compromise",
+    "base": "T1189"
+  },
+  {
+    "id": "attack:T1190",
+    "ntype": "attack",
+    "label": "Exploit Public-Facing Application",
+    "base": "T1190"
+  },
+  {
+    "id": "attack:T1195",
+    "ntype": "attack",
+    "label": "Supply Chain Compromise",
+    "base": "T1195"
+  },
+  {
+    "id": "attack:T1195.001",
+    "ntype": "attack",
+    "label": "Compromise Software Dependencies and Development Tools",
+    "base": "T1195"
+  },
+  {
+    "id": "attack:T1195.002",
+    "ntype": "attack",
+    "label": "Compromise Software Supply Chain",
+    "base": "T1195"
+  },
+  {
+    "id": "attack:T1195.003",
+    "ntype": "attack",
+    "label": "Compromise Hardware Supply Chain",
+    "base": "T1195"
+  },
+  {
+    "id": "attack:T1197",
+    "ntype": "attack",
+    "label": "BITS Jobs",
+    "base": "T1197"
+  },
+  {
+    "id": "attack:T1199",
+    "ntype": "attack",
+    "label": "Trusted Relationship",
+    "base": "T1199"
+  },
+  {
+    "id": "attack:T1200",
+    "ntype": "attack",
+    "label": "Hardware Additions",
+    "base": "T1200"
+  },
+  {
+    "id": "attack:T1203",
+    "ntype": "attack",
+    "label": "Exploitation for Client Execution",
+    "base": "T1203"
+  },
+  {
+    "id": "attack:T1204",
+    "ntype": "attack",
+    "label": "User Execution",
+    "base": "T1204"
+  },
+  {
+    "id": "attack:T1204.001",
+    "ntype": "attack",
+    "label": "Malicious Link",
+    "base": "T1204"
+  },
+  {
+    "id": "attack:T1204.002",
+    "ntype": "attack",
+    "label": "Malicious File",
+    "base": "T1204"
+  },
+  {
+    "id": "attack:T1205",
+    "ntype": "attack",
+    "label": "Traffic Signaling",
+    "base": "T1205"
+  },
+  {
+    "id": "attack:T1205.001",
+    "ntype": "attack",
+    "label": "Port Knocking",
+    "base": "T1205"
+  },
+  {
+    "id": "attack:T1205.002",
+    "ntype": "attack",
+    "label": "Socket Filters",
+    "base": "T1205"
+  },
+  {
+    "id": "attack:T1207",
+    "ntype": "attack",
+    "label": "Rogue Domain Controller",
+    "base": "T1207"
+  },
+  {
+    "id": "attack:T1210",
+    "ntype": "attack",
+    "label": "Exploitation of Remote Services",
+    "base": "T1210"
+  },
+  {
+    "id": "attack:T1211",
+    "ntype": "attack",
+    "label": "Exploitation for Defense Evasion",
+    "base": "T1211"
+  },
+  {
+    "id": "attack:T1212",
+    "ntype": "attack",
+    "label": "Exploitation for Credential Access",
+    "base": "T1212"
+  },
+  {
+    "id": "attack:T1213",
+    "ntype": "attack",
+    "label": "Data from Information Repositories",
+    "base": "T1213"
+  },
+  {
+    "id": "attack:T1213.001",
+    "ntype": "attack",
+    "label": "Confluence",
+    "base": "T1213"
+  },
+  {
+    "id": "attack:T1213.002",
+    "ntype": "attack",
+    "label": "Sharepoint",
+    "base": "T1213"
+  },
+  {
+    "id": "attack:T1213.003",
+    "ntype": "attack",
+    "label": "Code Repositories",
+    "base": "T1213"
+  },
+  {
+    "id": "attack:T1218",
+    "ntype": "attack",
+    "label": "System Binary Proxy Execution",
+    "base": "T1218"
+  },
+  {
+    "id": "attack:T1218.001",
+    "ntype": "attack",
+    "label": "Compiled HTML File",
+    "base": "T1218"
+  },
+  {
+    "id": "attack:T1218.002",
+    "ntype": "attack",
+    "label": "Control Panel",
+    "base": "T1218"
+  },
+  {
+    "id": "attack:T1218.003",
+    "ntype": "attack",
+    "label": "CMSTP",
+    "base": "T1218"
+  },
+  {
+    "id": "attack:T1218.005",
+    "ntype": "attack",
+    "label": "Mshta",
+    "base": "T1218"
+  },
+  {
+    "id": "attack:T1218.011",
+    "ntype": "attack",
+    "label": "Rundll32",
+    "base": "T1218"
+  },
+  {
+    "id": "attack:T1218.013",
+    "ntype": "attack",
+    "label": "Mavinject",
+    "base": "T1218"
+  },
+  {
+    "id": "attack:T1218.014",
+    "ntype": "attack",
+    "label": "MMC",
+    "base": "T1218"
+  },
+  {
+    "id": "attack:T1219",
+    "ntype": "attack",
+    "label": "Remote Access Tools",
+    "base": "T1219"
+  },
+  {
+    "id": "attack:T1219.001",
+    "ntype": "attack",
+    "label": "IDE Tunneling",
+    "base": "T1219"
+  },
+  {
+    "id": "attack:T1219.002",
+    "ntype": "attack",
+    "label": "Remote Desktop Software",
+    "base": "T1219"
+  },
+  {
+    "id": "attack:T1219.003",
+    "ntype": "attack",
+    "label": "Remote Access Hardware",
+    "base": "T1219"
+  },
+  {
+    "id": "attack:T1220",
+    "ntype": "attack",
+    "label": "XSL Script Processing",
+    "base": "T1220"
+  },
+  {
+    "id": "attack:T1222",
+    "ntype": "attack",
+    "label": "File and Directory Permissions Modification",
+    "base": "T1222"
+  },
+  {
+    "id": "attack:T1222.001",
+    "ntype": "attack",
+    "label": "Windows File and Directory Permissions Modification",
+    "base": "T1222"
+  },
+  {
+    "id": "attack:T1222.002",
+    "ntype": "attack",
+    "label": "Linux and Mac File and Directory Permissions Modification",
+    "base": "T1222"
+  },
+  {
+    "id": "attack:T1484",
+    "ntype": "attack",
+    "label": "Domain or Tenant Policy Modification",
+    "base": "T1484"
+  },
+  {
+    "id": "attack:T1484.001",
+    "ntype": "attack",
+    "label": "Group Policy Modification",
+    "base": "T1484"
+  },
+  {
+    "id": "attack:T1484.002",
+    "ntype": "attack",
+    "label": "Trust Modification",
+    "base": "T1484"
+  },
+  {
+    "id": "attack:T1486",
+    "ntype": "attack",
+    "label": "Data Encrypted for Impact",
+    "base": "T1486"
+  },
+  {
+    "id": "attack:T1490",
+    "ntype": "attack",
+    "label": "Inhibit System Recovery",
+    "base": "T1490"
+  },
+  {
+    "id": "attack:T1491",
+    "ntype": "attack",
+    "label": "Defacement",
+    "base": "T1491"
+  },
+  {
+    "id": "attack:T1491.002",
+    "ntype": "attack",
+    "label": "External Defacement",
+    "base": "T1491"
+  },
+  {
+    "id": "attack:T1497",
+    "ntype": "attack",
+    "label": "Virtualization/Sandbox Evasion",
+    "base": "T1497"
+  },
+  {
+    "id": "attack:T1497.003",
+    "ntype": "attack",
+    "label": "Time Based Checks",
+    "base": "T1497"
+  },
+  {
+    "id": "attack:T1498",
+    "ntype": "attack",
+    "label": "Network Denial of Service",
+    "base": "T1498"
+  },
+  {
+    "id": "attack:T1498.001",
+    "ntype": "attack",
+    "label": "Direct Network Flood",
+    "base": "T1498"
+  },
+  {
+    "id": "attack:T1498.002",
+    "ntype": "attack",
+    "label": "Reflection Amplification",
+    "base": "T1498"
+  },
+  {
+    "id": "attack:T1499",
+    "ntype": "attack",
+    "label": "Endpoint Denial of Service",
+    "base": "T1499"
+  },
+  {
+    "id": "attack:T1499.002",
+    "ntype": "attack",
+    "label": "Service Exhaustion Flood",
+    "base": "T1499"
+  },
+  {
+    "id": "attack:T1505",
+    "ntype": "attack",
+    "label": "Server Software Component",
+    "base": "T1505"
+  },
+  {
+    "id": "attack:T1505.001",
+    "ntype": "attack",
+    "label": "SQL Stored Procedures",
+    "base": "T1505"
+  },
+  {
+    "id": "attack:T1505.002",
+    "ntype": "attack",
+    "label": "Transport Agent",
+    "base": "T1505"
+  },
+  {
+    "id": "attack:T1505.003",
+    "ntype": "attack",
+    "label": "Web Shell",
+    "base": "T1505"
+  },
+  {
+    "id": "attack:T1505.004",
+    "ntype": "attack",
+    "label": "IIS Components",
+    "base": "T1505"
+  },
+  {
+    "id": "attack:T1518",
+    "ntype": "attack",
+    "label": "Software Discovery",
+    "base": "T1518"
+  },
+  {
+    "id": "attack:T1518.001",
+    "ntype": "attack",
+    "label": "Security Software Discovery",
+    "base": "T1518"
+  },
+  {
+    "id": "attack:T1525",
+    "ntype": "attack",
+    "label": "Implant Internal Image",
+    "base": "T1525"
+  },
+  {
+    "id": "attack:T1526",
+    "ntype": "attack",
+    "label": "Cloud Service Discovery",
+    "base": "T1526"
+  },
+  {
+    "id": "attack:T1528",
+    "ntype": "attack",
+    "label": "Steal Application Access Token",
+    "base": "T1528"
+  },
+  {
+    "id": "attack:T1531",
+    "ntype": "attack",
+    "label": "Account Access Removal",
+    "base": "T1531"
+  },
+  {
+    "id": "attack:T1534",
+    "ntype": "attack",
+    "label": "Internal Spearphishing",
+    "base": "T1534"
+  },
+  {
+    "id": "attack:T1538",
+    "ntype": "attack",
+    "label": "Cloud Service Dashboard",
+    "base": "T1538"
+  },
+  {
+    "id": "attack:T1539",
+    "ntype": "attack",
+    "label": "Steal Web Session Cookie",
+    "base": "T1539"
+  },
+  {
+    "id": "attack:T1542",
+    "ntype": "attack",
+    "label": "Pre-OS Boot",
+    "base": "T1542"
+  },
+  {
+    "id": "attack:T1542.001",
+    "ntype": "attack",
+    "label": "System Firmware",
+    "base": "T1542"
+  },
+  {
+    "id": "attack:T1542.002",
+    "ntype": "attack",
+    "label": "Component Firmware",
+    "base": "T1542"
+  },
+  {
+    "id": "attack:T1542.003",
+    "ntype": "attack",
+    "label": "Bootkit",
+    "base": "T1542"
+  },
+  {
+    "id": "attack:T1542.004",
+    "ntype": "attack",
+    "label": "ROMMONkit",
+    "base": "T1542"
+  },
+  {
+    "id": "attack:T1542.005",
+    "ntype": "attack",
+    "label": "TFTP Boot",
+    "base": "T1542"
+  },
+  {
+    "id": "attack:T1543",
+    "ntype": "attack",
+    "label": "Create or Modify System Process",
+    "base": "T1543"
+  },
+  {
+    "id": "attack:T1543.001",
+    "ntype": "attack",
+    "label": "Launch Agent",
+    "base": "T1543"
+  },
+  {
+    "id": "attack:T1543.002",
+    "ntype": "attack",
+    "label": "Systemd Service",
+    "base": "T1543"
+  },
+  {
+    "id": "attack:T1543.003",
+    "ntype": "attack",
+    "label": "Windows Service",
+    "base": "T1543"
+  },
+  {
+    "id": "attack:T1543.004",
+    "ntype": "attack",
+    "label": "Launch Daemon",
+    "base": "T1543"
+  },
+  {
+    "id": "attack:T1546",
+    "ntype": "attack",
+    "label": "Event Triggered Execution",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.001",
+    "ntype": "attack",
+    "label": "Change Default File Association",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.002",
+    "ntype": "attack",
+    "label": "Screensaver",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.003",
+    "ntype": "attack",
+    "label": "Windows Management Instrumentation Event Subscription",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.004",
+    "ntype": "attack",
+    "label": "Unix Shell Configuration Modification",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.005",
+    "ntype": "attack",
+    "label": "Trap",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.006",
+    "ntype": "attack",
+    "label": "LC_LOAD_DYLIB Addition",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.007",
+    "ntype": "attack",
+    "label": "Netsh Helper DLL",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.008",
+    "ntype": "attack",
+    "label": "Accessibility Features",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.009",
+    "ntype": "attack",
+    "label": "AppCert DLLs",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.010",
+    "ntype": "attack",
+    "label": "AppInit DLLs",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.011",
+    "ntype": "attack",
+    "label": "Application Shimming",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.012",
+    "ntype": "attack",
+    "label": "Image File Execution Options Injection",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.013",
+    "ntype": "attack",
+    "label": "PowerShell Profile",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.014",
+    "ntype": "attack",
+    "label": "Emond",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1546.015",
+    "ntype": "attack",
+    "label": "Component Object Model Hijacking",
+    "base": "T1546"
+  },
+  {
+    "id": "attack:T1547",
+    "ntype": "attack",
+    "label": "Boot or Logon Autostart Execution",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.001",
+    "ntype": "attack",
+    "label": "Registry Run Keys / Startup Folder",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.002",
+    "ntype": "attack",
+    "label": "Authentication Package",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.003",
+    "ntype": "attack",
+    "label": "Time Providers",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.004",
+    "ntype": "attack",
+    "label": "Winlogon Helper DLL",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.005",
+    "ntype": "attack",
+    "label": "Security Support Provider",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.006",
+    "ntype": "attack",
+    "label": "Kernel Modules and Extensions",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.007",
+    "ntype": "attack",
+    "label": "Re-opened Applications",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.008",
+    "ntype": "attack",
+    "label": "LSASS Driver",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.009",
+    "ntype": "attack",
+    "label": "Shortcut Modification",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.010",
+    "ntype": "attack",
+    "label": "Port Monitors",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1547.011",
+    "ntype": "attack",
+    "label": "Plist Modification",
+    "base": "T1547"
+  },
+  {
+    "id": "attack:T1548",
+    "ntype": "attack",
+    "label": "Abuse Elevation Control Mechanism",
+    "base": "T1548"
+  },
+  {
+    "id": "attack:T1548.001",
+    "ntype": "attack",
+    "label": "Setuid and Setgid",
+    "base": "T1548"
+  },
+  {
+    "id": "attack:T1548.002",
+    "ntype": "attack",
+    "label": "Bypass User Account Control",
+    "base": "T1548"
+  },
+  {
+    "id": "attack:T1548.003",
+    "ntype": "attack",
+    "label": "Sudo and Sudo Caching",
+    "base": "T1548"
+  },
+  {
+    "id": "attack:T1548.004",
+    "ntype": "attack",
+    "label": "Elevated Execution with Prompt",
+    "base": "T1548"
+  },
+  {
+    "id": "attack:T1548.005",
+    "ntype": "attack",
+    "label": "Temporary Elevated Cloud Access",
+    "base": "T1548"
+  },
+  {
+    "id": "attack:T1550",
+    "ntype": "attack",
+    "label": "Use Alternate Authentication Material",
+    "base": "T1550"
+  },
+  {
+    "id": "attack:T1550.001",
+    "ntype": "attack",
+    "label": "Application Access Token",
+    "base": "T1550"
+  },
+  {
+    "id": "attack:T1550.002",
+    "ntype": "attack",
+    "label": "Pass the Hash",
+    "base": "T1550"
+  },
+  {
+    "id": "attack:T1550.003",
+    "ntype": "attack",
+    "label": "Pass the Ticket",
+    "base": "T1550"
+  },
+  {
+    "id": "attack:T1550.004",
+    "ntype": "attack",
+    "label": "Web Session Cookie",
+    "base": "T1550"
+  },
+  {
+    "id": "attack:T1552",
+    "ntype": "attack",
+    "label": "Unsecured Credentials",
+    "base": "T1552"
+  },
+  {
+    "id": "attack:T1552.001",
+    "ntype": "attack",
+    "label": "Credentials In Files",
+    "base": "T1552"
+  },
+  {
+    "id": "attack:T1552.002",
+    "ntype": "attack",
+    "label": "Credentials in Registry",
+    "base": "T1552"
+  },
+  {
+    "id": "attack:T1552.003",
+    "ntype": "attack",
+    "label": "Shell History",
+    "base": "T1552"
+  },
+  {
+    "id": "attack:T1552.004",
+    "ntype": "attack",
+    "label": "Private Keys",
+    "base": "T1552"
+  },
+  {
+    "id": "attack:T1552.005",
+    "ntype": "attack",
+    "label": "Cloud Instance Metadata API",
+    "base": "T1552"
+  },
+  {
+    "id": "attack:T1552.006",
+    "ntype": "attack",
+    "label": "Group Policy Preferences",
+    "base": "T1552"
+  },
+  {
+    "id": "attack:T1552.007",
+    "ntype": "attack",
+    "label": "Container API",
+    "base": "T1552"
+  },
+  {
+    "id": "attack:T1552.008",
+    "ntype": "attack",
+    "label": "Chat Messages",
+    "base": "T1552"
+  },
+  {
+    "id": "attack:T1553",
+    "ntype": "attack",
+    "label": "Subvert Trust Controls",
+    "base": "T1553"
+  },
+  {
+    "id": "attack:T1553.003",
+    "ntype": "attack",
+    "label": "SIP and Trust Provider Hijacking",
+    "base": "T1553"
+  },
+  {
+    "id": "attack:T1553.004",
+    "ntype": "attack",
+    "label": "Install Root Certificate",
+    "base": "T1553"
+  },
+  {
+    "id": "attack:T1554",
+    "ntype": "attack",
+    "label": "Compromise Host Software Binary",
+    "base": "T1554"
+  },
+  {
+    "id": "attack:T1555",
+    "ntype": "attack",
+    "label": "Credentials from Password Stores",
+    "base": "T1555"
+  },
+  {
+    "id": "attack:T1555.001",
+    "ntype": "attack",
+    "label": "Keychain",
+    "base": "T1555"
+  },
+  {
+    "id": "attack:T1555.002",
+    "ntype": "attack",
+    "label": "Securityd Memory",
+    "base": "T1555"
+  },
+  {
+    "id": "attack:T1555.003",
+    "ntype": "attack",
+    "label": "Credentials from Web Browsers",
+    "base": "T1555"
+  },
+  {
+    "id": "attack:T1555.004",
+    "ntype": "attack",
+    "label": "Windows Credential Manager",
+    "base": "T1555"
+  },
+  {
+    "id": "attack:T1555.005",
+    "ntype": "attack",
+    "label": "Password Managers",
+    "base": "T1555"
+  },
+  {
+    "id": "attack:T1555.006",
+    "ntype": "attack",
+    "label": "Cloud Secrets Management Stores",
+    "base": "T1555"
+  },
+  {
+    "id": "attack:T1556",
+    "ntype": "attack",
+    "label": "Modify Authentication Process",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1556.001",
+    "ntype": "attack",
+    "label": "Domain Controller Authentication",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1556.002",
+    "ntype": "attack",
+    "label": "Password Filter DLL",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1556.003",
+    "ntype": "attack",
+    "label": "Pluggable Authentication Modules",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1556.004",
+    "ntype": "attack",
+    "label": "Network Device Authentication",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1556.005",
+    "ntype": "attack",
+    "label": "Reversible Encryption",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1556.006",
+    "ntype": "attack",
+    "label": "Multi-Factor Authentication",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1556.007",
+    "ntype": "attack",
+    "label": "Hybrid Identity",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1556.008",
+    "ntype": "attack",
+    "label": "Network Provider DLL",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1556.009",
+    "ntype": "attack",
+    "label": "Conditional Access Policies",
+    "base": "T1556"
+  },
+  {
+    "id": "attack:T1557",
+    "ntype": "attack",
+    "label": "Adversary-in-the-Middle",
+    "base": "T1557"
+  },
+  {
+    "id": "attack:T1557.001",
+    "ntype": "attack",
+    "label": "LLMNR/NBT-NS Poisoning and SMB Relay",
+    "base": "T1557"
+  },
+  {
+    "id": "attack:T1557.002",
+    "ntype": "attack",
+    "label": "ARP Cache Poisoning",
+    "base": "T1557"
+  },
+  {
+    "id": "attack:T1557.003",
+    "ntype": "attack",
+    "label": "DHCP Spoofing",
+    "base": "T1557"
+  },
+  {
+    "id": "attack:T1557.004",
+    "ntype": "attack",
+    "label": "Evil Twin",
+    "base": "T1557"
+  },
+  {
+    "id": "attack:T1558",
+    "ntype": "attack",
+    "label": "Steal or Forge Kerberos Tickets",
+    "base": "T1558"
+  },
+  {
+    "id": "attack:T1558.001",
+    "ntype": "attack",
+    "label": "Golden Ticket",
+    "base": "T1558"
+  },
+  {
+    "id": "attack:T1558.002",
+    "ntype": "attack",
+    "label": "Silver Ticket",
+    "base": "T1558"
+  },
+  {
+    "id": "attack:T1558.003",
+    "ntype": "attack",
+    "label": "Kerberoasting",
+    "base": "T1558"
+  },
+  {
+    "id": "attack:T1558.004",
+    "ntype": "attack",
+    "label": "AS-REP Roasting",
+    "base": "T1558"
+  },
+  {
+    "id": "attack:T1558.005",
+    "ntype": "attack",
+    "label": "Ccache Files",
+    "base": "T1558"
+  },
+  {
+    "id": "attack:T1560",
+    "ntype": "attack",
+    "label": "Archive Collected Data",
+    "base": "T1560"
+  },
+  {
+    "id": "attack:T1560.001",
+    "ntype": "attack",
+    "label": "Archive via Utility",
+    "base": "T1560"
+  },
+  {
+    "id": "attack:T1560.002",
+    "ntype": "attack",
+    "label": "Archive via Library",
+    "base": "T1560"
+  },
+  {
+    "id": "attack:T1560.003",
+    "ntype": "attack",
+    "label": "Archive via Custom Method",
+    "base": "T1560"
+  },
+  {
+    "id": "attack:T1561",
+    "ntype": "attack",
+    "label": "Disk Wipe",
+    "base": "T1561"
+  },
+  {
+    "id": "attack:T1561.001",
+    "ntype": "attack",
+    "label": "Disk Content Wipe",
+    "base": "T1561"
+  },
+  {
+    "id": "attack:T1561.002",
+    "ntype": "attack",
+    "label": "Disk Structure Wipe",
+    "base": "T1561"
+  },
+  {
+    "id": "attack:T1562",
+    "ntype": "attack",
+    "label": "Impair Defenses",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1562.001",
+    "ntype": "attack",
+    "label": "Disable or Modify Tools",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1562.002",
+    "ntype": "attack",
+    "label": "Disable Windows Event Logging",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1562.003",
+    "ntype": "attack",
+    "label": "Impair Command History Logging",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1562.004",
+    "ntype": "attack",
+    "label": "Disable or Modify System Firewall",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1562.007",
+    "ntype": "attack",
+    "label": "Disable or Modify Cloud Firewall",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1562.008",
+    "ntype": "attack",
+    "label": "Disable or Modify Cloud Logs",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1562.009",
+    "ntype": "attack",
+    "label": "Safe Mode Boot",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1562.010",
+    "ntype": "attack",
+    "label": "Downgrade Attack",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1562.013",
+    "ntype": "attack",
+    "label": "Disable or Modify Network Device Firewall",
+    "base": "T1562"
+  },
+  {
+    "id": "attack:T1563",
+    "ntype": "attack",
+    "label": "Remote Service Session Hijacking",
+    "base": "T1563"
+  },
+  {
+    "id": "attack:T1563.001",
+    "ntype": "attack",
+    "label": "SSH Hijacking",
+    "base": "T1563"
+  },
+  {
+    "id": "attack:T1563.002",
+    "ntype": "attack",
+    "label": "RDP Hijacking",
+    "base": "T1563"
+  },
+  {
+    "id": "attack:T1564",
+    "ntype": "attack",
+    "label": "Hide Artifacts",
+    "base": "T1564"
+  },
+  {
+    "id": "attack:T1564.002",
+    "ntype": "attack",
+    "label": "Hidden Users",
+    "base": "T1564"
+  },
+  {
+    "id": "attack:T1564.003",
+    "ntype": "attack",
+    "label": "Hidden Window",
+    "base": "T1564"
+  },
+  {
+    "id": "attack:T1564.005",
+    "ntype": "attack",
+    "label": "Hidden File System",
+    "base": "T1564"
+  },
+  {
+    "id": "attack:T1564.006",
+    "ntype": "attack",
+    "label": "Run Virtual Instance",
+    "base": "T1564"
+  },
+  {
+    "id": "attack:T1564.007",
+    "ntype": "attack",
+    "label": "VBA Stomping",
+    "base": "T1564"
+  },
+  {
+    "id": "attack:T1564.008",
+    "ntype": "attack",
+    "label": "Email Hiding Rules",
+    "base": "T1564"
+  },
+  {
+    "id": "attack:T1564.009",
+    "ntype": "attack",
+    "label": "Resource Forking",
+    "base": "T1564"
+  },
+  {
+    "id": "attack:T1565",
+    "ntype": "attack",
+    "label": "Data Manipulation",
+    "base": "T1565"
+  },
+  {
+    "id": "attack:T1565.001",
+    "ntype": "attack",
+    "label": "Stored Data Manipulation",
+    "base": "T1565"
+  },
+  {
+    "id": "attack:T1565.002",
+    "ntype": "attack",
+    "label": "Transmitted Data Manipulation",
+    "base": "T1565"
+  },
+  {
+    "id": "attack:T1565.003",
+    "ntype": "attack",
+    "label": "Runtime Data Manipulation",
+    "base": "T1565"
+  },
+  {
+    "id": "attack:T1566",
+    "ntype": "attack",
+    "label": "Phishing",
+    "base": "T1566"
+  },
+  {
+    "id": "attack:T1566.001",
+    "ntype": "attack",
+    "label": "Spearphishing Attachment",
+    "base": "T1566"
+  },
+  {
+    "id": "attack:T1566.002",
+    "ntype": "attack",
+    "label": "Spearphishing Link",
+    "base": "T1566"
+  },
+  {
+    "id": "attack:T1566.003",
+    "ntype": "attack",
+    "label": "Spearphishing via Service",
+    "base": "T1566"
+  },
+  {
+    "id": "attack:T1567",
+    "ntype": "attack",
+    "label": "Exfiltration Over Web Service",
+    "base": "T1567"
+  },
+  {
+    "id": "attack:T1567.001",
+    "ntype": "attack",
+    "label": "Exfiltration to Code Repository",
+    "base": "T1567"
+  },
+  {
+    "id": "attack:T1567.002",
+    "ntype": "attack",
+    "label": "Exfiltration to Cloud Storage",
+    "base": "T1567"
+  },
+  {
+    "id": "attack:T1567.003",
+    "ntype": "attack",
+    "label": "Exfiltration to Text Storage Sites",
+    "base": "T1567"
+  },
+  {
+    "id": "attack:T1567.004",
+    "ntype": "attack",
+    "label": "Exfiltration Over Webhook",
+    "base": "T1567"
+  },
+  {
+    "id": "attack:T1568",
+    "ntype": "attack",
+    "label": "Dynamic Resolution",
+    "base": "T1568"
+  },
+  {
+    "id": "attack:T1568.001",
+    "ntype": "attack",
+    "label": "Fast Flux DNS",
+    "base": "T1568"
+  },
+  {
+    "id": "attack:T1568.002",
+    "ntype": "attack",
+    "label": "Domain Generation Algorithms",
+    "base": "T1568"
+  },
+  {
+    "id": "attack:T1568.003",
+    "ntype": "attack",
+    "label": "DNS Calculation",
+    "base": "T1568"
+  },
+  {
+    "id": "attack:T1570",
+    "ntype": "attack",
+    "label": "Lateral Tool Transfer",
+    "base": "T1570"
+  },
+  {
+    "id": "attack:T1571",
+    "ntype": "attack",
+    "label": "Non-Standard Port",
+    "base": "T1571"
+  },
+  {
+    "id": "attack:T1572",
+    "ntype": "attack",
+    "label": "Protocol Tunneling",
+    "base": "T1572"
+  },
+  {
+    "id": "attack:T1573",
+    "ntype": "attack",
+    "label": "Encrypted Channel",
+    "base": "T1573"
+  },
+  {
+    "id": "attack:T1573.001",
+    "ntype": "attack",
+    "label": "Symmetric Cryptography",
+    "base": "T1573"
+  },
+  {
+    "id": "attack:T1573.002",
+    "ntype": "attack",
+    "label": "Asymmetric Cryptography",
+    "base": "T1573"
+  },
+  {
+    "id": "attack:T1574",
+    "ntype": "attack",
+    "label": "Hijack Execution Flow",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.001",
+    "ntype": "attack",
+    "label": "DLL",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.002",
+    "ntype": "attack",
+    "label": "DLL Side-Loading",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.004",
+    "ntype": "attack",
+    "label": "Dylib Hijacking",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.005",
+    "ntype": "attack",
+    "label": "Executable Installer File Permissions Weakness",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.006",
+    "ntype": "attack",
+    "label": "Dynamic Linker Hijacking",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.007",
+    "ntype": "attack",
+    "label": "Path Interception by PATH Environment Variable",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.008",
+    "ntype": "attack",
+    "label": "Path Interception by Search Order Hijacking",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.009",
+    "ntype": "attack",
+    "label": "Path Interception by Unquoted Path",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.010",
+    "ntype": "attack",
+    "label": "Services File Permissions Weakness",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.011",
+    "ntype": "attack",
+    "label": "Services Registry Permissions Weakness",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1574.012",
+    "ntype": "attack",
+    "label": "COR_PROFILER",
+    "base": "T1574"
+  },
+  {
+    "id": "attack:T1578",
+    "ntype": "attack",
+    "label": "Modify Cloud Compute Infrastructure",
+    "base": "T1578"
+  },
+  {
+    "id": "attack:T1578.002",
+    "ntype": "attack",
+    "label": "Create Cloud Instance",
+    "base": "T1578"
+  },
+  {
+    "id": "attack:T1578.003",
+    "ntype": "attack",
+    "label": "Delete Cloud Instance",
+    "base": "T1578"
+  },
+  {
+    "id": "attack:T1578.004",
+    "ntype": "attack",
+    "label": "Revert Cloud Instance",
+    "base": "T1578"
+  },
+  {
+    "id": "attack:T1578.005",
+    "ntype": "attack",
+    "label": "Modify Cloud Compute Configurations",
+    "base": "T1578"
+  },
+  {
+    "id": "attack:T1606",
+    "ntype": "attack",
+    "label": "Forge Web Credentials",
+    "base": "T1606"
+  },
+  {
+    "id": "attack:T1606.001",
+    "ntype": "attack",
+    "label": "Web Cookies",
+    "base": "T1606"
+  },
+  {
+    "id": "attack:T1606.002",
+    "ntype": "attack",
+    "label": "SAML Tokens",
+    "base": "T1606"
+  },
+  {
+    "id": "attack:T1614",
+    "ntype": "attack",
+    "label": "System Location Discovery",
+    "base": "T1614"
+  },
+  {
+    "id": "attack:T1614.001",
+    "ntype": "attack",
+    "label": "System Language Discovery",
+    "base": "T1614"
+  },
+  {
+    "id": "attack:T1615",
+    "ntype": "attack",
+    "label": "Group Policy Discovery",
+    "base": "T1615"
+  },
+  {
+    "id": "attack:T1619",
+    "ntype": "attack",
+    "label": "Cloud Storage Object Discovery",
+    "base": "T1619"
+  },
+  {
+    "id": "attack:T1620",
+    "ntype": "attack",
+    "label": "Reflective Code Loading",
+    "base": "T1620"
+  },
+  {
+    "id": "attack:T1621",
+    "ntype": "attack",
+    "label": "Multi-Factor Authentication Request Generation",
+    "base": "T1621"
+  },
+  {
+    "id": "attack:T1649",
+    "ntype": "attack",
+    "label": "Steal or Forge Authentication Certificates",
+    "base": "T1649"
+  },
+  {
+    "id": "attack:T1666",
+    "ntype": "attack",
+    "label": "Modify Cloud Resource Hierarchy",
+    "base": "T1666"
+  },
+  {
+    "id": "attack:tactic/Collection",
+    "ntype": "attack_tactic",
+    "label": "Collection"
+  },
+  {
+    "id": "attack:tactic/Command And Control",
+    "ntype": "attack_tactic",
+    "label": "Command And Control"
+  },
+  {
+    "id": "attack:tactic/Credential Access",
+    "ntype": "attack_tactic",
+    "label": "Credential Access"
+  },
+  {
+    "id": "attack:tactic/Defense Evasion",
+    "ntype": "attack_tactic",
+    "label": "Defense Evasion"
+  },
+  {
+    "id": "attack:tactic/Discovery",
+    "ntype": "attack_tactic",
+    "label": "Discovery"
+  },
+  {
+    "id": "attack:tactic/Execution",
+    "ntype": "attack_tactic",
+    "label": "Execution"
+  },
+  {
+    "id": "attack:tactic/Exfiltration",
+    "ntype": "attack_tactic",
+    "label": "Exfiltration"
+  },
+  {
+    "id": "attack:tactic/Impact",
+    "ntype": "attack_tactic",
+    "label": "Impact"
+  },
+  {
+    "id": "attack:tactic/Initial Access",
+    "ntype": "attack_tactic",
+    "label": "Initial Access"
+  },
+  {
+    "id": "attack:tactic/Lateral Movement",
+    "ntype": "attack_tactic",
+    "label": "Lateral Movement"
+  },
+  {
+    "id": "attack:tactic/Persistence",
+    "ntype": "attack_tactic",
+    "label": "Persistence"
+  },
+  {
+    "id": "attack:tactic/Privilege Escalation",
+    "ntype": "attack_tactic",
+    "label": "Privilege Escalation"
+  },
+  {
+    "id": "d3f:AccessControlConfiguration",
+    "ntype": "artifact",
+    "label": "Access Control Configuration"
+  },
+  {
+    "id": "d3f:AccessControlGroup",
+    "ntype": "d3fend_event",
+    "label": "Access Control Group"
+  },
+  {
+    "id": "d3f:AccessMediation",
+    "ntype": "defense",
+    "label": "Access Mediation",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:AccessModeling",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-AM"
+  },
+  {
+    "id": "d3f:AccessPolicyAdministration",
+    "ntype": "defense",
+    "label": "Access Policy Administration",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:AccessToken",
+    "ntype": "artifact",
+    "label": "Access Token"
+  },
+  {
+    "id": "d3f:AccountLocking",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-AL"
+  },
+  {
+    "id": "d3f:AdministrativeNetworkActivityAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-ANAA"
+  },
+  {
+    "id": "d3f:AdministrativeNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Administrative Network Traffic"
+  },
+  {
+    "id": "d3f:Agent",
+    "ntype": "d3fend_event",
+    "label": "Agent"
+  },
+  {
+    "id": "d3f:AgentAuthentication",
+    "ntype": "defense",
+    "label": "Agent Authentication",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:Application",
+    "ntype": "d3fend_event",
+    "label": "Application"
+  },
+  {
+    "id": "d3f:Application-basedProcessIsolation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-ABPI"
+  },
+  {
+    "id": "d3f:ApplicationConfiguration",
+    "ntype": "artifact",
+    "label": "Application Configuration"
+  },
+  {
+    "id": "d3f:ApplicationConfigurationDatabase",
+    "ntype": "artifact",
+    "label": "Application Configuration Database"
+  },
+  {
+    "id": "d3f:ApplicationConfigurationFile",
+    "ntype": "artifact",
+    "label": "Application Configuration File"
+  },
+  {
+    "id": "d3f:ApplicationConfigurationHardening",
+    "ntype": "defense",
+    "label": "Application Configuration Hardening"
+  },
+  {
+    "id": "d3f:ApplicationEvent",
+    "ntype": "d3fend_event",
+    "label": "Application Event"
+  },
+  {
+    "id": "d3f:ApplicationExceptionMonitoring",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-AEM"
+  },
+  {
+    "id": "d3f:ApplicationHardening",
+    "ntype": "defense",
+    "label": "Application Hardening",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:ArchiveFile",
+    "ntype": "artifact",
+    "label": "Archive File"
+  },
+  {
+    "id": "d3f:AssetInventory",
+    "ntype": "defense",
+    "label": "Asset Inventory",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:AudioInputDevice",
+    "ntype": "artifact",
+    "label": "Audio Input Device"
+  },
+  {
+    "id": "d3f:AuthenticationCacheInvalidation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-ANCI"
+  },
+  {
+    "id": "d3f:AuthenticationEvent",
+    "ntype": "d3fend_event",
+    "label": "Authentication Event"
+  },
+  {
+    "id": "d3f:AuthenticationEventThresholding",
+    "ntype": "defense",
+    "label": "Authentication Event Thresholding"
+  },
+  {
+    "id": "d3f:AuthenticationLog",
+    "ntype": "artifact",
+    "label": "Authentication Log"
+  },
+  {
+    "id": "d3f:AuthenticationService",
+    "ntype": "artifact",
+    "label": "Authentication Service"
+  },
+  {
+    "id": "d3f:AuthorizationEvent",
+    "ntype": "d3fend_event",
+    "label": "Authorization Event"
+  },
+  {
+    "id": "d3f:AuthorizationEventThresholding",
+    "ntype": "defense",
+    "label": "Authorization Event Thresholding"
+  },
+  {
+    "id": "d3f:BiometricAuthentication",
+    "ntype": "defense",
+    "label": "Biometric Authentication"
+  },
+  {
+    "id": "d3f:BootLoader",
+    "ntype": "artifact",
+    "label": "Boot Loader"
+  },
+  {
+    "id": "d3f:BootloaderAuthentication",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-BA"
+  },
+  {
+    "id": "d3f:BroadcastDomainIsolation",
+    "ntype": "defense",
+    "label": "Broadcast Domain Isolation"
+  },
+  {
+    "id": "d3f:BrowserExtension",
+    "ntype": "artifact",
+    "label": "Browser Extension"
+  },
+  {
+    "id": "d3f:CCI-000015_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000015",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000016_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000016",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000017_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000017",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000018_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000018",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000025_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000025",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000027_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000027",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000029_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000029",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000030_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000030",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000032_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000032",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000034_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000034",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000035_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000035",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000037_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000037",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000040_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000040",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000044_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000044",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000047_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000047",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000056_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000056",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000057_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000057",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000058_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000058",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000060_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000060",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000066_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000066",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000067_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000067",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000068_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000068",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000071_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000071",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000139_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000139",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000143_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000143",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000144_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000144",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000162_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000162",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000163_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000163",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000164_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000164",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000185_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000185",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000186_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000186",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000187_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000187",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000192_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000192",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000193_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000193",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000194_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000194",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000195_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000195",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000196_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000196",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000197_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000197",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000198_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000198",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000199_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000199",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000200_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000200",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000205_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000205",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000213_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000213",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000218_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000218",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000219_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000219",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000226_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000226",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000346_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000346",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000352_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000352",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000374_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000374",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000381_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000381",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000382_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000382",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000386_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000386",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000417_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000417",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000663_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000663",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000764_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000764",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000765_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000765",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000766_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000766",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000767_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000767",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000768_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000768",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000771_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000771",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000772_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000772",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000774_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000774",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000776_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000776",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000804_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000804",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000831_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000831",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000877_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000877",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000880_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000880",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000884_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000884",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-000888_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-000888",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001009_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001009",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001019_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001019",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001067_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001067",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001069_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001069",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001082_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001082",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001083_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001083",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001084_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001084",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001085_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001085",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001086_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001086",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001087_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001087",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001089_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001089",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001090_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001090",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001092_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001092",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001094_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001094",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001096_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001096",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001109_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001109",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001111_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001111",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001115_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001115",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001117_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001117",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001118_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001118",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001124_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001124",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001125_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001125",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001127_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001127",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001128_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001128",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001133_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001133",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001144_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001144",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001145_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001145",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001146_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001146",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001147_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001147",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001150_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001150",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001166_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001166",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001169_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001169",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001170_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001170",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001178_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001178",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001185_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001185",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001199_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001199",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001200_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001200",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001210_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001210",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001211_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001211",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001233_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001233",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001237_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001237",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001239_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001239",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001242_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001242",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001262_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001262",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001297_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001297",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001305_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001305",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001310_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001310",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001350_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001350",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001356_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001356",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001368_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001368",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001372_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001372",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001373_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001373",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001374_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001374",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001376_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001376",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001377_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001377",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001399_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001399",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001400_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001400",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001401_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001401",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001403_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001403",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001404_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001404",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001405_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001405",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001414_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001414",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001424_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001424",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001425_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001425",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001426_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001426",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001427_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001427",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001428_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001428",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001436_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001436",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001452_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001452",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001453_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001453",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001454_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001454",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001494_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001494",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001495_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001495",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001496_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001496",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001499_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001499",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001555_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001555",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001556_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001556",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001557_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001557",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001574_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001574",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001589_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001589",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001619_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001619",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001632_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001632",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001662_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001662",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001668_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001668",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001677_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001677",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001682_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001682",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001683_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001683",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001684_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001684",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001685_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001685",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001686_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001686",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001695_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001695",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001744_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001744",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001749_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001749",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001762_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001762",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001764_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001764",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001767_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001767",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001774_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001774",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001811_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001811",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001812_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001812",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001813_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001813",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001855_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001855",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001858_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001858",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001936_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001936",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001937_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001937",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001941_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001941",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001953_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001953",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001954_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001954",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001957_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001957",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-001991_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-001991",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002005_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002005",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002009_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002009",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002010_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002010",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002015_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002015",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002016_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002016",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002041_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002041",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002145_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002145",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002178_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002178",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002179_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002179",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002201_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002201",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002205_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002205",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002207_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002207",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002211_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002211",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002218_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002218",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002233_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002233",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002235_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002235",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002238_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002238",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002262_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002262",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002263_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002263",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002264_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002264",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002272_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002272",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002277_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002277",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002281_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002281",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002282_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002282",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002283_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002283",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002284_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002284",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002289_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002289",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002290_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002290",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002302_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002302",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002306_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002306",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002307_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002307",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002308_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002308",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002309_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002309",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002322_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002322",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002346_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002346",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002347_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002347",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002353_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002353",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002355_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002355",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002357_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002357",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002358_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002358",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002359_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002359",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002361_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002361",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002363_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002363",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002364_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002364",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002381_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002381",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002382_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002382",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002384_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002384",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002385_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002385",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002394_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002394",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002397_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002397",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002400_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002400",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002403_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002403",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002409_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002409",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002411_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002411",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002420_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002420",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002421_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002421",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002422_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002422",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002423_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002423",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002425_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002425",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002426_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002426",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002460_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002460",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002462_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002462",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002463_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002463",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002464_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002464",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002465_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002465",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002466_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002466",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002467_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002467",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002468_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002468",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002470_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002470",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002475_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002475",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002476_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002476",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002530_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002530",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002531_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002531",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002533_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002533",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002536_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002536",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002546_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002546",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002605_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002605",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002607_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002607",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002613_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002613",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002614_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002614",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002617_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002617",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002618_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002618",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002630_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002630",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002631_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002631",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002661_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002661",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002662_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002662",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002684_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002684",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002688_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002688",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002689_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002689",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002690_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002690",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002691_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002691",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002710_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002710",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002711_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002711",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002712_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002712",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002715_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002715",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002716_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002716",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002717_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002717",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002718_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002718",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002723_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002723",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002724_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002724",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002726_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002726",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002729_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002729",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002740_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002740",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002743_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002743",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002746_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002746",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002748_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002748",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002749_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002749",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002771_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002771",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002824_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002824",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002883_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002883",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002890_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002890",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-002891_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-002891",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:CCI-003123_v2022-04-05",
+    "ntype": "control",
+    "label": "CCI-003123",
+    "control_kind": "cci"
+  },
+  {
+    "id": "d3f:Certificate",
+    "ntype": "d3fend_event",
+    "label": "Certificate"
+  },
+  {
+    "id": "d3f:Certificate-basedAuthentication",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CBAN"
+  },
+  {
+    "id": "d3f:CertificateFile",
+    "ntype": "artifact",
+    "label": "Certificate File"
+  },
+  {
+    "id": "d3f:CertificatePinning",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CP"
+  },
+  {
+    "id": "d3f:CertificateRotation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CERO"
+  },
+  {
+    "id": "d3f:ChangeDefaultPassword",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CDP"
+  },
+  {
+    "id": "d3f:Client-serverPayloadProfiling",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CSPP"
+  },
+  {
+    "id": "d3f:ClientApplication",
+    "ntype": "artifact",
+    "label": "Client Application"
+  },
+  {
+    "id": "d3f:CloudConfiguration",
+    "ntype": "artifact",
+    "label": "Cloud Configuration"
+  },
+  {
+    "id": "d3f:CloudInstanceMetadata",
+    "ntype": "artifact",
+    "label": "Cloud Instance Metadata"
+  },
+  {
+    "id": "d3f:CloudStorage",
+    "ntype": "d3fend_event",
+    "label": "Cloud Storage"
+  },
+  {
+    "id": "d3f:CloudUserAccount",
+    "ntype": "artifact",
+    "label": "Cloud User Account"
+  },
+  {
+    "id": "d3f:CodeRepository",
+    "ntype": "artifact",
+    "label": "Code Repository"
+  },
+  {
+    "id": "d3f:CommandHistoryLog",
+    "ntype": "artifact",
+    "label": "Command History Log"
+  },
+  {
+    "id": "d3f:CommandHistoryLogFile",
+    "ntype": "artifact",
+    "label": "Command History Log File"
+  },
+  {
+    "id": "d3f:Compiler",
+    "ntype": "artifact",
+    "label": "Compiler"
+  },
+  {
+    "id": "d3f:CompilerConfigurationFile",
+    "ntype": "artifact",
+    "label": "Compiler Configuration File"
+  },
+  {
+    "id": "d3f:ComputerNetworkNode",
+    "ntype": "d3fend_event",
+    "label": "Computer Network Node"
+  },
+  {
+    "id": "d3f:ConfigurationInventory",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CI"
+  },
+  {
+    "id": "d3f:ConfigurationResource",
+    "ntype": "artifact",
+    "label": "Configuration Resource"
+  },
+  {
+    "id": "d3f:ConnectionAttemptAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CAA"
+  },
+  {
+    "id": "d3f:ContainerImage",
+    "ntype": "d3fend_event",
+    "label": "Container Image"
+  },
+  {
+    "id": "d3f:ContainerImageAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CIA"
+  },
+  {
+    "id": "d3f:ContainerProcess",
+    "ntype": "d3fend_event",
+    "label": "Container Process"
+  },
+  {
+    "id": "d3f:ContentFiltering",
+    "ntype": "defense",
+    "label": "Content Filtering",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:ContentQuarantine",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CQ"
+  },
+  {
+    "id": "d3f:CopyToken",
+    "ntype": "artifact",
+    "label": "Copy Token"
+  },
+  {
+    "id": "d3f:CreateFile",
+    "ntype": "artifact",
+    "label": "Create File"
+  },
+  {
+    "id": "d3f:CreateProcess",
+    "ntype": "artifact",
+    "label": "Create Process"
+  },
+  {
+    "id": "d3f:CreateSocket",
+    "ntype": "artifact",
+    "label": "Create Socket"
+  },
+  {
+    "id": "d3f:CreateThread",
+    "ntype": "artifact",
+    "label": "Create Thread"
+  },
+  {
+    "id": "d3f:Credential",
+    "ntype": "artifact",
+    "label": "Credential"
+  },
+  {
+    "id": "d3f:CredentialCompromiseScopeAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CCSA"
+  },
+  {
+    "id": "d3f:CredentialEviction",
+    "ntype": "defense",
+    "label": "Credential Eviction",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:CredentialHardening",
+    "ntype": "defense",
+    "label": "Credential Hardening",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:CredentialManagementSystem",
+    "ntype": "artifact",
+    "label": "Credential Management System"
+  },
+  {
+    "id": "d3f:CredentialRevocation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CR"
+  },
+  {
+    "id": "d3f:CredentialScrubbing",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CS"
+  },
+  {
+    "id": "d3f:CredentialTransmissionScoping",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-CTS"
+  },
+  {
+    "id": "d3f:CustomArchiveFile",
+    "ntype": "artifact",
+    "label": "Custom Archive File"
+  },
+  {
+    "id": "d3f:DHCPEvent",
+    "ntype": "d3fend_event",
+    "label": "DHCP Event"
+  },
+  {
+    "id": "d3f:DHCPNetworkTraffic",
+    "ntype": "artifact",
+    "label": "DHCP Network Traffic"
+  },
+  {
+    "id": "d3f:DNSAllowlisting",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DNSAL"
+  },
+  {
+    "id": "d3f:DNSDenylisting",
+    "ntype": "defense",
+    "label": "DNS Denylisting"
+  },
+  {
+    "id": "d3f:DNSEvent",
+    "ntype": "d3fend_event",
+    "label": "DNS Event"
+  },
+  {
+    "id": "d3f:DNSLookup",
+    "ntype": "d3fend_event",
+    "label": "DNS Lookup"
+  },
+  {
+    "id": "d3f:DNSNetworkTraffic",
+    "ntype": "artifact",
+    "label": "DNS Network Traffic"
+  },
+  {
+    "id": "d3f:DNSTrafficAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DNSTA"
+  },
+  {
+    "id": "d3f:DataInventory",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DI"
+  },
+  {
+    "id": "d3f:Database",
+    "ntype": "artifact",
+    "label": "Database"
+  },
+  {
+    "id": "d3f:DatabaseFile",
+    "ntype": "artifact",
+    "label": "Database File"
+  },
+  {
+    "id": "d3f:DatabaseQuery",
+    "ntype": "artifact",
+    "label": "Database Query"
+  },
+  {
+    "id": "d3f:DatabaseQueryStringAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DQSA"
+  },
+  {
+    "id": "d3f:DatabaseRecord",
+    "ntype": "artifact",
+    "label": "Database Record"
+  },
+  {
+    "id": "d3f:DeadCodeElimination",
+    "ntype": "defense",
+    "label": "Dead Code Elimination"
+  },
+  {
+    "id": "d3f:DecoyArtifact",
+    "ntype": "artifact",
+    "label": "Decoy Artifact"
+  },
+  {
+    "id": "d3f:DecoyEnvironment",
+    "ntype": "defense",
+    "label": "Decoy Environment",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:DecoyFile",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DF"
+  },
+  {
+    "id": "d3f:DecoyNetworkResource",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DNR"
+  },
+  {
+    "id": "d3f:DecoyObject",
+    "ntype": "defense",
+    "label": "Decoy Object",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:DecoyUserCredential",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DUC"
+  },
+  {
+    "id": "d3f:DefaultUserAccount",
+    "ntype": "artifact",
+    "label": "Default User Account"
+  },
+  {
+    "id": "d3f:DetectionEvent",
+    "ntype": "d3fend_event",
+    "label": "Detection Event"
+  },
+  {
+    "id": "d3f:DigitalCamera",
+    "ntype": "artifact",
+    "label": "Digital Camera"
+  },
+  {
+    "id": "d3f:DigitalFingerprint",
+    "ntype": "d3fend_event",
+    "label": "Digital Fingerprint"
+  },
+  {
+    "id": "d3f:DigitalSystem",
+    "ntype": "artifact",
+    "label": "Digital System"
+  },
+  {
+    "id": "d3f:Directory",
+    "ntype": "artifact",
+    "label": "Directory"
+  },
+  {
+    "id": "d3f:DirectoryService",
+    "ntype": "artifact",
+    "label": "Directory Service"
+  },
+  {
+    "id": "d3f:DisableRemoteAccess",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DRA"
+  },
+  {
+    "id": "d3f:DiskEncryption",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DENCR"
+  },
+  {
+    "id": "d3f:DiskErasure",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DKE"
+  },
+  {
+    "id": "d3f:DiskPartitioning",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DKP"
+  },
+  {
+    "id": "d3f:DocumentFile",
+    "ntype": "artifact",
+    "label": "Document File"
+  },
+  {
+    "id": "d3f:DomainAccountMonitoring",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DAM"
+  },
+  {
+    "id": "d3f:DomainNameReputationAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DNRA"
+  },
+  {
+    "id": "d3f:DomainTrustPolicy",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DTP"
+  },
+  {
+    "id": "d3f:DomainUserAccount",
+    "ntype": "artifact",
+    "label": "Domain User Account"
+  },
+  {
+    "id": "d3f:DriverLoadIntegrityChecking",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DLIC"
+  },
+  {
+    "id": "d3f:DynamicAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-DA"
+  },
+  {
+    "id": "d3f:Email",
+    "ntype": "d3fend_event",
+    "label": "Email"
+  },
+  {
+    "id": "d3f:EmailEvent",
+    "ntype": "d3fend_event",
+    "label": "Email Event"
+  },
+  {
+    "id": "d3f:EmailFiltering",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-EF"
+  },
+  {
+    "id": "d3f:EmailRemoval",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-ER"
+  },
+  {
+    "id": "d3f:EmailRule",
+    "ntype": "artifact",
+    "label": "Email Rule"
+  },
+  {
+    "id": "d3f:EmulatedFileAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-EFA"
+  },
+  {
+    "id": "d3f:EncryptedCredential",
+    "ntype": "artifact",
+    "label": "Encrypted Credential"
+  },
+  {
+    "id": "d3f:EncryptedTunnels",
+    "ntype": "defense",
+    "label": "Encrypted Tunnels"
+  },
+  {
+    "id": "d3f:EndpointHealthBeacon",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-EHB"
+  },
+  {
+    "id": "d3f:EventLog",
+    "ntype": "artifact",
+    "label": "Event Log"
+  },
+  {
+    "id": "d3f:EventLogEvent",
+    "ntype": "d3fend_event",
+    "label": "Event Log Event"
+  },
+  {
+    "id": "d3f:ExceptionHandlerPointerValidation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-EHPV"
+  },
+  {
+    "id": "d3f:ExecutableAllowlisting",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-EAL"
+  },
+  {
+    "id": "d3f:ExecutableBinary",
+    "ntype": "artifact",
+    "label": "Executable Binary"
+  },
+  {
+    "id": "d3f:ExecutableDenylisting",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-EDL"
+  },
+  {
+    "id": "d3f:ExecutableFile",
+    "ntype": "artifact",
+    "label": "Executable File"
+  },
+  {
+    "id": "d3f:ExecutableScript",
+    "ntype": "artifact",
+    "label": "Executable Script"
+  },
+  {
+    "id": "d3f:ExecutionIsolation",
+    "ntype": "defense",
+    "label": "Execution Isolation",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:FTPEvent",
+    "ntype": "d3fend_event",
+    "label": "FTP Event"
+  },
+  {
+    "id": "d3f:File",
+    "ntype": "artifact",
+    "label": "File"
+  },
+  {
+    "id": "d3f:FileAccessPatternAnalysis",
+    "ntype": "defense",
+    "label": "File Access Pattern Analysis"
+  },
+  {
+    "id": "d3f:FileAnalysis",
+    "ntype": "defense",
+    "label": "File Analysis",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:FileCarving",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-FC"
+  },
+  {
+    "id": "d3f:FileContentRules",
+    "ntype": "defense",
+    "label": "File Content Rules"
+  },
+  {
+    "id": "d3f:FileCreationAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-FCA"
+  },
+  {
+    "id": "d3f:FileEncryption",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-FE"
+  },
+  {
+    "id": "d3f:FileEvent",
+    "ntype": "d3fend_event",
+    "label": "File Event"
+  },
+  {
+    "id": "d3f:FileHashReputationAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-FHRA"
+  },
+  {
+    "id": "d3f:FileHashing",
+    "ntype": "defense",
+    "label": "File Hashing"
+  },
+  {
+    "id": "d3f:FileIntegrityMonitoring",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-FIM"
+  },
+  {
+    "id": "d3f:FileSection",
+    "ntype": "artifact",
+    "label": "File Section"
+  },
+  {
+    "id": "d3f:FileTransferNetworkTraffic",
+    "ntype": "artifact",
+    "label": "File Transfer Network Traffic"
+  },
+  {
+    "id": "d3f:Firewall",
+    "ntype": "artifact",
+    "label": "Firewall"
+  },
+  {
+    "id": "d3f:Firmware",
+    "ntype": "artifact",
+    "label": "Firmware"
+  },
+  {
+    "id": "d3f:FirmwareBehaviorAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-FBA"
+  },
+  {
+    "id": "d3f:FirmwareEmbeddedMonitoringCode",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-FEMC"
+  },
+  {
+    "id": "d3f:FirmwareVerification",
+    "ntype": "defense",
+    "label": "Firmware Verification"
+  },
+  {
+    "id": "d3f:GetOpenSockets",
+    "ntype": "artifact",
+    "label": "Get Open Sockets"
+  },
+  {
+    "id": "d3f:GetOpenWindows",
+    "ntype": "artifact",
+    "label": "Get Open Windows"
+  },
+  {
+    "id": "d3f:GetRunningProcesses",
+    "ntype": "artifact",
+    "label": "Get Running Processes"
+  },
+  {
+    "id": "d3f:GetScreenCapture",
+    "ntype": "artifact",
+    "label": "Get Screen Capture"
+  },
+  {
+    "id": "d3f:GetSystemConfigValue",
+    "ntype": "artifact",
+    "label": "Get System Config Value"
+  },
+  {
+    "id": "d3f:GetSystemNetworkConfigValue",
+    "ntype": "artifact",
+    "label": "Get System Network Config Value"
+  },
+  {
+    "id": "d3f:GetSystemTime",
+    "ntype": "artifact",
+    "label": "Get System Time"
+  },
+  {
+    "id": "d3f:GlobalUserAccount",
+    "ntype": "artifact",
+    "label": "Global User Account"
+  },
+  {
+    "id": "d3f:GroupManagementEvent",
+    "ntype": "d3fend_event",
+    "label": "Group Management Event"
+  },
+  {
+    "id": "d3f:GroupPolicy",
+    "ntype": "artifact",
+    "label": "Group Policy"
+  },
+  {
+    "id": "d3f:HTTPEvent",
+    "ntype": "d3fend_event",
+    "label": "HTTP Event"
+  },
+  {
+    "id": "d3f:Hardware-basedProcessIsolation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-HBPI"
+  },
+  {
+    "id": "d3f:Hardware-basedWriteProtection",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-HBWP"
+  },
+  {
+    "id": "d3f:HardwareComponentInventory",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-HCI"
+  },
+  {
+    "id": "d3f:HardwareDevice",
+    "ntype": "d3fend_event",
+    "label": "Hardware Device"
+  },
+  {
+    "id": "d3f:HomoglyphDetection",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-HD"
+  },
+  {
+    "id": "d3f:Host",
+    "ntype": "d3fend_event",
+    "label": "Host"
+  },
+  {
+    "id": "d3f:HostReboot",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-HR"
+  },
+  {
+    "id": "d3f:IOPortRestriction",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-IOPR"
+  },
+  {
+    "id": "d3f:IPCTrafficAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-IPCTA"
+  },
+  {
+    "id": "d3f:IPReputationAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-IPRA"
+  },
+  {
+    "id": "d3f:IdentifierAnalysis",
+    "ntype": "defense",
+    "label": "Identifier Analysis",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:In-memoryPasswordStore",
+    "ntype": "artifact",
+    "label": "In-memory Password Store"
+  },
+  {
+    "id": "d3f:InboundInternetDNSResponseTraffic",
+    "ntype": "d3fend_event",
+    "label": "Inbound Internet DNS Response Traffic"
+  },
+  {
+    "id": "d3f:InboundInternetMailTraffic",
+    "ntype": "artifact",
+    "label": "Inbound Internet Mail Traffic"
+  },
+  {
+    "id": "d3f:InboundInternetNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Inbound Internet Network Traffic"
+  },
+  {
+    "id": "d3f:InboundInternetWebTraffic",
+    "ntype": "d3fend_event",
+    "label": "Inbound Internet Web Traffic"
+  },
+  {
+    "id": "d3f:InboundSessionVolumeAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-ISVA"
+  },
+  {
+    "id": "d3f:InboundTrafficFiltering",
+    "ntype": "defense",
+    "label": "Inbound Traffic Filtering"
+  },
+  {
+    "id": "d3f:InputDevice",
+    "ntype": "artifact",
+    "label": "Input Device"
+  },
+  {
+    "id": "d3f:InputDeviceAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-IDA"
+  },
+  {
+    "id": "d3f:InternetNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Internet Network Traffic"
+  },
+  {
+    "id": "d3f:IntranetAdministrativeNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Intranet Administrative Network Traffic"
+  },
+  {
+    "id": "d3f:IntranetFileTransferTraffic",
+    "ntype": "artifact",
+    "label": "Intranet File Transfer Traffic"
+  },
+  {
+    "id": "d3f:IntranetIPCNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Intranet IPC Network Traffic"
+  },
+  {
+    "id": "d3f:IntranetMulticastNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Intranet Multicast Network Traffic"
+  },
+  {
+    "id": "d3f:IntranetNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Intranet Network Traffic"
+  },
+  {
+    "id": "d3f:IntranetWebNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Intranet Web Network Traffic"
+  },
+  {
+    "id": "d3f:JobFunctionAccessPatternAnalysis",
+    "ntype": "defense",
+    "label": "Job Function Access Pattern Analysis"
+  },
+  {
+    "id": "d3f:JobSchedule",
+    "ntype": "artifact",
+    "label": "Job Schedule"
+  },
+  {
+    "id": "d3f:KerberosTicket",
+    "ntype": "artifact",
+    "label": "Kerberos Ticket"
+  },
+  {
+    "id": "d3f:KerberosTicketGrantingTicket",
+    "ntype": "artifact",
+    "label": "Kerberos Ticket Granting Ticket"
+  },
+  {
+    "id": "d3f:Kernel",
+    "ntype": "d3fend_event",
+    "label": "Kernel"
+  },
+  {
+    "id": "d3f:Kernel-basedProcessIsolation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-KBPI"
+  },
+  {
+    "id": "d3f:KernelEvent",
+    "ntype": "d3fend_event",
+    "label": "Kernel Event"
+  },
+  {
+    "id": "d3f:KernelModule",
+    "ntype": "d3fend_event",
+    "label": "Kernel Module"
+  },
+  {
+    "id": "d3f:KernelModuleEvent",
+    "ntype": "d3fend_event",
+    "label": "Kernel Module Event"
+  },
+  {
+    "id": "d3f:KeyboardInputDevice",
+    "ntype": "artifact",
+    "label": "Keyboard Input Device"
+  },
+  {
+    "id": "d3f:LegacySystem",
+    "ntype": "artifact",
+    "label": "Legacy System"
+  },
+  {
+    "id": "d3f:LoadLibraryEvent",
+    "ntype": "d3fend_event",
+    "label": "Load Library Event"
+  },
+  {
+    "id": "d3f:LocalAccountMonitoring",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-LAM"
+  },
+  {
+    "id": "d3f:LocalFilePermissions",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-LFP"
+  },
+  {
+    "id": "d3f:LocalUserAccount",
+    "ntype": "artifact",
+    "label": "Local User Account"
+  },
+  {
+    "id": "d3f:Log",
+    "ntype": "artifact",
+    "label": "Log"
+  },
+  {
+    "id": "d3f:LoginSession",
+    "ntype": "artifact",
+    "label": "Login Session"
+  },
+  {
+    "id": "d3f:M1013",
+    "ntype": "attack_mitigation",
+    "label": "Application Developer Guidance"
+  },
+  {
+    "id": "d3f:M1015",
+    "ntype": "attack_mitigation",
+    "label": "Active Directory Configuration"
+  },
+  {
+    "id": "d3f:M1016",
+    "ntype": "attack_mitigation",
+    "label": "Vulnerability Scanning"
+  },
+  {
+    "id": "d3f:M1017",
+    "ntype": "attack_mitigation",
+    "label": "User Training"
+  },
+  {
+    "id": "d3f:M1018",
+    "ntype": "attack_mitigation",
+    "label": "User Account Management"
+  },
+  {
+    "id": "d3f:M1019",
+    "ntype": "attack_mitigation",
+    "label": "Threat Intelligence Program"
+  },
+  {
+    "id": "d3f:M1020",
+    "ntype": "attack_mitigation",
+    "label": "SSL/TLS Inspection"
+  },
+  {
+    "id": "d3f:M1021",
+    "ntype": "attack_mitigation",
+    "label": "Restrict Web-Based Content"
+  },
+  {
+    "id": "d3f:M1022",
+    "ntype": "attack_mitigation",
+    "label": "Restrict File and Directory Permissions"
+  },
+  {
+    "id": "d3f:M1024",
+    "ntype": "attack_mitigation",
+    "label": "Restrict Registry Permission"
+  },
+  {
+    "id": "d3f:M1025",
+    "ntype": "attack_mitigation",
+    "label": "Privileged Process Integrity"
+  },
+  {
+    "id": "d3f:M1026",
+    "ntype": "attack_mitigation",
+    "label": "Privileged Account Management"
+  },
+  {
+    "id": "d3f:M1027",
+    "ntype": "attack_mitigation",
+    "label": "Password Policies"
+  },
+  {
+    "id": "d3f:M1028",
+    "ntype": "artifact",
+    "label": "Operating System Configuration"
+  },
+  {
+    "id": "d3f:M1029",
+    "ntype": "attack_mitigation",
+    "label": "Remote Data Storage"
+  },
+  {
+    "id": "d3f:M1030",
+    "ntype": "attack_mitigation",
+    "label": "Network Segmentation"
+  },
+  {
+    "id": "d3f:M1031",
+    "ntype": "attack_mitigation",
+    "label": "Network Intrusion Prevention"
+  },
+  {
+    "id": "d3f:M1032",
+    "ntype": "attack_mitigation",
+    "label": "Multi-factor Authentication"
+  },
+  {
+    "id": "d3f:M1033",
+    "ntype": "attack_mitigation",
+    "label": "Limit Software Installation"
+  },
+  {
+    "id": "d3f:M1034",
+    "ntype": "attack_mitigation",
+    "label": "Limit Hardware Installation"
+  },
+  {
+    "id": "d3f:M1035",
+    "ntype": "attack_mitigation",
+    "label": "Limit Access to Resource Over Network"
+  },
+  {
+    "id": "d3f:M1036",
+    "ntype": "attack_mitigation",
+    "label": "Account Use Policies"
+  },
+  {
+    "id": "d3f:M1037",
+    "ntype": "attack_mitigation",
+    "label": "Filter Network Traffic"
+  },
+  {
+    "id": "d3f:M1038",
+    "ntype": "attack_mitigation",
+    "label": "Execution Prevention"
+  },
+  {
+    "id": "d3f:M1039",
+    "ntype": "attack_mitigation",
+    "label": "Environment Variable Permissions"
+  },
+  {
+    "id": "d3f:M1040",
+    "ntype": "attack_mitigation",
+    "label": "Behavior Prevention on Endpoint"
+  },
+  {
+    "id": "d3f:M1041",
+    "ntype": "attack_mitigation",
+    "label": "Encrypt Sensitive Information"
+  },
+  {
+    "id": "d3f:M1042",
+    "ntype": "attack_mitigation",
+    "label": "Disable or Remove Feature or Program"
+  },
+  {
+    "id": "d3f:M1043",
+    "ntype": "attack_mitigation",
+    "label": "Credential Access Protection"
+  },
+  {
+    "id": "d3f:M1044",
+    "ntype": "attack_mitigation",
+    "label": "Restrict Library Loading"
+  },
+  {
+    "id": "d3f:M1045",
+    "ntype": "attack_mitigation",
+    "label": "Code Signing"
+  },
+  {
+    "id": "d3f:M1046",
+    "ntype": "attack_mitigation",
+    "label": "Boot Integrity"
+  },
+  {
+    "id": "d3f:M1047",
+    "ntype": "attack_mitigation",
+    "label": "Audit"
+  },
+  {
+    "id": "d3f:M1048",
+    "ntype": "attack_mitigation",
+    "label": "Application Isolation and Sandboxing"
+  },
+  {
+    "id": "d3f:M1049",
+    "ntype": "attack_mitigation",
+    "label": "Antivirus/Antimalware"
+  },
+  {
+    "id": "d3f:M1050",
+    "ntype": "attack_mitigation",
+    "label": "Exploit Protection"
+  },
+  {
+    "id": "d3f:M1051",
+    "ntype": "attack_mitigation",
+    "label": "Update Software"
+  },
+  {
+    "id": "d3f:M1052",
+    "ntype": "attack_mitigation",
+    "label": "User Account Control"
+  },
+  {
+    "id": "d3f:M1053",
+    "ntype": "attack_mitigation",
+    "label": "Data Backup"
+  },
+  {
+    "id": "d3f:M1054",
+    "ntype": "attack_mitigation",
+    "label": "Software Configuration"
+  },
+  {
+    "id": "d3f:M1055",
+    "ntype": "attack_mitigation",
+    "label": "Do Not Mitigate"
+  },
+  {
+    "id": "d3f:M1056",
+    "ntype": "attack_mitigation",
+    "label": "Pre-compromise"
+  },
+  {
+    "id": "d3f:MacOSKeychain",
+    "ntype": "artifact",
+    "label": "MacOS Keychain"
+  },
+  {
+    "id": "d3f:MailServer",
+    "ntype": "artifact",
+    "label": "Mail Server"
+  },
+  {
+    "id": "d3f:MemoryBoundaryTracking",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-MBT"
+  },
+  {
+    "id": "d3f:MemoryEvent",
+    "ntype": "d3fend_event",
+    "label": "Memory Event"
+  },
+  {
+    "id": "d3f:MessageAnalysis",
+    "ntype": "defense",
+    "label": "Message Analysis",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:MessageAuthentication",
+    "ntype": "defense",
+    "label": "Message Authentication"
+  },
+  {
+    "id": "d3f:MessageEncryption",
+    "ntype": "defense",
+    "label": "Message Encryption"
+  },
+  {
+    "id": "d3f:MessageTransferAgent",
+    "ntype": "artifact",
+    "label": "Message Transfer Agent"
+  },
+  {
+    "id": "d3f:Metadata",
+    "ntype": "d3fend_event",
+    "label": "Metadata"
+  },
+  {
+    "id": "d3f:MicrosoftHTMLApplication",
+    "ntype": "artifact",
+    "label": "Microsoft HTML Application"
+  },
+  {
+    "id": "d3f:MoveFile",
+    "ntype": "artifact",
+    "label": "Move File"
+  },
+  {
+    "id": "d3f:Multi-factorAuthentication",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-MFA"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-17_8",
+    "ntype": "control",
+    "label": "AC-17(8)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-23",
+    "ntype": "control",
+    "label": "AC-23",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-24_1",
+    "ntype": "control",
+    "label": "AC-24(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-24_2",
+    "ntype": "control",
+    "label": "AC-24(2)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-2_1",
+    "ntype": "control",
+    "label": "AC-2(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-2_13",
+    "ntype": "control",
+    "label": "AC-2(13)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-2_2",
+    "ntype": "control",
+    "label": "AC-2(2)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-2_3",
+    "ntype": "control",
+    "label": "AC-2(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-2_4",
+    "ntype": "control",
+    "label": "AC-2(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-2_5",
+    "ntype": "control",
+    "label": "AC-2(5)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-2_7",
+    "ntype": "control",
+    "label": "AC-2(7)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-2_9",
+    "ntype": "control",
+    "label": "AC-2(9)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-3",
+    "ntype": "control",
+    "label": "AC-3",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-3_8",
+    "ntype": "control",
+    "label": "AC-3(8)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4",
+    "ntype": "control",
+    "label": "AC-4",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_1",
+    "ntype": "control",
+    "label": "AC-4(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_10",
+    "ntype": "control",
+    "label": "AC-4(10)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_11",
+    "ntype": "control",
+    "label": "AC-4(11)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_12",
+    "ntype": "control",
+    "label": "AC-4(12)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_13",
+    "ntype": "control",
+    "label": "AC-4(13)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_14",
+    "ntype": "control",
+    "label": "AC-4(14)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_15",
+    "ntype": "control",
+    "label": "AC-4(15)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_17",
+    "ntype": "control",
+    "label": "AC-4(17)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_19",
+    "ntype": "control",
+    "label": "AC-4(19)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_20",
+    "ntype": "control",
+    "label": "AC-4(20)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_21",
+    "ntype": "control",
+    "label": "AC-4(21)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_26",
+    "ntype": "control",
+    "label": "AC-4(26)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_27",
+    "ntype": "control",
+    "label": "AC-4(27)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_28",
+    "ntype": "control",
+    "label": "AC-4(28)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_29",
+    "ntype": "control",
+    "label": "AC-4(29)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_3",
+    "ntype": "control",
+    "label": "AC-4(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_30",
+    "ntype": "control",
+    "label": "AC-4(30)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_32",
+    "ntype": "control",
+    "label": "AC-4(32)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_4",
+    "ntype": "control",
+    "label": "AC-4(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_5",
+    "ntype": "control",
+    "label": "AC-4(5)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_6",
+    "ntype": "control",
+    "label": "AC-4(6)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-4_8",
+    "ntype": "control",
+    "label": "AC-4(8)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-5",
+    "ntype": "control",
+    "label": "AC-5",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-6",
+    "ntype": "control",
+    "label": "AC-6",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-6_1",
+    "ntype": "control",
+    "label": "AC-6(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-6_10",
+    "ntype": "control",
+    "label": "AC-6(10)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-6_3",
+    "ntype": "control",
+    "label": "AC-6(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-6_4",
+    "ntype": "control",
+    "label": "AC-6(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-6_5",
+    "ntype": "control",
+    "label": "AC-6(5)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-6_6",
+    "ntype": "control",
+    "label": "AC-6(6)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-6_9",
+    "ntype": "control",
+    "label": "AC-6(9)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-7",
+    "ntype": "control",
+    "label": "AC-7",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-7_3",
+    "ntype": "control",
+    "label": "AC-7(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AC-7_4",
+    "ntype": "control",
+    "label": "AC-7(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AU-10_5",
+    "ntype": "control",
+    "label": "AU-10(5)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AU-14_2",
+    "ntype": "control",
+    "label": "AU-14(2)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AU-15",
+    "ntype": "control",
+    "label": "AU-15",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AU-2",
+    "ntype": "control",
+    "label": "AU-2",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AU-2_1",
+    "ntype": "control",
+    "label": "AU-2(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AU-2_2",
+    "ntype": "control",
+    "label": "AU-2(2)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AU-3",
+    "ntype": "control",
+    "label": "AU-3",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_AU-4",
+    "ntype": "control",
+    "label": "AU-4",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_CM-14",
+    "ntype": "control",
+    "label": "CM-14",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_CM-5",
+    "ntype": "control",
+    "label": "CM-5",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_CM-5_1",
+    "ntype": "control",
+    "label": "CM-5(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_CM-5_3",
+    "ntype": "control",
+    "label": "CM-5(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_CM-5_5",
+    "ntype": "control",
+    "label": "CM-5(5)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_CM-5_6",
+    "ntype": "control",
+    "label": "CM-5(6)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_CM-6_3",
+    "ntype": "control",
+    "label": "CM-6(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_IA-2_1",
+    "ntype": "control",
+    "label": "IA-2(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_IA-2_2",
+    "ntype": "control",
+    "label": "IA-2(2)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_IA-2_4",
+    "ntype": "control",
+    "label": "IA-2(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_IA-2_6",
+    "ntype": "control",
+    "label": "IA-2(6)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_IR-4_12",
+    "ntype": "control",
+    "label": "IR-4(12)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_IR-4_13",
+    "ntype": "control",
+    "label": "IR-4(13)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_MA-3_3",
+    "ntype": "control",
+    "label": "MA-3(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_MA-3_4",
+    "ntype": "control",
+    "label": "MA-3(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_MA-3_5",
+    "ntype": "control",
+    "label": "MA-3(5)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_MA-3_6",
+    "ntype": "control",
+    "label": "MA-3(6)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_MA-4_1",
+    "ntype": "control",
+    "label": "MA-4(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_MA-6",
+    "ntype": "control",
+    "label": "MA-6",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_MA-6_1",
+    "ntype": "control",
+    "label": "MA-6(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_MA-6_2",
+    "ntype": "control",
+    "label": "MA-6(2)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_MA-6_3",
+    "ntype": "control",
+    "label": "MA-6(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_RA-3_3",
+    "ntype": "control",
+    "label": "RA-3(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_RA-3_4",
+    "ntype": "control",
+    "label": "RA-3(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_RA-5",
+    "ntype": "control",
+    "label": "RA-5",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_RA-5_2",
+    "ntype": "control",
+    "label": "RA-5(2)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_RA-5_3",
+    "ntype": "control",
+    "label": "RA-5(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_RA-5_4",
+    "ntype": "control",
+    "label": "RA-5(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_RA-5_5",
+    "ntype": "control",
+    "label": "RA-5(5)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_RA-5_6",
+    "ntype": "control",
+    "label": "RA-5(6)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_RA-5_7",
+    "ntype": "control",
+    "label": "RA-5(7)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SA-10_1",
+    "ntype": "control",
+    "label": "SA-10(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SA-10_3",
+    "ntype": "control",
+    "label": "SA-10(3)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SA-10_4",
+    "ntype": "control",
+    "label": "SA-10(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SA-10_5",
+    "ntype": "control",
+    "label": "SA-10(5)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SA-10_6",
+    "ntype": "control",
+    "label": "SA-10(6)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SA-11_1",
+    "ntype": "control",
+    "label": "SA-11(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SA-11_8",
+    "ntype": "control",
+    "label": "SA-11(8)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SA-8_18",
+    "ntype": "control",
+    "label": "SA-8(18)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SA-8_22",
+    "ntype": "control",
+    "label": "SA-8(22)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SC-2",
+    "ntype": "control",
+    "label": "SC-2",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SC-2_1",
+    "ntype": "control",
+    "label": "SC-2(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SC-3",
+    "ntype": "control",
+    "label": "SC-3",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SC-3_1",
+    "ntype": "control",
+    "label": "SC-3(1)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-2_4",
+    "ntype": "control",
+    "label": "SI-2(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-2_5",
+    "ntype": "control",
+    "label": "SI-2(5)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-2_6",
+    "ntype": "control",
+    "label": "SI-2(6)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-3",
+    "ntype": "control",
+    "label": "SI-3",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-3_10",
+    "ntype": "control",
+    "label": "SI-3(10)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-3_4",
+    "ntype": "control",
+    "label": "SI-3(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-3_8",
+    "ntype": "control",
+    "label": "SI-3(8)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-4",
+    "ntype": "control",
+    "label": "SI-4",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-4_2",
+    "ntype": "control",
+    "label": "SI-4(2)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NIST_SP_800-53_R5_SI-4_4",
+    "ntype": "control",
+    "label": "SI-4(4)",
+    "control_kind": "nist_800-53"
+  },
+  {
+    "id": "d3f:NTPEvent",
+    "ntype": "d3fend_event",
+    "label": "NTP Event"
+  },
+  {
+    "id": "d3f:NetworkConnectionEvent",
+    "ntype": "d3fend_event",
+    "label": "Network Connection Event"
+  },
+  {
+    "id": "d3f:NetworkEvent",
+    "ntype": "d3fend_event",
+    "label": "Network Event"
+  },
+  {
+    "id": "d3f:NetworkFileShareResource",
+    "ntype": "artifact",
+    "label": "Network File Share Resource"
+  },
+  {
+    "id": "d3f:NetworkInitScriptFileResource",
+    "ntype": "artifact",
+    "label": "Network Init Script File Resource"
+  },
+  {
+    "id": "d3f:NetworkInterfaceCard",
+    "ntype": "d3fend_event",
+    "label": "Network Interface Card"
+  },
+  {
+    "id": "d3f:NetworkIsolation",
+    "ntype": "defense",
+    "label": "Network Isolation",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:NetworkMapping",
+    "ntype": "defense",
+    "label": "Network Mapping",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:NetworkNode",
+    "ntype": "artifact",
+    "label": "Network Node"
+  },
+  {
+    "id": "d3f:NetworkNodeInventory",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-NNI"
+  },
+  {
+    "id": "d3f:NetworkResource",
+    "ntype": "artifact",
+    "label": "Network Resource"
+  },
+  {
+    "id": "d3f:NetworkSession",
+    "ntype": "d3fend_event",
+    "label": "Network Session"
+  },
+  {
+    "id": "d3f:NetworkTraffic",
+    "ntype": "d3fend_event",
+    "label": "Network Traffic"
+  },
+  {
+    "id": "d3f:NetworkTrafficAnalysis",
+    "ntype": "defense",
+    "label": "Network Traffic Analysis",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:NetworkTrafficCommunityDeviation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-NTCD"
+  },
+  {
+    "id": "d3f:NetworkTrafficFiltering",
+    "ntype": "defense",
+    "label": "Network Traffic Filtering"
+  },
+  {
+    "id": "d3f:NetworkTrafficPolicyMapping",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-NTPM"
+  },
+  {
+    "id": "d3f:NetworkTrafficSignatureAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-NTSA"
+  },
+  {
+    "id": "d3f:ObjectEviction",
+    "ntype": "defense",
+    "label": "Object Eviction",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:ObjectFile",
+    "ntype": "artifact",
+    "label": "Object File"
+  },
+  {
+    "id": "d3f:OfficeApplication",
+    "ntype": "artifact",
+    "label": "Office Application"
+  },
+  {
+    "id": "d3f:OfficeApplicationFile",
+    "ntype": "artifact",
+    "label": "Office Application File"
+  },
+  {
+    "id": "d3f:One-timePassword",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-OTP"
+  },
+  {
+    "id": "d3f:OperatingSystem",
+    "ntype": "d3fend_event",
+    "label": "Operating System"
+  },
+  {
+    "id": "d3f:OperatingSystemConfigurationComponent",
+    "ntype": "artifact",
+    "label": "Operating System Configuration Component"
+  },
+  {
+    "id": "d3f:OperatingSystemConfigurationFile",
+    "ntype": "artifact",
+    "label": "Operating System Configuration File"
+  },
+  {
+    "id": "d3f:OperatingSystemExecutableFile",
+    "ntype": "artifact",
+    "label": "Operating System Executable File"
+  },
+  {
+    "id": "d3f:OperatingSystemFile",
+    "ntype": "artifact",
+    "label": "Operating System File"
+  },
+  {
+    "id": "d3f:OperatingSystemLogFile",
+    "ntype": "artifact",
+    "label": "Operating System Log File"
+  },
+  {
+    "id": "d3f:OperatingSystemMonitoring",
+    "ntype": "defense",
+    "label": "Operating System Monitoring"
+  },
+  {
+    "id": "d3f:OperatingSystemProcess",
+    "ntype": "artifact",
+    "label": "Operating System Process"
+  },
+  {
+    "id": "d3f:OperatingSystemSharedLibraryFile",
+    "ntype": "artifact",
+    "label": "Operating System Shared Library File"
+  },
+  {
+    "id": "d3f:OperationalActivityMapping",
+    "ntype": "defense",
+    "label": "Operational Activity Mapping",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:OperationalProcessMonitoring",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-OPM"
+  },
+  {
+    "id": "d3f:OutboundInternetDNSLookupTraffic",
+    "ntype": "artifact",
+    "label": "Outbound Internet DNS Lookup Traffic"
+  },
+  {
+    "id": "d3f:OutboundInternetEncryptedRemoteTerminalTraffic",
+    "ntype": "artifact",
+    "label": "Outbound Internet Encrypted Remote Terminal Traffic"
+  },
+  {
+    "id": "d3f:OutboundInternetEncryptedTraffic",
+    "ntype": "artifact",
+    "label": "Outbound Internet Encrypted Traffic"
+  },
+  {
+    "id": "d3f:OutboundInternetEncryptedWebTraffic",
+    "ntype": "artifact",
+    "label": "Outbound Internet Encrypted Web Traffic"
+  },
+  {
+    "id": "d3f:OutboundInternetFileTransferTraffic",
+    "ntype": "artifact",
+    "label": "Outbound Internet File Transfer Traffic"
+  },
+  {
+    "id": "d3f:OutboundInternetMailTraffic",
+    "ntype": "artifact",
+    "label": "Outbound Internet Mail Traffic"
+  },
+  {
+    "id": "d3f:OutboundInternetNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Outbound Internet Network Traffic"
+  },
+  {
+    "id": "d3f:OutboundInternetWebTraffic",
+    "ntype": "d3fend_event",
+    "label": "Outbound Internet Web Traffic"
+  },
+  {
+    "id": "d3f:OutboundTrafficFiltering",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-OTF"
+  },
+  {
+    "id": "d3f:PartitionTable",
+    "ntype": "artifact",
+    "label": "Partition Table"
+  },
+  {
+    "id": "d3f:Password",
+    "ntype": "artifact",
+    "label": "Password"
+  },
+  {
+    "id": "d3f:PasswordAuthentication",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PWA"
+  },
+  {
+    "id": "d3f:PasswordFile",
+    "ntype": "artifact",
+    "label": "Password File"
+  },
+  {
+    "id": "d3f:PasswordStore",
+    "ntype": "artifact",
+    "label": "Password Store"
+  },
+  {
+    "id": "d3f:PerHostDownload-UploadRatioAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PHDURA"
+  },
+  {
+    "id": "d3f:PeripheralFirmwareVerification",
+    "ntype": "defense",
+    "label": "Peripheral Firmware Verification"
+  },
+  {
+    "id": "d3f:PermissionGrantingEvent",
+    "ntype": "d3fend_event",
+    "label": "Permission Granting Event"
+  },
+  {
+    "id": "d3f:PhysicalAccessMonitoring",
+    "ntype": "defense",
+    "label": "Physical Access Monitoring",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:PhysicalLocation",
+    "ntype": "d3fend_event",
+    "label": "Physical Location"
+  },
+  {
+    "id": "d3f:PlatformHardening",
+    "ntype": "defense",
+    "label": "Platform Hardening",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:PlatformMonitoring",
+    "ntype": "defense",
+    "label": "Platform Monitoring",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:PointerAuthentication",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PAN"
+  },
+  {
+    "id": "d3f:PowerShellProfileScript",
+    "ntype": "artifact",
+    "label": "PowerShell Profile Script"
+  },
+  {
+    "id": "d3f:Process",
+    "ntype": "d3fend_event",
+    "label": "Process"
+  },
+  {
+    "id": "d3f:ProcessAnalysis",
+    "ntype": "defense",
+    "label": "Process Analysis",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:ProcessCodeSegment",
+    "ntype": "artifact",
+    "label": "Process Code Segment"
+  },
+  {
+    "id": "d3f:ProcessCodeSegmentVerification",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PCSV"
+  },
+  {
+    "id": "d3f:ProcessEnvironmentVariable",
+    "ntype": "artifact",
+    "label": "Process Environment Variable"
+  },
+  {
+    "id": "d3f:ProcessEvent",
+    "ntype": "d3fend_event",
+    "label": "Process Event"
+  },
+  {
+    "id": "d3f:ProcessEviction",
+    "ntype": "defense",
+    "label": "Process Eviction",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:ProcessLineageAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PLA"
+  },
+  {
+    "id": "d3f:ProcessSegment",
+    "ntype": "artifact",
+    "label": "Process Segment"
+  },
+  {
+    "id": "d3f:ProcessSegmentExecutionPrevention",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PSEP"
+  },
+  {
+    "id": "d3f:ProcessSelf-ModificationDetection",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PSMD"
+  },
+  {
+    "id": "d3f:ProcessSuspension",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PS"
+  },
+  {
+    "id": "d3f:ProcessTermination",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PT"
+  },
+  {
+    "id": "d3f:PropertyListFile",
+    "ntype": "artifact",
+    "label": "Property List File"
+  },
+  {
+    "id": "d3f:ProtocolMetadataAnomalyDetection",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-PMAD"
+  },
+  {
+    "id": "d3f:ProxyServer",
+    "ntype": "d3fend_event",
+    "label": "Proxy Server"
+  },
+  {
+    "id": "d3f:RDPEvent",
+    "ntype": "d3fend_event",
+    "label": "RDP Event"
+  },
+  {
+    "id": "d3f:RDPSession",
+    "ntype": "artifact",
+    "label": "RDP Session"
+  },
+  {
+    "id": "d3f:RFShielding",
+    "ntype": "defense",
+    "label": "RF Shielding"
+  },
+  {
+    "id": "d3f:RPCNetworkTraffic",
+    "ntype": "artifact",
+    "label": "RPC Network Traffic"
+  },
+  {
+    "id": "d3f:RPCTrafficAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RTA"
+  },
+  {
+    "id": "d3f:ReadFile",
+    "ntype": "artifact",
+    "label": "Read File"
+  },
+  {
+    "id": "d3f:RegistryKeyDeletion",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RKD"
+  },
+  {
+    "id": "d3f:ReissueCredential",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RIC"
+  },
+  {
+    "id": "d3f:RelayPatternAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RPA"
+  },
+  {
+    "id": "d3f:RemoteAuthenticationService",
+    "ntype": "artifact",
+    "label": "Remote Authentication Service"
+  },
+  {
+    "id": "d3f:RemoteFileAccessMediation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RFAM"
+  },
+  {
+    "id": "d3f:RemoteProcedureCall",
+    "ntype": "d3fend_event",
+    "label": "Remote Procedure Call"
+  },
+  {
+    "id": "d3f:RemoteSession",
+    "ntype": "artifact",
+    "label": "Remote Session"
+  },
+  {
+    "id": "d3f:RemoteTerminalSessionDetection",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RTSD"
+  },
+  {
+    "id": "d3f:RemovableMediaDevice",
+    "ntype": "artifact",
+    "label": "Removable Media Device"
+  },
+  {
+    "id": "d3f:ResourceAccessPatternAnalysis",
+    "ntype": "defense",
+    "label": "Resource Access Pattern Analysis"
+  },
+  {
+    "id": "d3f:ResourceFork",
+    "ntype": "artifact",
+    "label": "Resource Fork"
+  },
+  {
+    "id": "d3f:RestoreAccess",
+    "ntype": "defense",
+    "label": "Restore Access",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:RestoreConfiguration",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RC"
+  },
+  {
+    "id": "d3f:RestoreDatabase",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RD"
+  },
+  {
+    "id": "d3f:RestoreEmail",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RE"
+  },
+  {
+    "id": "d3f:RestoreNetworkAccess",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RNA"
+  },
+  {
+    "id": "d3f:RestoreObject",
+    "ntype": "defense",
+    "label": "Restore Object",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:RestoreSoftware",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RS"
+  },
+  {
+    "id": "d3f:ReverseResolutionIPDenylisting",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-RRID"
+  },
+  {
+    "id": "d3f:SMBEvent",
+    "ntype": "d3fend_event",
+    "label": "SMB Event"
+  },
+  {
+    "id": "d3f:SSHEvent",
+    "ntype": "d3fend_event",
+    "label": "SSH Event"
+  },
+  {
+    "id": "d3f:SSHSession",
+    "ntype": "artifact",
+    "label": "SSH Session"
+  },
+  {
+    "id": "d3f:ScheduledJob",
+    "ntype": "d3fend_event",
+    "label": "Scheduled Job"
+  },
+  {
+    "id": "d3f:ScheduledJobAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SJA"
+  },
+  {
+    "id": "d3f:ScheduledJobEvent",
+    "ntype": "d3fend_event",
+    "label": "Scheduled Job Event"
+  },
+  {
+    "id": "d3f:ScriptExecutionAnalysis",
+    "ntype": "defense",
+    "label": "Script Execution Analysis"
+  },
+  {
+    "id": "d3f:SecondaryStorage",
+    "ntype": "artifact",
+    "label": "Secondary Storage"
+  },
+  {
+    "id": "d3f:SecurityToken",
+    "ntype": "artifact",
+    "label": "Security Token"
+  },
+  {
+    "id": "d3f:SegmentAddressOffsetRandomization",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SAOR"
+  },
+  {
+    "id": "d3f:SenderMTAReputationAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SMRA"
+  },
+  {
+    "id": "d3f:SenderReputationAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SRA"
+  },
+  {
+    "id": "d3f:Sensor",
+    "ntype": "d3fend_event",
+    "label": "Sensor"
+  },
+  {
+    "id": "d3f:ServiceApplication",
+    "ntype": "d3fend_event",
+    "label": "Service Application"
+  },
+  {
+    "id": "d3f:ServiceApplicationProcess",
+    "ntype": "artifact",
+    "label": "Service Application Process"
+  },
+  {
+    "id": "d3f:ServiceBinaryVerification",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SBV"
+  },
+  {
+    "id": "d3f:Session",
+    "ntype": "d3fend_event",
+    "label": "Session"
+  },
+  {
+    "id": "d3f:SessionCookie",
+    "ntype": "d3fend_event",
+    "label": "Session Cookie"
+  },
+  {
+    "id": "d3f:SessionDurationAnalysis",
+    "ntype": "defense",
+    "label": "Session Duration Analysis"
+  },
+  {
+    "id": "d3f:SessionTermination",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-ST"
+  },
+  {
+    "id": "d3f:ShadowStackComparisons",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SSC"
+  },
+  {
+    "id": "d3f:SharedLibraryFile",
+    "ntype": "artifact",
+    "label": "Shared Library File"
+  },
+  {
+    "id": "d3f:Shim",
+    "ntype": "artifact",
+    "label": "Shim"
+  },
+  {
+    "id": "d3f:ShimDatabase",
+    "ntype": "artifact",
+    "label": "Shim Database"
+  },
+  {
+    "id": "d3f:SoftwareDeploymentTool",
+    "ntype": "artifact",
+    "label": "Software Deployment Tool"
+  },
+  {
+    "id": "d3f:SoftwareInventory",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SWI"
+  },
+  {
+    "id": "d3f:SoftwarePackage",
+    "ntype": "d3fend_event",
+    "label": "Software Package"
+  },
+  {
+    "id": "d3f:SoftwareUpdate",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SU"
+  },
+  {
+    "id": "d3f:SourceCodeHardening",
+    "ntype": "defense",
+    "label": "Source Code Hardening",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:StackFrame",
+    "ntype": "artifact",
+    "label": "Stack Frame"
+  },
+  {
+    "id": "d3f:StackFrameCanaryValidation",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SFCV"
+  },
+  {
+    "id": "d3f:Storage",
+    "ntype": "artifact",
+    "label": "Storage"
+  },
+  {
+    "id": "d3f:StoredProcedure",
+    "ntype": "artifact",
+    "label": "Stored Procedure"
+  },
+  {
+    "id": "d3f:StrongPasswordPolicy",
+    "ntype": "defense",
+    "label": "Strong Password Policy"
+  },
+  {
+    "id": "d3f:Subroutine",
+    "ntype": "artifact",
+    "label": "Subroutine"
+  },
+  {
+    "id": "d3f:SymbolicLink",
+    "ntype": "artifact",
+    "label": "Symbolic Link"
+  },
+  {
+    "id": "d3f:SystemCall",
+    "ntype": "artifact",
+    "label": "System Call"
+  },
+  {
+    "id": "d3f:SystemCallFiltering",
+    "ntype": "defense",
+    "label": "System Call Filtering"
+  },
+  {
+    "id": "d3f:SystemConfigurationDatabase",
+    "ntype": "artifact",
+    "label": "System Configuration Database"
+  },
+  {
+    "id": "d3f:SystemConfigurationDatabaseRecord",
+    "ntype": "artifact",
+    "label": "System Configuration Database Record"
+  },
+  {
+    "id": "d3f:SystemConfigurationInitDatabaseRecord",
+    "ntype": "artifact",
+    "label": "System Configuration Init Database Record"
+  },
+  {
+    "id": "d3f:SystemConfigurationPermissions",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SCP"
+  },
+  {
+    "id": "d3f:SystemDaemonMonitoring",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SDM"
+  },
+  {
+    "id": "d3f:SystemFileAnalysis",
+    "ntype": "defense",
+    "label": "System File Analysis"
+  },
+  {
+    "id": "d3f:SystemFirewallConfiguration",
+    "ntype": "artifact",
+    "label": "System Firewall Configuration"
+  },
+  {
+    "id": "d3f:SystemFirmwareVerification",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SFV"
+  },
+  {
+    "id": "d3f:SystemInitConfigAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SICA"
+  },
+  {
+    "id": "d3f:SystemInitConfiguration",
+    "ntype": "artifact",
+    "label": "System Init Configuration"
+  },
+  {
+    "id": "d3f:SystemInitScript",
+    "ntype": "artifact",
+    "label": "System Init Script"
+  },
+  {
+    "id": "d3f:SystemMapping",
+    "ntype": "defense",
+    "label": "System Mapping",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:SystemPasswordDatabase",
+    "ntype": "artifact",
+    "label": "System Password Database"
+  },
+  {
+    "id": "d3f:SystemServiceSoftware",
+    "ntype": "artifact",
+    "label": "System Service Software"
+  },
+  {
+    "id": "d3f:SystemStartupDirectory",
+    "ntype": "artifact",
+    "label": "System Startup Directory"
+  },
+  {
+    "id": "d3f:SystemTimeApplication",
+    "ntype": "artifact",
+    "label": "System Time Application"
+  },
+  {
+    "id": "d3f:SystemVulnerabilityAssessment",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-SYSVA"
+  },
+  {
+    "id": "d3f:T1019",
+    "ntype": "artifact",
+    "label": "System Firmware"
+  },
+  {
+    "id": "d3f:T1592.002",
+    "ntype": "artifact",
+    "label": "Software"
+  },
+  {
+    "id": "d3f:TFTPNetworkTraffic",
+    "ntype": "artifact",
+    "label": "TFTP Network Traffic"
+  },
+  {
+    "id": "d3f:TPMBootIntegrity",
+    "ntype": "defense",
+    "label": "TPM Boot Integrity"
+  },
+  {
+    "id": "d3f:Token-basedAuthentication",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-TBA"
+  },
+  {
+    "id": "d3f:TokenBinding",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-TB"
+  },
+  {
+    "id": "d3f:TransferAgentAuthentication",
+    "ntype": "defense",
+    "label": "Transfer Agent Authentication"
+  },
+  {
+    "id": "d3f:TrustedLibrary",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-TL"
+  },
+  {
+    "id": "d3f:TunnelEvent",
+    "ntype": "d3fend_event",
+    "label": "Tunnel Event"
+  },
+  {
+    "id": "d3f:URL",
+    "ntype": "d3fend_event",
+    "label": "URL"
+  },
+  {
+    "id": "d3f:URLAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-UA"
+  },
+  {
+    "id": "d3f:URLReputationAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-URA"
+  },
+  {
+    "id": "d3f:UnloadLibraryEvent",
+    "ntype": "d3fend_event",
+    "label": "Unload Library Event"
+  },
+  {
+    "id": "d3f:UnlockAccount",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-ULA"
+  },
+  {
+    "id": "d3f:UserAccount",
+    "ntype": "d3fend_event",
+    "label": "User Account"
+  },
+  {
+    "id": "d3f:UserAccountEvent",
+    "ntype": "d3fend_event",
+    "label": "User Account Event"
+  },
+  {
+    "id": "d3f:UserAccountPermissions",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-UAP"
+  },
+  {
+    "id": "d3f:UserBehaviorAnalysis",
+    "ntype": "defense",
+    "label": "User Behavior Analysis",
+    "d3fend_id": ""
+  },
+  {
+    "id": "d3f:UserDataTransferAnalysis",
+    "ntype": "defense",
+    "label": "User Data Transfer Analysis"
+  },
+  {
+    "id": "d3f:UserGeolocationLogonPatternAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-UGLPA"
+  },
+  {
+    "id": "d3f:UserInitConfigurationFile",
+    "ntype": "artifact",
+    "label": "User Init Configuration File"
+  },
+  {
+    "id": "d3f:UserInitScript",
+    "ntype": "artifact",
+    "label": "User Init Script"
+  },
+  {
+    "id": "d3f:UserSessionInitConfigAnalysis",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-USICA"
+  },
+  {
+    "id": "d3f:UserStartupScriptFile",
+    "ntype": "artifact",
+    "label": "User Startup Script File"
+  },
+  {
+    "id": "d3f:VariableInitialization",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-VI"
+  },
+  {
+    "id": "d3f:VideoInputDevice",
+    "ntype": "artifact",
+    "label": "Video Input Device"
+  },
+  {
+    "id": "d3f:VideoSurveillance",
+    "ntype": "defense",
+    "label": "",
+    "d3fend_id": "D3-VS"
+  },
+  {
+    "id": "d3f:VirtualizationSoftware",
+    "ntype": "artifact",
+    "label": "Virtualization Software"
+  },
+  {
+    "id": "d3f:WebApplication",
+    "ntype": "artifact",
+    "label": "Web Application"
+  },
+  {
+    "id": "d3f:WebFileResource",
+    "ntype": "artifact",
+    "label": "Web File Resource"
+  },
+  {
+    "id": "d3f:WebNetworkTraffic",
+    "ntype": "artifact",
+    "label": "Web Network Traffic"
+  },
+  {
+    "id": "d3f:WebResource",
+    "ntype": "d3fend_event",
+    "label": "Web Resource"
+  },
+  {
+    "id": "d3f:WebScriptFile",
+    "ntype": "artifact",
+    "label": "Web Script File"
+  },
+  {
+    "id": "d3f:WebServer",
+    "ntype": "artifact",
+    "label": "Web Server"
+  },
+  {
+    "id": "d3f:WebSessionActivityAnalysis",
+    "ntype": "defense",
+    "label": "Web Session Activity Analysis"
+  },
+  {
+    "id": "d3f:WindowsRegistry",
+    "ntype": "artifact",
+    "label": "Windows Registry"
+  },
+  {
+    "id": "d3f:WindowsRegistryKey",
+    "ntype": "d3fend_event",
+    "label": "Windows Registry Key"
+  },
+  {
+    "id": "d3f:WindowsRegistryKeyEvent",
+    "ntype": "d3fend_event",
+    "label": "Windows Registry Key Event"
+  },
+  {
+    "id": "d3f:WindowsRegistryValue",
+    "ntype": "d3fend_event",
+    "label": "Windows Registry Value"
+  },
+  {
+    "id": "d3f:WindowsRegistryValueEvent",
+    "ntype": "d3fend_event",
+    "label": "Windows Registry Value Event"
+  },
+  {
+    "id": "d3f:WindowsShortcutFile",
+    "ntype": "artifact",
+    "label": "Windows Shortcut File"
+  },
+  {
+    "id": "d3f:identifier",
+    "ntype": "artifact",
+    "label": "Identifier"
+  },
+  {
+    "id": "ocsf:class/account_change",
+    "ntype": "ocsf_class",
+    "label": "account_change",
+    "ocsf_url": "https://schema.ocsf.io/classes/account_change"
+  },
+  {
+    "id": "ocsf:class/application_lifecycle",
+    "ntype": "ocsf_class",
+    "label": "application_lifecycle",
+    "ocsf_url": "https://schema.ocsf.io/classes/application_lifecycle"
+  },
+  {
+    "id": "ocsf:class/authentication",
+    "ntype": "ocsf_class",
+    "label": "authentication",
+    "ocsf_url": "https://schema.ocsf.io/classes/authentication"
+  },
+  {
+    "id": "ocsf:class/authorize_session",
+    "ntype": "ocsf_class",
+    "label": "authorize_session",
+    "ocsf_url": "https://schema.ocsf.io/classes/authorize_session"
+  },
+  {
+    "id": "ocsf:class/dhcp_activity",
+    "ntype": "ocsf_class",
+    "label": "dhcp_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/dhcp_activity"
+  },
+  {
+    "id": "ocsf:class/dns_activity",
+    "ntype": "ocsf_class",
+    "label": "dns_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/dns_activity"
+  },
+  {
+    "id": "ocsf:class/email_activity",
+    "ntype": "ocsf_class",
+    "label": "email_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/email_activity"
+  },
+  {
+    "id": "ocsf:class/event_log_activity",
+    "ntype": "ocsf_class",
+    "label": "event_log_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/event_log_activity"
+  },
+  {
+    "id": "ocsf:class/file_activity",
+    "ntype": "ocsf_class",
+    "label": "file_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/file_activity"
+  },
+  {
+    "id": "ocsf:class/ftp_activity",
+    "ntype": "ocsf_class",
+    "label": "ftp_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/ftp_activity"
+  },
+  {
+    "id": "ocsf:class/group_management",
+    "ntype": "ocsf_class",
+    "label": "group_management",
+    "ocsf_url": "https://schema.ocsf.io/classes/group_management"
+  },
+  {
+    "id": "ocsf:class/http_activity",
+    "ntype": "ocsf_class",
+    "label": "http_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/http_activity"
+  },
+  {
+    "id": "ocsf:class/kernel_activity",
+    "ntype": "ocsf_class",
+    "label": "kernel_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/kernel_activity"
+  },
+  {
+    "id": "ocsf:class/kernel_extension_activity",
+    "ntype": "ocsf_class",
+    "label": "kernel_extension_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/kernel_extension_activity"
+  },
+  {
+    "id": "ocsf:class/memory_activity",
+    "ntype": "ocsf_class",
+    "label": "memory_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/memory_activity"
+  },
+  {
+    "id": "ocsf:class/module_activity",
+    "ntype": "ocsf_class",
+    "label": "module_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/module_activity"
+  },
+  {
+    "id": "ocsf:class/network_activity",
+    "ntype": "ocsf_class",
+    "label": "network_activity"
+  },
+  {
+    "id": "ocsf:class/ntp_activity",
+    "ntype": "ocsf_class",
+    "label": "ntp_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/ntp_activity"
+  },
+  {
+    "id": "ocsf:class/process_activity",
+    "ntype": "ocsf_class",
+    "label": "process_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/process_activity"
+  },
+  {
+    "id": "ocsf:class/rdp_activity",
+    "ntype": "ocsf_class",
+    "label": "rdp_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/rdp_activity"
+  },
+  {
+    "id": "ocsf:class/registry_key_activity",
+    "ntype": "ocsf_class",
+    "label": "registry_key_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/win/registry_key_activity"
+  },
+  {
+    "id": "ocsf:class/registry_value_activity",
+    "ntype": "ocsf_class",
+    "label": "registry_value_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/win/registry_value_activity"
+  },
+  {
+    "id": "ocsf:class/scheduled_job_activity",
+    "ntype": "ocsf_class",
+    "label": "scheduled_job_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/scheduled_job_activity"
+  },
+  {
+    "id": "ocsf:class/smb_activity",
+    "ntype": "ocsf_class",
+    "label": "smb_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/smb_activity"
+  },
+  {
+    "id": "ocsf:class/ssh_activity",
+    "ntype": "ocsf_class",
+    "label": "ssh_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/ssh_activity"
+  },
+  {
+    "id": "ocsf:class/tunnel_activity",
+    "ntype": "ocsf_class",
+    "label": "tunnel_activity",
+    "ocsf_url": "https://schema.ocsf.io/classes/tunnel_activity"
+  },
+  {
+    "id": "ocsf:class/user_access",
+    "ntype": "ocsf_class",
+    "label": "user_access",
+    "ocsf_url": "https://schema.ocsf.io/classes/user_access"
+  },
+  {
+    "id": "ocsf:field/network_activity.app_name",
+    "ntype": "ocsf_field",
+    "label": "app_name"
+  },
+  {
+    "id": "ocsf:field/network_activity.connection_info.protocol_name",
+    "ntype": "ocsf_field",
+    "label": "connection_info.protocol_name"
+  },
+  {
+    "id": "ocsf:field/network_activity.connection_info.uid",
+    "ntype": "ocsf_field",
+    "label": "connection_info.uid"
+  },
+  {
+    "id": "ocsf:field/network_activity.device.hostname",
+    "ntype": "ocsf_field",
+    "label": "device.hostname"
+  },
+  {
+    "id": "ocsf:field/network_activity.dst_endpoint.interface_name",
+    "ntype": "ocsf_field",
+    "label": "dst_endpoint.interface_name"
+  },
+  {
+    "id": "ocsf:field/network_activity.dst_endpoint.ip",
+    "ntype": "ocsf_field",
+    "label": "dst_endpoint.ip"
+  },
+  {
+    "id": "ocsf:field/network_activity.dst_endpoint.location.country",
+    "ntype": "ocsf_field",
+    "label": "dst_endpoint.location.country"
+  },
+  {
+    "id": "ocsf:field/network_activity.dst_endpoint.port",
+    "ntype": "ocsf_field",
+    "label": "dst_endpoint.port"
+  },
+  {
+    "id": "ocsf:field/network_activity.dst_endpoint.zone",
+    "ntype": "ocsf_field",
+    "label": "dst_endpoint.zone"
+  },
+  {
+    "id": "ocsf:field/network_activity.src_endpoint.interface_name",
+    "ntype": "ocsf_field",
+    "label": "src_endpoint.interface_name"
+  },
+  {
+    "id": "ocsf:field/network_activity.src_endpoint.ip",
+    "ntype": "ocsf_field",
+    "label": "src_endpoint.ip"
+  },
+  {
+    "id": "ocsf:field/network_activity.src_endpoint.location.country",
+    "ntype": "ocsf_field",
+    "label": "src_endpoint.location.country"
+  },
+  {
+    "id": "ocsf:field/network_activity.src_endpoint.owner.name",
+    "ntype": "ocsf_field",
+    "label": "src_endpoint.owner.name"
+  },
+  {
+    "id": "ocsf:field/network_activity.src_endpoint.port",
+    "ntype": "ocsf_field",
+    "label": "src_endpoint.port"
+  },
+  {
+    "id": "ocsf:field/network_activity.src_endpoint.zone",
+    "ntype": "ocsf_field",
+    "label": "src_endpoint.zone"
+  },
+  {
+    "id": "ocsf:field/network_activity.traffic.bytes",
+    "ntype": "ocsf_field",
+    "label": "traffic.bytes"
+  },
+  {
+    "id": "ocsf:field/network_activity.traffic.bytes_in",
+    "ntype": "ocsf_field",
+    "label": "traffic.bytes_in"
+  },
+  {
+    "id": "ocsf:field/network_activity.traffic.bytes_out",
+    "ntype": "ocsf_field",
+    "label": "traffic.bytes_out"
+  },
+  {
+    "id": "ocsf:field/network_activity.traffic.packets",
+    "ntype": "ocsf_field",
+    "label": "traffic.packets"
+  },
+  {
+    "id": "ocsf:object/actor",
+    "ntype": "ocsf_object",
+    "label": "actor",
+    "ocsf_url": "https://schema.ocsf.io/objects/actor"
+  },
+  {
+    "id": "ocsf:object/agent",
+    "ntype": "ocsf_object",
+    "label": "agent",
+    "ocsf_url": "https://schema.ocsf.io/objects/agent"
+  },
+  {
+    "id": "ocsf:object/application",
+    "ntype": "ocsf_object",
+    "label": "application",
+    "ocsf_url": "https://schema.ocsf.io/objects/application"
+  },
+  {
+    "id": "ocsf:object/certificate",
+    "ntype": "ocsf_object",
+    "label": "certificate",
+    "ocsf_url": "https://schema.ocsf.io/objects/certificate"
+  },
+  {
+    "id": "ocsf:object/container",
+    "ntype": "ocsf_object",
+    "label": "container",
+    "ocsf_url": "https://schema.ocsf.io/objects/container"
+  },
+  {
+    "id": "ocsf:object/databucket",
+    "ntype": "ocsf_object",
+    "label": "databucket",
+    "ocsf_url": "https://schema.ocsf.io/objects/databucket"
+  },
+  {
+    "id": "ocsf:object/dce_rpc",
+    "ntype": "ocsf_object",
+    "label": "dce_rpc",
+    "ocsf_url": "https://schema.ocsf.io/objects/dce_rpc"
+  },
+  {
+    "id": "ocsf:object/device",
+    "ntype": "ocsf_object",
+    "label": "device",
+    "ocsf_url": "https://schema.ocsf.io/objects/device"
+  },
+  {
+    "id": "ocsf:object/device_hw_info",
+    "ntype": "ocsf_object",
+    "label": "device_hw_info",
+    "ocsf_url": "https://schema.ocsf.io/objects/device_hw_info"
+  },
+  {
+    "id": "ocsf:object/dns_answer",
+    "ntype": "ocsf_object",
+    "label": "dns_answer",
+    "ocsf_url": "https://schema.ocsf.io/objects/dns_answer"
+  },
+  {
+    "id": "ocsf:object/dns_query",
+    "ntype": "ocsf_object",
+    "label": "dns_query",
+    "ocsf_url": "https://schema.ocsf.io/objects/dns_query"
+  },
+  {
+    "id": "ocsf:object/email",
+    "ntype": "ocsf_object",
+    "label": "email",
+    "ocsf_url": "https://schema.ocsf.io/objects/email"
+  },
+  {
+    "id": "ocsf:object/endpoint",
+    "ntype": "ocsf_object",
+    "label": "endpoint",
+    "ocsf_url": "https://schema.ocsf.io/objects/endpoint"
+  },
+  {
+    "id": "ocsf:object/fingerprint",
+    "ntype": "ocsf_object",
+    "label": "fingerprint",
+    "ocsf_url": "https://schema.ocsf.io/objects/fingerprint"
+  },
+  {
+    "id": "ocsf:object/group",
+    "ntype": "ocsf_object",
+    "label": "group",
+    "ocsf_url": "https://schema.ocsf.io/objects/group"
+  },
+  {
+    "id": "ocsf:object/http_cookie",
+    "ntype": "ocsf_object",
+    "label": "http_cookie",
+    "ocsf_url": "https://schema.ocsf.io/objects/http_cookie"
+  },
+  {
+    "id": "ocsf:object/http_request",
+    "ntype": "ocsf_object",
+    "label": "http_request",
+    "ocsf_url": "https://schema.ocsf.io/objects/http_request"
+  },
+  {
+    "id": "ocsf:object/http_response",
+    "ntype": "ocsf_object",
+    "label": "http_response",
+    "ocsf_url": "https://schema.ocsf.io/objects/http_response"
+  },
+  {
+    "id": "ocsf:object/image",
+    "ntype": "ocsf_object",
+    "label": "image",
+    "ocsf_url": "https://schema.ocsf.io/objects/image"
+  },
+  {
+    "id": "ocsf:object/job",
+    "ntype": "ocsf_object",
+    "label": "job",
+    "ocsf_url": "https://schema.ocsf.io/objects/job"
+  },
+  {
+    "id": "ocsf:object/kernel",
+    "ntype": "ocsf_object",
+    "label": "kernel",
+    "ocsf_url": "https://schema.ocsf.io/objects/kernel"
+  },
+  {
+    "id": "ocsf:object/kernel_driver",
+    "ntype": "ocsf_object",
+    "label": "kernel_driver",
+    "ocsf_url": "https://schema.ocsf.io/objects/kernel_driver"
+  },
+  {
+    "id": "ocsf:object/location",
+    "ntype": "ocsf_object",
+    "label": "location",
+    "ocsf_url": "https://schema.ocsf.io/objects/location"
+  },
+  {
+    "id": "ocsf:object/metadata",
+    "ntype": "ocsf_object",
+    "label": "metadata",
+    "ocsf_url": "https://schema.ocsf.io/objects/metadata"
+  },
+  {
+    "id": "ocsf:object/network_connection_info",
+    "ntype": "ocsf_object",
+    "label": "network_connection_info",
+    "ocsf_url": "https://schema.ocsf.io/objects/network_connection_info"
+  },
+  {
+    "id": "ocsf:object/network_endpoint",
+    "ntype": "ocsf_object",
+    "label": "network_endpoint",
+    "ocsf_url": "https://schema.ocsf.io/objects/network_endpoint"
+  },
+  {
+    "id": "ocsf:object/network_interface",
+    "ntype": "ocsf_object",
+    "label": "network_interface",
+    "ocsf_url": "https://schema.ocsf.io/objects/network_interface"
+  },
+  {
+    "id": "ocsf:object/network_proxy",
+    "ntype": "ocsf_object",
+    "label": "network_proxy",
+    "ocsf_url": "https://schema.ocsf.io/objects/network_proxy"
+  },
+  {
+    "id": "ocsf:object/network_traffic",
+    "ntype": "ocsf_object",
+    "label": "network_traffic",
+    "ocsf_url": "https://schema.ocsf.io/objects/network_traffic"
+  },
+  {
+    "id": "ocsf:object/os",
+    "ntype": "ocsf_object",
+    "label": "os",
+    "ocsf_url": "https://schema.ocsf.io/objects/os"
+  },
+  {
+    "id": "ocsf:object/package",
+    "ntype": "ocsf_object",
+    "label": "package",
+    "ocsf_url": "https://schema.ocsf.io/objects/package"
+  },
+  {
+    "id": "ocsf:object/process",
+    "ntype": "ocsf_object",
+    "label": "process",
+    "ocsf_url": "https://schema.ocsf.io/objects/process"
+  },
+  {
+    "id": "ocsf:object/registry_key",
+    "ntype": "ocsf_object",
+    "label": "registry_key",
+    "ocsf_url": "https://schema.ocsf.io/objects/registry_key"
+  },
+  {
+    "id": "ocsf:object/registry_value",
+    "ntype": "ocsf_object",
+    "label": "registry_value",
+    "ocsf_url": "https://schema.ocsf.io/objects/registry_value"
+  },
+  {
+    "id": "ocsf:object/service",
+    "ntype": "ocsf_object",
+    "label": "service",
+    "ocsf_url": "https://schema.ocsf.io/objects/service"
+  },
+  {
+    "id": "ocsf:object/session",
+    "ntype": "ocsf_object",
+    "label": "session",
+    "ocsf_url": "https://schema.ocsf.io/objects/session"
+  },
+  {
+    "id": "ocsf:object/url",
+    "ntype": "ocsf_object",
+    "label": "url",
+    "ocsf_url": "https://schema.ocsf.io/objects/url"
+  },
+  {
+    "id": "ocsf:object/user",
+    "ntype": "ocsf_object",
+    "label": "user",
+    "ocsf_url": "https://schema.ocsf.io/objects/user"
+  },
+  {
+    "id": "ocsf:object/web_resource",
+    "ntype": "ocsf_object",
+    "label": "web_resource",
+    "ocsf_url": "https://schema.ocsf.io/objects/web_resource"
+  },
+  {
+    "id": "ocsf:other/https://schema.ocsf.io/categories/findings",
+    "ntype": "ocsf_other",
+    "label": "https://schema.ocsf.io/categories/findings"
+  },
+  {
+    "id": "ocsf:other/https://schema.ocsf.io/categories/network",
+    "ntype": "ocsf_other",
+    "label": "https://schema.ocsf.io/categories/network"
+  },
+  {
+    "id": "src:cim/application",
+    "ntype": "source_field",
+    "label": "application",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/bytes",
+    "ntype": "source_field",
+    "label": "bytes",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/bytes_in",
+    "ntype": "source_field",
+    "label": "bytes_in",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/bytes_out",
+    "ntype": "source_field",
+    "label": "bytes_out",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/client_ip",
+    "ntype": "source_field",
+    "label": "client_ip",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/client_location",
+    "ntype": "source_field",
+    "label": "client_location",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/dest",
+    "ntype": "source_field",
+    "label": "dest",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/dest_interface",
+    "ntype": "source_field",
+    "label": "dest_interface",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/dest_port",
+    "ntype": "source_field",
+    "label": "dest_port",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/dest_zone",
+    "ntype": "source_field",
+    "label": "dest_zone",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/dvc",
+    "ntype": "source_field",
+    "label": "dvc",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/packets",
+    "ntype": "source_field",
+    "label": "packets",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/server_ip",
+    "ntype": "source_field",
+    "label": "server_ip",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/server_location",
+    "ntype": "source_field",
+    "label": "server_location",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/session_id",
+    "ntype": "source_field",
+    "label": "session_id",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/signature",
+    "ntype": "source_field",
+    "label": "signature",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/src",
+    "ntype": "source_field",
+    "label": "src",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/src_interface",
+    "ntype": "source_field",
+    "label": "src_interface",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/src_port",
+    "ntype": "source_field",
+    "label": "src_port",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/src_zone",
+    "ntype": "source_field",
+    "label": "src_zone",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/transport",
+    "ntype": "source_field",
+    "label": "transport",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/user",
+    "ntype": "source_field",
+    "label": "user",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/vendor_action",
+    "ntype": "source_field",
+    "label": "vendor_action",
+    "schema": "splunk_cim"
+  },
+  {
+    "id": "src:cim/virtual_system",
+    "ntype": "source_field",
+    "label": "virtual_system",
+    "schema": "splunk_cim"
+  }
+]
