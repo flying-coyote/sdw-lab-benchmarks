@@ -1,0 +1,4 @@
+# Generated NDJSON corpora + engine outputs (multi-GB, regenerable via corpus.py)
+_work/
+__pycache__/
+*.pyc

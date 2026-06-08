@@ -1,0 +1,38 @@
+# OTel Collector (contrib) — filelog receiver -> json parse -> filter (drop low-value
+# conn_states) -> nop exporter (discard). The filelog receiver TAILS the corpus file
+# (it does not exit at EOF), so the harness times this by polling the receiver's
+# accepted-record count to completion and then terminates the process — see run.py's
+# daemon runner. json_parser lifts the NDJSON fields into log-record attributes so the
+# filter processor can drop on attributes["conn_state"]; this is the same logical
+# transform Vector/Tenzir run, expressed in OTel's idiomatic pipeline.
+receivers:
+  filelog:
+    include: [ "__CORPUS__" ]
+    start_at: beginning
+    storage: file_storage
+    operators:
+      - type: json_parser
+extensions:
+  file_storage:
+    directory: "__STORAGE__"
+processors:
+  filter/drop:
+    logs:
+      log_record:
+        - 'attributes["conn_state"] == "S0"'
+        - 'attributes["conn_state"] == "REJ"'
+        - 'attributes["conn_state"] == "RSTO"'
+exporters:
+  nop: {}
+service:
+  extensions: [file_storage]
+  telemetry:
+    metrics:
+      level: none
+    logs:
+      level: warn
+  pipelines:
+    logs:
+      receivers: [filelog]
+      processors: [filter/drop]
+      exporters: [nop]

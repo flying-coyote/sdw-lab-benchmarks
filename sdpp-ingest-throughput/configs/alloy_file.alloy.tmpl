@@ -1,0 +1,36 @@
+// Grafana Alloy — full route: filelog receiver -> json parse -> filter -> file exporter
+// (re-serialize + write OTLP-JSON to a file). Same component DAG as alloy_discard but
+// with the file exporter so the output-stage cost is visible, mirroring the OTel
+// Collector file config. Survivors verified by summing logRecords across the OTLP-JSON
+// batch lines (same counter as OTel). filelog + file are public-preview, so the harness
+// passes --stability.level=public-preview (file mode does not need experimental).
+otelcol.receiver.filelog "in" {
+  include  = ["__CORPUS__"]
+  start_at = "beginning"
+  operators = [
+    {
+      type = "json_parser",
+    },
+  ]
+  output {
+    logs = [otelcol.processor.filter.drop.input]
+  }
+}
+
+otelcol.processor.filter "drop" {
+  error_mode = "ignore"
+  logs {
+    log_record = [
+      "attributes[\"conn_state\"] == \"S0\"",
+      "attributes[\"conn_state\"] == \"REJ\"",
+      "attributes[\"conn_state\"] == \"RSTO\"",
+    ]
+  }
+  output {
+    logs = [otelcol.exporter.file.out.input]
+  }
+}
+
+otelcol.exporter.file "out" {
+  path = "__OUT__"
+}

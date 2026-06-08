@@ -1,0 +1,22 @@
+# Vector pipeline — read NDJSON from stdin, drop low-value conn_states, write the
+# survivors back out as NDJSON to a file sink. This is the *full route*: read +
+# parse + filter + re-serialize + write, the work a route-by-value pipeline does
+# on the way to a sink. The sink path is templated by the harness via env so the
+# output lands in the per-run work dir.
+
+data_dir = "/tmp/vector_sdpp_data"
+
+[sources.in]
+type = "stdin"
+decoding.codec = "json"
+
+[transforms.filt]
+type = "filter"
+inputs = ["in"]
+condition = '!includes(["S0","REJ","RSTO"], .conn_state)'
+
+[sinks.out]
+type = "file"
+inputs = ["filt"]
+path = "${VECTOR_OUT_PATH}"
+encoding.codec = "json"

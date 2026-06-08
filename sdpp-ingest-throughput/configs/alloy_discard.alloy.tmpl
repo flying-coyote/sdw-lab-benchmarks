@@ -1,0 +1,48 @@
+// Grafana Alloy — the SAME OTel filelog receiver + filter processor as the OTel
+// Collector config, expressed in Alloy's component DAG (River) syntax, so the only
+// difference from the OTel row is Alloy's DAG-evaluation wrapper (the comparison the
+// capability matrix calls out: Alloy wraps OTel components). discard = drop via the
+// file exporter pointed at /dev/null.
+//
+// Why file→/dev/null and not a nop/debug sink: Alloy has no nop exporter, and its
+// experimental `debug`/basic exporter does NOT pull fast enough — it back-pressures
+// the filelog receiver, which stalls partway through the file (observed: read offset
+// frozen at ~20% with the engine idle). The file exporter is a real pulling consumer,
+// so Alloy drains the whole corpus steadily; writing the survivors to /dev/null is a
+// legitimate discard (the OS sink swallows the bytes). This is the closest fair Alloy
+// analogue to OTel's `nop` discard, and it keeps Alloy on the GA-adjacent
+// public-preview stability level (no experimental components). The serialize cost is
+// the small apples-to-oranges difference vs a true nop, and is documented in RESULTS.md.
+//
+// Tailing daemon: same poll/terminate timing model as OTel and rsyslog (discard is
+// detected by the corpus read offset reaching EOF, then a CPU settle).
+otelcol.receiver.filelog "in" {
+  include  = ["__CORPUS__"]
+  start_at = "beginning"
+  operators = [
+    {
+      type = "json_parser",
+    },
+  ]
+  output {
+    logs = [otelcol.processor.filter.drop.input]
+  }
+}
+
+otelcol.processor.filter "drop" {
+  error_mode = "ignore"
+  logs {
+    log_record = [
+      "attributes[\"conn_state\"] == \"S0\"",
+      "attributes[\"conn_state\"] == \"REJ\"",
+      "attributes[\"conn_state\"] == \"RSTO\"",
+    ]
+  }
+  output {
+    logs = [otelcol.exporter.file.out.input]
+  }
+}
+
+otelcol.exporter.file "out" {
+  path = "/dev/null"
+}
