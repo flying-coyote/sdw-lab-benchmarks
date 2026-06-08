@@ -93,6 +93,41 @@ entity→class names differ from the shipped v1.4.0 file (e.g. `d3f:NetworkEvent
 `d3f:NetworkConnectionEvent`). All 27 are real OCSF classes. The graph build is what surfaced
 the drift — which is the point of a reconciliation pass.
 
+## Query it over MCP (Phase B)
+
+`scg_mcp.py` exposes the graph read-only over MCP/stdio so an agent can ground a
+security-context question in the real chain instead of inventing one. It loads
+`results/nodes.json` + `results/edges.json` (the public spine; the SCF layer loads only with
+`SCG_WITH_SCF=1`). Tools:
+
+| tool | what it answers |
+|---|---|
+| `legend` | the proxy_quality + tier vocabulary and the trust ranking — read it to interpret every other tool's `trust`/`weak` fields |
+| `stats` | node counts by type, edge counts by proxy_quality, the locked reconciliation figures |
+| `find_node` / `node` | resolve a name/id to a node (a bare `T1059` resolves to the parent technique) and inspect it |
+| `neighbors` | adjacency with full edge provenance; `min_trust` shows only well-supported links |
+| `paths` | concept chains between two nodes, each hop annotated, returning `path_trust` (the weakest edge) and `crosses_inference` |
+| `coverage` | for an ATT&CK technique: defenses that may-counter it (mostly intent-blind), curated mitigations, and tactic — each with its proxy |
+
+The discipline the server enforces: **a multi-hop answer is only as trustworthy as its
+weakest edge.** `paths` returns the weakest hop by name and flags `crosses_inference` when a
+chain leans on an intent-blind `artifact_cooccurrence` edge (the largest edge class, ~6,000 of
+7,618), so a weak inference can't be laundered into a confident claim. This is the same
+transparency point the essay makes, made operable.
+
+Registered in `~/project1/.claude/mcp.json` as `scg` (runs on system `python3`, which needs
+the `mcp` package). Paired with the global `security-context-graph` reasoning skill. Empirical
+caveat carried into the server's own docstring: the SDW Lab benchmarks (2026-06-08) found
+conceptual grounding ~inert versus a schema-validity check, and graph structure helping a
+retrieval answer on only 1 of 9 queries — so the server's job is honest navigation with
+provenance, not a claim that the graph makes a model smarter.
+
+```bash
+python3 scg_mcp.py                 # serve the public spine over stdio
+SCG_WITH_SCF=1 python3 scg_mcp.py  # include the local ND-gated SCF layer
+python3 test_scg_mcp.py            # offline smoke test (no MCP client needed)
+```
+
 ## What this is not
 
 - not a telemetry graph (no events; record→defense runtime annotation does not exist today);
