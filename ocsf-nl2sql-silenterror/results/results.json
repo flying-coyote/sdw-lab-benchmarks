@@ -1,0 +1,717 @@
+{
+  "anchors": {
+    "BIRD_human": 0.9296,
+    "BIRD_sota": 0.8167,
+    "NL2KQL_confidently_wrong": 0.42,
+    "NL2KQL_result_accuracy": 0.58
+  },
+  "benchmark": "ocsf-nl2sql-silenterror (by-difficulty NL2SQL silent-error over OCSF)",
+  "evidence_tier": "B (local models, single machine, one planted chain, hand-authored gold)",
+  "hypothesis": "H-CONCEPT-GRAPH-03 (first OCSF by-difficulty silent-error datapoint)",
+  "models": {
+    "gemma4:26b": {
+      "by_tier": {
+        "adversary_tail": {
+          "counts": {
+            "correct": 0,
+            "loud": 5,
+            "silent": 0
+          },
+          "n": 5,
+          "result_accuracy": 0.0,
+          "silent_error_rate": 0.0
+        },
+        "aggregation": {
+          "counts": {
+            "correct": 5,
+            "loud": 0,
+            "silent": 0
+          },
+          "n": 5,
+          "result_accuracy": 1.0,
+          "silent_error_rate": 0.0
+        },
+        "group_by": {
+          "counts": {
+            "correct": 0,
+            "loud": 5,
+            "silent": 0
+          },
+          "n": 5,
+          "result_accuracy": 0.0,
+          "silent_error_rate": 0.0
+        },
+        "join": {
+          "counts": {
+            "correct": 2,
+            "loud": 2,
+            "silent": 0
+          },
+          "n": 4,
+          "result_accuracy": 0.5,
+          "silent_error_rate": 0.0
+        },
+        "multi_condition": {
+          "counts": {
+            "correct": 4,
+            "loud": 1,
+            "silent": 0
+          },
+          "n": 5,
+          "result_accuracy": 0.8,
+          "silent_error_rate": 0.0
+        },
+        "simple_filter": {
+          "counts": {
+            "correct": 5,
+            "loud": 0,
+            "silent": 0
+          },
+          "n": 5,
+          "result_accuracy": 1.0,
+          "silent_error_rate": 0.0
+        },
+        "time_window": {
+          "counts": {
+            "correct": 2,
+            "loud": 2,
+            "silent": 0
+          },
+          "n": 4,
+          "result_accuracy": 0.5,
+          "silent_error_rate": 0.0
+        }
+      },
+      "counts": {
+        "correct": 18,
+        "loud": 15,
+        "silent": 0
+      },
+      "result_accuracy": 0.5455,
+      "rows": [
+        {
+          "id": "F01",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_auth WHERE outcome = 'FAILURE'",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "F02",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_auth WHERE is_remote = true",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "F03",
+          "kind": "set",
+          "outcome": "correct",
+          "rows_returned": 22,
+          "sql": "SELECT DISTINCT api_operation FROM f_api",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "F04",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_process WHERE device_hostname = 'WS1'",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "F05",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_network",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "G01",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT SUM(bytes_out) FROM f_network",
+          "tier": "aggregation"
+        },
+        {
+          "id": "G02",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(DISTINCT dst_port) FROM f_network",
+          "tier": "aggregation"
+        },
+        {
+          "id": "G03",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT AVG(duration) FROM f_network",
+          "tier": "aggregation"
+        },
+        {
+          "id": "G04",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(DISTINCT src_ip) FROM f_network",
+          "tier": "aggregation"
+        },
+        {
+          "id": "G05",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(DISTINCT user_uid) FROM f_auth",
+          "tier": "aggregation"
+        },
+        {
+          "id": "B01",
+          "kind": "set",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT dst_port FROM f_network E1 JOIN f_asset A1 ON E1.src_ip = A1.ip = E1.dst_ip = A1.ip} (Wait, I need to check the logic for top ing. top 5. Let me re-read. ",
+          "tier": "group_by"
+        },
+        {
+          "id": "B02",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT outcome FROM f_auth WHERE outcome IS NOT NULL AND outcome IS NOT NULL AND outcome IS NOT NULL AND outcome IS NOT NULL AND outcome IS NOT NULL AND outcome IS NOT NULL AND outcome IS NOT NULL AND outcome IS NOT NULL AND outcome IS NOT NULL AND outcome IS NOT NULL AND outcome IS NOT NULL AND out",
+          "tier": "group_by"
+        },
+        {
+          "id": "B03",
+          "kind": "set",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT image_name FROM f_process E1 JOIN f_asset A1 ON E1.device_hostname = A1.hostname OR Ethought. All good.<channel|>```json}{",
+          "tier": "group_by"
+        },
+        {
+          "id": "B04",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT service FROM f_api E1 E1.service = E1.service\nWHERE is_success = true\trand(rand())\trand(rand())\trand(rand())",
+          "tier": "group_by"
+        },
+        {
+          "id": "B05",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "",
+          "tier": "group_by"
+        },
+        {
+          "id": "T01",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT count(*) FROM f_auth WHERE time BETWEEN 1767830400000 AND chain_day_limit_exclusive_of_1767916800000_logic_error_in_prompt_logic_error_in_prompt_logic_error_in_prompt_logic_error_in_prompt_logic_error_in_prompt_logic_error_in_prompt_logic_error_in_prompt_logic_error_in_prompt_logic_error_in_p",
+          "tier": "time_window"
+        },
+        {
+          "id": "T02",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_api WHERE time >= 1767866400000 AND time <= 1767870600000",
+          "tier": "time_window"
+        },
+        {
+          "id": "T03",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT count(*) FROM f_network (SELECT t.time, t.src_ip, t.src_hostname, tappend-1.src_ip, src_hostname, query_hostname, answer FROM f_dns (SELECT t.time, tthought-1.src_epoch-ms 17678664000s) FROM f_auth (SELECT t.time, t.src_ip, t.src_hostname, tappend-1.src_ip, src_hostname, query_hostname, answe",
+          "tier": "time_window"
+        },
+        {
+          "id": "T04",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT max(time) - min(time) FROM f_network",
+          "tier": "time_window"
+        },
+        {
+          "id": "M01",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_network WHERE dst_port = 443 AND bytes_out < 1000",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "M02",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_auth WHERE outcome = 'FAILURE' AND is_remote = true",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "M03",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "M04",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_process WHERE device_hostname = 'WS1' and cmd_line LIKE '%powershell%'",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "M05",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_network WHERE src_ip = '10.10.1.21' AND dst_ip = '10.10.1.22' AND dst_port = 3389",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "J01",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(DISTINCT canonical_asset) FROM f_asset WHERE hostname = 'WS1' OR ip = '10.10.1.21' OR ip = '10.10.1.22'",
+          "tier": "join"
+        },
+        {
+          "id": "J02",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "",
+          "tier": "join"
+        },
+        {
+          "id": "J03",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT count(*) FROM f_process p JOIN f_asset a ON p.device_hostname = a.hostname",
+          "tier": "join"
+        },
+        {
+          "id": "J04",
+          "kind": "set",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "",
+          "tier": "join"
+        },
+        {
+          "id": "A01",
+          "kind": "uidset",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "",
+          "tier": "adversary_tail"
+        },
+        {
+          "id": "A02",
+          "kind": "substring",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "",
+          "tier": "adversary_tail"
+        },
+        {
+          "id": "A06",
+          "kind": "uid",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "",
+          "tier": "adversary_tail"
+        },
+        {
+          "id": "A08",
+          "kind": "substring",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "",
+          "tier": "adversary_tail"
+        },
+        {
+          "id": "A04",
+          "kind": "uidset",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT event_uid FROM f_session WHERE start_time <= 1767880980000 AND end_time >= 17678809append_ms 1767880980000",
+          "tier": "adversary_tail"
+        }
+      ],
+      "silent_error_rate": 0.0
+    },
+    "phi3:latest": {
+      "by_tier": {
+        "adversary_tail": {
+          "counts": {
+            "correct": 0,
+            "loud": 5,
+            "silent": 0
+          },
+          "n": 5,
+          "result_accuracy": 0.0,
+          "silent_error_rate": 0.0
+        },
+        "aggregation": {
+          "counts": {
+            "correct": 5,
+            "loud": 0,
+            "silent": 0
+          },
+          "n": 5,
+          "result_accuracy": 1.0,
+          "silent_error_rate": 0.0
+        },
+        "group_by": {
+          "counts": {
+            "correct": 0,
+            "loud": 4,
+            "silent": 1
+          },
+          "n": 5,
+          "result_accuracy": 0.0,
+          "silent_error_rate": 0.2
+        },
+        "join": {
+          "counts": {
+            "correct": 1,
+            "loud": 3,
+            "silent": 0
+          },
+          "n": 4,
+          "result_accuracy": 0.25,
+          "silent_error_rate": 0.0
+        },
+        "multi_condition": {
+          "counts": {
+            "correct": 3,
+            "loud": 2,
+            "silent": 0
+          },
+          "n": 5,
+          "result_accuracy": 0.6,
+          "silent_error_rate": 0.0
+        },
+        "simple_filter": {
+          "counts": {
+            "correct": 3,
+            "loud": 0,
+            "silent": 2
+          },
+          "n": 5,
+          "result_accuracy": 0.6,
+          "silent_error_rate": 0.4
+        },
+        "time_window": {
+          "counts": {
+            "correct": 0,
+            "loud": 4,
+            "silent": 0
+          },
+          "n": 4,
+          "result_accuracy": 0.0,
+          "silent_error_rate": 0.0
+        }
+      },
+      "counts": {
+        "correct": 12,
+        "loud": 18,
+        "silent": 3
+      },
+      "result_accuracy": 0.3636,
+      "rows": [
+        {
+          "id": "F01",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(*) as total FROM f_auth WHERE outcome = 'FAILURE'",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "F02",
+          "kind": "scalar",
+          "outcome": "silent",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(*) FROM f_auth WHERE outcome = 'success' AND is_remote = TRUE;",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "F03",
+          "kind": "set",
+          "outcome": "correct",
+          "rows_returned": 22,
+          "sql": "SELECT DISTINCT api_operation FROM f_api",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "F04",
+          "kind": "scalar",
+          "outcome": "silent",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(*) as total FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%create%'",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "F05",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(*) FROM f_network",
+          "tier": "simple_filter"
+        },
+        {
+          "id": "G01",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT SUM(bytes_out) FROM f_network",
+          "tier": "aggregation"
+        },
+        {
+          "id": "G02",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(DISTINCT dst_port) FROM f_network",
+          "tier": "aggregation"
+        },
+        {
+          "id": "G03",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT AVG(duration) as avg_connection_duration FROM f_network",
+          "tier": "aggregation"
+        },
+        {
+          "id": "G04",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(DISTINCT src_ip) AS num_distinct_ips FROM f_network;",
+          "tier": "aggregation"
+        },
+        {
+          "id": "G05",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(DISTINCT user_uid) FROM f_auth",
+          "tier": "aggregation"
+        },
+        {
+          "id": "B01",
+          "kind": "set",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT dst_port AS port, COUNT(*) as connection_count FROM f_network GROUP BY dst_port ORDER BY connection end DESC LIMIT 5",
+          "tier": "group_by"
+        },
+        {
+          "id": "B02",
+          "kind": "scalar",
+          "outcome": "silent",
+          "rows_returned": 1,
+          "sql": "SELECT is_success AS Outcome FROM f_auth GROUP BY is_success ORDER BY COUNT(*) DESC LIMIT 1",
+          "tier": "group_by"
+        },
+        {
+          "id": "B03",
+          "kind": "set",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT p.image_name AS 'Image Name', COUNT(*) AS 'Event Count' FROM f_process p GROUP BY p.image_name ORDER BY Event Count DESC LIMIT 10",
+          "tier": "group_by"
+        },
+        {
+          "id": "B04",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT DISTINCT api.service FROM f_api WHERE mfa_present = TRUE ORDER BY COUNT(1) DESC LIMIT 1",
+          "tier": "group_by"
+        },
+        {
+          "id": "B05",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT COUNT(DISTINCT dst_ip) AS num_destinations FROM f_network WHERE src_host = 'WS1'",
+          "tier": "group_by"
+        },
+        {
+          "id": "T01",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT COUNT(*) as total_auth_events FROM f_auth WHERE time >= '2024-05-03T00:00:00' AND time < '2deceb8e-d17c-11ed-afff-ffffffffffff'",
+          "tier": "time_window"
+        },
+        {
+          "id": "T02",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT COUNT(*) FROM f_api WHERE time BETWEEN '2024-05-03T09:00:00' AND '2024-05-03T16:00:00';",
+          "tier": "time_window"
+        },
+        {
+          "id": "T03",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT COUNT(*) as connection_count FROM f_network WHERE src_ip = 'WS1' AND time BETWEEN epoch-ms(datetime('now()', '-1 hour')) and epoch-ms(datetime('now()'))",
+          "tier": "time_window"
+        },
+        {
+          "id": "T04",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT EXTRACT('epoch' FROM MAX(f_network.time) - MIN(fdependent on f_session to calculate this, as it provides the start and end times of user sessions which can be used to determine connection spans within a session: {",
+          "tier": "time_window"
+        },
+        {
+          "id": "M01",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT COUNT(*) FROM (SELECT * FROM f_network WHERE dst_port = 443 AND bytes_out < 1 end GROUP BY event_uid) AS subquery",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "M02",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(*) FROM f_auth WHERE outcome = 'FAILURE' AND is_remote = TRUE;",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "M03",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(*) as total FROM (SELECT * FROM f_api WHERE api_operation = 'AssumeRole' AND mfa_present IS TRUE) AS subquery;",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "M04",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT COUNT(*) FROM (SELECT * FROM f_process WHERE class_uid = 'WS1' AND LOWER(cmd_line) LIKE '%powershell%')",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "M05",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(*) as connection_count FROM f_network WHERE src_ip = '10.10.1.21' AND dst_ip = '10.10.1.22' AND dst_port = 3389;",
+          "tier": "multi_condition"
+        },
+        {
+          "id": "J01",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT COUNT(DISTINCT asset) AS total_assets FROM f_asset JOIN (SELECT canonical_asset as hostname, ip from f_dns UNION SELECT hostname, NULL as ip from f_session WHERE src_ip IN ('10.10.1.21', '10.10.1.22')) AS asset_info ON f_asset.hostname = asset_info.hostname OR (f_asset.ip = asset_info.ip AND ",
+          "tier": "join"
+        },
+        {
+          "id": "J02",
+          "kind": "scalar",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT f_auth.user_uid, COUNT(*) as num_auth_events FROM (SELECT DISTINCT event_uid, class_uid, time, logged_time, outcome, is_success, src_country, src_ip, target_host FROM f_auth UNION ALL SELECT DISTINCT user_uid, NULL AS event_uid, NULL AS class_uid, NULL AS time, NULL AS logged_time, NULL AS ou",
+          "tier": "join"
+        },
+        {
+          "id": "J03",
+          "kind": "scalar",
+          "outcome": "correct",
+          "rows_returned": 1,
+          "sql": "SELECT COUNT(*) FROM f_process JOIN f_asset ON f_process.device_hostname = f_asset.hostname",
+          "tier": "join"
+        },
+        {
+          "id": "J04",
+          "kind": "set",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT DISTINCT dst_ip FROM f_network WHERE src_ip = 'WS1' AND protocol_name IN ('DNS')",
+          "tier": "join"
+        },
+        {
+          "id": "A01",
+          "kind": "uidset",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT f_network.event_uid FROM f_network JOIN (SELECT class_uid AS common_class_uid, src_ip, dst_ip, AVG(duration) as avg_duration, SUM(bytes_out + bytes_in)/2 as average_bytes  FROM f_network GROUP BY class_uid, src_ip, dst_ip HAVING (avg_duration BETWEEN 59 AND 61) AND average_bytes < 1000000 ORD",
+          "tier": "adversary_tail"
+        },
+        {
+          "id": "A02",
+          "kind": "substring",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT cmd_line FROM f_process WHERE actor_user_uid = 'desired_user' AND pid IN (SELECT DISTINCT parent_image_name FROM f_api JOIN f_dns ON api.event_uid = dns.event_uid) ORDER BY time DESC LIMIT 1",
+          "tier": "adversary_tail"
+        },
+        {
+          "id": "A06",
+          "kind": "uid",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT f_auth.event_uid FROM f_api JOIN f_dns ON f_api.event_uid = f_dns.eventdependent(f_network, 'DNS query') AND NOT EXISTS (SELECT * FROM f_api WHERE mfa_present IS TRUE) WHERE api_operation LIKE '%AttachUserPolicy%'",
+          "tier": "adversary_tail"
+        },
+        {
+          "id": "A08",
+          "kind": "substring",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT f_dns.query_hostname FROM f_dns JOIN f_session ON f_dns.event_uid = fdependent(f_network, 'start_time') AND f_session.host = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1",
+          "tier": "adversary_tail"
+        },
+        {
+          "id": "A04",
+          "kind": "uidset",
+          "outcome": "loud",
+          "rows_returned": 0,
+          "sql": "SELECT s.event_uid FROM f_session AS s WHERE s.start_time <= '2021-04-05T13:00:00Z' AND s.end_time >= '2 end_time >= '2021-04-05T13:00:00Z';",
+          "tier": "adversary_tail"
+        }
+      ],
+      "silent_error_rate": 0.0909
+    }
+  },
+  "question_count": 33,
+  "tier_counts": {
+    "adversary_tail": 5,
+    "aggregation": 5,
+    "group_by": 5,
+    "join": 4,
+    "multi_condition": 5,
+    "simple_filter": 5,
+    "time_window": 4
+  }
+}
