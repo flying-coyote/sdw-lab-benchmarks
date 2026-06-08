@@ -1,0 +1,194 @@
+{
+  "checks": [
+    {
+      "check": "node_count_under_10k",
+      "expected": true,
+      "got": true,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "no_event_nodes",
+      "expected": [],
+      "got": [],
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "skos_edges",
+      "expected": 606,
+      "got": 606,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "skos_controls",
+      "expected": 402,
+      "got": 402,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "skos_controls_800-53",
+      "expected": 111,
+      "got": 111,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "skos_controls_cci",
+      "expected": 291,
+      "got": 291,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "skos_def_techniques",
+      "expected": 79,
+      "got": 79,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "ocsf_seealso_pairs",
+      "expected": 69,
+      "got": 69,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "ocsf_event_class_links",
+      "expected": 28,
+      "got": 28,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "ocsf_distinct_classes",
+      "expected": 27,
+      "got": 27,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "wall_defenses",
+      "expected": 120,
+      "got": 120,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "digital_artifact_leaves~607",
+      "expected": 607,
+      "got": 607,
+      "hard": false,
+      "pass": true
+    },
+    {
+      "check": "leaves_with_ocsf_seealso~14",
+      "expected": 14,
+      "got": 14,
+      "hard": false,
+      "pass": true
+    },
+    {
+      "check": "scf_controls_attack",
+      "expected": 108,
+      "got": 108,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "scf_attack_ids",
+      "expected": 511,
+      "got": 511,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "wall_defenses_reaching_scf",
+      "expected": 118,
+      "got": 118,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "scf_controls_reached",
+      "expected": 104,
+      "got": 104,
+      "hard": true,
+      "pass": true
+    },
+    {
+      "check": "wall_attack_gaps",
+      "expected": 33,
+      "got": 33,
+      "hard": true,
+      "pass": true
+    }
+  ],
+  "digital_artifact_leaves": 607,
+  "fingerprint": "5d2a93c8708db611a4dd89b00c0b19c9487908337bbee4fd0157d7955e167581",
+  "hard_failures": [],
+  "hop1_cim_fields": 21,
+  "hop1_cim_unmapped": 3,
+  "hop3_observes_edges": 4676,
+  "hop4_inferred_edges": 5616,
+  "hop4_produces_edges": 4676,
+  "hop4prime_curated_edges": 89,
+  "leaves_with_ocsf_seealso": 14,
+  "node_types": {
+    "artifact": 167,
+    "attack": 587,
+    "attack_mitigation": 41,
+    "attack_tactic": 12,
+    "control": 402,
+    "d3fend_event": 68,
+    "defense": 179,
+    "framework": 249,
+    "ocsf_class": 27,
+    "ocsf_field": 19,
+    "ocsf_object": 39,
+    "ocsf_other": 2,
+    "scf_control": 1468,
+    "source_field": 24
+  },
+  "ocsf_distinct_classes": 27,
+  "ocsf_event_class_links": 28,
+  "ocsf_seealso_pairs": 69,
+  "proxy_quality_dist": {
+    "artifact_cooccurrence": 10292,
+    "ctid_reroute": 5039,
+    "curated": 4765,
+    "doc_link": 138,
+    "measured": 45,
+    "ontology_curated": 4676,
+    "scf_strm": 30667,
+    "skos_typed": 606
+  },
+  "scf_attack_ids": 511,
+  "scf_controls_attack": 108,
+  "scf_controls_reached": 104,
+  "scf_loaded": true,
+  "skos_controls": 402,
+  "skos_controls_800-53": 111,
+  "skos_controls_cci": 291,
+  "skos_def_techniques": 79,
+  "skos_edges": 606,
+  "soft_failures": [],
+  "sources": {
+    "cim_bridge": "/home/jerem/project1/02-projects/d3fend-wall/c1-fieldmapping/cim_ocsf_bridge.json",
+    "edges": "/home/jerem/project1/02-projects/d3fend-wall/data/edges.csv",
+    "matrix_long": "/home/jerem/project1/02-projects/d3fend-wall/data/matrix_long.csv",
+    "ontology": "/home/jerem/project1/02-projects/d3fend-wall/cache/d3fend_ontology.json",
+    "scf_sankey": "/home/jerem/project1/02-projects/scf-mapping/data/scf_sankey.json",
+    "table_b": "/home/jerem/project1/02-projects/d3fend-wall/data/table_b_off_artifacts.csv",
+    "wall_columns": "/home/jerem/project1/02-projects/d3fend-wall/data/wall_columns.csv"
+  },
+  "total_edges": 56228,
+  "total_nodes": 3284,
+  "wall_attack_gaps": 33,
+  "wall_defenses": 120,
+  "wall_defenses_reaching_scf": 118,
+  "with_scf": true
+}
