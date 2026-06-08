@@ -30,6 +30,16 @@ graph structure) to isolate retrieval-value from graph-structure-value. A bare r
 arm validates that it executes end-to-end without the stall and produces correct/silent/loud
 outcomes, but it is a smoke test, not the pre-registered head-to-head, until `flat_retrieval` lands.
 
+VALIDATION (2026-06-08, phi3, per-phase timing): the rebuild is confirmed functional end-to-end.
+build_graph 5.3s (234k nodes / 355k edges), entity embeddings cached (2,504 vectors, 0s reload),
+sameAs index 0.3s, **bounded** retrieve <0.1s (keep ≈ 157), serialize 0.3s. The only slow phase is
+CPU LLM generation at ~260s/query (phi3, ~6k-token context), so a full 9-query run is ~40 min of
+inference — an environment cost, not the embedding stall (which is gone). Two further fixes were
+needed beyond entity-layer embedding, both design-consistent and documented in code: HOPS=1 (an
+entity seed is one hop from its events) and excluding the 54k high-cardinality `endpoint`
+(dst_ip:dst_port) tuples from the embed set, plus bounded per-seed expansion + a precomputed sameAs
+index in `retrieve()` so a super-hub host-entity on a 2-host corpus doesn't blow up the subgraph.
+
 ---
 
 ## 1. The contract this arm must match

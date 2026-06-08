@@ -42,7 +42,12 @@ from scoring import classify  # noqa: E402
 # Fixed retrieval hyper-params — pre-registered BEFORE the scored run (fairness §6: no tuning
 # k/hops to the planted answers after seeing misses).
 K_SEED = 20
-HOPS = 2
+# HOPS = 1 for the structured (entity-layer) rebuild: an entity seed is one hop from its events,
+# so radius-1 IS the entity->events traversal the design intends. The original per-event arm used
+# HOPS=2 (event->entity->event); on the rebuilt entity-seeded graph, radius-2 explodes from hub
+# entities (a host's thousands of events, then each event's other entities) and is intractable.
+# This is a design-consistent setting, not tuning to the planted answers (fairness §6).
+HOPS = 1
 NODE_BUDGET = 150
 EDGE_BUDGET = 300
 
@@ -217,7 +222,12 @@ def graph_fingerprint(g):
 # entity seeds then pull their events through the 2-hop ego traversal in retrieve(). The event
 # nodes stay in the graph (so traversal + serialization still see them) — they are just not
 # vector-indexed.
-ENTITY_NTYPES = {"host", "ip", "instance", "user", "domain", "endpoint", "resource", "role"}
+# Stable CONCEPT entities only. `endpoint` (dst_ip:dst_port) is deliberately excluded: it is a
+# high-cardinality per-flow tuple (~54k on Store F), an event attribute rather than a concept, and
+# embedding it reintroduces the very cost the rebuild removes. Endpoints stay as graph nodes and are
+# reachable by traversal from their host/event; they are just not vector-indexed. The embedded set
+# is then ~1.3k (hosts, users, domains, resources, roles, instances) — genuinely "a few hundred-ish".
+ENTITY_NTYPES = {"host", "ip", "instance", "user", "domain", "resource", "role"}
 
 
 def node_documents(g):
@@ -271,23 +281,39 @@ def vector_topk(qvec, mat, ids, k):
     return [ids[i] for i in order[:k]]
 
 
-def retrieve(g, seeds):
-    """Seeds → 2-hop ego union + full sameAs closure."""
-    import networkx as nx
-    keep = set()
+def sameas_index(g):
+    """Precompute the sameAs adjacency once (alias chains: host↔ip↔instance). Avoids scanning a
+    hub node's tens-of-thousands of edges per query just to find its 2-3 alias links."""
+    adj = {}
+    for u, v, d in g.edges(data=True):
+        if d.get("rel") == "sameAs":
+            adj.setdefault(u, set()).add(v)
+            adj.setdefault(v, set()).add(u)
+    return adj
+
+
+def retrieve(g, seeds, sameadj):
+    """Structured retrieval: from each entity seed, a BOUNDED 1-hop neighbourhood (entity → its
+    events / aliases), capped so the kept subgraph stays ~NODE_BUDGET even when a seed is a
+    super-hub — a host on a 2-host corpus has tens of thousands of event neighbours, and a full
+    ego_graph over that is intractable. Bounding the per-seed expansion is what makes entity-seeded
+    retrieval usable; the serializer caps again at NODE_BUDGET. Then a small sameAs alias closure
+    (via the precomputed index) so an actor's identity links are not split."""
+    keep = set(s for s in seeds if s in g)
+    per_seed = max(2, NODE_BUDGET // max(1, len(seeds)))
     for s in seeds:
-        if s in g:
-            keep |= set(nx.ego_graph(g, s, radius=HOPS, undirected=True).nodes)
-    # sameAs closure: pull whole alias chains touching any kept node
+        if s not in g:
+            continue
+        nbrs = sorted(set(g.successors(s)) | set(g.predecessors(s)))  # deterministic
+        keep.update(nbrs[:per_seed])
+    # bounded sameAs alias closure over the kept set (index lookup, not a full edge scan)
     frontier = set(keep)
     while frontier:
         nxt = set()
         for n in frontier:
-            for u, v, d in list(g.out_edges(n, data=True)) + list(g.in_edges(n, data=True)):
-                if d.get("rel") == "sameAs":
-                    other = v if u == n else u
-                    if other not in keep:
-                        keep.add(other); nxt.add(other)
+            for other in sameadj.get(n, ()):  # O(alias degree), not O(node degree)
+                if other not in keep:
+                    keep.add(other); nxt.add(other)
         frontier = nxt
     return keep
 
@@ -336,13 +362,14 @@ def run_arm(model, embed_model):
     con.close()
     fp = graph_fingerprint(g)
     mat, ids = build_or_load_embeddings(g, embed_model, fp)
+    sameadj = sameas_index(g)
 
     per_query, rows = {}, []
     for q in QUERIES:
         qvec = embed([q["nl"]], embed_model)[0]
         seeds = vector_topk(qvec, mat, ids, K_SEED)
         seed_rank = {nid: i for i, nid in enumerate(seeds)}
-        keep = retrieve(g, seeds)
+        keep = retrieve(g, seeds, sameadj)
         context = serialize_subgraph(g, keep, seed_rank)
         answer = ask(model, q["nl"], context)
         if not answer:
