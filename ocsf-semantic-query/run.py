@@ -149,6 +149,34 @@ frontier text-to-SQL leg would complete.
 """
 
 
+def _graphrag_section(results):
+    g = results.get("arms", {}).get("graphrag")
+    if not g or g.get("status") != "measured":
+        blocker = (g or {}).get("blocker", "run_graphrag.py not yet run")
+        return f"\n## GraphRAG arm\n\nPending ({blocker}).\n"
+    pq = g["per_query"]
+    rows = "\n".join(f"| {q} | {pq[q]['outcome']} | {pq[q]['kind']} | {pq[q].get('cells_returned','—')} |"
+                     for q in g["queries"])
+    return f"""
+## GraphRAG arm ({g['engine']})
+
+The LLM arm with graph + vector retrieval: it attempts all {len(g['queries'])} adversary
+queries (including the aggregation/recursion ones OBDA refuses), with no correctness
+guarantee. **{int(g['result_accuracy']*100)}% correct, {int(g['silent_error_rate']*100)}% silent**
+across the A1–A9 union. Graph: {g['graph_nodes']} nodes / {g['graph_edges']} edges;
+retrieval k={g['retrieval']['k_seed']}, hops={g['retrieval']['hops']}.
+
+| query | outcome | kind | cells |
+|---|---|---|---|
+{rows}
+
+The three-way reading: OBDA refuses the queries outside OWL2QL (loud), text-to-SQL fails
+loud-but-broken, and GraphRAG can attempt everything — so the question its silent-error rate
+answers is whether broad-but-unverified coverage trades loud refusals for plausible-but-wrong
+answers on the tail. {g['decode_caveat']}.
+"""
+
+
 def render_md(results):
     t = results["arms"]["text_to_sql"]
     rows = "\n".join(f"| {r['id']} | {r['outcome']} | {r['rows_returned']} |" for r in t["rows"])
@@ -184,7 +212,7 @@ produce silent errors in the first place (the frontier leg) and the OBDA arm to 
 against. Both are the next steps.
 
 {_obda_section(results)}
-GraphRAG arm still pending ({results['arms'].get('graphrag', {}).get('blocker', 'no graph+vector stack installed')}).
+{_graphrag_section(results)}
 Tier B, single machine, one planted chain.
 """
 

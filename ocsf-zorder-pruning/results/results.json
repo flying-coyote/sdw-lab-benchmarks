@@ -1,0 +1,548 @@
+{
+  "answer_equality": {
+    "Q1_src_ip_and_time": {
+      "answers": {
+        "single_sort": [
+          [
+            "7",
+            "18605"
+          ]
+        ],
+        "unordered": [
+          [
+            "7",
+            "18605"
+          ]
+        ],
+        "zorder": [
+          [
+            "7",
+            "18605"
+          ]
+        ]
+      },
+      "equal": true
+    },
+    "Q2_dst_port_and_src_ip": {
+      "answers": {
+        "single_sort": [
+          [
+            "49",
+            "55195"
+          ]
+        ],
+        "unordered": [
+          [
+            "49",
+            "55195"
+          ]
+        ],
+        "zorder": [
+          [
+            "49",
+            "55195"
+          ]
+        ]
+      },
+      "equal": true
+    },
+    "Q3_dst_endpoint_and_port": {
+      "answers": {
+        "single_sort": [
+          [
+            "5983",
+            "9837637"
+          ]
+        ],
+        "unordered": [
+          [
+            "5983",
+            "9837637"
+          ]
+        ],
+        "zorder": [
+          [
+            "5983",
+            "9837637"
+          ]
+        ]
+      },
+      "equal": true
+    },
+    "Q4_time_window_only": {
+      "answers": {
+        "single_sort": [
+          [
+            "83185",
+            "145564920"
+          ]
+        ],
+        "unordered": [
+          [
+            "83185",
+            "145564920"
+          ]
+        ],
+        "zorder": [
+          [
+            "83185",
+            "145564920"
+          ]
+        ]
+      },
+      "equal": true
+    }
+  },
+  "artifacts": {
+    "single_sort": {
+      "bytes_sha256": "2ca56d8129ee27d10aa2fa88e8ddefa82a93b547f5fc18e6f621d4a677ae251d",
+      "logical_fingerprint": "fe1435968d46de84964b9936a342ac24",
+      "manifest": {
+        "columns": {
+          "activity_id": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "bytes_out": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "class_uid": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "dst_endpoint_int": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "dst_port": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "id": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "src_ip": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "src_ip_int": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "time": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          }
+        },
+        "n_row_groups": 40,
+        "n_rows": 2000000
+      },
+      "path": "single_sort.parquet"
+    },
+    "unordered": {
+      "bytes_sha256": "0574ea81c1e7ee1190758112cffad70f0cdc93a5d1afe11a1d33a5ee20fd3550",
+      "logical_fingerprint": "fe1435968d46de84964b9936a342ac24",
+      "manifest": {
+        "columns": {
+          "activity_id": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "bytes_out": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "class_uid": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "dst_endpoint_int": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "dst_port": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "id": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "src_ip": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "src_ip_int": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "time": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          }
+        },
+        "n_row_groups": 40,
+        "n_rows": 2000000
+      },
+      "path": "unordered.parquet"
+    },
+    "zorder": {
+      "bytes_sha256": "59161fa5fd36f0cadca8569b4174f77a02f7d5128dd1cd7d023786f385de7ccb",
+      "logical_fingerprint": "fe1435968d46de84964b9936a342ac24",
+      "manifest": {
+        "columns": {
+          "activity_id": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "bytes_out": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "class_uid": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "dst_endpoint_int": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "dst_port": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "id": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "src_ip": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "src_ip_int": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          },
+          "time": {
+            "encodings": [
+              "PLAIN, RLE, RLE_DICTIONARY"
+            ],
+            "has_bloom": false
+          }
+        },
+        "n_row_groups": 40,
+        "n_rows": 2000000
+      },
+      "path": "zorder.parquet"
+    }
+  },
+  "benchmark": "ocsf-zorder-pruning",
+  "environment": {
+    "duckdb": "1.5.3",
+    "pyarrow": "23.0.1"
+  },
+  "evidence_tier": "B (single machine; seeded corpus; Parquet + DuckDB)",
+  "latencies": {
+    "Q1_src_ip_and_time": {
+      "single_sort": {
+        "cv_pct": 11.5,
+        "max_ms": 4.641,
+        "median_ms": 3.711,
+        "min_ms": 3.27,
+        "trials": 7,
+        "warmup": 2
+      },
+      "unordered": {
+        "cv_pct": 5.2,
+        "max_ms": 13.993,
+        "median_ms": 12.498,
+        "min_ms": 12.049,
+        "trials": 7,
+        "warmup": 2
+      },
+      "zorder": {
+        "cv_pct": 5.3,
+        "max_ms": 5.318,
+        "median_ms": 4.77,
+        "min_ms": 4.474,
+        "trials": 7,
+        "warmup": 2
+      }
+    },
+    "Q2_dst_port_and_src_ip": {
+      "single_sort": {
+        "cv_pct": 4.3,
+        "max_ms": 2.934,
+        "median_ms": 2.737,
+        "min_ms": 2.536,
+        "trials": 7,
+        "warmup": 2
+      },
+      "unordered": {
+        "cv_pct": 5.8,
+        "max_ms": 11.144,
+        "median_ms": 9.691,
+        "min_ms": 9.383,
+        "trials": 7,
+        "warmup": 2
+      },
+      "zorder": {
+        "cv_pct": 9.7,
+        "max_ms": 6.952,
+        "median_ms": 5.777,
+        "min_ms": 5.318,
+        "trials": 7,
+        "warmup": 2
+      }
+    },
+    "Q3_dst_endpoint_and_port": {
+      "single_sort": {
+        "cv_pct": 12.8,
+        "max_ms": 10.911,
+        "median_ms": 9.339,
+        "min_ms": 7.524,
+        "trials": 7,
+        "warmup": 2
+      },
+      "unordered": {
+        "cv_pct": 30.8,
+        "max_ms": 15.699,
+        "median_ms": 8.493,
+        "min_ms": 6.981,
+        "trials": 7,
+        "warmup": 2
+      },
+      "zorder": {
+        "cv_pct": 9.5,
+        "max_ms": 7.448,
+        "median_ms": 6.021,
+        "min_ms": 5.59,
+        "trials": 7,
+        "warmup": 2
+      }
+    },
+    "Q4_time_window_only": {
+      "single_sort": {
+        "cv_pct": 7.5,
+        "max_ms": 12.201,
+        "median_ms": 10.214,
+        "min_ms": 9.519,
+        "trials": 7,
+        "warmup": 2
+      },
+      "unordered": {
+        "cv_pct": 4.4,
+        "max_ms": 12.25,
+        "median_ms": 11.127,
+        "min_ms": 10.574,
+        "trials": 7,
+        "warmup": 2
+      },
+      "zorder": {
+        "cv_pct": 8.6,
+        "max_ms": 6.596,
+        "median_ms": 5.897,
+        "min_ms": 4.884,
+        "trials": 7,
+        "warmup": 2
+      }
+    }
+  },
+  "layout_meta": {
+    "single_sort": {
+      "sort_key": "src_ip_int",
+      "write_ms": 2058.7
+    },
+    "unordered": {
+      "write_ms": 2656.6
+    },
+    "zorder": {
+      "scale": {
+        "ip": [
+          167772161,
+          169869310
+        ],
+        "port": [
+          22,
+          8443
+        ],
+        "time_bucket": [
+          490896,
+          490919
+        ]
+      },
+      "write_ms": 11564.2,
+      "z_bits_per_dim": 16,
+      "z_dims": [
+        "src_ip_int",
+        "dst_port",
+        "time_bucket_1h"
+      ],
+      "z_value_range": [
+        585,
+        281474976710070
+      ]
+    }
+  },
+  "n_rows": 2000000,
+  "pruning": {
+    "Q1_src_ip_and_time": {
+      "single_sort": {
+        "pct_pruned": 95.0,
+        "prunable_rgs": 38,
+        "rows_in_prunable": 1900000,
+        "rows_in_scanned": 100000,
+        "total_rgs": 40
+      },
+      "unordered": {
+        "pct_pruned": 0.0,
+        "prunable_rgs": 0,
+        "rows_in_prunable": 0,
+        "rows_in_scanned": 2000000,
+        "total_rgs": 40
+      },
+      "zorder": {
+        "pct_pruned": 72.5,
+        "prunable_rgs": 29,
+        "rows_in_prunable": 1450000,
+        "rows_in_scanned": 550000,
+        "total_rgs": 40
+      }
+    },
+    "Q2_dst_port_and_src_ip": {
+      "single_sort": {
+        "pct_pruned": 97.5,
+        "prunable_rgs": 39,
+        "rows_in_prunable": 1950000,
+        "rows_in_scanned": 50000,
+        "total_rgs": 40
+      },
+      "unordered": {
+        "pct_pruned": 0.0,
+        "prunable_rgs": 0,
+        "rows_in_prunable": 0,
+        "rows_in_scanned": 2000000,
+        "total_rgs": 40
+      },
+      "zorder": {
+        "pct_pruned": 65.0,
+        "prunable_rgs": 26,
+        "rows_in_prunable": 1300000,
+        "rows_in_scanned": 700000,
+        "total_rgs": 40
+      }
+    },
+    "Q3_dst_endpoint_and_port": {
+      "single_sort": {
+        "pct_pruned": 0.0,
+        "prunable_rgs": 0,
+        "rows_in_prunable": 0,
+        "rows_in_scanned": 2000000,
+        "total_rgs": 40
+      },
+      "unordered": {
+        "pct_pruned": 0.0,
+        "prunable_rgs": 0,
+        "rows_in_prunable": 0,
+        "rows_in_scanned": 2000000,
+        "total_rgs": 40
+      },
+      "zorder": {
+        "pct_pruned": 15.0,
+        "prunable_rgs": 6,
+        "rows_in_prunable": 300000,
+        "rows_in_scanned": 1700000,
+        "total_rgs": 40
+      }
+    },
+    "Q4_time_window_only": {
+      "single_sort": {
+        "pct_pruned": 0.0,
+        "prunable_rgs": 0,
+        "rows_in_prunable": 0,
+        "rows_in_scanned": 2000000,
+        "total_rgs": 40
+      },
+      "unordered": {
+        "pct_pruned": 0.0,
+        "prunable_rgs": 0,
+        "rows_in_prunable": 0,
+        "rows_in_scanned": 2000000,
+        "total_rgs": 40
+      },
+      "zorder": {
+        "pct_pruned": 65.0,
+        "prunable_rgs": 26,
+        "rows_in_prunable": 1300000,
+        "rows_in_scanned": 700000,
+        "total_rgs": 40
+      }
+    }
+  },
+  "row_group_size": 50000,
+  "sizes_bytes": {
+    "single_sort": 40720564,
+    "unordered": 49072287,
+    "zorder": 46817900
+  },
+  "z_bits_per_dim": 16,
+  "z_order_dims": [
+    "src_ip_int",
+    "dst_port",
+    "time_bucket_1h"
+  ]
+}

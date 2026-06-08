@@ -93,17 +93,18 @@
     }
   ],
   "digital_artifact_leaves": 607,
-  "fingerprint": "8ee79370f7fcfe7605ea374e7c1aa10c875e3efd8a4d6a6142df63cda7b08680",
+  "fingerprint": "c1510f7b08322591440232a1e54ca97f743f96f5f43c7592afb25e99d6e9ed5b",
   "hard_failures": [],
   "hop1_cim_fields": 21,
   "hop1_cim_unmapped": 3,
+  "hop2b_event_artifact_edges": 66,
   "hop3_observes_edges": 4676,
   "hop4_inferred_edges": 5616,
   "hop4_produces_edges": 4676,
   "hop4prime_curated_edges": 89,
   "leaves_with_ocsf_seealso": 14,
   "node_types": {
-    "artifact": 167,
+    "artifact": 188,
     "attack": 441,
     "attack_mitigation": 41,
     "attack_tactic": 12,
@@ -124,6 +125,7 @@
     "curated": 4765,
     "doc_link": 138,
     "measured": 45,
+    "ontology_axiom": 66,
     "ontology_curated": 4676,
     "skos_typed": 606
   },
@@ -142,8 +144,8 @@
     "table_b": "/home/jerem/project1/02-projects/d3fend-wall/data/table_b_off_artifacts.csv",
     "wall_columns": "/home/jerem/project1/02-projects/d3fend-wall/data/wall_columns.csv"
   },
-  "total_edges": 20522,
-  "total_nodes": 1421,
+  "total_edges": 20588,
+  "total_nodes": 1442,
   "wall_defenses": 120,
   "with_scf": false
 }

@@ -275,6 +275,31 @@ def hop2_ocsf_d3fend(scg, ont, recon):
     recon["leaves_with_ocsf_seealso"] = leaf_with_ocsf
 
 
+def hop2b_event_artifact(scg, ont, recon):
+    """Hop 2b: D3FEND event -> digital artifact, via the ontology's own event-class restrictions
+    (e.g. FileEvent `has-participant` File, AuthenticationEvent `caused-by` Authentication).
+    ontology_axiom, Tier A. This is the join that connects an OCSF-linked event to the artifact a
+    defense observes -- it closes the schema->defense path end-to-end through real edges."""
+    art_desc = ont.digital_artifact_leaves()[0]  # full DigitalArtifact descendant set
+    src_file = "d3fend-wall/cache/d3fend_ontology.json (event subClassOf restriction)"
+    note = "D3FEND event-class restriction linking the event-occurrent to its digital-artifact participant"
+    n = 0
+    event_ids = [nid for nid, a in scg.nodes.items() if a.get("ntype") == "d3fend_event"]
+    for eid in event_ids:
+        node = ont.byid.get(eid, {})
+        for sc in _refs(node.get("rdfs:subClassOf")):
+            r = ont.byid.get(sc, {})
+            if r.get("@type") != "owl:Restriction":
+                continue
+            prop = (_refs(r.get("owl:onProperty")) or [""])[0].replace("d3f:", "").replace("-", "_")
+            for tgt in _refs(r.get("owl:someValuesFrom")):
+                if tgt in art_desc:
+                    a = scg.node(tgt, "artifact", _label(ont.byid.get(tgt, {})))
+                    scg.edge(eid, a, f"event_{prop or 'involves'}", "A", "ontology_axiom", src_file, note)
+                    n += 1
+    recon["hop2b_event_artifact_edges"] = n
+
+
 def _resolve_defense(ont, scg, d3fend_id=None, label=None):
     nid = None
     if d3fend_id and d3fend_id in ont.d3fendid2id:
@@ -415,6 +440,7 @@ def hop5prime_scf(scg, ont, recon, def2attacks):
     d = json.load(open(p))
     src_file = "scf-mapping/data/scf_sankey.json (LOCAL, CC-BY-ND -- not redistributed)"
     fw_by_fid = {str(f["fid"]): f for f in d["frameworks"]}
+    domains = d.get("domains", [])
     attack_note = ("SCF's ATT&CK layer is CTID's NIST 800-53->ATT&CK mapping re-routed through SCF's own "
                    "800-53 crosswalk (uniform Intersects-With/strength-3); SCF adds no independent ATT&CK signal")
     scf_attack_controls = 0
@@ -423,8 +449,10 @@ def hop5prime_scf(scg, ont, recon, def2attacks):
     ctl_to_attacks = {}
     for c in d["controls"]:
         scf_code = c.get("scf") or f"cid{c['cid']}"
+        did = c.get("did")
         cnode = scg.node(f"scf:{scf_code}", "scf_control", c.get("name", ""),
-                         consensus=c.get("cons"), consensus_w=c.get("consw"))
+                         consensus=c.get("cons"), consensus_w=c.get("consw"),
+                         domain=(domains[did] if isinstance(did, int) and did < len(domains) else None))
         mp = c.get("map") or {}
         # SCF control -> external framework (STRM); ND-gated derived edges
         for fid, codes in mp.items():
@@ -564,6 +592,7 @@ def main():
 
     hop1_fields(scg, recon)
     hop2_ocsf_d3fend(scg, ont, recon)
+    hop2b_event_artifact(scg, ont, recon)
     hop34_artifacts(scg, ont, recon)
     def2attacks = hop4_inferred_matrix(scg, ont, recon)
     hop4prime_curated(scg, ont, recon)
