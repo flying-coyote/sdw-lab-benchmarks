@@ -194,9 +194,9 @@
     }
   ],
   "store_cost": {
-    "fidelity_overhead_x": 1.92,
+    "fidelity_overhead_x": 1.93,
     "store_f_bytes": 5359973,
-    "store_n_bytes": 2785680
+    "store_n_bytes": 2777011
   },
   "void": false
 }

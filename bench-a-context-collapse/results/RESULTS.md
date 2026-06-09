@@ -63,8 +63,8 @@ believable, not more.
 
 ## Cost of the fix
 
-Store F is **1.92×** the size of Store N on this corpus
-(5,359,973 vs 2,785,680 bytes). Fidelity is not free; the
+Store F is **1.93×** the size of Store N on this corpus
+(5,359,973 vs 2,777,011 bytes). Fidelity is not free; the
 benchmark reports the price alongside the recovery so "Store F recovers the gap" is
 weighed against what it costs to keep.
 
