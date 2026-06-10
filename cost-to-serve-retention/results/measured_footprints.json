@@ -1,0 +1,43 @@
+{
+  "corpus": {
+    "rows": 10000000,
+    "jsonl_sha256": "c6ed5e3c05f311a6b53fcf6fb39d4f2448c16d74efaf17eb7cba6e76cf5dae52",
+    "raw_bytes": 3742877526
+  },
+  "measured_2026_06_10": {
+    "raw_jsonl": {
+      "bytes": 3742877526,
+      "bytes_per_event": 374.3,
+      "ratio_vs_raw": 1.0
+    },
+    "opensearch_index": {
+      "bytes": 1867759590,
+      "bytes_per_event": 186.8,
+      "ratio_vs_raw": 2.0
+    },
+    "ch_native_lz4": {
+      "bytes": 684777971,
+      "bytes_per_event": 68.5,
+      "ratio_vs_raw": 5.47
+    },
+    "iceberg_zstd_default": {
+      "bytes": 440175792,
+      "bytes_per_event": 44.0,
+      "ratio_vs_raw": 8.5
+    },
+    "ch_zstd22": {
+      "bytes": 414722162,
+      "build_seconds": null,
+      "note": "blanket ZSTD(22), same layout as the LZ4 arm; no specialty codecs (declared); resumed after a client timeout, build time not recorded",
+      "bytes_per_event": 41.5,
+      "ratio_vs_raw": 9.03
+    },
+    "parquet_zstd19_cold": {
+      "bytes": 386218513,
+      "build_seconds": 62.9,
+      "note": "single file, zstd level 19, 1,048,576-row groups, DuckDB writer (declared)",
+      "bytes_per_event": 38.6,
+      "ratio_vs_raw": 9.69
+    }
+  }
+}

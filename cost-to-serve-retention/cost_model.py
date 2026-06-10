@@ -13,7 +13,11 @@ HERE = Path(__file__).parent
 RESULTS = HERE / "results"
 
 PRICES_PER_GB_MONTH = {
-    # as-of 2026-06-10, AWS us-east-1 list; re-verify before publication
+    # VERIFIED 2026-06-10 against AWS's live rate-card JSON feeds (the source the official
+    # pricing pages render from): b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/{ec2,s3}/USD/current
+    # gp3 unchanged since 12/2020; S3 Standard (first 50TB) since 12/2016; Glacier IR since 11/2021.
+    # Storage only — Glacier IR additionally charges $0.03/GB on retrieval, so cold-tier math
+    # must stay storage-only or model retrieval frequency explicitly.
     "ebs_gp3": 0.08,
     "s3_standard": 0.023,
     "s3_glacier_ir": 0.004,
@@ -62,7 +66,7 @@ def main():
     }
 
     out = {"reference_workload_gb_per_day_raw": RAW_GB_PER_DAY,
-           "prices_as_of": "2026-06-10 AWS us-east-1 list — re-verify before publication",
+           "prices_as_of": "2026-06-10 AWS us-east-1 list — verified against the live AWS rate-card feeds (see PRICES comment)",
            "curves": curves, "compounded_multipliers": multipliers}
     (RESULTS / "cost_curves.json").write_text(json.dumps(out, indent=2))
 
