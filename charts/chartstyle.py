@@ -27,6 +27,10 @@ import matplotlib.font_manager as fm
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 
+# Feed preset: CHARTSTYLE_FEED_SCALE > 0 bumps type for phone-feed renders and
+# routes save() to out/feed/. Unset/0 leaves behavior byte-identical to default.
+FEED_SCALE = float(os.environ.get("CHARTSTYLE_FEED_SCALE", "0") or 0)
+
 
 def _register(fname, fallback):
     p = os.path.join(_HERE, "fonts", fname)
@@ -82,20 +86,29 @@ plt.rcParams.update({
     "savefig.dpi": 200,
 })
 
+if FEED_SCALE > 0:
+    plt.rcParams.update({
+        "font.size": plt.rcParams["font.size"] * FEED_SCALE,
+        "axes.labelsize": plt.rcParams["axes.labelsize"] * FEED_SCALE,
+        "xtick.labelsize": plt.rcParams["xtick.labelsize"] * FEED_SCALE,
+        "ytick.labelsize": plt.rcParams["ytick.labelsize"] * FEED_SCALE,
+    })
+
 
 def canvas(head, sub=None, source="", tier="Tier B · single-host · reproducible",
            figsize=(8.8, 4.6), nrows=1, ncols=1, top=0.80, bottom=0.17, **kw):
     """Figure + axes with reserved margins; title/subtitle (top-left) and
     source/caveat footer (bottom-left) placed so they never touch the plot."""
+    _s = FEED_SCALE if FEED_SCALE > 0 else 1.0
     fig, ax = plt.subplots(nrows, ncols, figsize=figsize, **kw)
     fig.subplots_adjust(top=top, bottom=bottom, left=0.10, right=0.965, hspace=0.45, wspace=0.28)
-    fig.text(0.012, 0.965, head, fontsize=15.5, fontweight="bold", color=INK,
+    fig.text(0.012, 0.965, head, fontsize=15.5 * _s, fontweight="bold", color=INK,
              family=SANS, ha="left", va="top")
     if sub:
-        fig.text(0.012, 0.885, sub, fontsize=11, color=MUTED, family=SANS,
+        fig.text(0.012, 0.885, sub, fontsize=11 * _s, color=MUTED, family=SANS,
                  ha="left", va="top", wrap=True)
     if source:
-        fig.text(0.012, 0.028, f"{tier}   ·   {source}", fontsize=8, family=MONO,
+        fig.text(0.012, 0.028, f"{tier}   ·   {source}", fontsize=8 * _s, family=MONO,
                  color=MUTED, ha="left", va="bottom")
     return fig, ax
 
@@ -126,6 +139,10 @@ def donut(ax, values, labels, colors, center=None, center_sub=None, startangle=9
 
 
 def save(fig, path):
+    if FEED_SCALE > 0:
+        feed_dir = os.path.join(os.path.dirname(path) or ".", "feed")
+        os.makedirs(feed_dir, exist_ok=True)
+        path = os.path.join(feed_dir, os.path.basename(path))
     fig.savefig(path, bbox_inches="tight", pad_inches=0.12)
     plt.close(fig)
     return path
