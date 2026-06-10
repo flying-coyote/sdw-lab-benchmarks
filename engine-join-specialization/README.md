@@ -61,7 +61,7 @@ survives the CV gate.
 | Arm | Engine + version | Read path | Notes |
 |---|---|---|---|
 | `starrocks` | StarRocks 4.1 allin1 | external Iceberg catalog (REST) | CBO + runtime filters; the claimed join leader |
-| `clickhouse_iceberg` | ClickHouse latest (26.5+) | `icebergS3()` catalog-less | tests whether the 24.12→26.4 join-optimization run survives the Iceberg read path (undocumented publicly) |
+| `clickhouse_iceberg` | ClickHouse latest (26.5+) | `DataLakeCatalog` REST db (catalog-mediated) | tests whether the 24.12→26.4 join-optimization run survives the Iceberg read path (undocumented publicly) |
 | `clickhouse_native` | same server | MergeTree copies of the same tables | extends the flagship rerun's native-vs-Iceberg split to joins |
 | `trino` | Trino 481 | Iceberg REST catalog | mature CBO + dynamic filtering; single-node so no cluster-shuffle advantage |
 | `dremio` | Dremio 26.0 OSS | Nessie source | **Reflections OFF** (declared: the 20× TPC-DS marketing number measures materialization, not joins) |
@@ -78,9 +78,23 @@ reads the raw S3 paths — so every arm reads **byte-identical files**
 (`reference_format_compare_writer_confound`). Declared decision rule: if StarRocks or Trino
 fail the smoke test against Nessie's REST endpoint, fall back to the MOAR-proven split
 (iceberg-rest fixture for SR/Trino + a second Nessie-written copy for Dremio) and report the
-two-catalog confound explicitly. ClickHouse `icebergS3()` stale-snapshot discipline: tables
-are write-once; any reseed purges the table's S3 prefix first
-(`reference_clickhouse_icebergs3_stale_snapshot`).
+two-catalog confound explicitly.
+
+**Declared deviation (build phase, before any scored run):** the `clickhouse_iceberg` arm
+reads `icebergS3()` against a **planted metadata pin**. Reasons, both measured during
+build: (1) Nessie names every metadata file `00000-<uuid>.metadata.json` with no sequence
+numbers, so icebergS3's "latest metadata" resolution silently picked an intermediate
+commit — 54.0M of 59.99M lineitem rows, no error; the write-once-is-safe assumption does
+not hold under Nessie naming (`reference_clickhouse_icebergs3_stale_snapshot`). (2) The
+catalog-mediated fix (`DataLakeCatalog` REST database, experimental) read correctly live
+but crash-loops the server at boot once persisted (pthread mutex assertion on database
+load), so it cannot survive an engine restart. Final mechanism: after load, a byte-copy of
+the catalog's current metadata pointer is planted per table under a sort-last name
+(`99999-….metadata.json`), making catalog-less resolution deterministic and correct;
+verified count-exact per table. Tables are write-once; any reseed purges the table's S3
+prefix first. ClickHouse arms also carry `max_memory_usage = 18e9` (below the 24g cgroup)
+so an oversized join fails as a loud per-query resource DNF instead of killing the server
+(observed: TPC-H Q21 took the server down with SIGSEGV in smoke).
 
 ## Corpora (pinned by sha256)
 
