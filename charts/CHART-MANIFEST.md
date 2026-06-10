@@ -1,6 +1,6 @@
 # Benchmark chart asset manifest
 
-Built 34 lab charts + 5 correctness tables from first-party `sdw-lab-benchmarks` results, plus 7 campaign graphics (2026-06-10, `_p*`/`_pb*` scripts — see the bottom section).
+Built 34 lab charts + 5 correctness tables from first-party `sdw-lab-benchmarks` results, plus 7 campaign graphics (2026-06-10, `_p*`/`_pb*` scripts) and 6 book figures (2026-06-10, `_bk*` scripts, MOAr restructure Wave C) — see the bottom sections.
 All numbers re-derived from source `RESULTS.md`; brand-styled via `chartstyle.py`; collision guards enforced (the two 96.3%s, the two storage premiums, the two recall headlines never cross).
 Web-served at `securitydataworks.com/research/charts/<file>`.
 
@@ -66,5 +66,20 @@ One visual per campaign post, per `project1/02-projects/securitydataworks/linked
 | `_pb6_three_journeys.py` | `three-architect-journeys.png` | Same framework, three estates, three different right answers. | B6 |
 
 Collision guards honored: `storage-footprint-7x` is the MOAR footprint measurement, never the 1.80×/1.93× fidelity premiums; no campaign graphic touches the 96.3% or recall-headline families.
+
+## Book figures (built 2026-06-10 — MOAr restructure task #28 Wave C, builds #1–#6)
+
+Each replaces repeated template prose in the restructured book; placements are the `<!-- FIGURE: name (build #N) -->` comments already in the chapters. Every number is carried exactly from the named book source (no lab data); the framing/process diagrams carry an explicit "framing diagram / framework-derived / illustrative — not a measurement" tier line instead of a Tier letter. Each ships as a web PNG plus a grayscale 300-dpi `-print` variant for the PDF build.
+
+| script | file | head (the claim) | book destination · source |
+|---|---|---|---|
+| `_bk1_adoption_bar_two_axis.py` | `adoption-bar-two-axis.png` | A move has to win large on BOTH axes (technical × operational) or the risk doesn't make sense. FRAMING diagram, no data points. | ch01 Executive Summary · ch01 line 7 |
+| `_bk2_vendor_filtering_funnel.py` | `vendor-filtering-funnel.png` | 80+ vendors → 10-15 viable → 3-5 finalists → 1 validated selection; Tier 1 does ~87% of the work. | ch03 §3.1 · the Filtering Effect table |
+| `_bk3_workload_engine_grid.py` | `workload-engine-grid.png` | One grid replaces five capability matrices; every Tier 1 workload disqualifies someone (Athena/PostgreSQL/Splunk). Unrated cells shown honestly as "not assessed in §3.3". | ch03 §3.3 · worked threat-hunting matrix + decision-implication prose |
+| `_bk4_five_phase_timeline.py` | `five-phase-decision-timeline.png` | Requirements → documented decision in roughly seven weeks; four belong to the POC; gate outputs per phase + per-phase reality check. | ch03 §3.5 · phase headings + week spans |
+| `_bk5_three_journeys_pathab.py` | `three-journeys-comparison.png` | Extends `_pb6_three_journeys` with the Marcus Path-A→B pivot; $380K / $2.9M / $12M / $1.8M and the $9.1M/yr premium carried character-exact. | ch04 §4.5 · comparison table |
+| `_bk6_phased_roadmap_swimlanes.py` | `phased-roadmap-swimlanes.png` | Integrated org: pilot M1-3 → production M4-6 → optimization/sunset M7-9 with gates; federated: 7 staggered BU bars to M12 ("12 months against the 6 to 9"). | ch06 §6.3 · phase spans + Appendix L.4 rollout table |
+
+Collision guard: `three-journeys-comparison` (book figure, carries the §4.5 dollar figures) is distinct from `three-architect-journeys.png` (campaign B6, no dollar figures) — don't swap them.
 
 ✅ = target essay exists today (existence only, says nothing about placement). 📍PLACED = chart is deployed into a live essay (the first four placed 2026-06-09, securitydataworks c40ac51); where the placed essay isn't the row's named target, the marker names it. Rows with neither are staged for placement or need the essay written first.
