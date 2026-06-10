@@ -1,0 +1,54 @@
+name: zeek-flagship-rerun
+
+services:
+  opensearch:
+    image: opensearchproject/opensearch:2.18.0
+    container_name: zfr-opensearch
+    environment:
+      - discovery.type=single-node
+      - DISABLE_SECURITY_PLUGIN=true
+      - bootstrap.memory_lock=true
+      - OPENSEARCH_JAVA_OPTS=-Xms6g -Xmx6g
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    ports:
+      - "9200:9200"
+    volumes:
+      - os_data:/usr/share/opensearch/data
+
+  clickhouse:
+    # deliberately unpinned tag; the harness records SELECT version() and the image
+    # digest in results/env.json so the exact build is reproducible from the report
+    image: clickhouse/clickhouse-server:latest
+    container_name: zfr-clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    ports:
+      - "8123:8123"
+    volumes:
+      - ch_data:/var/lib/clickhouse
+
+  minio:
+    image: minio/minio:latest
+    container_name: zfr-minio
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ROOT_USER=zfrbench
+      - MINIO_ROOT_PASSWORD=zfrbench123
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+
+volumes:
+  os_data:
+  ch_data:
+  minio_data:
