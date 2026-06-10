@@ -1,0 +1,9 @@
+{
+  "rows": 10000000,
+  "seed": 42,
+  "jsonl_sha256": "c6ed5e3c05f311a6b53fcf6fb39d4f2448c16d74efaf17eb7cba6e76cf5dae52",
+  "jsonl_bytes": 3742877526,
+  "parquet_snappy_bytes": 572607024,
+  "generated_unix": 1781083792.8004441,
+  "generator": "zeek_generator.py (ported verbatim from splunk-db-connect-benchmark @ archive)"
+}

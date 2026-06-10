@@ -6,15 +6,23 @@ OpenSearch DSL is the original translation with two DECLARED deviations made
 for answer-equality (both documented in README pre-registration):
   1. port_scan terms size 10000 -> 20000 (exceeds the corpus's unique orig_h
      count, making the agg exhaustive like the SQL GROUP BY).
-  2. precision_threshold 40000 on the cardinality aggs (forces exact counting
-     below the threshold; HLL approximation would otherwise make
-     answer-equality a coin flip).
+  2. precision_threshold 3000 on the cardinality aggs — exact below the
+     threshold, and ground-truthed exact for THIS corpus via ClickHouse
+     (max distinct resp_p per orig_h = 10; distinct resp_h per orig_h ≤ ~700).
+     A first attempt at 40000 pre-allocated ~3.6 GB and tripped the 6 GB
+     heap's circuit breaker; 3000 keeps exactness with bounded memory.
+
+Corpus-realism note (found during ground-truthing, recorded in RESULTS.md):
+max distinct ports per source is exactly 10, so port_scan_detection's
+HAVING > 10 returns an EMPTY set on this corpus — in the original benchmark
+too. The aggregation work being timed is real; the detection semantics are
+hollow on this synthetic corpus.
 """
 
 CH_NATIVE_TABLE = "benchmark.zeek_native"
 
 ICEBERG_TABLE_FN = (
-    "icebergS3('http://minio:9000/zfr-bench/iceberg/zeek.db/conn_10m', "
+    "icebergS3('http://minio:9000/zfr-bench/iceberg/zeek/conn_10m', "
     "'zfrbench', 'zfrbench123')"
 )
 
@@ -83,10 +91,10 @@ OS_QUERIES = {
                 "terms": {"field": "orig_h", "size": 20000, "min_doc_count": 1},
                 "aggs": {
                     "unique_ports": {
-                        "cardinality": {"field": "resp_p", "precision_threshold": 40000}
+                        "cardinality": {"field": "resp_p", "precision_threshold": 3000}
                     },
                     "unique_hosts": {
-                        "cardinality": {"field": "resp_h", "precision_threshold": 40000}
+                        "cardinality": {"field": "resp_h", "precision_threshold": 3000}
                     },
                     "port_filter": {
                         "bucket_selector": {
