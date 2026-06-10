@@ -77,5 +77,6 @@ axR.text(lx+0.16, ly+0.022, "format effect (matched codec)", color=cs.MUTED, fon
 axR.add_patch(plt.Rectangle((lx, ly-0.085), 0.10, 0.045, color=cs.ACCENT2, transform=axR.transData, clip_on=False))
 axR.text(lx+0.16, ly-0.063, "codec effect (Snappy vs ZSTD)", color=cs.ACCENT2, fontsize=8.3, va="center", ha="left", fontweight="bold")
 
+cs.direction_note(fig, "read ratios: 1.0× = parity")
 cs.save(fig, "out/ducklake-vs-iceberg-read-neutrality-on-b.png")
 print("rendered r16")

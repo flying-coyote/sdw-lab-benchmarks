@@ -69,5 +69,7 @@ fig.text(0.012, 0.075,
          "* raw-line match is a lighter, non-parse operation (grey).   + tenzir 6.0.0 has a ~1-in-6 shutdown segfault on this build.",
          fontsize=8.2, color=cs.MUTED, family=cs.MONO, ha="left", va="bottom")
 
+cs.direction_note(fig, "throughput: higher is better", x=0.545, y=0.215, va="bottom")
+cs.direction_note(fig, "peak RSS: lower is better", x=0.960, y=0.735, va="center")
 cs.save(fig, "out/ingest-engine-throughput-rss.png")
 print("rendered; font in use =", cs.SANS)

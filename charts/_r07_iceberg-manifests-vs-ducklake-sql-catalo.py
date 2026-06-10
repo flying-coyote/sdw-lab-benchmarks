@@ -46,5 +46,6 @@ ax.tick_params(length=0)
 ax.text(0, 1.02, "identical answers throughout — the difference is where the metadata lives (files vs a database)",
         transform=ax.transAxes, ha="left", va="bottom", fontsize=8.5, color=cs.MUTED, family=cs.MONO)
 
+cs.direction_note(fig, "latency: lower is better")
 cs.save(fig, "out/iceberg-manifests-vs-ducklake-sql-catalo.png")
 print("rendered r07")

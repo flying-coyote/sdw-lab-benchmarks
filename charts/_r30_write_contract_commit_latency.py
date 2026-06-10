@@ -67,5 +67,6 @@ fig.text(0.012, 0.085,
          "Read-contract coherence verified: one engine reads both tiers and returns identical answers.",
          fontsize=8.4, color=cs.GOOD, family=cs.MONO, ha="left", va="bottom")
 
+cs.direction_note(fig, "commit latency: lower is better", x=0.50, y=0.775, ha="center", va="top")
 cs.save(fig, "out/write-contract-commit-latency.png")
 print("rendered; font in use =", cs.SANS)

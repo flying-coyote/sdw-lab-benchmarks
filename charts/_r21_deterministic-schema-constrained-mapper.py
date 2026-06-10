@@ -59,5 +59,6 @@ ax.text(0.995, len(labels) - 0.4,
         "not 'rules beat models': the deterministic mapper covers only 0.67 of fields\n(rest left unmapped, not guessed) — but invents nothing. Schema-constraint is the lever.",
         ha="right", va="bottom", fontsize=8.5, color=cs.MUTED, family=cs.MONO)
 
+cs.direction_note(fig, "silent errors: lower is better", x=0.955, y=0.78)
 cs.save(fig, "out/deterministic-schema-constrained-mapper.png")
 print("rendered r21")

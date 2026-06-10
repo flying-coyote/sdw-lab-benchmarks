@@ -44,5 +44,7 @@ ax.grid(axis="x", color=cs.GRID)
 ax.grid(axis="y", visible=False)
 ax.tick_params(axis="both", length=0)
 
+cs.direction_note(fig, "storage: lower is better")
+
 cs.save(fig, "out/storage-footprint-7x.png")
 print("rendered p10")

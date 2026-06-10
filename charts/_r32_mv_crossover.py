@@ -64,5 +64,6 @@ ax.grid(axis="x", visible=False)
 ax.set_axisbelow(True)
 ax.tick_params(length=0)
 
+cs.direction_note(fig, "higher = incremental wins", x=0.115, y=0.745, ha="left", va="top")
 cs.save(fig, "out/mv-incremental-vs-recompute-crossover.png")
 print("rendered mv crossover")

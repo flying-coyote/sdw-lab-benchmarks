@@ -57,5 +57,6 @@ ax.text(1.0, 2.78,
         "cross-tool > best-single at every cell (min margin +19.4%) · residual gap > 0 everywhere · lever > 0 everywhere",
         ha="center", va="top", fontsize=8.6, color=cs.BODY, family=cs.MONO)
 
+cs.direction_note(fig, "lever gain: higher is better", y=0.825)
 cs.save(fig, "out/ext-1-robustness-parameter-sweep.png")
 print("rendered ext-1")

@@ -77,5 +77,7 @@ for name, color in [("Correct", cs.ACCENT), ("Loud failure (refused / errored)",
     ax.text(keyx + 0.30, legy, name, ha="left", va="center", fontsize=9, color=cs.BODY)
     keyx += 0.30 + len(name) * 0.105 + 0.55
 
+cs.direction_note(fig, "correct: higher is better", y=0.62)
+cs.direction_note(fig, "silent errors: lower is better", y=0.53, color=cs.BAD)
 cs.save(fig, "out/obda-ontop-vs-llm-text-to-sql-on-adversary.png")
 print("rendered obda")

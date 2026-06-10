@@ -60,5 +60,7 @@ ax1.set_yticklabels(panels, fontsize=10.5, color=cs.BODY)
 for ax in (ax2, ax3):
     ax.set_yticks(y); ax.set_yticklabels([])
 
+cs.direction_note(fig, "speedup: higher is better", x=0.377, y=0.135, ha="center", va="top")
+cs.direction_note(fig, "overhead: lower is better", x=0.8435, y=0.135, ha="center", va="top")
 cs.save(fig, "out/materialized-view-three-number-accountin.png")
 print("rendered r08")

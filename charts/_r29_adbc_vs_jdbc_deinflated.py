@@ -61,5 +61,6 @@ for s in ("top", "right"):
 ax.legend(loc="upper left", frameon=False, fontsize=9.5, ncol=1,
           handlelength=1.1, labelcolor=cs.BODY)
 
+cs.direction_note(fig, "latency: lower is better")
 cs.save(fig, "out/adbc-vs-jdbc-deinflated.png")
 print("rendered; font in use =", cs.SANS)

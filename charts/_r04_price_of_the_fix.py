@@ -58,5 +58,6 @@ ax.tick_params(axis="both", length=0)
 ax.text(0, 13.0, "what fidelity buys back:  ~0.35 recall  ·  9 detections un-blinded",
         ha="left", va="top", fontsize=10, color=cs.ACCENT, fontweight="bold")
 
+cs.direction_note(fig, "premium: lower is better", y=1.0, va="bottom")
 cs.save(fig, "out/context-collapse-price-of-the-fix.png")
 print("rendered r04")

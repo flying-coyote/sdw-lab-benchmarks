@@ -79,5 +79,6 @@ for ax, p in zip(axes, panels):
 
 axes[0].set_ylabel("recall / F1 of the planted detection")
 
+cs.direction_note(fig, "recall/F1: higher is better")
 cs.save(fig, "out/three-mechanisms-of-silent-detection-loss.png")
 print("rendered r05")

@@ -79,5 +79,6 @@ axR.annotate("", xy=(ADV_LOSS, 1), xytext=(ROU_LOSS, 1),
 axR.text(0.23, 0.5, "gap = +0.19\nadversary vs routine", ha="center", va="center",
          fontsize=10.5, color=cs.ACCENT, fontweight="bold")
 
+cs.direction_note(fig, "recall loss: lower is better")
 cs.save(fig, "out/de-gamed-recall-loss.png")
 print("rendered r02")

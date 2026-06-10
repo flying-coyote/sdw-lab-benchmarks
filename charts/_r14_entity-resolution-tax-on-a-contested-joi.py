@@ -47,5 +47,6 @@ ax.text(0, -0.95, "16,073 clusters resolved from 12,000 people  ·  0 over-merge
         ha="left", va="center", fontsize=8.8, color=cs.MUTED, family=cs.MONO)
 
 ax.set_ylim(-1.25, 2.7)
+cs.direction_note(fig, "recovery: higher is better")
 cs.save(fig, "out/entity-resolution-tax-on-a-contested-joi.png")
 print("rendered r14")

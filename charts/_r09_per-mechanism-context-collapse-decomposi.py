@@ -58,5 +58,6 @@ ax.text(0.0, 1.025,
         "headline delta(adversary − routine) = +0.719   ·   Store F = 1.93× Store N (synthetic corpus)",
         transform=ax.transAxes, ha="left", va="bottom", fontsize=8.8, color=cs.MUTED, family=cs.MONO)
 
+cs.direction_note(fig, "recall lost: lower is better")
 cs.save(fig, "out/per-mechanism-context-collapse-decomposi.png")
 print("rendered r09")

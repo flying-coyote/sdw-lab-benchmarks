@@ -29,5 +29,6 @@ ax.tick_params(axis="x", length=0)
 ax.grid(axis="x", color=cs.GRID); ax.grid(axis="y", visible=False); ax.set_axisbelow(True)
 ax.text(75.6, 0.30, "the scored merge beats a naive authority-of-record merge by +25.1pp",
         ha="right", va="bottom", fontsize=9, color=cs.MUTED, family=cs.MONO)
+cs.direction_note(fig, "recovered: higher is better")
 cs.save(fig, "out/data-health-recovery.png")
 print("rendered; font in use =", cs.SANS)
