@@ -48,25 +48,31 @@ for a range predicate). Actual engine pruning may be higher with page-index push
 
 ## Query latency (median + CV)
 
-| query | layout | median ms | cv % | real delta? |
+| query | layout | median ms | cv % | real delta vs unordered? |
 |---|---|---|---|---|
-| Q1_src_ip_and_time | unordered | 12.5 | 5.2 | — |
-| Q1_src_ip_and_time | single_sort | 3.7 | 11.5 | — |
-| Q1_src_ip_and_time | zorder | 4.8 | 5.3 | — |
-| Q2_dst_port_and_src_ip | unordered | 9.7 | 5.8 | — |
-| Q2_dst_port_and_src_ip | single_sort | 2.7 | 4.3 | — |
-| Q2_dst_port_and_src_ip | zorder | 5.8 | 9.7 | — |
-| Q3_dst_endpoint_and_port | unordered | 8.5 | 30.8 | — |
-| Q3_dst_endpoint_and_port | single_sort | 9.3 | 12.8 | — |
-| Q3_dst_endpoint_and_port | zorder | 6.0 | 9.5 | — |
-| Q4_time_window_only | unordered | 11.1 | 4.4 | — |
-| Q4_time_window_only | single_sort | 10.2 | 7.5 | — |
-| Q4_time_window_only | zorder | 5.9 | 8.6 | — |
+| Q1_src_ip_and_time | unordered | 12.5 | 5.2 | baseline |
+| Q1_src_ip_and_time | single_sort | 3.7 | 11.5 | ✓ real (70% gap > 11.5% CV) |
+| Q1_src_ip_and_time | zorder | 4.8 | 5.3 | ✓ real (62% gap > 5.3% CV) |
+| Q2_dst_port_and_src_ip | unordered | 9.7 | 5.8 | baseline |
+| Q2_dst_port_and_src_ip | single_sort | 2.7 | 4.3 | ✓ real (72% gap > 5.8% CV) |
+| Q2_dst_port_and_src_ip | zorder | 5.8 | 9.7 | ✓ real (40% gap > 9.7% CV) |
+| Q3_dst_endpoint_and_port | unordered | 8.5 | 30.8 | baseline (noisy: CV 30.8%) |
+| Q3_dst_endpoint_and_port | single_sort | 9.3 | 12.8 | ✗ within noise (9% gap < 30.8% CV) |
+| Q3_dst_endpoint_and_port | zorder | 6.0 | 9.5 | ✗ NOT claimable (29% gap < 30.8% CV) |
+| Q4_time_window_only | unordered | 11.1 | 4.4 | baseline |
+| Q4_time_window_only | single_sort | 10.2 | 7.5 | ~ marginal (8% gap ≈ 7.5% CV — treat as no) |
+| Q4_time_window_only | zorder | 5.9 | 8.6 | ✓ real (47% gap > 8.6% CV) |
 
 A delta below the CV is not a real difference. Per [`BENCHMARKING-METHODOLOGY.md`](../BENCHMARKING-METHODOLOGY.md):
 report CV alongside every median; claim a win only when the gap exceeds the CV. The
-"real delta?" column should be filled in by the reader after comparing each layout's
-median gap to the maximum of the two CVs.
+"real delta?" column was filled in 2026-06-10 (full re-derivation against `results.json`):
+gap = (baseline median − layout median) / baseline median, claimed real only when it
+exceeds the larger of the two CVs. Two consequences worth stating: Q3's z-order latency
+win is NOT claimable (the unordered baseline's CV is 30.8%, wider than the 29% gap) even
+though its 15% pruning is real — pruning and latency are separate claims here; and on
+Q1/Q2 single-sort beats z-order outright (3.7 vs 4.8 ms, 2.7 vs 5.8 ms — gaps exceed both
+CVs), so z-order's case rests on Q3/Q4 coverage, not on winning the queries a single sort
+already serves.
 
 ## Interpretation
 
