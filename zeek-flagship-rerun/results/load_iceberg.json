@@ -1,0 +1,9 @@
+{
+  "row_count": 10000000,
+  "data_files": 5,
+  "data_file_bytes": 440175792,
+  "write_seconds": 6.0,
+  "write_path": "pyiceberg SqlCatalog (sqlite) -> MinIO s3://zfr-bench/iceberg/zeek.db/conn_10m",
+  "write_properties": "pyiceberg defaults (zstd parquet) \u2014 footer verified in results/env.json",
+  "read_path": "ClickHouse icebergS3() catalog-less; write-once table so stale-snapshot risk N/A"
+}

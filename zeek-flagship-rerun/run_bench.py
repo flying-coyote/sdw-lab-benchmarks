@@ -48,7 +48,8 @@ def os_runner():
 
 def ch_runner(table_expr):
     import clickhouse_connect
-    client = clickhouse_connect.get_client(host="localhost", port=8123, query_limit=0)
+    client = clickhouse_connect.get_client(host="localhost", port=8123, password="zfrbench123",
+                                           query_limit=0)
     qs = ch_queries(table_expr)
 
     def run(name):
@@ -71,10 +72,12 @@ def get_runner(arm):
 
 
 def wait_healthy(arm, timeout=300):
-    names, run = get_runner(arm)
     t0 = time.time()
     while time.time() - t0 < timeout:
         try:
+            # client creation itself fails while the engine is still booting,
+            # so it must live inside the retry loop
+            names, run = get_runner(arm)
             run("count_all")
             return
         except Exception:
@@ -167,9 +170,11 @@ def main():
     if not args.arm:
         raise SystemExit("--arm required")
     out = bench(args.arm, args.trials, args.warmup)
+    # persist the timed pass before the cold pass so a cold-pass failure can't lose it
+    (RESULTS / f"raw_{args.arm}.json").write_text(json.dumps(out, indent=2))
     if args.engine_cold:
         out["engine_cold_s"] = engine_cold(args.arm)
-    (RESULTS / f"raw_{args.arm}.json").write_text(json.dumps(out, indent=2))
+        (RESULTS / f"raw_{args.arm}.json").write_text(json.dumps(out, indent=2))
 
 
 if __name__ == "__main__":

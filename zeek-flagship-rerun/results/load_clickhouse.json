@@ -1,0 +1,9 @@
+{
+  "row_count": 10000000,
+  "load_seconds": 24.6,
+  "compressed_bytes": 684777971,
+  "uncompressed_bytes": 1840155512,
+  "active_parts": 1,
+  "server_version": "26.5.1.882",
+  "settings": "MergeTree, default LZ4, PARTITION BY day, ORDER BY (orig_h, resp_h, ts), OPTIMIZE FINAL"
+}

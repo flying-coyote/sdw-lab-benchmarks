@@ -99,7 +99,7 @@ def load_opensearch():
 def load_clickhouse():
     import clickhouse_connect
 
-    client = clickhouse_connect.get_client(host="localhost", port=8123)
+    client = clickhouse_connect.get_client(host="localhost", port=8123, password="zfrbench123")
     client.command("CREATE DATABASE IF NOT EXISTS benchmark")
     client.command("DROP TABLE IF EXISTS benchmark.zeek_native")
     # Default compression (LZ4), no per-column codecs: this is the DEFAULT-CONFIG arm.
@@ -181,7 +181,7 @@ def load_iceberg():
         "data_files": len(files),
         "data_file_bytes": int(data_bytes),
         "write_seconds": round(load_s, 1),
-        "write_path": "pyiceberg SqlCatalog (sqlite) -> MinIO s3://zfr-bench/iceberg/zeek.db/conn_10m",
+        "write_path": "pyiceberg SqlCatalog (sqlite) -> MinIO s3://zfr-bench/iceberg/zeek/conn_10m",
         "write_properties": "pyiceberg defaults (zstd parquet) — footer verified in results/env.json",
         "read_path": "ClickHouse icebergS3() catalog-less; write-once table so stale-snapshot risk N/A",
     })
