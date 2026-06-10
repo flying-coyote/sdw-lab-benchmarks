@@ -1,0 +1,135 @@
+name: ejs-bench
+
+# Engines are behind profiles so timed passes can start exactly one at a time
+# (methodology isolation rule; simultaneous JVM/MPP cold starts OOM — MOAR exit-137 lesson).
+
+networks:
+  ejs:
+
+volumes:
+  ejs-minio-data:
+  ejs-ch-data:
+  ejs-dremio-data:
+
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: ejs-minio
+    networks: [ejs]
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ejsbench
+      MINIO_ROOT_PASSWORD: ejsbench123
+    volumes: ["ejs-minio-data:/data"]
+    ports: ["9300:9000", "9301:9001"]
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  minio-init:
+    image: minio/mc:latest
+    container_name: ejs-minio-init
+    networks: [ejs]
+    depends_on:
+      minio: {condition: service_healthy}
+    entrypoint: >
+      /bin/sh -c "mc alias set local http://minio:9000 ejsbench ejsbench123
+      && mc mb -p local/warehouse && exit 0"
+
+  # Single catalog for every arm (pre-reg primary plan): Nessie's Iceberg-REST endpoint
+  # serves pyiceberg (writes), Trino, and StarRocks; Dremio reads the native Nessie API;
+  # ClickHouse reads the raw S3 paths. Byte-identical files for all arms.
+  nessie:
+    image: ghcr.io/projectnessie/nessie:latest
+    container_name: ejs-nessie
+    networks: [ejs]
+    depends_on:
+      minio: {condition: service_healthy}
+    environment:
+      nessie.version.store.type: IN_MEMORY
+      nessie.catalog.default-warehouse: warehouse
+      nessie.catalog.warehouses.warehouse.location: s3://warehouse/
+      nessie.catalog.service.s3.default-options.region: us-east-1
+      nessie.catalog.service.s3.default-options.endpoint: http://minio:9000
+      nessie.catalog.service.s3.default-options.path-style-access: "true"
+      nessie.catalog.service.s3.default-options.auth-mode: STATIC
+      nessie.catalog.service.s3.default-options.access-key: urn:nessie-secret:quarkus:nessie.catalog.secrets.access-key
+      nessie.catalog.secrets.access-key.name: ejsbench
+      nessie.catalog.secrets.access-key.secret: ejsbench123
+    ports: ["19320:19120"]
+
+  # Loader + timing client live IN the docker network: uniform endpoints (minio:9000,
+  # nessie:19120), persistent protocols, no host-NAT jitter in the timings.
+  lab:
+    build:
+      context: .
+      dockerfile: Dockerfile.lab
+    container_name: ejs-lab
+    networks: [ejs]
+    volumes: ["./:/bench"]
+    working_dir: /bench
+    command: sleep infinity
+    mem_limit: 8g
+
+  # ---- engine arms (mem parity: 24g each; one runs at a time on the 48 GB host) ----
+
+  starrocks:
+    image: starrocks/allin1-ubuntu:4.1-latest
+    container_name: ejs-starrocks
+    profiles: ["engine-starrocks"]
+    networks: [ejs]
+    ports: ["9330:9030", "8330:8030"]
+    mem_limit: 24g
+    healthcheck:
+      # FE answers SELECT 1 before a BE can serve an Iceberg scan — gate on BE registration
+      test: ["CMD-SHELL", "mysql -P 9030 -h 127.0.0.1 -u root -N -B -e 'SHOW BACKENDS' 2>/dev/null | grep -q true || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 90s
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: ejs-clickhouse
+    profiles: ["engine-clickhouse"]
+    networks: [ejs]
+    environment:
+      CLICKHOUSE_USER: default
+      CLICKHOUSE_PASSWORD: ejsbench123
+    volumes: ["ejs-ch-data:/var/lib/clickhouse"]
+    ports: ["8323:8123"]
+    ulimits:
+      nofile: {soft: 262144, hard: 262144}
+    mem_limit: 24g
+    healthcheck:
+      test: ["CMD", "clickhouse-client", "--password", "ejsbench123", "--query", "SELECT 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 24
+
+  trino:
+    image: trinodb/trino:481
+    container_name: ejs-trino
+    profiles: ["engine-trino"]
+    networks: [ejs]
+    ports: ["8381:8080"]
+    volumes: ["./config/trino/iceberg.properties:/etc/trino/catalog/iceberg.properties:ro"]
+    mem_limit: 24g
+    healthcheck:
+      test: ["CMD", "trino", "--execute", "SELECT 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 24
+
+  dremio:
+    image: dremio/dremio-oss:26.0
+    container_name: ejs-dremio
+    profiles: ["engine-dremio"]
+    networks: [ejs]
+    environment:
+      DREMIO_MAX_MEMORY_SIZE_MB: "20480"
+    volumes: ["ejs-dremio-data:/opt/dremio/data"]
+    ports: ["9347:9047"]
+    mem_limit: 24g
