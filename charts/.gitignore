@@ -1,0 +1,5 @@
+venv/
+__pycache__/
+*.pyc
+_chart_items.json
+_table_items.json
