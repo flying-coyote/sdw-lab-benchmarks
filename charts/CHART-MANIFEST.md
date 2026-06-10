@@ -1,6 +1,6 @@
 # Benchmark chart asset manifest
 
-Built 34 charts + 5 correctness tables from first-party `sdw-lab-benchmarks` results.
+Built 34 lab charts + 5 correctness tables from first-party `sdw-lab-benchmarks` results, plus 7 campaign graphics (2026-06-10, `_p*`/`_pb*` scripts — see the bottom section).
 All numbers re-derived from source `RESULTS.md`; brand-styled via `chartstyle.py`; collision guards enforced (the two 96.3%s, the two storage premiums, the two recall headlines never cross).
 Web-served at `securitydataworks.com/research/charts/<file>`.
 
@@ -50,5 +50,21 @@ Web-served at `securitydataworks.com/research/charts/<file>`.
 - `parquet-page-checksum-three-way-split.md` —  → essay:trustworthy/verify-the-bytes
 - `parquet-float-determinism-and-pme-lockout.md` —  → essay:trustworthy/determinism-and-encryption
 - `airgap-local-model-agentic-hunt.md` —  → essay:ai/air-gapped-agentic-hunt
+
+## Campaign graphics (built 2026-06-10 for the LinkedIn book-led arc)
+
+One visual per campaign post, per `project1/02-projects/securitydataworks/linkedin-campaign-queue.md` § "Campaign visual pairing". Posted by hand to LinkedIn; not auto-placed in essays. The two measurement charts carry Tier B footers; the five diagrams carry an explicit "illustrative · mechanism, not a measurement" tier line.
+
+| script | file | head (the claim) | campaign post |
+|---|---|---|---|
+| `_p15_who_may_benchmark.py` | `who-may-benchmark.png` | The SIEM you'd leave forbids the benchmark; the lakehouse you'd move to doesn't. (license texts, verified 2026-06) | Post 15 — the closing visual |
+| `_p10_storage_footprint.py` | `storage-footprint-7x.png` | Same data, same answers, about a seventh of the storage. (1.6 vs 11.5 MB @ 200k events, `./moar compare`) | Post 10 |
+| `_p06_five_engines_one_answer.py` | `five-engines-one-answer.png` | Five engines, one table, one answer. (1,000 rows · 125 RDP, `./moar verify`) | Post 6 |
+| `_p12_time_travel_snapshots.py` | `time-travel-snapshots.png` | Three writes, three snapshots — each still queryable as it stood. | Post 12 |
+| `_p05_two_streams_join.py` | `two-streams-join.png` | Neither signal is an incident; the join on source IP is. | Post 5 |
+| `_pb2_pipeline_lockin_stack.py` | `pipeline-lockin-stack.png` | Open formats don't remove lock-in; they move it to the pipeline. | B2 |
+| `_pb6_three_journeys.py` | `three-architect-journeys.png` | Same framework, three estates, three different right answers. | B6 |
+
+Collision guards honored: `storage-footprint-7x` is the MOAR footprint measurement, never the 1.80×/1.93× fidelity premiums; no campaign graphic touches the 96.3% or recall-headline families.
 
 ✅ = target essay exists today (existence only, says nothing about placement). 📍PLACED = chart is deployed into a live essay (the first four placed 2026-06-09, securitydataworks c40ac51); where the placed essay isn't the row's named target, the marker names it. Rows with neither are staged for placement or need the essay written first.

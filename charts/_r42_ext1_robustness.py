@@ -24,7 +24,7 @@ crossbest = np.array([
 ])
 
 fig, ax = cs.canvas(
-    "Every cell of the parameter grid keeps the same ordering",
+    "The cross-tool win holds at all nine cells of the staleness × coverage sweep.",
     "Lever gain (scored − naive merge), % recovered, across a 3×3 staleness × coverage sweep. cross > best-single, residual > 0, and lever > 0 hold at all 9 cells.",
     source="sdw-lab-benchmarks/ocsf-data-health",
     tier="Tier B · single-host · synthetic · the ordering is the parameter-independent claim, the magnitudes move",

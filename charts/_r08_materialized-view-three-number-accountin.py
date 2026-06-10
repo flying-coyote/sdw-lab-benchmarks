@@ -12,8 +12,8 @@ storage = [0.0, 0.001, 0.002]
 y = list(range(len(panels)))  # 0=class_rollup; inverted below so it sits on top
 
 fig, axes = cs.canvas(
-    "A materialized view trades three things: read speed, compute, storage.",
-    "20M OCSF events, three always-on SOC panels. The read win is large; the compute win collapses to break-even; storage is ~nothing.",
+    "The MV's read win is 45–77×; the compute win fades to break-even; storage is ~nothing.",
+    "20M OCSF events, three always-on SOC panels: read speedup, incremental vs full recompute, MV storage overhead.",
     source="sdw-lab-benchmarks/ocsf-mv-acceleration",
     tier="Tier B · single-host · 20M synthetic · an MV only answers pre-decided questions",
     figsize=(9.6, 4.3), bottom=0.18, top=0.78, ncols=3)

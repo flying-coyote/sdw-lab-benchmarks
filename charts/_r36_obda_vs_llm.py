@@ -21,8 +21,8 @@ silent   = [0, 0]
 denom    = ["of 8 adversary queries", "of 4 attempted"]
 
 fig, ax = cs.canvas(
-    "Neither is silently wrong here — they differ in coverage and how they fail",
-    "Adversary-tail outcomes. OBDA answers a narrow set exactly and refuses the rest loudly; the local LLM is broader-attempted but loud-broken.",
+    "Ontop answers 3 of 8 exactly and refuses the rest; the local LLM misses loudly, never silently.",
+    "Adversary-tail concept queries — correct vs loud failure vs silently wrong; both arms record zero silent errors.",
     source="sdw-lab-benchmarks/ocsf-semantic-query",
     tier="Tier B · single-host · PRELIMINARY (1 of 3 arms; frontier-LLM + GraphRAG legs pending)",
     figsize=(8.8, 4.9), bottom=0.24, top=0.78)
