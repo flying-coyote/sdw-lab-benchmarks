@@ -1,7 +1,7 @@
 import chartstyle as cs
 # Same source: ocsf-data-health — part-to-whole of 140,000 cells.
 fig, ax = cs.canvas(
-    "Where the cross-tool view gets you, and what stays blind.",
+    "The cross-tool merge recovers 75.6% of the estate; the last 24.4% no tool sees.",
     "140,000 asset/attribute cells: what the best single tool sees, what the merge adds, what no tool gets right.",
     source="sdw-lab-benchmarks/ocsf-data-health",
     tier="Tier B · single-host · synthetic 20k-asset estate",
