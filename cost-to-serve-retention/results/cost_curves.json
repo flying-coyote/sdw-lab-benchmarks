@@ -1,0 +1,157 @@
+{
+  "reference_workload_gb_per_day_raw": 1000.0,
+  "prices_as_of": "2026-06-10 AWS us-east-1 list \u2014 verified against the live AWS rate-card feeds (see PRICES comment)",
+  "curves": {
+    "opensearch_index": {
+      "ratio_vs_raw": 2.0,
+      "storage_class": "ebs_gp3",
+      "class_rationale": "hot search index requires block storage",
+      "price_per_gb_month": 0.08,
+      "by_retention_days": {
+        "30": {
+          "stored_gb": 15000,
+          "monthly_usd": 1200
+        },
+        "90": {
+          "stored_gb": 45000,
+          "monthly_usd": 3600
+        },
+        "365": {
+          "stored_gb": 182500,
+          "monthly_usd": 14600
+        },
+        "2555": {
+          "stored_gb": 1277500,
+          "monthly_usd": 102200
+        }
+      }
+    },
+    "ch_native_lz4": {
+      "ratio_vs_raw": 5.47,
+      "storage_class": "ebs_gp3",
+      "class_rationale": "hot OLAP MergeTree on block storage",
+      "price_per_gb_month": 0.08,
+      "by_retention_days": {
+        "30": {
+          "stored_gb": 5484,
+          "monthly_usd": 439
+        },
+        "90": {
+          "stored_gb": 16453,
+          "monthly_usd": 1316
+        },
+        "365": {
+          "stored_gb": 66728,
+          "monthly_usd": 5338
+        },
+        "2555": {
+          "stored_gb": 467093,
+          "monthly_usd": 37367
+        }
+      }
+    },
+    "ch_zstd22": {
+      "ratio_vs_raw": 9.03,
+      "storage_class": "ebs_gp3",
+      "class_rationale": "tuned-hot OLAP on block storage",
+      "price_per_gb_month": 0.08,
+      "by_retention_days": {
+        "30": {
+          "stored_gb": 3322,
+          "monthly_usd": 266
+        },
+        "90": {
+          "stored_gb": 9967,
+          "monthly_usd": 797
+        },
+        "365": {
+          "stored_gb": 40421,
+          "monthly_usd": 3234
+        },
+        "2555": {
+          "stored_gb": 282946,
+          "monthly_usd": 22636
+        }
+      }
+    },
+    "iceberg_zstd_default": {
+      "ratio_vs_raw": 8.5,
+      "storage_class": "s3_standard",
+      "class_rationale": "lakehouse warm tier on object storage",
+      "price_per_gb_month": 0.023,
+      "by_retention_days": {
+        "30": {
+          "stored_gb": 3529,
+          "monthly_usd": 81
+        },
+        "90": {
+          "stored_gb": 10588,
+          "monthly_usd": 244
+        },
+        "365": {
+          "stored_gb": 42941,
+          "monthly_usd": 988
+        },
+        "2555": {
+          "stored_gb": 300588,
+          "monthly_usd": 6914
+        }
+      }
+    },
+    "parquet_zstd19_cold": {
+      "ratio_vs_raw": 9.69,
+      "storage_class": "s3_standard",
+      "class_rationale": "compacted cold tier on object storage",
+      "price_per_gb_month": 0.023,
+      "by_retention_days": {
+        "30": {
+          "stored_gb": 3096,
+          "monthly_usd": 71
+        },
+        "90": {
+          "stored_gb": 9288,
+          "monthly_usd": 214
+        },
+        "365": {
+          "stored_gb": 37668,
+          "monthly_usd": 866
+        },
+        "2555": {
+          "stored_gb": 263674,
+          "monthly_usd": 6064
+        }
+      }
+    },
+    "parquet_zstd19_cold_glacier": {
+      "ratio_vs_raw": 9.69,
+      "storage_class": "s3_glacier_ir",
+      "class_rationale": "same cold artifact on Glacier Instant Retrieval",
+      "price_per_gb_month": 0.004,
+      "by_retention_days": {
+        "30": {
+          "stored_gb": 3096,
+          "monthly_usd": 12
+        },
+        "90": {
+          "stored_gb": 9288,
+          "monthly_usd": 37
+        },
+        "365": {
+          "stored_gb": 37668,
+          "monthly_usd": 151
+        },
+        "2555": {
+          "stored_gb": 263674,
+          "monthly_usd": 1055
+        }
+      }
+    }
+  },
+  "compounded_multipliers": {
+    "opensearch_gp3_vs_iceberg_s3": 14.8,
+    "opensearch_gp3_vs_cold_s3": 16.9,
+    "opensearch_gp3_vs_cold_glacier_ir": 96.7,
+    "ch_lz4_gp3_vs_iceberg_s3": 5.4,
+    "note": "bytes multiplier x $/byte multiplier; constant across retention because both layers are linear in days"
+  }
+}

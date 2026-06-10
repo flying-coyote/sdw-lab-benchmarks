@@ -18,6 +18,22 @@ CH_PASSWORD = "zfrbench123"
 
 
 def ch_zstd22(client) -> dict:
+    # idempotent: a prior attempt's INSERT survives a client timeout, so resume rather than rebuild
+    try:
+        existing = client.query("SELECT count() FROM benchmark.zeek_zstd22").result_rows[0][0]
+    except Exception:
+        existing = 0
+    if existing == 10_000_000:
+        while client.query("SELECT count() FROM system.merges WHERE table='zeek_zstd22'").result_rows[0][0]:
+            time.sleep(10)
+        client.command("OPTIMIZE TABLE benchmark.zeek_zstd22 FINAL")
+        row = client.query(
+            "SELECT sum(data_compressed_bytes), count() FROM system.parts "
+            "WHERE database='benchmark' AND table='zeek_zstd22' AND active"
+        ).result_rows[0]
+        return {"bytes": int(row[0]), "build_seconds": None,
+                "note": "blanket ZSTD(22), same layout as the LZ4 arm; no specialty codecs (declared); "
+                        "resumed after a client timeout, build time not recorded"}
     client.command("DROP TABLE IF EXISTS benchmark.zeek_zstd22")
     client.command("""
         CREATE TABLE benchmark.zeek_zstd22 (
@@ -85,7 +101,8 @@ def main():
         "iceberg_zstd_default": json.loads((RERUN / "results" / "load_iceberg.json").read_text())["data_file_bytes"],
     }
 
-    client = clickhouse_connect.get_client(host="localhost", port=8123, password=CH_PASSWORD)
+    client = clickhouse_connect.get_client(host="localhost", port=8123, password=CH_PASSWORD,
+                                           send_receive_timeout=3600)
     new_zstd22 = ch_zstd22(client)
     new_cold = parquet_cold()
 
