@@ -81,3 +81,10 @@ run.py                compile all, verify determinism, score, write results/
 results/              RESULTS.md + results.json (generated)
 requirements.txt      pinned pySigma + backend plugins
 ```
+
+## Hypothesis mapping
+
+Advances **H-SIGMA-01** (registered in the tracker 2026-06-10): the per-backend
+correlation-fidelity matrix is the first-party measurement of where write-once Sigma
+portability holds and where it leaks. *(ID recorded 2026-06-10 per the
+benchmark-alignment audit.)*

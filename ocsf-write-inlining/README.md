@@ -24,3 +24,9 @@ python ocsf-write-inlining/run.py
 Tier B, single machine; file counts are deterministic, the inline threshold is a configured parameter.
 It isolates the file-avoidance claim; it doesn't settle warehouse-scale trade-offs (inlined rows trade
 file count for catalog growth). Complements the BENCH-D write-contract and iceberg-metadata benchmarks.
+
+## Hypothesis mapping
+
+Advances **H-DUCKLAKE-02**: the inlining file-count result is one side of the
+DuckLake-vs-Iceberg write-contract trade-off that hypothesis tracks. *(ID recorded
+2026-06-10 per the benchmark-alignment audit.)*

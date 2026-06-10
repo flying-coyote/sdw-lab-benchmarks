@@ -44,3 +44,10 @@ Deterministic byte-flip, ground-truth-verified sum, single machine. The per-read
 none) is the transferable finding and should be re-checked per version — checksum verification is actively
 being added across implementations, so a reader in the "none" column today can move to "opt-in" on an
 upgrade. Tier B.
+
+## Hypothesis mapping
+
+Advances **H-ENGINE-ANSWER-EQUIVALENCE-01**: the page-checksum verification split is the
+integrity layer under the cross-engine answer-equivalence question — the same corrupted
+bytes return different answers depending on the reader's verification default. *(ID
+recorded 2026-06-10 per the benchmark-alignment audit.)*

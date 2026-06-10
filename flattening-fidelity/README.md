@@ -94,3 +94,10 @@ CrowdStrike, Okta, Palo Alto, Cisco, and Zscaler into OCSF 1.8.0 — is scaffold
 in [`../ocsf-mapping-fidelity/`](../ocsf-mapping-fidelity/). It needs real vendor
 schemas rather than a synthetic corpus, so it is stubbed with the protocol and
 left unrun until those inputs are gathered.
+
+## Hypothesis mapping
+
+Advances **H-OCSF-CONTEXT-COLLAPSE-01** — the mechanism-decomposition leg: the three
+failure modes above (absence-vs-NULL collapse, grain loss, floating timestamps) isolate
+the individual mechanisms behind the context-collapse claim and put a Tier-B number on
+each. *(ID recorded 2026-06-10 per the benchmark-alignment audit.)*

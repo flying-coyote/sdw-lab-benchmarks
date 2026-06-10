@@ -132,3 +132,10 @@ METHODOLOGY.md  flaw models, the four measures, the two extensions, falsificatio
 The seeds, fixed time anchor, and scoring helpers (`new_rng`, `prf1`, `canonical`,
 `connect`) live in the repo-level [`../lib/common.py`](../lib/common.py), shared
 with the other benchmarks.
+
+## Hypothesis mapping
+
+Advances **H-CROSS-TOOL-ASSURANCE-01**: the four measures (single-tool recovery,
+cross-tool best-context recovery, residual gap, scored-merge lever) are the first-party
+Tier-B evidence for the cross-tool layer of the data-health framework. *(ID recorded
+2026-06-10 per the benchmark-alignment audit.)*

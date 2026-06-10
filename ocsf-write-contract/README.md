@@ -43,3 +43,10 @@ tier; the latencies are this host's medians. The never-write (ISK) arm is unmeas
 (vendor-blocked). The integrating "tiering beats one backend" claim and the Iceberg-V4
 efficient-materialization null both need the third arm and a production-volume run, and a
 named reviewer (Jake Thomas) on whether this resembles a real tiered build.
+
+## Hypothesis mapping
+
+Advances **H-DUCKLAKE-02** (the per-commit write-contract comparison) and
+**H-TIERED-REALIZATION-01** (the hot-tier sub-question: which write contract the hot
+tier should run, and whether one engine reads both tiers coherently). *(IDs recorded
+2026-06-10 per the benchmark-alignment audit.)*
