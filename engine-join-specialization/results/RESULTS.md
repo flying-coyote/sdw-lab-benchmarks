@@ -110,12 +110,24 @@ five arms.
    maturity, concurrency, and ops, not the join-latency war.
 2. **The one completion failure is ClickHouse's own native table.** Same engine, same
    query (q5, 6-table), same host: >300 s twice on stats-less MergeTree
-   (`ORDER BY tuple()`, the declared layout control), 1.35 s over Iceberg — consistent
-   with the 2025–26 join-optimization run being statistics-dependent (the Iceberg read
-   path carries Parquet/Iceberg column stats the bare MergeTree copy lacks), though the
-   mechanism is inferred, not instrumented (an EXPLAIN-level diagnostic is the named
-   follow-up). "Native is always faster" fails loudly on exactly one join shape; where
-   it completes, native wins by 1.1–2.2×.
+   (`ORDER BY tuple()`, the declared layout control), 1.35 s over Iceberg. "Native is
+   always faster" fails loudly on exactly one join shape; where it completes, native
+   wins by 1.1–2.2×.
+
+   **Post-run EXPLAIN diagnostic (2026-06-10).** The run-day inference (statistics-dependent
+   — the Iceberg read path carries column stats the bare MergeTree copy lacks) was half
+   right. Instrumented: *neither* arm carries column statistics (`SHOW CREATE TABLE` shows
+   none; `materialize_statistics_on_insert=0`; no `system.statistics`). The difference is
+   that the native path engages 26.5's greedy join reordering
+   (`query_plan_optimize_join_order_limit=10`), which, planning on raw table row counts
+   alone, reordered q5 dimension-first through the many-to-many
+   `c_nationkey = s_nationkey` step — a measured 1,203,307,921-row intermediate with
+   lineitem (60M rows) still to come as a hash-build side. With
+   `query_plan_optimize_join_order_limit=0` the plan reverts to the written TPC-H order and
+   the same native table answers in 5.3 s wall with the oracle-matching result. The
+   `icebergS3` table-function arm keeps the written join order, which is why it never saw
+   the cliff. Same manageability lesson, sharper mechanism: the optimization engages
+   stats-blind on the native path.
 3. **The join tax does not justify flattening on this hardware for four of five
    engines** (~1.8×, sub-second absolute), and Trino's 4.35× is the measured version of
    why federation engines get handed the pre-joined copies.
