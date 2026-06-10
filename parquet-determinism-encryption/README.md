@@ -37,3 +37,11 @@ python parquet-determinism-encryption/run.py
 
 The SIMD arm spawns one subprocess per vector level (env set before pyarrow imports). Determinism and interop
 are the transferable findings and are version-bound — re-check on any engine upgrade. Tier B, single machine.
+
+## Hypothesis mapping
+
+Advances **H-ENGINE-ANSWER-EQUIVALENCE-01**: the float-divergence arm establishes which answer
+types are safe to compare bit-for-bit across engines and which need a stated tolerance. The
+Arm-B PME lockout additionally feeds **H-ICEBERG-METADATA-INTEGRITY-01** — in-file encryption
+silently revokes the open multi-engine read contract. *(IDs recorded 2026-06-10 per the
+benchmark-alignment audit.)*

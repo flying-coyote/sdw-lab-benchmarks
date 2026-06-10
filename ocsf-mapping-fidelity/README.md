@@ -127,3 +127,14 @@ python3 -m venv .venv && . .venv/bin/activate
 pip install -r requirements.txt         # only the stdlib + duckdb/chdb shared pins; C1 itself is pure-stdlib
 cd ocsf-mapping-fidelity && python run.py
 ```
+
+## Hypothesis mapping
+
+This bench serves three hypotheses *(IDs recorded 2026-06-10 per the benchmark-alignment audit)*:
+
+- **H-SPEC-INTEGRITY-01** — the promotion instrument: the schema-validated scoring is how a
+  mapping claim gets promoted from assertion to measured result.
+- **H3-INTEGRATION-03** — the lossiness leg: the coerced/unmapped split quantifies what real
+  vendor schemas lose mapping into OCSF 1.8.0.
+- **H2-SCHEMA-02** — the scoring instrument: the per-field typed/coerced/unmapped protocol is
+  the reusable method for scoring any source→OCSF mapping.

@@ -41,3 +41,10 @@ The per-cell result is version-bound and is the transferable finding — re-run 
 encoding support is actively moving (BYTE_STREAM_SPLIT for integers and the DELTA family are the active edges,
 and a reader in the "errors" column today can move to "decodes correctly" — or, the case to watch for,
 "silently wrong" — on an upgrade). Tier B, single machine.
+
+## Hypothesis mapping
+
+Advances **H-ENGINE-ANSWER-EQUIVALENCE-01**: the encoding × library matrix tests whether the
+same Parquet bytes decode to the same values across implementations — the library layer of the
+answer-equivalence question, where both historical silent-wrong findings lived. *(ID recorded
+2026-06-10 per the benchmark-alignment audit.)*

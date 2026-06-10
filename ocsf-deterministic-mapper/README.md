@@ -37,3 +37,9 @@ python ocsf-deterministic-mapper/run.py
 The alias table is generic (common field-naming, not tuned to the gold), so this is a fair
 schema-constrained baseline, not an upper bound on a tuned deterministic mapper. Tier B. Complements
 BENCH-B (ocsf-mapping-oracle) — same task, the harness side of the comparison.
+
+## Hypothesis mapping
+
+Advances **H-CONCEPT-GRAPH-01** — schema constraint as the lever: the 0.00-by-construction
+silent-error rate shows the safety comes from constraining outputs to paths that exist in the
+schema, not from the model. *(ID recorded 2026-06-10 per the benchmark-alignment audit.)*

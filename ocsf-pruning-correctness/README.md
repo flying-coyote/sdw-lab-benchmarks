@@ -37,3 +37,10 @@ python ocsf-pruning-correctness/run.py
 1,000,000 rows, 10,000-row groups (100 row groups), seeded shuffle. The A/B is self-verifying: the writeup
 records the sorted vs shuffled row-group ranges so you can confirm pruning genuinely engaged on one file and
 not the other. Tier B, single machine.
+
+## Hypothesis mapping
+
+Advances **H-ENGINE-ANSWER-EQUIVALENCE-01**: pruning soundness is the pushdown layer of the
+answer-equivalence question — an unsound skip is precisely an engine returning a different
+answer for the same bytes. The clean negative here is a standing regression guard. *(ID
+recorded 2026-06-10 per the benchmark-alignment audit.)*
