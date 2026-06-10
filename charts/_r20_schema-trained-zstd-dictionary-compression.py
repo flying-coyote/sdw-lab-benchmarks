@@ -63,5 +63,6 @@ ax.grid(axis="y", color=cs.GRID); ax.grid(axis="x", visible=False)
 for s in ("top", "right"):
     ax.spines[s].set_visible(False)
 
+cs.direction_note(fig, "compression: higher is better", x=0.955, y=0.205, va="bottom")
 cs.save(fig, "out/schema-trained-zstd-dictionary-compression.png")
 print("rendered r20")

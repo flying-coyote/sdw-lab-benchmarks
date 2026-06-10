@@ -67,5 +67,6 @@ handles = [
 fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.085),
            ncol=3, frameon=False, fontsize=9.5, handlelength=1.2)
 
+cs.direction_note(fig, "silent errors: lower is better")
 cs.save(fig, "out/nl2sql-silent-error-by-model-strength-an.png")
 print("rendered r11")

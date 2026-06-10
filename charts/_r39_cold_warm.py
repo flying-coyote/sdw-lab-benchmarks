@@ -65,5 +65,6 @@ for i, (name, color) in enumerate([("Iceberg", cs.ACCENT), ("DuckLake", cs.CONTE
 ax.text(1.0, y[-1] - 0.85, "1.0× = cache-insensitive", ha="center", va="center",
         fontsize=8.5, color=cs.MUTED, family=cs.SANS)
 
+cs.direction_note(fig, "cold penalty: lower is better", x=0.975, y=0.745)
 cs.save(fig, "out/cold-vs-warm-read-penalty-per-query-iceberg.png")
 print("rendered cold/warm")

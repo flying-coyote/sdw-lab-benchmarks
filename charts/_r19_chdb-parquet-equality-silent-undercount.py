@@ -53,5 +53,6 @@ ax.text(-13.5, len(probes) - 0.35,
         "52 rows short overall — no exception, no warning,\njust a confident count that is wrong",
         ha="left", va="top", fontsize=9.5, color=cs.BAD, family=cs.MONO)
 
+cs.direction_note(fig, "rows missed: 0 is correct", x=0.95, y=0.77)
 cs.save(fig, "out/chdb-parquet-equality-silent-undercount.png")
 print("rendered r19")

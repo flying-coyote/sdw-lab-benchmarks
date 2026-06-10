@@ -55,5 +55,6 @@ ax.set_axisbelow(True)
 # shade the headroom between the workload and the read tier
 ax.fill_between([0, 5.6], [dwpd_4tb[-1]] * 2, [READ_TIER] * 2, color=cs.SUBTLE, alpha=0.0)
 
+cs.direction_note(fig, "projected DWPD: lower is better", x=0.955, y=0.205, va="bottom")
 cs.save(fig, "out/projected-dwpd-vs-ingest.png")
 print("rendered; font in use =", cs.SANS)

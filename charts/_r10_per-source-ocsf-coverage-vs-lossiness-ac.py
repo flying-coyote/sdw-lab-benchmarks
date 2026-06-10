@@ -62,5 +62,6 @@ ax.annotate("Okta is the only source with a public shipped mapper:\nOCSF can hol
             arrowprops=dict(arrowstyle="->", color=cs.BAD, lw=1.2,
                             connectionstyle="arc3,rad=-0.2"))
 
+cs.direction_note(fig, "typed share: higher is better")
 cs.save(fig, "out/per-source-ocsf-coverage-vs-lossiness-ac.png")
 print("rendered r10")

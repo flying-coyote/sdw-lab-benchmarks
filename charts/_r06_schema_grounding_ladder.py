@@ -68,5 +68,6 @@ ax.legend(handles=handles, loc="upper right", frameon=False, fontsize=9.5, ncol=
 ax.text(2.0, 0.62, "the control diamond sits on the\nschema bar at every rung:\nformal - wrong_grounding ~ 0,\nso it's grounding content, not tokens",
         ha="center", va="top", fontsize=8.2, color=cs.MUTED, family=cs.MONO)
 
+cs.direction_note(fig, "silent errors: lower is better", y=0.99, va="bottom")
 cs.save(fig, "out/schema-grounding-cuts-invented-paths.png")
 print("rendered r06")

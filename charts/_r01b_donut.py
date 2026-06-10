@@ -11,5 +11,6 @@ cs.donut(ax,
     ["Best single\ntool (CMDB)", "Added by the\ncross-tool merge", "Residual\nblind spot"],
     [cs.CONTEXT, cs.ACCENT, cs.BAD],
     center="75.6%", center_sub="recovered by the\ncross-tool view")
+cs.direction_note(fig, "recovered: higher is better", y=0.80)
 cs.save(fig, "out/data-health-recovery-donut.png")
 print("ok")

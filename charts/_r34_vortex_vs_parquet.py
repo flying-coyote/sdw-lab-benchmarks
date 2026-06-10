@@ -59,5 +59,6 @@ for ax, (title, unit, pv, vv, note) in zip(axes, panels):
     ax.tick_params(axis="x", length=0)
     ax.grid(False)
 
+cs.direction_note(fig, "Lower is better")
 cs.save(fig, "out/vortex-vs-parquet-footprint-scan-needle-write.png")
 print("rendered vortex")

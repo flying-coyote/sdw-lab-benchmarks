@@ -63,5 +63,6 @@ axR.text(-0.5, 1760, "Iceberg retry-storms — 1,505 retries, 142 hard errors",
 axR.text(x[1]+0.15, 980, "retries", color=cs.WARN, fontsize=9.5, ha="left", va="center", fontweight="bold")
 axR.text(x[1]+0.15, 870, "hard errors", color=cs.BAD, fontsize=9.5, ha="left", va="center", fontweight="bold")
 
+cs.direction_note(fig, "Lower is better")
 cs.save(fig, "out/concurrent-writer-degradation-shape.png")
 print("rendered r15")

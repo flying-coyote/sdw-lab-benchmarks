@@ -138,6 +138,22 @@ def donut(ax, values, labels, colors, center=None, center_sub=None, startangle=9
     ax.set(aspect="equal")
 
 
+def direction_note(fig, text="Higher is better", x=0.985, y=0.985, color=ACCENT,
+                   ha="right", va="top"):
+    """Scanning-reviewer popout: a highlighted box stating the metric direction
+    ('Higher is better' / 'Lower is better' / 'recall: higher is better').
+    A quickly-scanning reviewer looks for this on any technically dense chart —
+    add one per measurement figure (twice with custom x/y for mixed-direction
+    panels). Figure coordinates; default top-right, clear of the head/sub text."""
+    _s = FEED_SCALE if FEED_SCALE > 0 else 1.0
+    low = text.lower()
+    arrow = "↑" if "high" in low else ("↓" if "low" in low else "")
+    label = f"{arrow} {text}" if arrow else text
+    fig.text(x, y, label, fontsize=10 * _s, fontweight="bold", color=WHITE,
+             family=SANS, ha=ha, va=va,
+             bbox=dict(boxstyle="round,pad=0.45", facecolor=color, edgecolor="none"))
+
+
 def save(fig, path):
     if FEED_SCALE > 0:
         feed_dir = os.path.join(os.path.dirname(path) or ".", "feed")

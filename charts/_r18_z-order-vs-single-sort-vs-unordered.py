@@ -84,5 +84,7 @@ axR.annotate("5.6x the\nsingle sort", (11564, 2), textcoords="offset points",
              xytext=(-6, -26), ha="right", va="top", fontsize=8.5,
              color=cs.ACCENT, family=cs.MONO)
 
+cs.direction_note(fig, "pruned %: higher is better", x=0.66, y=0.74)
+cs.direction_note(fig, "write cost: lower is better", x=0.955, y=0.775)
 cs.save(fig, "out/z-order-vs-single-sort-vs-unordered.png")
 print("rendered r18")

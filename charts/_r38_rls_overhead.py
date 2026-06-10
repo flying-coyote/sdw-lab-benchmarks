@@ -54,5 +54,6 @@ ax.grid(False)
 ax.text(2.60, 1, "predicate reads\nfewer rows, so\nfaster than\nno filter", ha="left", va="center",
         fontsize=8.5, color=cs.GOOD, family=cs.SANS)
 
+cs.direction_note(fig, "RLS overhead: lower is better", y=0.80)
 cs.save(fig, "out/engine-side-rls-overhead-by-query-shape.png")
 print("rendered rls")

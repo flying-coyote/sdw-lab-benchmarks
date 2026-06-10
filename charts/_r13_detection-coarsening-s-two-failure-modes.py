@@ -58,5 +58,7 @@ axR.grid(axis="x", color=cs.GRID); axR.grid(axis="y", visible=False); axR.set_ax
 axR.text(0, 0.92, "Failure mode 2 — cry wolf", fontsize=11, color=cs.WARN,
          fontweight="bold", ha="left", va="top")
 
+cs.direction_note(fig, "recall: higher is better", x=0.465, y=0.285, ha="right", va="top")
+cs.direction_note(fig, "false alerts: lower is better")
 cs.save(fig, "out/detection-coarsening-s-two-failure-modes.png")
 print("rendered r13")

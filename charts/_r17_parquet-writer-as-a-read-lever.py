@@ -46,5 +46,6 @@ ax.set_ylabel("topn_src read (ms) — faster is lower")
 ax.grid(True, color=cs.GRID)
 for s in ("top", "right"):
     ax.spines[s].set_visible(False)
+cs.direction_note(fig, "lower-left is better", x=0.955, y=0.205, va="bottom")
 cs.save(fig, "out/parquet-writer-as-a-read-lever.png")
 print("rendered r17")

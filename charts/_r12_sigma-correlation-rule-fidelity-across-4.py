@@ -58,5 +58,6 @@ ax.annotate("all 3 PPL partials silently DROP the time window —\nthe correlati
                             connectionstyle="arc3,rad=-0.25"))
 
 ax.set_ylim(-1.15, 4.0)
+cs.direction_note(fig, "full fidelity: higher is better")
 cs.save(fig, "out/sigma-correlation-rule-fidelity-across-4.png")
 print("rendered r12")
