@@ -6,3 +6,4 @@ __pycache__/
 _work/
 *.parquet
 .jars/
+ocsf-mapping-oracle/results/*.log
