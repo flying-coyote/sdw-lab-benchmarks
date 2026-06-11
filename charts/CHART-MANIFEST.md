@@ -83,3 +83,14 @@ Each replaces repeated template prose in the restructured book; placements are t
 Collision guard: `three-journeys-comparison` (book figure, carries the §4.5 dollar figures) is distinct from `three-architect-journeys.png` (campaign B6, no dollar figures) — don't swap them.
 
 ✅ = target essay exists today (existence only, says nothing about placement). 📍PLACED = chart is deployed into a live essay (the first four placed 2026-06-09, securitydataworks c40ac51); where the placed essay isn't the row's named target, the marker names it. Rows with neither are staged for placement or need the essay written first.
+
+## Transition-program figures (built 2026-06-10 — transition-point program §7, task #30)
+
+The asset navigation layer: one payload, three renders (web map · ribbon · feed crop via `CHARTSTYLE_FEED_SCALE`), plus grayscale 300-dpi `-print` variants. Every coordinate is from the program's measured atlas (each number spot-checked against its source RESULTS file; provenance block at the top of the script). Tier line: one host (Beelink 5800H, WSL2 48 GB/14t), Tier B — what travels is ordering and shape.
+
+| script | file | head (the claim) | destination |
+|---|---|---|---|
+| `_t01_breaking_points_map.py` | `breaking-points-map.png` | Architectures fail at an edge, not at a row count — and every measured edge except the cliffs gives warning. 2D: scale × concurrent demand, 3 regions, slope/step glyphs, join-cliff + silent-wrong hazards inside the regions, retention/ingest/anchor chips. | 📍PLACED /lab "Where it breaks" (`public/lab/breaking-points-map.png`) |
+| `_t01_breaking_points_map.py` | `breaking-points-ribbon.png` | Where it breaks — the measured edges in order (10M index hunt-edge · 100M crossover + hazards · 1B single-node ceiling · beyond unmeasured), plus the layout-cliff caveat. | deck slide 16 (rendered as the `.edge-ribbon` CSS strip mirroring this PNG; PNG also at `public/pitch-deck/images/`) · campaign feed crop in `out/feed/` |
+
+Collision guard: the map's 100M "crossover" mark is the 4-engine per-workload winner flip (H-ARCH-02), NOT the 145× SIEM-vs-stack gap — don't caption one with the other's number.
