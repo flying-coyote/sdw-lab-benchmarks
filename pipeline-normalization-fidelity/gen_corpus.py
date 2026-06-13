@@ -108,6 +108,15 @@ _PROC_NAMES = ["powershell.exe", "cmd.exe", "rundll32.exe", "svchost.exe",
 _PARENTS = ["explorer.exe", "services.exe", "winlogon.exe", "outlook.exe"]
 _TZ_OFFSETS = [0, -300, -480, 60, 330, 540]  # minutes; cross-zone is a README probe
 
+# OCSF severity_id enum (1.8.0): 0 Unknown, 1 Informational, 2 Low, 3 Medium, 4 High,
+# 5 Critical, 6 Fatal. The severity-remap failure-class only needs "benign stays
+# Informational, an error/failure lifts above it"; the gold uses Informational(1) for
+# benign and a minimal Low(2) lift for error/failure. The exact lift magnitude is an
+# implementation choice (the pre-reg names severity remapping as a class to check but
+# sets no numeric threshold), so it is recorded in each probe's note + the README errata.
+_SEV_INFO = 1
+_SEV_ERROR = 2
+
 
 def _ip(rng, a=10):
     return f"{a}.{rng.randint(0, 255)}.{rng.randint(0, 255)}.{rng.randint(1, 254)}"
@@ -239,7 +248,11 @@ def _gen_cloudtrail(rng, i, t):
     semantic = {
         "severity_remap": {"probe": "an error event maps to a non-Informational severity, success stays Informational",
                            "expect": {"is_error": bool(err)},
-                           "note": "severity-remap failure-class: errorCode presence must lift severity, not be dropped"},
+                           "expected_severity_id": _SEV_ERROR if err else _SEV_INFO,
+                           "note": "severity-remap failure-class: errorCode presence must lift severity, not be dropped. "
+                                   "expected_severity_id is the gold answer the reference mapper emits (faithful lift); "
+                                   "the 1->2 (Informational->Low) lift magnitude is an implementation choice, not a "
+                                   "pre-registered threshold — see README errata."},
         "context_collapse": {"probe": "service + operation kept as distinct api.* fields, not collapsed into one event_name string",
                              "expect_paths": ["api.service.name", "api.operation"],
                              "note": "context-collapse failure-class"},
@@ -362,7 +375,10 @@ def _gen_auth(rng, i, t):
     semantic = {
         "severity_remap": {"probe": "a failed auth lifts severity above Informational",
                            "expect": {"is_failure": not success},
-                           "note": "severity-remap failure-class"},
+                           "expected_severity_id": _SEV_INFO if success else _SEV_ERROR,
+                           "note": "severity-remap failure-class. expected_severity_id is the gold answer the "
+                                   "reference mapper emits; the 1->2 (Informational->Low) lift magnitude is an "
+                                   "implementation choice, not a pre-registered threshold — see README errata."},
         "context_collapse": {"probe": "src (client) and dst (target host) kept distinct, not collapsed to one endpoint",
                              "expect_paths": ["src_endpoint.ip", "dst_endpoint.hostname"],
                              "note": "entity-role / context-collapse: a tool that puts the target host in src inverts the auth direction"},

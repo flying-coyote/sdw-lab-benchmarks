@@ -152,3 +152,61 @@ with no official mapping for a source either gets a labeled hand-written fill or
 scores that source 0% coverage — both are recorded, neither is hidden. The
 `reference` tool name is reserved for the self-check (gold vs the gold-derived
 reference mapper); it is the 100% control, not a fourth pipeline tool.
+
+### Status: AUTHORED, NOT RUN
+
+The harness (`gen_corpus.py` + `score.py` + the two OCSF subsets) is written and its
+correctness gates pass, but **no scored pass against a pipeline tool has been run** —
+that is Beelink-gated (single host, quiet window, per BENCHMARKING-METHODOLOGY §5
+isolation), and no Tenzir / Cribl / Vector mapping has been executed. There is no
+`results/` directory and no `_work/` corpus checked in (`_work/` is gitignored;
+regenerate it with `gen_corpus.py`). What exists is the *instrument*, validated against
+itself, not a result. The pre-registered P1–P5 in the frozen section above remain
+predictions; nothing here scores them.
+
+Two gates were run to validate the harness (neither runs a pipeline tool):
+
+- `python gen_corpus.py --check` — regenerates each source twice and asserts
+  byte-identical (the determinism gate; verified OK at n=1000).
+- `python score.py --self-check` — builds the gold's own faithful mapping as an
+  emitted event and scores it against the gold, asserting 100% field / 100% value /
+  100% class+activity_id+type_uid AND zero failure-class reproduction per source
+  (verified OK on all four sources). This is the harness-correctness gate, with no
+  tool involved; a real tool's run is the only thing that produces a publishable
+  number, and that has not happened.
+
+### Errata (appended 2026-06-13; the pre-registration above is unchanged)
+
+Authoring the scorer surfaced two harness-correctness bugs the self-check now catches,
+plus one scoring choice the pre-reg left open:
+
+1. **Field-fidelity denominator = populated fields, not schema width.** A gold field
+   whose canonical value is `None` is the absence-vs-null case the gold notes already
+   call out (a CloudTrail success has no `errorCode`; a successful auth has no
+   `failure_reason`). Faithfully, that field is absent on that record, so it is not a
+   field-fidelity obligation and is excluded from the per-record denominator — matching
+   the pre-reg stop rule "every fidelity number reports its denominator (populated
+   source fields, not schema width)". Without this, the gold's own faithful mapping
+   scored ~93% field fidelity on CloudTrail and auth, contradicting the self-check's
+   100% control. A tool that *does* emit a value where the gold is null surfaces that
+   at the value level, not as a phantom field obligation.
+
+2. **The severity-remap failure-class needed an explicit gold answer.** `severity_id`
+   is derived semantics, not a 1:1 source-field mapping, so it is not in the gold
+   `fields` block; the probe had no value for the faithful reference mapper to emit,
+   so the severity-remap class reproduced against the gold itself (~15–19%, exactly the
+   error/failure-record fraction). The gold's `severity_remap` probe now carries an
+   explicit `expected_severity_id` (the faithful severity for that record), the
+   reference mapper emits it, and the probe is reproduced when a tool's emitted
+   `severity_id` does not match — symmetric across benign (stays Informational) and
+   error/failure (lifts).
+
+3. **ASSUMPTION FLAGGED — severity-lift magnitude.** The pre-reg names "severity
+   remapping" as one of the five failure classes to check but sets **no numeric
+   threshold**. The gold uses OCSF 1.8.0 `severity_id` = Informational (1) for a benign
+   event and a minimal Low (2) for an error/failure. The *magnitude* of the lift (1→2)
+   is an implementation choice, not a pre-registered value; the probe only needs
+   "benign stays Informational, error/failure lifts above it", which any non-1 emitted
+   severity on an error/failure record satisfies. If a future review wants a specific
+   error→High mapping, change `_SEV_ERROR` in `gen_corpus.py` (one constant) and
+   regenerate — the probe logic is value-driven and does not hard-code the magnitude.
