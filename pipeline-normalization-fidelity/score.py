@@ -178,7 +178,19 @@ def score_record(schema, gold_rec, emitted):
     Semantic: class, activity_id, type_uid, and each planted failure-class probe.
     """
     fields = gold_rec["fields"]
-    homed = {f: r for f, r in fields.items() if r["status"] in ("typed", "coerced")}
+    # Field fidelity is scored over the gold fields that (a) have a real OCSF home
+    # (typed/coerced) AND (b) are actually POPULATED on this record — the README
+    # denominator is "populated source fields, not schema width". A gold field whose
+    # canonical value is None is the absence-is-correct case (the absence-vs-null
+    # seam the gold notes call out: a CloudTrail success has no errorCode, a
+    # successful auth has no failure_reason). Faithfully, that field is absent on
+    # this record, so it is NOT a field-fidelity obligation — counting it would make
+    # the gold's own faithful mapping (the self-check reference) score below 100%,
+    # which is the harness-correctness contradiction the self-check exists to catch.
+    # If a tool nonetheless emits a non-null value at that path, that surfaces at the
+    # value level (an absence-vs-null divergence), not as a phantom field obligation.
+    homed = {f: r for f, r in fields.items()
+             if r["status"] in ("typed", "coerced") and r["value"] is not None}
 
     field_total = len(homed)
     field_landed = 0
@@ -248,23 +260,32 @@ def _score_failure_classes(schema, gold_rec, emitted):
                 ok = False
                 reason = f"expected OCSF path `{p}` absent/null/catch-all"
                 break
+        # severity-remap probes carry the gold answer in `expected_severity_id`: the
+        # faithful severity_id for THIS record (Informational for a benign event, a
+        # lift for an error/failure). The failure class reproduces when the tool's
+        # emitted severity_id does not match it — which covers both directions (an
+        # error left at Informational AND a benign event spuriously escalated), and is
+        # satisfied by a reference mapper that emits the gold severity, so the gold's
+        # own faithful mapping scores 0% reproduced (the self-check invariant).
+        if ok and "expected_severity_id" in probe:
+            want_sev = probe["expected_severity_id"]
+            present, sev = get_path(emitted, "severity_id")
+            if not present or not _eq(sev, want_sev):
+                ok = False
+                reason = (f"severity_id={sev!r}, faithful gold severity_id={want_sev} "
+                          f"(error/failure must lift, benign stays Informational)")
         if ok and "expect" in probe:
             for path, want in probe["expect"].items():
                 if path in ("is_error", "is_failure"):
-                    # severity-remap probes: a true error/failure must lift severity
-                    # above Informational (severity_id 1). Reproduced if it didn't.
-                    if want:
-                        present, sev = get_path(emitted, "severity_id")
-                        if not present or sev in (None, 1):
-                            ok = False
-                            reason = "error/failure event left at Informational severity"
-                            break
-                else:
-                    present, val = get_path(emitted, path)
-                    if not present or not _eq(val, want):
-                        ok = False
-                        reason = f"expected `{path}` == {want!r}, got {val!r}"
-                        break
+                    # The boolean is carried for auditability (it labels the record as
+                    # error/failure); the checkable severity assertion lives in
+                    # `expected_severity_id` above, so nothing to re-check here.
+                    continue
+                present, val = get_path(emitted, path)
+                if not present or not _eq(val, want):
+                    ok = False
+                    reason = f"expected `{path}` == {want!r}, got {val!r}"
+                    break
         out[name] = {"reproduced": (not ok), "reason": reason,
                      "note": probe.get("note", "")}
     return out
@@ -355,7 +376,20 @@ def _build_reference_emitted(schema, gold):
                 continue
             if _is_catch_all(schema, rec["ocsf"]):
                 continue
+            # A faithful mapping emits no leaf for an absent field (gold value None,
+            # the absence-vs-null seam); writing an explicit null would not be a
+            # genuine reference mapping and would diverge from the scorer's
+            # populated-field denominator. Match it: skip null gold values.
+            if rec["value"] is None:
+                continue
             _set_path(ev, rec["ocsf"], rec["value"])
+        # severity_id is derived semantics, not a 1:1 source-field mapping, so it is
+        # not in `fields`; the faithful reference mapper emits the gold's
+        # `expected_severity_id` (from the severity-remap probe) so the severity-remap
+        # failure class scores 0% reproduced against the gold itself.
+        sev_probe = g.get("semantic", {}).get("severity_remap", {})
+        if "expected_severity_id" in sev_probe:
+            ev["severity_id"] = sev_probe["expected_severity_id"]
         emitted[g["_id"]] = ev
     return emitted
 
@@ -381,11 +415,22 @@ def self_check(schema, sources):
         ff = res["field_fidelity"]["score"]
         vf = res["value_fidelity"]["score"]
         sc = res["semantic_fidelity"]["class_assignment"]
-        # The reference mapper preserves everything the gold preserves at typed/coerced.
-        perfect = (ff == 1.0 and vf == 1.0 and sc == 1.0)
+        act = res["semantic_fidelity"]["activity_id"]
+        tuid = res["semantic_fidelity"]["type_uid"]
+        # The reference mapper IS the gold's own faithful mapping, so it must preserve
+        # everything: every fidelity level perfect AND no failure class reproduced (a
+        # faithful mapping reproduces none of the five crosswalk failure classes — if
+        # one fires here the gold's semantic answer is incomplete, the second class of
+        # harness bug this gate exists to catch).
+        fc = res["semantic_fidelity"]["failure_classes"]
+        worst_fc = max((v["reproduced_fraction"] for v in fc.values()), default=0.0)
+        no_fc = (worst_fc == 0.0)
+        perfect = (ff == 1.0 and vf == 1.0 and sc == 1.0 and act == 1.0 and tuid == 1.0 and no_fc)
         ok = ok and perfect
-        print(f"  {source:11s} field={ff:.2f} value={vf:.2f} class={sc:.2f}  "
-              f"{'OK' if perfect else 'FAIL'}")
+        fc_note = "" if no_fc else f"  !! failure-class reproduced against gold (max {worst_fc:.0%})"
+        print(f"  {source:11s} field={ff:.2f} value={vf:.2f} class={sc:.2f} "
+              f"act={act:.2f} type_uid={tuid:.2f} no_failure_class={no_fc}  "
+              f"{'OK' if perfect else 'FAIL'}{fc_note}")
     print(f"self-check (gold vs reference mapper): {'OK' if ok else 'FAIL'}")
     return ok
 
