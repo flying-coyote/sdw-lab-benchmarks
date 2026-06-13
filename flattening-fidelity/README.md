@@ -89,11 +89,13 @@ The seeds, fixed time anchor, and scoring helpers live in the repo-level
 
 ## Related: OCSF field-mapping fidelity (C1)
 
-A separate benchmark — OCSF field-mapping completeness and lossiness across
-CrowdStrike, Okta, Palo Alto, Cisco, and Zscaler into OCSF 1.8.0 — is scaffolded
-in [`../ocsf-mapping-fidelity/`](../ocsf-mapping-fidelity/). It needs real vendor
-schemas rather than a synthetic corpus, so it is stubbed with the protocol and
-left unrun until those inputs are gathered.
+A separate benchmark — OCSF field-mapping completeness and lossiness across six
+real vendor schemas (Okta, CrowdStrike, Palo Alto PAN-OS, Cisco ASA, Cisco
+Umbrella, Zscaler ZIA) into OCSF 1.8.0 — lives in
+[`../ocsf-mapping-fidelity/`](../ocsf-mapping-fidelity/). It is **scored** against
+the real shipped schemas (not a synthetic corpus); see its
+[`results/RESULTS.md`](../ocsf-mapping-fidelity/results/RESULTS.md) for the
+per-source typed / coerced / unmapped breakdown.
 
 ## Hypothesis mapping
 
