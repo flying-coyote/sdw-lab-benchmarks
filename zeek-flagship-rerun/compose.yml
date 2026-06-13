@@ -51,7 +51,48 @@ services:
     volumes:
       - minio_data:/data
 
+  # Nessie catalog for the B-DREMIO arm (added 2026-06-13). Dremio cannot read the
+  # pyiceberg/SqlCatalog(sqlite) table from a plain S3 source (no version-hint; "Failed to
+  # get iceberg metadata"), so the SAME data files are registered into Nessie via pyiceberg
+  # register_table (NO data rewrite — byte-identical files, shared with clickhouse_iceberg)
+  # and Dremio reads via a Nessie source. Warehouse points at the existing table prefix.
+  nessie:
+    image: ghcr.io/projectnessie/nessie:latest
+    container_name: zfr-nessie
+    depends_on:
+      - minio
+    environment:
+      nessie.version.store.type: IN_MEMORY
+      nessie.catalog.default-warehouse: warehouse
+      nessie.catalog.warehouses.warehouse.location: s3://zfr-bench/iceberg/
+      nessie.catalog.service.s3.default-options.region: us-east-1
+      nessie.catalog.service.s3.default-options.endpoint: http://minio:9000
+      nessie.catalog.service.s3.default-options.path-style-access: "true"
+      nessie.catalog.service.s3.default-options.auth-mode: STATIC
+      nessie.catalog.service.s3.default-options.access-key: urn:nessie-secret:quarkus:nessie.catalog.secrets.access-key
+      nessie.catalog.secrets.access-key.name: zfrbench
+      nessie.catalog.secrets.access-key.secret: zfrbench123
+    ports:
+      - "19120:19120"
+
+  # B-DREMIO arm (added 2026-06-13, pre-registered in BENCHMARK-BACKLOG.md). Dremio reads the
+  # SAME pyiceberg-written Iceberg table on MinIO that the clickhouse_iceberg arm reads
+  # (byte-identical) via the Nessie source above + register_table (config in dremio_arm.py).
+  # Memory is a declared accommodation: arms run one-at-a-time (the others are stopped during a
+  # timed pass), so Dremio gets a generous heap; the 10M-row aggregations are small for it.
+  dremio:
+    image: dremio/dremio-oss:26.0
+    container_name: zfr-dremio
+    environment:
+      DREMIO_MAX_MEMORY_SIZE_MB: "8192"
+    volumes:
+      - dremio_data:/opt/dremio/data
+    ports:
+      - "9347:9047"
+    mem_limit: 12g
+
 volumes:
   os_data:
   ch_data:
   minio_data:
+  dremio_data:
