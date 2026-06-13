@@ -23,12 +23,14 @@ import time
 from pathlib import Path
 
 from queries import CH_NATIVE_TABLE, ICEBERG_TABLE_FN, OS_QUERIES, ch_queries, extract_ch, extract_os
+from dremio_arm import dremio_runner
 
 WORK = Path(__file__).parent / "_work"
 RESULTS = Path(__file__).parent / "results"
 
 ARM_CONTAINER = {"opensearch": "zfr-opensearch", "clickhouse_native": "zfr-clickhouse",
-                 "clickhouse_iceberg": "zfr-clickhouse"}
+                 "clickhouse_iceberg": "zfr-clickhouse",
+                 "dremio_iceberg": "zfr-dremio", "dremio_reflections": "zfr-dremio"}
 
 
 def os_runner():
@@ -68,6 +70,10 @@ def get_runner(arm):
         return ch_runner(CH_NATIVE_TABLE)
     if arm == "clickhouse_iceberg":
         return ch_runner(ICEBERG_TABLE_FN)
+    if arm == "dremio_iceberg":
+        return dremio_runner(reflections=False)
+    if arm == "dremio_reflections":
+        return dremio_runner(reflections=True)
     raise SystemExit(f"unknown arm {arm}")
 
 
