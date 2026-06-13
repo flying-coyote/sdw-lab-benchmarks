@@ -191,51 +191,65 @@ class Dremio:
         print(f"table {TABLE_SQL} resolved, COUNT(*) = {n}")
         return int(n)
 
-    def dataset_id(self) -> str:
-        ent = self.get_by_path(TABLE_PATH)
-        if "id" not in ent:
-            raise RuntimeError(f"dataset id not found for {TABLE_PATH}: {ent}")
-        return ent["id"]
+    # Reflection management is SQL-based (ALTER TABLE ... REFLECTION + sys.reflections polling).
+    # The REST /api/v3/reflection + /api/v3/catalog/{id} endpoints do NOT work on a Nessie-
+    # *versioned* dataset (BRANCH main): the dataset id is a composite {tableKey, contentId,
+    # versionContext} object, the list endpoint 405s, and catalog-by-id 404s for both the object
+    # and the contentId. SQL goes through the query path, which resolves the versioned table.
+    # Validated 2026-06-13: CREATE/DROP parse, sys.reflections polling works.
+    #
+    # KNOWN OPEN ISSUE (Reflections-ON arm) — the materialization completes but expires
+    # INSTANTLY: sys.reflections shows status=CANNOT_ACCELERATE_SCHEDULED,
+    # available_until=1970-01-01 (epoch 0), last_failure="Successful materialization already
+    # expired". This reproduces with BOTH the REST- and SQL-created reflection, so it is a
+    # Dremio-26 + Nessie-*versioned*-table friction, NOT a code bug — Dremio can't compute a
+    # valid freshness/expiry for a BRANCH-main Iceberg table registered via register_table, so
+    # the reflection never reaches CAN_ACCELERATE and the "ON" arm would run un-accelerated
+    # (a duplicate of OFF). The Reflections-OFF arm is unaffected and is the primary number.
+    # Quiet-window options to make ON real: (a) a non-versioned read path (Dremio's own Iceberg
+    # catalog / Glue / Hadoop-tables with version-hint, instead of Nessie BRANCH); (b) a Dremio
+    # support key / dataset refresh-policy that pins materialization validity; (c) report ON as
+    # "not cleanly supported over the Nessie-versioned path" — itself an honest finding.
 
-    def list_reflections(self) -> list:
-        return requests.get(f"{self.base}/api/v3/reflection", headers=self.auth,
-                            timeout=60).json().get("data", [])
+    def _refl_row(self):
+        rows = self.sql(
+            "SELECT reflection_id, status, acceleration_status, num_failures, "
+            "last_failure_message, available_until FROM sys.reflections "
+            "WHERE reflection_name = 'zfr_raw' AND dataset_name LIKE '%conn_10m%'")
+        return rows[0] if rows else None
 
     def reflect_off(self):
-        did = self.dataset_id()
-        dropped = 0
-        for ref in self.list_reflections():
-            if ref.get("datasetId") == did:
-                requests.delete(f"{self.base}/api/v3/reflection/{ref['id']}",
-                                headers=self.auth, timeout=60)
-                dropped += 1
-        print(f"dropped {dropped} reflection(s) on the table")
+        row = self._refl_row()
+        if not row:
+            print("no reflection to drop")
+            return
+        rid = row[0]
+        # Dremio drops reflections by reflection_id (not by name, no "RAW" keyword)
+        self.sql(f'ALTER TABLE {TABLE_SQL} DROP REFLECTION "{rid}"')
+        print(f"dropped reflection {rid}")
 
-    def reflect_on(self, wait_s=600):
-        did = self.dataset_id()
-        # drop any stale ones first so we wait on a known-fresh reflection
+    def reflect_on(self, wait_s=1800):
         self.reflect_off()
-        body = {
-            "type": "RAW", "name": "zfr_raw", "datasetId": did, "enabled": True,
-            "displayFields": [{"name": c} for c in COLUMNS],
-        }
-        r = requests.post(f"{self.base}/api/v3/reflection", headers=self.auth, json=body, timeout=60)
-        if r.status_code not in (200, 201):
-            raise RuntimeError(f"reflection create failed {r.status_code}: {r.text[:400]}")
-        rid = r.json()["id"]
-        print(f"raw reflection {rid} created; waiting for it to become available...")
+        cols = ", ".join(COLUMNS)
+        self.sql(f'ALTER TABLE {TABLE_SQL} CREATE RAW REFLECTION "zfr_raw" USING DISPLAY ({cols})')
+        print("raw reflection zfr_raw created via SQL; polling sys.reflections "
+              "(materialization is a 10M-row scan — run this in a quiet window)...")
         deadline = time.time() + wait_s
         while time.time() < deadline:
-            ref = requests.get(f"{self.base}/api/v3/reflection/{rid}", headers=self.auth,
-                               timeout=60).json()
-            status = ref.get("status", {})
-            avail = status.get("availability")
-            print(f"  reflection availability={avail} refresh={status.get('refresh')}", flush=True)
-            if avail == "AVAILABLE":
-                print("reflection AVAILABLE — Reflections-ON arm ready")
-                return
-            time.sleep(10)
-        raise TimeoutError("reflection did not become AVAILABLE in time")
+            row = self._refl_row()
+            if row is None:
+                print("  (reflection not yet in sys.reflections)", flush=True)
+            else:
+                rid, status, accel, fails, failmsg, avail_until = row
+                print(f"  status={status} acceleration={accel} failures={fails}"
+                      f"{' msg=' + str(failmsg)[:120] if failmsg else ''}", flush=True)
+                if accel == "CAN_ACCELERATE":
+                    print("reflection CAN_ACCELERATE — Reflections-ON arm ready")
+                    return
+                if fails and int(fails) >= 3:
+                    raise RuntimeError(f"reflection failing: {failmsg}")
+            time.sleep(15)
+        raise TimeoutError("reflection did not reach CAN_ACCELERATE in time")
 
 
 def dremio_runner(reflections: bool):
