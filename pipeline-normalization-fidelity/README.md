@@ -88,3 +88,67 @@ hypothesis evidence (through the gate).
 Single host (Beelink 5800H, WSL2 48 GB/14t), Tier B. What travels is ordering and the
 failure classes; absolute percentages ride with the corpus caveat (seeded, four
 sources, not your estate).
+
+---
+
+## Implementation note (appended 2026-06-13; pre-registration above is unchanged)
+
+The harness is two files, plus the gold key already under `schemas/ocsf/`:
+
+- `gen_corpus.py` — deterministic generator. Builds the four pinned source corpora
+  (`_work/<source>.corpus.jsonl`, ~100k each, fixed seed off `../lib/common.py`
+  `MASTER_SEED` / `BASE_EPOCH`, no wall clock) and the gold OCSF mapping per record
+  (`_work/<source>.gold.jsonl`), then pins every file by sha256 in
+  `_work/corpus_manifest.json`. `python gen_corpus.py --check` regenerates twice and
+  asserts byte-identical (the determinism gate). The gold key is the hand-verified
+  reference mapping: per source field it carries `{ocsf, status, value, note}` in the
+  C1 `ocsf-mapping-fidelity` record shape — `status` is C1's typed/coerced/unmapped
+  tier (the field-fidelity ceiling), `value` is the canonical OCSF value after a
+  faithful coercion (the value-fidelity answer), and each record carries the OCSF
+  class / `activity_id` / `type_uid` plus the five failure-class probes (the semantic
+  answer). The four classes are Network Activity 4001 + Authentication 3002 (reused
+  from the C1 subset) and API Activity 6003 + Process Activity 1007 (this bench's
+  `schemas/ocsf/ocsf_1.8.0_ext_subset.json`).
+
+- `score.py` — scorer. Merges the C1 subset and the ext subset, validates every gold
+  OCSF target with C1's `resolve_ocsf_path` (an invented attribute fails the run),
+  and scores a tool's emitted OCSF output field / value / semantic against the gold.
+  `python score.py --self-check` scores the gold against a reference mapper built FROM
+  the gold and asserts 100%/100%/100% — the harness's own correctness gate, no tool
+  involved.
+
+### Join contract
+
+Each corpus row carries an explicit `_id` (a source-agnostic alias of the row's
+natural id — `uid` for Zeek, `eventID` for CloudTrail, `ProcessGuid` for Sysmon,
+`event_id` for auth). Each tool's mapping must carry `_id` through verbatim onto its
+emitted OCSF event; `score.py` joins emitted→gold on `_id`. A source the tool
+produced no output for (crash / refusal) scores 0% coverage for that source, not
+excluded (README stop rule) — pass no `--emitted` for it, or an empty file.
+
+### Where each tool's shipped mapping artifact plugs in
+
+No pipeline tool is installed or run by this harness. For a scored run, each tool maps
+`_work/<source>.corpus.jsonl` → OCSF 1.8.0 using its MOST OFFICIAL available mapping,
+writes the emitted events (one per row, `_id` carried) to a JSONL file, and that file
+is handed to `score.py --tool <name> --mapping-artifact "<pinned version>" --emitted
+<source>=<file>`. The mapping artifact and its version are pinned into the result
+(`--mapping-artifact`), so every number is version-bound.
+
+- **Tenzir** — Tenzir's built-in OCSF mapping operators (`ocsf::*` / the `mapping`
+  operators) in a TQL pipeline that reads each corpus JSONL and writes OCSF JSON.
+  Plug in: the pipeline definition (`.tql`) + the Tenzir version. Tenzir ships the
+  most OCSF mapping surface of the three (README P1: expect highest coverage).
+- **Cribl** — Cribl Stream's published OCSF Pack (free tier). Plug in: the Pack
+  version + the per-source Pipeline/Pack export that reads the corpus and emits OCSF.
+  Run it through Cribl and capture the destination JSONL.
+- **Vector** — VRL. Use a vendor-published OCSF VRL example where one exists for the
+  source; otherwise a minimal hand-written `.vrl` labeled NON-OFFICIAL (coverage ≠
+  fidelity — the hand-written fills are reported separately, README stop rule). Plug
+  in: the `.vrl` transform (pin its commit/source) + the Vector version.
+
+Per source the official-mapping availability differs (that is P1 itself), so a tool
+with no official mapping for a source either gets a labeled hand-written fill or
+scores that source 0% coverage — both are recorded, neither is hidden. The
+`reference` tool name is reserved for the self-check (gold vs the gold-derived
+reference mapper); it is the 100% control, not a fourth pipeline tool.
