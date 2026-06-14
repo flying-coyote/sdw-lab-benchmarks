@@ -2,7 +2,9 @@ name: zeek-flagship-rerun
 
 services:
   opensearch:
-    image: opensearchproject/opensearch:2.18.0
+    # version-currency update 2026-06-14: bumped 2.18.0 (17 mo old) -> 3.7.0 (current) per the
+    # "as updated as possible" directive; the foil is re-validated on the current OpenSearch.
+    image: opensearchproject/opensearch:3.7.0
     container_name: zfr-opensearch
     environment:
       - discovery.type=single-node

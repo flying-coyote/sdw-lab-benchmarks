@@ -61,8 +61,26 @@ trigger.
 ## Consequence for the published copy
 
 The campaign (Post 9), Subsurface abstract, and lab.astro cite the present-tense "2 silently
-return wrong answers." That language is **correct and current** — it should NOT be softened to
-"2 were silently wrong on the versions we caught, since fixed." If anything, pin the versions
-(chDB 4.1.8 / ClickHouse C++ v3 reader, fastparquet 2026.5.0) and add the trigger nuance
-(high-cardinality fields, small row groups) so the claim is precise and defensible. The check
-belongs in CI exactly because the bugs persist across upgrades.
+return wrong answers." As of the chDB 4.1.8 test that language was correct; the version-currency
+update below now sharpens it (one of the two was fixed by a point release). Pin the versions and
+the trigger nuance (high-cardinality fields, small row groups) so the claim is precise.
+
+## Version-currency update (2026-06-14) — chDB 4.1.9 FIXES the bloom undercount; fastparquet persists
+
+Per the "as updated as possible" directive, the libraries were bumped to latest and the two
+mechanisms re-run:
+
+| reader | version tested | result |
+|---|---|---|
+| chDB / ClickHouse C++ v3 | 4.1.8 (yesterday) → **4.1.9** (latest) | bloom undercount **FIXED in 4.1.9** — default v3 reader now ALL CORRECT (user1337 4972 = truth); 4.1.8 diverged (4966). The chdb-core ClickHouse engine moved 26.3 → 26.5. |
+| fastparquet | **2026.5.0** (already latest) | DuckDB-`PLAIN_DICTIONARY` mis-decode **STILL LIVE** — user7 531 vs 532, 4,672/1M rows ≠ pyarrow. |
+
+So the honest current count is **1 of 13 silently wrong on the very latest libraries**
+(fastparquet only), down from 2 on the versions first caught. This is the load-bearing point
+of the whole answer-equivalence check, now demonstrated end-to-end: the chDB undercount was
+*caught here, is version-bound, and was fixed by a point release* — while the fastparquet
+mis-decode persists on the latest version. The claim to publish is therefore **not** a static
+"2 silently wrong" and **not** "all fixed" — it is "**we caught 2 silently-wrong readers; one
+(chDB) was fixed in the next point release, one (fastparquet) is still wrong on the latest
+version — which is exactly why this equality check belongs in CI rather than being assumed.**"
+The version-bound, moving nature of the failure IS the finding.
