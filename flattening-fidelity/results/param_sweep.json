@@ -1,0 +1,284 @@
+{
+  "benchmark": "flattening-fidelity Modes 2-3 parameter x seed sweep",
+  "duckdb_version": "1.5.3",
+  "grain_decoy_ratio_sweep": [
+    {
+      "atomic_f1": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      },
+      "coarse_f1": {
+        "ci95_hi": 0.8,
+        "ci95_lo": 0.8,
+        "max": 0.8,
+        "mean": 0.8,
+        "min": 0.8,
+        "n": 8,
+        "sd": 0.0
+      },
+      "decoy_ratio": 0.5,
+      "n_beacons": 8,
+      "n_decoys": 4,
+      "predicted_coarse_f1_2b_over_2b_plus_d": 0.8
+    },
+    {
+      "atomic_f1": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      },
+      "coarse_f1": {
+        "ci95_hi": 0.6667,
+        "ci95_lo": 0.6667,
+        "max": 0.6667,
+        "mean": 0.6667,
+        "min": 0.6667,
+        "n": 8,
+        "sd": 0.0
+      },
+      "decoy_ratio": 1,
+      "n_beacons": 8,
+      "n_decoys": 8,
+      "predicted_coarse_f1_2b_over_2b_plus_d": 0.6667
+    },
+    {
+      "atomic_f1": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      },
+      "coarse_f1": {
+        "ci95_hi": 0.5,
+        "ci95_lo": 0.5,
+        "max": 0.5,
+        "mean": 0.5,
+        "min": 0.5,
+        "n": 8,
+        "sd": 0.0
+      },
+      "decoy_ratio": 2,
+      "n_beacons": 8,
+      "n_decoys": 16,
+      "predicted_coarse_f1_2b_over_2b_plus_d": 0.5
+    },
+    {
+      "atomic_f1": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      },
+      "coarse_f1": {
+        "ci95_hi": 0.4,
+        "ci95_lo": 0.4,
+        "max": 0.4,
+        "mean": 0.4,
+        "min": 0.4,
+        "n": 8,
+        "sd": 0.0
+      },
+      "decoy_ratio": 3,
+      "n_beacons": 8,
+      "n_decoys": 24,
+      "predicted_coarse_f1_2b_over_2b_plus_d": 0.4
+    },
+    {
+      "atomic_f1": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      },
+      "coarse_f1": {
+        "ci95_hi": 0.3333,
+        "ci95_lo": 0.3333,
+        "max": 0.3333,
+        "mean": 0.3333,
+        "min": 0.3333,
+        "n": 8,
+        "sd": 0.0
+      },
+      "decoy_ratio": 4,
+      "n_beacons": 8,
+      "n_decoys": 32,
+      "predicted_coarse_f1_2b_over_2b_plus_d": 0.3333
+    }
+  ],
+  "note": "Mode 1 (absence->NULL) is structural (100% by construction); not swept.",
+  "timestamps_cross_zone_sweep": [
+    {
+      "actual_cross_fraction": {
+        "ci95_hi": 0.0,
+        "ci95_lo": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 8,
+        "sd": 0.0
+      },
+      "cross_zone_fraction_target": 0.0,
+      "floating_recall": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      },
+      "predicted_floating_recall_1_minus_cross": 1.0,
+      "utc_recall": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      }
+    },
+    {
+      "actual_cross_fraction": {
+        "ci95_hi": 0.2517658753188115,
+        "ci95_lo": 0.2384841246811885,
+        "max": 0.256,
+        "mean": 0.245125,
+        "min": 0.229,
+        "n": 8,
+        "sd": 0.009583281573359184
+      },
+      "cross_zone_fraction_target": 0.25,
+      "floating_recall": {
+        "ci95_hi": 0.7615158753188115,
+        "ci95_lo": 0.7482341246811884,
+        "max": 0.771,
+        "mean": 0.754875,
+        "min": 0.744,
+        "n": 8,
+        "sd": 0.009583281573359194
+      },
+      "predicted_floating_recall_1_minus_cross": 0.7549,
+      "utc_recall": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      }
+    },
+    {
+      "actual_cross_fraction": {
+        "ci95_hi": 0.5016118282190116,
+        "ci95_lo": 0.4856381717809884,
+        "max": 0.505,
+        "mean": 0.493625,
+        "min": 0.472,
+        "n": 8,
+        "sd": 0.011525592640479965
+      },
+      "cross_zone_fraction_target": 0.5,
+      "floating_recall": {
+        "ci95_hi": 0.5143618282190117,
+        "ci95_lo": 0.49838817178098843,
+        "max": 0.528,
+        "mean": 0.506375,
+        "min": 0.495,
+        "n": 8,
+        "sd": 0.011525592640479965
+      },
+      "predicted_floating_recall_1_minus_cross": 0.5064,
+      "utc_recall": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      }
+    },
+    {
+      "actual_cross_fraction": {
+        "ci95_hi": 0.7487740015688324,
+        "ci95_lo": 0.7334759984311676,
+        "max": 0.759,
+        "mean": 0.741125,
+        "min": 0.722,
+        "n": 8,
+        "sd": 0.011038083425771249
+      },
+      "cross_zone_fraction_target": 0.75,
+      "floating_recall": {
+        "ci95_hi": 0.2665240015688324,
+        "ci95_lo": 0.25122599843116766,
+        "max": 0.278,
+        "mean": 0.258875,
+        "min": 0.241,
+        "n": 8,
+        "sd": 0.011038083425771249
+      },
+      "predicted_floating_recall_1_minus_cross": 0.2589,
+      "utc_recall": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      }
+    },
+    {
+      "actual_cross_fraction": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      },
+      "cross_zone_fraction_target": 1.0,
+      "floating_recall": {
+        "ci95_hi": 0.0,
+        "ci95_lo": 0.0,
+        "max": 0.0,
+        "mean": 0.0,
+        "min": 0.0,
+        "n": 8,
+        "sd": 0.0
+      },
+      "predicted_floating_recall_1_minus_cross": 0.0,
+      "utc_recall": {
+        "ci95_hi": 1.0,
+        "ci95_lo": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "min": 1.0,
+        "n": 8,
+        "sd": 0.0
+      }
+    }
+  ]
+}
