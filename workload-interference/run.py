@@ -613,9 +613,19 @@ def write_results(arm_records, args):
             "calibration_max_overhead_pct": CALIBRATION_MAX_OVERHEAD_PCT,
             "scheduled_shapes": list(mix.SCHEDULED_ORDER),
         },
-        "arms": {r["arm"]: r for r in arm_records},
+        "arms": {},
     }
-    (RESULTS / "results.json").write_text(json.dumps(blob, indent=2))
+    # Merge with any prior arms so a multi-invocation sweep (one engine profile up at a time,
+    # the memory-safe pattern) accumulates instead of clobbering. New arm records win.
+    rp = RESULTS / "results.json"
+    prior = {}
+    if rp.exists():
+        try:
+            prior = json.loads(rp.read_text()).get("arms", {})
+        except Exception:
+            prior = {}
+    blob["arms"] = {**prior, **{r["arm"]: r for r in arm_records}}
+    rp.write_text(json.dumps(blob, indent=2))
 
     # ---- RESULTS.md scaffold (operator fills prose + the P1-P7 verdicts) ----
     lines = []
