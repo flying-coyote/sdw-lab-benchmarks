@@ -8,28 +8,32 @@
 
 | arm | baseline probe median | calibration median | client-added % | gate |
 |---|---|---|---|---|
-| dremio | 0.5262 s | 0.383 s | -27.21% | PASS |
+| dremio | 0.4496 s | 0.3526 s | -21.57% | PASS |
 
 ## Knee + failure shape (per arm)
 
 | arm | scored | knee demand (U) | stop trigger | failure shape | reproduced 3× |
 |---|---|---|---|---|---|
-| dremio | yes | — | — | graceful | no (operator step) |
+| dremio | yes | 32.0 | utilization_ge_1_with_monotone_backlog | graceful | no (operator step) |
 
 ## p95-vs-demand curves (full, so any reader re-derives the knee at their own threshold)
 
 ### dremio
 
-R=0 baseline probe median 0.5262 s (CV 26.0%).
+R=0 baseline probe median 0.4496 s (CV 26.1%).
 
 | demand U | probe median | probe p95 | probe max | sched completed | utilization | peak outstanding | backlog end | stop trigger |
 |---|---|---|---|---|---|---|---|---|
-| 0.125 | 0.2584 s | 0.4526 s | 1.0224 s | 4 | 0.023 | 1 | 0 | — |
-| 0.25 | 0.2515 s | 0.453 s | 0.8103 s | 8 | 0.0248 | 1 | 0 | — |
-| 0.5 | 0.2535 s | 0.4557 s | 0.5716 s | 15 | 0.045 | 1 | 0 | — |
-| 1.0 | 0.2513 s | 0.4519 s | 0.5679 s | 30 | 0.074 | 1 | 0 | — |
-| 2.0 | 0.2933 s | 0.4079 s | 0.5523 s | 60 | 0.1404 | 1 | 0 | — |
-| 4.0 | 0.2863 s | 0.4773 s | 0.6217 s | 120 | 0.2622 | 1 | 0 | — |
+| 0.125 | 0.2374 s | 0.4374 s | 0.8801 s | 4 | 0.0185 | 1 | 0 | — |
+| 0.25 | 0.2348 s | 0.3684 s | 0.495 s | 8 | 0.0214 | 1 | 0 | — |
+| 0.5 | 0.2346 s | 0.3741 s | 0.4856 s | 15 | 0.0395 | 1 | 0 | — |
+| 1.0 | 0.2357 s | 0.3739 s | 0.482 s | 30 | 0.0703 | 1 | 0 | — |
+| 2.0 | 0.29 s | 0.406 s | 0.4837 s | 60 | 0.1388 | 1 | 0 | — |
+| 4.0 | 0.2833 s | 0.478 s | 0.5945 s | 120 | 0.259 | 1 | 0 | — |
+| 8.0 | 0.2813 s | 0.4056 s | 0.4841 s | 240 | 0.5519 | 2 | 0 | — |
+| 16.0 | 0.341 s | 0.6969 s | 0.9028 s | 480 | 1.3313 | 3 | 0 | — |
+| 32.0 | 2.0934 s | 3.7274 s | 4.8852 s | 655 | 62.0692 | 64 | 305 | utilization_ge_1_with_monotone_backlog |
+| 64.0 | 2.1529 s | 5.7833 s | 11.9706 s | 623 | 67.502 | 64 | 1297 | utilization_ge_1_with_monotone_backlog |
 
 ## Predictions scorecard (pre-registered in README.md — operator fills the verdict after reading the curves)
 
