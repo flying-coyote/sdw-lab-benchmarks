@@ -20,6 +20,7 @@ DECK_DIR = os.path.expanduser(
 DECK_PNGS = [
     "roles-venn.png",
     "benchmark-8-engine.png",
+    "needle-where-the-index-wins.png",
     "capability-matrix-method.png",
     "format-convergence-timeline.png",
     "data-health-heatmap.png",
