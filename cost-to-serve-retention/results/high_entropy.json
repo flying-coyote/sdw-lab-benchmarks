@@ -1,0 +1,37 @@
+{
+  "benchmark": "B-COST high-entropy corpus (storage-ratio floor)",
+  "corpus": "synthetic high-entropy security telemetry (base64 payload + full sha256 + per-event guid)",
+  "n_rows": 10000000,
+  "realizations": {
+    "raw_jsonl": {
+      "bytes": 4164738155,
+      "ratio_vs_raw": 1.0,
+      "bytes_per_event": 416.5
+    },
+    "parquet_zstd_default": {
+      "bytes": 1617702943,
+      "ratio_vs_raw": 2.57,
+      "build_s": 8.3,
+      "bytes_per_event": 161.8
+    },
+    "parquet_zstd19": {
+      "bytes": 1516799757,
+      "ratio_vs_raw": 2.75,
+      "build_s": 749.0,
+      "bytes_per_event": 151.7
+    }
+  },
+  "vs_baselines": {
+    "zstd_default": {
+      "high_entropy": 2.57,
+      "edr": 7.94,
+      "zeek": 8.5
+    },
+    "zstd19": {
+      "high_entropy": 2.75,
+      "edr": 9.25,
+      "zeek": 9.69
+    }
+  },
+  "duckdb_version": "1.5.3"
+}
