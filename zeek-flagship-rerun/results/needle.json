@@ -1,0 +1,49 @@
+{
+  "benchmark": "needle-in-haystack (index home turf \u2014 point lookups)",
+  "needles": {
+    "uid": "CvZU8WyfHI0IX5idhK",
+    "orig_h": "10.34.124.197"
+  },
+  "queries": {
+    "point_lookup_uid": {
+      "os": {
+        "median_s": 0.0035,
+        "cv_pct": 11.4,
+        "answer": 1
+      },
+      "ch_native": {
+        "median_s": 0.0035,
+        "cv_pct": 9.1,
+        "answer": 1
+      },
+      "ch_iceberg": {
+        "median_s": 0.1448,
+        "cv_pct": 6.6,
+        "answer": 1
+      },
+      "answer_identical": true,
+      "index_vs_ch_native_x": 1.0,
+      "index_vs_ch_iceberg_x": 41.4
+    },
+    "point_lookup_rare_ip": {
+      "os": {
+        "median_s": 0.0057,
+        "cv_pct": 20.4,
+        "answer": 570
+      },
+      "ch_native": {
+        "median_s": 0.0045,
+        "cv_pct": 23.1,
+        "answer": 570
+      },
+      "ch_iceberg": {
+        "median_s": 0.05,
+        "cv_pct": 5.8,
+        "answer": 570
+      },
+      "answer_identical": true,
+      "index_vs_ch_native_x": 0.8,
+      "index_vs_ch_iceberg_x": 8.8
+    }
+  }
+}
