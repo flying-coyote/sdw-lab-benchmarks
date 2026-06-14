@@ -32,6 +32,36 @@ techniques), one dataset, one coarsening config; recall-loss is measured against
 absolute per-event labels; and the independent-reviewer sign-off that Store N resembles what shops actually
 build remains the open Tier-A gate.
 
+## Coarsening-sensitivity sweep (2026-06-14) — the contrast holds at every truncation cap
+
+This bench is deterministic (real fixed APT29 telemetry, unmodified SigmaHQ rules, no RNG),
+so there is no stochastic seed band — the honest way to bound the +0.188 is a *coarsening
+curve*. `coarsening_sweep.py` sweeps the dominant knob, the field-length truncation cap (the
+one that kills APT29's encoded-PowerShell tradecraft), holding rare-DNS at < 3 and reusing
+run.py's `score_stores()` so the scoring is unchanged; only Store N is rebuilt per cap.
+
+| truncation cap (chars) | adversary recall-loss / blind% | routine recall-loss / blind% | Δ (adv − routine) |
+|--:|--:|--:|--:|
+| 256 | 0.236 / 21% | 0.100 / 8% | +0.136 |
+| 128 | 0.305 / 28% | 0.100 / 8% | +0.205 |
+| **64** (documented) | **0.348 / 31%** | **0.160 / 16%** | **+0.188** |
+| 32 | 0.402 / 38% | 0.308 / 28% | +0.094 |
+| 16 | 0.540 / 48% | 0.360 / 36% | +0.180 |
+
+Two things the sweep settles. First, the **disproportionality is positive at every cap** —
+adversary-relevant rules always lose more recall than routine rules, the delta ranging
+**+0.094 to +0.205** with the published documented-64-char point at **+0.188**, mid-to-upper
+in that range rather than a cherry-picked maximum. Second, the **mechanism is monotone**: as
+the cap tightens 256 → 16 both classes blind more (adversary 0.24 → 0.54, routine 0.10 →
+0.36) because heavier truncation eventually eats the routine rules' fields too — the delta
+narrows at 32 (where routine catches up) and re-widens at 16, but never inverts. So the
+finding is robust to the one corpus parameter most open to a "you picked the cap" rebuttal.
+Machine-readable in `results/coarsening_sweep.json`. The remaining axis — a different
+SigmaHQ rule-set commit — is left as future work (re-cloning at a pinned commit), as is the
+synthetic-testbed sibling's chain-variant (BENCH-A `robustness.py` re-draws background noise
+only; a different ATT&CK chain needs the frozen battery generalized to read IOCs from ground
+truth).
+
 ## Store N coarsening provenance (documented, blind to rules)
 
 Each knob is a documented volume-driven normalization behavior, not a choice to make a rule fail:

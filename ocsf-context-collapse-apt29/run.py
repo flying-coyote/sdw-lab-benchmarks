@@ -98,11 +98,12 @@ def _to_count_sql(sql, table, store_dir):
     return f"SELECT count(*) FROM '{store_dir}/{table}.parquet' WHERE {cond}"
 
 
-def run():
-    con = configure_duckdb(duckdb.connect(":memory:"))
-    cost = stores.build(con)
-    store_f = os.path.join(WORK, "store_f")
-    store_n = os.path.join(WORK, "store_n")
+def score_stores(con, store_f, store_n, cost):
+    """Score the compiled SigmaHQ rule set against a fidelity store_f and a
+    coarsened store_n (both parquet dirs), returning the result dict. Factored out
+    of run() so coarsening_sweep.py can call it per coarsening setting with one
+    source of scoring truth. Does NOT close `con` or write files — the caller owns
+    the connection lifecycle and output."""
     backend = sqliteBackend()
 
     files = []
@@ -153,7 +154,6 @@ def run():
                 "matches_f": mf, "matches_n": mn,
                 "recall_loss": round(1 - mn / mf, 4), "blind": mn == 0,
             })
-    con.close()
 
     def agg(cls):
         rs = [s for s in scored if s["class"] == cls]
@@ -185,6 +185,16 @@ def run():
         "delta_mean_recall_loss": round(adv["mean_recall_loss"] - rou["mean_recall_loss"], 4),
         "scored": sorted(scored, key=lambda s: (-s["recall_loss"], s["class"])),
     }
+    return result
+
+
+def run():
+    con = configure_duckdb(duckdb.connect(":memory:"))
+    cost = stores.build(con)
+    store_f = os.path.join(WORK, "store_f")
+    store_n = os.path.join(WORK, "store_n")
+    result = score_stores(con, store_f, store_n, cost)
+    con.close()
     rdir = os.path.join(HERE, "results"); os.makedirs(rdir, exist_ok=True)
     json.dump(result, open(os.path.join(rdir, "results.json"), "w"), indent=2, sort_keys=True)
     open(os.path.join(rdir, "RESULTS.md"), "w").write(render_md(result))

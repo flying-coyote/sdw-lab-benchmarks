@@ -1,0 +1,60 @@
+{
+  "benchmark": "apt29 de-gamed BENCH-A \u2014 coarsening-sensitivity sweep (truncation cap)",
+  "delta_max": 0.2046,
+  "delta_min": 0.0943,
+  "dns_rare_min": 3,
+  "documented_delta": 0.1877,
+  "note": "Deterministic: real APT29 telemetry + unmodified SigmaHQ rules, no RNG. The band is the coarsening-sensitivity curve, not a stochastic CI. Rule-set-commit variation is a separate axis, left as future work.",
+  "rows": [
+    {
+      "adv_blind_pct": 20.7,
+      "adv_mean_recall_loss": 0.2356,
+      "delta_mean_recall_loss": 0.1356,
+      "documented": false,
+      "fired_on_f": 54,
+      "rou_blind_pct": 8.0,
+      "rou_mean_recall_loss": 0.1,
+      "trunc_chars": 256
+    },
+    {
+      "adv_blind_pct": 27.6,
+      "adv_mean_recall_loss": 0.3046,
+      "delta_mean_recall_loss": 0.2046,
+      "documented": false,
+      "fired_on_f": 54,
+      "rou_blind_pct": 8.0,
+      "rou_mean_recall_loss": 0.1,
+      "trunc_chars": 128
+    },
+    {
+      "adv_blind_pct": 31.0,
+      "adv_mean_recall_loss": 0.3477,
+      "delta_mean_recall_loss": 0.1877,
+      "documented": true,
+      "fired_on_f": 54,
+      "rou_blind_pct": 16.0,
+      "rou_mean_recall_loss": 0.16,
+      "trunc_chars": 64
+    },
+    {
+      "adv_blind_pct": 37.9,
+      "adv_mean_recall_loss": 0.4023,
+      "delta_mean_recall_loss": 0.0943,
+      "documented": false,
+      "fired_on_f": 54,
+      "rou_blind_pct": 28.0,
+      "rou_mean_recall_loss": 0.308,
+      "trunc_chars": 32
+    },
+    {
+      "adv_blind_pct": 48.3,
+      "adv_mean_recall_loss": 0.5402,
+      "delta_mean_recall_loss": 0.1802,
+      "documented": false,
+      "fired_on_f": 54,
+      "rou_blind_pct": 36.0,
+      "rou_mean_recall_loss": 0.36,
+      "trunc_chars": 16
+    }
+  ]
+}
