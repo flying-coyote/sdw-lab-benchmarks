@@ -1,0 +1,273 @@
+{
+  "benchmark": "pipeline-normalization-fidelity (task #10)",
+  "mapping_artifact": "tenzir 6.0.0 / library 671e049 zeek::ocsf::map",
+  "ocsf_version": "1.8.0",
+  "per_source": [
+    {
+      "class_uid": 4001,
+      "coverage": 1.0,
+      "field_fidelity": {
+        "homed_field_instances": 1500000,
+        "landed": 1200000,
+        "score": 0.8,
+        "top_dropped": [
+          {
+            "count": 100000,
+            "field": "history"
+          },
+          {
+            "count": 100000,
+            "field": "service"
+          },
+          {
+            "count": 100000,
+            "field": "uid"
+          }
+        ]
+      },
+      "ocsf_class": "network_activity",
+      "records": 100000,
+      "semantic_fidelity": {
+        "activity_id": 0.167,
+        "class_assignment": 1.0,
+        "failure_classes": {
+          "entity_role": {
+            "reproduced_fraction": 0.0,
+            "reproduced_records": 0,
+            "total_records": 100000
+          },
+          "observables_flattening": {
+            "reproduced_fraction": 0.0,
+            "reproduced_records": 0,
+            "total_records": 100000
+          }
+        },
+        "type_uid": 0.167
+      },
+      "source": "zeek_conn",
+      "value_fidelity": {
+        "landed_field_instances": 1200000,
+        "score": 0.9166,
+        "top_mangled": [
+          {
+            "count": 100000,
+            "field": "ts"
+          },
+          {
+            "count": 53,
+            "field": "duration"
+          }
+        ],
+        "value_preserved": 1099947
+      }
+    },
+    {
+      "class_uid": 6003,
+      "coverage": 0.0,
+      "field_fidelity": {
+        "homed_field_instances": 1212091,
+        "landed": 0,
+        "score": 0.0,
+        "top_dropped": [
+          {
+            "count": 100000,
+            "field": "awsRegion"
+          },
+          {
+            "count": 100000,
+            "field": "eventID"
+          },
+          {
+            "count": 100000,
+            "field": "eventName"
+          },
+          {
+            "count": 100000,
+            "field": "eventSource"
+          },
+          {
+            "count": 100000,
+            "field": "eventTime"
+          },
+          {
+            "count": 100000,
+            "field": "eventVersion"
+          },
+          {
+            "count": 100000,
+            "field": "requestID"
+          },
+          {
+            "count": 100000,
+            "field": "sourceIPAddress"
+          }
+        ]
+      },
+      "ocsf_class": "api_activity",
+      "records": 100000,
+      "semantic_fidelity": {
+        "activity_id": 0.0,
+        "class_assignment": 0.0,
+        "failure_classes": {
+          "context_collapse": {
+            "reproduced_fraction": 1.0,
+            "reproduced_records": 100000,
+            "total_records": 100000
+          },
+          "severity_remap": {
+            "reproduced_fraction": 1.0,
+            "reproduced_records": 100000,
+            "total_records": 100000
+          }
+        },
+        "type_uid": 0.0
+      },
+      "source": "cloudtrail",
+      "value_fidelity": {
+        "landed_field_instances": 0,
+        "score": 0.0,
+        "top_mangled": [],
+        "value_preserved": 0
+      }
+    },
+    {
+      "class_uid": 1007,
+      "coverage": 0.0,
+      "field_fidelity": {
+        "homed_field_instances": 1300000,
+        "landed": 0,
+        "score": 0.0,
+        "top_dropped": [
+          {
+            "count": 100000,
+            "field": "CommandLine"
+          },
+          {
+            "count": 100000,
+            "field": "EventID"
+          },
+          {
+            "count": 100000,
+            "field": "Hashes"
+          },
+          {
+            "count": 100000,
+            "field": "Image"
+          },
+          {
+            "count": 100000,
+            "field": "IntegrityLevel"
+          },
+          {
+            "count": 100000,
+            "field": "LogonId"
+          },
+          {
+            "count": 100000,
+            "field": "ParentCommandLine"
+          },
+          {
+            "count": 100000,
+            "field": "ParentImage"
+          }
+        ]
+      },
+      "ocsf_class": "process_activity",
+      "records": 100000,
+      "semantic_fidelity": {
+        "activity_id": 0.0,
+        "class_assignment": 0.0,
+        "failure_classes": {
+          "multi_event_collapse": {
+            "reproduced_fraction": 1.0,
+            "reproduced_records": 100000,
+            "total_records": 100000
+          },
+          "observables_flattening": {
+            "reproduced_fraction": 1.0,
+            "reproduced_records": 100000,
+            "total_records": 100000
+          }
+        },
+        "type_uid": 0.0
+      },
+      "source": "sysmon",
+      "value_fidelity": {
+        "landed_field_instances": 0,
+        "score": 0.0,
+        "top_mangled": [],
+        "value_preserved": 0
+      }
+    },
+    {
+      "class_uid": 3002,
+      "coverage": 0.0,
+      "field_fidelity": {
+        "homed_field_instances": 1120140,
+        "landed": 0,
+        "score": 0.0,
+        "top_dropped": [
+          {
+            "count": 100000,
+            "field": "auth_protocol"
+          },
+          {
+            "count": 100000,
+            "field": "dst_host"
+          },
+          {
+            "count": 100000,
+            "field": "event_id"
+          },
+          {
+            "count": 100000,
+            "field": "logon_type"
+          },
+          {
+            "count": 100000,
+            "field": "mfa"
+          },
+          {
+            "count": 100000,
+            "field": "result"
+          },
+          {
+            "count": 100000,
+            "field": "src_ip"
+          },
+          {
+            "count": 100000,
+            "field": "timestamp"
+          }
+        ]
+      },
+      "ocsf_class": "authentication",
+      "records": 100000,
+      "semantic_fidelity": {
+        "activity_id": 0.0,
+        "class_assignment": 0.0,
+        "failure_classes": {
+          "context_collapse": {
+            "reproduced_fraction": 1.0,
+            "reproduced_records": 100000,
+            "total_records": 100000
+          },
+          "severity_remap": {
+            "reproduced_fraction": 1.0,
+            "reproduced_records": 100000,
+            "total_records": 100000
+          }
+        },
+        "type_uid": 0.0
+      },
+      "source": "auth",
+      "value_fidelity": {
+        "landed_field_instances": 0,
+        "score": 0.0,
+        "top_mangled": [],
+        "value_preserved": 0
+      }
+    }
+  ],
+  "tool": "tenzir"
+}

@@ -7,3 +7,5 @@ _work/
 *.parquet
 .jars/
 ocsf-mapping-oracle/results/*.log
+# tool-emitted OCSF output (large, regenerable from the pinned mapping) — keep scores, not the raw events
+*.emitted.jsonl
