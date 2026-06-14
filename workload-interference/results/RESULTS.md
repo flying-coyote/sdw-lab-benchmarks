@@ -8,32 +8,26 @@
 
 | arm | baseline probe median | calibration median | client-added % | gate |
 |---|---|---|---|---|
-| dremio | 0.4496 s | 0.3526 s | -21.57% | PASS |
+| starrocks_mv | 0.1073 s | 0.0695 s | -35.23% | PASS |
 
 ## Knee + failure shape (per arm)
 
 | arm | scored | knee demand (U) | stop trigger | failure shape | reproduced 3× |
 |---|---|---|---|---|---|
-| dremio | yes | 32.0 | utilization_ge_1_with_monotone_backlog | graceful | no (operator step) |
+| starrocks_mv | yes | 64.0 | hard_break:resource | hard-break | no (operator step) |
 
 ## p95-vs-demand curves (full, so any reader re-derives the knee at their own threshold)
 
-### dremio
+### starrocks_mv
 
-R=0 baseline probe median 0.4496 s (CV 26.1%).
+R=0 baseline probe median 0.1073 s (CV 12.5%).
 
 | demand U | probe median | probe p95 | probe max | sched completed | utilization | peak outstanding | backlog end | stop trigger |
 |---|---|---|---|---|---|---|---|---|
-| 0.125 | 0.2374 s | 0.4374 s | 0.8801 s | 4 | 0.0185 | 1 | 0 | — |
-| 0.25 | 0.2348 s | 0.3684 s | 0.495 s | 8 | 0.0214 | 1 | 0 | — |
-| 0.5 | 0.2346 s | 0.3741 s | 0.4856 s | 15 | 0.0395 | 1 | 0 | — |
-| 1.0 | 0.2357 s | 0.3739 s | 0.482 s | 30 | 0.0703 | 1 | 0 | — |
-| 2.0 | 0.29 s | 0.406 s | 0.4837 s | 60 | 0.1388 | 1 | 0 | — |
-| 4.0 | 0.2833 s | 0.478 s | 0.5945 s | 120 | 0.259 | 1 | 0 | — |
-| 8.0 | 0.2813 s | 0.4056 s | 0.4841 s | 240 | 0.5519 | 2 | 0 | — |
-| 16.0 | 0.341 s | 0.6969 s | 0.9028 s | 480 | 1.3313 | 3 | 0 | — |
-| 32.0 | 2.0934 s | 3.7274 s | 4.8852 s | 655 | 62.0692 | 64 | 305 | utilization_ge_1_with_monotone_backlog |
-| 64.0 | 2.1529 s | 5.7833 s | 11.9706 s | 623 | 67.502 | 64 | 1297 | utilization_ge_1_with_monotone_backlog |
+| 16.0 | 0.0561 s | 0.111 s | 0.132 s | 480 | 0.3616 | 2 | 0 | — |
+| 32.0 | 0.0556 s | 0.0915 s | 0.1119 s | 960 | 0.7591 | 2 | 0 | — |
+| 64.0 | 0.9011 s | 3.2586 s | 3.4027 s | 791 | 34.3011 | 61 | 0 | hard_break:resource |
+| 128.0 | 1.4307 s | 2.6933 s | 2.6933 s | 396 | 27.9849 | 64 | 78 | hard_break:resource |
 
 ## Predictions scorecard (pre-registered in README.md — operator fills the verdict after reading the curves)
 

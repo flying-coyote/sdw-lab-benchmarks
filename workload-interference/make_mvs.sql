@@ -25,10 +25,13 @@
 --   -- run.py --arm starrocks_mv aborts the scored pass if any scheduled shape's EXPLAIN
 --   -- does not name one of these MVs (rewrite not engaged == arm not scored).
 --
--- Async + MANUAL refresh: the bench measures a STATIC table, so the MVs are refreshed once
--- at build, never auto-refreshed mid-run (no refresh contention competing for the cpuset
--- during a scored window). Re-run REFRESH MATERIALIZED VIEW <name> WITH SYNC MODE by hand
--- if the base corpus is reseeded.
+-- MANUAL refresh: the bench measures a STATIC table, so the MVs are refreshed once at build,
+-- never auto-refreshed mid-run (no refresh contention competing for the cpuset during a scored
+-- window). Re-run REFRESH MATERIALIZED VIEW <name> WITH SYNC MODE by hand if the base corpus is
+-- reseeded. NB (2026-06-14): StarRocks 4.1 rejects `REFRESH MANUAL` on an external-catalog MV
+-- without a refresh interval (error 1064 "ASYNC need to specify refresh interval for external
+-- table"); REFRESH MANUAL is both the fix and the documented build-once/static intent, so the
+-- six MVs below use REFRESH MANUAL. The SYNC-mode refresh after build is unchanged.
 
 CREATE DATABASE IF NOT EXISTS wi_mv;
 SET CATALOG default_catalog;
@@ -39,7 +42,7 @@ USE wi_mv;
 -- (count(*), sum(orig_bytes) GROUP BY criticality ORDER BY criticality) rewrites onto it.
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_j1
 DISTRIBUTED BY HASH(criticality)
-REFRESH ASYNC
+REFRESH MANUAL
 AS
 SELECT a.criticality AS criticality,
        count(*)            AS conns,
@@ -53,7 +56,7 @@ GROUP BY a.criticality;
 -- onto the single-row aggregate.
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_j4
 DISTRIBUTED BY HASH(hits)
-REFRESH ASYNC
+REFRESH MANUAL
 AS
 SELECT count(*)          AS hits,
        sum(c.orig_bytes) AS bytes_out
@@ -67,7 +70,7 @@ WHERE c.resp_h IN (SELECT ioc_value FROM iceberg.soc.ioc);
 -- per-host distinct-count rows.
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_port_scan
 DISTRIBUTED BY HASH(orig_h)
-REFRESH ASYNC
+REFRESH MANUAL
 AS
 SELECT orig_h                  AS orig_h,
        count(DISTINCT resp_p)  AS unique_ports,
@@ -81,7 +84,7 @@ GROUP BY orig_h;
 -- duration DESC LIMIT 10 rewrites onto the filtered subset (far smaller than scanning conn).
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_long_duration
 DISTRIBUTED BY HASH(orig_h)
-REFRESH ASYNC
+REFRESH MANUAL
 AS
 SELECT orig_h     AS orig_h,
        resp_h     AS resp_h,
@@ -95,7 +98,7 @@ WHERE duration > 60;
 -- Additive count per resp_p; the scheduled scan_aggregate (ORDER BY resp_p) rewrites onto it.
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_scan_aggregate
 DISTRIBUTED BY HASH(resp_p)
-REFRESH ASYNC
+REFRESH MANUAL
 AS
 SELECT resp_p   AS resp_p,
        count(*) AS c
@@ -107,7 +110,7 @@ GROUP BY resp_p;
 -- (count, sum, sum) match the scheduled rollup_5min text exactly and rewrite onto it.
 CREATE MATERIALIZED VIEW IF NOT EXISTS mv_rollup_5min
 DISTRIBUTED BY HASH(bucket)
-REFRESH ASYNC
+REFRESH MANUAL
 AS
 SELECT CAST(floor(ts / 300) AS BIGINT) AS bucket,
        count(*)        AS conns,

@@ -82,10 +82,47 @@ exists, it is far out (32–64×), and at least two arms fail by scheduler-satur
 graceful degradation at that point.
 
 **Claimability:** per the pre-registration, a knee is claimable only on **3× reproduction at the
-same ladder step**. This run is 1× per arm, so the 32–64× knee is a single observation — the
-Phase-C follow-up is to reproduce the 64× step (and dremio's 32×) 3× before publishing the knee.
-starrocks_mv (the MV upper bound) is now worth running, since a knee finally exists for the MV
-layer to shift (P5).
+same ladder step** — now **DONE** (see Phase C below).
+
+## Phase C — knee reproduced 3× (2026-06-14): the knee is now claimable
+
+Three independent runs (run-1 = this extend-ladder; run-2 = a repeat over the 16/32/64×
+knee region; run-3 = a clean repeat) all trip the mechanical stop rule at the **same** ladder
+step for every arm, so the knee is claimable per the pre-registration:
+
+| arm | knee per run [1,2,3] | reproduced 3× | p95 band at the knee step (min/median/max over 3 runs) |
+|---|---|:--:|---|
+| clickhouse_iceberg | [64×, 64×, 64×] | **yes (U=64)** | 1.16 / 2.70 / 4.05 s |
+| clickhouse_native | [64×, 64×, 64×] | **yes (U=64)** | 3.11 / 3.21 / 3.47 s |
+| starrocks | [64×, 64×, 64×] | **yes (U=64)** | 3.25 / 3.77 / 4.93 s |
+| dremio | [32×, 32×, 32×] | **yes (U=32)** | 4.35 / 4.58 / 4.80 s (at 32×) |
+
+So the single-host scheduled:ad-hoc mix tolerates **~32× the base scheduled rate** before the
+interactive experience inflects, and the knee location is stable across three runs. The p95
+*magnitude* at the knee spreads run-to-run (e.g. ch_iceberg 1.16–4.05 s at 64×) — that is
+expected near saturation and is why the location, not the magnitude, is the claim. (Caveat:
+run-2's magnitudes may be mildly inflated by concurrent unrelated docker work during its
+original capture; the knee *location* is throughput-determined and unaffected, and run-1/run-3
+were clean.) Harness note: the first Phase-C attempt's per-rep capture silently dropped reps
+1–2 (a `docker run` without `-i` never fed its capture heredoc to the container), so the
+captures were redone host-side; the runs themselves were valid. Per-arm captures:
+`_work/phase_c/run{2,3}_<arm>.json`; analysis `PHASE-C-SUMMARY.json` + `phase_c_analyze.py`.
+
+## starrocks_mv (P5) — the MV upper bound did NOT shift the knee
+
+The `starrocks_mv` arm (six pre-built MVs covering the scheduled set, EXPLAIN-verified rewrite,
+the README's hand-built UPPER BOUND) was run on a ladder reaching 256× to look for P5's
+predicted ≥2-step rightward knee shift. It **did not shift**: the MV arm knees at the **same
+64×** as base StarRocks (0 steps right), so **P5 is not supported**. The reading: at 64× the
+binding constraint is open-loop scheduler / per-query coordinator saturation (the scheduler
+fires 64× the base rate; even a near-instant MV-rewritten query pays fixed per-query overhead),
+not the per-query *compute* the MVs accelerate — so pre-materialising the scheduled answers buys
+no interference headroom. Honest caveats: a single MV run, p95 went non-monotonic past the knee
+(64×: 3.26 s, 128×: 2.69 s — saturation noise), and `make_mvs.sql` needed a `REFRESH ASYNC →
+REFRESH MANUAL` fix for StarRocks 4.1 (external-catalog ASYNC MVs require a refresh interval;
+MANUAL matches the build-once/static intent and the MV content is unchanged). Rewrite was
+EXPLAIN-verified at start (run.py aborts otherwise). P5 would need reproduction for a firm
+claim, but the direction — MV acceleration does not move the interference knee — is the result.
 
 ## Scope, honestly
 

@@ -2,22 +2,17 @@
   "bench": "workload-interference",
   "tier": "B",
   "host": "Beelink 5800H, WSL2 48 GB / 14t (cpuset 12/2 engine/client split)",
-  "generated_unix": 1781439525,
+  "generated_unix": 1781462655,
   "seed": 20260601,
   "config": {
     "cycle_seconds": 60.0,
     "probe_period_seconds": 5.0,
     "ladder": [
-      0.125,
-      0.25,
-      0.5,
-      1.0,
-      2.0,
-      4.0,
-      8.0,
       16.0,
       32.0,
-      64.0
+      64.0,
+      128.0,
+      256.0
     ],
     "warmin_seconds": 60,
     "measure_seconds": 300,
@@ -74,26 +69,26 @@
     "clickhouse_iceberg": {
       "arm": "clickhouse_iceberg",
       "baseline": {
-        "probe_median_s": 0.0899,
-        "probe_cv_pct": 39.4,
+        "probe_median_s": 0.0762,
+        "probe_cv_pct": 32.2,
         "trials": 7,
         "warmup": 1,
         "samples_s": [
-          0.101,
-          0.1511,
-          0.1159,
-          0.0361,
-          0.0708,
-          0.0605,
-          0.0899
+          0.0843,
+          0.1387,
+          0.112,
+          0.0513,
+          0.0652,
+          0.0732,
+          0.0762
         ]
       },
       "calibration": {
         "passed": true,
         "max_demand": 64.0,
-        "baseline_median_s": 0.0899,
-        "calibration_median_s": 0.061,
-        "client_added_latency_pct": -32.15,
+        "baseline_median_s": 0.0762,
+        "calibration_median_s": 0.0497,
+        "client_added_latency_pct": -34.78,
         "threshold_pct": 5.0,
         "probe_samples": 13,
         "note": "client-added latency under the 5% gate \u2014 cpuset split clean"
@@ -101,196 +96,14 @@
       "scored": true,
       "ladder": [
         {
-          "demand": 0.125,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0554,
-            "p95_s": 0.1882,
-            "max_s": 0.2243,
-            "mean_s": 0.0623
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 4,
-            "completed": 4,
-            "utilization": 0.0078,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2889,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 0.25,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0532,
-            "p95_s": 0.1354,
-            "max_s": 0.2347,
-            "mean_s": 0.0623
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 8,
-            "completed": 8,
-            "utilization": 0.0084,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2196,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 0.5,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0551,
-            "p95_s": 0.1374,
-            "max_s": 0.2691,
-            "mean_s": 0.0657
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 15,
-            "completed": 15,
-            "utilization": 0.0192,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2591,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 1.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 60,
-            "median_s": 0.0567,
-            "p95_s": 0.1571,
-            "max_s": 0.2714,
-            "mean_s": 0.069
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 30,
-            "completed": 30,
-            "utilization": 0.0346,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2167,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 2.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0675,
-            "p95_s": 0.2,
-            "max_s": 0.2586,
-            "mean_s": 0.0772
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 60,
-            "completed": 60,
-            "utilization": 0.0699,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2164,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 4.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0606,
-            "p95_s": 0.2028,
-            "max_s": 0.2411,
-            "mean_s": 0.0737
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 120,
-            "completed": 120,
-            "utilization": 0.1344,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2042,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 8.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 60,
-            "median_s": 0.0617,
-            "p95_s": 0.1986,
-            "max_s": 0.2666,
-            "mean_s": 0.0711
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 240,
-            "completed": 240,
-            "utilization": 0.2669,
-            "peak_outstanding": 2,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2084,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
           "demand": 16.0,
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0592,
-            "p95_s": 0.1889,
-            "max_s": 0.2429,
-            "mean_s": 0.0733
+            "median_s": 0.0515,
+            "p95_s": 0.1683,
+            "max_s": 0.2347,
+            "mean_s": 0.0605
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -298,11 +111,11 @@
           "scheduled": {
             "fires_intended": 480,
             "completed": 480,
-            "utilization": 0.5752,
+            "utilization": 0.5014,
             "peak_outstanding": 2,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1922,
+            "scheduled_runtime_median_s": 0.169,
             "dnf": {}
           },
           "hard_break": null,
@@ -313,10 +126,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0721,
-            "p95_s": 0.219,
-            "max_s": 0.2486,
-            "mean_s": 0.09
+            "median_s": 0.0534,
+            "p95_s": 0.1925,
+            "max_s": 0.2431,
+            "mean_s": 0.0716
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -324,11 +137,11 @@
           "scheduled": {
             "fires_intended": 960,
             "completed": 960,
-            "utilization": 1.392,
-            "peak_outstanding": 4,
+            "utilization": 1.0873,
+            "peak_outstanding": 3,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2488,
+            "scheduled_runtime_median_s": 0.1726,
             "dnf": {}
           },
           "hard_break": null,
@@ -336,27 +149,27 @@
         },
         {
           "demand": 64.0,
-          "window_s": 53.7,
+          "window_s": 47.7,
           "probe": {
-            "n": 11,
-            "median_s": 1.2019,
-            "p95_s": 4.0521,
-            "max_s": 4.0521,
-            "mean_s": 1.6315
+            "n": 10,
+            "median_s": 1.42,
+            "p95_s": 2.6982,
+            "max_s": 2.6982,
+            "mean_s": 1.4619
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
           "probe_dnf_count": 0,
           "scheduled": {
-            "fires_intended": 344,
-            "completed": 253,
-            "utilization": 63.6849,
+            "fires_intended": 305,
+            "completed": 247,
+            "utilization": 54.6648,
             "peak_outstanding": 64,
-            "backlog_end": 89,
+            "backlog_end": 53,
             "backlog_monotone": true,
-            "scheduled_runtime_median_s": 7.7156,
+            "scheduled_runtime_median_s": 5.948,
             "dnf": {
-              "resource": 2
+              "resource": 5
             }
           },
           "hard_break": "resource",
@@ -366,7 +179,7 @@
       "knee": {
         "demand": 64.0,
         "stop_reason": "hard_break:resource",
-        "probe_p95_s": 4.0521,
+        "probe_p95_s": 2.6982,
         "reproduced": false,
         "note": "first ladder step tripping the mechanical stop rule; a claimable knee requires 3x reproduction at this same demand step"
       },
@@ -375,26 +188,26 @@
     "clickhouse_native": {
       "arm": "clickhouse_native",
       "baseline": {
-        "probe_median_s": 0.0733,
-        "probe_cv_pct": 41.8,
+        "probe_median_s": 0.0539,
+        "probe_cv_pct": 44.0,
         "trials": 7,
         "warmup": 1,
         "samples_s": [
-          0.0238,
-          0.0997,
-          0.0831,
-          0.0733,
-          0.0719,
-          0.0867,
-          0.0254
+          0.0183,
+          0.0775,
+          0.0539,
+          0.0686,
+          0.0497,
+          0.0596,
+          0.0171
         ]
       },
       "calibration": {
         "passed": true,
         "max_demand": 64.0,
-        "baseline_median_s": 0.0733,
-        "calibration_median_s": 0.0469,
-        "client_added_latency_pct": -36.02,
+        "baseline_median_s": 0.0539,
+        "calibration_median_s": 0.0395,
+        "client_added_latency_pct": -26.72,
         "threshold_pct": 5.0,
         "probe_samples": 13,
         "note": "client-added latency under the 5% gate \u2014 cpuset split clean"
@@ -402,196 +215,14 @@
       "scored": true,
       "ladder": [
         {
-          "demand": 0.125,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0424,
-            "p95_s": 0.0587,
-            "max_s": 0.0919,
-            "mean_s": 0.0305
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 4,
-            "completed": 4,
-            "utilization": 0.0036,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1253,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 0.25,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0436,
-            "p95_s": 0.0725,
-            "max_s": 0.1063,
-            "mean_s": 0.0324
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 8,
-            "completed": 8,
-            "utilization": 0.0046,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.07,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 0.5,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0425,
-            "p95_s": 0.0762,
-            "max_s": 0.0966,
-            "mean_s": 0.033
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 15,
-            "completed": 15,
-            "utilization": 0.0112,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0778,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 1.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 60,
-            "median_s": 0.0427,
-            "p95_s": 0.0764,
-            "max_s": 0.0978,
-            "mean_s": 0.0329
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 30,
-            "completed": 30,
-            "utilization": 0.0192,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0673,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 2.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0456,
-            "p95_s": 0.0828,
-            "max_s": 0.1021,
-            "mean_s": 0.0387
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 60,
-            "completed": 60,
-            "utilization": 0.0381,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0715,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 4.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 60,
-            "median_s": 0.0457,
-            "p95_s": 0.0808,
-            "max_s": 0.086,
-            "mean_s": 0.0368
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 120,
-            "completed": 120,
-            "utilization": 0.0751,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0626,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 8.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0476,
-            "p95_s": 0.0732,
-            "max_s": 0.0935,
-            "mean_s": 0.0355
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 240,
-            "completed": 240,
-            "utilization": 0.148,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0655,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
           "demand": 16.0,
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.041,
-            "p95_s": 0.0803,
-            "max_s": 0.115,
-            "mean_s": 0.0345
+            "median_s": 0.038,
+            "p95_s": 0.0656,
+            "max_s": 0.0815,
+            "mean_s": 0.0304
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -599,11 +230,11 @@
           "scheduled": {
             "fires_intended": 480,
             "completed": 480,
-            "utilization": 0.2957,
+            "utilization": 0.2712,
             "peak_outstanding": 2,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0625,
+            "scheduled_runtime_median_s": 0.0584,
             "dnf": {}
           },
           "hard_break": null,
@@ -614,10 +245,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0382,
-            "p95_s": 0.075,
-            "max_s": 0.1024,
-            "mean_s": 0.0321
+            "median_s": 0.0384,
+            "p95_s": 0.0986,
+            "max_s": 0.1213,
+            "mean_s": 0.037
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -625,11 +256,11 @@
           "scheduled": {
             "fires_intended": 960,
             "completed": 960,
-            "utilization": 0.5807,
+            "utilization": 0.571,
             "peak_outstanding": 2,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0636,
+            "scheduled_runtime_median_s": 0.0622,
             "dnf": {}
           },
           "hard_break": null,
@@ -640,22 +271,22 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.2782,
-            "p95_s": 3.1113,
-            "max_s": 3.6266,
-            "mean_s": 1.1339
+            "median_s": 0.1375,
+            "p95_s": 3.2123,
+            "max_s": 3.479,
+            "mean_s": 1.1349
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
           "probe_dnf_count": 0,
           "scheduled": {
             "fires_intended": 1920,
-            "completed": 1631,
-            "utilization": 53.2798,
+            "completed": 1640,
+            "utilization": 51.7868,
             "peak_outstanding": 64,
-            "backlog_end": 289,
+            "backlog_end": 280,
             "backlog_monotone": true,
-            "scheduled_runtime_median_s": 3.3931,
+            "scheduled_runtime_median_s": 3.2563,
             "dnf": {}
           },
           "hard_break": null,
@@ -665,7 +296,7 @@
       "knee": {
         "demand": 64.0,
         "stop_reason": "utilization_ge_1_with_monotone_backlog",
-        "probe_p95_s": 3.1113,
+        "probe_p95_s": 3.2123,
         "reproduced": false,
         "note": "first ladder step tripping the mechanical stop rule; a claimable knee requires 3x reproduction at this same demand step"
       },
@@ -707,26 +338,26 @@
     "starrocks": {
       "arm": "starrocks",
       "baseline": {
-        "probe_median_s": 0.0813,
-        "probe_cv_pct": 36.6,
+        "probe_median_s": 0.0879,
+        "probe_cv_pct": 44.1,
         "trials": 7,
         "warmup": 1,
         "samples_s": [
-          0.1737,
-          0.0618,
-          0.0813,
-          0.0942,
-          0.0803,
-          0.093,
-          0.0717
+          0.2095,
+          0.0664,
+          0.0922,
+          0.1047,
+          0.0879,
+          0.0875,
+          0.0703
         ]
       },
       "calibration": {
         "passed": true,
         "max_demand": 64.0,
-        "baseline_median_s": 0.0813,
+        "baseline_median_s": 0.0879,
         "calibration_median_s": 0.0668,
-        "client_added_latency_pct": -17.84,
+        "client_added_latency_pct": -24.0,
         "threshold_pct": 5.0,
         "probe_samples": 13,
         "note": "client-added latency under the 5% gate \u2014 cpuset split clean"
@@ -734,196 +365,14 @@
       "scored": true,
       "ladder": [
         {
-          "demand": 0.125,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0553,
-            "p95_s": 0.0825,
-            "max_s": 0.1197,
-            "mean_s": 0.0567
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 4,
-            "completed": 4,
-            "utilization": 0.007,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2521,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 0.25,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0515,
-            "p95_s": 0.077,
-            "max_s": 0.0932,
-            "mean_s": 0.0514
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 8,
-            "completed": 8,
-            "utilization": 0.008,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1618,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 0.5,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0495,
-            "p95_s": 0.0786,
-            "max_s": 0.1419,
-            "mean_s": 0.0504
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 15,
-            "completed": 15,
-            "utilization": 0.0188,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1603,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 1.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0477,
-            "p95_s": 0.0761,
-            "max_s": 0.1106,
-            "mean_s": 0.0493
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 30,
-            "completed": 30,
-            "utilization": 0.0335,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1547,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 2.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0505,
-            "p95_s": 0.0837,
-            "max_s": 0.131,
-            "mean_s": 0.0531
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 60,
-            "completed": 60,
-            "utilization": 0.0654,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1541,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 4.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.0489,
-            "p95_s": 0.0768,
-            "max_s": 0.1132,
-            "mean_s": 0.0492
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 120,
-            "completed": 120,
-            "utilization": 0.1254,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1414,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 8.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.044,
-            "p95_s": 0.0772,
-            "max_s": 0.1125,
-            "mean_s": 0.0458
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 240,
-            "completed": 240,
-            "utilization": 0.2453,
-            "peak_outstanding": 2,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1364,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
           "demand": 16.0,
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0463,
-            "p95_s": 0.0878,
-            "max_s": 0.1196,
-            "mean_s": 0.0497
+            "median_s": 0.0529,
+            "p95_s": 0.1113,
+            "max_s": 0.123,
+            "mean_s": 0.0605
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -931,11 +380,11 @@
           "scheduled": {
             "fires_intended": 480,
             "completed": 480,
-            "utilization": 0.5154,
+            "utilization": 0.5497,
             "peak_outstanding": 2,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1356,
+            "scheduled_runtime_median_s": 0.149,
             "dnf": {}
           },
           "hard_break": null,
@@ -946,10 +395,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0533,
-            "p95_s": 0.1046,
-            "max_s": 0.2009,
-            "mean_s": 0.0611
+            "median_s": 0.0655,
+            "p95_s": 0.1118,
+            "max_s": 0.1384,
+            "mean_s": 0.0667
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -957,11 +406,11 @@
           "scheduled": {
             "fires_intended": 960,
             "completed": 960,
-            "utilization": 1.2184,
+            "utilization": 1.2795,
             "peak_outstanding": 3,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1704,
+            "scheduled_runtime_median_s": 0.1848,
             "dnf": {}
           },
           "hard_break": null,
@@ -969,27 +418,27 @@
         },
         {
           "demand": 64.0,
-          "window_s": 242.4,
+          "window_s": 143.6,
           "probe": {
-            "n": 49,
-            "median_s": 2.1633,
-            "p95_s": 4.9278,
-            "max_s": 5.5459,
-            "mean_s": 2.3448
+            "n": 29,
+            "median_s": 2.1077,
+            "p95_s": 3.7731,
+            "max_s": 4.5324,
+            "mean_s": 2.3616
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
           "probe_dnf_count": 0,
           "scheduled": {
-            "fires_intended": 1552,
-            "completed": 974,
-            "utilization": 58.3147,
+            "fires_intended": 920,
+            "completed": 606,
+            "utilization": 60.0295,
             "peak_outstanding": 64,
-            "backlog_end": 562,
+            "backlog_end": 309,
             "backlog_monotone": true,
-            "scheduled_runtime_median_s": 6.9328,
+            "scheduled_runtime_median_s": 7.26,
             "dnf": {
-              "resource": 16
+              "resource": 5
             }
           },
           "hard_break": "resource",
@@ -999,7 +448,7 @@
       "knee": {
         "demand": 64.0,
         "stop_reason": "hard_break:resource",
-        "probe_p95_s": 4.9278,
+        "probe_p95_s": 3.7731,
         "reproduced": false,
         "note": "first ladder step tripping the mechanical stop rule; a claimable knee requires 3x reproduction at this same demand step"
       },
@@ -1008,26 +457,26 @@
     "dremio": {
       "arm": "dremio",
       "baseline": {
-        "probe_median_s": 0.4496,
-        "probe_cv_pct": 26.1,
+        "probe_median_s": 0.4608,
+        "probe_cv_pct": 28.0,
         "trials": 7,
         "warmup": 1,
         "samples_s": [
-          0.5346,
-          0.5867,
-          0.5127,
-          0.4496,
-          0.3955,
-          0.3927,
-          0.2116
+          0.579,
+          0.5848,
+          0.5129,
+          0.4521,
+          0.4608,
+          0.3341,
+          0.2105
         ]
       },
       "calibration": {
         "passed": true,
         "max_demand": 64.0,
-        "baseline_median_s": 0.4496,
-        "calibration_median_s": 0.3526,
-        "client_added_latency_pct": -21.57,
+        "baseline_median_s": 0.4608,
+        "calibration_median_s": 0.301,
+        "client_added_latency_pct": -34.68,
         "threshold_pct": 5.0,
         "probe_samples": 13,
         "note": "client-added latency under the 5% gate \u2014 cpuset split clean"
@@ -1035,196 +484,14 @@
       "scored": true,
       "ladder": [
         {
-          "demand": 0.125,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.2374,
-            "p95_s": 0.4374,
-            "max_s": 0.8801,
-            "mean_s": 0.2501
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 4,
-            "completed": 4,
-            "utilization": 0.0185,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.9234,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 0.25,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.2348,
-            "p95_s": 0.3684,
-            "max_s": 0.495,
-            "mean_s": 0.2352
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 8,
-            "completed": 8,
-            "utilization": 0.0214,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.6106,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 0.5,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.2346,
-            "p95_s": 0.3741,
-            "max_s": 0.4856,
-            "mean_s": 0.2373
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 15,
-            "completed": 15,
-            "utilization": 0.0395,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.4602,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 1.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.2357,
-            "p95_s": 0.3739,
-            "max_s": 0.482,
-            "mean_s": 0.2457
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 30,
-            "completed": 30,
-            "utilization": 0.0703,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.4023,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 2.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.29,
-            "p95_s": 0.406,
-            "max_s": 0.4837,
-            "mean_s": 0.2763
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 60,
-            "completed": 60,
-            "utilization": 0.1388,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.4053,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 4.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.2833,
-            "p95_s": 0.478,
-            "max_s": 0.5945,
-            "mean_s": 0.2772
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 120,
-            "completed": 120,
-            "utilization": 0.259,
-            "peak_outstanding": 1,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.339,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
-          "demand": 8.0,
-          "window_s": 300.0,
-          "probe": {
-            "n": 61,
-            "median_s": 0.2813,
-            "p95_s": 0.4056,
-            "max_s": 0.4841,
-            "mean_s": 0.2625
-          },
-          "probe_p95_over_flow_10s": false,
-          "probe_p95_over_tolerable_30s": false,
-          "probe_dnf_count": 0,
-          "scheduled": {
-            "fires_intended": 240,
-            "completed": 240,
-            "utilization": 0.5519,
-            "peak_outstanding": 2,
-            "backlog_end": 0,
-            "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.4638,
-            "dnf": {}
-          },
-          "hard_break": null,
-          "stop_reason": null
-        },
-        {
           "demand": 16.0,
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.341,
-            "p95_s": 0.6969,
-            "max_s": 0.9028,
-            "mean_s": 0.3711
+            "median_s": 0.3584,
+            "p95_s": 0.9926,
+            "max_s": 1.258,
+            "mean_s": 0.4323
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -1232,11 +499,11 @@
           "scheduled": {
             "fires_intended": 480,
             "completed": 480,
-            "utilization": 1.3313,
-            "peak_outstanding": 3,
+            "utilization": 1.5288,
+            "peak_outstanding": 4,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.5532,
+            "scheduled_runtime_median_s": 0.6679,
             "dnf": {}
           },
           "hard_break": null,
@@ -1247,22 +514,22 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 2.0934,
-            "p95_s": 3.7274,
-            "max_s": 4.8852,
-            "mean_s": 2.1698
+            "median_s": 2.1104,
+            "p95_s": 4.7979,
+            "max_s": 6.9339,
+            "mean_s": 2.3577
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
           "probe_dnf_count": 0,
           "scheduled": {
             "fires_intended": 960,
-            "completed": 655,
-            "utilization": 62.0692,
+            "completed": 614,
+            "utilization": 64.1808,
             "peak_outstanding": 64,
-            "backlog_end": 305,
+            "backlog_end": 346,
             "backlog_monotone": true,
-            "scheduled_runtime_median_s": 10.0432,
+            "scheduled_runtime_median_s": 19.1933,
             "dnf": {}
           },
           "hard_break": null,
@@ -1272,23 +539,23 @@
           "demand": 64.0,
           "window_s": 300.0,
           "probe": {
-            "n": 60,
-            "median_s": 2.1529,
-            "p95_s": 5.7833,
-            "max_s": 11.9706,
-            "mean_s": 2.7905
+            "n": 61,
+            "median_s": 2.1399,
+            "p95_s": 8.8923,
+            "max_s": 14.0075,
+            "mean_s": 3.0003
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
           "probe_dnf_count": 0,
           "scheduled": {
             "fires_intended": 1920,
-            "completed": 623,
-            "utilization": 67.502,
+            "completed": 659,
+            "utilization": 66.7405,
             "peak_outstanding": 64,
-            "backlog_end": 1297,
+            "backlog_end": 1261,
             "backlog_monotone": true,
-            "scheduled_runtime_median_s": 32.2764,
+            "scheduled_runtime_median_s": 7.1652,
             "dnf": {}
           },
           "hard_break": null,
@@ -1298,11 +565,158 @@
       "knee": {
         "demand": 32.0,
         "stop_reason": "utilization_ge_1_with_monotone_backlog",
-        "probe_p95_s": 3.7274,
+        "probe_p95_s": 4.7979,
         "reproduced": false,
         "note": "first ladder step tripping the mechanical stop rule; a claimable knee requires 3x reproduction at this same demand step"
       },
       "failure_shape": "graceful"
+    },
+    "starrocks_mv": {
+      "arm": "starrocks_mv",
+      "baseline": {
+        "probe_median_s": 0.1073,
+        "probe_cv_pct": 12.5,
+        "trials": 7,
+        "warmup": 1,
+        "samples_s": [
+          0.1073,
+          0.1271,
+          0.0883,
+          0.0944,
+          0.1156,
+          0.121,
+          0.0977
+        ]
+      },
+      "calibration": {
+        "passed": true,
+        "max_demand": 256.0,
+        "baseline_median_s": 0.1073,
+        "calibration_median_s": 0.0695,
+        "client_added_latency_pct": -35.23,
+        "threshold_pct": 5.0,
+        "probe_samples": 13,
+        "note": "client-added latency under the 5% gate \u2014 cpuset split clean"
+      },
+      "scored": true,
+      "ladder": [
+        {
+          "demand": 16.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.0561,
+            "p95_s": 0.111,
+            "max_s": 0.132,
+            "mean_s": 0.0607
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 480,
+            "completed": 480,
+            "utilization": 0.3616,
+            "peak_outstanding": 2,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.0151,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 32.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.0556,
+            "p95_s": 0.0915,
+            "max_s": 0.1119,
+            "mean_s": 0.0588
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 960,
+            "completed": 960,
+            "utilization": 0.7591,
+            "peak_outstanding": 2,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.0183,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 64.0,
+          "window_s": 124.8,
+          "probe": {
+            "n": 25,
+            "median_s": 0.9011,
+            "p95_s": 3.2586,
+            "max_s": 3.4027,
+            "mean_s": 1.1826
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 799,
+            "completed": 791,
+            "utilization": 34.3011,
+            "peak_outstanding": 61,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.8388,
+            "dnf": {
+              "resource": 8
+            }
+          },
+          "hard_break": "resource",
+          "stop_reason": "hard_break:resource"
+        },
+        {
+          "demand": 128.0,
+          "window_s": 40.2,
+          "probe": {
+            "n": 9,
+            "median_s": 1.4307,
+            "p95_s": 2.6933,
+            "max_s": 2.6933,
+            "mean_s": 1.4927
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 515,
+            "completed": 396,
+            "utilization": 27.9849,
+            "peak_outstanding": 64,
+            "backlog_end": 78,
+            "backlog_monotone": true,
+            "scheduled_runtime_median_s": 0.9497,
+            "dnf": {
+              "resource": 41
+            }
+          },
+          "hard_break": "resource",
+          "stop_reason": "hard_break:resource"
+        }
+      ],
+      "knee": {
+        "demand": 64.0,
+        "stop_reason": "hard_break:resource",
+        "probe_p95_s": 3.2586,
+        "reproduced": false,
+        "note": "first ladder step tripping the mechanical stop rule; a claimable knee requires 3x reproduction at this same demand step"
+      },
+      "failure_shape": "hard-break"
     }
   }
 }
