@@ -45,6 +45,53 @@ rollup that halves beacon-hunt F1 answers bytes-per-host and pair-count queries
 [`results/RESULTS.md`](results/RESULTS.md); machine-readable in
 [`results/results.json`](results/results.json).
 
+## Parameter sweep — the two corpus-dependent magnitudes, as curves (2026-06-14)
+
+Two of the headline numbers are corpus parameters, not constants, so a point
+estimate invites a "you picked the number" rebuttal. `param_sweep.py` measures
+each as a curve across its driving parameter and across 8 seeds, and both land on
+a clean closed form (DuckDB 1.5.3; machine-readable in
+[`results/param_sweep.json`](results/param_sweep.json)). Mode 1 is not swept — it
+is 100% by construction.
+
+**Mode 2 (grain) — coarse beacon-hunt F1 = 2/(2 + decoy-to-beacon ratio).** The
+coarse detector flags any pair with a steady per-bucket count, and beacons and
+decoys are *both* steady 5/bucket by construction, so it cannot separate them and
+its F1 is fixed by the ratio alone — measured equal to the closed form at every
+point, with the seed leaving it unmoved (CV ≈ 0):
+
+| decoy : beacon ratio | coarse F1 (8 seeds, min–max) | predicted 2/(2+r) | atomic (preserved) F1 |
+|--:|--:|--:|--:|
+| 0.5 | 0.800 (0.800–0.800) | 0.800 | 1.000 |
+| 1 | 0.667 (0.667–0.667) | 0.667 | 1.000 |
+| **2** (v1) | **0.500** | 0.500 | 1.000 |
+| 3 | 0.400 (0.400–0.400) | 0.400 | 1.000 |
+| 4 | 0.333 (0.333–0.333) | 0.333 | 1.000 |
+
+The published 0.50 is the ratio-2 point; the fidelity-preserving atomic store
+holds F1 = 1.0 at every ratio. So the loss is real and predictable — it is the
+*shape* (coarse collapses on the decoy ratio, atomic does not) that travels, and
+the magnitude reads off the ratio.
+
+**Mode 3 (floating time) — correlation recall = 1 − cross-zone fraction.** A
+cross-zone chain can never re-correlate once the offset is dropped (the four
+zones differ by ≥ 1 h, far past the 5-minute window), and same-zone chains always
+survive, so floating recall is one minus the fraction of chains that are
+cross-zone; the only seed noise is the binomial draw of that count (n = 1000):
+
+| cross-zone fraction | floating recall (mean, 95% CI) | UTC (preserved) recall |
+|--:|--:|--:|
+| 0.00 | 1.000 | 1.00 |
+| 0.25 | 0.755 [0.748, 0.762] | 1.00 |
+| **0.50** (v1) | **0.506** [0.498, 0.514] | 1.00 |
+| 0.75 | 0.259 [0.251, 0.267] | 1.00 |
+| 1.00 | 0.000 | 1.00 |
+
+The published ~0.46–0.50 is the cross-zone-fraction-0.5 point; the UTC store holds
+recall = 1.0 throughout. Both magnitudes are now reported as the curves they are,
+and the parameter-independent finding — the lossy store collapses on the corpus
+parameter while the preserved store stays at 1.0 — is what the essay should carry.
+
 ## Honesty boundary
 
 This is **Tier B**: a reproducible, first-party, controlled measurement on a

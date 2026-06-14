@@ -76,7 +76,7 @@ def _gen_corpus(n_beacons: int, n_decoys: int, n_noise: int, seed: int):
     return rows, truth
 
 
-def run(scales=((8, 16, 200), (16, 32, 400))):
+def run(scales=((8, 16, 200), (16, 32, 400)), seed=202):
     out = {
         "name": "grain_loss_timing_destroyed",
         "title": "Grain loss → timing-based adversary queries destroyed, volumetric queries exact",
@@ -84,7 +84,7 @@ def run(scales=((8, 16, 200), (16, 32, 400))):
     }
 
     for (n_beacons, n_decoys, n_noise) in scales:
-        rows, truth = _gen_corpus(n_beacons, n_decoys, n_noise, seed=202)
+        rows, truth = _gen_corpus(n_beacons, n_decoys, n_noise, seed=seed)
         con = connect()
         con.execute(
             "CREATE TABLE atomic (conn_id INTEGER, t_off INTEGER, src_host VARCHAR, dst VARCHAR, n_bytes INTEGER)"

@@ -94,14 +94,14 @@ def _score(events, truth, time_key):
     }
 
 
-def run(scales=((200, 0.5), (1000, 0.5))):
+def run(scales=((200, 0.5), (1000, 0.5)), seed=303):
     out = {
         "name": "floating_timestamp_correlation_break",
         "title": "Floating (zone-naive) timestamps → cross-zone correlation silently lost",
         "scales": [],
     }
     for (n_chains, cross_frac) in scales:
-        events, truth = _gen_corpus(n_chains, cross_frac, seed=303)
+        events, truth = _gen_corpus(n_chains, cross_frac, seed=seed)
         n_cross = sum(1 for e in events if e["cross_zone"]) // len(SOURCES)
         out["scales"].append(
             {
