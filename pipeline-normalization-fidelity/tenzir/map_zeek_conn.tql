@@ -1,0 +1,28 @@
+// Tenzir arm — Zeek conn.log → OCSF Network Activity, using Tenzir's SHIPPED
+// library mapping (github.com/tenzir/library, package `zeek`, operator
+// `zeek::ocsf::map`). The mapping operator itself is NOT edited — this file only
+// feeds the corpus to it in Tenzir's documented input shape and lifts the join id
+// back out, so the score measures Tenzir's mapping, not a hand-written one.
+//
+// Input shaping (all via Tenzir's own operators, not mapping edits):
+//   - read_ndjson unflatten_separator="."  → turns the corpus's flat dotted keys
+//     ("id.orig_h") into the nested records the mapping reads ($event.zeek.id.orig_h).
+//   - this._path = "conn"  → Zeek's JSON logger emits _path on every record; the
+//     synthetic corpus omits it, and zeek::ocsf::map dispatches on _path to pick the
+//     conn (Network Activity) handler. Without it the dispatcher falls to base_event.
+//   - this._id = unmapped._id  → zeek::ocsf::map moves unrecognised fields to
+//     `unmapped`; the corpus join id rides there, lift it to top-level so score.py
+//     can join emitted→gold on _id.
+//
+// Pinned: Tenzir 6.0.0 (image tenzir/tenzir:latest) + library commit 671e049
+// ("Port library packages to v6 executor", 2026-06-01) — the library state matching
+// the v6 executor; the next commit (98c3e6b, 2026-06-13) adds `default: this` arg
+// syntax that Tenzir 6.0.0 rejects.
+
+from_file "/work/zeek_conn.corpus.jsonl" {
+  read_ndjson unflatten_separator="."
+}
+this._path = "conn"
+zeek::ocsf::map
+this._id = unmapped._id?
+write_ndjson
