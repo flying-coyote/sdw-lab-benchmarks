@@ -58,13 +58,34 @@ Honest summary: **P4 confirmed; the knee-dependent predictions (P1, P3, P5, P6, 
 inconclusive because the pre-registered ladder didn't reach a breaking point.** That is the
 result, and it motivates the follow-up.
 
-## Next step (motivated by this result): extend the ladder to find the knee
+## Extend-ladder result (2026-06-14): the knee is at 32–64× base demand
 
-Since nothing kneed at ≤4×, the open question is *where* the single-host mix breaks. The
-follow-on extends the ladder to 8× / 16× / 32× (or a heavier scheduled-shape mix) on the 4
-graceful arms to locate the actual knee + its failure shape, with the pre-registered 3×
-reproduction at the knee step before any knee is claimable. starrocks_mv (the MV upper bound) is
-worth running once a knee exists for it to shift.
+The 4 graceful arms were re-run on a ladder extended to **64×** (`extend_ladder.sh`). The knee
+appears only at the very top — the interactive p95 stays flat (well under the 10 s flow line)
+through 16–32× and then inflects sharply:
+
+| arm | p95 flat through | knee (sharp inflection) | p95 at 64× | failure shape |
+|---|--:|--:|--:|---|
+| clickhouse_native | 32× (~0.08 s) | **64×** | 3.11 s | graceful |
+| clickhouse_iceberg | 32× (~0.20 s) | **64×** | 4.05 s | hard-break (scheduler saturates, util ≥ 1.0) |
+| starrocks | 32× (~0.10 s) | **64×** | 4.93 s | hard-break |
+| dremio | 8× (~0.45 s) | **~16–32×** | 5.78 s | graceful (degrades earliest) |
+
+So on a single host the scheduled:ad-hoc mix tolerates **16–32× the base scheduled rate** before
+the interactive experience inflects, and even at **64×** the probe p95 (3–6 s) never crosses the
+30 s "broken" threshold. The headroom is enormous relative to any realistic SOC scheduled load.
+Dremio knees earliest (~16–32×), consistent with its higher per-query REST/coordinator overhead;
+the ClickHouse arms and StarRocks hold flat to 32× and inflect at 64×, where the open-loop
+scheduler saturates (util ≥ 1.0, backlog growth → the "hard-break" classification, not a p95
+crossing). This resolves the P1/P3/P6/P7 predictions that were inconclusive at ≤4×: a knee
+exists, it is far out (32–64×), and at least two arms fail by scheduler-saturation rather than
+graceful degradation at that point.
+
+**Claimability:** per the pre-registration, a knee is claimable only on **3× reproduction at the
+same ladder step**. This run is 1× per arm, so the 32–64× knee is a single observation — the
+Phase-C follow-up is to reproduce the 64× step (and dremio's 32×) 3× before publishing the knee.
+starrocks_mv (the MV upper bound) is now worth running, since a knee finally exists for the MV
+layer to shift (P5).
 
 ## Scope, honestly
 
