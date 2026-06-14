@@ -1,0 +1,36 @@
+{
+  "arm": "E1",
+  "issue": "duckdb/ducklake#1215",
+  "issue_title": "concurrent inlined and parquet deletes on the same row commit without conflict",
+  "issue_state_at_run": "OPEN",
+  "filed_against": {
+    "ducklake": "415a9ebd (v1.0)",
+    "duckdb": "1.5.2"
+  },
+  "run_versions": {
+    "duckdb": "1.5.3",
+    "ducklake": "e6a3bd0a"
+  },
+  "tier": "B",
+  "host": "single host (Beelink 5800H, WSL2)",
+  "kind": "correctness (silent lost-conflict + resurrected rows)",
+  "arms": [
+    {
+      "commit_order": "inlined_first",
+      "second_commit_conflicted": false,
+      "conflict_error": null,
+      "deleted_range_survivors": 29,
+      "expected_survivors": 0,
+      "bug_reproduced": true
+    },
+    {
+      "commit_order": "parquet_first",
+      "second_commit_conflicted": false,
+      "conflict_error": null,
+      "deleted_range_survivors": 29,
+      "expected_survivors": 0,
+      "bug_reproduced": true
+    }
+  ],
+  "verdict": "PERSISTS"
+}

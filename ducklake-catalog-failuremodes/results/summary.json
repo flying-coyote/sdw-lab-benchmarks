@@ -1,0 +1,54 @@
+{
+  "bench": "BENCH-E \u2014 DuckLake catalog failure modes",
+  "tier": "B",
+  "host": "single host (Beelink 5800H, WSL2 48GB/14t)",
+  "discipline": "all three issue numbers verified real + OPEN at duckdb/ducklake before reproduction; versions recorded per arm; verify-don't-assume",
+  "arms": [
+    {
+      "arm": "E1",
+      "issue": "duckdb/ducklake#1215",
+      "title": "concurrent inlined and parquet deletes on the same row commit without conflict",
+      "kind": "correctness (silent lost-conflict + resurrected rows)",
+      "verdict": "PERSISTS",
+      "evidence": "both commit orders: 29 survivors vs 0 expected, no conflict raised",
+      "run_versions": {
+        "duckdb": "1.5.3",
+        "ducklake": "e6a3bd0a"
+      }
+    },
+    {
+      "arm": "E2",
+      "issue": "duckdb/ducklake#1184",
+      "title": "CREATE TABLE with >1600 columns fails on Postgres catalog even when data inlining is disabled",
+      "kind": "operability (wide-schema CREATE blocked by backing-table 1600-col CREATE)",
+      "verdict": "PERSISTS",
+      "evidence": "1500 cols created=True; 1700 cols (inlining off) -> ERROR:  tables can have at most 1600 columns",
+      "run_versions": {
+        "duckdb": "1.5.3",
+        "ducklake": "e6a3bd0a",
+        "postgres": "postgres:17"
+      }
+    },
+    {
+      "arm": "E3",
+      "issue": "duckdb/ducklake#1031",
+      "title": "Connection pool timeout with postgres catalog",
+      "kind": "operability (thread-local pool exhaustion)",
+      "verdict": "FIXED-BETWEEN-1.5.2-AND-1.5.3",
+      "evidence": {
+        "duckdb_1.5.2": {
+          "ducklake": "415a9ebd",
+          "probe_wall_s": 60.023,
+          "pool_timeout_fired": true,
+          "probe_error": "Connection pool timeout: all 14 connections in use, waited 30000ms"
+        },
+        "duckdb_1.5.3": {
+          "ducklake": "e6a3bd0a",
+          "probe_wall_s": 0.036,
+          "pool_timeout_fired": false
+        }
+      }
+    }
+  ],
+  "headline": "2 of 3 verified-OPEN catalog bugs reproduce on the current stack (DuckDB 1.5.3 + DuckLake e6a3bd0a); the pool-timeout (#1031, labeled 'PR submitted') reproduces on 1.5.2 and is fixed on 1.5.3."
+}
