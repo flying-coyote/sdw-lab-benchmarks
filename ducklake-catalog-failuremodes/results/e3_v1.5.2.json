@@ -1,0 +1,33 @@
+{
+  "arm": "E3",
+  "issue": "duckdb/ducklake#1031",
+  "issue_title": "Connection pool timeout with postgres catalog",
+  "issue_state_at_run": "OPEN (label: PR submitted)",
+  "filed_against": {
+    "ducklake": "415a9ebd (v1.0)",
+    "duckdb": "1.5.2",
+    "postgres": "16-alpine"
+  },
+  "does_not_reproduce_on": {
+    "duckdb": "1.4.4",
+    "ducklake": "v0.3 (3f1b372)"
+  },
+  "run_versions": {
+    "duckdb": "1.5.2",
+    "ducklake": "415a9ebd",
+    "postgres": "postgres:17"
+  },
+  "tier": "B",
+  "host": "single host (Beelink 5800H, WSL2)",
+  "kind": "operability (thread-local pool exhaustion)",
+  "n_tables_requested": 60,
+  "tables_created": 60,
+  "create_error": null,
+  "create_wall_s": 1.563,
+  "information_schema_count": null,
+  "probe_wall_s": 60.023,
+  "probe_error": "Connection pool timeout: all 14 connections in use, waited 30000ms",
+  "pool_timeout_fired": true,
+  "verdict": "PERSISTS",
+  "label": "duckdb-1.5.2"
+}

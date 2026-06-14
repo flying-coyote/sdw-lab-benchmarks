@@ -1,0 +1,50 @@
+{
+  "arm": "E2",
+  "issue": "duckdb/ducklake#1184",
+  "issue_title": "CREATE TABLE with >1600 columns fails on Postgres catalog even when data inlining is disabled",
+  "issue_state_at_run": "OPEN",
+  "filed_against": {
+    "ducklake": "415a9ebd",
+    "duckdb": "1.5.2",
+    "postgres": "Azure Flexible 17.x"
+  },
+  "run_versions": {
+    "duckdb": "1.5.3",
+    "ducklake": "e6a3bd0a",
+    "postgres": "postgres:17"
+  },
+  "tier": "B",
+  "host": "single host (Beelink 5800H, WSL2)",
+  "kind": "operability (wide-schema CREATE blocked by backing-table 1600-col CREATE)",
+  "probes": [
+    {
+      "n_cols": 1500,
+      "inlining_off": false,
+      "created": true,
+      "error": null,
+      "is_pg_1600_error": false
+    },
+    {
+      "n_cols": 1600,
+      "inlining_off": false,
+      "created": false,
+      "error": "ERROR:  tables can have at most 1600 columns",
+      "is_pg_1600_error": true
+    },
+    {
+      "n_cols": 1700,
+      "inlining_off": false,
+      "created": false,
+      "error": "ERROR:  tables can have at most 1600 columns",
+      "is_pg_1600_error": true
+    },
+    {
+      "n_cols": 1700,
+      "inlining_off": true,
+      "created": false,
+      "error": "ERROR:  tables can have at most 1600 columns",
+      "is_pg_1600_error": true
+    }
+  ],
+  "verdict": "PERSISTS"
+}
