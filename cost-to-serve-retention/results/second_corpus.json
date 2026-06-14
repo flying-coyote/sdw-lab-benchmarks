@@ -1,0 +1,42 @@
+{
+  "benchmark": "B-COST second corpus \u2014 EDR/Sysmon process-creation byte-ratio sensitivity",
+  "corpus": "synthetic EDR process-creation (Sysmon EID1-shaped), deterministic, 10M rows",
+  "duckdb_version": "1.5.3",
+  "edr_realizations": {
+    "parquet_zstd19": {
+      "build_seconds": 362.1,
+      "bytes": 649095751,
+      "bytes_per_event": 64.9,
+      "ratio_vs_raw": 9.25
+    },
+    "parquet_zstd_default": {
+      "build_seconds": 4.6,
+      "bytes": 755907455,
+      "bytes_per_event": 75.6,
+      "ratio_vs_raw": 7.94
+    },
+    "raw_jsonl": {
+      "bytes": 6001142530,
+      "bytes_per_event": 600.1,
+      "ratio_vs_raw": 1.0
+    }
+  },
+  "n_rows": 10000000,
+  "ratio_comparison": {
+    "parquet_zstd19": {
+      "edr": 9.25,
+      "edr_over_zeek": 0.95,
+      "zeek": 9.69
+    },
+    "parquet_zstd_default": {
+      "edr": 7.94,
+      "edr_over_zeek": 0.93,
+      "zeek_iceberg_zstd_default": 8.5
+    }
+  },
+  "zeek_conn_baseline": {
+    "iceberg_zstd_default_ratio": 8.5,
+    "parquet_zstd19_ratio": 9.69,
+    "raw_bytes_per_event": 374.3
+  }
+}

@@ -46,9 +46,34 @@ first retention-scale entry). Cannot: full TCO (compute/license/ops out of scope
 pricing, compression behavior of other corpora (ratios are corpus parameters — this corpus
 is synthetic Zeek conn, and its ratios should be re-measured per engagement workload).
 
+## Second corpus — byte-ratio sensitivity (2026-06-14)
+
+The README above flags the byte ratios as corpus parameters to re-measure per workload. This
+checks how far they move on a structurally different schema: a synthetic **EDR/Sysmon
+process-creation** corpus (long command lines, process GUIDs, high-cardinality user/host) at
+the same 10M-row scale, so the comparison isolates schema/content, not parquet overhead
+(`second_corpus.py`, deterministic content; machine-readable in `results/second_corpus.json`).
+
+| corpus | raw B/event | Parquet zstd-default ratio | Parquet zstd-19 ratio |
+|---|--:|--:|--:|
+| Zeek conn (flat 16-col, the Layer-1 corpus) | 374.3 | 8.5× | 9.69× |
+| EDR/Sysmon proc-creation (this corpus) | 600.1 | **7.94×** (0.93× Zeek) | **9.25×** (0.95× Zeek) |
+
+Two things the second corpus settles. The **compression ratio transfers within ~5–7%** across
+these two security-telemetry schemas — the flat-Zeek 8.5× is not an artifact that wildly
+inflates the ratio; a higher-entropy EDR schema lands close, modestly lower. But the **absolute
+$/event is higher for EDR**: it carries more content (600 vs 374 raw B/event) and still stores
+75.6 vs 44.0 compressed B/event at zstd-default, so at a given retention the EDR corpus costs
+~1.7× the Zeek corpus per event even though its compression ratio is similar. So the priced
+curves' *shape* (the storage-class compounding) transfers, but the per-event magnitude must be
+re-based on the workload's own raw bytes/event — re-measure the ratio AND the raw B/event per
+engagement, not just the ratio. Genuinely high-entropy streams (full hashes, base64 blobs, raw
+packet payloads) would compress less still; this EDR corpus is a moderate case, not the floor.
+
 ## Run
 
 ```bash
-.venv/bin/python measure.py      # captures all 5 footprints (builds the 2 new arms live)
-.venv/bin/python cost_model.py   # priced layer -> results/cost_curves.json + table
+.venv/bin/python measure.py         # captures all 5 footprints (builds the 2 new arms live)
+.venv/bin/python cost_model.py      # priced layer -> results/cost_curves.json + table
+.venv/bin/python second_corpus.py   # 2026-06-14 EDR/Sysmon byte-ratio sensitivity (10M rows)
 ```
