@@ -57,11 +57,17 @@ the same 10M-row scale, so the comparison isolates schema/content, not parquet o
 | corpus | raw B/event | Parquet zstd-default ratio | Parquet zstd-19 ratio |
 |---|--:|--:|--:|
 | Zeek conn (flat 16-col, the Layer-1 corpus) | 374.3 | 8.5× | 9.69× |
-| EDR/Sysmon proc-creation (this corpus) | 600.1 | **7.94×** (0.93× Zeek) | **9.25×** (0.95× Zeek) |
+| EDR/Sysmon proc-creation (`second_corpus.py`) | 600.1 | **7.94×** (0.93× Zeek) | **9.25×** (0.95× Zeek) |
+| High-entropy (base64 payload + full SHA-256 + per-event GUID, `high_entropy_corpus.py`) | 416.5 | **2.57×** (0.30× Zeek) | **2.75×** (0.28× Zeek) |
 
-Two things the second corpus settles. The **compression ratio transfers within ~5–7%** across
-these two security-telemetry schemas — the flat-Zeek 8.5× is not an artifact that wildly
-inflates the ratio; a higher-entropy EDR schema lands close, modestly lower. But the **absolute
+Two things the second + third corpora settle. (1) For *moderate-entropy* schemas the
+**compression ratio transfers within ~5–7%** — flat-Zeek 8.5× vs EDR 7.94×, so the 8.5× is not
+an artifact that wildly inflates the ratio. (2) But the ratio is **strongly workload-dependent at
+the tails**: a genuinely high-entropy stream (encoded-PowerShell / packet payloads, full hashes,
+per-event GUIDs) compresses only **2.6×** — *0.30× the flat-Zeek ratio, ~3.3× worse*. So the
+storage-cost ratio spans **~2.6× to 8.5×** across security-telemetry shapes, and the cost model
+must **re-measure the byte ratio per workload** (NOT assume 8.5×) — high-entropy ingest can
+triple the stored-byte cost at a given retention versus a flat Zeek-conn estimate. Also the **absolute
 $/event is higher for EDR**: it carries more content (600 vs 374 raw B/event) and still stores
 75.6 vs 44.0 compressed B/event at zstd-default, so at a given retention the EDR corpus costs
 ~1.7× the Zeek corpus per event even though its compression ratio is similar. So the priced
@@ -75,5 +81,6 @@ packet payloads) would compress less still; this EDR corpus is a moderate case, 
 ```bash
 .venv/bin/python measure.py         # captures all 5 footprints (builds the 2 new arms live)
 .venv/bin/python cost_model.py      # priced layer -> results/cost_curves.json + table
-.venv/bin/python second_corpus.py   # 2026-06-14 EDR/Sysmon byte-ratio sensitivity (10M rows)
+.venv/bin/python second_corpus.py       # 2026-06-14 EDR/Sysmon byte-ratio sensitivity (10M rows)
+.venv/bin/python high_entropy_corpus.py # 2026-06-14 high-entropy floor (base64/hashes/GUIDs, 10M rows)
 ```
