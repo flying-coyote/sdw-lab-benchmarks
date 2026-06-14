@@ -1,0 +1,657 @@
+{
+  "answer_equality": {
+    "count_all": {
+      "identical": true,
+      "per_arm": {
+        "clickhouse_iceberg": 10000000,
+        "clickhouse_native": 10000000,
+        "dremio_iceberg": 10000000,
+        "opensearch": 10000000
+      }
+    },
+    "top_source_ips_by_bytes": {
+      "identical": true,
+      "per_arm": {
+        "clickhouse_iceberg": [
+          [
+            "172.18.196.29",
+            150041272
+          ],
+          [
+            "10.38.0.40",
+            148752399
+          ],
+          [
+            "192.168.13.71",
+            148420526
+          ],
+          [
+            "172.19.115.83",
+            148196330
+          ],
+          [
+            "10.126.30.127",
+            147754841
+          ],
+          [
+            "10.150.59.214",
+            147353064
+          ],
+          [
+            "192.168.140.43",
+            147329347
+          ],
+          [
+            "172.23.126.239",
+            146770532
+          ],
+          [
+            "172.18.181.70",
+            146760042
+          ],
+          [
+            "172.25.171.130",
+            146613244
+          ]
+        ],
+        "clickhouse_native": [
+          [
+            "172.18.196.29",
+            150041272
+          ],
+          [
+            "10.38.0.40",
+            148752399
+          ],
+          [
+            "192.168.13.71",
+            148420526
+          ],
+          [
+            "172.19.115.83",
+            148196330
+          ],
+          [
+            "10.126.30.127",
+            147754841
+          ],
+          [
+            "10.150.59.214",
+            147353064
+          ],
+          [
+            "192.168.140.43",
+            147329347
+          ],
+          [
+            "172.23.126.239",
+            146770532
+          ],
+          [
+            "172.18.181.70",
+            146760042
+          ],
+          [
+            "172.25.171.130",
+            146613244
+          ]
+        ],
+        "dremio_iceberg": [
+          [
+            "172.18.196.29",
+            150041272
+          ],
+          [
+            "10.38.0.40",
+            148752399
+          ],
+          [
+            "192.168.13.71",
+            148420526
+          ],
+          [
+            "172.19.115.83",
+            148196330
+          ],
+          [
+            "10.126.30.127",
+            147754841
+          ],
+          [
+            "10.150.59.214",
+            147353064
+          ],
+          [
+            "192.168.140.43",
+            147329347
+          ],
+          [
+            "172.23.126.239",
+            146770532
+          ],
+          [
+            "172.18.181.70",
+            146760042
+          ],
+          [
+            "172.25.171.130",
+            146613244
+          ]
+        ],
+        "opensearch": [
+          [
+            "172.18.196.29",
+            150041272
+          ],
+          [
+            "10.38.0.40",
+            148752399
+          ],
+          [
+            "192.168.13.71",
+            148420526
+          ],
+          [
+            "172.19.115.83",
+            148196330
+          ],
+          [
+            "10.126.30.127",
+            147754841
+          ],
+          [
+            "10.150.59.214",
+            147353064
+          ],
+          [
+            "192.168.140.43",
+            147329347
+          ],
+          [
+            "172.23.126.239",
+            146770532
+          ],
+          [
+            "172.18.181.70",
+            146760042
+          ],
+          [
+            "172.25.171.130",
+            146613244
+          ]
+        ]
+      }
+    },
+    "protocol_distribution": {
+      "identical": true,
+      "per_arm": {
+        "clickhouse_iceberg": [
+          [
+            "icmp",
+            166616
+          ],
+          [
+            "tcp",
+            8918398
+          ],
+          [
+            "udp",
+            914986
+          ]
+        ],
+        "clickhouse_native": [
+          [
+            "icmp",
+            166616
+          ],
+          [
+            "tcp",
+            8918398
+          ],
+          [
+            "udp",
+            914986
+          ]
+        ],
+        "dremio_iceberg": [
+          [
+            "icmp",
+            166616
+          ],
+          [
+            "tcp",
+            8918398
+          ],
+          [
+            "udp",
+            914986
+          ]
+        ],
+        "opensearch": [
+          [
+            "icmp",
+            166616
+          ],
+          [
+            "tcp",
+            8918398
+          ],
+          [
+            "udp",
+            914986
+          ]
+        ]
+      }
+    },
+    "long_duration_connections": {
+      "identical": true,
+      "per_arm": {
+        "clickhouse_iceberg": [
+          [
+            "192.168.207.102",
+            "82.196.10.87",
+            3599.997171
+          ],
+          [
+            "192.168.80.79",
+            "124.4.132.142",
+            3599.995335
+          ],
+          [
+            "10.26.73.223",
+            "113.148.190.126",
+            3599.993001
+          ],
+          [
+            "172.22.209.53",
+            "22.8.19.84",
+            3599.99189
+          ],
+          [
+            "192.168.21.11",
+            "45.106.63.138",
+            3599.991423
+          ],
+          [
+            "192.168.208.7",
+            "10.54.162.198",
+            3599.982576
+          ],
+          [
+            "192.168.31.161",
+            "172.155.115.123",
+            3599.978307
+          ],
+          [
+            "192.168.150.112",
+            "129.121.126.110",
+            3599.970716
+          ],
+          [
+            "10.13.209.68",
+            "104.224.140.172",
+            3599.969398
+          ],
+          [
+            "192.168.240.49",
+            "186.105.4.95",
+            3599.96736
+          ]
+        ],
+        "clickhouse_native": [
+          [
+            "192.168.207.102",
+            "82.196.10.87",
+            3599.997171
+          ],
+          [
+            "192.168.80.79",
+            "124.4.132.142",
+            3599.995335
+          ],
+          [
+            "10.26.73.223",
+            "113.148.190.126",
+            3599.993001
+          ],
+          [
+            "172.22.209.53",
+            "22.8.19.84",
+            3599.99189
+          ],
+          [
+            "192.168.21.11",
+            "45.106.63.138",
+            3599.991423
+          ],
+          [
+            "192.168.208.7",
+            "10.54.162.198",
+            3599.982576
+          ],
+          [
+            "192.168.31.161",
+            "172.155.115.123",
+            3599.978307
+          ],
+          [
+            "192.168.150.112",
+            "129.121.126.110",
+            3599.970716
+          ],
+          [
+            "10.13.209.68",
+            "104.224.140.172",
+            3599.969398
+          ],
+          [
+            "192.168.240.49",
+            "186.105.4.95",
+            3599.96736
+          ]
+        ],
+        "dremio_iceberg": [
+          [
+            "192.168.207.102",
+            "82.196.10.87",
+            3599.997171
+          ],
+          [
+            "192.168.80.79",
+            "124.4.132.142",
+            3599.995335
+          ],
+          [
+            "10.26.73.223",
+            "113.148.190.126",
+            3599.993001
+          ],
+          [
+            "172.22.209.53",
+            "22.8.19.84",
+            3599.99189
+          ],
+          [
+            "192.168.21.11",
+            "45.106.63.138",
+            3599.991423
+          ],
+          [
+            "192.168.208.7",
+            "10.54.162.198",
+            3599.982576
+          ],
+          [
+            "192.168.31.161",
+            "172.155.115.123",
+            3599.978307
+          ],
+          [
+            "192.168.150.112",
+            "129.121.126.110",
+            3599.970716
+          ],
+          [
+            "10.13.209.68",
+            "104.224.140.172",
+            3599.969398
+          ],
+          [
+            "192.168.240.49",
+            "186.105.4.95",
+            3599.96736
+          ]
+        ],
+        "opensearch": [
+          [
+            "192.168.207.102",
+            "82.196.10.87",
+            3599.997171
+          ],
+          [
+            "192.168.80.79",
+            "124.4.132.142",
+            3599.995335
+          ],
+          [
+            "10.26.73.223",
+            "113.148.190.126",
+            3599.993001
+          ],
+          [
+            "172.22.209.53",
+            "22.8.19.84",
+            3599.99189
+          ],
+          [
+            "192.168.21.11",
+            "45.106.63.138",
+            3599.991423
+          ],
+          [
+            "192.168.208.7",
+            "10.54.162.198",
+            3599.982576
+          ],
+          [
+            "192.168.31.161",
+            "172.155.115.123",
+            3599.978307
+          ],
+          [
+            "192.168.150.112",
+            "129.121.126.110",
+            3599.970716
+          ],
+          [
+            "10.13.209.68",
+            "104.224.140.172",
+            3599.969398
+          ],
+          [
+            "192.168.240.49",
+            "186.105.4.95",
+            3599.96736
+          ]
+        ]
+      }
+    },
+    "port_scan_detection": {
+      "identical": true,
+      "per_arm": {
+        "clickhouse_iceberg": [],
+        "clickhouse_native": [],
+        "dremio_iceberg": [],
+        "opensearch": []
+      }
+    }
+  },
+  "speedups_cv_gated": {
+    "count_all: clickhouse_native vs clickhouse_iceberg": {
+      "ratio": 6.53,
+      "gap_pct": 552.9,
+      "gate_max_cv_pct": 4.6,
+      "claimable": true
+    },
+    "count_all: clickhouse_iceberg vs dremio_iceberg": {
+      "ratio": 14.49,
+      "gap_pct": 1348.6,
+      "gate_max_cv_pct": 15.6,
+      "claimable": true
+    },
+    "count_all: opensearch vs clickhouse_iceberg": {
+      "ratio": 3.0,
+      "gap_pct": 200.0,
+      "gate_max_cv_pct": 14.8,
+      "claimable": true
+    },
+    "count_all: clickhouse_native vs dremio_iceberg": {
+      "ratio": 94.59,
+      "gap_pct": 9358.8,
+      "gate_max_cv_pct": 15.6,
+      "claimable": true
+    },
+    "count_all: clickhouse_native vs opensearch": {
+      "ratio": 2.18,
+      "gap_pct": 117.6,
+      "gate_max_cv_pct": 14.8,
+      "claimable": true
+    },
+    "count_all: opensearch vs dremio_iceberg": {
+      "ratio": 43.46,
+      "gap_pct": 4245.9,
+      "gate_max_cv_pct": 15.6,
+      "claimable": true
+    },
+    "top_source_ips_by_bytes: clickhouse_native vs clickhouse_iceberg": {
+      "ratio": 2.55,
+      "gap_pct": 154.5,
+      "gate_max_cv_pct": 13.4,
+      "claimable": true
+    },
+    "top_source_ips_by_bytes: clickhouse_iceberg vs dremio_iceberg": {
+      "ratio": 6.32,
+      "gap_pct": 532.3,
+      "gate_max_cv_pct": 21.8,
+      "claimable": true
+    },
+    "top_source_ips_by_bytes: clickhouse_iceberg vs opensearch": {
+      "ratio": 7.43,
+      "gap_pct": 643.3,
+      "gate_max_cv_pct": 7.3,
+      "claimable": true
+    },
+    "top_source_ips_by_bytes: clickhouse_native vs dremio_iceberg": {
+      "ratio": 16.09,
+      "gap_pct": 1509.2,
+      "gate_max_cv_pct": 21.8,
+      "claimable": true
+    },
+    "top_source_ips_by_bytes: clickhouse_native vs opensearch": {
+      "ratio": 18.92,
+      "gap_pct": 1791.9,
+      "gate_max_cv_pct": 13.4,
+      "claimable": true
+    },
+    "top_source_ips_by_bytes: dremio_iceberg vs opensearch": {
+      "ratio": 1.18,
+      "gap_pct": 17.6,
+      "gate_max_cv_pct": 21.8,
+      "claimable": false
+    },
+    "protocol_distribution: clickhouse_native vs clickhouse_iceberg": {
+      "ratio": 2.11,
+      "gap_pct": 111.0,
+      "gate_max_cv_pct": 9.1,
+      "claimable": true
+    },
+    "protocol_distribution: clickhouse_iceberg vs dremio_iceberg": {
+      "ratio": 11.5,
+      "gap_pct": 1050.3,
+      "gate_max_cv_pct": 25.2,
+      "claimable": true
+    },
+    "protocol_distribution: opensearch vs clickhouse_iceberg": {
+      "ratio": 9.11,
+      "gap_pct": 810.5,
+      "gate_max_cv_pct": 8.0,
+      "claimable": true
+    },
+    "protocol_distribution: clickhouse_native vs dremio_iceberg": {
+      "ratio": 24.27,
+      "gap_pct": 2326.8,
+      "gate_max_cv_pct": 25.2,
+      "claimable": true
+    },
+    "protocol_distribution: opensearch vs clickhouse_native": {
+      "ratio": 4.32,
+      "gap_pct": 331.6,
+      "gate_max_cv_pct": 9.1,
+      "claimable": true
+    },
+    "protocol_distribution: opensearch vs dremio_iceberg": {
+      "ratio": 104.74,
+      "gap_pct": 10373.7,
+      "gate_max_cv_pct": 25.2,
+      "claimable": true
+    },
+    "long_duration_connections: clickhouse_native vs clickhouse_iceberg": {
+      "ratio": 10.37,
+      "gap_pct": 937.3,
+      "gate_max_cv_pct": 8.7,
+      "claimable": true
+    },
+    "long_duration_connections: clickhouse_iceberg vs dremio_iceberg": {
+      "ratio": 2.19,
+      "gap_pct": 119.5,
+      "gate_max_cv_pct": 8.7,
+      "claimable": true
+    },
+    "long_duration_connections: opensearch vs clickhouse_iceberg": {
+      "ratio": 18.54,
+      "gap_pct": 1753.7,
+      "gate_max_cv_pct": 11.1,
+      "claimable": true
+    },
+    "long_duration_connections: clickhouse_native vs dremio_iceberg": {
+      "ratio": 22.77,
+      "gap_pct": 2176.7,
+      "gate_max_cv_pct": 3.5,
+      "claimable": true
+    },
+    "long_duration_connections: opensearch vs clickhouse_native": {
+      "ratio": 1.79,
+      "gap_pct": 78.7,
+      "gate_max_cv_pct": 11.1,
+      "claimable": true
+    },
+    "long_duration_connections: opensearch vs dremio_iceberg": {
+      "ratio": 40.69,
+      "gap_pct": 3968.5,
+      "gate_max_cv_pct": 11.1,
+      "claimable": true
+    },
+    "port_scan_detection: clickhouse_native vs clickhouse_iceberg": {
+      "ratio": 4.28,
+      "gap_pct": 328.3,
+      "gate_max_cv_pct": 4.1,
+      "claimable": true
+    },
+    "port_scan_detection: clickhouse_iceberg vs dremio_iceberg": {
+      "ratio": 2.46,
+      "gap_pct": 145.6,
+      "gate_max_cv_pct": 4.6,
+      "claimable": true
+    },
+    "port_scan_detection: clickhouse_iceberg vs opensearch": {
+      "ratio": 15.39,
+      "gap_pct": 1439.0,
+      "gate_max_cv_pct": 4.1,
+      "claimable": true
+    },
+    "port_scan_detection: clickhouse_native vs dremio_iceberg": {
+      "ratio": 10.52,
+      "gap_pct": 951.9,
+      "gate_max_cv_pct": 4.6,
+      "claimable": true
+    },
+    "port_scan_detection: clickhouse_native vs opensearch": {
+      "ratio": 65.91,
+      "gap_pct": 6490.9,
+      "gate_max_cv_pct": 2.2,
+      "claimable": true
+    },
+    "port_scan_detection: dremio_iceberg vs opensearch": {
+      "ratio": 6.27,
+      "gap_pct": 526.6,
+      "gate_max_cv_pct": 4.6,
+      "claimable": true
+    }
+  },
+  "avg_of_medians_s": {
+    "clickhouse_iceberg": 0.2428,
+    "clickhouse_native": 0.0573,
+    "dremio_iceberg": 0.7865,
+    "opensearch": 2.7549
+  }
+}
