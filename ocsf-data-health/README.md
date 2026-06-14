@@ -46,12 +46,13 @@ result (a naive authority merge gets only 50.5%). Full per-attribute numbers in
 [`results/RESULTS.md`](results/RESULTS.md); machine-readable in
 [`results/results.json`](results/results.json).
 
-## Two extensions — the order's robustness, and a harder entity
+## Three extensions — the order's robustness, a harder entity, and the headline's variance
 
 The four headline numbers above are one point in a parameter space, on the
-easiest entity (assets, one clean key). Two extensions test whether the *finding*
-survives past that point. Both preserve the v1 numbers bit-for-bit and fold into
-the same build-twice determinism assert.
+easiest entity (assets, one clean key). Three extensions test whether the *finding*
+survives past that point. The first two preserve the v1 numbers bit-for-bit and
+fold into the same build-twice determinism assert; the third (the seed sweep) runs
+beside the v1 path without touching it.
 
 **EXT-1 — parameter sweep (is the ORDER robust, not just the magnitude?)** The v1
 magnitudes are functions of the flaw-model parameters. We sweep the two that move
@@ -75,6 +76,22 @@ recovers **96.3%**; resolving identity from the disagreeing key *values* only an
 then merging recovers **86.2%** — a **−10.1%** entity-resolution tax, the part of
 the assurance gap that is *join*, not *coverage*. A naive "just pick `employee_id`"
 single-key join collapses to **60.0%**.
+
+**EXT-3 — seed sweep (is the headline MAGNITUDE a lucky draw?)** EXT-1 bounds the
+ordering across the parameter grid; this bounds the two headline magnitudes
+themselves by re-drawing the whole corpus — both the ground-truth RNG and the
+observation-flaw RNG — across 12 independent seed pairs at fixed `V1_PARAMS`
+(`seed_sweep.py`, which imports the v1 build/score functions and so leaves the v1
+determinism path untouched). The numbers are tight: best-single recovery
+**47.4% ± 0.15%** (95% CI 47.3–47.4%, range 47.1–47.7% over the 12 draws,
+CV 0.3%) and cross-tool recovery **75.4% ± 0.21%** (95% CI 75.2–75.5%, range
+75.0–75.6%, CV 0.3%), with the cross-over-single gap **28.0% ± 0.12%**, the
+residual gap **24.6% ± 0.21%**, and the scored-merge lever **25.0% ± 0.11%**. The
+canonical (truth=701, obs=702) point published above (47.7% / 75.6%) sits at the
+top edge of each band — a real reproducible draw, not a fragile one. So the
+headline is a point estimate of a tight distribution, not a single fortunate seed;
+at 20k assets the flaw-realization noise averages out to a fraction of a percent.
+Machine-readable in [`results/seed_sweep.json`](results/seed_sweep.json).
 
 ## Which thesis pillar
 
@@ -113,6 +130,8 @@ is optimal or that this is a real organisation's resolution accuracy.
 ```bash
 # from the repo root, with the shared venv (duckdb 1.5.3, pyarrow):
 SDW_DUCK_MEMORY_LIMIT=12GB .venv/bin/python3 ocsf-data-health/run.py
+# EXT-3 headline-magnitude band (12 independent corpus draws; does not touch run.py):
+SDW_DUCK_MEMORY_LIMIT=12GB .venv/bin/python3 ocsf-data-health/seed_sweep.py 12
 ```
 
 `run.py` runs the full build-and-score twice and asserts the canonical JSON is
@@ -125,7 +144,8 @@ integrity check first. Same code, same seed, same numbers, every run.
 ```
 run.py        corpus + flaw models + DuckDB scoring + determinism/integrity asserts
               + EXT-1 parameter sweep + EXT-2 contested-join-key identities
-results/      RESULTS.md + results.json (generated)
+seed_sweep.py EXT-3 headline-magnitude CI band (imports run.py, 12 seed re-draws)
+results/      RESULTS.md + results.json + seed_sweep.json (generated)
 METHODOLOGY.md  flaw models, the four measures, the two extensions, falsification
 ```
 
