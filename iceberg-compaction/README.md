@@ -59,6 +59,32 @@ dominate. So the honest claim is conditional: *the more a streaming table fragme
 compaction recovers* — at heavy fragmentation (hundreds of small files) it is 3–5× on scans;
 at light fragmentation it is marginal.
 
+## Sort-clustered arm (2026-06-14) — the pruning benefit on top of file-count
+
+The result above measured compaction as **file-count reduction only** (random-order overwrite),
+which is the floor — it can't improve row-group min/max pruning. `run_sorted.py` adds the arm a
+real `rewrite_data_files` with a sort order would give: it shuffles the corpus (so `ts` is
+scattered across files, the multi-source-streaming state), then compares the SAME data as 500
+fragmented appends vs an unsorted overwrite vs an **overwrite ORDER BY ts**, on a selective
+time-range scan (5% `ts` window) and a full-scan hunt.
+
+| query | fragmented (500 files) | compact, unsorted (4 files) | compact, sorted-by-ts (4 files) |
+|---|--:|--:|--:|
+| **time-range scan** (5% ts window) | 0.337 s | 0.056 s (**6.0×**, file-count) | 0.033 s (**10.1× total**) |
+| full-scan hunt (port_scan) | 0.591 s | 0.300 s (2.0×, file-count) | 0.329 s (no gain) |
+
+So sort-by-ts compaction adds **~1.7× pruning** on top of the ~6× file-count recovery for the
+selective time-range scan — total **~10×** — because the time-clustered row groups let the
+scanner skip the files outside the window (answers identical). On a **full scan** the sort adds
+nothing (~0.9×, expected — a full scan prunes nothing), and the file-count effect alone gives
+~2×. The lesson for the essay: the base B-COMPACT 3.2–5.3× is the file-count floor; a
+**well-sorted** compaction recovers more (~10× here) on the time-range "90-day scan" shape that
+motivated the claim — *if* the sort key matches the query's range predicate. Machine-readable in
+[`results/sorted.json`](results/sorted.json). (Caveat: the full-scan `port_scan` answer differs
+across layouts only because that query is `ORDER BY ... LIMIT 5` with ties — a non-deterministic
+tie-break, not a layout correctness issue; the time-range scan's count+sum is identical
+everywhere.)
+
 ## Honesty boundary
 
 - **Single-host WSL2**, hot/warm cache (no OS page-cache drop), 1 warmup discarded — the

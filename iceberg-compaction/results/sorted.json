@@ -1,0 +1,116 @@
+{
+  "benchmark": "iceberg-compaction sort-clustered arm",
+  "n_appends": 500,
+  "time_window_pct": "40-45% of ts span (5% selective)",
+  "compact_unsorted_seconds": 2.6,
+  "compact_sorted_seconds": 2.5,
+  "layouts": {
+    "fragmented": {
+      "files": 500
+    },
+    "compact_unsorted": {
+      "files": 4
+    },
+    "compact_sorted": {
+      "files": 4
+    }
+  },
+  "queries": {
+    "time_range_scan": {
+      "fragmented": {
+        "median_s": 0.3368,
+        "cv_pct": 17.9,
+        "answer": [
+          [
+            523492,
+            2401512443
+          ]
+        ]
+      },
+      "compact_unsorted": {
+        "median_s": 0.056,
+        "cv_pct": 4.2,
+        "answer": [
+          [
+            523492,
+            2401512443
+          ]
+        ]
+      },
+      "compact_sorted": {
+        "median_s": 0.0334,
+        "cv_pct": 3.9,
+        "answer": [
+          [
+            523492,
+            2401512443
+          ]
+        ]
+      },
+      "answer_identical": true,
+      "recovery_filecount_only_x": 6.01,
+      "recovery_total_sorted_x": 10.08,
+      "added_pruning_x": 1.68
+    },
+    "port_scan_fullscan": {
+      "fragmented": {
+        "median_s": 0.5913,
+        "cv_pct": 5.4,
+        "answer": [
+          [
+            "192.168.16.166",
+            10
+          ],
+          [
+            "192.168.18.37",
+            10
+          ],
+          [
+            "172.31.1.78",
+            10
+          ]
+        ]
+      },
+      "compact_unsorted": {
+        "median_s": 0.2996,
+        "cv_pct": 10.1,
+        "answer": [
+          [
+            "10.26.50.211",
+            10
+          ],
+          [
+            "192.168.145.59",
+            10
+          ],
+          [
+            "10.178.22.92",
+            10
+          ]
+        ]
+      },
+      "compact_sorted": {
+        "median_s": 0.3287,
+        "cv_pct": 12.6,
+        "answer": [
+          [
+            "10.31.60.235",
+            10
+          ],
+          [
+            "192.168.238.35",
+            10
+          ],
+          [
+            "172.16.96.254",
+            10
+          ]
+        ]
+      },
+      "answer_identical": false,
+      "recovery_filecount_only_x": 1.97,
+      "recovery_total_sorted_x": 1.8,
+      "added_pruning_x": 0.91
+    }
+  }
+}
