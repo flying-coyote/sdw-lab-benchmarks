@@ -2,7 +2,7 @@
   "bench": "workload-interference",
   "tier": "B",
   "host": "Beelink 5800H, WSL2 48 GB / 14t (cpuset 12/2 engine/client split)",
-  "generated_unix": 1781423023,
+  "generated_unix": 1781439525,
   "seed": 20260601,
   "config": {
     "cycle_seconds": 60.0,
@@ -13,7 +13,11 @@
       0.5,
       1.0,
       2.0,
-      4.0
+      4.0,
+      8.0,
+      16.0,
+      32.0,
+      64.0
     ],
     "warmin_seconds": 60,
     "measure_seconds": 300,
@@ -70,26 +74,26 @@
     "clickhouse_iceberg": {
       "arm": "clickhouse_iceberg",
       "baseline": {
-        "probe_median_s": 0.0672,
-        "probe_cv_pct": 38.9,
+        "probe_median_s": 0.0899,
+        "probe_cv_pct": 39.4,
         "trials": 7,
         "warmup": 1,
         "samples_s": [
-          0.0992,
-          0.1358,
-          0.1019,
-          0.0401,
-          0.0585,
-          0.0561,
-          0.0672
+          0.101,
+          0.1511,
+          0.1159,
+          0.0361,
+          0.0708,
+          0.0605,
+          0.0899
         ]
       },
       "calibration": {
         "passed": true,
-        "max_demand": 4.0,
-        "baseline_median_s": 0.0672,
-        "calibration_median_s": 0.0561,
-        "client_added_latency_pct": -16.52,
+        "max_demand": 64.0,
+        "baseline_median_s": 0.0899,
+        "calibration_median_s": 0.061,
+        "client_added_latency_pct": -32.15,
         "threshold_pct": 5.0,
         "probe_samples": 13,
         "note": "client-added latency under the 5% gate \u2014 cpuset split clean"
@@ -101,10 +105,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0469,
-            "p95_s": 0.1499,
-            "max_s": 0.1966,
-            "mean_s": 0.0549
+            "median_s": 0.0554,
+            "p95_s": 0.1882,
+            "max_s": 0.2243,
+            "mean_s": 0.0623
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -112,11 +116,11 @@
           "scheduled": {
             "fires_intended": 4,
             "completed": 4,
-            "utilization": 0.0062,
+            "utilization": 0.0078,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2888,
+            "scheduled_runtime_median_s": 0.2889,
             "dnf": {}
           },
           "hard_break": null,
@@ -127,10 +131,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0495,
-            "p95_s": 0.15,
-            "max_s": 0.2068,
-            "mean_s": 0.0545
+            "median_s": 0.0532,
+            "p95_s": 0.1354,
+            "max_s": 0.2347,
+            "mean_s": 0.0623
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -138,11 +142,11 @@
           "scheduled": {
             "fires_intended": 8,
             "completed": 8,
-            "utilization": 0.0076,
+            "utilization": 0.0084,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1939,
+            "scheduled_runtime_median_s": 0.2196,
             "dnf": {}
           },
           "hard_break": null,
@@ -153,10 +157,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0481,
-            "p95_s": 0.1199,
-            "max_s": 0.2539,
-            "mean_s": 0.0558
+            "median_s": 0.0551,
+            "p95_s": 0.1374,
+            "max_s": 0.2691,
+            "mean_s": 0.0657
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -164,11 +168,11 @@
           "scheduled": {
             "fires_intended": 15,
             "completed": 15,
-            "utilization": 0.0176,
+            "utilization": 0.0192,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2125,
+            "scheduled_runtime_median_s": 0.2591,
             "dnf": {}
           },
           "hard_break": null,
@@ -178,11 +182,11 @@
           "demand": 1.0,
           "window_s": 300.0,
           "probe": {
-            "n": 61,
-            "median_s": 0.0467,
-            "p95_s": 0.1431,
-            "max_s": 0.2065,
-            "mean_s": 0.0596
+            "n": 60,
+            "median_s": 0.0567,
+            "p95_s": 0.1571,
+            "max_s": 0.2714,
+            "mean_s": 0.069
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -190,11 +194,11 @@
           "scheduled": {
             "fires_intended": 30,
             "completed": 30,
-            "utilization": 0.0307,
+            "utilization": 0.0346,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1926,
+            "scheduled_runtime_median_s": 0.2167,
             "dnf": {}
           },
           "hard_break": null,
@@ -205,10 +209,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0575,
-            "p95_s": 0.1947,
-            "max_s": 0.2205,
-            "mean_s": 0.0704
+            "median_s": 0.0675,
+            "p95_s": 0.2,
+            "max_s": 0.2586,
+            "mean_s": 0.0772
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -216,11 +220,11 @@
           "scheduled": {
             "fires_intended": 60,
             "completed": 60,
-            "utilization": 0.0642,
+            "utilization": 0.0699,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2079,
+            "scheduled_runtime_median_s": 0.2164,
             "dnf": {}
           },
           "hard_break": null,
@@ -231,10 +235,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0519,
-            "p95_s": 0.1907,
-            "max_s": 0.202,
-            "mean_s": 0.0644
+            "median_s": 0.0606,
+            "p95_s": 0.2028,
+            "max_s": 0.2411,
+            "mean_s": 0.0737
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -242,43 +246,155 @@
           "scheduled": {
             "fires_intended": 120,
             "completed": 120,
-            "utilization": 0.1214,
+            "utilization": 0.1344,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1812,
+            "scheduled_runtime_median_s": 0.2042,
             "dnf": {}
           },
           "hard_break": null,
           "stop_reason": null
+        },
+        {
+          "demand": 8.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 60,
+            "median_s": 0.0617,
+            "p95_s": 0.1986,
+            "max_s": 0.2666,
+            "mean_s": 0.0711
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 240,
+            "completed": 240,
+            "utilization": 0.2669,
+            "peak_outstanding": 2,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.2084,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 16.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.0592,
+            "p95_s": 0.1889,
+            "max_s": 0.2429,
+            "mean_s": 0.0733
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 480,
+            "completed": 480,
+            "utilization": 0.5752,
+            "peak_outstanding": 2,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.1922,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 32.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.0721,
+            "p95_s": 0.219,
+            "max_s": 0.2486,
+            "mean_s": 0.09
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 960,
+            "completed": 960,
+            "utilization": 1.392,
+            "peak_outstanding": 4,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.2488,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 64.0,
+          "window_s": 53.7,
+          "probe": {
+            "n": 11,
+            "median_s": 1.2019,
+            "p95_s": 4.0521,
+            "max_s": 4.0521,
+            "mean_s": 1.6315
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 344,
+            "completed": 253,
+            "utilization": 63.6849,
+            "peak_outstanding": 64,
+            "backlog_end": 89,
+            "backlog_monotone": true,
+            "scheduled_runtime_median_s": 7.7156,
+            "dnf": {
+              "resource": 2
+            }
+          },
+          "hard_break": "resource",
+          "stop_reason": "hard_break:resource"
         }
       ],
-      "knee": null,
-      "failure_shape": "graceful"
+      "knee": {
+        "demand": 64.0,
+        "stop_reason": "hard_break:resource",
+        "probe_p95_s": 4.0521,
+        "reproduced": false,
+        "note": "first ladder step tripping the mechanical stop rule; a claimable knee requires 3x reproduction at this same demand step"
+      },
+      "failure_shape": "hard-break"
     },
     "clickhouse_native": {
       "arm": "clickhouse_native",
       "baseline": {
-        "probe_median_s": 0.0432,
-        "probe_cv_pct": 43.5,
+        "probe_median_s": 0.0733,
+        "probe_cv_pct": 41.8,
         "trials": 7,
         "warmup": 1,
         "samples_s": [
-          0.0233,
-          0.0779,
-          0.0478,
-          0.0425,
-          0.0432,
-          0.0532,
-          0.0155
+          0.0238,
+          0.0997,
+          0.0831,
+          0.0733,
+          0.0719,
+          0.0867,
+          0.0254
         ]
       },
       "calibration": {
         "passed": true,
-        "max_demand": 4.0,
-        "baseline_median_s": 0.0432,
-        "calibration_median_s": 0.0415,
-        "client_added_latency_pct": -3.94,
+        "max_demand": 64.0,
+        "baseline_median_s": 0.0733,
+        "calibration_median_s": 0.0469,
+        "client_added_latency_pct": -36.02,
         "threshold_pct": 5.0,
         "probe_samples": 13,
         "note": "client-added latency under the 5% gate \u2014 cpuset split clean"
@@ -290,10 +406,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0378,
-            "p95_s": 0.0507,
-            "max_s": 0.098,
-            "mean_s": 0.0256
+            "median_s": 0.0424,
+            "p95_s": 0.0587,
+            "max_s": 0.0919,
+            "mean_s": 0.0305
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -301,11 +417,11 @@
           "scheduled": {
             "fires_intended": 4,
             "completed": 4,
-            "utilization": 0.0035,
+            "utilization": 0.0036,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1401,
+            "scheduled_runtime_median_s": 0.1253,
             "dnf": {}
           },
           "hard_break": null,
@@ -316,10 +432,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0381,
-            "p95_s": 0.0526,
-            "max_s": 0.0779,
-            "mean_s": 0.0262
+            "median_s": 0.0436,
+            "p95_s": 0.0725,
+            "max_s": 0.1063,
+            "mean_s": 0.0324
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -327,11 +443,11 @@
           "scheduled": {
             "fires_intended": 8,
             "completed": 8,
-            "utilization": 0.0042,
+            "utilization": 0.0046,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0734,
+            "scheduled_runtime_median_s": 0.07,
             "dnf": {}
           },
           "hard_break": null,
@@ -342,10 +458,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.037,
-            "p95_s": 0.0612,
-            "max_s": 0.0916,
-            "mean_s": 0.0272
+            "median_s": 0.0425,
+            "p95_s": 0.0762,
+            "max_s": 0.0966,
+            "mean_s": 0.033
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -353,11 +469,11 @@
           "scheduled": {
             "fires_intended": 15,
             "completed": 15,
-            "utilization": 0.01,
+            "utilization": 0.0112,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0821,
+            "scheduled_runtime_median_s": 0.0778,
             "dnf": {}
           },
           "hard_break": null,
@@ -367,11 +483,11 @@
           "demand": 1.0,
           "window_s": 300.0,
           "probe": {
-            "n": 61,
-            "median_s": 0.0371,
-            "p95_s": 0.0687,
-            "max_s": 0.0877,
-            "mean_s": 0.0279
+            "n": 60,
+            "median_s": 0.0427,
+            "p95_s": 0.0764,
+            "max_s": 0.0978,
+            "mean_s": 0.0329
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -379,11 +495,11 @@
           "scheduled": {
             "fires_intended": 30,
             "completed": 30,
-            "utilization": 0.0166,
+            "utilization": 0.0192,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0593,
+            "scheduled_runtime_median_s": 0.0673,
             "dnf": {}
           },
           "hard_break": null,
@@ -394,55 +510,165 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0432,
-            "p95_s": 0.0774,
-            "max_s": 0.0936,
+            "median_s": 0.0456,
+            "p95_s": 0.0828,
+            "max_s": 0.1021,
+            "mean_s": 0.0387
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 60,
+            "completed": 60,
+            "utilization": 0.0381,
+            "peak_outstanding": 1,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.0715,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 4.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 60,
+            "median_s": 0.0457,
+            "p95_s": 0.0808,
+            "max_s": 0.086,
+            "mean_s": 0.0368
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 120,
+            "completed": 120,
+            "utilization": 0.0751,
+            "peak_outstanding": 1,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.0626,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 8.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.0476,
+            "p95_s": 0.0732,
+            "max_s": 0.0935,
+            "mean_s": 0.0355
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 240,
+            "completed": 240,
+            "utilization": 0.148,
+            "peak_outstanding": 1,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.0655,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 16.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.041,
+            "p95_s": 0.0803,
+            "max_s": 0.115,
             "mean_s": 0.0345
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
           "probe_dnf_count": 0,
           "scheduled": {
-            "fires_intended": 60,
-            "completed": 60,
-            "utilization": 0.0338,
-            "peak_outstanding": 1,
+            "fires_intended": 480,
+            "completed": 480,
+            "utilization": 0.2957,
+            "peak_outstanding": 2,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0685,
+            "scheduled_runtime_median_s": 0.0625,
             "dnf": {}
           },
           "hard_break": null,
           "stop_reason": null
         },
         {
-          "demand": 4.0,
+          "demand": 32.0,
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0419,
-            "p95_s": 0.0676,
-            "max_s": 0.0843,
-            "mean_s": 0.0307
+            "median_s": 0.0382,
+            "p95_s": 0.075,
+            "max_s": 0.1024,
+            "mean_s": 0.0321
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
           "probe_dnf_count": 0,
           "scheduled": {
-            "fires_intended": 120,
-            "completed": 120,
-            "utilization": 0.0665,
-            "peak_outstanding": 1,
+            "fires_intended": 960,
+            "completed": 960,
+            "utilization": 0.5807,
+            "peak_outstanding": 2,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.0557,
+            "scheduled_runtime_median_s": 0.0636,
             "dnf": {}
           },
           "hard_break": null,
           "stop_reason": null
+        },
+        {
+          "demand": 64.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.2782,
+            "p95_s": 3.1113,
+            "max_s": 3.6266,
+            "mean_s": 1.1339
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 1920,
+            "completed": 1631,
+            "utilization": 53.2798,
+            "peak_outstanding": 64,
+            "backlog_end": 289,
+            "backlog_monotone": true,
+            "scheduled_runtime_median_s": 3.3931,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": "utilization_ge_1_with_monotone_backlog"
         }
       ],
-      "knee": null,
+      "knee": {
+        "demand": 64.0,
+        "stop_reason": "utilization_ge_1_with_monotone_backlog",
+        "probe_p95_s": 3.1113,
+        "reproduced": false,
+        "note": "first ladder step tripping the mechanical stop rule; a claimable knee requires 3x reproduction at this same demand step"
+      },
       "failure_shape": "graceful"
     },
     "trino": {
@@ -481,26 +707,26 @@
     "starrocks": {
       "arm": "starrocks",
       "baseline": {
-        "probe_median_s": 0.081,
-        "probe_cv_pct": 43.4,
+        "probe_median_s": 0.0813,
+        "probe_cv_pct": 36.6,
         "trials": 7,
         "warmup": 1,
         "samples_s": [
-          0.1945,
-          0.0664,
-          0.0892,
-          0.1015,
-          0.081,
-          0.0788,
-          0.063
+          0.1737,
+          0.0618,
+          0.0813,
+          0.0942,
+          0.0803,
+          0.093,
+          0.0717
         ]
       },
       "calibration": {
         "passed": true,
-        "max_demand": 4.0,
-        "baseline_median_s": 0.081,
-        "calibration_median_s": 0.0724,
-        "client_added_latency_pct": -10.62,
+        "max_demand": 64.0,
+        "baseline_median_s": 0.0813,
+        "calibration_median_s": 0.0668,
+        "client_added_latency_pct": -17.84,
         "threshold_pct": 5.0,
         "probe_samples": 13,
         "note": "client-added latency under the 5% gate \u2014 cpuset split clean"
@@ -512,10 +738,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0652,
-            "p95_s": 0.099,
-            "max_s": 0.1295,
-            "mean_s": 0.0659
+            "median_s": 0.0553,
+            "p95_s": 0.0825,
+            "max_s": 0.1197,
+            "mean_s": 0.0567
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -523,11 +749,11 @@
           "scheduled": {
             "fires_intended": 4,
             "completed": 4,
-            "utilization": 0.0075,
+            "utilization": 0.007,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.2804,
+            "scheduled_runtime_median_s": 0.2521,
             "dnf": {}
           },
           "hard_break": null,
@@ -538,10 +764,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0558,
-            "p95_s": 0.082,
-            "max_s": 0.096,
-            "mean_s": 0.055
+            "median_s": 0.0515,
+            "p95_s": 0.077,
+            "max_s": 0.0932,
+            "mean_s": 0.0514
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -549,11 +775,11 @@
           "scheduled": {
             "fires_intended": 8,
             "completed": 8,
-            "utilization": 0.0082,
+            "utilization": 0.008,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1739,
+            "scheduled_runtime_median_s": 0.1618,
             "dnf": {}
           },
           "hard_break": null,
@@ -564,10 +790,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0543,
-            "p95_s": 0.0826,
-            "max_s": 0.0912,
-            "mean_s": 0.0542
+            "median_s": 0.0495,
+            "p95_s": 0.0786,
+            "max_s": 0.1419,
+            "mean_s": 0.0504
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -575,11 +801,11 @@
           "scheduled": {
             "fires_intended": 15,
             "completed": 15,
-            "utilization": 0.0202,
+            "utilization": 0.0188,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1701,
+            "scheduled_runtime_median_s": 0.1603,
             "dnf": {}
           },
           "hard_break": null,
@@ -590,10 +816,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0532,
-            "p95_s": 0.0982,
-            "max_s": 0.1297,
-            "mean_s": 0.0581
+            "median_s": 0.0477,
+            "p95_s": 0.0761,
+            "max_s": 0.1106,
+            "mean_s": 0.0493
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -601,11 +827,11 @@
           "scheduled": {
             "fires_intended": 30,
             "completed": 30,
-            "utilization": 0.0366,
+            "utilization": 0.0335,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1669,
+            "scheduled_runtime_median_s": 0.1547,
             "dnf": {}
           },
           "hard_break": null,
@@ -616,10 +842,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0557,
-            "p95_s": 0.1012,
-            "max_s": 0.1174,
-            "mean_s": 0.0596
+            "median_s": 0.0505,
+            "p95_s": 0.0837,
+            "max_s": 0.131,
+            "mean_s": 0.0531
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -627,11 +853,11 @@
           "scheduled": {
             "fires_intended": 60,
             "completed": 60,
-            "utilization": 0.0738,
+            "utilization": 0.0654,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1667,
+            "scheduled_runtime_median_s": 0.1541,
             "dnf": {}
           },
           "hard_break": null,
@@ -642,10 +868,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.0562,
-            "p95_s": 0.0913,
-            "max_s": 0.1399,
-            "mean_s": 0.0564
+            "median_s": 0.0489,
+            "p95_s": 0.0768,
+            "max_s": 0.1132,
+            "mean_s": 0.0492
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -653,45 +879,157 @@
           "scheduled": {
             "fires_intended": 120,
             "completed": 120,
-            "utilization": 0.1417,
+            "utilization": 0.1254,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.1524,
+            "scheduled_runtime_median_s": 0.1414,
             "dnf": {}
           },
           "hard_break": null,
           "stop_reason": null
+        },
+        {
+          "demand": 8.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.044,
+            "p95_s": 0.0772,
+            "max_s": 0.1125,
+            "mean_s": 0.0458
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 240,
+            "completed": 240,
+            "utilization": 0.2453,
+            "peak_outstanding": 2,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.1364,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 16.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.0463,
+            "p95_s": 0.0878,
+            "max_s": 0.1196,
+            "mean_s": 0.0497
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 480,
+            "completed": 480,
+            "utilization": 0.5154,
+            "peak_outstanding": 2,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.1356,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 32.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.0533,
+            "p95_s": 0.1046,
+            "max_s": 0.2009,
+            "mean_s": 0.0611
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 960,
+            "completed": 960,
+            "utilization": 1.2184,
+            "peak_outstanding": 3,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.1704,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 64.0,
+          "window_s": 242.4,
+          "probe": {
+            "n": 49,
+            "median_s": 2.1633,
+            "p95_s": 4.9278,
+            "max_s": 5.5459,
+            "mean_s": 2.3448
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 1552,
+            "completed": 974,
+            "utilization": 58.3147,
+            "peak_outstanding": 64,
+            "backlog_end": 562,
+            "backlog_monotone": true,
+            "scheduled_runtime_median_s": 6.9328,
+            "dnf": {
+              "resource": 16
+            }
+          },
+          "hard_break": "resource",
+          "stop_reason": "hard_break:resource"
         }
       ],
-      "knee": null,
-      "failure_shape": "graceful"
+      "knee": {
+        "demand": 64.0,
+        "stop_reason": "hard_break:resource",
+        "probe_p95_s": 4.9278,
+        "reproduced": false,
+        "note": "first ladder step tripping the mechanical stop rule; a claimable knee requires 3x reproduction at this same demand step"
+      },
+      "failure_shape": "hard-break"
     },
     "dremio": {
       "arm": "dremio",
       "baseline": {
-        "probe_median_s": 0.5262,
-        "probe_cv_pct": 26.0,
+        "probe_median_s": 0.4496,
+        "probe_cv_pct": 26.1,
         "trials": 7,
         "warmup": 1,
         "samples_s": [
-          0.5935,
-          0.6062,
-          0.5262,
-          0.5336,
-          0.4719,
-          0.4022,
-          0.2175
+          0.5346,
+          0.5867,
+          0.5127,
+          0.4496,
+          0.3955,
+          0.3927,
+          0.2116
         ]
       },
       "calibration": {
         "passed": true,
-        "max_demand": 4.0,
-        "baseline_median_s": 0.5262,
-        "calibration_median_s": 0.383,
-        "client_added_latency_pct": -27.21,
+        "max_demand": 64.0,
+        "baseline_median_s": 0.4496,
+        "calibration_median_s": 0.3526,
+        "client_added_latency_pct": -21.57,
         "threshold_pct": 5.0,
-        "probe_samples": 12,
+        "probe_samples": 13,
         "note": "client-added latency under the 5% gate \u2014 cpuset split clean"
       },
       "scored": true,
@@ -701,10 +1039,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.2584,
-            "p95_s": 0.4526,
-            "max_s": 1.0224,
-            "mean_s": 0.2919
+            "median_s": 0.2374,
+            "p95_s": 0.4374,
+            "max_s": 0.8801,
+            "mean_s": 0.2501
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -712,11 +1050,11 @@
           "scheduled": {
             "fires_intended": 4,
             "completed": 4,
-            "utilization": 0.023,
+            "utilization": 0.0185,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 1.2011,
+            "scheduled_runtime_median_s": 0.9234,
             "dnf": {}
           },
           "hard_break": null,
@@ -727,10 +1065,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.2515,
-            "p95_s": 0.453,
-            "max_s": 0.8103,
-            "mean_s": 0.2753
+            "median_s": 0.2348,
+            "p95_s": 0.3684,
+            "max_s": 0.495,
+            "mean_s": 0.2352
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -738,11 +1076,11 @@
           "scheduled": {
             "fires_intended": 8,
             "completed": 8,
-            "utilization": 0.0248,
+            "utilization": 0.0214,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.7223,
+            "scheduled_runtime_median_s": 0.6106,
             "dnf": {}
           },
           "hard_break": null,
@@ -753,10 +1091,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.2535,
-            "p95_s": 0.4557,
-            "max_s": 0.5716,
-            "mean_s": 0.2743
+            "median_s": 0.2346,
+            "p95_s": 0.3741,
+            "max_s": 0.4856,
+            "mean_s": 0.2373
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -764,11 +1102,11 @@
           "scheduled": {
             "fires_intended": 15,
             "completed": 15,
-            "utilization": 0.045,
+            "utilization": 0.0395,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.5834,
+            "scheduled_runtime_median_s": 0.4602,
             "dnf": {}
           },
           "hard_break": null,
@@ -779,10 +1117,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.2513,
-            "p95_s": 0.4519,
-            "max_s": 0.5679,
-            "mean_s": 0.2673
+            "median_s": 0.2357,
+            "p95_s": 0.3739,
+            "max_s": 0.482,
+            "mean_s": 0.2457
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -790,11 +1128,11 @@
           "scheduled": {
             "fires_intended": 30,
             "completed": 30,
-            "utilization": 0.074,
+            "utilization": 0.0703,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.4117,
+            "scheduled_runtime_median_s": 0.4023,
             "dnf": {}
           },
           "hard_break": null,
@@ -805,10 +1143,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.2933,
-            "p95_s": 0.4079,
-            "max_s": 0.5523,
-            "mean_s": 0.2856
+            "median_s": 0.29,
+            "p95_s": 0.406,
+            "max_s": 0.4837,
+            "mean_s": 0.2763
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -816,11 +1154,11 @@
           "scheduled": {
             "fires_intended": 60,
             "completed": 60,
-            "utilization": 0.1404,
+            "utilization": 0.1388,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.455,
+            "scheduled_runtime_median_s": 0.4053,
             "dnf": {}
           },
           "hard_break": null,
@@ -831,10 +1169,10 @@
           "window_s": 300.0,
           "probe": {
             "n": 61,
-            "median_s": 0.2863,
-            "p95_s": 0.4773,
-            "max_s": 0.6217,
-            "mean_s": 0.2808
+            "median_s": 0.2833,
+            "p95_s": 0.478,
+            "max_s": 0.5945,
+            "mean_s": 0.2772
           },
           "probe_p95_over_flow_10s": false,
           "probe_p95_over_tolerable_30s": false,
@@ -842,18 +1180,128 @@
           "scheduled": {
             "fires_intended": 120,
             "completed": 120,
-            "utilization": 0.2622,
+            "utilization": 0.259,
             "peak_outstanding": 1,
             "backlog_end": 0,
             "backlog_monotone": false,
-            "scheduled_runtime_median_s": 0.342,
+            "scheduled_runtime_median_s": 0.339,
             "dnf": {}
           },
           "hard_break": null,
           "stop_reason": null
+        },
+        {
+          "demand": 8.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.2813,
+            "p95_s": 0.4056,
+            "max_s": 0.4841,
+            "mean_s": 0.2625
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 240,
+            "completed": 240,
+            "utilization": 0.5519,
+            "peak_outstanding": 2,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.4638,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 16.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 0.341,
+            "p95_s": 0.6969,
+            "max_s": 0.9028,
+            "mean_s": 0.3711
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 480,
+            "completed": 480,
+            "utilization": 1.3313,
+            "peak_outstanding": 3,
+            "backlog_end": 0,
+            "backlog_monotone": false,
+            "scheduled_runtime_median_s": 0.5532,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": null
+        },
+        {
+          "demand": 32.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 61,
+            "median_s": 2.0934,
+            "p95_s": 3.7274,
+            "max_s": 4.8852,
+            "mean_s": 2.1698
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 960,
+            "completed": 655,
+            "utilization": 62.0692,
+            "peak_outstanding": 64,
+            "backlog_end": 305,
+            "backlog_monotone": true,
+            "scheduled_runtime_median_s": 10.0432,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": "utilization_ge_1_with_monotone_backlog"
+        },
+        {
+          "demand": 64.0,
+          "window_s": 300.0,
+          "probe": {
+            "n": 60,
+            "median_s": 2.1529,
+            "p95_s": 5.7833,
+            "max_s": 11.9706,
+            "mean_s": 2.7905
+          },
+          "probe_p95_over_flow_10s": false,
+          "probe_p95_over_tolerable_30s": false,
+          "probe_dnf_count": 0,
+          "scheduled": {
+            "fires_intended": 1920,
+            "completed": 623,
+            "utilization": 67.502,
+            "peak_outstanding": 64,
+            "backlog_end": 1297,
+            "backlog_monotone": true,
+            "scheduled_runtime_median_s": 32.2764,
+            "dnf": {}
+          },
+          "hard_break": null,
+          "stop_reason": "utilization_ge_1_with_monotone_backlog"
         }
       ],
-      "knee": null,
+      "knee": {
+        "demand": 32.0,
+        "stop_reason": "utilization_ge_1_with_monotone_backlog",
+        "probe_p95_s": 3.7274,
+        "reproduced": false,
+        "note": "first ladder step tripping the mechanical stop rule; a claimable knee requires 3x reproduction at this same demand step"
+      },
       "failure_shape": "graceful"
     }
   }
