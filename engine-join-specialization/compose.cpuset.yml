@@ -1,0 +1,14 @@
+# cpuset 12/2 engine/client split for the workload-interference (#23) bench
+# (pre-registered isolation control). Engines pinned to cores 0-11; the run/client
+# container is pinned to 12,13 via --cpuset-cpus at docker-run time. The duckdb_parquet
+# arm is unpinned (the embedded model deliberately shares host cores). Applied with
+#   docker compose -f compose.yml -f compose.cpuset.yml ...
+services:
+  starrocks:
+    cpuset: "0-11"
+  clickhouse:
+    cpuset: "0-11"
+  trino:
+    cpuset: "0-11"
+  dremio:
+    cpuset: "0-11"

@@ -1,4 +1,7 @@
 FROM python:3.12-slim
+# trino + duckdb added 2026-06-14 for the workload-interference (#23) harness:
+# the trino arm needs the trino client, and duckdb_parquet + lib.common.configure_duckdb
+# need duckdb. The original ejs join bench did not exercise these from the lab container.
 RUN pip install --no-cache-dir \
-    pyiceberg==0.11.1 pyarrow pymysql clickhouse-connect requests s3fs
+    pyiceberg==0.11.1 pyarrow pymysql clickhouse-connect requests s3fs trino duckdb
 WORKDIR /bench
