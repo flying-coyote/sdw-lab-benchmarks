@@ -1,6 +1,6 @@
 {
   "reference_workload_gb_per_day_raw": 1000.0,
-  "prices_as_of": "2026-06-10 AWS us-east-1 list \u2014 verified against the live AWS rate-card feeds (see PRICES comment)",
+  "prices_as_of": "2026-06-10 AWS us-east-1 list, re-verified 2026-06-14 (all three unchanged; see PRICES comment)",
   "curves": {
     "opensearch_index": {
       "ratio_vs_raw": 2.0,
