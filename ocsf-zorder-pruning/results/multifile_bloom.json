@@ -1,0 +1,285 @@
+{
+  "benchmark": "ocsf-zorder-pruning / multifile + bloom (H-LAKEHOUSE-ZORDER-01 owed legs)",
+  "bloom_compare": {
+    "single_sort": {
+      "bloom": {
+        "queries": {
+          "Q1_src_ip_and_time": {
+            "cv_pct": 4.2,
+            "median_ms": 2.47
+          },
+          "Q2_dst_port_and_src_ip": {
+            "cv_pct": 5.7,
+            "median_ms": 1.991
+          },
+          "Q3_dst_endpoint_and_port": {
+            "cv_pct": 18.7,
+            "median_ms": 4.875
+          },
+          "Q4_time_window_only": {
+            "cv_pct": 4.3,
+            "median_ms": 7.285
+          }
+        },
+        "size_bytes": 26845380
+      },
+      "no_bloom": {
+        "queries": {
+          "Q1_src_ip_and_time": {
+            "cv_pct": 9.0,
+            "median_ms": 2.671
+          },
+          "Q2_dst_port_and_src_ip": {
+            "cv_pct": 16.2,
+            "median_ms": 2.177
+          },
+          "Q3_dst_endpoint_and_port": {
+            "cv_pct": 13.1,
+            "median_ms": 4.822
+          },
+          "Q4_time_window_only": {
+            "cv_pct": 7.2,
+            "median_ms": 7.077
+          }
+        },
+        "size_bytes": 26437590
+      }
+    },
+    "unordered": {
+      "bloom": {
+        "queries": {
+          "Q1_src_ip_and_time": {
+            "cv_pct": 4.9,
+            "median_ms": 9.348
+          },
+          "Q2_dst_port_and_src_ip": {
+            "cv_pct": 6.2,
+            "median_ms": 6.974
+          },
+          "Q3_dst_endpoint_and_port": {
+            "cv_pct": 1.4,
+            "median_ms": 4.86
+          },
+          "Q4_time_window_only": {
+            "cv_pct": 7.7,
+            "median_ms": 6.644
+          }
+        },
+        "size_bytes": 34909607
+      },
+      "no_bloom": {
+        "queries": {
+          "Q1_src_ip_and_time": {
+            "cv_pct": 8.7,
+            "median_ms": 9.961
+          },
+          "Q2_dst_port_and_src_ip": {
+            "cv_pct": 12.9,
+            "median_ms": 8.804
+          },
+          "Q3_dst_endpoint_and_port": {
+            "cv_pct": 32.3,
+            "median_ms": 4.775
+          },
+          "Q4_time_window_only": {
+            "cv_pct": 2.5,
+            "median_ms": 6.881
+          }
+        },
+        "size_bytes": 34501817
+      }
+    },
+    "zorder": {
+      "bloom": {
+        "queries": {
+          "Q1_src_ip_and_time": {
+            "cv_pct": 9.6,
+            "median_ms": 3.865
+          },
+          "Q2_dst_port_and_src_ip": {
+            "cv_pct": 5.9,
+            "median_ms": 3.893
+          },
+          "Q3_dst_endpoint_and_port": {
+            "cv_pct": 21.7,
+            "median_ms": 4.545
+          },
+          "Q4_time_window_only": {
+            "cv_pct": 12.2,
+            "median_ms": 3.868
+          }
+        },
+        "size_bytes": 33068273
+      },
+      "no_bloom": {
+        "queries": {
+          "Q1_src_ip_and_time": {
+            "cv_pct": 97.2,
+            "median_ms": 4.592
+          },
+          "Q2_dst_port_and_src_ip": {
+            "cv_pct": 13.5,
+            "median_ms": 4.416
+          },
+          "Q3_dst_endpoint_and_port": {
+            "cv_pct": 34.0,
+            "median_ms": 4.524
+          },
+          "Q4_time_window_only": {
+            "cv_pct": 17.4,
+            "median_ms": 4.317
+          }
+        },
+        "size_bytes": 32660483
+      }
+    }
+  },
+  "environment": {
+    "duckdb": "1.5.3",
+    "pyarrow": "24.0.0"
+  },
+  "evidence_tier": "B (single host; seeded corpus; DuckDB/pyarrow)",
+  "multifile_pruning": {
+    "single_sort": {
+      "Q1_src_ip_and_time": {
+        "file_pct_pruned": 75.0,
+        "files_pruned": 6,
+        "files_total": 8,
+        "rg_pct_pruned": 95.0,
+        "rg_pruned": 38,
+        "rg_total": 40,
+        "rows_pct_scanned": 5.0,
+        "rows_scanned": 100000,
+        "rows_total": 2000000
+      },
+      "Q2_dst_port_and_src_ip": {
+        "file_pct_pruned": 87.5,
+        "files_pruned": 7,
+        "files_total": 8,
+        "rg_pct_pruned": 97.5,
+        "rg_pruned": 39,
+        "rg_total": 40,
+        "rows_pct_scanned": 2.5,
+        "rows_scanned": 50000,
+        "rows_total": 2000000
+      },
+      "Q3_dst_endpoint_and_port": {
+        "file_pct_pruned": 0.0,
+        "files_pruned": 0,
+        "files_total": 8,
+        "rg_pct_pruned": 0.0,
+        "rg_pruned": 0,
+        "rg_total": 40,
+        "rows_pct_scanned": 100.0,
+        "rows_scanned": 2000000,
+        "rows_total": 2000000
+      },
+      "Q4_time_window_only": {
+        "file_pct_pruned": 0.0,
+        "files_pruned": 0,
+        "files_total": 8,
+        "rg_pct_pruned": 0.0,
+        "rg_pruned": 0,
+        "rg_total": 40,
+        "rows_pct_scanned": 100.0,
+        "rows_scanned": 2000000,
+        "rows_total": 2000000
+      }
+    },
+    "unordered": {
+      "Q1_src_ip_and_time": {
+        "file_pct_pruned": 0.0,
+        "files_pruned": 0,
+        "files_total": 8,
+        "rg_pct_pruned": 0.0,
+        "rg_pruned": 0,
+        "rg_total": 40,
+        "rows_pct_scanned": 100.0,
+        "rows_scanned": 2000000,
+        "rows_total": 2000000
+      },
+      "Q2_dst_port_and_src_ip": {
+        "file_pct_pruned": 0.0,
+        "files_pruned": 0,
+        "files_total": 8,
+        "rg_pct_pruned": 0.0,
+        "rg_pruned": 0,
+        "rg_total": 40,
+        "rows_pct_scanned": 100.0,
+        "rows_scanned": 2000000,
+        "rows_total": 2000000
+      },
+      "Q3_dst_endpoint_and_port": {
+        "file_pct_pruned": 0.0,
+        "files_pruned": 0,
+        "files_total": 8,
+        "rg_pct_pruned": 0.0,
+        "rg_pruned": 0,
+        "rg_total": 40,
+        "rows_pct_scanned": 100.0,
+        "rows_scanned": 2000000,
+        "rows_total": 2000000
+      },
+      "Q4_time_window_only": {
+        "file_pct_pruned": 0.0,
+        "files_pruned": 0,
+        "files_total": 8,
+        "rg_pct_pruned": 0.0,
+        "rg_pruned": 0,
+        "rg_total": 40,
+        "rows_pct_scanned": 100.0,
+        "rows_scanned": 2000000,
+        "rows_total": 2000000
+      }
+    },
+    "zorder": {
+      "Q1_src_ip_and_time": {
+        "file_pct_pruned": 37.5,
+        "files_pruned": 3,
+        "files_total": 8,
+        "rg_pct_pruned": 72.5,
+        "rg_pruned": 29,
+        "rg_total": 40,
+        "rows_pct_scanned": 27.5,
+        "rows_scanned": 550000,
+        "rows_total": 2000000
+      },
+      "Q2_dst_port_and_src_ip": {
+        "file_pct_pruned": 25.0,
+        "files_pruned": 2,
+        "files_total": 8,
+        "rg_pct_pruned": 65.0,
+        "rg_pruned": 26,
+        "rg_total": 40,
+        "rows_pct_scanned": 35.0,
+        "rows_scanned": 700000,
+        "rows_total": 2000000
+      },
+      "Q3_dst_endpoint_and_port": {
+        "file_pct_pruned": 0.0,
+        "files_pruned": 0,
+        "files_total": 8,
+        "rg_pct_pruned": 15.0,
+        "rg_pruned": 6,
+        "rg_total": 40,
+        "rows_pct_scanned": 85.0,
+        "rows_scanned": 1700000,
+        "rows_total": 2000000
+      },
+      "Q4_time_window_only": {
+        "file_pct_pruned": 50.0,
+        "files_pruned": 4,
+        "files_total": 8,
+        "rg_pct_pruned": 65.0,
+        "rg_pruned": 26,
+        "rg_total": 40,
+        "rows_pct_scanned": 35.0,
+        "rows_scanned": 700000,
+        "rows_total": 2000000
+      }
+    }
+  },
+  "n_files": 8,
+  "n_rows": 2000000,
+  "row_group_size": 50000
+}
