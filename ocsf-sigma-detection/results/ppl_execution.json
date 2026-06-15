@@ -1,0 +1,33 @@
+{
+  "benchmark": "ocsf-sigma-detection / PPL execution (H-SIGMA-01 execution leg)",
+  "correct_windowed_ppl": "source=auth-synth | where outcome='FAILURE' | stats count() as c by actor_user, span(@timestamp, 10m) as win | where c >= 10",
+  "emitted_windowless_ppl": "source=auth-synth | where outcome='FAILURE' | stats count() as event_count by actor_user | where event_count >= 10",
+  "events": 4093,
+  "evidence_tier": "B (single host; synthetic planted corpus; OpenSearch 3.7.0 PPL)",
+  "ground_truth": {
+    "benign": 500,
+    "decoy_spread": 50,
+    "true_burst": 20
+  },
+  "rule": "brute_force: event_count >=10 failed logons per actor_user in 10m",
+  "windowed": {
+    "false_positive_rate_of_alerts": 0.0,
+    "flagged": 20,
+    "fp_benign": 0,
+    "fp_decoy": 0,
+    "fp_total": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 20
+  },
+  "windowless": {
+    "false_positive_rate_of_alerts": 0.714,
+    "flagged": 70,
+    "fp_benign": 0,
+    "fp_decoy": 50,
+    "fp_total": 50,
+    "precision": 0.286,
+    "recall": 1.0,
+    "tp": 20
+  }
+}
