@@ -1,0 +1,82 @@
+{
+  "engine": "opensearch",
+  "table": "soc.conn",
+  "window_s": 20.0,
+  "levels": [
+    {
+      "n_clients": 1,
+      "elapsed_s": 20.008,
+      "completed": 23,
+      "qps": 1.15,
+      "p50_ms": 849.07,
+      "p95_ms": 990.87,
+      "p99_ms": 1116.78,
+      "mean_ms": 870.68,
+      "errors": 0,
+      "err_sample": [],
+      "mem_min_kb": 32549260,
+      "aborted": null,
+      "result_key": "127.0.0.1"
+    },
+    {
+      "n_clients": 2,
+      "elapsed_s": 20.009,
+      "completed": 43,
+      "qps": 2.149,
+      "p50_ms": 915.41,
+      "p95_ms": 1202.15,
+      "p99_ms": 1256.5,
+      "mean_ms": 949.1,
+      "errors": 0,
+      "err_sample": [],
+      "mem_min_kb": 32548400,
+      "aborted": null,
+      "result_key": "127.0.0.1"
+    },
+    {
+      "n_clients": 4,
+      "elapsed_s": 20.01,
+      "completed": 73,
+      "qps": 3.648,
+      "p50_ms": 1114.57,
+      "p95_ms": 1447.36,
+      "p99_ms": 1502.45,
+      "mean_ms": 1127.76,
+      "errors": 0,
+      "err_sample": [],
+      "mem_min_kb": 32485124,
+      "aborted": null,
+      "result_key": "127.0.0.1"
+    },
+    {
+      "n_clients": 8,
+      "elapsed_s": 20.016,
+      "completed": 110,
+      "qps": 5.496,
+      "p50_ms": 1494.13,
+      "p95_ms": 1722.85,
+      "p99_ms": 1767.67,
+      "mean_ms": 1496.21,
+      "errors": 0,
+      "err_sample": [],
+      "mem_min_kb": 32453684,
+      "aborted": null,
+      "result_key": "127.0.0.1"
+    },
+    {
+      "n_clients": 16,
+      "elapsed_s": 20.035,
+      "completed": 142,
+      "qps": 7.088,
+      "p50_ms": 2372.52,
+      "p95_ms": 2916.64,
+      "p99_ms": 3213.66,
+      "mean_ms": 2385.87,
+      "errors": 0,
+      "err_sample": [],
+      "mem_min_kb": 32331024,
+      "aborted": null,
+      "result_key": "127.0.0.1"
+    }
+  ]
+}
