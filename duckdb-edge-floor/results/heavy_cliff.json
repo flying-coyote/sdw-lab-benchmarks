@@ -1,0 +1,62 @@
+{
+  "bench": "duckdb-edge-floor / heavy cliff-finder",
+  "tier": "B",
+  "n_rows": 10000000,
+  "detection": "high-card group-by (host,user,process,minute) ~10M groups",
+  "threads": 1,
+  "runs": [
+    {
+      "mem": "4GB",
+      "latency_s": 2.36,
+      "completed": true,
+      "spilled_mb": 0.0,
+      "spilled": false
+    },
+    {
+      "mem": "2GB",
+      "latency_s": 3.36,
+      "completed": true,
+      "spilled_mb": 0.0,
+      "spilled": false
+    },
+    {
+      "mem": "1GB",
+      "latency_s": 2.95,
+      "completed": true,
+      "spilled_mb": 0.0,
+      "spilled": false
+    },
+    {
+      "mem": "512MB",
+      "latency_s": 3.67,
+      "completed": true,
+      "spilled_mb": 0.0,
+      "spilled": false
+    },
+    {
+      "mem": "256MB",
+      "latency_s": 3.65,
+      "completed": true,
+      "spilled_mb": 0.0,
+      "spilled": false
+    },
+    {
+      "mem": "128MB",
+      "latency_s": 3.86,
+      "completed": true,
+      "spilled_mb": 0.0,
+      "spilled": false
+    },
+    {
+      "mem": "64MB",
+      "latency_s": 3.74,
+      "completed": true,
+      "spilled_mb": 0.0,
+      "spilled": false
+    }
+  ],
+  "floor_mem": "64MB",
+  "graceful_spill_seen": false,
+  "cliff_seen": false,
+  "cliff_at": null
+}
