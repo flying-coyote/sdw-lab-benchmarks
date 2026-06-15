@@ -1,0 +1,55 @@
+{
+  "bench": "BENCH-D write/commit-freshness contract (achievable core; no Kafka/Flink front)",
+  "tier": "B",
+  "host": "single host",
+  "batches": [
+    1000,
+    10000,
+    100000
+  ],
+  "reps": 3,
+  "arms": {
+    "ducklake_catalog_inline": {
+      "1000": {
+        "write_commit_s": 0.0157,
+        "query_s": 0.0064
+      },
+      "10000": {
+        "write_commit_s": 0.0192,
+        "query_s": 0.0062
+      },
+      "100000": {
+        "write_commit_s": 0.0797,
+        "query_s": 0.008
+      }
+    },
+    "clickhouse_wal": {
+      "1000": {
+        "write_commit_s": 0.0608,
+        "query_s": 0.0026
+      },
+      "10000": {
+        "write_commit_s": 0.0715,
+        "query_s": 0.0023
+      },
+      "100000": {
+        "write_commit_s": 0.0998,
+        "query_s": 0.0024
+      }
+    },
+    "iceberg_file_commit": {
+      "1000": {
+        "write_commit_s": 0.0706,
+        "query_s": 0.1134
+      },
+      "10000": {
+        "write_commit_s": 0.0717,
+        "query_s": 0.2212
+      },
+      "100000": {
+        "write_commit_s": 0.1244,
+        "query_s": 0.29
+      }
+    }
+  }
+}
