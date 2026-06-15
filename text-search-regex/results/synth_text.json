@@ -1,0 +1,79 @@
+{
+  "bench": "text-search-regex (synthetic corpus)",
+  "tier": "B",
+  "host": "single host",
+  "n_rows": 2000000,
+  "truth": {
+    "powershell": 40240,
+    "rundll32": 19828,
+    "FromB64StringDec": 10064,
+    "__b64": 7946
+  },
+  "storage_mb": {
+    "clickhouse": 181,
+    "opensearch": 209
+  },
+  "patterns": {
+    "powershell": {
+      "class": "token",
+      "expected": 40240,
+      "opensearch": {
+        "median_s": 0.0057,
+        "count": 40240
+      },
+      "ch_brute": {
+        "median_s": 0.0542,
+        "count": 40240
+      },
+      "ch_fts": {
+        "median_s": 0.0046,
+        "count": 40240
+      }
+    },
+    "rundll32": {
+      "class": "token",
+      "expected": 19828,
+      "opensearch": {
+        "median_s": 0.0043,
+        "count": 19828
+      },
+      "ch_brute": {
+        "median_s": 0.054,
+        "count": 19828
+      },
+      "ch_fts": {
+        "median_s": 0.0049,
+        "count": 19828
+      }
+    },
+    "B64_substring": {
+      "class": "substring",
+      "expected": 10064,
+      "opensearch": {
+        "median_s": 0.0052,
+        "count": 10066
+      },
+      "ch_brute": {
+        "median_s": 0.052,
+        "count": 10066
+      }
+    },
+    "base64_blob": {
+      "class": "regex",
+      "expected": 7946,
+      "opensearch": {
+        "median_s": 0.0051,
+        "count": 3159
+      },
+      "ch_brute": {
+        "median_s": 0.1071,
+        "count": 7946
+      },
+      "ch_hyperscan": {
+        "median_s": 0.1056,
+        "count": 7946
+      }
+    }
+  },
+  "storage_note": "ClickHouse 181MB vs OpenSearch 209MB"
+}
