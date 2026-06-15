@@ -1,0 +1,29 @@
+{
+  "foil_avg_s": 2.854,
+  "corpus": "flagship conn_10m",
+  "tier": "B",
+  "host": "ejs single host",
+  "starrocks": {
+    "per_query": {
+      "count_all": 0.0422,
+      "top_source_ips_by_bytes": 0.1732,
+      "protocol_distribution": 0.0734,
+      "long_duration_connections": 0.1602,
+      "port_scan_detection": 1.268
+    },
+    "avg_of_medians_s": 0.3434,
+    "x_vs_foil": 8.3
+  },
+  "trino": {
+    "catalog": "iceberg",
+    "per_query": {
+      "count_all": 0.0748,
+      "top_source_ips_by_bytes": 0.5464,
+      "protocol_distribution": 0.13,
+      "long_duration_connections": 0.4353,
+      "port_scan_detection": 2.7886
+    },
+    "avg_of_medians_s": 0.795,
+    "x_vs_foil": 3.6
+  }
+}

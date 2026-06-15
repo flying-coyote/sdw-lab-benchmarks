@@ -10,27 +10,30 @@ This is the SCAN-HEAVY AGGREGATION regime (the hunting workload). On point-looku
 inverted index wins — that is the other half of the two-regime split (NEEDLE-FINDINGS),
 which the subtitle names so the chart does not overclaim "columnar always wins".
 
-Kept filename `benchmark-8-engine.png` so the deck + campaign references don't break, even
-though the honest current foil-comparison suite is 4 arms (StarRocks/Trino were a separate
-join workload, never re-measured against this foil — including them would mix foils).
+Kept filename `benchmark-8-engine.png` so the deck + campaign references don't break. As of
+2026-06-15 StarRocks + Trino were re-measured against THIS foil on the SAME conn_10m corpus +
+5-query suite (starrocks_trino_arms.py → results/starrocks_trino_arms.json), so the chart now
+carries 6 arms without mixing foils.
 """
 import chartstyle as cs
 import matplotlib.pyplot as plt
 
-# (label, avg-of-medians seconds, x faster than foil, bar color)
+# (label, avg-of-medians seconds, x faster than foil, bar color) — ordered by speed
 ARMS = [
-    ("Schema-on-read SIEM\ninverted index",        2.854, 1.0,  cs.CONTEXT),  # baseline
+    ("Schema-on-read SIEM\ninverted index",        2.854, 1.0,  cs.CONTEXT),  # baseline foil
+    ("Trino\nIceberg · federated (REST)",          0.795, 3.6,  "#8fb4d9"),   # open format
     ("Dremio\nIceberg · Reflections off",          0.787, 3.6,  cs.ACCENT2),  # open format
+    ("StarRocks\nIceberg · async-MV rewrite",      0.343, 8.3,  cs.TEAL600),  # open-format MPP
     ("ClickHouse\nIceberg · zstd Parquet",         0.282, 10.1, cs.ACCENT),   # open-format hero
-    ("ClickHouse\nnative MergeTree",               0.061, 46.8, cs.TEAL600),  # proprietary ceiling
+    ("ClickHouse\nnative MergeTree",               0.061, 46.8, cs.INK),      # proprietary ceiling
 ]
 
 fig, ax = cs.canvas(
     "Columnar engines win the hunting workload on open Iceberg",
     sub=("Average of 5 scan/aggregate queries vs a schema-on-read inverted-index foil (10M-event Zeek). "
-         "The open Iceberg arms clear the foil 3.6–10.1×; the ~4.6× gap to native is the open-format tax. "
+         "Five open-Iceberg engines clear the foil 3.6–10.1×; the ~4.6× gap to native is the open-format tax. "
          "On point-lookups the index wins — the other regime."),
-    source="sdw-lab zeek-flagship-rerun · triple-validated 2026-06-14 · OpenSearch 3.7 foil (best_compression, 1 seg)",
+    source="sdw-lab zeek-flagship-rerun · 4 arms triple-validated 2026-06-14, StarRocks+Trino added 2026-06-15 · OpenSearch 3.7 foil (best_compression, 1 seg)",
     tier="Tier B · single host · reproducible",
     figsize=(9.4, 5.0), bottom=0.21, top=0.74,
 )
