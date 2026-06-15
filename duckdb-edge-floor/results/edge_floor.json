@@ -1,0 +1,174 @@
+{
+  "bench": "duckdb-edge-floor (H-EDGE-01 \u00a712)",
+  "tier": "B",
+  "n_rows": 10000000,
+  "corpus_mb": 116.1,
+  "duckdb": "1.5.3",
+  "runs": [
+    {
+      "mem": "4GB",
+      "threads": 4,
+      "latency_s": 0.42,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "2GB",
+      "threads": 4,
+      "latency_s": 0.48,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "1GB",
+      "threads": 4,
+      "latency_s": 0.45,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "512MB",
+      "threads": 4,
+      "latency_s": 0.6,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "256MB",
+      "threads": 4,
+      "latency_s": 0.76,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "128MB",
+      "threads": 4,
+      "latency_s": 1.43,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "4GB",
+      "threads": 2,
+      "latency_s": 0.79,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "2GB",
+      "threads": 2,
+      "latency_s": 0.67,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "1GB",
+      "threads": 2,
+      "latency_s": 0.93,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "512MB",
+      "threads": 2,
+      "latency_s": 0.65,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "256MB",
+      "threads": 2,
+      "latency_s": 1.05,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "128MB",
+      "threads": 2,
+      "latency_s": 1.49,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "4GB",
+      "threads": 1,
+      "latency_s": 1.06,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "2GB",
+      "threads": 1,
+      "latency_s": 1.06,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "1GB",
+      "threads": 1,
+      "latency_s": 1.19,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "512MB",
+      "threads": 1,
+      "latency_s": 1.02,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "256MB",
+      "threads": 1,
+      "latency_s": 1.1,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    },
+    {
+      "mem": "128MB",
+      "threads": 1,
+      "latency_s": 2.01,
+      "completed": true,
+      "flagged": 50,
+      "spilled_bytes": 0,
+      "spilled": false
+    }
+  ],
+  "floor_mem_threads1": "128MB",
+  "graceful": false,
+  "any_cliff": false
+}
