@@ -1,0 +1,52 @@
+{
+  "bench": "spec-vs-emitted-integrity (H-SPEC-INTEGRITY-01 \u00a79)",
+  "tier": "B",
+  "n_records": 5000,
+  "n_fields": 12,
+  "cases": {
+    "positional_csv:field_omission": {
+      "correct": 30000,
+      "silent_wrong": 25000,
+      "loud_miss": 5000,
+      "silent_per_record": 5.0,
+      "loud_per_record": 1.0
+    },
+    "positional_csv:tail_append": {
+      "correct": 60000,
+      "silent_wrong": 0,
+      "loud_miss": 0,
+      "silent_per_record": 0.0,
+      "loud_per_record": 0.0
+    },
+    "positional_csv:type_drift": {
+      "correct": 55000,
+      "silent_wrong": 5000,
+      "loud_miss": 0,
+      "silent_per_record": 1.0,
+      "loud_per_record": 0.0
+    },
+    "kv_pairs:key_rename": {
+      "correct": 55000,
+      "silent_wrong": 0,
+      "loud_miss": 5000,
+      "silent_per_record": 0.0,
+      "loud_per_record": 1.0
+    },
+    "kv_pairs:field_omission": {
+      "correct": 55000,
+      "silent_wrong": 0,
+      "loud_miss": 5000,
+      "silent_per_record": 0.0,
+      "loud_per_record": 1.0
+    },
+    "json:key_rename": {
+      "correct": 55000,
+      "silent_wrong": 0,
+      "loud_miss": 5000,
+      "silent_per_record": 0.0,
+      "loud_per_record": 1.0
+    }
+  },
+  "positional_max_silent_blast": 5.0,
+  "selfdescribing_max_silent_blast": 0.0
+}
