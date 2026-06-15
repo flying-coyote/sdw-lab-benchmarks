@@ -1,0 +1,593 @@
+{
+  "summary": {
+    "bench": "deterministic-routing-sim (H-DETERMINISTIC-ROUTING-01)",
+    "tier": "B- / simulation (routing-decision sim, not a live multi-engine measurement)",
+    "host": "lab-free; sqlglot 30.11.0; ground truth = engine-join-specialization RESULTS (single host, 2026-06-10)",
+    "honesty": "Ground-truth winner map is a ~10-shape lookup table from one host. High templated accuracy is partly circular (the templated corpus IS the measured shapes) \u2014 DR-5's denominator-artifact point. The result of interest is the per-mode degradation and whether R3/view-resolution closes the catastrophic (cliff) modes.",
+    "templated_accuracy": {
+      "n": 11,
+      "correct": 11,
+      "minor_misroute": 0,
+      "catastrophic_misroute": 0,
+      "parse_fail": 0,
+      "accuracy": 1.0
+    },
+    "full_router_adversarial_overall": {
+      "n": 5,
+      "correct": 4,
+      "minor_misroute": 1,
+      "catastrophic_misroute": 0,
+      "parse_fail": 0,
+      "accuracy": 0.8
+    },
+    "per_mode": {
+      "view_obfuscation": {
+        "full": {
+          "n": 1,
+          "correct": 1,
+          "minor_misroute": 0,
+          "catastrophic_misroute": 0,
+          "parse_fail": 0,
+          "accuracy": 1.0
+        },
+        "ast_only": {
+          "n": 1,
+          "correct": 0,
+          "minor_misroute": 0,
+          "catastrophic_misroute": 1,
+          "parse_fail": 0,
+          "accuracy": 0.0
+        }
+      },
+      "time_predicate_masking": {
+        "full": {
+          "n": 1,
+          "correct": 0,
+          "minor_misroute": 1,
+          "catastrophic_misroute": 0,
+          "parse_fail": 0,
+          "accuracy": 0.0
+        },
+        "ast_only": {
+          "n": 1,
+          "correct": 0,
+          "minor_misroute": 1,
+          "catastrophic_misroute": 0,
+          "parse_fail": 0,
+          "accuracy": 0.0
+        }
+      },
+      "literal_skew": {
+        "full": {
+          "n": 1,
+          "correct": 1,
+          "minor_misroute": 0,
+          "catastrophic_misroute": 0,
+          "parse_fail": 0,
+          "accuracy": 1.0
+        },
+        "ast_only": {
+          "n": 1,
+          "correct": 1,
+          "minor_misroute": 0,
+          "catastrophic_misroute": 0,
+          "parse_fail": 0,
+          "accuracy": 1.0
+        }
+      },
+      "dynamic_functions": {
+        "full": {
+          "n": 1,
+          "correct": 1,
+          "minor_misroute": 0,
+          "catastrophic_misroute": 0,
+          "parse_fail": 0,
+          "accuracy": 1.0
+        },
+        "ast_only": {
+          "n": 1,
+          "correct": 1,
+          "minor_misroute": 0,
+          "catastrophic_misroute": 0,
+          "parse_fail": 0,
+          "accuracy": 1.0
+        }
+      },
+      "dialect_mismatch": {
+        "full": {
+          "n": 1,
+          "correct": 1,
+          "minor_misroute": 0,
+          "catastrophic_misroute": 0,
+          "parse_fail": 0,
+          "accuracy": 1.0
+        },
+        "ast_only": {
+          "n": 1,
+          "correct": 1,
+          "minor_misroute": 0,
+          "catastrophic_misroute": 0,
+          "parse_fail": 0,
+          "accuracy": 1.0
+        }
+      }
+    },
+    "dialect_common_subset": [
+      {
+        "id": "t_q3",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_q5",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_q9",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_q18",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_q21",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_j1",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_j2",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_j3",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_j4",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_scan",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      },
+      {
+        "id": "t_pt",
+        "in_common_subset": true,
+        "per_dialect": {
+          "starrocks": "ok",
+          "clickhouse": "ok",
+          "trino": "ok",
+          "dremio": "ok"
+        }
+      }
+    ],
+    "clickhouse_only_func_transpile": {
+      "starrocks": "ok:SELECT DATE_TRUNC('DAY', ts) AS d, COUNT(*) FROM conn WHERE ts > CAST('2026-06-1",
+      "clickhouse": "ok:SELECT dateTrunc('DAY', ts) AS d, count(*) FROM conn WHERE ts > CAST('2026-06-14",
+      "trino": "ok:SELECT DATE_TRUNC('DAY', ts) AS d, COUNT(*) FROM conn WHERE ts > CAST('2026-06-1",
+      "dremio": "ok:SELECT DATE_TRUNC('DAY', ts) AS d, COUNT(*) FROM conn WHERE ts > CAST('2026-06-1"
+    }
+  },
+  "rows": [
+    {
+      "router": "full",
+      "id": "t_q3",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "starrocks",
+      "tier_decided": "cold",
+      "tier_ok": true,
+      "expected_tier": "cold",
+      "shape_true": "join_3table",
+      "shape_router": "join_3table",
+      "rules": [
+        "R1:cold",
+        "R2:join_3table",
+        "R3:scan=76500000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_q5",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "starrocks",
+      "tier_decided": "cold",
+      "tier_ok": true,
+      "expected_tier": "cold",
+      "shape_true": "join_6table",
+      "shape_router": "join_6table",
+      "rules": [
+        "R1:cold",
+        "R2:join_6table",
+        "R3:scan=76800000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_q9",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "starrocks",
+      "tier_decided": "cold",
+      "tier_ok": true,
+      "expected_tier": "cold",
+      "shape_true": "join_6table",
+      "shape_router": "join_6table",
+      "rules": [
+        "R1:cold",
+        "R2:join_6table",
+        "R3:scan=75400000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_q18",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "clickhouse_native",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "aggjoin",
+      "shape_router": "aggjoin",
+      "rules": [
+        "R1:hot",
+        "R2:aggjoin",
+        "R3:scan=76500000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_q21",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "starrocks",
+      "tier_decided": "cold",
+      "tier_ok": true,
+      "expected_tier": "cold",
+      "shape_true": "correlated_exists",
+      "shape_router": "correlated_exists",
+      "rules": [
+        "R1:cold",
+        "R2:correlated_exists",
+        "R3:scan=60100000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_j1",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "clickhouse_native",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "dim_enrichment",
+      "shape_router": "dim_enrichment",
+      "rules": [
+        "R1:hot",
+        "R2:dim_enrichment",
+        "R3:scan=10014800"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_j2",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "starrocks",
+      "tier_decided": "cold",
+      "tier_ok": true,
+      "expected_tier": "cold",
+      "shape_true": "large_large",
+      "shape_router": "large_large",
+      "rules": [
+        "R1:cold",
+        "R2:large_large",
+        "R3:scan=20000000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_j3",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "clickhouse_iceberg",
+      "tier_decided": "cold",
+      "tier_ok": true,
+      "expected_tier": "cold",
+      "shape_true": "two_stream_aggjoin",
+      "shape_router": "two_stream_aggjoin",
+      "rules": [
+        "R1:cold",
+        "R2:two_stream_aggjoin",
+        "R3:scan=20000000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_j4",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "clickhouse_native",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "ioc_semijoin",
+      "shape_router": "ioc_semijoin",
+      "rules": [
+        "R1:hot",
+        "R2:ioc_semijoin",
+        "R3:scan=11000000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_scan",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "clickhouse_iceberg",
+      "tier_decided": "cold",
+      "tier_ok": true,
+      "expected_tier": "cold",
+      "shape_true": "scan_aggregation",
+      "shape_router": "scan_aggregation",
+      "rules": [
+        "R1:cold",
+        "R2:scan_aggregation",
+        "R3:scan=10000000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "t_pt",
+      "mode": "templated",
+      "outcome": "correct",
+      "pick": "clickhouse_native",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "point_lookup",
+      "shape_router": "point_lookup",
+      "rules": [
+        "R1:hot",
+        "R2:point_lookup",
+        "R3:scan=10000000"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "m1_view",
+      "mode": "view_obfuscation",
+      "outcome": "correct",
+      "pick": "starrocks",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "join_6table",
+      "shape_router": "join_6table",
+      "rules": [
+        "R1:hot",
+        "R2:join_6table",
+        "R3:scan=60000000"
+      ]
+    },
+    {
+      "router": "ast_only",
+      "id": "m1_view",
+      "mode": "view_obfuscation",
+      "outcome": "catastrophic_misroute",
+      "pick": "clickhouse_native",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "join_6table",
+      "shape_router": "scan_aggregation",
+      "rules": [
+        "R1:hot",
+        "R2:scan_aggregation",
+        "R3:off(no-catalog)"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "m2_mask",
+      "mode": "time_predicate_masking",
+      "outcome": "minor_misroute",
+      "pick": "clickhouse_iceberg",
+      "tier_decided": "default",
+      "tier_ok": false,
+      "expected_tier": "hot",
+      "shape_true": "point_lookup",
+      "shape_router": "point_lookup",
+      "rules": [
+        "R1:default",
+        "R2:point_lookup",
+        "R3:scan=10000000"
+      ]
+    },
+    {
+      "router": "ast_only",
+      "id": "m2_mask",
+      "mode": "time_predicate_masking",
+      "outcome": "minor_misroute",
+      "pick": "clickhouse_iceberg",
+      "tier_decided": "default",
+      "tier_ok": false,
+      "expected_tier": "hot",
+      "shape_true": "point_lookup",
+      "shape_router": "point_lookup",
+      "rules": [
+        "R1:default",
+        "R2:point_lookup",
+        "R3:off(no-catalog)"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "m3_skew",
+      "mode": "literal_skew",
+      "outcome": "correct",
+      "pick": "clickhouse_native",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "ioc_semijoin",
+      "shape_router": "ioc_semijoin",
+      "rules": [
+        "R1:hot",
+        "R2:ioc_semijoin",
+        "R3:scan=11000000"
+      ]
+    },
+    {
+      "router": "ast_only",
+      "id": "m3_skew",
+      "mode": "literal_skew",
+      "outcome": "correct",
+      "pick": "clickhouse_native",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "ioc_semijoin",
+      "shape_router": "ioc_semijoin",
+      "rules": [
+        "R1:hot",
+        "R2:ioc_semijoin",
+        "R3:off(no-catalog)"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "m4_dyn",
+      "mode": "dynamic_functions",
+      "outcome": "correct",
+      "pick": "clickhouse_iceberg",
+      "tier_decided": "default",
+      "tier_ok": true,
+      "expected_tier": "cold",
+      "shape_true": "scan_aggregation",
+      "shape_router": "scan_aggregation",
+      "rules": [
+        "R1:default",
+        "R2:scan_aggregation",
+        "R3:scan=10000000"
+      ]
+    },
+    {
+      "router": "ast_only",
+      "id": "m4_dyn",
+      "mode": "dynamic_functions",
+      "outcome": "correct",
+      "pick": "clickhouse_iceberg",
+      "tier_decided": "default",
+      "tier_ok": true,
+      "expected_tier": "cold",
+      "shape_true": "scan_aggregation",
+      "shape_router": "scan_aggregation",
+      "rules": [
+        "R1:default",
+        "R2:scan_aggregation",
+        "R3:off(no-catalog)"
+      ]
+    },
+    {
+      "router": "full",
+      "id": "m5_dialect",
+      "mode": "dialect_mismatch",
+      "outcome": "correct",
+      "pick": "clickhouse_native",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "scan_aggregation",
+      "shape_router": "scan_aggregation",
+      "rules": [
+        "R1:hot",
+        "R2:scan_aggregation",
+        "R3:scan=10000000"
+      ]
+    },
+    {
+      "router": "ast_only",
+      "id": "m5_dialect",
+      "mode": "dialect_mismatch",
+      "outcome": "correct",
+      "pick": "clickhouse_native",
+      "tier_decided": "hot",
+      "tier_ok": true,
+      "expected_tier": "hot",
+      "shape_true": "scan_aggregation",
+      "shape_router": "scan_aggregation",
+      "rules": [
+        "R1:hot",
+        "R2:scan_aggregation",
+        "R3:off(no-catalog)"
+      ]
+    }
+  ]
+}
