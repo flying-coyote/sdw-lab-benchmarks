@@ -31,9 +31,9 @@ ARMS = [
 fig, ax = cs.canvas(
     "Columnar engines win the hunting workload on open Iceberg",
     sub=("Average of 5 scan/aggregate queries vs a schema-on-read inverted-index foil (10M-event Zeek). "
-         "Five open-Iceberg engines clear the foil 3.6–10.1×; the ~4.6× gap to native is the open-format tax. "
+         "Four open-Iceberg engines clear the foil 3.6–10.1×; the ~4.6× gap to native is the open-format tax. "
          "On point-lookups the index wins — the other regime."),
-    source="sdw-lab zeek-flagship-rerun · 4 arms triple-validated 2026-06-14, StarRocks+Trino added 2026-06-15 · OpenSearch 3.7 foil (best_compression, 1 seg)",
+    source="sdw-lab zeek-flagship-rerun · 4 arms triple-validated 2026-06-14, StarRocks+Trino added 2026-06-15 · OpenSearch 2.18.0 foil (best_compression, 1 seg)",
     tier="Tier B · single host · reproducible",
     figsize=(9.4, 5.0), bottom=0.21, top=0.74,
 )
