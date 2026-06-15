@@ -1,0 +1,83 @@
+{
+  "bench": "soc-query-shapes/beaconing (window-function regime)",
+  "tier": "B",
+  "host": "ejs single host",
+  "table": "soc.conn (10.3M, structured flow only)",
+  "trials": 5,
+  "arms": {
+    "starrocks": {
+      "beacon_median_s": 1.7421,
+      "beacon_trials": [
+        1.9315,
+        1.5334,
+        1.6142,
+        1.7421,
+        1.8389
+      ],
+      "beacon_cv_pct": 9.3,
+      "flat_median_s": 0.0615,
+      "window_over_flat_x": 28.3,
+      "suspicious_pairs": 0,
+      "top_pairset_hash": 5740354900026072187
+    },
+    "trino": {
+      "beacon_median_s": 5.8108,
+      "beacon_trials": [
+        5.6959,
+        5.8108,
+        5.632,
+        6.32,
+        6.5231
+      ],
+      "beacon_cv_pct": 6.7,
+      "flat_median_s": 0.1029,
+      "window_over_flat_x": 56.5,
+      "suspicious_pairs": 0,
+      "top_pairset_hash": 5740354900026072187
+    },
+    "dremio": {
+      "beacon_median_s": 7.1597,
+      "beacon_trials": [
+        7.553,
+        7.4999,
+        6.8678,
+        7.0093,
+        7.1597
+      ],
+      "beacon_cv_pct": 4.2,
+      "flat_median_s": 0.4197,
+      "window_over_flat_x": 17.1,
+      "suspicious_pairs": 0,
+      "top_pairset_hash": 5740354900026072187
+    },
+    "clickhouse_iceberg": {
+      "beacon_median_s": 1.6077,
+      "beacon_trials": [
+        1.532,
+        1.4802,
+        1.6077,
+        1.7064,
+        1.7687
+      ],
+      "beacon_cv_pct": 7.4,
+      "flat_median_s": 0.037,
+      "window_over_flat_x": 43.5,
+      "suspicious_pairs": 0,
+      "top_pairset_hash": 5740354900026072187
+    }
+  },
+  "beacon_ranking": [
+    "clickhouse_iceberg",
+    "starrocks",
+    "trino",
+    "dremio"
+  ],
+  "flat_ranking": [
+    "clickhouse_iceberg",
+    "starrocks",
+    "trino",
+    "dremio"
+  ],
+  "ranking_inverted": false,
+  "pairset_agreement": true
+}
