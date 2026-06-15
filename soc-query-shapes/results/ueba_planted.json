@@ -1,0 +1,141 @@
+{
+  "bench": "soc-query-shapes/ueba+rare PLANTED ground truth",
+  "tier": "B",
+  "host": "ejs single host",
+  "table": "soc.conn_ueba_planted",
+  "trials": 5,
+  "ground_truth": {
+    "ueba_spike_hosts": 15,
+    "rare_dests": 15,
+    "n_rows": 868790,
+    "highsteady_decoys": 60
+  },
+  "arms": {
+    "starrocks": {
+      "ueba": {
+        "median_s": 0.0872,
+        "cv_pct": 7.1,
+        "flagged": 20,
+        "tp": 15,
+        "fp": 5,
+        "precision": 0.75,
+        "recall": 1.0,
+        "false_positives": [
+          "10.10.68.219",
+          "10.11.164.43",
+          "10.6.228.66",
+          "10.6.27.220",
+          "10.8.232.240"
+        ]
+      },
+      "rare": {
+        "median_s": 0.0842,
+        "cv_pct": 7.4,
+        "flagged": 15,
+        "tp": 15,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "false_positives": []
+      }
+    },
+    "clickhouse_iceberg": {
+      "ueba": {
+        "median_s": 0.0675,
+        "cv_pct": 30.4,
+        "flagged": 20,
+        "tp": 15,
+        "fp": 5,
+        "precision": 0.75,
+        "recall": 1.0,
+        "false_positives": [
+          "10.10.68.219",
+          "10.11.164.43",
+          "10.6.228.66",
+          "10.6.27.220",
+          "10.8.232.240"
+        ]
+      },
+      "rare": {
+        "median_s": 0.0615,
+        "cv_pct": 7.3,
+        "flagged": 15,
+        "tp": 15,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "false_positives": []
+      }
+    },
+    "trino": {
+      "ueba": {
+        "median_s": 0.294,
+        "cv_pct": 11.5,
+        "flagged": 20,
+        "tp": 15,
+        "fp": 5,
+        "precision": 0.75,
+        "recall": 1.0,
+        "false_positives": [
+          "10.10.68.219",
+          "10.11.164.43",
+          "10.6.228.66",
+          "10.6.27.220",
+          "10.8.232.240"
+        ]
+      },
+      "rare": {
+        "median_s": 0.2798,
+        "cv_pct": 8.7,
+        "flagged": 15,
+        "tp": 15,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "false_positives": []
+      }
+    },
+    "dremio": {
+      "ueba": {
+        "median_s": 0.5047,
+        "cv_pct": 12.2,
+        "flagged": 20,
+        "tp": 15,
+        "fp": 5,
+        "precision": 0.75,
+        "recall": 1.0,
+        "false_positives": [
+          "10.10.68.219",
+          "10.11.164.43",
+          "10.6.228.66",
+          "10.6.27.220",
+          "10.8.232.240"
+        ]
+      },
+      "rare": {
+        "median_s": 0.3736,
+        "cv_pct": 10.1,
+        "flagged": 15,
+        "tp": 15,
+        "fp": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "false_positives": []
+      }
+    }
+  },
+  "ueba_answer_equal_set": true,
+  "rare_answer_equal_set": true,
+  "ueba_latency_ranking": [
+    "clickhouse_iceberg",
+    "starrocks",
+    "trino",
+    "dremio"
+  ],
+  "rare_latency_ranking": [
+    "clickhouse_iceberg",
+    "starrocks",
+    "trino",
+    "dremio"
+  ]
+}
