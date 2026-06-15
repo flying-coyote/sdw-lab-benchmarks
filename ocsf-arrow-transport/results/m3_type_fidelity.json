@@ -1,0 +1,73 @@
+{
+  "bench": "ocsf-arrow-transport / M3 type-fidelity as maintenance",
+  "tier": "B",
+  "table": "soc.conn_ueba_planted",
+  "bespoke_python_types": {
+    "starrocks": {
+      "orig_h": "str",
+      "c": "int",
+      "avg_b": "float",
+      "max_ts": "float"
+    },
+    "clickhouse_iceberg": {
+      "orig_h": "str",
+      "c": "int",
+      "avg_b": "float",
+      "max_ts": "float"
+    },
+    "trino": {
+      "orig_h": "str",
+      "c": "int",
+      "avg_b": "float",
+      "max_ts": "float"
+    },
+    "dremio": {
+      "orig_h": "str",
+      "c": "int",
+      "avg_b": "float",
+      "max_ts": "float"
+    }
+  },
+  "arrow_schema_types": {
+    "dremio_adbc_flightsql": {
+      "orig_h": "string",
+      "c": "int64",
+      "avg_b": "double",
+      "max_ts": "double"
+    },
+    "clickhouse_query_arrow": {
+      "orig_h": "string",
+      "c": "uint64",
+      "avg_b": "double",
+      "max_ts": "double"
+    }
+  },
+  "per_column_coercion": {
+    "orig_h": {
+      "distinct_bespoke_types": [
+        "str"
+      ],
+      "coercion_sites": 0
+    },
+    "c": {
+      "distinct_bespoke_types": [
+        "int"
+      ],
+      "coercion_sites": 0
+    },
+    "avg_b": {
+      "distinct_bespoke_types": [
+        "float"
+      ],
+      "coercion_sites": 0
+    },
+    "max_ts": {
+      "distinct_bespoke_types": [
+        "float"
+      ],
+      "coercion_sites": 0
+    }
+  },
+  "total_coercion_sites_bespoke": 0,
+  "total_coercion_sites_arrow": 0
+}
