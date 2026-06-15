@@ -148,6 +148,21 @@ there is fidelity-for-round-trips, not a coercion-tax removal. (The cases where 
 diverge — native TIMESTAMP/DECIMAL/nested columns — are flagged but not exercised here; the corpus's `ts`
 is a double epoch, so no native temporal column was available to force the divergence.)
 
+## M4 (speed, background) — same-runtime transport closes M1's cross-runtime confound
+
+`transport_same_runtime.py` / `results/transport_same_runtime.json`. The original `ocsf-arrow-transport`
+speed leg (ADBC 5–10× over JDBC) was **cross-runtime** (ADBC-Python-Arrow vs JDBC-Java-rows) — the bench's
+own flagged caveat. This isolates the runtime: pull 100k rows from Dremio via **ADBC Flight SQL → Arrow** vs
+**REST → JSON rows**, *both in Python*. Result: **ADBC-Arrow 709k rows/s (0.14s) vs REST-rows 55k rows/s
+(1.82s) = 13× faster, same runtime.** So the Arrow transport advantage is real with the Python-vs-Java
+confound removed — it is the columnar-batch / zero-copy-into-pyarrow path vs per-row JSON marshaling (the
+13× *is* the zero-copy benefit manifest: no per-row Python object creation). **Honest caveat:** part of the
+REST cost is its 500-rows/page pagination (200 round-trips for 100k), intrinsic to the row-API path but not
+purely "rows vs Arrow"; the robust finding is that Arrow bulk transport is ~13× faster same-runtime,
+confirming the original speed direction without the cross-runtime confound. The live **Java ADBC-JDBC** run
+remains characterized-not-executed (host-only java, no Maven; the dep-cost — JVM + per-engine JDBC jar — is
+already the measured M1 metric).
+
 ## Caveats (Tier B)
 
 Single host, the lab's 4 engines; surface counts are from the lab's real clients (representative, not a

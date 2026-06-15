@@ -1,0 +1,19 @@
+{
+  "bench": "arrow M4 same-runtime transport (Dremio, Python)",
+  "tier": "B",
+  "rows": 100000,
+  "trials": 3,
+  "arms": {
+    "adbc_flightsql_arrow": {
+      "rows": 100000,
+      "median_s": 0.14,
+      "rows_per_s": 709167
+    },
+    "rest_json_rows": {
+      "rows": 100000,
+      "median_s": 1.82,
+      "rows_per_s": 55056
+    }
+  },
+  "arrow_speedup_same_runtime_x": 13.0
+}
