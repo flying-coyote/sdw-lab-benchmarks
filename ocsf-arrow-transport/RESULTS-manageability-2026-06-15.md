@@ -77,9 +77,61 @@ unifies everything" — is the fair-broker finding.
 - **M4 · (background) the speed legs** — Flight SQL throughput, same-runtime isolation, zero-copy, large-
   result memory. Supporting evidence, not the headline.
 
+## M1 + M2 — MEASURED (2026-06-15), with the ADBC-over-JDBC bridge folded in
+
+`adbc_manageability_bench.py` / `results/adbc_manageability.json`. Three regimes over the same shared
+Nessie/Iceberg table; surface counts derived from the real `ejs_clients.py` source + the capability probes;
+live answer-equality across access tiers.
+
+### M1 — integration surface across the 4 engines
+
+| metric (consumer-facing) | A: bespoke (today) | C: ADBC-uniform (Flight SQL + ADBC-over-JDBC) |
+|---|--:|--:|
+| distinct auth schemes | **4** | **1** |
+| distinct result representations | **4** (tuples / `.result_rows` / JSON arrays / JSON rows+schema) | **1** (Arrow) |
+| distinct paging/completion models | **4** (fetchall / single / `nextUri` loop / job-poll+offset) | **0** (driver-owned) |
+| type fidelity | lost on Dremio (rebuilt by name → re-inferred) | **preserved** (Arrow schema is the contract) |
+| consumer handlers to support all 4 | **4** (one full {auth,result,paging,type} per engine) | **1** |
+| client deps | 3 Python libs (pymysql, clickhouse-connect, requests) | 2 ADBC libs **+ JVM + 1 JDBC jar per non-Flight-SQL engine** |
+
+So the **consumer-facing surface collapses 4→1** on every axis — the manageability win, quantified. **The
+folded-in JDBC-bridge cost is the honest other side:** only **Dremio** speaks Flight SQL natively, so the
+uniform API reaches **ClickHouse / StarRocks / Trino** via the JVM-only `org.apache.arrow.adbc.driver.jdbc`
+bridge, which needs a **JVM + one JDBC jar per engine** (clickhouse-jdbc / mysql-connector-j / trino-jdbc).
+The API/result/paging/type surface goes to 1, but the *driver* footprint does not vanish — it shifts from N
+Python clients to (2 ADBC libs + a JVM + N JDBC jars). From Python (the security-analytics lingua franca)
+the non-Flight-SQL engines have **no clean native ADBC path**: you cross into the JVM via the bridge, or use
+engine-specific Arrow APIs (ClickHouse `query_arrow` works — Arrow result, but a bespoke API, not uniform).
+
+### M2 — engine-swap reversibility (the MOAR "being wrong is cheap" number)
+
+Swapping engine A→B costs, under **bespoke**, a rewrite of the per-engine client class: **8–24 lines**
+(ClickHouse 8, StarRocks 10, Trino 13, Dremio 24 — the REST+poll+paginate clients are the heaviest). Under
+**ADBC-uniform** it is a **~1–3 line connection change** (+ adding one JDBC jar to the classpath if the
+target isn't Flight-SQL) and the `{execute, fetch_arrow_table}` consumer code **does not change at all** —
+that invariance is the reversibility win the modular-architecture pitch rests on.
+
+### Answer-equality (manageability must not cost correctness)
+
+All six access paths — the 4 bespoke clients + Dremio ADBC Flight SQL + ClickHouse `query_arrow` — return
+the **identical** count (868,790) over the shared table. The uniform/Arrow paths agree with the bespoke
+ones, and Arrow additionally carries types the JSON-row path drops.
+
+### What this says
+
+Arrow/ADBC is a **real, measurable manageability lever** for the multi-engine stack H-ARCH-02 forces: the
+operator-facing integration surface collapses 4→1 and engine-swap drops from a class-rewrite to a config
+line, with correctness preserved and types no longer silently lost. The honest bound — uniformity is gated
+by Flight-SQL adoption, and the JDBC bridge buys it back only with a JVM + per-engine JDBC jar — is itself
+the fair-broker finding: an open stack built on Flight-SQL-speaking engines is genuinely more manageable;
+one built on HTTP/MySQL-wire engines gets uniformity only by carrying the JVM bridge.
+
 ## Caveats (Tier B)
 
-Single host, the lab's 4 engines; the surface counts are from the lab's real clients (representative, not a
-universal census). The uniform-path proof is one engine (Dremio Flight SQL) + the driver-availability map
-for the rest; M1's full quantification and M2/M3 are the proposed next runs. ADBC-over-JDBC was mapped, not
-benchmarked here.
+Single host, the lab's 4 engines; surface counts are from the lab's real clients (representative, not a
+universal census), and the LOC figures are a proxy — the robust headline is the **count of distinct
+concerns (4→1)**, not the line counts. The Flight SQL leg is **live-proven** (Dremio); the **ADBC-over-JDBC
+bridge is characterized + its dependency cost measured, but not executed in Java this session** — a live
+ADBC-JDBC run (the JVM-side Arrow path for ClickHouse/StarRocks/Trino) is the one remaining proof. M3
+(type-fidelity-as-maintenance, count the per-engine coercion fixups Arrow removes) and M4 (the speed/zero-
+copy legs) remain.

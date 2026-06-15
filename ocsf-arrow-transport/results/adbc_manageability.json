@@ -1,0 +1,168 @@
+{
+  "bench": "ocsf-arrow-transport / Arrow-ADBC manageability M1+M2",
+  "tier": "B",
+  "host": "ejs single host",
+  "table": "soc.conn_ueba_planted",
+  "M1_surface": {
+    "n_engines": 4,
+    "regime_A_bespoke": {
+      "regime": "A: bespoke (status quo)",
+      "distinct_auth": 4,
+      "distinct_result_reprs": 4,
+      "distinct_paging": 4,
+      "type_fidelity_lost_engines": [
+        "dremio"
+      ],
+      "client_deps": [
+        "clickhouse-connect",
+        "pymysql",
+        "requests"
+      ],
+      "jvm_required": false,
+      "consumer_handlers": 4
+    },
+    "regime_C_adbc_uniform": {
+      "regime": "C: ADBC-uniform (Flight SQL + ADBC-over-JDBC bridge)",
+      "distinct_auth": 1,
+      "distinct_result_reprs": 1,
+      "distinct_paging": 0,
+      "type_fidelity_lost_engines": [],
+      "uniform_api": true,
+      "flight_sql_native": [
+        "dremio"
+      ],
+      "adbc_jdbc_bridged": [
+        "starrocks",
+        "clickhouse_iceberg",
+        "trino"
+      ],
+      "client_deps": [
+        "adbc_driver_manager",
+        "adbc_driver_flightsql"
+      ],
+      "jvm_required": true,
+      "jvm_reason": "ADBC-over-JDBC for ['starrocks', 'clickhouse_iceberg', 'trino'] (no native Python ADBC)",
+      "per_engine_jdbc_jars": {
+        "starrocks": "mysql-connector-j jar",
+        "clickhouse_iceberg": "clickhouse-jdbc jar",
+        "trino": "trino-jdbc jar"
+      },
+      "consumer_handlers": 1
+    },
+    "bespoke_detail": {
+      "starrocks": {
+        "wire": "MySQL-wire (pymysql)",
+        "auth": "user + CREATE EXTERNAL CATALOG DDL",
+        "result": "list[tuple]",
+        "paging": "cursor.fetchall",
+        "types": "driver-typed",
+        "dep": "pymysql"
+      },
+      "clickhouse_iceberg": {
+        "wire": "HTTP (clickhouse-connect)",
+        "auth": "password",
+        "result": ".result_rows (list)",
+        "paging": "single call",
+        "types": "driver-typed",
+        "dep": "clickhouse-connect"
+      },
+      "trino": {
+        "wire": "REST /v1/statement",
+        "auth": "X-Trino-User header",
+        "result": "JSON data arrays",
+        "paging": "nextUri poll loop",
+        "types": "JSON-untyped",
+        "dep": "requests"
+      },
+      "dremio": {
+        "wire": "REST /apiv2 + /api/v3",
+        "auth": "login->token header",
+        "result": "JSON rows+schema (rebuilt by name)",
+        "paging": "job-state poll + offset/limit",
+        "types": "LOST -> re-inferred by name",
+        "dep": "requests"
+      }
+    },
+    "capability_map": {
+      "dremio": "ADBC Flight SQL (native, :32010) \u2014 uniform ADBC API + Arrow",
+      "clickhouse_iceberg": "engine Arrow API (query_arrow) \u2014 Arrow result, bespoke API; no native ADBC / no Flight SQL server",
+      "starrocks": "no Flight SQL (not enabled), no native Python ADBC \u2014 bespoke rows or ADBC-over-JDBC",
+      "trino": "Trino 481, no native Python ADBC / no Flight SQL server \u2014 bespoke rows or ADBC-over-JDBC"
+    },
+    "adbc_jdbc_bridge": {
+      "mechanism": "org.apache.arrow.adbc.driver.jdbc.JdbcDriver wraps any JDBC driver, returns Arrow (JVM-side)",
+      "uniform_api": true,
+      "result": "Arrow (VectorSchemaRoot)",
+      "paging": "driver-owned",
+      "types": "Arrow-typed",
+      "runtime_cost": "JVM required (no clean Python ADBC path for these engines)",
+      "per_engine_dep": {
+        "clickhouse_iceberg": "clickhouse-jdbc jar",
+        "starrocks": "mysql-connector-j jar",
+        "trino": "trino-jdbc jar"
+      },
+      "note": "From Python (the security-analytics lingua franca) this means crossing into the JVM or staying on engine-specific Arrow APIs; the uniform-API win is real but carries a JVM + N-jars cost."
+    }
+  },
+  "M2_swap_cost": {
+    "bespoke": {
+      "swap_unit": "rewrite the per-engine client class (auth+execute+result+paging+ref)",
+      "touch_points_loc_per_engine": {
+        "StarRocks": 10,
+        "ClickHouse": 8,
+        "Trino": 13,
+        "Dremio": 24
+      },
+      "median_loc": 13
+    },
+    "adbc_uniform": {
+      "swap_unit": "change the connection target (driver/URI); + 1 JDBC jar if non-Flight-SQL",
+      "touch_points_loc_per_engine": {
+        "flight_sql": "~1-3 (connection dict)",
+        "jdbc_bridge": "~1-3 + add 1 jar to classpath"
+      },
+      "note": "the {execute, fetch_arrow_table} consumer code does NOT change \u2014 that is the reversibility win"
+    }
+  },
+  "live_checks": {
+    "bespoke:starrocks": {
+      "count": 868790,
+      "result_type": "list"
+    },
+    "bespoke:clickhouse_iceberg": {
+      "count": 868790,
+      "result_type": "list"
+    },
+    "bespoke:trino": {
+      "count": 868790,
+      "result_type": "list"
+    },
+    "bespoke:dremio": {
+      "count": 868790,
+      "result_type": "list"
+    },
+    "adbc_flightsql:dremio": {
+      "count": 868790,
+      "result_type": "Table",
+      "typed_schema": [
+        "int64"
+      ]
+    },
+    "engine_arrow:clickhouse": {
+      "count": 868790,
+      "result_type": "Table",
+      "typed_schema": [
+        "uint64"
+      ]
+    }
+  },
+  "answer_equal_across_access": true,
+  "counts_by_access": {
+    "bespoke:starrocks": 868790,
+    "bespoke:clickhouse_iceberg": 868790,
+    "bespoke:trino": 868790,
+    "bespoke:dremio": 868790,
+    "adbc_flightsql:dremio": 868790,
+    "engine_arrow:clickhouse": 868790
+  }
+}
