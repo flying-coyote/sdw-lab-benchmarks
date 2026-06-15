@@ -1,0 +1,71 @@
+{
+  "bench": "edr-two-regime / BM25 relevance (two-regime symmetry, index home turf)",
+  "tier": "B",
+  "n_rows": 10000000,
+  "queries": {
+    "multiterm": {
+      "query": "powershell -enc whoami",
+      "opensearch_bm25": {
+        "latency_ms": 23.6,
+        "ranked": true,
+        "scoring": "BM25 (TF-IDF)",
+        "top_scores": [
+          1.05,
+          1.05,
+          1.05,
+          1.05,
+          1.05
+        ]
+      },
+      "clickhouse": {
+        "latency_ms": 274.9,
+        "ranked": false,
+        "scoring": "manual TF count (no IDF), full scan",
+        "note": "columnar engine has no native relevance ranking"
+      }
+    },
+    "common": {
+      "query": "process call create",
+      "opensearch_bm25": {
+        "latency_ms": 17.7,
+        "ranked": true,
+        "scoring": "BM25 (TF-IDF)",
+        "top_scores": [
+          2.66,
+          2.66,
+          2.66,
+          2.66,
+          2.66
+        ]
+      },
+      "clickhouse": {
+        "latency_ms": 303.9,
+        "ranked": false,
+        "scoring": "manual TF count (no IDF), full scan",
+        "note": "columnar engine has no native relevance ranking"
+      }
+    },
+    "mixed": {
+      "query": "schtasks netsvcs query",
+      "opensearch_bm25": {
+        "latency_ms": 20.6,
+        "ranked": true,
+        "scoring": "BM25 (TF-IDF)",
+        "top_scores": [
+          1.05,
+          1.05,
+          1.05,
+          1.05,
+          1.05
+        ]
+      },
+      "clickhouse": {
+        "latency_ms": 248.9,
+        "ranked": false,
+        "scoring": "manual TF count (no IDF), full scan",
+        "note": "columnar engine has no native relevance ranking"
+      }
+    }
+  },
+  "finding": "OpenSearch ranks by BM25 (TF-IDF) natively via the inverted index; ClickHouse has no native relevance ranking \u2014 it matches via full scan and any 'rank' is a hand-rolled TF count without IDF. The index's two-regime win includes a CAPABILITY gap (relevance), not only a latency gap."
+}
