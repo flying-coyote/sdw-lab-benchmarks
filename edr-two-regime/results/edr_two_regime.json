@@ -1,0 +1,64 @@
+{
+  "bench": "edr-two-regime (#68 generalization)",
+  "tier": "B",
+  "n_rows": 3000000,
+  "guid": "52fb854e1ccc875d2894a67def554e4c",
+  "token": "netsvcs",
+  "ch_version": "26.5",
+  "os_version": "3.7.0",
+  "queries": {
+    "agg_top_hosts": {
+      "regime": "agg",
+      "ch_ms": 15.2,
+      "os_ms": 5.4,
+      "winner": "index(OS)",
+      "ratio": 2.8,
+      "ch_count": null,
+      "os_count": null,
+      "answer_equal": null
+    },
+    "agg_distinct_users": {
+      "regime": "agg",
+      "ch_ms": 91.4,
+      "os_ms": 93.7,
+      "winner": "columnar(CH)",
+      "ratio": 1.0,
+      "ch_count": null,
+      "os_count": null,
+      "answer_equal": null
+    },
+    "agg_integrity_hist": {
+      "regime": "agg",
+      "ch_ms": 11.7,
+      "os_ms": 2.3,
+      "winner": "index(OS)",
+      "ratio": 5.1,
+      "ch_count": null,
+      "os_count": null,
+      "answer_equal": null
+    },
+    "lookup_guid": {
+      "regime": "lookup",
+      "ch_ms": 3.8,
+      "os_ms": 2.0,
+      "winner": "index(OS)",
+      "ratio": 1.9,
+      "ch_count": 1,
+      "os_count": 1,
+      "answer_equal": true
+    },
+    "lookup_cmdline_text": {
+      "regime": "lookup",
+      "ch_ms": 55.5,
+      "os_ms": 1.6,
+      "winner": "index(OS)",
+      "ratio": 34.7,
+      "ch_count": 375264,
+      "os_count": 375264,
+      "answer_equal": true
+    }
+  },
+  "columnar_wins_all_aggs": false,
+  "index_wins_all_lookups": true,
+  "two_regime_holds": false
+}
