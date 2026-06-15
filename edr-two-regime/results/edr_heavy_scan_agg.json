@@ -1,0 +1,38 @@
+{
+  "bench": "edr-heavy-scan-agg (#68 columnar-half fair-test)",
+  "tier": "B",
+  "n_rows": 10000000,
+  "token": "netsvcs",
+  "queries": {
+    "heavy_top_hosts_by_bytes": {
+      "regime": "heavy_agg",
+      "ch_ms": 75.5,
+      "os_ms": 646.4,
+      "winner": "columnar(CH)",
+      "ratio": 8.6
+    },
+    "heavy_highcard_user_bytes": {
+      "regime": "heavy_agg",
+      "ch_ms": 115.7,
+      "os_ms": 545.7,
+      "winner": "columnar(CH)",
+      "ratio": 4.7
+    },
+    "heavy_computed_cmdlen": {
+      "regime": "heavy_agg",
+      "ch_ms": 61.9,
+      "os_ms": 22087.4,
+      "winner": "columnar(CH)",
+      "ratio": 356.8
+    },
+    "lookup_cmdline_text": {
+      "regime": "lookup",
+      "ch_ms": 173.1,
+      "os_ms": 1.2,
+      "winner": "index(OS)",
+      "ratio": 144.2
+    }
+  },
+  "columnar_wins_heavy_aggs": true,
+  "columnar_heavy_agg_win_count": "3/3"
+}
