@@ -1,0 +1,115 @@
+{
+  "bench": "soc-query-shapes/ueba+rare (two-level agg + high-card count-distinct)",
+  "tier": "B",
+  "host": "ejs single host",
+  "table": "soc.conn",
+  "trials": 5,
+  "arms": {
+    "starrocks": {
+      "ueba_zscore": {
+        "median_s": 0.2071,
+        "cv_pct": 16.0,
+        "rows": 0,
+        "rowset_hash": 5740354900026072187,
+        "over_flat_x": 3.2
+      },
+      "rare_dest": {
+        "median_s": 1.3034,
+        "cv_pct": 2.9,
+        "rows": 0,
+        "rowset_hash": 5740354900026072187,
+        "over_flat_x": 20.3
+      },
+      "flat": {
+        "median_s": 0.0641,
+        "cv_pct": 4.2,
+        "rows": 3
+      }
+    },
+    "clickhouse_iceberg": {
+      "ueba_zscore": {
+        "median_s": 0.3775,
+        "cv_pct": 15.0,
+        "rows": 0,
+        "rowset_hash": 5740354900026072187,
+        "over_flat_x": 10.3
+      },
+      "rare_dest": {
+        "median_s": 1.2552,
+        "cv_pct": 8.9,
+        "rows": 0,
+        "rowset_hash": 5740354900026072187,
+        "over_flat_x": 34.1
+      },
+      "flat": {
+        "median_s": 0.0368,
+        "cv_pct": 4.7,
+        "rows": 3
+      }
+    },
+    "trino": {
+      "ueba_zscore": {
+        "median_s": 0.4213,
+        "cv_pct": 8.5,
+        "rows": 0,
+        "rowset_hash": 5740354900026072187,
+        "over_flat_x": 4.8
+      },
+      "rare_dest": {
+        "median_s": 3.4119,
+        "cv_pct": 16.6,
+        "rows": 0,
+        "rowset_hash": 5740354900026072187,
+        "over_flat_x": 38.5
+      },
+      "flat": {
+        "median_s": 0.0886,
+        "cv_pct": 19.3,
+        "rows": 3
+      }
+    },
+    "dremio": {
+      "ueba_zscore": {
+        "median_s": 0.7475,
+        "cv_pct": 5.3,
+        "rows": 0,
+        "rowset_hash": 5740354900026072187,
+        "over_flat_x": 1.8
+      },
+      "rare_dest": {
+        "median_s": 2.5,
+        "cv_pct": 4.0,
+        "rows": 0,
+        "rowset_hash": 5740354900026072187,
+        "over_flat_x": 6.1
+      },
+      "flat": {
+        "median_s": 0.4117,
+        "cv_pct": 5.9,
+        "rows": 3
+      }
+    }
+  },
+  "ueba_zscore_ranking": [
+    "starrocks",
+    "clickhouse_iceberg",
+    "trino",
+    "dremio"
+  ],
+  "rare_dest_ranking": [
+    "clickhouse_iceberg",
+    "starrocks",
+    "dremio",
+    "trino"
+  ],
+  "flat_ranking": [
+    "clickhouse_iceberg",
+    "starrocks",
+    "trino",
+    "dremio"
+  ],
+  "ueba_inverts_flat": true,
+  "rare_inverts_flat": true,
+  "ueba_zscore_answer_equal": true,
+  "rare_dest_answer_equal": true
+}
