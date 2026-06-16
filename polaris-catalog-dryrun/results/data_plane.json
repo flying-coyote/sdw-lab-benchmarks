@@ -1,0 +1,15 @@
+{
+  "benchmark": "polaris-catalog-dryrun / data-plane (H-CATALOG-AUDITABILITY-01 \u00a710)",
+  "data_write": {
+    "ok": true,
+    "rows_appended": 100000,
+    "scan_count": 300000
+  },
+  "evidence_tier": "B (single host; dev config in-memory persistence; Polaris 1.5.0 + MinIO; synthetic)",
+  "recipe": "S3+STS endpoints \u2192 MinIO, pathStyleAccess=true, explicit TABLE_*_DATA grant",
+  "table_rbac": {
+    "reader_read_ok": 300000,
+    "reader_write_blocked": true,
+    "reader_write_error": "OSError: When initiating multiple part upload for key 'q3p/soc/events/metadata/snap-51159"
+  }
+}
