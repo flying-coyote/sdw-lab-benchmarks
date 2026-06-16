@@ -1,0 +1,51 @@
+{
+  "benchmark": "ocsf-sigma-detection / temporal_ordered PPL execution (H-SIGMA-01 execution leg #2)",
+  "correct_reference": {
+    "caught_by_population": {
+      "benign_farapart": 0,
+      "benign_single": 0,
+      "inbucket": 40,
+      "straddle": 40,
+      "wrong_order": 0
+    },
+    "flagged": 80,
+    "fp": 0,
+    "label": "correct sliding+ordered Python reference",
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 80
+  },
+  "dropped_order_overfire": 40,
+  "dropped_window_miss_rate": 1.0,
+  "emitted_ppl": "| multisearch [search source=process_creation-* | where LIKE(cmd_line, \"%-EncodedCommand%\")] [search source=network_connection-* | where dst_port=3389] | stats dc(EventID) as unique_rules by span(@timestamp, 2h), host | where unique_rules >= 2",
+  "emitted_query": {
+    "caught_by_population": {
+      "benign_farapart": 0,
+      "benign_single": 0,
+      "inbucket": 40,
+      "straddle": 0,
+      "wrong_order": 40
+    },
+    "flagged": 80,
+    "fp": 40,
+    "label": "emitted PPL (tumbling span, unordered dc>=2)",
+    "precision": 0.5,
+    "recall": 0.5,
+    "tp": 40
+  },
+  "events": {
+    "network": 180,
+    "process": 180
+  },
+  "evidence_tier": "B (single host; synthetic planted corpus; OpenSearch 3.7.0 PPL; OpenSearchPPLBackend)",
+  "ground_truth": {
+    "benign_farapart": 40,
+    "benign_single": 40,
+    "true_inbucket": 40,
+    "true_positives_total": 80,
+    "true_straddle": 40,
+    "wrong_order": 40
+  },
+  "rule": "exec_then_lateral: temporal_ordered ps_exec THEN rdp_lat per host within 2h",
+  "window_seconds": 7200
+}
