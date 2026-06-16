@@ -67,46 +67,22 @@
         "cv_pct": 19.3,
         "rows": 3
       }
-    },
-    "dremio": {
-      "ueba_zscore": {
-        "median_s": 0.7475,
-        "cv_pct": 5.3,
-        "rows": 0,
-        "rowset_hash": 5740354900026072187,
-        "over_flat_x": 1.8
-      },
-      "rare_dest": {
-        "median_s": 2.5,
-        "cv_pct": 4.0,
-        "rows": 0,
-        "rowset_hash": 5740354900026072187,
-        "over_flat_x": 6.1
-      },
-      "flat": {
-        "median_s": 0.4117,
-        "cv_pct": 5.9,
-        "rows": 3
-      }
     }
   },
   "ueba_zscore_ranking": [
     "starrocks",
     "clickhouse_iceberg",
-    "trino",
-    "dremio"
+    "trino"
   ],
   "rare_dest_ranking": [
     "clickhouse_iceberg",
     "starrocks",
-    "dremio",
     "trino"
   ],
   "flat_ranking": [
     "clickhouse_iceberg",
     "starrocks",
-    "trino",
-    "dremio"
+    "trino"
   ],
   "ueba_inverts_flat": true,
   "rare_inverts_flat": true,

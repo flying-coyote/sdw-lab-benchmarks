@@ -17,15 +17,16 @@ Tier B, single host (ejs).
 | ClickHouse-Iceberg | 0.037 s | 0.378 s | 10.3× | 1.255 s | 34.1× |
 | StarRocks | 0.064 s | **0.207 s** | 3.2× | 1.303 s | 20.3× |
 | Trino | 0.089 s | 0.421 s | 4.8× | 3.412 s | 38.5× |
-| Dremio | 0.412 s | 0.748 s | 1.8× | 2.500 s | 6.1× |
 
-- **flat ranking:** CH-Iceberg < StarRocks < Trino < Dremio (ClickHouse wins flat single-level agg, as
+(Dremio arm withheld under its benchmark-publication terms.)
+
+- **flat ranking:** CH-Iceberg < StarRocks < Trino (ClickHouse wins flat single-level agg, as
   in the flagship).
-- **UEBA ranking INVERTS the top:** StarRocks (0.207 s) < ClickHouse-Iceberg (0.378 s) < Trino <
-  Dremio. **StarRocks overtakes ClickHouse** on the two-level aggregation — an 82% gap, far above the
+- **UEBA ranking INVERTS the top:** StarRocks (0.207 s) < ClickHouse-Iceberg (0.378 s) <
+  Trino. **StarRocks overtakes ClickHouse** on the two-level aggregation — an 82% gap, far above the
   3.2% CV, so claimable. This is the headline: the regime *does* reorder the leaders.
-- **rare-value:** partial inversion — Dremio overtakes Trino at the bottom (6.1× vs 38.5× over flat);
-  ClickHouse keeps the lead on the high-cardinality `count(DISTINCT)`.
+- **rare-value:** ClickHouse keeps the lead on the high-cardinality `count(DISTINCT)`, and the
+  StarRocks-overtakes-ClickHouse top-of-ranking inversion seen in UEBA does NOT recur here.
 
 ## What it means
 
@@ -45,7 +46,7 @@ single-source destinations (resp_h is drawn from a small pool), so the *detectio
 answer-equality is **unvalidated** for these two shapes (the reported "answer-equal" is the trivial
 empty-set match — disregard it). The expensive aggregation still ran fully (HAVING filtered at the
 end), so the **latency/ranking finding stands**. Detection-correctness with answer-equality was
-demonstrated on planted ground truth in bench #1 (beaconing, 100% recall, exact 3-engine equality);
+demonstrated on planted ground truth in bench #1 (beaconing, 100% recall, exact cross-engine equality);
 validating UEBA/rare the same way needs planted anomalies (a volume-spike host set + single-source
 destinations) — owed if the detection arm is wanted. ClickHouse-Iceberg worked here (soc.conn is not
 a fresh table, unlike the beacon-planted run). Gate before any hypothesis confidence move.

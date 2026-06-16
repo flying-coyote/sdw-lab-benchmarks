@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # #23 Phase C — knee reproduction (2026-06-14). The extend-ladder located the single-host
-# knee at 32-64x base demand (dremio earliest ~16-32x), but that was 1x per arm. The
+# knee in the high-multiple region of base demand, but that was 1x per arm. The
 # pre-registration (README) makes a knee claimable only on 3x reproduction at the same
 # ladder step. This runs the 4 graceful arms over the knee REGION (16/32/64x — the
 # flat->inflection band) 3x each, saving every repetition separately so the band + the

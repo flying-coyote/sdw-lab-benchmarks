@@ -34,13 +34,7 @@ Tier B, single host (Beelink 5800H, WSL2 48 GB/14t, cpuset 12/2). A knee is clai
 
 ## dremio
 
-- knee per run [run1, run2, run3]: [32.0, 32.0, 32.0] — **knee reproduced 3× at U=32.0**
-
-| step (U) | p95 min | p95 median | p95 max | n runs |
-|--:|--:|--:|--:|--:|
-| 16.0 | 0.809 s | 0.901 s | 0.993 s | 2 |
-| 32.0 | 4.353 s | 4.575 s | 4.798 s | 2 |
-| 64.0 | 5.78 s | 5.83 s | 8.892 s | 3 |
+_(Dremio arm withheld under its benchmark-publication terms — the Dremio arm was reproduced 3× alongside the others, but its measured knee and p95 results are not published here.)_
 
 ## starrocks_mv (P5 — does the MV shift the knee right >=2 steps?)
 

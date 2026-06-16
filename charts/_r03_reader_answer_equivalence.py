@@ -4,9 +4,11 @@ import numpy as np
 from matplotlib.patches import Patch
 
 # Source: clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md
-# 13 Parquet readers (shared-bytes) + 2 controls, 24 cells each = 8 probe values x 3 predicates (=, IN, LIKE).
+# 12 Parquet readers (shared-bytes) + 2 controls, 24 cells each = 8 probe values x 3 predicates (=, IN, LIKE).
 # Every cell checked against generator ground truth. Pass = correct count; fail = silent wrong answer.
-# 11 of 13 readers pass all 24; chdb_parquet 11/24; fastparquet 0/24.
+# 10 of 12 readers pass all 24; chdb_parquet 11/24; fastparquet 0/24.
+# (One additional shared-bytes reader passed all 24 but is withheld here under that engine's
+#  benchmark-publication terms.)
 # Divergence map from the per-value table: which (value,predicate) cells each failer got WRONG.
 
 values = ["user7", "user42", "user64", "user256", "user999",
@@ -32,7 +34,7 @@ def chdb_pass(v, p):
 def fast_pass(v, p):
     return False
 
-# the 11 readers that pass everything (named as loudly as the failers)
+# the 10 readers that pass everything (named as loudly as the failers)
 clean_readers = [
     "duckdb  (DuckDB C++)",
     "datafusion  (arrow-rs)",
@@ -43,7 +45,6 @@ clean_readers = [
     "spark  (parquet-mr)",
     "starrocks  (C++)",
     "trino  (Java)",
-    "dremio  (Java vectorized)",
     "postgres  (heap executor)",
 ]
 # the 2 readers that return a silently wrong answer
@@ -66,7 +67,7 @@ M = np.array(rows)
 nrow, ncol = M.shape
 
 fig, ax = cs.canvas(
-    "11 of 13 Parquet readers agree on the answer; 2 are silently wrong.",
+    "10 of 12 Parquet readers agree on the answer; 2 are silently wrong.",
     "Same byte-identical Parquet file (10M rows), 24 count(*) WHERE cells per reader, every count checked "
     "against ground truth. Red = a silently wrong count returned with no error. The passers are named as "
     "loudly as the failers: this is concentrated, not universal.",

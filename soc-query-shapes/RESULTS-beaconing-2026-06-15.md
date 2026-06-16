@@ -10,22 +10,21 @@ surfaced — see [[feedback_security_telemetry_injection_surface]].
 
 ## Two parts
 
-**(A) Window-regime ranking — real corpus, 4 engines, 10.3M rows (`soc.conn`).**
+**(A) Window-regime ranking — real corpus, 3 non-Dremio engines, 10.3M rows (`soc.conn`).**
 The window query (PARTITION BY orig_h,resp_h ORDER BY ts → `lag` gap → `stddev_pop(gap)/avg(gap)`)
 ran full machinery over all 10.3M rows; a matched flat aggregation (`GROUP BY proto`) is the
-baseline.
+baseline. (Dremio arm withheld under its benchmark-publication terms.)
 
 | engine | beacon (window) median | flat median | window / flat |
 |---|---|---|---|
 | ClickHouse-over-Iceberg | 1.608 s | 0.037 s | 43.5× |
 | StarRocks | 1.742 s | 0.061 s | 28.3× |
 | Trino | 5.811 s | 0.103 s | 56.5× |
-| Dremio | 7.160 s | 0.420 s | 17.1× |
 
-- **The ranking did NOT invert.** Window order = flat order = ClickHouse-Iceberg < StarRocks < Trino
-  < Dremio. P4's hypothesis (window/sort-heavy reorders the engines) is **not supported** on this
-  four-engine set — the columnar leaders stay ahead.
-- The window regime is **17–57× more expensive** than the flat aggregation (the partition+sort cost),
+- **The ranking did NOT invert.** Window order = flat order = ClickHouse-Iceberg < StarRocks < Trino.
+  P4's hypothesis (window/sort-heavy reorders the engines) is **not supported** on this
+  non-Dremio engine set — the columnar leaders stay ahead.
+- The window regime is **28–57× more expensive** than the flat aggregation (the partition+sort cost),
   so it *is* a materially different regime — it just doesn't change *who wins*.
 - `soc.conn` has **no beacon structure** to detect (8.9M distinct pairs, max 3 connections/pair, 0
   pairs ≥9) — so this run measures the regime *latency/ranking* honestly, not detection. Detection is
@@ -40,13 +39,14 @@ decoy heavy-talkers** (must NOT rank as beacons). Fully synthetic — no real/ad
 |---|---|---|---|---|
 | StarRocks | 0.202 s | **100%** | 80% | identical |
 | Trino | 0.407 s | **100%** | 80% | identical |
-| Dremio | 0.690 s | **100%** | 80% | identical |
 | ClickHouse-Iceberg | — | DNF | — | (see note) |
 
-- **100% recall** on all three catalog engines: every planted beacon surfaced, and the CV ranking put
+(Dremio arm withheld under its benchmark-publication terms — it ran successfully and is one of the engines included in the answer-equality check below.)
+
+- **100% recall** on both reported catalog engines: every planted beacon surfaced, and the CV ranking put
   the 120 beacons above the 30 decoys (the "80% precision" is just the 30 decoys filling the LIMIT-150
   tail; at LIMIT 120 it is ~100%). The deterministic detection works and is correct.
-- **Answer-equality holds exactly:** StarRocks, Trino, and Dremio return byte-identical top-150 pair
+- **Answer-equality holds exactly:** the engines that returned results produce byte-identical top-150 pair
   sets (same pairs, same per-pair connection counts) — the lab's signature cross-engine equality on
   known truth.
 - **ClickHouse-Iceberg DNF'd on the freshly-created table** (returned 0 rows in 13 ms). This is the
@@ -58,8 +58,8 @@ decoy heavy-talkers** (must NOT rank as beacons). Fully synthetic — no real/ad
 
 ## Net
 
-The beaconing window-function shape is a genuinely different (17–57× costlier) regime, but on this
-four-engine set it **does not reorder the engines** — so the flagship's columnar-leaders ranking is
+The beaconing window-function shape is a genuinely different (28–57× costlier) regime, but on this
+non-Dremio engine set it **does not reorder the engines** — so the flagship's columnar-leaders ranking is
 robust to the window regime, narrowing P4's "this shape inverts the ranking" hypothesis. The
 deterministic beacon detection is **portable and correct** (100% recall, exact cross-engine
 answer-equality on planted truth). Gate before any hypothesis confidence move (karen →

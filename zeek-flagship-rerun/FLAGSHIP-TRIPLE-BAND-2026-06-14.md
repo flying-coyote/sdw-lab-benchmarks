@@ -1,8 +1,9 @@
 # Flagship — triple-run band on the two-regime core (2026-06-14)
 
-Three independent draws of the flagship 4-arm benchmark (the 145×→two-regime number). Tier B,
+Three independent draws of the flagship benchmark (the 145×→two-regime number). Tier B,
 single host (Beelink 5800H, WSL2 48 GB/14t), one engine up at a time, 1 warmup + 7 trials,
-engine-cold, CV-gated. Draws:
+engine-cold, CV-gated. The benchmark runs four arms; the Dremio arm is withheld here under
+its benchmark-publication terms, so this band reports the three non-Dremio arms. Draws:
 
 - **draw-1** = `results/` (the canonical published draw)
 - **draw-2** = `results_revalidation_2026-06-14/` (the Jeremy-priority revalidation)
@@ -27,7 +28,8 @@ Per-arm avg-of-medians latency (s):
 | clickhouse_native | 0.0610 | 0.0573 | 0.0573 | 3 |
 | clickhouse_iceberg | 0.2821 | 0.2438 | 0.2428 | 3 |
 | opensearch (foil 3.7.0) | 2.8537 | 2.5816 | 2.7549 | 3 |
-| dremio_iceberg | 0.7865 | 0.7571 | — (failed) | **2** |
+
+(Dremio arm withheld under its benchmark-publication terms.)
 
 So the durable two-regime claim — index/sorted storage wins point lookups (see
 `NEEDLE-FINDINGS-2026-06-14.md`), columnar engines win scan-heavy aggregations — holds across three
@@ -37,27 +39,25 @@ travel, which is exactly why the literature quotes multiples and the split rathe
 
 ## The headline "145×" is a range, and it is the extreme arm-pair
 
-The original 145× was the most extreme pairing (ClickHouse-native vs Dremio-Iceberg on count). That
-pairing measures **76.6× (draw-1) / 85.9× (draw-2)** here — a 2-draw range, because Dremio's draw-3
-arm did not complete (below). Quote it as a range and lead with the two-regime split + the
-triple-validated ~10–11× foil multiple, not the single extreme number.
+The original 145× was the most extreme pairing (ClickHouse-native vs the open-format Iceberg-over-S3
+front-engine arm on count). Quote it as a range and lead with the two-regime split + the
+triple-validated ~10–11× foil multiple, not the single extreme number. (The Dremio-arm multiples
+that anchored that extreme pairing are withheld here under Dremio's benchmark-publication terms.)
 
-## Honest caveat — Dremio stays 2×
+## Honest caveat — the front-engine arm orchestration
 
-The Dremio arm failed to score in draw-3 (three automated attempts). The failure is a Dremio-26
-startup/auth race: after the per-arm container restart the REST port on :9347 opens before the auth
-service is ready, so `Dremio()._login` gets `Connection reset by peer` even behind a readiness poll.
-This is consistent with the documented B-DREMIO Dremio-26 friction over the Nessie `register_table`
-path. It is an **automation/orchestration** failure, not a measurement disagreement — Dremio's
-draw-1/draw-2 numbers (0.7865 / 0.7571 s, ~3.4–3.6× the foil on the heavy aggregation per the
-B-DREMIO arm) stand and agree. Dremio therefore stays double-validated; a clean third Dremio draw
-needs a login-success readiness gate (poll an authenticated endpoint, not just the open port) or a
-longer fixed warmup before the arm. The stale draw-3 dremio output was removed, not reported.
+The front-engine (Dremio) arm failed to score in draw-3 (three automated attempts). The failure is a
+Dremio-26 startup/auth race: after the per-arm container restart the REST port on :9347 opens before
+the auth service is ready, so `Dremio()._login` gets `Connection reset by peer` even behind a
+readiness poll. This is consistent with the documented B-DREMIO Dremio-26 friction over the Nessie
+`register_table` path. It is an **automation/orchestration** failure, not a measurement disagreement.
+A clean third draw of that arm needs a login-success readiness gate (poll an authenticated endpoint,
+not just the open port) or a longer fixed warmup before the arm. The stale draw-3 output was removed,
+not reported. Dremio arm result numbers are withheld under its benchmark-publication terms.
 
 ## Net
 
 The flagship's two-regime core is now **3×-validated** (ClickHouse native + Iceberg + OpenSearch
-foil), with stable multiples; Dremio is 2×-validated with a known orchestration caveat. The
-"validate the key Splunk-vs-ClickHouse-vs-Dremio number" ask is met for the part the literature
-leans on — the columnar-vs-foil multiple and the regime split — and the absolute-ms drift is bounded
-and explained.
+foil), with stable multiples. The "validate the key Splunk-vs-ClickHouse number" ask is met for the
+part the literature leans on — the columnar-vs-foil multiple and the regime split — and the
+absolute-ms drift is bounded and explained.

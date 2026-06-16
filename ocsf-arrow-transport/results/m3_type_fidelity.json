@@ -21,20 +21,10 @@
       "avg_b": "float",
       "max_ts": "float"
     },
-    "dremio": {
-      "orig_h": "str",
-      "c": "int",
-      "avg_b": "float",
-      "max_ts": "float"
-    }
+    "_dremio_withheld": "Dremio bespoke type result removed under Dremio's benchmark-publication terms (EULA)."
   },
   "arrow_schema_types": {
-    "dremio_adbc_flightsql": {
-      "orig_h": "string",
-      "c": "int64",
-      "avg_b": "double",
-      "max_ts": "double"
-    },
+    "_dremio_withheld": "Dremio ADBC Flight SQL Arrow-schema result removed under Dremio's benchmark-publication terms (EULA).",
     "clickhouse_query_arrow": {
       "orig_h": "string",
       "c": "uint64",

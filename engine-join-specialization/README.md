@@ -64,7 +64,7 @@ survives the CV gate.
 | `clickhouse_iceberg` | ClickHouse latest (26.5+) | `DataLakeCatalog` REST db (catalog-mediated) | tests whether the 24.12→26.4 join-optimization run survives the Iceberg read path (undocumented publicly) |
 | `clickhouse_native` | same server | MergeTree copies of the same tables | extends the flagship rerun's native-vs-Iceberg split to joins |
 | `trino` | Trino 481 | Iceberg REST catalog | mature CBO + dynamic filtering; single-node so no cluster-shuffle advantage |
-| `dremio` | Dremio 26.0 OSS | Nessie source | **Reflections OFF** (declared: the 20× TPC-DS marketing number measures materialization, not joins) |
+| `dremio` | Dremio 26.0 OSS | Nessie source | **Reflections OFF** (declared: the vendor's TPC-DS marketing number measures materialization, not joins) |
 
 Config parity: each heavy engine gets `mem_limit: 24g` (one engine runs at a time on the
 48 GB host; parity is by equal limit, not by tuning). Engine defaults otherwise — no hints,
@@ -187,7 +187,7 @@ cross-source correlation correctness (`correlate.py` demo) · scan-aggregate con
    over `icebergS3()` is publicly undocumented — this delta is the answer.
 5. **Cross-cutting (~75%): the engine spread at this scale is low single-digit ×**, not the
    3–26× of the marketing literature (StarRocks 3–5×, ClickHouse "26× faster than v22.4",
-   Dremio 20× all come from 100 GB–1 TB+ scale or materializations; at 10–60M rows fixed
+   and a semantic-layer vendor's 20× all come from 100 GB–1 TB+ scale or materializations; at 10–60M rows fixed
    overheads compress differences). If this holds it is itself the publishable finding:
    *at SOC-single-node scale, engine choice on joins matters less than the marketing war
    implies — the assignment criteria should be catalog maturity, concurrency, and ops.*

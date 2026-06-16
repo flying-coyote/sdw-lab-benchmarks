@@ -94,34 +94,6 @@
         "recall": 1.0,
         "false_positives": []
       }
-    },
-    "dremio": {
-      "ueba": {
-        "median_s": 0.5047,
-        "cv_pct": 12.2,
-        "flagged": 20,
-        "tp": 15,
-        "fp": 5,
-        "precision": 0.75,
-        "recall": 1.0,
-        "false_positives": [
-          "10.10.68.219",
-          "10.11.164.43",
-          "10.6.228.66",
-          "10.6.27.220",
-          "10.8.232.240"
-        ]
-      },
-      "rare": {
-        "median_s": 0.3736,
-        "cv_pct": 10.1,
-        "flagged": 15,
-        "tp": 15,
-        "fp": 0,
-        "precision": 1.0,
-        "recall": 1.0,
-        "false_positives": []
-      }
     }
   },
   "ueba_answer_equal_set": true,
@@ -129,13 +101,11 @@
   "ueba_latency_ranking": [
     "clickhouse_iceberg",
     "starrocks",
-    "trino",
-    "dremio"
+    "trino"
   ],
   "rare_latency_ranking": [
     "clickhouse_iceberg",
     "starrocks",
-    "trino",
-    "dremio"
+    "trino"
   ]
 }

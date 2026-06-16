@@ -29,8 +29,9 @@ On Dremio OSS 26.0, **Reflections do not work over an Iceberg table managed by a
 catalog** — neither through the versioned Nessie source (reflection materializes then expires at
 epoch 0) nor through a raw S3 source (the catalog-managed metadata layout has no version hint to
 promote). This is an orchestration/integration limit of Dremio-26 over the open-catalog path, not a
-measurement: Dremio's *Reflections-OFF* engine numbers are unaffected and stand
-(`zeek-flagship-rerun`: 0.787 s avg = 3.6× the OpenSearch foil, 6.5× on the heaviest hunt).
+measurement. (The separate Dremio Reflections-OFF engine results in `zeek-flagship-rerun` are
+withheld under Dremio's benchmark-publication terms; this finding is about the Reflections-ON
+integration path being blocked, not about Dremio's measured latency.)
 
 ## What this means for #25
 

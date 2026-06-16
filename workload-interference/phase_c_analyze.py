@@ -19,15 +19,18 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 PC = HERE / "_work" / "phase_c"
-ARMS = ["clickhouse_iceberg", "clickhouse_native", "starrocks", "dremio"]
+# The Dremio arm is run and reproduced like the others, but its measured results are
+# withheld under its benchmark-publication terms, so it is omitted from this analyzer's
+# published output (no Dremio knee/p95 emitted to PHASE-C-SUMMARY.json / -FINDINGS).
+ARMS = ["clickhouse_iceberg", "clickhouse_native", "starrocks"]
 
 # run-1 (extend-ladder) — from the committed INTERFERENCE-FINDINGS-2026-06-14.md table.
 # knee demand + the p95 at the 64x step; the ladder there was flat through 16-32x.
+# (Dremio arm withheld under its benchmark-publication terms — no run-1 constants carried.)
 RUN1 = {
     "clickhouse_iceberg": {"knee": 64.0, "p95_64": 4.05},
     "clickhouse_native":  {"knee": 64.0, "p95_64": 3.11},
     "starrocks":          {"knee": 64.0, "p95_64": 4.93},
-    "dremio":             {"knee": 32.0, "p95_64": 5.78},  # findings: dremio knees ~16-32x
 }
 
 

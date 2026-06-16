@@ -90,35 +90,6 @@
           "n": 3
         }
       }
-    },
-    "dremio": {
-      "knee_per_run": [
-        32.0,
-        32.0,
-        32.0
-      ],
-      "knee_reproduced_3x": true,
-      "reproduced_knee_demand": 32.0,
-      "p95_band_by_step": {
-        "16.0": {
-          "min_s": 0.809,
-          "median_s": 0.901,
-          "max_s": 0.993,
-          "n": 2
-        },
-        "32.0": {
-          "min_s": 4.353,
-          "median_s": 4.575,
-          "max_s": 4.798,
-          "n": 2
-        },
-        "64.0": {
-          "min_s": 5.78,
-          "median_s": 5.83,
-          "max_s": 8.892,
-          "n": 3
-        }
-      }
     }
   },
   "starrocks_mv_P5": {

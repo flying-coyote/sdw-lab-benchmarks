@@ -3,7 +3,7 @@
 The load-bearing performance number (the 145×→two-regime supersession) was re-run as a full
 independent draw 4 days after the published baseline, same host, same pinned corpus
 (sha256-matched), same one-engine-at-a-time isolation + 7-trial CV-gated protocol. The
-published `results/comparison.json` (06-10 for OS/CH, 06-14 for the Dremio arm) stays
+published `results/comparison.json` (06-10 for OS/CH, 06-14 for the front-engine arm) stays
 canonical; this draw is the validation evidence (preserved in `results_revalidation_2026-06-14/`).
 
 ## The cited multiples reproduce within ~5%
@@ -12,7 +12,8 @@ canonical; this draw is the validation evidence (preserved in `results_revalidat
 |---|--:|--:|
 | ClickHouse-native MergeTree | 46.8× | **45.1×** |
 | ClickHouse-over-Iceberg | 10.1× | **10.6×** |
-| Dremio-over-Iceberg (Reflections OFF) | 3.6× | **3.4×** |
+
+(Front-engine / Dremio arm withheld under its benchmark-publication terms.)
 
 **Answer-equality: ALL IDENTICAL** across all four arms (the silent-wrong check passes again).
 

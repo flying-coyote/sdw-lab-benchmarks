@@ -1,6 +1,6 @@
 # Cross-engine Parquet answer-equality — does the R3 undercount generalize? (Phase E)
 
-**Tier B · single machine · ground-truth-verified.** 13 engines (plus controls) read the **same**
+**Tier B · single machine · ground-truth-verified.** 12 engines (plus controls) read the **same**
 Parquet file (10,000,000 rows, 814 row groups — the R3 trigger structure),
 every count checked against the generator's ground truth (the corpus is a pure function of the row index,
 so the true count of each `user_name` value is computable without any engine). 8
@@ -21,7 +21,6 @@ Parquet reader* (see `ENGINE-LANDSCAPE-SURVEY.md`).
 - **spark** — parquet-mr Java (the reference reader) — `3.5.0`
 - **starrocks** — StarRocks C++ (own) — `4.1.1-14b7e3f`
 - **trino** — Trino Java (own, not parquet-mr) — `481`
-- **dremio** — Dremio Java (own vectorized) — `26.0.5-202509091642240013-f5051a07`
 - **postgres** — Postgres heap (corpus loaded — independent executor, NOT a Parquet read) — `PostgreSQL 17.10`
 - **chdb_mergetree** — ClickHouse MergeTree native store (within-engine control, not Parquet) — `4.1.8`
 
@@ -40,42 +39,41 @@ Parquet reader* (see `ENGINE-LANDSCAPE-SURVEY.md`).
 | spark | parquet-mr Java (the reference reader) | shared bytes | 24/24 | ✓ all correct |
 | starrocks | StarRocks C++ (own) | shared bytes | 24/24 | ✓ all correct |
 | trino | Trino Java (own, not parquet-mr) | shared bytes | 24/24 | ✓ all correct |
-| dremio | Dremio Java (own vectorized) | shared bytes | 24/24 | ✓ all correct |
 | postgres | Postgres heap (corpus loaded — independent executor, NOT a Parquet read) | shared bytes | 24/24 | ✓ all correct |
 | chdb_mergetree | ClickHouse MergeTree native store (within-engine control, not Parquet) | control | 24/24 | ✓ all correct |
 
-**Passes ground truth on every cell: clickhouse_server, daft, datafusion, dremio, duckdb, polars, postgres, pyarrow, spark, starrocks, trino.**
+**Passes ground truth on every cell: clickhouse_server, daft, datafusion, duckdb, polars, postgres, pyarrow, spark, starrocks, trino.**
 **Returns a wrong answer on ≥1 cell: chdb_parquet, fastparquet** — spanning **2 distinct
 reader(s)**: ClickHouse C++ v3 reader, fastparquet.
 
 ## Where the engines diverged
 
-| value | predicate | truth | duckdb | chdb_parquet | datafusion | polars | pyarrow | daft | fastparquet | clickhouse_server | spark | starrocks | trino | dremio | postgres |
-|---|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
-| `user42` | `=` | 5099 | 5099 | **5092** | 5099 | 5099 | 5099 | 5099 | **5096** | 5099 | 5099 | 5099 | 5099 | 5099 | 5099 |
-| `user42` | `IN` | 5099 | 5099 | **5092** | 5099 | 5099 | 5099 | 5099 | **5096** | 5099 | 5099 | 5099 | 5099 | 5099 | 5099 |
-| `user42` | `LIKE` | 5099 | 5099 | 5099 | 5099 | 5099 | 5099 | 5099 | **5096** | 5099 | 5099 | 5099 | 5099 | 5099 | 5099 |
-| `user1337` | `=` | 4972 | 4972 | **4966** | 4972 | 4972 | 4972 | 4972 | **4971** | 4972 | 4972 | 4972 | 4972 | 4972 | 4972 |
-| `user1337` | `IN` | 4972 | 4972 | **4966** | 4972 | 4972 | 4972 | 4972 | **4971** | 4972 | 4972 | 4972 | 4972 | 4972 | 4972 |
-| `user1337` | `LIKE` | 4972 | 4972 | 4972 | 4972 | 4972 | 4972 | 4972 | **4971** | 4972 | 4972 | 4972 | 4972 | 4972 | 4972 |
-| `user7` | `=` | 5108 | 5108 | **5101** | 5108 | 5108 | 5108 | 5108 | **5102** | 5108 | 5108 | 5108 | 5108 | 5108 | 5108 |
-| `user7` | `IN` | 5108 | 5108 | **5101** | 5108 | 5108 | 5108 | 5108 | **5102** | 5108 | 5108 | 5108 | 5108 | 5108 | 5108 |
-| `user7` | `LIKE` | 5108 | 5108 | 5108 | 5108 | 5108 | 5108 | 5108 | **5102** | 5108 | 5108 | 5108 | 5108 | 5108 | 5108 |
-| `user999` | `=` | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | **5050** | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 |
-| `user999` | `IN` | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | **5050** | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 |
-| `user999` | `LIKE` | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | **5050** | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 |
-| `user1500` | `=` | 5106 | 5106 | **5096** | 5106 | 5106 | 5106 | 5106 | **5100** | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 |
-| `user1500` | `IN` | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 | **5100** | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 |
-| `user1500` | `LIKE` | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 | **5100** | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 |
-| `user256` | `=` | 5000 | 5000 | **4988** | 5000 | 5000 | 5000 | 5000 | **4997** | 5000 | 5000 | 5000 | 5000 | 5000 | 5000 |
-| `user256` | `IN` | 5000 | 5000 | **4988** | 5000 | 5000 | 5000 | 5000 | **4997** | 5000 | 5000 | 5000 | 5000 | 5000 | 5000 |
-| `user256` | `LIKE` | 5000 | 5000 | 5000 | 5000 | 5000 | 5000 | 5000 | **4997** | 5000 | 5000 | 5000 | 5000 | 5000 | 5000 |
-| `user1023` | `=` | 5022 | 5022 | **5012** | 5022 | 5022 | 5022 | 5022 | **5019** | 5022 | 5022 | 5022 | 5022 | 5022 | 5022 |
-| `user1023` | `IN` | 5022 | 5022 | **5012** | 5022 | 5022 | 5022 | 5022 | **5019** | 5022 | 5022 | 5022 | 5022 | 5022 | 5022 |
-| `user1023` | `LIKE` | 5022 | 5022 | 5022 | 5022 | 5022 | 5022 | 5022 | **5019** | 5022 | 5022 | 5022 | 5022 | 5022 | 5022 |
-| `user64` | `=` | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | 5144 | 5144 |
-| `user64` | `IN` | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | 5144 | 5144 |
-| `user64` | `LIKE` | 5144 | 5144 | 5144 | 5144 | 5144 | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | 5144 | 5144 |
+| value | predicate | truth | duckdb | chdb_parquet | datafusion | polars | pyarrow | daft | fastparquet | clickhouse_server | spark | starrocks | trino | postgres |
+|---|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|
+| `user42` | `=` | 5099 | 5099 | **5092** | 5099 | 5099 | 5099 | 5099 | **5096** | 5099 | 5099 | 5099 | 5099 | 5099 |
+| `user42` | `IN` | 5099 | 5099 | **5092** | 5099 | 5099 | 5099 | 5099 | **5096** | 5099 | 5099 | 5099 | 5099 | 5099 |
+| `user42` | `LIKE` | 5099 | 5099 | 5099 | 5099 | 5099 | 5099 | 5099 | **5096** | 5099 | 5099 | 5099 | 5099 | 5099 |
+| `user1337` | `=` | 4972 | 4972 | **4966** | 4972 | 4972 | 4972 | 4972 | **4971** | 4972 | 4972 | 4972 | 4972 | 4972 |
+| `user1337` | `IN` | 4972 | 4972 | **4966** | 4972 | 4972 | 4972 | 4972 | **4971** | 4972 | 4972 | 4972 | 4972 | 4972 |
+| `user1337` | `LIKE` | 4972 | 4972 | 4972 | 4972 | 4972 | 4972 | 4972 | **4971** | 4972 | 4972 | 4972 | 4972 | 4972 |
+| `user7` | `=` | 5108 | 5108 | **5101** | 5108 | 5108 | 5108 | 5108 | **5102** | 5108 | 5108 | 5108 | 5108 | 5108 |
+| `user7` | `IN` | 5108 | 5108 | **5101** | 5108 | 5108 | 5108 | 5108 | **5102** | 5108 | 5108 | 5108 | 5108 | 5108 |
+| `user7` | `LIKE` | 5108 | 5108 | 5108 | 5108 | 5108 | 5108 | 5108 | **5102** | 5108 | 5108 | 5108 | 5108 | 5108 |
+| `user999` | `=` | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | **5050** | 5055 | 5055 | 5055 | 5055 | 5055 |
+| `user999` | `IN` | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | **5050** | 5055 | 5055 | 5055 | 5055 | 5055 |
+| `user999` | `LIKE` | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | 5055 | **5050** | 5055 | 5055 | 5055 | 5055 | 5055 |
+| `user1500` | `=` | 5106 | 5106 | **5096** | 5106 | 5106 | 5106 | 5106 | **5100** | 5106 | 5106 | 5106 | 5106 | 5106 |
+| `user1500` | `IN` | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 | **5100** | 5106 | 5106 | 5106 | 5106 | 5106 |
+| `user1500` | `LIKE` | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 | 5106 | **5100** | 5106 | 5106 | 5106 | 5106 | 5106 |
+| `user256` | `=` | 5000 | 5000 | **4988** | 5000 | 5000 | 5000 | 5000 | **4997** | 5000 | 5000 | 5000 | 5000 | 5000 |
+| `user256` | `IN` | 5000 | 5000 | **4988** | 5000 | 5000 | 5000 | 5000 | **4997** | 5000 | 5000 | 5000 | 5000 | 5000 |
+| `user256` | `LIKE` | 5000 | 5000 | 5000 | 5000 | 5000 | 5000 | 5000 | **4997** | 5000 | 5000 | 5000 | 5000 | 5000 |
+| `user1023` | `=` | 5022 | 5022 | **5012** | 5022 | 5022 | 5022 | 5022 | **5019** | 5022 | 5022 | 5022 | 5022 | 5022 |
+| `user1023` | `IN` | 5022 | 5022 | **5012** | 5022 | 5022 | 5022 | 5022 | **5019** | 5022 | 5022 | 5022 | 5022 | 5022 |
+| `user1023` | `LIKE` | 5022 | 5022 | 5022 | 5022 | 5022 | 5022 | 5022 | **5019** | 5022 | 5022 | 5022 | 5022 | 5022 |
+| `user64` | `=` | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | 5144 |
+| `user64` | `IN` | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | 5144 |
+| `user64` | `LIKE` | 5144 | 5144 | 5144 | 5144 | 5144 | 5144 | 5144 | **5137** | 5144 | 5144 | 5144 | 5144 | 5144 |
 
 (bold = wrong answer; — = engine errored on that cell)
 

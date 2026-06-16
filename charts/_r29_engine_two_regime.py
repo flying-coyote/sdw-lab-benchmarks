@@ -3,8 +3,7 @@ benchmark-8-engine.png — the engine two-regime chart (replaces the stale 145×
 
 Data: zeek-flagship-rerun, draw-1 (canonical published draw), triple-validated 2026-06-14.
 Average of per-query medians across the 5 standardized scan/aggregate queries, vs the
-OpenSearch schema-on-read foil (best_compression, 1 segment). Dremio = Reflections OFF
-(the honest apples-to-apples baseline), 2-draw validated (draw-3 hit a Dremio-26 auth race).
+OpenSearch schema-on-read foil (best_compression, 1 segment).
 
 This is the SCAN-HEAVY AGGREGATION regime (the hunting workload). On point-lookups the
 inverted index wins — that is the other half of the two-regime split (NEEDLE-FINDINGS),
@@ -12,8 +11,10 @@ which the subtitle names so the chart does not overclaim "columnar always wins".
 
 Kept filename `benchmark-8-engine.png` so the deck + campaign references don't break. As of
 2026-06-15 StarRocks + Trino were re-measured against THIS foil on the SAME conn_10m corpus +
-5-query suite (starrocks_trino_arms.py → results/starrocks_trino_arms.json), so the chart now
-carries 6 arms without mixing foils.
+5-query suite (starrocks_trino_arms.py → results/starrocks_trino_arms.json).
+
+(One additional open-Iceberg arm was measured but its result is withheld here under that
+engine's benchmark-publication terms; the chart carries the remaining arms.)
 """
 import chartstyle as cs
 import matplotlib.pyplot as plt
@@ -22,7 +23,6 @@ import matplotlib.pyplot as plt
 ARMS = [
     ("Schema-on-read SIEM\ninverted index",        2.854, 1.0,  cs.CONTEXT),  # baseline foil
     ("Trino\nIceberg · federated (REST)",          0.795, 3.6,  "#8fb4d9"),   # open format
-    ("Dremio\nIceberg · Reflections off",          0.787, 3.6,  cs.ACCENT2),  # open format
     ("StarRocks\nIceberg · async-MV rewrite",      0.343, 8.3,  cs.TEAL600),  # open-format MPP
     ("ClickHouse\nIceberg · zstd Parquet",         0.282, 10.1, cs.ACCENT),   # open-format hero
     ("ClickHouse\nnative MergeTree",               0.061, 46.8, cs.INK),      # proprietary ceiling
@@ -31,9 +31,9 @@ ARMS = [
 fig, ax = cs.canvas(
     "Columnar engines win the hunting workload on open Iceberg",
     sub=("Average of 5 scan/aggregate queries vs a schema-on-read inverted-index foil (10M-event Zeek). "
-         "Four open-Iceberg engines clear the foil 3.6–10.1×; the ~4.6× gap to native is the open-format tax. "
+         "Three open-Iceberg engines clear the foil 3.6–10.1×; the ~4.6× gap to native is the open-format tax. "
          "On point-lookups the index wins — the other regime."),
-    source="sdw-lab zeek-flagship-rerun · 4 arms triple-validated 2026-06-14, StarRocks+Trino added 2026-06-15 · OpenSearch 2.18.0 foil (best_compression, 1 seg)",
+    source="sdw-lab zeek-flagship-rerun · triple-validated 2026-06-14, StarRocks+Trino added 2026-06-15 · OpenSearch 2.18.0 foil (best_compression, 1 seg)",
     tier="Tier B · single host · reproducible",
     figsize=(9.4, 5.0), bottom=0.21, top=0.74,
 )

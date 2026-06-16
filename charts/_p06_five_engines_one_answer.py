@@ -2,12 +2,14 @@ import chartstyle as cs
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 
-# Diagram: five engines -> one OCSF Iceberg table -> one identical answer.
-# Verified numbers: 1,000 rows / 125 RDP, 5 engines, 3 catalogs, 2 table formats.
+# Diagram: four engines -> one OCSF Iceberg table -> one identical answer.
+# Verified numbers: 1,000 rows / 125 RDP, 4 engines, 3 catalogs, 2 table formats.
+# (A fifth engine also returned the identical answer but its result is withheld here under
+#  that engine's benchmark-publication terms.)
 
 fig, ax = cs.canvas(
-    "Five engines, one table, one answer.",
-    "DuckDB, Trino, ClickHouse, StarRocks and Dremio all return the identical 1,000 rows / 125 RDP\n"
+    "Four engines, one table, one answer.",
+    "DuckDB, Trino, ClickHouse and StarRocks all return the identical 1,000 rows / 125 RDP\n"
     "from the same OCSF table — across 3 catalogs and 2 table formats.",
     source="security-data-that-works/docker · ./moar verify",
     tier="Tier B · single-host · reproducible",
@@ -23,11 +25,11 @@ def box(x, y, w, h, fc=cs.SUBTLE, ec=cs.GRID, lw=1.0):
     ax.add_patch(p)
     return p
 
-# --- five engine boxes, column on the left ---
-engines = ["DuckDB", "Trino", "ClickHouse", "StarRocks", "Dremio"]
+# --- four engine boxes, column on the left ---
+engines = ["DuckDB", "Trino", "ClickHouse", "StarRocks"]
 ew, eh = 2.0, 1.15
 ex = 0.45
-eys = [8.35, 6.55, 4.75, 2.95, 1.15]
+eys = [8.05, 6.10, 4.15, 2.20]
 for name, ey in zip(engines, eys):
     box(ex, ey, ew, eh)
     ax.text(ex + ew/2, ey + eh/2, name, ha="center", va="center",

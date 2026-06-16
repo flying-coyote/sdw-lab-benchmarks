@@ -4,22 +4,21 @@
   "host": "ejs single host",
   "table": "soc.conn_ueba_planted",
   "M1_surface": {
-    "n_engines": 4,
+    "n_engines": 3,
+    "_withheld_note": "Dremio arm removed under Dremio's benchmark-publication terms (EULA). Counts here are over the published engines (starrocks, clickhouse_iceberg, trino); architecture/connector facts retained, measured results removed.",
     "regime_A_bespoke": {
       "regime": "A: bespoke (status quo)",
-      "distinct_auth": 4,
-      "distinct_result_reprs": 4,
-      "distinct_paging": 4,
-      "type_fidelity_lost_engines": [
-        "dremio"
-      ],
+      "distinct_auth": 3,
+      "distinct_result_reprs": 3,
+      "distinct_paging": 3,
+      "type_fidelity_lost_engines": [],
       "client_deps": [
         "clickhouse-connect",
         "pymysql",
         "requests"
       ],
       "jvm_required": false,
-      "consumer_handlers": 4
+      "consumer_handlers": 3
     },
     "regime_C_adbc_uniform": {
       "regime": "C: ADBC-uniform (Flight SQL + ADBC-over-JDBC bridge)",
@@ -28,9 +27,8 @@
       "distinct_paging": 0,
       "type_fidelity_lost_engines": [],
       "uniform_api": true,
-      "flight_sql_native": [
-        "dremio"
-      ],
+      "flight_sql_native": [],
+      "_flight_sql_native_note": "A Flight-SQL-speaking engine (Dremio) reaches the uniform path natively; that arm is withheld under Dremio's benchmark-publication terms.",
       "adbc_jdbc_bridged": [
         "starrocks",
         "clickhouse_iceberg",
@@ -74,14 +72,7 @@
         "types": "JSON-untyped",
         "dep": "requests"
       },
-      "dremio": {
-        "wire": "REST /apiv2 + /api/v3",
-        "auth": "login->token header",
-        "result": "JSON rows+schema (rebuilt by name)",
-        "paging": "job-state poll + offset/limit",
-        "types": "LOST -> re-inferred by name",
-        "dep": "requests"
-      }
+      "_dremio_withheld": "Dremio bespoke-client detail removed under Dremio's benchmark-publication terms (EULA)."
     },
     "capability_map": {
       "dremio": "ADBC Flight SQL (native, :32010) \u2014 uniform ADBC API + Arrow",
@@ -110,10 +101,10 @@
       "touch_points_loc_per_engine": {
         "StarRocks": 10,
         "ClickHouse": 8,
-        "Trino": 13,
-        "Dremio": 24
+        "Trino": 13
       },
-      "median_loc": 13
+      "_dremio_withheld": "Dremio swap-cost (LOC) removed under Dremio's benchmark-publication terms (EULA).",
+      "median_loc": 10
     },
     "adbc_uniform": {
       "swap_unit": "change the connection target (driver/URI); + 1 JDBC jar if non-Flight-SQL",
@@ -137,17 +128,7 @@
       "count": 868790,
       "result_type": "list"
     },
-    "bespoke:dremio": {
-      "count": 868790,
-      "result_type": "list"
-    },
-    "adbc_flightsql:dremio": {
-      "count": 868790,
-      "result_type": "Table",
-      "typed_schema": [
-        "int64"
-      ]
-    },
+    "_dremio_withheld": "Dremio live-check results (bespoke + ADBC Flight SQL) removed under Dremio's benchmark-publication terms (EULA).",
     "engine_arrow:clickhouse": {
       "count": 868790,
       "result_type": "Table",
@@ -161,8 +142,6 @@
     "bespoke:starrocks": 868790,
     "bespoke:clickhouse_iceberg": 868790,
     "bespoke:trino": 868790,
-    "bespoke:dremio": 868790,
-    "adbc_flightsql:dremio": 868790,
     "engine_arrow:clickhouse": 868790
   }
 }

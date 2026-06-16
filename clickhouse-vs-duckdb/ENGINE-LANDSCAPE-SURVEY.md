@@ -67,8 +67,9 @@ Snowflake, BigQuery, Athena (Presto/Trino-lineage), Redshift Spectrum, Databrick
 What actually wired into `multi_engine_correctness.py`, after building each runner:
 
 - **Wired and passing ground truth:** DuckDB, DataFusion, Polars, pyarrow, Daft, Trino, ClickHouse-server,
-  Spark, StarRocks, Dremio, Postgres (native-load baseline). 13 distinct readers/executors counting the
-  controls.
+  Spark, StarRocks, Postgres (native-load baseline). (One additional Java-vectorized arm was wired and ran,
+  but its correctness result is withheld under that engine's benchmark-publication terms.) 12 distinct
+  readers/executors counting the controls.
 - **Wired and FAILING (the findings):** chDB Parquet (`=`/`IN` undercount via default-on Bloom-filter
   pushdown — `CHDB-UPSTREAM-BUG-REPORT.md`); fastparquet (mis-decodes DuckDB's `PLAIN_DICTIONARY` —
   `FASTPARQUET-DECODE-NOTE.md`). Two *distinct readers* return silently wrong answers.

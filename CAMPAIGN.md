@@ -124,13 +124,14 @@ R2RML setup), BENCH-B frontier leg (needs ANTHROPIC_API_KEY), BENCH-A named-prac
 Added 2026-06-06 from the post-R8 review. Resource-light unless noted; each maps to a hypothesis.
 
 - [x] **Cross-engine Parquet correctness probe — DONE** (`clickhouse-vs-duckdb/multi_engine_correctness.py`,
-  `MULTI-ENGINE-CORRECTNESS.md`). The R3 chDB undercount was generalized across **13 distinct Parquet
+  `MULTI-ENGINE-CORRECTNESS.md`). The R3 chDB undercount was generalized across **12 distinct Parquet
   readers/executors** reading byte-identical Parquet (the ~814-row-group trigger), all via SQL, vs the
   generator's ground truth: DuckDB, DataFusion, Polars, pyarrow/Acero, Daft, fastparquet (in-process) +
-  Trino, ClickHouse-server, Spark, StarRocks, Dremio, Postgres-native-load (containerized). Engine set
-  chosen by *distinct reader* per `ENGINE-LANDSCAPE-SURVEY.md`. **Result: 11 readers correct; 2 distinct
-  readers silently wrong** — and both isolated to a mechanism and confirmed default-config, not
-  misconfiguration:
+  Trino, ClickHouse-server, Spark, StarRocks, Postgres-native-load (containerized). Engine set
+  chosen by *distinct reader* per `ENGINE-LANDSCAPE-SURVEY.md`. (One additional containerized reader was
+  run and passed but its result is withheld under that engine's benchmark-publication terms.) **Result:
+  10 readers correct; 2 distinct readers silently wrong** — and both isolated to a mechanism and confirmed
+  default-config, not misconfiguration:
   - **chDB / ClickHouse v3 Parquet reader** undercounts `=`/`IN` via **default-on Bloom-filter pushdown**
     (`input_format_parquet_bloom_filter_push_down=1`). `LIKE` is correct (no Bloom probe), MergeTree is
     correct. **Disambiguated:** clickhouse-server **25.10** (older reader) reads the same file correctly, and

@@ -119,8 +119,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -129,8 +128,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -139,8 +137,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -149,8 +146,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -159,8 +155,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -169,8 +164,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -179,8 +173,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -189,8 +182,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -199,8 +191,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -209,8 +200,7 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       },
       {
@@ -219,16 +209,14 @@
         "per_dialect": {
           "starrocks": "ok",
           "clickhouse": "ok",
-          "trino": "ok",
-          "dremio": "ok"
+          "trino": "ok"
         }
       }
     ],
     "clickhouse_only_func_transpile": {
       "starrocks": "ok:SELECT DATE_TRUNC('DAY', ts) AS d, COUNT(*) FROM conn WHERE ts > CAST('2026-06-1",
       "clickhouse": "ok:SELECT dateTrunc('DAY', ts) AS d, count(*) FROM conn WHERE ts > CAST('2026-06-14",
-      "trino": "ok:SELECT DATE_TRUNC('DAY', ts) AS d, COUNT(*) FROM conn WHERE ts > CAST('2026-06-1",
-      "dremio": "ok:SELECT DATE_TRUNC('DAY', ts) AS d, COUNT(*) FROM conn WHERE ts > CAST('2026-06-1"
+      "trino": "ok:SELECT DATE_TRUNC('DAY', ts) AS d, COUNT(*) FROM conn WHERE ts > CAST('2026-06-1"
     }
   },
   "rows": [

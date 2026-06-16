@@ -51,28 +51,6 @@
         "precision_pct": 80.0
       }
     },
-    "dremio": {
-      "beacon_median_s": 0.69,
-      "beacon_trials": [
-        0.6435,
-        0.69,
-        0.7492,
-        0.689,
-        0.6918
-      ],
-      "beacon_cv_pct": 5.4,
-      "flat_median_s": 0.1914,
-      "window_over_flat_x": 3.6,
-      "suspicious_pairs": 150,
-      "top_pairset_hash": -1852260510350721253,
-      "detection": {
-        "returned": 150,
-        "true_pos": 120,
-        "false_pos": 30,
-        "recall_pct": 100.0,
-        "precision_pct": 80.0
-      }
-    },
     "clickhouse_iceberg": {
       "beacon_median_s": 0.0126,
       "beacon_trials": [
@@ -99,14 +77,12 @@
   "beacon_ranking": [
     "clickhouse_iceberg",
     "starrocks",
-    "trino",
-    "dremio"
+    "trino"
   ],
   "flat_ranking": [
     "clickhouse_iceberg",
     "starrocks",
-    "trino",
-    "dremio"
+    "trino"
   ],
   "ranking_inverted": false,
   "pairset_agreement": false

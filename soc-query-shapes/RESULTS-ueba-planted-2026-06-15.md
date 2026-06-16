@@ -11,14 +11,15 @@ gap. `gen_ueba_corpus.py` builds `soc.conn_ueba_planted` (868,790 rows): 3,000 N
 source (ground truth). `ueba_planted_bench.py` scores precision/recall vs the plant and cross-engine
 set-equality. Tier B, single host, synthetic.
 
-## Result (all four Iceberg engines, 5 trials)
+## Result (the four Iceberg engines ran; three non-Dremio arms reported, 5 trials)
 
 | engine | UEBA P | UEBA R | UEBA (tp/fp) | rare P | rare R | rare (tp/fp) | ueba s | rare s |
 |---|--:|--:|--:|--:|--:|--:|--:|--:|
 | ClickHouse-Iceberg | 0.75 | **1.0** | 15/5 | **1.0** | **1.0** | 15/0 | 0.068 | 0.061 |
 | StarRocks | 0.75 | **1.0** | 15/5 | **1.0** | **1.0** | 15/0 | 0.087 | 0.084 |
 | Trino | 0.75 | **1.0** | 15/5 | **1.0** | **1.0** | 15/0 | 0.294 | 0.280 |
-| Dremio | 0.75 | **1.0** | 15/5 | **1.0** | **1.0** | 15/0 | 0.505 | 0.374 |
+
+(Dremio arm withheld under its benchmark-publication terms — it ran and is included in the cross-engine answer-equality check below.)
 
 **Detection is correct and engine-portable.** Every engine catches all 15 planted spike hosts (UEBA
 recall 1.0) and all 15 single-source rare dests (recall 1.0, precision 1.0). The UEBA precision 0.75 is
@@ -28,7 +29,7 @@ statistical outliers in the synthetic baseline + the Z>3 threshold, not a detect
 heavy talkers (the decoy test the shape is built to pass). The five FPs are the *same five hosts* on every
 engine.
 
-**Cross-engine answer-equality CONFIRMED on planted truth.** All four engines return the **identical
+**Cross-engine answer-equality CONFIRMED on planted truth.** The reported non-Dremio engines return the **identical
 flagged set** for UEBA (the same 20 hosts: 15 spikes + the same 5 chance-FPs) and for rare_dest (the same
 15 dests) — `ueba_answer_equal_set = true`, `rare_answer_equal_set = true`. This is the cross-engine
 correctness datapoint the empty-set run could not provide. (Scored on the entity SET, not the float-laden
@@ -37,12 +38,12 @@ rows: avg/stddev format differently per engine, so set-equality is the meaningfu
 ## What it does to the hypothesis — and the honest qualification of the inversion
 
 This closes the H-ARCH-02 UEBA/rare evidence gap: the two-level-agg and high-card count-DISTINCT shapes
-now have **measured detection correctness (recall 1.0) and confirmed four-engine answer-equality on planted
+now have **measured detection correctness (recall 1.0) and confirmed cross-engine answer-equality on planted
 ground truth**, replacing "0-row, correctness UNVALIDATED."
 
 But the **StarRocks-overtakes-ClickHouse UEBA inversion does NOT reproduce here**: on this 868k corpus
-ClickHouse wins UEBA (0.068 s) over StarRocks (0.087 s) — the ranking is ClickHouse < StarRocks < Trino <
-Dremio for *both* shapes, the same as the flat baseline, no inversion. The inversion was measured at
+ClickHouse wins UEBA (0.068 s) over StarRocks (0.087 s) — the ranking is ClickHouse < StarRocks < Trino
+for *both* shapes, the same as the flat baseline, no inversion. The inversion was measured at
 **10.3M** rows on `soc.conn`; this corpus is both **smaller (868k) and a different distribution** (3,000
 hosts + planted anomalies vs the flagship's flow mix), so the two differ on scale AND shape and the
 non-reproduction can't be cleanly attributed to either alone. The honest read: the inversion is

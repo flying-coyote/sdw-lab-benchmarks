@@ -1,19 +1,7 @@
 {
-  "bench": "arrow M4 same-runtime transport (Dremio, Python)",
+  "bench": "arrow M4 same-runtime transport (Python)",
   "tier": "B",
   "rows": 100000,
   "trials": 3,
-  "arms": {
-    "adbc_flightsql_arrow": {
-      "rows": 100000,
-      "median_s": 0.14,
-      "rows_per_s": 709167
-    },
-    "rest_json_rows": {
-      "rows": 100000,
-      "median_s": 1.82,
-      "rows_per_s": 55056
-    }
-  },
-  "arrow_speedup_same_runtime_x": 13.0
+  "withheld": "Results removed under Dremio's benchmark-publication terms (EULA). This same-runtime transport leg (ADBC Flight SQL Arrow vs REST JSON rows, both in Python) was exercised against Dremio's endpoints, so its measured throughput, latency, and speedup numbers are withheld. The methodology and direction are recorded in RESULTS-manageability-2026-06-15.md; the measured Dremio numbers are not."
 }
