@@ -10,21 +10,30 @@ NL2KQL quantified at ~42% confidently-wrong in security telemetry.
 Three arms over the [shared testbed](../ocsf-semantic-testbed/)'s Store F, scored against
 the planted ground truth:
 
-- **text-to-SQL** — a local LLM composes DuckDB SQL from the schema in context. *(first
-  pass: implemented)*
-- **OBDA / Ontop** — OWL2QL virtual rewrite over R2RML mappings. *(pending: Ontop CLI not
-  installed here; the JVM is present, the mappings are to author)*
-- **GraphRAG** — retrieve a concept subgraph, LLM composes the query. *(pending: no
-  graph+vector GraphRAG stack installed here)*
+- **text-to-SQL** — an LLM composes DuckDB SQL from the schema in context. *(RAN — frontier
+  multi-trial; correct+stable on lookups, silently wrong on the adversary tail)*
+- **OBDA / Ontop** — OWL2QL virtual rewrite (SPARQL→SQL). *(RAN — `run_obda.py`; correct or
+  refusal-honest on its 3/8 OWL2QL-expressible coverage)*
+- **GraphRAG (structured) + a flat_retrieval control** — retrieve a concept subgraph, LLM
+  composes the query. *(RAN — `run_graphrag.py`; structure did not beat the flat control above
+  run-to-run noise; retrieval was the binding constraint)*
 
-## State — first pass (text-to-SQL baseline only)
+## State — head-to-head RAN (2026-06-17 update)
 
-This first pass runs the text-to-SQL arm and records the OBDA and GraphRAG arms as
-pending with their blockers, so the comparison is honestly partial rather than implied.
-The text-to-SQL baseline is the arm the formal rewrite has to beat; measuring its
-silent-error rate on the adversary tail is the starting point for the head-to-head.
-Results in [results/RESULTS.md](results/RESULTS.md) (when rendered) and
-[results/results.json](results/results.json).
+All three arms plus a flat_retrieval control ran at the frontier with run-to-run variance
+(8 trials/query), pre-registered (`BENCH-C-PREREGISTRATION.md`), adversarially verified. The
+canonical result is **[RESULTS-headtohead-2026-06-16.md](RESULTS-headtohead-2026-06-16.md)**;
+the earlier single-pass `results/results.json` is superseded for the variance claim. It
+**resolves toward the problem, not either proposed solution**: frontier text-to-SQL with full
+data access is correct+stable on simple lookups but silently wrong on the
+aggregate/sequence/identity adversary tail (silent 0.49 overall / 0.84 on the tail, 0 correct);
+the graph-structure pre-registered null was not refuted (retrieval recall ~0.10 was the binding
+constraint, the one apparent win an A9 sameAs-index artifact); OBDA's defensible property is
+refusal-honesty on its 3/8 OWL2QL coverage, not same-question safety (the A4 "safer" reading was
+a confound — the template was fed the gold constant). Moves H-CONCEPT-GRAPH-03 to 3.5/5;
+H-CONCEPT-GRAPH-02 holds 2.5/5. A clean re-run is pre-registered
+(`BENCH-C-PREREGISTRATION-v2-rerun.md`): the adversary tail is compute-over-graph, not
+needle-retrieval, so the GraphRAG arm needs a structured-query channel to fairly adjudicate.
 
 Each query is scored **correct** (truth recovered), **silent** (executed, returned rows,
 truth not recovered — the security-relevant failure), or **loud** (SQL errored or came
@@ -42,9 +51,9 @@ cd bench-a-context-collapse && python run.py && cd ..
 
 ## Evidence tier
 
-Tier B, and only one of three arms. A local weak model composing SQL is the baseline, not
-the headline; the headline is the OBDA-vs-LLM silent-error contrast on the adversary tail,
-which needs all three arms. Single machine, one planted chain, one model. The OWL2QL
-recursion ceiling and the documented text-to-SQL silent-error literature are the external
-anchors the full result would sit against. Tier-A needs all three arms, a published
-labeled query set, a named reviewer, and a non-toy scale.
+Tier B — all three arms ran at the frontier (claude-opus-class proxy) with run-to-run
+variance, single machine, one planted chain, directional pilot (n=9). The OWL2QL recursion
+ceiling and the documented text-to-SQL silent-error literature (NL2KQL ~42% confidently-wrong,
+BIRD 81.67% vs 92.96% human) are the external anchors. Tier-A needs a second host (independent
+reproduction), the v2 re-run's confound removals (`BENCH-C-PREREGISTRATION-v2-rerun.md`), a
+published labeled query set, a named reviewer, and a non-toy scale.

@@ -1,5 +1,17 @@
 # BENCH-C GraphRAG arm — readiness doc
 
+> **UPDATE 2026-06-17 — SUPERSEDED BY THE RUN.** This readiness doc predates the run. The
+> GraphRAG arm (structured entity-layer retrieval) plus a flat_retrieval control DID run, at
+> the frontier with 8-trials/query variance, pre-registered, scored — see
+> [RESULTS-headtohead-2026-06-16.md](RESULTS-headtohead-2026-06-16.md). Finding: graph structure
+> did not beat the flat control above run-to-run noise, and retrieval recall (~0.10) was the
+> binding constraint, so the pre-registered null was not refuted. The "Phase-B gated / nothing
+> heavy has been run / still needs a pre-registration + flat_retrieval control" text below is
+> HISTORICAL — the pre-registration (`BENCH-C-PREREGISTRATION.md`), the flat control, and the run
+> all exist now. A clean re-run is pre-registered (`BENCH-C-PREREGISTRATION-v2-rerun.md`), which
+> reframes the adversary tail as compute-over-graph (needing a structured-query channel) rather
+> than needle-retrieval. The design detail below remains useful background.
+
 The third arm of the BENCH-C head-to-head (`ocsf-semantic-query`): a GraphRAG runtime
 that builds a concept graph + a vector index over the OCSF fidelity store, retrieves a
 relevant subgraph plus the top-k vector neighbours per question, hands that context to a
