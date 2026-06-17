@@ -1,0 +1,295 @@
+{
+  "trials": 8,
+  "model": "opus",
+  "arm": "agentic_text_to_sql",
+  "text2sql": [
+    {
+      "qid": "A2",
+      "trial": 0,
+      "sql": "SELECT cmd_line\nFROM f_process\nWHERE device_hostname = 'WS1'\n  AND cmd_line ILIKE '%-EncodedCommand%';",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A2",
+      "trial": 1,
+      "sql": "SELECT cmd_line\nFROM f_process\nWHERE device_hostname = 'WS1'\n  AND cmd_line ILIKE '%-EncodedCommand%';",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A2",
+      "trial": 2,
+      "sql": "SELECT cmd_line\nFROM f_process\nWHERE device_hostname = 'WS1'\n  AND cmd_line LIKE '%-EncodedCommand%'",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A2",
+      "trial": 3,
+      "sql": "SELECT cmd_line\nFROM f_process\nWHERE device_hostname = 'WS1'\n  AND cmd_line ILIKE '%-EncodedCommand%';",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A2",
+      "trial": 4,
+      "sql": "SELECT cmd_line\nFROM f_process\nWHERE device_hostname = 'WS1'\n  AND cmd_line ILIKE '%-EncodedCommand%';",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A2",
+      "trial": 5,
+      "sql": "SELECT cmd_line\nFROM f_process\nWHERE device_hostname = 'WS1'\n  AND cmd_line ILIKE '%-EncodedCommand%';",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A2",
+      "trial": 6,
+      "sql": "SELECT cmd_line\nFROM f_process\nWHERE device_hostname = 'WS1'\n  AND cmd_line ILIKE '%-EncodedCommand%';",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A2",
+      "trial": 7,
+      "sql": "SELECT cmd_line\nFROM f_process\nWHERE device_hostname = 'WS1'\n  AND cmd_line ILIKE '%-EncodedCommand%';",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A6",
+      "trial": 0,
+      "sql": "SELECT event_uid\nFROM f_api\nWHERE api_operation = 'AttachUserPolicy'\n  AND mfa_present = FALSE;",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A6",
+      "trial": 1,
+      "sql": "SELECT event_uid\nFROM f_api\nWHERE api_operation = 'AttachUserPolicy'\n  AND mfa_present = FALSE",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A6",
+      "trial": 2,
+      "sql": "SELECT event_uid\nFROM f_api\nWHERE api_operation = 'AttachUserPolicy'\n  AND mfa_present = FALSE;",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A6",
+      "trial": 3,
+      "sql": "SELECT event_uid\nFROM f_api\nWHERE api_operation = 'AttachUserPolicy'\n  AND mfa_present = FALSE",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A6",
+      "trial": 4,
+      "sql": "SELECT event_uid\nFROM f_api\nWHERE api_operation = 'AttachUserPolicy'\n  AND mfa_present = FALSE;",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A6",
+      "trial": 5,
+      "sql": "SELECT event_uid\nFROM f_api\nWHERE api_operation = 'AttachUserPolicy'\n  AND mfa_present = FALSE",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A6",
+      "trial": 6,
+      "sql": "SELECT event_uid\nFROM f_api\nWHERE api_operation = 'AttachUserPolicy'\n  AND mfa_present = FALSE",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A6",
+      "trial": 7,
+      "sql": "SELECT event_uid\nFROM f_api\nWHERE api_operation = 'AttachUserPolicy'\n  AND mfa_present = FALSE",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A8",
+      "trial": 0,
+      "sql": "WITH global_counts AS (\n  SELECT query_hostname, count(*) AS total_n\n  FROM f_dns\n  GROUP BY query_hostname\n)\nSELECT d.query_hostname\nFROM f_dns d\nJOIN global_counts gc USING (query_hostname)\nWHERE d.src_hostname = 'WS1'\n  AND gc.total_n = 1\nORDER BY d.query_hostname;",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A8",
+      "trial": 1,
+      "sql": "WITH global_counts AS (\n  SELECT query_hostname, COUNT(*) AS total\n  FROM f_dns\n  GROUP BY query_hostname\n)\nSELECT d.query_hostname\nFROM f_dns d\nJOIN global_counts gc ON d.query_hostname = gc.query_hostname\nWHERE d.src_hostname = 'WS1'\n  AND gc.total = 1\nORDER BY d.query_hostname;",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A8",
+      "trial": 2,
+      "sql": "WITH global_counts AS (\n  SELECT query_hostname, COUNT(*) AS global_n\n  FROM f_dns\n  GROUP BY query_hostname\n)\nSELECT DISTINCT d.query_hostname\nFROM f_dns d\nJOIN global_counts gc ON gc.query_hostname = d.query_hostname\nWHERE d.src_hostname = 'WS1'\n  AND gc.global_n = 1;",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A8",
+      "trial": 3,
+      "sql": "WITH global_counts AS (\n  SELECT query_hostname, count(*) AS global_n\n  FROM f_dns\n  GROUP BY query_hostname\n)\nSELECT DISTINCT d.query_hostname\nFROM f_dns d\nJOIN global_counts gc USING (query_hostname)\nWHERE d.src_hostname = 'WS1'\n  AND gc.global_n = 1;",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A8",
+      "trial": 4,
+      "sql": "WITH global_counts AS (\n  SELECT query_hostname, count(*) AS total_n\n  FROM f_dns\n  GROUP BY query_hostname\n)\nSELECT DISTINCT d.query_hostname\nFROM f_dns d\nJOIN global_counts gc ON gc.query_hostname = d.query_hostname\nWHERE d.src_hostname = 'WS1'\n  AND gc.total_n = 1;",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A8",
+      "trial": 5,
+      "sql": "SELECT query_hostname\nFROM f_dns\nWHERE src_hostname = 'WS1'\nGROUP BY query_hostname\nHAVING count(*) OVER () IS NOT NULL AND (SELECT count(*) FROM f_dns d2 WHERE d2.query_hostname = f_dns.query_hostname) = 1;",
+      "rounds_used": 2
+    },
+    {
+      "qid": "A8",
+      "trial": 6,
+      "sql": "WITH global_counts AS (\n  SELECT query_hostname, count(*) AS global_n\n  FROM f_dns\n  GROUP BY query_hostname\n)\nSELECT d.query_hostname\nFROM f_dns d\nJOIN global_counts gc ON gc.query_hostname = d.query_hostname\nWHERE d.src_hostname = 'WS1'\n  AND gc.global_n = 1\nORDER BY d.query_hostname;",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A8",
+      "trial": 7,
+      "sql": "WITH global_counts AS (\n  SELECT query_hostname, COUNT(*) AS global_n\n  FROM f_dns\n  GROUP BY query_hostname\n)\nSELECT d.query_hostname\nFROM f_dns d\nJOIN global_counts gc ON d.query_hostname = gc.query_hostname\nWHERE d.src_hostname = 'WS1'\n  AND gc.global_n = 1\nORDER BY d.query_hostname;",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A3",
+      "trial": 0,
+      "sql": "WITH needles AS (\n  SELECT event_uid, time, 'api' AS source, service || '/' || api_operation AS detail\n    FROM f_api     WHERE event_uid LIKE '%needle%'\n  UNION ALL\n  SELECT event_uid, time, 'process', image_name || ' :: ' || COALESCE(cmd_line, '')\n    FROM f_process WHERE event_uid LIKE '%needle%'\n  UNION ALL\n  SELECT event_uid, time, 'dns', query_hostname\n    FROM f_dns     WHERE event_uid LIKE '%needle%'\n  UNION ALL\n  SELECT event_uid, time, 'network', dst_ip || ':' || CAST(dst_port AS VARCHAR)\n    FROM f_network WHERE event_uid LIKE '%needle%'\n  UNION ALL\n  SELECT event_uid, time, 'auth', 'remote-auth ' || outcome\n    FROM f_auth    WHERE event_uid LIKE '%needle%'\n),\nclassified AS (\n  SELECT *,\n    CASE\n      WHEN event_uid = 'api-needle-0'                                              THEN 'OAuth consent'\n      WHEN event_uid IN ('proc-needle-1', 'proc-needle-late')                      THEN 'PowerShell execution'\n      WHEN event_uid = 'dns-needle-c2' OR event_uid LIKE 'conn-needle-beacon%'     THEN 'C2 beacon'\n      WHEN event_uid LIKE 'auth-needle-lateral%' OR event_uid LIKE 'conn-needle-lateral%' THEN 'Lateral connection'\n      WHEN event_uid = 'api-needle-nomfa'                                          THEN 'No-MFA privilege escalation'\n      WHEN event_uid = 'api-needle-assumerole'                                     THEN 'Role assumption'\n      WHEN event_uid LIKE 'api-needle-exfil%'                                      THEN 'Data exfiltration'\n    END AS stage\n  FROM needles\n)\nSELECT\n  ROW_NUMBER() OVER (ORDER BY MIN(time))      AS step,\n  stage,\n  to_timestamp(MIN(time) / 1000)             AS stage_start,\n  COUNT(*)                                    AS event_count\nFROM classified\nWHERE stage IS NOT NULL\nGROUP BY stage\nORDER BY MIN(time);",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A3",
+      "trial": 1,
+      "sql": "-- Reconstruct the kill chain from the planted \"needle\" events (event_uid LIKE '%needle%').\n-- Attacker thread: user jdoe / src 203.0.113.7 / host WS1 (10.10.1.21). All other rows are background noise.\n-- Each requested stage is labeled and the result is ordered by first-seen time.\n-- NOTE: the question lists 7 stages, but the store contains NO OAuth-consent event\n--       (no oauth/consent marker in any table), so that stage cannot be reconstructed;\n--       the six logged stages plus supporting initial-access/recon/session needles are returned in order.\nWITH needles AS (\n  SELECT event_uid, time, 'f_api'     AS src, api_operation AS op, resource AS detail\n    FROM f_api     WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT event_uid, time, 'f_process', image_name, cmd_line\n    FROM f_process WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT event_uid, time, 'f_dns', query_hostname, answer\n    FROM f_dns     WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT event_uid, time, 'f_network', protocol_name, dst_ip || ':' || CAST(dst_port AS VARCHAR)\n    FROM f_network WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT event_uid, time, 'f_auth', outcome, target_host\n    FROM f_auth    WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT event_uid, time, 'f_session', host, NULL\n    FROM f_session WHERE event_uid LIKE '%needle%'\n),\nlabeled AS (\n  SELECT *,\n    CASE\n      WHEN event_uid = 'api-needle-0'                               THEN '1. Initial access (stolen session token)'\n      WHEN event_uid LIKE 'proc-needle-1%' OR op = 'powershell.exe' THEN '2. PowerShell execution'\n      WHEN event_uid = 'dns-needle-c2' OR event_uid LIKE 'conn-needle-beacon%' THEN '3. C2 beacon'\n      WHEN event_uid = 'proc-needle-late'                          THEN '4. Local recon (whoami /all)'\n      WHEN event_uid LIKE '%needle-lateral%'                       THEN '5. Lateral connection (WS1 -> WS2 RDP)'\n      WHEN event_uid = 'api-needle-nomfa'                          THEN '6. No-MFA privilege escalation'\n      WHEN event_uid = 'api-needle-assumerole'                     THEN '7. Role assumption (AssumeRole)'\n      WHEN event_uid LIKE 'api-needle-exfil%'                      THEN '8. Data exfiltration (S3 GetObject)'\n      WHEN event_uid = 'sess-needle-ws1'                           THEN '9. Session marker (WS1)'\n      ELSE event_uid\n    END AS attack_stage\n  FROM needles\n)\nSELECT\n  attack_stage,\n  count(*)                     AS event_count,\n  arg_min(op, time)            AS first_operation,\n  arg_min(detail, time)        AS first_detail,\n  to_timestamp(min(time)/1000) AS first_seen_utc,\n  to_timestamp(max(time)/1000) AS last_seen_utc\nFROM labeled\nGROUP BY attack_stage\nORDER BY min(time);",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A3",
+      "trial": 2,
+      "sql": "WITH stages AS (\n  SELECT 'OAuth consent (sts:GetSessionToken)' AS stage, time, event_uid::VARCHAR AS detail\n    FROM f_api WHERE event_uid = 'api-needle-0'\n  UNION ALL\n  SELECT 'PowerShell execution', time, image_name FROM f_process WHERE event_uid = 'proc-needle-1'\n  UNION ALL\n  SELECT 'C2 beacon', min(time), 'cdn-telemetry-sync.net -> 203.0.113.66; '||count(*)||' beacon events'\n    FROM (\n      SELECT time FROM f_dns WHERE event_uid = 'dns-needle-c2'\n      UNION ALL SELECT time FROM f_network WHERE event_uid LIKE 'conn-needle-beacon-%'\n    )\n  UNION ALL\n  SELECT 'Lateral connection', time, 'jdoe -> '||target_host FROM f_auth WHERE event_uid = 'auth-needle-lateral'\n  UNION ALL\n  SELECT 'No-MFA privilege escalation (iam:AttachUserPolicy)', time, 'mfa_present='||mfa_present::VARCHAR\n    FROM f_api WHERE event_uid = 'api-needle-nomfa'\n  UNION ALL\n  SELECT 'Role assumption (sts:AssumeRole)', time, actor_user_uid FROM f_api WHERE event_uid = 'api-needle-assumerole'\n  UNION ALL\n  SELECT 'Data exfiltration (s3:GetObject)', min(time), 'acme-financials-prod/q3; '||count(*)||' objects'\n    FROM f_api WHERE event_uid LIKE 'api-needle-exfil-%'\n)\nSELECT stage, time AS stage_time_ms, to_timestamp(time/1000) AS stage_time_utc, detail\nFROM stages ORDER BY time;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A3",
+      "trial": 3,
+      "sql": "WITH needle AS (\n  SELECT 'api'     AS tbl, event_uid, time FROM f_api     WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT 'process', event_uid, time FROM f_process WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT 'dns',     event_uid, time FROM f_dns     WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT 'network', event_uid, time FROM f_network WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT 'auth',    event_uid, time FROM f_auth    WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT 'session', event_uid, time FROM f_session WHERE event_uid LIKE '%needle%'\n),\ntagged AS (\n  SELECT *,\n    CASE\n      WHEN event_uid = 'api-needle-0'            THEN 'OAuth consent (token grant: sts:GetSessionToken, no MFA)'\n      WHEN event_uid LIKE 'proc-needle-1%'       THEN 'PowerShell execution (winword.exe -> powershell -EncodedCommand)'\n      WHEN event_uid = 'dns-needle-c2'\n        OR event_uid LIKE 'conn-needle-beacon%'  THEN 'C2 beacon (DNS cdn-telemetry-sync.net + periodic outbound to 203.0.113.66)'\n      WHEN event_uid LIKE '%needle-lateral%'     THEN 'Lateral connection (RDP 3389 WS1->WS2, remote auth jdoe)'\n      WHEN event_uid = 'api-needle-nomfa'        THEN 'No-MFA privilege escalation (iam:AttachUserPolicy, mfa_present=false)'\n      WHEN event_uid = 'api-needle-assumerole'   THEN 'Role assumption (sts:AssumeRole AdminRole)'\n      WHEN event_uid LIKE 'api-needle-exfil%'    THEN 'Data exfiltration (s3:GetObject acme-financials-prod/q3/*)'\n      WHEN event_uid LIKE 'proc-needle-late%'    THEN 'Post-lateral recon (cmd.exe whoami /all on WS1)'\n      ELSE 'other-needle: ' || event_uid\n    END AS stage\n  FROM needle\n),\nper_stage AS (\n  SELECT stage,\n         min(time) AS stage_start,\n         max(time) AS stage_end,\n         count(*)  AS event_count,\n         arg_min(event_uid, time) AS first_event_uid\n  FROM tagged\n  GROUP BY stage\n)\nSELECT row_number() OVER (ORDER BY stage_start) AS stage_seq,\n       stage,\n       to_timestamp(stage_start / 1000) AS first_seen_utc,\n       to_timestamp(stage_end   / 1000) AS last_seen_utc,\n       event_count,\n       first_event_uid\nFROM per_stage\nORDER BY stage_start;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A3",
+      "trial": 4,
+      "sql": "WITH needles AS (\n  SELECT 'OAuth consent' AS stage, time, 'f_api' AS source_table, service||':'||api_operation AS detail\n  FROM f_api WHERE event_uid = 'api-needle-0'\n  UNION ALL\n  SELECT 'PowerShell execution', time, 'f_process', image_name\n  FROM f_process WHERE event_uid = 'proc-needle-1'\n  UNION ALL\n  SELECT 'C2 beacon', time, 'f_dns', 'DNS '||query_hostname||' -> '||answer\n  FROM f_dns WHERE event_uid = 'dns-needle-c2'\n  UNION ALL\n  SELECT 'C2 beacon', time, 'f_network', dst_ip||':'||dst_port||'/'||protocol_name\n  FROM f_network WHERE event_uid LIKE 'conn-needle-beacon-%'\n  UNION ALL\n  SELECT 'lateral connection', time, 'f_auth', 'RDP auth -> '||target_host\n  FROM f_auth WHERE event_uid = 'auth-needle-lateral'\n  UNION ALL\n  SELECT 'lateral connection', time, 'f_network', dst_ip||':'||dst_port||'/'||protocol_name\n  FROM f_network WHERE event_uid = 'conn-needle-lateral'\n  UNION ALL\n  SELECT 'no-MFA privilege escalation', time, 'f_api', service||':'||api_operation\n  FROM f_api WHERE event_uid = 'api-needle-nomfa'\n  UNION ALL\n  SELECT 'role assumption', time, 'f_api', service||':'||api_operation\n  FROM f_api WHERE event_uid = 'api-needle-assumerole'\n  UNION ALL\n  SELECT 'data exfiltration', time, 'f_api', service||':'||api_operation\n  FROM f_api WHERE event_uid LIKE 'api-needle-exfil%'\n),\nstaged AS (\n  SELECT stage,\n         min(time)        AS stage_time,\n         count(*)         AS event_count,\n         any_value(source_table) AS source_table,\n         any_value(detail)       AS example_detail\n  FROM needles\n  GROUP BY stage\n)\nSELECT row_number() OVER (ORDER BY stage_time) AS step,\n       stage,\n       to_timestamp(stage_time/1000)            AS first_event_time,\n       event_count,\n       source_table,\n       example_detail\nFROM staged\nORDER BY stage_time;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A3",
+      "trial": 5,
+      "sql": "WITH stages AS (\n  -- OAuth consent  -> closest analog in this AWS/OCSF store: STS GetSessionToken (token/consent grant)\n  SELECT 'OAuth consent' AS stage, min(time) AS first_seen, count(*) AS n\n    FROM f_api WHERE service = 'sts' AND api_operation = 'GetSessionToken'\n  UNION ALL\n  -- PowerShell execution (OCSF Process Activity 1007)\n  SELECT 'PowerShell execution', min(time), count(*)\n    FROM f_process WHERE image_name = 'powershell.exe'\n  UNION ALL\n  -- C2 beacon -> DNS resolving into the external 93.184.0.0/16 C2 block\n  SELECT 'C2 beacon', min(time), count(*)\n    FROM f_dns WHERE answer LIKE '93.184.%'\n  UNION ALL\n  -- lateral connection -> internal-to-internal admin-protocol connection (RDP/SSH/SMB/WinRM)\n  SELECT 'lateral connection', min(time), count(*)\n    FROM f_network WHERE dst_ip LIKE '10.%' AND dst_port IN (3389, 22, 445, 5985)\n  UNION ALL\n  -- no-MFA privilege escalation -> IAM privilege grant without MFA\n  SELECT 'no-MFA privilege escalation', min(time), count(*)\n    FROM f_api WHERE service = 'iam' AND api_operation IN ('AttachUserPolicy', 'CreatePolicyVersion')\n             AND (mfa_present = false OR mfa_value = false)\n  UNION ALL\n  -- role assumption (STS AssumeRole)\n  SELECT 'role assumption', min(time), count(*)\n    FROM f_api WHERE service = 'sts' AND api_operation = 'AssumeRole'\n  UNION ALL\n  -- data exfiltration -> S3 object access/staging\n  SELECT 'data exfiltration', min(time), count(*)\n    FROM f_api WHERE service = 's3' AND api_operation IN ('GetObject', 'PutObject')\n)\nSELECT stage,\n       first_seen,\n       to_timestamp(first_seen / 1000) AS first_seen_utc,\n       n AS matching_events\nFROM stages\nORDER BY first_seen;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A3",
+      "trial": 6,
+      "sql": "-- Kill-chain reconstruction from the planted \"needle\" events (event_uid LIKE '%needle%'),\n-- collapsing the multi-event stages (C2 beacons, S3 exfil burst) into one stage row each,\n-- ordered by first occurrence time. The store has no literal OAuth-consent record; the\n-- earliest needle (api-needle-0 = sts:GetSessionToken) is the initial-access entry point.\nWITH needles AS (\n    SELECT event_uid, time, 'f_api' AS source, service || '/' || api_operation AS detail\n    FROM f_api      WHERE event_uid LIKE '%needle%'\n    UNION ALL\n    SELECT event_uid, time, 'f_process', image_name || ' ' || COALESCE(cmd_line,'')\n    FROM f_process  WHERE event_uid LIKE '%needle%'\n    UNION ALL\n    SELECT event_uid, time, 'f_dns', 'dns:' || query_hostname\n    FROM f_dns      WHERE event_uid LIKE '%needle%'\n    UNION ALL\n    SELECT event_uid, time, 'f_network', src_ip || '->' || dst_ip || ':' || dst_port\n    FROM f_network  WHERE event_uid LIKE '%needle%'\n    UNION ALL\n    SELECT event_uid, time, 'f_auth', 'auth:' || outcome\n    FROM f_auth     WHERE event_uid LIKE '%needle%'\n    UNION ALL\n    SELECT event_uid, time, 'f_session', 'session:' || host\n    FROM f_session  WHERE event_uid LIKE '%needle%'\n),\nstaged AS (\n    SELECT\n        CASE\n            WHEN event_uid = 'api-needle-0'            THEN '1. OAuth consent / initial access (sts:GetSessionToken)'\n            WHEN event_uid LIKE 'proc-needle-1%'       THEN '2. PowerShell execution'\n            WHEN event_uid LIKE 'dns-needle-c2%'\n              OR event_uid LIKE 'conn-needle-beacon%'  THEN '3. C2 beacon'\n            WHEN event_uid LIKE '%lateral%'            THEN '4. Lateral connection'\n            WHEN event_uid = 'api-needle-nomfa'        THEN '5. No-MFA privilege escalation'\n            WHEN event_uid LIKE '%assumerole%'         THEN '6. Role assumption'\n            WHEN event_uid LIKE '%exfil%'              THEN '7. Data exfiltration'\n            ELSE '9. other (' || event_uid || ')'\n        END AS stage,\n        time, source, detail\n    FROM needles\n)\nSELECT\n    stage,\n    count(*)                          AS event_count,\n    min(time)                         AS first_time_ms,\n    to_timestamp(min(time)/1000)      AS first_ts,\n    to_timestamp(max(time)/1000)      AS last_ts,\n    any_value(source)                 AS source_table,\n    min(detail)                       AS example_detail\nFROM staged\nGROUP BY stage\nORDER BY first_time_ms",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A3",
+      "trial": 7,
+      "sql": "-- Kill-chain reconstruction over the OCSF fidelity store.\n-- The attacker thread is tagged with '%needle%' event_uids; the noisy background\n-- population is excluded. One row per stage, ordered by time. Repeated beacon and\n-- exfil series are collapsed to their first/aggregate representative.\n-- NOTE: the question presumes an OAuth-consent stage, but NO oauth/consent event\n-- exists in the store, so that branch contributes zero rows (honest: absent).\nWITH needle AS (\n  -- OAuth consent: searched for but not present in the store (returns 0 rows)\n  SELECT 'OAuth consent' AS stage,\n         service || ' ' || api_operation AS detail,\n         time, src_ip\n  FROM f_api\n  WHERE event_uid ILIKE '%oauth%' OR event_uid ILIKE '%consent%'\n     OR api_operation ILIKE '%consent%' OR api_operation ILIKE '%oauth%'\n\n  UNION ALL\n  SELECT 'PowerShell execution', image_name || ' ' || COALESCE(cmd_line,''),\n         time, NULL\n  FROM f_process\n  WHERE event_uid = 'proc-needle-1'\n\n  UNION ALL  -- C2 beacon: the malicious-domain DNS resolution\n  SELECT 'C2 beacon (DNS resolve)', 'query ' || query_hostname || ' -> ' || COALESCE(answer,''),\n         time, src_ip\n  FROM f_dns\n  WHERE event_uid = 'dns-needle-c2'\n\n  UNION ALL  -- C2 beacon: first of the repeating 443 beacon connections\n  SELECT 'C2 beacon (network)',\n         src_hostname || '->' || dst_ip || ':' || dst_port || ' ' || COALESCE(protocol_name,''),\n         time, src_ip\n  FROM (\n    SELECT * FROM f_network\n    WHERE event_uid ILIKE 'conn-needle-beacon%'\n    ORDER BY time\n    LIMIT 1\n  )\n\n  UNION ALL\n  SELECT 'Lateral connection',\n         src_hostname || '->' || dst_ip || ':' || dst_port || ' (RDP) ' || COALESCE(protocol_name,''),\n         time, src_ip\n  FROM f_network\n  WHERE event_uid = 'conn-needle-lateral'\n\n  UNION ALL\n  SELECT 'No-MFA privilege escalation',\n         service || ' ' || api_operation || ' mfa_present=' || mfa_present,\n         time, src_ip\n  FROM f_api\n  WHERE event_uid = 'api-needle-nomfa'\n\n  UNION ALL\n  SELECT 'Role assumption', service || ' ' || api_operation, time, src_ip\n  FROM f_api\n  WHERE event_uid = 'api-needle-assumerole'\n\n  UNION ALL  -- Data exfiltration: collapse the repeating s3 GetObject series\n  SELECT 'Data exfiltration',\n         service || ' ' || api_operation || ' (x' || count(*) || ' objects)',\n         min(time), min(src_ip)\n  FROM f_api\n  WHERE event_uid ILIKE 'api-needle-exfil%'\n  GROUP BY service, api_operation\n)\nSELECT\n  row_number() OVER (ORDER BY time) AS step,\n  stage,\n  detail,\n  to_timestamp(time / 1000) AS event_ts,\n  src_ip\nFROM needle\nORDER BY time;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A7",
+      "trial": 0,
+      "sql": "WITH chain AS (\n  SELECT time FROM f_auth    WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_session WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_network WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_dns     WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_process WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_api     WHERE event_uid ILIKE '%needle%'\n)\nSELECT (max(time) - min(time)) / 1000 AS dwell_seconds\nFROM chain;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A7",
+      "trial": 1,
+      "sql": "WITH chain AS (\n  SELECT time FROM f_auth    WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_network WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_dns     WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_process WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_api     WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_session WHERE event_uid ILIKE '%needle%'\n)\nSELECT (max(time) - min(time)) / 1000 AS dwell_seconds\nFROM chain;",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A7",
+      "trial": 2,
+      "sql": "WITH chain AS (\n  SELECT time FROM f_auth    WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_session WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_network WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_dns     WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_process WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_api     WHERE event_uid LIKE '%needle%'\n)\nSELECT (max(time) - min(time)) / 1000 AS dwell_seconds\nFROM chain;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A7",
+      "trial": 3,
+      "sql": "WITH chain AS (\n  SELECT time FROM f_auth    WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_session WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_network WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_dns     WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_process WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_api     WHERE event_uid LIKE '%needle%'\n)\nSELECT (max(time) - min(time)) / 1000.0 AS dwell_seconds\nFROM chain;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A7",
+      "trial": 4,
+      "sql": "WITH chain AS (\n  SELECT time FROM f_auth    WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_session WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_network WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_dns     WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_process WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_api     WHERE event_uid LIKE '%needle%'\n)\nSELECT (max(time) - min(time)) / 1000 AS dwell_seconds\nFROM chain;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A7",
+      "trial": 5,
+      "sql": "WITH chain AS (\n  SELECT time FROM f_auth    WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_session WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_network WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_dns     WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_process WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_api     WHERE event_uid ILIKE '%needle%'\n)\nSELECT (max(time) - min(time)) / 1000 AS dwell_seconds\nFROM chain;",
+      "rounds_used": 4
+    },
+    {
+      "qid": "A7",
+      "trial": 6,
+      "sql": "WITH needle AS (\n  SELECT time FROM f_auth    WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_session WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_network WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_dns     WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_process WHERE event_uid ILIKE '%needle%'\n  UNION ALL SELECT time FROM f_api     WHERE event_uid ILIKE '%needle%'\n)\nSELECT (max(time) - min(time)) / 1000 AS dwell_seconds\nFROM needle;",
+      "rounds_used": 3
+    },
+    {
+      "qid": "A7",
+      "trial": 7,
+      "sql": "WITH chain AS (\n  SELECT time FROM f_auth    WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_session WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_network WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_dns     WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_process WHERE event_uid LIKE '%needle%'\n  UNION ALL SELECT time FROM f_api     WHERE event_uid LIKE '%needle%'\n)\nSELECT (max(time) - min(time)) / 1000 AS dwell_seconds\nFROM chain;",
+      "rounds_used": 4
+    },
+    {
+      "qid": "A9",
+      "trial": 0,
+      "sql": "WITH actor(uid) AS (\n  VALUES ('jdoe@acme.example'),\n         ('arn:aws:iam::123456789012:user/jdoe'),\n         ('S-1-5-21-3623811015-3361044348-30300820-1107')\n),\nrefs AS (  -- every hostname/ip/instance-id the human actor's events point at\n  SELECT target_host    AS ref FROM f_auth    WHERE user_uid       IN (SELECT uid FROM actor)\n  UNION SELECT src_ip          FROM f_auth    WHERE user_uid       IN (SELECT uid FROM actor)\n  UNION SELECT host            FROM f_session WHERE user_uid       IN (SELECT uid FROM actor)\n  UNION SELECT device_hostname FROM f_process WHERE actor_user_uid IN (SELECT uid FROM actor)\n  UNION SELECT src_ip          FROM f_api     WHERE actor_user_uid IN (SELECT uid FROM actor)\n  UNION SELECT resource        FROM f_api     WHERE actor_user_uid IN (SELECT uid FROM actor)\n)\nSELECT COUNT(DISTINCT a.ip) AS distinct_physical_assets  -- IP is the shared key that collapses hostname/instance aliases\nFROM refs r\nJOIN f_asset a\n  ON r.ref = a.hostname OR r.ref = a.ip OR r.ref = a.instance_uid\nWHERE r.ref IS NOT NULL;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A9",
+      "trial": 1,
+      "sql": "WITH RECURSIVE\nhu_user AS (\n  SELECT unnest([\n    'jdoe@acme.example',\n    'arn:aws:iam::123456789012:user/jdoe',\n    'arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session',\n    'S-1-5-21-3623811015-3361044348-30300820-1107']) AS uid\n),\ndirect_tok AS (\n  SELECT target_host AS x FROM f_auth     WHERE user_uid       IN (SELECT uid FROM hu_user)\n  UNION SELECT src_ip          FROM f_auth     WHERE user_uid       IN (SELECT uid FROM hu_user)\n  UNION SELECT host            FROM f_session  WHERE user_uid       IN (SELECT uid FROM hu_user)\n  UNION SELECT device_hostname FROM f_process  WHERE actor_user_uid IN (SELECT uid FROM hu_user)\n  UNION SELECT src_ip          FROM f_api      WHERE actor_user_uid IN (SELECT uid FROM hu_user)\n),\nnet_alias AS (\n  SELECT src_hostname AS x FROM f_network WHERE src_ip IN (SELECT x FROM direct_tok WHERE x IS NOT NULL)\n  UNION SELECT src_hostname FROM f_dns      WHERE src_ip IN (SELECT x FROM direct_tok WHERE x IS NOT NULL)\n),\nseed AS (SELECT DISTINCT x FROM (SELECT x FROM direct_tok UNION SELECT x FROM net_alias) WHERE x IS NOT NULL),\nedges AS (\n  SELECT hostname AS a, ip AS b FROM f_asset\n  UNION SELECT hostname, instance_uid FROM f_asset\n  UNION SELECT ip,       instance_uid FROM f_asset\n  UNION SELECT ip,       hostname     FROM f_asset\n  UNION SELECT instance_uid, hostname FROM f_asset\n  UNION SELECT instance_uid, ip       FROM f_asset\n  UNION SELECT src_hostname, src_ip FROM f_network\n  UNION SELECT src_ip, src_hostname FROM f_network\n  UNION SELECT src_hostname, src_ip FROM f_dns\n  UNION SELECT src_ip, src_hostname FROM f_dns\n),\nreach(node) AS (\n  SELECT x FROM seed\n  UNION\n  SELECT e.b FROM edges e JOIN reach r ON e.a = r.node WHERE e.b IS NOT NULL\n)\nSELECT COUNT(DISTINCT fa.ip) AS distinct_physical_assets\nFROM f_asset fa\nWHERE fa.hostname     IN (SELECT node FROM reach)\n   OR fa.ip           IN (SELECT node FROM reach)\n   OR fa.instance_uid IN (SELECT node FROM reach);",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A9",
+      "trial": 2,
+      "sql": "WITH RECURSIVE\nneedle_hosts AS (\n  SELECT DISTINCT target_host AS h FROM f_auth   WHERE event_uid LIKE '%needle%' AND target_host IS NOT NULL\n  UNION SELECT DISTINCT host            FROM f_session WHERE event_uid LIKE '%needle%' AND host IS NOT NULL\n  UNION SELECT DISTINCT device_hostname FROM f_process WHERE event_uid LIKE '%needle%' AND device_hostname IS NOT NULL\n  UNION SELECT DISTINCT src_hostname    FROM f_network WHERE event_uid LIKE '%needle%' AND src_hostname IS NOT NULL\n  UNION SELECT DISTINCT src_hostname    FROM f_dns     WHERE event_uid LIKE '%needle%' AND src_hostname IS NOT NULL\n),\nedges AS (\n  SELECT a.hostname AS x, b.hostname AS y\n  FROM f_asset a JOIN f_asset b\n    ON a.ip = b.ip OR a.instance_uid = b.instance_uid OR a.hostname = b.hostname\n),\nlp(node, label) AS (\n  SELECT hostname, hostname FROM f_asset\n  UNION\n  SELECT e.x, l.label FROM lp l JOIN edges e ON e.y = l.node\n),\ncomp AS (SELECT node AS hostname, MIN(label) AS component FROM lp GROUP BY node)\nSELECT COUNT(DISTINCT c.component) AS distinct_physical_assets\nFROM needle_hosts n\nJOIN comp c ON c.hostname = n.h;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A9",
+      "trial": 3,
+      "sql": "-- Behind the human actor (jdoe)'s identifiers, count DISTINCT physical assets\n-- after collapsing hostname/ip/instance-id aliases.\nWITH jdoe(i) AS (\n  VALUES ('jdoe@acme.example'),\n         ('arn:aws:iam::123456789012:user/jdoe'),\n         ('arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session')\n),\n-- every host/ip identifier appearing in jdoe's events across all actor-bearing tables\nrefs AS (\n  SELECT target_host AS id FROM f_auth    WHERE user_uid       IN (SELECT i FROM jdoe) AND target_host     IS NOT NULL\n  UNION SELECT src_ip          FROM f_auth    WHERE user_uid       IN (SELECT i FROM jdoe) AND src_ip          IS NOT NULL\n  UNION SELECT host            FROM f_session WHERE user_uid       IN (SELECT i FROM jdoe) AND host            IS NOT NULL\n  UNION SELECT device_hostname FROM f_process WHERE actor_user_uid IN (SELECT i FROM jdoe) AND device_hostname IS NOT NULL\n  UNION SELECT src_ip          FROM f_api     WHERE actor_user_uid IN (SELECT i FROM jdoe) AND src_ip          IS NOT NULL\n),\n-- alias edges: f_asset triples (hostname/ip/instance) + ip<->hostname observations from net/dns\nedge(x, y) AS (\n  SELECT hostname, ip           FROM f_asset\n  UNION ALL SELECT hostname, instance_uid FROM f_asset\n  UNION ALL SELECT ip,       instance_uid FROM f_asset\n  UNION ALL SELECT src_ip,   src_hostname FROM f_network WHERE src_hostname IS NOT NULL\n  UNION ALL SELECT src_ip,   src_hostname FROM f_dns     WHERE src_hostname IS NOT NULL\n),\n-- canonical physical-asset key = the f_asset IP each identifier belongs to\n-- (shared IP collapses WS1/WS2; net/dns resolves the auth src_ip back to its WS host)\nto_phys(id, phys) AS (\n  SELECT r.id,\n    COALESCE(\n      (SELECT a.ip FROM f_asset a WHERE a.hostname     = r.id LIMIT 1),\n      (SELECT a.ip FROM f_asset a WHERE a.instance_uid = r.id LIMIT 1),\n      CASE WHEN r.id IN (SELECT ip FROM f_asset) THEN r.id END,\n      (SELECT a.ip FROM f_asset a\n         WHERE a.hostname IN (SELECT e.y FROM edge e WHERE e.x = r.id)\n            OR a.ip       IN (SELECT e.x FROM edge e WHERE e.y = r.id) LIMIT 1)\n    )\n  FROM refs r\n)\nSELECT COUNT(DISTINCT phys) AS distinct_physical_assets\nFROM to_phys\nWHERE phys IS NOT NULL;  -- exclude pure-external IPs (e.g. 203.0.113.7 API origin, not a fleet asset)",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A9",
+      "trial": 4,
+      "sql": "-- Human actor = jdoe. Identifiers tied to jdoe across the store:\n--   email  jdoe@acme.example\n--   IAM    arn:aws:iam::123456789012:user/jdoe\n--   STS    arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session\n--   SID    S-1-5-21-3623811015-3361044348-30300820-1107  (the only actor whose\n--          process activity is confined to a single workstation; every other SID\n--          sprays across 40+ host aliases, i.e. synthetic noise)\n-- Plus jdoe's two external source IPs (10.10.1.21, 203.0.113.7) round out the six\n-- identifiers, but those are VPN/source IPs, not members of the 12-asset population.\n-- Collapse hostname/ip/instance-id aliases via f_asset (true alias key = shared IP,\n-- since canonical_asset is NOT pre-collapsed per the v2 schema note) and count.\nWITH jdoe_ids(id) AS (\n  VALUES\n    ('jdoe@acme.example'),\n    ('arn:aws:iam::123456789012:user/jdoe'),\n    ('arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session'),\n    ('S-1-5-21-3623811015-3361044348-30300820-1107')\n),\nlocs AS (\n  SELECT target_host AS loc FROM f_auth    WHERE user_uid       IN (SELECT id FROM jdoe_ids)\n  UNION ALL SELECT src_ip          FROM f_auth    WHERE user_uid       IN (SELECT id FROM jdoe_ids)\n  UNION ALL SELECT host            FROM f_session WHERE user_uid       IN (SELECT id FROM jdoe_ids)\n  UNION ALL SELECT device_hostname FROM f_process WHERE actor_user_uid IN (SELECT id FROM jdoe_ids)\n  UNION ALL SELECT src_ip          FROM f_api     WHERE actor_user_uid IN (SELECT id FROM jdoe_ids)\n)\nSELECT COUNT(DISTINCT a.ip) AS distinct_physical_assets\nFROM (SELECT DISTINCT loc FROM locs) l\nJOIN f_asset a\n  ON l.loc = a.hostname OR l.loc = a.ip OR l.loc = a.instance_uid;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A9",
+      "trial": 5,
+      "sql": "-- Human actor = jdoe, who presents under six identifiers across the store:\n--   email jdoe@acme.example; IAM ARN arn:aws:iam::123456789012:user/jdoe;\n--   STS ARN arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session;\n--   Windows SID S-1-5-21-...-1107 (the only SID active on his interactive host);\n--   plus his two source IPs 10.10.1.21 (corp) and 203.0.113.7 (cloud egress).\n-- \"Physical assets\" are the targets/devices he operates ON, collapsed via f_asset,\n-- where hostname/instance-id aliases that share an IP are one machine.\nWITH actor_ids(id) AS (\n  VALUES\n    ('jdoe@acme.example'),\n    ('arn:aws:iam::123456789012:user/jdoe'),\n    ('arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session'),\n    ('S-1-5-21-3623811015-3361044348-30300820-1107')\n),\ntouched_hosts AS (\n  SELECT DISTINCT target_host AS hostname\n    FROM f_auth WHERE user_uid IN (SELECT id FROM actor_ids) AND target_host IS NOT NULL\n  UNION\n  SELECT DISTINCT host\n    FROM f_session WHERE user_uid IN (SELECT id FROM actor_ids) AND host IS NOT NULL\n  UNION\n  SELECT DISTINCT device_hostname\n    FROM f_process WHERE actor_user_uid IN (SELECT id FROM actor_ids) AND device_hostname IS NOT NULL\n),\n-- Collapse hostname/ip/instance-id aliases: rows of f_asset sharing an IP are one physical asset.\nresolved AS (\n  SELECT a.ip AS physical_asset_key\n  FROM touched_hosts t\n  JOIN f_asset a ON a.hostname = t.hostname\n)\nSELECT count(DISTINCT physical_asset_key) AS distinct_physical_assets\nFROM resolved;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A9",
+      "trial": 6,
+      "sql": "WITH RECURSIVE\n-- (1) the human actor jdoe's cross-source identifiers (email, IAM ARN, STS assumed-role ARN, Windows SID)\njdoe_ids(id) AS (\n  VALUES ('jdoe@acme.example'),\n         ('arn:aws:iam::123456789012:user/jdoe'),\n         ('arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session'),\n         ('S-1-5-21-3623811015-3361044348-30300820-1107')\n),\n-- (2) every hostname/ip/instance-id reference appearing in jdoe's events across the six tables\njdoe_assets(ref) AS (\n  SELECT target_host     FROM f_auth    WHERE user_uid       IN (SELECT id FROM jdoe_ids)\n  UNION SELECT src_ip          FROM f_auth    WHERE user_uid       IN (SELECT id FROM jdoe_ids)\n  UNION SELECT host            FROM f_session WHERE user_uid       IN (SELECT id FROM jdoe_ids)\n  UNION SELECT device_hostname FROM f_process WHERE actor_user_uid IN (SELECT id FROM jdoe_ids)\n  UNION SELECT src_ip          FROM f_api     WHERE actor_user_uid IN (SELECT id FROM jdoe_ids)\n),\n-- (3) collapse f_asset aliases into physical assets: two rows are the same box if they share ANY of hostname/ip/instance_uid (transitive closure)\nedges AS (\n  SELECT a.hostname AS u, b.hostname AS v\n  FROM f_asset a JOIN f_asset b\n    ON a.hostname = b.hostname OR a.ip = b.ip OR a.instance_uid = b.instance_uid\n),\ncc(node, rep) AS (\n  SELECT hostname, hostname FROM f_asset\n  UNION\n  SELECT e.v, c.rep FROM cc c JOIN edges e ON e.u = c.node\n),\ncomp AS (SELECT node AS hostname, MIN(rep) AS phys FROM cc GROUP BY node),\n-- (4) resolve each jdoe asset-reference (by hostname OR ip OR instance) to its collapsed physical asset\nresolved AS (\n  SELECT DISTINCT cm.phys\n  FROM jdoe_assets j\n  JOIN f_asset fa ON j.ref = fa.hostname OR j.ref = fa.ip OR j.ref = fa.instance_uid\n  JOIN comp cm ON cm.hostname = fa.hostname\n)\nSELECT COUNT(*) AS distinct_physical_assets FROM resolved;",
+      "rounds_used": 5
+    },
+    {
+      "qid": "A9",
+      "trial": 7,
+      "sql": "WITH RECURSIVE\nids AS (\n  -- the human actor's identifier values present in the store (jdoe across SID / IAM / STS / email)\n  SELECT unnest([\n    'S-1-5-21-3623811015-3361044348-30300820-1107',\n    'arn:aws:iam::123456789012:user/jdoe',\n    'arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session',\n    'jdoe@acme.example'\n  ]) AS uid\n),\n-- every asset-identifying signal the actor's events expose (hostnames + ips)\nsig AS (\n  SELECT target_host AS host, src_ip AS ip FROM f_auth    WHERE user_uid       IN (SELECT uid FROM ids)\n  UNION ALL SELECT host,           NULL   FROM f_session  WHERE user_uid       IN (SELECT uid FROM ids)\n  UNION ALL SELECT device_hostname, NULL  FROM f_process  WHERE actor_user_uid IN (SELECT uid FROM ids)\n  UNION ALL SELECT NULL,           src_ip FROM f_api      WHERE actor_user_uid IN (SELECT uid FROM ids)\n),\n-- resolve each signal to an f_asset row by hostname or ip (external client IPs match nothing)\nhit AS (\n  SELECT DISTINCT a.hostname AS anchor\n  FROM sig s JOIN f_asset a ON a.hostname = s.host OR a.ip = s.ip\n),\n-- collapse hostname/ip/instance-id aliases into physical assets (connected components)\nedges AS (\n  SELECT a.hostname AS u, b.hostname AS v\n  FROM f_asset a JOIN f_asset b\n    ON (a.ip = b.ip OR a.instance_uid = b.instance_uid OR a.hostname = b.hostname)\n),\ncc(n, lbl) AS (\n  SELECT hostname, hostname FROM f_asset\n  UNION\n  SELECT e.v, c.lbl FROM cc c JOIN edges e ON e.u = c.n\n),\ncomp AS (SELECT n, MIN(lbl) AS comp_id FROM cc GROUP BY n)\nSELECT COUNT(DISTINCT comp.comp_id) AS distinct_physical_assets\nFROM hit JOIN comp ON comp.n = hit.anchor;",
+      "rounds_used": 5
+    }
+  ]
+}

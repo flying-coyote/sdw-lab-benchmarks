@@ -1,0 +1,1199 @@
+{
+  "a4_excluded_ill_posed": true,
+  "bench": "BENCH-C v2.1 Arm #2 \u2014 self-consistency (5/8 majority-or-abstain; derived, NO new generation)",
+  "exec_path": "Ontop",
+  "hypotheses": [
+    "H-CONCEPT-GRAPH-03",
+    "H-CONCEPT-GRAPH-02"
+  ],
+  "majority_threshold": "5/8",
+  "scorer": "scoring.classify (shared, byte-identical); clustering via per-kind canonical_key mirroring it",
+  "tier": "B",
+  "tiers": {
+    "haiku": {
+      "graphrag_flat": {
+        "lookup": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 3,
+            "correct": 0,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A2": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A3": {
+            "decision": "abstain",
+            "kind": "order",
+            "n_distinct_answers": 7,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "2/8"
+          },
+          "A6": {
+            "decision": "abstain",
+            "kind": "uid",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 2,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "5/8"
+          },
+          "A8": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A9": {
+            "decision": "abstain",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 4,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "4/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 2,
+            "correct": 0,
+            "silent": 1
+          }
+        }
+      },
+      "graphrag_structured": {
+        "lookup": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 3,
+            "correct": 0,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A2": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A3": {
+            "decision": "abstain",
+            "kind": "order",
+            "n_distinct_answers": 5,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "3/8"
+          },
+          "A6": {
+            "decision": "abstain",
+            "kind": "uid",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "8/8"
+          },
+          "A8": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A9": {
+            "decision": "majority",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 3,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "6/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 1,
+            "correct": 0,
+            "silent": 2
+          }
+        }
+      },
+      "structured_graph_query": {
+        "lookup": {
+          "n_queries": 0,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 0.0
+          },
+          "self_consistency_counts": {
+            "caught": 0,
+            "correct": 0,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A3": {
+            "decision": "majority",
+            "kind": "order",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "loud",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 8,
+              "silent": 0
+            },
+            "sc_outcome": "loud",
+            "top_answer_agreement": "8/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "loud",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 8,
+              "silent": 0
+            },
+            "sc_outcome": "loud",
+            "top_answer_agreement": "8/8"
+          },
+          "A9": {
+            "decision": "majority",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "loud",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 8,
+              "silent": 0
+            },
+            "sc_outcome": "loud",
+            "top_answer_agreement": "8/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 1.0,
+            "silent": 0.0
+          },
+          "self_consistency_counts": {
+            "caught": 3,
+            "correct": 0,
+            "silent": 0
+          }
+        }
+      },
+      "text_to_sql": {
+        "lookup": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 1.0,
+            "loud": 0.0,
+            "silent": 0.0
+          },
+          "self_consistency_counts": {
+            "caught": 0,
+            "correct": 3,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A2": {
+            "decision": "majority",
+            "kind": "substring",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "correct",
+            "per_trial_outcomes": {
+              "correct": 8,
+              "loud": 0,
+              "silent": 0
+            },
+            "sc_outcome": "correct",
+            "top_answer_agreement": "8/8"
+          },
+          "A3": {
+            "decision": "abstain",
+            "kind": "order",
+            "n_distinct_answers": 6,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 3,
+              "silent": 5
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "3/8"
+          },
+          "A6": {
+            "decision": "majority",
+            "kind": "uid",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "correct",
+            "per_trial_outcomes": {
+              "correct": 8,
+              "loud": 0,
+              "silent": 0
+            },
+            "sc_outcome": "correct",
+            "top_answer_agreement": "8/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 2,
+            "per_trial_majority_outcome": "loud",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 7,
+              "silent": 1
+            },
+            "sc_outcome": "loud",
+            "top_answer_agreement": "7/8"
+          },
+          "A8": {
+            "decision": "majority",
+            "kind": "substring",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "correct",
+            "per_trial_outcomes": {
+              "correct": 8,
+              "loud": 0,
+              "silent": 0
+            },
+            "sc_outcome": "correct",
+            "top_answer_agreement": "8/8"
+          },
+          "A9": {
+            "decision": "majority",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 3,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 1,
+              "silent": 7
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "6/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.4583,
+            "silent": 0.5417
+          },
+          "self_consistency_counts": {
+            "caught": 2,
+            "correct": 0,
+            "silent": 1
+          }
+        }
+      }
+    },
+    "opus": {
+      "graphrag_flat": {
+        "lookup": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 3,
+            "correct": 0,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A2": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A3": {
+            "decision": "majority",
+            "kind": "order",
+            "n_distinct_answers": 3,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "5/8"
+          },
+          "A6": {
+            "decision": "abstain",
+            "kind": "uid",
+            "n_distinct_answers": 7,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "2/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "8/8"
+          },
+          "A8": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A9": {
+            "decision": "abstain",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 6,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "2/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 1,
+            "correct": 0,
+            "silent": 2
+          }
+        }
+      },
+      "graphrag_structured": {
+        "lookup": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 3,
+            "correct": 0,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A2": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A3": {
+            "decision": "majority",
+            "kind": "order",
+            "n_distinct_answers": 3,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "6/8"
+          },
+          "A6": {
+            "decision": "abstain",
+            "kind": "uid",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "8/8"
+          },
+          "A8": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A9": {
+            "decision": "majority",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "8/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 0,
+            "correct": 0,
+            "silent": 3
+          }
+        }
+      },
+      "structured_graph_query": {
+        "lookup": {
+          "n_queries": 0,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 0.0
+          },
+          "self_consistency_counts": {
+            "caught": 0,
+            "correct": 0,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A3": {
+            "decision": "abstain",
+            "kind": "order",
+            "n_distinct_answers": 5,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "3/8"
+          },
+          "A7": {
+            "decision": "abstain",
+            "kind": "scalar",
+            "n_distinct_answers": 5,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 1,
+              "silent": 7
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "3/8"
+          },
+          "A9": {
+            "decision": "majority",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "8/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0417,
+            "silent": 0.9583
+          },
+          "self_consistency_counts": {
+            "caught": 2,
+            "correct": 0,
+            "silent": 1
+          }
+        }
+      },
+      "text_to_sql": {
+        "lookup": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 1.0,
+            "loud": 0.0,
+            "silent": 0.0
+          },
+          "self_consistency_counts": {
+            "caught": 0,
+            "correct": 3,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A2": {
+            "decision": "majority",
+            "kind": "substring",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "correct",
+            "per_trial_outcomes": {
+              "correct": 8,
+              "loud": 0,
+              "silent": 0
+            },
+            "sc_outcome": "correct",
+            "top_answer_agreement": "8/8"
+          },
+          "A3": {
+            "decision": "abstain",
+            "kind": "order",
+            "n_distinct_answers": 6,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 1,
+              "silent": 7
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "2/8"
+          },
+          "A6": {
+            "decision": "majority",
+            "kind": "uid",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "correct",
+            "per_trial_outcomes": {
+              "correct": 8,
+              "loud": 0,
+              "silent": 0
+            },
+            "sc_outcome": "correct",
+            "top_answer_agreement": "8/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "loud",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 8,
+              "silent": 0
+            },
+            "sc_outcome": "loud",
+            "top_answer_agreement": "8/8"
+          },
+          "A8": {
+            "decision": "majority",
+            "kind": "substring",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "correct",
+            "per_trial_outcomes": {
+              "correct": 8,
+              "loud": 0,
+              "silent": 0
+            },
+            "sc_outcome": "correct",
+            "top_answer_agreement": "8/8"
+          },
+          "A9": {
+            "decision": "abstain",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 4,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 3,
+              "loud": 0,
+              "silent": 5
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "3/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.125,
+            "loud": 0.375,
+            "silent": 0.5
+          },
+          "self_consistency_counts": {
+            "caught": 3,
+            "correct": 0,
+            "silent": 0
+          }
+        }
+      }
+    },
+    "sonnet": {
+      "graphrag_flat": {
+        "lookup": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 3,
+            "correct": 0,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A2": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 6,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "2/8"
+          },
+          "A3": {
+            "decision": "abstain",
+            "kind": "order",
+            "n_distinct_answers": 5,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "2/8"
+          },
+          "A6": {
+            "decision": "abstain",
+            "kind": "uid",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "8/8"
+          },
+          "A8": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A9": {
+            "decision": "majority",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 2,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "5/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 1,
+            "correct": 0,
+            "silent": 2
+          }
+        }
+      },
+      "graphrag_structured": {
+        "lookup": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 3,
+            "correct": 0,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A2": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A3": {
+            "decision": "majority",
+            "kind": "order",
+            "n_distinct_answers": 4,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "5/8"
+          },
+          "A6": {
+            "decision": "abstain",
+            "kind": "uid",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 2,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "7/8"
+          },
+          "A8": {
+            "decision": "abstain",
+            "kind": "substring",
+            "n_distinct_answers": 8,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "1/8"
+          },
+          "A9": {
+            "decision": "majority",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "8/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 1.0
+          },
+          "self_consistency_counts": {
+            "caught": 0,
+            "correct": 0,
+            "silent": 3
+          }
+        }
+      },
+      "structured_graph_query": {
+        "lookup": {
+          "n_queries": 0,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.0,
+            "silent": 0.0
+          },
+          "self_consistency_counts": {
+            "caught": 0,
+            "correct": 0,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A3": {
+            "decision": "majority",
+            "kind": "order",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "loud",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 8,
+              "silent": 0
+            },
+            "sc_outcome": "loud",
+            "top_answer_agreement": "8/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "loud",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 8,
+              "silent": 0
+            },
+            "sc_outcome": "loud",
+            "top_answer_agreement": "8/8"
+          },
+          "A9": {
+            "decision": "majority",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 2,
+            "per_trial_majority_outcome": "loud",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 7,
+              "silent": 1
+            },
+            "sc_outcome": "loud",
+            "top_answer_agreement": "7/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.9583,
+            "silent": 0.0417
+          },
+          "self_consistency_counts": {
+            "caught": 3,
+            "correct": 0,
+            "silent": 0
+          }
+        }
+      },
+      "text_to_sql": {
+        "lookup": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 1.0,
+            "loud": 0.0,
+            "silent": 0.0
+          },
+          "self_consistency_counts": {
+            "caught": 0,
+            "correct": 3,
+            "silent": 0
+          }
+        },
+        "per_query": {
+          "A2": {
+            "decision": "majority",
+            "kind": "substring",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "correct",
+            "per_trial_outcomes": {
+              "correct": 8,
+              "loud": 0,
+              "silent": 0
+            },
+            "sc_outcome": "correct",
+            "top_answer_agreement": "8/8"
+          },
+          "A3": {
+            "decision": "abstain",
+            "kind": "order",
+            "n_distinct_answers": 6,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 0,
+              "silent": 8
+            },
+            "sc_outcome": "abstain",
+            "top_answer_agreement": "2/8"
+          },
+          "A6": {
+            "decision": "majority",
+            "kind": "uid",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "correct",
+            "per_trial_outcomes": {
+              "correct": 8,
+              "loud": 0,
+              "silent": 0
+            },
+            "sc_outcome": "correct",
+            "top_answer_agreement": "8/8"
+          },
+          "A7": {
+            "decision": "majority",
+            "kind": "scalar",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "loud",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 8,
+              "silent": 0
+            },
+            "sc_outcome": "loud",
+            "top_answer_agreement": "8/8"
+          },
+          "A8": {
+            "decision": "majority",
+            "kind": "substring",
+            "n_distinct_answers": 1,
+            "per_trial_majority_outcome": "correct",
+            "per_trial_outcomes": {
+              "correct": 8,
+              "loud": 0,
+              "silent": 0
+            },
+            "sc_outcome": "correct",
+            "top_answer_agreement": "8/8"
+          },
+          "A9": {
+            "decision": "majority",
+            "kind": "exact_scalar",
+            "n_distinct_answers": 4,
+            "per_trial_majority_outcome": "silent",
+            "per_trial_outcomes": {
+              "correct": 0,
+              "loud": 1,
+              "silent": 7
+            },
+            "sc_outcome": "silent",
+            "top_answer_agreement": "5/8"
+          }
+        },
+        "tail": {
+          "n_queries": 3,
+          "per_trial_mean": {
+            "correct": 0.0,
+            "loud": 0.375,
+            "silent": 0.625
+          },
+          "self_consistency_counts": {
+            "caught": 2,
+            "correct": 0,
+            "silent": 1
+          }
+        }
+      }
+    }
+  }
+}
