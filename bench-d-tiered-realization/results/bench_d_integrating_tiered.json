@@ -1,0 +1,250 @@
+{
+  "bench": "BENCH-D integrating run \u2014 Window 2: multi-tier arm + read contract + head-to-head",
+  "hypothesis": "H-TIERED-REALIZATION-01",
+  "tier": "B",
+  "host": "single host",
+  "cache_label": "warm-cache, single-host",
+  "cv_blowout_pct": 30.0,
+  "trials": 7,
+  "w_hot": 2,
+  "preregistration": "PRE-REGISTRATION-integrating-2026-06-16.md",
+  "duckdb": "1.5.3",
+  "pyiceberg": "0.11.1",
+  "scales": [
+    {
+      "scale": "700000rows_14days",
+      "w_hot": 2,
+      "watermark_endstate": 12,
+      "fingerprints": {
+        "corpus": "46b4f4d0179110147f7bfbc9790ea887",
+        "tiered": "46b4f4d0179110147f7bfbc9790ea887",
+        "null_a": "46b4f4d0179110147f7bfbc9790ea887",
+        "null_b": "46b4f4d0179110147f7bfbc9790ea887"
+      },
+      "answer_equal": true,
+      "conservation_pass": true,
+      "conservation_steps": [
+        {
+          "after_promote_day": 0,
+          "expected": 150000,
+          "conn_all_count": 150000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 1,
+          "expected": 200000,
+          "conn_all_count": 200000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 2,
+          "expected": 250000,
+          "conn_all_count": 250000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 3,
+          "expected": 300000,
+          "conn_all_count": 300000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 4,
+          "expected": 350000,
+          "conn_all_count": 350000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 5,
+          "expected": 400000,
+          "conn_all_count": 400000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 6,
+          "expected": 450000,
+          "conn_all_count": 450000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 7,
+          "expected": 500000,
+          "conn_all_count": 500000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 8,
+          "expected": 550000,
+          "conn_all_count": 550000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 9,
+          "expected": 600000,
+          "conn_all_count": 600000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 10,
+          "expected": 650000,
+          "conn_all_count": 650000,
+          "ok": true
+        },
+        {
+          "after_promote_day": 11,
+          "expected": 700000,
+          "conn_all_count": 700000,
+          "ok": true
+        }
+      ],
+      "overlap_probe": {
+        "staged_day": 12,
+        "day_rows": 50000,
+        "corpus_total": 700000,
+        "pinned_count": 700000,
+        "pinned_correct": true,
+        "naive_count": 750000,
+        "naive_duplicated": true,
+        "stale_pin_count": 650000,
+        "stale_pin_dropped": true,
+        "verdict": "pinned-correct; naive-duplicates; stale-pin-drops"
+      },
+      "scan_latency": {
+        "tiered": {
+          "freshness_probe": {
+            "median_ms": 9.248,
+            "min_ms": 8.769,
+            "max_ms": 9.854,
+            "cv_pct": 3.7,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "recent_window": {
+            "median_ms": 11.889,
+            "min_ms": 11.604,
+            "max_ms": 15.263,
+            "cv_pct": 12.1,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "cold_aggregation": {
+            "median_ms": 15.21,
+            "min_ms": 13.993,
+            "max_ms": 17.104,
+            "cv_pct": 5.9,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "needle_lookup": {
+            "median_ms": 16.263,
+            "min_ms": 15.778,
+            "max_ms": 19.598,
+            "cv_pct": 7.5,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          }
+        },
+        "null_a": {
+          "freshness_probe": {
+            "median_ms": 7.16,
+            "min_ms": 6.897,
+            "max_ms": 8.179,
+            "cv_pct": 5.4,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "recent_window": {
+            "median_ms": 7.395,
+            "min_ms": 6.566,
+            "max_ms": 8.352,
+            "cv_pct": 6.8,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "cold_aggregation": {
+            "median_ms": 8.356,
+            "min_ms": 7.917,
+            "max_ms": 10.294,
+            "cv_pct": 8.8,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "needle_lookup": {
+            "median_ms": 11.703,
+            "min_ms": 10.986,
+            "max_ms": 12.397,
+            "cv_pct": 4.3,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          }
+        },
+        "null_b": {
+          "freshness_probe": {
+            "median_ms": 6.62,
+            "min_ms": 6.219,
+            "max_ms": 7.273,
+            "cv_pct": 4.7,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "recent_window": {
+            "median_ms": 6.779,
+            "min_ms": 6.697,
+            "max_ms": 8.537,
+            "cv_pct": 8.7,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "cold_aggregation": {
+            "median_ms": 5.171,
+            "min_ms": 5.014,
+            "max_ms": 5.541,
+            "cv_pct": 3.3,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "needle_lookup": {
+            "median_ms": 11.905,
+            "min_ms": 10.001,
+            "max_ms": 13.003,
+            "cv_pct": 8.2,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          }
+        }
+      },
+      "freshness": {
+        "tiered_hot_ingest": {
+          "median_ms": 27.755,
+          "min_ms": 26.831,
+          "max_ms": 30.859,
+          "cv_pct": 4.8,
+          "trials": 7,
+          "warmup": 0,
+          "cv_blown": false
+        },
+        "tiered_post_handoff": {
+          "median_ms": 181.147,
+          "min_ms": 169.594,
+          "max_ms": 193.366,
+          "cv_pct": 4.7,
+          "trials": 7,
+          "warmup": 0,
+          "cv_blown": false
+        }
+      }
+    }
+  ]
+}
