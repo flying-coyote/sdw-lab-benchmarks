@@ -1,0 +1,22 @@
+{
+  "benchmark": "pipeline-normalization-fidelity / Logstash two-edition arm (H-PIPELINE-OCSF-FIDELITY-01)",
+  "evidence_tier": "B (single host; synthetic shared corpus; availability/capability finding scored by the shared instrument)",
+  "date": "2026-06-16",
+  "editions": {
+    "logstash_oss": {"image": "docker.elastic.co/logstash/logstash-oss:7.10.2", "license": "Apache-2.0 (last OSS Logstash, pre-7.11 relicense)"},
+    "logstash_elastic": {"image": "docker.elastic.co/logstash/logstash:8.17.0", "license": "Elastic License 2.0 (EULA 1.3(v) DeWitt-clause)"}
+  },
+  "shipped_ocsf_mapping": false,
+  "shipped_codecs_relevant": ["logstash-codec-cef"],
+  "ocsf_codec_or_filter_present": false,
+  "passthrough_run": {"records": 200, "ocsf_fields_emitted": [], "note": "json_lines passthrough — the only path; no OCSF codec to invoke; both editions emitted records with zero OCSF structure"},
+  "scores": {
+    "logstash_oss":     {"zeek_conn": 0.0, "cloudtrail": 0.0, "sysmon": 0.0, "auth": 0.0},
+    "logstash_elastic": {"zeek_conn": 0.0, "cloudtrail": 0.0, "sysmon": 0.0, "auth": 0.0}
+  },
+  "metric": "coverage = field = value = class = activity_id = 0% on all four sources, both editions",
+  "editions_identical": true,
+  "decision_rule_outcome": "identical (both 0%) -> ONE 'Logstash' (not two); DeWitt distinction MOOT (0%-availability is a capability statement, not a publishable performance result -> both editions nameable)",
+  "p1_availability_across_tools": {"tenzir": "1 of 4 sources", "vector": "0 of 4", "logstash_both_editions": "0 of 4"},
+  "hypothesis_disposition": "H-PIPELINE-OCSF-FIDELITY-01 stays 2.5/5 gated-pending; Cribl (ships a packaged OCSF Pack, the falsifying test) still unrun (needs Cribl Stream Free account)"
+}
