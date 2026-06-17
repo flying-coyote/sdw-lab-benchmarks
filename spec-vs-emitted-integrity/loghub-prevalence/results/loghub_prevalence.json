@@ -1,0 +1,140 @@
+{
+  "bench": "SPEC-INTEGRITY real-log prevalence leg (H-SPEC-INTEGRITY-01)",
+  "corpus": "LogHub 2k real-line samples (github.com/logpai/loghub)",
+  "method": "code-only parse of REAL emitted lines vs each format's PUBLISHED standard grammar; silent = positional/tolerant consumer binds a wrong-but-present value; loud = null",
+  "tier": "B",
+  "boundary": "code-only diff, no LLM, no rows into model context",
+  "scope": "OS/infra/app logs, not security-vendor; transfers to the positional-format class",
+  "systems": {
+    "Linux": {
+      "format_class": "regex-prefixed (RFC3164 BSD syslog)",
+      "n_lines": 2000,
+      "corpus_sha16": "6d50cefa82380651",
+      "conform": 1138,
+      "silent": 862,
+      "loud": 0,
+      "deviation_rate": 0.431,
+      "silent_rate": 0.431,
+      "loud_rate": 0.0,
+      "silent_examples": [
+        {
+          "ident_field_captured": "sshd(pam_unix)",
+          "line": "Jun 14 15:16:01 combo sshd(pam_unix)[19939]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=218.188.2.4 "
+        },
+        {
+          "ident_field_captured": "sshd(pam_unix)",
+          "line": "Jun 14 15:16:02 combo sshd(pam_unix)[19937]: check pass; user unknown"
+        },
+        {
+          "ident_field_captured": "sshd(pam_unix)",
+          "line": "Jun 14 15:16:02 combo sshd(pam_unix)[19937]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=218.188.2.4 "
+        },
+        {
+          "ident_field_captured": "sshd(pam_unix)",
+          "line": "Jun 15 02:04:59 combo sshd(pam_unix)[20882]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=220-135-151-1.hinet-ip."
+        }
+      ],
+      "loud_examples": []
+    },
+    "OpenSSH": {
+      "format_class": "regex-prefixed (RFC3164 BSD syslog)",
+      "n_lines": 2000,
+      "corpus_sha16": "16da02f37eb00cec",
+      "conform": 2000,
+      "silent": 0,
+      "loud": 0,
+      "deviation_rate": 0.0,
+      "silent_rate": 0.0,
+      "loud_rate": 0.0,
+      "silent_examples": [],
+      "loud_examples": []
+    },
+    "Apache": {
+      "format_class": "regex-prefixed (httpd error_log)",
+      "n_lines": 2000,
+      "corpus_sha16": "0e51c532c9b82b49",
+      "conform": 2000,
+      "silent": 0,
+      "loud": 0,
+      "deviation_rate": 0.0,
+      "silent_rate": 0.0,
+      "loud_rate": 0.0,
+      "silent_examples": [],
+      "loud_examples": []
+    },
+    "HDFS": {
+      "format_class": "positional-prefix (date time pid level comp:msg)",
+      "n_lines": 2000,
+      "corpus_sha16": "05f657ef60be7968",
+      "conform": 2000,
+      "silent": 0,
+      "loud": 0,
+      "deviation_rate": 0.0,
+      "silent_rate": 0.0,
+      "loud_rate": 0.0,
+      "silent_examples": [],
+      "loud_examples": []
+    },
+    "Zookeeper": {
+      "format_class": "prefixed (ts - LEVEL [thread] - msg)",
+      "n_lines": 2000,
+      "corpus_sha16": "ca38c8b373c69376",
+      "conform": 1837,
+      "silent": 0,
+      "loud": 163,
+      "deviation_rate": 0.0815,
+      "silent_rate": 0.0,
+      "loud_rate": 0.0815,
+      "silent_examples": [],
+      "loud_examples": [
+        "2015-07-29 17:41:44,747 - INFO  [QuorumPeer[myid=1]/0:0:0:0:0:0:0:0:2181:FastLeaderElection@774] - Notification time out: 3200",
+        "2015-07-30 17:43:58,186 - INFO  [QuorumPeer[myid=1]/0:0:0:0:0:0:0:0:2181:Environment@100] - Server environment:user.dir=/",
+        "2015-07-30 17:55:26,200 - WARN  [WorkerSender[myid=1]:QuorumCnxManager@368] - Cannot open channel to 2 at election address /10.10.34.12:3888"
+      ]
+    },
+    "Proxifier": {
+      "format_class": "bracket-prefixed ([ts] prog - msg)",
+      "n_lines": 2000,
+      "corpus_sha16": "94b6a9d98d76e7ad",
+      "conform": 1272,
+      "silent": 0,
+      "loud": 728,
+      "deviation_rate": 0.364,
+      "silent_rate": 0.0,
+      "loud_rate": 0.364,
+      "silent_examples": [],
+      "loud_examples": [
+        "[10.30 16:51:56] svchost.exe *64 - proxy.cse.cuhk.edu.hk:5070 close, 303 bytes sent, 275 bytes received, lifetime <1 sec",
+        "[10.30 16:52:25] svchost.exe *64 - proxy.cse.cuhk.edu.hk:5070 close, 301 bytes sent, 278 bytes received, lifetime <1 sec",
+        "[10.30 17:59:03] svchost.exe *64 - proxy.cse.cuhk.edu.hk:5070 close, 293 bytes sent, 514 bytes received, lifetime <1 sec"
+      ]
+    }
+  },
+  "aggregate": {
+    "n_lines": 12000,
+    "conform_rate": 0.8539,
+    "silent_rate": 0.0718,
+    "loud_rate": 0.0742,
+    "deviation_rate": 0.1461,
+    "systems_with_zero_deviation": [
+      "OpenSSH",
+      "Apache",
+      "HDFS"
+    ],
+    "systems_with_silent_deviation": [
+      "Linux"
+    ]
+  },
+  "security_relevance_anchor": {
+    "finding": "same daemon (sshd), two real deployments: OpenSSH corpus emits program 'sshd' (0% deviation); Linux corpus emits 'sshd(pam_unix)' for 677/677 sshd events -> a detection keyed on the documented program name 'sshd' silently misses 100% of real sshd auth events (incl. auth-failures / break-in attempts) on the PAM-annotated deployment.",
+    "linux_sshd_events": 677,
+    "linux_program_eq_sshd": 0,
+    "openssh_program_eq_sshd": 2000
+  },
+  "caveats": [
+    "DEVIATION RATE is the robust metric (emitted line != the published-standard strict grammar). The silent-vs-loud SPLIT is consumer-dependent: a strict-regex consumer fails LOUD (null) on a deviation, while a positional/delimiter consumer (the hypothesis's subject) reads it SILENTLY wrong-but-present. This run counts silent conservatively (only the Linux tag-annotation case); the Zookeeper nested-bracket and Proxifier space-in-program deviations would also be SILENT under a delimiter consumer, so true silent >= reported.",
+    "That 'spec-faithful' is itself underdetermined (bracket-field vs delimiter parser disagree on what deviates) is the hypothesis's 'parsing layer nobody owns' point, not a bug.",
+    "The sshd(pam_unix) form is a known syslog facility-annotation convention; mature SIEM parsers may strip it. The miss is for a parser faithful to the DOCUMENTED standard (RFC3164 alphanumeric tag = 'sshd'); catching it requires handling an emit convention the standard never documented -- exactly the 'you can't trust the published spec' claim.",
+    "SCOPE: real but OS/infra/app logs (LogHub), NOT commercial security-vendor telemetry; transfers to the positional/prefixed format CLASS; the security-vendor-specific rate stays an extrapolation. Prevalence is deployment/config-dependent (0% vs 100% for the same daemon), not a fixed vendor property."
+  ]
+}
