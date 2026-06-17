@@ -1,0 +1,1380 @@
+{
+ "trials": 8,
+ "model": "sonnet",
+ "generated": 216,
+ "expected": 216,
+ "text2sql": [
+  {
+   "qid": "A1",
+   "trial": 0,
+   "sql": "SELECT event_uid\nFROM (\n    SELECT\n        event_uid,\n        src_ip,\n        dst_ip,\n        time,\n        bytes_out,\n        bytes_in,\n        AVG(time - LAG(time) OVER (PARTITION BY src_ip, dst_ip ORDER BY time)) OVER (PARTITION BY src_ip, dst_ip) AS avg_interval,\n        STDDEV(time - LAG(time) OVER (PARTITION BY src_ip, dst_ip ORDER BY time)) OVER (PARTITION BY src_ip, dst_ip) AS stddev_interval,\n        MAX(time) OVER (PARTITION BY src_ip, dst_ip) - MIN(time) OVER (PARTITION BY src_ip, dst_ip) AS span,\n        AVG(bytes_out + bytes_in) OVER (PARTITION BY src_ip, dst_ip) AS avg_bytes,\n        COUNT(*) OVER (PARTITION BY src_ip, dst_ip) AS cnt\n    FROM f_network\n)\nWHERE\n    avg_interval BETWEEN 45 AND 75\n    AND (stddev_interval IS NULL OR stddev_interval < 20)\n    AND span >= 3000\n    AND avg_bytes < 5000\n    AND cnt >= 10"
+  },
+  {
+   "qid": "A1",
+   "trial": 1,
+   "sql": "WITH ordered AS (\n    SELECT\n        event_uid,\n        src_ip,\n        dst_ip,\n        time,\n        bytes_out,\n        bytes_in,\n        LAG(time) OVER (PARTITION BY src_ip, dst_ip ORDER BY time) AS prev_time\n    FROM f_network\n),\nintervals AS (\n    SELECT\n        src_ip,\n        dst_ip,\n        event_uid,\n        bytes_out,\n        bytes_in,\n        time,\n        EXTRACT(EPOCH FROM (time - prev_time)) AS gap_seconds\n    FROM ordered\n    WHERE prev_time IS NOT NULL\n),\npair_stats AS (\n    SELECT\n        src_ip,\n        dst_ip,\n        COUNT(*) AS conn_count,\n        AVG(gap_seconds) AS avg_gap,\n        STDDEV(gap_seconds) AS stddev_gap,\n        AVG(bytes_out + bytes_in) AS avg_bytes,\n        MAX(time) - MIN(time) AS session_span\n    FROM intervals\n    GROUP BY src_ip, dst_ip\n),\nbeacon_pairs AS (\n    SELECT src_ip, dst_ip\n    FROM pair_stats\n    WHERE avg_gap BETWEEN 45 AND 75\n      AND stddev_gap < 15\n      AND avg_bytes < 5000\n      AND EXTRACT(EPOCH FROM session_span) >= 3000\n      AND conn_count >= 10\n)\nSELECT n.event_uid\nFROM f_network n\nJOIN beacon_pairs b ON n.src_ip = b.src_ip AND n.dst_ip = b.dst_ip"
+  },
+  {
+   "qid": "A1",
+   "trial": 2,
+   "sql": "WITH ordered AS (\n    SELECT\n        event_uid,\n        src_ip,\n        dst_ip,\n        time,\n        bytes_out,\n        bytes_in,\n        LAG(time) OVER (PARTITION BY src_ip, dst_ip ORDER BY time) AS prev_time\n    FROM f_network\n),\nintervals AS (\n    SELECT\n        event_uid,\n        src_ip,\n        dst_ip,\n        time,\n        bytes_out,\n        bytes_in,\n        (time - prev_time) AS gap_seconds\n    FROM ordered\n    WHERE prev_time IS NOT NULL\n),\npair_stats AS (\n    SELECT\n        src_ip,\n        dst_ip,\n        COUNT(*) AS conn_count,\n        AVG(gap_seconds) AS avg_gap,\n        STDDEV(gap_seconds) AS stddev_gap,\n        MIN(time) AS first_seen,\n        MAX(time) AS last_seen,\n        AVG(bytes_out + bytes_in) AS avg_bytes\n    FROM intervals\n    GROUP BY src_ip, dst_ip\n    HAVING\n        AVG(gap_seconds) BETWEEN 45 AND 75\n        AND STDDEV(gap_seconds) < 15\n        AND (MAX(time) - MIN(time)) >= 3000\n        AND AVG(bytes_out + bytes_in) < 5000\n        AND COUNT(*) >= 10\n),\nbeacon_pairs AS (\n    SELECT src_ip, dst_ip FROM pair_stats\n)\nSELECT i.event_uid\nFROM intervals i\nJOIN beacon_pairs bp ON i.src_ip = bp.src_ip AND i.dst_ip = bp.dst_ip"
+  },
+  {
+   "qid": "A1",
+   "trial": 3,
+   "sql": "WITH arrivals AS (\n    SELECT\n        event_uid,\n        src_ip,\n        dst_ip,\n        time,\n        bytes_out,\n        bytes_in,\n        LAG(time) OVER (PARTITION BY src_ip, dst_ip ORDER BY time) AS prev_time\n    FROM f_network\n),\nintervals AS (\n    SELECT\n        event_uid,\n        src_ip,\n        dst_ip,\n        time,\n        bytes_out,\n        bytes_in,\n        EXTRACT(EPOCH FROM (time - prev_time)) AS gap_seconds\n    FROM arrivals\n    WHERE prev_time IS NOT NULL\n),\npair_stats AS (\n    SELECT\n        src_ip,\n        dst_ip,\n        COUNT(*) AS conn_count,\n        AVG(gap_seconds) AS avg_gap,\n        STDDEV(gap_seconds) AS stddev_gap,\n        AVG(bytes_out + bytes_in) AS avg_bytes,\n        MAX(time) - MIN(time) AS span\n    FROM intervals\n    GROUP BY src_ip, dst_ip\n),\nbeacon_pairs AS (\n    SELECT src_ip, dst_ip\n    FROM pair_stats\n    WHERE avg_gap BETWEEN 45 AND 75\n      AND stddev_gap < 20\n      AND avg_bytes < 5000\n      AND EXTRACT(EPOCH FROM span) >= 3000\n)\nSELECT n.event_uid\nFROM f_network n\nJOIN beacon_pairs b ON n.src_ip = b.src_ip AND n.dst_ip = b.dst_ip"
+  },
+  {
+   "qid": "A1",
+   "trial": 4,
+   "sql": "WITH arrivals AS (\n    SELECT\n        event_uid,\n        src_ip,\n        dst_ip,\n        time,\n        bytes_out,\n        bytes_in,\n        LAG(time) OVER (PARTITION BY src_ip, dst_ip ORDER BY time) AS prev_time\n    FROM f_network\n),\npair_stats AS (\n    SELECT\n        src_ip,\n        dst_ip,\n        COUNT(*) AS conn_count,\n        AVG(CASE WHEN prev_time IS NOT NULL THEN time - prev_time END) AS avg_interval,\n        STDDEV(CASE WHEN prev_time IS NOT NULL THEN time - prev_time END) AS std_interval,\n        MAX(time) - MIN(time) AS duration_span,\n        AVG(COALESCE(bytes_out, 0) + COALESCE(bytes_in, 0)) AS avg_bytes\n    FROM arrivals\n    GROUP BY src_ip, dst_ip\n),\nbeacon_pairs AS (\n    SELECT src_ip, dst_ip\n    FROM pair_stats\n    WHERE conn_count >= 10\n      AND avg_interval BETWEEN 45 AND 75\n      AND (std_interval IS NULL OR std_interval < 20)\n      AND duration_span >= 3000\n      AND avg_bytes < 5000\n)\nSELECT a.event_uid\nFROM arrivals a\nJOIN beacon_pairs b ON a.src_ip = b.src_ip AND a.dst_ip = b.dst_ip"
+  },
+  {
+   "qid": "A1",
+   "trial": 5,
+   "sql": "WITH pair_events AS (\n  SELECT\n    event_uid,\n    src_ip,\n    dst_ip,\n    time,\n    bytes_out,\n    bytes_in,\n    LAG(time) OVER (PARTITION BY src_ip, dst_ip ORDER BY time) AS prev_time\n  FROM f_network\n),\npair_stats AS (\n  SELECT\n    src_ip,\n    dst_ip,\n    COUNT(*) AS event_count,\n    AVG(bytes_out + bytes_in) AS avg_bytes,\n    MAX(time) - MIN(time) AS span_seconds,\n    AVG(CASE WHEN prev_time IS NOT NULL THEN time - prev_time END) AS avg_interval,\n    STDDEV(CASE WHEN prev_time IS NOT NULL THEN time - prev_time END) AS stddev_interval\n  FROM pair_events\n  GROUP BY src_ip, dst_ip\n  HAVING\n    COUNT(*) >= 10\n    AND AVG(CASE WHEN prev_time IS NOT NULL THEN time - prev_time END) BETWEEN 45 AND 75\n    AND (STDDEV(CASE WHEN prev_time IS NOT NULL THEN time - prev_time END) IS NULL\n         OR STDDEV(CASE WHEN prev_time IS NOT NULL THEN time - prev_time END) < 30)\n    AND AVG(bytes_out + bytes_in) < 5000\n    AND MAX(time) - MIN(time) BETWEEN 2700 AND 7200\n)\nSELECT pe.event_uid\nFROM pair_events pe\nJOIN pair_stats ps ON pe.src_ip = ps.src_ip AND pe.dst_ip = ps.dst_ip"
+  },
+  {
+   "qid": "A1",
+   "trial": 6,
+   "sql": "WITH ranked AS (\n    SELECT\n        event_uid,\n        src_ip,\n        dst_ip,\n        time,\n        bytes_out,\n        bytes_in,\n        LAG(time) OVER (PARTITION BY src_ip, dst_ip ORDER BY time) AS prev_time\n    FROM f_network\n),\npair_stats AS (\n    SELECT\n        src_ip,\n        dst_ip,\n        COUNT(*) AS conn_count,\n        AVG(CASE WHEN prev_time IS NOT NULL THEN time - prev_time END) AS avg_inter_arrival,\n        STDDEV(CASE WHEN prev_time IS NOT NULL THEN time - prev_time END) AS stddev_inter_arrival,\n        MAX(time) - MIN(time) AS span_seconds,\n        AVG(COALESCE(bytes_out, 0) + COALESCE(bytes_in, 0)) AS avg_bytes\n    FROM ranked\n    GROUP BY src_ip, dst_ip\n),\nbeacon_pairs AS (\n    SELECT src_ip, dst_ip\n    FROM pair_stats\n    WHERE avg_inter_arrival BETWEEN 45 AND 75\n      AND (stddev_inter_arrival IS NULL OR stddev_inter_arrival < 15)\n      AND span_seconds >= 3000\n      AND avg_bytes < 5000\n      AND conn_count >= 5\n)\nSELECT r.event_uid\nFROM ranked r\nJOIN beacon_pairs bp ON r.src_ip = bp.src_ip AND r.dst_ip = bp.dst_ip"
+  },
+  {
+   "qid": "A1",
+   "trial": 7,
+   "sql": "WITH pair_events AS (\n    SELECT\n        event_uid,\n        src_ip,\n        dst_ip,\n        time,\n        bytes_out,\n        bytes_in,\n        LAG(time) OVER (PARTITION BY src_ip, dst_ip ORDER BY time) AS prev_time\n    FROM f_network\n),\npair_intervals AS (\n    SELECT\n        src_ip,\n        dst_ip,\n        AVG(epoch(time) - epoch(prev_time)) AS avg_interval_sec,\n        STDDEV(epoch(time) - epoch(prev_time)) AS stddev_interval_sec,\n        COUNT(*) AS event_count,\n        MAX(epoch(time)) - MIN(epoch(time)) AS span_sec,\n        AVG(COALESCE(bytes_out, 0) + COALESCE(bytes_in, 0)) AS avg_bytes\n    FROM pair_events\n    WHERE prev_time IS NOT NULL\n    GROUP BY src_ip, dst_ip\n),\nbeacon_pairs AS (\n    SELECT src_ip, dst_ip\n    FROM pair_intervals\n    WHERE avg_interval_sec BETWEEN 45 AND 75\n      AND stddev_interval_sec < 15\n      AND span_sec >= 3000\n      AND avg_bytes < 5000\n      AND event_count >= 50\n)\nSELECT n.event_uid\nFROM f_network n\nJOIN beacon_pairs b ON n.src_ip = b.src_ip AND n.dst_ip = b.dst_ip"
+  },
+  {
+   "qid": "A2",
+   "trial": 0,
+   "sql": "SELECT cmd_line FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%-EncodedCommand%'"
+  },
+  {
+   "qid": "A2",
+   "trial": 1,
+   "sql": "SELECT cmd_line FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%-EncodedCommand%'"
+  },
+  {
+   "qid": "A2",
+   "trial": 2,
+   "sql": "SELECT cmd_line FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%-EncodedCommand%'"
+  },
+  {
+   "qid": "A2",
+   "trial": 3,
+   "sql": "SELECT cmd_line FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%-EncodedCommand%'"
+  },
+  {
+   "qid": "A2",
+   "trial": 4,
+   "sql": "SELECT cmd_line FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%-EncodedCommand%'"
+  },
+  {
+   "qid": "A2",
+   "trial": 5,
+   "sql": "SELECT cmd_line FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%-EncodedCommand%'"
+  },
+  {
+   "qid": "A2",
+   "trial": 6,
+   "sql": "SELECT cmd_line FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%-EncodedCommand%'"
+  },
+  {
+   "qid": "A2",
+   "trial": 7,
+   "sql": "SELECT cmd_line FROM f_process WHERE device_hostname = 'WS1' AND cmd_line LIKE '%-EncodedCommand%'"
+  },
+  {
+   "qid": "A3",
+   "trial": 0,
+   "sql": "SELECT stage, event_uid, time FROM (\n  SELECT 'OAuth consent' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%oauth%' OR lower(api_operation) LIKE '%authorize%' OR lower(api_operation) LIKE '%consent%'\n  UNION ALL\n  SELECT 'PowerShell execution' AS stage, event_uid, time FROM f_process WHERE lower(image_name) LIKE '%powershell%' OR lower(cmd_line) LIKE '%powershell%'\n  UNION ALL\n  SELECT 'C2 beacon' AS stage, event_uid, time FROM f_dns WHERE lower(query_hostname) NOT LIKE '%.microsoft.com' AND lower(query_hostname) NOT LIKE '%.windows.com' AND lower(query_hostname) NOT LIKE '%.amazon.com'\n  UNION ALL\n  SELECT 'Lateral connection' AS stage, event_uid, time FROM f_network WHERE src_hostname IS NOT NULL AND dst_ip IS NOT NULL AND src_hostname != ''\n  UNION ALL\n  SELECT 'No-MFA privilege escalation' AS stage, event_uid, time FROM f_api WHERE (mfa_present = false OR mfa_value = 'false' OR mfa_value = '0') AND (lower(api_operation) LIKE '%escalat%' OR lower(api_operation) LIKE '%privilege%' OR lower(api_operation) LIKE '%admin%' OR lower(resource) LIKE '%role%')\n  UNION ALL\n  SELECT 'Role assumption' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%assumerole%' OR lower(api_operation) LIKE '%assume-role%' OR lower(api_operation) LIKE '%assume_role%'\n  UNION ALL\n  SELECT 'Data exfiltration' AS stage, event_uid, time FROM f_network WHERE bytes_out = (SELECT max(bytes_out) FROM f_network)\n) kill_chain\nORDER BY time ASC"
+  },
+  {
+   "qid": "A3",
+   "trial": 1,
+   "sql": "SELECT stage, event_uid, time FROM (\n  SELECT 'OAuth consent' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%oauth%' OR lower(api_operation) LIKE '%consent%' OR lower(api_operation) LIKE '%authorize%'\n  UNION ALL\n  SELECT 'PowerShell execution' AS stage, event_uid, time FROM f_process WHERE lower(image_name) LIKE '%powershell%' OR lower(cmd_line) LIKE '%powershell%'\n  UNION ALL\n  SELECT 'C2 beacon' AS stage, event_uid, time FROM f_dns WHERE lower(query_hostname) NOT IN (SELECT DISTINCT lower(query_hostname) FROM f_dns WHERE answer IS NOT NULL AND length(answer) > 0 LIMIT 0) OR answer IS NULL\n  UNION ALL\n  SELECT 'Lateral connection' AS stage, n.event_uid, n.time FROM f_network n INNER JOIN f_asset a1 ON n.src_hostname = a1.hostname INNER JOIN f_asset a2 ON n.dst_ip = a2.ip WHERE n.src_hostname IS NOT NULL AND n.dst_ip IS NOT NULL AND n.src_hostname <> a2.hostname\n  UNION ALL\n  SELECT 'No-MFA privilege escalation' AS stage, event_uid, time FROM f_api WHERE (mfa_present = false OR mfa_value = false) AND (lower(api_operation) LIKE '%escalat%' OR lower(api_operation) LIKE '%privilege%' OR lower(api_operation) LIKE '%admin%' OR lower(api_operation) LIKE '%elevat%')\n  UNION ALL\n  SELECT 'Role assumption' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%assumerole%' OR lower(api_operation) LIKE '%assume%role%' OR lower(api_operation) LIKE '%sts%'\n  UNION ALL\n  SELECT 'Data exfiltration' AS stage, event_uid, time FROM f_network WHERE bytes_out = (SELECT max(bytes_out) FROM f_network)\n) kill_chain\nORDER BY time ASC"
+  },
+  {
+   "qid": "A3",
+   "trial": 2,
+   "sql": "SELECT stage, event_uid, time FROM (\n  SELECT 'OAuth consent' AS stage, event_uid, time FROM f_api WHERE LOWER(api_operation) LIKE '%oauth%' OR LOWER(api_operation) LIKE '%consent%' OR LOWER(resource) LIKE '%oauth%'\n  UNION ALL\n  SELECT 'PowerShell execution' AS stage, event_uid, time FROM f_process WHERE LOWER(image_name) LIKE '%powershell%' OR LOWER(cmd_line) LIKE '%powershell%'\n  UNION ALL\n  SELECT 'C2 beacon' AS stage, event_uid, time FROM f_dns WHERE LOWER(query_hostname) NOT LIKE '%microsoft%' AND query_hostname IS NOT NULL\n  UNION ALL\n  SELECT 'Lateral connection' AS stage, event_uid, time FROM f_network WHERE dst_port IN (445, 3389, 22, 5985, 5986)\n  UNION ALL\n  SELECT 'No-MFA privilege escalation' AS stage, event_uid, time FROM f_api WHERE (mfa_present = false OR mfa_value = false OR mfa_present IS NULL) AND (LOWER(api_operation) LIKE '%escalat%' OR LOWER(api_operation) LIKE '%privilege%' OR LOWER(api_operation) LIKE '%admin%' OR LOWER(api_operation) LIKE '%elevat%')\n  UNION ALL\n  SELECT 'Role assumption' AS stage, event_uid, time FROM f_api WHERE LOWER(api_operation) LIKE '%assumerole%' OR LOWER(api_operation) LIKE '%assume-role%' OR LOWER(api_operation) LIKE '%assume_role%' OR LOWER(api_operation) LIKE '%sts%'\n  UNION ALL\n  SELECT 'Data exfiltration' AS stage, event_uid, time FROM f_network WHERE bytes_out > bytes_in AND bytes_out IS NOT NULL AND bytes_in IS NOT NULL\n) kill_chain\nORDER BY time ASC"
+  },
+  {
+   "qid": "A3",
+   "trial": 3,
+   "sql": "SELECT stage, event_uid, time FROM (\n  SELECT 'OAuth consent' AS stage, event_uid, time FROM f_api WHERE api_operation ILIKE '%oauth%' OR api_operation ILIKE '%consent%'\n  UNION ALL\n  SELECT 'PowerShell execution' AS stage, event_uid, time FROM f_process WHERE image_name ILIKE '%powershell%' OR cmd_line ILIKE '%powershell%'\n  UNION ALL\n  SELECT 'C2 beacon' AS stage, event_uid, time FROM f_dns WHERE query_hostname IS NOT NULL\n  UNION ALL\n  SELECT 'Lateral connection' AS stage, event_uid, time FROM f_network WHERE dst_port IN (445, 3389, 22, 135, 139)\n  UNION ALL\n  SELECT 'No-MFA privilege escalation' AS stage, event_uid, time FROM f_api WHERE (mfa_present = false OR mfa_value = 'false' OR mfa_value = '0' OR mfa_present IS NULL) AND (api_operation ILIKE '%privilege%' OR api_operation ILIKE '%escalat%' OR api_operation ILIKE '%admin%' OR api_operation ILIKE '%policy%')\n  UNION ALL\n  SELECT 'Role assumption' AS stage, event_uid, time FROM f_api WHERE api_operation ILIKE '%assume%role%' OR api_operation ILIKE '%AssumeRole%'\n  UNION ALL\n  SELECT 'Data exfiltration' AS stage, event_uid, time FROM f_network WHERE bytes_out > bytes_in\n) kill_chain\nORDER BY time ASC"
+  },
+  {
+   "qid": "A3",
+   "trial": 4,
+   "sql": "SELECT stage, event_uid, time FROM (\n  SELECT 'OAuth consent' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%oauth%' OR lower(api_operation) LIKE '%consent%' OR lower(api_operation) LIKE '%authorize%'\n  UNION ALL\n  SELECT 'PowerShell execution' AS stage, event_uid, time FROM f_process WHERE lower(image_name) LIKE '%powershell%' OR lower(cmd_line) LIKE '%powershell%'\n  UNION ALL\n  SELECT 'C2 beacon' AS stage, event_uid, time FROM f_dns WHERE lower(query_hostname) NOT IN (SELECT lower(hostname) FROM f_asset) AND lower(query_hostname) NOT LIKE '%.microsoft.com' AND lower(query_hostname) NOT LIKE '%.amazonaws.com'\n  UNION ALL\n  SELECT 'Lateral connection' AS stage, event_uid, time FROM f_network WHERE src_hostname IS NOT NULL AND dst_ip IS NOT NULL AND src_hostname <> '' AND dst_port IN (22, 445, 3389, 5985, 5986)\n  UNION ALL\n  SELECT 'No-MFA privilege escalation' AS stage, event_uid, time FROM f_api WHERE (mfa_present = false OR mfa_value = 'false' OR mfa_value = '0') AND (lower(api_operation) LIKE '%escalat%' OR lower(api_operation) LIKE '%attach%policy%' OR lower(api_operation) LIKE '%putuserpolicy%' OR lower(api_operation) LIKE '%adminadd%')\n  UNION ALL\n  SELECT 'Role assumption' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%assumerole%' OR lower(api_operation) LIKE '%assume-role%'\n  UNION ALL\n  SELECT 'Data exfiltration' AS stage, event_uid, time FROM f_network WHERE bytes_out > 10000000\n) kill_chain\nORDER BY time ASC"
+  },
+  {
+   "qid": "A3",
+   "trial": 5,
+   "sql": "SELECT stage, event_uid, time FROM (\n  SELECT 'OAuth consent' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%oauth%' OR lower(api_operation) LIKE '%consent%'\n  UNION ALL\n  SELECT 'PowerShell execution' AS stage, event_uid, time FROM f_process WHERE lower(image_name) LIKE '%powershell%' OR lower(cmd_line) LIKE '%powershell%'\n  UNION ALL\n  SELECT 'C2 beacon' AS stage, event_uid, time FROM f_network WHERE dst_port IN (4444, 8080, 443, 80) AND bytes_out > 0 AND bytes_in > 0\n  UNION ALL\n  SELECT 'Lateral connection' AS stage, event_uid, time FROM f_auth WHERE is_remote = true\n  UNION ALL\n  SELECT 'No-MFA privilege escalation' AS stage, event_uid, time FROM f_api WHERE (mfa_present = false OR mfa_value = 'No') AND (lower(api_operation) LIKE '%assume%' OR lower(api_operation) LIKE '%escalat%' OR lower(resource) LIKE '%role%')\n  UNION ALL\n  SELECT 'Role assumption' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%assumerole%' OR lower(api_operation) LIKE '%assume-role%' OR lower(api_operation) LIKE '%assume_role%'\n  UNION ALL\n  SELECT 'Data exfiltration' AS stage, event_uid, time FROM f_network WHERE bytes_out > bytes_in AND bytes_out > 0\n) kill_chain\nORDER BY time"
+  },
+  {
+   "qid": "A3",
+   "trial": 6,
+   "sql": "SELECT stage, event_uid, time FROM (\n  SELECT 'OAuth consent' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%oauth%' OR lower(api_operation) LIKE '%consent%' OR lower(api_operation) LIKE '%authorize%'\n  UNION ALL\n  SELECT 'PowerShell execution' AS stage, event_uid, time FROM f_process WHERE lower(image_name) LIKE '%powershell%' OR lower(cmd_line) LIKE '%powershell%'\n  UNION ALL\n  SELECT 'C2 beacon' AS stage, event_uid, time FROM f_dns WHERE lower(query_hostname) NOT LIKE '%amazonaws.com' AND lower(query_hostname) NOT LIKE '%microsoft.com' AND lower(query_hostname) NOT LIKE '%windows.com'\n  UNION ALL\n  SELECT 'Lateral connection' AS stage, event_uid, time FROM f_network WHERE dst_port IN (445, 3389, 22, 135, 139, 5985, 5986) AND bytes_in > 0\n  UNION ALL\n  SELECT 'No-MFA privilege escalation' AS stage, event_uid, time FROM f_api WHERE (mfa_present = false OR mfa_value = 'false' OR mfa_value = '0' OR mfa_value IS NULL) AND (lower(api_operation) LIKE '%escalat%' OR lower(api_operation) LIKE '%attach%policy%' OR lower(api_operation) LIKE '%putuserpolicy%' OR lower(api_operation) LIKE '%admin%')\n  UNION ALL\n  SELECT 'Role assumption' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%assumerole%' OR lower(api_operation) LIKE '%assume_role%'\n  UNION ALL\n  SELECT 'Data exfiltration' AS stage, event_uid, time FROM f_network WHERE bytes_out > bytes_in AND bytes_out > 0\n) kill_chain\nORDER BY time ASC"
+  },
+  {
+   "qid": "A3",
+   "trial": 7,
+   "sql": "SELECT stage, event_uid, time FROM (\n  SELECT 'OAuth consent' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%oauth%' OR lower(api_operation) LIKE '%consent%'\n  UNION ALL\n  SELECT 'PowerShell execution' AS stage, event_uid, time FROM f_process WHERE lower(image_name) LIKE '%powershell%' OR lower(cmd_line) LIKE '%powershell%'\n  UNION ALL\n  SELECT 'C2 beacon' AS stage, event_uid, time FROM f_network WHERE bytes_out < bytes_in OR duration IS NOT NULL\n  UNION ALL\n  SELECT 'Lateral connection' AS stage, event_uid, time FROM f_auth WHERE is_remote = true\n  UNION ALL\n  SELECT 'No-MFA privilege escalation' AS stage, event_uid, time FROM f_api WHERE (mfa_present = false OR mfa_value = 'false' OR mfa_value = 'No') AND (lower(api_operation) LIKE '%escalat%' OR lower(api_operation) LIKE '%privilege%' OR lower(api_operation) LIKE '%admin%')\n  UNION ALL\n  SELECT 'Role assumption' AS stage, event_uid, time FROM f_api WHERE lower(api_operation) LIKE '%assumerole%' OR lower(api_operation) LIKE '%assume_role%'\n  UNION ALL\n  SELECT 'Data exfiltration' AS stage, event_uid, time FROM f_network WHERE bytes_out > bytes_in\n) kill_chain\nORDER BY time ASC"
+  },
+  {
+   "qid": "A5",
+   "trial": 0,
+   "sql": "WITH all_user_uids AS (\n    SELECT DISTINCT user_uid AS id, 'user_uid' AS id_type FROM f_auth WHERE user_uid IS NOT NULL\n    UNION\n    SELECT DISTINCT user_uid, 'user_uid' FROM f_session WHERE user_uid IS NOT NULL\n    UNION\n    SELECT DISTINCT actor_user_uid, 'actor_user_uid' FROM f_process WHERE actor_user_uid IS NOT NULL\n    UNION\n    SELECT DISTINCT actor_user_uid, 'actor_user_uid' FROM f_api WHERE actor_user_uid IS NOT NULL\n),\nall_ips AS (\n    SELECT DISTINCT src_ip AS id, 'src_ip' AS id_type FROM f_auth WHERE src_ip IS NOT NULL\n    UNION\n    SELECT DISTINCT src_ip, 'src_ip' FROM f_network WHERE src_ip IS NOT NULL\n    UNION\n    SELECT DISTINCT src_ip, 'src_ip' FROM f_dns WHERE src_ip IS NOT NULL\n    UNION\n    SELECT DISTINCT src_ip, 'src_ip' FROM f_api WHERE src_ip IS NOT NULL\n),\nall_hostnames AS (\n    SELECT DISTINCT target_host AS id, 'target_host' AS id_type FROM f_auth WHERE target_host IS NOT NULL\n    UNION\n    SELECT DISTINCT host, 'session_host' FROM f_session WHERE host IS NOT NULL\n    UNION\n    SELECT DISTINCT src_hostname, 'src_hostname' FROM f_network WHERE src_hostname IS NOT NULL\n    UNION\n    SELECT DISTINCT src_hostname, 'src_hostname' FROM f_dns WHERE src_hostname IS NOT NULL\n    UNION\n    SELECT DISTINCT device_hostname, 'device_hostname' FROM f_process WHERE device_hostname IS NOT NULL\n    UNION\n    SELECT DISTINCT hostname, 'asset_hostname' FROM f_asset WHERE hostname IS NOT NULL\n),\nall_asset_ids AS (\n    SELECT DISTINCT ip AS id, 'asset_ip' AS id_type FROM f_asset WHERE ip IS NOT NULL\n    UNION\n    SELECT DISTINCT instance_uid, 'instance_uid' FROM f_asset WHERE instance_uid IS NOT NULL\n    UNION\n    SELECT DISTINCT canonical_asset, 'canonical_asset' FROM f_asset WHERE canonical_asset IS NOT NULL\n),\nactor_anchor AS (\n    SELECT id, id_type FROM all_user_uids\n    UNION\n    SELECT id, id_type FROM all_ips\n    UNION\n    SELECT id, id_type FROM all_hostnames\n    UNION\n    SELECT id, id_type FROM all_asset_ids\n)\nSELECT DISTINCT\n    a.id,\n    a.id_type\nFROM actor_anchor a\nINNER JOIN (\n    SELECT DISTINCT src_ip FROM f_auth WHERE src_ip IS NOT NULL\n    UNION\n    SELECT DISTINCT src_ip FROM f_session s JOIN f_auth fa ON s.user_uid = fa.user_uid WHERE src_ip IS NOT NULL\n) linked_ips ON (a.id_type IN ('src_ip','asset_ip') AND a.id = linked_ips.src_ip)\nOR a.id_type IN ('user_uid','actor_user_uid')\nOR EXISTS (\n    SELECT 1 FROM f_asset ast\n    WHERE (a.id_type = 'asset_hostname' AND ast.hostname = a.id)\n       OR (a.id_type = 'asset_ip'       AND ast.ip       = a.id)\n       OR (a.id_type = 'instance_uid'   AND ast.instance_uid = a.id)\n       OR (a.id_type = 'canonical_asset'AND ast.canonical_asset = a.id)\n)\nORDER BY id_type, id"
+  },
+  {
+   "qid": "A5",
+   "trial": 1,
+   "sql": "SELECT DISTINCT identifier_type, identifier_value\nFROM (\n    SELECT 'user_uid' AS identifier_type, user_uid AS identifier_value FROM f_auth WHERE user_uid IS NOT NULL\n    UNION ALL\n    SELECT 'src_ip', CAST(src_ip AS VARCHAR) FROM f_auth WHERE src_ip IS NOT NULL\n    UNION ALL\n    SELECT 'target_host', target_host FROM f_auth WHERE target_host IS NOT NULL\n    UNION ALL\n    SELECT 'user_uid', user_uid FROM f_session WHERE user_uid IS NOT NULL\n    UNION ALL\n    SELECT 'host', host FROM f_session WHERE host IS NOT NULL\n    UNION ALL\n    SELECT 'src_ip', CAST(src_ip AS VARCHAR) FROM f_network WHERE src_ip IS NOT NULL\n    UNION ALL\n    SELECT 'src_hostname', src_hostname FROM f_network WHERE src_hostname IS NOT NULL\n    UNION ALL\n    SELECT 'dst_ip', CAST(dst_ip AS VARCHAR) FROM f_network WHERE dst_ip IS NOT NULL\n    UNION ALL\n    SELECT 'src_ip', CAST(src_ip AS VARCHAR) FROM f_dns WHERE src_ip IS NOT NULL\n    UNION ALL\n    SELECT 'src_hostname', src_hostname FROM f_dns WHERE src_hostname IS NOT NULL\n    UNION ALL\n    SELECT 'device_hostname', device_hostname FROM f_process WHERE device_hostname IS NOT NULL\n    UNION ALL\n    SELECT 'actor_user_uid', actor_user_uid FROM f_process WHERE actor_user_uid IS NOT NULL\n    UNION ALL\n    SELECT 'actor_user_uid', actor_user_uid FROM f_api WHERE actor_user_uid IS NOT NULL\n    UNION ALL\n    SELECT 'src_ip', CAST(src_ip AS VARCHAR) FROM f_api WHERE src_ip IS NOT NULL\n    UNION ALL\n    SELECT 'hostname', hostname FROM f_asset WHERE hostname IS NOT NULL\n    UNION ALL\n    SELECT 'ip', CAST(ip AS VARCHAR) FROM f_asset WHERE ip IS NOT NULL\n    UNION ALL\n    SELECT 'instance_uid', instance_uid FROM f_asset WHERE instance_uid IS NOT NULL\n    UNION ALL\n    SELECT 'canonical_asset', canonical_asset FROM f_asset WHERE canonical_asset IS NOT NULL\n) AS all_ids\nWHERE identifier_value IS NOT NULL\n  AND identifier_value <> ''\nORDER BY identifier_type, identifier_value"
+  },
+  {
+   "qid": "A5",
+   "trial": 2,
+   "sql": "WITH all_ids AS (\n    SELECT user_uid AS identifier, 'user_uid' AS id_type FROM f_auth WHERE user_uid IS NOT NULL\n    UNION\n    SELECT src_ip, 'src_ip' FROM f_auth WHERE src_ip IS NOT NULL\n    UNION\n    SELECT target_host, 'target_host' FROM f_auth WHERE target_host IS NOT NULL\n    UNION\n    SELECT user_uid, 'user_uid' FROM f_session WHERE user_uid IS NOT NULL\n    UNION\n    SELECT host, 'host' FROM f_session WHERE host IS NOT NULL\n    UNION\n    SELECT src_ip, 'src_ip' FROM f_network WHERE src_ip IS NOT NULL\n    UNION\n    SELECT src_hostname, 'src_hostname' FROM f_network WHERE src_hostname IS NOT NULL\n    UNION\n    SELECT dst_ip, 'dst_ip' FROM f_network WHERE dst_ip IS NOT NULL\n    UNION\n    SELECT src_ip, 'src_ip' FROM f_dns WHERE src_ip IS NOT NULL\n    UNION\n    SELECT src_hostname, 'src_hostname' FROM f_dns WHERE src_hostname IS NOT NULL\n    UNION\n    SELECT device_hostname, 'device_hostname' FROM f_process WHERE device_hostname IS NOT NULL\n    UNION\n    SELECT actor_user_uid, 'actor_user_uid' FROM f_process WHERE actor_user_uid IS NOT NULL\n    UNION\n    SELECT actor_user_uid, 'actor_user_uid' FROM f_api WHERE actor_user_uid IS NOT NULL\n    UNION\n    SELECT src_ip, 'src_ip' FROM f_api WHERE src_ip IS NOT NULL\n    UNION\n    SELECT resource, 'resource' FROM f_api WHERE resource IS NOT NULL\n    UNION\n    SELECT hostname, 'hostname' FROM f_asset WHERE hostname IS NOT NULL\n    UNION\n    SELECT ip, 'ip' FROM f_asset WHERE ip IS NOT NULL\n    UNION\n    SELECT instance_uid, 'instance_uid' FROM f_asset WHERE instance_uid IS NOT NULL\n    UNION\n    SELECT canonical_asset, 'canonical_asset' FROM f_asset WHERE canonical_asset IS NOT NULL\n)\nSELECT DISTINCT a.identifier, a.id_type\nFROM all_ids a"
+  },
+  {
+   "qid": "A5",
+   "trial": 3,
+   "sql": "SELECT DISTINCT identifier FROM (\n  SELECT user_uid AS identifier FROM f_auth WHERE user_uid IS NOT NULL\n  UNION ALL\n  SELECT src_ip AS identifier FROM f_auth WHERE src_ip IS NOT NULL\n  UNION ALL\n  SELECT target_host AS identifier FROM f_auth WHERE target_host IS NOT NULL\n  UNION ALL\n  SELECT user_uid AS identifier FROM f_session WHERE user_uid IS NOT NULL\n  UNION ALL\n  SELECT host AS identifier FROM f_session WHERE host IS NOT NULL\n  UNION ALL\n  SELECT src_ip AS identifier FROM f_network WHERE src_ip IS NOT NULL\n  UNION ALL\n  SELECT src_hostname AS identifier FROM f_network WHERE src_hostname IS NOT NULL\n  UNION ALL\n  SELECT src_ip AS identifier FROM f_dns WHERE src_ip IS NOT NULL\n  UNION ALL\n  SELECT src_hostname AS identifier FROM f_dns WHERE src_hostname IS NOT NULL\n  UNION ALL\n  SELECT device_hostname AS identifier FROM f_process WHERE device_hostname IS NOT NULL\n  UNION ALL\n  SELECT actor_user_uid AS identifier FROM f_process WHERE actor_user_uid IS NOT NULL\n  UNION ALL\n  SELECT actor_user_uid AS identifier FROM f_api WHERE actor_user_uid IS NOT NULL\n  UNION ALL\n  SELECT src_ip AS identifier FROM f_api WHERE src_ip IS NOT NULL\n  UNION ALL\n  SELECT resource AS identifier FROM f_api WHERE resource IS NOT NULL\n  UNION ALL\n  SELECT hostname AS identifier FROM f_asset WHERE hostname IS NOT NULL\n  UNION ALL\n  SELECT ip AS identifier FROM f_asset WHERE ip IS NOT NULL\n  UNION ALL\n  SELECT instance_uid AS identifier FROM f_asset WHERE instance_uid IS NOT NULL\n  UNION ALL\n  SELECT canonical_asset AS identifier FROM f_asset WHERE canonical_asset IS NOT NULL\n) ids\nWHERE identifier IN (\n  SELECT user_uid FROM f_auth WHERE user_uid IS NOT NULL\n  UNION\n  SELECT actor_user_uid FROM f_process WHERE actor_user_uid IS NOT NULL\n  UNION\n  SELECT actor_user_uid FROM f_api WHERE actor_user_uid IS NOT NULL\n  UNION\n  SELECT user_uid FROM f_session WHERE user_uid IS NOT NULL\n)\nOR identifier IN (\n  SELECT src_ip FROM f_auth WHERE src_ip IS NOT NULL\n  UNION\n  SELECT src_ip FROM f_network WHERE src_ip IS NOT NULL\n  UNION\n  SELECT src_ip FROM f_dns WHERE src_ip IS NOT NULL\n  UNION\n  SELECT src_ip FROM f_api WHERE src_ip IS NOT NULL\n)\nORDER BY identifier"
+  },
+  {
+   "qid": "A5",
+   "trial": 4,
+   "sql": "WITH actor_uids AS (\n    SELECT DISTINCT user_uid AS uid FROM f_auth WHERE user_uid IS NOT NULL\n    UNION\n    SELECT DISTINCT user_uid FROM f_session WHERE user_uid IS NOT NULL\n    UNION\n    SELECT DISTINCT actor_user_uid FROM f_process WHERE actor_user_uid IS NOT NULL\n    UNION\n    SELECT DISTINCT actor_user_uid FROM f_api WHERE actor_user_uid IS NOT NULL\n),\nactor_ips AS (\n    SELECT DISTINCT src_ip AS ip FROM f_auth WHERE src_ip IS NOT NULL\n    UNION\n    SELECT DISTINCT src_ip FROM f_api WHERE src_ip IS NOT NULL\n    UNION\n    SELECT DISTINCT src_ip FROM f_network WHERE src_ip IS NOT NULL\n    UNION\n    SELECT DISTINCT src_ip FROM f_dns WHERE src_ip IS NOT NULL\n),\nactor_hostnames AS (\n    SELECT DISTINCT target_host AS hostname FROM f_auth WHERE target_host IS NOT NULL\n    UNION\n    SELECT DISTINCT host FROM f_session WHERE host IS NOT NULL\n    UNION\n    SELECT DISTINCT device_hostname FROM f_process WHERE device_hostname IS NOT NULL\n    UNION\n    SELECT DISTINCT src_hostname FROM f_network WHERE src_hostname IS NOT NULL\n    UNION\n    SELECT DISTINCT src_hostname FROM f_dns WHERE src_hostname IS NOT NULL\n),\nasset_pivot AS (\n    SELECT a.hostname, a.ip, a.instance_uid, a.canonical_asset\n    FROM f_asset a\n    WHERE a.ip IN (SELECT ip FROM actor_ips)\n       OR a.hostname IN (SELECT hostname FROM actor_hostnames)\n),\nall_identifiers AS (\n    SELECT 'user_uid'    AS id_type, uid        AS id_value FROM actor_uids\n    UNION\n    SELECT 'ip',                      ip          FROM actor_ips\n    UNION\n    SELECT 'hostname',                hostname    FROM actor_hostnames\n    UNION\n    SELECT 'hostname',                hostname    FROM asset_pivot WHERE hostname IS NOT NULL\n    UNION\n    SELECT 'ip',                      ip          FROM asset_pivot WHERE ip IS NOT NULL\n    UNION\n    SELECT 'instance_uid',            instance_uid FROM asset_pivot WHERE instance_uid IS NOT NULL\n    UNION\n    SELECT 'canonical_asset',         canonical_asset FROM asset_pivot WHERE canonical_asset IS NOT NULL\n)\nSELECT DISTINCT id_type, id_value\nFROM all_identifiers\nWHERE id_value IS NOT NULL\nORDER BY id_type, id_value"
+  },
+  {
+   "qid": "A5",
+   "trial": 5,
+   "sql": "WITH all_user_uids AS (\n    SELECT user_uid AS uid FROM f_auth WHERE user_uid IS NOT NULL\n    UNION\n    SELECT user_uid FROM f_session WHERE user_uid IS NOT NULL\n    UNION\n    SELECT actor_user_uid FROM f_process WHERE actor_user_uid IS NOT NULL\n    UNION\n    SELECT actor_user_uid FROM f_api WHERE actor_user_uid IS NOT NULL\n),\nall_src_ips AS (\n    SELECT src_ip FROM f_auth WHERE src_ip IS NOT NULL\n    UNION\n    SELECT src_ip FROM f_network WHERE src_ip IS NOT NULL\n    UNION\n    SELECT src_ip FROM f_dns WHERE src_ip IS NOT NULL\n    UNION\n    SELECT src_ip FROM f_api WHERE src_ip IS NOT NULL\n),\nall_hostnames AS (\n    SELECT host AS hostname FROM f_session WHERE host IS NOT NULL\n    UNION\n    SELECT target_host FROM f_auth WHERE target_host IS NOT NULL\n    UNION\n    SELECT src_hostname FROM f_network WHERE src_hostname IS NOT NULL\n    UNION\n    SELECT src_hostname FROM f_dns WHERE src_hostname IS NOT NULL\n    UNION\n    SELECT device_hostname FROM f_process WHERE device_hostname IS NOT NULL\n),\nall_instance_uids AS (\n    SELECT instance_uid FROM f_asset WHERE instance_uid IS NOT NULL\n)\nSELECT 'user_uid' AS identifier_type, uid AS identifier_value FROM all_user_uids\nUNION ALL\nSELECT 'src_ip', src_ip FROM all_src_ips\nUNION ALL\nSELECT 'hostname', hostname FROM all_hostnames\nUNION ALL\nSELECT 'instance_uid', instance_uid FROM all_instance_uids\nORDER BY identifier_type, identifier_value"
+  },
+  {
+   "qid": "A5",
+   "trial": 6,
+   "sql": "WITH actor_uids AS (\n    SELECT user_uid AS uid FROM f_auth WHERE user_uid IS NOT NULL\n    UNION\n    SELECT user_uid FROM f_session WHERE user_uid IS NOT NULL\n    UNION\n    SELECT actor_user_uid FROM f_process WHERE actor_user_uid IS NOT NULL\n    UNION\n    SELECT actor_user_uid FROM f_api WHERE actor_user_uid IS NOT NULL\n),\nactor_hosts AS (\n    SELECT a.target_host AS host FROM f_auth a JOIN actor_uids u ON a.user_uid = u.uid WHERE a.target_host IS NOT NULL\n    UNION\n    SELECT s.host FROM f_session s JOIN actor_uids u ON s.user_uid = u.uid WHERE s.host IS NOT NULL\n    UNION\n    SELECT p.device_hostname FROM f_process p JOIN actor_uids u ON p.actor_user_uid = u.uid WHERE p.device_hostname IS NOT NULL\n),\nactor_ips AS (\n    SELECT a.src_ip AS ip FROM f_auth a JOIN actor_uids u ON a.user_uid = u.uid WHERE a.src_ip IS NOT NULL\n    UNION\n    SELECT ap.src_ip FROM f_api ap JOIN actor_uids u ON ap.actor_user_uid = u.uid WHERE ap.src_ip IS NOT NULL\n    UNION\n    SELECT n.src_ip FROM f_network n JOIN actor_hosts h ON n.src_hostname = h.host WHERE n.src_ip IS NOT NULL\n    UNION\n    SELECT d.src_ip FROM f_dns d JOIN actor_hosts h ON d.src_hostname = h.host WHERE d.src_ip IS NOT NULL\n),\nall_identifiers AS (\n    SELECT 'user_uid' AS id_type, uid AS id_value FROM actor_uids\n    UNION\n    SELECT 'hostname', host FROM actor_hosts\n    UNION\n    SELECT 'ip', ip FROM actor_ips\n    UNION\n    SELECT 'instance_uid', fa.instance_uid FROM f_asset fa JOIN actor_hosts h ON fa.hostname = h.host WHERE fa.instance_uid IS NOT NULL\n    UNION\n    SELECT 'instance_uid', fa.instance_uid FROM f_asset fa JOIN actor_ips i ON fa.ip = i.ip WHERE fa.instance_uid IS NOT NULL\n    UNION\n    SELECT 'canonical_asset', fa.canonical_asset FROM f_asset fa JOIN actor_hosts h ON fa.hostname = h.host WHERE fa.canonical_asset IS NOT NULL\n    UNION\n    SELECT 'canonical_asset', fa.canonical_asset FROM f_asset fa JOIN actor_ips i ON fa.ip = i.ip WHERE fa.canonical_asset IS NOT NULL\n)\nSELECT id_type, id_value FROM all_identifiers ORDER BY id_type, id_value"
+  },
+  {
+   "qid": "A5",
+   "trial": 7,
+   "sql": "WITH all_user_uids AS (\n    SELECT user_uid AS uid FROM f_auth WHERE user_uid IS NOT NULL\n    UNION\n    SELECT user_uid FROM f_session WHERE user_uid IS NOT NULL\n    UNION\n    SELECT actor_user_uid FROM f_process WHERE actor_user_uid IS NOT NULL\n    UNION\n    SELECT actor_user_uid FROM f_api WHERE actor_user_uid IS NOT NULL\n),\nall_src_ips AS (\n    SELECT src_ip FROM f_auth WHERE src_ip IS NOT NULL\n    UNION\n    SELECT src_ip FROM f_network WHERE src_ip IS NOT NULL\n    UNION\n    SELECT src_ip FROM f_dns WHERE src_ip IS NOT NULL\n    UNION\n    SELECT src_ip FROM f_api WHERE src_ip IS NOT NULL\n),\nall_hostnames AS (\n    SELECT target_host AS hostname FROM f_auth WHERE target_host IS NOT NULL\n    UNION\n    SELECT host FROM f_session WHERE host IS NOT NULL\n    UNION\n    SELECT src_hostname FROM f_network WHERE src_hostname IS NOT NULL\n    UNION\n    SELECT dst_ip AS hostname FROM f_network WHERE dst_ip IS NOT NULL\n    UNION\n    SELECT src_hostname FROM f_dns WHERE src_hostname IS NOT NULL\n    UNION\n    SELECT query_hostname FROM f_dns WHERE query_hostname IS NOT NULL\n    UNION\n    SELECT device_hostname FROM f_process WHERE device_hostname IS NOT NULL\n),\nall_instance_ids AS (\n    SELECT instance_uid FROM f_asset WHERE instance_uid IS NOT NULL\n),\nall_canonical_assets AS (\n    SELECT canonical_asset FROM f_asset WHERE canonical_asset IS NOT NULL\n),\n-- Pivot: join assets to the user chain via IP or hostname\nlinked_assets AS (\n    SELECT a.hostname, a.ip, a.instance_uid, a.canonical_asset\n    FROM f_asset a\n    WHERE a.ip IN (SELECT src_ip FROM all_src_ips)\n       OR a.hostname IN (SELECT hostname FROM all_hostnames)\n)\nSELECT 'user_uid' AS id_type, uid AS identifier FROM all_user_uids\nUNION ALL\nSELECT 'src_ip', src_ip FROM all_src_ips\nUNION ALL\nSELECT 'hostname', hostname FROM all_hostnames\nUNION ALL\nSELECT 'instance_uid', instance_uid FROM all_instance_ids\nUNION ALL\nSELECT 'canonical_asset', canonical_asset FROM all_canonical_assets\nUNION ALL\nSELECT 'linked_asset_hostname', hostname FROM linked_assets WHERE hostname IS NOT NULL\nUNION ALL\nSELECT 'linked_asset_ip', ip FROM linked_assets WHERE ip IS NOT NULL\nUNION ALL\nSELECT 'linked_asset_instance_uid', instance_uid FROM linked_assets WHERE instance_uid IS NOT NULL\nUNION ALL\nSELECT 'linked_asset_canonical', canonical_asset FROM linked_assets WHERE canonical_asset IS NOT NULL"
+  },
+  {
+   "qid": "A6",
+   "trial": 0,
+   "sql": "SELECT event_uid FROM f_api WHERE api_operation = 'AttachUserPolicy' AND mfa_present = false"
+  },
+  {
+   "qid": "A6",
+   "trial": 1,
+   "sql": "SELECT event_uid FROM f_api WHERE api_operation = 'AttachUserPolicy' AND mfa_present = false"
+  },
+  {
+   "qid": "A6",
+   "trial": 2,
+   "sql": "SELECT event_uid FROM f_api WHERE api_operation = 'AttachUserPolicy' AND mfa_present = false"
+  },
+  {
+   "qid": "A6",
+   "trial": 3,
+   "sql": "SELECT event_uid FROM f_api WHERE api_operation = 'AttachUserPolicy' AND mfa_present = false"
+  },
+  {
+   "qid": "A6",
+   "trial": 4,
+   "sql": "SELECT event_uid FROM f_api WHERE api_operation = 'AttachUserPolicy' AND mfa_present = false"
+  },
+  {
+   "qid": "A6",
+   "trial": 5,
+   "sql": "SELECT event_uid FROM f_api WHERE api_operation = 'AttachUserPolicy' AND mfa_present = false"
+  },
+  {
+   "qid": "A6",
+   "trial": 6,
+   "sql": "SELECT event_uid FROM f_api WHERE api_operation = 'AttachUserPolicy' AND mfa_present = false"
+  },
+  {
+   "qid": "A6",
+   "trial": 7,
+   "sql": "SELECT event_uid FROM f_api WHERE api_operation = 'AttachUserPolicy' AND mfa_present = false"
+  },
+  {
+   "qid": "A7",
+   "trial": 0,
+   "sql": "SELECT DATEDIFF('second', MIN(first_event), MAX(last_event)) AS dwell_time_seconds FROM (SELECT MIN(time) AS first_event, MAX(time) AS last_event FROM f_auth UNION ALL SELECT MIN(time), MAX(time) FROM f_session UNION ALL SELECT MIN(time), MAX(time) FROM f_network UNION ALL SELECT MIN(time), MAX(time) FROM f_dns UNION ALL SELECT MIN(time), MAX(time) FROM f_process UNION ALL SELECT MIN(time), MAX(time) FROM f_api)"
+  },
+  {
+   "qid": "A7",
+   "trial": 1,
+   "sql": "SELECT DATEDIFF('second', MIN(first_event), MAX(last_event)) AS dwell_time_seconds FROM (SELECT MIN(time) AS first_event, MAX(time) AS last_event FROM f_auth UNION ALL SELECT MIN(time), MAX(time) FROM f_session UNION ALL SELECT MIN(time), MAX(time) FROM f_network UNION ALL SELECT MIN(time), MAX(time) FROM f_dns UNION ALL SELECT MIN(time), MAX(time) FROM f_process UNION ALL SELECT MIN(time), MAX(time) FROM f_api)"
+  },
+  {
+   "qid": "A7",
+   "trial": 2,
+   "sql": "SELECT DATEDIFF('second', MIN(first_event), MAX(last_event)) AS dwell_time_seconds\nFROM (\n    SELECT MIN(time) AS first_event, MAX(time) AS last_event FROM f_auth\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_session\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_network\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_dns\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_process\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_api\n) AS all_events"
+  },
+  {
+   "qid": "A7",
+   "trial": 3,
+   "sql": "SELECT DATEDIFF('second', MIN(t), MAX(t)) AS dwell_time_seconds\nFROM (\n    SELECT time AS t FROM f_auth\n    UNION ALL\n    SELECT time AS t FROM f_session\n    UNION ALL\n    SELECT time AS t FROM f_network\n    UNION ALL\n    SELECT time AS t FROM f_dns\n    UNION ALL\n    SELECT time AS t FROM f_process\n    UNION ALL\n    SELECT time AS t FROM f_api\n) all_events"
+  },
+  {
+   "qid": "A7",
+   "trial": 4,
+   "sql": "SELECT DATEDIFF('second', MIN(first_event), MAX(last_event)) AS dwell_time_seconds\nFROM (\n    SELECT MIN(time) AS first_event, MAX(time) AS last_event FROM f_auth\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_session\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_network\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_dns\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_process\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_api\n) sub"
+  },
+  {
+   "qid": "A7",
+   "trial": 5,
+   "sql": "SELECT DATEDIFF('second', MIN(t), MAX(t)) AS dwell_time_seconds FROM (SELECT time AS t FROM f_auth UNION ALL SELECT time FROM f_session UNION ALL SELECT time FROM f_network UNION ALL SELECT time FROM f_dns UNION ALL SELECT time FROM f_process UNION ALL SELECT time FROM f_api)"
+  },
+  {
+   "qid": "A7",
+   "trial": 6,
+   "sql": "SELECT DATEDIFF('second', MIN(first_event), MAX(last_event)) AS dwell_time_seconds\nFROM (\n    SELECT MIN(time) AS first_event, MAX(time) AS last_event FROM f_auth\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_session\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_network\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_dns\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_process\n    UNION ALL\n    SELECT MIN(time), MAX(time) FROM f_api\n) sub"
+  },
+  {
+   "qid": "A7",
+   "trial": 7,
+   "sql": "SELECT CAST(EXTRACT(EPOCH FROM (MAX(t) - MIN(t))) AS BIGINT) AS dwell_time_seconds\nFROM (\n    SELECT time AS t FROM f_auth\n    UNION ALL\n    SELECT time AS t FROM f_session\n    UNION ALL\n    SELECT time AS t FROM f_network\n    UNION ALL\n    SELECT time AS t FROM f_dns\n    UNION ALL\n    SELECT time AS t FROM f_process\n    UNION ALL\n    SELECT time AS t FROM f_api\n) all_events"
+  },
+  {
+   "qid": "A8",
+   "trial": 0,
+   "sql": "SELECT query_hostname FROM f_dns WHERE src_hostname = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1"
+  },
+  {
+   "qid": "A8",
+   "trial": 1,
+   "sql": "SELECT query_hostname FROM f_dns WHERE src_hostname = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1"
+  },
+  {
+   "qid": "A8",
+   "trial": 2,
+   "sql": "SELECT query_hostname FROM f_dns WHERE src_hostname = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1"
+  },
+  {
+   "qid": "A8",
+   "trial": 3,
+   "sql": "SELECT query_hostname FROM f_dns WHERE src_hostname = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1"
+  },
+  {
+   "qid": "A8",
+   "trial": 4,
+   "sql": "SELECT query_hostname FROM f_dns WHERE src_hostname = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1"
+  },
+  {
+   "qid": "A8",
+   "trial": 5,
+   "sql": "SELECT query_hostname FROM f_dns WHERE src_hostname = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1"
+  },
+  {
+   "qid": "A8",
+   "trial": 6,
+   "sql": "SELECT query_hostname FROM f_dns WHERE src_hostname = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1"
+  },
+  {
+   "qid": "A8",
+   "trial": 7,
+   "sql": "SELECT query_hostname FROM f_dns WHERE src_hostname = 'WS1' GROUP BY query_hostname HAVING COUNT(*) = 1"
+  },
+  {
+   "qid": "A9",
+   "trial": 0,
+   "sql": "SELECT COUNT(DISTINCT a.canonical_asset) AS distinct_physical_assets\nFROM f_asset a\nWHERE a.hostname IN (\n    SELECT target_host FROM f_auth\n    UNION\n    SELECT host FROM f_session\n    UNION\n    SELECT device_hostname FROM f_process\n)\nOR a.ip IN (\n    SELECT src_ip FROM f_auth\n    UNION\n    SELECT src_ip FROM f_network\n    UNION\n    SELECT src_ip FROM f_api\n)"
+  },
+  {
+   "qid": "A9",
+   "trial": 1,
+   "sql": "WITH actor_ids AS (\n    SELECT DISTINCT user_uid AS uid FROM f_auth\n    UNION\n    SELECT DISTINCT actor_user_uid FROM f_process\n    UNION\n    SELECT DISTINCT actor_user_uid FROM f_api\n),\nactor_assets AS (\n    -- auth events: join src_ip to f_asset.ip\n    SELECT a.canonical_asset\n    FROM f_auth e\n    JOIN actor_ids u ON e.user_uid = u.uid\n    JOIN f_asset a ON e.src_ip = a.ip\n    UNION\n    -- auth events: join target_host to f_asset.hostname\n    SELECT a.canonical_asset\n    FROM f_auth e\n    JOIN actor_ids u ON e.user_uid = u.uid\n    JOIN f_asset a ON e.target_host = a.hostname\n    UNION\n    -- process events: join device_hostname to f_asset.hostname\n    SELECT a.canonical_asset\n    FROM f_process e\n    JOIN actor_ids u ON e.actor_user_uid = u.uid\n    JOIN f_asset a ON e.device_hostname = a.hostname\n    UNION\n    -- api events: join src_ip to f_asset.ip\n    SELECT a.canonical_asset\n    FROM f_api e\n    JOIN actor_ids u ON e.actor_user_uid = u.uid\n    JOIN f_asset a ON e.src_ip = a.ip\n)\nSELECT COUNT(DISTINCT canonical_asset) AS distinct_physical_assets\nFROM actor_assets"
+  },
+  {
+   "qid": "A9",
+   "trial": 2,
+   "sql": "WITH human_actor_uids AS (\n    SELECT user_uid AS actor_uid FROM f_auth\n    UNION\n    SELECT user_uid AS actor_uid FROM f_session\n    UNION\n    SELECT actor_user_uid AS actor_uid FROM f_process\n    UNION\n    SELECT actor_user_uid AS actor_uid FROM f_api\n),\nactor_hostnames AS (\n    SELECT a.target_host AS identifier, 'hostname' AS id_type\n    FROM f_auth a\n    JOIN human_actor_uids h ON a.user_uid = h.actor_uid\n    WHERE a.target_host IS NOT NULL\n    UNION ALL\n    SELECT s.host AS identifier, 'hostname' AS id_type\n    FROM f_session s\n    JOIN human_actor_uids h ON s.user_uid = h.actor_uid\n    WHERE s.host IS NOT NULL\n    UNION ALL\n    SELECT p.device_hostname AS identifier, 'hostname' AS id_type\n    FROM f_process p\n    JOIN human_actor_uids h ON p.actor_user_uid = h.actor_uid\n    WHERE p.device_hostname IS NOT NULL\n    UNION ALL\n    SELECT n.src_ip AS identifier, 'ip' AS id_type\n    FROM f_api n\n    JOIN human_actor_uids h ON n.actor_user_uid = h.actor_uid\n    WHERE n.src_ip IS NOT NULL\n),\ncanonical_assets AS (\n    SELECT DISTINCT fa.canonical_asset\n    FROM actor_hostnames ah\n    JOIN f_asset fa\n      ON (ah.id_type = 'hostname' AND fa.hostname = ah.identifier)\n      OR (ah.id_type = 'ip'       AND fa.ip       = ah.identifier)\n)\nSELECT COUNT(*) AS distinct_physical_assets\nFROM canonical_assets"
+  },
+  {
+   "qid": "A9",
+   "trial": 3,
+   "sql": "WITH actor_uids AS (\n    SELECT DISTINCT user_uid AS uid FROM f_auth\n    UNION\n    SELECT DISTINCT user_uid FROM f_session\n    UNION\n    SELECT DISTINCT actor_user_uid FROM f_process WHERE actor_user_uid IS NOT NULL\n    UNION\n    SELECT DISTINCT actor_user_uid FROM f_api WHERE actor_user_uid IS NOT NULL\n),\nactor_ips AS (\n    SELECT DISTINCT a.src_ip AS ip, NULL AS hostname, NULL AS instance_uid\n    FROM f_auth a JOIN actor_uids u ON a.user_uid = u.uid WHERE a.src_ip IS NOT NULL\n    UNION\n    SELECT DISTINCT a2.src_ip, NULL, NULL\n    FROM f_api a2 JOIN actor_uids u ON a2.actor_user_uid = u.uid WHERE a2.src_ip IS NOT NULL\n),\nactor_hosts AS (\n    SELECT DISTINCT NULL AS ip, s.host AS hostname, NULL AS instance_uid\n    FROM f_session s JOIN actor_uids u ON s.user_uid = u.uid WHERE s.host IS NOT NULL\n    UNION\n    SELECT DISTINCT NULL, p.device_hostname, NULL\n    FROM f_process p JOIN actor_uids u ON p.actor_user_uid = u.uid WHERE p.device_hostname IS NOT NULL\n    UNION\n    SELECT DISTINCT NULL, a.target_host, NULL\n    FROM f_auth a JOIN actor_uids u ON a.user_uid = u.uid WHERE a.target_host IS NOT NULL\n),\nall_identifiers AS (\n    SELECT ip, hostname, instance_uid FROM actor_ips\n    UNION\n    SELECT ip, hostname, instance_uid FROM actor_hosts\n),\nmatched_assets AS (\n    SELECT DISTINCT fa.canonical_asset\n    FROM all_identifiers i\n    JOIN f_asset fa ON (i.ip IS NOT NULL AND fa.ip = i.ip)\n        OR (i.hostname IS NOT NULL AND fa.hostname = i.hostname)\n        OR (i.instance_uid IS NOT NULL AND fa.instance_uid = i.instance_uid)\n)\nSELECT COUNT(DISTINCT canonical_asset) AS distinct_physical_assets FROM matched_assets"
+  },
+  {
+   "qid": "A9",
+   "trial": 4,
+   "sql": "WITH actor_six AS (\n    SELECT user_uid\n    FROM f_auth\n    GROUP BY user_uid\n    HAVING COUNT(DISTINCT src_ip) = 6\n),\nactor_ips AS (\n    SELECT DISTINCT fa.src_ip\n    FROM f_auth fa\n    JOIN actor_six a ON fa.user_uid = a.user_uid\n    WHERE fa.src_ip IS NOT NULL\n)\nSELECT COUNT(DISTINCT ast.canonical_asset) AS distinct_physical_assets\nFROM actor_ips ai\nJOIN f_asset ast ON ai.src_ip = ast.ip"
+  },
+  {
+   "qid": "A9",
+   "trial": 5,
+   "sql": "SELECT COUNT(DISTINCT a.canonical_asset) AS distinct_physical_assets\nFROM (\n    SELECT src_ip AS ip, CAST(NULL AS VARCHAR) AS hostname\n    FROM f_auth\n    WHERE user_uid IS NOT NULL\n    UNION ALL\n    SELECT CAST(NULL AS VARCHAR) AS ip, target_host AS hostname\n    FROM f_auth\n    WHERE user_uid IS NOT NULL\n    UNION ALL\n    SELECT CAST(NULL AS VARCHAR) AS ip, host AS hostname\n    FROM f_session\n    WHERE user_uid IS NOT NULL\n    UNION ALL\n    SELECT src_ip AS ip, src_hostname AS hostname\n    FROM f_network\n    UNION ALL\n    SELECT src_ip AS ip, src_hostname AS hostname\n    FROM f_dns\n    UNION ALL\n    SELECT CAST(NULL AS VARCHAR) AS ip, device_hostname AS hostname\n    FROM f_process\n    WHERE actor_user_uid IS NOT NULL\n    UNION ALL\n    SELECT src_ip AS ip, CAST(NULL AS VARCHAR) AS hostname\n    FROM f_api\n    WHERE actor_user_uid IS NOT NULL\n) AS identifiers\nJOIN f_asset AS a\n    ON (identifiers.ip IS NOT NULL AND a.ip = identifiers.ip)\n    OR (identifiers.hostname IS NOT NULL AND a.hostname = identifiers.hostname)"
+  },
+  {
+   "qid": "A9",
+   "trial": 6,
+   "sql": "WITH actor AS (\n    SELECT user_uid\n    FROM f_auth\n    GROUP BY user_uid\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n),\nactor_identifiers AS (\n    SELECT DISTINCT src_ip AS identifier, 'ip' AS id_type FROM f_auth WHERE user_uid = (SELECT user_uid FROM actor)\n    UNION\n    SELECT DISTINCT target_host AS identifier, 'hostname' AS id_type FROM f_auth WHERE user_uid = (SELECT user_uid FROM actor) AND target_host IS NOT NULL\n    UNION\n    SELECT DISTINCT host AS identifier, 'hostname' AS id_type FROM f_session WHERE user_uid = (SELECT user_uid FROM actor) AND host IS NOT NULL\n    UNION\n    SELECT DISTINCT src_ip AS identifier, 'ip' AS id_type FROM f_api WHERE actor_user_uid = (SELECT user_uid FROM actor) AND src_ip IS NOT NULL\n    UNION\n    SELECT DISTINCT device_hostname AS identifier, 'hostname' AS id_type FROM f_process WHERE actor_user_uid = (SELECT user_uid FROM actor) AND device_hostname IS NOT NULL\n),\nasset_mapping AS (\n    SELECT ai.identifier, a.canonical_asset\n    FROM actor_identifiers ai\n    LEFT JOIN f_asset a ON (ai.id_type = 'ip' AND a.ip = ai.identifier)\n                        OR (ai.id_type = 'hostname' AND a.hostname = ai.identifier)\n    WHERE a.canonical_asset IS NOT NULL\n)\nSELECT COUNT(DISTINCT canonical_asset) AS distinct_physical_assets\nFROM asset_mapping"
+  },
+  {
+   "qid": "A9",
+   "trial": 7,
+   "sql": "WITH human_uids AS (\n    SELECT DISTINCT user_uid AS uid FROM f_auth\n    UNION\n    SELECT DISTINCT user_uid FROM f_session\n    UNION\n    SELECT DISTINCT actor_user_uid FROM f_process\n    UNION\n    SELECT DISTINCT actor_user_uid FROM f_api\n),\ntop6 AS (\n    SELECT uid FROM human_uids LIMIT 6\n),\nactor_ips AS (\n    SELECT src_ip AS ip, NULL AS hostname FROM f_auth WHERE user_uid IN (SELECT uid FROM top6)\n    UNION ALL\n    SELECT NULL AS ip, target_host AS hostname FROM f_auth WHERE user_uid IN (SELECT uid FROM top6)\n    UNION ALL\n    SELECT NULL AS ip, host AS hostname FROM f_session WHERE user_uid IN (SELECT uid FROM top6)\n    UNION ALL\n    SELECT NULL AS ip, device_hostname AS hostname FROM f_process WHERE actor_user_uid IN (SELECT uid FROM top6)\n    UNION ALL\n    SELECT src_ip AS ip, NULL AS hostname FROM f_process WHERE actor_user_uid IN (SELECT uid FROM top6)\n    UNION ALL\n    SELECT src_ip AS ip, NULL AS hostname FROM f_api WHERE actor_user_uid IN (SELECT uid FROM top6)\n),\nmatched_assets AS (\n    SELECT a.canonical_asset\n    FROM actor_ips ai\n    JOIN f_asset a\n      ON (ai.ip IS NOT NULL AND ai.ip = a.ip)\n      OR (ai.hostname IS NOT NULL AND ai.hostname = a.hostname)\n    WHERE ai.ip IS NOT NULL OR ai.hostname IS NOT NULL\n)\nSELECT COUNT(DISTINCT canonical_asset) AS distinct_physical_assets\nFROM matched_assets"
+  }
+ ],
+ "structured": [
+  {
+   "qid": "A3",
+   "trial": 0,
+   "sparql": "SELECT ?eventUid ?type ?descriptor WHERE {\n  {\n    ?e a :Process ;\n       :eventUid ?eventUid ;\n       :cmdLine ?descriptor .\n    BIND(\"Process\" AS ?type)\n  }\n  UNION\n  {\n    ?e a :ApiEvent ;\n       :eventUid ?eventUid ;\n       :operation ?descriptor .\n    BIND(\"ApiEvent\" AS ?type)\n  }\n  UNION\n  {\n    ?e a :Session ;\n       :eventUid ?eventUid ;\n       :startTime ?descriptor .\n    BIND(\"Session\" AS ?type)\n  }\n}\nORDER BY ?eventUid"
+  },
+  {
+   "qid": "A3",
+   "trial": 1,
+   "sparql": "SELECT ?event ?type ?eventUid ?cmdLine ?operation ?mfaPresent ?actor ?startTime WHERE { { ?event a :Process ; :eventUid ?eventUid . BIND(\"Process\" AS ?type) OPTIONAL { ?event :cmdLine ?cmdLine } OPTIONAL { ?event :startTime ?startTime } } UNION { ?event a :ApiEvent ; :eventUid ?eventUid . BIND(\"ApiEvent\" AS ?type) OPTIONAL { ?event :operation ?operation } OPTIONAL { ?event :mfaPresent ?mfaPresent } OPTIONAL { ?event :actor ?actor } OPTIONAL { ?event :startTime ?startTime } } UNION { ?event a :Session ; :eventUid ?eventUid . BIND(\"Session\" AS ?type) OPTIONAL { ?event :startTime ?startTime } OPTIONAL { ?event :endTime ?endTime } } } ORDER BY ?startTime ?eventUid"
+  },
+  {
+   "qid": "A3",
+   "trial": 2,
+   "sparql": "SELECT ?stage ?eventUid ?detail WHERE {\n  {\n    ?e a :ApiEvent ;\n       :eventUid ?eventUid ;\n       :operation ?detail .\n    BIND(\"ApiEvent\" AS ?stage)\n  }\n  UNION\n  {\n    ?e a :Process ;\n       :eventUid ?eventUid ;\n       :cmdLine ?detail .\n    BIND(\"Process\" AS ?stage)\n  }\n  UNION\n  {\n    ?e a :Session ;\n       :eventUid ?eventUid ;\n       :startTime ?detail .\n    BIND(\"Session\" AS ?stage)\n  }\n}\nORDER BY ?eventUid"
+  },
+  {
+   "qid": "A3",
+   "trial": 3,
+   "sparql": "SELECT ?event ?type ?eventUid WHERE {\n  {\n    ?event a :Process ; :eventUid ?eventUid .\n    BIND(\"Process\" AS ?type)\n  }\n  UNION\n  {\n    ?event a :ApiEvent ; :eventUid ?eventUid .\n    BIND(\"ApiEvent\" AS ?type)\n  }\n  UNION\n  {\n    ?event a :Session ; :eventUid ?eventUid .\n    BIND(\"Session\" AS ?type)\n  }\n}\nORDER BY ?eventUid"
+  },
+  {
+   "qid": "A3",
+   "trial": 4,
+   "sparql": "SELECT ?event ?type ?eventUid WHERE {\n  {\n    ?event a :Process ; :eventUid ?eventUid .\n    BIND(\"Process\" AS ?type)\n  }\n  UNION\n  {\n    ?event a :ApiEvent ; :eventUid ?eventUid .\n    BIND(\"ApiEvent\" AS ?type)\n  }\n  UNION\n  {\n    ?event a :Session ; :eventUid ?eventUid .\n    BIND(\"Session\" AS ?type)\n  }\n}\nORDER BY ?eventUid"
+  },
+  {
+   "qid": "A3",
+   "trial": 5,
+   "sparql": "SELECT ?event ?type ?uid WHERE {\n  {\n    ?event a :Process ; :eventUid ?uid .\n    BIND(\"Process\" AS ?type)\n  }\n  UNION\n  {\n    ?event a :ApiEvent ; :eventUid ?uid .\n    BIND(\"ApiEvent\" AS ?type)\n  }\n  UNION\n  {\n    ?event a :Session ; :eventUid ?uid .\n    BIND(\"Session\" AS ?type)\n  }\n}\nORDER BY ?uid"
+  },
+  {
+   "qid": "A3",
+   "trial": 6,
+   "sparql": "SELECT ?stage ?eventUid ?detail WHERE {\n  {\n    ?e a :Process ; :eventUid ?eventUid ; :cmdLine ?detail .\n    BIND(\"PowerShell execution\" AS ?stage)\n    FILTER(CONTAINS(LCASE(STR(?detail)), \"powershell\"))\n  }\n  UNION\n  {\n    ?e a :Process ; :eventUid ?eventUid ; :cmdLine ?detail .\n    BIND(\"C2 beacon\" AS ?stage)\n    FILTER(CONTAINS(LCASE(STR(?detail)), \"beacon\") || CONTAINS(LCASE(STR(?detail)), \"c2\"))\n  }\n  UNION\n  {\n    ?e a :Process ; :eventUid ?eventUid ; :cmdLine ?detail .\n    BIND(\"lateral connection\" AS ?stage)\n    FILTER(CONTAINS(LCASE(STR(?detail)), \"lateral\") || CONTAINS(LCASE(STR(?detail)), \"psexec\") || CONTAINS(LCASE(STR(?detail)), \"wmic\"))\n  }\n  UNION\n  {\n    ?e a :ApiEvent ; :eventUid ?eventUid ; :operation ?detail .\n    BIND(\"OAuth consent\" AS ?stage)\n    FILTER(CONTAINS(LCASE(STR(?detail)), \"oauth\") || CONTAINS(LCASE(STR(?detail)), \"consent\"))\n  }\n  UNION\n  {\n    ?e a :ApiEvent ; :eventUid ?eventUid ; :operation ?detail ; :mfaPresent ?mfa .\n    BIND(\"no-MFA privilege escalation\" AS ?stage)\n    FILTER(STR(?mfa) = \"false\" && (CONTAINS(LCASE(STR(?detail)), \"escalat\") || CONTAINS(LCASE(STR(?detail)), \"privilege\")))\n  }\n  UNION\n  {\n    ?e a :ApiEvent ; :eventUid ?eventUid ; :operation ?detail .\n    BIND(\"role assumption\" AS ?stage)\n    FILTER(CONTAINS(LCASE(STR(?detail)), \"assumerole\") || CONTAINS(LCASE(STR(?detail)), \"role\"))\n  }\n  UNION\n  {\n    ?e a :ApiEvent ; :eventUid ?eventUid ; :operation ?detail .\n    BIND(\"data exfiltration\" AS ?stage)\n    FILTER(CONTAINS(LCASE(STR(?detail)), \"exfil\") || CONTAINS(LCASE(STR(?detail)), \"getobject\") || CONTAINS(LCASE(STR(?detail)), \"download\"))\n  }\n  UNION\n  {\n    ?e a :Session ; :eventUid ?eventUid ; :startTime ?detail .\n    BIND(\"lateral connection\" AS ?stage)\n  }\n}\nORDER BY ?eventUid"
+  },
+  {
+   "qid": "A3",
+   "trial": 7,
+   "sparql": "SELECT ?event ?type ?eventUid ?startTime WHERE {\n  {\n    ?event a :Process ; :eventUid ?eventUid .\n    BIND(\"Process\" AS ?type)\n    OPTIONAL { ?event :startTime ?startTime }\n  }\n  UNION\n  {\n    ?event a :ApiEvent ; :eventUid ?eventUid .\n    BIND(\"ApiEvent\" AS ?type)\n    OPTIONAL { ?event :startTime ?startTime }\n  }\n  UNION\n  {\n    ?event a :Session ; :eventUid ?eventUid ; :startTime ?startTime .\n    BIND(\"Session\" AS ?type)\n  }\n}\nORDER BY ?startTime ?eventUid"
+  },
+  {
+   "qid": "A7",
+   "trial": 0,
+   "sparql": "SELECT ((?maxEnd - ?minStart) AS ?dwellTimeSeconds) WHERE { { SELECT (MIN(?s) AS ?minStart) (MAX(?e) AS ?maxEnd) WHERE { ?sess a :Session ; :startTime ?s ; :endTime ?e . } } }"
+  },
+  {
+   "qid": "A7",
+   "trial": 1,
+   "sparql": "SELECT ((?maxEnd - ?minStart) AS ?dwellTimeSeconds) WHERE { { SELECT (MIN(?s) AS ?minStart) (MAX(?e) AS ?maxEnd) WHERE { ?sess a :Session ; :startTime ?s ; :endTime ?e . } } }"
+  },
+  {
+   "qid": "A7",
+   "trial": 2,
+   "sparql": "SELECT ((?maxEnd - ?minStart) AS ?dwellSeconds) WHERE { { SELECT (MIN(?s) AS ?minStart) (MAX(?e) AS ?maxEnd) WHERE { ?sess a :Session ; :startTime ?s ; :endTime ?e . } } }"
+  },
+  {
+   "qid": "A7",
+   "trial": 3,
+   "sparql": "SELECT ((?maxEnd - ?minStart) AS ?dwellTimeSeconds) WHERE { { SELECT (MIN(?s) AS ?minStart) (MAX(?e) AS ?maxEnd) WHERE { ?sess a :Session ; :startTime ?s ; :endTime ?e . } } }"
+  },
+  {
+   "qid": "A7",
+   "trial": 4,
+   "sparql": "SELECT ((?maxEnd - ?minStart) AS ?dwellTimeSeconds) WHERE { { SELECT (MIN(?start) AS ?minStart) (MAX(?end) AS ?maxEnd) WHERE { ?s a :Session ; :startTime ?start ; :endTime ?end . } } }"
+  },
+  {
+   "qid": "A7",
+   "trial": 5,
+   "sparql": "SELECT ((?maxEnd - ?minStart) AS ?dwellTimeSeconds) WHERE { { SELECT (MIN(?st) AS ?minStart) (MAX(?et) AS ?maxEnd) WHERE { ?s a :Session ; :startTime ?st ; :endTime ?et . } } }"
+  },
+  {
+   "qid": "A7",
+   "trial": 6,
+   "sparql": "SELECT ((?maxEnd - ?minStart) AS ?dwellTimeSeconds) WHERE { { SELECT (MIN(?s) AS ?minStart) (MAX(?e) AS ?maxEnd) WHERE { ?sess a :Session ; :startTime ?s ; :endTime ?e . } } }"
+  },
+  {
+   "qid": "A7",
+   "trial": 7,
+   "sparql": "SELECT ((?maxEnd - ?minStart) AS ?dwellTimeSeconds) WHERE { { SELECT (MIN(?s) AS ?minStart) (MAX(?e) AS ?maxEnd) WHERE { ?sess a :Session ; :startTime ?s ; :endTime ?e . } } }"
+  },
+  {
+   "qid": "A9",
+   "trial": 0,
+   "sparql": "SELECT (COUNT(DISTINCT ?host) AS ?distinctAssets)\nWHERE {\n  {\n    ?apiEv a :ApiEvent ; :actor ?actorUid ; :eventUid ?uid .\n    ?proc a :Process ; :eventUid ?uid ; :host ?host .\n  }\n  UNION\n  {\n    ?apiEv a :ApiEvent ; :actor ?actorUid ; :eventUid ?uid .\n    ?sess a :Session ; :eventUid ?uid ; :host ?host .\n  }\n}"
+  },
+  {
+   "qid": "A9",
+   "trial": 1,
+   "sparql": "SELECT (COUNT(DISTINCT ?host) AS ?distinctAssets)\nWHERE {\n  ?api a :ApiEvent ;\n       :actor ?actorUid ;\n       :eventUid ?eid .\n  {\n    ?proc a :Process ;\n          :eventUid ?eid ;\n          :host ?host .\n  } UNION {\n    ?sess a :Session ;\n          :eventUid ?eid ;\n          :host ?host .\n  }\n  {\n    SELECT DISTINCT ?actorUid\n    WHERE {\n      ?api2 a :ApiEvent ;\n            :actor ?actorUid .\n    }\n    LIMIT 6\n  }\n}"
+  },
+  {
+   "qid": "A9",
+   "trial": 2,
+   "sparql": "SELECT (COUNT(DISTINCT ?hostVal) AS ?distinctAssets) WHERE { { SELECT DISTINCT ?actorUid WHERE { ?api a :ApiEvent ; :actor ?actorUid . } } { ?api2 a :ApiEvent ; :actor ?actorUid ; :eventUid ?eid . ?proc a :Process ; :eventUid ?eid ; :host ?hostVal . } UNION { ?api2 a :ApiEvent ; :actor ?actorUid ; :eventUid ?eid . ?sess a :Session ; :eventUid ?eid ; :host ?hostVal . } }"
+  },
+  {
+   "qid": "A9",
+   "trial": 3,
+   "sparql": "SELECT (COUNT(DISTINCT ?host) AS ?distinctAssets)\nWHERE {\n  {\n    ?api a :ApiEvent ; :eventUid ?eid ; :actor ?actorUid .\n    ?proc a :Process ; :eventUid ?eid ; :host ?host .\n  }\n  UNION\n  {\n    ?api a :ApiEvent ; :eventUid ?eid ; :actor ?actorUid .\n    ?sess a :Session ; :eventUid ?eid ; :host ?host .\n  }\n}"
+  },
+  {
+   "qid": "A9",
+   "trial": 4,
+   "sparql": "SELECT (COUNT(DISTINCT ?host) AS ?distinctAssets) WHERE { { ?proc a :Process ; :host ?host . } UNION { ?sess a :Session ; :host ?host . } }"
+  },
+  {
+   "qid": "A9",
+   "trial": 5,
+   "sparql": "SELECT (COUNT(DISTINCT ?host) AS ?distinctAssets)\nWHERE {\n  {\n    SELECT DISTINCT ?actorUid\n    WHERE {\n      ?api a :ApiEvent ;\n           :actor ?actorUid .\n    }\n  }\n  {\n    ?api2 a :ApiEvent ;\n          :actor ?actorUid ;\n          :eventUid ?eid .\n    ?proc a :Process ;\n          :eventUid ?eid ;\n          :host ?host .\n  }\n  UNION\n  {\n    ?api2 a :ApiEvent ;\n          :actor ?actorUid ;\n          :eventUid ?eid .\n    ?sess a :Session ;\n          :eventUid ?eid ;\n          :host ?host .\n  }\n}"
+  },
+  {
+   "qid": "A9",
+   "trial": 6,
+   "sparql": "PREFIX : <http://sdw.example/ocsf#>\n\nSELECT (COUNT(DISTINCT ?host) AS ?distinctPhysicalAssets)\nWHERE {\n  ?api a :ApiEvent ;\n       :actor ?actorUid ;\n       :eventUid ?eid .\n\n  {\n    ?proc a :Process ;\n          :eventUid ?eid ;\n          :host ?host .\n  }\n  UNION\n  {\n    ?sess a :Session ;\n          :eventUid ?eid ;\n          :host ?host .\n  }\n}"
+  },
+  {
+   "qid": "A9",
+   "trial": 7,
+   "sparql": "SELECT (COUNT(DISTINCT ?host) AS ?distinctAssets) WHERE { ?api a :ApiEvent ; :actor ?actorId . ?proc a :Process ; :eventUid ?eid ; :host ?host . ?api :eventUid ?eid . }"
+  }
+ ],
+ "graphrag": [
+  {
+   "qid": "A1",
+   "mode": "flat",
+   "trial": 0,
+   "answer": "The context does not contain network connection flow records with inter-arrival timing, byte counts, or duration data. Without those fields, it is not possible to identify a beaconing connection pair (60-second inter-arrival, low bytes, ~1 hour sustained) or return event_uid values for such connections. The retrieved context includes only DNS queries, cloud API events, and an authentication event \u2014 none of which carry the flow-level attributes needed to answer this question."
+  },
+  {
+   "qid": "A1",
+   "mode": "flat",
+   "trial": 1,
+   "answer": "The context does not contain the answer. The retrieved facts include DNS queries, cloud API events, and authentication events, but no network connection flow records with inter-arrival timing, byte counts, or session duration data that would allow identification of a beaconing connection with roughly 60-second inter-arrival intervals, low bytes, and ~1 hour duration."
+  },
+  {
+   "qid": "A1",
+   "mode": "flat",
+   "trial": 2,
+   "answer": "The context does not contain the answer. The retrieved facts include DNS queries, cloud API events, and authentication events, but no network connection/flow records with inter-arrival timing, byte counts, or session duration data that would identify a beaconing connection with ~60-second intervals sustained for ~1 hour."
+  },
+  {
+   "qid": "A1",
+   "mode": "flat",
+   "trial": 3,
+   "answer": "The context does not contain the answer. The retrieved facts include DNS query events, cloud API events, and an authentication event, but no network connection/flow records with inter-arrival timing, byte counts, or session duration data. There is no information in the context from which to identify a beaconing connection with ~60-second inter-arrival, low bytes, and ~1-hour duration, nor any event_uid for such connections."
+  },
+  {
+   "qid": "A1",
+   "mode": "flat",
+   "trial": 4,
+   "answer": "The context does not contain the information needed to answer this question. No network connection flow records with inter-arrival timing, byte counts, or duration data are present in the retrieved facts \u2014 only DNS queries, cloud API events, and an authentication event are included. The event_uid(s) of any beaconing connection cannot be determined from this context."
+  },
+  {
+   "qid": "A1",
+   "mode": "flat",
+   "trial": 5,
+   "answer": "The context does not contain the answer. There are no network connection flow records in the provided facts \u2014 only DNS queries, cloud API events, and an authentication event. Without flow data showing inter-arrival intervals, byte counts, and connection duration, it is not possible to identify the beaconing connection or its event_uid values from this context."
+  },
+  {
+   "qid": "A1",
+   "mode": "flat",
+   "trial": 6,
+   "answer": "The context does not contain the answer. No network connection/flow records with inter-arrival timing or byte-count data are present in the retrieved facts \u2014 only DNS queries, cloud API events, and an authentication event appear. A beaconing connection with ~60-second inter-arrival, low bytes, sustained ~1 hour cannot be identified from the provided context."
+  },
+  {
+   "qid": "A1",
+   "mode": "flat",
+   "trial": 7,
+   "answer": "The context does not contain the answer. There are no network connection flow records in the retrieved context \u2014 only DNS query events, cloud API events, and one authentication event. None of these include inter-arrival timing, byte counts, or session duration data needed to identify a beaconing connection with roughly 60-second intervals sustained for about an hour. No event_uid for such a connection can be determined from the provided facts."
+  },
+  {
+   "qid": "A1",
+   "mode": "structured",
+   "trial": 0,
+   "answer": "The context does not contain the information needed to answer this question. There are no network connection/flow events with inter-arrival timing, byte counts, or session duration data present in the retrieved subgraph. The context includes DNS query events, cloud API events, and one authentication event, but none of these carry the per-connection metrics (regular ~60-second inter-arrival intervals, low byte counts, ~1-hour sustained duration) required to identify a beaconing pair or return event_uids for such connections."
+  },
+  {
+   "qid": "A1",
+   "mode": "structured",
+   "trial": 1,
+   "answer": "The context does not contain the answer. The retrieved subgraph includes DNS query events, cloud API events, and one authentication event, but no network connection/flow events with per-connection timestamps, inter-arrival intervals, or byte counts. There is no data in the context from which to identify a beaconing src/dst pair with ~60-second regular inter-arrival, low bytes, sustained for ~1 hour, and therefore no event_uid values can be returned."
+  },
+  {
+   "qid": "A1",
+   "mode": "structured",
+   "trial": 2,
+   "answer": "The context does not contain the answer. There are no network flow or connection events with inter-arrival timing, byte counts, or session duration data present in the retrieved subgraph. The context includes DNS query events (scattered single lookups across many different workstations), cloud API events, and one authentication event, but none of these carry the ~60-second inter-arrival cadence, low-byte, sustained-hour beaconing signature the question asks about. The beaconing connection and its event_uid values cannot be identified from what is provided."
+  },
+  {
+   "qid": "A1",
+   "mode": "structured",
+   "trial": 3,
+   "answer": "The context does not contain the answer. No network connection/flow events with inter-arrival timing, byte counts, or duration data appear in the retrieved facts. The context includes only DNS query events, cloud API events, and an authentication event \u2014 none of which carry the connection-level attributes (regular inter-arrival intervals, bytes transferred, session duration) needed to identify a beaconing pair. No event_uids for beaconing connections can be returned from this context."
+  },
+  {
+   "qid": "A1",
+   "mode": "structured",
+   "trial": 4,
+   "answer": "The context does not contain the information needed to answer this question. There are no network connection flow events in the retrieved context \u2014 only DNS queries, cloud API calls, and an authentication event. None of these records include inter-arrival timing between connections, byte counts per flow, or session duration data that would identify a beaconing src/dst pair with ~60-second periodicity sustained for ~1 hour. The event_uid(s) for such beaconing connections cannot be determined from this context."
+  },
+  {
+   "qid": "A1",
+   "mode": "structured",
+   "trial": 5,
+   "answer": "The context does not contain the information needed to answer this question. There are no network connection/flow records with inter-arrival timing or byte-count data present in the retrieved subgraph. The context includes DNS queries, cloud API events, and one authentication event, but no connection events that could be analyzed for ~60-second inter-arrival intervals, low byte counts, or ~1-hour sustained duration. The beaconing connection event_uids cannot be determined from the provided context."
+  },
+  {
+   "qid": "A1",
+   "mode": "structured",
+   "trial": 6,
+   "answer": "The context does not contain the information needed to answer this question. There are no network connection flow events with inter-arrival timing, byte counts, or session duration data in the retrieved subgraph. The context includes DNS queries, cloud API calls, an authentication event, domain names, and host/instance records, but no per-flow connection records that would allow identifying a beaconing pair with ~60-second inter-arrival intervals sustained for ~1 hour. The event_uid values for such connections cannot be determined from the provided context."
+  },
+  {
+   "qid": "A1",
+   "mode": "structured",
+   "trial": 7,
+   "answer": "The context does not contain the answer. There are no network connection or flow records in the retrieved context \u2014 only DNS query events, cloud API call events, and one authentication event. None of these include inter-arrival timing, byte counts, or connection duration data that would identify a beaconing connection with ~60-second regularity sustained for ~1 hour. The event_uid(s) for such a connection cannot be determined from the provided context."
+  },
+  {
+   "qid": "A2",
+   "mode": "flat",
+   "trial": 0,
+   "answer": "The context does not contain a PowerShell command line with -EncodedCommand executed on host WS1. No process execution events are present in the retrieved facts."
+  },
+  {
+   "qid": "A2",
+   "mode": "flat",
+   "trial": 1,
+   "answer": "The context does not contain a PowerShell command line with -EncodedCommand for host WS1. The retrieved facts include network connections and DNS events for WS1 but no process execution or command-line records."
+  },
+  {
+   "qid": "A2",
+   "mode": "flat",
+   "trial": 2,
+   "answer": "The context does not contain the answer. No PowerShell command line with -EncodedCommand executed on host WS1 appears in the retrieved facts; only DNS queries and network beacon connections from WS1 (10.10.1.21) are present."
+  },
+  {
+   "qid": "A2",
+   "mode": "flat",
+   "trial": 3,
+   "answer": "The context does not contain a PowerShell command line with -EncodedCommand for host WS1. No process execution events are present in the retrieved facts."
+  },
+  {
+   "qid": "A2",
+   "mode": "flat",
+   "trial": 4,
+   "answer": "The context does not contain a PowerShell command line with -EncodedCommand executed on host WS1. No process execution events are present in the retrieved facts."
+  },
+  {
+   "qid": "A2",
+   "mode": "flat",
+   "trial": 5,
+   "answer": "The context does not contain the answer. No PowerShell command line or process execution events for host WS1 appear in the retrieved facts \u2014 only DNS queries, network connections, and authentication events are present."
+  },
+  {
+   "qid": "A2",
+   "mode": "flat",
+   "trial": 6,
+   "answer": "The context does not contain any PowerShell command line with -EncodedCommand executed on host WS1. No process execution events are present in the retrieved facts."
+  },
+  {
+   "qid": "A2",
+   "mode": "flat",
+   "trial": 7,
+   "answer": "The context does not contain a PowerShell command line with -EncodedCommand for host WS1. No process execution events are present in the retrieved facts."
+  },
+  {
+   "qid": "A2",
+   "mode": "structured",
+   "trial": 0,
+   "answer": "The context does not contain the answer. No process execution events or PowerShell command lines are present in the retrieved facts \u2014 only authentication events, DNS queries, network connections, and host/IP mappings are included. The exact PowerShell command line containing -EncodedCommand that executed on host WS1 cannot be determined from the provided context."
+  },
+  {
+   "qid": "A2",
+   "mode": "structured",
+   "trial": 1,
+   "answer": "The context does not contain any PowerShell command line or process execution events for host WS1. No -EncodedCommand entry appears in the retrieved facts."
+  },
+  {
+   "qid": "A2",
+   "mode": "structured",
+   "trial": 2,
+   "answer": "The context does not contain any PowerShell command line or -EncodedCommand execution event for host WS1. The retrieved facts include authentication events, DNS queries, and network connections, but no process execution records."
+  },
+  {
+   "qid": "A2",
+   "mode": "structured",
+   "trial": 3,
+   "answer": "The context does not contain any PowerShell command line or process execution events for host WS1. No -EncodedCommand entry is present in the retrieved facts."
+  },
+  {
+   "qid": "A2",
+   "mode": "structured",
+   "trial": 4,
+   "answer": "The context does not contain any PowerShell command line or process execution events for host WS1. No -EncodedCommand data is present in the retrieved facts."
+  },
+  {
+   "qid": "A2",
+   "mode": "structured",
+   "trial": 5,
+   "answer": "The context does not contain any PowerShell command line or -EncodedCommand execution event for host WS1. The retrieved facts include DNS queries, network connections, authentication events, and host/IP/instance mappings, but no process execution or command-line telemetry."
+  },
+  {
+   "qid": "A2",
+   "mode": "structured",
+   "trial": 6,
+   "answer": "The context does not contain any PowerShell command line or process execution events for host WS1. No -EncodedCommand entry appears anywhere in the retrieved facts."
+  },
+  {
+   "qid": "A2",
+   "mode": "structured",
+   "trial": 7,
+   "answer": "The context does not contain any PowerShell command line or process execution data for host WS1. No -EncodedCommand command line is present in the retrieved facts."
+  },
+  {
+   "qid": "A3",
+   "mode": "flat",
+   "trial": 0,
+   "answer": "{\"answer\": \"The context does not contain events for OAuth consent, PowerShell execution, or a no-MFA privilege escalation (the AssumeRole event in the context shows mfa_present=True, not False). The stages that are evidenced by timestamped events in the context, in chronological order, are: (1) C2 beacon \u2014 DNS query dns-needle-c2 from WS1 to cdn-telemetry-sync.net at time 1767866870000, followed by network beacons conn-needle-beacon-00 through -03 starting at 1767866882000; (2) lateral connection \u2014 auth-needle-lateral (jdoe@acme.example authenticating remotely to WS2) at time 1767870600000; (3) role assumption \u2014 api-needle-assumerole (STS AssumeRole by jdoe-session) at time 1767871800000; (4) data exfiltration \u2014 api-needle-exfil-00 through -05 (S3 GetObject on acme-financials-prod) starting at time 1767872400000. OAuth consent, PowerShell execution, and no-MFA privilege escalation are not present in the retrieved context.\"}"
+  },
+  {
+   "qid": "A3",
+   "mode": "flat",
+   "trial": 1,
+   "answer": "{\"answer\": \"The context contains timestamps for four of the seven named stages. In chronological order: (1) C2 beacon \u2014 dns-needle-c2 at time 1767866870000, followed immediately by conn-needle-beacon-00 through -03 (WS1 \u2192 203.0.113.66:443); (2) lateral connection \u2014 auth-needle-lateral at time 1767870600000 (jdoe@acme.example \u2192 WS2, remote SUCCESS); (3) role assumption \u2014 api-needle-assumerole at time 1767871800000 (STS AssumeRole by jdoe-session, mfa_present True); (4) data exfiltration \u2014 api-needle-exfil-00 through -05 beginning at time 1767872400000 (S3 GetObject on acme-financials-prod/q3/). The context does not contain any events for OAuth consent, PowerShell execution, or a no-MFA privilege escalation (the AssumeRole event shows mfa_present True, not False), so those three stages cannot be placed in the order from the available facts.\"}"
+  },
+  {
+   "qid": "A3",
+   "mode": "flat",
+   "trial": 2,
+   "answer": "The context contains timestamps for four of the seven stages: C2 beacon (conn-needle-beacon-00, time 1767866882000), lateral connection (auth-needle-lateral, time 1767870600000), role assumption (api-needle-assumerole, time 1767871800000), and data exfiltration (api-needle-exfil-00, time 1767872400000). In chronological order those four are: C2 beacon \u2192 lateral connection \u2192 role assumption \u2192 data exfiltration. The context contains no events for OAuth consent, PowerShell execution, or no-MFA privilege escalation, so those three stages cannot be placed in the order from the available facts."
+  },
+  {
+   "qid": "A3",
+   "mode": "flat",
+   "trial": 3,
+   "answer": "{\"answer\": \"Based solely on the timestamps in the context, the ordering of the stages with observable events is: (1) C2 beacon \u2014 dns-needle-c2 DNS query at time 1767866870000, followed immediately by network beacon connections starting at 1767866882000; (2) lateral connection \u2014 auth-needle-lateral at time 1767870600000 (jdoe@acme.example authenticating to WS2 from 10.10.1.21); (3) role assumption \u2014 api-needle-assumerole (STS AssumeRole for AdminRole/jdoe-session) at time 1767871800000; (4) data exfiltration \u2014 api-needle-exfil-00 through exfil-05 (S3 GetObject on acme-financials-prod) starting at time 1767872400000. The context does not contain events for OAuth consent, PowerShell execution, or no-MFA privilege escalation \u2014 those three stages cannot be ordered from the available facts. Additionally, the AssumeRole event in the context shows mfa_present=True, which contradicts the 'no-MFA privilege escalation' label.\"}"
+  },
+  {
+   "qid": "A3",
+   "mode": "flat",
+   "trial": 4,
+   "answer": [
+    "C2 beacon",
+    "lateral connection",
+    "role assumption",
+    "data exfiltration"
+   ]
+  },
+  {
+   "qid": "A3",
+   "mode": "flat",
+   "trial": 5,
+   "answer": [
+    "C2 beacon",
+    "lateral connection",
+    "role assumption",
+    "data exfiltration"
+   ]
+  },
+  {
+   "qid": "A3",
+   "mode": "flat",
+   "trial": 6,
+   "answer": [
+    "OAuth consent \u2014 not present in context (no event found)",
+    "PowerShell execution \u2014 not present in context (no event found)",
+    "C2 beacon (dns-needle-c2 + conn-needle-beacon-* from WS1 to 203.0.113.66, starting time 1767866870000)",
+    "Lateral connection (auth-needle-lateral: jdoe@acme.example \u2192 WS2, time 1767870600000)",
+    "Role assumption (api-needle-assumerole: AssumeRole via STS, time 1767871800000)",
+    "No-MFA privilege escalation \u2014 not explicitly labeled in context; the AssumeRole event records mfa_present True, so a distinct no-MFA escalation event is not present",
+    "Data exfiltration (api-needle-exfil-00 through exfil-05: S3 GetObject on acme-financials-prod, starting time 1767872400000)"
+   ]
+  },
+  {
+   "qid": "A3",
+   "mode": "flat",
+   "trial": 7,
+   "answer": "The context does not contain events for OAuth consent or PowerShell execution, so those stages cannot be placed from the available facts. The events that do appear, ordered by timestamp, are: (1) C2 beacon \u2014 DNS query dns-needle-c2 from WS1 to cdn-telemetry-sync.net at time 1767866870000, followed by network beacon connections conn-needle-beacon-00 through conn-needle-beacon-03 starting at 1767866882000; (2) lateral connection \u2014 authentication auth-needle-lateral, jdoe@acme.example to WS2 from 10.10.1.21 (SUCCESS, remote) at time 1767870600000; (3) role assumption \u2014 cloud API event api-needle-assumerole, STS AssumeRole by arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session at time 1767871800000 (mfa_present=True, not a no-MFA escalation per the data); (4) data exfiltration \u2014 cloud API events api-needle-exfil-00 through api-needle-exfil-05, S3 GetObject on acme-financials-prod/q3/ files starting at time 1767872400000. OAuth consent and PowerShell execution are not present in the context and cannot be ordered from the available facts."
+  },
+  {
+   "qid": "A3",
+   "mode": "structured",
+   "trial": 0,
+   "answer": "The context contains timestamps for four of the seven stages. Ordered by their timestamps: (1) C2 beacon \u2014 dns-needle-c2 at 1767866870000, followed by conn-needle-beacon-00 through -03 starting at 1767866882000; (2) lateral connection \u2014 auth-needle-lateral at 1767870600000; (3) role assumption \u2014 api-needle-assumerole at 1767871800000; (4) data exfiltration \u2014 api-needle-exfil-00 through -05 starting at 1767872400000. The context does not contain events for OAuth consent, PowerShell execution, or no-MFA privilege escalation, so those three stages cannot be placed in order from the provided facts. Additionally, the role assumption event (api-needle-assumerole) shows mfa_present=True, which contradicts the \"no-MFA privilege escalation\" label in the question."
+  },
+  {
+   "qid": "A3",
+   "mode": "structured",
+   "trial": 1,
+   "answer": "The context contains timestamps for only four of the seven stages. In timestamp order: (1) C2 beacon \u2014 dns-needle-c2 at 1767866870000, followed by conn-needle-beacon-00 at 1767866882000 (WS1 \u2192 203.0.113.66:443); (2) lateral connection \u2014 auth-needle-lateral at 1767870600000 (jdoe@acme.example \u2192 WS2 from 10.10.1.21, remote, SUCCESS); (3) role assumption \u2014 api-needle-assumerole at 1767871800000 (STS AssumeRole, AdminRole/jdoe-session, src 203.0.113.7); (4) data exfiltration \u2014 api-needle-exfil-00 through exfil-05 starting at 1767872400000 (S3 GetObject on acme-financials-prod/q3/). The context contains no events for OAuth consent, PowerShell execution, or no-MFA privilege escalation \u2014 those three stages cannot be ordered from the available facts. The AssumeRole event that is present has mfa_present=True, not False, so it does not match the no-MFA privilege escalation stage described in the question."
+  },
+  {
+   "qid": "A3",
+   "mode": "structured",
+   "trial": 2,
+   "answer": [
+    "OAuth consent \u2014 not present in context",
+    "PowerShell execution \u2014 not present in context",
+    "C2 beacon (dns-needle-c2 at 1767866870000, conn-needle-beacon-00 through -03 starting 1767866882000)",
+    "lateral connection (auth-needle-lateral to WS2 at 1767870600000)",
+    "role assumption (api-needle-assumerole, STS AssumeRole at 1767871800000)",
+    "data exfiltration (api-needle-exfil-00 through -05, S3 GetObject starting at 1767872400000)"
+   ]
+  },
+  {
+   "qid": "A3",
+   "mode": "structured",
+   "trial": 3,
+   "answer": [
+    "C2 beacon (dns-needle-c2 DNS lookup at t=1767866870000, followed by conn-needle-beacon-00 through conn-needle-beacon-03 starting at t=1767866882000)",
+    "Lateral connection (auth-needle-lateral: jdoe@acme.example authenticated remotely to WS2 from 10.10.1.21 at t=1767870600000)",
+    "Role assumption (api-needle-assumerole: sts:AssumeRole called by arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session at t=1767871800000)",
+    "Data exfiltration (api-needle-exfil-00 through api-needle-exfil-05: S3 GetObject calls on acme-financials-prod/q3/ starting at t=1767872400000)"
+   ]
+  },
+  {
+   "qid": "A3",
+   "mode": "structured",
+   "trial": 4,
+   "answer": [
+    "C2 beacon (dns-needle-c2 DNS resolution at t=1767866870000, followed by conn-needle-beacon-* connections at t=1767866882000+)",
+    "lateral connection (auth-needle-lateral: jdoe@acme.example authenticated remotely to WS2 at t=1767870600000)",
+    "role assumption (api-needle-assumerole: AssumeRole via STS at t=1767871800000)",
+    "data exfiltration (api-needle-exfil-00 through exfil-05: S3 GetObject on acme-financials-prod/q3/ starting at t=1767872400000)",
+    "NOTE: OAuth consent, PowerShell execution, and no-MFA privilege escalation are not present in the retrieved context and cannot be ordered from it. The AssumeRole and exfil events show mfa_present=True, so no-MFA escalation is not evidenced here."
+   ]
+  },
+  {
+   "qid": "A3",
+   "mode": "structured",
+   "trial": 5,
+   "answer": "{\"answer\": \"The context contains timestamps for only four of the seven named stages. Ordered by time: (1) C2 beacon \u2014 dns-needle-c2 at 1767866870000, followed immediately by conn-needle-beacon-00 through beacon-03 starting at 1767866882000; (2) lateral connection \u2014 auth-needle-lateral (jdoe@acme.example \u2192 WS2) at 1767870600000; (3) role assumption \u2014 api-needle-assumerole (STS AssumeRole, AdminRole/jdoe-session) at 1767871800000; (4) data exfiltration \u2014 api-needle-exfil-00 through exfil-05 (S3 GetObject on acme-financials-prod) at 1767872400000\u20131767872425000. OAuth consent, PowerShell execution, and no-MFA privilege escalation do not appear as events in the context \u2014 the AssumeRole event present has mfa_present=True, not False \u2014 so those three stages cannot be placed in the order from the available facts.\"}"
+  },
+  {
+   "qid": "A3",
+   "mode": "structured",
+   "trial": 6,
+   "answer": "{\"answer\": \"The context contains timestamped events for only five of the seven stages. In chronological order by timestamp: (1) C2 beacon \u2014 WS1 queried cdn-telemetry-sync.net at time 1767866870000 (dns-needle-c2) and then made four TCP/443 beacon connections to 203.0.113.66 starting at 1767866882000; (2) lateral connection \u2014 jdoe@acme.example authenticated remotely to WS2 from 10.10.1.21 at time 1767870600000 (auth-needle-lateral); (3) role assumption \u2014 the jdoe-session assumed-role principal called STS AssumeRole at time 1767871800000 (api-needle-assumerole); (4) data exfiltration \u2014 six S3 GetObject calls on acme-financials-prod/q3/file_000\u2013005.xlsx from 1767872400000 to 1767872425000. The context contains no events for OAuth consent, PowerShell execution, or no-MFA privilege escalation, so those stages cannot be ordered from the available facts.\"}"
+  },
+  {
+   "qid": "A3",
+   "mode": "structured",
+   "trial": 7,
+   "answer": "{\"answer\": \"The context does not contain events for OAuth consent or PowerShell execution, so the full seven-stage kill chain cannot be reconstructed from the provided facts alone. The stages that are present can be ordered by their timestamps as follows: (1) C2 beacon \u2014 dns-needle-c2 DNS query at time 1767866870000, followed immediately by network beacons conn-needle-beacon-00 through -03 starting at 1767866882000; (2) lateral connection \u2014 auth-needle-lateral (jdoe@acme.example authenticating to WS2 from 10.10.1.21) at time 1767870600000; (3) role assumption \u2014 api-needle-assumerole (STS AssumeRole by the AdminRole/jdoe-session principal) at time 1767871800000; (4) data exfiltration \u2014 api-needle-exfil-00 through api-needle-exfil-05 (S3 GetObject on acme-financials-prod/q3/ files) starting at time 1767872400000. No-MFA privilege escalation is also not directly evidenced \u2014 the AssumeRole event shows mfa_present: True, not False.\"}"
+  },
+  {
+   "qid": "A5",
+   "mode": "flat",
+   "trial": 0,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "arn:aws:iam::123456789012:user/user0177",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "203.0.113.7"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "flat",
+   "trial": 1,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "203.0.113.7"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "flat",
+   "trial": 2,
+   "answer": "{\"answer\": [\"arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session\", \"jdoe@acme.example\", \"WS1\", \"WS2\", \"10.10.1.21\", \"203.0.113.7\"]}"
+  },
+  {
+   "qid": "A5",
+   "mode": "flat",
+   "trial": 3,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "arn:aws:iam::123456789012:user/user0177",
+    "jdoe@acme.example",
+    "10.10.1.21",
+    "203.0.113.7",
+    "WS1",
+    "WS2"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "flat",
+   "trial": 4,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "203.0.113.7"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "flat",
+   "trial": 5,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "203.0.113.7"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "flat",
+   "trial": 6,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "flat",
+   "trial": 7,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "203.0.113.7"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "structured",
+   "trial": 0,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "10.10.1.22",
+    "i-0a1b2c3d4e5f6071",
+    "i-0e4f5a6b7c8d9012"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "structured",
+   "trial": 1,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "10.10.1.22",
+    "i-0a1b2c3d4e5f6071",
+    "i-0e4f5a6b7c8d9012"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "structured",
+   "trial": 2,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "203.0.113.7",
+    "WS1",
+    "10.10.1.21",
+    "i-0a1b2c3d4e5f6071",
+    "WS2",
+    "10.10.1.22",
+    "i-0e4f5a6b7c8d9012"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "structured",
+   "trial": 3,
+   "answer": [
+    "jdoe@acme.example",
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "10.10.1.22",
+    "i-0a1b2c3d4e5f6071",
+    "i-0e4f5a6b7c8d9012"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "structured",
+   "trial": 4,
+   "answer": [
+    "jdoe@acme.example",
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "arn:aws:iam::123456789012:user/user0177",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "10.10.1.22",
+    "i-0a1b2c3d4e5f6071",
+    "i-0e4f5a6b7c8d9012"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "structured",
+   "trial": 5,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "10.10.1.22",
+    "i-0a1b2c3d4e5f6071",
+    "i-0e4f5a6b7c8d9012"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "structured",
+   "trial": 6,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "10.10.1.22",
+    "i-0a1b2c3d4e5f6071",
+    "i-0e4f5a6b7c8d9012"
+   ]
+  },
+  {
+   "qid": "A5",
+   "mode": "structured",
+   "trial": 7,
+   "answer": [
+    "arn:aws:sts::123456789012:assumed-role/AdminRole/jdoe-session",
+    "jdoe@acme.example",
+    "WS1",
+    "WS2",
+    "10.10.1.21",
+    "10.10.1.22",
+    "i-0a1b2c3d4e5f6071",
+    "i-0e4f5a6b7c8d9012"
+   ]
+  },
+  {
+   "qid": "A6",
+   "mode": "flat",
+   "trial": 0,
+   "answer": "The context does not contain any AttachUserPolicy event or any event with an mfa_present flag. The retrieved facts include DNS queries, network connections, an authentication event, domain names, cloud instances, and an IAM user ARN, but no privilege escalation event matching the described criteria. The event_uid cannot be determined from the provided context."
+  },
+  {
+   "qid": "A6",
+   "mode": "flat",
+   "trial": 1,
+   "answer": "The context does not contain any AttachUserPolicy API call event or any event with an mfa_present flag set to false. The retrieved facts include DNS queries, network connections, an authentication event, domain names, cloud instances, IP addresses, and a user ARN, but no privilege escalation or IAM policy attachment event. The event_uid cannot be determined from the provided context."
+  },
+  {
+   "qid": "A6",
+   "mode": "flat",
+   "trial": 2,
+   "answer": "The context does not contain any AttachUserPolicy event or any event with an mfa_present flag. The retrieved facts cover DNS queries, network connections, an authentication event, domain names, cloud instances, and IP addresses, but no IAM API call events. The event_uid cannot be determined from the provided context."
+  },
+  {
+   "qid": "A6",
+   "mode": "flat",
+   "trial": 3,
+   "answer": "The context does not contain any AttachUserPolicy event or mfa_present flag. No event_uid for a privilege escalation matching those criteria can be found in the provided facts."
+  },
+  {
+   "qid": "A6",
+   "mode": "flat",
+   "trial": 4,
+   "answer": "The context does not contain any AttachUserPolicy event or any event with an mfa_present flag set to false. The retrieved facts cover DNS queries, network connections, an authentication event, domain names, hosts, IP addresses, and cloud instances, but no IAM privilege escalation event matching the described criteria. The event_uid cannot be determined from the provided context."
+  },
+  {
+   "qid": "A6",
+   "mode": "flat",
+   "trial": 5,
+   "answer": "The context does not contain any AttachUserPolicy API call event or any event with an mfa_present flag. The event_uid for the requested privilege escalation cannot be determined from the provided context."
+  },
+  {
+   "qid": "A6",
+   "mode": "flat",
+   "trial": 6,
+   "answer": "The context does not contain the answer. There is no AttachUserPolicy API call or any event with a mfa_present flag (true or false) in the retrieved facts provided."
+  },
+  {
+   "qid": "A6",
+   "mode": "flat",
+   "trial": 7,
+   "answer": "The context does not contain any AttachUserPolicy API call event or any event with an mfa_present flag. The answer cannot be determined from the provided context."
+  },
+  {
+   "qid": "A6",
+   "mode": "structured",
+   "trial": 0,
+   "answer": "The context does not contain any AttachUserPolicy API call event or any event with an mfa_present flag set to false. The retrieved facts cover DNS queries, network beacon connections, an authentication lateral movement event, and an AssumeRole action, but no privilege escalation via AttachUserPolicy is present. The event_uid cannot be determined from the provided context."
+  },
+  {
+   "qid": "A6",
+   "mode": "structured",
+   "trial": 1,
+   "answer": "The context does not contain any AttachUserPolicy API call event or mfa_present flag. No event_uid for the requested privilege escalation can be found in the provided facts."
+  },
+  {
+   "qid": "A6",
+   "mode": "structured",
+   "trial": 2,
+   "answer": "The context does not contain any AttachUserPolicy API call event or any event with an mfa_present flag set to false. The retrieved facts cover DNS queries, network connections, an authentication event, cloud instances, domains, and an AssumeRole action, but no privilege escalation event matching the described criteria is present. The event_uid cannot be determined from the provided context."
+  },
+  {
+   "qid": "A6",
+   "mode": "structured",
+   "trial": 3,
+   "answer": "The context does not contain any AttachUserPolicy API call event or any event with a mfa_present flag. The retrieved facts cover DNS queries, network connections, an authentication event, cloud instances, and an IAM role assumption, but no privilege escalation event matching the described criteria is present."
+  },
+  {
+   "qid": "A6",
+   "mode": "structured",
+   "trial": 4,
+   "answer": "The context does not contain any AttachUserPolicy event or mfa_present field. The retrieved facts cover DNS queries, network beacon connections, a lateral authentication event, and an AssumeRole relationship, but no privilege escalation via AttachUserPolicy is present in the provided context. The event_uid cannot be determined from the given information."
+  },
+  {
+   "qid": "A6",
+   "mode": "structured",
+   "trial": 5,
+   "answer": "The context does not contain any AttachUserPolicy event or any event with a mfa_present flag. No event_uid for such a privilege escalation can be found in the provided facts."
+  },
+  {
+   "qid": "A6",
+   "mode": "structured",
+   "trial": 6,
+   "answer": "The context does not contain any AttachUserPolicy API call event or any event with an mfa_present flag. The retrieved facts cover DNS queries, network beacon connections, an authentication lateral movement event, cloud instances, and an AssumeRole relationship, but no privilege escalation event matching the described criteria (AttachUserPolicy with mfa_present=false) appears in the context. The event_uid cannot be determined from the provided information."
+  },
+  {
+   "qid": "A6",
+   "mode": "structured",
+   "trial": 7,
+   "answer": "The context does not contain any AttachUserPolicy API call or mfa_present flag. The retrieved facts cover DNS queries, network beacon connections, a lateral authentication event, and IAM/cloud instance entities, but no privilege escalation event matching the described criteria is present. The event_uid cannot be determined from the provided context."
+  },
+  {
+   "qid": "A7",
+   "mode": "flat",
+   "trial": 0,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "flat",
+   "trial": 1,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "flat",
+   "trial": 2,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "flat",
+   "trial": 3,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "flat",
+   "trial": 4,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "flat",
+   "trial": 5,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "flat",
+   "trial": 6,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "flat",
+   "trial": 7,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "structured",
+   "trial": 0,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "structured",
+   "trial": 1,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "structured",
+   "trial": 2,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "structured",
+   "trial": 3,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "structured",
+   "trial": 4,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "structured",
+   "trial": 5,
+   "answer": 1825
+  },
+  {
+   "qid": "A7",
+   "mode": "structured",
+   "trial": 6,
+   "answer": 5555
+  },
+  {
+   "qid": "A7",
+   "mode": "structured",
+   "trial": 7,
+   "answer": 5555
+  },
+  {
+   "qid": "A8",
+   "mode": "flat",
+   "trial": 0,
+   "answer": "The context does not contain any DNS query events sourced from WS1 (10.10.1.1). All DNS facts in the retrieved context are from hosts WS10 through WS28. The query_hostname for a first-seen domain queried by WS1 cannot be determined from the provided context."
+  },
+  {
+   "qid": "A8",
+   "mode": "flat",
+   "trial": 1,
+   "answer": "The context does not contain any DNS query events sourced from WS1 (as distinct from WS10\u2013WS28). No query_hostname for WS1 appears in the provided facts, so the answer cannot be determined from the given context."
+  },
+  {
+   "qid": "A8",
+   "mode": "flat",
+   "trial": 2,
+   "answer": "The context does not contain any DNS query events from host WS1. All DNS records in the retrieved facts are from hosts WS10 through WS28. The query_hostname queried by WS1 that appears only once cannot be determined from the provided context."
+  },
+  {
+   "qid": "A8",
+   "mode": "flat",
+   "trial": 3,
+   "answer": "The context does not contain any DNS query events from source host WS1 (distinct from WS10\u2013WS28). No query_hostname for WS1 appears in the provided facts, so the answer cannot be determined from the given context."
+  },
+  {
+   "qid": "A8",
+   "mode": "flat",
+   "trial": 4,
+   "answer": "The context does not contain any DNS query events from host WS1 (source hostname WS1). All DNS records in the context originate from WS10 through WS28. The query_hostname cannot be determined from the provided context."
+  },
+  {
+   "qid": "A8",
+   "mode": "flat",
+   "trial": 5,
+   "answer": "The context does not contain any DNS query events sourced from WS1 (10.10.1.1). All DNS records in the retrieved context are from WS10 through WS28. The query_hostname for the first-seen domain queried by WS1 cannot be determined from this context."
+  },
+  {
+   "qid": "A8",
+   "mode": "flat",
+   "trial": 6,
+   "answer": "The context does not contain any DNS query events sourced from WS1. All DNS records in the retrieved facts are from WS10 through WS28; no entry with src WS1 appears, so the queried hostname cannot be determined from the provided context."
+  },
+  {
+   "qid": "A8",
+   "mode": "flat",
+   "trial": 7,
+   "answer": "The context does not contain any DNS query events sourced from WS1 (as distinct from WS10\u2013WS28). No query_hostname for a DNS lookup by host WS1 is present in the retrieved facts, so the answer cannot be determined from the provided context."
+  },
+  {
+   "qid": "A8",
+   "mode": "structured",
+   "trial": 0,
+   "answer": "The context does not contain any DNS query events from host WS1. While WS1 is listed as a canonical asset, no DNS queries with src WS1 appear in the retrieved facts, so the query_hostname cannot be determined from the provided context."
+  },
+  {
+   "qid": "A8",
+   "mode": "structured",
+   "trial": 1,
+   "answer": "The context does not contain any DNS query events from host WS1. While WS1 is listed as a known host, no dns query facts with src WS1 appear in the retrieved context, so the query_hostname cannot be determined from the provided information."
+  },
+  {
+   "qid": "A9",
+   "mode": "flat",
+   "trial": 0,
+   "answer": 4
+  },
+  {
+   "qid": "A9",
+   "mode": "flat",
+   "trial": 1,
+   "answer": 4
+  },
+  {
+   "qid": "A8",
+   "mode": "structured",
+   "trial": 2,
+   "answer": "The context does not contain any DNS query events from host WS1. The context lists WS1 as a canonical asset but includes no DNS records with src WS1 \u2014 all DNS facts in the retrieved subgraph are from hosts WS10 through WS28. The query_hostname for WS1's first-seen domain cannot be determined from this context."
+  },
+  {
+   "qid": "A8",
+   "mode": "structured",
+   "trial": 3,
+   "answer": "The context does not contain any DNS query events with source hostname WS1. Host WS1 appears only as a canonical asset entry with no associated DNS queries, so the question cannot be answered from the provided context."
+  },
+  {
+   "qid": "A8",
+   "mode": "structured",
+   "trial": 4,
+   "answer": "The context does not contain any DNS query events from WS1. WS1 is listed as a known host asset but no dns query facts with src WS1 appear in the retrieved context, so the query_hostname cannot be determined from the provided data."
+  },
+  {
+   "qid": "A8",
+   "mode": "structured",
+   "trial": 5,
+   "answer": "The context does not contain the answer. No DNS query events from host WS1 are present in the retrieved facts \u2014 only a canonical asset entry for WS1 exists, with no associated DNS queries. All DNS events in the context originate from WS10 through WS28."
+  },
+  {
+   "qid": "A8",
+   "mode": "structured",
+   "trial": 6,
+   "answer": "The context does not contain any DNS query events from host WS1 (source hostname WS1). All DNS records in the retrieved facts are from hosts WS10 through WS28. The query_hostname for a first-seen domain queried by WS1 cannot be determined from the provided context."
+  },
+  {
+   "qid": "A8",
+   "mode": "structured",
+   "trial": 7,
+   "answer": "The context does not contain any DNS query events from host WS1. All DNS facts in the retrieved context are from WS10 through WS28. The question cannot be answered from the provided context."
+  },
+  {
+   "qid": "A9",
+   "mode": "flat",
+   "trial": 2,
+   "answer": 4
+  },
+  {
+   "qid": "A9",
+   "mode": "flat",
+   "trial": 3,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "flat",
+   "trial": 4,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "flat",
+   "trial": 5,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "flat",
+   "trial": 6,
+   "answer": 4
+  },
+  {
+   "qid": "A9",
+   "mode": "flat",
+   "trial": 7,
+   "answer": 4
+  },
+  {
+   "qid": "A9",
+   "mode": "structured",
+   "trial": 0,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "structured",
+   "trial": 1,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "structured",
+   "trial": 2,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "structured",
+   "trial": 3,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "structured",
+   "trial": 4,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "structured",
+   "trial": 5,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "structured",
+   "trial": 6,
+   "answer": 2
+  },
+  {
+   "qid": "A9",
+   "mode": "structured",
+   "trial": 7,
+   "answer": 2
+  }
+ ]
+}

