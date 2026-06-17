@@ -41,6 +41,18 @@ OUT_OF_OWL2QL = {
 }
 
 
+def nl_pit_anchor(dbf):
+    """v2 (addendum §1): A4 point-in-time anchor DERIVED FROM THE NL — the timestamp of the
+    privilege-escalation marker event (the no-MFA AttachUserPolicy event, api-needle-nomfa). This
+    replaces the v1 gold-constant substitution (which fed the OBDA template the answer-defining
+    pit_point_ms straight from ground_truth.json). NEVER reads the gold pit_point_ms."""
+    import duckdb
+    con = duckdb.connect(dbf)
+    r = con.execute("SELECT time FROM api WHERE event_uid = 'api-needle-nomfa'").fetchone()
+    con.close()
+    return int(r[0]) if r else None
+
+
 def build_duckdb():
     import duckdb
     os.makedirs(WORK, exist_ok=True)
@@ -85,15 +97,30 @@ def main():
     gt = json.load(open(GT))["truth_needles"]
     dbf = build_duckdb()
     props = write_props(dbf)
+    nl_anchor = nl_pit_anchor(dbf)   # v2: A4 anchor DERIVED FROM NL, never the gold pit_point_ms
 
     results = {}
     for qid, q in EXPRESSIBLE.items():
-        rq = os.path.join(OBDA, q["rq"])
-        if q["rq"].endswith(".template"):
+        # v2 (addendum §1): A4 is ill-posed (the NL anchor yields 45, the gold pit yields 35), so it
+        # is EXCLUDED from the scored head-to-head and REPORTED as a question-design finding. The
+        # template is still executed with the NL-DERIVED anchor (NOT the gold constant) for the audit
+        # record, so a reviewer can see the 45-vs-35 mismatch directly.
+        if qid == "A4":
             rq2 = os.path.join(WORK, "a4.rq")
             with open(os.path.join(OBDA, q["rq"])) as f:
-                tmpl = f.read().replace("__PIT__", str(gt["pit_point_ms"]))
-            open(rq2, "w").write(tmpl); rq = rq2
+                tmpl = f.read().replace("__PIT__", str(nl_anchor))
+            open(rq2, "w").write(tmpl)
+            rows, rc = run_sparql(props, rq2)
+            results[qid] = {"outcome": "excluded_ill_posed", "expressible": True, "scored": False,
+                            "nl_anchor_ms": nl_anchor, "nl_anchored_rows": len(rows) if rc == 0 else None,
+                            "gold_pit_ms": gt.get("pit_point_ms"), "gold_count": len(gt[q["truth_key"]]),
+                            "note": ("A4 EXCLUDED as ill-posed: NL anchor = priv-esc marker event time "
+                                     f"({nl_anchor}) -> {len(rows) if rc==0 else 'err'} sessions; gold "
+                                     f"pit_point_ms ({gt.get('pit_point_ms')}) -> {len(gt[q['truth_key']])}. "
+                                     "The gold pit is tied to no named chain stage; do NOT score A4.")}
+            print(f"  {qid}: excluded_ill_posed (NL-anchored rows={len(rows) if rc==0 else 'err'}, gold={len(gt[q['truth_key']])})")
+            continue
+        rq = os.path.join(OBDA, q["rq"])
         rows, rc = run_sparql(props, rq)
         if rc != 0:
             outcome = "loud"
@@ -105,25 +132,29 @@ def main():
             outcome = "correct" if str(gt[q["truth_key"]]) in rows else "silent"
         elif q["kind"] == "count":
             outcome = "correct" if len(rows) == len(gt[q["truth_key"]]) else "silent"
-        results[qid] = {"outcome": outcome, "rows_returned": len(rows), "expressible": True}
+        results[qid] = {"outcome": outcome, "rows_returned": len(rows), "expressible": True, "scored": True}
         print(f"  {qid}: {outcome} ({len(rows)} rows)")
 
     for qid, why in OUT_OF_OWL2QL.items():
         results[qid] = {"outcome": "out_of_expressivity", "expressible": False, "reason": why}
         print(f"  {qid}: out-of-OWL2QL (loud by design) — {why}")
 
-    expr = [r for r in results.values() if r["expressible"]]
-    n_expr = len(expr)
-    correct = sum(1 for r in expr if r["outcome"] == "correct")
-    silent = sum(1 for r in expr if r["outcome"] == "silent")
+    # v2: A4 is excluded from scoring (ill-posed), so the scored expressible set is A2/A6 only.
+    expr_scored = [r for r in results.values() if r["expressible"] and r.get("scored")]
+    n_expr = len(expr_scored)
+    correct = sum(1 for r in expr_scored if r["outcome"] == "correct")
+    silent = sum(1 for r in expr_scored if r["outcome"] == "silent")
+    excluded = [qid for qid, r in results.items() if r.get("outcome") == "excluded_ill_posed"]
     arm = {
         "status": "measured", "engine": "Ontop 5.5.0 (OWL2QL) over DuckDB",
         "expressible_queries": list(EXPRESSIBLE), "out_of_owl2ql": OUT_OF_OWL2QL,
+        "excluded_ill_posed": excluded,   # A4 (addendum §1)
         "per_query": results,
-        "result_accuracy_on_expressible": round(correct / n_expr, 4),
-        "silent_error_rate_on_expressible": round(silent / n_expr, 4),
-        "coverage": f"{n_expr}/{n_expr + len(OUT_OF_OWL2QL)} adversary queries expressible in OWL2QL",
-        "refusal_honest": all(r["outcome"] != "silent" for r in results.values()),
+        "result_accuracy_on_expressible": round(correct / n_expr, 4) if n_expr else None,
+        "silent_error_rate_on_expressible": round(silent / n_expr, 4) if n_expr else None,
+        "coverage": f"{n_expr} scored expressible (A4 excluded ill-posed) + {len(OUT_OF_OWL2QL)} out-of-OWL2QL",
+        # refusal-honest = never silently wrong on what it SCORES (excluded A4 is not a silent result)
+        "refusal_honest": all(r["outcome"] not in ("silent",) for r in results.values()),
     }
     # merge into the BENCH-C results.json
     rpath = os.path.join(HERE, "results", "results.json")

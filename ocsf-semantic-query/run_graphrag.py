@@ -36,8 +36,15 @@ GEN_URL = "http://localhost:11434/api/generate"
 EMBED_URL = "http://localhost:11434/api/embed"
 EMBED_URL_LEGACY = "http://localhost:11434/api/embeddings"
 sys.path.insert(0, os.path.join(HERE, "..", "lib"))
+sys.path.insert(0, HERE)
 from common import configure_duckdb  # noqa: E402
 from scoring import classify  # noqa: E402
+from bm25_lite import build_bm25  # noqa: E402  (v2 hybrid-retrieval keyword channel)
+
+# v2: the LOOKUP class gets the hybrid (vector + BM25) seed union; the tail is unaffected (it was
+# never a retrieval problem — see BENCH-C-PREREGISTRATION-v2-rerun.md). Class membership is fixed
+# before the run.
+LOOKUP_CLASS = {"A2", "A6", "A8"}
 
 # Fixed retrieval hyper-params — pre-registered BEFORE the scored run (fairness §6: no tuning
 # k/hops to the planted answers after seeing misses).
@@ -281,6 +288,28 @@ def vector_topk(qvec, mat, ids, k):
     return [ids[i] for i in order[:k]]
 
 
+# ----------------------------------------------------------------- v2 hybrid retrieval (BM25)
+def build_bm25_index(g):
+    """BM25 over the ENTITY docs — the SAME corpus the vector index covers (addendum §4: 'over entity
+    docs'). Returns (engine, path_label). Built once per graph; deterministic."""
+    docs = node_documents(g)                 # [(node_id, doc)] entity layer, sorted
+    ids = [d[0] for d in docs]
+    return build_bm25(ids, [d[1] for d in docs], k1=1.5, b=0.75)
+
+
+def hybrid_seeds(qvec, mat, ids, bm25, nl, k):
+    """v2 lookup-class retrieval: UNION the vector top-k seeds with the BM25 top-k keyword seeds,
+    THEN hand the union to the locked ego traversal. This is a retrieval-STRATEGY change — K_SEED /
+    NODE_BUDGET / HOPS / EDGE_BUDGET are unchanged; the union just gives the locked traversal better
+    seeds. Deterministic order: vector seeds first (in vector rank), then BM25-only seeds (in BM25
+    rank), so seed_rank stays reproducible. Returns (seeds, bm25_only_ids) for reporting."""
+    vec = vector_topk(qvec, mat, ids, k)
+    kw = bm25.topk(nl, k)
+    vecset = set(vec)
+    bm25_only = [n for n in kw if n not in vecset]
+    return vec + bm25_only, bm25_only
+
+
 def sameas_index(g):
     """Precompute the sameAs adjacency once (alias chains: host↔ip↔instance). Avoids scanning a
     hub node's tens-of-thousands of edges per query just to find its 2-3 alias links."""
@@ -373,11 +402,15 @@ def run_arm(model, embed_model, flat=False):
     fp = graph_fingerprint(g)
     mat, ids = build_or_load_embeddings(g, embed_model, fp)
     sameadj = sameas_index(g)
+    bm25, bm25_path = build_bm25_index(g)   # v2 hybrid keyword channel (lookup class only)
 
     per_query, rows = {}, []
     for q in QUERIES:
         qvec = embed([q["nl"]], embed_model)[0]
-        seeds = vector_topk(qvec, mat, ids, K_SEED)
+        if q["id"] in LOOKUP_CLASS:
+            seeds, _bm25_only = hybrid_seeds(qvec, mat, ids, bm25, q["nl"], K_SEED)
+        else:
+            seeds = vector_topk(qvec, mat, ids, K_SEED)   # tail: vector-only (unchanged from v1)
         seed_rank = {nid: i for i, nid in enumerate(seeds)}
         keep = retrieve(g, seeds, sameadj)
         context = (serialize_flat if flat else serialize_subgraph)(g, keep, seed_rank)
@@ -402,6 +435,9 @@ def run_arm(model, embed_model, flat=False):
                   f"traversal, not embedded; + {model}",
         "generator_model": model, "embed_model": embed_model,
         "retrieval_mode": "flat" if flat else "structured",
+        "v2_hybrid_retrieval": {"channel": bm25_path, "applies_to": sorted(LOOKUP_CLASS),
+                                "note": "vector top-k UNION BM25 top-k over entity docs, before the "
+                                        "LOCKED ego traversal; tail is vector-only (unchanged from v1)"},
         "graph_fingerprint": fp, "graph_nodes": g.number_of_nodes(), "graph_edges": g.number_of_edges(),
         "embedded_entities": len(ids),
         "retrieval": {"k_seed": K_SEED, "hops": HOPS, "node_budget": NODE_BUDGET, "edge_budget": EDGE_BUDGET},
