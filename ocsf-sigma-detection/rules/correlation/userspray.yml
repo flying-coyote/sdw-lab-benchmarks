@@ -1,0 +1,19 @@
+title: Failed logon (base)
+name: failed_logon_vc
+status: experimental
+logsource:
+  service: auth
+detection:
+  sel: {outcome: FAILURE}
+  condition: sel
+---
+title: Userspray - one source, many distinct users
+status: experimental
+correlation:
+  type: value_count
+  rules: [failed_logon_vc]
+  group-by: [src_ip]
+  timespan: 10m
+  condition:
+    gte: 10
+    field: actor_user

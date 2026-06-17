@@ -1,0 +1,32 @@
+{
+  "benchmark": "ocsf-sigma-detection / value_count (userspray) PPL execution (H-SIGMA-01 execution leg #3)",
+  "correct_windowed_ppl": "source=auth-vcspray | where outcome='FAILURE' | stats dc(actor_user) as c by src_ip, span(@timestamp, 10m) as win | where c >= 10",
+  "dropped_window_overfire_decoys": 50,
+  "emitted_windowless_ppl": "| search source=auth-vcspray | where outcome=\"FAILURE\" | stats dc(actor_user) as value_count by src_ip | where value_count >= 10",
+  "events": 1579,
+  "evidence_tier": "B (single host; synthetic planted corpus; OpenSearch 3.7.0 PPL; OpenSearchPPLBackend)",
+  "ground_truth": {
+    "benign": 300,
+    "decoy_spread": 50,
+    "true_spray": 20
+  },
+  "rule": "userspray: value_count dc(actor_user) >= 10 per src_ip in 10m",
+  "windowed": {
+    "flagged": 20,
+    "fp_benign": 0,
+    "fp_decoy": 0,
+    "fp_total": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 20
+  },
+  "windowless": {
+    "flagged": 70,
+    "fp_benign": 0,
+    "fp_decoy": 50,
+    "fp_total": 50,
+    "precision": 0.286,
+    "recall": 1.0,
+    "tp": 20
+  }
+}
