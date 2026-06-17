@@ -1,0 +1,118 @@
+{
+  "benchmark": "pipeline-normalization-fidelity / Cribl OCSF arm (H-PIPELINE-OCSF-FIDELITY-01)",
+  "evidence_tier": "B (single host; Cribl 4.18.1 free on-prem via `cribl pipe`, no account; community pack camrunr/cribl-ocsf-conversion v0.5.1 'WIP'; the pack's OWN bundled samples, NOT the bench 4-source corpus)",
+  "date": "2026-06-16",
+  "cribl_version": "4.18.1",
+  "pack": "camrunr/cribl-ocsf-conversion v0.5.1 (community, public GitHub)",
+  "base_image_ships_ocsf": false,
+  "ocsf_path": "source/partner-specific packs (Dispensary in-tool OCSF search surfaces AlphaSOC network-detection mappings; Amazon Security Lake pack for AWS; this community pack for Okta/WAF/Proofpoint) \u2014 NO universal OCSF Pack",
+  "conversions": {
+    "okta_system_auth": {
+      "class_uid": 3002,
+      "category_uid": 3,
+      "type_uid": 300299,
+      "activity_id": 99,
+      "activity_classified": false,
+      "mapped_attrs": [
+        "activity_id",
+        "activity_name",
+        "actor",
+        "category_uid",
+        "class_uid",
+        "dst_endpoint",
+        "http_request",
+        "logon_type",
+        "logon_type_id",
+        "message",
+        "metadata",
+        "severity_id",
+        "src_endpoint",
+        "status",
+        "time",
+        "type_uid",
+        "user"
+      ],
+      "unmapped_groups": [
+        "authenticationContext",
+        "client",
+        "debugContext",
+        "host",
+        "legacyEventType",
+        "outcome",
+        "request",
+        "securityContext",
+        "severity",
+        "transaction"
+      ]
+    },
+    "aws_waf": {
+      "class_uid": 4002,
+      "category_uid": 4,
+      "type_uid": 400203,
+      "activity_id": 3,
+      "activity_classified": true,
+      "mapped_attrs": [
+        "action",
+        "action_id",
+        "activity_id",
+        "activity_name",
+        "category_name",
+        "category_uid",
+        "class_name",
+        "class_uid",
+        "disposition",
+        "disposition_id",
+        "dst_endpoint",
+        "firewall_rule",
+        "http_request",
+        "http_response",
+        "metadata",
+        "raw_data",
+        "severity_id",
+        "src_endpoint",
+        "time",
+        "tls",
+        "type_uid"
+      ],
+      "unmapped_groups": [
+        "httpRequest",
+        "httpSourceId",
+        "labels",
+        "ruleGroupList"
+      ]
+    },
+    "proofpoint_tap": {
+      "class_uid": 4009,
+      "category_uid": 4,
+      "type_uid": 400903,
+      "activity_id": 3,
+      "activity_classified": true,
+      "mapped_attrs": [
+        "action",
+        "action_id",
+        "activity_id",
+        "category_uid",
+        "class_uid",
+        "direction",
+        "direction_id",
+        "email",
+        "metadata",
+        "severity_id",
+        "time",
+        "type_uid"
+      ],
+      "unmapped_groups": [
+        "GUID",
+        "id",
+        "impostorScore",
+        "messageParts",
+        "modulesRun",
+        "policyRoutes",
+        "recipient",
+        "threatsInfoMap"
+      ]
+    }
+  },
+  "finding": "all 3 conversions emit valid OCSF with CORRECT class/category/type; activity_id classified on 2/3 (Okta->99 Other); real unmapped tail (4-10 groups) = coverage-not-complete. Best fidelity of the pipeline tools tested, still the correct-class/partial-activity/incomplete-coverage pattern.",
+  "caveats": "community pack (not the official Dispensary pack), the pack's own samples (not the bench 4-source corpus/gold), so not apples-to-apples vs Tenzir/Vector/Logstash; Cribl is DeWitt-CLEARED (publishable named)."
+}
