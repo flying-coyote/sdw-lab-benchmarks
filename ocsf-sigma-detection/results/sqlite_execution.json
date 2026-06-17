@@ -1,0 +1,35 @@
+{
+  "assumption_tested": "is PPL's silent window-drop a PPL quirk or cross-backend?",
+  "benchmark": "ocsf-sigma-detection / SQLite execution (H-SIGMA-01 second-backend leg)",
+  "correlation_coverage": {
+    "event_count": "compiled WINDOWLESS (timespan dropped)",
+    "temporal_ordered": "compiled",
+    "temporal_sql": "SELECT actor_user, GROUP_CONCAT(sigma_rule_id ORDER BY timestamp) AS rule_sequence, COUNT(DISTINCT sigma_rule_id) AS rule_count, MIN(timestamp) AS first_event, MAX(timestamp) AS last_event FROM (SELECT *, 'a' AS sigma_rule_id FROM logs WHERE outcome='FAILURE' UNION ALL SELECT *, 'b' AS sigma_rule_id FROM logs WHERE outcome='SUCCESS') AS subquery GROUP BY actor_user HAVING rule_count >= 2 AND (julianday(last_event) - julianday(first_event)) * 86400 <= 600",
+    "value_count": "compiled WINDOWLESS",
+    "value_count_sql": "SELECT src_ip, COUNT(DISTINCT actor_user) AS value_count FROM (SELECT * FROM logs WHERE outcome='FAILURE') AS subquery GROUP BY src_ip HAVING value_count >= 10"
+  },
+  "event_count": {
+    "correct_windowed_sql": "SELECT actor_user FROM (SELECT actor_user, COUNT(*) c FROM logs WHERE outcome='FAILURE' GROUP BY actor_user, CAST(timestamp/600 AS INT) HAVING c >= 10) GROUP BY actor_user",
+    "emitted_windowless_sql": "SELECT actor_user, COUNT(*) AS event_count FROM (SELECT * FROM logs WHERE outcome='FAILURE') AS subquery GROUP BY actor_user HAVING event_count >= 10",
+    "windowed": {
+      "flagged": 20,
+      "fp_benign": 0,
+      "fp_decoy": 0,
+      "fp_total": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tp": 20
+    },
+    "windowless": {
+      "flagged": 70,
+      "fp_benign": 0,
+      "fp_decoy": 50,
+      "fp_total": 50,
+      "precision": 0.286,
+      "recall": 1.0,
+      "tp": 20
+    }
+  },
+  "events": 4093,
+  "evidence_tier": "B (single host; synthetic planted corpus; SQLite + pySigma-backend-sqlite 1.1.3)"
+}
