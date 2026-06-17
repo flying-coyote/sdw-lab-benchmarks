@@ -1,0 +1,67 @@
+{
+  "benchmark": "spec-vs-emitted-integrity / real-vendor leg (H-SPEC-INTEGRITY-01)",
+  "boundary": "public vendor-doc specs only; pure code diff, no LLM, no real telemetry",
+  "evidence_tier": "B/C (real published specs + documented field-evolution; format-class/existence result, not a prevalence rate)",
+  "vendors": {
+    "AWS CloudTrail": {
+      "format_class": "self-describing-json",
+      "mid_insert": {
+        "loud_missing": 0,
+        "of_fields": 15,
+        "silent_wrong": 0,
+        "undelivered_new_field": 1
+      },
+      "real_change": "CloudTrail record contents are additive across eventVersion (requestID/eventID 1.01; vpcEndpointId 1.04; tlsDetails/addendum later). Fields are JSON keys.",
+      "self_describing": true,
+      "silent_cascade_exposed": false,
+      "spec_fields": 15,
+      "src": "https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-event-reference-record-contents.html",
+      "tail_append": {
+        "loud_missing": 0,
+        "of_fields": 15,
+        "silent_wrong": 0,
+        "undelivered_new_field": 1
+      }
+    },
+    "PAN-OS TRAFFIC": {
+      "format_class": "positional-delimited",
+      "mid_insert": {
+        "loud_missing": 0,
+        "of_fields": 47,
+        "silent_wrong": 35,
+        "undelivered_new_field": 1
+      },
+      "real_change": "PAN-OS adds/shifts TRAFFIC fields across releases (8.x -> 10.1/11.0 grew the record substantially; the PR-294 src_user-area shift is the documented mid-record case).",
+      "self_describing": false,
+      "silent_cascade_exposed": true,
+      "spec_fields": 47,
+      "src": "https://docs.paloaltonetworks.com/pan-os/10-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/traffic-log-fields",
+      "tail_append": {
+        "loud_missing": 0,
+        "of_fields": 47,
+        "silent_wrong": 0,
+        "undelivered_new_field": 1
+      }
+    },
+    "Zeek conn.log": {
+      "format_class": "self-describing-header",
+      "mid_insert": {
+        "loud_missing": 0,
+        "of_fields": 22,
+        "silent_wrong": 0,
+        "undelivered_new_field": 1
+      },
+      "real_change": "Zeek 7.1.0 added the ip_proto column; 8.0.0 optional policy scripts add columns. Each emitted file carries a #fields header naming every column in order.",
+      "self_describing": true,
+      "silent_cascade_exposed": false,
+      "spec_fields": 22,
+      "src": "https://docs.zeek.org/en/lts/logs/conn.html",
+      "tail_append": {
+        "loud_missing": 0,
+        "of_fields": 22,
+        "silent_wrong": 0,
+        "undelivered_new_field": 1
+      }
+    }
+  }
+}
