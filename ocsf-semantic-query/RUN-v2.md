@@ -15,11 +15,14 @@ pip install rank_bm25 rdflib
 # Store F must exist (shared corpus, already built):
 #   ocsf-semantic-testbed/_work/ground_truth.json + bench-a-context-collapse/_work/store_f/*.parquet
 # OBDA arm + the canonical structured-query EXECUTION path need Ontop (large; fetched separately):
+# Install to a PERSISTENT dir (NOT /tmp — a /tmp copy is wiped on reboot, which is how the v1 install was lost):
 curl -sL -o /tmp/ontop.zip https://github.com/ontop/ontop/releases/download/ontop-5.5.0/ontop-cli-5.5.0.zip
-python -c "import zipfile; zipfile.ZipFile('/tmp/ontop.zip').extractall('/tmp/ontop-bench/ontop-cli')"
-curl -sL -o /tmp/ontop-bench/ontop-cli/jdbc/duckdb_jdbc.jar \
+python -c "import zipfile; zipfile.ZipFile('/tmp/ontop.zip').extractall('$HOME/tools/ontop-cli')"
+mkdir -p "$HOME/tools/ontop-cli/jdbc"
+curl -sL -o "$HOME/tools/ontop-cli/jdbc/duckdb_jdbc.jar" \
   https://repo1.maven.org/maven2/org/duckdb/duckdb_jdbc/1.1.3/duckdb_jdbc-1.1.3.jar
-export ONTOP_HOME=/tmp/ontop-bench/ontop-cli
+chmod +x "$HOME/tools/ontop-cli/ontop"
+export ONTOP_HOME="$HOME/tools/ontop-cli"
 ```
 
 ## 1. Regenerate the A9 12-asset overlay (committed before the run)
@@ -74,7 +77,7 @@ they run in-process in step 4.
 ## 4. EXECUTE + SCORE (deterministic; the shared scorer)
 
 ```bash
-ONTOP_HOME=/tmp/ontop-bench/ontop-cli \
+ONTOP_HOME="$HOME/tools/ontop-cli" \
   python bench_c_v2_headtohead.py --predictions _frontier/v2/v2_predictions.json \
   --out results/v2_headtohead.json
 ```
