@@ -1,0 +1,195 @@
+{
+  "bench": "BENCH-D integrating run \u2014 Window 3: planning-cliff sweep + storage parity",
+  "hypothesis": "H-TIERED-REALIZATION-01",
+  "tier": "B",
+  "host": "single host",
+  "cache_label": "warm-cache, single-host",
+  "cv_blowout_pct": 30.0,
+  "sweep_rows": 700000,
+  "planning_slo_ms": 200,
+  "duckdb": "1.5.3",
+  "pyiceberg": "0.11.1",
+  "sweeps": [
+    {
+      "N_appends": 10,
+      "fragmented": {
+        "data_files": 10,
+        "plan_latency": {
+          "median_ms": 43.596,
+          "min_ms": 42.294,
+          "max_ms": 390.282,
+          "cv_pct": 94.1,
+          "trials": 5,
+          "cv_blown": true
+        },
+        "scan_latency": {
+          "median_ms": 6.693,
+          "min_ms": 6.569,
+          "max_ms": 7.335,
+          "cv_pct": 4.2,
+          "trials": 5,
+          "warmup": 2
+        },
+        "build_s": 1.8
+      },
+      "compacted": {
+        "data_files": 1,
+        "plan_latency": {
+          "median_ms": 10.286,
+          "min_ms": 9.146,
+          "max_ms": 10.712,
+          "cv_pct": 5.9,
+          "trials": 5,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "median_ms": 4.948,
+          "min_ms": 4.894,
+          "max_ms": 5.256,
+          "cv_pct": 2.7,
+          "trials": 5,
+          "warmup": 2
+        },
+        "compact_s": 0.6,
+        "expire_ok": "FAILED: UnsupportedOperationException: Nessie Catalog does not allow external snapshot management"
+      }
+    },
+    {
+      "N_appends": 100,
+      "fragmented": {
+        "data_files": 100,
+        "plan_latency": {
+          "median_ms": 480.93,
+          "min_ms": 409.31,
+          "max_ms": 656.901,
+          "cv_pct": 16.7,
+          "trials": 5,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "median_ms": 33.988,
+          "min_ms": 31.567,
+          "max_ms": 39.313,
+          "cv_pct": 7.4,
+          "trials": 5,
+          "warmup": 2
+        },
+        "build_s": 5.4
+      },
+      "compacted": {
+        "data_files": 1,
+        "plan_latency": {
+          "median_ms": 10.038,
+          "min_ms": 9.169,
+          "max_ms": 11.372,
+          "cv_pct": 8.2,
+          "trials": 5,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "median_ms": 5.35,
+          "min_ms": 4.966,
+          "max_ms": 7.908,
+          "cv_pct": 18.2,
+          "trials": 5,
+          "warmup": 2
+        },
+        "compact_s": 0.9,
+        "expire_ok": "FAILED: UnsupportedOperationException: Nessie Catalog does not allow external snapshot management"
+      }
+    },
+    {
+      "N_appends": 1000,
+      "fragmented": {
+        "data_files": 1000,
+        "plan_latency": {
+          "median_ms": 4083.287,
+          "min_ms": 4028.631,
+          "max_ms": 4409.675,
+          "cv_pct": 3.6,
+          "trials": 5,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "median_ms": 344.535,
+          "min_ms": 335.161,
+          "max_ms": 346.454,
+          "cv_pct": 1.3,
+          "trials": 5,
+          "warmup": 2
+        },
+        "build_s": 57.3
+      },
+      "compacted": {
+        "data_files": 1,
+        "plan_latency": {
+          "median_ms": 9.653,
+          "min_ms": 9.531,
+          "max_ms": 10.265,
+          "cv_pct": 2.7,
+          "trials": 5,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "median_ms": 5.777,
+          "min_ms": 5.383,
+          "max_ms": 6.025,
+          "cv_pct": 4.7,
+          "trials": 5,
+          "warmup": 2
+        },
+        "compact_s": 5.6,
+        "expire_ok": "FAILED: UnsupportedOperationException: Nessie Catalog does not allow external snapshot management"
+      }
+    },
+    {
+      "N_appends": 3000,
+      "fragmented": {
+        "data_files": 3000,
+        "plan_latency": {
+          "median_ms": 12769.085,
+          "min_ms": 12688.02,
+          "max_ms": 12821.283,
+          "cv_pct": 0.4,
+          "trials": 5,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "median_ms": 1140.163,
+          "min_ms": 1127.14,
+          "max_ms": 1163.791,
+          "cv_pct": 1.1,
+          "trials": 5,
+          "warmup": 2
+        },
+        "build_s": 251.1
+      },
+      "compacted": {
+        "data_files": 1,
+        "plan_latency": {
+          "median_ms": 13.037,
+          "min_ms": 12.993,
+          "max_ms": 13.92,
+          "cv_pct": 2.6,
+          "trials": 5,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "median_ms": 8.139,
+          "min_ms": 7.154,
+          "max_ms": 8.899,
+          "cv_pct": 8.4,
+          "trials": 5,
+          "warmup": 2
+        },
+        "compact_s": 17.8,
+        "expire_ok": "FAILED: UnsupportedOperationException: Nessie Catalog does not allow external snapshot management"
+      }
+    }
+  ],
+  "storage_parity_bytes": {
+    "zstd": 14719940,
+    "snappy": 19136846,
+    "uncompressed": 32190244
+  }
+}
