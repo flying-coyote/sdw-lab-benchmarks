@@ -1,0 +1,526 @@
+{
+  "bench": "BENCH-D integrating run \u2014 Window 1: single-backend NULL baseline",
+  "hypothesis": "H-TIERED-REALIZATION-01",
+  "tier": "B",
+  "host": "single host",
+  "cache_label": "warm-cache, single-host (OS page cache not dropped; cold object-store regime is the named follow-up)",
+  "cv_blowout_pct": 30.0,
+  "trials": 7,
+  "preregistration": "PRE-REGISTRATION-integrating-2026-06-16.md",
+  "duckdb": "1.5.3",
+  "pyiceberg": "0.11.1",
+  "scales": [
+    {
+      "scale": "700000rows_14days",
+      "n_rows": 700000,
+      "days": 14,
+      "fingerprints": {
+        "corpus": "46b4f4d0179110147f7bfbc9790ea887",
+        "null_b_ducklake": "46b4f4d0179110147f7bfbc9790ea887",
+        "null_a_iceberg": "46b4f4d0179110147f7bfbc9790ea887"
+      },
+      "answer_equal": true,
+      "null_b_ducklake": {
+        "backend": "ducklake_single",
+        "local": true,
+        "logical_fingerprint": "46b4f4d0179110147f7bfbc9790ea887",
+        "freshness_ingest": {
+          "median_ms": 26.545,
+          "min_ms": 23.932,
+          "max_ms": 30.716,
+          "cv_pct": 8.1,
+          "trials": 7,
+          "warmup": 0,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "freshness_probe": {
+            "median_ms": 6.859,
+            "min_ms": 6.325,
+            "max_ms": 7.582,
+            "cv_pct": 6.3,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "recent_window": {
+            "median_ms": 6.637,
+            "min_ms": 6.044,
+            "max_ms": 7.289,
+            "cv_pct": 5.3,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "cold_aggregation": {
+            "median_ms": 5.478,
+            "min_ms": 5.163,
+            "max_ms": 6.257,
+            "cv_pct": 6.4,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "needle_lookup": {
+            "median_ms": 10.686,
+            "min_ms": 9.76,
+            "max_ms": 11.186,
+            "cv_pct": 3.9,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          }
+        },
+        "planning_latency": {
+          "median_ms": 8.027,
+          "min_ms": 7.76,
+          "max_ms": 8.849,
+          "cv_pct": 4.7,
+          "trials": 7,
+          "warmup": 2,
+          "cv_blown": false,
+          "note": "EXPLAIN ANALYZE wall time (plan+exec instrument); steady-state, warm-cache"
+        },
+        "storage": {
+          "n_parquet_files": 8,
+          "total_bytes": 21380306,
+          "representative_footer": {
+            "n_rows": 700000,
+            "n_row_groups": 7,
+            "columns": {
+              "event_day": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "orig_bytes": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "orig_h": {
+                "encodings": [
+                  "PLAIN"
+                ],
+                "has_bloom": false
+              },
+              "proto": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "resp_bytes": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "resp_h": {
+                "encodings": [
+                  "PLAIN"
+                ],
+                "has_bloom": false
+              },
+              "resp_p": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "ts": {
+                "encodings": [
+                  "PLAIN"
+                ],
+                "has_bloom": false
+              }
+            }
+          },
+          "codec_note": "DuckLake default (Snappy / ~122,880 row-groups)"
+        }
+      },
+      "null_a_iceberg": {
+        "backend": "iceberg_single",
+        "local": false,
+        "metadata_location": "s3://warehouse/soc/benchd_int_null_6f8be438-8f0a-4406-b839-ceb6f6febb13/metadata/00000-6ec47c58-0e3c-4cfb-9d5a-227741f300c3.metadata.json",
+        "logical_fingerprint": "46b4f4d0179110147f7bfbc9790ea887",
+        "freshness_ingest": {
+          "median_ms": 160.538,
+          "min_ms": 153.443,
+          "max_ms": 195.233,
+          "cv_pct": 7.8,
+          "trials": 7,
+          "warmup": 0,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "freshness_probe": {
+            "median_ms": 6.991,
+            "min_ms": 6.623,
+            "max_ms": 7.54,
+            "cv_pct": 4.0,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "recent_window": {
+            "median_ms": 6.895,
+            "min_ms": 6.346,
+            "max_ms": 7.354,
+            "cv_pct": 4.4,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "cold_aggregation": {
+            "median_ms": 8.654,
+            "min_ms": 8.018,
+            "max_ms": 9.655,
+            "cv_pct": 5.4,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "needle_lookup": {
+            "median_ms": 11.655,
+            "min_ms": 11.1,
+            "max_ms": 13.048,
+            "cv_pct": 4.8,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          }
+        },
+        "planning_latency": {
+          "median_ms": 9.107,
+          "min_ms": 8.596,
+          "max_ms": 11.924,
+          "cv_pct": 12.3,
+          "trials": 7,
+          "warmup": 2,
+          "cv_blown": false,
+          "note": "EXPLAIN ANALYZE wall time (plan+exec instrument); steady-state, warm-cache"
+        },
+        "plan_files_count": 14,
+        "storage": {
+          "n_data_files": 14,
+          "total_bytes": 18741597,
+          "plan_files_count": 14,
+          "representative_footer": {
+            "n_rows": 10000,
+            "n_row_groups": 1,
+            "columns": {
+              "event_day": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "orig_bytes": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "orig_h": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "proto": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "resp_bytes": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "resp_h": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "resp_p": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "ts": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              }
+            }
+          },
+          "codec_note": "pyiceberg default (ZSTD / ~1M row-groups)"
+        }
+      }
+    },
+    {
+      "scale": "2800000rows_14days",
+      "n_rows": 2800000,
+      "days": 14,
+      "fingerprints": {
+        "corpus": "7804068203c496df69a19421f32fe031",
+        "null_b_ducklake": "7804068203c496df69a19421f32fe031",
+        "null_a_iceberg": "7804068203c496df69a19421f32fe031"
+      },
+      "answer_equal": true,
+      "null_b_ducklake": {
+        "backend": "ducklake_single",
+        "local": true,
+        "logical_fingerprint": "7804068203c496df69a19421f32fe031",
+        "freshness_ingest": {
+          "median_ms": 25.345,
+          "min_ms": 24.753,
+          "max_ms": 57.201,
+          "cv_pct": 36.6,
+          "trials": 7,
+          "warmup": 0,
+          "cv_blown": true
+        },
+        "scan_latency": {
+          "freshness_probe": {
+            "median_ms": 6.759,
+            "min_ms": 6.459,
+            "max_ms": 7.176,
+            "cv_pct": 3.3,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "recent_window": {
+            "median_ms": 6.502,
+            "min_ms": 6.169,
+            "max_ms": 11.018,
+            "cv_pct": 24.7,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "cold_aggregation": {
+            "median_ms": 11.998,
+            "min_ms": 8.606,
+            "max_ms": 14.989,
+            "cv_pct": 22.2,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "needle_lookup": {
+            "median_ms": 22.517,
+            "min_ms": 20.54,
+            "max_ms": 23.851,
+            "cv_pct": 4.8,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          }
+        },
+        "planning_latency": {
+          "median_ms": 8.842,
+          "min_ms": 7.937,
+          "max_ms": 12.347,
+          "cv_pct": 15.4,
+          "trials": 7,
+          "warmup": 2,
+          "cv_blown": false,
+          "note": "EXPLAIN ANALYZE wall time (plan+exec instrument); steady-state, warm-cache"
+        },
+        "storage": {
+          "n_parquet_files": 8,
+          "total_bytes": 79015056,
+          "representative_footer": {
+            "n_rows": 2800000,
+            "n_row_groups": 28,
+            "columns": {
+              "event_day": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "orig_bytes": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "orig_h": {
+                "encodings": [
+                  "PLAIN"
+                ],
+                "has_bloom": false
+              },
+              "proto": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "resp_bytes": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "resp_h": {
+                "encodings": [
+                  "PLAIN"
+                ],
+                "has_bloom": false
+              },
+              "resp_p": {
+                "encodings": [
+                  "PLAIN_DICTIONARY"
+                ],
+                "has_bloom": true
+              },
+              "ts": {
+                "encodings": [
+                  "PLAIN"
+                ],
+                "has_bloom": false
+              }
+            }
+          },
+          "codec_note": "DuckLake default (Snappy / ~122,880 row-groups)"
+        }
+      },
+      "null_a_iceberg": {
+        "backend": "iceberg_single",
+        "local": false,
+        "metadata_location": "s3://warehouse/soc/benchd_int_null_7711fae4-5bfb-49e7-98d5-8029d2b172e0/metadata/00000-711610f4-0ed6-4f93-bc41-df5dd947f2d8.metadata.json",
+        "logical_fingerprint": "7804068203c496df69a19421f32fe031",
+        "freshness_ingest": {
+          "median_ms": 153.499,
+          "min_ms": 147.626,
+          "max_ms": 233.031,
+          "cv_pct": 16.8,
+          "trials": 7,
+          "warmup": 0,
+          "cv_blown": false
+        },
+        "scan_latency": {
+          "freshness_probe": {
+            "median_ms": 7.649,
+            "min_ms": 7.373,
+            "max_ms": 10.553,
+            "cv_pct": 12.7,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "recent_window": {
+            "median_ms": 7.274,
+            "min_ms": 6.672,
+            "max_ms": 7.524,
+            "cv_pct": 3.4,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "cold_aggregation": {
+            "median_ms": 14.106,
+            "min_ms": 12.657,
+            "max_ms": 15.88,
+            "cv_pct": 7.8,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          },
+          "needle_lookup": {
+            "median_ms": 21.679,
+            "min_ms": 20.487,
+            "max_ms": 31.059,
+            "cv_pct": 14.7,
+            "trials": 7,
+            "warmup": 2,
+            "cv_blown": false
+          }
+        },
+        "planning_latency": {
+          "median_ms": 9.421,
+          "min_ms": 8.056,
+          "max_ms": 22.48,
+          "cv_pct": 42.4,
+          "trials": 7,
+          "warmup": 2,
+          "cv_blown": true,
+          "note": "EXPLAIN ANALYZE wall time (plan+exec instrument); steady-state, warm-cache"
+        },
+        "plan_files_count": 14,
+        "storage": {
+          "n_data_files": 14,
+          "total_bytes": 71731243,
+          "plan_files_count": 14,
+          "representative_footer": {
+            "n_rows": 10000,
+            "n_row_groups": 1,
+            "columns": {
+              "event_day": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "orig_bytes": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "orig_h": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "proto": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "resp_bytes": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "resp_h": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "resp_p": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              },
+              "ts": {
+                "encodings": [
+                  "PLAIN, RLE, RLE_DICTIONARY"
+                ],
+                "has_bloom": false
+              }
+            }
+          },
+          "codec_note": "pyiceberg default (ZSTD / ~1M row-groups)"
+        }
+      }
+    }
+  ]
+}
