@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Dremio arm — prior-art / two-regime expectation (external context)"
+created: 2026-06-13
+tags: [zeek-flagship, dremio, prior-art, two-regime, context]
+---
+
 # Dremio arm — prior-art / two-regime expectation (external context, verified 2026-06-13)
 
 **This is framing, not measurement.** It records the published architectural roles behind the

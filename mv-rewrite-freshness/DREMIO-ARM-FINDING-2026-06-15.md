@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "#25 Dremio-arm finding — Reflections don't persist over open Nessie/Iceberg"
+created: 2026-06-15
+tags: [mv-rewrite-freshness, dremio, reflections, nessie, iceberg, bench-25]
+---
+
 # #25 Dremio-arm finding — Reflections don't persist over the open Nessie/Iceberg path (2026-06-15)
 
 #25 (`mv-rewrite-freshness`) compares two transparent-rewrite accelerators at matched freshness on a
