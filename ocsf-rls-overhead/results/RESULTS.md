@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "OCSF RLS Overhead — Engine-Side Predicate Cost of Row-Level Security (DuckDB 1.5.3)"
+created: 2026-06-08
+tags: [row-level-security, duckdb, ocsf, multi-tenancy, rbac, catalog]
+---
+
 # OCSF RLS Overhead — engine-side predicate cost of row-level security
 
 - DuckDB `1.5.3`  

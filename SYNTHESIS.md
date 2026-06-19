@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Campaign Synthesis — What the Benchmarks Actually Argue"
+created: 2026-06-05
+tags: [synthesis, benchmark-campaign, chdb-correctness, ocsf-context-collapse, ducklake, iceberg]
+---
+
 # Campaign synthesis — what the benchmarks actually argue
 
 This is the through-line across the extended benchmark campaign (R0–R6), written after the runs rather

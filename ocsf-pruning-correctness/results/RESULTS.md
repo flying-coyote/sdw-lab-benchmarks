@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Parquet Pruning Correctness — Row-Group and Bloom-Filter A/B Bake-Off"
+created: 2026-06-06
+tags: [parquet, pruning, bloom-filter, correctness, cross-engine, silent-undercount]
+---
+
 # Does pruning ever drop the needle? (lower-level bake-off #3)
 
 **Tier B · single machine · identical-data A/B.** A Parquet reader prunes row groups and pages it believes

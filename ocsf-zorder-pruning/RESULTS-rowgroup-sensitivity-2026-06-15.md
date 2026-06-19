@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Z-Order Pruning: Row-Group-Size Sensitivity Leg (2026-06-15)"
+created: 2026-06-15
+tags: [z-order, parquet, row-group-size, h-lakehouse-zorder-01, pruning-coverage, duckdb]
+---
+
 # Z-order pruning — row-group-size sensitivity leg (2026-06-15)
 
 Owed follow-on for **H-LAKEHOUSE-ZORDER-01** (the hypothesis-evidence gate flagged the

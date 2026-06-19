@@ -1,3 +1,10 @@
+---
+type: reference
+title: "LogHub Corpus Fetch — Reproducible Download Script for Spec-vs-Emitted Integrity Benchmark"
+created: 2026-06-17
+tags: [loghub, corpus, reproducibility, runbook, spec-vs-emitted, integrity]
+---
+
 # Corpus fetch (reproducible) — LogHub real-production-log samples
 
 Raw logs are NOT committed (public research corpus; reproducible). Fetch:

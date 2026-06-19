@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Concurrent-Writer Catalog Contention Results: DuckLake vs Iceberg (Tier B)"
+created: 2026-06-06
+tags: [ducklake, iceberg, catalog-contention, concurrent-writes, h-ducklake-02, postgres]
+---
+
 # Concurrent-writer catalog contention (T1.3) — H-DUCKLAKE-02's untested adverse leg
 
 **Tier B · single machine · PostgreSQL 17 (shared, port 5434) for both engines.** N writer processes commit 20

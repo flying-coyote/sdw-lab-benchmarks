@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Air-Gapped Local-Model Agentic Hunt — Buildability and Egress Ledger"
+created: 2026-06-09
+tags: [air-gap, local-llm, agentic-hunt, ollama, ocsf, h-practitioner-owned-agentic-01]
+---
+
 # Air-gapped local-model agentic hunt — buildability + egress ledger
 
 *Every component on-box and offline: model weights via Ollama (local), a ~80-line code-action agent loop (the model emits read-only SQL, we run it over a local DuckDB OCSF store, feed back rows, it iterates), and offline content (the APT29 OCSF telemetry + 3,132 mirrored SigmaHQ rules on disk). H-PRACTITIONER-OWNED-AGENTIC-01.*

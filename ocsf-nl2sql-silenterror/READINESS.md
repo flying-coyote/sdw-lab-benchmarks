@@ -1,3 +1,10 @@
+---
+type: tracker
+title: "OCSF NL2SQL Silent-Error Benchmark — Readiness Doc"
+created: 2026-06-08
+tags: [nl2sql, ocsf, llm-evaluation, silent-error, bench-readiness, ollama]
+---
+
 # OCSF NL2SQL silent-error benchmark — readiness doc
 
 This benchmark is **authored and light-checked but NOT run**. The heavy evaluation

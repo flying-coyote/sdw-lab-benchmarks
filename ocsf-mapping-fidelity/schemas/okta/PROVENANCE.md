@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Okta System Log Schema Provenance — OCSF Mapping Fidelity Benchmark"
+created: 2026-06-02
+tags: [okta, ocsf, schema-provenance, authentication-3002, ocsf-mapping-fidelity, source-schema]
+---
+
 # Okta System Log — provenance
 
 `inventory.json` is the documented field set of the Okta System Log **LogEvent**

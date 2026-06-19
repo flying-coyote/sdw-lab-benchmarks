@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "Lab Benchmarking Methodology — Cross-Cutting Standard"
+created: 2026-06-05
+tags: [methodology, benchmarking, config-parity, coefficient-of-variation, parquet, wsl2]
+---
+
 # Lab benchmarking methodology
 
 A cross-cutting standard for every benchmark in this repo. It exists because of a concrete miss: the

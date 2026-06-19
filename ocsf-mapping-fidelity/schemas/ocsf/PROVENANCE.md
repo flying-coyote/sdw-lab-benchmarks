@@ -1,3 +1,10 @@
+---
+type: reference
+title: "OCSF 1.8.0 Validation Schema Provenance — Mapping Fidelity Benchmark"
+created: 2026-06-02
+tags: [ocsf, ocsf-1-8-0, schema-provenance, validation-target, ocsf-mapping-fidelity, attribute-graph]
+---
+
 # OCSF 1.8.0 schema — provenance
 
 `ocsf_1.8.0_subset.json` is a transcribed subset of the real OCSF 1.8.0 schema,

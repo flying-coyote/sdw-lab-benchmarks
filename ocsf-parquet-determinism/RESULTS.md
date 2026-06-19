@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Parquet Reproducibility Is a Configuration Choice — DuckDB Multi-Thread Non-Determinism Finding"
+created: 2026-06-05
+tags: [parquet, determinism, duckdb, logical-fingerprint, methodology, reproducibility]
+---
+
 # Same data, different file: Parquet reproducibility is a configuration choice
 
 > **METHODOLOGY INFRASTRUCTURE** — this probe is not a hypothesis test. It underpins the lab's

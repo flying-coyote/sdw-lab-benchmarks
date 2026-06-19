@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Cisco Umbrella DNS Log Schema Provenance (OCSF Mapping Fidelity Benchmark)"
+created: 2026-06-02
+tags: [cisco-umbrella, dns-logs, ocsf, provenance, schema-documentation, benchmark-source]
+---
+
 # Cisco Umbrella DNS — provenance
 
 `inventory.json` is the **DNS log** column set of Cisco Umbrella, scored against

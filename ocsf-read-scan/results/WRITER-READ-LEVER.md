@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Parquet Writer as a Read Lever — Size and Read Latency Across Writers (T2.6)"
+created: 2026-06-06
+tags: [parquet-writer, encoding, read-performance, ocsf, duckdb, tier-b]
+---
+
 # The Parquet writer as a read lever (T2.6) — size AND read latency across writers
 
 **Tier B, single machine, hot/warm.** One logical OCSF table (20,000,000 rows) written by each writer

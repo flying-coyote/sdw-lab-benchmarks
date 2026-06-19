@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Cross-engine NULL Semantics, Type Coercion, and Timezone Correctness for Security Data"
+created: 2026-06-06
+tags: [null-semantics, timezone, type-coercion, correctness, cross-engine, detection-reliability]
+---
+
 # Cross-engine NULL / type-coercion / timezone correctness
 
 **Tier B · single machine · deterministic.** The shapes where security answers silently diverge across engines

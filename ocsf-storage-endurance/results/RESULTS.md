@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "OCSF Storage Endurance: Write Amplification and DWPD Projection for Security Telemetry"
+created: 2026-06-05
+tags: [storage-endurance, write-amplification, dwpd, ocsf, parquet, nvme]
+---
+
 # Storage endurance — is write-intensive NVMe over-specified for security data? (results)
 
 **Tier B.** Write amplification is measured on 5,000,000 synthetic OCSF rows; DWPD is *projected*

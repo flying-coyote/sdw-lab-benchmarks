@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-D Hot-Tier Write Contract Results — Iceberg vs DuckLake"
+created: 2026-06-05
+tags: [ducklake, iceberg, write-contract, commit-latency, streaming-ingest, h-tiered-realization-01]
+---
+
 # BENCH-D — hot-tier write contract: results (first pass)
 
 **Tier B, two of three arms.** Single machine, synthetic OCSF ingest. Commit latencies are

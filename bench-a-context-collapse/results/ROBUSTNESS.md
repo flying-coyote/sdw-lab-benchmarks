@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-A Context-Collapse Robustness Across Background Re-Draws (Tier B)"
+created: 2026-06-05
+tags: [bench-a, context-collapse, ocsf, robustness, h-ocsf-context-collapse-01, noise-realization]
+---
+
 # BENCH-A robustness — headline across background draws
 
 **Tier B.** The planted six-stage chain is held byte-identical (generator seed 200); only the background

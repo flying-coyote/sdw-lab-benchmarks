@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "H-SIGMA-01 Execution Leg #2 — PPL temporal_ordered Rule Drops Order and Window (2026-06-16)"
+created: 2026-06-16
+tags: [sigma, pysigma, opensearch-ppl, temporal-ordered, correlation, detection-fidelity]
+---
+
 # H-SIGMA-01 execution leg #2 — PPL's temporal_ordered rule misses real attacks AND over-fires (2026-06-16)
 
 SIGMA-EXEC. The 2026-06-15 event_count leg (`RESULTS-ppl-execution-2026-06-15.md`) executed one correlation

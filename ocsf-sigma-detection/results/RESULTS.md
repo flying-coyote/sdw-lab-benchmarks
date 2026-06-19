@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Sigma Detection Execution Over OCSF Fidelity Store — 4/4 Planted Chain Stages Detected"
+created: 2026-06-05
+tags: [sigma, ocsf, detection-as-code, pysigma, mitre-attack, precision]
+---
+
 # Sigma detection execution vs the testbed (results)
 
 **Tier B.** Real Sigma rules compiled to SQL via pySigma and executed over the fidelity store

@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "Pre-Registration — SIGMA-EXEC SQLite Second-Backend Execution (H-SIGMA-01, 2026-06-17)"
+created: 2026-06-17
+tags: [sigma, pysigma, sqlite, pre-registration, correlation, h-sigma-01]
+---
+
 # Pre-registration — SIGMA-EXEC second-backend execution (SQLite), H-SIGMA-01
 
 _Frozen before the run (M6 / Platt strong inference). Loop iter 3, 2026-06-17._

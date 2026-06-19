@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Deterministic Validator vs LLM Grounding — Schema-Constrained OCSF Mapper Results"
+created: 2026-06-05
+tags: [ocsf-mapping, deterministic-mapper, llm-grounding, silent-errors, schema-constraint, tier-b]
+---
+
 # Deterministic validator vs LLM grounding (results)
 
 **Tier B.** A schema-constrained deterministic source→OCSF mapper (generic field-name alias rules, only

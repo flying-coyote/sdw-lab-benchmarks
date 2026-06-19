@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "BENCH-D Never-Write (ISK/Streambased) Arm — Pre-Registration and Execution Paths"
+created: 2026-06-05
+tags: [bench-d, iceberg, kafka, streaming-ingest, streambased, write-contract]
+---
+
 # BENCH-D — the never-write (ISK) arm: pre-registration and execution paths
 
 The third write contract in BENCH-D is **never-write**: producing to Kafka *is* the write, and

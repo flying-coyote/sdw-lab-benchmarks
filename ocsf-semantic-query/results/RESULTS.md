@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-C Semantic Query Head-to-Head — Text-to-SQL Baseline and OBDA/Ontop Results"
+created: 2026-06-05
+tags: [semantic-query, ocsf, obda, ontop, text-to-sql, owl2ql]
+---
+
 # BENCH-C — semantic-query head-to-head: results (first pass)
 
 **Tier B, one arm of three.** This first pass runs the **text-to-SQL baseline arm** (a

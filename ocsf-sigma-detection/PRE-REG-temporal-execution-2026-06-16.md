@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "Pre-Registration — temporal_ordered Execution Leg (SIGMA-EXEC, H-SIGMA-01, 2026-06-16)"
+created: 2026-06-16
+tags: [sigma, pysigma, opensearch-ppl, temporal-ordered, pre-registration, h-sigma-01]
+---
+
 # Pre-registration — temporal_ordered execution leg (SIGMA-EXEC, H-SIGMA-01) — 2026-06-16
 
 Pre-registered BEFORE the scored run (M6 discipline). Extends the event_count PPL-execution leg

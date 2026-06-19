@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Z-order vs Single-sort vs Unordered Parquet Pruning on OCSF Network Activity"
+created: 2026-06-08
+tags: [parquet, z-order, row-group-pruning, ocsf, duckdb, data-layout]
+---
+
 # Z-order pruning vs single-sort vs unordered (OCSF Network Activity)
 
 **Tier B.** 2,000,000-row seeded OCSF Network Activity corpus written three ways to Parquet

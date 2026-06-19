@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Sigma C4 Correlation-Backend Portability Results — pySigma 1.3.3 Across Four Backends"
+created: 2026-06-01
+tags: [sigma, pysigma, correlation-rules, splunk, elasticsearch, opensearch]
+---
+
 # Results — Sigma correlation-backend portability (C4)
 
 - pySigma: `1.3.3`  ·  backends: Splunk SPL, Elasticsearch ES|QL, Elasticsearch Lucene, OpenSearch PPL  

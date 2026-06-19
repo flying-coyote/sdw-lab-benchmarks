@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Materialized-view Acceleration for SOC Dashboards: Read Speedup vs Maintenance Cost (R5)"
+created: 2026-06-05
+tags: [materialized-view, soc-dashboard, ocsf, incremental-maintenance, duckdb, performance]
+---
+
 # Materialized-view acceleration for SOC dashboards — with its cost (R5)
 
 **Tier B · single machine.** 20,000,000 OCSF events ingested in 20 streaming

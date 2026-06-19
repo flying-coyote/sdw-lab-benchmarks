@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "Sigma Portability Benchmark — Methodology"
+created: 2026-06-01
+tags: [sigma, pysigma, correlation-rules, splunk, elasticsearch, opensearch]
+---
+
 # Methodology
 
 Sigma is named a foundational standard across the site because a detection

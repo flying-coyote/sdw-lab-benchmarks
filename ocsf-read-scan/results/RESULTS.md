@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-E Default-Config Large-Scan Results — DuckLake vs Iceberg at 10M Rows"
+created: 2026-06-05
+tags: [ducklake, iceberg, large-scan, read-performance, ocsf-read-scan, tier-b]
+---
+
 # BENCH-E — DuckLake vs Iceberg large-scan reads (results)
 
 **Tier B.** 10,000,000-row OCSF corpus materialized in both formats and read by the same

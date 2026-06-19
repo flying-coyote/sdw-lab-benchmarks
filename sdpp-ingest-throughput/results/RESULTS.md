@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "SDPP Ingest-Throughput: OSS Pipeline Engine Matrix (Vector, Tenzir, OTel, Alloy, rsyslog)"
+created: 2026-06-08
+tags: [ingest-throughput, pipeline-engines, vector, tenzir, otelcol, zeek]
+---
+
 # SDPP ingest-throughput — consolidated OSS-engine matrix
 
 _Run 2026-06-08T16:01:11Z · B (single WSL2 host; wall-clock medians; Cribl + Splunk-UF rows are Tier-C docs-only)_

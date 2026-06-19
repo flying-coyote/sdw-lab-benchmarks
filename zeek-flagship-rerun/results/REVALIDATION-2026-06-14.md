@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Zeek Flagship Revalidation — Independent Draw Confirming Published Multiples Within 5% (2026-06-14)"
+created: 2026-06-14
+tags: [revalidation, clickhouse, opensearch, iceberg, zeek, two-regime]
+---
+
 # Flagship revalidation — 2026-06-14 (independent fresh draw vs the published 06-10 number)
 
 The load-bearing performance number (the 145×→two-regime supersession) was re-run as a full

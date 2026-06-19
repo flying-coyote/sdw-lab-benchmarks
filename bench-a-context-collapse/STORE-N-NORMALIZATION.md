@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "BENCH-A Store N — Documented Normalization Default and Fairness Rationale"
+created: 2026-06-05
+tags: [ocsf-context-collapse, store-n, normalization, sigma, detection-fidelity, bench-a]
+---
+
 # Store N normalization — the documented default (and why it isn't a strawman)
 
 BENCH-A measures one thing: the difference between two OCSF stores built from the same

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Arrow/ADBC as a Manageability Lever — Integration Surface and Engine-Swap Cost Measured (2026-06-15)"
+created: 2026-06-15
+tags: [arrow, adbc, flight-sql, manageability, multi-engine, h-arch-02]
+---
+
 # Arrow/ADBC as a MANAGEABILITY lever, not a speed lever (2026-06-15)
 
 Reframing per the steer that Arrow/ADBC's value to security is **more manageable infrastructure**, not

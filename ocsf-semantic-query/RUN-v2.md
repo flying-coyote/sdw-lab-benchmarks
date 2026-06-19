@@ -1,3 +1,10 @@
+---
+type: reference
+title: "BENCH-C v2 Run Commands and Harness Execution Reference"
+created: 2026-06-17
+tags: [bench-c, ocsf-semantic-query, runbook, harness, llm-generation, deterministic-scoring]
+---
+
 # BENCH-C v2 — how to run the re-run (commands + LLM-invocation mechanism)
 
 The v2 harness separates GENERATION (the LLM-authoring step) from EXECUTION + SCORING (deterministic,

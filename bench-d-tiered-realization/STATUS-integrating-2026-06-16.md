@@ -1,3 +1,10 @@
+---
+type: tracker
+title: "BENCH-D Integrating Run — Status Checkpoint (2026-06-16)"
+created: 2026-06-16
+tags: [bench-d, tiered-realization, run-status, checkpoint, iceberg, ducklake]
+---
+
 # BENCH-D integrating run — STATUS / checkpoint (2026-06-16)
 
 Resume note for the staged clean-box run. Pre-registration:

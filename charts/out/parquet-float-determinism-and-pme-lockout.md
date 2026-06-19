@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Parquet Float-Aggregate Determinism and PME Encryption Lock-Out"
+created: 2026-06-09
+tags: [parquet, float-determinism, pme-encryption, cross-engine, data-integrity, chain-of-custody]
+---
+
 # Parquet float-aggregate determinism + PME encryption lock-out
 
 *Two properties under "verify the answer" that bite a regulated, multi-engine lakehouse: whether a floating-point aggregate is deterministic across SIMD width and across engines, and whether an encrypted Parquet file is portable across engines at all. Bit-pattern compare throughout.*

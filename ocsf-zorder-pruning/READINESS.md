@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Z-Order Pruning Benchmark: Pre-Run Readiness Checklist"
+created: 2026-06-08
+tags: [z-order, duckdb, runbook, benchmark-prep, ocsf, parquet]
+---
+
 # READINESS — ocsf-zorder-pruning
 
 Run this benchmark when the box is free of competing DuckDB workloads.

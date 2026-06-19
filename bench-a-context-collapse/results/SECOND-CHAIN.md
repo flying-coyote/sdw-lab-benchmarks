@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-A Second Chain (Chain B SMB Lateral) Results — External Validity (Tier B)"
+created: 2026-06-05
+tags: [bench-a, context-collapse, ocsf, external-validity, h-ocsf-context-collapse-01, second-chain]
+---
+
 # BENCH-A second chain — headline on a different attack (results)
 
 **Tier B.** A second independent chain profile, scored by the same frozen A1–A10 battery (which reads the

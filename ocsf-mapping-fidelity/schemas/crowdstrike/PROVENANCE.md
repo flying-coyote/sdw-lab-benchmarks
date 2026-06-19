@@ -1,3 +1,10 @@
+---
+type: reference
+title: "CrowdStrike Falcon Detection Summary Schema Provenance — OCSF Mapping Fidelity Benchmark"
+created: 2026-06-02
+tags: [crowdstrike, falcon, ocsf, detection-finding-2004, schema-provenance, ocsf-mapping-fidelity]
+---
+
 # CrowdStrike Falcon — provenance
 
 `inventory.json` is the **Detection Summary Event** field set from CrowdStrike's

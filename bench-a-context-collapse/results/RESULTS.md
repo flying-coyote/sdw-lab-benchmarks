@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-A OCSF Context-Collapse: Main Results (Tier B)"
+created: 2026-06-05
+tags: [bench-a, context-collapse, ocsf, h-ocsf-context-collapse-01, store-f-vs-store-n, adversary-tail]
+---
+
 # BENCH-A — OCSF context-collapse: results
 
 **Tier B (first pass).** Synthetic, controlled testbed; single machine; one planted

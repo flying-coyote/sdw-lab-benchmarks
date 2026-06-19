@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-E Cross-Run Validation — Reproducibility at 100M and 1B Rows"
+created: 2026-06-05
+tags: [ducklake, iceberg, reproducibility, validation, ocsf-read-scan, tier-b]
+---
+
 # BENCH-E large-scan arm — cross-run validation
 
 **Tier B, single machine.** Each scale run twice with frozen code; the corpus is seeded so

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Sigma Correlation Rules — Multi-Backend Portability and Execution Results"
+created: 2026-06-05
+tags: [sigma, ocsf, correlation, pysigma, portability, detection-as-code]
+---
+
 # Sigma correlation — multi-event rules, multi-backend, executed (results)
 
 **Tier B.** Multi-event correlation rules (a temporal-ordered exec→lateral sequence and an event-count

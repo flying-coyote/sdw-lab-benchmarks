@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Cisco ASA Connection-Event Schema Provenance — OCSF Mapping Fidelity Benchmark"
+created: 2026-06-02
+tags: [cisco-asa, ocsf, network-activity-4001, schema-provenance, ocsf-mapping-fidelity, syslog]
+---
+
 # Cisco ASA — provenance
 
 `inventory.json` is the connection-event field set of **Cisco ASA / Secure

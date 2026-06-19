@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-E Same-Files Arm — Byte-Identical Data in Two Catalogs at 1 Billion Rows"
+created: 2026-06-05
+tags: [ducklake, iceberg, same-files, format-neutrality, billion-rows, tier-b]
+---
+
 # BENCH-E same-files arm — byte-identical data, two catalogs (1,000,000,000 rows)
 
 **Tier B, single machine, hot/warm only.** The data files are written ONCE (DuckDB, ZSTD-3,

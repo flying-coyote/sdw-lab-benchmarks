@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Air-Gapped Agentic Hunt — Local Model + Code-Action Loop + Offline OCSF Store (Adj.15)"
+created: 2026-06-06
+tags: [agentic-hunt, air-gap, ollama, ocsf, local-model, tier-b]
+---
+
 # Air-gapped agentic hunt — local model + code-action loop + offline OCSF store (Adj.15)
 
 **Tier B for buildability/air-gap mechanics; Tier D for hard-SOC-reasoning capability.** Every component is

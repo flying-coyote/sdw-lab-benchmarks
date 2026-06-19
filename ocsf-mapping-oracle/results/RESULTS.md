@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-B Mapping Oracle Results — Local Model Ladder vs Frontier"
+created: 2026-06-05
+tags: [ocsf-mapping, llm-grounding, silent-error-rate, local-model, h-practitioner-owned-agentic-01, benchmark]
+---
+
 # BENCH-B — mapping oracle: results
 
 **Tier B, local model ladder.** Five conditions on source→OCSF field mapping, scored against the hand-curated C1 gold key with every predicted path validated against the OCSF 1.8.0 subset. Primary metric is the **silent-error rate** (a path that doesn't exist); exact-match path-correctness is reported but undercounts valid alternatives. The model ladder is the capability gradient available without a frontier API key.

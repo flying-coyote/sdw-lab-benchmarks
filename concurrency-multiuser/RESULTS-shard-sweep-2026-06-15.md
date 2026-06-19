@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "OpenSearch Shard-Count Concurrency Sweep — Single-Shard Scaling Artifact Confirmed (2026-06-15)"
+created: 2026-06-15
+tags: [concurrency, opensearch, shard-count, throughput-ceiling, h3-concurrency]
+---
+
 # OpenSearch shard-count concurrency — is the foil's 6.73× scaling a single-shard artifact? (2026-06-15)
 
 The `concurrency-multiuser` bench (RESULTS-2026-06-15.md) ran the OpenSearch foil on `zeek_conn`

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Arrow Transport: ADBC vs JDBC Latency and Parquet Encoding Results"
+created: 2026-06-05
+tags: [arrow, adbc, jdbc, transport, parquet-encoding, duckdb]
+---
+
 # Arrow transport — ADBC vs JDBC, + Parquet encoding (results)
 
 **Tier B.** Same DuckDB query feeds both transports; the only variable is the connectivity API.

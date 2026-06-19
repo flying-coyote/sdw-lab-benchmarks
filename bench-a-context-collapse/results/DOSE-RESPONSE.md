@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-A Context-Collapse Dose-Response: Headline vs Coarseness Level (Tier B)"
+created: 2026-06-05
+tags: [bench-a, context-collapse, ocsf, dose-response, h-ocsf-context-collapse-01, normalization]
+---
+
 # BENCH-A dose-response — headline vs coarseness
 
 **Tier B.** How the context-collapse headline `Δ(adversary) − Δ(routine)` moves as Store N's

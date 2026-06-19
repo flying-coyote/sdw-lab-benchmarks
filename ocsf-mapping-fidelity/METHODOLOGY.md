@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "OCSF Field-Mapping Fidelity (C1) — Methodology"
+created: 2026-06-02
+tags: [ocsf, schema-mapping, fidelity, okta, crowdstrike, palo-alto]
+---
+
 # Methodology — OCSF field-mapping fidelity (C1)
 
 ## What is measured

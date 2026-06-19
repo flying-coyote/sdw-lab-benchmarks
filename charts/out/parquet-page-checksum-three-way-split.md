@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Parquet Page Checksum Verification — Three-Way Engine Split"
+created: 2026-06-09
+tags: [parquet, data-integrity, page-checksum, chdb, cross-engine, silent-corruption]
+---
+
 # Do Parquet readers verify page checksums?
 
 *Capability vs default vs behavior are three different things. An int64 column (100,000 rows, PLAIN, uncompressed) is written with Parquet page checksums; one byte of a sentinel value is flipped inside the data page (value changes by +1, page CRC no longer matches). Each reader then computes `sum(v)` — a verifying reader raises, an ignoring reader returns a silently-wrong sum (truth + 1).*

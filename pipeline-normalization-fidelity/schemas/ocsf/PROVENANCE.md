@@ -1,3 +1,10 @@
+---
+type: reference
+title: "OCSF 1.8.0 extension subset provenance — pipeline-normalization-fidelity bench"
+created: 2026-06-13
+tags: [ocsf-1-8-0, schema-provenance, pipeline-normalization, process-activity, api-activity, transcription-audit]
+---
+
 # OCSF 1.8.0 extension subset — provenance
 
 `ocsf_1.8.0_ext_subset.json` adds the two OCSF classes this bench needs that the C1

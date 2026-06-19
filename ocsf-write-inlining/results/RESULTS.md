@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "DuckLake Inlining vs Iceberg — Small-Files Problem at the Source (Bench Results)"
+created: 2026-06-05
+tags: [ducklake, iceberg, small-files, streaming-ingest, ocsf, tier-b]
+---
+
 # DuckLake inlining vs Iceberg — the small-files problem at the source (results)
 
 **Tier B.** 100 small commits of 200 rows each, identical seeded stream

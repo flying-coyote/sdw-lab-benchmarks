@@ -1,3 +1,10 @@
+---
+type: asset-registry
+title: "SDW Lab Benchmark Chart Asset Manifest — 34 Charts, 5 Correctness Tables, Campaign and Book Figures"
+created: 2026-06-09
+tags: [asset-registry, charts, lab-benchmarks, publication-mapping, chart-manifest, securitydataworks]
+---
+
 # Benchmark chart asset manifest
 
 Built 34 lab charts + 5 correctness tables from first-party `sdw-lab-benchmarks` results, plus 7 campaign graphics (2026-06-10, `_p*`/`_pb*` scripts) and 6 book figures (2026-06-10, `_bk*` scripts, MOAr restructure Wave C) — see the bottom sections.

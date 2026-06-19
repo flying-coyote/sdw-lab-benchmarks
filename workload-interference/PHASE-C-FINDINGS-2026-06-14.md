@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Workload-Interference Phase C: Knee 3× Reproduction Data Tables (2026-06-14)"
+created: 2026-06-14
+tags: [workload-interference, phase-c, knee-reproduction, clickhouse, starrocks, benchmark-results]
+---
+
 # Phase C — knee 3x reproduction + starrocks_mv (P5) — 2026-06-14
 
 Tier B, single host (Beelink 5800H, WSL2 48 GB/14t, cpuset 12/2). A knee is claimable only when all 3 independent runs trip the mechanical stop rule at the SAME ladder step (README). run-1 = extend-ladder; run-2 = phase-C rep3 (salvaged; reps 1-2 lost to a `docker run` missing `-i` so its heredoc capture never ran); run-3 = clean finish pass (host-side capture).

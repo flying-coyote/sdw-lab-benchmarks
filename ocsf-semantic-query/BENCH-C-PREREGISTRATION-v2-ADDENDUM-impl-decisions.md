@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "BENCH-C v2 Implementation-Decision Addendum: Six Pre-Run Ambiguity Resolutions"
+created: 2026-06-17
+tags: [bench-c, pre-registration, implementation-decisions, ocsf-semantic-query, hybrid-retrieval, asset-population]
+---
+
 # BENCH-C v2 — implementation-decision addendum (pre-run, committed BEFORE the re-run)
 
 Resolves the six implementation ambiguities under [`BENCH-C-PREREGISTRATION-v2-rerun.md`](BENCH-C-PREREGISTRATION-v2-rerun.md) **before any scored run**, to preserve the no-post-hoc-tuning contract. Each is an implementation choice under the already-committed v2 strategy, not a new strategy. Committed 2026-06-17.

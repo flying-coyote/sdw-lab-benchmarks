@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Cross-Engine Answer-Equality Study: Parquet Reader Landscape Survey (2026)"
+created: 2026-06-06
+tags: [parquet-readers, engine-survey, clickhouse, duckdb, h-engine-answer-equivalence-01, multi-engine]
+---
+
 # Cross-engine answer-equality study — the query-engine landscape (2026)
 
 Survey behind the engine selection for `multi_engine_correctness.py` (the Phase-E generalization of the

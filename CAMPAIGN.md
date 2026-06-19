@@ -1,3 +1,10 @@
+---
+type: tracker
+title: "Extended Benchmark Campaign — Plan, Findings, and Corrections"
+created: 2026-06-05
+tags: [benchmark-campaign, tracker, run-backlog, iceberg, ducklake, ocsf]
+---
+
 # Extended benchmark campaign — plan, findings, corrections
 
 > Read-together narrative + thesis mapping: [`SYNTHESIS.md`](SYNTHESIS.md).

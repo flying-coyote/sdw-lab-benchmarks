@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Compute Determinism and Parquet Modular Encryption Interop Across Engines"
+created: 2026-06-06
+tags: [parquet, determinism, encryption, cross-engine, floating-point, duckdb]
+---
+
 # Compute determinism + Parquet encryption interop (lower-level bake-off #5)
 
 **Tier B · single machine · bit-pattern compare.** Two properties under "verify the answer" that bite a

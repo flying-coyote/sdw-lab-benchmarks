@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Silent chDB Parquet Equality Undercount: Isolated Reproduction (C3 Answer-equality Gate)"
+created: 2026-06-05
+tags: [clickhouse, chdb, parquet, correctness, bloom-filter, silent-undercount]
+---
+
 # A silent cross-engine correctness divergence (C3 answer-equality gate)
 
 **Tier B · single machine · ground-truth-verified.** DuckDB `1.5.3` vs chDB `4.1.8`

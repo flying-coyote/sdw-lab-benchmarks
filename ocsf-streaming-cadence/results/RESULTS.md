@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Streaming Write Cadence — Throughput, Commit Latency, and Inlining Inversion (R7)"
+created: 2026-06-05
+tags: [ducklake, iceberg, streaming-ingest, write-contract, commit-latency, ocsf]
+---
+
 # Streaming write cadence — throughput, commit latency, inlining inversion (R7)
 
 **Tier B · single machine.** 200 commits per cadence, swept across

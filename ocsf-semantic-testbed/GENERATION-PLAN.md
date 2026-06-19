@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "OCSF Semantic Testbed — Corpus Generation Plan (BENCH-A)"
+created: 2026-06-05
+tags: [ocsf, bench-a, context-collapse, corpus-generation, synthetic-testbed, pre-registration]
+---
+
 # Corpus generation plan
 
 This documents how `generate.py` builds the testbed: the source shapes, the

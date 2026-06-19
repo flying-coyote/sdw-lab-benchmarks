@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-E Parity Arm — Codec × Format at Fixed Row-Group (100M Rows)"
+created: 2026-06-05
+tags: [ducklake, iceberg, codec, format-effect, ocsf-read-scan, tier-b]
+---
+
 # BENCH-E parity arm — codec x format at fixed row-group (100,000,000 rows)
 
 **Tier B, single machine, hot/warm only.** Row-group fixed at 122,880 rows across every arm; codec varied; read by the same engine (DuckDB, memory_limit 28GB). Each latency is the median of 5 trials with its coefficient of variation; a delta below the CV is not a real difference. Footer codec is verified per arm.

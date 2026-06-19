@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-E Cold-Cache Arm — posix_fadvise Cold Reads at 20M Rows"
+created: 2026-06-07
+tags: [cold-cache, ducklake, iceberg, read-performance, ocsf-read-scan, tier-b]
+---
+
 # BENCH-E cold-cache arm — posix_fadvise(DONTNEED) cold reads (20,000,000 rows)
 
 **Tier B, single machine.** Every other BENCH-E arm is hot/warm only, which structurally favours

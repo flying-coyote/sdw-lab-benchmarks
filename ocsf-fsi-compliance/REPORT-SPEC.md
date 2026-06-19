@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "BENCH-F — SEC Reg SCI §1003(b) Report Spec (Frozen Pre-Registration)"
+created: 2026-06-05
+tags: [fsi-compliance, reg-sci, pre-registration, lakehouse, benchmark-spec, iceberg]
+---
+
 # BENCH-F — §1003(b) report spec (frozen)
 
 **Frozen before any timing run.** This fixes the report sections, their acceptance

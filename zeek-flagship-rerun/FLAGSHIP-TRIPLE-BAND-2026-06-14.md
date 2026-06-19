@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Flagship Benchmark Triple-Run Band — Two-Regime Revalidation (2026-06-14)"
+created: 2026-06-14
+tags: [flagship, clickhouse, opensearch, two-regime, revalidation, iceberg]
+---
+
 # Flagship — triple-run band on the two-regime core (2026-06-14)
 
 Three independent draws of the flagship benchmark (the 145×→two-regime number). Tier B,

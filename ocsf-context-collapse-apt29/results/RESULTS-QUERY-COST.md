@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Context-collapse cost curve — query-compute leg (F/N latency ratio, APT29 evals)"
+created: 2026-06-07
+tags: [ocsf-context-collapse, query-latency, duckdb, h-ocsf-context-collapse-01, cost-curve, apt29]
+---
+
 # Context-collapse cost curve — the COMPUTE half (query latency, fidelity vs coarsened)
 
 **Tier B · single host · DuckDB-on-local-Parquet · one public dataset (APT29 evals, ~143k events).** This is

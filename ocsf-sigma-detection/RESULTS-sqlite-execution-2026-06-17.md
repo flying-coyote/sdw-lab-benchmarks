@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "H-SIGMA-01 Execution Leg #4 — SQLite Second-Backend Window-Drop Replication (2026-06-17)"
+created: 2026-06-17
+tags: [sigma, pysigma, sqlite, correlation, detection-fidelity, h-sigma-01]
+---
+
 # H-SIGMA-01 execution leg #4 — the dropped window generalizes to a SECOND backend (SQLite) (2026-06-17)
 
 SIGMA-EXEC, the gated "execution on one OTHER backend" sub-condition. The PPL legs (2026-06-15/16) showed

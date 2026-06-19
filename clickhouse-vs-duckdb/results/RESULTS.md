@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "ClickHouse vs DuckDB on OCSF-shaped Event Data: Performance Results (C3)"
+created: 2026-06-01
+tags: [clickhouse, duckdb, ocsf, performance-benchmark, parquet, answer-equivalence]
+---
+
 # Results — ClickHouse vs DuckDB on OCSF-shaped event data (C3)
 
 - DuckDB: `1.5.3`  ·  ClickHouse engine: `chDB (embedded ClickHouse)` (`chdb 4.1.8`)  

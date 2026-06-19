@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Sigma Detection Under Context-Collapse — Recall and Precision Across Store F vs Store N (R1)"
+created: 2026-06-05
+tags: [context-collapse, ocsf, sigma, detection-fidelity, normalization, precision]
+---
+
 # Sigma over the coarse store — recall & precision under context-collapse (R1)
 
 **Tier B · synthetic testbed · single machine · one planted chain.** The same compiled Sigma rules that

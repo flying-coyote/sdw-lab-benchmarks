@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "Flattening Fidelity Benchmark Methodology — Three-Mode Design for Silent Detection Loss"
+created: 2026-06-01
+tags: [flattening-fidelity, ocsf, detection-loss, benchmark-design, grain-loss, timestamp-tz]
+---
+
 # Methodology
 
 The point of this benchmark is to be falsifiable and reproducible, so the design

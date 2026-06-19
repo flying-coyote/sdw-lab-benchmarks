@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "H-SIGMA-01 Execution Leg #1 — PPL Dropped Correlation Window Over-Fires at Runtime (2026-06-15)"
+created: 2026-06-15
+tags: [sigma, pysigma, opensearch-ppl, correlation, detection-fidelity, h-sigma-01]
+---
+
 # H-SIGMA-01 execution leg — PPL's dropped correlation window over-fires at runtime (2026-06-15)
 
 The compile-time finding (C4 / `correlation.py`): the pySigma **OpenSearch PPL** backend (2.0.3) compiles

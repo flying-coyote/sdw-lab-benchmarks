@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Parquet Encoding × Library Correctness Matrix — Silent-Wrong and Error Behavior Across 7 Libraries"
+created: 2026-06-06
+tags: [parquet, encoding, correctness, duckdb, pyarrow, fastparquet]
+---
+
 # Parquet encoding x library correctness matrix (lower-level bake-off #2)
 
 **Tier B · single machine · exact ground truth.** Both silent-wrong-answer findings the Lab turned up this

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "chDB Upstream Bug Report: v3 Parquet Reader Bloom-Filter Pushdown Silent Undercount (chdb#587)"
+created: 2026-06-06
+tags: [clickhouse, chdb, bloom-filter, parquet, h-engine-answer-equivalence-01, correctness-bug]
+---
+
 # Bug report (FILED: chdb-io/chdb#587) — chDB embedded-ClickHouse Parquet Bloom-filter pushdown silently undercounts
 
 > **✅ REPRODUCES AT SCALE — fileable, but it is SCALE-DEPENDENT (re-tested 2026-06-06).** Two full

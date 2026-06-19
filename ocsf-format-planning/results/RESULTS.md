@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Planning Cost vs Fragmentation — Iceberg Manifests vs DuckLake Catalog (R6)"
+created: 2026-06-05
+tags: [ducklake, iceberg, metadata-planning, fragmentation, small-files, h-tiered-realization-01]
+---
+
 # Planning cost vs fragmentation — Iceberg manifests vs DuckLake catalog (R6)
 
 **Tier B · single machine.** 5,000,000 rows ingested into each format across a ladder of

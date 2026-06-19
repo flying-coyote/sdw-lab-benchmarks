@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "SOC Query Shape #1 — C2 Beaconing Window-Function Regime Results (2026-06-15)"
+created: 2026-06-15
+tags: [beaconing, window-functions, clickhouse, starrocks, trino, detection-correctness]
+---
+
 # SOC query-shape bench #1 — C2 beaconing (window-function regime), 2026-06-15
 
 First of the external-review P4 backlog shapes (the SOC shapes the flagship flat-aggregation + needle

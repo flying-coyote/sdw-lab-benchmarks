@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "OCSF Field-Mapping Fidelity Results — C1 Benchmark (6 Vendors vs OCSF 1.8.0)"
+created: 2026-06-02
+tags: [ocsf, mapping-fidelity, benchmark, vendor-schemas, detection-survivability, field-coverage]
+---
+
 # Results — OCSF field-mapping fidelity (C1)
 
 - OCSF version: **1.8.0**  ·  evidence tier: B (reproducible, first-party mapping judgement against real documented vendor schemas and the real OCSF 1.8.0 schema; not production telemetry)

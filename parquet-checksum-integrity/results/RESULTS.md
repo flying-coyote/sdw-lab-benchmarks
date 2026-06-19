@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Parquet Page-checksum Verification Bake-off: Which Readers Catch Bit Flips by Default"
+created: 2026-06-06
+tags: [parquet, checksum, data-integrity, correctness, chdb, duckdb]
+---
+
 # Do Parquet readers verify page checksums? (lower-level correctness bake-off)
 
 **Tier B · single machine · deterministic byte-flip.** An int64 column (100,000 rows, PLAIN,

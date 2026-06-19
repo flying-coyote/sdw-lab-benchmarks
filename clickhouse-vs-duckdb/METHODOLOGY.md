@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "ClickHouse vs DuckDB Benchmark: Methodology and Design Rationale"
+created: 2026-06-01
+tags: [clickhouse, duckdb, methodology, ocsf, benchmark-design, answer-equality]
+---
+
 # Methodology
 
 This benchmark exists to put a number under one claim the site makes in

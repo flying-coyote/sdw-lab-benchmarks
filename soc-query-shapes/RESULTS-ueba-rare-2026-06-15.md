@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "SOC Query-Shape Bench: UEBA Z-Score and Rare-Value Latency/Ranking on soc.conn (2026-06-15)"
+created: 2026-06-15
+tags: [ueba, soc-query-shapes, clickhouse, starrocks, trino, h-arch-02]
+---
+
 # SOC query-shape bench #2+3 — UEBA Z-score + rare-value (2026-06-15)
 
 The other two external-review P4 backlog shapes, run across the 4 Iceberg-reading engines on the

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Spec-vs-Emitted Integrity Results on Three Named Real Vendors: PAN-OS, Zeek, CloudTrail (2026-06-16)"
+created: 2026-06-16
+tags: [spec-integrity, pan-os, zeek, cloudtrail, silent-corruption, positional-format]
+---
+
 # Spec-vs-emitted integrity — the mechanism, grounded on 3 named real vendors (2026-06-16)
 
 SPEC-INTEGRITY, the leg the 2026-06-15 mechanism run (`RESULTS-2026-06-15.md`) left owed: move the

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Z-Order Pruning: Multi-File Cross-File Pruning and Bloom-Filter Alternative (2026-06-15)"
+created: 2026-06-15
+tags: [z-order, parquet, bloom-filter, iceberg, h-lakehouse-zorder-01, cross-file-pruning]
+---
+
 # Z-order owed legs: multi-file cross-file pruning + Bloom/page-index (2026-06-15)
 
 The within-file leg (`run.py` / canonical RESULTS) + the row-group-sensitivity leg

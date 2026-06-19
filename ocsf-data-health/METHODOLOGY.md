@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "OCSF Data Health Benchmark: Methodology and Estate Design (Cross-Tool Asset + Identity Recovery)"
+created: 2026-06-07
+tags: [ocsf, data-health, asset-inventory, methodology, benchmark-design, entity-resolution]
+---
+
 # Methodology
 
 The point of this benchmark is to be falsifiable and reproducible, so the design

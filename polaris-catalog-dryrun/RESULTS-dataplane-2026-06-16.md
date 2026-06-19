@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Polaris Data-Plane Dry-Run — Catalog-on-S3 and Table-RBAC on MinIO (2026-06-16)"
+created: 2026-06-16
+tags: [apache-polaris, iceberg-catalog, minio, rbac, h-catalog-auditability-01]
+---
+
 # Polaris data-plane dry-run — catalog-on-S3 + table-RBAC works on the open MinIO substrate (2026-06-16)
 
 POLARIS-AUDIT, the leg the 2026-06-15 control-plane rehearsal deferred (`RESULTS-2026-06-15.md`: "the full

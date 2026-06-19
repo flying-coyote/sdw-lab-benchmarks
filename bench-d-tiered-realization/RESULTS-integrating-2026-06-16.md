@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-D Integrating Run — Null Wins at Lab Scale (H-TIERED-REALIZATION-01, 2026-06-16)"
+created: 2026-06-16
+tags: [bench-d, tiered-realization, ducklake, iceberg, h-tiered-realization-01, null-result]
+---
+
 # BENCH-D integrating run — RESULTS: the null wins at lab scale (H-TIERED-REALIZATION-01, 2026-06-16)
 
 The first end-to-end test of the *integrating* claim this hypothesis owns — does DuckLake-hot →

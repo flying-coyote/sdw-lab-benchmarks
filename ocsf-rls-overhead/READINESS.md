@@ -1,3 +1,10 @@
+---
+type: reference
+title: "OCSF RLS Overhead Bench — Readiness Checklist and Runbook"
+created: 2026-06-08
+tags: [ocsf, row-level-security, duckdb, benchmark-runbook, methodology]
+---
+
 # READINESS — ocsf-rls-overhead
 
 Status as of 2026-06-08. Run this doc top-to-bottom before starting the workload.

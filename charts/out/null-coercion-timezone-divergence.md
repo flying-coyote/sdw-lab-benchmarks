@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Cross-Engine NULL / Coercion / Timezone Divergence"
+created: 2026-06-09
+tags: [null-semantics, timezone, sql-correctness, cross-engine, detection-bypass, chdb]
+---
+
 # Cross-engine NULL / coercion / timezone divergence
 
 *Where the silent break is in query semantics, not the reader: the same byte-identical Parquet, queried under session TZ `America/New_York`, against SQL-standard (or known-UTC) ground truth.*

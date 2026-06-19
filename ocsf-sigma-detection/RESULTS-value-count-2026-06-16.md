@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "H-SIGMA-01 Execution Leg #3 — value_count (Userspray) Window-Drop Generalizes Across Count Types (2026-06-16)"
+created: 2026-06-16
+tags: [sigma, pysigma, opensearch-ppl, value-count, correlation, detection-fidelity]
+---
+
 # H-SIGMA-01 execution leg #3 — value_count (userspray) over-fires too: the window-drop generalizes (2026-06-16)
 
 SIGMA-EXEC, completing the correlation-type execution matrix. The compile finding (`sigma-portability`)

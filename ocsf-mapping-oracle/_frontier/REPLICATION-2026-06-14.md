@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-B Frontier-Leg Replication Study — Three-Run Band (2026-06-14)"
+created: 2026-06-14
+tags: [ocsf-mapping, replication, llm-nondeterminism, frontier-model, silent-error-rate, benchmark]
+---
+
 # Frontier-leg replication (run-2) — 2026-06-14
 
 The frontier leg (Opus-4.8-as-proxy, no metered API — the intended `dump_frontier_prompts.py`

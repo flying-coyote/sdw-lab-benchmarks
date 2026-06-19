@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-E Large-Scan Arm — DuckLake vs Iceberg at 1 Billion Rows"
+created: 2026-06-05
+tags: [ducklake, iceberg, billion-rows, large-scan, ocsf-read-scan, tier-b]
+---
+
 # BENCH-E large-scan arm — DuckLake vs Iceberg at 1,000,000,000 rows (results)
 
 **Tier B · single machine.** 1,000,000,000 rows ingested in 20 batches of

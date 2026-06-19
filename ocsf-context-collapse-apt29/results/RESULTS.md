@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Context-collapse recall-loss — de-gamed BENCH-A on APT29 evals with unmodified SigmaHQ rules"
+created: 2026-06-06
+tags: [ocsf-context-collapse, apt29, sigma, recall-loss, h-ocsf-context-collapse-01, detection-fidelity]
+---
+
 # De-gamed BENCH-A — context collapse vs unmodified upstream SigmaHQ on real APT29 data
 
 **Tier B · real public attack data · third-party rules.** Removes the gameability the lab-built R1/R2

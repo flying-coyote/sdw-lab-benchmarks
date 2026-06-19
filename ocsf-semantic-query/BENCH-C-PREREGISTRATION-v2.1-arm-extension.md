@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "BENCH-C v2.1 Pre-Registration: Agentic Self-Correct and Self-Consistency Arms"
+created: 2026-06-17
+tags: [bench-c, pre-registration, agentic-self-correct, self-consistency, ocsf-semantic-query, silent-error]
+---
+
 # BENCH-C v2.1 — arm extension (pre-registered BEFORE the run)
 
 Two new arms added to the v2 head-to-head, **pre-registered before generation** to hold the no-post-hoc-tuning contract. Same corpus (Store F + the A9 12-asset overlay), same shared scorer (`scoring.classify`, byte-identical), same A4 exclusion, same three model tiers (Haiku / Sonnet / Opus) so the tier-invariance read extends to the new arms. Both arms target the question the v2 result raised: the failure on the compute tail is *silent*, and the only guard that worked was refuse / fail-loud / pre-verified — so v2.1 tests whether adding a **verification mechanism** to the probabilistic path converts silent → caught. Committed 2026-06-17, before the v2.1 generation runs.

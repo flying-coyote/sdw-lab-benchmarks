@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Cross-Engine Nested-OCSF Type Fidelity"
+created: 2026-06-06
+tags: [ocsf, nested-types, query-portability, datafusion, duckdb, parquet]
+---
+
 # Cross-engine nested-OCSF type fidelity
 
 **Tier B · single machine · deterministic.** OCSF events are nested — `src_endpoint`/`dst_endpoint` structs and

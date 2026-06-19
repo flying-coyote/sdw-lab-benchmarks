@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Parquet Silent-wrong Reader Re-confirmation and Version-currency Update (2026-06-14)"
+created: 2026-06-14
+tags: [parquet, correctness, chdb, fastparquet, version-currency, silent-undercount]
+---
+
 # Answer-equivalence re-confirmation (2026-06-14) — the two silent-wrong readers STILL reproduce
 
 **Tier B · single host · ground-truth-verified.** The standing claim cited by the campaign,

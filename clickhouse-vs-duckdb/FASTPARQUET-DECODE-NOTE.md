@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "fastparquet Silent Mis-Decode of DuckDB PLAIN_DICTIONARY String Columns"
+created: 2026-06-06
+tags: [fastparquet, duckdb, parquet, correctness-bug, h-engine-answer-equivalence-01, reader-defect]
+---
+
 # fastparquet silently mis-decodes DuckDB's PLAIN_DICTIONARY string column
 
 A second independent silent-wrong-answer finding from the cross-engine answer-equality study, in a

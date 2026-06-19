@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "OCSF NL2SQL Silent-Error Benchmark Results (Tier B)"
+created: 2026-06-08
+tags: [nl2sql, ocsf, silent-error, benchmark, local-llm, query-accuracy]
+---
+
 # OCSF NL2SQL silent-error benchmark — results
 
 **Tier B, single machine, local models, one planted chain.** The headline is the **silent-error rate** (SQL runs, returns a non-empty wrong answer) and **where on the difficulty curve it concentrates**. Anchors (external): NL2KQL ~58% result-accuracy at ~42% confidently-wrong; BIRD 81.67% vs 92.96% human.

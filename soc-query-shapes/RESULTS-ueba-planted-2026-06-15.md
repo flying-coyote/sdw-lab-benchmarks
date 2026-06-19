@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "SOC Query-Shape Bench: UEBA + Rare-Value on Planted Ground Truth — Detection Correctness and Answer-Equality (2026-06-15)"
+created: 2026-06-15
+tags: [ueba, soc-query-shapes, planted-ground-truth, answer-equality, h-arch-02, detection-correctness]
+---
+
 # UEBA + rare-value on PLANTED ground truth — detection correctness + answer-equality (2026-06-15)
 
 The 2026-06-15 SOC-shape bench (`RESULTS-ueba-rare-2026-06-15.md`) measured the UEBA two-level-agg and

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Software Version-Currency Pass — 2026-06-14"
+created: 2026-06-14
+tags: [version-currency, opensearch, chdb, fastparquet, answer-equality, parquet-correctness]
+---
+
 # Software version-currency pass — 2026-06-14
 
 Per the "ensure software versions are as updated as possible" directive: audited the benchmark

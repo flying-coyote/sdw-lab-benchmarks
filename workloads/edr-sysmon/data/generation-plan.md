@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "EDR/Sysmon Workload Data Generation Plan"
+created: 2026-06-05
+tags: [edr, sysmon, atomic-red-team, ocsf, benchmark-spec, corpus-generation]
+---
+
 # EDR/Sysmon Data Generation Plan
 
 **Status:** spec (2026-05-24). Implementation pending.

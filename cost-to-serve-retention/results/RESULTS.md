@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Cost-to-Serve Retention — Storage Footprints and AWS Pricing Across Realizations (10M Zeek Events)"
+created: 2026-06-10
+tags: [cost-to-serve, retention, storage, aws, iceberg, opensearch]
+---
+
 # RESULTS — the index pays twice: 4.2× the bytes at 3.5× the price
 
 **Measured layer: Tier B · single host · same sha256-pinned 10M-row Zeek conn corpus as

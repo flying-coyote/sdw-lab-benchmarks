@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Cross-Engine Nested OCSF Query Portability"
+created: 2026-06-09
+tags: [ocsf, nested-types, query-portability, datafusion, list-of-struct, parquet]
+---
+
 # Cross-engine nested-OCSF query portability
 
 *Whether the same nested OCSF data (`src_endpoint`/`dst_endpoint` structs, an `observables[]` list of structs) returns the same answer across engines, and how far nested access stays portable — one byte-identical Parquet file, explicit ground-truth counts, each engine given its fair best expression.*

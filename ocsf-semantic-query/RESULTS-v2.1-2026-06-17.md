@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-C v2.1 Results: Agentic Self-Correct and Self-Consistency Both Fail to Convert Silent Errors to Caught (2026-06-17)"
+created: 2026-06-17
+tags: [bench-c, agentic-self-correct, self-consistency, silent-error, ocsf-semantic-query, verification-layer]
+---
+
 # BENCH-C v2.1 results — does adding a verification mechanism to the probabilistic path convert silent → caught?
 
 **2026-06-17. Tier B, single host, synthetic Store F + the A9 12-asset overlay. Directional pilot — the order/mode of failure is the transferable claim, not the magnitudes.** Pre-registered in [`BENCH-C-PREREGISTRATION-v2.1-arm-extension.md`](BENCH-C-PREREGISTRATION-v2.1-arm-extension.md) BEFORE generation. Two arms extend the [v2 head-to-head](RESULTS-v2-2026-06-17.md): both target the question v2 raised — the compute-tail failures are *silent*, and the only guards that worked were refuse / fail-loud / pre-verified, so v2.1 asks whether bolting a verification mechanism onto the probabilistic path turns silent into caught. Same corpus, same shared byte-identical scorer (`scoring.classify`), same A4 exclusion, same three model tiers (Haiku / Sonnet / Opus). The answer for both arms is **no** — and each fails in an instructive way.

@@ -1,3 +1,10 @@
+---
+type: reference
+title: "Zscaler ZIA Web Log Schema Provenance — OCSF Mapping Fidelity Benchmark"
+created: 2026-06-02
+tags: [zscaler, zia, ocsf, http-activity-4002, schema-provenance, ocsf-mapping-fidelity]
+---
+
 # Zscaler Internet Access (ZIA) Web log — provenance
 
 `inventory.json` is the standard **Web log** field set of Zscaler Internet Access,

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Schema-Trained ZSTD Dictionary on OCSF Data — Compression Ratio vs Block Regime (R4)"
+created: 2026-06-05
+tags: [compression, zstd, ocsf, storage, parquet, ingestion]
+---
+
 # When a schema-trained ZSTD dictionary helps OCSF data (R4)
 
 **Tier B · single machine.** 100,000 OCSF events (~221

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Spec-vs-Emitted Integrity: Real-Log Prevalence Leg (LogHub, 2026-06-16)"
+created: 2026-06-16
+tags: [spec-vs-emitted, syslog, loghub, h-spec-integrity-01, ocsf, silent-misalignment]
+---
+
 # SPEC-INTEGRITY real-log prevalence leg — spec-vs-emitted disagreement measured on REAL emitted logs (2026-06-16)
 
 The prevalence gate H-SPEC-INTEGRITY-01 left open: the synthetic leg (2026-06-15) and the real-vendor

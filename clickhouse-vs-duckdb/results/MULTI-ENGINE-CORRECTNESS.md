@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Cross-engine Parquet Answer-equality: 12-Engine Ground-truth Scorecard (Phase E)"
+created: 2026-06-06
+tags: [parquet, answer-equivalence, correctness, clickhouse, duckdb, cross-engine]
+---
+
 # Cross-engine Parquet answer-equality — does the R3 undercount generalize? (Phase E)
 
 **Tier B · single machine · ground-truth-verified.** 12 engines (plus controls) read the **same**

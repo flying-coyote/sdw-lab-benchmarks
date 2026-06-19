@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Isolating BENCH-E topn_src Divergence — Read Path vs Spill at 100M Rows (T2.5)"
+created: 2026-06-06
+tags: [ducklake, iceberg, read-performance, spill, ocsf-read-scan, tier-b]
+---
+
 # Isolating R8's topn_src divergence — read path vs spill (T2.5)
 
 **Tier B, single machine.** 100,000,000 rows of byte-identical Parquet (verified identical)

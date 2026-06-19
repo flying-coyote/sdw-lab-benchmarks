@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "MV Maintenance Base-to-Batch Crossover: Bounded vs Unbounded Cardinality (T2.4)"
+created: 2026-06-06
+tags: [materialized-view, incremental-maintenance, cardinality, crossover-point, duckdb, streaming]
+---
+
 # MV maintenance: the base:batch crossover (T2.4)
 
 **Tier B · single machine.** R5 gave incremental-vs-recompute at one base size; this sweeps the base at a

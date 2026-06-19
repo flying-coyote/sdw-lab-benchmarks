@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Cross-tool Assurance Gap: Asset and Identity Recovery Benchmark (ocsf-data-health)"
+created: 2026-06-07
+tags: [data-health, asset-management, cross-tool-merge, ocsf, entity-resolution, assurance-gap]
+---
+
 # Results — cross-tool assurance gap (ocsf-data-health)
 
 - DuckDB: `1.5.3`  

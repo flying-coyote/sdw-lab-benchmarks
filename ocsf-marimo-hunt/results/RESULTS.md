@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Marimo vs Jupyter Notebook Reproducibility and Portability for OCSF Detection"
+created: 2026-06-05
+tags: [marimo, jupyter, detection-as-code, reproducibility, notebook-format, ocsf]
+---
+
 # Notebook substrate — marimo .py vs .ipynb (results)
 
 **Tier B/C, a reproducibility/portability demonstration** (the value is a by-construction property; the

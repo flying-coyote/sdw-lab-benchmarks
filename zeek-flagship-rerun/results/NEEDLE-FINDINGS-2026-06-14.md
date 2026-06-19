@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Needle-in-Haystack Point-Lookup Results — OpenSearch vs ClickHouse Native vs Iceberg (2026-06-14)"
+created: 2026-06-14
+tags: [point-lookup, clickhouse, opensearch, iceberg, zeek, two-regime]
+---
+
 # Needle-in-haystack arm — the index's home turf, measured (2026-06-14)
 
 The flagship 5-query suite measured the lakehouse on its best ground (scan-heavy aggregations).

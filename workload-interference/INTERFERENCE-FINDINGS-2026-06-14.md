@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Workload-Interference Bench (#23): P1–P7 Scorecard, Extend-Ladder, and Phase C Knee Reproduction (2026-06-14)"
+created: 2026-06-14
+tags: [workload-interference, clickhouse, starrocks, knee-finding, concurrent-load, benchmark-results]
+---
+
 # Workload-interference (#23) — findings + P1–P7 scorecard (2026-06-14)
 
 First scored run of the pre-registered interference bench (6 of 7 arms; starrocks_mv deferred —

@@ -1,3 +1,10 @@
+---
+type: reference
+title: "SDPP Ingest Throughput — Capability and Limitations Matrix (OSS and Commercial Pipelines)"
+created: 2026-06-08
+tags: [pipeline-platforms, sdpp, vector, cribl, ocsf, capability-comparison]
+---
+
 # SDPP Ingest Throughput Benchmark — Capability & Limitations Matrix
 
 *Last updated: 2026-06-08. Throughput numbers are measured separately in `run.py` / `results/`. This document covers the qualitative layer: what each tool can and cannot do, which modes are fair to run per tool, and where the real constraints live.*

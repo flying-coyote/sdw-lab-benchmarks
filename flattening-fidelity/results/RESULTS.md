@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "OCSF Flattening-Fidelity Benchmark C2 — Three Structural Failure Modes"
+created: 2026-06-01
+tags: [ocsf, flattening-fidelity, detection-miss, grain-loss, timestamp, tier-b]
+---
+
 # Results — OCSF flattening-fidelity benchmark (C2)
 
 - DuckDB: `1.5.3`  

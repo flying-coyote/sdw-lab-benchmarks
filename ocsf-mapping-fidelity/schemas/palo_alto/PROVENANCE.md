@@ -1,3 +1,10 @@
+---
+type: reference
+title: "PAN-OS TRAFFIC Log Schema Provenance — OCSF Mapping Fidelity Benchmark"
+created: 2026-06-02
+tags: [palo-alto, pan-os, ocsf, network-activity-4001, schema-provenance, ocsf-mapping-fidelity]
+---
+
 # Palo Alto Networks PAN-OS TRAFFIC log — provenance
 
 `inventory.json` is the field set of the PAN-OS **TRAFFIC** log (a firewall

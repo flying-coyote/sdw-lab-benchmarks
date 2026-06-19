@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "BENCH-D Integrating Run — Pre-Registration (H-TIERED-REALIZATION-01)"
+created: 2026-06-16
+tags: [bench-d, pre-registration, tiered-realization, ducklake, iceberg, h-tiered-realization-01]
+---
+
 # BENCH-D integrating run — pre-registration (H-TIERED-REALIZATION-01)
 
 _Written before any integrating-run numbers exist (Platt strong inference: the prediction is

@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "BENCH-C v1 Head-to-Head Results: Probabilistic Silent-Error Problem Measured at Frontier with Run-to-Run Variance (2026-06-16)"
+created: 2026-06-16
+tags: [bench-c, ocsf-semantic-query, silent-error, graphrag, text-to-sql, obda]
+---
+
 # BENCH-C-GRAPHRAG head-to-head — RESULTS: the probabilistic silent-error problem is real on OCSF; graph structure and OBDA-same-question-safety are not the demonstrated solution (2026-06-16)
 
 The first first-party OCSF datapoint that runs the load-bearing H-CONCEPT-GRAPH-02 (deterministic OBDA)

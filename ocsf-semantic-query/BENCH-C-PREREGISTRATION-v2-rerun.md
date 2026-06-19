@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "BENCH-C v2 Pre-Registration: Clean Re-Run with Structural Reframe (OBDA vs Probabilistic over OCSF)"
+created: 2026-06-17
+tags: [bench-c, pre-registration, ocsf-semantic-query, graphrag, obda, falsification]
+---
+
 # BENCH-C re-run pre-registration v2 — clean adjudication of OBDA vs probabilistic over OCSF
 
 **Pre-registered before the re-run** (loop iter 13, 2026-06-17). The v1 head-to-head

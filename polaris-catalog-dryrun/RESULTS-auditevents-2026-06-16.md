@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Polaris Audit-Event Forwarding — Operation-Level Events to JDBC Confirmed (2026-06-16)"
+created: 2026-06-16
+tags: [apache-polaris, audit-trail, jdbc, postgres, h-catalog-auditability-01]
+---
+
 # Polaris audit-event forwarding — WORKING: operation-level events persist to a queryable JDBC sink (2026-06-16)
 
 POLARIS-AUDIT, the **last open gate** of H-CATALOG-AUDITABILITY-01 — the one the control-plane rehearsal

@@ -1,3 +1,10 @@
+---
+type: benchmark-spec
+title: "Cloud / VPC Flow Workload Data Generation Plan"
+created: 2026-06-05
+tags: [vpc-flow, cloudtrail, aws, stratus-red-team, ocsf, corpus-generation]
+---
+
 # Cloud / VPC Flow Data Generation Plan
 
 **Status:** spec (2026-05-24). Implementation pending — gated on EDR archetype shipping.

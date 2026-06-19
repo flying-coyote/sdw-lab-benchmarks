@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Zeek Flagship Rerun — Two-Regime Split Results Superseding 145× (2026-06-10)"
+created: 2026-06-10
+tags: [clickhouse, opensearch, iceberg, zeek, two-regime, performance]
+---
+
 # RESULTS — the flagship, re-measured: the index wins the lookups, loses the hunt
 
 **Tier B · single host (Beelink 5800H, WSL2, High Performance plan) · 10M-row synthetic Zeek

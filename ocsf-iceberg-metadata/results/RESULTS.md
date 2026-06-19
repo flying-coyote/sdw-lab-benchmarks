@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Iceberg Metadata and Compaction Scaling Results (Tier B)"
+created: 2026-06-05
+tags: [iceberg, compaction, small-files, scan-planning, duckdb, h-iceberg-v4-metadata-efficiency-01]
+---
+
 # Iceberg metadata & compaction scaling (results)
 
 **Tier B.** How scan-planning cost grows as a table accumulates small appends (snapshots / data

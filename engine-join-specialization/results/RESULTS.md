@@ -1,3 +1,10 @@
+---
+type: evidence
+title: "Engine Join Specialization: StarRocks vs ClickHouse vs Trino on Shared Iceberg (F1/F2/F3)"
+created: 2026-06-10
+tags: [starrocks, clickhouse, trino, iceberg, join-specialization, soc-analytics]
+---
+
 # RESULTS — joins on shared Iceberg: StarRocks wins the deep joins, the spread is small, and ClickHouse's one DNF is its own native table
 
 **Tier B · single host (WSL2, 48 GB / 14 threads, High Performance power plan verified
