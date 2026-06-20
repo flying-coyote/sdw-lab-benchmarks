@@ -69,10 +69,10 @@ corpus (synthetic Zeek conn; flat 16-column schema) — nested OCSF or long-mess
 compress differently, so re-measure per workload in an engagement. A real architecture
 keeps a hot tier for recent data in any case; the honest comparison this table enables is
 *tiered* (hot 7–30 d + warm/cold for the rest) vs *all-hot*, and that arithmetic is exactly
-what `cost_curves.json` supports. The legacy desk-derived 130–227× (H1-COST-08) measured a
-different thing (full platform economics incl. compute and license) — these numbers neither
-confirm nor replace it; they put a measured storage floor of 15–97× under the storage share
-of that claim.
+what `cost_curves.json` supports. The legacy desk-derived 130–227× (H1-COST-08) is a
+storage-only list-price ratio (Splunk indexed storage $3–10/GB ÷ S3 $0.023/GB; compute and
+license sit on top of it, not inside it) — these numbers neither confirm nor replace it;
+they put a measured storage floor of 15–97× under that same storage ratio.
 
 ## What this moves
 
