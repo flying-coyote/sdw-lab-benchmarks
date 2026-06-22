@@ -6,6 +6,8 @@ __pycache__/
 _work/
 *.parquet
 .jars/
-ocsf-mapping-oracle/results/*.log
+# transient bench run logs (regenerable; never a committed artifact). Supersedes the
+# earlier scoped ocsf-mapping-oracle/results/*.log rule.
+*.log
 # tool-emitted OCSF output (large, regenerable from the pinned mapping) — keep scores, not the raw events
 *.emitted.jsonl
