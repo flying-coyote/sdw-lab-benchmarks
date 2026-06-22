@@ -1,0 +1,68 @@
+{
+  "trials_llm": 8,
+  "bm25_channel": "rank_bm25.BM25Okapi",
+  "lookup_class": [
+    "A2",
+    "A6",
+    "A8"
+  ],
+  "tail_class": [
+    "A3",
+    "A4",
+    "A7",
+    "A9"
+  ],
+  "a4_excluded": [
+    "A4"
+  ],
+  "tasks": [
+    {
+      "qid": "A1",
+      "kind": "uidset",
+      "retrieval": "vector-only (tail unchanged from v1)",
+      "keep_nodes": 157
+    },
+    {
+      "qid": "A2",
+      "kind": "substring",
+      "retrieval": "hybrid (vector UNION bm25 over entity docs)",
+      "keep_nodes": 152
+    },
+    {
+      "qid": "A3",
+      "kind": "order",
+      "retrieval": "vector-only (tail unchanged from v1)",
+      "keep_nodes": 157
+    },
+    {
+      "qid": "A5",
+      "kind": "set",
+      "retrieval": "vector-only (tail unchanged from v1)",
+      "keep_nodes": 157
+    },
+    {
+      "qid": "A6",
+      "kind": "uid",
+      "retrieval": "hybrid (vector UNION bm25 over entity docs)",
+      "keep_nodes": 157
+    },
+    {
+      "qid": "A7",
+      "kind": "scalar",
+      "retrieval": "vector-only (tail unchanged from v1)",
+      "keep_nodes": 157
+    },
+    {
+      "qid": "A8",
+      "kind": "substring",
+      "retrieval": "hybrid (vector UNION bm25 over entity docs)",
+      "keep_nodes": 168
+    },
+    {
+      "qid": "A9",
+      "kind": "exact_scalar",
+      "retrieval": "vector-only (tail unchanged from v1)",
+      "keep_nodes": 157
+    }
+  ]
+}
