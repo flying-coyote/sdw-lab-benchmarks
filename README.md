@@ -13,6 +13,10 @@ back here). The reference MOAR stack that runs several of these tiers end-to-end
 
 ## The benchmarks
 
+This table is a curated subset — the benchmark directories in this repo are
+canonical, so see the directory tree (each top-level `*/` with a `run.py`) for
+the full set.
+
 | dir | what it measures | tier | state |
 |---|---|---|---|
 | [`flattening-fidelity/`](flattening-fidelity/) | which detections silently break when semi-structured OCSF/CloudTrail logs are flattened or rolled up to a coarse grain | B | published |
@@ -77,6 +81,9 @@ Each benchmark is self-contained and reads the shared `lib/` via a path shim, so
 it runs from its own directory.
 
 ## Layout
+
+A curated sketch of the tree, not an exhaustive listing — the directories on
+disk are canonical; `ls */run.py` enumerates the full set.
 
 ```
 lib/common.py           shared seeds, epoch anchor, scoring + timing helpers
