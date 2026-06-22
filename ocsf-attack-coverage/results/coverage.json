@@ -1,0 +1,711 @@
+{
+  "benchmark": "ocsf-attack-coverage",
+  "corpus": {
+    "ground_truth_fingerprint": "46af223bf406ee3be09bc024e02a0533d0c63e31acab74f8b55409fa823742d5",
+    "master_seed": 20260601,
+    "store_f": "bench-a-context-collapse/_work/store_f",
+    "tagged_corpus": "corpus/ (projection of Store F, no new rows; see gen_corpus.py)"
+  },
+  "coverage_detected": "3/8",
+  "detected": 3,
+  "determinism": {
+    "method": "canonical() over per_technique (uid-set scores)",
+    "rerun_identical": true
+  },
+  "evidence_tier": "B (synthetic testbed, single machine)",
+  "missed": 4,
+  "noisy": 1,
+  "per_technique": [
+    {
+      "att_ck": "T1003.001",
+      "compiled": null,
+      "false_positives": 0,
+      "matches": 0,
+      "miss_reason": "no_rule_or_no_needle",
+      "ocsf_class_uid": 1007,
+      "precision": 0.0,
+      "rule": null,
+      "scg_lead": {
+        "caveat": "intent-blind artifact_cooccurrence (trust 0.25) is a POSSIBILITY of coverage, not a measured detection; counters!=detects. A may_counter lead is never collapsed into the detected count.",
+        "curated_mitigations_count": 0,
+        "d3fend_join": "matrix_long",
+        "defenses_may_counter": [
+          {
+            "d3fend_id": "d3f:Application-basedProcessIsolation",
+            "label": "Application-basedProcessIsolation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:Hardware-basedProcessIsolation",
+            "label": "Hardware-basedProcessIsolation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:HostReboot",
+            "label": "HostReboot",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:Kernel-basedProcessIsolation",
+            "label": "Kernel-basedProcessIsolation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ProcessLineageAnalysis",
+            "label": "ProcessLineageAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ProcessSegmentExecutionPrevention",
+            "label": "ProcessSegmentExecutionPrevention",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ProcessSelf-ModificationDetection",
+            "label": "ProcessSelf-ModificationDetection",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ProcessSuspension",
+            "label": "ProcessSuspension",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ProcessTermination",
+            "label": "ProcessTermination",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:SegmentAddressOffsetRandomization",
+            "label": "SegmentAddressOffsetRandomization",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          }
+        ],
+        "defenses_may_counter_count": 10,
+        "min_trust_used": 0.0,
+        "resolved": true,
+        "survive_min_trust_0_6": 0,
+        "tactics": [
+          "Credential Access"
+        ]
+      },
+      "stage": "credential access",
+      "state": "MISSED",
+      "store_f_table": "process",
+      "threshold_T": 0.9,
+      "true_positive": 0
+    },
+    {
+      "att_ck": "T1021",
+      "compiled": true,
+      "false_positives": 2959,
+      "matches": 2960,
+      "ocsf_class_uid": 4001,
+      "precision": 0.0003,
+      "rule": "rdp_lateral.yml",
+      "stage": "lateral movement",
+      "state": "NOISY",
+      "store_f_table": "network",
+      "threshold_T": 0.9,
+      "true_positive": 1
+    },
+    {
+      "att_ck": "T1048",
+      "compiled": null,
+      "false_positives": 0,
+      "matches": 0,
+      "miss_reason": "no_rule_or_no_needle",
+      "ocsf_class_uid": 4001,
+      "precision": 0.0,
+      "rule": null,
+      "scg_lead": {
+        "caveat": "intent-blind artifact_cooccurrence (trust 0.25) is a POSSIBILITY of coverage, not a measured detection; counters!=detects. A may_counter lead is never collapsed into the detected count.",
+        "curated_mitigations_count": 0,
+        "d3fend_join": "matrix_long",
+        "defenses_may_counter": [
+          {
+            "d3fend_id": "d3f:Certificate-basedAuthentication",
+            "label": "Certificate-basedAuthentication",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:CertificatePinning",
+            "label": "CertificatePinning",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:CertificateRotation",
+            "label": "CertificateRotation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:Client-serverPayloadProfiling",
+            "label": "Client-serverPayloadProfiling",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ContentQuarantine",
+            "label": "ContentQuarantine",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:DecoyFile",
+            "label": "DecoyFile",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:DomainNameReputationAnalysis",
+            "label": "DomainNameReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:EndpointHealthBeacon",
+            "label": "EndpointHealthBeacon",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:FileEncryption",
+            "label": "FileEncryption",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:FileHashReputationAnalysis",
+            "label": "FileHashReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:FileIntegrityMonitoring",
+            "label": "FileIntegrityMonitoring",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:HomoglyphDetection",
+            "label": "HomoglyphDetection",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:IPReputationAnalysis",
+            "label": "IPReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:LocalFilePermissions",
+            "label": "LocalFilePermissions",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:NetworkNodeInventory",
+            "label": "NetworkNodeInventory",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:NetworkTrafficCommunityDeviation",
+            "label": "NetworkTrafficCommunityDeviation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:NetworkTrafficSignatureAnalysis",
+            "label": "NetworkTrafficSignatureAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:OutboundTrafficFiltering",
+            "label": "OutboundTrafficFiltering",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:PerHostDownload-UploadRatioAnalysis",
+            "label": "PerHostDownload-UploadRatioAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ProtocolMetadataAnomalyDetection",
+            "label": "ProtocolMetadataAnomalyDetection",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:RelayPatternAnalysis",
+            "label": "RelayPatternAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:RemoteFileAccessMediation",
+            "label": "RemoteFileAccessMediation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:RemoteTerminalSessionDetection",
+            "label": "RemoteTerminalSessionDetection",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:URLAnalysis",
+            "label": "URLAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:URLReputationAnalysis",
+            "label": "URLReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:UserGeolocationLogonPatternAnalysis",
+            "label": "UserGeolocationLogonPatternAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          }
+        ],
+        "defenses_may_counter_count": 26,
+        "min_trust_used": 0.0,
+        "resolved": true,
+        "survive_min_trust_0_6": 0,
+        "tactics": [
+          "Exfiltration"
+        ]
+      },
+      "stage": "exfiltration",
+      "state": "MISSED",
+      "store_f_table": "network",
+      "threshold_T": 0.9,
+      "true_positive": 0
+    },
+    {
+      "att_ck": "T1059.001",
+      "compiled": true,
+      "false_positives": 0,
+      "matches": 1,
+      "ocsf_class_uid": 1007,
+      "precision": 1.0,
+      "rule": "encoded_powershell.yml",
+      "stage": "execution",
+      "state": "DETECTED",
+      "store_f_table": "process",
+      "threshold_T": 0.9,
+      "true_positive": 1
+    },
+    {
+      "att_ck": "T1071",
+      "compiled": true,
+      "false_positives": 0,
+      "matches": 1,
+      "ocsf_class_uid": 4003,
+      "precision": 1.0,
+      "rule": "c2_domain.yml",
+      "stage": "C2",
+      "state": "DETECTED",
+      "store_f_table": "dns",
+      "threshold_T": 0.9,
+      "true_positive": 1
+    },
+    {
+      "att_ck": "T1098",
+      "compiled": true,
+      "false_positives": 0,
+      "matches": 1,
+      "ocsf_class_uid": 6003,
+      "precision": 1.0,
+      "rule": "nomfa_privesc.yml",
+      "stage": "priv-esc",
+      "state": "DETECTED",
+      "store_f_table": "api",
+      "threshold_T": 0.9,
+      "true_positive": 1
+    },
+    {
+      "att_ck": "T1110",
+      "compiled": null,
+      "false_positives": 0,
+      "matches": 0,
+      "miss_reason": "no_rule_or_no_needle",
+      "ocsf_class_uid": 3002,
+      "precision": 0.0,
+      "rule": null,
+      "scg_lead": {
+        "caveat": "intent-blind artifact_cooccurrence (trust 0.25) is a POSSIBILITY of coverage, not a measured detection; counters!=detects. A may_counter lead is never collapsed into the detected count.",
+        "curated_mitigations_count": 0,
+        "d3fend_join": "matrix_long",
+        "defenses_may_counter": [
+          {
+            "d3fend_id": "d3f:AdministrativeNetworkActivityAnalysis",
+            "label": "AdministrativeNetworkActivityAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ApplicationExceptionMonitoring",
+            "label": "ApplicationExceptionMonitoring",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:AuthenticationCacheInvalidation",
+            "label": "AuthenticationCacheInvalidation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ChangeDefaultPassword",
+            "label": "ChangeDefaultPassword",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:Client-serverPayloadProfiling",
+            "label": "Client-serverPayloadProfiling",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ConnectionAttemptAnalysis",
+            "label": "ConnectionAttemptAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:CredentialCompromiseScopeAnalysis",
+            "label": "CredentialCompromiseScopeAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:CredentialRevocation",
+            "label": "CredentialRevocation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:CredentialTransmissionScoping",
+            "label": "CredentialTransmissionScoping",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:DecoyUserCredential",
+            "label": "DecoyUserCredential",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:DomainNameReputationAnalysis",
+            "label": "DomainNameReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:EndpointHealthBeacon",
+            "label": "EndpointHealthBeacon",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:IPReputationAnalysis",
+            "label": "IPReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:Multi-factorAuthentication",
+            "label": "Multi-factorAuthentication",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:NetworkNodeInventory",
+            "label": "NetworkNodeInventory",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:NetworkTrafficCommunityDeviation",
+            "label": "NetworkTrafficCommunityDeviation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:NetworkTrafficSignatureAnalysis",
+            "label": "NetworkTrafficSignatureAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:One-timePassword",
+            "label": "One-timePassword",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:OperationalProcessMonitoring",
+            "label": "OperationalProcessMonitoring",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:PasswordAuthentication",
+            "label": "PasswordAuthentication",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:PerHostDownload-UploadRatioAnalysis",
+            "label": "PerHostDownload-UploadRatioAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ProtocolMetadataAnomalyDetection",
+            "label": "ProtocolMetadataAnomalyDetection",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ReissueCredential",
+            "label": "ReissueCredential",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:RemoteTerminalSessionDetection",
+            "label": "RemoteTerminalSessionDetection",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:UserGeolocationLogonPatternAnalysis",
+            "label": "UserGeolocationLogonPatternAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          }
+        ],
+        "defenses_may_counter_count": 25,
+        "min_trust_used": 0.0,
+        "resolved": true,
+        "survive_min_trust_0_6": 0,
+        "tactics": []
+      },
+      "stage": "credential access",
+      "state": "MISSED",
+      "store_f_table": "auth",
+      "threshold_T": 0.9,
+      "true_positive": 0
+    },
+    {
+      "att_ck": "T1490",
+      "compiled": null,
+      "false_positives": 0,
+      "matches": 0,
+      "miss_reason": "no_rule_or_no_needle",
+      "ocsf_class_uid": 1007,
+      "precision": 0.0,
+      "rule": null,
+      "scg_lead": {
+        "caveat": "intent-blind artifact_cooccurrence (trust 0.25) is a POSSIBILITY of coverage, not a measured detection; counters!=detects. A may_counter lead is never collapsed into the detected count.",
+        "curated_mitigations_count": 0,
+        "d3fend_join": "matrix_long",
+        "defenses_may_counter": [
+          {
+            "d3fend_id": "d3f:Application-basedProcessIsolation",
+            "label": "Application-basedProcessIsolation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ConfigurationInventory",
+            "label": "ConfigurationInventory",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:CredentialScrubbing",
+            "label": "CredentialScrubbing",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:DynamicAnalysis",
+            "label": "DynamicAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:EmulatedFileAnalysis",
+            "label": "EmulatedFileAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ExecutableAllowlisting",
+            "label": "ExecutableAllowlisting",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ExecutableDenylisting",
+            "label": "ExecutableDenylisting",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:RestoreConfiguration",
+            "label": "RestoreConfiguration",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:RestoreSoftware",
+            "label": "RestoreSoftware",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:SoftwareInventory",
+            "label": "SoftwareInventory",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:SoftwareUpdate",
+            "label": "SoftwareUpdate",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:TrustedLibrary",
+            "label": "TrustedLibrary",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:VariableInitialization",
+            "label": "VariableInitialization",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          }
+        ],
+        "defenses_may_counter_count": 13,
+        "min_trust_used": 0.0,
+        "resolved": true,
+        "survive_min_trust_0_6": 0,
+        "tactics": [
+          "Impact"
+        ]
+      },
+      "stage": "impact",
+      "state": "MISSED",
+      "store_f_table": "process",
+      "threshold_T": 0.9,
+      "true_positive": 0
+    }
+  ],
+  "precision_threshold_T": 0.9,
+  "states_note": "DETECTED/MISSED/NOISY are MEASURED runtime firing against planted ground truth; the scg_lead on a MISSED technique is an inferred POSSIBILITY carrying proxy_quality, never a coverage guarantee.",
+  "techniques_total": 8
+}

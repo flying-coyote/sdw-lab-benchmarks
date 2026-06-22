@@ -1,0 +1,259 @@
+{
+  "benchmark": "ocsf-attack-coverage",
+  "corpus": {
+    "ground_truth_fingerprint": "46af223bf406ee3be09bc024e02a0533d0c63e31acab74f8b55409fa823742d5",
+    "master_seed": 20260601,
+    "store_f": "bench-a-context-collapse/_work/store_f",
+    "tagged_corpus": "corpus/ (projection of Store F, no new rows; see gen_corpus.py)"
+  },
+  "coverage_detected": "1/3",
+  "detected": 1,
+  "evidence_tier": "B (synthetic testbed, single machine)",
+  "missed": 1,
+  "noisy": 1,
+  "per_technique": [
+    {
+      "att_ck": "T1021",
+      "compiled": true,
+      "false_positives": 2959,
+      "matches": 2960,
+      "ocsf_class_uid": 4001,
+      "precision": 0.0003,
+      "rule": "rdp_lateral.yml",
+      "stage": "lateral movement",
+      "state": "NOISY",
+      "store_f_table": "network",
+      "threshold_T": 0.9,
+      "true_positive": 1
+    },
+    {
+      "att_ck": "T1048",
+      "compiled": null,
+      "false_positives": 0,
+      "matches": 0,
+      "miss_reason": "no_rule_or_no_needle",
+      "ocsf_class_uid": 4001,
+      "precision": 0.0,
+      "rule": null,
+      "scg_lead": {
+        "caveat": "intent-blind artifact_cooccurrence (trust 0.25) is a POSSIBILITY of coverage, not a measured detection; counters!=detects. A may_counter lead is never collapsed into the detected count.",
+        "curated_mitigations_count": 0,
+        "d3fend_join": "matrix_long",
+        "defenses_may_counter": [
+          {
+            "d3fend_id": "d3f:Certificate-basedAuthentication",
+            "label": "Certificate-basedAuthentication",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:CertificatePinning",
+            "label": "CertificatePinning",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:CertificateRotation",
+            "label": "CertificateRotation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:Client-serverPayloadProfiling",
+            "label": "Client-serverPayloadProfiling",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ContentQuarantine",
+            "label": "ContentQuarantine",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:DecoyFile",
+            "label": "DecoyFile",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:DomainNameReputationAnalysis",
+            "label": "DomainNameReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:EndpointHealthBeacon",
+            "label": "EndpointHealthBeacon",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:FileEncryption",
+            "label": "FileEncryption",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:FileHashReputationAnalysis",
+            "label": "FileHashReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:FileIntegrityMonitoring",
+            "label": "FileIntegrityMonitoring",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:HomoglyphDetection",
+            "label": "HomoglyphDetection",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:IPReputationAnalysis",
+            "label": "IPReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:LocalFilePermissions",
+            "label": "LocalFilePermissions",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:NetworkNodeInventory",
+            "label": "NetworkNodeInventory",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:NetworkTrafficCommunityDeviation",
+            "label": "NetworkTrafficCommunityDeviation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:NetworkTrafficSignatureAnalysis",
+            "label": "NetworkTrafficSignatureAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:OutboundTrafficFiltering",
+            "label": "OutboundTrafficFiltering",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:PerHostDownload-UploadRatioAnalysis",
+            "label": "PerHostDownload-UploadRatioAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:ProtocolMetadataAnomalyDetection",
+            "label": "ProtocolMetadataAnomalyDetection",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:RelayPatternAnalysis",
+            "label": "RelayPatternAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:RemoteFileAccessMediation",
+            "label": "RemoteFileAccessMediation",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:RemoteTerminalSessionDetection",
+            "label": "RemoteTerminalSessionDetection",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:URLAnalysis",
+            "label": "URLAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:URLReputationAnalysis",
+            "label": "URLReputationAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          },
+          {
+            "d3fend_id": "d3f:UserGeolocationLogonPatternAnalysis",
+            "label": "UserGeolocationLogonPatternAnalysis",
+            "proxy_quality": "artifact_cooccurrence",
+            "trust": 0.25,
+            "weak": true
+          }
+        ],
+        "defenses_may_counter_count": 26,
+        "min_trust_used": 0.0,
+        "resolved": true,
+        "survive_min_trust_0_6": 0,
+        "tactics": [
+          "Exfiltration"
+        ]
+      },
+      "stage": "exfiltration",
+      "state": "MISSED",
+      "store_f_table": "network",
+      "threshold_T": 0.9,
+      "true_positive": 0
+    },
+    {
+      "att_ck": "T1059.001",
+      "compiled": true,
+      "false_positives": 0,
+      "matches": 1,
+      "ocsf_class_uid": 1007,
+      "precision": 1.0,
+      "rule": "encoded_powershell.yml",
+      "stage": "execution",
+      "state": "DETECTED",
+      "store_f_table": "process",
+      "threshold_T": 0.9,
+      "true_positive": 1
+    }
+  ],
+  "precision_threshold_T": 0.9,
+  "smoke": true,
+  "states_note": "DETECTED/MISSED/NOISY are MEASURED runtime firing against planted ground truth; the scg_lead on a MISSED technique is an inferred POSSIBILITY carrying proxy_quality, never a coverage guarantee.",
+  "techniques_total": 3
+}

@@ -1,0 +1,17 @@
+title: Failed logon (base)
+name: failed_logon
+status: experimental
+logsource:
+  service: auth
+detection:
+  sel: {outcome: FAILURE}
+  condition: sel
+---
+title: Failed-logon burst
+status: experimental
+correlation:
+  type: event_count
+  rules: [failed_logon]
+  group-by: [actor_user]
+  timespan: 10m
+  condition: {gte: 10}

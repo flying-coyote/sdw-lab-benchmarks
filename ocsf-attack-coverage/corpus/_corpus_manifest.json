@@ -1,0 +1,42 @@
+{
+  "benchmark": "ocsf-attack-coverage",
+  "corpus_source": "projection of Store F (no new rows)",
+  "ground_truth_fingerprint": "46af223bf406ee3be09bc024e02a0533d0c63e31acab74f8b55409fa823742d5",
+  "master_seed": 20260601,
+  "tables": {
+    "api": {
+      "att_ck_tags": [
+        "T1048",
+        "T1098"
+      ],
+      "class_uid": 6003,
+      "malicious": 31,
+      "rows": 28033
+    },
+    "dns": {
+      "att_ck_tags": [
+        "T1071"
+      ],
+      "class_uid": 4003,
+      "malicious": 1,
+      "rows": 18001
+    },
+    "network": {
+      "att_ck_tags": [
+        "T1021",
+        "T1071"
+      ],
+      "class_uid": 4001,
+      "malicious": 61,
+      "rows": 60061
+    },
+    "process": {
+      "att_ck_tags": [
+        "T1059.001"
+      ],
+      "class_uid": 1007,
+      "malicious": 1,
+      "rows": 40002
+    }
+  }
+}

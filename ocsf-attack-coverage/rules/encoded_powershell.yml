@@ -1,0 +1,9 @@
+title: Encoded PowerShell on Workstation
+status: experimental
+logsource:
+  category: process_creation
+detection:
+  sel:
+    cmd_line|contains: '-EncodedCommand'
+    device_hostname: 'WS1'
+  condition: sel

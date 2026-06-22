@@ -1,0 +1,10 @@
+title: Privilege Escalation Without MFA
+status: experimental
+logsource:
+  service: cloudtrail
+detection:
+  sel:
+    api_operation: 'AttachUserPolicy'
+  filter_mfa:
+    mfa_present: true
+  condition: sel and not filter_mfa
