@@ -1,0 +1,36 @@
+{
+  "assumption_tested": "does the silent window-drop persist on a window-function-capable lakehouse engine (DuckDB)?",
+  "benchmark": "ocsf-sigma-detection / DuckDB execution (H-SIGMA-01 lakehouse leg, backend 3)",
+  "compile_path": "pySigma SQLite backend (no dedicated DuckDB backend), executed verbatim on DuckDB",
+  "correlation_coverage": {
+    "event_count": "compiled WINDOWLESS (timespan dropped)",
+    "temporal_ordered": "compiled",
+    "value_count": "compiled WINDOWLESS"
+  },
+  "emit_classification": "WINDOWLESS (timespan dropped)",
+  "event_count": {
+    "correct_windowed_sql": "SELECT actor_user FROM (SELECT actor_user, COUNT(*) c FROM logs WHERE outcome='FAILURE' GROUP BY actor_user, CAST(timestamp // 600 AS BIGINT) HAVING c >= 10) GROUP BY actor_user",
+    "emitted_run": {
+      "flagged": 70,
+      "fp_benign": 0,
+      "fp_decoy": 50,
+      "fp_total": 50,
+      "precision": 0.286,
+      "recall": 1.0,
+      "tp": 20
+    },
+    "emitted_sql": "SELECT actor_user, COUNT(*) AS event_count FROM (SELECT * FROM logs WHERE outcome='FAILURE') AS subquery GROUP BY actor_user HAVING event_count >= 10",
+    "windowed_control": {
+      "flagged": 20,
+      "fp_benign": 0,
+      "fp_decoy": 0,
+      "fp_total": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tp": 20
+    }
+  },
+  "events": 4093,
+  "evidence_tier": "B (single host; synthetic planted corpus; DuckDB + pySigma SQLite backend = generic path)",
+  "three_band": "SILENTLY-DEGRADES (windowless emit + over-fire despite window-function capability)"
+}
