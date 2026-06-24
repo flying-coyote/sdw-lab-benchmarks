@@ -54,9 +54,11 @@ paid Matrix.
 
 **Scope it leaves open (do NOT overclaim):** DuckDB has no *dedicated* pySigma backend, so this is the
 generic-path data point. The pre-reg's primary prediction — that an engine with a *mature dedicated* pySigma
-backend emits windowed — is untested here; the next backends (ClickHouse/Trino, via docker) should be checked
-for a dedicated windowed backend before the c5 re-score is finalized. H-SIGMA-01 advances 3 → 3.5 (execution on
-a third, columnar/lakehouse backend class).
+backend emits windowed — is untested here. **RESOLVED by backends 4-7** (see
+[`RESULTS-lakehouse-engines-4-7-2026-06-23.md`](RESULTS-lakehouse-engines-4-7-2026-06-23.md)): ClickHouse
+*does* have a dedicated, engine-native pySigma backend and it **also** emits windowless `event_count` and
+silently degrades — so even the dedicated path drops the count-family window. H-SIGMA-01 advances 3 → 4
+across the full leg (five lakehouse backends, two compile paths).
 
 ## Guard (anti-Goodhart)
 
@@ -64,4 +66,5 @@ The over-fire *rate* (0.286 precision / 50 decoys) tracks the planted 50:20 deco
 transferable. The transferable claim is the **mechanism**: windowless emit on the generic pySigma path → the
 engine over-fires regardless of its window-function capability, and the three-band classification
 (SILENTLY-DEGRADES for DuckDB-via-generic-backend). Tier B, single host, n=1 corpus shape. Backends 4–7
-(ClickHouse, Trino, StarRocks, Dremio) remain **not-run** — never inferred.
+(ClickHouse, Trino, StarRocks, Dremio) were subsequently **run** 2026-06-23 — all SILENTLY-DEGRADES; see
+[`RESULTS-lakehouse-engines-4-7-2026-06-23.md`](RESULTS-lakehouse-engines-4-7-2026-06-23.md).
