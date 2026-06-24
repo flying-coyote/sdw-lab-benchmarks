@@ -1,0 +1,38 @@
+{
+  "assumption_tested": "does a DEDICATED, engine-native pySigma backend preserve the event_count window where the generic path dropped it?",
+  "benchmark": "ocsf-sigma-detection / ClickHouse execution (H-SIGMA-01 lakehouse leg, backend 4 \u2014 DEDICATED backend)",
+  "compile_path": "DEDICATED pySigma ClickHouse backend (ClickhouseBackend) \u2014 engine-native (emits uniqExact for value_count)",
+  "correlation_coverage": {
+    "event_count": "compiled WINDOWLESS (timespan dropped)",
+    "temporal_ordered": "compiled WINDOWED (carries max-min <= 600 span)",
+    "temporal_sql": "SELECT actor_user, arrayStringConcat(groupArray(sigma_rule_id), ',') AS rule_sequence, uniqExact(sigma_rule_id) AS rule_count, min(timestamp) AS first_event, max(timestamp) AS last_event FROM (SELECT *, 'a' AS sigma_rule_id FROM logs WHERE outcome='FAILURE' UNION ALL SELECT *, 'b' AS sigma_rule_id FROM logs WHERE outcome='SUCCESS') AS subquery GROUP BY actor_user HAVING rule_count >= 2 AND toUnixTimestamp(last_event) - toUnixTimestamp(first_event) <= 600",
+    "value_count": "compiled WINDOWLESS (CH-native uniqExact, window dropped)",
+    "value_count_sql": "SELECT src_ip, uniqExact(actor_user) AS value_count FROM (SELECT * FROM logs WHERE outcome='FAILURE') AS subquery GROUP BY src_ip HAVING value_count >= 10"
+  },
+  "emit_classification": "WINDOWLESS (timespan dropped)",
+  "event_count": {
+    "correct_windowed_sql": "SELECT actor_user FROM (SELECT actor_user, count(*) c FROM logs WHERE outcome='FAILURE' GROUP BY actor_user, intDiv(timestamp, 600) HAVING c >= 10) GROUP BY actor_user",
+    "emitted_run": {
+      "flagged": 70,
+      "fp_benign": 0,
+      "fp_decoy": 50,
+      "fp_total": 50,
+      "precision": 0.286,
+      "recall": 1.0,
+      "tp": 20
+    },
+    "emitted_sql": "SELECT actor_user, count(*) AS event_count FROM (SELECT * FROM logs WHERE outcome='FAILURE') AS subquery GROUP BY actor_user HAVING event_count >= 10",
+    "windowed_control": {
+      "flagged": 20,
+      "fp_benign": 0,
+      "fp_decoy": 0,
+      "fp_total": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tp": 20
+    }
+  },
+  "events": 4093,
+  "evidence_tier": "B (single host; synthetic planted corpus; ClickHouse + DEDICATED pySigma-backend-clickhouse 1.0.0)",
+  "three_band": "SILENTLY-DEGRADES (windowless emit + over-fire from a DEDICATED backend despite engine capability)"
+}

@@ -1,0 +1,33 @@
+{
+  "assumption_tested": "does the generic-path window-drop persist on a distributed MPP-JVM engine (Trino) with full window functions?",
+  "benchmark": "ocsf-sigma-detection / Trino execution (H-SIGMA-01 lakehouse leg, backend 5 \u2014 GENERIC path)",
+  "compile_path": "generic pySigma SQLite backend (no dedicated Trino/Presto backend on PyPI), executed on Trino memory catalog",
+  "emit_classification": "WINDOWLESS (timespan dropped)",
+  "emit_dialect_note": "verbatim emit rejected by Trino (TrinoUserError: TrinoUserError(type=USER_ERROR, name=COLUMN_NOT_FOUND, message=\"line 1:133: Colu); ran windowless-equivalent (count(*) in HAVING)",
+  "emitted_executed_sql": "SELECT actor_user, count(*) AS event_count FROM (SELECT * FROM logs WHERE outcome='FAILURE') AS subquery GROUP BY actor_user HAVING count(*) >= 10",
+  "emitted_verbatim_sql": "SELECT actor_user, COUNT(*) AS event_count FROM (SELECT * FROM logs WHERE outcome='FAILURE') AS subquery GROUP BY actor_user HAVING event_count >= 10",
+  "event_count": {
+    "correct_windowed_sql": "SELECT actor_user FROM (SELECT actor_user, count(*) c FROM logs WHERE outcome='FAILURE' GROUP BY actor_user, (timestamp / 600) HAVING count(*) >= 10) GROUP BY actor_user",
+    "emitted_run": {
+      "flagged": 70,
+      "fp_benign": 0,
+      "fp_decoy": 50,
+      "fp_total": 50,
+      "precision": 0.286,
+      "recall": 1.0,
+      "tp": 20
+    },
+    "windowed_control": {
+      "flagged": 20,
+      "fp_benign": 0,
+      "fp_decoy": 0,
+      "fp_total": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tp": 20
+    }
+  },
+  "events": 4093,
+  "evidence_tier": "B (single host; synthetic planted corpus; Trino + generic pySigma SQLite backend, no dedicated Trino backend)",
+  "three_band": "SILENTLY-DEGRADES (windowless emit + over-fire despite window-function capability)"
+}

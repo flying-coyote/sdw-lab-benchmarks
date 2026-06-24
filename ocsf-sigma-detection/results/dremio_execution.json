@@ -1,0 +1,34 @@
+{
+  "assumption_tested": "does the generic-path window-drop persist on a federation/Arrow engine (Dremio)?",
+  "benchmark": "ocsf-sigma-detection / Dremio execution (H-SIGMA-01 lakehouse leg, backend 7 \u2014 GENERIC path)",
+  "compile_path": "generic pySigma SQLite backend (no dedicated Dremio backend), executed over Dremio REST on $scratch",
+  "emit_classification": "WINDOWLESS (timespan dropped)",
+  "emit_dialect_note": null,
+  "emitted_executed_sql": "SELECT actor_user, COUNT(*) AS event_count FROM (SELECT * FROM $scratch.logs WHERE outcome='FAILURE') AS subquery GROUP BY actor_user HAVING event_count >= 10",
+  "emitted_verbatim_sql": "SELECT actor_user, COUNT(*) AS event_count FROM (SELECT * FROM logs WHERE outcome='FAILURE') AS subquery GROUP BY actor_user HAVING event_count >= 10",
+  "event_count": {
+    "correct_windowed_sql": "SELECT actor_user FROM (SELECT actor_user, count(*) c FROM $scratch.logs WHERE outcome='FAILURE' GROUP BY actor_user, FLOOR(\"timestamp\"/600) HAVING count(*) >= 10) t GROUP BY actor_user",
+    "emitted_run": {
+      "flagged": 70,
+      "fp_benign": 0,
+      "fp_decoy": 50,
+      "fp_total": 50,
+      "precision": 0.286,
+      "recall": 1.0,
+      "tp": 20
+    },
+    "windowed_control": {
+      "flagged": 20,
+      "fp_benign": 0,
+      "fp_decoy": 0,
+      "fp_total": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tp": 20
+    }
+  },
+  "events": 4093,
+  "evidence_tier": "B (single host; synthetic planted corpus; Dremio OSS + generic pySigma SQLite backend, no dedicated Dremio backend)",
+  "scope_guard": "firing-correctness ONLY (no Dremio perf numbers); independent of the answer-equality reader-count benchmark",
+  "three_band": "SILENTLY-DEGRADES (windowless emit + over-fire despite window-function capability)"
+}
