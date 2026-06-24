@@ -149,8 +149,9 @@ What it refutes, precisely:
    increment).
 
 A deployed private page (`~/securitydataworks/src/pages/matrix/private/detection-survivability.astro`)
-restates the per-engine totals and must be re-checked against any ratified re-score. Route all of this through
-an MDR (status **Proposed**); do not auto-edit the paid Matrix YAMLs or the page.
+restates the per-engine totals and must be re-checked against any ratified re-score. This is routed through
+**MDR-0034** (`project1/02-projects/securitydataworks/decisions/MDR-0034-c5-detection-survivability-band-rescore.md`,
+status **Proposed**, owner-gated); do not auto-edit the paid Matrix YAMLs or the page.
 
 This is the named c5 `revalidation_trigger`. **Surface it to the owner as a c5 re-score routed through an MDR
 (status Proposed); do not auto-edit the paid Matrix YAMLs.**
