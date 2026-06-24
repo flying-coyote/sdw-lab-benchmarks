@@ -1,0 +1,245 @@
+{
+  "benchmark": "ocsf-sigma-detection / scheduled-arm decomposition (H-SIGMA-01 check A, MDR-0034 rethink)",
+  "corpus_original": {
+    "corpus": "original (decoys spread over 7d)",
+    "decoy_fp_by_phase": {
+      "10m": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "1h": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "24h": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "48h": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "5m": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "6h": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "7d": {
+        "0pct": 50,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      }
+    },
+    "events": 4093,
+    "scheduled": {
+      "10m": {
+        "flagged": 20,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "1h": {
+        "flagged": 20,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "24h": {
+        "flagged": 20,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "48h": {
+        "flagged": 20,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "5m": {
+        "flagged": 0,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "tp": 0
+      },
+      "6h": {
+        "flagged": 20,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "7d": {
+        "flagged": 70,
+        "fp_benign": 0,
+        "fp_decoy": 50,
+        "precision": 0.286,
+        "recall": 1.0,
+        "tp": 20
+      }
+    },
+    "unbounded": {
+      "flagged": 70,
+      "fp_benign": 0,
+      "fp_decoy": 50,
+      "precision": 0.286,
+      "recall": 1.0,
+      "tp": 20
+    }
+  },
+  "corpus_replanted_24h": {
+    "corpus": "replanted (decoys spread over 24h)",
+    "decoy_fp_by_phase": {
+      "10m": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "1h": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "24h": {
+        "0pct": 50,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "48h": {
+        "0pct": 50,
+        "25pct": 0,
+        "50pct": 50,
+        "75pct": 50
+      },
+      "5m": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "6h": {
+        "0pct": 0,
+        "25pct": 0,
+        "50pct": 0,
+        "75pct": 0
+      },
+      "7d": {
+        "0pct": 50,
+        "25pct": 50,
+        "50pct": 50,
+        "75pct": 50
+      }
+    },
+    "events": 2067,
+    "scheduled": {
+      "10m": {
+        "flagged": 20,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "1h": {
+        "flagged": 20,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "24h": {
+        "flagged": 70,
+        "fp_benign": 0,
+        "fp_decoy": 50,
+        "precision": 0.286,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "48h": {
+        "flagged": 70,
+        "fp_benign": 0,
+        "fp_decoy": 50,
+        "precision": 0.286,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "5m": {
+        "flagged": 2,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 1.0,
+        "recall": 0.1,
+        "tp": 2
+      },
+      "6h": {
+        "flagged": 20,
+        "fp_benign": 0,
+        "fp_decoy": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "tp": 20
+      },
+      "7d": {
+        "flagged": 70,
+        "fp_benign": 0,
+        "fp_decoy": 50,
+        "precision": 0.286,
+        "recall": 1.0,
+        "tp": 20
+      }
+    },
+    "unbounded": {
+      "flagged": 70,
+      "fp_benign": 0,
+      "fp_decoy": 50,
+      "precision": 0.286,
+      "recall": 1.0,
+      "tp": 20
+    }
+  },
+  "evidence_tier": "B (single host; synthetic; DuckDB in-process; emit byte-identical across generic-SQL engines)",
+  "lookbacks": [
+    "5m",
+    "10m",
+    "1h",
+    "6h",
+    "24h",
+    "48h",
+    "7d"
+  ],
+  "model": "tumbling scheduler lookback L = the windowless emit's predicate applied per (timestamp-BASE)//L bucket, unioned; aligned to BASE",
+  "note": "schedule grid aligned to BASE -> true-burst recall flattered (decoy-FP-vs-lookback curve is the result of interest). Re-planted corpus is a deliberately-constructed demonstration of the mechanism at a realistic daily-batch cadence, NOT a transferable rate.",
+  "question": "is the windowless-emit over-fire (precision 0.286) a property of the dropped timespan or of running the emit as an unbounded scan with no scheduler?",
+  "verbatim_emit": "SELECT actor_user, COUNT(*) AS event_count FROM (SELECT * FROM logs WHERE outcome='FAILURE') AS subquery GROUP BY actor_user HAVING event_count >= 10"
+}
