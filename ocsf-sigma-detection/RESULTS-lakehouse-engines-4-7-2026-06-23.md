@@ -144,9 +144,10 @@ What it refutes, precisely:
    reached by the count-correlation emit). This is a refinement of the criterion's role, not a new criterion.
 3. The confirming engine bands move **Tier C → Tier B** (measured) per the licensing rule, but **downward**
    (the trigger's "lift the band-4 cap" assumed confirmation; this is the refute branch, so the bands fall,
-   not rise). H-SIGMA-01 advances **3 → 4** on the tracker's execution-breadth convention (five lakehouse
-   backends, two compile paths, one dedicated engine-native — not a fresh rubric, the existing per-stage
-   increment).
+   not rise). H-SIGMA-01 is **HELD at 3/5** (no magnitude move): this leg strengthens the 3/5 evidence
+   within-band (five lakehouse backends, a third pySigma backend, the dedicated-backend finding) but clears
+   neither condition the tracker holds open for 3.5 — a non-pySigma / SIEM-native compiler (all backends here
+   are pySigma) and a newer-pySigma version (still 1.3.3). The confidence move is gated, not asserted here.
 
 A deployed private page (`~/securitydataworks/src/pages/matrix/private/detection-survivability.astro`)
 restates the per-engine totals and must be re-checked against any ratified re-score. This is routed through

@@ -57,8 +57,9 @@ generic-path data point. The pre-reg's primary prediction — that an engine wit
 backend emits windowed — is untested here. **RESOLVED by backends 4-7** (see
 [`RESULTS-lakehouse-engines-4-7-2026-06-23.md`](RESULTS-lakehouse-engines-4-7-2026-06-23.md)): ClickHouse
 *does* have a dedicated, engine-native pySigma backend and it **also** emits windowless `event_count` and
-silently degrades — so even the dedicated path drops the count-family window. H-SIGMA-01 advances 3 → 4
-across the full leg (five lakehouse backends, two compile paths).
+silently degrades — so even the dedicated path drops the count-family window. H-SIGMA-01 is **HELD at 3/5**
+across the full leg (strengthened within-band — five lakehouse backends, three pySigma backends — but the two
+gate conditions for 3.5, a non-pySigma compiler and a newer-pySigma version, remain unmet).
 
 ## Guard (anti-Goodhart)
 
