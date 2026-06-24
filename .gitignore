@@ -11,3 +11,6 @@ _work/
 *.log
 # tool-emitted OCSF output (large, regenerable from the pinned mapping) — keep scores, not the raw events
 *.emitted.jsonl
+
+# local agent notes (operate from project1; keep public repo minimized)
+CLAUDE.md
