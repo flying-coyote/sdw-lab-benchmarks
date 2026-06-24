@@ -30,9 +30,14 @@ WINDOWED and SURVIVE where the generic-path engines degrade. This leg measures w
 | # | Engine | Class | Compile path | Emitted `event_count` | Emitted precision | Decoy FP | Windowed control | Three-band |
 |---|---|---|---|---|---|---|---|---|
 | 4 | ClickHouse 26.5.1 | columnar OLAP (C++) | **DEDICATED** (`ClickhouseBackend`) | **WINDOWLESS** | 0.286 | 50 | 1.0 / 0 FP | **SILENTLY-DEGRADES** |
-| 5 | Trino 481 | distributed MPP (JVM) | generic SQLite | **WINDOWLESS** | 0.286 | 50 | 1.0 / 0 FP | **SILENTLY-DEGRADES** |
+| 5 | Trino 481 | distributed MPP (JVM) | generic SQLite | **WINDOWLESS** | 0.286† | 50 | 1.0 / 0 FP | **SILENTLY-DEGRADES** |
 | 6 | StarRocks 4.1.1 | MPP OLAP (C++) | generic SQLite | **WINDOWLESS** | 0.286 | 50 | 1.0 / 0 FP | **SILENTLY-DEGRADES** |
 | 7 | Dremio OSS 26.0 | federation / Arrow | generic SQLite | **WINDOWLESS** | 0.286 | 50 | 1.0 / 0 FP | **SILENTLY-DEGRADES** |
+
+† Trino's firing numbers are from the windowless-*equivalent* repair (`HAVING count(*) >= 10`): pySigma's
+verbatim emit (`HAVING event_count >= 10`, the alias) was **rejected** by Trino (`COLUMN_NOT_FOUND`). The
+WINDOWLESS classification is computed from the verbatim emit; the repair is the same windowless query made
+Trino-legal (see the dialect footnote). The other three engines ran pySigma's emit verbatim.
 
 Each engine ran the pySigma-emitted windowless query AND a hand-written correct windowed control (10-min
 tumbling bucket, `intDiv`/`DIV`/`FLOOR` per dialect). Every windowed control fires exactly the 20 true bursts
@@ -63,8 +68,14 @@ generic path is fragile across SQL engines.
 | StarRocks | MPP OLAP (C++) | generic SQLite | WINDOWLESS | SILENTLY-DEGRADES |
 | Dremio | federation / Arrow | generic SQLite | WINDOWLESS | SILENTLY-DEGRADES |
 
-**Seven architecturally-distinct backends, two independent compile paths (one dedicated, one generic), one
-result.** Every SQL-family backend silently drops the `event_count` 10-minute window and over-fires.
+**The independent unit here is the compile path, not the engine.** There are two paths — the generic SQLite
+backend (SQLite/DuckDB/Trino/StarRocks/Dremio all compile through it and emit the byte-identical windowless
+string) and the dedicated ClickHouse backend — and both drop the `event_count` window. So the strong evidence
+is "two independent emission codebases, same drop," confirmed to *execute and over-fire* on seven
+architecturally-distinct engines. The four new engines' identical 70-flagged / 0.286 / 50-decoy-FP rows are
+**corpus-determined** (the same windowless query over the same 4093-event corpus must return the same set) —
+they confirm the windowless emit runs and over-fires on each engine/dialect, they are **not** four
+independent firing draws. The transferable claim is the mechanism + the three-band, not the rate.
 
 ## The mechanism is per-correlation-type, not per-engine (the precise basis for the c5 re-score)
 
@@ -104,21 +115,42 @@ The **inversion finding survives** (best-performance ≠ best-detection-survivab
 silently over-fires a brute-force rule), but its **mechanism changes**: from *temporal-primitive presence per
 engine* to *per-correlation-type emission fidelity in pySigma*, uniform across engines.
 
+**Correction to the pre-reg's own phrasing (verified against the YAMLs 2026-06-23):** the pre-reg quote above
+says the current bands "rank Trino/Dremio above ClickHouse partly on the temporal surface." That phrase is
+imprecise. In the actual scoring files (`02-projects/securitydataworks/scoring/matrix-c5-detection-survivability-{A,B,C}.yaml`),
+`temporal_correlation_primitive` is scored **5 for Trino, Dremio, AND ClickHouse alike** — temporal does
+**not** differentiate them. The Archetype-A per-engine gap (Trino/Dremio 4.20 vs ClickHouse 3.95) comes
+**entirely from `sigma_sql_compilation_fidelity`** (Trino/Dremio 4 vs ClickHouse 3). So the falsifier's bite
+does not land on a temporal *ranking* (there isn't one); it lands on the uniform `detection_survivability_band`
+= 4 itself, whose band-4 value bakes in a "the window survives on these SQL engines" assumption that this
+measurement falsifies for the count family.
+
 ## What this does to Matrix Move #3 c5 (owner-gated re-score — NOT auto-applied)
 
-The Move #3 c5 detection-survivability build (`securitydataworks/scoring/matrix-c5-detection-survivability-*.yaml`)
-currently ranks SQL lakehouse engines against each other on the temporal surface (Trino/Dremio above
-ClickHouse), extrapolated Tier-C from documented window-function support and capped at band 4. This
-measurement refutes that **per-engine** ranking for the count-correlation family:
+The Move #3 c5 detection-survivability build (`02-projects/securitydataworks/scoring/matrix-c5-detection-survivability-{A,B,C}.yaml`)
+scores each engine on four weighted criteria; the headline `detection_survivability_band` is **uniform 4**
+across Trino/Dremio/ClickHouse (Archetype A), Tier C, capped at band 4 because correct execution on these
+engines was unmeasured (SIGMA-EXEC had run only PPL+SQLite). This leg is the named `revalidation_trigger`.
+What it refutes, precisely:
 
-1. For `event_count` / `value_count` correlations, the survivability band should be **uniform-low across all
-   SQL engines** — the window is dropped at the pySigma conversion layer regardless of engine or dedicated
-   backend. No engine-vs-engine differentiation is supported by measurement.
-2. The differentiation that does exist is **per-correlation-type** (`temporal_ordered` survives;
-   `event_count`/`value_count` do not) and belongs to `sigma_sql_compilation_fidelity`, **not**
-   `temporal_correlation_primitive`.
-3. H-SIGMA-01 advances **3 → 4** (executed on five lakehouse backends across two compile paths, including a
-   dedicated engine-native backend).
+1. The uniform `detection_survivability_band` = 4 for the **count-correlation family** (`event_count` /
+   `value_count`) is unsupported — the window is dropped at the pySigma conversion layer regardless of engine
+   or dedicated backend, so the band should go **uniform-low** for that family. The band-4 value encoded a
+   window-survives assumption that measurement falsifies.
+2. The per-engine spread the build already assigns to `sigma_sql_compilation_fidelity` (Trino/Dremio 4 vs
+   ClickHouse 3) is the **correct locus** of engine differentiation and stands — the measurement *confirms*
+   that the real difference is compilation/dialect fidelity, not the temporal primitive (which is tied at 5
+   and should arguably drop for the count family too, since no SQL engine's temporal primitive is actually
+   reached by the count-correlation emit). This is a refinement of the criterion's role, not a new criterion.
+3. The confirming engine bands move **Tier C → Tier B** (measured) per the licensing rule, but **downward**
+   (the trigger's "lift the band-4 cap" assumed confirmation; this is the refute branch, so the bands fall,
+   not rise). H-SIGMA-01 advances **3 → 4** on the tracker's execution-breadth convention (five lakehouse
+   backends, two compile paths, one dedicated engine-native — not a fresh rubric, the existing per-stage
+   increment).
+
+A deployed private page (`~/securitydataworks/src/pages/matrix/private/detection-survivability.astro`)
+restates the per-engine totals and must be re-checked against any ratified re-score. Route all of this through
+an MDR (status **Proposed**); do not auto-edit the paid Matrix YAMLs or the page.
 
 This is the named c5 `revalidation_trigger`. **Surface it to the owner as a c5 re-score routed through an MDR
 (status Proposed); do not auto-edit the paid Matrix YAMLs.**
