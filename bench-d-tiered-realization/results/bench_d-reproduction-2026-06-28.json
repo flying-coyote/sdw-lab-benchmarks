@@ -1,0 +1,28 @@
+{
+  "bench": "BENCH-D write/commit-freshness contract (achievable core; no Kafka/Flink front)",
+  "purpose": "Independent reproduction of the two owner-input-free arms (file-write Iceberg + SQL-transaction DuckLake) to move MDR-0026 file-write + SQL-transaction arms HOLD -> partial-DONE. Never-write/ISK arm remains owner-gated (Streambased access).",
+  "date": "2026-06-28",
+  "tier": "B",
+  "host": "single host (Beelink 5800H, WSL2)",
+  "batches": [1000, 10000, 100000],
+  "reps_per_run": 3,
+  "reproducibility_basis": "Synthetic conn-like corpus, seed pinned random.seed(7); harness reports median of 3 reps per batch; two independent process runs per arm on 2026-06-28; cross-checked against the 2026-06-15 baseline (results/bench_d.json). DuckLake arm fully local; Iceberg arm in-container on ejs-bench_ejs network (Nessie REST + MinIO), internal endpoints.",
+  "arms": {
+    "ducklake_catalog_inline": {
+      "paradigm": "SQL-transaction (DuckDB + DuckLake, local catalog + parquet)",
+      "run1_write_commit_ms": {"1000": 17.1, "10000": 19.4, "100000": 77.9},
+      "run2_write_commit_ms": {"1000": 15.3, "10000": 19.7, "100000": 88.6},
+      "query_after_write_ms_run1": {"1000": 6.3, "10000": 6.6, "100000": 6.0},
+      "baseline_2026_06_15_write_commit_ms": {"1000": 15.7, "10000": 19.2, "100000": 79.7}
+    },
+    "iceberg_file_commit": {
+      "paradigm": "file-write (Apache Iceberg append/commit, pyiceberg -> Nessie/MinIO)",
+      "run1_write_commit_ms": {"1000": 71.0, "10000": 80.3, "100000": 135.0},
+      "run2_write_commit_ms": {"1000": 98.2, "10000": 94.9, "100000": 151.3},
+      "query_after_write_ms_run1": {"1000": 133.4, "10000": 229.6, "100000": 344.0},
+      "baseline_2026_06_15_write_commit_ms": {"1000": 70.6, "10000": 71.7, "100000": 124.4}
+    }
+  },
+  "verdict": "Both arms reproduce the 2026-06-15 bands within run-to-run noise ~3 weeks later. Write/commit ordering stable: DuckLake (SQL-transaction) < Iceberg (file-write) at every batch; both sub-second. The divergence is read-after-write (DuckLake single-digit ms vs Iceberg ~130-344 ms), matching the original finding.",
+  "remaining_owner_gated": "never-write / virtual-view arm (Streambased ISK) — requires vendor access; not runnable on-box. Per MDR-0026 owner brief, that arm not closing means the metadata_realization criterion stays HOLD-PROPOSED."
+}
