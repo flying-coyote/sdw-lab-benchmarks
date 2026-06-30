@@ -16,7 +16,7 @@
       "err_sample": [],
       "mem_min_kb": 32549260,
       "aborted": null,
-      "result_key": "127.0.0.1"
+      "result_key": "<lab-host>"
     },
     {
       "n_clients": 2,
@@ -31,7 +31,7 @@
       "err_sample": [],
       "mem_min_kb": 32548400,
       "aborted": null,
-      "result_key": "127.0.0.1"
+      "result_key": "<lab-host>"
     },
     {
       "n_clients": 4,
@@ -46,7 +46,7 @@
       "err_sample": [],
       "mem_min_kb": 32485124,
       "aborted": null,
-      "result_key": "127.0.0.1"
+      "result_key": "<lab-host>"
     },
     {
       "n_clients": 8,
@@ -61,7 +61,7 @@
       "err_sample": [],
       "mem_min_kb": 32453684,
       "aborted": null,
-      "result_key": "127.0.0.1"
+      "result_key": "<lab-host>"
     },
     {
       "n_clients": 16,
@@ -76,7 +76,7 @@
       "err_sample": [],
       "mem_min_kb": 32331024,
       "aborted": null,
-      "result_key": "127.0.0.1"
+      "result_key": "<lab-host>"
     }
   ]
 }

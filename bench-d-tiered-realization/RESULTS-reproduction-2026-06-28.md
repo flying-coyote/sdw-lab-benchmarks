@@ -45,7 +45,7 @@ on top of a sub-second commit, not an inherent commit cost — confirmed again h
 - Synthetic conn-like corpus only (structured; no real telemetry); data seed pinned `random.seed(7)`.
 - Harness reports median of REPS=3 per batch; two independent process runs per arm on 2026-06-28, plus
   the 2026-06-15 baseline run — three independent draws agree in band.
-- DuckLake arm: `/home/USER/sdw-lab-benchmarks/.venv/bin/python bench_d.py` with `ARMS=ducklake`
+- DuckLake arm: `~/sdw-lab-benchmarks/.venv/bin/python bench_d.py` with `ARMS=ducklake`
   (fully local; `/tmp/benchd.ducklake` + `/tmp/benchd_data`).
 - Iceberg arm: one-off container from `ejs-bench-lab:latest` on `--network ejs-bench_ejs`, env
   `ARMS=iceberg S3_ENDPOINT=http://minio:9000 NESSIE_URI=http://nessie:19120/iceberg/`. Infra brought

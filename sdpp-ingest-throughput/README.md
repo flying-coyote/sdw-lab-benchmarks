@@ -135,7 +135,7 @@ artificial handicap.
 ```bash
 # from the sdpp-ingest-throughput dir, with the repo venv
 SDW_DUCK_MEMORY_LIMIT=12GB \
-  /home/USER/sdw-lab-benchmarks/.venv/bin/python3 run.py --n 1000000 --trials 3
+  ~/sdw-lab-benchmarks/.venv/bin/python3 run.py --n 1000000 --trials 3
 # quick run:        --n 100000
 # pipeline-only:    --modes discard
 # subset of engines:--engines "vector,tenzir,otelcol-contrib"

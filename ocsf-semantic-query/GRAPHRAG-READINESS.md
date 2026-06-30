@@ -306,7 +306,7 @@ misses the needle → **silent**; an empty answer, a parse failure, or a model r
 
 ## 3. Dependencies — ready vs. to-pull
 
-Repo venv: `/home/USER/sdw-lab-benchmarks/.venv/bin/python3` (3.12.3). Do **not** edit
+Repo venv: `~/sdw-lab-benchmarks/.venv/bin/python3` (3.12.3). Do **not** edit
 `lib/common.py`; the arm imports `configure_duckdb` from it as the other arms do.
 
 ### Ready now (verified)
@@ -325,7 +325,7 @@ Repo venv: `/home/USER/sdw-lab-benchmarks/.venv/bin/python3` (3.12.3). Do **not*
 
 `networkx` install was the only mutation this session:
 ```bash
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 -m pip install networkx   # done — 3.6.1
+~/sdw-lab-benchmarks/.venv/bin/python3 -m pip install networkx   # done — 3.6.1
 ```
 
 ### To pull when the box frees (deferred — do NOT run now)
@@ -343,7 +343,7 @@ is wanted later, it is a no-sudo pip install but pulls heavier native deps and a
 HNSW index — skip it for the deterministic lab run unless there's a reason:
 ```bash
 # OPTIONAL, not recommended for the deterministic run:
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 -m pip install chromadb
+~/sdw-lab-benchmarks/.venv/bin/python3 -m pip install chromadb
 ```
 
 No sudo, no docker, no system packages anywhere in the path.
@@ -484,19 +484,19 @@ None of these blocks the run except the embed-model pull, which is a single defe
 ollama pull nomic-embed-text
 
 # 1. (sanity) confirm light deps + Store F + ground truth are present
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 -c "import networkx, numpy, duckdb, requests; print('deps ok')"
-ls /home/USER/sdw-lab-benchmarks/bench-a-context-collapse/_work/store_f/*.parquet
-ls /home/USER/sdw-lab-benchmarks/ocsf-semantic-testbed/_work/ground_truth.json
+~/sdw-lab-benchmarks/.venv/bin/python3 -c "import networkx, numpy, duckdb, requests; print('deps ok')"
+ls ~/sdw-lab-benchmarks/bench-a-context-collapse/_work/store_f/*.parquet
+ls ~/sdw-lab-benchmarks/ocsf-semantic-testbed/_work/ground_truth.json
 
 # 2. determinism check (graph fingerprint + scorer stability; prints the greedy-decode caveat)
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 ocsf-semantic-query/run_graphrag.py --determinism
+~/sdw-lab-benchmarks/.venv/bin/python3 ocsf-semantic-query/run_graphrag.py --determinism
 
 # 3. run the GraphRAG arm — primary generator, then the small-model leg
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 ocsf-semantic-query/run_graphrag.py --model gemma4:26b --embed-model nomic-embed-text
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 ocsf-semantic-query/run_graphrag.py --model phi3:latest  --embed-model nomic-embed-text
+~/sdw-lab-benchmarks/.venv/bin/python3 ocsf-semantic-query/run_graphrag.py --model gemma4:26b --embed-model nomic-embed-text
+~/sdw-lab-benchmarks/.venv/bin/python3 ocsf-semantic-query/run_graphrag.py --model phi3:latest  --embed-model nomic-embed-text
 
 # 4. re-render the combined three-arm results
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 ocsf-semantic-query/run.py --render-only
+~/sdw-lab-benchmarks/.venv/bin/python3 ocsf-semantic-query/run.py --render-only
 ```
 
 (`run_graphrag.py` is implemented as the §4 plan describes — that file is the one piece of

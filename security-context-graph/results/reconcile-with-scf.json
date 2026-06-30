@@ -179,13 +179,13 @@
   "skos_edges": 606,
   "soft_failures": [],
   "sources": {
-    "cim_bridge": "/home/USER/project1/02-projects/d3fend-wall/c1-fieldmapping/cim_ocsf_bridge.json",
-    "edges": "/home/USER/project1/02-projects/d3fend-wall/data/edges.csv",
-    "matrix_long": "/home/USER/project1/02-projects/d3fend-wall/data/matrix_long.csv",
-    "ontology": "/home/USER/project1/02-projects/d3fend-wall/cache/d3fend_ontology.json",
-    "scf_sankey": "/home/USER/project1/02-projects/scf-mapping/data/scf_sankey.json",
-    "table_b": "/home/USER/project1/02-projects/d3fend-wall/data/table_b_off_artifacts.csv",
-    "wall_columns": "/home/USER/project1/02-projects/d3fend-wall/data/wall_columns.csv"
+    "cim_bridge": "~/project1/02-projects/d3fend-wall/c1-fieldmapping/cim_ocsf_bridge.json",
+    "edges": "~/project1/02-projects/d3fend-wall/data/edges.csv",
+    "matrix_long": "~/project1/02-projects/d3fend-wall/data/matrix_long.csv",
+    "ontology": "~/project1/02-projects/d3fend-wall/cache/d3fend_ontology.json",
+    "scf_sankey": "~/project1/02-projects/scf-mapping/data/scf_sankey.json",
+    "table_b": "~/project1/02-projects/d3fend-wall/data/table_b_off_artifacts.csv",
+    "wall_columns": "~/project1/02-projects/d3fend-wall/data/wall_columns.csv"
   },
   "total_edges": 56294,
   "total_nodes": 3305,

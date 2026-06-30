@@ -40,10 +40,10 @@ No WSL-side action needed; the power plan setting persists across WSL restarts.
 ## 3. Verify venv and deps
 
 ```bash
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 -c "
+~/sdw-lab-benchmarks/.venv/bin/python3 -c "
 import duckdb, pyarrow
 import sys, os
-sys.path.insert(0, '/home/USER/sdw-lab-benchmarks/lib')
+sys.path.insert(0, '~/sdw-lab-benchmarks/lib')
 from common import configure_duckdb, logical_fingerprint, time_trials, pin_artifact, parquet_manifest
 print('duckdb', duckdb.__version__)
 print('pyarrow', pyarrow.__version__)
@@ -58,16 +58,16 @@ pyarrow 23.0.1
 lib/common imports ok
 ```
 
-Any `ImportError` or version mismatch: run `pip install -r /home/USER/sdw-lab-benchmarks/requirements.txt` in the venv.
+Any `ImportError` or version mismatch: run `pip install -r ~/sdw-lab-benchmarks/requirements.txt` in the venv.
 
 ---
 
 ## 4. Syntax / import check (light — no DuckDB queries)
 
 ```bash
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 -c "
+~/sdw-lab-benchmarks/.venv/bin/python3 -c "
 import ast, sys
-with open('/home/USER/sdw-lab-benchmarks/ocsf-zorder-pruning/run.py') as f:
+with open('~/sdw-lab-benchmarks/ocsf-zorder-pruning/run.py') as f:
     src = f.read()
 ast.parse(src)
 print('AST parse OK')
@@ -77,7 +77,7 @@ print('AST parse OK')
 Then confirm the module imports without invoking `main()`:
 
 ```bash
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 - <<'EOF'
+~/sdw-lab-benchmarks/.venv/bin/python3 - <<'EOF'
 import sys, types
 
 # stub duckdb and pyarrow so no engine initialises
@@ -102,11 +102,11 @@ _m.sha256_file = lambda p: ''
 _m.time_trials = lambda fn, **kw: {}
 _s.modules['common'] = _m
 
-sys.path.insert(0, '/home/USER/sdw-lab-benchmarks/ocsf-zorder-pruning')
-sys.path.insert(0, '/home/USER/sdw-lab-benchmarks/lib')
+sys.path.insert(0, '~/sdw-lab-benchmarks/ocsf-zorder-pruning')
+sys.path.insert(0, '~/sdw-lab-benchmarks/lib')
 import importlib.util
 spec = importlib.util.spec_from_file_location(
-    'run', '/home/USER/sdw-lab-benchmarks/ocsf-zorder-pruning/run.py')
+    'run', '~/sdw-lab-benchmarks/ocsf-zorder-pruning/run.py')
 mod = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
 print('module import OK — no DuckDB query executed')
@@ -134,7 +134,7 @@ _scale([0,100,200], 0, 200) = [0, 32767, 65535]  OK
 ## 5. Run (default corpus, 2M rows)
 
 ```bash
-cd /home/USER/sdw-lab-benchmarks
+cd ~/sdw-lab-benchmarks
 source .venv/bin/activate
 python ocsf-zorder-pruning/run.py
 ```

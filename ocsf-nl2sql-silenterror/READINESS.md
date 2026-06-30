@@ -39,7 +39,7 @@ The full design, scoring, and the relationship to BENCH-B / BENCH-C are in
 
 ## 2. Dependencies — ready vs. to-pull
 
-Repo venv: `/home/USER/sdw-lab-benchmarks/.venv/bin/python` (3.12.3). Do **not** edit
+Repo venv: `~/sdw-lab-benchmarks/.venv/bin/python` (3.12.3). Do **not** edit
 `lib/common.py`; `run.py` imports `configure_duckdb` from it as the other benchmarks do.
 
 ### Ready now (verified this session)
@@ -95,20 +95,20 @@ caveat note.
 
 ```bash
 # 1. (sanity) light deps + corpus present — no DuckDB, no LLM
-/home/USER/sdw-lab-benchmarks/.venv/bin/python -c "import duckdb, requests; print('deps ok')"
-ls /home/USER/sdw-lab-benchmarks/bench-a-context-collapse/_work/store_f/*.parquet   # expect 7
-ls /home/USER/sdw-lab-benchmarks/ocsf-semantic-testbed/_work/ground_truth.json
+~/sdw-lab-benchmarks/.venv/bin/python -c "import duckdb, requests; print('deps ok')"
+ls ~/sdw-lab-benchmarks/bench-a-context-collapse/_work/store_f/*.parquet   # expect 7
+ls ~/sdw-lab-benchmarks/ocsf-semantic-testbed/_work/ground_truth.json
 
 # 2. confirm the two models are present and the daemon is up
 ollama list | grep -E 'phi3:latest|gemma4:26b'
 curl -s http://localhost:11434/api/tags >/dev/null && echo 'ollama up'
 
 # 3. the scored run — both local models, temperature 0
-/home/USER/sdw-lab-benchmarks/.venv/bin/python \
+~/sdw-lab-benchmarks/.venv/bin/python \
     ocsf-nl2sql-silenterror/run.py --models phi3:latest gemma4:26b
 
 # 4. (optional) re-render RESULTS.md from results.json — no DuckDB, no LLM
-/home/USER/sdw-lab-benchmarks/.venv/bin/python \
+~/sdw-lab-benchmarks/.venv/bin/python \
     ocsf-nl2sql-silenterror/run.py --render-only
 ```
 

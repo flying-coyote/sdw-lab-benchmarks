@@ -73,7 +73,7 @@ below the CV is not a real difference — state that.
 
 ```bash
 # activate the shared venv
-source /home/USER/sdw-lab-benchmarks/.venv/bin/activate
+source ~/sdw-lab-benchmarks/.venv/bin/activate
 
 # default 2M-row corpus (~5–10 min including write + timing trials)
 python ocsf-zorder-pruning/run.py

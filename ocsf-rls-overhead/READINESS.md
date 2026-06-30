@@ -25,7 +25,7 @@ Status as of 2026-06-08. Run this doc top-to-bottom before starting the workload
 
 ```bash
 # Run from the repo root — should print "deps ok, duckdb 1.5.3"
-/home/USER/sdw-lab-benchmarks/.venv/bin/python3 -c \
+~/sdw-lab-benchmarks/.venv/bin/python3 -c \
   "import duckdb, statistics, hashlib, json; print('deps ok, duckdb', duckdb.__version__)"
 ```
 
@@ -38,12 +38,12 @@ No extra packages required beyond the top-level `requirements.txt`; the benchmar
 
 All heavy DuckDB benchmarks in this repo are serialised. Confirm no other bench is running
 before starting. The workload uses the shared DuckDB venv at
-`/home/USER/sdw-lab-benchmarks/.venv/`.
+`~/sdw-lab-benchmarks/.venv/`.
 
 ### Default run (1M rows, ~2–5 minutes)
 
 ```bash
-cd /home/USER/sdw-lab-benchmarks
+cd ~/sdw-lab-benchmarks
 .venv/bin/python3 ocsf-rls-overhead/run.py
 ```
 
@@ -53,7 +53,7 @@ cd /home/USER/sdw-lab-benchmarks
 ### Larger run (5M rows, ~10–20 minutes, stronger signal)
 
 ```bash
-cd /home/USER/sdw-lab-benchmarks
+cd ~/sdw-lab-benchmarks
 .venv/bin/python3 ocsf-rls-overhead/run.py --rows 5000000
 ```
 
@@ -63,7 +63,7 @@ row is ~1 GB, well within the WSL2 48 GB cap.
 ### Background (5M, log to file)
 
 ```bash
-cd /home/USER/sdw-lab-benchmarks
+cd ~/sdw-lab-benchmarks
 nohup .venv/bin/python3 ocsf-rls-overhead/run.py --rows 5000000 \
     > ocsf-rls-overhead/results/run.log 2>&1 &
 echo $!
