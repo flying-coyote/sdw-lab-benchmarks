@@ -6,10 +6,10 @@ CV-gated number: **when a streaming security table fragments into many small fil
 scan latency does compaction recover?**
 
 This replaces a hand-wave. The `iceberg-maintenance.astro` essay used to assert a precise
-"60s → 12–20s, a 3-to-5x speedup, at the a very-large-scale deployment"; the 2026-06-13 conflation
+"60s → 12–20s, a 3-to-5x speedup, at a very-large-scale deployment"; the 2026-06-13 conflation
 untangle established (via git provenance) that those specifics were AI-drafted blog color
-ported from the retired blog with no first-party source, and that "a very-large-scale" is a large enterprise's
-(analyzed-not-operated) scale. The essay was softened to "directionally a 3-to-5x
+ported from the retired blog with no first-party source (an unattributed, analyzed-not-operated
+scale figure). The essay was softened to "directionally a 3-to-5x
 improvement." This bench makes it a measurement.
 
 ## Design (single host, Tier B)
