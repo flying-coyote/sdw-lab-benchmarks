@@ -191,6 +191,16 @@ Added 2026-06-06 from the post-R8 review. Resource-light unless noted; each maps
   External system.
 - **BENCH-B frontier leg** (needs ANTHROPIC_API_KEY) and **BENCH-C OBDA arm** (Ontop + R2RML) — external-dep
   gated, as above.
+- [ ] **EvidenceForge correlated-corpus candidate** (Cisco Talos, MIT, 2026 —
+  github.com/Cisco-Talos/EvidenceForge). Deterministic synthetic generator: one `SecurityEvent` model
+  fans out to 20+ cross-correlated raw formats (Windows Security, Sysmon, Zeek's 13 log types, eCAR,
+  syslog, Snort, web/proxy), Hawkes-process timing, no LLM at runtime. Candidate *source corpus* for the
+  OCSF mapping-fidelity (C1) and cross-source/entity-join (flattening-fidelity) benches: it emits raw
+  per-source formats but NOT OCSF, so the natural leg is generate → map to OCSF 1.x → measure
+  field/meaning fidelity on realistic multi-source data rather than the pure-function-of-row-index
+  corpora these benches use today. Doubles as external corroboration of the well-connected
+  normalization-gap claim. Resource-light to trial (Python 3.11/uv). Ties to H-PIPELINE-OCSF-FIDELITY-01
+  and the C1 mapping work.
 
 ## Essay slate (findings → /writing pillars)
 
