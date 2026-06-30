@@ -7,7 +7,7 @@ tags: [asset-registry, charts, lab-benchmarks, publication-mapping, chart-manife
 
 # Benchmark chart asset manifest
 
-Built 34 lab charts + 5 correctness tables from first-party `sdw-lab-benchmarks` results, plus 7 campaign graphics (2026-06-10, `_p*`/`_pb*` scripts) and 6 book figures (2026-06-10, `_bk*` scripts, MOAr restructure Wave C) — see the bottom sections.
+Built 34 lab charts + 5 correctness tables from first-party `sdw-lab-benchmarks` results, plus 7 campaign graphics (2026-06-10, `_p*`/`_pb*` scripts) and 6 book figures (2026-06-10, `_bk*` scripts, MOAR restructure Wave C) — see the bottom sections.
 All numbers re-derived from source `RESULTS.md`; brand-styled via `chartstyle.py`; collision guards enforced (the two 96.3%s, the two storage premiums, the two recall headlines never cross).
 Web-served at `securitydataworks.com/research/charts/<file>`.
 
@@ -74,7 +74,7 @@ One visual per campaign post, per `project1/02-projects/securitydataworks/linked
 
 Collision guards honored: `storage-footprint-7x` is the MOAR footprint measurement, never the 1.80×/1.93× fidelity premiums; no campaign graphic touches the 96.3% or recall-headline families.
 
-## Book figures (built 2026-06-10 — MOAr restructure task #28 Wave C, builds #1–#6)
+## Book figures (built 2026-06-10 — MOAR restructure task #28 Wave C, builds #1–#6)
 
 Each replaces repeated template prose in the restructured book; placements are the `<!-- FIGURE: name (build #N) -->` comments already in the chapters. Every number is carried exactly from the named book source (no lab data); the framing/process diagrams carry an explicit "framing diagram / framework-derived / illustrative — not a measurement" tier line instead of a Tier letter. Each ships as a web PNG plus a grayscale 300-dpi `-print` variant for the PDF build.
 
