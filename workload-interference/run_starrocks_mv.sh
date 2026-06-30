@@ -7,7 +7,7 @@
 # scheduled shape and ABORTS the arm if rewrite is not engaged (so a scored result means
 # the MVs really took). One engine at a time (isolation), client cpuset 12,13.
 set -u
-REPO=/home/USER/sdw-lab-benchmarks
+REPO=$HOME/sdw-lab-benchmarks
 EJS=$REPO/engine-join-specialization
 WI=$REPO/workload-interference
 NET=ejs-bench_ejs

@@ -6,8 +6,8 @@
 # registered. After both arms succeed, --compare and re-capture the full draw to
 # results_revalidation3_2026-06-14/.
 set -u
-cd /home/USER/sdw-lab-benchmarks/zeek-flagship-rerun
-PYV=/home/USER/sdw-lab-benchmarks/.venv/bin/python
+cd $HOME/sdw-lab-benchmarks/zeek-flagship-rerun
+PYV=$HOME/sdw-lab-benchmarks/.venv/bin/python
 LOG=_work/finish_draw3.log; : > "$LOG"
 log(){ echo "[$(date +%H:%M:%S)] $*" | tee -a "$LOG"; }
 

@@ -4,8 +4,8 @@
 # published 2026-06-10 results are backed up in results_published_backup/ for the new-vs-old
 # validation. minio + nessie stay up throughout (iceberg/dremio arms need them; low overhead).
 set -u
-cd /home/USER/sdw-lab-benchmarks/zeek-flagship-rerun
-PYV=/home/USER/sdw-lab-benchmarks/.venv/bin/python
+cd $HOME/sdw-lab-benchmarks/zeek-flagship-rerun
+PYV=$HOME/sdw-lab-benchmarks/.venv/bin/python
 LOG=_work/revalidate.log; : > "$LOG"
 log(){ echo "[$(date +%H:%M:%S)] $*" | tee -a "$LOG"; }
 

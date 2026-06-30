@@ -12,6 +12,7 @@ parent_image/command_line+md5-tail/process_guid/sha256/...). ClickHouse = MergeT
 OpenSearch = index arm (keyword fields + analyzed `command_line`). Host-run: ClickHouse :8323,
 OpenSearch :9200. Synthetic/structured only. Tier B, single host.
 """
+import os
 import json, time, urllib.request, sys
 import duckdb, pyarrow as pa
 import clickhouse_connect
@@ -149,7 +150,7 @@ def main():
     res["columnar_wins_all_aggs"] = all(v["winner"].startswith("columnar") for v in aggs)
     res["index_wins_all_lookups"] = all(v["winner"].startswith("index") for v in lkps)
     res["two_regime_holds"] = res["columnar_wins_all_aggs"] and res["index_wins_all_lookups"]
-    json.dump(res, open("/home/USER/sdw-lab-benchmarks/edr-two-regime/results/edr_two_regime.json", "w"), indent=2, default=str)
+    json.dump(res, open(os.path.expanduser("~/sdw-lab-benchmarks/edr-two-regime/results/edr_two_regime.json"), "w"), indent=2, default=str)
     print(f"\ntwo-regime on EDR/Sysmon: columnar wins all aggs={res['columnar_wins_all_aggs']} | "
           f"index wins all lookups={res['index_wins_all_lookups']} | HOLDS={res['two_regime_holds']}")
 

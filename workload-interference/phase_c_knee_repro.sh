@@ -11,7 +11,7 @@
 # writes results/results.json (merge-by-arm) so after each rep we copy that arm's record
 # out to results/phase_c/rep<R>_<arm>.json before the next rep overwrites it.
 set -u
-REPO=/home/USER/sdw-lab-benchmarks
+REPO=$HOME/sdw-lab-benchmarks
 EJS=$REPO/engine-join-specialization
 WI=$REPO/workload-interference
 NET=ejs-bench_ejs

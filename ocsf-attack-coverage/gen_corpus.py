@@ -20,7 +20,7 @@ fingerprint -- a re-run produces byte-identical corpus parquet given an unchange
 No new randomness is introduced (no new_rng draw, no datetime.now); the corpus is the same
 synthetic, aggregate-safe telemetry, only re-keyed by ground truth. Synthetic only.
 
-Run: /home/USER/sdw-lab-benchmarks/.venv/bin/python gen_corpus.py
+Run: ~/sdw-lab-benchmarks/.venv/bin/python gen_corpus.py
 """
 
 import json

@@ -21,7 +21,7 @@ Adversary fixes folded in (design panel wj6zv61h0, verdict FIX-FIRST):
 The multi-tier arm + watermark lifecycle + pinned-vs-naive correctness oracle + conservation invariant
 (fix E) + degenerate all-Iceberg control are Window 2; this file leaves clearly-marked seams for them.
 
-Run on host:  /home/USER/sdw-lab-benchmarks/.venv/bin/python bench_d_integrating.py
+Run on host:  ~/sdw-lab-benchmarks/.venv/bin/python bench_d_integrating.py
 """
 import json
 import os

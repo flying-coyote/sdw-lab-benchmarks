@@ -7,7 +7,7 @@
 # Writes to results/results_extended.json (a copy of results.json is taken first so the ≤4×
 # run is preserved).
 set -u
-REPO=/home/USER/sdw-lab-benchmarks
+REPO=$HOME/sdw-lab-benchmarks
 EJS=$REPO/engine-join-specialization
 NET=ejs-bench_ejs
 IMG=ejs-bench-lab

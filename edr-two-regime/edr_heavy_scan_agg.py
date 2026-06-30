@@ -10,6 +10,7 @@ grows with scan size; the first run was 3M). ClickHouse (columnar) vs OpenSearch
 Tier B, single host. Hypothesis: on HEAVY scan-aggregations at 10M, ClickHouse wins (the columnar half
 generalizes to EDR), even though cheap terms-aggs at 3M went to the index.
 """
+import os
 import json, time, sys, urllib.request
 import duckdb, clickhouse_connect
 
@@ -127,7 +128,7 @@ def main():
     heavy = [v for v in res["queries"].values() if v["regime"] == "heavy_agg" and v["winner"] != "n/a"]
     res["columnar_wins_heavy_aggs"] = all(v["winner"].startswith("columnar") for v in heavy) if heavy else None
     res["columnar_heavy_agg_win_count"] = f"{sum(v['winner'].startswith('columnar') for v in heavy)}/{len(heavy)}"
-    json.dump(res, open("/home/USER/sdw-lab-benchmarks/edr-two-regime/results/edr_heavy_scan_agg.json", "w"), indent=2, default=str)
+    json.dump(res, open(os.path.expanduser("~/sdw-lab-benchmarks/edr-two-regime/results/edr_heavy_scan_agg.json"), "w"), indent=2, default=str)
     print(f"\ncolumnar wins HEAVY aggs at {n//1_000_000}M: {res['columnar_heavy_agg_win_count']} "
           f"(all={res['columnar_wins_heavy_aggs']}) | lookup stays index-turf")
 

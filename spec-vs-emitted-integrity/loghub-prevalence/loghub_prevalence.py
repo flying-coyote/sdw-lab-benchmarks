@@ -19,7 +19,7 @@ For each real line, against the documented standard:
 Scope (honest): OS/infra/app logs, not security-vendor telemetry; transfers to the positional-format
 CLASS (the hypothesis's structural claim); the security-vendor-specific rate stays an extrapolation.
 
-Run: /home/USER/sdw-lab-benchmarks/.venv/bin/python loghub_prevalence.py
+Run: ~/sdw-lab-benchmarks/.venv/bin/python loghub_prevalence.py
 """
 import hashlib
 import json

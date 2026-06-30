@@ -7,8 +7,8 @@
 # Iceberg table, THEN run revalidate.sh (which manages the engine arms one-at-a-time and keeps
 # minio+nessie up). Captures the draw to results_revalidation3_2026-06-14/. No git here.
 set -u
-cd /home/USER/sdw-lab-benchmarks/zeek-flagship-rerun
-PYV=/home/USER/sdw-lab-benchmarks/.venv/bin/python
+cd $HOME/sdw-lab-benchmarks/zeek-flagship-rerun
+PYV=$HOME/sdw-lab-benchmarks/.venv/bin/python
 LOG=_work/draw3_proper.log; : > "$LOG"
 log(){ echo "[$(date +%H:%M:%S)] $*" | tee -a "$LOG"; }
 

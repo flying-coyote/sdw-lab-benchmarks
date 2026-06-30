@@ -4,7 +4,7 @@
 # the base knee (to 256x) for P5's predicted >=2-step rightward shift. Host-side capture to
 # _work/phase_c/mv_starrocks_mv.json (results/ is root-owned). One engine, client cpuset 12,13.
 set -u
-REPO=/home/USER/sdw-lab-benchmarks
+REPO=$HOME/sdw-lab-benchmarks
 EJS=$REPO/engine-join-specialization
 WI=$REPO/workload-interference
 NET=ejs-bench_ejs

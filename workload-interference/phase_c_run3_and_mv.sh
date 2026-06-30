@@ -10,7 +10,7 @@
 #      ladder past the base knee (to 256x) to see P5's predicted >=2-step rightward shift.
 # Captures go to _work/phase_c/ (jerem-owned; results/ is root-owned and unwritable here).
 set -u
-REPO=/home/USER/sdw-lab-benchmarks
+REPO=$HOME/sdw-lab-benchmarks
 EJS=$REPO/engine-join-specialization
 WI=$REPO/workload-interference
 NET=ejs-bench_ejs

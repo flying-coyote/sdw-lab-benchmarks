@@ -5,7 +5,7 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VENV="/home/USER/sdw-lab-benchmarks/.venv/bin/python3"
+VENV="$HOME/sdw-lab-benchmarks/.venv/bin/python3"
 PG_IMAGE="${PG_IMAGE:-postgres:17}"
 CONTAINER="pg-ducklake-benchE"
 PORT="${PGPORT:-5544}"   # off the default 5432 to avoid colliding with any local pg

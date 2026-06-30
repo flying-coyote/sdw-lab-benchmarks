@@ -9,7 +9,7 @@
 # run.py merges into results/results.json. starrocks_mv is OMITTED (needs the make_mvs.sql
 # MV build first — a separate operator step); noted as not-run.
 set -u
-REPO=/home/USER/sdw-lab-benchmarks
+REPO=$HOME/sdw-lab-benchmarks
 EJS=$REPO/engine-join-specialization
 NET=ejs-bench_ejs
 IMG=ejs-bench-lab

@@ -3,6 +3,7 @@
 A high-cardinality group-by on (host,user,process,minute) over 10M rows builds a ~10M-entry hash
 that must exceed tight caps, forcing DuckDB to spill (graceful) or fail (cliff). Sweeps memory_limit
 at threads=1 (the most endpoint-like) to find the floor + the failure SHAPE. Synthetic. Tier B."""
+import os
 import json, os, time, shutil, tempfile
 import duckdb
 
@@ -52,7 +53,7 @@ def main():
     res["graceful_spill_seen"] = any(r.get("spilled") and r["completed"] for r in res["runs"])
     res["cliff_seen"] = any(not r["completed"] for r in res["runs"])
     res["cliff_at"] = next((r["mem"] for r in res["runs"] if not r["completed"]), None)
-    json.dump(res, open("/home/USER/sdw-lab-benchmarks/duckdb-edge-floor/results/heavy_cliff.json", "w"), indent=2, default=str)
+    json.dump(res, open(os.path.expanduser("~/sdw-lab-benchmarks/duckdb-edge-floor/results/heavy_cliff.json"), "w"), indent=2, default=str)
     shutil.rmtree(work, ignore_errors=True)
     print(f"\nheavy detection (threads=1): completes to {res['floor_mem']} | graceful-spill={res['graceful_spill_seen']} "
           f"| cliff={res['cliff_seen']}" + (f" at {res['cliff_at']}" if res['cliff_at'] else ""))

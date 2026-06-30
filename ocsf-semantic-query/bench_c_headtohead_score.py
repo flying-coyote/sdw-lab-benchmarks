@@ -22,7 +22,7 @@ sys.path.insert(0, HERE)
 from scoring import classify  # noqa: E402
 import run_graphrag as R  # noqa: E402
 
-STOREF = "/home/USER/sdw-lab-benchmarks/bench-a-context-collapse/_work/store_f"
+STOREF = os.path.expanduser("~/sdw-lab-benchmarks/bench-a-context-collapse/_work/store_f")
 TABLES = ("auth", "session", "network", "dns", "process", "api", "asset")
 ADVERSARY_TAIL = {"A3", "A5", "A7", "A9"}  # the recursive/aggregate queries OWL2QL excludes (pre-reg §falsification)
 

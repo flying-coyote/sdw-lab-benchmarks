@@ -13,6 +13,7 @@ divergence, parse by the SPEC, and classify every field — correct / SILENT-wro
 null/error) / loud-miss (null/error). Blast radius = mean SILENT-wrong fields per record. Synthetic,
 deterministic. Tier B.
 """
+import os
 import json, random
 
 random.seed(7)
@@ -110,7 +111,7 @@ def main():
     sd = [v["silent_per_record"] for k, v in out["cases"].items() if not k.startswith("positional")]
     out["positional_max_silent_blast"] = max(pos)
     out["selfdescribing_max_silent_blast"] = max(sd)
-    json.dump(out, open("/home/USER/sdw-lab-benchmarks/spec-vs-emitted-integrity/results/spec_vs_emitted.json", "w"), indent=2)
+    json.dump(out, open(os.path.expanduser("~/sdw-lab-benchmarks/spec-vs-emitted-integrity/results/spec_vs_emitted.json"), "w"), indent=2)
     print(f"\npositional SILENT blast radius up to {max(pos)} fields/record (cascade); "
           f"self-describing up to {max(sd)} (localized, mostly loud-null). "
           f"-> the spec-defect failure is a property of POSITIONAL formats, not a PAN-OS quirk.")

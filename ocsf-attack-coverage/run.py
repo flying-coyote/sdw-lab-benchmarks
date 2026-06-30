@@ -29,7 +29,7 @@ Determinism: the corpus is the testbed's (fingerprint 46af223b...), reused not r
 coverage.json scores SETS of event_uids (order-independent) and is dumped sort_keys=True, so a
 re-run reproduces it identically. Tier B, synthetic-only, single machine.
 
-Run: /home/USER/sdw-lab-benchmarks/.venv/bin/python run.py [--smoke]
+Run: ~/sdw-lab-benchmarks/.venv/bin/python run.py [--smoke]
 """
 
 import json

@@ -11,13 +11,14 @@ counts (4, 2, 1), with spill-to-disk enabled. For each (mem, threads) we record:
 and whether it spilled (temp files written). The floor = the tightest cap that still completes, and
 whether it degrades gracefully (spills, slower) or cliffs (errors). Synthetic only. Tier B, single host.
 """
+import os
 import json, os, time, shutil, tempfile
 import duckdb
 
 N = int(os.environ.get("EDGE_N", "10000000"))
 MEMS = ["4GB", "2GB", "1GB", "512MB", "256MB", "128MB"]
 THREADS = [4, 2, 1]
-OUT = "/home/USER/sdw-lab-benchmarks/duckdb-edge-floor/results/edge_floor.json"
+OUT = os.path.expanduser("~/sdw-lab-benchmarks/duckdb-edge-floor/results/edge_floor.json")
 
 # multi-step hunting detection (UEBA volume Z-score) — memory-intensive (two-level group + per-host stats)
 DETECT = """

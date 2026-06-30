@@ -17,7 +17,7 @@ host. NOTE the file-write number is the raw Iceberg COMMIT cost, NOT the "1-5 mi
 Flink micro-batch checkpoint-interval CHOICE layered on top, not an inherent commit latency; this
 bench isolates the commit cost to make that distinction measurable.
 
-Run on host: /home/USER/sdw-lab-benchmarks/.venv/bin/python bench_d.py
+Run on host: ~/sdw-lab-benchmarks/.venv/bin/python bench_d.py
 """
 import json, os, random, statistics, time
 from pathlib import Path

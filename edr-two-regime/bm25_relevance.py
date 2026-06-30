@@ -6,6 +6,7 @@ engine lacks natively — not just a latency gap but a capability gap. Reuses th
 (OpenSearch command_line = analyzed `text`; ClickHouse command_line = plain String, no inverted index).
 Host-run (OS :9200, CH :8323). Tier B, single host.
 """
+import os
 import json, time, urllib.request
 import clickhouse_connect
 
@@ -54,7 +55,7 @@ def main():
                       "native relevance ranking — it matches via full scan and any 'rank' is a hand-rolled TF "
                       "count without IDF. The index's two-regime win includes a CAPABILITY gap (relevance), not "
                       "only a latency gap.")
-    json.dump(out, open("/home/USER/sdw-lab-benchmarks/edr-two-regime/results/bm25_relevance.json", "w"), indent=2, default=str)
+    json.dump(out, open(os.path.expanduser("~/sdw-lab-benchmarks/edr-two-regime/results/bm25_relevance.json"), "w"), indent=2, default=str)
     print("\n" + out["finding"])
 
 

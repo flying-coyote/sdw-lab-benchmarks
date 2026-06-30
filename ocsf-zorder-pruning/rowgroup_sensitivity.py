@@ -1,5 +1,6 @@
+import os
 import sys, os, tempfile
-sys.path.insert(0, '/home/USER/sdw-lab-benchmarks/ocsf-zorder-pruning')
+sys.path.insert(0, os.path.expanduser('~/sdw-lab-benchmarks/ocsf-zorder-pruning'))
 import pyarrow.compute  # register pa.compute for run.py
 import run as z
 

@@ -7,7 +7,7 @@
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CUR_VENV="/home/USER/sdw-lab-benchmarks/.venv/bin/python3"
+CUR_VENV="$HOME/sdw-lab-benchmarks/.venv/bin/python3"
 OLD_VENV="/tmp/ducklake-e3-1.5.2-venv"
 PG_IMAGE="${PG_IMAGE:-postgres:17}"
 CONTAINER="pg-ducklake-benchE3cmp"
