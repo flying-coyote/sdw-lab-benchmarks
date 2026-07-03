@@ -127,9 +127,10 @@ def donut(ax, values, labels, colors, center=None, center_sub=None, startangle=9
     import numpy as np
     wedges, _ = ax.pie(values, colors=colors, startangle=startangle, counterclock=False,
                        wedgeprops=dict(width=0.42, edgecolor="white", linewidth=2))
+    total = float(sum(values))  # values may be raw counts; the % label must be a true share
     for w, val, lab in zip(wedges, values, labels):
         ang = np.deg2rad((w.theta2 + w.theta1) / 2.0)
-        ax.text(1.22*np.cos(ang), 1.22*np.sin(ang), f"{lab}\n{val:.1f}%",
+        ax.text(1.22*np.cos(ang), 1.22*np.sin(ang), f"{lab}\n{100.0 * val / total:.1f}%",
                 ha="center", va="center", fontsize=10.5, color=BODY)
     if center:
         ax.text(0, 0.10, center, ha="center", va="center", fontsize=23, fontweight="bold", color=INK)

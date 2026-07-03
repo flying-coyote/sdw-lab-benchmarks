@@ -2,10 +2,11 @@ import chartstyle as cs
 # KPI donut companion to the reader heatmap (MULTI-ENGINE-CORRECTNESS.md): 10 of 12 readers agree.
 fig, ax = cs.canvas(
     "10 of 12 Parquet readers return the right answer.",
-    "Byte-identical 10M-row data, 24 count(*) WHERE cells per reader checked against ground truth.",
+    "Byte-identical 10M-row / 814-row-group Parquet (the structure behind the 100M-row C3 failure), "
+    "24 count(*) WHERE cells per reader vs ground truth.",
     source="sdw-lab-benchmarks/clickhouse-vs-duckdb",
     tier="Tier B · single-host · version-bound (chDB 4.1.8, fastparquet) · concentrated, not universal",
-    figsize=(7.4, 5.0), top=0.82, bottom=0.10)
+    figsize=(7.4, 5.0), top=0.78, bottom=0.10)
 cs.donut(ax, [10, 2], ["10 readers\nagree", "2 silently\nwrong"], [cs.GOOD, cs.BAD],
          center="10 / 12", center_sub="agree on every cell")
 cs.direction_note(fig, "silently wrong: lower is better")

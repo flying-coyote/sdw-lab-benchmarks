@@ -4,6 +4,10 @@ import numpy as np
 
 # Source: clickhouse-vs-duckdb/results/CORRECTNESS-DIVERGENCE.md
 # DuckDB 1.5.3 vs chDB 4.1.8, SAME 10M-row Parquet (814 row groups). Ground truth = generator.
+# FRAMING: the C3 answer-equality gate first failed at 100M rows (default row groups); this 10M
+# file is the isolated reproduction, built with a small row-group size (~814 groups) to mimic the
+# 100M file's structure. The trigger is row-group structure, not raw scale — a plain 10M-row file
+# does not reliably reproduce it.
 # chDB '=' over Parquet undercount per probe value (rows missed, all silent, no error):
 #   user42 -7 · user1337 -6 · user7 -7 · user999 0 · user1500 -10 · user256 -12 · user1023 -10 · user64 0
 # Diverged on 6 of 8; total undercount 52 rows. chDB LIKE, chDB MergeTree, DuckDB all correct.
@@ -20,7 +24,7 @@ miss   = [miss[i]   for i in order]
 
 fig, ax = cs.canvas(
     "chDB's Parquet equality filter drops matching rows silently — fast and wrong.",
-    "count(*) WHERE user_name = ? on a 10M-row Parquet file. chDB 4.1.8 undercounts 6 of 8 probe values; DuckDB, chDB LIKE and chDB MergeTree all return the true count.",
+    "count(*) WHERE user_name = ? on the isolated 10M-row / 814-row-group reproduction of the failure the C3 gate caught at 100M rows — the trigger is row-group structure, not scale. chDB 4.1.8 undercounts 6 of 8 probe values; DuckDB, chDB LIKE and chDB MergeTree all return the true count.",
     source="sdw-lab-benchmarks/clickhouse-vs-duckdb · CORRECTNESS-DIVERGENCE.md",
     tier="Tier B · single-host · ground-truth-verified · chDB 4.1.8 Parquet '=' path only (LIKE + MergeTree correct)",
     figsize=(9.0, 4.9), bottom=0.16, top=0.80)

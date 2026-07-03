@@ -68,7 +68,8 @@ nrow, ncol = M.shape
 
 fig, ax = cs.canvas(
     "10 of 12 Parquet readers agree on the answer; 2 are silently wrong.",
-    "Same byte-identical Parquet file (10M rows), 24 count(*) WHERE cells per reader, every count checked "
+    "Same byte-identical Parquet file (10M rows, 814 row groups — the structure that reproduces the failure "
+    "the C3 gate caught at 100M rows), 24 count(*) WHERE cells per reader, every count checked "
     "against ground truth. Red = a silently wrong count returned with no error. The passers are named as "
     "loudly as the failers: this is concentrated, not universal.",
     source="sdw-lab-benchmarks/clickhouse-vs-duckdb",
