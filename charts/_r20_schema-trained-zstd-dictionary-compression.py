@@ -19,7 +19,7 @@ fig, ax = cs.canvas(
     "A schema-trained ZSTD dictionary wins per-event, then fades as you batch.",
     "Compression ratio vs raw JSON for 100k OCSF events. The trained dictionary's edge is the gap between the two lines — widest at 1 event/block, gone by 100.",
     source="sdw-lab-benchmarks/ocsf-zstd-dictionary · RESULTS.md · dict trained on disjoint held-out 50k",
-    tier="Tier B · single-host · ~221-byte JSON events · per-event ingest regime, NOT the lakehouse 8.2x Zeek number",
+    tier="Tier B · single-host · ~221-byte JSON events · per-event ingest regime, NOT the lakehouse Zeek footprints (8.5x Iceberg · 9.0x CH-ZSTD22)",
     figsize=(9.0, 4.9), bottom=0.16, top=0.80)
 
 # columnar reference line (the ceiling the per-record codecs can't reach)
