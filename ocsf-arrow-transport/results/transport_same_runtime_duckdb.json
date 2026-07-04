@@ -1,0 +1,76 @@
+{
+  "bench": "A2 same-runtime transport isolation (DuckDB, all-Python)",
+  "tier": "B",
+  "pre_registration": "PRE-REG-samruntime-duckdb-2026-07-04.md",
+  "machine": "Beelink 5800H, WSL2 48GB, quiet window (moar containers up but idle; see pre-reg amendment)",
+  "duckdb": "1.5.3",
+  "trials": 7,
+  "warmup": 2,
+  "sizes": {
+    "rs_100000": {
+      "adbc_arrow": {
+        "median_ms": 39.473,
+        "min_ms": 38.971,
+        "max_ms": 40.779,
+        "cv_pct": 1.4,
+        "trials": 7,
+        "warmup": 2,
+        "spread_ratio": 1.05
+      },
+      "dbapi_rows": {
+        "median_ms": 146.146,
+        "min_ms": 142.893,
+        "max_ms": 156.556,
+        "cv_pct": 3.0,
+        "trials": 7,
+        "warmup": 2,
+        "spread_ratio": 1.1
+      },
+      "native_arrow": {
+        "median_ms": 44.575,
+        "min_ms": 43.413,
+        "max_ms": 49.858,
+        "cv_pct": 4.9,
+        "trials": 7,
+        "warmup": 2,
+        "spread_ratio": 1.15
+      },
+      "rows": 100000,
+      "gap_rows_over_adbc_x": 3.7,
+      "adbc_tax_vs_native_arrow_x": 0.89
+    },
+    "rs_1000000": {
+      "adbc_arrow": {
+        "median_ms": 162.772,
+        "min_ms": 151.184,
+        "max_ms": 166.676,
+        "cv_pct": 3.7,
+        "trials": 7,
+        "warmup": 2,
+        "spread_ratio": 1.1
+      },
+      "dbapi_rows": {
+        "median_ms": 1350.975,
+        "min_ms": 1277.833,
+        "max_ms": 1416.937,
+        "cv_pct": 3.6,
+        "trials": 7,
+        "warmup": 2,
+        "spread_ratio": 1.11
+      },
+      "native_arrow": {
+        "median_ms": 181.692,
+        "min_ms": 168.495,
+        "max_ms": 202.15,
+        "cv_pct": 5.1,
+        "trials": 7,
+        "warmup": 2,
+        "spread_ratio": 1.2
+      },
+      "rows": 1000000,
+      "gap_rows_over_adbc_x": 8.3,
+      "adbc_tax_vs_native_arrow_x": 0.9
+    }
+  },
+  "status": "PROVISIONAL-DISCARDED: native_arrow CV 5.1% at 1M breaches the pre-reg amendment's any-arm <5% gate; bare-window re-run owed (see PRE-REG erratum). Headline arms passed (3.6-3.7%)."
+}
