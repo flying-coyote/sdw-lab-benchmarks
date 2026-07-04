@@ -1,0 +1,93 @@
+{
+  "benchmark": "ocsf-sigma-detection/evidenceforge-arm",
+  "corpus": "/tmp/claude-1000/-home-jerem-project1/3f346061-99d6-407a-9395-0757dbd37f05/scratchpad/ef-branch",
+  "corpus_provenance": {
+    "commit": "7cbcc6a9",
+    "eval_acceptance_passed": true,
+    "eval_overall_score": 97.12,
+    "repo": "/home/jerem/EvidenceForge",
+    "scenario": "scenarios/branch-office-example/scenario.yaml"
+  },
+  "evidence_tier": "B (single realistic scenario corpus, single machine, single run)",
+  "no_target_rules": 2,
+  "per_rule": [
+    {
+      "att_ck": "T1021.001",
+      "compiled": true,
+      "detected": true,
+      "detection_method": "exact-uid",
+      "false_positives": 137,
+      "matches": 138,
+      "precision": 0.0072,
+      "rule": "rdp_lateral.yml",
+      "sql": "SELECT * FROM <TABLE_NAME> WHERE dst_port=3389",
+      "stage": "lateral movement",
+      "storyline_target": "evt-004",
+      "table": "network",
+      "true_positive_uids": [
+        "CV2riwYnBazUAItUPk"
+      ],
+      "window_join_hit_count": 2
+    },
+    {
+      "att_ck": "T1071.001",
+      "compiled": true,
+      "corroboration": {
+        "dns_rows_for_real_domain": 8,
+        "dns_src_ip_sample": "10.44.20.30",
+        "dns_src_resolved_host": "PROXY-BO-01",
+        "http_actor_sample": "nina.kapoor",
+        "http_proxy_rows_for_real_domain": 8,
+        "real_c2_domain": "northlakeportal.com",
+        "rule_hardcoded_domain": "cdn-telemetry-sync.net"
+      },
+      "detected": false,
+      "detection_method": "none",
+      "false_positives": 0,
+      "matches": 0,
+      "precision": null,
+      "rule": "c2_domain.yml",
+      "sql": "SELECT * FROM <TABLE_NAME> WHERE query_hostname='cdn-telemetry-sync.net'",
+      "stage": "C2",
+      "storyline_target": "evt-006",
+      "table": "dns",
+      "true_positive_uids": [],
+      "window_join_hit_count": 0
+    },
+    {
+      "att_ck": "T1059.001",
+      "compiled": true,
+      "detected": false,
+      "detection_method": null,
+      "false_positives": 0,
+      "matches": 0,
+      "precision": null,
+      "rule": "encoded_powershell.yml",
+      "sql": "SELECT * FROM <TABLE_NAME> WHERE cmd_line LIKE '%-EncodedCommand%' ESCAPE '\\' AND device_hostname='WS1'",
+      "stage": "execution",
+      "storyline_target": null,
+      "table": "process",
+      "true_positive_uids": [],
+      "window_join_hit_count": null
+    },
+    {
+      "att_ck": "T1098",
+      "compiled": true,
+      "detected": false,
+      "detection_method": null,
+      "false_positives": 0,
+      "matches": 0,
+      "precision": null,
+      "rule": "nomfa_privesc.yml",
+      "sql": "SELECT * FROM <TABLE_NAME> WHERE api_operation='AttachUserPolicy' AND (NOT mfa_present=true)",
+      "stage": "priv-esc",
+      "storyline_target": null,
+      "table": "api",
+      "true_positive_uids": [],
+      "window_join_hit_count": null
+    }
+  ],
+  "planted_targets": 2,
+  "planted_targets_detected": "1/2",
+  "rules": 4
+}
