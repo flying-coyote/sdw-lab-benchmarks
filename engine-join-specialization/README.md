@@ -210,6 +210,32 @@ docker compose up -d minio nessie          # core
 .venv/bin/python run_bench.py --compare    # CV-gated pairwise + completion matrix
 ```
 
+**Vantage point: run this (and any other pyiceberg/DuckDB-iceberg bench against this stack) from
+inside the `ejs-lab` container, not the WSL host.** `load_tables.py` and `run_bench.py` hard-code
+`S3_ENDPOINT = "http://minio:9000"` because Nessie's REST catalog advertises that *internal* MinIO
+endpoint in its config response, and that overrides a host-passed `localhost:9300` — so
+`load_table`/`append`/`plan_files` only resolve from inside the `ejs` docker network. A host `.venv`
+run against these scripts fails with `Could not connect ... minio:9000`. Recipe (host → container):
+
+```bash
+docker exec ejs-lab mkdir -p /work/<bench> /work/lib /work/results
+docker cp <bench>/<script>.py ejs-lab:/work/<bench>/
+docker cp lib/common.py ejs-lab:/work/lib/         # ejs-lab has NO pandas — use con.register(arrow), not .to_pandas()
+docker exec -e S3_ENDPOINT=http://minio:9000 -e NESSIE_URI=http://nessie:19120/iceberg/ \
+  -e MINIO_HOST=minio:9000 -e OUT_DIR=/work/results \
+  ejs-lab python3 /work/<bench>/<script>.py
+docker cp ejs-lab:/work/results/<out>.json <bench>/results/
+```
+
+`ejs-lab` matches the host toolchain (DuckDB 1.5.3 + pyiceberg 0.11.1 + ducklake/iceberg/httpfs
+extensions install fine in-container) but has no pandas. Separately, a DuckDB `iceberg_scan` over a
+pinned snapshot should pass the `metadata.json` location with **no** `allow_moved_paths` — pyiceberg
+writes absolute `s3://` manifest paths, and `allow_moved_paths=true` makes DuckDB re-resolve them
+against the metadata.json path, doubling it into a 404. The DuckDB S3 secret here uses `ENDPOINT
+'minio:9000', URL_STYLE 'path', USE_SSL false`. Pinning the explicit metadata location is also the
+control for the ClickHouse `icebergS3()` stale-snapshot trap this bench already works around above
+(the planted-metadata-pin deviation).
+
 ## Outputs
 
 `results/raw_<arm>.json` (every trial + answers + DNF reasons), `results/comparison.json`
