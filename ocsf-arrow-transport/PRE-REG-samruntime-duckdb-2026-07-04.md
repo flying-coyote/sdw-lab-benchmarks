@@ -82,3 +82,14 @@ which the re-run should switch to `to_arrow_table()`). Raw JSON kept at
 genuinely bare window: stop the moar-* containers (permission-held this session), re-invoke
 `../.venv/bin/python transport_same_runtime_duckdb.py`, require every arm CV < 5%, then append
 the RESULTS.md section and lift this erratum.
+
+## Erratum LIFTED — bare-window re-run executed 2026-07-08
+
+The owed re-run ran in a genuinely bare window (moar-* containers stopped ~08:56–08:57Z; docker
+ps empty across all timed trials; owner authorization on record). Every arm CV ≤ 2.5% (worst:
+native_arrow 2.5% at 1M) against the any-arm <5% line — the gate PASSES, including the reference
+arm that breached in run 1. Gaps 3.7× @100k / 7.8× @1M, inside the [2×, 15×] survives-band;
+adbc-vs-native 0.84×/0.89× (no ADBC tax). The one prescribed methodology change was applied
+(native_arrow uses `to_arrow_table()` per the erratum's own instruction). RESULTS.md section
+appended; adjudicated write-up: `results/RESULTS-samruntime-duckdb-rerun-2026-07-08.md`.
+Run 1's JSON remains at `results/transport_same_runtime_duckdb.json` as the discarded record.

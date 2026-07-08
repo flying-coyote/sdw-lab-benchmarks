@@ -58,3 +58,18 @@ errors early on" a practitioner hit are driver-/version-/backend-specific (the A
 varies) rather than universal — this bench found none against DuckDB's ADBC path and says so. The encoding
 sweep shows the ordinary trade: zstd is ~3.7× smaller than uncompressed but scans slower (decompression
 cost). Tier B, single machine; ODBC pending (needs a DuckDB ODBC driver). Advances H-ARROW-SECURITY-STACK-01.
+
+## Same-runtime isolation (A2 · DuckDB leg) — added 2026-07-08
+
+The cross-runtime caveat above is now closed for the one backend where both transports run in a
+single language runtime: DuckDB from the same Python process, DB-API rows vs ADBC Arrow vs the
+in-process native Arrow reference. On the bare-window re-run (moar-* containers stopped; docker
+environment empty for the full timed span), the rows/ADBC gap is **3.7× at 100k rows and 7.8× at
+1M** — inside the pre-registered [2×, 15×] survives-band, so the cross-runtime table's
+single-digit framing SURVIVES runtime isolation — and ADBC runs at **0.84×/0.89× of the native
+in-process Arrow path**, i.e. no ADBC tax (slightly faster than the deprecated-wrapper-free
+native reference, by more than the run-to-run spread). Every arm CV ≤ 2.5% against the any-arm
+<5% gate (worst: native_arrow 2.5% at 1M). This supersedes the 2026-07-04 run 1, which was
+PROVISIONAL-DISCARDED by its own CV gate (reference arm 5.1%) and whose JSON stays as the
+discarded record. Tier B, single host (Beelink 5800H, WSL2 48GB/14 vCPU), same-runtime scope
+only. Full adjudication + methodology: `RESULTS-samruntime-duckdb-rerun-2026-07-08.md`.
