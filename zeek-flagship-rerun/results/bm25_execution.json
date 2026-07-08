@@ -1,0 +1,435 @@
+{
+  "benchmark": "NEEDLE-BM25 (staged-benchmark-open-track-prereg.md Arm A) \u2014 BM25 fuzzy-full-text vs OpenSearch foil",
+  "corpus": {
+    "boundary": "structured synthetic strings only; no real telemetry (feedback_security_telemetry_injection_surface)",
+    "extends_corpus_sha256": "c6ed5e3c05f311a6b53fcf6fb39d4f2448c16d74efaf17eb7cba6e76cf5dae52",
+    "generated_unix": 1783482659.7175412,
+    "jsonl_bytes": 899022285,
+    "jsonl_sha256": "11a0679630edbc5f845296dddd1c7468ec770961cfd4c3644b6d104b4b582ba2",
+    "parquet_snappy_bytes": 340947700,
+    "phrase": "zqplant beacon uplink",
+    "phrase_planted_rows": 300,
+    "rare_token": "zqrareplant7k",
+    "rare_token_planted_rows": 500,
+    "relevance_terms": {
+      "admin": 0.05,
+      "error": 0.03,
+      "login": 0.2,
+      "session": 0.15,
+      "token": 0.1
+    },
+    "rows": 10000000,
+    "seed": 45653
+  },
+  "evidence_tier": "B (single host, synthetic corpus, co-resident with idle moar-* stack)",
+  "queries": {
+    "bm25_relevance": {
+      "ch_iceberg": {
+        "capability": false,
+        "cv_pct": 3.1,
+        "durations_s": [
+          0.5269,
+          0.533,
+          0.5288,
+          0.526,
+          0.5147,
+          0.5176,
+          0.4848
+        ],
+        "mean_s": 0.5188,
+        "mechanism": "same naive proxy as ch_native, run over icebergS3() (no index, full scan)",
+        "median_s": 0.526,
+        "top10": [
+          [
+            "CIaAxPxYs0GAeOGIlO",
+            5
+          ],
+          [
+            "CR2mBlFrA13wtmQtVb",
+            5
+          ],
+          [
+            "Ce570sDYmeFiUwQqEI",
+            5
+          ],
+          [
+            "CftefrhuDQEhmw8F4l",
+            5
+          ],
+          [
+            "CkTYx7uMNHV097840C",
+            5
+          ],
+          [
+            "CI6dyQ9MIKEomtaiQp",
+            5
+          ],
+          [
+            "CqulgmmeqUQDh851vN",
+            5
+          ],
+          [
+            "CC84iXB4p4peOI9EHF",
+            5
+          ],
+          [
+            "CZa13O62MwUMcD3CAS",
+            5
+          ],
+          [
+            "CBG9GcB3q5NirHa3Nx",
+            5
+          ]
+        ],
+        "trials": 7
+      },
+      "ch_native": {
+        "capability": false,
+        "cv_pct": 9.8,
+        "durations_s": [
+          0.1456,
+          0.1693,
+          0.157,
+          0.1354,
+          0.1381,
+          0.1385,
+          0.1279
+        ],
+        "mean_s": 0.1446,
+        "mechanism": "NOT BM25 -- naive matched-term COUNT proxy (no IDF, no term-frequency saturation, no doc-length normalization); verified no bm25/rank function exists in system.functions",
+        "median_s": 0.1385,
+        "top10": [
+          [
+            "C2BDqiluv57DXyqEoj",
+            5
+          ],
+          [
+            "C5kqJQGR3NkhDv5MLU",
+            5
+          ],
+          [
+            "C8FgnqSqgvi9DqxRqa",
+            5
+          ],
+          [
+            "CBG9GcB3q5NirHa3Nx",
+            5
+          ],
+          [
+            "CBkwmRUqQfvvtv9W13",
+            5
+          ],
+          [
+            "CBzwdm31QjphWL2y6z",
+            5
+          ],
+          [
+            "CC84iXB4p4peOI9EHF",
+            5
+          ],
+          [
+            "CH91M6BDrcgGQjxtJf",
+            5
+          ],
+          [
+            "CI6dyQ9MIKEomtaiQp",
+            5
+          ],
+          [
+            "CIWCzjthYh21SfITgv",
+            5
+          ]
+        ],
+        "trials": 7
+      },
+      "opensearch": {
+        "capability": true,
+        "cv_pct": 11.7,
+        "durations_s": [
+          0.0338,
+          0.0316,
+          0.029,
+          0.0297,
+          0.0264,
+          0.0262,
+          0.0355
+        ],
+        "mean_s": 0.0303,
+        "mechanism": "native Lucene BM25 similarity (default k1/b), match query OR across 5 terms",
+        "median_s": 0.0297,
+        "top10": [
+          [
+            "CkTYx7uMNHV097840C",
+            5.7008
+          ],
+          [
+            "CH91M6BDrcgGQjxtJf",
+            5.7008
+          ],
+          [
+            "CrfCEwNPrDOK43qFYD",
+            5.7008
+          ],
+          [
+            "CR2mBlFrA13wtmQtVb",
+            5.7008
+          ],
+          [
+            "CBG9GcB3q5NirHa3Nx",
+            5.7008
+          ],
+          [
+            "C2BDqiluv57DXyqEoj",
+            5.7008
+          ],
+          [
+            "CaOhclOXQpgwcA8mae",
+            5.7008
+          ],
+          [
+            "CXQdSqXD2ouAl6XEUm",
+            5.7008
+          ],
+          [
+            "CMvVGFlHcGX5dPi21H",
+            5.7008
+          ],
+          [
+            "CIaAxPxYs0GAeOGIlO",
+            5.7008
+          ]
+        ],
+        "trials": 7
+      },
+      "opensearch_vs_ch_iceberg": {
+        "claimable": true,
+        "faster_is": "first",
+        "gap_pct": 1671.0,
+        "gate_max_cv_pct": 11.7,
+        "multiple_slower_over_faster": 17.7,
+        "note": "first=opensearch, second=ch_iceberg"
+      },
+      "opensearch_vs_ch_native": {
+        "claimable": true,
+        "faster_is": "first",
+        "gap_pct": 366.3,
+        "gate_max_cv_pct": 11.7,
+        "multiple_slower_over_faster": 4.7,
+        "note": "first=opensearch, second=ch_native"
+      }
+    },
+    "fuzzy_match": {
+      "answer_note": "counts, not answer-equality-gated -- OpenSearch fuzzy and ClickHouse editDistance are different algorithms (Damerau-Levenshtein variants may differ at the margin); capability + latency is the claim, not exact equality",
+      "ch_iceberg": {
+        "capability": true,
+        "cv_pct": 2.7,
+        "doc_count": 2001030,
+        "durations_s": [
+          0.9999,
+          1.0174,
+          1.0163,
+          1.0209,
+          1.0115,
+          0.9902,
+          1.0752
+        ],
+        "mean_s": 1.0188,
+        "mechanism": "editDistance() over ARRAY JOIN on icebergS3() -- brute-force scan, no index of any kind",
+        "median_s": 1.0163,
+        "trials": 7,
+        "trials_note": null
+      },
+      "ch_native": {
+        "capability": true,
+        "cv_pct": 4.9,
+        "doc_count": 2001030,
+        "durations_s": [
+          0.8426,
+          0.8327,
+          0.7695,
+          0.8489,
+          0.7556,
+          0.8076,
+          0.7677
+        ],
+        "mean_s": 0.8035,
+        "mechanism": "editDistance() over ARRAY JOIN splitByNonAlpha(text) -- brute-force scan, NOT accelerated by the text index (text index accelerates hasToken/LIKE only)",
+        "median_s": 0.8076,
+        "trials": 7,
+        "trials_note": null
+      },
+      "opensearch": {
+        "capability": true,
+        "cv_pct": 10.2,
+        "doc_count": 10000,
+        "durations_s": [
+          0.007,
+          0.0064,
+          0.0062,
+          0.0058,
+          0.0055,
+          0.0052,
+          0.0056
+        ],
+        "mean_s": 0.0059,
+        "mechanism": "Lucene fuzzy query, edit-distance automaton, indexed",
+        "median_s": 0.0058,
+        "trials": 7
+      },
+      "opensearch_vs_ch_iceberg": {
+        "claimable": true,
+        "faster_is": "first",
+        "gap_pct": 17422.4,
+        "gate_max_cv_pct": 10.2,
+        "multiple_slower_over_faster": 175.2,
+        "note": "first=opensearch, second=ch_iceberg"
+      },
+      "opensearch_vs_ch_native": {
+        "claimable": true,
+        "faster_is": "first",
+        "gap_pct": 13824.1,
+        "gate_max_cv_pct": 10.2,
+        "multiple_slower_over_faster": 139.2,
+        "note": "first=opensearch, second=ch_native"
+      }
+    },
+    "phrase_exact": {
+      "answer_identical": true,
+      "ch_iceberg": {
+        "cv_pct": 4.6,
+        "doc_count": 300,
+        "durations_s": [
+          0.2508,
+          0.2642,
+          0.2467,
+          0.2367,
+          0.2358,
+          0.2386,
+          0.2317
+        ],
+        "mean_s": 0.2435,
+        "median_s": 0.2386,
+        "trials": 7
+      },
+      "ch_native": {
+        "cv_pct": 0.9,
+        "doc_count": 300,
+        "durations_s": [
+          0.0439,
+          0.0438,
+          0.0433,
+          0.0433,
+          0.0431,
+          0.0441,
+          0.0434
+        ],
+        "mean_s": 0.0436,
+        "median_s": 0.0434,
+        "trials": 7
+      },
+      "count_matches_ground_truth": true,
+      "expected_count": 300,
+      "opensearch": {
+        "cv_pct": 6.4,
+        "doc_count": 300,
+        "durations_s": [
+          0.0458,
+          0.0443,
+          0.0404,
+          0.0406,
+          0.0388,
+          0.0388,
+          0.0417
+        ],
+        "mean_s": 0.0415,
+        "median_s": 0.0406,
+        "trials": 7
+      },
+      "opensearch_vs_ch_iceberg": {
+        "claimable": true,
+        "faster_is": "first",
+        "gap_pct": 487.7,
+        "gate_max_cv_pct": 6.4,
+        "multiple_slower_over_faster": 5.9,
+        "note": "first=opensearch, second=ch_iceberg"
+      },
+      "opensearch_vs_ch_native": {
+        "claimable": true,
+        "faster_is": "first",
+        "gap_pct": 6.9,
+        "gate_max_cv_pct": 6.4,
+        "multiple_slower_over_faster": 1.1,
+        "note": "first=opensearch, second=ch_native"
+      }
+    },
+    "token_exact": {
+      "answer_identical": true,
+      "ch_iceberg": {
+        "cv_pct": 10.3,
+        "doc_count": 500,
+        "durations_s": [
+          0.2572,
+          0.3222,
+          0.249,
+          0.2552,
+          0.2547,
+          0.2475,
+          0.2476
+        ],
+        "mean_s": 0.2619,
+        "median_s": 0.2547,
+        "trials": 7
+      },
+      "ch_native": {
+        "cv_pct": 2.3,
+        "doc_count": 500,
+        "durations_s": [
+          0.0219,
+          0.0224,
+          0.0212,
+          0.022,
+          0.0212,
+          0.0214,
+          0.0211
+        ],
+        "mean_s": 0.0216,
+        "median_s": 0.0214,
+        "trials": 7
+      },
+      "count_matches_ground_truth": true,
+      "expected_count": 500,
+      "opensearch": {
+        "cv_pct": 11.1,
+        "doc_count": 500,
+        "durations_s": [
+          0.0729,
+          0.0712,
+          0.0765,
+          0.085,
+          0.0678,
+          0.0645,
+          0.0613
+        ],
+        "mean_s": 0.0713,
+        "median_s": 0.0712,
+        "trials": 7
+      },
+      "opensearch_vs_ch_iceberg": {
+        "claimable": true,
+        "faster_is": "first",
+        "gap_pct": 257.7,
+        "gate_max_cv_pct": 11.1,
+        "multiple_slower_over_faster": 3.6,
+        "note": "first=opensearch, second=ch_iceberg"
+      },
+      "opensearch_vs_ch_native": {
+        "claimable": true,
+        "faster_is": "second",
+        "gap_pct": 232.7,
+        "gate_max_cv_pct": 11.1,
+        "multiple_slower_over_faster": 3.3,
+        "note": "first=opensearch, second=ch_native"
+      }
+    }
+  }
+}
