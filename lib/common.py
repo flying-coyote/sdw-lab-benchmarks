@@ -111,7 +111,7 @@ def canonical(obj) -> str:
     return json.dumps(obj, sort_keys=True, separators=(",", ":"))
 
 
-def time_trials(fn, warmup: int = 2, trials: int = 7):
+def time_trials(fn, warmup: int = 2, trials: int = 7, keep_samples: bool = True):
     """Measure wall-clock latency of ``fn`` over repeated calls.
 
     The first ``warmup`` calls are discarded (page cache, JIT of any query plan,
@@ -122,6 +122,13 @@ def time_trials(fn, warmup: int = 2, trials: int = 7):
     median is the headline, min/max bound the run-to-run spread on the machine
     it ran on, and the caller is responsible for naming that machine. Nothing
     here is a universal constant.
+
+    ``samples_ms`` carries the raw per-trial timings in RUN ORDER (not sorted),
+    so an adversarial verify pass can recompute the median/CV from primary data
+    instead of bounds-checking against min/max, and cross-trial drift (a warming
+    or degrading trend across trials) stays visible. Pass ``keep_samples=False``
+    only when a re-run must stay byte-comparable to a pre-2026-07-08 result
+    artifact, which predates this field.
     """
     for _ in range(warmup):
         fn()
@@ -130,6 +137,7 @@ def time_trials(fn, warmup: int = 2, trials: int = 7):
         t0 = time.perf_counter()
         fn()
         samples.append((time.perf_counter() - t0) * 1000.0)
+    samples_run_order = [round(s, 3) for s in samples]
     samples.sort()
     n = len(samples)
     median = samples[n // 2] if n % 2 else (samples[n // 2 - 1] + samples[n // 2]) / 2
@@ -138,7 +146,7 @@ def time_trials(fn, warmup: int = 2, trials: int = 7):
     # delta below the CV is not a real difference (db-benchmarks principle). Reported on every
     # timed result so callers never quote a single median as if it were stable.
     cv = (statistics.pstdev(samples) / mean * 100.0) if n > 1 and mean > 0 else 0.0
-    return {
+    out = {
         "median_ms": round(median, 3),
         "min_ms": round(samples[0], 3),
         "max_ms": round(samples[-1], 3),
@@ -146,6 +154,9 @@ def time_trials(fn, warmup: int = 2, trials: int = 7):
         "trials": n,
         "warmup": warmup,
     }
+    if keep_samples:
+        out["samples_ms"] = samples_run_order
+    return out
 
 
 # --- Reproducibility hardening: pin the artifact, sweep the scale ----------------------------------------
