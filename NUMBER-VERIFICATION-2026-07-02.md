@@ -64,7 +64,7 @@ one is real and one is orphaned.
 ## Appendix — B3 chart audit item (Dremio bar), same audit
 
 The audit also flagged `charts/_r29_engine_two_regime.py` as "currently includes a
-'Dremio Iceberg 3.6×' bar". Verified 2026-07-02: **the flag is stale.** The Dremio arm
+'Dremio Iceberg 3.6×' bar". Verified 2026-07-02: **the flag is stale** and that Dremio result is withheld. The Dremio arm
 was removed from the script and the PNG re-rendered Dremio-free in commit `c00084d`
 (2026-06-16 DeWitt sweep). A fresh render from the current script is byte-identical to
 the committed `charts/out/benchmark-8-engine.png`; visual inspection confirms the arms
