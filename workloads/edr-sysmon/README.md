@@ -45,7 +45,9 @@ See [`queries/README.md`](queries/README.md) (skeleton — queries to be added d
 
 ## Docker harness
 
-Reuse the existing top-level `~/splunk-db-connect-benchmark/docker-compose.yml`. Do not fork. EDR-specific services (Sysmon log forwarder, OCSF normalizer for Process Activity / File System Activity / Network Activity classes) will be added as additional services in the existing compose file, not as a parallel compose file.
+This spec originally said to reuse the compose file from the predecessor benchmark repo rather than fork it. That repo was retired once its workload specs migrated here (2026-06-05) and it was taken off disk on 2026-07-13, so the instruction no longer resolves and is recorded here rather than silently left dangling. This workload has never been run, so nothing depends on the old harness.
+
+When it is built, define the compose harness in this repo. EDR-specific services (Sysmon log forwarder, OCSF normalizer for Process Activity / File System Activity / Network Activity classes) belong in that harness alongside the shared services, not in a parallel compose file — the no-parallel-compose rule was the point of the original instruction and it still holds.
 
 ## Out of scope
 

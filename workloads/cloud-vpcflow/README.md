@@ -61,7 +61,9 @@ See [`queries/README.md`](queries/README.md) (skeleton — queries authored duri
 
 ## Docker harness
 
-Reuse the existing top-level `~/splunk-db-connect-benchmark/docker-compose.yml`. Cloud-specific services (CloudTrail ingester, VPC Flow parser, OCSF normalizer for API Activity / Cloud API Activity / Network Activity) added as additional services to the existing compose file, not a parallel one.
+This spec originally said to reuse the compose file from the predecessor benchmark repo rather than fork it. That repo was retired once its workload specs migrated here (2026-06-05) and it was taken off disk on 2026-07-13, so the instruction no longer resolves and is recorded here rather than silently left dangling. This workload has never been run, so nothing depends on the old harness.
+
+When it is built, define the compose harness in this repo. Cloud-specific services (CloudTrail ingester, VPC Flow parser, OCSF normalizer for API Activity / Cloud API Activity / Network Activity) belong in that harness alongside the shared services, not in a parallel compose file — the no-parallel-compose rule was the point of the original instruction and it still holds.
 
 ## Out of scope
 
