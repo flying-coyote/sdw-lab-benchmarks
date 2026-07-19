@@ -1,0 +1,13 @@
+# Extends the official Flink image with the Kafka SQL connector jar so the SQL Client
+# (streaming/flink_job.sql, submitted by streaming/submit_flink_job.sh) can read/write
+# Kafka tables. Built once by `docker compose build`; the jar is fetched from Maven
+# Central at build time rather than checked into the git repo as a binary blob.
+#
+# Version pin: flink-sql-connector-kafka 5.0.0-2.2 is the connector build published
+# FOR Flink 2.2.x (verified against its POM's <flink.version>2.2.1</flink.version> on
+# Maven Central, 2026-07-19) — must move in lockstep with the FLINK_IMAGE_TAG below.
+FROM flink:2.2.1-scala_2.12-java11
+
+ARG KAFKA_CONNECTOR_VERSION=5.0.0-2.2
+RUN curl -fSL -o /opt/flink/lib/flink-sql-connector-kafka-${KAFKA_CONNECTOR_VERSION}.jar \
+    "https://repo1.maven.org/maven2/org/apache/flink/flink-sql-connector-kafka/${KAFKA_CONNECTOR_VERSION}/flink-sql-connector-kafka-${KAFKA_CONNECTOR_VERSION}.jar"

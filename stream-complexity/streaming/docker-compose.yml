@@ -1,0 +1,156 @@
+# stream-complexity streaming arm: Kafka (KRaft, single broker) + Flink (jobmanager +
+# taskmanager), checkpointing enabled. Every name is prefixed `smx-` per the quiet-box
+# rule so nothing collides with the running `moar-*` stack.
+#
+# Image pins (verified 2026-07-19):
+#   apache/kafka:4.3.1                — latest stable; Kafka 4.x is KRaft-only (no
+#                                        ZooKeeper mode exists to accidentally pick)
+#   flink:2.2.1-scala_2.12-java11     — latest Flink whose flink-sql-connector-kafka
+#                                        build (5.0.0-2.2) is published on Maven Central
+name: smx-stream
+
+networks:
+  smx:
+    name: smx-stream-net
+
+volumes:
+  smx-kafka-data:
+    name: smx-kafka-data
+  smx-flink-checkpoints:
+    name: smx-flink-checkpoints
+
+x-flink-properties: &flink-properties
+  FLINK_PROPERTIES: |
+    jobmanager.rpc.address: smx-jobmanager
+    taskmanager.numberOfTaskSlots: 2
+    parallelism.default: 1
+    state.checkpoints.dir: file:///opt/flink/checkpoints
+    execution.checkpointing.interval: 10000
+    execution.checkpointing.min-pause: 5000
+    execution.checkpointing.timeout: 60000
+    table.local-time-zone: UTC
+    restart-strategy.type: fixed-delay
+    restart-strategy.fixed-delay.attempts: 10
+    restart-strategy.fixed-delay.delay: 5 s
+
+services:
+  # apache/kafka runs as non-root (uid 1000, "appuser"); a fresh named volume is
+  # created root-owned by the Docker daemon, so KRaft's format-on-first-boot step
+  # fails with AccessDeniedException writing into it unless something chowns it
+  # first. One-shot, exits immediately, never shows up in a "running containers"
+  # snapshot.
+  smx-kafka-data-init:
+    image: busybox:latest
+    container_name: smx-kafka-data-init
+    networks: [smx]
+    volumes:
+      - smx-kafka-data:/data
+    command: ["chown", "-R", "1000:1000", "/data"]
+    restart: "no"
+
+  smx-kafka:
+    image: apache/kafka:4.3.1
+    container_name: smx-kafka
+    hostname: smx-kafka
+    networks: [smx]
+    depends_on:
+      smx-kafka-data-init:
+        condition: service_completed_successfully
+    ports:
+      - "19094:9094"   # PLAINTEXT_HOST — host-side producer.py / consume_alerts.py / init-topics debug
+    volumes:
+      - smx-kafka-data:/tmp/kraft-combined-logs
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: "broker,controller"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT"
+      KAFKA_LISTENERS: "PLAINTEXT://:9092,CONTROLLER://:9093,PLAINTEXT_HOST://:9094"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://smx-kafka:9092,PLAINTEXT_HOST://localhost:19094"
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@smx-kafka:9093"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+      CLUSTER_ID: "4L6g3nShT-eMCtK--X86sw"   # any valid base64 UUID; not a secret, just an id
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"   # see init-topics.sh — deliberate, not an oversight
+      KAFKA_LOG_DIRS: "/tmp/kraft-combined-logs"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  smx-topic-init:
+    image: apache/kafka:4.3.1
+    container_name: smx-topic-init
+    networks: [smx]
+    depends_on:
+      smx-kafka:
+        condition: service_healthy
+    volumes:
+      - ./init-topics.sh:/init-topics.sh:ro
+    entrypoint: ["/bin/bash", "/init-topics.sh"]
+    restart: "no"
+
+  # Same root-owned-named-volume problem as smx-kafka-data-init, this time for the
+  # Flink image's uid 9999 ("flink") user and the checkpoint dir checkpointing writes
+  # to (execution.checkpointing.interval above) — without this, the FIRST checkpoint
+  # attempt fails with IOException: Failed to create directory for shared state.
+  smx-flink-checkpoints-init:
+    image: busybox:latest
+    container_name: smx-flink-checkpoints-init
+    networks: [smx]
+    volumes:
+      - smx-flink-checkpoints:/data
+    command: ["chown", "-R", "9999:9999", "/data"]
+    restart: "no"
+
+  smx-jobmanager:
+    build:
+      context: .
+      dockerfile: Dockerfile.flink
+    image: smx-flink-kafka:2.2.1
+    container_name: smx-jobmanager
+    hostname: smx-jobmanager
+    networks: [smx]
+    depends_on:
+      smx-topic-init:
+        condition: service_completed_successfully
+      smx-flink-checkpoints-init:
+        condition: service_completed_successfully
+    ports:
+      - "18081:8081"   # Flink Web UI
+    command: jobmanager
+    volumes:
+      - smx-flink-checkpoints:/opt/flink/checkpoints
+      - ./flink_job.sql:/opt/flink/usrlib/flink_job.sql:ro
+    environment:
+      <<: *flink-properties
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8081/overview >/dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+
+  smx-taskmanager:
+    build:
+      context: .
+      dockerfile: Dockerfile.flink
+    image: smx-flink-kafka:2.2.1
+    container_name: smx-taskmanager
+    hostname: smx-taskmanager
+    networks: [smx]
+    depends_on:
+      smx-jobmanager:
+        condition: service_healthy
+      smx-flink-checkpoints-init:
+        condition: service_completed_successfully
+    command: taskmanager
+    volumes:
+      - smx-flink-checkpoints:/opt/flink/checkpoints
+    environment:
+      <<: *flink-properties

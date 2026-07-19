@@ -1,0 +1,9 @@
+# Generated corpus + arm outputs (large, regenerable via gen_corpus.py + run_clean_trial.sh)
+data/events.jsonl
+data/ground_truth.json
+data/batch_in/
+results/*.jsonl
+results/*.json
+faults/_work/
+__pycache__/
+*.pyc

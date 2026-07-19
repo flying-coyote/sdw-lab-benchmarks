@@ -1,0 +1,6 @@
+# Host-side Python deps for this bench (gen_corpus.py, batch/, compare_answers.py,
+# measure_complexity.py, streaming/producer.py + consume_alerts.py). Versions pinned
+# to what was installed and smoke-tested in ../.venv on 2026-07-19.
+duckdb==1.5.3
+pyarrow==24.0.0
+confluent-kafka==2.15.0
