@@ -58,7 +58,7 @@ def save_seen(state_file, seen):
     os.rename(tmp, state_file)
 
 
-def consume(bootstrap, topic, out_file, state_file, group_id, idle_timeout, quiet=False):
+def consume(bootstrap, topic, out_file, state_file, group_id, idle_timeout, quiet=False, stop_file=None):
     os.makedirs(os.path.dirname(out_file), exist_ok=True)
     seen = load_seen(state_file, out_file)
 
@@ -79,6 +79,14 @@ def consume(bootstrap, topic, out_file, state_file, group_id, idle_timeout, quie
             msg = consumer.poll(poll_s)
             if msg is None:
                 idle_elapsed += poll_s
+                # Alert gaps are data-dependent (trial-1 2026-07-19: a 19-minute
+                # alert-free event stretch = 57 wall-seconds at 20x tripped the
+                # 30s idle exit and orphaned 8 tail alerts still in the topic),
+                # so idleness alone can never mean "done". In stop-file mode the
+                # caller signals completion after the topic end-offset is stable;
+                # idle_timeout remains only as a runaway safety cap.
+                if stop_file and os.path.exists(stop_file) and idle_elapsed >= 10.0:
+                    break
                 if idle_elapsed >= idle_timeout:
                     break
                 continue
@@ -127,12 +135,16 @@ def main():
     ap.add_argument("--out-file", default=DEFAULT_OUT_FILE)
     ap.add_argument("--state-file", default=DEFAULT_STATE_FILE)
     ap.add_argument("--group-id", default="smx-alert-consumer")
+    ap.add_argument("--stop-file", default=None,
+                    help="path whose existence signals 'replay done + sink end-offset stable'; "
+                         "consumer exits after 10s of quiet once it appears (idle-timeout "
+                         "becomes only a runaway safety cap in this mode)")
     ap.add_argument("--idle-timeout", type=float, default=30.0,
                      help="auto-exit after this many seconds with no new alert messages")
     ap.add_argument("--quiet", action="store_true")
     args = ap.parse_args()
     consume(args.bootstrap, args.topic, args.out_file, args.state_file,
-             args.group_id, args.idle_timeout, args.quiet)
+             args.group_id, args.idle_timeout, args.quiet, stop_file=args.stop_file)
 
 
 if __name__ == "__main__":

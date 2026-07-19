@@ -56,7 +56,7 @@ sleep 5   # let the job reach RUNNING and register its watermark/window state be
 
 echo "=== [4/7] replay both arms (replay_factor=${REPLAY_FACTOR}x) ==="
 rm -f results/alerts-batch.jsonl results/alerts-stream.jsonl
-rm -f data/batch_in/.batch_state.json results/.stream_consumer_state.json
+rm -f data/batch_in/.batch_state.json results/.stream_consumer_state.json results/.consumer-stop
 rm -f data/batch_in/window-*.parquet 2>/dev/null || true
 
 # A SHARED wall-clock anchor (see land_microbatches.py / producer.py docstrings): both
@@ -72,7 +72,7 @@ LAND_PID=$!
 PROD_PID=$!
 "$VENV_PY" batch/batch_job.py --poll-interval 5 --max-idle-ticks 6 --quiet &
 JOB_PID=$!
-"$VENV_PY" streaming/consume_alerts.py --idle-timeout 30 --quiet &
+"$VENV_PY" streaming/consume_alerts.py --idle-timeout 900 --stop-file results/.consumer-stop --quiet &
 CONS_PID=$!
 
 echo "=== [5/7] moving-parts snapshot (mid-run, both arms actively processing) ==="
@@ -83,7 +83,20 @@ echo "=== [6/7] waiting for drain ==="
 wait "$LAND_PID"; echo "  batch replay finished"
 wait "$PROD_PID"; echo "  stream replay finished"
 wait "$JOB_PID";  echo "  batch job drained (auto-exit on idle)"
-wait "$CONS_PID"; echo "  stream consumer drained (auto-exit on idle)"
+# Alert gaps are data-dependent (trial-1 2026-07-19: a 19-minute alert-free
+# event stretch = 57s at 20x tripped the old 30s idle exit and orphaned 8 tail
+# alerts still sitting in the topic), so the consumer cannot infer completion
+# from idleness. Signal it explicitly once the sink topic's end-offset has been
+# stable for 3 consecutive 15s checks after replay + batch drain.
+prev=-1; stable=0
+while [ "$stable" -lt 3 ]; do
+  sleep 15
+  cur=$(docker exec smx-kafka /opt/kafka/bin/kafka-get-offsets.sh --bootstrap-server localhost:9092 --topic smx-alerts 2>/dev/null | awk -F: '{s+=$NF} END {print s+0}')
+  if [ "$cur" = "$prev" ]; then stable=$((stable+1)); else stable=0; fi
+  prev="$cur"
+done
+touch results/.consumer-stop
+wait "$CONS_PID"; echo "  stream consumer drained (explicit stop; sink end-offset stable at $prev)"
 
 echo "=== [7/7] compare answers + latency ==="
 set +e
