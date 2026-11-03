@@ -1,0 +1,21 @@
+# BC arm: containerised batch. One container, restart policy on-failure, input and
+# output on bind mounts so the host-side lander (harness) and the answer gate see them.
+name: smx-bc
+
+services:
+  smx-bc-batch:
+    build:
+      context: ../..
+      dockerfile: stream-complexity/bc/Dockerfile.batch
+    image: smx-bc-batch:v2
+    container_name: smx-bc-batch
+    user: "1000:1000"
+    restart: on-failure
+    environment:
+      SDW_DUCK_TEMP_DIR: /tmp/duckdb
+    volumes:
+      - ${SMX_BC_IN:-../data/bc_in}:/data/bc_in
+      - ${SMX_BC_OUT:-../results}:/results
+    command: ["--in-dir", "/data/bc_in", "--out-file", "/results/alerts-bc.jsonl",
+              "--state-file", "/data/bc_in/.batch_state.json",
+              "--poll-interval", "5", "--max-idle-ticks", "${SMX_BC_IDLE_TICKS:-6}", "--quiet"]

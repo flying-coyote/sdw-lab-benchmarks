@@ -1,0 +1,101 @@
+{
+  "n_samples": 46,
+  "B": {
+    "n_containers": {
+      "median": 0.0,
+      "max": 0
+    },
+    "n_in_container_processes": {
+      "median": 0.0,
+      "max": 0
+    },
+    "engine_only": {
+      "median": 1.0,
+      "max": 1
+    },
+    "engine_plus_sink": {
+      "median": 1.0,
+      "max": 1
+    },
+    "in_container_comms_seen": {}
+  },
+  "S": {
+    "n_containers": {
+      "median": 3.0,
+      "max": 3
+    },
+    "n_in_container_processes": {
+      "median": 3.0,
+      "max": 4
+    },
+    "engine_only": {
+      "median": 3.0,
+      "max": 3
+    },
+    "engine_plus_sink": {
+      "median": 4.0,
+      "max": 4
+    },
+    "in_container_comms_seen": {
+      "smx-kafka": [
+        "java",
+        "kafka-run-class"
+      ],
+      "smx-jobmanager": [
+        "java",
+        "sh"
+      ],
+      "smx-taskmanager": [
+        "java"
+      ]
+    }
+  },
+  "F": {
+    "n_containers": {
+      "median": 1.0,
+      "max": 1
+    },
+    "n_in_container_processes": {
+      "median": 12.0,
+      "max": 12
+    },
+    "engine_only": {
+      "median": 1.0,
+      "max": 1
+    },
+    "engine_plus_sink": {
+      "median": 2.0,
+      "max": 2
+    },
+    "in_container_comms_seen": {
+      "smx-feldera": [
+        "pipeline-manage",
+        "postgres",
+        "program_01a1a15"
+      ]
+    }
+  },
+  "BC": {
+    "n_containers": {
+      "median": 1.0,
+      "max": 1
+    },
+    "n_in_container_processes": {
+      "median": 1.0,
+      "max": 1
+    },
+    "engine_only": {
+      "median": 1.0,
+      "max": 1
+    },
+    "engine_plus_sink": {
+      "median": 1.0,
+      "max": 1
+    },
+    "in_container_comms_seen": {
+      "smx-bc-batch": [
+        "python3"
+      ]
+    }
+  }
+}

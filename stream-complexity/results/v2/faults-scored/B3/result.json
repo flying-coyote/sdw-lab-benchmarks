@@ -1,0 +1,51 @@
+{
+  "kill_wall": 1793711084.9123676,
+  "recovery_start_wall": 1793711086.4877949,
+  "recovery_done_wall": 1793711116.1136587,
+  "wall_kill_to_infra_restored_s": 31.2,
+  "wall_recovery_script_s": 29.63,
+  "wall_kill_to_new_correct_alert_s": 31.31,
+  "output_exists": true,
+  "rows_at_recovery_done": 12,
+  "rows_at_end": 30,
+  "output_grew_after_recovery": true,
+  "post_recovery": {
+    "n_rows": 30,
+    "n_distinct_keys": 30,
+    "n_missing": 0,
+    "n_extra": 0,
+    "n_duplicate_keys": 0,
+    "missing": [],
+    "extra": [],
+    "identical": true
+  },
+  "window_under_fault": 29453805,
+  "window_under_fault_offset_s": 2700,
+  "job_exit_code_after_truncated_file": 1,
+  "n_recovery_steps": 2,
+  "step_count_method": "markers",
+  "recover_script": "recover_b3.sh",
+  "recover_stdout": "262768",
+  "batch_job_log_tail": "453791\n[batch_job] tick: scanned 3 file(s), 0 new alert(s), last_window_processed=29453793\n[batch_job] ALERT user00630 198.51.100.15 window=1767227640 count=8\n[batch_job] tick: scanned 3 file(s), 1 new alert(s), last_window_processed=29453795\n[batch_job] tick: scanned 2 file(s), 0 new alert(s), last_window_processed=29453796\n[batch_job] tick: scanned 3 file(s), 0 new alert(s), last_window_processed=29453798\n[batch_job] ALERT user00603 198.51.100.18 window=1767227940 count=8\n[batch_job] ALERT user00405 198.51.100.4 window=1767228000 count=7\n[batch_job] tick: scanned 3 file(s), 2 new alert(s), last_window_processed=29453800\n[batch_job] tick: scanned 2 file(s), 0 new alert(s), last_window_processed=29453801\n[batch_job] tick: scanned 3 file(s), 0 new alert(s), last_window_processed=29453803\nTraceback (most recent call last):\n  File \"/home/jerem/sdw-lab-benchmarks/stream-complexity/batch/batch_job.py\", line 190, in <module>\n    main()\n  File \"/home/jerem/sdw-lab-benchmarks/stream-complexity/batch/batch_job.py\", line 166, in main\n    last_window_processed, n_new, n_files = run_tick(\n                                            ^^^^^^^^^\n  File \"/home/jerem/sdw-lab-benchmarks/stream-complexity/batch/batch_job.py\", line 107, in run_tick\n    rows = con.execute(f\"\"\"\n           ^^^^^^^^^^^^^^^^\n_duckdb.InvalidInputException: Invalid Input Error: No magic bytes found at end of file '/home/jerem/sdw-lab-benchmarks/stream-complexity/results/v2/faults-scored/B3/b_in/window-29453805.parquet'\n",
+  "lander_events": [
+    {
+      "action": "truncated_file_written",
+      "window": 29453805,
+      "bytes": 35400,
+      "full_bytes": 70801,
+      "wall": 1793711084.9123676
+    },
+    {
+      "action": "complete_file_replaced",
+      "window": 29453805,
+      "wall": 1793711115.6227238
+    },
+    {
+      "action": "replay_done",
+      "wall": 1793711306.8927221
+    }
+  ],
+  "window_under_fault_has_gt_alert": false,
+  "fault": "B3",
+  "date": "2026-11-03"
+}

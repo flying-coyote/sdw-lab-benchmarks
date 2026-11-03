@@ -1,0 +1,56 @@
+{
+  "kill_wall": 1793711087.359747,
+  "recovery_start_wall": 1793711118.2103834,
+  "recovery_done_wall": 1793711118.4638596,
+  "wall_kill_to_infra_restored_s": 31.1,
+  "wall_recovery_script_s": 0.25,
+  "wall_kill_to_new_correct_alert_s": 31.21,
+  "output_exists": true,
+  "rows_at_recovery_done": 12,
+  "rows_at_end": 30,
+  "output_grew_after_recovery": true,
+  "post_recovery": {
+    "n_rows": 30,
+    "n_distinct_keys": 30,
+    "n_missing": 0,
+    "n_extra": 0,
+    "n_duplicate_keys": 0,
+    "missing": [],
+    "extra": [],
+    "identical": true
+  },
+  "n_recovery_steps": 1,
+  "step_count_method": "executed steps (conditional script)",
+  "recover_stdout": "EXECUTED_STEPS=1",
+  "kill": "smx-bc-batch",
+  "status_trace_during_hold": [
+    [
+      0.28,
+      "exited 0"
+    ],
+    [
+      5.43,
+      "exited 0"
+    ],
+    [
+      10.61,
+      "exited 0"
+    ],
+    [
+      15.75,
+      "exited 0"
+    ],
+    [
+      20.89,
+      "exited 0"
+    ],
+    [
+      26.74,
+      "exited 0"
+    ]
+  ],
+  "final_exit_code": "0",
+  "restart_count_and_policy": "0 on-failure",
+  "fault": "BC1",
+  "date": "2026-11-03"
+}

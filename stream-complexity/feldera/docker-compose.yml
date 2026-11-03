@@ -1,0 +1,19 @@
+# F arm (STREAM-COMPLEXITY v2): Feldera OPEN-SOURCE edition (MIT), one pipeline-manager
+# container. Pinned at freeze to v0.375.0 by index digest (identical on images.feldera.com
+# and ghcr.io, checked 2026-11-03). EDITION-BOUND: no checkpoint / fault tolerance in OSS.
+name: smx-feldera
+
+services:
+  smx-feldera:
+    image: images.feldera.com/feldera/pipeline-manager:0.375.0@sha256:3dae7d8285a7c4e50b3761952543560f427544fec57f0167c621ce606e9ae0fc
+    container_name: smx-feldera
+    ports:
+      - "18080:8080"
+    environment:
+      RUST_LOG: "info"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8080/healthz >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 20s

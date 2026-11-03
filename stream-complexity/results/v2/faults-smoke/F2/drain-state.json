@@ -1,0 +1,1 @@
+{"connected": true, "n_connects": 2, "n_raw_inserts": 30, "n_written": 30, "n_duplicate_inserts": 0, "n_deletes": 0, "last_row_wall": 1793712170.2421556, "connect_walls": [1793711810.7229805, 1793711988.5035174], "disconnects": [{"wall": 1793711955.9653738, "error": "HTTP 503"}]}

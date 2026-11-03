@@ -1,0 +1,74 @@
+{
+  "kill_wall": 1793712775.892329,
+  "recovery_start_wall": 1793712807.7848594,
+  "recovery_done_wall": 1793712810.019316,
+  "wall_kill_to_infra_restored_s": 34.13,
+  "wall_recovery_script_s": 2.23,
+  "wall_kill_to_new_correct_alert_s": 34.52,
+  "output_exists": true,
+  "rows_at_recovery_done": 13,
+  "rows_at_end": 30,
+  "output_grew_after_recovery": true,
+  "post_recovery": {
+    "n_rows": 30,
+    "n_distinct_keys": 30,
+    "n_missing": 0,
+    "n_extra": 0,
+    "n_duplicate_keys": 0,
+    "missing": [],
+    "extra": [],
+    "identical": true
+  },
+  "kill": "SIGKILL in-container pid 809 (/home/ubuntu/.feldera/local-runner/pipeline-01a1a19a-540b-7970-b236-c5b6006ee16f/program_01a1a19a-540b-7970-b236-c5b6006ee16f_v1 --config-file /home/ubuntu/.feldera/local-runner/pipeline-01a1a19a-540b) rc=0 ",
+  "pipeline_status_after_hold": "{\"id\":\"01a1a19a-540b-7970-b236-c5b6006ee16f\",\"name\":\"smx-detect\",\"description\":\"\",\"tags\":[],\"created_at\":\"2026-11-03T13:30:08.267504Z\",\"version\":1,\"platform_version\":\"0.375.0+8270e156cdc048ded3e9aee024d1969573993f48\",\"runtime_config\":{\"workers\":8,\"hosts\":1,\"storage\":{\"backend\":{\"name\":\"default\"},\"co",
+  "n_recovery_steps": 3,
+  "step_count_method": "markers",
+  "recover_rc": 0,
+  "recover_stdout": "rewind_to=1767228360",
+  "recover_stderr": "",
+  "recompiled": false,
+  "operator_start_issued": true,
+  "program_version_before_after": [
+    1,
+    1
+  ],
+  "program_status_after": "Success",
+  "pipeline_status_trace_head": "1793712807.834716864 Stopped Success Stopped RunnerCheckError\n1793712807.846580970 operator issued start: \"Pipeline is starting\"\n1793712808.374690595 Provisioning Success Running None\n1793712808.899951528 Provisioning Success Running None\n1793712809.425743068 Provisioning Success Running None\n1793712809.951333038 Running Success Running None\n1793712809.974808879 new incarnation 01a1a19d-632a-7d73-903b-5beb4a5ed0c0\n1793712809.998293542 sink adapter re-attached\n",
+  "pipeline_status_trace_tail": "1793712807.834716864 Stopped Success Stopped RunnerCheckError\n1793712807.846580970 operator issued start: \"Pipeline is starting\"\n1793712808.374690595 Provisioning Success Running None\n1793712808.899951528 Provisioning Success Running None\n1793712809.425743068 Provisioning Success Running None\n1793712809.951333038 Running Success Running None\n1793712809.974808879 new incarnation 01a1a19d-632a-7d73-903b-5beb4a5ed0c0\n1793712809.998293542 sink adapter re-attached\n",
+  "drain_state": {
+    "n_connects": 2,
+    "n_raw_inserts": 30,
+    "n_written": 30,
+    "n_duplicate_inserts": 0,
+    "n_deletes": 0,
+    "disconnects": [
+      {
+        "wall": 1793712777.3788738,
+        "error": "HTTP 503"
+      }
+    ]
+  },
+  "raw_engine_duplicates": 0,
+  "replayer": {
+    "last_acked": 1767232799,
+    "failures": [
+      {
+        "event_time": 1767228378,
+        "wall": 1793712776.8602226,
+        "error": "HTTP 503: {\"message\":\"Error sending HTTP request to pipeline: I/O error: Connection reset by peer (os error 104) Failed request: HTTP/1.1 POST http://127.0.0.1:40853/ingress/auth_events?format=json&update_format=raw pipeline-id=N/A pipeline-name=\\\"smx-detect\\\"\",\"error_code\":\"PipelineInteractionUnreachable\",\"d"
+      }
+    ],
+    "rewinds": [
+      {
+        "rewind_to": 1767228360,
+        "wall": 1793712810.021186,
+        "failed_at": 1767228378
+      }
+    ],
+    "n_events_sent": 501303,
+    "n_posts": 7218
+  },
+  "processed_records_final": 308111,
+  "fault": "F2",
+  "date": "2026-11-03"
+}

@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-03",
+  "feldera_version": "0.375.0",
+  "image": "images.feldera.com/feldera/pipeline-manager:0.375.0@sha256:3dae7d8285a7c4e50b3761952543560f427544fec57f0167c621ce606e9ae0fc",
+  "edition_reported_by_/v0/config": "Open source",
+  "probes": [
+    {
+      "step": "fda set-config smx-detect fault_tolerance at_least_once (pipeline stopped), fda run inside the container",
+      "verbatim": "JSON for 'runtime_config' field:\ufffd{\ufffd  \"workers\": 4,\ufffd  \"hosts\": 1,\ufffd  \"storage\": {\ufffd    \"backend\": {\ufffd      \"name\": \"default\"\ufffd    },\ufffd    \"compression\": \"default\",\ufffd    \"compression_level\": null\ufffd  },\ufffd  \"fault_tolerance\": {\ufffd    \"model\": \"at_least_once\"\ufffd  },\ufffd  \"cpu_profiler\": true,\ufffd  \"tracing\": false,\ufffd  \"tracing_endpoint_jaeger\": \"127.0.0.1:6831\",\ufffd  \"min_batch_size_records\": 0,\ufffd  \"resources\": {\ufffd    \"cpu_cores_min\": null,\ufffd    \"cpu_cores_max\": null,\ufffd    \"storage_class\": null,\ufffd    \"service_account_name\": null,\ufffd    \"namespace\": null\ufffd  },\ufffd  \"clock_timezone_offset\": null,\ufffd  \"pin_cpus\": [],\ufffd  \"max_parallel_connector_init\": null,\ufffd  \"init_containers\": null,\ufffd  \"checkpoint_during_suspend\": true,\ufffd  \"http_workers\": null,\ufffd  \"io_workers\": null,\ufffd  \"env\": {},\ufffd  \"dev_tweaks\": {},\ufffd  \"logging\": null,\ufffd  \"pipeline_template_configmap\": null\ufffd}\ufffd\ufffd... is not valid due to: enterprise feature: fault tolerance\nrc=1\n"
+    },
+    {
+      "step": "curl -X PATCH /v0/pipelines/smx-detect -d '{\"runtime_config\":{\"fault_tolerance\":{\"model\":\"at_least_once\"}}}'",
+      "verbatim": "{\"message\":\"JSON for 'runtime_config' field:\\n{\\n  \\\"fault_tolerance\\\": {\\n    \\\"model\\\": \\\"at_least_once\\\"\\n  }\\n}\\n\\n... is not valid due to: enterprise feature: fault tolerance\",\"error_code\":\"InvalidRuntimeConfig\",\"details\":{\"value\":{\"fault_tolerance\":{\"model\":\"at_least_once\"}},\"error\":{\"EnterpriseFeature\":\"fault tolerance\"}}}\nHTTP 400\n"
+    },
+    {
+      "step": "curl -X PATCH ... exactly_once",
+      "verbatim": "{\"message\":\"JSON for 'runtime_config' field:\\n{\\n  \\\"fault_tolerance\\\": {\\n    \\\"model\\\": \\\"exactly_once\\\"\\n  }\\n}\\n\\n... is not valid due to: enterprise feature: fault tolerance\",\"error_code\":\"InvalidRuntimeConfig\",\"details\":{\"value\":{\"fault_tolerance\":{\"model\":\"exactly_once\"}},\"error\":{\"EnterpriseFeature\":\"fault tolerance\"}}}\nHTTP 400\n"
+    },
+    {
+      "step": "pipeline started with fault_tolerance model none (the setting did not persist); curl -X POST /v0/pipelines/smx-detect/checkpoint",
+      "verbatim": "{\"message\":\"Cannot use enterprise-only feature (checkpoint) in Feldera community edition.\",\"error_code\":\"EnterpriseFeature\",\"details\":{\"feature\":\"checkpoint\"}}\nHTTP 501\n"
+    },
+    {
+      "step": "fda checkpoint smx-detect",
+      "verbatim": "Failed to initiate pipeline checkpoint: Cannot use enterprise-only feature (checkpoint) in Feldera community edition.\n"
+    },
+    {
+      "step": "open item: Prometheus metrics gating; curl /v0/pipelines/smx-detect/metrics (first 8 lines)",
+      "verbatim": "# HELP pipeline_status Whether the pipeline is in the status named by the status label: 1 if it is, 0 if it is not.\n# TYPE pipeline_status gauge\npipeline_status{pipeline=\"pipeline-01a1a14d-025b-71e3-a4f4-bc5fb446c249\",pipeline_name=\"smx-detect\",status=\"Stopped\"} 0\npipeline_status{pipeline=\"pipeline-01a1a14d-025b-71e3-a4f4-bc5fb446c249\",pipeline_name=\"smx-detect\",status=\"Provisioning\"} 0\npipeline_status{pipeline=\"pipeline-01a1a14d-025b-71e3-a4f4-bc5fb446c249\",pipeline_name=\"smx-detect\",status=\"Unavailable\"} 0\npipeline_status{pipeline=\"pipeline-01a1a14d-025b-71e3-a4f4-bc5fb446c249\",pipeline_name=\"smx-detect\",status=\"Coordination\"} 0\npipeline_status{pipeline=\"pipeline-01a1a14d-025b-71e3-a4f4-bc5fb446c249\",pipeline_name=\"smx-detect\",status=\"Standby\"} 0\npipeline_status{pipeline=\"pipeline-01a1a14d-025b-71e3-a4f4-bc5fb446c249\",pipeline_name=\"smx-detect\",status=\"AwaitingApproval\"} 0\n"
+    }
+  ],
+  "outcome": "REFUSED. The OSS image rejects fault_tolerance at_least_once and exactly_once at config time (HTTP 400 InvalidRuntimeConfig, EnterpriseFeature 'fault tolerance'); the config stays at model 'none' and the pipeline starts without it; a manual checkpoint returns HTTP 501 EnterpriseFeature 'checkpoint'. Prediction P6 edition-probe sub-item: refuses or ignores -> HIT (refuses)."
+}

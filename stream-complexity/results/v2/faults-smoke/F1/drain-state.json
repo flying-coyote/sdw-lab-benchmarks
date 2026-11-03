@@ -1,0 +1,1 @@
+{"connected": true, "n_connects": 2, "n_raw_inserts": 30, "n_written": 30, "n_duplicate_inserts": 0, "n_deletes": 0, "last_row_wall": 1793711321.8919425, "connect_walls": [1793710962.387866, 1793711141.5298984], "disconnects": [{"wall": 1793711105.7112627, "error": "Response ended prematurely"}]}

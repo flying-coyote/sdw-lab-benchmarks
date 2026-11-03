@@ -1,0 +1,1829 @@
+{
+  "trials_20x": {
+    "1": {
+      "gate_pass": true,
+      "arms": {
+        "B": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "S": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "F": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "BC": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        }
+      },
+      "latency": {
+        "B": {
+          "cv_pct": 63.3,
+          "max_s": 4.8141,
+          "median_s": 2.2939,
+          "median_s_real_time_equivalent": 45.88,
+          "min_s": 0.0672,
+          "n": 30
+        },
+        "S": {
+          "cv_pct": 26.1,
+          "max_s": 0.3812,
+          "median_s": 0.2648,
+          "min_s": 0.1333,
+          "n": 30
+        },
+        "F": {
+          "cv_pct": 0.3,
+          "max_s": 0.1052,
+          "median_s": 0.1047,
+          "min_s": 0.1041,
+          "n": 30
+        },
+        "BC": {
+          "cv_pct": 67.7,
+          "max_s": 4.8891,
+          "median_s": 2.2498,
+          "median_s_real_time_equivalent": 45.0,
+          "min_s": 0.0281,
+          "n": 30
+        }
+      },
+      "latency_samples": {
+        "B": [
+          1.2184,
+          4.3321,
+          2.3555,
+          3.4884,
+          2.4958,
+          4.5033,
+          1.6413,
+          0.6483,
+          4.6597,
+          0.6659,
+          0.7797,
+          2.7863,
+          0.7983,
+          3.9156,
+          1.926,
+          3.9324,
+          4.0591,
+          1.0616,
+          0.0672,
+          1.0776,
+          0.0838,
+          2.2323,
+          0.3835,
+          1.5087,
+          3.5158,
+          4.527,
+          1.6508,
+          3.6705,
+          4.8141,
+          2.9388
+        ],
+        "S": [
+          0.3373,
+          0.3081,
+          0.2373,
+          0.3691,
+          0.3764,
+          0.3812,
+          0.2971,
+          0.2276,
+          0.2357,
+          0.2436,
+          0.1609,
+          0.1649,
+          0.1765,
+          0.2875,
+          0.3041,
+          0.3068,
+          0.2323,
+          0.2388,
+          0.2487,
+          0.2573,
+          0.2634,
+          0.2661,
+          0.3779,
+          0.3037,
+          0.3076,
+          0.3176,
+          0.1451,
+          0.1654,
+          0.305,
+          0.1333
+        ],
+        "F": [
+          0.1049,
+          0.1047,
+          0.1044,
+          0.1049,
+          0.1052,
+          0.1043,
+          0.1045,
+          0.1046,
+          0.1044,
+          0.1046,
+          0.1049,
+          0.1048,
+          0.105,
+          0.1052,
+          0.1043,
+          0.1047,
+          0.1046,
+          0.1047,
+          0.1044,
+          0.1048,
+          0.1045,
+          0.1047,
+          0.1041,
+          0.1048,
+          0.1046,
+          0.1045,
+          0.1052,
+          0.1048,
+          0.1048,
+          0.1047
+        ],
+        "BC": [
+          0.5941,
+          3.6139,
+          1.7367,
+          2.8685,
+          1.8764,
+          3.8837,
+          0.8987,
+          0.0281,
+          4.0397,
+          0.0468,
+          0.1623,
+          2.172,
+          0.1829,
+          3.2977,
+          1.3102,
+          3.3169,
+          3.4443,
+          0.4465,
+          4.4576,
+          0.4642,
+          4.617,
+          1.6196,
+          4.8891,
+          0.8967,
+          2.9037,
+          3.9154,
+          1.0395,
+          3.0596,
+          4.2009,
+          2.3276
+        ]
+      },
+      "moving_parts": {
+        "n_samples": 46,
+        "B": {
+          "n_containers": {
+            "median": 0.0,
+            "max": 0
+          },
+          "n_in_container_processes": {
+            "median": 0.0,
+            "max": 0
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 1.0,
+            "max": 1
+          },
+          "in_container_comms_seen": {}
+        },
+        "S": {
+          "n_containers": {
+            "median": 3.0,
+            "max": 3
+          },
+          "n_in_container_processes": {
+            "median": 3.0,
+            "max": 4
+          },
+          "engine_only": {
+            "median": 3.0,
+            "max": 3
+          },
+          "engine_plus_sink": {
+            "median": 4.0,
+            "max": 4
+          },
+          "in_container_comms_seen": {
+            "smx-kafka": [
+              "java",
+              "kafka-run-class"
+            ],
+            "smx-jobmanager": [
+              "java",
+              "sh"
+            ],
+            "smx-taskmanager": [
+              "java"
+            ]
+          }
+        },
+        "F": {
+          "n_containers": {
+            "median": 1.0,
+            "max": 1
+          },
+          "n_in_container_processes": {
+            "median": 12.0,
+            "max": 12
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 2.0,
+            "max": 2
+          },
+          "in_container_comms_seen": {
+            "smx-feldera": [
+              "pipeline-manage",
+              "postgres",
+              "program_01a1a15"
+            ]
+          }
+        },
+        "BC": {
+          "n_containers": {
+            "median": 1.0,
+            "max": 1
+          },
+          "n_in_container_processes": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 1.0,
+            "max": 1
+          },
+          "in_container_comms_seen": {
+            "smx-bc-batch": [
+              "python3"
+            ]
+          }
+        }
+      },
+      "feldera_drain": {
+        "connected": true,
+        "n_connects": 1,
+        "n_raw_inserts": 30,
+        "n_written": 30,
+        "n_duplicate_inserts": 0,
+        "n_deletes": 0,
+        "last_row_wall": 1793708526.814897,
+        "connect_walls": [
+          1793708167.1931062
+        ],
+        "disconnects": []
+      },
+      "stream_raw": {
+        "smx_alerts_end_offset": 30
+      },
+      "feldera_deploy": {
+        "deploy_compile_start_s": 24.71
+      }
+    },
+    "2": {
+      "gate_pass": true,
+      "arms": {
+        "B": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "S": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "F": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "BC": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        }
+      },
+      "latency": {
+        "B": {
+          "cv_pct": 59.6,
+          "max_s": 5.0021,
+          "median_s": 2.3853,
+          "median_s_real_time_equivalent": 47.71,
+          "min_s": 0.2362,
+          "n": 30
+        },
+        "S": {
+          "cv_pct": 22.7,
+          "max_s": 0.367,
+          "median_s": 0.2252,
+          "min_s": 0.1486,
+          "n": 30
+        },
+        "F": {
+          "cv_pct": 0.4,
+          "max_s": 0.1065,
+          "median_s": 0.1048,
+          "min_s": 0.1043,
+          "n": 30
+        },
+        "BC": {
+          "cv_pct": 63.1,
+          "max_s": 4.9985,
+          "median_s": 2.3796,
+          "median_s_real_time_equivalent": 47.59,
+          "min_s": 0.1689,
+          "n": 30
+        }
+      },
+      "latency_samples": {
+        "B": [
+          1.3474,
+          4.3631,
+          2.503,
+          3.6358,
+          2.6421,
+          4.6487,
+          1.663,
+          0.7743,
+          4.7848,
+          0.7916,
+          0.9166,
+          2.9227,
+          0.9336,
+          4.0872,
+          2.0981,
+          4.1054,
+          4.2263,
+          1.2292,
+          0.2362,
+          1.2473,
+          0.2607,
+          2.2676,
+          0.5743,
+          1.7048,
+          3.7117,
+          4.7307,
+          1.8576,
+          3.877,
+          5.0021,
+          3.183
+        ],
+        "S": [
+          0.2569,
+          0.2261,
+          0.2808,
+          0.2109,
+          0.2189,
+          0.2227,
+          0.2394,
+          0.1536,
+          0.1624,
+          0.1705,
+          0.3028,
+          0.3068,
+          0.3186,
+          0.266,
+          0.2812,
+          0.2843,
+          0.203,
+          0.2114,
+          0.2226,
+          0.2312,
+          0.2243,
+          0.2382,
+          0.367,
+          0.1957,
+          0.2022,
+          0.2136,
+          0.1486,
+          0.1734,
+          0.2926,
+          0.3299
+        ],
+        "F": [
+          0.105,
+          0.1051,
+          0.1052,
+          0.1055,
+          0.1048,
+          0.1044,
+          0.1048,
+          0.1045,
+          0.1047,
+          0.1048,
+          0.1047,
+          0.1048,
+          0.1044,
+          0.1044,
+          0.1048,
+          0.1065,
+          0.1043,
+          0.1058,
+          0.1045,
+          0.1045,
+          0.105,
+          0.1045,
+          0.1045,
+          0.1051,
+          0.1053,
+          0.105,
+          0.105,
+          0.1047,
+          0.1044,
+          0.1051
+        ],
+        "BC": [
+          0.7382,
+          3.7534,
+          1.8953,
+          3.0275,
+          2.0346,
+          4.0415,
+          1.0577,
+          0.1689,
+          4.1797,
+          0.1862,
+          0.3106,
+          2.3174,
+          0.3284,
+          3.4811,
+          1.493,
+          3.4999,
+          3.6222,
+          0.6286,
+          4.6394,
+          0.6467,
+          4.6868,
+          1.6889,
+          4.9985,
+          1.1244,
+          3.1316,
+          4.1434,
+          1.2703,
+          3.2931,
+          4.4172,
+          2.4417
+        ]
+      },
+      "moving_parts": {
+        "n_samples": 46,
+        "B": {
+          "n_containers": {
+            "median": 0.0,
+            "max": 0
+          },
+          "n_in_container_processes": {
+            "median": 0.0,
+            "max": 0
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 1.0,
+            "max": 1
+          },
+          "in_container_comms_seen": {}
+        },
+        "S": {
+          "n_containers": {
+            "median": 3.0,
+            "max": 3
+          },
+          "n_in_container_processes": {
+            "median": 3.0,
+            "max": 4
+          },
+          "engine_only": {
+            "median": 3.0,
+            "max": 3
+          },
+          "engine_plus_sink": {
+            "median": 4.0,
+            "max": 4
+          },
+          "in_container_comms_seen": {
+            "smx-kafka": [
+              "java",
+              "kafka-run-class"
+            ],
+            "smx-jobmanager": [
+              "java"
+            ],
+            "smx-taskmanager": [
+              "java"
+            ]
+          }
+        },
+        "F": {
+          "n_containers": {
+            "median": 1.0,
+            "max": 1
+          },
+          "n_in_container_processes": {
+            "median": 12.0,
+            "max": 13
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 2.0,
+            "max": 2
+          },
+          "in_container_comms_seen": {
+            "smx-feldera": [
+              "pipeline-manage",
+              "postgres",
+              "program_01a1a15"
+            ]
+          }
+        },
+        "BC": {
+          "n_containers": {
+            "median": 1.0,
+            "max": 1
+          },
+          "n_in_container_processes": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 1.0,
+            "max": 1
+          },
+          "in_container_comms_seen": {
+            "smx-bc-batch": [
+              "python3"
+            ]
+          }
+        }
+      },
+      "feldera_drain": {
+        "connected": true,
+        "n_connects": 1,
+        "n_raw_inserts": 30,
+        "n_written": 30,
+        "n_duplicate_inserts": 0,
+        "n_deletes": 0,
+        "last_row_wall": 1793709067.8758225,
+        "connect_walls": [
+          1793708708.3937085
+        ],
+        "disconnects": []
+      },
+      "stream_raw": {
+        "smx_alerts_end_offset": 30
+      },
+      "feldera_deploy": {
+        "deploy_compile_start_s": 22.65
+      }
+    },
+    "3": {
+      "gate_pass": true,
+      "arms": {
+        "B": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "S": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "F": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "BC": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        }
+      },
+      "latency": {
+        "B": {
+          "cv_pct": 61.5,
+          "max_s": 4.8444,
+          "median_s": 2.2691,
+          "median_s_real_time_equivalent": 45.38,
+          "min_s": 0.0336,
+          "n": 30
+        },
+        "S": {
+          "cv_pct": 27.5,
+          "max_s": 0.3746,
+          "median_s": 0.2281,
+          "min_s": 0.1419,
+          "n": 30
+        },
+        "F": {
+          "cv_pct": 12.5,
+          "max_s": 0.1794,
+          "median_s": 0.1048,
+          "min_s": 0.1041,
+          "n": 30
+        },
+        "BC": {
+          "cv_pct": 65.6,
+          "max_s": 4.7594,
+          "median_s": 2.212,
+          "median_s_real_time_equivalent": 44.24,
+          "min_s": 0.0645,
+          "n": 30
+        }
+      },
+      "latency_samples": {
+        "B": [
+          1.3408,
+          4.3567,
+          2.5042,
+          3.6651,
+          2.6732,
+          4.6798,
+          1.6941,
+          0.8305,
+          4.8406,
+          0.847,
+          0.9847,
+          2.9925,
+          1.0032,
+          4.1442,
+          2.1566,
+          4.1635,
+          4.3455,
+          1.3481,
+          0.3547,
+          1.3667,
+          0.3742,
+          2.3816,
+          0.6815,
+          1.8258,
+          3.8329,
+          4.8444,
+          2.0058,
+          4.0259,
+          0.0336,
+          3.1886
+        ],
+        "S": [
+          0.3146,
+          0.2897,
+          0.1419,
+          0.3012,
+          0.3135,
+          0.3171,
+          0.334,
+          0.2723,
+          0.2798,
+          0.2884,
+          0.2261,
+          0.23,
+          0.2418,
+          0.3746,
+          0.1931,
+          0.1954,
+          0.3742,
+          0.1797,
+          0.1906,
+          0.1978,
+          0.2032,
+          0.2062,
+          0.2313,
+          0.1728,
+          0.1778,
+          0.1868,
+          0.1532,
+          0.1734,
+          0.1814,
+          0.3364
+        ],
+        "F": [
+          0.1048,
+          0.1041,
+          0.1043,
+          0.1049,
+          0.105,
+          0.1048,
+          0.1046,
+          0.1049,
+          0.1051,
+          0.1045,
+          0.1049,
+          0.1052,
+          0.1047,
+          0.1794,
+          0.1048,
+          0.1048,
+          0.1045,
+          0.1046,
+          0.1044,
+          0.1049,
+          0.105,
+          0.1043,
+          0.1043,
+          0.1046,
+          0.1047,
+          0.1045,
+          0.1052,
+          0.1045,
+          0.1042,
+          0.1056
+        ],
+        "BC": [
+          0.7217,
+          3.737,
+          1.8829,
+          3.0437,
+          2.0505,
+          4.0574,
+          1.0713,
+          0.2077,
+          4.2187,
+          0.2259,
+          0.3667,
+          2.3735,
+          0.3846,
+          3.524,
+          1.5362,
+          3.5431,
+          3.7271,
+          0.7296,
+          4.7403,
+          0.7474,
+          4.7594,
+          1.7616,
+          0.0645,
+          1.2092,
+          3.2165,
+          4.2272,
+          1.3877,
+          3.4093,
+          4.548,
+          2.5739
+        ]
+      },
+      "moving_parts": {
+        "n_samples": 46,
+        "B": {
+          "n_containers": {
+            "median": 0.0,
+            "max": 0
+          },
+          "n_in_container_processes": {
+            "median": 0.0,
+            "max": 0
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 1.0,
+            "max": 1
+          },
+          "in_container_comms_seen": {}
+        },
+        "S": {
+          "n_containers": {
+            "median": 3.0,
+            "max": 3
+          },
+          "n_in_container_processes": {
+            "median": 3.0,
+            "max": 4
+          },
+          "engine_only": {
+            "median": 3.0,
+            "max": 3
+          },
+          "engine_plus_sink": {
+            "median": 4.0,
+            "max": 4
+          },
+          "in_container_comms_seen": {
+            "smx-kafka": [
+              "java"
+            ],
+            "smx-jobmanager": [
+              "java",
+              "sh"
+            ],
+            "smx-taskmanager": [
+              "java"
+            ]
+          }
+        },
+        "F": {
+          "n_containers": {
+            "median": 1.0,
+            "max": 1
+          },
+          "n_in_container_processes": {
+            "median": 12.0,
+            "max": 13
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 2.0,
+            "max": 2
+          },
+          "in_container_comms_seen": {
+            "smx-feldera": [
+              "pipeline-manage",
+              "postgres",
+              "program_01a1a16"
+            ]
+          }
+        },
+        "BC": {
+          "n_containers": {
+            "median": 1.0,
+            "max": 1
+          },
+          "n_in_container_processes": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 1.0,
+            "max": 1
+          },
+          "in_container_comms_seen": {
+            "smx-bc-batch": [
+              "python3"
+            ]
+          }
+        }
+      },
+      "feldera_drain": {
+        "connected": true,
+        "n_connects": 1,
+        "n_raw_inserts": 30,
+        "n_written": 30,
+        "n_duplicate_inserts": 0,
+        "n_deletes": 0,
+        "last_row_wall": 1793709609.326909,
+        "connect_walls": [
+          1793709249.8179948
+        ],
+        "disconnects": []
+      },
+      "stream_raw": {
+        "smx_alerts_end_offset": 30
+      },
+      "feldera_deploy": {
+        "deploy_compile_start_s": 22.68
+      }
+    }
+  },
+  "trial_1x": {
+    "gate_pass": true,
+    "arms": {
+      "B": {
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0
+      },
+      "S": {
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0
+      },
+      "F": {
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0
+      },
+      "BC": {
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0
+      }
+    },
+    "latency": {
+      "B": {
+        "cv_pct": 24.9,
+        "max_s": 7.1527,
+        "median_s": 5.1983,
+        "median_s_real_time_equivalent": 5.2,
+        "min_s": 2.6946,
+        "n": 30
+      },
+      "S": {
+        "cv_pct": 10.3,
+        "max_s": 3.3553,
+        "median_s": 2.1844,
+        "min_s": 2.0196,
+        "n": 30
+      },
+      "F": {
+        "cv_pct": 10.7,
+        "max_s": 3.221,
+        "median_s": 2.0046,
+        "min_s": 2.0037,
+        "n": 30
+      },
+      "BC": {
+        "cv_pct": 28.0,
+        "max_s": 6.6366,
+        "median_s": 4.6412,
+        "median_s_real_time_equivalent": 4.64,
+        "min_s": 2.1341,
+        "n": 30
+      }
+    },
+    "latency_samples": {
+      "B": [
+        5.7123,
+        3.183,
+        4.5671,
+        5.5734,
+        4.7019,
+        6.7664,
+        4.4706,
+        2.6946,
+        7.0232,
+        3.6205,
+        4.6712,
+        6.9336,
+        4.8232,
+        3.9771,
+        3.3055,
+        5.66,
+        6.3802,
+        3.8282,
+        3.6857,
+        6.2933,
+        6.3774,
+        3.9234,
+        6.2727,
+        4.3997,
+        7.1527,
+        4.039,
+        5.8606,
+        6.663,
+        5.6825,
+        6.1898
+      ],
+      "S": [
+        2.2267,
+        2.2234,
+        2.1482,
+        2.2684,
+        2.2707,
+        2.0707,
+        2.0313,
+        2.192,
+        2.1947,
+        2.2027,
+        2.2372,
+        2.2348,
+        2.2713,
+        2.0665,
+        2.1325,
+        2.0196,
+        2.1156,
+        2.1972,
+        2.2205,
+        2.1243,
+        2.1768,
+        3.3553,
+        2.0494,
+        2.0723,
+        2.2542,
+        2.1349,
+        2.1425,
+        2.2363,
+        2.0388,
+        2.1167
+      ],
+      "F": [
+        2.0044,
+        2.0045,
+        2.0047,
+        2.0044,
+        2.0044,
+        2.0043,
+        2.0044,
+        2.0045,
+        2.0056,
+        2.0058,
+        2.0037,
+        2.1543,
+        2.0044,
+        2.005,
+        2.0047,
+        2.005,
+        2.0048,
+        2.0044,
+        2.0045,
+        2.0045,
+        2.0047,
+        3.221,
+        2.0043,
+        2.0044,
+        2.0048,
+        2.0054,
+        2.0047,
+        2.0053,
+        2.0044,
+        2.0047
+      ],
+      "BC": [
+        5.1449,
+        2.6175,
+        4.0043,
+        5.0112,
+        4.14,
+        6.2047,
+        3.909,
+        2.1341,
+        6.464,
+        3.0656,
+        4.1168,
+        6.3784,
+        4.2713,
+        3.4274,
+        2.7591,
+        5.113,
+        5.8366,
+        3.2857,
+        3.1454,
+        5.7554,
+        5.8415,
+        3.3883,
+        5.7532,
+        3.8829,
+        6.6366,
+        3.525,
+        5.3521,
+        6.1602,
+        5.1815,
+        5.7016
+      ]
+    },
+    "moving_parts": {
+      "n_samples": 698,
+      "B": {
+        "n_containers": {
+          "median": 0.0,
+          "max": 0
+        },
+        "n_in_container_processes": {
+          "median": 0.0,
+          "max": 0
+        },
+        "engine_only": {
+          "median": 1.0,
+          "max": 1
+        },
+        "engine_plus_sink": {
+          "median": 1.0,
+          "max": 1
+        },
+        "in_container_comms_seen": {}
+      },
+      "S": {
+        "n_containers": {
+          "median": 3.0,
+          "max": 3
+        },
+        "n_in_container_processes": {
+          "median": 3.0,
+          "max": 4
+        },
+        "engine_only": {
+          "median": 3.0,
+          "max": 3
+        },
+        "engine_plus_sink": {
+          "median": 4.0,
+          "max": 4
+        },
+        "in_container_comms_seen": {
+          "smx-kafka": [
+            "java",
+            "kafka-broker-ap",
+            "kafka-run-class"
+          ],
+          "smx-jobmanager": [
+            "java",
+            "sh"
+          ],
+          "smx-taskmanager": [
+            "java"
+          ]
+        }
+      },
+      "F": {
+        "n_containers": {
+          "median": 1.0,
+          "max": 1
+        },
+        "n_in_container_processes": {
+          "median": 12.0,
+          "max": 13
+        },
+        "engine_only": {
+          "median": 1.0,
+          "max": 1
+        },
+        "engine_plus_sink": {
+          "median": 2.0,
+          "max": 2
+        },
+        "in_container_comms_seen": {
+          "smx-feldera": [
+            "pipeline-manage",
+            "postgres",
+            "program_01a1a1a",
+            "sh"
+          ]
+        }
+      },
+      "BC": {
+        "n_containers": {
+          "median": 1.0,
+          "max": 1
+        },
+        "n_in_container_processes": {
+          "median": 1.0,
+          "max": 1
+        },
+        "engine_only": {
+          "median": 1.0,
+          "max": 1
+        },
+        "engine_plus_sink": {
+          "median": 1.0,
+          "max": 1
+        },
+        "in_container_comms_seen": {
+          "smx-bc-batch": [
+            "python3"
+          ]
+        }
+      }
+    },
+    "feldera_drain": {
+      "connected": true,
+      "n_connects": 1,
+      "n_raw_inserts": 30,
+      "n_written": 30,
+      "n_duplicate_inserts": 0,
+      "n_deletes": 0,
+      "last_row_wall": 1793720157.4268548,
+      "connect_walls": [
+        1793713070.0268097
+      ],
+      "disconnects": []
+    },
+    "stream_raw": {
+      "smx_alerts_end_offset": 30
+    },
+    "feldera_deploy": {
+      "deploy_compile_start_s": 23.53
+    }
+  },
+  "freshness_20x": {
+    "B": {
+      "trial_medians_s": [
+        2.2939,
+        2.3853,
+        2.2691
+      ],
+      "pooled_p50_s": 2.3115,
+      "median_of_trial_medians_s": 2.2939,
+      "cv_of_trial_medians_pct": 2.2,
+      "within_trial_cv_pct": [
+        63.3,
+        59.6,
+        61.5
+      ],
+      "pooled_p50_real_time_equivalent_s": 46.23
+    },
+    "S": {
+      "trial_medians_s": [
+        0.2648,
+        0.2252,
+        0.2281
+      ],
+      "pooled_p50_s": 0.2385,
+      "median_of_trial_medians_s": 0.2281,
+      "cv_of_trial_medians_pct": 7.5,
+      "within_trial_cv_pct": [
+        26.1,
+        22.7,
+        27.5
+      ]
+    },
+    "F": {
+      "trial_medians_s": [
+        0.1047,
+        0.1048,
+        0.1048
+      ],
+      "pooled_p50_s": 0.1047,
+      "median_of_trial_medians_s": 0.1048,
+      "cv_of_trial_medians_pct": 0.0,
+      "within_trial_cv_pct": [
+        0.3,
+        0.4,
+        12.5
+      ]
+    },
+    "BC": {
+      "trial_medians_s": [
+        2.2498,
+        2.3796,
+        2.212
+      ],
+      "pooled_p50_s": 2.3225,
+      "median_of_trial_medians_s": 2.2498,
+      "cv_of_trial_medians_pct": 3.1,
+      "within_trial_cv_pct": [
+        67.7,
+        63.1,
+        65.6
+      ],
+      "pooled_p50_real_time_equivalent_s": 46.45
+    }
+  },
+  "moving_parts_20x": {
+    "B": {
+      "n_containers": {
+        "medians": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "maxes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "n_in_container_processes": {
+        "medians": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "maxes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "engine_only": {
+        "medians": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "engine_plus_sink": {
+        "medians": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "comms_seen": {}
+    },
+    "S": {
+      "n_containers": {
+        "medians": [
+          3.0,
+          3.0,
+          3.0
+        ],
+        "maxes": [
+          3,
+          3,
+          3
+        ]
+      },
+      "n_in_container_processes": {
+        "medians": [
+          3.0,
+          3.0,
+          3.0
+        ],
+        "maxes": [
+          4,
+          4,
+          4
+        ]
+      },
+      "engine_only": {
+        "medians": [
+          3.0,
+          3.0,
+          3.0
+        ],
+        "maxes": [
+          3,
+          3,
+          3
+        ]
+      },
+      "engine_plus_sink": {
+        "medians": [
+          4.0,
+          4.0,
+          4.0
+        ],
+        "maxes": [
+          4,
+          4,
+          4
+        ]
+      },
+      "comms_seen": {
+        "smx-kafka": [
+          "java"
+        ],
+        "smx-jobmanager": [
+          "java",
+          "sh"
+        ],
+        "smx-taskmanager": [
+          "java"
+        ]
+      }
+    },
+    "F": {
+      "n_containers": {
+        "medians": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "n_in_container_processes": {
+        "medians": [
+          12.0,
+          12.0,
+          12.0
+        ],
+        "maxes": [
+          12,
+          13,
+          13
+        ]
+      },
+      "engine_only": {
+        "medians": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "engine_plus_sink": {
+        "medians": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "maxes": [
+          2,
+          2,
+          2
+        ]
+      },
+      "comms_seen": {
+        "smx-feldera": [
+          "pipeline-manage",
+          "postgres",
+          "program_01a1a16"
+        ]
+      }
+    },
+    "BC": {
+      "n_containers": {
+        "medians": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "n_in_container_processes": {
+        "medians": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "engine_only": {
+        "medians": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "engine_plus_sink": {
+        "medians": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "comms_seen": {
+        "smx-bc-batch": [
+          "python3"
+        ]
+      }
+    }
+  },
+  "faults": {
+    "B1": {
+      "n_recovery_steps": 1,
+      "step_count_method": "markers",
+      "wall_kill_to_infra_restored_s": 30.72,
+      "wall_recovery_script_s": 0.01,
+      "wall_kill_to_new_correct_alert_s": 30.84,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 12,
+      "rows_at_end": 30,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "raw_engine_duplicates": null,
+      "recompiled": null,
+      "job_exit_code_after_truncated_file": null,
+      "window_under_fault_has_gt_alert": null,
+      "flink_job_restarts_in_jm_log": null
+    },
+    "B2": {
+      "n_recovery_steps": 0,
+      "step_count_method": "no operator action",
+      "wall_kill_to_infra_restored_s": 6.44,
+      "wall_recovery_script_s": 0.0,
+      "wall_kill_to_new_correct_alert_s": 1.36,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 13,
+      "rows_at_end": 30,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "raw_engine_duplicates": null,
+      "recompiled": null,
+      "job_exit_code_after_truncated_file": null,
+      "window_under_fault_has_gt_alert": false,
+      "flink_job_restarts_in_jm_log": null
+    },
+    "B2x": {
+      "n_recovery_steps": 0,
+      "step_count_method": "no operator action",
+      "wall_kill_to_infra_restored_s": 8.84,
+      "wall_recovery_script_s": 0.0,
+      "wall_kill_to_new_correct_alert_s": 13.77,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 12,
+      "rows_at_end": 29,
+      "post_recovery": {
+        "n_rows": 29,
+        "n_distinct_keys": 29,
+        "n_missing": 1,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [
+          {
+            "user": "user00705",
+            "src_ip": "198.51.100.9",
+            "window_start": 1767228240
+          }
+        ],
+        "extra": [],
+        "identical": false
+      },
+      "raw_engine_duplicates": null,
+      "recompiled": null,
+      "job_exit_code_after_truncated_file": null,
+      "window_under_fault_has_gt_alert": true,
+      "flink_job_restarts_in_jm_log": null
+    },
+    "B3": {
+      "n_recovery_steps": 2,
+      "step_count_method": "markers",
+      "wall_kill_to_infra_restored_s": 31.2,
+      "wall_recovery_script_s": 29.63,
+      "wall_kill_to_new_correct_alert_s": 31.31,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 12,
+      "rows_at_end": 30,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "raw_engine_duplicates": null,
+      "recompiled": null,
+      "job_exit_code_after_truncated_file": 1,
+      "window_under_fault_has_gt_alert": false,
+      "flink_job_restarts_in_jm_log": null
+    },
+    "B3x": {
+      "n_recovery_steps": 2,
+      "step_count_method": "markers",
+      "wall_kill_to_infra_restored_s": 30.92,
+      "wall_recovery_script_s": 27.04,
+      "wall_kill_to_new_correct_alert_s": 31.03,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 12,
+      "rows_at_end": 30,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "raw_engine_duplicates": null,
+      "recompiled": null,
+      "job_exit_code_after_truncated_file": 1,
+      "window_under_fault_has_gt_alert": true,
+      "flink_job_restarts_in_jm_log": null
+    },
+    "BC1": {
+      "n_recovery_steps": 1,
+      "step_count_method": "executed steps (conditional script)",
+      "wall_kill_to_infra_restored_s": 31.1,
+      "wall_recovery_script_s": 0.25,
+      "wall_kill_to_new_correct_alert_s": 31.21,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 12,
+      "rows_at_end": 30,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "raw_engine_duplicates": null,
+      "recompiled": null,
+      "job_exit_code_after_truncated_file": null,
+      "window_under_fault_has_gt_alert": null,
+      "flink_job_restarts_in_jm_log": null
+    },
+    "F1": {
+      "n_recovery_steps": 4,
+      "step_count_method": "markers",
+      "wall_kill_to_infra_restored_s": 36.91,
+      "wall_recovery_script_s": 5.72,
+      "wall_kill_to_new_correct_alert_s": 37.42,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 13,
+      "rows_at_end": 30,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "raw_engine_duplicates": 0,
+      "recompiled": false,
+      "job_exit_code_after_truncated_file": null,
+      "window_under_fault_has_gt_alert": null,
+      "flink_job_restarts_in_jm_log": null
+    },
+    "F2": {
+      "n_recovery_steps": 3,
+      "step_count_method": "markers",
+      "wall_kill_to_infra_restored_s": 34.13,
+      "wall_recovery_script_s": 2.23,
+      "wall_kill_to_new_correct_alert_s": 34.52,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 13,
+      "rows_at_end": 30,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "raw_engine_duplicates": 0,
+      "recompiled": false,
+      "job_exit_code_after_truncated_file": null,
+      "window_under_fault_has_gt_alert": null,
+      "flink_job_restarts_in_jm_log": null
+    },
+    "S1": {
+      "n_recovery_steps": 2,
+      "step_count_method": "markers",
+      "wall_kill_to_infra_restored_s": 48.37,
+      "wall_recovery_script_s": 17.27,
+      "wall_kill_to_new_correct_alert_s": 91.01,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 13,
+      "rows_at_end": 30,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "raw_engine_duplicates": 0,
+      "recompiled": null,
+      "job_exit_code_after_truncated_file": null,
+      "window_under_fault_has_gt_alert": null,
+      "flink_job_restarts_in_jm_log": 0
+    },
+    "S2": {
+      "n_recovery_steps": 2,
+      "step_count_method": "markers",
+      "wall_kill_to_infra_restored_s": 37.47,
+      "wall_recovery_script_s": 6.27,
+      "wall_kill_to_new_correct_alert_s": 39.05,
+      "output_exists": true,
+      "output_grew_after_recovery": true,
+      "rows_at_recovery_done": 13,
+      "rows_at_end": 30,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "raw_engine_duplicates": 1,
+      "recompiled": null,
+      "job_exit_code_after_truncated_file": null,
+      "window_under_fault_has_gt_alert": null,
+      "flink_job_restarts_in_jm_log": 1
+    }
+  },
+  "axes": {
+    "B": {
+      "moving_parts_engine_plus_sink": 1.0,
+      "config_loc": 131,
+      "recovery_steps": 3
+    },
+    "S": {
+      "moving_parts_engine_plus_sink": 4.0,
+      "config_loc": 197,
+      "recovery_steps": 4
+    },
+    "F": {
+      "moving_parts_engine_plus_sink": 2.0,
+      "config_loc": 61,
+      "recovery_steps": 7
+    },
+    "BC": {
+      "moving_parts_engine_plus_sink": 1.0,
+      "config_loc": 156,
+      "recovery_steps": 1
+    }
+  }
+}

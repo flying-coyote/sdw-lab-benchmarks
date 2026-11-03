@@ -1,0 +1,18 @@
+[
+  {
+    "action": "truncated_file_written",
+    "window": 29453805,
+    "bytes": 35368,
+    "full_bytes": 70737,
+    "wall": 1793709921.9033787
+  },
+  {
+    "action": "complete_file_replaced",
+    "window": 29453805,
+    "wall": 1793709952.4596345
+  },
+  {
+    "action": "replay_done",
+    "wall": 1793710143.8821876
+  }
+]

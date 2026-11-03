@@ -1,0 +1,74 @@
+{
+  "kill_wall": 1793712372.6528363,
+  "recovery_start_wall": 1793712403.8416626,
+  "recovery_done_wall": 1793712409.5646198,
+  "wall_kill_to_infra_restored_s": 36.91,
+  "wall_recovery_script_s": 5.72,
+  "wall_kill_to_new_correct_alert_s": 37.42,
+  "output_exists": true,
+  "rows_at_recovery_done": 13,
+  "rows_at_end": 30,
+  "output_grew_after_recovery": true,
+  "post_recovery": {
+    "n_rows": 30,
+    "n_distinct_keys": 30,
+    "n_missing": 0,
+    "n_extra": 0,
+    "n_duplicate_keys": 0,
+    "missing": [],
+    "extra": [],
+    "identical": true
+  },
+  "kill": "docker kill smx-feldera: smx-feldera",
+  "pipeline_status_after_hold": null,
+  "n_recovery_steps": 4,
+  "step_count_method": "markers",
+  "recover_rc": 0,
+  "recover_stdout": "rewind_to=1767228360",
+  "recover_stderr": "",
+  "recompiled": false,
+  "operator_start_issued": true,
+  "program_version_before_after": [
+    1,
+    1
+  ],
+  "program_status_after": "Success",
+  "pipeline_status_trace_head": "1793712404.691414988 Running Success Running None\n1793712405.305705253 Running Success Running None\n1793712406.765585459 Running Success Running None\n1793712407.379640636 Stopped Success Stopped RunnerCheckError\n1793712407.393616977 operator issued start: \"Pipeline is starting\"\n1793712407.922334546 Provisioning Success Running None\n1793712408.447718630 Provisioning Success Running None\n1793712408.972909544 Provisioning Success Running None\n1793712409.497438774 Running Success Running None\n1793712409.520209301 new incarnation 01a1a197-46d1-7b31-b880-33659dceba78\n1793712409.543784678 sink adapter re-attached\n",
+  "pipeline_status_trace_tail": "1793712404.691414988 Running Success Running None\n1793712405.305705253 Running Success Running None\n1793712406.765585459 Running Success Running None\n1793712407.379640636 Stopped Success Stopped RunnerCheckError\n1793712407.393616977 operator issued start: \"Pipeline is starting\"\n1793712407.922334546 Provisioning Success Running None\n1793712408.447718630 Provisioning Success Running None\n1793712408.972909544 Provisioning Success Running None\n1793712409.497438774 Running Success Running None\n1793712409.520209301 new incarnation 01a1a197-46d1-7b31-b880-33659dceba78\n1793712409.543784678 sink adapter re-attached\n",
+  "drain_state": {
+    "n_connects": 2,
+    "n_raw_inserts": 30,
+    "n_written": 30,
+    "n_duplicate_inserts": 0,
+    "n_deletes": 0,
+    "disconnects": [
+      {
+        "wall": 1793712372.7024355,
+        "error": "Response ended prematurely"
+      }
+    ]
+  },
+  "raw_engine_duplicates": 0,
+  "replayer": {
+    "last_acked": 1767232799,
+    "failures": [
+      {
+        "event_time": 1767228370,
+        "wall": 1793712372.722459,
+        "error": "ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+      }
+    ],
+    "rewinds": [
+      {
+        "rewind_to": 1767228360,
+        "wall": 1793712409.6670234,
+        "failed_at": 1767228370
+      }
+    ],
+    "n_events_sent": 500713,
+    "n_posts": 7210
+  },
+  "processed_records_final": 308111,
+  "fault": "F1",
+  "date": "2026-11-03"
+}

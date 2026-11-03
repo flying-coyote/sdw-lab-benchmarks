@@ -1,0 +1,54 @@
+{
+  "kill_wall": 1793711082.5964992,
+  "recovery_start_wall": 1793711091.4371219,
+  "recovery_done_wall": 1793711091.4371219,
+  "wall_kill_to_infra_restored_s": 8.84,
+  "wall_recovery_script_s": 0.0,
+  "wall_kill_to_new_correct_alert_s": 13.77,
+  "output_exists": true,
+  "rows_at_recovery_done": 12,
+  "rows_at_end": 29,
+  "output_grew_after_recovery": true,
+  "post_recovery": {
+    "n_rows": 29,
+    "n_distinct_keys": 29,
+    "n_missing": 1,
+    "n_extra": 0,
+    "n_duplicate_keys": 0,
+    "missing": [
+      {
+        "user": "user00705",
+        "src_ip": "198.51.100.9",
+        "window_start": 1767228240
+      }
+    ],
+    "extra": [],
+    "identical": false
+  },
+  "window_under_fault": 29453804,
+  "window_under_fault_offset_s": 2640,
+  "n_recovery_steps": 0,
+  "step_count_method": "no operator action",
+  "recover_script": null,
+  "recover_stdout": null,
+  "batch_job_log_tail": "d 3 file(s), 1 new alert(s), last_window_processed=29453860\n[batch_job] tick: scanned 2 file(s), 0 new alert(s), last_window_processed=29453861\n[batch_job] tick: scanned 3 file(s), 0 new alert(s), last_window_processed=29453863\n[batch_job] ALERT user01241 198.51.100.18 window=1767231900 count=5\n[batch_job] tick: scanned 3 file(s), 1 new alert(s), last_window_processed=29453865\n[batch_job] tick: scanned 3 file(s), 0 new alert(s), last_window_processed=29453867\n[batch_job] ALERT user00546 198.51.100.18 window=1767232080 count=7\n[batch_job] tick: scanned 2 file(s), 1 new alert(s), last_window_processed=29453868\n[batch_job] tick: scanned 3 file(s), 0 new alert(s), last_window_processed=29453870\n[batch_job] tick: scanned 3 file(s), 0 new alert(s), last_window_processed=29453872\n[batch_job] tick: scanned 2 file(s), 0 new alert(s), last_window_processed=29453873\n[batch_job] tick: scanned 3 file(s), 0 new alert(s), last_window_processed=29453875\n[batch_job] ALERT user01901 198.51.100.18 window=1767232620 count=6\n[batch_job] tick: scanned 3 file(s), 1 new alert(s), last_window_processed=29453877\n[batch_job] tick: scanned 2 file(s), 0 new alert(s), last_window_processed=29453878\n[batch_job] tick: scanned 2 file(s), 0 new alert(s), last_window_processed=29453879\n[batch_job] tick: idle (1/6)\n[batch_job] tick: idle (2/6)\n[batch_job] tick: idle (3/6)\n[batch_job] tick: idle (4/6)\n[batch_job] tick: idle (5/6)\n[batch_job] tick: idle (6/6)\n[batch_job] drained (max idle ticks reached), exiting\n",
+  "lander_events": [
+    {
+      "action": "file_held_back",
+      "window": 29453804,
+      "wall": 1793711082.5964992
+    },
+    {
+      "action": "late_file_landed",
+      "window": 29453804,
+      "wall": 1793711091.4371219
+    },
+    {
+      "action": "replay_done",
+      "wall": 1793711306.9032822
+    }
+  ],
+  "window_under_fault_has_gt_alert": true,
+  "fault": "B2x",
+  "date": "2026-11-03"
+}

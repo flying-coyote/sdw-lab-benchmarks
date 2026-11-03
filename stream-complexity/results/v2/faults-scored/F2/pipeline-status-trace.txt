@@ -1,0 +1,8 @@
+1793712807.834716864 Stopped Success Stopped RunnerCheckError
+1793712807.846580970 operator issued start: "Pipeline is starting"
+1793712808.374690595 Provisioning Success Running None
+1793712808.899951528 Provisioning Success Running None
+1793712809.425743068 Provisioning Success Running None
+1793712809.951333038 Running Success Running None
+1793712809.974808879 new incarnation 01a1a19d-632a-7d73-903b-5beb4a5ed0c0
+1793712809.998293542 sink adapter re-attached
