@@ -1,0 +1,16 @@
+{
+  "alerts_i": 30,
+  "alerts_w": 30,
+  "cpu_system_s": 0.4,
+  "cpu_total_s": 1.36,
+  "cpu_user_s": 0.96,
+  "files_scanned": 143,
+  "label": "B300.r0",
+  "last_tick_wall": 1793967719.642124,
+  "phase_s": 37.5,
+  "poll_interval_s": 300.0,
+  "poll_wakeups": 25,
+  "queries_i": 24,
+  "queries_w": 24,
+  "ticks_with_new_files": 24
+}

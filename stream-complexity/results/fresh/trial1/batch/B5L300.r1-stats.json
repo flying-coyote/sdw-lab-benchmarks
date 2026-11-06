@@ -1,0 +1,16 @@
+{
+  "alerts_i": 30,
+  "alerts_w": 30,
+  "cpu_system_s": 0.77,
+  "cpu_total_s": 1.95,
+  "cpu_user_s": 1.18,
+  "files_scanned": 24,
+  "label": "B5L300.r1",
+  "last_tick_wall": 1793967684.0171258,
+  "phase_s": 1.875,
+  "poll_interval_s": 5.0,
+  "poll_wakeups": 1441,
+  "queries_i": 24,
+  "queries_w": 24,
+  "ticks_with_new_files": 24
+}

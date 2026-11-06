@@ -1,0 +1,24 @@
+{
+  "cgroup_end_s": {
+    "smx-jobmanager": 167.774965,
+    "smx-kafka": 2987.64896,
+    "smx-taskmanager": 124.112225
+  },
+  "cgroup_start_s": {
+    "smx-jobmanager": 32.650395,
+    "smx-kafka": 24.324725,
+    "smx-taskmanager": 17.205811
+  },
+  "host_cpu_pct_max": 13.6,
+  "host_cpu_pct_median": 3.7,
+  "host_load_flag": false,
+  "host_samples": 788,
+  "host_samples_over_50pct": 0,
+  "s_cpu_seconds_per_container": {
+    "smx-jobmanager": 135.125,
+    "smx-kafka": 2963.324,
+    "smx-taskmanager": 106.906
+  },
+  "s_cpu_seconds_total": 3205.355,
+  "window_s": 8090.7
+}

@@ -1,0 +1,599 @@
+{
+  "arms": {
+    "B300.r0": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B300.r0",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B300.r0-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B300.r1": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B300.r1",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B300.r1-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B300.r2": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B300.r2",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B300.r2-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B300.r3": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B300.r3",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B300.r3-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B5.r0": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B5.r0",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B5.r0-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B5.r1": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B5.r1",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B5.r1-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B5.r2": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B5.r2",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B5.r2-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B5.r3": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B5.r3",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B5.r3-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B5L300.r0": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B5L300.r0",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B5L300.r0-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B5L300.r1": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B5L300.r1",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B5L300.r1-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B5L300.r2": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B5L300.r2",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B5L300.r2-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B5L300.r3": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B5L300.r3",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B5L300.r3-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B60.r0": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B60.r0",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B60.r0-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B60.r1": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B60.r1",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B60.r1-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B60.r2": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B60.r2",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B60.r2-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B60.r3": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B60.r3",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B60.r3-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B900.r0": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B900.r0",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B900.r0-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B900.r1": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B900.r1",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B900.r1-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B900.r2": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B900.r2",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B900.r2-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "B900.r3": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "B900.r3",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/batch/B900.r3-W.jsonl"
+      },
+      "W_pass": true
+    },
+    "S": {
+      "I": {
+        "exists": true,
+        "extra": [],
+        "missing": [],
+        "n_distinct": 30,
+        "n_duplicates": 0,
+        "n_rows": 30,
+        "pass": true
+      },
+      "I_pass": true,
+      "W": {
+        "arm": "S",
+        "duplicate_keys": [],
+        "exists": true,
+        "extra": [],
+        "identical": true,
+        "missing": [],
+        "n_distinct_keys": 30,
+        "n_duplicate_keys": 0,
+        "n_extra": 0,
+        "n_ground_truth": 30,
+        "n_missing": 0,
+        "n_rows": 30,
+        "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/fresh/trial1/alerts-S-W.jsonl"
+      },
+      "W_pass": true
+    }
+  },
+  "gate_i_pass": true,
+  "gate_pass": true,
+  "gate_w_pass": true,
+  "n_i_planted": 30,
+  "n_w_ground_truth": 30,
+  "pairwise_i_identical": true,
+  "pairwise_w_identical": true
+}

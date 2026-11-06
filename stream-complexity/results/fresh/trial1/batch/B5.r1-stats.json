@@ -1,0 +1,16 @@
+{
+  "alerts_i": 30,
+  "alerts_w": 30,
+  "cpu_system_s": 1.21,
+  "cpu_total_s": 3.74,
+  "cpu_user_s": 2.53,
+  "files_scanned": 239,
+  "label": "B5.r1",
+  "last_tick_wall": 1793967684.0171247,
+  "phase_s": 1.875,
+  "poll_interval_s": 5.0,
+  "poll_wakeups": 1441,
+  "queries_i": 120,
+  "queries_w": 120,
+  "ticks_with_new_files": 120
+}

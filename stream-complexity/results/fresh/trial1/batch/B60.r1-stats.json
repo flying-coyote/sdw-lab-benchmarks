@@ -1,0 +1,16 @@
+{
+  "alerts_i": 30,
+  "alerts_w": 30,
+  "cpu_system_s": 0.82,
+  "cpu_total_s": 2.8,
+  "cpu_user_s": 1.98,
+  "files_scanned": 239,
+  "label": "B60.r1",
+  "last_tick_wall": 1793967704.642102,
+  "phase_s": 22.5,
+  "poll_interval_s": 60.0,
+  "poll_wakeups": 121,
+  "queries_i": 120,
+  "queries_w": 120,
+  "ticks_with_new_files": 120
+}
