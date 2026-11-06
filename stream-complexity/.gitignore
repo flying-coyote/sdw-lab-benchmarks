@@ -7,3 +7,4 @@ results/*.json
 faults/_work/
 __pycache__/
 *.pyc
+data/fresh*/

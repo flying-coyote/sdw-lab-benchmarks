@@ -1,0 +1,4 @@
+{"user": "user00050", "src_ip": "198.51.100.5", "window_start": "2026-01-01 00:01:00Z", "window_end": "2026-01-01 00:02:00Z", "failure_count": 8, "last_ingest_wall_ts": 1793958582.0940533, "alert_emit_wall_ts": 1793958603.2331672}
+{"user": "user00225", "src_ip": "198.51.100.4", "window_start": "2026-01-01 00:03:00Z", "window_end": "2026-01-01 00:04:00Z", "failure_count": 8, "last_ingest_wall_ts": 1793958709.094112, "alert_emit_wall_ts": 1793958723.261131}
+{"user": "user00009", "src_ip": "198.51.100.1", "window_start": "2026-01-01 00:07:00Z", "window_end": "2026-01-01 00:08:00Z", "failure_count": 8, "last_ingest_wall_ts": 1793958953.0940979, "alert_emit_wall_ts": 1793958963.3290253}
+{"user": "user00155", "src_ip": "198.51.100.5", "window_start": "2026-01-01 00:10:00Z", "window_end": "2026-01-01 00:11:00Z", "failure_count": 5, "last_ingest_wall_ts": 1793959128.094358, "alert_emit_wall_ts": 1793959143.1693585}

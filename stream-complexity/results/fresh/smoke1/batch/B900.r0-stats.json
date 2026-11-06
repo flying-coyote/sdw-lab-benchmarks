@@ -1,0 +1,16 @@
+{
+  "alerts_i": 5,
+  "alerts_w": 4,
+  "cpu_system_s": 0.09,
+  "cpu_total_s": 0.33,
+  "cpu_user_s": 0.24,
+  "files_scanned": 16,
+  "label": "B900.r0",
+  "last_tick_wall": 1793959493.5942252,
+  "phase_s": 112.5,
+  "poll_interval_s": 900.0,
+  "poll_wakeups": 2,
+  "queries_i": 2,
+  "queries_w": 2,
+  "ticks_with_new_files": 2
+}

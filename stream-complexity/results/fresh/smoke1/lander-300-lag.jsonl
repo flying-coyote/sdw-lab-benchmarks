@@ -1,0 +1,3 @@
+{"file": "window-29453760.parquet", "first_window": 29453760, "span_s": 300, "chunk_start": 1767225600, "chunk_end": 1767225900, "n_rows": 21038, "target_wall": 1793958781.094, "rename_wall": 1793958781.3089027, "lag_s": 0.2149}
+{"file": "window-29453765.parquet", "first_window": 29453765, "span_s": 300, "chunk_start": 1767225900, "chunk_end": 1767226200, "n_rows": 20725, "target_wall": 1793959081.094, "rename_wall": 1793959081.1265366, "lag_s": 0.0325}
+{"file": "window-29453770.parquet", "first_window": 29453770, "span_s": 300, "chunk_start": 1767226200, "chunk_end": 1767226500, "n_rows": 20742, "target_wall": 1793959381.094, "rename_wall": 1793959381.1245902, "lag_s": 0.0306}
