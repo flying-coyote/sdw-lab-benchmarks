@@ -1,0 +1,290 @@
+{
+  "kill_wall": 1794037584.2722383,
+  "recovery_start_wall": 1794037615.0668867,
+  "recovery_done_wall": 1794037616.1547415,
+  "wall_kill_to_infra_restored_s": 31.88,
+  "wall_recovery_script_s": 1.09,
+  "wall_kill_to_new_correct_alert_s": 36.48,
+  "output_exists": true,
+  "rows_at_recovery_done": 11,
+  "rows_at_end": 30,
+  "output_grew_after_recovery": true,
+  "post_recovery": {
+    "n_rows": 30,
+    "n_distinct_keys": 30,
+    "n_missing": 0,
+    "n_extra": 0,
+    "n_duplicate_keys": 0,
+    "missing": [],
+    "extra": [],
+    "identical": true
+  },
+  "kill": "docker kill smx-risingwave: smx-risingwave",
+  "n_recovery_steps": 3,
+  "step_count_method": "markers",
+  "recover_rc": 0,
+  "recover_stdout": "resend_after_uid=e-00168941",
+  "recover_stderr": "",
+  "status_trace_during_hold": [
+    [
+      0.34,
+      "exited 0"
+    ],
+    [
+      5.51,
+      "exited 0"
+    ],
+    [
+      10.67,
+      "exited 0"
+    ],
+    [
+      15.83,
+      "exited 0"
+    ],
+    [
+      21.0,
+      "exited 0"
+    ],
+    [
+      26.15,
+      "exited 0"
+    ],
+    [
+      28.73,
+      "exited 0"
+    ]
+  ],
+  "restart_count_and_policy": "0 no",
+  "checkpoint_loss": {
+    "replayer_last_acked_uid_before_kill": "e-00169920",
+    "recovered_max_event_uid": "e-00168941",
+    "n_events_lost": 979,
+    "replayer_failures": [
+      {
+        "event_time": 1767228043,
+        "wall": 1794037584.3275068,
+        "error": "OperationalError: consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+      }
+    ]
+  },
+  "auth_events_final_count_and_distinct_uids": [
+    500000,
+    500000
+  ],
+  "auth_events_missing_uid_ranges": [],
+  "host_clock_steps": [
+    {
+      "wall": 1794037471.1612916,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037498.6552136,
+      "step_s": -2.582
+    },
+    {
+      "wall": 1794037526.1201603,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037553.5665104,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037581.02608,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037608.520729,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037635.9937594,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037662.9595008,
+      "step_s": -2.582
+    },
+    {
+      "wall": 1794037690.4636788,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037717.9426994,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037745.4359534,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037772.9231687,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037800.3989217,
+      "step_s": -2.581
+    },
+    {
+      "wall": 1794037827.9091523,
+      "step_s": -2.581
+    },
+    {
+      "done": true,
+      "n_checks": 822
+    }
+  ],
+  "drain_state": {
+    "n_connects": 2,
+    "n_raw_inserts": 30,
+    "n_written": 30,
+    "n_duplicate_inserts": 0,
+    "n_resume_overlap": 1,
+    "n_non_insert_ops": 0,
+    "ops_seen": {
+      "Insert": 31
+    },
+    "disconnects": [
+      {
+        "wall": 1794037584.3734658,
+        "error": "consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+      }
+    ],
+    "connect_walls": [
+      1794037456.8120441,
+      1794037615.9722803
+    ]
+  },
+  "raw_engine_duplicates": 0,
+  "replayer": {
+    "last_acked_uid": "e-00500000",
+    "failures": [
+      {
+        "event_time": 1767228043,
+        "wall": 1794037584.3275068,
+        "error": "OperationalError: consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+      }
+    ],
+    "rewinds": [
+      {
+        "resend_after_uid": "e-00168941",
+        "wall": 1794037616.2962947,
+        "failed_at": 1767228043,
+        "first_acks": [
+          [
+            1794037616.3197088,
+            "e-00168942",
+            "e-00169011"
+          ],
+          [
+            1794037616.3288128,
+            "e-00169012",
+            "e-00169087"
+          ],
+          [
+            1794037616.3372273,
+            "e-00169088",
+            "e-00169162"
+          ],
+          [
+            1794037616.3460186,
+            "e-00169163",
+            "e-00169238"
+          ],
+          [
+            1794037616.3535926,
+            "e-00169239",
+            "e-00169294"
+          ]
+        ]
+      }
+    ],
+    "n_events_sent": 500979,
+    "n_inserts": 7214
+  },
+  "engine_log_recovery_lines": [
+    "2026-11-07T07:44:09.540072561Z ERROR rw-standalone-meta risingwave_object_store::object: metadata failed error=NotFound (permanent) at stat, context: { service: fs, path: hummock_001/checkpoint/0 } => entity not found, source: No such file or directory (os error 2)",
+    "2026-11-07T07:44:09.556375973Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T07:44:09.556413837Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T07:44:09.573098136Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T07:44:09.57316743Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T07:44:10.207480213Z ERROR   rw-standalone-compute risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compute, status 500 Internal Server Error",
+    "2026-11-07T07:44:10.207480184Z ERROR      rw-standalone-meta risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/meta, status 500 Internal Server Error",
+    "2026-11-07T07:44:10.207496831Z ERROR rw-standalone-compactor risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compactor, status 500 Internal Server Error",
+    "2026-11-07T07:44:10.207508313Z ERROR  rw-standalone-frontend risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/frontend, status 500 Internal Server Error",
+    "2026-11-07T07:44:13.051165023Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:18.121593707Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:23.182567794Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:28.237828082Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:33.298129267Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:35.789037633Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:40.845337925Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:45.916878303Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:51.000510817Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:56.076117152Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:44:58.567175168Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:03.636170793Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:08.703017626Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:13.775539828Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:18.851512524Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:23.92628978Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:26.417361002Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:31.479201049Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:36.550411002Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:41.632032066Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:46.706281805Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:51.778216721Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:54.258712522Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:45:59.33402722Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:46:04.413127912Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:46:09.472296644Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:46:14.540434376Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:46:19.608915712Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:46:22.107881214Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:46:55.464369923Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T07:46:55.464415002Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T07:46:55.486649867Z  WARN    rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: failed to inject database initial barrier database_id=1 e=unconnected worker node 1",
+    "2026-11-07T07:46:55.486736943Z ERROR    rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery failed error=global recovery failed due to failure of databases [1]",
+    "2026-11-07T07:46:55.510101524Z  WARN      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::worker: failed to inject database initial barrier database_id=1 e=unconnected worker node 1",
+    "2026-11-07T07:46:55.510170698Z ERROR      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::worker: recovery failed error=global recovery failed due to failure of databases [1]",
+    "2026-11-07T07:46:55.698161807Z  INFO      rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T07:46:55.69821651Z  INFO      rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T07:46:56.313313823Z ERROR rw-standalone-compactor risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compactor, status 500 Internal Server Error",
+    "2026-11-07T07:46:56.313314941Z ERROR   rw-standalone-compute risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compute, status 500 Internal Server Error",
+    "2026-11-07T07:46:56.313390562Z ERROR      rw-standalone-meta bootstrap_recovery: risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/meta, status 500 Internal Server Error",
+    "2026-11-07T07:46:56.314285591Z ERROR  rw-standalone-frontend risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/frontend, status 500 Internal Server Error",
+    "2026-11-07T07:47:00.433525204Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:05.502857108Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:10.570790159Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:15.626405737Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:18.117192826Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:23.180441042Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:28.265233733Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:33.321576302Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:38.38145145Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:43.441705395Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:45.927958634Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:50.995211869Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:47:56.062470215Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:01.147708309Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:06.219545636Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:11.291525183Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:13.794848159Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:18.874350864Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:23.942821234Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:29.025617421Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:34.102811348Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:39.181753095Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:41.677014618Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:46.73507744Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:51.805349767Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:48:56.865584147Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:49:01.937487Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:49:07.001508778Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:49:09.502887032Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T07:49:14.567402398Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file"
+  ],
+  "fault": "R1",
+  "date": "2026-11-07"
+}

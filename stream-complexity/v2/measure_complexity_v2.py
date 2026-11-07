@@ -34,6 +34,11 @@ FELDERA_FILES = {
     "engine_config": [],
     "job_and_scheduler": ["feldera/detection.sql", "feldera/deploy_pipeline.sh"],
 }
+RW_FILES = {  # v3 (2026-11-07): compose service, detection SQL, deploy script (pre-reg Measures (2))
+    "compose_orchestration": ["risingwave/docker-compose.yml"],
+    "engine_config": [],
+    "job_and_scheduler": ["risingwave/detection.sql", "risingwave/deploy.py"],
+}
 BC_FILES = {
     "compose_orchestration": ["bc/docker-compose.yml", "bc/Dockerfile.batch"],
     "engine_config": [],
@@ -44,8 +49,10 @@ IMAGES = {
     "F": ["images.feldera.com/feldera/pipeline-manager@sha256:3dae7d8285a7c4e50b3761952543560f427544fec57f0167c621ce606e9ae0fc"],
     "BC": ["smx-bc-batch:v2"],
     "B": [],
+    "R": ["risingwavelabs/risingwave@sha256:b869358fa704250d25045d3575145ca59cfb67a558a08fa4f8fd375874c24d63"],
 }
-CONSTRUCT_RE = re.compile(r"WATERMARK\s+FOR|TUMBLE|LATENESS|emit_final|append_only|//\s*\{?WINDOW_SECONDS|//\s*60",
+# v3 adds the two RisingWave constructs its pre-reg names (APPEND ONLY, EMIT ON WINDOW CLOSE)
+CONSTRUCT_RE = re.compile(r"WATERMARK\s+FOR|TUMBLE|LATENESS|emit_final|append_only|APPEND\s+ONLY|EMIT\s+ON\s+WINDOW\s+CLOSE|//\s*\{?WINDOW_SECONDS|//\s*60",
                           re.IGNORECASE)
 
 
@@ -83,7 +90,8 @@ def detection_lines(path, sql_only_block=None):
 def main():
     rep = {"config_surface": {
         "B": config_surface(ROOT, BATCH_FILES), "S": config_surface(ROOT, STREAM_FILES),
-        "F": config_surface(ROOT, FELDERA_FILES), "BC": config_surface(ROOT, BC_FILES)}}
+        "F": config_surface(ROOT, FELDERA_FILES), "BC": config_surface(ROOT, BC_FILES),
+        "R": config_surface(ROOT, RW_FILES)}}
     b = rep["config_surface"]["B"]["total_loc"]
     rep["config_ratio_to_B"] = {k: round(v["total_loc"] / b, 2) for k, v in rep["config_surface"].items()}
     rep["images"] = image_bytes()
@@ -97,10 +105,11 @@ def main():
         "BC": detection_lines(os.path.join(ROOT, "batch", "batch_job.py"), (start, end)),
         "S": detection_lines(os.path.join(ROOT, "streaming", "flink_job.sql")),
         "F": detection_lines(os.path.join(ROOT, "feldera", "detection.sql")),
+        "R": detection_lines(os.path.join(ROOT, "risingwave", "detection.sql")),
     }
-    out = os.path.join(ROOT, "results", "v2", "complexity-v2.json")
+    out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "results", "v2", "complexity-v2.json")
     json.dump(rep, open(out, "w"), indent=2)
-    for a in ("B", "S", "F", "BC"):
+    for a in ("B", "S", "F", "BC", "R"):
         print(a, "LOC", rep["config_surface"][a]["total_loc"], "ratio", rep["config_ratio_to_B"][a],
               "images", rep["images"][a]["total_inspect_size_bytes_july_basis"],
               "eng-specific", rep["engine_specific_sql"][a]["engine_specific_lines"], "/",

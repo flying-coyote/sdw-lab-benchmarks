@@ -1,0 +1,9 @@
+2026-11-07T07:27:37.05726083Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery start!
+2026-11-07T07:27:37.073731114Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery success
+2026-11-07T07:28:31.556158561Z  WARN      rw-standalone-meta risingwave_meta::hummock::manager::compaction: failed to commit compaction task 110 unexpected decreasing now, old=1794036513, new=1794036511
+2026-11-07T07:28:32.546921482Z  WARN      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::hummock::manager::compaction: failed to commit compaction task 112 unexpected decreasing now, old=1794036513, new=1794036512
+2026-11-07T07:31:43.463917126Z  WARN      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::hummock::manager::compaction: failed to commit compaction task 550 unexpected decreasing now, old=1794036705, new=1794036703
+2026-11-07T07:34:00.560446998Z  WARN      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::hummock::manager::compaction: failed to commit compaction task 825 unexpected decreasing now, old=1794036842, new=1794036840
+2026-11-07T07:34:01.561984721Z  WARN      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::hummock::manager::compaction: failed to commit compaction task 827 unexpected decreasing now, old=1794036842, new=1794036841
+2026-11-07T07:34:55.403745383Z  WARN      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::hummock::manager::compaction: failed to commit compaction task 892 unexpected decreasing now, old=1794036897, new=1794036895
+2026-11-07T07:34:56.396006119Z  WARN      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::hummock::manager::compaction: failed to commit compaction task 894 unexpected decreasing now, old=1794036897, new=1794036896

@@ -1,0 +1,245 @@
+{
+  "config_surface": {
+    "B": {
+      "buckets": {
+        "job_and_scheduler": [
+          {
+            "file": "batch/batch_job.py",
+            "loc": 131,
+            "exists": true
+          }
+        ]
+      },
+      "total_loc": 131
+    },
+    "S": {
+      "buckets": {
+        "compose_orchestration": [
+          {
+            "file": "streaming/docker-compose.yml",
+            "loc": 129,
+            "exists": true
+          },
+          {
+            "file": "streaming/Dockerfile.flink",
+            "loc": 4,
+            "exists": true
+          }
+        ],
+        "engine_config": [
+          {
+            "file": "streaming/init-topics.sh",
+            "loc": 7,
+            "exists": true
+          }
+        ],
+        "job_and_scheduler": [
+          {
+            "file": "streaming/flink_job.sql",
+            "loc": 52,
+            "exists": true
+          },
+          {
+            "file": "streaming/submit_flink_job.sh",
+            "loc": 5,
+            "exists": true
+          }
+        ]
+      },
+      "total_loc": 197
+    },
+    "F": {
+      "buckets": {
+        "compose_orchestration": [
+          {
+            "file": "feldera/docker-compose.yml",
+            "loc": 15,
+            "exists": true
+          }
+        ],
+        "engine_config": [],
+        "job_and_scheduler": [
+          {
+            "file": "feldera/detection.sql",
+            "loc": 27,
+            "exists": true
+          },
+          {
+            "file": "feldera/deploy_pipeline.sh",
+            "loc": 19,
+            "exists": true
+          }
+        ]
+      },
+      "total_loc": 61
+    },
+    "BC": {
+      "buckets": {
+        "compose_orchestration": [
+          {
+            "file": "bc/docker-compose.yml",
+            "loc": 18,
+            "exists": true
+          },
+          {
+            "file": "bc/Dockerfile.batch",
+            "loc": 7,
+            "exists": true
+          }
+        ],
+        "engine_config": [],
+        "job_and_scheduler": [
+          {
+            "file": "batch/batch_job.py",
+            "loc": 131,
+            "exists": true
+          }
+        ]
+      },
+      "total_loc": 156
+    },
+    "R": {
+      "buckets": {
+        "compose_orchestration": [
+          {
+            "file": "risingwave/docker-compose.yml",
+            "loc": 18,
+            "exists": true
+          }
+        ],
+        "engine_config": [],
+        "job_and_scheduler": [
+          {
+            "file": "risingwave/detection.sql",
+            "loc": 24,
+            "exists": true
+          },
+          {
+            "file": "risingwave/deploy.py",
+            "loc": 34,
+            "exists": true
+          }
+        ]
+      },
+      "total_loc": 76
+    }
+  },
+  "config_ratio_to_B": {
+    "B": 1.0,
+    "S": 1.5,
+    "F": 0.47,
+    "BC": 1.19,
+    "R": 0.58
+  },
+  "images": {
+    "S": {
+      "images": [
+        {
+          "image": "apache/kafka:4.3.1",
+          "id": "sha256:77e3df9054047a88b520d0cc46e16696d3b22022e1d580aeccd2632df6532837",
+          "inspect_size_bytes_july_basis": 238880881,
+          "unpacked_disk_size_docker_system_df": "686MB"
+        },
+        {
+          "image": "smx-flink-kafka:2.2.1",
+          "id": "sha256:8caadad04a18ceec622489628b18a3ffae1c532f2126a69c603d75aa63e4f160",
+          "inspect_size_bytes_july_basis": 674189499,
+          "unpacked_disk_size_docker_system_df": "1.58GB"
+        }
+      ],
+      "n_distinct_images": 2,
+      "total_inspect_size_bytes_july_basis": 913070380
+    },
+    "F": {
+      "images": [
+        {
+          "image": "images.feldera.com/feldera/pipeline-manager@sha256:3dae7d8285a7c4e50b3761952543560f427544fec57f0167c621ce606e9ae0fc",
+          "id": "sha256:3dae7d8285a7c4e50b3761952543560f427544fec57f0167c621ce606e9ae0fc",
+          "inspect_size_bytes_july_basis": 2559070153,
+          "unpacked_disk_size_docker_system_df": "11GB"
+        }
+      ],
+      "n_distinct_images": 1,
+      "total_inspect_size_bytes_july_basis": 2559070153
+    },
+    "BC": {
+      "images": [
+        {
+          "image": "smx-bc-batch:v2",
+          "id": "sha256:5ad248f4ffc8cb2698abec6b608caae3fe2be31a0266bc73a343da29b85c04cf",
+          "inspect_size_bytes_july_basis": 119672230,
+          "unpacked_disk_size_docker_system_df": "485MB"
+        }
+      ],
+      "n_distinct_images": 1,
+      "total_inspect_size_bytes_july_basis": 119672230
+    },
+    "B": {
+      "images": [],
+      "n_distinct_images": 0,
+      "total_inspect_size_bytes_july_basis": 0
+    },
+    "R": {
+      "images": [
+        {
+          "image": "risingwavelabs/risingwave@sha256:b869358fa704250d25045d3575145ca59cfb67a558a08fa4f8fd375874c24d63",
+          "id": "sha256:b869358fa704250d25045d3575145ca59cfb67a558a08fa4f8fd375874c24d63",
+          "inspect_size_bytes_july_basis": 2521484435,
+          "unpacked_disk_size_docker_system_df": "11GB"
+        }
+      ],
+      "n_distinct_images": 1,
+      "total_inspect_size_bytes_july_basis": 2521484435
+    }
+  },
+  "engine_specific_sql": {
+    "rule": "line counts if it contains any pre-reg-named construct (WATERMARK FOR, TUMBLE, LATENESS, emit_final, append_only, DuckDB // floor-division windowing); same rule every arm",
+    "B": {
+      "detection_sql_loc": 7,
+      "engine_specific_lines": 1,
+      "pct": 14.3,
+      "lines": [
+        "SELECT user, src_ip, (time // {WINDOW_SECONDS}) * {WINDOW_SECONDS} AS window_start,"
+      ]
+    },
+    "BC": {
+      "detection_sql_loc": 7,
+      "engine_specific_lines": 1,
+      "pct": 14.3,
+      "lines": [
+        "SELECT user, src_ip, (time // {WINDOW_SECONDS}) * {WINDOW_SECONDS} AS window_start,"
+      ]
+    },
+    "S": {
+      "detection_sql_loc": 52,
+      "engine_specific_lines": 2,
+      "pct": 3.8,
+      "lines": [
+        "WATERMARK FOR `event_time` AS `event_time` - INTERVAL '2' SECOND",
+        "TUMBLE(TABLE auth_events, DESCRIPTOR(event_time), INTERVAL '60' SECOND)"
+      ]
+    },
+    "F": {
+      "detection_sql_loc": 27,
+      "engine_specific_lines": 4,
+      "pct": 14.8,
+      "lines": [
+        ") WITH ('append_only' = 'true');",
+        "LATENESS auth_ts.event_time INTERVAL 2 SECONDS;",
+        "WITH ('emit_final' = 'window_start')",
+        "FROM TABLE(TUMBLE(\"DATA\" => TABLE auth_ts, \"TIMECOL\" => DESCRIPTOR(event_time),"
+      ]
+    },
+    "R": {
+      "detection_sql_loc": 24,
+      "engine_specific_lines": 4,
+      "pct": 16.7,
+      "lines": [
+        "WATERMARK FOR event_time AS event_time - INTERVAL '2' SECOND",
+        ") APPEND ONLY;",
+        "FROM TUMBLE(auth_events, event_time, INTERVAL '1' MINUTE)",
+        "EMIT ON WINDOW CLOSE;"
+      ]
+    }
+  }
+}

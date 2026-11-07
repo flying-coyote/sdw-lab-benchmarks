@@ -1,0 +1,1539 @@
+{
+  "trials_20x": {
+    "1": {
+      "gate_pass": true,
+      "arms": {
+        "B": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "S": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "R": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        }
+      },
+      "latency": {
+        "B": {
+          "cv_pct": 113.6,
+          "max_s": 4.9118,
+          "median_s": 1.8624,
+          "median_s_real_time_equivalent": 37.25,
+          "min_s": -2.4789,
+          "n": 30
+        },
+        "S": {
+          "cv_pct": 662.8,
+          "max_s": 0.3716,
+          "median_s": 0.2524,
+          "min_s": -2.2695,
+          "n": 30
+        },
+        "R": {
+          "cv_pct": 46.3,
+          "max_s": 6.2392,
+          "median_s": 3.2388,
+          "min_s": 1.2288,
+          "n": 30
+        }
+      },
+      "latency_samples": {
+        "B": [
+          -1.3482,
+          1.6752,
+          2.1397,
+          3.1559,
+          -0.4132,
+          1.5989,
+          3.6241,
+          0.052,
+          4.0672,
+          0.0776,
+          -2.4789,
+          4.5327,
+          2.5521,
+          -2.0132,
+          1.006,
+          3.0169,
+          0.4602,
+          2.4771,
+          1.488,
+          2.5087,
+          -1.0588,
+          0.9645,
+          3.8973,
+          4.9118,
+          1.9148,
+          0.3465,
+          2.37,
+          1.8099,
+          2.8246,
+          3.2744
+        ],
+        "S": [
+          0.362,
+          0.149,
+          0.2838,
+          0.2302,
+          0.2856,
+          0.3051,
+          0.3716,
+          -2.1759,
+          0.1685,
+          0.2022,
+          0.3019,
+          0.3118,
+          0.2509,
+          0.3203,
+          0.1813,
+          0.1913,
+          0.2784,
+          0.2041,
+          0.2253,
+          0.2515,
+          0.2952,
+          0.3046,
+          0.2203,
+          0.2533,
+          0.2625,
+          -2.2695,
+          0.3178,
+          0.2154,
+          0.2447,
+          0.2701
+        ],
+        "R": [
+          4.2495,
+          2.2157,
+          3.2254,
+          4.2305,
+          1.2288,
+          3.2307,
+          5.2403,
+          2.3039,
+          1.2671,
+          2.2565,
+          2.2521,
+          5.2586,
+          5.2373,
+          1.2288,
+          1.2396,
+          4.2456,
+          1.2591,
+          4.2693,
+          5.2854,
+          1.2465,
+          3.2447,
+          5.232,
+          5.2216,
+          6.2392,
+          3.2435,
+          1.2339,
+          3.2231,
+          3.2341,
+          4.242,
+          5.2414
+        ]
+      },
+      "r_latency_decomposition": {
+        "window_close_to_rw_commit_timestamp_p50_s": 2.1761,
+        "window_close_to_rw_commit_timestamp_min_max_s": [
+          0.1611,
+          4.1891
+        ],
+        "rw_commit_timestamp_to_drain_write_p50_s": 1.0744
+      },
+      "moving_parts": {
+        "n_samples": 49,
+        "B": {
+          "n_containers": {
+            "median": 0,
+            "max": 0
+          },
+          "n_in_container_processes": {
+            "median": 0,
+            "max": 0
+          },
+          "engine_only": {
+            "median": 1,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 1,
+            "max": 1
+          },
+          "in_container_comms_seen": {}
+        },
+        "S": {
+          "n_containers": {
+            "median": 3,
+            "max": 3
+          },
+          "n_in_container_processes": {
+            "median": 3,
+            "max": 4
+          },
+          "engine_only": {
+            "median": 3,
+            "max": 3
+          },
+          "engine_plus_sink": {
+            "median": 4,
+            "max": 4
+          },
+          "in_container_comms_seen": {
+            "smx-kafka": [
+              "java",
+              "kafka-run-class"
+            ],
+            "smx-jobmanager": [
+              "java"
+            ],
+            "smx-taskmanager": [
+              "java"
+            ]
+          }
+        },
+        "R": {
+          "n_containers": {
+            "median": 1,
+            "max": 1
+          },
+          "n_in_container_processes": {
+            "median": 1,
+            "max": 1
+          },
+          "engine_only": {
+            "median": 1,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 2,
+            "max": 2
+          },
+          "in_container_comms_seen": {
+            "smx-risingwave": [
+              "risingwave"
+            ]
+          }
+        }
+      },
+      "risingwave_drain": {
+        "connected": false,
+        "n_connects": 1,
+        "n_raw_inserts": 30,
+        "n_written": 30,
+        "n_duplicate_inserts": 0,
+        "n_resume_overlap": 0,
+        "n_non_insert_ops": 0,
+        "ops_seen": {
+          "Insert": 30
+        },
+        "last_rw_timestamp": 1794036315723,
+        "last_row_wall": 1794036316.7784505,
+        "connect_walls": [
+          1794035952.1946454
+        ],
+        "disconnects": []
+      },
+      "stream_raw": {
+        "smx_alerts_end_offset": 30
+      },
+      "risingwave_deploy": {
+        "deploy_s": 2.89
+      }
+    },
+    "2": {
+      "gate_pass": true,
+      "arms": {
+        "B": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "S": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "R": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        }
+      },
+      "latency": {
+        "B": {
+          "cv_pct": 45.8,
+          "max_s": 5.0247,
+          "median_s": 2.382,
+          "median_s_real_time_equivalent": 47.64,
+          "min_s": 0.4799,
+          "n": 30
+        },
+        "S": {
+          "cv_pct": 25.2,
+          "max_s": 0.3826,
+          "median_s": 0.2613,
+          "min_s": 0.1477,
+          "n": 30
+        },
+        "R": {
+          "cv_pct": 41.3,
+          "max_s": 6.279,
+          "median_s": 3.2915,
+          "min_s": 1.271,
+          "n": 30
+        }
+      },
+      "latency_samples": {
+        "B": [
+          1.1815,
+          1.6175,
+          2.0705,
+          3.0844,
+          2.0933,
+          4.1025,
+          3.542,
+          2.5532,
+          1.5641,
+          5.0023,
+          5.0247,
+          2.0275,
+          2.466,
+          0.4799,
+          0.9167,
+          2.9253,
+          2.9447,
+          2.371,
+          1.3781,
+          2.393,
+          1.4,
+          3.4099,
+          1.3133,
+          4.7526,
+          1.7579,
+          2.7727,
+          2.2186,
+          1.6639,
+          2.682,
+          3.1408
+        ],
+        "S": [
+          0.3142,
+          0.3278,
+          0.1661,
+          0.2109,
+          0.2343,
+          0.2459,
+          0.3422,
+          0.3647,
+          0.3826,
+          0.1477,
+          0.2162,
+          0.225,
+          0.2395,
+          0.2812,
+          0.3483,
+          0.3585,
+          0.1628,
+          0.1727,
+          0.2233,
+          0.2661,
+          0.2905,
+          0.3019,
+          0.2565,
+          0.3256,
+          0.3393,
+          0.2764,
+          0.1797,
+          0.2468,
+          0.2195,
+          0.3676
+        ],
+        "R": [
+          1.271,
+          2.2631,
+          3.2675,
+          4.2735,
+          3.2742,
+          5.2678,
+          5.2872,
+          5.2663,
+          3.2832,
+          2.2739,
+          2.2794,
+          4.265,
+          5.2679,
+          3.2727,
+          1.2872,
+          4.291,
+          1.28,
+          3.2754,
+          5.2789,
+          1.2784,
+          6.279,
+          3.2831,
+          1.3224,
+          5.3186,
+          2.3249,
+          3.3114,
+          3.2997,
+          3.3209,
+          4.334,
+          5.341
+        ]
+      },
+      "r_latency_decomposition": {
+        "window_close_to_rw_commit_timestamp_p50_s": 2.2358,
+        "window_close_to_rw_commit_timestamp_min_max_s": [
+          0.2183,
+          4.2513
+        ],
+        "rw_commit_timestamp_to_drain_write_p50_s": 1.054
+      },
+      "moving_parts": {
+        "n_samples": 49,
+        "B": {
+          "n_containers": {
+            "median": 0,
+            "max": 0
+          },
+          "n_in_container_processes": {
+            "median": 0,
+            "max": 0
+          },
+          "engine_only": {
+            "median": 1,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 1,
+            "max": 1
+          },
+          "in_container_comms_seen": {}
+        },
+        "S": {
+          "n_containers": {
+            "median": 3,
+            "max": 3
+          },
+          "n_in_container_processes": {
+            "median": 3,
+            "max": 4
+          },
+          "engine_only": {
+            "median": 3,
+            "max": 3
+          },
+          "engine_plus_sink": {
+            "median": 4,
+            "max": 4
+          },
+          "in_container_comms_seen": {
+            "smx-kafka": [
+              "java",
+              "kafka-run-class"
+            ],
+            "smx-jobmanager": [
+              "java",
+              "sh"
+            ],
+            "smx-taskmanager": [
+              "java"
+            ]
+          }
+        },
+        "R": {
+          "n_containers": {
+            "median": 1,
+            "max": 1
+          },
+          "n_in_container_processes": {
+            "median": 1,
+            "max": 1
+          },
+          "engine_only": {
+            "median": 1,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 2,
+            "max": 2
+          },
+          "in_container_comms_seen": {
+            "smx-risingwave": [
+              "risingwave"
+            ]
+          }
+        }
+      },
+      "risingwave_drain": {
+        "connected": false,
+        "n_connects": 1,
+        "n_raw_inserts": 30,
+        "n_written": 30,
+        "n_duplicate_inserts": 0,
+        "n_resume_overlap": 0,
+        "n_non_insert_ops": 0,
+        "ops_seen": {
+          "Insert": 30
+        },
+        "last_rw_timestamp": 1794036825648,
+        "last_row_wall": 1794036826.7429345,
+        "connect_walls": [
+          1794036462.0095983
+        ],
+        "disconnects": []
+      },
+      "stream_raw": {
+        "smx_alerts_end_offset": 30
+      },
+      "risingwave_deploy": {
+        "deploy_s": 2.63
+      }
+    },
+    "3": {
+      "gate_pass": true,
+      "arms": {
+        "B": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "S": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        },
+        "R": {
+          "n_distinct_keys": 30,
+          "n_missing": 0,
+          "n_extra": 0,
+          "n_duplicate_keys": 0
+        }
+      },
+      "latency": {
+        "B": {
+          "cv_pct": 93.5,
+          "max_s": 4.8687,
+          "median_s": 1.4941,
+          "median_s_real_time_equivalent": 29.88,
+          "min_s": -0.7634,
+          "n": 30
+        },
+        "S": {
+          "cv_pct": 25.8,
+          "max_s": 0.3793,
+          "median_s": 0.2505,
+          "min_s": 0.1415,
+          "n": 30
+        },
+        "R": {
+          "cv_pct": 39.8,
+          "max_s": 5.4621,
+          "median_s": 3.2356,
+          "min_s": 1.2337,
+          "n": 30
+        }
+      },
+      "latency_samples": {
+        "B": [
+          3.6278,
+          1.6426,
+          2.0979,
+          0.5319,
+          4.5508,
+          1.5567,
+          1.0013,
+          0.0122,
+          4.0281,
+          0.0382,
+          2.4816,
+          4.4923,
+          -0.0737,
+          2.9482,
+          0.9629,
+          0.3899,
+          0.4117,
+          2.4211,
+          1.4315,
+          4.8687,
+          3.8786,
+          0.8884,
+          3.7965,
+          2.2315,
+          -0.7634,
+          0.2519,
+          -0.3041,
+          1.7213,
+          0.154,
+          0.6032
+        ],
+        "S": [
+          0.3243,
+          0.2089,
+          0.3654,
+          0.3291,
+          0.3542,
+          0.167,
+          0.1867,
+          0.2131,
+          0.2336,
+          0.2684,
+          0.3793,
+          0.296,
+          0.1415,
+          0.2144,
+          0.2019,
+          0.2179,
+          0.2958,
+          0.3118,
+          0.3297,
+          0.1962,
+          0.2131,
+          0.2225,
+          0.3704,
+          0.1997,
+          0.2091,
+          0.2685,
+          0.2338,
+          0.3389,
+          0.3724,
+          0.2671
+        ],
+        "R": [
+          4.2481,
+          2.2445,
+          3.2359,
+          3.2485,
+          1.2337,
+          3.2565,
+          3.2505,
+          2.2946,
+          2.2492,
+          2.258,
+          2.2469,
+          5.2527,
+          3.2325,
+          1.3484,
+          2.2554,
+          5.261,
+          2.2421,
+          5.2482,
+          5.4621,
+          4.2738,
+          4.2486,
+          5.2529,
+          4.2583,
+          5.2677,
+          2.2745,
+          1.2691,
+          2.2346,
+          3.2353,
+          2.2375,
+          3.2444
+        ]
+      },
+      "r_latency_decomposition": {
+        "window_close_to_rw_commit_timestamp_p50_s": 2.168,
+        "window_close_to_rw_commit_timestamp_min_max_s": [
+          0.1675,
+          4.1885
+        ],
+        "rw_commit_timestamp_to_drain_write_p50_s": 1.0826
+      },
+      "moving_parts": {
+        "n_samples": 50,
+        "B": {
+          "n_containers": {
+            "median": 0.0,
+            "max": 0
+          },
+          "n_in_container_processes": {
+            "median": 0.0,
+            "max": 0
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 1.0,
+            "max": 1
+          },
+          "in_container_comms_seen": {}
+        },
+        "S": {
+          "n_containers": {
+            "median": 3.0,
+            "max": 3
+          },
+          "n_in_container_processes": {
+            "median": 3.0,
+            "max": 4
+          },
+          "engine_only": {
+            "median": 3.0,
+            "max": 3
+          },
+          "engine_plus_sink": {
+            "median": 4.0,
+            "max": 4
+          },
+          "in_container_comms_seen": {
+            "smx-kafka": [
+              "java",
+              "kafka-run-class"
+            ],
+            "smx-jobmanager": [
+              "java"
+            ],
+            "smx-taskmanager": [
+              "java"
+            ]
+          }
+        },
+        "R": {
+          "n_containers": {
+            "median": 1.0,
+            "max": 1
+          },
+          "n_in_container_processes": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_only": {
+            "median": 1.0,
+            "max": 1
+          },
+          "engine_plus_sink": {
+            "median": 2.0,
+            "max": 2
+          },
+          "in_container_comms_seen": {
+            "smx-risingwave": [
+              "risingwave"
+            ]
+          }
+        }
+      },
+      "risingwave_drain": {
+        "connected": false,
+        "n_connects": 1,
+        "n_raw_inserts": 30,
+        "n_written": 30,
+        "n_duplicate_inserts": 0,
+        "n_resume_overlap": 0,
+        "n_non_insert_ops": 0,
+        "ops_seen": {
+          "Insert": 30
+        },
+        "last_rw_timestamp": 1794037336209,
+        "last_row_wall": 1794037337.2608604,
+        "connect_walls": [
+          1794036974.6399162
+        ],
+        "disconnects": []
+      },
+      "stream_raw": {
+        "smx_alerts_end_offset": 30
+      },
+      "risingwave_deploy": {
+        "deploy_s": 2.88
+      }
+    }
+  },
+  "trial_1x": {
+    "gate_pass": true,
+    "arms": {
+      "B": {
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0
+      },
+      "S": {
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0
+      },
+      "R": {
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0
+      }
+    },
+    "latency": {
+      "B": {
+        "cv_pct": -256.6,
+        "max_s": 7.0162,
+        "median_s": -2.8869,
+        "median_s_real_time_equivalent": -2.89,
+        "min_s": -6.7174,
+        "n": 30
+      },
+      "S": {
+        "cv_pct": 33.5,
+        "max_s": 2.2802,
+        "median_s": 2.167,
+        "min_s": -0.5393,
+        "n": 30
+      },
+      "R": {
+        "cv_pct": 29.0,
+        "max_s": 7.7635,
+        "median_s": 5.4411,
+        "min_s": 2.4581,
+        "n": 30
+      }
+    },
+    "latency_samples": {
+      "B": [
+        -2.8482,
+        -6.0222,
+        -4.9087,
+        -2.9256,
+        -3.2208,
+        -5.9483,
+        -4.3931,
+        -3.7675,
+        -4.0316,
+        -2.0283,
+        -0.3196,
+        -0.4571,
+        -3.5642,
+        -6.7174,
+        -2.2422,
+        -4.9606,
+        -3.2478,
+        -3.3914,
+        -3.6558,
+        -6.6691,
+        -1.9444,
+        -2.0806,
+        2.6082,
+        2.2173,
+        4.1932,
+        5.1035,
+        2.2926,
+        4.4011,
+        6.1693,
+        7.0162
+      ],
+      "S": [
+        2.1877,
+        2.2129,
+        2.2068,
+        2.0435,
+        -0.5393,
+        2.1343,
+        2.2281,
+        2.121,
+        2.1671,
+        2.087,
+        2.1617,
+        2.2555,
+        2.1669,
+        2.2802,
+        -0.4509,
+        2.1675,
+        2.1301,
+        2.1609,
+        2.1999,
+        2.2174,
+        2.1758,
+        2.1466,
+        2.1341,
+        2.0349,
+        2.2485,
+        2.2721,
+        2.1363,
+        2.0823,
+        2.1968,
+        2.2418
+      ],
+      "R": [
+        6.396,
+        3.4251,
+        3.4898,
+        6.5147,
+        3.3973,
+        4.4062,
+        3.4946,
+        6.8272,
+        5.8696,
+        3.8697,
+        6.9161,
+        6.3265,
+        3.3588,
+        5.3963,
+        2.4581,
+        3.4653,
+        6.5602,
+        7.5779,
+        4.5902,
+        5.6356,
+        7.6441,
+        4.6258,
+        4.9268,
+        4.5255,
+        5.4858,
+        6.3534,
+        3.4569,
+        6.4675,
+        7.1645,
+        7.7635
+      ]
+    },
+    "r_latency_decomposition": {
+      "window_close_to_rw_commit_timestamp_p50_s": 4.3745,
+      "window_close_to_rw_commit_timestamp_min_max_s": [
+        1.415,
+        6.67
+      ],
+      "rw_commit_timestamp_to_drain_write_p50_s": 1.0654
+    },
+    "moving_parts": {
+      "n_samples": 753,
+      "B": {
+        "n_containers": {
+          "median": 0,
+          "max": 0
+        },
+        "n_in_container_processes": {
+          "median": 0,
+          "max": 0
+        },
+        "engine_only": {
+          "median": 1,
+          "max": 1
+        },
+        "engine_plus_sink": {
+          "median": 1,
+          "max": 1
+        },
+        "in_container_comms_seen": {}
+      },
+      "S": {
+        "n_containers": {
+          "median": 3,
+          "max": 3
+        },
+        "n_in_container_processes": {
+          "median": 3,
+          "max": 5
+        },
+        "engine_only": {
+          "median": 3,
+          "max": 3
+        },
+        "engine_plus_sink": {
+          "median": 4,
+          "max": 4
+        },
+        "in_container_comms_seen": {
+          "smx-kafka": [
+            "java",
+            "kafka-broker-ap",
+            "kafka-run-class"
+          ],
+          "smx-jobmanager": [
+            "java",
+            "sh"
+          ],
+          "smx-taskmanager": [
+            "java"
+          ]
+        }
+      },
+      "R": {
+        "n_containers": {
+          "median": 1,
+          "max": 1
+        },
+        "n_in_container_processes": {
+          "median": 1,
+          "max": 1
+        },
+        "engine_only": {
+          "median": 1,
+          "max": 1
+        },
+        "engine_plus_sink": {
+          "median": 2,
+          "max": 2
+        },
+        "in_container_comms_seen": {
+          "smx-risingwave": [
+            "risingwave"
+          ]
+        }
+      }
+    },
+    "risingwave_drain": {
+      "connected": false,
+      "n_connects": 1,
+      "n_raw_inserts": 30,
+      "n_written": 30,
+      "n_duplicate_inserts": 0,
+      "n_resume_overlap": 0,
+      "n_non_insert_ops": 0,
+      "ops_seen": {
+        "Insert": 30
+      },
+      "last_rw_timestamp": 1794044971363,
+      "last_row_wall": 1794044972.4613926,
+      "connect_walls": [
+        1794037879.3007917
+      ],
+      "disconnects": []
+    },
+    "stream_raw": {
+      "smx_alerts_end_offset": 30
+    },
+    "risingwave_deploy": {
+      "deploy_s": 2.83
+    }
+  },
+  "freshness_20x": {
+    "B": {
+      "trial_medians_s": [
+        1.8624,
+        2.382,
+        1.4941
+      ],
+      "pooled_p50_s": 2.049,
+      "cv_of_trial_medians_pct": 19.0,
+      "within_trial_cv_pct": [
+        113.6,
+        45.8,
+        93.5
+      ]
+    },
+    "S": {
+      "trial_medians_s": [
+        0.2524,
+        0.2613,
+        0.2505
+      ],
+      "pooled_p50_s": 0.2549,
+      "cv_of_trial_medians_pct": 1.8,
+      "within_trial_cv_pct": [
+        662.8,
+        25.2,
+        25.8
+      ]
+    },
+    "R": {
+      "trial_medians_s": [
+        3.2388,
+        3.2915,
+        3.2356
+      ],
+      "pooled_p50_s": 3.2535,
+      "cv_of_trial_medians_pct": 0.8,
+      "within_trial_cv_pct": [
+        46.3,
+        41.3,
+        39.8
+      ]
+    }
+  },
+  "moving_parts_20x": {
+    "B": {
+      "n_containers": {
+        "medians": [
+          0,
+          0,
+          0.0
+        ],
+        "maxes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "n_in_container_processes": {
+        "medians": [
+          0,
+          0,
+          0.0
+        ],
+        "maxes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "engine_only": {
+        "medians": [
+          1,
+          1,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "engine_plus_sink": {
+        "medians": [
+          1,
+          1,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "comms_seen": {}
+    },
+    "S": {
+      "n_containers": {
+        "medians": [
+          3,
+          3,
+          3.0
+        ],
+        "maxes": [
+          3,
+          3,
+          3
+        ]
+      },
+      "n_in_container_processes": {
+        "medians": [
+          3,
+          3,
+          3.0
+        ],
+        "maxes": [
+          4,
+          4,
+          4
+        ]
+      },
+      "engine_only": {
+        "medians": [
+          3,
+          3,
+          3.0
+        ],
+        "maxes": [
+          3,
+          3,
+          3
+        ]
+      },
+      "engine_plus_sink": {
+        "medians": [
+          4,
+          4,
+          4.0
+        ],
+        "maxes": [
+          4,
+          4,
+          4
+        ]
+      },
+      "comms_seen": {
+        "smx-kafka": [
+          "java",
+          "kafka-run-class"
+        ],
+        "smx-jobmanager": [
+          "java"
+        ],
+        "smx-taskmanager": [
+          "java"
+        ]
+      }
+    },
+    "R": {
+      "n_containers": {
+        "medians": [
+          1,
+          1,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "n_in_container_processes": {
+        "medians": [
+          1,
+          1,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "engine_only": {
+        "medians": [
+          1,
+          1,
+          1.0
+        ],
+        "maxes": [
+          1,
+          1,
+          1
+        ]
+      },
+      "engine_plus_sink": {
+        "medians": [
+          2,
+          2,
+          2.0
+        ],
+        "maxes": [
+          2,
+          2,
+          2
+        ]
+      },
+      "comms_seen": {
+        "smx-risingwave": [
+          "risingwave"
+        ]
+      }
+    }
+  },
+  "faults": {
+    "R1": {
+      "kill_wall": 1794037584.2722383,
+      "recovery_start_wall": 1794037615.0668867,
+      "recovery_done_wall": 1794037616.1547415,
+      "wall_kill_to_infra_restored_s": 31.88,
+      "wall_recovery_script_s": 1.09,
+      "wall_kill_to_new_correct_alert_s": 36.48,
+      "output_exists": true,
+      "rows_at_recovery_done": 11,
+      "rows_at_end": 30,
+      "output_grew_after_recovery": true,
+      "post_recovery": {
+        "n_rows": 30,
+        "n_distinct_keys": 30,
+        "n_missing": 0,
+        "n_extra": 0,
+        "n_duplicate_keys": 0,
+        "missing": [],
+        "extra": [],
+        "identical": true
+      },
+      "kill": "docker kill smx-risingwave: smx-risingwave",
+      "n_recovery_steps": 3,
+      "step_count_method": "markers",
+      "recover_rc": 0,
+      "recover_stdout": "resend_after_uid=e-00168941",
+      "recover_stderr": "",
+      "status_trace_during_hold": [
+        [
+          0.34,
+          "exited 0"
+        ],
+        [
+          5.51,
+          "exited 0"
+        ],
+        [
+          10.67,
+          "exited 0"
+        ],
+        [
+          15.83,
+          "exited 0"
+        ],
+        [
+          21.0,
+          "exited 0"
+        ],
+        [
+          26.15,
+          "exited 0"
+        ],
+        [
+          28.73,
+          "exited 0"
+        ]
+      ],
+      "restart_count_and_policy": "0 no",
+      "checkpoint_loss": {
+        "replayer_last_acked_uid_before_kill": "e-00169920",
+        "recovered_max_event_uid": "e-00168941",
+        "n_events_lost": 979,
+        "replayer_failures": [
+          {
+            "event_time": 1767228043,
+            "wall": 1794037584.3275068,
+            "error": "OperationalError: consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+          }
+        ]
+      },
+      "auth_events_final_count_and_distinct_uids": [
+        500000,
+        500000
+      ],
+      "auth_events_missing_uid_ranges": [],
+      "host_clock_steps": [
+        {
+          "wall": 1794037471.1612916,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037498.6552136,
+          "step_s": -2.582
+        },
+        {
+          "wall": 1794037526.1201603,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037553.5665104,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037581.02608,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037608.520729,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037635.9937594,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037662.9595008,
+          "step_s": -2.582
+        },
+        {
+          "wall": 1794037690.4636788,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037717.9426994,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037745.4359534,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037772.9231687,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037800.3989217,
+          "step_s": -2.581
+        },
+        {
+          "wall": 1794037827.9091523,
+          "step_s": -2.581
+        },
+        {
+          "done": true,
+          "n_checks": 822
+        }
+      ],
+      "drain_state": {
+        "n_connects": 2,
+        "n_raw_inserts": 30,
+        "n_written": 30,
+        "n_duplicate_inserts": 0,
+        "n_resume_overlap": 1,
+        "n_non_insert_ops": 0,
+        "ops_seen": {
+          "Insert": 31
+        },
+        "disconnects": [
+          {
+            "wall": 1794037584.3734658,
+            "error": "consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+          }
+        ],
+        "connect_walls": [
+          1794037456.8120441,
+          1794037615.9722803
+        ]
+      },
+      "raw_engine_duplicates": 0,
+      "replayer": {
+        "last_acked_uid": "e-00500000",
+        "failures": [
+          {
+            "event_time": 1767228043,
+            "wall": 1794037584.3275068,
+            "error": "OperationalError: consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+          }
+        ],
+        "rewinds": [
+          {
+            "resend_after_uid": "e-00168941",
+            "wall": 1794037616.2962947,
+            "failed_at": 1767228043,
+            "first_acks": [
+              [
+                1794037616.3197088,
+                "e-00168942",
+                "e-00169011"
+              ],
+              [
+                1794037616.3288128,
+                "e-00169012",
+                "e-00169087"
+              ],
+              [
+                1794037616.3372273,
+                "e-00169088",
+                "e-00169162"
+              ],
+              [
+                1794037616.3460186,
+                "e-00169163",
+                "e-00169238"
+              ],
+              [
+                1794037616.3535926,
+                "e-00169239",
+                "e-00169294"
+              ]
+            ]
+          }
+        ],
+        "n_events_sent": 500979,
+        "n_inserts": 7214
+      },
+      "engine_log_recovery_lines": [
+        "2026-11-07T07:44:09.540072561Z ERROR rw-standalone-meta risingwave_object_store::object: metadata failed error=NotFound (permanent) at stat, context: { service: fs, path: hummock_001/checkpoint/0 } => entity not found, source: No such file or directory (os error 2)",
+        "2026-11-07T07:44:09.556375973Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as blocked",
+        "2026-11-07T07:44:09.556413837Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery start!",
+        "2026-11-07T07:44:09.573098136Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery success",
+        "2026-11-07T07:44:09.57316743Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+        "2026-11-07T07:44:10.207480213Z ERROR   rw-standalone-compute risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compute, status 500 Internal Server Error",
+        "2026-11-07T07:44:10.207480184Z ERROR      rw-standalone-meta risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/meta, status 500 Internal Server Error",
+        "2026-11-07T07:44:10.207496831Z ERROR rw-standalone-compactor risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compactor, status 500 Internal Server Error",
+        "2026-11-07T07:44:10.207508313Z ERROR  rw-standalone-frontend risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/frontend, status 500 Internal Server Error",
+        "2026-11-07T07:44:13.051165023Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:18.121593707Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:23.182567794Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:28.237828082Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:33.298129267Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:35.789037633Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:40.845337925Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:45.916878303Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:51.000510817Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:56.076117152Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:44:58.567175168Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:03.636170793Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:08.703017626Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:13.775539828Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:18.851512524Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:23.92628978Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:26.417361002Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:31.479201049Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:36.550411002Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:41.632032066Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:46.706281805Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:51.778216721Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:54.258712522Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:45:59.33402722Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:46:04.413127912Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:46:09.472296644Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:46:14.540434376Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:46:19.608915712Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:46:22.107881214Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:46:55.464369923Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as blocked",
+        "2026-11-07T07:46:55.464415002Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery start!",
+        "2026-11-07T07:46:55.486649867Z  WARN    rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: failed to inject database initial barrier database_id=1 e=unconnected worker node 1",
+        "2026-11-07T07:46:55.486736943Z ERROR    rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery failed error=global recovery failed due to failure of databases [1]",
+        "2026-11-07T07:46:55.510101524Z  WARN      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::worker: failed to inject database initial barrier database_id=1 e=unconnected worker node 1",
+        "2026-11-07T07:46:55.510170698Z ERROR      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::worker: recovery failed error=global recovery failed due to failure of databases [1]",
+        "2026-11-07T07:46:55.698161807Z  INFO      rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery success",
+        "2026-11-07T07:46:55.69821651Z  INFO      rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+        "2026-11-07T07:46:56.313313823Z ERROR rw-standalone-compactor risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compactor, status 500 Internal Server Error",
+        "2026-11-07T07:46:56.313314941Z ERROR   rw-standalone-compute risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compute, status 500 Internal Server Error",
+        "2026-11-07T07:46:56.313390562Z ERROR      rw-standalone-meta bootstrap_recovery: risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/meta, status 500 Internal Server Error",
+        "2026-11-07T07:46:56.314285591Z ERROR  rw-standalone-frontend risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/frontend, status 500 Internal Server Error",
+        "2026-11-07T07:47:00.433525204Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:05.502857108Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:10.570790159Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:15.626405737Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:18.117192826Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:23.180441042Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:28.265233733Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:33.321576302Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:38.38145145Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:43.441705395Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:45.927958634Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:50.995211869Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:47:56.062470215Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:01.147708309Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:06.219545636Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:11.291525183Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:13.794848159Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:18.874350864Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:23.942821234Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:29.025617421Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:34.102811348Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:39.181753095Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:41.677014618Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:46.73507744Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:51.805349767Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:48:56.865584147Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:49:01.937487Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:49:07.001508778Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:49:09.502887032Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+        "2026-11-07T07:49:14.567402398Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file"
+      ],
+      "fault": "R1",
+      "date": "2026-11-07"
+    }
+  },
+  "axes": {
+    "B": {
+      "moving_parts_engine_plus_sink": 1,
+      "config_loc": 131,
+      "recovery_steps": 3
+    },
+    "S": {
+      "moving_parts_engine_plus_sink": 4,
+      "config_loc": 197,
+      "recovery_steps": 4
+    },
+    "R": {
+      "moving_parts_engine_plus_sink": 2,
+      "config_loc": 76,
+      "recovery_steps": 3
+    }
+  },
+  "axes_note": "B and S recovery steps are the dated v2 (2026-11-03) fault results; R's is v3 R1"
+}

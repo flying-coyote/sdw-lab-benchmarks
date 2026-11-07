@@ -1,0 +1,1 @@
+{"connected": false, "n_connects": 1, "n_raw_inserts": 30, "n_written": 30, "n_duplicate_inserts": 0, "n_resume_overlap": 0, "n_non_insert_ops": 0, "ops_seen": {"Insert": 30}, "last_rw_timestamp": 1794036315723, "last_row_wall": 1794036316.7784505, "connect_walls": [1794035952.1946454], "disconnects": []}

@@ -1,0 +1,70 @@
+{
+  "arms": {
+    "B": {
+      "arm": "B",
+      "duplicate_keys": [],
+      "exists": true,
+      "extra": [],
+      "identical": true,
+      "missing": [],
+      "n_distinct_keys": 30,
+      "n_duplicate_keys": 0,
+      "n_extra": 0,
+      "n_ground_truth": 30,
+      "n_missing": 0,
+      "n_rows": 30,
+      "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/v3/trial-1x/alerts-batch.jsonl"
+    },
+    "R": {
+      "arm": "R",
+      "duplicate_keys": [],
+      "exists": true,
+      "extra": [],
+      "identical": true,
+      "missing": [],
+      "n_distinct_keys": 30,
+      "n_duplicate_keys": 0,
+      "n_extra": 0,
+      "n_ground_truth": 30,
+      "n_missing": 0,
+      "n_rows": 30,
+      "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/v3/trial-1x/alerts-risingwave.jsonl"
+    },
+    "S": {
+      "arm": "S",
+      "duplicate_keys": [],
+      "exists": true,
+      "extra": [],
+      "identical": true,
+      "missing": [],
+      "n_distinct_keys": 30,
+      "n_duplicate_keys": 0,
+      "n_extra": 0,
+      "n_ground_truth": 30,
+      "n_missing": 0,
+      "n_rows": 30,
+      "path": "/home/jerem/sdw-lab-benchmarks/stream-complexity/results/v3/trial-1x/alerts-stream.jsonl"
+    }
+  },
+  "gate_pass": true,
+  "n_events": 500000,
+  "n_ground_truth_alerts": 30,
+  "pairwise": {
+    "B_vs_R": {
+      "identical": true,
+      "only_in_B": [],
+      "only_in_R": []
+    },
+    "B_vs_S": {
+      "identical": true,
+      "only_in_B": [],
+      "only_in_S": []
+    },
+    "S_vs_R": {
+      "identical": true,
+      "only_in_R": [],
+      "only_in_S": []
+    }
+  },
+  "seed": 20260719
+}

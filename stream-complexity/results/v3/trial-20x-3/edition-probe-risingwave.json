@@ -1,0 +1,132 @@
+{
+  "version": "PostgreSQL 13.14.0-RisingWave-3.1.1 (04db7efd159bfe2941cd0aeaf1a42288d49a70ff)",
+  "license_before": [
+    [
+      "license_key",
+      "<default>",
+      "The license key to activate enterprise features.",
+      true
+    ]
+  ],
+  "clear_trial": "accepted",
+  "license_after": [
+    [
+      "license_key",
+      "<default>",
+      "The license key to activate enterprise features.",
+      true
+    ]
+  ],
+  "rw_features": [
+    [
+      "TimeTravel",
+      "Query historical data within the retention period.",
+      false
+    ],
+    [
+      "GlueSchemaRegistry",
+      "Use Schema Registry from AWS Glue rather than Confluent.",
+      false
+    ],
+    [
+      "SnowflakeSink",
+      "Delivering data to SnowFlake.",
+      false
+    ],
+    [
+      "RedisSinkStream",
+      "Delivering data to redis stream.",
+      false
+    ],
+    [
+      "DynamoDbSink",
+      "Delivering data to DynamoDb.",
+      false
+    ],
+    [
+      "OpenSearchSink",
+      "Delivering data to OpenSearch.",
+      false
+    ],
+    [
+      "BigQuerySink",
+      "Delivering data to BigQuery.",
+      false
+    ],
+    [
+      "ClickHouseSharedEngine",
+      "Delivering data to Shared tree on clickhouse cloud",
+      false
+    ],
+    [
+      "SecretManagement",
+      "Secret management.",
+      false
+    ],
+    [
+      "SqlServerSink",
+      "Sink data from RisingWave to SQL Server.",
+      false
+    ],
+    [
+      "SqlServerCdcSource",
+      "CDC source connector for Sql Server.",
+      false
+    ],
+    [
+      "CdcAutoSchemaChange",
+      "Auto replicate upstream DDL to CDC Table.",
+      false
+    ],
+    [
+      "IcebergSinkWithGlue",
+      "Delivering data to Iceberg with Glue catalog.",
+      false
+    ],
+    [
+      "ElasticDiskCache",
+      "Disk cache and refilling to boost performance and reduce object store access cost.",
+      false
+    ],
+    [
+      "ResourceGroup",
+      "Resource group to isolate workload and failure.",
+      false
+    ],
+    [
+      "DatabaseFailureIsolation",
+      "Failure isolation between databases.",
+      false
+    ],
+    [
+      "IcebergCompaction",
+      "Auto iceberg compaction.",
+      false
+    ],
+    [
+      "SinkAutoSchemaChange",
+      "Sink auto schema change.",
+      false
+    ],
+    [
+      "StateTableMemoryPreload",
+      "Support state table memory preload for boosting performance.",
+      false
+    ],
+    [
+      "LocalityBackfill",
+      "Support locality backfill for complex streaming queries.",
+      false
+    ],
+    [
+      "SinkSinceTimestamp",
+      "Create sinks from a historical timestamp.",
+      false
+    ],
+    [
+      "WebSocketIngest",
+      "Ingest data into tables through the WebSocket API.",
+      false
+    ]
+  ]
+}

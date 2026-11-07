@@ -1,0 +1,3 @@
+2026-11-07T07:36:08.389651644Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery start!
+2026-11-07T07:36:08.41572195Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery success
+2026-11-07T07:39:57.331086437Z  WARN      rw-standalone-meta bootstrap_recovery: risingwave_meta::hummock::manager::compaction: failed to commit compaction task 512 unexpected decreasing now, old=1794037199, new=1794037197

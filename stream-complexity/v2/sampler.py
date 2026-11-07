@@ -9,13 +9,13 @@ Frozen per-arm pattern list (inclusion rule identical for every arm):
 
 Harness EXCLUDED for every arm: gen_corpus.py, the paced replayers/producers
 (batch/land_microbatches.py, streaming/producer.py, feldera/replay_http.py,
-v2/land_faulty.py), compare/latency scripts and this sampler.
+v2/land_faulty.py, risingwave/replay_pg.py), compare/latency scripts and this sampler.
 
 Units:
   engine_only        broker / engine / scheduler / job process = running containers of
                      the arm + host-side job processes (B's batch_job.py)
   engine_plus_sink   engine_only + the sink adapter that moves alerts to a file
-                     (S: streaming/consume_alerts.py, F: feldera/drain_alerts.py;
+                     (S: streaming/consume_alerts.py, F: feldera/drain_alerts.py, R: risingwave/drain_alerts.py;
                      B and BC write their own file, so they have none)
 """
 
@@ -34,6 +34,9 @@ ARMS = {
     "F": {"containers": ["smx-feldera"], "engine_host": [],
           "sink_host": ["feldera/drain_alerts.py"]},
     "BC": {"containers": ["smx-bc-batch"], "engine_host": [], "sink_host": []},
+    # v3 (2026-11-07): RisingWave standalone, one container; its subscription-cursor drain is the sink
+    "R": {"containers": ["smx-risingwave"], "engine_host": [],
+          "sink_host": ["risingwave/drain_alerts.py"]},
 }
 
 

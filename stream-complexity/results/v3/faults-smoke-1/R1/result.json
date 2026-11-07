@@ -1,0 +1,160 @@
+{
+  "kill_wall": 1794034136.9215658,
+  "recovery_start_wall": 1794034167.3857746,
+  "recovery_done_wall": 1794034168.6614423,
+  "wall_kill_to_infra_restored_s": 31.74,
+  "wall_recovery_script_s": 1.28,
+  "wall_kill_to_new_correct_alert_s": 31.68,
+  "output_exists": true,
+  "rows_at_recovery_done": 12,
+  "rows_at_end": 30,
+  "output_grew_after_recovery": true,
+  "post_recovery": {
+    "n_rows": 30,
+    "n_distinct_keys": 30,
+    "n_missing": 0,
+    "n_extra": 0,
+    "n_duplicate_keys": 0,
+    "missing": [],
+    "extra": [],
+    "identical": true
+  },
+  "kill": "docker kill smx-risingwave: smx-risingwave",
+  "n_recovery_steps": 3,
+  "step_count_method": "markers",
+  "recover_rc": 0,
+  "recover_stdout": "resend_after_uid=e-00172956",
+  "recover_stderr": "",
+  "status_trace_during_hold": [
+    [
+      0.45,
+      "exited 0"
+    ],
+    [
+      5.62,
+      "exited 0"
+    ],
+    [
+      10.78,
+      "exited 0"
+    ],
+    [
+      13.84,
+      "exited 0"
+    ],
+    [
+      19.03,
+      "exited 0"
+    ],
+    [
+      24.2,
+      "exited 0"
+    ],
+    [
+      29.43,
+      "exited 0"
+    ]
+  ],
+  "restart_count_and_policy": "0 no",
+  "checkpoint_loss": {
+    "replayer_last_acked_uid_before_kill": "e-00173499",
+    "recovered_max_event_uid": "e-00172956",
+    "n_events_lost": 543,
+    "replayer_failures": [
+      {
+        "event_time": 1767228095,
+        "wall": 1794034137.0013766,
+        "error": "OperationalError: consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+      }
+    ]
+  },
+  "auth_events_final_count_and_distinct_uids": [
+    499744,
+    499744
+  ],
+  "drain_state": {
+    "n_connects": 2,
+    "n_raw_inserts": 30,
+    "n_written": 30,
+    "n_duplicate_inserts": 0,
+    "n_resume_overlap": 1,
+    "n_non_insert_ops": 0,
+    "ops_seen": {
+      "Insert": 31
+    },
+    "disconnects": [
+      {
+        "wall": 1794034137.0467315,
+        "error": "consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+      }
+    ],
+    "connect_walls": [
+      1794034006.9072845,
+      1794034168.538516
+    ]
+  },
+  "raw_engine_duplicates": 0,
+  "replayer": {
+    "last_acked_uid": "e-00500000",
+    "failures": [
+      {
+        "event_time": 1767228095,
+        "wall": 1794034137.0013766,
+        "error": "OperationalError: consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+      }
+    ],
+    "rewinds": [
+      {
+        "resend_after_uid": "e-00172956",
+        "wall": 1794034168.8241837,
+        "failed_at": 1767228095
+      }
+    ],
+    "n_events_sent": 500543,
+    "n_inserts": 7208
+  },
+  "engine_log_recovery_lines": [
+    "2026-11-07T06:46:38.044533892Z  INFO rw-standalone-meta risingwave_meta_node: > config: RwConfig { server: ServerConfig { heartbeat_interval_ms: 1000, connection_pool_size: 16, metrics_level: Info, telemetry_enabled: true, heap_profiling: HeapProfilingConfig { enable_auto: true, threshold_auto: 0.9,",
+    "2026-11-07T06:46:39.735117785Z  INFO rw-standalone-meta risingwave_meta::controller::system_param: initialize system parameters initial_params=SystemParamsReader { barrier_interval_ms: 1000, checkpoint_frequency: 1, sstable_size_mb: 256, parallel_compact_size_mb: 512, block_size_kb: 64, bloom_false_",
+    "2026-11-07T06:46:39.809843932Z  INFO rw-standalone-meta risingwave_meta::barrier::worker: Starting barrier manager with: enable_recovery=true, in_flight_barrier_nums=10000",
+    "2026-11-07T06:46:39.809882465Z  INFO rw-standalone-meta risingwave_telemetry_event: Telemetry tracking_id is not set, event reporting disabled event_name=\"normal_recovery\"",
+    "2026-11-07T06:46:39.809931738Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:46:39.809985852Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:46:39.813583233Z  INFO rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::manager::sink_coordination::manager: sink manager worker start cleaning up",
+    "2026-11-07T06:46:39.813615375Z  INFO rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::manager::sink_coordination::manager: sink manager worker finished cleaning up",
+    "2026-11-07T06:46:39.813632182Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::manager::sink_coordination::manager: successfully stop coordinator: None",
+    "2026-11-07T06:46:39.815219046Z  INFO rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::context::recovery: recovering creating job progress",
+    "2026-11-07T06:46:39.816245524Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::context::recovery: recovered creating job progress",
+    "2026-11-07T06:46:39.816898539Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::context::recovery: creating streaming jobs: [] total 0",
+    "2026-11-07T06:46:39.81835859Z  WARN rw-standalone-meta risingwave_meta::rpc::metrics: failed to get fragment backfill progress error=cluster under recovery[bootstrap]",
+    "2026-11-07T06:46:39.81888412Z  INFO rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::rpc: control stream reset elapsed=3.336\u00b5s unconnected_workers={}",
+    "2026-11-07T06:46:39.828464165Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:46:39.828529675Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:46:39.875573098Z  INFO rw-standalone-compute risingwave_compute::server: > config: RwConfig { server: ServerConfig { heartbeat_interval_ms: 1000, connection_pool_size: 16, metrics_level: Info, telemetry_enabled: true, heap_profiling: HeapProfilingConfig { enable_auto: true, threshold_a",
+    "2026-11-07T06:46:39.877724956Z  INFO rw-standalone-frontend risingwave_frontend::session: > config: RwConfig { server: ServerConfig { heartbeat_interval_ms: 1000, connection_pool_size: 16, metrics_level: Info, telemetry_enabled: true, heap_profiling: HeapProfilingConfig { enable_auto: true, threshol",
+    "2026-11-07T06:46:39.880340279Z  INFO rw-standalone-compactor risingwave_compactor::server: > config: RwConfig { server: ServerConfig { heartbeat_interval_ms: 1000, connection_pool_size: 16, metrics_level: Info, telemetry_enabled: true, heap_profiling: HeapProfilingConfig { enable_auto: true, thresho",
+    "2026-11-07T06:46:39.950452743Z  INFO      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta_service::cluster_service: add_worker_node: registered host=HostAddress { host: \"0.0.0.0\", port: 4566 } worker_id=2 worker_type=Frontend elapsed_ms=25",
+    "2026-11-07T06:46:40.000636439Z  INFO      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta_service::cluster_service: resolve host addr socket_addr=0.0.0.0:4566 host=HostAddress { host: \"0.0.0.0\", port: 4566 }",
+    "2026-11-07T06:46:46.630544447Z  WARN      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_hummock_sdk::compaction_group::hummock_version_ext: table change log dropped due to no further change log at newly committed epoch table_id=6",
+    "2026-11-07T06:47:07.733004709Z  INFO      rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::hummock::manager::time_travel: Delete 4 rows from hummock_epoch_to_version. epoch_watermark=11586648652578816",
+    "2026-11-07T06:49:27.779049978Z  INFO rw-standalone-meta risingwave_meta_node: > config: RwConfig { server: ServerConfig { heartbeat_interval_ms: 1000, connection_pool_size: 16, metrics_level: Info, telemetry_enabled: true, heap_profiling: HeapProfilingConfig { enable_auto: true, threshold_auto: 0.9,",
+    "2026-11-07T06:49:27.787147704Z  INFO rw-standalone-meta risingwave_meta::controller::system_param: initialize system parameters initial_params=SystemParamsReader { barrier_interval_ms: 1000, checkpoint_frequency: 1, sstable_size_mb: 256, parallel_compact_size_mb: 512, block_size_kb: 64, bloom_false_",
+    "2026-11-07T06:49:27.884730858Z  INFO rw-standalone-meta risingwave_meta::barrier::worker: Starting barrier manager with: enable_recovery=true, in_flight_barrier_nums=10000",
+    "2026-11-07T06:49:27.884808915Z  INFO rw-standalone-meta risingwave_telemetry_event: Telemetry tracking_id is not set, event reporting disabled event_name=\"normal_recovery\"",
+    "2026-11-07T06:49:27.884895203Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:49:27.884925924Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:49:27.884991659Z  WARN rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: DatabaseFailureIsolation disabled by license error=feature DatabaseFailureIsolation is not available based on your license",
+    "2026-11-07T06:49:27.899774743Z  INFO    rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::manager::sink_coordination::manager: successfully stop coordinator: None",
+    "2026-11-07T06:49:27.901251094Z  INFO    rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::context::recovery: recovering creating job progress",
+    "2026-11-07T06:49:27.9024714Z  INFO    rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::context::recovery: recovered creating job progress",
+    "2026-11-07T06:49:27.903295461Z  INFO    rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::context::recovery: creating streaming jobs: [] total 0",
+    "2026-11-07T06:49:27.910166863Z  WARN    rw-standalone-meta risingwave_meta::rpc::metrics: failed to get fragment backfill progress error=cluster under recovery[bootstrap]",
+    "2026-11-07T06:49:27.912075151Z  WARN    rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::rpc: failed to connect to node e=failed to create RPC client to 127.0.0.1:5688: transport error: tcp connect error: Connection refused (os error 111) worker_id=1 node=WorkerNode ",
+    "2026-11-07T06:49:27.912194871Z  INFO    rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::rpc: control stream reset elapsed=713.287\u00b5s unconnected_workers={1}",
+    "2026-11-07T06:49:27.913956401Z  WARN    rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::worker: failed to inject database initial barrier database_id=1 e=unconnected worker node 1",
+    "2026-11-07T06:49:27.914033908Z ERROR    rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::barrier::worker: recovery failed error=global recovery failed due to failure of databases [1]",
+    "2026-11-07T06:49:27.920614849Z  INFO    rw-standalone-meta bootstrap_recovery:recovery_attempt: risingwave_meta::manager::sink_coordination::manager: sink manager worker start cleaning up"
+  ],
+  "fault": "R1",
+  "date": "2026-11-07"
+}

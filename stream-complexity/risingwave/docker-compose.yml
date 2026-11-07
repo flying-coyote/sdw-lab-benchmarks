@@ -1,0 +1,24 @@
+# R arm (STREAM-COMPLEXITY v3): RisingWave v3.1.1 Community Edition (Apache-2.0) in standalone
+# mode, the whole cluster in one process with the embedded LocalFs object store and SQLite meta
+# store. Pinned by index digest (Docker Hub, read 2026-11-07). State on a named volume so it
+# survives a container kill.
+name: smx-risingwave
+
+services:
+  smx-risingwave:
+    image: risingwavelabs/risingwave:v3.1.1@sha256:b869358fa704250d25045d3575145ca59cfb67a558a08fa4f8fd375874c24d63
+    container_name: smx-risingwave
+    command: ["single_node"]
+    ports:
+      - "14566:4566"
+    volumes:
+      - smx-rw-state:/root/.risingwave
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'echo > /dev/tcp/127.0.0.1/4566'"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 10s
+
+volumes:
+  smx-rw-state:

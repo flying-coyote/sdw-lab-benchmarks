@@ -1,0 +1,1 @@
+/risingwave/bin/risingwave single_node 

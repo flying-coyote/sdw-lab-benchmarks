@@ -1,0 +1,233 @@
+{
+  "kill_wall": 1794034877.7780592,
+  "recovery_start_wall": 1794034908.830313,
+  "recovery_done_wall": 1794034910.097873,
+  "wall_kill_to_infra_restored_s": 32.32,
+  "wall_recovery_script_s": 1.27,
+  "wall_kill_to_new_correct_alert_s": 31.98,
+  "output_exists": true,
+  "rows_at_recovery_done": 11,
+  "rows_at_end": 30,
+  "output_grew_after_recovery": true,
+  "post_recovery": {
+    "n_rows": 30,
+    "n_distinct_keys": 30,
+    "n_missing": 0,
+    "n_extra": 0,
+    "n_duplicate_keys": 0,
+    "missing": [],
+    "extra": [],
+    "identical": true
+  },
+  "kill": "docker kill smx-risingwave: smx-risingwave",
+  "n_recovery_steps": 3,
+  "step_count_method": "markers",
+  "recover_rc": 0,
+  "recover_stdout": "resend_after_uid=e-00168856",
+  "recover_stderr": "",
+  "status_trace_during_hold": [
+    [
+      0.5,
+      "exited 0"
+    ],
+    [
+      5.69,
+      "exited 0"
+    ],
+    [
+      10.87,
+      "exited 0"
+    ],
+    [
+      16.04,
+      "exited 0"
+    ],
+    [
+      18.63,
+      "exited 0"
+    ],
+    [
+      23.81,
+      "exited 0"
+    ],
+    [
+      28.98,
+      "exited 0"
+    ]
+  ],
+  "restart_count_and_policy": "0 no",
+  "checkpoint_loss": {
+    "replayer_last_acked_uid_before_kill": "e-00169991",
+    "recovered_max_event_uid": "e-00168856",
+    "n_events_lost": 1135,
+    "replayer_failures": [
+      {
+        "event_time": 1767228044,
+        "wall": 1794034877.8238382,
+        "error": "OperationalError: consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+      }
+    ]
+  },
+  "auth_events_final_count_and_distinct_uids": [
+    499613,
+    499613
+  ],
+  "auth_events_missing_uid_ranges": [
+    [
+      42421,
+      42807
+    ]
+  ],
+  "drain_state": {
+    "n_connects": 2,
+    "n_raw_inserts": 30,
+    "n_written": 30,
+    "n_duplicate_inserts": 0,
+    "n_resume_overlap": 1,
+    "n_non_insert_ops": 0,
+    "ops_seen": {
+      "Insert": 31
+    },
+    "disconnects": [
+      {
+        "wall": 1794034877.9143672,
+        "error": "consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+      }
+    ],
+    "connect_walls": [
+      1794034750.2900078,
+      1794034909.5312467
+    ]
+  },
+  "raw_engine_duplicates": 0,
+  "replayer": {
+    "last_acked_uid": "e-00500000",
+    "failures": [
+      {
+        "event_time": 1767228044,
+        "wall": 1794034877.8238382,
+        "error": "OperationalError: consuming input failed: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request."
+      }
+    ],
+    "rewinds": [
+      {
+        "resend_after_uid": "e-00168856",
+        "wall": 1794034910.1248693,
+        "failed_at": 1767228044,
+        "first_acks": [
+          [
+            1794034910.153003,
+            "e-00168857",
+            "e-00168941"
+          ],
+          [
+            1794034910.1630015,
+            "e-00168942",
+            "e-00169011"
+          ],
+          [
+            1794034910.1723347,
+            "e-00169012",
+            "e-00169087"
+          ],
+          [
+            1794034910.1816156,
+            "e-00169088",
+            "e-00169162"
+          ],
+          [
+            1794034910.1919224,
+            "e-00169163",
+            "e-00169238"
+          ]
+        ]
+      }
+    ],
+    "n_events_sent": 501135,
+    "n_inserts": 7216
+  },
+  "engine_log_recovery_lines": [
+    "2026-11-07T06:59:04.682399926Z ERROR rw-standalone-meta risingwave_object_store::object: metadata failed error=NotFound (permanent) at stat, context: { service: fs, path: hummock_001/checkpoint/0 } => entity not found, source: No such file or directory (os error 2)",
+    "2026-11-07T06:59:04.709609041Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:04.70969603Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:04.733238736Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:04.733296465Z  INFO rw-standalone-meta bootstrap_recovery: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:06.188532984Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:06.197826128Z ERROR   rw-standalone-compute risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compute, status 500 Internal Server Error",
+    "2026-11-07T06:59:06.197852356Z ERROR      rw-standalone-meta risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/meta, status 500 Internal Server Error",
+    "2026-11-07T06:59:06.19783123Z ERROR rw-standalone-compactor risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/compactor, status 500 Internal Server Error",
+    "2026-11-07T06:59:06.199967064Z ERROR  rw-standalone-frontend risingwave_common::telemetry::report: Telemetry post error, telemetry response is error, url https://telemetry.risingwave.dev/api/v2/report/frontend, status 500 Internal Server Error",
+    "2026-11-07T06:59:11.285167989Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:16.365655217Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:18.90497517Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:23.969923411Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:29.049300392Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:34.143994426Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:39.215736386Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:44.28139837Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:44.544209929Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034784}: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:44.544247892Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034784}: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:45.04497919Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034784}: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:45.045034935Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034784}: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:45.065724545Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:45.065769075Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:45.117159088Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:45.117227615Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:45.13901523Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:45.13905281Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:45.187260054Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:45.18732207Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:45.221661484Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:45.221698899Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:45.273058938Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:45.273133483Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:45.29332181Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:45.293366329Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:45.340065947Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:45.34013761Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:45.361119082Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:45.361156892Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:45.409424852Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:45.409497096Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:45.427719911Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:45.427754607Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:45.472291539Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:45.47234952Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:45.489139886Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.489178956Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.532221678Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.532281874Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.56382072Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::sc",
+    "2026-11-07T06:59:45.563857686Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.60621324Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::wo",
+    "2026-11-07T06:59:45.606275004Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.623560612Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.623599935Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.665870312Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.665931681Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.682746838Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.682782785Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.725047135Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.725118742Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.74176183Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:45.741795661Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:45.785321035Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:45.785555229Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:45.804258803Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.804300779Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.850867871Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.85092982Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::sc",
+    "2026-11-07T06:59:45.883388441Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.883432051Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.939073412Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::w",
+    "2026-11-07T06:59:45.939136074Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}:recovery_attempt:failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::s",
+    "2026-11-07T06:59:45.956559711Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as blocked",
+    "2026-11-07T06:59:45.956598716Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery start!",
+    "2026-11-07T06:59:46.003166803Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::worker: recovery success",
+    "2026-11-07T06:59:46.003220991Z  INFO      rw-standalone-meta failure_recovery{error=Hummock error: unexpected decreasing now, old=1794034786, new=1794034785}: risingwave_meta::barrier::schedule: cluster marked as ready blocked_databases={}",
+    "2026-11-07T06:59:46.686984Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file",
+    "2026-11-07T06:59:51.758164346Z ERROR  rw-standalone-frontend pgwire::pg_protocol: error when reading message error=unexpected end of file"
+  ],
+  "fault": "R1",
+  "date": "2026-11-07"
+}

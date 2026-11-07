@@ -1,0 +1,2 @@
+trial 0: close-insert->rw_ts +1.835s | rw_ts->FETCH(no timeout, 20ms poll) 1.172s | rw_ts->FETCH 1 timeout 1.154s | rw_ts->MV visible 1.149s
+trial 1: close-insert->rw_ts +2.304s | rw_ts->FETCH(no timeout, 20ms poll) 1.102s | rw_ts->FETCH 1 timeout 2.101s | rw_ts->MV visible 1.087s

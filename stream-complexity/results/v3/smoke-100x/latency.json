@@ -1,0 +1,579 @@
+{
+  "B": {
+    "samples": [
+      {
+        "latency_s": 3.5177,
+        "src_ip": "198.51.100.19",
+        "user": "user00171",
+        "window_start": 1767225720
+      },
+      {
+        "latency_s": 1.1211,
+        "src_ip": "198.51.100.10",
+        "user": "user00103",
+        "window_start": 1767225960
+      },
+      {
+        "latency_s": 0.7839,
+        "src_ip": "198.51.100.6",
+        "user": "user00436",
+        "window_start": 1767226500
+      },
+      {
+        "latency_s": 4.0418,
+        "src_ip": "198.51.100.7",
+        "user": "user01817",
+        "window_start": 1767226680
+      },
+      {
+        "latency_s": 2.8455,
+        "src_ip": "198.51.100.9",
+        "user": "user01334",
+        "window_start": 1767226800
+      },
+      {
+        "latency_s": 2.2491,
+        "src_ip": "198.51.100.8",
+        "user": "user00475",
+        "window_start": 1767226860
+      },
+      {
+        "latency_s": 3.7209,
+        "src_ip": "198.51.100.8",
+        "user": "user01166",
+        "window_start": 1767227220
+      },
+      {
+        "latency_s": 2.5245,
+        "src_ip": "198.51.100.14",
+        "user": "user01104",
+        "window_start": 1767227340
+      },
+      {
+        "latency_s": 1.328,
+        "src_ip": "198.51.100.7",
+        "user": "user01463",
+        "window_start": 1767227460
+      },
+      {
+        "latency_s": 4.5865,
+        "src_ip": "198.51.100.15",
+        "user": "user00630",
+        "window_start": 1767227640
+      },
+      {
+        "latency_s": 1.5897,
+        "src_ip": "198.51.100.18",
+        "user": "user00603",
+        "window_start": 1767227940
+      },
+      {
+        "latency_s": 0.9922,
+        "src_ip": "198.51.100.4",
+        "user": "user00405",
+        "window_start": 1767228000
+      },
+      {
+        "latency_s": 3.6474,
+        "src_ip": "198.51.100.9",
+        "user": "user00705",
+        "window_start": 1767228240
+      },
+      {
+        "latency_s": 1.2506,
+        "src_ip": "198.51.100.14",
+        "user": "user01833",
+        "window_start": 1767228480
+      },
+      {
+        "latency_s": 3.9023,
+        "src_ip": "198.51.100.1",
+        "user": "user01615",
+        "window_start": 1767228720
+      },
+      {
+        "latency_s": 3.3059,
+        "src_ip": "198.51.100.7",
+        "user": "user01363",
+        "window_start": 1767228780
+      },
+      {
+        "latency_s": 0.3089,
+        "src_ip": "198.51.100.3",
+        "user": "user01789",
+        "window_start": 1767229080
+      },
+      {
+        "latency_s": 4.7612,
+        "src_ip": "198.51.100.17",
+        "user": "user00562",
+        "window_start": 1767229140
+      },
+      {
+        "latency_s": 3.5663,
+        "src_ip": "198.51.100.14",
+        "user": "user01549",
+        "window_start": 1767229260
+      },
+      {
+        "latency_s": 1.7684,
+        "src_ip": "198.51.100.14",
+        "user": "user00516",
+        "window_start": 1767229440
+      },
+      {
+        "latency_s": 0.5707,
+        "src_ip": "198.51.100.13",
+        "user": "user01282",
+        "window_start": 1767229560
+      },
+      {
+        "latency_s": 5.0219,
+        "src_ip": "198.51.100.3",
+        "user": "user01460",
+        "window_start": 1767229620
+      },
+      {
+        "latency_s": 3.7353,
+        "src_ip": "198.51.100.7",
+        "user": "user00059",
+        "window_start": 1767230760
+      },
+      {
+        "latency_s": 1.9387,
+        "src_ip": "198.51.100.5",
+        "user": "user00181",
+        "window_start": 1767230940
+      },
+      {
+        "latency_s": 1.3407,
+        "src_ip": "198.51.100.19",
+        "user": "user01367",
+        "window_start": 1767231000
+      },
+      {
+        "latency_s": 4.594,
+        "src_ip": "198.51.100.1",
+        "user": "user01712",
+        "window_start": 1767231180
+      },
+      {
+        "latency_s": 1.0009,
+        "src_ip": "198.51.100.3",
+        "user": "user01881",
+        "window_start": 1767231540
+      },
+      {
+        "latency_s": 2.4613,
+        "src_ip": "198.51.100.18",
+        "user": "user01241",
+        "window_start": 1767231900
+      },
+      {
+        "latency_s": 0.6645,
+        "src_ip": "198.51.100.18",
+        "user": "user00546",
+        "window_start": 1767232080
+      },
+      {
+        "latency_s": 0.3198,
+        "src_ip": "198.51.100.18",
+        "user": "user01901",
+        "window_start": 1767232620
+      }
+    ],
+    "summary": {
+      "cv_pct": 59.5,
+      "max_s": 5.0219,
+      "median_s": 2.3552,
+      "median_s_real_time_equivalent": 235.52,
+      "min_s": 0.3089,
+      "n": 30
+    }
+  },
+  "R": {
+    "samples": [
+      {
+        "latency_s": 3.5072,
+        "src_ip": "198.51.100.19",
+        "user": "user00171",
+        "window_start": 1767225720
+      },
+      {
+        "latency_s": 6.1561,
+        "src_ip": "198.51.100.10",
+        "user": "user00103",
+        "window_start": 1767225960
+      },
+      {
+        "latency_s": 5.7835,
+        "src_ip": "198.51.100.6",
+        "user": "user00436",
+        "window_start": 1767226500
+      },
+      {
+        "latency_s": 3.9928,
+        "src_ip": "198.51.100.7",
+        "user": "user01817",
+        "window_start": 1767226680
+      },
+      {
+        "latency_s": 8.2137,
+        "src_ip": "198.51.100.8",
+        "user": "user00475",
+        "window_start": 1767226860
+      },
+      {
+        "latency_s": 8.8185,
+        "src_ip": "198.51.100.9",
+        "user": "user01334",
+        "window_start": 1767226800
+      },
+      {
+        "latency_s": 4.4635,
+        "src_ip": "198.51.100.15",
+        "user": "user00630",
+        "window_start": 1767227640
+      },
+      {
+        "latency_s": 7.4724,
+        "src_ip": "198.51.100.14",
+        "user": "user01104",
+        "window_start": 1767227340
+      },
+      {
+        "latency_s": 8.6804,
+        "src_ip": "198.51.100.8",
+        "user": "user01166",
+        "window_start": 1767227220
+      },
+      {
+        "latency_s": 6.2841,
+        "src_ip": "198.51.100.7",
+        "user": "user01463",
+        "window_start": 1767227460
+      },
+      {
+        "latency_s": 6.912,
+        "src_ip": "198.51.100.4",
+        "user": "user00405",
+        "window_start": 1767228000
+      },
+      {
+        "latency_s": 7.5213,
+        "src_ip": "198.51.100.18",
+        "user": "user00603",
+        "window_start": 1767227940
+      },
+      {
+        "latency_s": 4.5292,
+        "src_ip": "198.51.100.9",
+        "user": "user00705",
+        "window_start": 1767228240
+      },
+      {
+        "latency_s": 3.1511,
+        "src_ip": "198.51.100.7",
+        "user": "user01363",
+        "window_start": 1767228780
+      },
+      {
+        "latency_s": 3.7554,
+        "src_ip": "198.51.100.1",
+        "user": "user01615",
+        "window_start": 1767228720
+      },
+      {
+        "latency_s": 6.1594,
+        "src_ip": "198.51.100.14",
+        "user": "user01833",
+        "window_start": 1767228480
+      },
+      {
+        "latency_s": 22.7198,
+        "src_ip": "198.51.100.17",
+        "user": "user00562",
+        "window_start": 1767229140
+      },
+      {
+        "latency_s": 21.5248,
+        "src_ip": "198.51.100.14",
+        "user": "user01549",
+        "window_start": 1767229260
+      },
+      {
+        "latency_s": 23.3294,
+        "src_ip": "198.51.100.3",
+        "user": "user01789",
+        "window_start": 1767229080
+      },
+      {
+        "latency_s": 59.7893,
+        "src_ip": "198.51.100.14",
+        "user": "user00516",
+        "window_start": 1767229440
+      },
+      {
+        "latency_s": 65.8271,
+        "src_ip": "198.51.100.13",
+        "user": "user01282",
+        "window_start": 1767229560
+      },
+      {
+        "latency_s": 65.2403,
+        "src_ip": "198.51.100.3",
+        "user": "user01460",
+        "window_start": 1767229620
+      },
+      {
+        "latency_s": 68.835,
+        "src_ip": "198.51.100.7",
+        "user": "user00059",
+        "window_start": 1767230760
+      },
+      {
+        "latency_s": 67.0403,
+        "src_ip": "198.51.100.5",
+        "user": "user00181",
+        "window_start": 1767230940
+      },
+      {
+        "latency_s": 66.4444,
+        "src_ip": "198.51.100.19",
+        "user": "user01367",
+        "window_start": 1767231000
+      },
+      {
+        "latency_s": 64.6501,
+        "src_ip": "198.51.100.1",
+        "user": "user01712",
+        "window_start": 1767231180
+      },
+      {
+        "latency_s": 66.0398,
+        "src_ip": "198.51.100.3",
+        "user": "user01881",
+        "window_start": 1767231540
+      },
+      {
+        "latency_s": 69.58,
+        "src_ip": "198.51.100.18",
+        "user": "user00546",
+        "window_start": 1767232080
+      },
+      {
+        "latency_s": 71.3865,
+        "src_ip": "198.51.100.18",
+        "user": "user01241",
+        "window_start": 1767231900
+      },
+      {
+        "latency_s": 72.1343,
+        "src_ip": "198.51.100.18",
+        "user": "user01901",
+        "window_start": 1767232620
+      }
+    ],
+    "summary": {
+      "cv_pct": 95.5,
+      "max_s": 72.1343,
+      "median_s": 8.7494,
+      "min_s": 3.1511,
+      "n": 30
+    }
+  },
+  "S": {
+    "samples": [
+      {
+        "latency_s": 2.6164,
+        "src_ip": "198.51.100.19",
+        "user": "user00171",
+        "window_start": 1767225720
+      },
+      {
+        "latency_s": 0.2358,
+        "src_ip": "198.51.100.10",
+        "user": "user00103",
+        "window_start": 1767225960
+      },
+      {
+        "latency_s": 0.2013,
+        "src_ip": "198.51.100.6",
+        "user": "user00436",
+        "window_start": 1767226500
+      },
+      {
+        "latency_s": 0.2052,
+        "src_ip": "198.51.100.7",
+        "user": "user01817",
+        "window_start": 1767226680
+      },
+      {
+        "latency_s": 0.205,
+        "src_ip": "198.51.100.9",
+        "user": "user01334",
+        "window_start": 1767226800
+      },
+      {
+        "latency_s": 0.211,
+        "src_ip": "198.51.100.8",
+        "user": "user00475",
+        "window_start": 1767226860
+      },
+      {
+        "latency_s": 0.2609,
+        "src_ip": "198.51.100.8",
+        "user": "user01166",
+        "window_start": 1767227220
+      },
+      {
+        "latency_s": 0.2661,
+        "src_ip": "198.51.100.14",
+        "user": "user01104",
+        "window_start": 1767227340
+      },
+      {
+        "latency_s": 0.1118,
+        "src_ip": "198.51.100.7",
+        "user": "user01463",
+        "window_start": 1767227460
+      },
+      {
+        "latency_s": 0.115,
+        "src_ip": "198.51.100.15",
+        "user": "user00630",
+        "window_start": 1767227640
+      },
+      {
+        "latency_s": 0.1662,
+        "src_ip": "198.51.100.18",
+        "user": "user00603",
+        "window_start": 1767227940
+      },
+      {
+        "latency_s": 0.1774,
+        "src_ip": "198.51.100.4",
+        "user": "user00405",
+        "window_start": 1767228000
+      },
+      {
+        "latency_s": 0.169,
+        "src_ip": "198.51.100.9",
+        "user": "user00705",
+        "window_start": 1767228240
+      },
+      {
+        "latency_s": 0.2189,
+        "src_ip": "198.51.100.14",
+        "user": "user01833",
+        "window_start": 1767228480
+      },
+      {
+        "latency_s": 0.2202,
+        "src_ip": "198.51.100.1",
+        "user": "user01615",
+        "window_start": 1767228720
+      },
+      {
+        "latency_s": 0.2231,
+        "src_ip": "198.51.100.7",
+        "user": "user01363",
+        "window_start": 1767228780
+      },
+      {
+        "latency_s": 0.2679,
+        "src_ip": "198.51.100.3",
+        "user": "user01789",
+        "window_start": 1767229080
+      },
+      {
+        "latency_s": 0.2689,
+        "src_ip": "198.51.100.17",
+        "user": "user00562",
+        "window_start": 1767229140
+      },
+      {
+        "latency_s": 0.2695,
+        "src_ip": "198.51.100.14",
+        "user": "user01549",
+        "window_start": 1767229260
+      },
+      {
+        "latency_s": 0.1139,
+        "src_ip": "198.51.100.14",
+        "user": "user00516",
+        "window_start": 1767229440
+      },
+      {
+        "latency_s": 0.1165,
+        "src_ip": "198.51.100.13",
+        "user": "user01282",
+        "window_start": 1767229560
+      },
+      {
+        "latency_s": 0.1161,
+        "src_ip": "198.51.100.3",
+        "user": "user01460",
+        "window_start": 1767229620
+      },
+      {
+        "latency_s": 0.2212,
+        "src_ip": "198.51.100.7",
+        "user": "user00059",
+        "window_start": 1767230760
+      },
+      {
+        "latency_s": 0.2663,
+        "src_ip": "198.51.100.5",
+        "user": "user00181",
+        "window_start": 1767230940
+      },
+      {
+        "latency_s": 0.2676,
+        "src_ip": "198.51.100.19",
+        "user": "user01367",
+        "window_start": 1767231000
+      },
+      {
+        "latency_s": 0.2696,
+        "src_ip": "198.51.100.1",
+        "user": "user01712",
+        "window_start": 1767231180
+      },
+      {
+        "latency_s": 0.1176,
+        "src_ip": "198.51.100.3",
+        "user": "user01881",
+        "window_start": 1767231540
+      },
+      {
+        "latency_s": 0.1649,
+        "src_ip": "198.51.100.18",
+        "user": "user01241",
+        "window_start": 1767231900
+      },
+      {
+        "latency_s": 0.1661,
+        "src_ip": "198.51.100.18",
+        "user": "user00546",
+        "window_start": 1767232080
+      },
+      {
+        "latency_s": 0.219,
+        "src_ip": "198.51.100.18",
+        "user": "user01901",
+        "window_start": 1767232620
+      }
+    ],
+    "summary": {
+      "cv_pct": 155.1,
+      "max_s": 2.6164,
+      "median_s": 0.215,
+      "min_s": 0.1118,
+      "n": 30
+    }
+  },
+  "baseline": "July measure_latency.py: window close on the shared replay clock",
+  "replay_factor": 100.0,
+  "replay_start_epoch": 1794033769.3816156
+}
