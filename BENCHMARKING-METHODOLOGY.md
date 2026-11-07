@@ -79,6 +79,29 @@ Performance power plan holds the cores near max and removes the on-demand downcl
 source (§Decision: CV 5.8%→0.8% on sustained, 19.8%→2.7% on short queries). So run benches on High
 Performance and confirm with `env_characterize.py`; CV reporting (§4) catches any residual variance.
 
+### 7a. Guest clock rate: chrony since 2026-11-07 (dated note)
+On the Beelink (Ryzen 7 5800H, WSL2), the guest clock ran about 4% slow against Windows until chrony
+replaced systemd-timesyncd on 2026-11-07. Timesyncd was correcting the drift by stepping the realtime
+clock forward roughly 1.2 s every 32 s, and containers under Docker Desktop share the WSL2 kernel, so
+they inherited the same slow clock and the same steps. Three consequences for results produced on this
+host before that date:
+- Absolute durations read about 4% short.
+- Ratios between arms measured in the same run are unaffected, because every arm saw the same clock.
+- Comparisons between event time and wall-clock time may contain steps. The stream-complexity RisingWave
+  v3 results (`stream-complexity/results/RESULTS-v3-risingwave-2026-11-07.md`) already carry this caveat.
+
+The in-container picture did not match the host one exactly: the v3 run logged the container wall clock
+stepping backwards about 2.6 s every 27 to 30 s, with a larger gap between monotonic and wall time than
+the host's 4%. I have not reconciled the two, and the likeliest reading is that more than one time
+correction was acting on the shared kernel. After chrony, a 40 s check inside a container showed
+`/proc/uptime` and `date` advancing together (40 s each, at one-second resolution), and the host matched
+Windows to within a millisecond over 40 s, so treat the pre-2026-11-07 numbers as carrying a clock error
+of unknown sign in the container case, not a clean 4%.
+
+Pre-run check from now on: `chronyc tracking` should report a small `System time` offset (milliseconds or
+less, not seconds) before a timed run starts. If chrony is not running, or the offset is large, fix the
+clock first and treat any absolute timing from that run as suspect.
+
 ### 8. What remains genuinely ACKNOWLEDGED, not faked
 - **Non-invasive measurement** (benchANT: don't run the harness on the system under test). DuckDB is an
   embedded engine, so timing is necessarily in-process; we keep harness work out of the timed region and
@@ -153,6 +176,7 @@ locally rather than in this repo.
 - [ ] Per query: cold (if privileged) and hot-min, plus **median + CV over ≥3 trials**.
 - [ ] On-disk size, file count, row-group count, **and the footer-verified codec/row-group** per arm.
 - [ ] Load/write time, separately from read latency.
+- [ ] Guest clock checked before the run (`chronyc tracking`, small `System time` offset; §7a).
 - [ ] Relative ratios within a single hardware+tuning class (cross-class comparison is invalid).
 - [ ] Tier label, single-machine caveat, and the explicit list of what was held constant vs varied.
 - [ ] Logical answer-equality across arms.
