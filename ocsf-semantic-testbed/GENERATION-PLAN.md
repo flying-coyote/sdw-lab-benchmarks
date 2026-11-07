@@ -138,3 +138,11 @@ promotion is gated on an independent practitioner (Jake Thomas / Hunter Madison)
 confirming that Store N's coarsening resembles what shops actually build. That sign-off
 is a Phase-2 gate and Jeremy's to obtain; the synthetic result stands at Tier B until
 then, and the write-up says so in the headline rather than a footnote.
+
+One further limit applies when an LLM arm reads this corpus (BENCH-C): frontier models may recognize
+generated telemetry as synthetic, which Torq reports seeing "very early on" with Caldera and Kali data
+(Noam Cohen and Jeremy Herzog, "When Humans Can't Make It Hard Enough", [un]prompted II, October 2026;
+vendor, Tier C). The planted chain is hand-built rather than
+simulator output, so the exposure is probably smaller, but it is untested. A cheap check is to ask each
+model, with no question attached, whether the stage-1 through stage-6 events look like a real intrusion
+or a generated one, and report the answer beside the scores (methodology §10).

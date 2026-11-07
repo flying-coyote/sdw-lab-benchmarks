@@ -101,6 +101,54 @@ The chDB Bloom-pushdown undercount made both halves of this concrete, after a ne
   validated against the scale the bug was first seen at rather than assumed to shrink. Worked example:
   `clickhouse-vs-duckdb/scale_pin_repro.py`.
 
+### 10. LLM arms: stability, contamination, harness, strata — ENFORCED for any bench with a generation step
+Added 2026-11-07 from production evaluation practice reported at [un]prompted II (October 2026). The
+engine principles above assume a deterministic system under test; an LLM arm is not one, and four
+failure modes follow from that which CV over latency does not catch.
+- **Verdict stability (run-to-run flip rate).** Report, per (arm, query, model), the share of repeated
+  trials whose scored verdict differs from the modal verdict, beside the per-trial mean. Wiz re-ran its
+  production SOC agent on identical threats and found "on around 6% of the time, the verdict flips";
+  a shadow model with "98% of verdict agreement" on ~11,000 production threats still "generated 44% more
+  false alarms", and one threat "investigated 33 times in the same day" was wrong in 32 of the 33 at high
+  self-reported confidence, so self-reported confidence is not a substitute measure (Waitzenberg/Harush,
+  "Same Threat, Two Verdicts"; vendor describing its own agent, Tier B for method, C for efficacy). BENCH-C v2 and
+  v2.1 already collect 8 trials per cell, so the flip rate is derivable from data on disk; the frozen
+  pre-registrations are not amended, and the metric applies to new runs. Agreement between two arms or
+  two models is reported as agreement, never as accuracy.
+- **Contamination exposure, and a no-data arm where the corpus is public.** Public security datasets are
+  memorized: run the same questions with the evidence withheld and report that score as the floor. Louie.ai
+  ran the BOTSv3 CTF "with Splunk disabled" and scored "Opus 5.5 29% Opus 4.6 17% Sonnet 4.6 10%"
+  (Meyerovich, "Three Years of Evals Later", deck; vendor, Tier C), and Kovalsky/Arshad got "207 right again"
+  after withdrawing the documentation the agent had read ("Your AI Analyst Is Confidently Wrong"; Tier B). The mapping oracle's
+  `none` condition is this lab's existing precedent and generalizes. Deterministic arms with no model in
+  the loop (pySigma-compiled rules, curated SQL) are exempt and say so in their README.
+- **Harness, prompt format and tuning disclosed; a tuned lift is re-run on a second model before it is
+  claimed.** Prompt and skill optimizations overfit: Dan Dye saw operational loss drop 99% after
+  evolving his skills, and "when I test those changes in a different model, or a different harness, the
+  improvements disappear"; rubrics embedded in the skills were "basically giving the LLM the answer to the
+  test" ("Engineering Context for SOC Agents"; Tier B). Scoring rubrics and gold answers never enter a prompt, skill or
+  grounding note. `RESULTS-headtohead-2026-06-16.md` already notes that no prompt ablation was run; this
+  names the rule.
+- **Per-stratum reporting, never pooled.** Report every dataset, source and query class separately before
+  any pooled number. Intuit's activation-probe guardrail held 98.1% recall on 11,086 held-out attack
+  prompts and 85.4% on a disjoint 996-prompt red-team set, and "one backbone missed 140 of 140 injections
+  rendered as text inside an unfamiliar image layout", which a pooled score hid (Shtar/Elad,
+  "Reading the Residual Stream", deck; Tier B). BENCH-A's routine/adversary-tail split is the existing instance.
+- **Seeded gold subset as a cheap oracle.** Where a full answer key is too costly, a hand-verified subset
+  of about 100 items dispersed inside the larger task can stand in for whole-run precision and recall;
+  Kovalsky/Arshad report it "turned out to be a pretty good proxy for overall model performance" across a
+  4,000-plus question run, and that recall collapse, not hallucination, dominated as evidence volume grew
+  ("Hallucination is a tiny, tiny percentage of the overall problem"; Tier B, one team's
+  experience). Score false negatives as a first-class outcome, not only invented answers.
+- **Synthetic-data recognition.** Frontier models can tell simulator output from real attacks: Torq
+  reports that with Caldera or Kali environments "frontiers tell that they're synthetic data and not real
+  attacks very early on", and that well-known public SOC datasets are saturated (Cohen/Herzog,
+  "When Humans Can't Make It Hard Enough"; vendor, Tier C). A synthetic corpus fed to an LLM arm declares this as a validity
+  limit, and a run can probe it by asking the model directly whether the evidence looks synthetic.
+
+Every quote above was re-checked on 2026-11-07 against the talk transcripts and decks, which are held
+locally rather than in this repo.
+
 ## Reporting checklist (every comparative bench)
 - [ ] Per query: cold (if privileged) and hot-min, plus **median + CV over ≥3 trials**.
 - [ ] On-disk size, file count, row-group count, **and the footer-verified codec/row-group** per arm.
@@ -109,9 +157,21 @@ The chDB Bloom-pushdown undercount made both halves of this concrete, after a ne
 - [ ] Tier label, single-machine caveat, and the explicit list of what was held constant vs varied.
 - [ ] Logical answer-equality across arms.
 - [ ] For a correctness finding: the **pinned artifact** (logical fingerprint + manifest) and the **scales swept**.
+- [ ] For an LLM arm (§10): **verdict flip rate** over repeated trials beside the mean; **contamination exposure
+  declared**, with a **no-data arm** run where the corpus is public (or the deterministic-arm exemption stated);
+  **harness, prompt format and any tuning disclosed**, with a tuned lift re-run on a second model; results
+  **per stratum** before any pooled figure; synthetic-corpus recognition named as a limit.
 
 ## Sources
 - ClickBench — github.com/ClickHouse/ClickBench (run protocol, scoring weights, self-acknowledged biases)
 - db-benchmarks — github.com/db-benchmarks/db-benchmarks (cache purge, restart-per-query, CV, CPU pin, NVMe)
 - benchANT — benchant.com/blog/database-benchmarking (non-invasive measurement, statistical rigor)
 - ClickHouse benchmark dashboard — benchmark.clickhouse.com (within-class relative normalization)
+- [un]prompted II, October 2026 (transcripts and decks held locally, not in this repo): Tal Waitzenberg and
+  Erez Harush (Wiz), "Same Threat, Two Verdicts: Shadow Testing Our SOC Agent"; Leo Meyerovich (Louie.ai),
+  "Three Years of Evals Later: What's Changing in Model and Harness IR/SOC Scores"; Maxim Kovalsky and Ali
+  Arshad, "Your AI Analyst Is Confidently Wrong: Adversarial QC for Agentic Security Analysis"; Dan Dye,
+  "Engineering Context for SOC Agents: Lessons, Failures and Open Questions"; Shtar/Elad (Intuit),
+  "Reading the Residual Stream: Productizing Activation-Probe Security at Intuit"; Noam Cohen and Jeremy
+  Herzog (Torq), "When Humans Can't Make It Hard Enough: Self-Hardening Environments for Frontier AI
+  Investigators". Practitioner talks, Tier B for method; vendor efficacy figures Tier C.

@@ -16,6 +16,11 @@ does not exist in 1.8.0. That is the security-relevant failure: it validates and
 as a real mapping and is wrong. Path-correctness (exact gold match) is reported too, but
 it penalizes defensible alternatives, so silent-error carries the finding.
 
+The `none` condition doubles as this bench's contamination floor: it is the no-data arm that
+`BENCHMARKING-METHODOLOGY.md` §10 now asks every LLM bench over a public corpus to run. OCSF and the
+vendor field docs behind the gold key are public, so a model's `none` score measures what it brings from
+pretraining, and grounded conditions are read as lifts over that floor.
+
 ## Gold key and validation
 
 The answer key is the hand-curated C1 source→OCSF mappings in
@@ -52,5 +57,8 @@ rather than resolved; an independent frontier leg (needs an API key) closes it. 
 Tier B, and only the local leg. Single weak model, single-shot, temperature 0, a curated
 gold subset, exact-match path scoring that undercounts valid alternatives. The
 silent-error contrast is the readable signal at this tier; the magnitudes are
-model-and-subset-specific. Tier-A needs a published larger gold set, a named reviewer on
+model-and-subset-specific. For the full-corpus run, a seeded gold subset (about 100 hand-verified
+mappings dispersed through the larger task, scored for precision and recall, with missed fields counted
+as a first-class outcome) is a cheap scoring method that one practitioner team reports tracks whole-run
+performance (methodology §10). Tier-A needs a published larger gold set, a named reviewer on
 the ambiguous adjudications, and an independent (non-same-family) frontier model.

@@ -29,6 +29,13 @@ Then four exact, set-based measures (no timings, no fuzzy matching):
    naive "trust the system of record" merge with no freshness ranking. The gap
    between them is what the score buys.
 
+A production practitioner states the premise in one line: "an empty query result and a dead log source
+look the exact same unless you go verify your uptime", which is why his investigation agent runs a source
+health check before any case and requires that "every claim in the report must have the cited query
+result, the query itself, and the data itself" (Sannan Iqbal, "Twelve Consoles, One Investigation", [un]prompted II, October 2026;
+Tier B for direction, employer not stated). That is the source-health layer this bench's fourth layer
+sits on top of.
+
 ## Results (DuckDB 1.5.3, seed 20260601)
 
 | Measure | Value |

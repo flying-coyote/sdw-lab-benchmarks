@@ -35,7 +35,7 @@ W is measured from the window close to the alert landing, and I from the event's
 | P6 | Answer equality: W 30/30 and I 30/30, every arm and replica, pairwise identical | pass | pass | **HIT** |
 | P7 | On I, B-5/L300 p50 ≥ 3.5× B-5 | 5.2× | 5.2× | **HIT** |
 
-Tally: 8 hits, 2 misses. Host load stayed low throughout: median 3.7–3.8% CPU, max 13.6%, no sample over 50%, so neither trial is flagged.
+Tally: 7 hits, 2 misses across the nine scored rows (P5 is scored as three parts, P5a to P5c). Host load stayed low throughout: median 3.7–3.8% CPU, max 13.6%, no sample over 50%, so neither trial is flagged.
 
 **Why P5 missed.** I predicted that every arm would run about one query per landed file, so query counts would match and CPU would differ only through cheap directory listings. In fact `batch_fresh.py` runs one query per tick over every file that has landed since the last tick. A 900-second poll therefore folds fifteen 60-second files into one query: 9 queries a trial against 120 for the 5-second poll. So the CPU difference came from queries, not from polling. That cuts against the cost half of my model, but the absolute numbers are tiny next to the streaming stack's: 3.7 CPU-seconds for the 5-second poll over a 2¼-hour trial, against about 3,200 for Kafka + Flink, most of which is the broker. The P5 rule requires this cost to sit next to the B-5 freshness figure wherever that is quoted: here, a 5-second poll cost about three times the CPU of a 15-minute schedule, and about 0.1% of the streaming stack's.
 

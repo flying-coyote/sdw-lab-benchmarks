@@ -78,6 +78,13 @@ Each knob is a documented volume-driven normalization behavior, not a choice to 
 Both stores carry identical columns (canonical Sigma field names) so one compiled rule runs against either;
 the only variable is the coarsening.
 
+## Contamination exposure (methodology §10)
+
+The APT29 evaluation telemetry and SigmaHQ are both public, and a model could well have memorized either.
+That does not touch this bench, because no model is in the loop: rules compile deterministically via
+pySigma and run as SQL, so there is nothing to contaminate and no no-data arm to run. Any future LLM arm
+over this corpus would need one.
+
 ## Reproducibility
 
 **pySigma 1.3.3 / sigma-cli 3.0.2 / pySigma-backend-sqlite 1.1.3** — pinned in `requirements.txt`.
