@@ -33,6 +33,24 @@ resolved by a Windows-side power-plan setting; **we run benches on High Performa
 leave WSL2.** Re-run `env_characterize.py` if the host or plan changes; if a future workload shows CV
 above its claimed delta there, escalate (native Linux boot, or a cloud fixed-frequency instance).
 
+## Confidentiality: what never lands in this repo
+
+This repo is public, and a private, NDA-gated catalog benchmark exists alongside it, so the line between
+them is written here rather than left to memory (owner ruling 2026-11-08, from the 2026-07 grill bank 3B
+Q5). Three classes are never committed to this repo, in a results file, a README, a commit message, a
+fixture or a code comment:
+- **Client names**, and any detail specific enough to identify a client engagement (environment sizes,
+  vendor stacks, incident dates). Anonymize to a role or sector, or leave it out.
+- **NDA-sourced numbers**: any figure obtained under a non-disclosure agreement, a vendor evaluation
+  licence or a private briefing, even when the number looks generic.
+- **Content from the private catalog benchmark**: its workloads, results,
+  configurations, vendor names in that context, and anything derived from them.
+
+There is no scanner for this, by decision. The control is the author checking each of the three classes
+before a commit, and a reviewer checking again before a push. When it is unclear whether something falls
+in a class, it stays out until Jeremy rules. The DeWitt-clause restriction (no public results for an
+engine whose licence forbids them) is a separate rule and binds as well.
+
 ## Principles
 
 ### 1. Configuration parity (the rule the confound taught us) — ENFORCED
@@ -101,6 +119,18 @@ of unknown sign in the container case, not a clean 4%.
 Pre-run check from now on: `chronyc tracking` should report a small `System time` offset (milliseconds or
 less, not seconds) before a timed run starts. If chrony is not running, or the offset is large, fix the
 clock first and treat any absolute timing from that run as suspect.
+
+### 7b. Rig stamp on latency-bearing RESULTS files — ADOPTED 2026-11-08; back-stamping of existing files pending
+Every RESULTS file that reports an absolute duration (latency, throughput, wall time, load time) carries a
+rig stamp near the top: host (for example the Beelink, Ryzen 7 5800H, WSL2), Windows power plan, the date
+of the run, engine versions, and the clock state at the time, meaning either "chrony, `chronyc tracking`
+offset checked" or "pre-2026-11-07, timesyncd: absolute durations read about 4% short, container clock
+error of unknown sign (§7a)". Results that report only correctness, answer equality, sizes, counts or
+within-run ratios do not need one. The stamp exists because the §7a clock error is invisible in a number
+once it leaves the run, and a stamp is the only way a reader can tell a pre-chrony timing from a corrected
+one (owner ruling 2026-11-08, from grill bank 3B Q4). Back-stamping applies to the existing latency-bearing
+RESULTS files, with `ocsf-read-scan/` and the other pre-chrony timings done in the same pass; until a file
+is stamped, treat its absolute durations under §7a.
 
 ### 8. What remains genuinely ACKNOWLEDGED, not faked
 - **Non-invasive measurement** (benchANT: don't run the harness on the system under test). DuckDB is an
@@ -177,6 +207,8 @@ locally rather than in this repo.
 - [ ] On-disk size, file count, row-group count, **and the footer-verified codec/row-group** per arm.
 - [ ] Load/write time, separately from read latency.
 - [ ] Guest clock checked before the run (`chronyc tracking`, small `System time` offset; §7a).
+- [ ] Rig stamp at the top of any RESULTS file that reports an absolute duration (§7b).
+- [ ] Nothing from the three never-commit classes (client names, NDA-sourced numbers, private catalog-benchmark content).
 - [ ] Relative ratios within a single hardware+tuning class (cross-class comparison is invalid).
 - [ ] Tier label, single-machine caveat, and the explicit list of what was held constant vs varied.
 - [ ] Logical answer-equality across arms.
