@@ -1,0 +1,12 @@
+title: MCP tool description largely rewritten
+id: 7d0f6b2e-5b1a-4a0e-9a51-0b3f2a6c0004
+status: experimental
+description: Body-aware. Existing tool's description similarity to the previous version fell below 0.5 (difflib ratio, producer-computed).
+logsource: {product: mcp, category: application_lifecycle}
+detection:
+  sel:
+    class_uid: 6002
+    activity_id: 8
+    unmapped.desc_similarity|lt: 0.5
+  condition: sel
+level: medium

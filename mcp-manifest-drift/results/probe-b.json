@@ -1,0 +1,12 @@
+{
+ "path": "b",
+ "versions": {
+  "pySigma": "2.0.3",
+  "backend": "pySigma-backend-sqlite 2.1.1"
+ },
+ "s3_hidden_instruction": [],
+ "s2_contract_drift": [
+  "probe-null-prev",
+  "probe-underscore"
+ ]
+}

@@ -1,0 +1,17 @@
+title: AI inference API call
+name: llm_api_call_s
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation: chat.completions
+  condition: sel
+---
+title: Burst of inference calls from one source (extraction volume)
+status: experimental
+correlation:
+  type: event_count
+  rules: [llm_api_call_s]
+  group-by: [src_endpoint_ip]
+  timespan: 1h
+  condition: {gte: 300}

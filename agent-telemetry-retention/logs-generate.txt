@@ -1,0 +1,16 @@
+{"name": "coding-real-s99", "rows": 1120, "users": 2, "billed_tokens": 49976684, "sessions": 27, "raw_text_bytes": {"prompt_text_delta": 3994170, "prompt_text_full": 199823701, "response_text": 1796889}}
+{"name": "coding-real-s0", "rows": 1269, "users": 2, "billed_tokens": 50323552, "sessions": 35, "raw_text_bytes": {"prompt_text_delta": 4521831, "prompt_text_full": 201051015, "response_text": 2089690}}
+{"name": "coding-real-s1", "rows": 1218, "users": 2, "billed_tokens": 56040630, "sessions": 31, "raw_text_bytes": {"prompt_text_delta": 4099708, "prompt_text_full": 226253854, "response_text": 2036605}}
+{"name": "coding-real-s2", "rows": 1060, "users": 2, "billed_tokens": 50902010, "sessions": 25, "raw_text_bytes": {"prompt_text_delta": 3581307, "prompt_text_full": 205662297, "response_text": 1646890}}
+{"name": "coding-high_entropy-s99", "rows": 309, "users": 2, "billed_tokens": 63671878, "sessions": 5, "raw_text_bytes": {"prompt_text_delta": 2057257, "prompt_text_full": 140242294, "response_text": 783023}}
+{"name": "chat-real-s0", "rows": 6043, "users": 100, "billed_tokens": 23222372, "sessions": 914, "raw_text_bytes": {"prompt_text_delta": 2547945, "prompt_text_full": 81224769, "response_text": 10993734}}
+{"name": "chat-real-s1", "rows": 5900, "users": 100, "billed_tokens": 24926754, "sessions": 844, "raw_text_bytes": {"prompt_text_delta": 2550683, "prompt_text_full": 87903633, "response_text": 11059818}}
+{"name": "chat-real-s2", "rows": 5803, "users": 100, "billed_tokens": 24402235, "sessions": 816, "raw_text_bytes": {"prompt_text_delta": 2444052, "prompt_text_full": 85603566, "response_text": 10703939}}
+{"name": "chat-real-s99", "rows": 5843, "users": 100, "billed_tokens": 24597245, "sessions": 829, "raw_text_bytes": {"prompt_text_delta": 2457233, "prompt_text_full": 86484517, "response_text": 10735902}}
+{"name": "coding-high_entropy-s2", "rows": 431, "users": 2, "billed_tokens": 50799619, "sessions": 18, "raw_text_bytes": {"prompt_text_delta": 3219152, "prompt_text_full": 111377324, "response_text": 1092743}}
+{"name": "coding-high_entropy-s0", "rows": 415, "users": 2, "billed_tokens": 73115949, "sessions": 9, "raw_text_bytes": {"prompt_text_delta": 2756032, "prompt_text_full": 160991963, "response_text": 1022858}}
+{"name": "coding-high_entropy-s1", "rows": 464, "users": 2, "billed_tokens": 72325736, "sessions": 13, "raw_text_bytes": {"prompt_text_delta": 3000720, "prompt_text_full": 158969421, "response_text": 1181015}}
+{"name": "chat-high_entropy-s0", "rows": 2750, "users": 100, "billed_tokens": 31351185, "sessions": 427, "raw_text_bytes": {"prompt_text_delta": 1584382, "prompt_text_full": 61347772, "response_text": 8064466}}
+{"name": "chat-high_entropy-s1", "rows": 2706, "users": 100, "billed_tokens": 30925062, "sessions": 398, "raw_text_bytes": {"prompt_text_delta": 1591820, "prompt_text_full": 60615083, "response_text": 7866466}}
+{"name": "chat-high_entropy-s99", "rows": 2849, "users": 100, "billed_tokens": 32791254, "sessions": 433, "raw_text_bytes": {"prompt_text_delta": 1649854, "prompt_text_full": 64190687, "response_text": 8391400}}
+{"name": "chat-high_entropy-s2", "rows": 2868, "users": 100, "billed_tokens": 34578169, "sessions": 400, "raw_text_bytes": {"prompt_text_delta": 1699151, "prompt_text_full": 68199266, "response_text": 8404827}}

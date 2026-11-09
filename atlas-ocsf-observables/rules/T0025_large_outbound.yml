@@ -1,0 +1,10 @@
+title: Large outbound transfer to an external address
+description: AML.T0025 Exfiltration via Cyber Means. No crosswalk artifact; observed directly through OCSF network_traffic.bytes_out.
+status: experimental
+logsource: {category: network_connection}
+detection:
+  sel:
+    traffic_bytes_out|gt: 500000000
+  internal:
+    dst_endpoint_ip|startswith: '10.'
+  condition: sel and not internal

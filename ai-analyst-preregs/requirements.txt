@@ -1,0 +1,6 @@
+# Planned pins for R3 / R9 / R11. Nothing was installed or run on 2026-11-09 (pre-registration only).
+# Versions below are what was observed on the host that day; the run re-freezes with `pip freeze`.
+duckdb==1.5.4
+requests==2.33.1
+anthropic==0.86.0
+# pySigma and pysigma-backend-sqlite: pin at run time (left unpinned in ocsf-attack-coverage/requirements.txt)

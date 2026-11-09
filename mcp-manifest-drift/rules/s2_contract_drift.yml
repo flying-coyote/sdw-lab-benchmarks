@@ -1,0 +1,15 @@
+title: MCP tool contract changed after baseline (fingerprint vs previous)
+id: 7d0f6b2e-5b1a-4a0e-9a51-0b3f2a6c0002
+status: experimental
+description: OCSF-native fingerprints compared by fieldref against producer-carried previous fingerprints (unmapped, since OCSF has no prev_ counterpart).
+logsource: {product: mcp, category: application_lifecycle}
+detection:
+  sel:
+    class_uid: 6002
+    activity_id: 8
+  same_desc:
+    ai_capability.desc_fingerprint|fieldref: unmapped.prev_desc_fingerprint
+  same_schema:
+    ai_capability.input_schema_fingerprint|fieldref: unmapped.prev_input_schema_fingerprint
+  condition: sel and not (same_desc and same_schema)
+level: low

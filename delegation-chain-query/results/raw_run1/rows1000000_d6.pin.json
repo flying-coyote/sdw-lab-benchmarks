@@ -1,0 +1,77 @@
+{
+ "gen_ms": 2238.553959,
+ "cell_ms": 8863.457012,
+ "status": "OK",
+ "stderr": "",
+ "pin": {
+  "path": "rows1000000_d6.parquet",
+  "logical_fingerprint": "dd31f68f4305a5feae00f5ea61a630e2",
+  "manifest": {
+   "n_rows": 1000002,
+   "n_row_groups": 2,
+   "columns": {
+    "actor_uid": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    },
+    "agent_uid": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    },
+    "chain_uid": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    },
+    "event_uid": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    },
+    "hop": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    },
+    "parent_eff_scope": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    },
+    "parent_uid": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    },
+    "root_scope": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    },
+    "scope_mask": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    },
+    "time": {
+     "encodings": [
+      "PLAIN, RLE, RLE_DICTIONARY"
+     ],
+     "has_bloom": false
+    }
+   }
+  },
+  "bytes_sha256": "b1ff76af7b84893f98a6827f81b32ec6229734290cc3341ff422ae435216fac7"
+ }
+}

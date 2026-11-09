@@ -1,0 +1,267 @@
+{
+ "meta": {
+  "loadavg_start": [
+   24.63525390625,
+   15.8505859375,
+   10.37646484375
+  ],
+  "cell": {
+   "n_rows": 100000,
+   "depth": 10,
+   "chains": 10000
+  },
+  "planted": 100,
+  "planted_reacquire": 46,
+  "duckdb": {
+   "version": "1.5.3",
+   "threads": 14,
+   "table": "in-memory DuckDB table (default)",
+   "load_ms": 157.86909
+  },
+  "chdb": {
+   "version": "chdb 4.4.0 / ClickHouse 26.9.2.1",
+   "threads": "14",
+   "table": "ENGINE = Memory (no ORDER BY / index)",
+   "load_ms": 96.901584
+  },
+  "loadavg_end": [
+   24.34375,
+   15.9365234375,
+   10.43359375
+  ]
+ },
+ "results": {
+  "duckdb|A_recursive": {
+   "warmup_ms": 156.184674,
+   "status": "OK",
+   "error": null,
+   "flagged": 100,
+   "true_pos": 100,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    100,
+    550217136584
+   ],
+   "trials_ms": [
+    134.174755,
+    127.113169,
+    100.634542,
+    87.358465,
+    64.73625
+   ],
+   "loadavg_1m": [
+    24.63525390625,
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375
+   ]
+  },
+  "chdb|A_recursive": {
+   "warmup_ms": 191.962842,
+   "status": "OK",
+   "error": null,
+   "flagged": 100,
+   "true_pos": 100,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    100,
+    550217136584
+   ],
+   "trials_ms": [
+    88.907833,
+    84.331817,
+    78.839753,
+    95.197655,
+    82.030932
+   ],
+   "loadavg_1m": [
+    24.63525390625,
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375
+   ]
+  },
+  "duckdb|B_selfjoin": {
+   "warmup_ms": 38.70527,
+   "status": "OK",
+   "error": null,
+   "flagged": 100,
+   "true_pos": 100,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    100,
+    550217136584
+   ],
+   "trials_ms": [
+    39.279709,
+    29.42743,
+    18.393751,
+    19.66633,
+    30.330497
+   ],
+   "loadavg_1m": [
+    24.63525390625,
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375
+   ]
+  },
+  "chdb|B_selfjoin": {
+   "warmup_ms": 65.159995,
+   "status": "OK",
+   "error": null,
+   "flagged": 100,
+   "true_pos": 100,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    100,
+    550217136584
+   ],
+   "trials_ms": [
+    74.848863,
+    41.140337,
+    34.802477,
+    32.850055,
+    50.643668
+   ],
+   "loadavg_1m": [
+    24.63525390625,
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375
+   ]
+  },
+  "duckdb|C_materialized": {
+   "warmup_ms": 14.224881,
+   "status": "OK",
+   "error": null,
+   "flagged": 100,
+   "true_pos": 100,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    100,
+    550217136584
+   ],
+   "trials_ms": [
+    18.576282,
+    12.015928,
+    5.43394,
+    3.708232,
+    4.550585
+   ],
+   "loadavg_1m": [
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375
+   ]
+  },
+  "chdb|C_materialized": {
+   "warmup_ms": 12.644572,
+   "status": "OK",
+   "error": null,
+   "flagged": 100,
+   "true_pos": 100,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    100,
+    550217136584
+   ],
+   "trials_ms": [
+    6.865173,
+    8.239568,
+    38.399102,
+    7.723484,
+    4.069355
+   ],
+   "loadavg_1m": [
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375
+   ]
+  },
+  "duckdb|D_rootonly": {
+   "warmup_ms": 7.702531,
+   "status": "OK",
+   "error": null,
+   "flagged": 54,
+   "true_pos": 54,
+   "false_pos": 0,
+   "recall": 0.54,
+   "missed_reacquire": 46,
+   "exact_match": false,
+   "checksum": [
+    54,
+    298408160166
+   ],
+   "trials_ms": [
+    8.191765,
+    8.444783,
+    9.179875,
+    3.225701,
+    5.205725
+   ],
+   "loadavg_1m": [
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375
+   ]
+  },
+  "chdb|D_rootonly": {
+   "warmup_ms": 15.352159,
+   "status": "OK",
+   "error": null,
+   "flagged": 54,
+   "true_pos": 54,
+   "false_pos": 0,
+   "recall": 0.54,
+   "missed_reacquire": 46,
+   "exact_match": false,
+   "checksum": [
+    54,
+    298408160166
+   ],
+   "trials_ms": [
+    50.788003,
+    9.087627,
+    6.583912,
+    3.591524,
+    4.446278
+   ],
+   "loadavg_1m": [
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375,
+    24.34375
+   ]
+  }
+ }
+}

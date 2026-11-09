@@ -1,0 +1,12 @@
+title: MCP tool manifest drift (any added, removed or changed tool)
+id: 7d0f6b2e-5b1a-4a0e-9a51-0b3f2a6c0001
+status: experimental
+description: OCSF-native. Application Lifecycle (6002) event carrying ai_capability for an MCP tool that was installed, removed or updated between tools/list snapshots.
+logsource: {product: mcp, category: application_lifecycle}
+detection:
+  sel:
+    class_uid: 6002
+    activity_id: [1, 2, 8]
+    ai_capability.type_id: 1
+  condition: sel
+level: informational

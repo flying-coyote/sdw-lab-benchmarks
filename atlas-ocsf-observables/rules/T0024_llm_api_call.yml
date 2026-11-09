@@ -1,0 +1,9 @@
+title: AI inference API call
+description: AML.T0024 Exfiltration via AI Inference API via d3f:WebAPIResource. A single-event rule can only name the operation.
+status: experimental
+name: llm_api_call
+logsource: {category: api}
+detection:
+  sel:
+    api_operation: chat.completions
+  condition: sel

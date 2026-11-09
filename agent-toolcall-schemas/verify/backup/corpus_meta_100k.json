@@ -1,0 +1,363 @@
+{
+ "n": 100000,
+ "generate_s": 0.96,
+ "layouts": {
+  "L1_typed": {
+   "bytes": 2741602,
+   "write_s": 0.252,
+   "codecs": [
+    "ZSTD"
+   ],
+   "row_groups": 1,
+   "pin": {
+    "path": "L1_typed.parquet",
+    "logical_fingerprint": "d62bb088bca643932be16190478fab3c",
+    "manifest": {
+     "n_rows": 100000,
+     "n_row_groups": 1,
+     "columns": {
+      "activity_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, session, uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, ai_model, ai_provider": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, ai_model, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, instance_uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, is_destructive": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "ai_capability, is_readonly": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "ai_capability, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, service, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, service, version": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, source_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, transaction_uid": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "ai_capability, transport_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, type_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, operation": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, request, data": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "api, request, uid": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "api, response, data": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, response, error_message": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, version": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "class_uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "duration": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "status_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "time": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      }
+     }
+    },
+    "bytes_sha256": "a2b8a3b564ad108a148a9a59ada3571f20818e1e0186acb0a6e2ade2843f571c"
+   }
+  },
+  "L2_otel_map": {
+   "bytes": 5820786,
+   "write_s": 1.485,
+   "codecs": [
+    "ZSTD"
+   ],
+   "row_groups": 1,
+   "pin": {
+    "path": "L2_otel_map.parquet",
+    "logical_fingerprint": "c5dd738951370c80f440c037aaa2477a",
+    "manifest": {
+     "n_rows": 100000,
+     "n_row_groups": 1,
+     "columns": {
+      "attributes, key_value, key": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "attributes, key_value, value": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "duration_ns": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "span_id": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "span_name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "start_time_unix_nano": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "status_code": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "trace_id": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      }
+     }
+    },
+    "bytes_sha256": "8958e9a04783fa11e61bbaa18f65fd7a5e6febe919f5f8b02246b48b7b334ade"
+   }
+  },
+  "L3_aos_unmapped": {
+   "bytes": 3084783,
+   "write_s": 0.391,
+   "codecs": [
+    "ZSTD"
+   ],
+   "row_groups": 1,
+   "pin": {
+    "path": "L3_aos_unmapped.parquet",
+    "logical_fingerprint": "5adcc6ce3b424fdd6e712991b4418bba",
+    "manifest": {
+     "n_rows": 100000,
+     "n_row_groups": 1,
+     "columns": {
+      "activity_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "activity_name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, type": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, type_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, operation": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, service, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, service, version": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "class_uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "duration": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "src_endpoint, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "src_endpoint, type_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "status_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "time": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "unmapped": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      }
+     }
+    },
+    "bytes_sha256": "15d0ce4f082bf65cf127f84d4a1e5606edc76d17b255bf617902a863092d59fb"
+   }
+  }
+ }
+}

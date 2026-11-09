@@ -1,0 +1,13 @@
+{
+ "path": "a",
+ "versions": {
+  "pySigma": "1.5.1",
+  "backend": "pySigma-backend-duckdb 0.1.4"
+ },
+ "s3_hidden_instruction": [
+  "probe-underscore"
+ ],
+ "s2_contract_drift": [
+  "probe-underscore"
+ ]
+}

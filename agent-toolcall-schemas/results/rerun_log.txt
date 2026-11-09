@@ -1,0 +1,17 @@
+start load 3.90 9.86 9.77 2/1312 87327
+Q1_tool_by_agent equal {'L1_typed': 4.946, 'L2_otel_map': 186.041, 'L3_aos_unmapped': 51.864}
+Q2_argument_hunt equal {'L1_typed': 29.461, 'L2_otel_map': 213.903, 'L3_aos_unmapped': 162.326}
+Q3_tool_breadth_errors equal {'L1_typed': 20.492, 'L2_otel_map': 234.915, 'L3_aos_unmapped': 153.102}
+Q4_failure_bursts equal {'L1_typed': 6.231, 'L2_otel_map': 246.854, 'L3_aos_unmapped': 108.191}
+Q5_off_allowlist equal {'L1_typed': 16.032, 'L2_otel_map': 232.249, 'L3_aos_unmapped': 175.919}
+Q1_tool_by_agent equal {'L1_typed': 8.0, 'L2_otel_map': 211.312, 'L3_aos_unmapped': 56.124}
+Q2_argument_hunt equal {'L1_typed': 39.258, 'L2_otel_map': 238.43, 'L3_aos_unmapped': 181.871}
+Q3_tool_breadth_errors equal {'L1_typed': 8.23, 'L2_otel_map': 232.739, 'L3_aos_unmapped': 105.588}
+Q4_failure_bursts equal {'L1_typed': 22.047, 'L2_otel_map': 210.729, 'L3_aos_unmapped': 112.129}
+Q5_off_allowlist equal {'L1_typed': 7.904, 'L2_otel_map': 222.258, 'L3_aos_unmapped': 170.68}
+Q1_tool_by_agent equal {'L1_typed': 13.729, 'L2_otel_map': 192.457, 'L3_aos_unmapped': 56.565}
+Q2_argument_hunt equal {'L1_typed': 36.957, 'L2_otel_map': 224.353, 'L3_aos_unmapped': 175.256}
+Q3_tool_breadth_errors equal {'L1_typed': 7.037, 'L2_otel_map': 207.257, 'L3_aos_unmapped': 121.113}
+Q4_failure_bursts equal {'L1_typed': 5.571, 'L2_otel_map': 197.623, 'L3_aos_unmapped': 74.38}
+Q5_off_allowlist equal {'L1_typed': 7.691, 'L2_otel_map': 215.16, 'L3_aos_unmapped': 162.898}
+end load 8.09 10.00 9.82 3/1335 88253

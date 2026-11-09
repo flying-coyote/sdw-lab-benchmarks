@@ -1,0 +1,267 @@
+{
+ "meta": {
+  "loadavg_start": [
+   15.451171875,
+   10.9580078125,
+   6.56298828125
+  ],
+  "cell": {
+   "n_rows": 1000002,
+   "depth": 6,
+   "chains": 166667
+  },
+  "planted": 1667,
+  "planted_reacquire": 668,
+  "duckdb": {
+   "version": "1.5.3",
+   "threads": 14,
+   "table": "in-memory DuckDB table (default)",
+   "load_ms": 724.25533
+  },
+  "chdb": {
+   "version": "chdb 4.4.0 / ClickHouse 26.9.2.1",
+   "threads": "14",
+   "table": "ENGINE = Memory (no ORDER BY / index)",
+   "load_ms": 382.970468
+  },
+  "loadavg_end": [
+   15.939453125,
+   11.22021484375,
+   6.6962890625
+  ]
+ },
+ "results": {
+  "duckdb|A_recursive": {
+   "warmup_ms": 480.31992,
+   "status": "OK",
+   "error": null,
+   "flagged": 1667,
+   "true_pos": 1667,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    1667,
+    22845373239354
+   ],
+   "trials_ms": [
+    375.047249,
+    327.161566,
+    219.952906,
+    174.580954,
+    152.964933
+   ],
+   "loadavg_1m": [
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    15.939453125
+   ]
+  },
+  "chdb|A_recursive": {
+   "warmup_ms": 838.420472,
+   "status": "OK",
+   "error": null,
+   "flagged": 1667,
+   "true_pos": 1667,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    1667,
+    22845373239354
+   ],
+   "trials_ms": [
+    551.331891,
+    429.777488,
+    287.035085,
+    261.183945,
+    190.672187
+   ],
+   "loadavg_1m": [
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    15.939453125
+   ]
+  },
+  "duckdb|B_selfjoin": {
+   "warmup_ms": 415.543992,
+   "status": "OK",
+   "error": null,
+   "flagged": 1667,
+   "true_pos": 1667,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    1667,
+    22845373239354
+   ],
+   "trials_ms": [
+    305.331834,
+    160.016398,
+    205.194341,
+    117.80761,
+    105.752784
+   ],
+   "loadavg_1m": [
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    15.939453125,
+    15.939453125
+   ]
+  },
+  "chdb|B_selfjoin": {
+   "warmup_ms": 155.027473,
+   "status": "OK",
+   "error": null,
+   "flagged": 1667,
+   "true_pos": 1667,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    1667,
+    22845373239354
+   ],
+   "trials_ms": [
+    143.546744,
+    102.073093,
+    97.76357,
+    63.601399,
+    60.880457
+   ],
+   "loadavg_1m": [
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    15.939453125,
+    15.939453125
+   ]
+  },
+  "duckdb|C_materialized": {
+   "warmup_ms": 9.985717,
+   "status": "OK",
+   "error": null,
+   "flagged": 1667,
+   "true_pos": 1667,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    1667,
+    22845373239354
+   ],
+   "trials_ms": [
+    13.183284,
+    7.192673,
+    18.33025,
+    5.410881,
+    7.152171
+   ],
+   "loadavg_1m": [
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    15.939453125,
+    15.939453125
+   ]
+  },
+  "chdb|C_materialized": {
+   "warmup_ms": 38.172279,
+   "status": "OK",
+   "error": null,
+   "flagged": 1667,
+   "true_pos": 1667,
+   "false_pos": 0,
+   "recall": 1.0,
+   "missed_reacquire": 0,
+   "exact_match": true,
+   "checksum": [
+    1667,
+    22845373239354
+   ],
+   "trials_ms": [
+    18.741572,
+    12.15963,
+    48.450713,
+    8.399635,
+    7.579193
+   ],
+   "loadavg_1m": [
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    15.939453125,
+    15.939453125
+   ]
+  },
+  "duckdb|D_rootonly": {
+   "warmup_ms": 21.503515,
+   "status": "OK",
+   "error": null,
+   "flagged": 999,
+   "true_pos": 999,
+   "false_pos": 0,
+   "recall": 0.5992801439712058,
+   "missed_reacquire": 668,
+   "exact_match": false,
+   "checksum": [
+    999,
+    13703146809944
+   ],
+   "trials_ms": [
+    14.767266,
+    4.62864,
+    14.874472,
+    3.07746,
+    3.122062
+   ],
+   "loadavg_1m": [
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    15.939453125,
+    15.939453125
+   ]
+  },
+  "chdb|D_rootonly": {
+   "warmup_ms": 19.038988,
+   "status": "OK",
+   "error": null,
+   "flagged": 999,
+   "true_pos": 999,
+   "false_pos": 0,
+   "recall": 0.5992801439712058,
+   "missed_reacquire": 668,
+   "exact_match": false,
+   "checksum": [
+    999,
+    13703146809944
+   ],
+   "trials_ms": [
+    107.854993,
+    9.306483,
+    7.475688,
+    6.871956,
+    5.482484
+   ],
+   "loadavg_1m": [
+    16.45654296875,
+    16.45654296875,
+    16.45654296875,
+    15.939453125,
+    15.939453125
+   ]
+  }
+ }
+}

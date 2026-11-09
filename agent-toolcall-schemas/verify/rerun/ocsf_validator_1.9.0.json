@@ -1,0 +1,18 @@
+{
+ "ocsf_main": {
+  "records": 10,
+  "error_kinds": {
+   "attribute_unknown@ai_capability": 10,
+   "version_incompatible_later@metadata.version": 10
+  },
+  "warning_kinds": {}
+ },
+ "aos": {
+  "records": 10,
+  "error_kinds": {},
+  "warning_kinds": {
+   "attribute_enum_sibling_incorrect@activity_name": 10,
+   "version_earlier@metadata.version": 10
+  }
+ }
+}

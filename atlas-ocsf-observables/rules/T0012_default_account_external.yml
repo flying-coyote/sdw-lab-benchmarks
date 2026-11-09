@@ -1,0 +1,11 @@
+title: Built-in account successful logon from outside the network
+description: AML.T0012 Valid Accounts via d3f:DefaultUserAccount. OCSF has no 'default account' field, so the rule names the built-ins.
+status: experimental
+logsource: {category: authentication}
+detection:
+  sel:
+    user_name: [Administrator, admin, root, guest]
+    status_id: 1
+  internal:
+    src_endpoint_ip|startswith: '10.'
+  condition: sel and not internal

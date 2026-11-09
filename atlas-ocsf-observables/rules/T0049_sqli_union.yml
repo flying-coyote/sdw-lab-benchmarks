@@ -1,0 +1,8 @@
+title: UNION-based SQL injection reaches the datastore
+description: AML.T0049 Exploit Public-Facing Application via d3f:DatabaseQuery (query_info.query_string).
+status: experimental
+logsource: {category: database}
+detection:
+  sel:
+    query_info_query_string|contains|all: ['UNION', 'SELECT', '--']
+  condition: sel

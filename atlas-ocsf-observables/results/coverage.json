@@ -1,0 +1,1748 @@
+{
+ "benchmark": "atlas-ocsf-observables / planted",
+ "compiled_sql": {
+  "core|AML.T0012": "SELECT event_uid FROM authentication WHERE ((user_name='Administrator' OR user_name='admin' OR user_name='root' OR user_name='guest') AND status_id=1) AND (NOT COALESCE((src_endpoint_ip LIKE '10.%' ESCAPE '\\'), 0))",
+  "core|AML.T0024": "SELECT event_uid FROM api WHERE api_operation='chat.completions'",
+  "core|AML.T0025": "SELECT event_uid FROM network WHERE traffic_bytes_out > 500000000 AND (NOT COALESCE((dst_endpoint_ip LIKE '10.%' ESCAPE '\\'), 0))",
+  "core|AML.T0049": "SELECT event_uid FROM datastore WHERE query_info_query_string LIKE '%UNION%' ESCAPE '\\' AND query_info_query_string LIKE '%SELECT%' ESCAPE '\\' AND query_info_query_string LIKE '%--%' ESCAPE '\\'",
+  "core|AML.T0050": "SELECT event_uid FROM process WHERE process_cmd_line LIKE '% -c %' ESCAPE '\\' AND process_cmd_line LIKE '%exec(%' ESCAPE '\\' AND process_cmd_line LIKE '%b64decode%' ESCAPE '\\'",
+  "core|AML.T0051.000": "SELECT event_uid FROM api WHERE message_context_prompt_text LIKE '%ignore previous instructions%' ESCAPE '\\' OR message_context_prompt_text LIKE '%ignore all previous instructions%' ESCAPE '\\'",
+  "core|AML.T0055": "SELECT event_uid FROM process WHERE process_cmd_line LIKE '%169.254.169.254%' ESCAPE '\\' AND process_cmd_line LIKE '%security-credentials%' ESCAPE '\\'",
+  "core|AML.T0089": "SELECT event_uid FROM process WHERE process_cmd_line='ps aux' OR process_cmd_line='tasklist' OR process_cmd_line='tasklist /v' OR process_cmd_line='whoami' OR process_cmd_line='net user'",
+  "profile|AML.T0012": "SELECT event_uid FROM authentication WHERE ((user_name='Administrator' OR user_name='admin' OR user_name='root' OR user_name='guest') AND status_id=1) AND (NOT COALESCE((src_endpoint_ip LIKE '10.%' ESCAPE '\\'), 0))",
+  "profile|AML.T0024": "SELECT event_uid FROM api WHERE api_operation='chat.completions'",
+  "profile|AML.T0025": "SELECT event_uid FROM network WHERE traffic_bytes_out > 500000000 AND (NOT COALESCE((dst_endpoint_ip LIKE '10.%' ESCAPE '\\'), 0))",
+  "profile|AML.T0049": "SELECT event_uid FROM datastore WHERE query_info_query_string LIKE '%UNION%' ESCAPE '\\' AND query_info_query_string LIKE '%SELECT%' ESCAPE '\\' AND query_info_query_string LIKE '%--%' ESCAPE '\\'",
+  "profile|AML.T0050": "SELECT event_uid FROM process WHERE process_cmd_line LIKE '% -c %' ESCAPE '\\' AND process_cmd_line LIKE '%exec(%' ESCAPE '\\' AND process_cmd_line LIKE '%b64decode%' ESCAPE '\\'",
+  "profile|AML.T0051.000": "SELECT event_uid FROM api WHERE message_context_prompt_text LIKE '%ignore previous instructions%' ESCAPE '\\' OR message_context_prompt_text LIKE '%ignore all previous instructions%' ESCAPE '\\'",
+  "profile|AML.T0055": "SELECT event_uid FROM process WHERE process_cmd_line LIKE '%169.254.169.254%' ESCAPE '\\' AND process_cmd_line LIKE '%security-credentials%' ESCAPE '\\'",
+  "profile|AML.T0089": "SELECT event_uid FROM process WHERE process_cmd_line='ps aux' OR process_cmd_line='tasklist' OR process_cmd_line='tasklist /v' OR process_cmd_line='whoami' OR process_cmd_line='net user'"
+ },
+ "per_seed": {
+  "20261109": {
+   "core|AML.T0012": {
+    "duckdb": {
+     "fp": 6,
+     "matches": 7,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0012_default_account_external.yml",
+    "sqlite": {
+     "fp": 6,
+     "matches": 7,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "authentication"
+   },
+   "core|AML.T0024": {
+    "duckdb": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "rule": "T0024_llm_api_call.yml",
+    "sqlite": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "core|AML.T0024|correlation": {
+    "duckdb": {
+     "state": "n/a (sqlite-specific SQL)"
+    },
+    "rule": "supplementary/T0024_llm_api_burst_correlation.yml",
+    "sqlite": {
+     "alerts": 301,
+     "fp": 0,
+     "matches": 600,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "core|AML.T0025": {
+    "duckdb": {
+     "fp": 40,
+     "matches": 41,
+     "precision": 0.0244,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0025_large_outbound.yml",
+    "sqlite": {
+     "fp": 40,
+     "matches": 41,
+     "precision": 0.0244,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "network"
+   },
+   "core|AML.T0049": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0049_sqli_union.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "datastore"
+   },
+   "core|AML.T0050": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0050_python_exec_b64.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "core|AML.T0051.000": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 0,
+     "miss_reason": "exec_error: Binder Error: Referenced column \"message_context_prompt_text\" not found in FROM clause! Candidate bindings: \"actor_user_",
+     "precision": 0.0,
+     "recall": 0.0,
+     "state": "MISSED",
+     "tp": 0
+    },
+    "rule": "T0051_000_prompt_injection.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 0,
+     "miss_reason": "exec_error: no such column: message_context_prompt_text",
+     "precision": 0.0,
+     "recall": 0.0,
+     "state": "MISSED",
+     "tp": 0
+    },
+    "table": "api"
+   },
+   "core|AML.T0055": {
+    "duckdb": {
+     "fp": 11,
+     "matches": 12,
+     "precision": 0.0833,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0055_imds_credentials.yml",
+    "sqlite": {
+     "fp": 11,
+     "matches": 12,
+     "precision": 0.0833,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "core|AML.T0089": {
+    "duckdb": {
+     "fp": 89,
+     "matches": 90,
+     "precision": 0.0111,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0089_process_discovery.yml",
+    "sqlite": {
+     "fp": 89,
+     "matches": 90,
+     "precision": 0.0111,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "profile|AML.T0012": {
+    "duckdb": {
+     "fp": 6,
+     "matches": 7,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0012_default_account_external.yml",
+    "sqlite": {
+     "fp": 6,
+     "matches": 7,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "authentication"
+   },
+   "profile|AML.T0024": {
+    "duckdb": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "rule": "T0024_llm_api_call.yml",
+    "sqlite": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "profile|AML.T0024|correlation": {
+    "duckdb": {
+     "state": "n/a (sqlite-specific SQL)"
+    },
+    "rule": "supplementary/T0024_llm_api_burst_correlation.yml",
+    "sqlite": {
+     "alerts": 301,
+     "fp": 0,
+     "matches": 600,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "profile|AML.T0025": {
+    "duckdb": {
+     "fp": 40,
+     "matches": 41,
+     "precision": 0.0244,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0025_large_outbound.yml",
+    "sqlite": {
+     "fp": 40,
+     "matches": 41,
+     "precision": 0.0244,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "network"
+   },
+   "profile|AML.T0049": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0049_sqli_union.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "datastore"
+   },
+   "profile|AML.T0050": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0050_python_exec_b64.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "profile|AML.T0051.000": {
+    "duckdb": {
+     "fp": 20,
+     "matches": 20,
+     "precision": 0.0,
+     "recall": 0.0,
+     "state": "MISSED",
+     "tp": 0
+    },
+    "rule": "T0051_000_prompt_injection.yml",
+    "sqlite": {
+     "fp": 20,
+     "matches": 21,
+     "precision": 0.0476,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "api"
+   },
+   "profile|AML.T0055": {
+    "duckdb": {
+     "fp": 11,
+     "matches": 12,
+     "precision": 0.0833,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0055_imds_credentials.yml",
+    "sqlite": {
+     "fp": 11,
+     "matches": 12,
+     "precision": 0.0833,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "profile|AML.T0089": {
+    "duckdb": {
+     "fp": 89,
+     "matches": 90,
+     "precision": 0.0111,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0089_process_discovery.yml",
+    "sqlite": {
+     "fp": 89,
+     "matches": 90,
+     "precision": 0.0111,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   }
+  },
+  "20261110": {
+   "core|AML.T0012": {
+    "duckdb": {
+     "fp": 3,
+     "matches": 4,
+     "precision": 0.25,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0012_default_account_external.yml",
+    "sqlite": {
+     "fp": 3,
+     "matches": 4,
+     "precision": 0.25,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "authentication"
+   },
+   "core|AML.T0024": {
+    "duckdb": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "rule": "T0024_llm_api_call.yml",
+    "sqlite": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "core|AML.T0024|correlation": {
+    "duckdb": {
+     "state": "n/a (sqlite-specific SQL)"
+    },
+    "rule": "supplementary/T0024_llm_api_burst_correlation.yml",
+    "sqlite": {
+     "alerts": 301,
+     "fp": 0,
+     "matches": 600,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "core|AML.T0025": {
+    "duckdb": {
+     "fp": 33,
+     "matches": 34,
+     "precision": 0.0294,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0025_large_outbound.yml",
+    "sqlite": {
+     "fp": 33,
+     "matches": 34,
+     "precision": 0.0294,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "network"
+   },
+   "core|AML.T0049": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0049_sqli_union.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "datastore"
+   },
+   "core|AML.T0050": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0050_python_exec_b64.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "core|AML.T0051.000": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 0,
+     "miss_reason": "exec_error: Binder Error: Referenced column \"message_context_prompt_text\" not found in FROM clause! Candidate bindings: \"actor_user_",
+     "precision": 0.0,
+     "recall": 0.0,
+     "state": "MISSED",
+     "tp": 0
+    },
+    "rule": "T0051_000_prompt_injection.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 0,
+     "miss_reason": "exec_error: no such column: message_context_prompt_text",
+     "precision": 0.0,
+     "recall": 0.0,
+     "state": "MISSED",
+     "tp": 0
+    },
+    "table": "api"
+   },
+   "core|AML.T0055": {
+    "duckdb": {
+     "fp": 11,
+     "matches": 12,
+     "precision": 0.0833,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0055_imds_credentials.yml",
+    "sqlite": {
+     "fp": 11,
+     "matches": 12,
+     "precision": 0.0833,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "core|AML.T0089": {
+    "duckdb": {
+     "fp": 88,
+     "matches": 89,
+     "precision": 0.0112,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0089_process_discovery.yml",
+    "sqlite": {
+     "fp": 88,
+     "matches": 89,
+     "precision": 0.0112,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "profile|AML.T0012": {
+    "duckdb": {
+     "fp": 3,
+     "matches": 4,
+     "precision": 0.25,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0012_default_account_external.yml",
+    "sqlite": {
+     "fp": 3,
+     "matches": 4,
+     "precision": 0.25,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "authentication"
+   },
+   "profile|AML.T0024": {
+    "duckdb": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "rule": "T0024_llm_api_call.yml",
+    "sqlite": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "profile|AML.T0024|correlation": {
+    "duckdb": {
+     "state": "n/a (sqlite-specific SQL)"
+    },
+    "rule": "supplementary/T0024_llm_api_burst_correlation.yml",
+    "sqlite": {
+     "alerts": 301,
+     "fp": 0,
+     "matches": 600,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "profile|AML.T0025": {
+    "duckdb": {
+     "fp": 33,
+     "matches": 34,
+     "precision": 0.0294,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0025_large_outbound.yml",
+    "sqlite": {
+     "fp": 33,
+     "matches": 34,
+     "precision": 0.0294,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "network"
+   },
+   "profile|AML.T0049": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0049_sqli_union.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "datastore"
+   },
+   "profile|AML.T0050": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0050_python_exec_b64.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "profile|AML.T0051.000": {
+    "duckdb": {
+     "fp": 20,
+     "matches": 20,
+     "precision": 0.0,
+     "recall": 0.0,
+     "state": "MISSED",
+     "tp": 0
+    },
+    "rule": "T0051_000_prompt_injection.yml",
+    "sqlite": {
+     "fp": 20,
+     "matches": 21,
+     "precision": 0.0476,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "api"
+   },
+   "profile|AML.T0055": {
+    "duckdb": {
+     "fp": 11,
+     "matches": 12,
+     "precision": 0.0833,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0055_imds_credentials.yml",
+    "sqlite": {
+     "fp": 11,
+     "matches": 12,
+     "precision": 0.0833,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "profile|AML.T0089": {
+    "duckdb": {
+     "fp": 88,
+     "matches": 89,
+     "precision": 0.0112,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0089_process_discovery.yml",
+    "sqlite": {
+     "fp": 88,
+     "matches": 89,
+     "precision": 0.0112,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   }
+  },
+  "20261111": {
+   "core|AML.T0012": {
+    "duckdb": {
+     "fp": 2,
+     "matches": 3,
+     "precision": 0.3333,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0012_default_account_external.yml",
+    "sqlite": {
+     "fp": 2,
+     "matches": 3,
+     "precision": 0.3333,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "authentication"
+   },
+   "core|AML.T0024": {
+    "duckdb": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "rule": "T0024_llm_api_call.yml",
+    "sqlite": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "core|AML.T0024|correlation": {
+    "duckdb": {
+     "state": "n/a (sqlite-specific SQL)"
+    },
+    "rule": "supplementary/T0024_llm_api_burst_correlation.yml",
+    "sqlite": {
+     "alerts": 301,
+     "fp": 0,
+     "matches": 600,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "core|AML.T0025": {
+    "duckdb": {
+     "fp": 27,
+     "matches": 28,
+     "precision": 0.0357,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0025_large_outbound.yml",
+    "sqlite": {
+     "fp": 27,
+     "matches": 28,
+     "precision": 0.0357,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "network"
+   },
+   "core|AML.T0049": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0049_sqli_union.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "datastore"
+   },
+   "core|AML.T0050": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0050_python_exec_b64.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "core|AML.T0051.000": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 0,
+     "miss_reason": "exec_error: Binder Error: Referenced column \"message_context_prompt_text\" not found in FROM clause! Candidate bindings: \"actor_user_",
+     "precision": 0.0,
+     "recall": 0.0,
+     "state": "MISSED",
+     "tp": 0
+    },
+    "rule": "T0051_000_prompt_injection.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 0,
+     "miss_reason": "exec_error: no such column: message_context_prompt_text",
+     "precision": 0.0,
+     "recall": 0.0,
+     "state": "MISSED",
+     "tp": 0
+    },
+    "table": "api"
+   },
+   "core|AML.T0055": {
+    "duckdb": {
+     "fp": 17,
+     "matches": 18,
+     "precision": 0.0556,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0055_imds_credentials.yml",
+    "sqlite": {
+     "fp": 17,
+     "matches": 18,
+     "precision": 0.0556,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "core|AML.T0089": {
+    "duckdb": {
+     "fp": 85,
+     "matches": 86,
+     "precision": 0.0116,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0089_process_discovery.yml",
+    "sqlite": {
+     "fp": 85,
+     "matches": 86,
+     "precision": 0.0116,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "profile|AML.T0012": {
+    "duckdb": {
+     "fp": 2,
+     "matches": 3,
+     "precision": 0.3333,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0012_default_account_external.yml",
+    "sqlite": {
+     "fp": 2,
+     "matches": 3,
+     "precision": 0.3333,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "authentication"
+   },
+   "profile|AML.T0024": {
+    "duckdb": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "rule": "T0024_llm_api_call.yml",
+    "sqlite": {
+     "fp": 2001,
+     "matches": 2601,
+     "precision": 0.2307,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "profile|AML.T0024|correlation": {
+    "duckdb": {
+     "state": "n/a (sqlite-specific SQL)"
+    },
+    "rule": "supplementary/T0024_llm_api_burst_correlation.yml",
+    "sqlite": {
+     "alerts": 301,
+     "fp": 0,
+     "matches": 600,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 600
+    },
+    "table": "api"
+   },
+   "profile|AML.T0025": {
+    "duckdb": {
+     "fp": 27,
+     "matches": 28,
+     "precision": 0.0357,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0025_large_outbound.yml",
+    "sqlite": {
+     "fp": 27,
+     "matches": 28,
+     "precision": 0.0357,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "network"
+   },
+   "profile|AML.T0049": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0049_sqli_union.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "datastore"
+   },
+   "profile|AML.T0050": {
+    "duckdb": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "rule": "T0050_python_exec_b64.yml",
+    "sqlite": {
+     "fp": 0,
+     "matches": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "state": "DETECTED",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "profile|AML.T0051.000": {
+    "duckdb": {
+     "fp": 20,
+     "matches": 20,
+     "precision": 0.0,
+     "recall": 0.0,
+     "state": "MISSED",
+     "tp": 0
+    },
+    "rule": "T0051_000_prompt_injection.yml",
+    "sqlite": {
+     "fp": 20,
+     "matches": 21,
+     "precision": 0.0476,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "api"
+   },
+   "profile|AML.T0055": {
+    "duckdb": {
+     "fp": 17,
+     "matches": 18,
+     "precision": 0.0556,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0055_imds_credentials.yml",
+    "sqlite": {
+     "fp": 17,
+     "matches": 18,
+     "precision": 0.0556,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   },
+   "profile|AML.T0089": {
+    "duckdb": {
+     "fp": 85,
+     "matches": 86,
+     "precision": 0.0116,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "rule": "T0089_process_discovery.yml",
+    "sqlite": {
+     "fp": 85,
+     "matches": 86,
+     "precision": 0.0116,
+     "recall": 1.0,
+     "state": "NOISY",
+     "tp": 1
+    },
+    "table": "process"
+   }
+  }
+ },
+ "precision_floor_T": 0.9,
+ "seeds": [
+  20261109,
+  20261110,
+  20261111
+ ],
+ "summary": {
+  "core|AML.T0012": {
+   "duckdb": {
+    "fp_per_seed": [
+     6,
+     3,
+     2
+    ],
+    "precision_min_median_max": [
+     0.1429,
+     0.25,
+     0.3333
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     6,
+     3,
+     2
+    ],
+    "precision_min_median_max": [
+     0.1429,
+     0.25,
+     0.3333
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "core|AML.T0024": {
+   "duckdb": {
+    "fp_per_seed": [
+     2001,
+     2001,
+     2001
+    ],
+    "precision_min_median_max": [
+     0.2307,
+     0.2307,
+     0.2307
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     2001,
+     2001,
+     2001
+    ],
+    "precision_min_median_max": [
+     0.2307,
+     0.2307,
+     0.2307
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "core|AML.T0024|correlation": {
+   "duckdb": {
+    "fp_per_seed": [
+     null,
+     null,
+     null
+    ],
+    "precision_min_median_max": null,
+    "states": [
+     "n/a (sqlite-specific SQL)",
+     "n/a (sqlite-specific SQL)",
+     "n/a (sqlite-specific SQL)"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   }
+  },
+  "core|AML.T0025": {
+   "duckdb": {
+    "fp_per_seed": [
+     40,
+     33,
+     27
+    ],
+    "precision_min_median_max": [
+     0.0244,
+     0.0294,
+     0.0357
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     40,
+     33,
+     27
+    ],
+    "precision_min_median_max": [
+     0.0244,
+     0.0294,
+     0.0357
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "core|AML.T0049": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   }
+  },
+  "core|AML.T0050": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   }
+  },
+  "core|AML.T0051.000": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "miss_reason": [
+     "exec_error: Binder Error: Referenced column \"message_context_prompt_text\" not found in FROM clause! Candidate bindings: \"actor_user_"
+    ],
+    "precision_min_median_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "states": [
+     "MISSED",
+     "MISSED",
+     "MISSED"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "miss_reason": [
+     "exec_error: no such column: message_context_prompt_text"
+    ],
+    "precision_min_median_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "states": [
+     "MISSED",
+     "MISSED",
+     "MISSED"
+    ]
+   }
+  },
+  "core|AML.T0055": {
+   "duckdb": {
+    "fp_per_seed": [
+     11,
+     11,
+     17
+    ],
+    "precision_min_median_max": [
+     0.0556,
+     0.0833,
+     0.0833
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     11,
+     11,
+     17
+    ],
+    "precision_min_median_max": [
+     0.0556,
+     0.0833,
+     0.0833
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "core|AML.T0089": {
+   "duckdb": {
+    "fp_per_seed": [
+     89,
+     88,
+     85
+    ],
+    "precision_min_median_max": [
+     0.0111,
+     0.0112,
+     0.0116
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     89,
+     88,
+     85
+    ],
+    "precision_min_median_max": [
+     0.0111,
+     0.0112,
+     0.0116
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "profile|AML.T0012": {
+   "duckdb": {
+    "fp_per_seed": [
+     6,
+     3,
+     2
+    ],
+    "precision_min_median_max": [
+     0.1429,
+     0.25,
+     0.3333
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     6,
+     3,
+     2
+    ],
+    "precision_min_median_max": [
+     0.1429,
+     0.25,
+     0.3333
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "profile|AML.T0024": {
+   "duckdb": {
+    "fp_per_seed": [
+     2001,
+     2001,
+     2001
+    ],
+    "precision_min_median_max": [
+     0.2307,
+     0.2307,
+     0.2307
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     2001,
+     2001,
+     2001
+    ],
+    "precision_min_median_max": [
+     0.2307,
+     0.2307,
+     0.2307
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "profile|AML.T0024|correlation": {
+   "duckdb": {
+    "fp_per_seed": [
+     null,
+     null,
+     null
+    ],
+    "precision_min_median_max": null,
+    "states": [
+     "n/a (sqlite-specific SQL)",
+     "n/a (sqlite-specific SQL)",
+     "n/a (sqlite-specific SQL)"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   }
+  },
+  "profile|AML.T0025": {
+   "duckdb": {
+    "fp_per_seed": [
+     40,
+     33,
+     27
+    ],
+    "precision_min_median_max": [
+     0.0244,
+     0.0294,
+     0.0357
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     40,
+     33,
+     27
+    ],
+    "precision_min_median_max": [
+     0.0244,
+     0.0294,
+     0.0357
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "profile|AML.T0049": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   }
+  },
+  "profile|AML.T0050": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   }
+  },
+  "profile|AML.T0051.000": {
+   "duckdb": {
+    "fp_per_seed": [
+     20,
+     20,
+     20
+    ],
+    "precision_min_median_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "states": [
+     "MISSED",
+     "MISSED",
+     "MISSED"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     20,
+     20,
+     20
+    ],
+    "precision_min_median_max": [
+     0.0476,
+     0.0476,
+     0.0476
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "profile|AML.T0055": {
+   "duckdb": {
+    "fp_per_seed": [
+     11,
+     11,
+     17
+    ],
+    "precision_min_median_max": [
+     0.0556,
+     0.0833,
+     0.0833
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     11,
+     11,
+     17
+    ],
+    "precision_min_median_max": [
+     0.0556,
+     0.0833,
+     0.0833
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "profile|AML.T0089": {
+   "duckdb": {
+    "fp_per_seed": [
+     89,
+     88,
+     85
+    ],
+    "precision_min_median_max": [
+     0.0111,
+     0.0112,
+     0.0116
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     89,
+     88,
+     85
+    ],
+    "precision_min_median_max": [
+     0.0111,
+     0.0112,
+     0.0116
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  }
+ },
+ "versions": {
+  "duckdb": "1.5.3"
+ }
+}

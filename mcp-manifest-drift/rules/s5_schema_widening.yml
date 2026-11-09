@@ -1,0 +1,12 @@
+title: MCP tool input schema widened
+id: 7d0f6b2e-5b1a-4a0e-9a51-0b3f2a6c0005
+status: experimental
+description: Producer-computed. New unconstrained optional string parameter, removed constraint, removed required entry, opened additionalProperties or broadened type.
+logsource: {product: mcp, category: application_lifecycle}
+detection:
+  sel:
+    class_uid: 6002
+    activity_id: 8
+    unmapped.schema_widened: true
+  condition: sel
+level: medium

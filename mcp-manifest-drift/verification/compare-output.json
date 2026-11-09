@@ -1,0 +1,81 @@
+{
+ "everything": {
+  "n": 18,
+  "rerun_distinct_raw_manifests": 1,
+  "rerun_distinct_canon_manifests": 1,
+  "same_canon_as_original": true,
+  "same_raw_as_original": true,
+  "median_ms": 5.358,
+  "cv_pct": 107.7,
+  "min_ms": 1.887,
+  "max_ms": 36.722,
+  "per_run_median_ms": [
+   5.776,
+   3.714,
+   4.804
+  ],
+  "init_ms_per_run": [
+   836.0,
+   2620.5,
+   2534.8
+  ],
+  "serverInfo": {
+   "name": "mcp-servers/everything",
+   "title": "Everything Reference Server",
+   "version": "2.0.0"
+  },
+  "tools": 13
+ },
+ "filesystem": {
+  "n": 18,
+  "rerun_distinct_raw_manifests": 1,
+  "rerun_distinct_canon_manifests": 1,
+  "same_canon_as_original": true,
+  "same_raw_as_original": true,
+  "median_ms": 9.524,
+  "cv_pct": 61.0,
+  "min_ms": 3.073,
+  "max_ms": 23.086,
+  "per_run_median_ms": [
+   13.874,
+   10.357,
+   4.929
+  ],
+  "init_ms_per_run": [
+   3408.1,
+   2400.1,
+   1324.8
+  ],
+  "serverInfo": {
+   "name": "secure-filesystem-server",
+   "version": "0.2.0"
+  },
+  "tools": 14
+ },
+ "scg": {
+  "n": 18,
+  "rerun_distinct_raw_manifests": 1,
+  "rerun_distinct_canon_manifests": 1,
+  "same_canon_as_original": true,
+  "same_raw_as_original": true,
+  "median_ms": 2.256,
+  "cv_pct": 124.0,
+  "min_ms": 1.585,
+  "max_ms": 26.272,
+  "per_run_median_ms": [
+   1.61,
+   6.396,
+   2.495
+  ],
+  "init_ms_per_run": [
+   562.3,
+   2592.5,
+   989.1
+  ],
+  "serverInfo": {
+   "name": "security-context-graph",
+   "version": "1.30.0"
+  },
+  "tools": 7
+ }
+}

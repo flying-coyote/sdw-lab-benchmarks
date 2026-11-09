@@ -1,0 +1,2282 @@
+{
+ "chat|high_entropy|T3_full|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 793647.1300845565,
+  "min": 793136.3565253321,
+  "max": 811287.4050676309,
+  "cv_pct": 1.0556826251234903,
+  "text_share_median": 0.9929076009377072,
+  "bytes_per_record_median": 9064.224316334072,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 198586.63500820144,
+  "min": 192118.96384681328,
+  "max": 200304.48609837238,
+  "cv_pct": 1.7889409835641992,
+  "text_share_median": 0.9820168035692288,
+  "bytes_per_record_median": 2283.5574545454547,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 198586.63500820144,
+  "min": 192118.96384681328,
+  "max": 200304.48609837238,
+  "cv_pct": 1.7889409835641992,
+  "text_share_median": 0.9820168035692288,
+  "bytes_per_record_median": 2283.5574545454547,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 184412.20910082574,
+  "min": 177909.70944702133,
+  "max": 186014.2766533386,
+  "cv_pct": 1.9173408418706714,
+  "text_share_median": 0.9807951907582709,
+  "bytes_per_record_median": 2120.642909090909,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 173941.704627787,
+  "min": 167636.52233870453,
+  "max": 175362.2390987773,
+  "cv_pct": 1.9485285495831302,
+  "text_share_median": 0.9790533000817679,
+  "bytes_per_record_median": 1999.2050909090908,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 155913.86688246575,
+  "min": 150151.58841984952,
+  "max": 157177.98226765593,
+  "cv_pct": 1.9804992390614142,
+  "text_share_median": 0.9781966005988414,
+  "bytes_per_record_median": 1791.8967272727273,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 198501.7523974568,
+  "min": 192044.84193480577,
+  "max": 200219.5132337103,
+  "cv_pct": 1.7871411006143847,
+  "text_share_median": 0.9820092157474043,
+  "bytes_per_record_median": 2282.5887272727273,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|session_sorted|zstd_default_page8m": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 198421.33218681987,
+  "min": 191888.5872759775,
+  "max": 200142.8973099422,
+  "cv_pct": 1.8064945345129428,
+  "text_share_median": 0.9820017919827144,
+  "bytes_per_record_median": 2281.715272727273,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1152053.0723160862,
+  "min": 1151529.9468114243,
+  "max": 1153490.8629777362,
+  "cv_pct": 0.07194483380262334,
+  "text_share_median": 0.9947964662376364,
+  "bytes_per_record_median": 13160.064671101256,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 714534.5092598359,
+  "min": 713949.9830708153,
+  "max": 725948.9650825642,
+  "cv_pct": 0.7691707315000909,
+  "text_share_median": 0.9944823073814426,
+  "bytes_per_record_median": 8165.936437546194,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 714534.5092598359,
+  "min": 713949.9830708153,
+  "max": 725948.9650825642,
+  "cv_pct": 0.7691707315000909,
+  "text_share_median": 0.9944823073814426,
+  "bytes_per_record_median": 8165.936437546194,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 520942.4141384129,
+  "min": 517602.90731187543,
+  "max": 537047.6094324138,
+  "cv_pct": 1.6164161231657963,
+  "text_share_median": 0.9923219966072412,
+  "bytes_per_record_median": 5938.968,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 393191.45352879004,
+  "min": 388742.0823925915,
+  "max": 395003.3039632608,
+  "cv_pct": 0.6705485281355509,
+  "text_share_median": 0.9895637695118543,
+  "bytes_per_record_median": 4482.552,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 277067.8516841074,
+  "min": 276649.5342838763,
+  "max": 279286.44483454135,
+  "cv_pct": 0.4167297394941617,
+  "text_share_median": 0.9860779549895047,
+  "bytes_per_record_median": 3183.985818181818,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|high_entropy|T3_full|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 714449.6913215566,
+  "min": 713866.0946946662,
+  "max": 725871.2860128598,
+  "cv_pct": 0.7696941672921274,
+  "text_share_median": 0.9944816619654425,
+  "bytes_per_record_median": 8164.967110125646,
+  "jsonl_bytes_per_mtok_median": 2311268.967983188
+ },
+ "chat|real|T3_full|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1198600.2921453712,
+  "min": 1191083.9254491315,
+  "max": 1236622.345613071,
+  "cv_pct": 1.6490331374161746,
+  "text_share_median": 0.9882787846062935,
+  "bytes_per_record_median": 5040.242288471481,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 363348.51300734945,
+  "min": 360259.29592104984,
+  "max": 386689.8265172912,
+  "cv_pct": 3.1880456458129007,
+  "text_share_median": 0.9747763650964207,
+  "bytes_per_record_median": 1514.928829915561,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 363348.51300734945,
+  "min": 360259.29592104984,
+  "max": 386689.8265172912,
+  "cv_pct": 3.1880456458129007,
+  "text_share_median": 0.9747763650964207,
+  "bytes_per_record_median": 1514.928829915561,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 285272.7635535698,
+  "min": 282233.94291547476,
+  "max": 301084.1442037015,
+  "cv_pct": 2.854094876409535,
+  "text_share_median": 0.966820603070896,
+  "bytes_per_record_median": 1186.8238841978286,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 244167.0503909173,
+  "min": 241754.3720892779,
+  "max": 256915.35731147535,
+  "cv_pct": 2.6863027031318314,
+  "text_share_median": 0.9616622580196064,
+  "bytes_per_record_median": 1016.6029639841462,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 210633.20157931515,
+  "min": 209294.0667115123,
+  "max": 222084.72071672956,
+  "cv_pct": 2.6822064819653586,
+  "text_share_median": 0.9587681910520464,
+  "bytes_per_record_median": 880.1039117697743,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 363878.90697681694,
+  "min": 360815.88428273064,
+  "max": 387211.52171707526,
+  "cv_pct": 3.180369594668151,
+  "text_share_median": 0.9748154307971512,
+  "bytes_per_record_median": 1517.2693434430466,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|session_sorted|zstd_default_page8m": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 361638.4227164115,
+  "min": 358892.12606959976,
+  "max": 385145.23839339067,
+  "cv_pct": 3.1967763328294936,
+  "text_share_median": 0.9746801744143646,
+  "bytes_per_record_median": 1509.1797346200242,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2088061.245359103,
+  "min": 2086763.2411539354,
+  "max": 2098060.094808575,
+  "cv_pct": 0.24138843554128847,
+  "text_share_median": 0.9927358976158953,
+  "bytes_per_record_median": 8775.062381526797,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1327012.2018543154,
+  "min": 1320070.436171113,
+  "max": 1329834.8834348829,
+  "cv_pct": 0.30949941764377936,
+  "text_share_median": 0.9922671182979611,
+  "bytes_per_record_median": 5551.037222126486,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1327012.2018543154,
+  "min": 1320070.436171113,
+  "max": 1329834.8834348829,
+  "cv_pct": 0.30949941764377936,
+  "text_share_median": 0.9922671182979611,
+  "bytes_per_record_median": 5551.037222126486,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 714582.9030729504,
+  "min": 704302.9460211329,
+  "max": 720581.6689970944,
+  "cv_pct": 0.9425616824331384,
+  "text_share_median": 0.9848859156378439,
+  "bytes_per_record_median": 2961.669136653455,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 471506.19771832303,
+  "min": 459250.4334131689,
+  "max": 474261.80236885365,
+  "cv_pct": 1.3931432323546682,
+  "text_share_median": 0.976947714669071,
+  "bytes_per_record_median": 1931.1971394106497,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 329144.701311691,
+  "min": 322437.80129156203,
+  "max": 337236.2650981562,
+  "cv_pct": 1.835601261614981,
+  "text_share_median": 0.9689812457229443,
+  "bytes_per_record_median": 1355.885404101327,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "chat|real|T3_full|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1327421.2901248848,
+  "min": 1320936.4634018154,
+  "max": 1330507.7347816727,
+  "cv_pct": 0.30074235146033407,
+  "text_share_median": 0.9922721991725968,
+  "bytes_per_record_median": 5554.678959159056,
+  "jsonl_bytes_per_mtok_median": 4379971.094511543
+ },
+ "coding|high_entropy|T3_full|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1147914.0621113712,
+  "min": 1147453.382571838,
+  "max": 1149791.2859123896,
+  "cv_pct": 0.0880504476710479,
+  "text_share_median": 0.9995760824180062,
+  "bytes_per_record_median": 179223.0625,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 383150.6809692196,
+  "min": 206379.18563916787,
+  "max": 443585.65324782964,
+  "cv_pct": 29.22611115068341,
+  "text_share_median": 0.9991716367498992,
+  "bytes_per_record_median": 59723.394396551725,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 383150.6809692196,
+  "min": 206379.18563916787,
+  "max": 443585.65324782964,
+  "cv_pct": 29.22611115068341,
+  "text_share_median": 0.9991716367498992,
+  "bytes_per_record_median": 59723.394396551725,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 28148.73532707638,
+  "min": 25144.787493628784,
+  "max": 39689.15593638606,
+  "cv_pct": 20.227503318905566,
+  "text_share_median": 0.9884867909263466,
+  "bytes_per_record_median": 4430.084337349397,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 26684.636849046376,
+  "min": 23864.861550248086,
+  "max": 37624.29793026597,
+  "cv_pct": 20.190888564011715,
+  "text_share_median": 0.9881031239788215,
+  "bytes_per_record_median": 4204.583132530121,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 24324.439643448633,
+  "min": 21916.955492159446,
+  "max": 34218.44561472006,
+  "cv_pct": 19.84736412105046,
+  "text_share_median": 0.9876375543753103,
+  "bytes_per_record_median": 3861.3951807228914,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 382446.00787747256,
+  "min": 205106.4398731022,
+  "max": 442087.621676086,
+  "cv_pct": 29.324611376095312,
+  "text_share_median": 0.9991701106147866,
+  "bytes_per_record_median": 59613.55387931035,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|session_sorted|zstd_default_page8m": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 383150.6809692196,
+  "min": 206379.18563916787,
+  "max": 443585.65324782964,
+  "cv_pct": 29.22611115068341,
+  "text_share_median": 0.9991716367498992,
+  "bytes_per_record_median": 59723.394396551725,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1147901.2667398155,
+  "min": 1147435.9855467374,
+  "max": 1149787.3592326804,
+  "cv_pct": 0.08853228355792234,
+  "text_share_median": 0.9995653531001539,
+  "bytes_per_record_median": 179222.4504310345,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 652730.6130697377,
+  "min": 619508.1502481347,
+  "max": 672797.3810474648,
+  "cv_pct": 3.389414211242909,
+  "text_share_median": 0.999478515641056,
+  "bytes_per_record_median": 101744.01293103448,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 652730.6130697377,
+  "min": 619508.1502481347,
+  "max": 672797.3810474648,
+  "cv_pct": 3.389414211242909,
+  "text_share_median": 0.999478515641056,
+  "bytes_per_record_median": 101744.01293103448,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 341618.72355774953,
+  "min": 329309.300218479,
+  "max": 344967.2879927554,
+  "cv_pct": 1.9880706727791952,
+  "text_share_median": 0.9989975844427543,
+  "bytes_per_record_median": 53771.57974137931,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 187332.9156304749,
+  "min": 172143.83690759455,
+  "max": 208972.37437942202,
+  "cv_pct": 7.975311241658606,
+  "text_share_median": 0.9981534579967095,
+  "bytes_per_record_median": 29200.411637931036,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 95156.1557562304,
+  "min": 81782.9089519169,
+  "max": 105434.80650908031,
+  "cv_pct": 10.287804354441676,
+  "text_share_median": 0.9964246858679179,
+  "bytes_per_record_median": 14408.759036144578,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|high_entropy|T3_full|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 652713.3024958087,
+  "min": 619558.5443268777,
+  "max": 672783.2528030239,
+  "cv_pct": 3.384995989313621,
+  "text_share_median": 0.9994785020947846,
+  "bytes_per_record_median": 101741.31465517242,
+  "jsonl_bytes_per_mtok_median": 2222775.1430812995
+ },
+ "coding|real|T3_full|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1695381.2040035354,
+  "min": 1680778.6065217324,
+  "max": 1695428.0174817548,
+  "cv_pct": 0.4078480684233192,
+  "text_share_median": 0.999104511633035,
+  "bytes_per_record_median": 77333.24466338259,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 195905.84545534194,
+  "min": 162989.92567138345,
+  "max": 217287.9617131033,
+  "cv_pct": 11.62814380735714,
+  "text_share_median": 0.9952223255949644,
+  "bytes_per_record_median": 9013.700328407225,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 195905.84545534194,
+  "min": 162989.92567138345,
+  "max": 217287.9617131033,
+  "cv_pct": 11.62814380735714,
+  "text_share_median": 0.9952223255949644,
+  "bytes_per_record_median": 9013.700328407225,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 42349.89863604317,
+  "min": 40118.160363411975,
+  "max": 49437.32906611997,
+  "cv_pct": 9.035916186917564,
+  "text_share_median": 0.9772948721908407,
+  "bytes_per_record_median": 1948.5344827586207,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 33689.75330934003,
+  "min": 33197.195945700376,
+  "max": 41289.11647572095,
+  "cv_pct": 10.271958460577062,
+  "text_share_median": 0.9719534488881856,
+  "bytes_per_record_median": 1594.154716981132,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 27792.817461188428,
+  "min": 27113.31045669906,
+  "max": 34711.99727713974,
+  "cv_pct": 11.49249683104247,
+  "text_share_median": 0.9672802396537039,
+  "bytes_per_record_median": 1302.0018867924528,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 193739.3102111807,
+  "min": 166333.6483084501,
+  "max": 211642.5657847303,
+  "cv_pct": 9.777096971255776,
+  "text_share_median": 0.995168867914179,
+  "bytes_per_record_median": 8914.01724137931,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|session_sorted|zstd_default_page8m": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 195905.84545534194,
+  "min": 162989.92567138345,
+  "max": 217287.9617131033,
+  "cv_pct": 11.62814380735714,
+  "text_share_median": 0.9952223255949644,
+  "bytes_per_record_median": 9013.700328407225,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1739571.0699832875,
+  "min": 1723989.5411596908,
+  "max": 1745813.272481243,
+  "cv_pct": 0.5285134680624817,
+  "text_share_median": 0.9991028397091556,
+  "bytes_per_record_median": 79321.39573070608,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 785203.3937363181,
+  "min": 764649.8263848926,
+  "max": 857458.8097437955,
+  "cv_pct": 4.959965639039174,
+  "text_share_median": 0.9986675130695106,
+  "bytes_per_record_median": 35181.8210180624,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 785203.3937363181,
+  "min": 764649.8263848926,
+  "max": 857458.8097437955,
+  "cv_pct": 4.959965639039174,
+  "text_share_median": 0.9986675130695106,
+  "bytes_per_record_median": 35181.8210180624,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 409469.0584313559,
+  "min": 397022.8877012912,
+  "max": 488270.46230758907,
+  "cv_pct": 9.361188493943091,
+  "text_share_median": 0.9974675811677463,
+  "bytes_per_record_median": 19065.342452830188,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 227211.59630075537,
+  "min": 207862.49894650528,
+  "max": 280279.9174430294,
+  "cv_pct": 12.838650706435487,
+  "text_share_median": 0.9953804524666667,
+  "bytes_per_record_median": 10454.089490968801,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 97964.19133760632,
+  "min": 93331.95290323505,
+  "max": 122521.0811828227,
+  "cv_pct": 12.244484019810967,
+  "text_share_median": 0.9899974782025095,
+  "bytes_per_record_median": 4507.368637110017,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "coding|real|T3_full|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 785870.1061117232,
+  "min": 764696.9707513995,
+  "max": 857584.6156487523,
+  "cv_pct": 4.951725924264145,
+  "text_share_median": 0.9986675964813867,
+  "bytes_per_record_median": 35183.99014778325,
+  "jsonl_bytes_per_mtok_median": 4253613.405131241
+ },
+ "chat|high_entropy|T0_metadata|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 5858.096581989067,
+  "min": 5495.866481536371,
+  "max": 5896.58732197842,
+  "cv_pct": 3.1392825113677065,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 66.94826311899483,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 3799.733691722267,
+  "min": 3575.7532447712892,
+  "max": 3830.987568731453,
+  "cv_pct": 3.0429833354242244,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 43.42461197339246,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 3799.733691722267,
+  "min": 3575.7532447712892,
+  "max": 3830.987568731453,
+  "cv_pct": 3.0429833354242244,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 43.42461197339246,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 3769.6286591115,
+  "min": 3540.152747821899,
+  "max": 3805.3107083512155,
+  "cv_pct": 3.1711709838704514,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 43.080561714708054,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 3873.6543195936038,
+  "min": 3633.7667272087197,
+  "max": 3897.9706827668556,
+  "cv_pct": 3.136135276178884,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 44.26940133037694,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 3651.409029674636,
+  "min": 3409.9549921223415,
+  "max": 3670.744459623072,
+  "cv_pct": 3.316481984084722,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 41.62763636363636,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 3799.733691722267,
+  "min": 3575.7532447712892,
+  "max": 3830.987568731453,
+  "cv_pct": 3.0429833354242244,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 43.42461197339246,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 6225.630202455212,
+  "min": 5839.088819306771,
+  "max": 6245.409862498021,
+  "cv_pct": 3.064760146809305,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 71.14855875831486,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 4176.030431240526,
+  "min": 3925.627178234915,
+  "max": 4194.64208450175,
+  "cv_pct": 2.9926951470941456,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 47.72505543237251,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 4176.030431240526,
+  "min": 3925.627178234915,
+  "max": 4194.64208450175,
+  "cv_pct": 2.9926951470941456,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 47.72505543237251,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 4206.749852271921,
+  "min": 3971.8991482747397,
+  "max": 4242.901823328209,
+  "cv_pct": 2.9015889553573646,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 48.076127124907615,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 4313.8151186244995,
+  "min": 4053.3088955635567,
+  "max": 4332.021261716263,
+  "cv_pct": 3.007576933219471,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 49.29970436067997,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 4086.297385596187,
+  "min": 3849.538707500678,
+  "max": 4115.5382164980365,
+  "cv_pct": 2.9648320164301483,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 46.69955654101996,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T0_metadata|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 4176.030431240526,
+  "min": 3925.627178234915,
+  "max": 4194.64208450175,
+  "cv_pct": 2.9926951470941456,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 47.72505543237251,
+  "jsonl_bytes_per_mtok_median": 92586.87985815517
+ },
+ "chat|high_entropy|T1_hash|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 17630.338374769566,
+  "min": 16503.823554104325,
+  "max": 17644.136008522793,
+  "cv_pct": 3.0958491813615927,
+  "text_share_median": 0.6752572190137717,
+  "bytes_per_record_median": 200.99345454545454,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10000.529667491046,
+  "min": 9478.263583013895,
+  "max": 10072.31465094541,
+  "cv_pct": 2.6876708067563917,
+  "text_share_median": 0.6342410385404154,
+  "bytes_per_record_median": 114.28935698447894,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10000.529667491046,
+  "min": 9478.263583013895,
+  "max": 10072.31465094541,
+  "cv_pct": 2.6876708067563917,
+  "text_share_median": 0.6342410385404154,
+  "bytes_per_record_median": 114.28935698447894,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10743.389940495512,
+  "min": 10154.239225333187,
+  "max": 10797.996949716573,
+  "cv_pct": 2.758612420870776,
+  "text_share_median": 0.6630200512458413,
+  "bytes_per_record_median": 122.7790096082779,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10715.0634006813,
+  "min": 10114.965890761885,
+  "max": 10755.478620664577,
+  "cv_pct": 2.781779775296746,
+  "text_share_median": 0.6521612772575075,
+  "bytes_per_record_median": 122.45528455284553,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 9733.667164414997,
+  "min": 9161.647628016395,
+  "max": 9741.710461243376,
+  "cv_pct": 2.8449352106532775,
+  "text_share_median": 0.6393868948092625,
+  "bytes_per_record_median": 110.968,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10000.529667491046,
+  "min": 9478.263583013895,
+  "max": 10072.31465094541,
+  "cv_pct": 2.6876708067563917,
+  "text_share_median": 0.6342410385404154,
+  "bytes_per_record_median": 114.28935698447894,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 18096.64924843158,
+  "min": 16872.987115078304,
+  "max": 18101.676220532012,
+  "cv_pct": 3.2674622804708564,
+  "text_share_median": 0.6631211947382624,
+  "bytes_per_record_median": 206.3669090909091,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10374.659879420775,
+  "min": 9816.743043855215,
+  "max": 10417.788035763242,
+  "cv_pct": 2.682887881560545,
+  "text_share_median": 0.6105760012271664,
+  "bytes_per_record_median": 118.5650406504065,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10374.659879420775,
+  "min": 9816.743043855215,
+  "max": 10417.788035763242,
+  "cv_pct": 2.682887881560545,
+  "text_share_median": 0.6105760012271664,
+  "bytes_per_record_median": 118.5650406504065,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 11180.64047858659,
+  "min": 10585.349386197979,
+  "max": 11236.895830253305,
+  "cv_pct": 2.679569615395771,
+  "text_share_median": 0.6364946824097727,
+  "bytes_per_record_median": 127.77605321507761,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 11157.00269250875,
+  "min": 10536.243257993216,
+  "max": 11191.124035662448,
+  "cv_pct": 2.7459287845564426,
+  "text_share_median": 0.6258847260538103,
+  "bytes_per_record_median": 127.50591278640059,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10157.845439404455,
+  "min": 9602.966542271224,
+  "max": 10200.539469241752,
+  "cv_pct": 2.725452406420819,
+  "text_share_median": 0.6111112925401112,
+  "bytes_per_record_median": 116.08721359940873,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T1_hash|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10374.659879420775,
+  "min": 9816.743043855215,
+  "max": 10417.788035763242,
+  "cv_pct": 2.682887881560545,
+  "text_share_median": 0.6105760012271664,
+  "bytes_per_record_median": 118.5650406504065,
+  "jsonl_bytes_per_mtok_median": 107637.19729971762
+ },
+ "chat|high_entropy|T2_delta|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 166059.32754475967,
+  "min": 158476.69666950844,
+  "max": 166911.39425830316,
+  "cv_pct": 2.3143750680348436,
+  "text_share_median": 0.966056191942577,
+  "bytes_per_record_median": 1902.861818181818,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 111367.21407381495,
+  "min": 106334.49099054378,
+  "max": 111967.09151504161,
+  "cv_pct": 2.298435696236358,
+  "text_share_median": 0.9678757325379308,
+  "bytes_per_record_median": 1276.4730909090908,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 111367.21407381495,
+  "min": 106334.49099054378,
+  "max": 111967.09151504161,
+  "cv_pct": 2.298435696236358,
+  "text_share_median": 0.9678757325379308,
+  "bytes_per_record_median": 1276.4730909090908,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 101708.99576531164,
+  "min": 97015.92354412982,
+  "max": 102276.7719944238,
+  "cv_pct": 2.3497383455749787,
+  "text_share_median": 0.9651098050358036,
+  "bytes_per_record_median": 1165.9992727272727,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 96465.86965613844,
+  "min": 91914.78588701443,
+  "max": 96921.95047810792,
+  "cv_pct": 2.3770359047895844,
+  "text_share_median": 0.9621220742125347,
+  "bytes_per_record_median": 1104.952,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 87291.9834404859,
+  "min": 83070.10125377084,
+  "max": 87647.94695958064,
+  "cv_pct": 2.417580938390122,
+  "text_share_median": 0.9608010283472025,
+  "bytes_per_record_median": 999.2243636363636,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 111232.43665606879,
+  "min": 106214.3284683466,
+  "max": 111833.3485640176,
+  "cv_pct": 2.2951600603318316,
+  "text_share_median": 0.9678370269297054,
+  "bytes_per_record_median": 1274.9483636363636,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 166379.8766191641,
+  "min": 158827.61172229794,
+  "max": 167378.77691066542,
+  "cv_pct": 2.3249484497697903,
+  "text_share_median": 0.9639839591604351,
+  "bytes_per_record_median": 1908.1901818181818,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 111756.41297016639,
+  "min": 106657.09338166518,
+  "max": 112436.32417722009,
+  "cv_pct": 2.3385950490923726,
+  "text_share_median": 0.964626113799005,
+  "bytes_per_record_median": 1281.8225454545454,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 111756.41297016639,
+  "min": 106657.09338166518,
+  "max": 112436.32417722009,
+  "cv_pct": 2.3385950490923726,
+  "text_share_median": 0.964626113799005,
+  "bytes_per_record_median": 1281.8225454545454,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 102170.04577064389,
+  "min": 97444.14170686713,
+  "max": 102800.13339208708,
+  "cv_pct": 2.3711252979965884,
+  "text_share_median": 0.9609718721119879,
+  "bytes_per_record_median": 1171.9658181818181,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 96887.98683734248,
+  "min": 92348.41208625013,
+  "max": 97452.64812159413,
+  "cv_pct": 2.3908069637494935,
+  "text_share_median": 0.9577474280657253,
+  "bytes_per_record_median": 1111.0021818181817,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 87707.89206501833,
+  "min": 83521.54216147188,
+  "max": 88258.86485630448,
+  "cv_pct": 2.445570396000456,
+  "text_share_median": 0.9558855072544302,
+  "bytes_per_record_median": 1006.189090909091,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|high_entropy|T2_delta|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 111620.18042195032,
+  "min": 106535.16674061024,
+  "max": 112303.12347045256,
+  "cv_pct": 2.336044443123397,
+  "text_share_median": 0.9645843911876659,
+  "bytes_per_record_median": 1280.304,
+  "jsonl_bytes_per_mtok_median": 401932.29038635397
+ },
+ "chat|real|T0_metadata|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 14343.235363482076,
+  "min": 14320.075530091082,
+  "max": 15708.085289478611,
+  "cv_pct": 4.387449056911833,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 60.36389210656959,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 9376.026417252353,
+  "min": 9371.978397187215,
+  "max": 10267.383538598038,
+  "cv_pct": 4.354384040320675,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 39.45606486844282,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 9376.026417252353,
+  "min": 9371.978397187215,
+  "max": 10267.383538598038,
+  "cv_pct": 4.354384040320675,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 39.45606486844282,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 9710.20935979069,
+  "min": 9650.263592658623,
+  "max": 10635.476858264092,
+  "cv_pct": 4.510300479617868,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 40.87059407579017,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 9552.239784593501,
+  "min": 9549.177562389392,
+  "max": 10476.01855658845,
+  "cv_pct": 4.42428872049487,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 40.25781896409068,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 8919.452568914508,
+  "min": 8912.380361880787,
+  "max": 9768.166662733676,
+  "cv_pct": 4.367010610520423,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 37.53764686414033,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 9376.026417252353,
+  "min": 9371.978397187215,
+  "max": 10267.383538598038,
+  "cv_pct": 4.354384040320675,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 39.45606486844282,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 15454.404074053053,
+  "min": 15413.037734475978,
+  "max": 16875.450965990898,
+  "cv_pct": 4.271931242638233,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 64.98742029984491,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10503.710008529955,
+  "min": 10466.66565570471,
+  "max": 11476.949899863803,
+  "cv_pct": 4.324846375455309,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 44.16922281578494,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10503.710008529955,
+  "min": 10466.66565570471,
+  "max": 11476.949899863803,
+  "cv_pct": 4.324846375455309,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 44.16922281578494,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10937.80958998223,
+  "min": 10918.710073521806,
+  "max": 12026.032482814418,
+  "cv_pct": 4.58248004555934,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 46.13016949152542,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10876.626669647268,
+  "min": 10851.473079888381,
+  "max": 11884.57406504383,
+  "cv_pct": 4.29471310256315,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 45.737377218679995,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10288.401861550798,
+  "min": 10262.186564684675,
+  "max": 11216.640574011992,
+  "cv_pct": 4.1919045200431295,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 43.26382905393762,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T0_metadata|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 10503.710008529955,
+  "min": 10466.66565570471,
+  "max": 11476.949899863803,
+  "cv_pct": 4.324846375455309,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 44.16922281578494,
+  "jsonl_bytes_per_mtok_median": 251202.48206772862
+ },
+ "chat|real|T1_hash|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 44591.245213877424,
+  "min": 44338.76651052659,
+  "max": 48756.044386852474,
+  "cv_pct": 4.413168811514179,
+  "text_share_median": 0.6820352858301669,
+  "bytes_per_record_median": 187.3624027800761,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 25447.156095815764,
+  "min": 25372.798844040313,
+  "max": 27688.859690991085,
+  "cv_pct": 4.106688636122717,
+  "text_share_median": 0.6376039095003673,
+  "bytes_per_record_median": 106.69533000172325,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 25447.156095815764,
+  "min": 25372.798844040313,
+  "max": 27688.859690991085,
+  "cv_pct": 4.106688636122717,
+  "text_share_median": 0.6376039095003673,
+  "bytes_per_record_median": 106.69533000172325,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 26047.83599180222,
+  "min": 26021.100116444253,
+  "max": 28590.145743940368,
+  "cv_pct": 4.481110240722505,
+  "text_share_median": 0.6346197525331284,
+  "bytes_per_record_median": 109.86778090352475,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 26024.214585262373,
+  "min": 25971.652787202056,
+  "max": 28527.66289335129,
+  "cv_pct": 4.443616013795792,
+  "text_share_median": 0.6394670585862783,
+  "bytes_per_record_median": 109.62766837663412,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 24313.346707791316,
+  "min": 24270.22788446502,
+  "max": 26636.598535240068,
+  "cv_pct": 4.40903576393099,
+  "text_share_median": 0.6404581415266908,
+  "bytes_per_record_median": 102.36058249213967,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 25447.156095815764,
+  "min": 25372.798844040313,
+  "max": 27688.859690991085,
+  "cv_pct": 4.106688636122717,
+  "text_share_median": 0.6376039095003673,
+  "bytes_per_record_median": 106.69533000172325,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 45389.62433696742,
+  "min": 45373.179956672,
+  "max": 49696.904347238946,
+  "cv_pct": 4.345071644209075,
+  "text_share_median": 0.6644444502610035,
+  "bytes_per_record_median": 190.97799106404105,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 26485.71891871681,
+  "min": 26382.829277728044,
+  "max": 29115.02752604256,
+  "cv_pct": 4.626843259249061,
+  "text_share_median": 0.6111933868687891,
+  "bytes_per_record_median": 111.88482541783883,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 26485.71891871681,
+  "min": 26382.829277728044,
+  "max": 29115.02752604256,
+  "cv_pct": 4.626843259249061,
+  "text_share_median": 0.6111933868687891,
+  "bytes_per_record_median": 111.88482541783883,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 27279.509438377263,
+  "min": 27234.71335256889,
+  "max": 29946.725511071825,
+  "cv_pct": 4.503956548840588,
+  "text_share_median": 0.6052182881534783,
+  "bytes_per_record_median": 115.06322033898306,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 27345.527981350886,
+  "min": 27273.747717011207,
+  "max": 29937.20882604068,
+  "cv_pct": 4.3958619043354785,
+  "text_share_median": 0.6085275726568057,
+  "bytes_per_record_median": 115.04434883336091,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 25692.195817309355,
+  "min": 25614.526464215916,
+  "max": 28087.31166652571,
+  "cv_pct": 4.33715210171485,
+  "text_share_median": 0.6062013951038897,
+  "bytes_per_record_median": 108.0384283991039,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T1_hash|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 26485.71891871681,
+  "min": 26382.829277728044,
+  "max": 29115.02752604256,
+  "cv_pct": 4.626843259249061,
+  "text_share_median": 0.6111933868687891,
+  "bytes_per_record_median": 111.88482541783883,
+  "jsonl_bytes_per_mtok_median": 292105.12889495573
+ },
+ "chat|real|T2_delta|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 297586.64124498516,
+  "min": 295499.5310880336,
+  "max": 320207.8151189723,
+  "cv_pct": 3.6750989702236154,
+  "text_share_median": 0.9524024262793693,
+  "bytes_per_record_median": 1242.607099775978,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 204199.03048748345,
+  "min": 201952.3211705813,
+  "max": 218811.15331370974,
+  "cv_pct": 3.5878635916113266,
+  "text_share_median": 0.9549559680541145,
+  "bytes_per_record_median": 849.2310873686024,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 204199.03048748345,
+  "min": 201952.3211705813,
+  "max": 218811.15331370974,
+  "cv_pct": 3.5878635916113266,
+  "text_share_median": 0.9549559680541145,
+  "bytes_per_record_median": 849.2310873686024,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 149138.51197793343,
+  "min": 147460.91905106234,
+  "max": 159306.2930866838,
+  "cv_pct": 3.4438409531984604,
+  "text_share_median": 0.9363968164822715,
+  "bytes_per_record_median": 620.088919524384,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 133989.60811343507,
+  "min": 132655.51290691202,
+  "max": 143140.33036762997,
+  "cv_pct": 3.411598269048864,
+  "text_share_median": 0.9300163951192753,
+  "bytes_per_record_median": 557.8306048595554,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 122925.15102447756,
+  "min": 121802.2037735478,
+  "max": 131355.48771675865,
+  "cv_pct": 3.4009786838384306,
+  "text_share_median": 0.9290302104347973,
+  "bytes_per_record_median": 512.1912803722213,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 204745.99300013148,
+  "min": 202505.67212388536,
+  "max": 219313.7720815083,
+  "cv_pct": 3.5678829362967908,
+  "text_share_median": 0.9550796697212878,
+  "bytes_per_record_median": 851.5579872479752,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 299322.8079356021,
+  "min": 296361.7062125662,
+  "max": 321663.86792873696,
+  "cv_pct": 3.6936331315597295,
+  "text_share_median": 0.9487863994650317,
+  "bytes_per_record_median": 1246.2326382905394,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 205974.993775764,
+  "min": 203622.4960541524,
+  "max": 220091.2551052063,
+  "cv_pct": 3.4648790988305733,
+  "text_share_median": 0.9497765473433446,
+  "bytes_per_record_median": 856.2543511976564,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 205974.993775764,
+  "min": 203622.4960541524,
+  "max": 220091.2551052063,
+  "cv_pct": 3.4648790988305733,
+  "text_share_median": 0.9497765473433446,
+  "bytes_per_record_median": 856.2543511976564,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 152148.41049901646,
+  "min": 149577.405512241,
+  "max": 160872.41217219326,
+  "cv_pct": 3.1348081725237016,
+  "text_share_median": 0.9286668694417174,
+  "bytes_per_record_median": 628.9889712217819,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 136882.08260088737,
+  "min": 134790.23540261784,
+  "max": 144671.74154302583,
+  "cv_pct": 3.063654373207783,
+  "text_share_median": 0.9212715190744026,
+  "bytes_per_record_median": 566.8073410305014,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 125714.80426211935,
+  "min": 123875.90726833013,
+  "max": 132890.73140332088,
+  "cv_pct": 3.050608908179468,
+  "text_share_median": 0.9190758506629593,
+  "bytes_per_record_median": 520.9114251249354,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "chat|real|T2_delta|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 206635.04762794223,
+  "min": 204438.65080391202,
+  "max": 220516.2332254431,
+  "cv_pct": 3.381016456575672,
+  "text_share_median": 0.9499778638227371,
+  "bytes_per_record_median": 859.686369119421,
+  "jsonl_bytes_per_mtok_median": 826264.5830259328
+ },
+ "coding|high_entropy|T0_metadata|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 589.5550098515416,
+  "min": 540.1967770397127,
+  "max": 801.1674260785302,
+  "cv_pct": 17.586988095713377,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 94.4292343387471,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 419.24219063598605,
+  "min": 390.42097367839676,
+  "max": 578.0161461447182,
+  "cv_pct": 17.831970204734894,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 68.1276102088167,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 419.24219063598605,
+  "min": 390.42097367839676,
+  "max": 578.0161461447182,
+  "cv_pct": 17.831970204734894,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 68.1276102088167,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 424.2749773054504,
+  "min": 391.4057109482365,
+  "max": 580.6145908299037,
+  "cv_pct": 17.735054507370634,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 68.43387470997679,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 417.59685653250733,
+  "min": 386.87865488827885,
+  "max": 573.8625716858231,
+  "cv_pct": 17.819476850375864,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 67.63805104408353,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 400.7702043986113,
+  "min": 372.79144116696074,
+  "max": 550.811217698306,
+  "cv_pct": 17.705835022466605,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 64.92111368909512,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 419.24219063598605,
+  "min": 390.42097367839676,
+  "max": 578.0161461447182,
+  "cv_pct": 17.831970204734894,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 68.1276102088167,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 601.9019287961343,
+  "min": 551.3024251384606,
+  "max": 815.9313163352663,
+  "cv_pct": 17.474120677615048,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 96.16937354988399,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 442.44278412873666,
+  "min": 407.14783035914644,
+  "max": 605.1029634690764,
+  "cv_pct": 17.77911168921043,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 71.3201856148492,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 442.44278412873666,
+  "min": 407.14783035914644,
+  "max": 605.1029634690764,
+  "cv_pct": 17.77911168921043,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 71.3201856148492,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 447.7244448642735,
+  "min": 412.6049160628415,
+  "max": 610.4179639615014,
+  "cv_pct": 17.577455032366945,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 71.94663573085847,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 447.7106185272695,
+  "min": 411.57914807342513,
+  "max": 607.9770007723877,
+  "cv_pct": 17.450988784868258,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 71.65893271461717,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 424.99394682965965,
+  "min": 392.7597246942661,
+  "max": 581.1067205051281,
+  "cv_pct": 17.639253011669016,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 68.49187935034803,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T0_metadata|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 442.44278412873666,
+  "min": 407.14783035914644,
+  "max": 605.1029634690764,
+  "cv_pct": 17.77911168921043,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 71.3201856148492,
+  "jsonl_bytes_per_mtok_median": 7126.03878652545
+ },
+ "coding|high_entropy|T1_hash|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1490.7003504257461,
+  "min": 1338.98282575803,
+  "max": 1964.2076449431638,
+  "cv_pct": 16.66355321444568,
+  "text_share_median": 0.6427601860299517,
+  "bytes_per_record_median": 232.36206896551724,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 884.7887838984452,
+  "min": 808.77019048197,
+  "max": 1204.2610004614405,
+  "cv_pct": 17.739428872507386,
+  "text_share_median": 0.5866338030819018,
+  "bytes_per_record_median": 141.93967517401393,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 884.7887838984452,
+  "min": 808.77019048197,
+  "max": 1204.2610004614405,
+  "cv_pct": 17.739428872507386,
+  "text_share_median": 0.5866338030819018,
+  "bytes_per_record_median": 141.93967517401393,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 895.7115901316234,
+  "min": 809.9327275366418,
+  "max": 1205.0680931288086,
+  "cv_pct": 17.490853804788507,
+  "text_share_median": 0.5851901033021539,
+  "bytes_per_record_median": 142.03480278422273,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 912.4276315694872,
+  "min": 825.3602780974641,
+  "max": 1229.00528053173,
+  "cv_pct": 17.538080411805947,
+  "text_share_median": 0.6004547452089344,
+  "bytes_per_record_median": 144.85614849187934,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 859.1271024189784,
+  "min": 780.2675172827203,
+  "max": 1157.4102553800649,
+  "cv_pct": 17.42224394236171,
+  "text_share_median": 0.5945962479608483,
+  "bytes_per_record_median": 136.41763341067286,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 884.7887838984452,
+  "min": 808.77019048197,
+  "max": 1204.2610004614405,
+  "cv_pct": 17.739428872507386,
+  "text_share_median": 0.5866338030819018,
+  "bytes_per_record_median": 141.93967517401393,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1492.4286425512491,
+  "min": 1337.2595355358103,
+  "max": 1984.0306282612082,
+  "cv_pct": 17.181745142820613,
+  "text_share_median": 0.6332326822582981,
+  "bytes_per_record_median": 233.84686774941994,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 914.0453129989579,
+  "min": 831.9115163232034,
+  "max": 1247.903060060352,
+  "cv_pct": 18.026271555058237,
+  "text_share_median": 0.576280815314695,
+  "bytes_per_record_median": 146.56867469879518,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 914.0453129989579,
+  "min": 831.9115163232034,
+  "max": 1247.903060060352,
+  "cv_pct": 18.026271555058237,
+  "text_share_median": 0.576280815314695,
+  "bytes_per_record_median": 146.56867469879518,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 919.3269737344948,
+  "min": 831.1729633708235,
+  "max": 1235.2454848135771,
+  "cv_pct": 17.430579883021046,
+  "text_share_median": 0.5684758771929824,
+  "bytes_per_record_median": 145.59164733178653,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 942.900878326354,
+  "min": 850.2796017870191,
+  "max": 1263.0606540572676,
+  "cv_pct": 17.359124074934996,
+  "text_share_median": 0.5815370363772402,
+  "bytes_per_record_median": 148.87006960556843,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 882.8116177068699,
+  "min": 799.7024014555292,
+  "max": 1188.0797767400577,
+  "cv_pct": 17.45046298925961,
+  "text_share_median": 0.5771399086513654,
+  "bytes_per_record_median": 140.03248259860788,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T1_hash|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 914.0453129989579,
+  "min": 831.9115163232034,
+  "max": 1247.903060060352,
+  "cv_pct": 18.026271555058237,
+  "text_share_median": 0.576280815314695,
+  "bytes_per_record_median": 146.56867469879518,
+  "jsonl_bytes_per_mtok_median": 8229.49109014252
+ },
+ "coding|high_entropy|T2_delta|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 30813.76178460182,
+  "min": 27545.59063440454,
+  "max": 45295.064122429736,
+  "cv_pct": 22.32362418852955,
+  "text_share_median": 0.9840799111857051,
+  "bytes_per_record_median": 4853.065060240964,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 20671.36931727871,
+  "min": 18480.75581977333,
+  "max": 30405.85796519458,
+  "cv_pct": 22.353814152086603,
+  "text_share_median": 0.9845013809346588,
+  "bytes_per_record_median": 3255.9951807228917,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 20671.36931727871,
+  "min": 18480.75581977333,
+  "max": 30405.85796519458,
+  "cv_pct": 22.353814152086603,
+  "text_share_median": 0.9845013809346588,
+  "bytes_per_record_median": 3255.9951807228917,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 18886.167988667272,
+  "min": 16906.57123249539,
+  "max": 27781.92096283242,
+  "cv_pct": 22.318570612720286,
+  "text_share_median": 0.9827512847739944,
+  "bytes_per_record_median": 2978.6506024096384,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 17859.023238975402,
+  "min": 15996.933856387475,
+  "max": 26256.535506693464,
+  "cv_pct": 22.271978912518968,
+  "text_share_median": 0.9821261341961106,
+  "bytes_per_record_median": 2818.387951807229,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 16134.49187713762,
+  "min": 14497.302086580316,
+  "max": 23706.69354823311,
+  "cv_pct": 22.14746366861624,
+  "text_share_median": 0.98124763534504,
+  "bytes_per_record_median": 2554.178313253012,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 20655.828514486184,
+  "min": 18466.600221519388,
+  "max": 30385.247574396177,
+  "cv_pct": 22.358023780705622,
+  "text_share_median": 0.9844898781347567,
+  "bytes_per_record_median": 3253.501204819277,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 30827.380726550782,
+  "min": 27571.08438816817,
+  "max": 45334.591977943775,
+  "cv_pct": 22.33110009134778,
+  "text_share_median": 0.9836842822844895,
+  "bytes_per_record_median": 4857.556626506024,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 20694.874090185545,
+  "min": 18499.041843797993,
+  "max": 30450.051210029746,
+  "cv_pct": 22.37439900572777,
+  "text_share_median": 0.9833943684017358,
+  "bytes_per_record_median": 3259.2168674698796,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 20694.874090185545,
+  "min": 18499.041843797993,
+  "max": 30450.051210029746,
+  "cv_pct": 22.37439900572777,
+  "text_share_median": 0.9833943684017358,
+  "bytes_per_record_median": 3259.2168674698796,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 18911.373401025605,
+  "min": 16923.421181334867,
+  "max": 27822.8661518111,
+  "cv_pct": 22.335816588463125,
+  "text_share_median": 0.9815262991041375,
+  "bytes_per_record_median": 2981.619277108434,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 17891.80548401194,
+  "min": 16021.92156460966,
+  "max": 26296.004306646475,
+  "cv_pct": 22.263209454763032,
+  "text_share_median": 0.9804623753399818,
+  "bytes_per_record_median": 2822.790361445783,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 16164.52268111036,
+  "min": 14507.901689137618,
+  "max": 23748.445829879158,
+  "cv_pct": 22.17617757145877,
+  "text_share_median": 0.9797696948174838,
+  "bytes_per_record_median": 2556.0457831325302,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|high_entropy|T2_delta|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 20679.471550763064,
+  "min": 18486.732627924994,
+  "max": 30432.019578729516,
+  "cv_pct": 22.379807761686603,
+  "text_share_median": 0.9833821702495409,
+  "bytes_per_record_median": 3257.0481927710844,
+  "jsonl_bytes_per_mtok_median": 65200.73297283832
+ },
+ "coding|real|T0_metadata|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1637.2763832241,
+  "min": 1596.36132247037,
+  "max": 1892.334626935714,
+  "cv_pct": 7.663857809271295,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 75.33169129720854,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1067.2435338432133,
+  "min": 1060.645738743912,
+  "max": 1235.5049977394283,
+  "cv_pct": 7.217634821224362,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 49.10426929392447,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1067.2435338432133,
+  "min": 1060.645738743912,
+  "max": 1235.5049977394283,
+  "cv_pct": 7.217634821224362,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 49.10426929392447,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1089.709376928846,
+  "min": 1071.0186100706042,
+  "max": 1258.3372493261206,
+  "cv_pct": 7.391816735491917,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 50.13793103448276,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1093.760009478837,
+  "min": 1072.3545101657085,
+  "max": 1263.3249735630745,
+  "cv_pct": 7.4729840699542835,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 50.32430213464696,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1053.3785933527156,
+  "min": 1027.6215025693484,
+  "max": 1215.9117861950604,
+  "cv_pct": 7.584897463979061,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 48.466338259441706,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1067.2435338432133,
+  "min": 1060.645738743912,
+  "max": 1235.5049977394283,
+  "cv_pct": 7.217634821224362,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 49.10426929392447,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1678.8533604993377,
+  "min": 1636.1239958893568,
+  "max": 1952.6443602391182,
+  "cv_pct": 7.986164537685053,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 77.43420015760441,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1150.9328142813526,
+  "min": 1131.978874704555,
+  "max": 1334.0671978003459,
+  "cv_pct": 7.5582678237574665,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 52.954844006568145,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1150.9328142813526,
+  "min": 1131.978874704555,
+  "max": 1334.0671978003459,
+  "cv_pct": 7.5582678237574665,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 52.954844006568145,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1172.809798890555,
+  "min": 1151.1333245975943,
+  "max": 1359.4628614450744,
+  "cv_pct": 7.616694845986569,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 53.96141215106732,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1181.0002849718142,
+  "min": 1158.5593574792038,
+  "max": 1371.147251291006,
+  "cv_pct": 7.71011494835079,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 54.37431048069346,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1110.3372678001656,
+  "min": 1095.2219764995527,
+  "max": 1294.6621891872815,
+  "cv_pct": 7.770755590028861,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 51.341213553979514,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T0_metadata|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 1150.9328142813526,
+  "min": 1131.978874704555,
+  "max": 1334.0671978003459,
+  "cv_pct": 7.5582678237574665,
+  "text_share_median": 0.0,
+  "bytes_per_record_median": 52.954844006568145,
+  "jsonl_bytes_per_mtok_median": 23901.248076618696
+ },
+ "coding|real|T1_hash|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 4476.377228450145,
+  "min": 4290.793231937207,
+  "max": 5273.475131485154,
+  "cv_pct": 9.108235282986604,
+  "text_share_median": 0.652654338783411,
+  "bytes_per_record_median": 206.04716981132074,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2563.247415312783,
+  "min": 2498.9582926096627,
+  "max": 2967.9542493343874,
+  "cv_pct": 7.755741629913423,
+  "text_share_median": 0.6126018360572193,
+  "bytes_per_record_median": 117.93596059113301,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2563.247415312783,
+  "min": 2498.9582926096627,
+  "max": 2967.9542493343874,
+  "cv_pct": 7.755741629913423,
+  "text_share_median": 0.6126018360572193,
+  "bytes_per_record_median": 117.93596059113301,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2623.4715776749836,
+  "min": 2530.037615410472,
+  "max": 3032.138907841799,
+  "cv_pct": 7.990794406515043,
+  "text_share_median": 0.6132969816073183,
+  "bytes_per_record_median": 120.70689655172414,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2727.6459954143984,
+  "min": 2622.7844440720514,
+  "max": 3154.3878301754216,
+  "cv_pct": 8.109696388970814,
+  "text_share_median": 0.6274167535027577,
+  "bytes_per_record_median": 125.5,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2518.101598786452,
+  "min": 2424.9926476380792,
+  "max": 2909.4130716369145,
+  "cv_pct": 8.018437458134663,
+  "text_share_median": 0.6114616991593116,
+  "bytes_per_record_median": 115.85878489326765,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2563.247415312783,
+  "min": 2498.9582926096627,
+  "max": 2967.9542493343874,
+  "cv_pct": 7.755741629913423,
+  "text_share_median": 0.6126018360572193,
+  "bytes_per_record_median": 117.93596059113301,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 4531.480106487026,
+  "min": 4330.8505892007015,
+  "max": 5338.712974791605,
+  "cv_pct": 9.201972049190713,
+  "text_share_median": 0.6475408502712506,
+  "bytes_per_record_median": 208.49507389162562,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2655.341312187247,
+  "min": 2554.7124759906337,
+  "max": 3089.9448433210755,
+  "cv_pct": 8.394748435106658,
+  "text_share_median": 0.5944444444444444,
+  "bytes_per_record_median": 122.53506698187549,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2655.341312187247,
+  "min": 2554.7124759906337,
+  "max": 3089.9448433210755,
+  "cv_pct": 8.394748435106658,
+  "text_share_median": 0.5944444444444444,
+  "bytes_per_record_median": 122.53506698187549,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2705.3229058988095,
+  "min": 2610.89886234355,
+  "max": 3133.4632340737794,
+  "cv_pct": 8.0727778809658,
+  "text_share_median": 0.5924975268040962,
+  "bytes_per_record_median": 124.47290640394088,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2814.136814664646,
+  "min": 2709.0285825648143,
+  "max": 3262.130622258143,
+  "cv_pct": 8.18972435406625,
+  "text_share_median": 0.6056356076089673,
+  "bytes_per_record_median": 129.47947454844007,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2574.7569218975586,
+  "min": 2492.1019818274367,
+  "max": 2989.1967880168713,
+  "cv_pct": 8.098919154133643,
+  "text_share_median": 0.5946061764127349,
+  "bytes_per_record_median": 118.5397951142632,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T1_hash|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 2655.341312187247,
+  "min": 2554.7124759906337,
+  "max": 3089.9448433210755,
+  "cv_pct": 8.394748435106658,
+  "text_share_median": 0.5944444444444444,
+  "bytes_per_record_median": 122.53506698187549,
+  "jsonl_bytes_per_mtok_median": 27639.535815353967
+ },
+ "coding|real|T2_delta|session_sorted|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 44765.592392519495,
+  "min": 41718.39186704022,
+  "max": 55425.36027663548,
+  "cv_pct": 12.42302790109524,
+  "text_share_median": 0.9661877815129083,
+  "bytes_per_record_median": 2059.6814449917897,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|session_sorted|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 25922.10330255031,
+  "min": 24404.124709417174,
+  "max": 33043.51409852786,
+  "cv_pct": 13.552369042246774,
+  "text_share_median": 0.9635651709008036,
+  "bytes_per_record_median": 1192.6855500821018,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|session_sorted|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 25922.10330255031,
+  "min": 24404.124709417174,
+  "max": 33043.51409852786,
+  "cv_pct": 13.552369042246774,
+  "text_share_median": 0.9635651709008036,
+  "bytes_per_record_median": 1192.6855500821018,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|session_sorted|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 20614.43634734299,
+  "min": 19426.305562393314,
+  "max": 27097.272465981736,
+  "cv_pct": 15.063721758415749,
+  "text_share_median": 0.9529627383197885,
+  "bytes_per_record_median": 948.4778325123152,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|session_sorted|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 18474.613864976178,
+  "min": 17394.342580970773,
+  "max": 24237.319337077002,
+  "cv_pct": 14.992145466199888,
+  "text_share_median": 0.9472158857735,
+  "bytes_per_record_median": 850.0238095238095,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|session_sorted|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 16990.654815979047,
+  "min": 15996.61781528863,
+  "max": 22250.4762779861,
+  "cv_pct": 14.902714943613852,
+  "text_share_median": 0.9449482687105404,
+  "bytes_per_record_median": 781.7463054187192,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|session_sorted|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 26628.51934391173,
+  "min": 25215.703662782667,
+  "max": 33468.68281475839,
+  "cv_pct": 12.673140611887646,
+  "text_share_median": 0.9645420493972838,
+  "bytes_per_record_median": 1225.188013136289,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|random|snappy_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 49446.999435944956,
+  "min": 45942.40973981185,
+  "max": 60537.22121999655,
+  "cv_pct": 11.968680531328337,
+  "text_share_median": 0.9685604153395891,
+  "bytes_per_record_median": 2275.074712643678,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|random|zstd_default": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 32475.723417099347,
+  "min": 30024.295700700226,
+  "max": 41312.46538400151,
+  "cv_pct": 14.009622165034097,
+  "text_share_median": 0.9683840217633304,
+  "bytes_per_record_median": 1494.2200328407225,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|random|zstd_1": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 32475.723417099347,
+  "min": 30024.295700700226,
+  "max": 41312.46538400151,
+  "cv_pct": 14.009622165034097,
+  "text_share_median": 0.9683840217633304,
+  "bytes_per_record_median": 1494.2200328407225,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|random|zstd_3": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 22749.137545384485,
+  "min": 20377.682531593546,
+  "max": 29901.227957835727,
+  "cv_pct": 16.629079315113195,
+  "text_share_median": 0.9537376033992132,
+  "bytes_per_record_median": 1046.696223316913,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|random|zstd_9": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 20022.16962942779,
+  "min": 17852.73312389825,
+  "max": 26110.438309283094,
+  "cv_pct": 16.388647978201863,
+  "text_share_median": 0.9469391329311218,
+  "bytes_per_record_median": 921.2274220032841,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|random|zstd_19": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 18372.17033427354,
+  "min": 16396.209108441886,
+  "max": 23869.817456446635,
+  "cv_pct": 16.177094246702662,
+  "text_share_median": 0.9460070150692986,
+  "bytes_per_record_median": 845.3103448275862,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ },
+ "coding|real|T2_delta|random|zstd_default_nodict_text": {
+  "n_seeds": 3,
+  "bytes_per_mtok_median": 34778.802451007425,
+  "min": 32175.959259762043,
+  "max": 43554.179164459616,
+  "cv_pct": 13.21426299320202,
+  "text_share_median": 0.9704937843429846,
+  "bytes_per_record_median": 1600.1855500821018,
+  "jsonl_bytes_per_mtok_median": 138375.7106228106
+ }
+}

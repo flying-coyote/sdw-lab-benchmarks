@@ -1,0 +1,15 @@
+.venv*/
+data/
+tools/
+scratch/
+fixtures/**/*.gguf
+fixtures/**/*.safetensors
+fixtures/**/*.bin
+cache/
+fixtures/
+corpus/
+*.sqlite
+results/raw/
+verify/raw/
+results/posthoc/
+verify/posthoc/

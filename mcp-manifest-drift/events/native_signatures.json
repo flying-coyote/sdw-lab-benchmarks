@@ -1,0 +1,171 @@
+{
+ "targets": {
+  "everything": "echo",
+  "filesystem": "create_directory",
+  "scg": "coverage"
+ },
+ "signatures": {
+  "everything/P1_rug_pull": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "everything/P2_hidden_instruction": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "everything/P3_param_widening": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "input"
+    ]
+   }
+  ],
+  "everything/B1_wording_fix": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "everything/B2_clarification": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "everything/B3_new_tool": [
+   {
+    "activity_id": 1
+   }
+  ],
+  "everything/B4_schema_narrowing": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "input"
+    ]
+   }
+  ],
+  "everything/B5_key_reorder": [],
+  "filesystem/P1_rug_pull": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "filesystem/P2_hidden_instruction": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "filesystem/P3_param_widening": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "input"
+    ]
+   }
+  ],
+  "filesystem/B1_wording_fix": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "filesystem/B2_clarification": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "filesystem/B3_new_tool": [
+   {
+    "activity_id": 1
+   }
+  ],
+  "filesystem/B4_schema_narrowing": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "input"
+    ]
+   }
+  ],
+  "filesystem/B5_key_reorder": [],
+  "scg/P1_rug_pull": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "scg/P2_hidden_instruction": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "scg/P3_param_widening": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "input"
+    ]
+   }
+  ],
+  "scg/B1_wording_fix": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "scg/B2_clarification": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "desc"
+    ]
+   }
+  ],
+  "scg/B3_new_tool": [
+   {
+    "activity_id": 1
+   }
+  ],
+  "scg/B4_schema_narrowing": [
+   {
+    "activity_id": 8,
+    "native_fields_changed": [
+     "input"
+    ]
+   }
+  ],
+  "scg/B5_key_reorder": []
+ }
+}

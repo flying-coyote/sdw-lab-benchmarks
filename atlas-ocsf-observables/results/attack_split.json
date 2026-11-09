@@ -1,0 +1,37 @@
+{
+ "atlas_native": {
+  "observable_share": 0.69,
+  "specific_share": 0.339,
+  "steps": 168,
+  "steps_by_grade": {
+   "direct": 57,
+   "generic": 54,
+   "none": 52,
+   "proxy": 5
+  },
+  "techniques": 71
+ },
+ "attack_referenced": {
+  "observable_share": 0.975,
+  "specific_share": 0.852,
+  "steps": 122,
+  "steps_by_grade": {
+   "direct": 104,
+   "generic": 15,
+   "none": 3
+  },
+  "techniques": 36
+ },
+ "sensitivity_drop_File_UserAccount": {
+  "observable": 202,
+  "specific": 123,
+  "steps_by_grade_without_File_UserAccount": {
+   "direct": 120,
+   "event": 3,
+   "generic": 72,
+   "none": 88,
+   "proxy": 7
+  },
+  "total": 290
+ }
+}

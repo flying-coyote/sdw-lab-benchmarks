@@ -1,0 +1,4 @@
+{"servers": {
+  "filesystem": {"type": "stdio", "command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem@2025.3.28", "/srv/data"]},
+  "git": {"type": "stdio", "command": "uvx", "args": ["mcp-server-git==2025.7.1", "--repository", "/srv/repo"]}
+}}

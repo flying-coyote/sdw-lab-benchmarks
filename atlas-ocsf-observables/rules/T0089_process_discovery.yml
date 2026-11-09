@@ -1,0 +1,8 @@
+title: Process and account enumeration commands
+description: AML.T0089 Enterprise Environment Discovery via d3f:CreateProcess / GetRunningProcesses.
+status: experimental
+logsource: {category: process_creation}
+detection:
+  sel:
+    process_cmd_line: ['ps aux', 'tasklist', 'tasklist /v', 'whoami', 'net user']
+  condition: sel

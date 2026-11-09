@@ -1,0 +1,8 @@
+title: Direct prompt injection phrasing in an LLM prompt
+description: AML.T0051.000 via d3f:DigitalMessage; needs the OCSF ai_operation profile (message_context.prompt_text).
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    message_context_prompt_text|contains: ['ignore previous instructions', 'ignore all previous instructions']
+  condition: sel

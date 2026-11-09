@@ -1,0 +1,273 @@
+{
+ "path": "a",
+ "engine": "duckdb",
+ "versions": {
+  "pySigma": "1.5.1",
+  "backend": "pySigma-backend-duckdb 0.1.4",
+  "duckdb": "1.5.3",
+  "sqlite3": "3.45.1"
+ },
+ "rules": {
+  "s1_any_manifest_drift": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE class_uid=6002 AND (activity_id=1 OR activity_id=2 OR activity_id=8) AND \"ai_capability.type_id\"=1",
+   "results": {
+    "D0": {
+     "ok": true,
+     "uids": [
+      "D0-everything-B1_wording_fix-1",
+      "D0-everything-B2_clarification-1",
+      "D0-everything-B3_new_tool-10",
+      "D0-everything-B4_schema_narrowing-1",
+      "D0-everything-B5_key_reorder-1",
+      "D0-everything-B5_key_reorder-10",
+      "D0-everything-B5_key_reorder-11",
+      "D0-everything-B5_key_reorder-12",
+      "D0-everything-B5_key_reorder-13",
+      "D0-everything-B5_key_reorder-2",
+      "D0-everything-B5_key_reorder-3",
+      "D0-everything-B5_key_reorder-4",
+      "D0-everything-B5_key_reorder-5",
+      "D0-everything-B5_key_reorder-6",
+      "D0-everything-B5_key_reorder-7",
+      "D0-everything-B5_key_reorder-8",
+      "D0-everything-B5_key_reorder-9",
+      "D0-everything-P1_rug_pull-1",
+      "D0-everything-P2_hidden_instruction-1",
+      "D0-everything-P3_param_widening-1",
+      "D0-filesystem-B1_wording_fix-1",
+      "D0-filesystem-B2_clarification-1",
+      "D0-filesystem-B3_new_tool-5",
+      "D0-filesystem-B4_schema_narrowing-1",
+      "D0-filesystem-B5_key_reorder-1",
+      "D0-filesystem-B5_key_reorder-10",
+      "D0-filesystem-B5_key_reorder-11",
+      "D0-filesystem-B5_key_reorder-12",
+      "D0-filesystem-B5_key_reorder-13",
+      "D0-filesystem-B5_key_reorder-14",
+      "D0-filesystem-B5_key_reorder-2",
+      "D0-filesystem-B5_key_reorder-3",
+      "D0-filesystem-B5_key_reorder-4",
+      "D0-filesystem-B5_key_reorder-5",
+      "D0-filesystem-B5_key_reorder-6",
+      "D0-filesystem-B5_key_reorder-7",
+      "D0-filesystem-B5_key_reorder-8",
+      "D0-filesystem-B5_key_reorder-9",
+      "D0-filesystem-P1_rug_pull-1",
+      "D0-filesystem-P2_hidden_instruction-1",
+      "D0-filesystem-P3_param_widening-1",
+      "D0-scg-B1_wording_fix-1",
+      "D0-scg-B2_clarification-1",
+      "D0-scg-B3_new_tool-3",
+      "D0-scg-B4_schema_narrowing-1",
+      "D0-scg-B5_key_reorder-1",
+      "D0-scg-B5_key_reorder-2",
+      "D0-scg-B5_key_reorder-3",
+      "D0-scg-B5_key_reorder-4",
+      "D0-scg-B5_key_reorder-5",
+      "D0-scg-B5_key_reorder-6",
+      "D0-scg-B5_key_reorder-7",
+      "D0-scg-P1_rug_pull-1",
+      "D0-scg-P2_hidden_instruction-1",
+      "D0-scg-P3_param_widening-1"
+     ],
+     "ms": 2.109009
+    },
+    "D1": {
+     "ok": true,
+     "uids": [
+      "D1-everything-B1_wording_fix-1",
+      "D1-everything-B2_clarification-1",
+      "D1-everything-B3_new_tool-10",
+      "D1-everything-B4_schema_narrowing-1",
+      "D1-everything-P1_rug_pull-1",
+      "D1-everything-P2_hidden_instruction-1",
+      "D1-everything-P3_param_widening-1",
+      "D1-filesystem-B1_wording_fix-1",
+      "D1-filesystem-B2_clarification-1",
+      "D1-filesystem-B3_new_tool-5",
+      "D1-filesystem-B4_schema_narrowing-1",
+      "D1-filesystem-P1_rug_pull-1",
+      "D1-filesystem-P2_hidden_instruction-1",
+      "D1-filesystem-P3_param_widening-1",
+      "D1-scg-B1_wording_fix-1",
+      "D1-scg-B2_clarification-1",
+      "D1-scg-B3_new_tool-3",
+      "D1-scg-B4_schema_narrowing-1",
+      "D1-scg-P1_rug_pull-1",
+      "D1-scg-P2_hidden_instruction-1",
+      "D1-scg-P3_param_widening-1"
+     ],
+     "ms": 2.094509
+    }
+   }
+  },
+  "s2_contract_drift": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE (class_uid=6002 AND activity_id=8) AND (NOT (\"ai_capability.desc_fingerprint\"=\"unmapped.prev_desc_fingerprint\" AND \"ai_capability.input_schema_fingerprint\"=\"unmapped.prev_input_schema_fingerprint\"))",
+   "results": {
+    "D0": {
+     "ok": true,
+     "uids": [
+      "D0-everything-B1_wording_fix-1",
+      "D0-everything-B2_clarification-1",
+      "D0-everything-B4_schema_narrowing-1",
+      "D0-everything-B5_key_reorder-1",
+      "D0-everything-B5_key_reorder-10",
+      "D0-everything-B5_key_reorder-11",
+      "D0-everything-B5_key_reorder-12",
+      "D0-everything-B5_key_reorder-13",
+      "D0-everything-B5_key_reorder-2",
+      "D0-everything-B5_key_reorder-3",
+      "D0-everything-B5_key_reorder-4",
+      "D0-everything-B5_key_reorder-5",
+      "D0-everything-B5_key_reorder-6",
+      "D0-everything-B5_key_reorder-7",
+      "D0-everything-B5_key_reorder-8",
+      "D0-everything-B5_key_reorder-9",
+      "D0-everything-P1_rug_pull-1",
+      "D0-everything-P2_hidden_instruction-1",
+      "D0-everything-P3_param_widening-1",
+      "D0-filesystem-B1_wording_fix-1",
+      "D0-filesystem-B2_clarification-1",
+      "D0-filesystem-B4_schema_narrowing-1",
+      "D0-filesystem-B5_key_reorder-1",
+      "D0-filesystem-B5_key_reorder-10",
+      "D0-filesystem-B5_key_reorder-11",
+      "D0-filesystem-B5_key_reorder-12",
+      "D0-filesystem-B5_key_reorder-13",
+      "D0-filesystem-B5_key_reorder-14",
+      "D0-filesystem-B5_key_reorder-2",
+      "D0-filesystem-B5_key_reorder-3",
+      "D0-filesystem-B5_key_reorder-4",
+      "D0-filesystem-B5_key_reorder-5",
+      "D0-filesystem-B5_key_reorder-6",
+      "D0-filesystem-B5_key_reorder-7",
+      "D0-filesystem-B5_key_reorder-8",
+      "D0-filesystem-B5_key_reorder-9",
+      "D0-filesystem-P1_rug_pull-1",
+      "D0-filesystem-P2_hidden_instruction-1",
+      "D0-filesystem-P3_param_widening-1",
+      "D0-scg-B1_wording_fix-1",
+      "D0-scg-B2_clarification-1",
+      "D0-scg-B4_schema_narrowing-1",
+      "D0-scg-B5_key_reorder-1",
+      "D0-scg-B5_key_reorder-2",
+      "D0-scg-B5_key_reorder-3",
+      "D0-scg-B5_key_reorder-4",
+      "D0-scg-B5_key_reorder-5",
+      "D0-scg-B5_key_reorder-6",
+      "D0-scg-B5_key_reorder-7",
+      "D0-scg-P1_rug_pull-1",
+      "D0-scg-P2_hidden_instruction-1",
+      "D0-scg-P3_param_widening-1"
+     ],
+     "ms": 1.604183
+    },
+    "D1": {
+     "ok": true,
+     "uids": [
+      "D1-everything-B1_wording_fix-1",
+      "D1-everything-B2_clarification-1",
+      "D1-everything-B4_schema_narrowing-1",
+      "D1-everything-P1_rug_pull-1",
+      "D1-everything-P2_hidden_instruction-1",
+      "D1-everything-P3_param_widening-1",
+      "D1-filesystem-B1_wording_fix-1",
+      "D1-filesystem-B2_clarification-1",
+      "D1-filesystem-B4_schema_narrowing-1",
+      "D1-filesystem-P1_rug_pull-1",
+      "D1-filesystem-P2_hidden_instruction-1",
+      "D1-filesystem-P3_param_widening-1",
+      "D1-scg-B1_wording_fix-1",
+      "D1-scg-B2_clarification-1",
+      "D1-scg-B4_schema_narrowing-1",
+      "D1-scg-P1_rug_pull-1",
+      "D1-scg-P2_hidden_instruction-1",
+      "D1-scg-P3_param_widening-1"
+     ],
+     "ms": 1.159961
+    }
+   }
+  },
+  "s3_hidden_instruction": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE class_uid=6002 AND ((\"unmapped.desc_added_text\" ILIKE '%<IMPORTANT>%' OR \"unmapped.desc_added_text\" ILIKE '%</IMPORTANT>%' OR \"unmapped.desc_added_text\" ILIKE '%do not mention%' OR \"unmapped.desc_added_text\" ILIKE '%do not tell%' OR \"unmapped.desc_added_text\" ILIKE '%ignore previous%' OR \"unmapped.desc_added_text\" ILIKE '%ignore all previous%' OR \"unmapped.desc_added_text\" ILIKE '%~/.ssh%' OR \"unmapped.desc_added_text\" ILIKE '%id_rsa%' OR \"unmapped.desc_added_text\" ILIKE '%.aws/credentials%' OR \"unmapped.desc_added_text\" ILIKE '%mcp.json%' OR \"unmapped.desc_added_text\" ILIKE '%.env%' OR \"unmapped.desc_added_text\" ILIKE '%before using this tool%' OR \"unmapped.desc_added_text\" ILIKE '%otherwise the tool will not work%') OR regexp_matches(\"unmapped.desc_added_text\", '[​-‏⁠﻿]'))",
+   "results": {
+    "D0": {
+     "ok": true,
+     "uids": [
+      "D0-everything-P2_hidden_instruction-1",
+      "D0-filesystem-P2_hidden_instruction-1",
+      "D0-scg-P2_hidden_instruction-1"
+     ],
+     "ms": 1.891298
+    },
+    "D1": {
+     "ok": true,
+     "uids": [
+      "D1-everything-P2_hidden_instruction-1",
+      "D1-filesystem-P2_hidden_instruction-1",
+      "D1-scg-P2_hidden_instruction-1"
+     ],
+     "ms": 1.306668
+    }
+   }
+  },
+  "s4_description_rewrite": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE class_uid=6002 AND activity_id=8 AND \"unmapped.desc_similarity\" < 0.5",
+   "results": {
+    "D0": {
+     "ok": true,
+     "uids": [
+      "D0-everything-P1_rug_pull-1",
+      "D0-everything-P2_hidden_instruction-1",
+      "D0-filesystem-P1_rug_pull-1",
+      "D0-scg-P1_rug_pull-1"
+     ],
+     "ms": 1.185861
+    },
+    "D1": {
+     "ok": true,
+     "uids": [
+      "D1-everything-P1_rug_pull-1",
+      "D1-everything-P2_hidden_instruction-1",
+      "D1-filesystem-P1_rug_pull-1",
+      "D1-scg-P1_rug_pull-1"
+     ],
+     "ms": 0.779841
+    }
+   }
+  },
+  "s5_schema_widening": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE class_uid=6002 AND activity_id=8 AND \"unmapped.schema_widened\"=true",
+   "results": {
+    "D0": {
+     "ok": true,
+     "uids": [
+      "D0-everything-P3_param_widening-1",
+      "D0-filesystem-P3_param_widening-1",
+      "D0-scg-P3_param_widening-1"
+     ],
+     "ms": 1.367571
+    },
+    "D1": {
+     "ok": true,
+     "uids": [
+      "D1-everything-P3_param_widening-1",
+      "D1-filesystem-P3_param_widening-1",
+      "D1-scg-P3_param_widening-1"
+     ],
+     "ms": 0.800441
+    }
+   }
+  }
+ }
+}

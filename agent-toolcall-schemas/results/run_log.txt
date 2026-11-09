@@ -1,0 +1,62 @@
+++ for p in 0 1 2
+++ .venv/bin/python run_queries.py 100000 0
+Q1_tool_by_agent equal {'L1_typed': 3.443, 'L2_otel_map': 100.972, 'L3_aos_unmapped': 21.197}
+Q2_argument_hunt equal {'L1_typed': 13.795, 'L2_otel_map': 117.227, 'L3_aos_unmapped': 86.753}
+Q3_tool_breadth_errors equal {'L1_typed': 5.085, 'L2_otel_map': 124.456, 'L3_aos_unmapped': 64.4}
+Q4_failure_bursts equal {'L1_typed': 3.21, 'L2_otel_map': 101.409, 'L3_aos_unmapped': 23.641}
+Q5_off_allowlist equal {'L1_typed': 4.069, 'L2_otel_map': 91.797, 'L3_aos_unmapped': 84.874}
+++ for p in 0 1 2
+++ .venv/bin/python run_queries.py 100000 1
+Q1_tool_by_agent equal {'L1_typed': 3.871, 'L2_otel_map': 86.086, 'L3_aos_unmapped': 23.027}
+Q2_argument_hunt equal {'L1_typed': 15.963, 'L2_otel_map': 105.193, 'L3_aos_unmapped': 82.369}
+Q3_tool_breadth_errors equal {'L1_typed': 7.384, 'L2_otel_map': 110.558, 'L3_aos_unmapped': 57.395}
+Q4_failure_bursts equal {'L1_typed': 3.386, 'L2_otel_map': 107.122, 'L3_aos_unmapped': 57.991}
+Q5_off_allowlist equal {'L1_typed': 4.277, 'L2_otel_map': 117.048, 'L3_aos_unmapped': 94.929}
+++ for p in 0 1 2
+++ .venv/bin/python run_queries.py 100000 2
+Q1_tool_by_agent equal {'L1_typed': 3.64, 'L2_otel_map': 107.785, 'L3_aos_unmapped': 22.626}
+Q2_argument_hunt equal {'L1_typed': 14.199, 'L2_otel_map': 98.269, 'L3_aos_unmapped': 51.075}
+Q3_tool_breadth_errors equal {'L1_typed': 4.913, 'L2_otel_map': 116.742, 'L3_aos_unmapped': 38.322}
+Q4_failure_bursts equal {'L1_typed': 3.182, 'L2_otel_map': 93.581, 'L3_aos_unmapped': 55.466}
+Q5_off_allowlist equal {'L1_typed': 4.368, 'L2_otel_map': 103.137, 'L3_aos_unmapped': 92.571}
+++ /usr/bin/time -v .venv/bin/python gen_corpus.py 1000000
+++ grep -E 'L[123]_|Maximum resident|Elapsed'
+++ local _cc_a
+++ for _cc_a in ${1+"$@"}
+++ case "$_cc_a" in
+++ for _cc_a in ${1+"$@"}
+++ case "$_cc_a" in
+++ local _cc_bin=/home/jerem/.local/share/claude/versions/2.1.319
+++ [[ -x /home/jerem/.local/share/claude/versions/2.1.319 ]]
+++ [[ ! -x /home/jerem/.local/share/claude/versions/2.1.319 ]]
+++ [[ -n '' ]]
+++ [[ linux-gnu == \m\s\y\s ]]
+++ [[ linux-gnu == \c\y\g\w\i\n ]]
+++ [[ linux-gnu == \w\i\n\3\2 ]]
+++ exec -a ugrep /home/jerem/.local/share/claude/versions/2.1.319 -G --ignore-files --hidden -I --exclude-dir=.git --exclude-dir=.svn --exclude-dir=.hg --exclude-dir=.bzr --exclude-dir=.jj --exclude-dir=.sl -E 'L[123]_|Maximum resident|Elapsed'
+L1_typed 27439196 ['ZSTD'] 9 write 0.57s
+L2_otel_map 58221187 ['ZSTD'] 9 write 3.27s
+L3_aos_unmapped 30860739 ['ZSTD'] 9 write 1.02s
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:20.38
+	Maximum resident set size (kbytes): 3454656
+++ for p in 0 1 2
+++ .venv/bin/python run_queries.py 1000000 0
+Q1_tool_by_agent equal {'L1_typed': 6.198, 'L2_otel_map': 231.448, 'L3_aos_unmapped': 61.32}
+Q2_argument_hunt equal {'L1_typed': 34.661, 'L2_otel_map': 277.918, 'L3_aos_unmapped': 194.951}
+Q3_tool_breadth_errors equal {'L1_typed': 7.494, 'L2_otel_map': 257.937, 'L3_aos_unmapped': 137.656}
+Q4_failure_bursts equal {'L1_typed': 9.397, 'L2_otel_map': 216.36, 'L3_aos_unmapped': 98.754}
+Q5_off_allowlist equal {'L1_typed': 8.15, 'L2_otel_map': 271.164, 'L3_aos_unmapped': 195.37}
+++ for p in 0 1 2
+++ .venv/bin/python run_queries.py 1000000 1
+Q1_tool_by_agent equal {'L1_typed': 7.818, 'L2_otel_map': 244.78, 'L3_aos_unmapped': 62.848}
+Q2_argument_hunt equal {'L1_typed': 38.592, 'L2_otel_map': 265.33, 'L3_aos_unmapped': 185.182}
+Q3_tool_breadth_errors equal {'L1_typed': 16.805, 'L2_otel_map': 262.086, 'L3_aos_unmapped': 120.648}
+Q4_failure_bursts equal {'L1_typed': 25.638, 'L2_otel_map': 238.073, 'L3_aos_unmapped': 127.263}
+Q5_off_allowlist equal {'L1_typed': 10.332, 'L2_otel_map': 250.167, 'L3_aos_unmapped': 186.317}
+++ for p in 0 1 2
+++ .venv/bin/python run_queries.py 1000000 2
+Q1_tool_by_agent equal {'L1_typed': 15.359, 'L2_otel_map': 222.234, 'L3_aos_unmapped': 57.324}
+Q2_argument_hunt equal {'L1_typed': 34.447, 'L2_otel_map': 248.576, 'L3_aos_unmapped': 185.93}
+Q3_tool_breadth_errors equal {'L1_typed': 29.935, 'L2_otel_map': 260.742, 'L3_aos_unmapped': 144.268}
+Q4_failure_bursts equal {'L1_typed': 20.992, 'L2_otel_map': 240.995, 'L3_aos_unmapped': 90.95}
+Q5_off_allowlist equal {'L1_typed': 7.804, 'L2_otel_map': 277.343, 'L3_aos_unmapped': 176.304}

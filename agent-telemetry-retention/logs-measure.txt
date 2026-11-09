@@ -1,0 +1,112 @@
+parquet chat-high_entropy-s0 T3_full
+parquet chat-high_entropy-s1 T3_full
+parquet chat-high_entropy-s2 T3_full
+parquet chat-real-s0 T3_full
+parquet chat-real-s1 T3_full
+parquet chat-real-s2 T3_full
+parquet coding-high_entropy-s0 T3_full
+parquet coding-high_entropy-s1 T3_full
+parquet coding-high_entropy-s2 T3_full
+parquet coding-real-s0 T3_full
+parquet coding-real-s1 T3_full
+parquet coding-real-s2 T3_full
+parquet chat-high_entropy-s0 T0_metadata
+parquet chat-high_entropy-s0 T1_hash
+parquet chat-high_entropy-s0 T2_delta
+parquet chat-high_entropy-s1 T0_metadata
+parquet chat-high_entropy-s1 T1_hash
+parquet chat-high_entropy-s1 T2_delta
+parquet chat-high_entropy-s2 T0_metadata
+parquet chat-high_entropy-s2 T1_hash
+parquet chat-high_entropy-s2 T2_delta
+parquet chat-real-s0 T0_metadata
+parquet chat-real-s0 T1_hash
+parquet chat-real-s0 T2_delta
+parquet chat-real-s1 T0_metadata
+parquet chat-real-s1 T1_hash
+parquet chat-real-s1 T2_delta
+parquet chat-real-s2 T0_metadata
+parquet chat-real-s2 T1_hash
+parquet chat-real-s2 T2_delta
+parquet coding-high_entropy-s0 T0_metadata
+parquet coding-high_entropy-s0 T1_hash
+parquet coding-high_entropy-s0 T2_delta
+parquet coding-high_entropy-s1 T0_metadata
+parquet coding-high_entropy-s1 T1_hash
+parquet coding-high_entropy-s1 T2_delta
+parquet coding-high_entropy-s2 T0_metadata
+parquet coding-high_entropy-s2 T1_hash
+parquet coding-high_entropy-s2 T2_delta
+parquet coding-real-s0 T0_metadata
+parquet coding-real-s0 T1_hash
+parquet coding-real-s0 T2_delta
+parquet coding-real-s1 T0_metadata
+parquet coding-real-s1 T1_hash
+parquet coding-real-s1 T2_delta
+parquet coding-real-s2 T0_metadata
+parquet coding-real-s2 T1_hash
+parquet coding-real-s2 T2_delta
+iceberg chat-high_entropy-s0 T0_metadata
+iceberg chat-high_entropy-s0 T1_hash
+iceberg chat-high_entropy-s0 T2_delta
+iceberg chat-high_entropy-s0 T3_full
+iceberg chat-high_entropy-s1 T0_metadata
+iceberg chat-high_entropy-s1 T1_hash
+iceberg chat-high_entropy-s1 T2_delta
+iceberg chat-high_entropy-s1 T3_full
+iceberg chat-high_entropy-s2 T0_metadata
+iceberg chat-high_entropy-s2 T1_hash
+iceberg chat-high_entropy-s2 T2_delta
+iceberg chat-high_entropy-s2 T3_full
+iceberg chat-real-s0 T0_metadata
+iceberg chat-real-s0 T1_hash
+iceberg chat-real-s0 T2_delta
+iceberg chat-real-s0 T3_full
+iceberg chat-real-s1 T0_metadata
+iceberg chat-real-s1 T1_hash
+iceberg chat-real-s1 T2_delta
+iceberg chat-real-s1 T3_full
+iceberg chat-real-s2 T0_metadata
+iceberg chat-real-s2 T1_hash
+iceberg chat-real-s2 T2_delta
+iceberg chat-real-s2 T3_full
+iceberg coding-high_entropy-s0 T0_metadata
+iceberg coding-high_entropy-s0 T1_hash
+iceberg coding-high_entropy-s0 T2_delta
+iceberg coding-high_entropy-s0 T3_full
+iceberg coding-high_entropy-s1 T0_metadata
+iceberg coding-high_entropy-s1 T1_hash
+iceberg coding-high_entropy-s1 T2_delta
+iceberg coding-high_entropy-s1 T3_full
+iceberg coding-high_entropy-s2 T0_metadata
+iceberg coding-high_entropy-s2 T1_hash
+iceberg coding-high_entropy-s2 T2_delta
+iceberg coding-high_entropy-s2 T3_full
+iceberg coding-real-s0 T0_metadata
+iceberg coding-real-s0 T1_hash
+iceberg coding-real-s0 T2_delta
+iceberg coding-real-s0 T3_full
+iceberg coding-real-s1 T0_metadata
+iceberg coding-real-s1 T1_hash
+iceberg coding-real-s1 T2_delta
+iceberg coding-real-s1 T3_full
+iceberg coding-real-s2 T0_metadata
+iceberg coding-real-s2 T1_hash
+iceberg coding-real-s2 T2_delta
+iceberg coding-real-s2 T3_full
+dict coding-real-s0
+dict coding-real-s1
+dict coding-real-s2
+dict coding-high_entropy-s0
+dict coding-high_entropy-s1
+dict coding-high_entropy-s2
+dict chat-real-s0
+dict chat-real-s1
+dict chat-real-s2
+dict chat-high_entropy-s0
+dict chat-high_entropy-s1
+dict chat-high_entropy-s2
+
+real	1m56.093s
+user	13m37.023s
+sys	1m27.199s

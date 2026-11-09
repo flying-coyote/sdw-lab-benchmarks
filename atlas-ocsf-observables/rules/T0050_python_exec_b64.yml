@@ -1,0 +1,8 @@
+title: Inline interpreter executes base64-decoded code
+description: AML.T0050 Command and Scripting Interpreter via d3f:ShellCommand / ExecutableScript (process.cmd_line).
+status: experimental
+logsource: {category: process_creation}
+detection:
+  sel:
+    process_cmd_line|contains|all: [' -c ', 'exec(', 'b64decode']
+  condition: sel

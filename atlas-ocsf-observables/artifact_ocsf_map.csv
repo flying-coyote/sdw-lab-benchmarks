@@ -1,0 +1,80 @@
+artifact,grade,ocsf_object,ocsf_class_uid,ocsf_field,rationale
+d3f:File,direct,file,,file.path,OCSF file denotes a file; path/hashes identify it.
+d3f:UserAccount,direct,user,,user.uid,OCSF user = user or security principal; account details in user.account.
+d3f:WebAPIResource,generic,api,,api.operation,No OCSF object for the API resource itself; API Activity records the call (api.operation) and affected resources; URI in http_request.url.
+d3f:Software,generic,application,,application.name,Software is information (content); OCSF application/package describe inventoried software; no field marks a piece of software as the adversary's.
+d3f:Credential,generic,programmatic_credential,,programmatic_credential.uid,OCSF records credential identifiers and types (programmatic_credential; user.credential_uid) never the secret; parent kind only.
+d3f:DigitalMessage,generic,email,,email.subject,Core OCSF has email only; chat/agent messages need the ai_operation profile (message_context) which the core arm excludes.
+d3f:PrivateKey,proxy,file,,file.path,No OCSF object for a private key; certificate is the public half. Only a key file's path/hash is recordable.
+d3f:AccessToken,direct,authentication_token,,authentication_token.type,authentication_token denotes protocol tokens (Kerberos/OIDC/SAML); api.token on 6003 too.
+d3f:ProcessEnvironmentVariable,direct,environment_variable,,environment_variable.name,Dedicated object on process.environment_variables.
+d3f:DefaultUserAccount,generic,user,,user.name,"user exists but 'default/built-in' is not a field (user.type_id: User/Admin/System/Service); detectable only by name convention."
+d3f:SystemConfigurationDatabase,generic,reg_key,,reg_key.path,Windows registry is the main system configuration database; win extension reg_key. Non-Windows equivalents have no object.
+d3f:GroupPolicy,proxy,file,,file.path,"OCSF policy denotes the security product's policy, a different kind; a GPO is recordable only as SYSVOL files or registry keys."
+d3f:CloudInstanceMetadata,proxy,http_request,,http_request.url,No object for instance metadata; only an HTTP request to the metadata endpoint URL is recordable.
+d3f:CommandHistoryLogFile,generic,file,,file.path,A file; history-log-ness only by path convention (~/.bash_history).
+d3f:ExecutableScript,direct,script,,script.script_content,script object on Script Activity 1009.
+d3f:Database,direct,database,,database.name,database object on Datastore Activity 6005.
+d3f:Email,direct,email,,email.subject,email object on Email Activity 4009.
+d3f:InboundInternetNetworkTraffic,direct,network_connection_info,,network_connection_info.direction_id,Network classes carry connection_info.direction_id (Inbound) and boundary_id (Internet).
+d3f:ProcessSegment,proxy,,1004,class:1004.base_address,No object for a memory segment; Memory Activity records base_address/size of a page operation.
+d3f:DatabaseQuery,direct,query_info,,query_info.query_string,query_info.query_string on 6005 (and discovery query classes).
+d3f:ExecutableFile,generic,file,,file.mime_type,A file; executability only via mime_type/ext/signature.
+d3f:CodeRepository,proxy,url,,url.url_string,No repository object; only a repository URL is recordable.
+d3f:ExecutableBinary,generic,file,,file.mime_type,A file; binary-executable only via mime_type/ext/signature.
+d3f:DigitalMedia,proxy,file,,file.mime_type,"Digital media is content; recordable only through a carrier file (mime_type image/video)."
+d3f:ServiceApplication,generic,service,,service.name,OCSF service describes a service (e.g. AWS EC2); software kind only.
+d3f:ProxyServer,direct,network_proxy,,network_proxy.hostname,network_proxy endpoint object.
+d3f:OutboundInternetWebTraffic,direct,http_request,,http_request.url,HTTP Activity 4002 records the request; direction via connection_info.
+d3f:Command,direct,process,,process.cmd_line,Dedicated field process.cmd_line holds the command text.
+d3f:ServiceApplicationProcess,generic,process,,process.name,A process; service-ness not a field.
+d3f:RemoteSession,direct,session,,session.is_remote,session object with is_remote.
+d3f:ShellCommand,direct,process,,process.cmd_line,Dedicated field process.cmd_line.
+d3f:SoftwareLibrary,direct,module,,module.file,module = loaded library (Module Activity 1005).
+d3f:IntrusionDetectionSystem,generic,agent,,agent.type_id,OCSF agent denotes security sensors (EDR/DLP/IDS) installed on a device; recorded as device.agent_list.
+d3f:CloudConfiguration,generic,resource_details,,resource_details.type,"No cloud-config object; API Activity resources[] names the resource changed."
+d3f:WebResource,direct,web_resource,,web_resource.url_string,web_resource on 6001/6004.
+d3f:WebFileResource,generic,web_resource,,web_resource.url_string,web_resource; file-ness not a field.
+d3f:CollaborativeSoftware,generic,application,,application.name,application; collaborative kind not a field.
+d3f:CloudUserAccount,direct,account,,account.type_id,account.type_id enumerates AWS IAM User / Azure AD / GCP accounts.
+d3f:RemoteShellCommand,generic,process,,process.cmd_line,cmd_line exists; remote origin only via session.is_remote / parent context.
+d3f:OutboundInternetNetworkTraffic,direct,network_connection_info,,network_connection_info.direction_id,direction_id Outbound + boundary_id.
+d3f:RemoteTerminalSession,direct,session,,session.terminal,session.terminal and is_remote; RDP 4005 / SSH 4007.
+d3f:Process,direct,process,,process.pid,process object.
+d3f:GetRunningProcesses,proxy,,5015,class:5015.query_info,"Occurrent (system call). OCSF has no activity for one process enumerating others; Process Query 5015 is an inventory result, not the adversary's call."
+d3f:CreateProcess,event,,1007,class:1007.activity_id,Occurrent; Process Activity activity_id=1 Launch.
+d3f:DigitalIdentity,generic,user,,user.uid,Identity represented by user/idp; no identity object.
+d3f:FileSystemMetadata,direct,file,,file.modified_time,file carries created/modified/accessed time and owner attributes.
+d3f:NetworkTraffic,direct,network_traffic,,network_traffic.bytes,network_traffic object.
+d3f:SoftwareRepository,proxy,url,,url.url_string,No repository object; URL only.
+d3f:InboundInternetMailTraffic,direct,email,,email.from,Email Activity 4009 with direction_id Inbound.
+d3f:JobSchedule,direct,job,,job.cmd_line,job object on Scheduled Job Activity 1006.
+d3f:MoveFile,event,,1001,class:1001.activity_id,Occurrent; File System Activity activity_id=5 Rename.
+d3f:OperatingSystemExecutableFile,generic,file,,file.is_system,file.is_system flags OS files; executability via mime_type.
+d3f:URL,direct,url,,url.url_string,url object.
+d3f:AccessControlConfiguration,generic,,3005,class:3005.privileges,No object for an ACL configuration; User Access Management 3005 records privilege/role grants.
+d3f:SoftwarePackage,direct,package,,package.purl,package object.
+d3f:DomainRegistration,direct,whois,,whois.registrar,"whois denotes registration data, but only through the osint profile; no native class field."
+d3f:DatabaseRecord,proxy,table,,table.name,No record object; Datastore Activity names the table touched.
+d3f:ConfigurationResource,generic,resource_details,,resource_details.type,Generic resource only.
+d3f:AuthenticationService,generic,service,,service.name,Authentication 3002 carries service and idp; service kind only.
+d3f:DocumentFile,generic,file,,file.mime_type,A file; document-ness via mime_type.
+d3f:DigitalText,generic,message_context,,message_context.prompt_text,"Text content: only message_context.prompt_text/response_text (ai_operation profile) holds it; core arm has no field."
+d3f:PersonalComputer,direct,device,,device.type_id,device.type_id Desktop/Laptop.
+d3f:CloudStorage,direct,databucket,,databucket.name,databucket object.
+d3f:WindowsRegistryKey,direct,reg_key,,reg_key.path,win extension reg_key.
+d3f:MACAddress,direct,device,,device.mac,Dedicated field device.mac.
+d3f:Application,direct,application,,application.name,application object.
+d3f:Repository,proxy,url,,url.url_string,No repository object; URL only.
+d3f:Host,direct,device,,device.hostname,device object.
+d3f:ApplicationConfiguration,proxy,file,,file.path,No application-config object; config file path only.
+d3f:Server,direct,device,,device.type_id,device.type_id Server.
+d3f:ArtifactServer,generic,device,,device.hostname,device; artifact-server role not a field.
+d3f:ConfigurationFile,generic,file,,file.path,A file; configuration-ness only by path/ext convention.
+d3f:ArchiveFile,generic,file,,file.mime_type,A file; archive via mime_type.
+d3f:CreateFile,event,,1001,class:1001.activity_id,Occurrent; File System Activity activity_id=1 Create.
+d3f:InitScript,generic,startup_item,,startup_item.name,startup_item describes components with startup criteria (Startup Item Query 5022).
+d3f:CommandHistoryLog,generic,file,,file.path,Recordable as a file only.
+d3f:EventLog,direct,,1008,class:1008.log_name,Event Log Activity 1008 (Clear/Delete/Disable) names the log.
+d3f:Metadata,none,,,,"OCSF metadata denotes the event's own metadata, a different kind; no object for metadata about arbitrary information."
+d3f:Log,generic,,1008,class:1008.log_name,Event Log Activity 1008.

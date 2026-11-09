@@ -1,0 +1,1919 @@
+{
+ "discovery": {
+  "syft|T1": {
+   "n_components_in_fixture": 1,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": true,
+   "names": [
+    "TinyLlama"
+   ],
+   "types": [
+    "model"
+   ],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": true
+  },
+  "syft|T2": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "syft|T3": {
+   "n_components_in_fixture": 1,
+   "found_strict": false,
+   "found_lenient": true,
+   "as_ai_artifact": true,
+   "names": [
+    "MiniLM-L6-H384-uncased"
+   ],
+   "types": [
+    "model"
+   ],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": true
+  },
+  "syft|T4": {
+   "n_components_in_fixture": 57,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ],
+   "types": [
+    "npm"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:npm/%40modelcontextprotocol/server-filesystem@2025.3.28"
+   ],
+   "cpe": true,
+   "cpe_source": [
+    "syft-generated"
+   ],
+   "digest": true
+  },
+  "syft|T5": {
+   "n_components_in_fixture": 33,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": false,
+   "names": [
+    "mcp-server-git"
+   ],
+   "types": [
+    "python"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:pypi/mcp-server-git@2025.7.1"
+   ],
+   "cpe": true,
+   "cpe_source": [
+    "syft-generated"
+   ],
+   "digest": true
+  },
+  "syft|T6": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs|T1": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs|T2": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs|T3": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs|T4": {
+   "n_components_in_fixture": 56,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ],
+   "types": [
+    "npm"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:npm/%40modelcontextprotocol/server-filesystem@2025.3.28"
+   ],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs|T5": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs|T6": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-rootfs|T1": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-rootfs|T2": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-rootfs|T3": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-rootfs|T4": {
+   "n_components_in_fixture": 63,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ],
+   "types": [
+    "node-pkg"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:npm/%40modelcontextprotocol/server-filesystem@2025.3.28"
+   ],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-rootfs|T5": {
+   "n_components_in_fixture": 33,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": false,
+   "names": [
+    "mcp-server-git"
+   ],
+   "types": [
+    "python-pkg"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:pypi/mcp-server-git@2025.7.1"
+   ],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-rootfs|T6": {
+   "n_components_in_fixture": 3,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": false,
+   "names": [
+    "prettier-vscode"
+   ],
+   "types": [
+    "node-pkg"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:npm/prettier-vscode@12.2.0",
+    "pkg:npm/prettier-vscode@12.4.0"
+   ],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs-cdx|T1": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs-cdx|T2": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs-cdx|T3": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs-cdx|T4": {
+   "n_components_in_fixture": 57,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ],
+   "types": [
+    "library"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:npm/%40modelcontextprotocol/server-filesystem@2025.3.28"
+   ],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs-cdx|T5": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "trivy-fs-cdx|T6": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "ai-bom|T1": {
+   "n_components_in_fixture": 1,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": true,
+   "names": [
+    "tinyllama-1.1b-chat.Q4_0.gguf"
+   ],
+   "types": [
+    "machine-learning-model"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:pypi/tinyllama-1.1b-chat.q4-0.gguf"
+   ],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "ai-bom|T2": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "ai-bom|T3": {
+   "n_components_in_fixture": 1,
+   "found_strict": false,
+   "found_lenient": true,
+   "as_ai_artifact": true,
+   "names": [
+    "model.safetensors"
+   ],
+   "types": [
+    "machine-learning-model"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:pypi/model.safetensors"
+   ],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "ai-bom|T4": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "ai-bom|T5": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "ai-bom|T6": {
+   "n_components_in_fixture": 0,
+   "found_strict": false,
+   "found_lenient": false,
+   "as_ai_artifact": false,
+   "names": [],
+   "types": [],
+   "purl": false,
+   "purls": [],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  },
+  "cyclonedx-py|T5": {
+   "n_components_in_fixture": 33,
+   "found_strict": true,
+   "found_lenient": true,
+   "as_ai_artifact": false,
+   "names": [
+    "mcp-server-git"
+   ],
+   "types": [
+    "library"
+   ],
+   "purl": true,
+   "purls": [
+    "pkg:pypi/mcp-server-git@2025.7.1"
+   ],
+   "cpe": false,
+   "cpe_source": [],
+   "digest": false
+  }
+ },
+ "advisories": {
+  "grype|T1": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "grype|T2": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "grype|T3": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "grype|T4": {
+   "expected": 2,
+   "matched": 2,
+   "any_on_target": [
+    "CVE-2025-53109",
+    "CVE-2025-53110",
+    "GHSA-hc55-p739-j48w",
+    "GHSA-q66q-fx2p-7w4m"
+   ],
+   "total_matches_in_fixture": 8
+  },
+  "grype|T5": {
+   "expected": 4,
+   "matched": 4,
+   "any_on_target": [
+    "CVE-2025-68143",
+    "CVE-2025-68144",
+    "CVE-2025-68145",
+    "CVE-2026-27735",
+    "GHSA-5cgr-j3jf-jw3v",
+    "GHSA-9xwc-hfwc-8w59",
+    "GHSA-j22h-9j4x-23w5",
+    "GHSA-vjqx-cfc4-9h6v"
+   ],
+   "total_matches_in_fixture": 10
+  },
+  "grype|T6": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "trivy-fs|T1": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "trivy-fs|T2": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "trivy-fs|T3": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "trivy-fs|T4": {
+   "expected": 2,
+   "matched": 2,
+   "any_on_target": [
+    "CVE-2025-53109",
+    "CVE-2025-53110",
+    "GHSA-hc55-p739-j48w",
+    "GHSA-q66q-fx2p-7w4m"
+   ],
+   "total_matches_in_fixture": 7
+  },
+  "trivy-fs|T5": {
+   "expected": 4,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "trivy-fs|T6": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "trivy-rootfs|T1": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "trivy-rootfs|T2": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "trivy-rootfs|T3": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  },
+  "trivy-rootfs|T4": {
+   "expected": 2,
+   "matched": 2,
+   "any_on_target": [
+    "CVE-2025-53109",
+    "CVE-2025-53110",
+    "GHSA-hc55-p739-j48w",
+    "GHSA-q66q-fx2p-7w4m"
+   ],
+   "total_matches_in_fixture": 7
+  },
+  "trivy-rootfs|T5": {
+   "expected": 4,
+   "matched": 4,
+   "any_on_target": [
+    "CVE-2025-68143",
+    "CVE-2025-68144",
+    "CVE-2025-68145",
+    "CVE-2026-27735",
+    "GHSA-5cgr-j3jf-jw3v",
+    "GHSA-9xwc-hfwc-8w59",
+    "GHSA-j22h-9j4x-23w5",
+    "GHSA-vjqx-cfc4-9h6v"
+   ],
+   "total_matches_in_fixture": 10
+  },
+  "trivy-rootfs|T6": {
+   "expected": 0,
+   "matched": 0,
+   "any_on_target": [],
+   "total_matches_in_fixture": 0
+  }
+ },
+ "controls": {
+  "grype|controls-npm": 5,
+  "grype|controls-pip": 5,
+  "trivy-fs|controls-npm": 6,
+  "trivy-fs|controls-pip": 0,
+  "trivy-rootfs|controls-npm": 6,
+  "trivy-rootfs|controls-pip": 5
+ },
+ "variants": {
+  "syft|variants_V1": {
+   "orig_found": true,
+   "still_found": false,
+   "identity_differs": true,
+   "digest_differs": true,
+   "digest_present": false,
+   "publisher_differs": true,
+   "names": []
+  },
+  "syft|variants_V2": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": true,
+   "publisher_differs": false,
+   "names": [
+    "TinyLlama"
+   ]
+  },
+  "syft|variants_V3": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "syft|variants_V4": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": true,
+   "digest_present": true,
+   "publisher_differs": false,
+   "names": [
+    "TinyLlama"
+   ]
+  },
+  "syft|variants_V5": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": true,
+   "publisher_differs": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ]
+  },
+  "syft|variants_V6": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": true,
+   "digest_present": true,
+   "publisher_differs": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ]
+  },
+  "syft|variants_V7": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": true,
+   "publisher_differs": false,
+   "names": [
+    "mcp-server-git"
+   ]
+  },
+  "syft|variants_V8": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs|variants_V1": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs|variants_V2": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs|variants_V3": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs|variants_V4": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs|variants_V5": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ]
+  },
+  "trivy-fs|variants_V6": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ]
+  },
+  "trivy-fs|variants_V7": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs|variants_V8": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-rootfs|variants_V1": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-rootfs|variants_V2": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-rootfs|variants_V3": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-rootfs|variants_V4": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-rootfs|variants_V5": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ]
+  },
+  "trivy-rootfs|variants_V6": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ]
+  },
+  "trivy-rootfs|variants_V7": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "mcp-server-git"
+   ]
+  },
+  "trivy-rootfs|variants_V8": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "prettier-vscode",
+    "prettier-vscode"
+   ]
+  },
+  "trivy-fs-cdx|variants_V1": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs-cdx|variants_V2": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs-cdx|variants_V3": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs-cdx|variants_V4": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs-cdx|variants_V5": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ]
+  },
+  "trivy-fs-cdx|variants_V6": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "@modelcontextprotocol/server-filesystem"
+   ]
+  },
+  "trivy-fs-cdx|variants_V7": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "trivy-fs-cdx|variants_V8": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "ai-bom|variants_V1": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": true,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "weights.bin"
+   ]
+  },
+  "ai-bom|variants_V2": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": true,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "totally-safe-assistant.gguf"
+   ]
+  },
+  "ai-bom|variants_V3": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "ai-bom|variants_V4": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "tinyllama-1.1b-chat.Q4_0.gguf"
+   ]
+  },
+  "ai-bom|variants_V5": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "ai-bom|variants_V6": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "ai-bom|variants_V7": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "ai-bom|variants_V8": {
+   "orig_found": false,
+   "still_found": false,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": []
+  },
+  "cyclonedx-py|variants_V7": {
+   "orig_found": true,
+   "still_found": true,
+   "identity_differs": false,
+   "digest_differs": false,
+   "digest_present": false,
+   "publisher_differs": false,
+   "names": [
+    "mcp-server-git"
+   ]
+  }
+ },
+ "repeat": {
+  "ai-bom|ALL": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|controls-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|controls-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|mcp-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|mcp-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|models-gguf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|models-hf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|ollama-store": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|variants_V1": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|variants_V2": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|variants_V3": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|variants_V4": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|variants_V5": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|variants_V6": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|variants_V7": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|variants_V8": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "ai-bom|vscode": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "cyclonedx-py|controls-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "cyclonedx-py|mcp-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "cyclonedx-py|variants_V7": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|ALL": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|controls-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|controls-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|mcp-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|mcp-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|models-gguf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|models-hf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|ollama-store": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|variants_V1": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|variants_V2": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|variants_V3": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|variants_V4": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|variants_V5": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|variants_V6": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|variants_V7": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|variants_V8": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "syft|vscode": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|ALL": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|controls-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|controls-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|mcp-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|mcp-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|models-gguf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|models-hf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|ollama-store": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|variants_V1": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|variants_V2": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|variants_V3": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|variants_V4": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|variants_V5": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|variants_V6": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|variants_V7": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|variants_V8": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs|vscode": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|ALL": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|controls-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|controls-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|mcp-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|mcp-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|models-gguf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|models-hf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|ollama-store": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|variants_V1": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|variants_V2": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|variants_V3": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|variants_V4": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|variants_V5": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|variants_V6": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|variants_V7": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|variants_V8": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-fs-cdx|vscode": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|ALL": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|controls-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|controls-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|mcp-npm": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|mcp-pip": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|models-gguf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|models-hf": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|ollama-store": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|variants_V1": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|variants_V2": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|variants_V3": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|variants_V4": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|variants_V5": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|variants_V6": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|variants_V7": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|variants_V8": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  },
+  "trivy-rootfs|vscode": {
+   "runs_ok": 3,
+   "distinct_component_hashes": 1
+  }
+ },
+ "timing": {
+  "ai-bom|ALL": {
+   "n": 3,
+   "median_s": 5.045,
+   "cv_pct": 21.3
+  },
+  "ai-bom|controls-npm": {
+   "n": 3,
+   "median_s": 1.787,
+   "cv_pct": 4.0
+  },
+  "ai-bom|controls-pip": {
+   "n": 3,
+   "median_s": 2.392,
+   "cv_pct": 22.0
+  },
+  "ai-bom|mcp-npm": {
+   "n": 3,
+   "median_s": 1.798,
+   "cv_pct": 66.8
+  },
+  "ai-bom|mcp-pip": {
+   "n": 3,
+   "median_s": 2.884,
+   "cv_pct": 25.5
+  },
+  "ai-bom|models-gguf": {
+   "n": 3,
+   "median_s": 2.278,
+   "cv_pct": 31.3
+  },
+  "ai-bom|models-hf": {
+   "n": 3,
+   "median_s": 2.441,
+   "cv_pct": 10.5
+  },
+  "ai-bom|ollama-store": {
+   "n": 3,
+   "median_s": 1.686,
+   "cv_pct": 48.6
+  },
+  "ai-bom|variants_V1": {
+   "n": 3,
+   "median_s": 2.161,
+   "cv_pct": 28.0
+  },
+  "ai-bom|variants_V2": {
+   "n": 3,
+   "median_s": 2.717,
+   "cv_pct": 7.5
+  },
+  "ai-bom|variants_V3": {
+   "n": 3,
+   "median_s": 2.168,
+   "cv_pct": 27.7
+  },
+  "ai-bom|variants_V4": {
+   "n": 3,
+   "median_s": 2.256,
+   "cv_pct": 18.5
+  },
+  "ai-bom|variants_V5": {
+   "n": 3,
+   "median_s": 2.086,
+   "cv_pct": 30.3
+  },
+  "ai-bom|variants_V6": {
+   "n": 3,
+   "median_s": 2.88,
+   "cv_pct": 12.8
+  },
+  "ai-bom|variants_V7": {
+   "n": 3,
+   "median_s": 3.161,
+   "cv_pct": 8.0
+  },
+  "ai-bom|variants_V8": {
+   "n": 3,
+   "median_s": 2.565,
+   "cv_pct": 39.6
+  },
+  "ai-bom|vscode": {
+   "n": 3,
+   "median_s": 1.627,
+   "cv_pct": 14.5
+  },
+  "cyclonedx-py|controls-pip": {
+   "n": 3,
+   "median_s": 2.15,
+   "cv_pct": 29.0
+  },
+  "cyclonedx-py|mcp-pip": {
+   "n": 3,
+   "median_s": 7.173,
+   "cv_pct": 29.5
+  },
+  "cyclonedx-py|variants_V7": {
+   "n": 3,
+   "median_s": 8.741,
+   "cv_pct": 33.3
+  },
+  "grype|ALL": {
+   "n": 3,
+   "median_s": 2.591,
+   "cv_pct": 21.5
+  },
+  "grype|controls-npm": {
+   "n": 3,
+   "median_s": 1.636,
+   "cv_pct": 23.5
+  },
+  "grype|controls-pip": {
+   "n": 3,
+   "median_s": 1.576,
+   "cv_pct": 2.3
+  },
+  "grype|mcp-npm": {
+   "n": 3,
+   "median_s": 1.99,
+   "cv_pct": 52.5
+  },
+  "grype|mcp-pip": {
+   "n": 3,
+   "median_s": 2.112,
+   "cv_pct": 18.7
+  },
+  "grype|models-gguf": {
+   "n": 3,
+   "median_s": 1.689,
+   "cv_pct": 29.1
+  },
+  "grype|models-hf": {
+   "n": 3,
+   "median_s": 1.638,
+   "cv_pct": 17.0
+  },
+  "grype|ollama-store": {
+   "n": 3,
+   "median_s": 1.518,
+   "cv_pct": 37.9
+  },
+  "grype|variants_V1": {
+   "n": 3,
+   "median_s": 2.103,
+   "cv_pct": 18.4
+  },
+  "grype|variants_V2": {
+   "n": 3,
+   "median_s": 2.094,
+   "cv_pct": 30.4
+  },
+  "grype|variants_V3": {
+   "n": 3,
+   "median_s": 1.555,
+   "cv_pct": 26.9
+  },
+  "grype|variants_V4": {
+   "n": 3,
+   "median_s": 2.014,
+   "cv_pct": 19.3
+  },
+  "grype|variants_V5": {
+   "n": 3,
+   "median_s": 1.972,
+   "cv_pct": 17.7
+  },
+  "grype|variants_V6": {
+   "n": 3,
+   "median_s": 2.329,
+   "cv_pct": 4.5
+  },
+  "grype|variants_V7": {
+   "n": 3,
+   "median_s": 2.267,
+   "cv_pct": 19.5
+  },
+  "grype|variants_V8": {
+   "n": 3,
+   "median_s": 1.753,
+   "cv_pct": 26.6
+  },
+  "grype|vscode": {
+   "n": 3,
+   "median_s": 1.526,
+   "cv_pct": 5.7
+  },
+  "syft|ALL": {
+   "n": 3,
+   "median_s": 3.26,
+   "cv_pct": 45.6
+  },
+  "syft|controls-npm": {
+   "n": 3,
+   "median_s": 1.229,
+   "cv_pct": 8.9
+  },
+  "syft|controls-pip": {
+   "n": 3,
+   "median_s": 1.242,
+   "cv_pct": 17.1
+  },
+  "syft|mcp-npm": {
+   "n": 3,
+   "median_s": 1.329,
+   "cv_pct": 29.9
+  },
+  "syft|mcp-pip": {
+   "n": 3,
+   "median_s": 2.309,
+   "cv_pct": 30.6
+  },
+  "syft|models-gguf": {
+   "n": 3,
+   "median_s": 2.864,
+   "cv_pct": 24.6
+  },
+  "syft|models-hf": {
+   "n": 3,
+   "median_s": 1.384,
+   "cv_pct": 60.1
+  },
+  "syft|ollama-store": {
+   "n": 3,
+   "median_s": 1.155,
+   "cv_pct": 64.6
+  },
+  "syft|variants_V1": {
+   "n": 3,
+   "median_s": 1.364,
+   "cv_pct": 37.6
+  },
+  "syft|variants_V2": {
+   "n": 3,
+   "median_s": 3.335,
+   "cv_pct": 18.2
+  },
+  "syft|variants_V3": {
+   "n": 3,
+   "median_s": 2.113,
+   "cv_pct": 34.3
+  },
+  "syft|variants_V4": {
+   "n": 3,
+   "median_s": 2.547,
+   "cv_pct": 28.3
+  },
+  "syft|variants_V5": {
+   "n": 3,
+   "median_s": 1.884,
+   "cv_pct": 40.4
+  },
+  "syft|variants_V6": {
+   "n": 3,
+   "median_s": 1.978,
+   "cv_pct": 21.9
+  },
+  "syft|variants_V7": {
+   "n": 3,
+   "median_s": 2.379,
+   "cv_pct": 12.6
+  },
+  "syft|variants_V8": {
+   "n": 3,
+   "median_s": 1.099,
+   "cv_pct": 70.3
+  },
+  "syft|vscode": {
+   "n": 3,
+   "median_s": 1.319,
+   "cv_pct": 18.9
+  },
+  "trivy-fs|ALL": {
+   "n": 3,
+   "median_s": 0.451,
+   "cv_pct": 30.2
+  },
+  "trivy-fs|controls-npm": {
+   "n": 3,
+   "median_s": 0.104,
+   "cv_pct": 7.7
+  },
+  "trivy-fs|controls-pip": {
+   "n": 3,
+   "median_s": 0.132,
+   "cv_pct": 45.1
+  },
+  "trivy-fs|mcp-npm": {
+   "n": 3,
+   "median_s": 0.135,
+   "cv_pct": 29.7
+  },
+  "trivy-fs|mcp-pip": {
+   "n": 3,
+   "median_s": 0.154,
+   "cv_pct": 9.7
+  },
+  "trivy-fs|models-gguf": {
+   "n": 3,
+   "median_s": 0.113,
+   "cv_pct": 30.2
+  },
+  "trivy-fs|models-hf": {
+   "n": 3,
+   "median_s": 0.105,
+   "cv_pct": 34.5
+  },
+  "trivy-fs|ollama-store": {
+   "n": 3,
+   "median_s": 0.092,
+   "cv_pct": 81.3
+  },
+  "trivy-fs|variants_V1": {
+   "n": 3,
+   "median_s": 0.12,
+   "cv_pct": 18.9
+  },
+  "trivy-fs|variants_V2": {
+   "n": 3,
+   "median_s": 0.107,
+   "cv_pct": 51.0
+  },
+  "trivy-fs|variants_V3": {
+   "n": 3,
+   "median_s": 0.108,
+   "cv_pct": 40.6
+  },
+  "trivy-fs|variants_V4": {
+   "n": 3,
+   "median_s": 0.103,
+   "cv_pct": 44.5
+  },
+  "trivy-fs|variants_V5": {
+   "n": 3,
+   "median_s": 0.191,
+   "cv_pct": 45.9
+  },
+  "trivy-fs|variants_V6": {
+   "n": 3,
+   "median_s": 0.166,
+   "cv_pct": 51.9
+  },
+  "trivy-fs|variants_V7": {
+   "n": 3,
+   "median_s": 0.191,
+   "cv_pct": 23.1
+  },
+  "trivy-fs|variants_V8": {
+   "n": 3,
+   "median_s": 0.096,
+   "cv_pct": 76.2
+  },
+  "trivy-fs|vscode": {
+   "n": 3,
+   "median_s": 0.107,
+   "cv_pct": 16.0
+  },
+  "trivy-fs-cdx|ALL": {
+   "n": 3,
+   "median_s": 0.357,
+   "cv_pct": 33.3
+  },
+  "trivy-fs-cdx|controls-npm": {
+   "n": 3,
+   "median_s": 0.104,
+   "cv_pct": 2.7
+  },
+  "trivy-fs-cdx|controls-pip": {
+   "n": 3,
+   "median_s": 0.118,
+   "cv_pct": 73.5
+  },
+  "trivy-fs-cdx|mcp-npm": {
+   "n": 3,
+   "median_s": 0.147,
+   "cv_pct": 46.4
+  },
+  "trivy-fs-cdx|mcp-pip": {
+   "n": 3,
+   "median_s": 0.151,
+   "cv_pct": 12.9
+  },
+  "trivy-fs-cdx|models-gguf": {
+   "n": 3,
+   "median_s": 0.133,
+   "cv_pct": 26.2
+  },
+  "trivy-fs-cdx|models-hf": {
+   "n": 3,
+   "median_s": 0.167,
+   "cv_pct": 31.8
+  },
+  "trivy-fs-cdx|ollama-store": {
+   "n": 3,
+   "median_s": 0.094,
+   "cv_pct": 81.6
+  },
+  "trivy-fs-cdx|variants_V1": {
+   "n": 3,
+   "median_s": 0.127,
+   "cv_pct": 26.6
+  },
+  "trivy-fs-cdx|variants_V2": {
+   "n": 3,
+   "median_s": 0.112,
+   "cv_pct": 26.5
+  },
+  "trivy-fs-cdx|variants_V3": {
+   "n": 3,
+   "median_s": 0.105,
+   "cv_pct": 36.9
+  },
+  "trivy-fs-cdx|variants_V4": {
+   "n": 3,
+   "median_s": 0.098,
+   "cv_pct": 46.1
+  },
+  "trivy-fs-cdx|variants_V5": {
+   "n": 3,
+   "median_s": 0.14,
+   "cv_pct": 51.7
+  },
+  "trivy-fs-cdx|variants_V6": {
+   "n": 3,
+   "median_s": 0.197,
+   "cv_pct": 50.3
+  },
+  "trivy-fs-cdx|variants_V7": {
+   "n": 3,
+   "median_s": 0.206,
+   "cv_pct": 24.5
+  },
+  "trivy-fs-cdx|variants_V8": {
+   "n": 3,
+   "median_s": 0.097,
+   "cv_pct": 75.9
+  },
+  "trivy-fs-cdx|vscode": {
+   "n": 3,
+   "median_s": 0.097,
+   "cv_pct": 9.5
+  },
+  "trivy-rootfs|ALL": {
+   "n": 3,
+   "median_s": 0.504,
+   "cv_pct": 30.8
+  },
+  "trivy-rootfs|controls-npm": {
+   "n": 3,
+   "median_s": 0.105,
+   "cv_pct": 5.5
+  },
+  "trivy-rootfs|controls-pip": {
+   "n": 3,
+   "median_s": 0.118,
+   "cv_pct": 55.1
+  },
+  "trivy-rootfs|mcp-npm": {
+   "n": 3,
+   "median_s": 0.129,
+   "cv_pct": 56.7
+  },
+  "trivy-rootfs|mcp-pip": {
+   "n": 3,
+   "median_s": 0.223,
+   "cv_pct": 48.5
+  },
+  "trivy-rootfs|models-gguf": {
+   "n": 3,
+   "median_s": 0.114,
+   "cv_pct": 27.8
+  },
+  "trivy-rootfs|models-hf": {
+   "n": 3,
+   "median_s": 0.188,
+   "cv_pct": 44.7
+  },
+  "trivy-rootfs|ollama-store": {
+   "n": 3,
+   "median_s": 0.094,
+   "cv_pct": 83.6
+  },
+  "trivy-rootfs|variants_V1": {
+   "n": 3,
+   "median_s": 0.12,
+   "cv_pct": 14.8
+  },
+  "trivy-rootfs|variants_V2": {
+   "n": 3,
+   "median_s": 0.104,
+   "cv_pct": 42.1
+  },
+  "trivy-rootfs|variants_V3": {
+   "n": 3,
+   "median_s": 0.111,
+   "cv_pct": 43.5
+  },
+  "trivy-rootfs|variants_V4": {
+   "n": 3,
+   "median_s": 0.096,
+   "cv_pct": 38.5
+  },
+  "trivy-rootfs|variants_V5": {
+   "n": 3,
+   "median_s": 0.142,
+   "cv_pct": 45.4
+  },
+  "trivy-rootfs|variants_V6": {
+   "n": 3,
+   "median_s": 0.179,
+   "cv_pct": 50.6
+  },
+  "trivy-rootfs|variants_V7": {
+   "n": 3,
+   "median_s": 0.269,
+   "cv_pct": 22.2
+  },
+  "trivy-rootfs|variants_V8": {
+   "n": 3,
+   "median_s": 0.095,
+   "cv_pct": 74.7
+  },
+  "trivy-rootfs|vscode": {
+   "n": 3,
+   "median_s": 0.101,
+   "cv_pct": 10.4
+  }
+ },
+ "failures": {}
+}

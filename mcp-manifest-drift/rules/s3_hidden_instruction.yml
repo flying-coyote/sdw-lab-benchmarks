@@ -1,0 +1,27 @@
+title: MCP tool description gained hidden-instruction markers
+id: 7d0f6b2e-5b1a-4a0e-9a51-0b3f2a6c0003
+status: experimental
+description: Body-aware. Text added to a tool description contains prompt-injection markers or zero-width characters.
+logsource: {product: mcp, category: application_lifecycle}
+detection:
+  sel:
+    class_uid: 6002
+  kw:
+    unmapped.desc_added_text|contains:
+      - '<IMPORTANT>'
+      - '</IMPORTANT>'
+      - 'do not mention'
+      - 'do not tell'
+      - 'ignore previous'
+      - 'ignore all previous'
+      - '~/.ssh'
+      - 'id_rsa'
+      - '.aws/credentials'
+      - 'mcp.json'
+      - '.env'
+      - 'before using this tool'
+      - 'otherwise the tool will not work'
+  zw:
+    unmapped.desc_added_text|re: "[​-‏⁠﻿]"
+  condition: sel and (kw or zw)
+level: high

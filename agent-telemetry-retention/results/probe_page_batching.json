@@ -1,0 +1,290 @@
+[
+ {
+  "corpus": "coding-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1,
+  "zstd_level": 1,
+  "file_bytes": 15259818,
+  "bytes_per_mtok": 303234.119880886
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1,
+  "zstd_level": 3,
+  "file_bytes": 11096431,
+  "bytes_per_mtok": 220501.74439196978
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1,
+  "zstd_level": 19,
+  "file_bytes": 9671397,
+  "bytes_per_mtok": 192184.30765777425
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1024,
+  "zstd_level": 1,
+  "file_bytes": 8202232,
+  "bytes_per_mtok": 162989.92567138345
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1024,
+  "zstd_level": 3,
+  "file_bytes": 2487862,
+  "bytes_per_mtok": 49437.32906611997
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1024,
+  "zstd_level": 19,
+  "file_bytes": 1746831,
+  "bytes_per_mtok": 34711.99727713974
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 20000,
+  "zstd_level": 1,
+  "file_bytes": 8265249,
+  "bytes_per_mtok": 164242.16239743965
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 20000,
+  "zstd_level": 3,
+  "file_bytes": 2440334,
+  "bytes_per_mtok": 48492.88062972979
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 20000,
+  "zstd_level": 19,
+  "file_bytes": 1689351,
+  "bytes_per_mtok": 33569.78855546604
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "random",
+  "write_batch_size": 1,
+  "zstd_level": 1,
+  "file_bytes": 44793932,
+  "bytes_per_mtok": 890118.6466328927
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "random",
+  "write_batch_size": 1,
+  "zstd_level": 3,
+  "file_bytes": 36347002,
+  "bytes_per_mtok": 722266.2263585845
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "random",
+  "write_batch_size": 1,
+  "zstd_level": 19,
+  "file_bytes": 30607093,
+  "bytes_per_mtok": 608206.1337800638
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "random",
+  "write_batch_size": 1024,
+  "zstd_level": 1,
+  "file_bytes": 43150373,
+  "bytes_per_mtok": 857458.8097437955
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "random",
+  "write_batch_size": 1024,
+  "zstd_level": 3,
+  "file_bytes": 24571504,
+  "bytes_per_mtok": 488270.46230758907
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "random",
+  "write_batch_size": 1024,
+  "zstd_level": 19,
+  "file_bytes": 6165696,
+  "bytes_per_mtok": 122521.0811828227
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "random",
+  "write_batch_size": 20000,
+  "zstd_level": 1,
+  "file_bytes": 43142610,
+  "bytes_per_mtok": 857304.5479778533
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "random",
+  "write_batch_size": 20000,
+  "zstd_level": 3,
+  "file_bytes": 24435790,
+  "bytes_per_mtok": 485573.6335940675
+ },
+ {
+  "corpus": "coding-real-s0",
+  "order": "random",
+  "write_batch_size": 20000,
+  "zstd_level": 19,
+  "file_bytes": 5815624,
+  "bytes_per_mtok": 115564.65648529738
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1,
+  "zstd_level": 1,
+  "file_bytes": 9826298,
+  "bytes_per_mtok": 423139.28999156505
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1,
+  "zstd_level": 3,
+  "file_bytes": 8514828,
+  "bytes_per_mtok": 366664.869549071
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1,
+  "zstd_level": 19,
+  "file_bytes": 7451297,
+  "bytes_per_mtok": 320867.1792872838
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1024,
+  "zstd_level": 1,
+  "file_bytes": 8979855,
+  "bytes_per_mtok": 386689.8265172912
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1024,
+  "zstd_level": 3,
+  "file_bytes": 6991888,
+  "bytes_per_mtok": 301084.1442037015
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 1024,
+  "zstd_level": 19,
+  "file_bytes": 5157334,
+  "bytes_per_mtok": 222084.72071672956
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 20000,
+  "zstd_level": 1,
+  "file_bytes": 8626750,
+  "bytes_per_mtok": 371484.4461194576
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 20000,
+  "zstd_level": 3,
+  "file_bytes": 6384858,
+  "bytes_per_mtok": 274944.26495277917
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "session_sorted",
+  "write_batch_size": 20000,
+  "zstd_level": 19,
+  "file_bytes": 3638031,
+  "bytes_per_mtok": 156660.61158610324
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "random",
+  "write_batch_size": 1,
+  "zstd_level": 1,
+  "file_bytes": 31613604,
+  "bytes_per_mtok": 1361342.5880870395
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "random",
+  "write_batch_size": 1,
+  "zstd_level": 3,
+  "file_bytes": 23865144,
+  "bytes_per_mtok": 1027678.9985105741
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "random",
+  "write_batch_size": 1,
+  "zstd_level": 19,
+  "file_bytes": 20173878,
+  "bytes_per_mtok": 868725.9854419695
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "random",
+  "write_batch_size": 1024,
+  "zstd_level": 1,
+  "file_bytes": 30816371,
+  "bytes_per_mtok": 1327012.2018543154
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "random",
+  "write_batch_size": 1024,
+  "zstd_level": 3,
+  "file_bytes": 16594310,
+  "bytes_per_mtok": 714582.9030729504
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "random",
+  "write_batch_size": 1024,
+  "zstd_level": 19,
+  "file_bytes": 7831426,
+  "bytes_per_mtok": 337236.2650981562
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "random",
+  "write_batch_size": 20000,
+  "zstd_level": 1,
+  "file_bytes": 30438003,
+  "bytes_per_mtok": 1310718.9480902294
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "random",
+  "write_batch_size": 20000,
+  "zstd_level": 3,
+  "file_bytes": 15562737,
+  "bytes_per_mtok": 670161.3857533588
+ },
+ {
+  "corpus": "chat-real-s0",
+  "order": "random",
+  "write_batch_size": 20000,
+  "zstd_level": 19,
+  "file_bytes": 4641483,
+  "bytes_per_mtok": 199871.18456288616
+ }
+]

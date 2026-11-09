@@ -1,0 +1,6 @@
+duckdb==1.5.3
+chdb==4.4.0
+chdb-core==26.9.0
+pyarrow==23.0.1
+numpy==2.5.4
+pandas==3.1.1

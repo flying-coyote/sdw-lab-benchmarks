@@ -1,0 +1,33 @@
+{
+ "bytes": 47446267,
+ "queries": {
+  "Q1_tool_by_agent": {
+   "answers_equal_L1": true,
+   "median_ms": 255.02,
+   "cv_pct": 17.6,
+   "min_ms": 219.371,
+   "max_ms": 383.793
+  },
+  "Q3_tool_breadth_errors": {
+   "answers_equal_L1": true,
+   "median_ms": 747.15,
+   "cv_pct": 48.0,
+   "min_ms": 212.446,
+   "max_ms": 1199.077
+  },
+  "Q4_failure_bursts": {
+   "answers_equal_L1": true,
+   "median_ms": 731.75,
+   "cv_pct": 15.7,
+   "min_ms": 588.616,
+   "max_ms": 954.488
+  },
+  "Q5_off_allowlist": {
+   "answers_equal_L1": true,
+   "median_ms": 775.46,
+   "cv_pct": 11.2,
+   "min_ms": 583.291,
+   "max_ms": 979.641
+  }
+ }
+}

@@ -1,0 +1,11 @@
+.venv*/
+data/
+tools/
+scratch/
+fixtures/**/*.gguf
+fixtures/**/*.safetensors
+fixtures/**/*.bin
+cache/
+fixtures/
+corpus/
+*.sqlite

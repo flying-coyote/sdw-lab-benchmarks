@@ -1,0 +1,2148 @@
+{
+ "n_calls": 10,
+ "n_facts": 33,
+ "negotiated_protocol_version": "2025-11-25",
+ "counts": {
+  "ocsf_main": {
+   "UNMAPPED": 3,
+   "TYPED": 24,
+   "BLOB": 3,
+   "HASHED": 3
+  },
+  "ocsf_1754_draft": {
+   "UNMAPPED": 5,
+   "TYPED": 22,
+   "BLOB": 3,
+   "HASHED": 3
+  },
+  "otel_genai_mcp": {
+   "TYPED": 19,
+   "BLOB": 3,
+   "UNMAPPED": 11
+  },
+  "aos": {
+   "UNMAPPED": 22,
+   "TYPED": 11
+  },
+  "aos_example1": {
+   "UNMAPPED": 25,
+   "TYPED": 8
+  }
+ },
+ "facts": [
+  {
+   "fact": "jsonrpc_version",
+   "group": "protocol",
+   "ocsf_main": {
+    "path": "unmapped.jsonrpc",
+    "class": "UNMAPPED",
+    "note": "no OCSF attribute for the JSON-RPC envelope version"
+   },
+   "ocsf_1754_draft": {
+    "path": "unmapped.jsonrpc",
+    "class": "UNMAPPED",
+    "note": "no OCSF attribute for the JSON-RPC envelope version"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.jsonrpc.protocol.version",
+    "class": "TYPED",
+    "note": "recommended only when not 2.0"
+   },
+   "aos": {
+    "path": "unmapped.sdw.jsonrpc",
+    "class": "UNMAPPED",
+    "note": "not in the AOS example"
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.jsonrpc",
+    "class": "UNMAPPED",
+    "note": "not in the AOS example"
+   }
+  },
+  {
+   "fact": "request_id",
+   "group": "protocol",
+   "ocsf_main": {
+    "path": "ai_capability.transaction_uid",
+    "class": "TYPED",
+    "note": "also api.request.uid"
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.transaction_uid",
+    "class": "TYPED",
+    "note": "also api.request.uid"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.jsonrpc.request.id",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "metadata.correlation_uid",
+    "class": "TYPED",
+    "note": "example uses correlation_uid = tool execution id"
+   },
+   "aos_example1": {
+    "path": "unmapped.aos.step.id",
+    "class": "UNMAPPED",
+    "note": "example 1 has no correlation_uid"
+   }
+  },
+  {
+   "fact": "method",
+   "group": "protocol",
+   "ocsf_main": {
+    "path": "api.operation",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "unmapped.mcp.method",
+    "class": "UNMAPPED",
+    "note": "no api object on ai_agent_activity; activity_id Tool Use implies it"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.mcp.method.name",
+    "class": "TYPED",
+    "note": "enum"
+   },
+   "aos": {
+    "path": "unmapped.aos.step.type",
+    "class": "UNMAPPED",
+    "note": "example: step.type 'toolCall'; api.operation holds the tool name"
+   },
+   "aos_example1": {
+    "path": "api.operation",
+    "class": "TYPED",
+    "note": "example 1: api.operation = 'tools/call'"
+   }
+  },
+  {
+   "fact": "protocol_version",
+   "group": "protocol",
+   "ocsf_main": {
+    "path": "api.version",
+    "class": "TYPED",
+    "note": "api.version = 'version of the API service'; judgment call"
+   },
+   "ocsf_1754_draft": {
+    "path": "unmapped.mcp.protocol_version",
+    "class": "UNMAPPED",
+    "note": "no api object"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.mcp.protocol.version",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "unmapped.sdw.mcp_protocol_version",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.mcp_protocol_version",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "transport",
+   "group": "protocol",
+   "ocsf_main": {
+    "path": "ai_capability.transport_id",
+    "class": "TYPED",
+    "note": "enum 1 = stdio"
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.transport_id",
+    "class": "TYPED",
+    "note": "enum 1 = stdio"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.network.transport",
+    "class": "TYPED",
+    "note": "'pipe' for stdio per mcp/common.yaml"
+   },
+   "aos": {
+    "path": "unmapped.sdw.transport",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.transport",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "primitive_kind",
+   "group": "protocol",
+   "ocsf_main": {
+    "path": "ai_capability.type_id",
+    "class": "TYPED",
+    "note": "enum 1 = Tool"
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.type_id",
+    "class": "TYPED",
+    "note": "enum 1 = Tool"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.operation.name",
+    "class": "TYPED",
+    "note": "execute_tool"
+   },
+   "aos": {
+    "path": "unmapped.aos.step.operation.type",
+    "class": "UNMAPPED",
+    "note": "'tool_execution'"
+   },
+   "aos_example1": {
+    "path": "unmapped.aos.step.type",
+    "class": "UNMAPPED",
+    "note": "'toolCall'"
+   }
+  },
+  {
+   "fact": "tool_name",
+   "group": "tool",
+   "ocsf_main": {
+    "path": "ai_capability.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_agent_tool_use_info.name",
+    "class": "TYPED",
+    "note": "also ai_capability.name via profile"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.tool.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "api.operation",
+    "class": "TYPED",
+    "note": "example 2 puts the tool name in api.operation (example 1 puts 'tools/call')"
+   },
+   "aos_example1": {
+    "path": "unmapped.aos.tool_call.name",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "arguments",
+   "group": "payload",
+   "ocsf_main": {
+    "path": "api.request.data",
+    "class": "BLOB",
+    "note": "json_t"
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_agent_tool_use_info.ai_tool_input",
+    "class": "BLOB",
+    "note": "json_t"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.tool.call.arguments",
+    "class": "BLOB",
+    "note": "type any, opt-in"
+   },
+   "aos": {
+    "path": "unmapped.aos.step.operation.tool.inputs",
+    "class": "UNMAPPED",
+    "note": "list of {name, value}"
+   },
+   "aos_example1": {
+    "path": "unmapped.aos.tool_call.arguments",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "result_content",
+   "group": "payload",
+   "ocsf_main": {
+    "path": "api.response.data.content",
+    "class": "BLOB",
+    "note": "json_t"
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_agent_tool_use_info.ai_tool_response.content",
+    "class": "BLOB",
+    "note": "json_t"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.tool.call.result.content",
+    "class": "BLOB",
+    "note": "type any, opt-in"
+   },
+   "aos": {
+    "path": "unmapped.aos.step.operation.tool.outputs",
+    "class": "UNMAPPED",
+    "note": "list of {kind, text}"
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.result_content",
+    "class": "UNMAPPED",
+    "note": "example 1 has no output slot"
+   }
+  },
+  {
+   "fact": "structured_content",
+   "group": "payload",
+   "ocsf_main": {
+    "path": "api.response.data.structuredContent",
+    "class": "BLOB",
+    "note": "json_t"
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_agent_tool_use_info.ai_tool_response.structuredContent",
+    "class": "BLOB",
+    "note": "json_t"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.tool.call.result.structuredContent",
+    "class": "BLOB",
+    "note": "type any, opt-in"
+   },
+   "aos": {
+    "path": "unmapped.sdw.structured_content",
+    "class": "UNMAPPED",
+    "note": "no AOS slot"
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.structured_content",
+    "class": "UNMAPPED",
+    "note": "no AOS slot"
+   }
+  },
+  {
+   "fact": "is_error",
+   "group": "outcome",
+   "ocsf_main": {
+    "path": "status_id",
+    "class": "TYPED",
+    "note": "2 Failure / 1 Success"
+   },
+   "ocsf_1754_draft": {
+    "path": "status_id",
+    "class": "TYPED",
+    "note": "2 Failure / 1 Success"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.error.type",
+    "class": "TYPED",
+    "note": "'tool_error' when isError, plus span status ERROR"
+   },
+   "aos": {
+    "path": "status_id",
+    "class": "TYPED",
+    "note": "also unmapped.aos.step.operation.tool.is_error"
+   },
+   "aos_example1": {
+    "path": "status_id",
+    "class": "TYPED",
+    "note": "also unmapped.aos.step.operation.tool.is_error"
+   }
+  },
+  {
+   "fact": "error_text",
+   "group": "outcome",
+   "ocsf_main": {
+    "path": "api.response.error_message",
+    "class": "TYPED",
+    "note": "string"
+   },
+   "ocsf_1754_draft": {
+    "path": "status_detail",
+    "class": "TYPED",
+    "note": "base-event string"
+   },
+   "otel_genai_mcp": {
+    "path": "status.description",
+    "class": "TYPED",
+    "note": "span status description"
+   },
+   "aos": {
+    "path": "api.response.message",
+    "class": "TYPED",
+    "note": "example puts tool output text in api.response.message"
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.error_text",
+    "class": "UNMAPPED",
+    "note": "example 1 has no response"
+   }
+  },
+  {
+   "fact": "server_name",
+   "group": "server",
+   "ocsf_main": {
+    "path": "ai_capability.service.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.service.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.server.name",
+    "class": "UNMAPPED",
+    "note": "no MCP server-name attribute; server.service.name is defined for network connections"
+   },
+   "aos": {
+    "path": "api.service.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "api.service.name",
+    "class": "TYPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "server_version",
+   "group": "server",
+   "ocsf_main": {
+    "path": "ai_capability.service.version",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.service.version",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.server.version",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "api.service.version",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "api.service.version",
+    "class": "TYPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "server_instructions",
+   "group": "server",
+   "ocsf_main": {
+    "path": "unmapped.mcp.server_instructions",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "unmapped.mcp.server_instructions",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.server.instructions",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "unmapped.sdw.server_instructions",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.server_instructions",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "server_capabilities",
+   "group": "server",
+   "ocsf_main": {
+    "path": "unmapped.mcp.server_capabilities",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "unmapped.mcp.server_capabilities",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.server.capabilities",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "unmapped.sdw.server_capabilities",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.server_capabilities",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "client_name",
+   "group": "client",
+   "ocsf_main": {
+    "path": "message_context.application.name",
+    "class": "TYPED",
+    "note": "message_context.application = initiating client"
+   },
+   "ocsf_1754_draft": {
+    "path": "message_context.application.name",
+    "class": "TYPED",
+    "note": "message_context.application = initiating client"
+   },
+   "otel_genai_mcp": {
+    "path": "resource.service.name",
+    "class": "TYPED",
+    "note": "the instrumented client's own resource"
+   },
+   "aos": {
+    "path": "unmapped.sdw.client_name",
+    "class": "UNMAPPED",
+    "note": "no slot in the example"
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.client_name",
+    "class": "UNMAPPED",
+    "note": "no slot in the example"
+   }
+  },
+  {
+   "fact": "client_version",
+   "group": "client",
+   "ocsf_main": {
+    "path": "message_context.application.version",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "message_context.application.version",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "resource.service.version",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "unmapped.sdw.client_version",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.client_version",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "tool_description",
+   "group": "advert",
+   "ocsf_main": {
+    "path": "ai_capability.desc_fingerprint",
+    "class": "HASHED",
+    "note": "fingerprint only; text not carried"
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.desc_fingerprint",
+    "class": "HASHED",
+    "note": "fingerprint only; text not carried"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.tool.description",
+    "class": "TYPED",
+    "note": "free-text string attribute"
+   },
+   "aos": {
+    "path": "unmapped.sdw.tool_description",
+    "class": "UNMAPPED",
+    "note": "tool definitions live in AOS AgBOM, not the trace event"
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.tool_description",
+    "class": "UNMAPPED",
+    "note": "tool definitions live in AOS AgBOM, not the trace event"
+   }
+  },
+  {
+   "fact": "tool_input_schema",
+   "group": "advert",
+   "ocsf_main": {
+    "path": "ai_capability.input_schema_fingerprint",
+    "class": "HASHED",
+    "note": "fingerprint only"
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.input_schema_fingerprint",
+    "class": "HASHED",
+    "note": "fingerprint only"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.tool.input_schema",
+    "class": "UNMAPPED",
+    "note": "gen_ai.tool.definitions (any) is defined for inference spans, not execute_tool"
+   },
+   "aos": {
+    "path": "unmapped.sdw.tool_input_schema",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.tool_input_schema",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "tool_output_schema",
+   "group": "advert",
+   "ocsf_main": {
+    "path": "ai_capability.output_schema_fingerprint",
+    "class": "HASHED",
+    "note": "fingerprint only"
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.output_schema_fingerprint",
+    "class": "HASHED",
+    "note": "fingerprint only"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.tool.output_schema",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "unmapped.sdw.tool_output_schema",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.tool_output_schema",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "ann_read_only",
+   "group": "advert",
+   "ocsf_main": {
+    "path": "ai_capability.is_readonly",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.is_readonly",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.tool.annotations.readOnlyHint",
+    "class": "UNMAPPED",
+    "note": "no annotation attributes"
+   },
+   "aos": {
+    "path": "unmapped.sdw.annotations.readOnlyHint",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.annotations.readOnlyHint",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "ann_destructive",
+   "group": "advert",
+   "ocsf_main": {
+    "path": "ai_capability.is_destructive",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.is_destructive",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.tool.annotations.destructiveHint",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "unmapped.sdw.annotations.destructiveHint",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.annotations.destructiveHint",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "ann_idempotent",
+   "group": "advert",
+   "ocsf_main": {
+    "path": "ai_capability.is_idempotent",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.is_idempotent",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.tool.annotations.idempotentHint",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "unmapped.sdw.annotations.idempotentHint",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.annotations.idempotentHint",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "ann_open_world",
+   "group": "advert",
+   "ocsf_main": {
+    "path": "ai_capability.is_open_world",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_capability.is_open_world",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.mcp.tool.annotations.openWorldHint",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "unmapped.sdw.annotations.openWorldHint",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.annotations.openWorldHint",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "start_time_ns",
+   "group": "timing",
+   "ocsf_main": {
+    "path": "start_time",
+    "class": "TYPED",
+    "note": "timestamp_t (ms); proxy monotonic clock, not wall time"
+   },
+   "ocsf_1754_draft": {
+    "path": "start_time",
+    "class": "TYPED",
+    "note": "timestamp_t (ms); proxy monotonic clock, not wall time"
+   },
+   "otel_genai_mcp": {
+    "path": "start_time_unix_nano",
+    "class": "TYPED",
+    "note": "span field; proxy monotonic clock here"
+   },
+   "aos": {
+    "path": "time",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "time",
+    "class": "TYPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "duration_ns",
+   "group": "timing",
+   "ocsf_main": {
+    "path": "duration",
+    "class": "TYPED",
+    "note": "long_t ms"
+   },
+   "ocsf_1754_draft": {
+    "path": "duration",
+    "class": "TYPED",
+    "note": "long_t ms"
+   },
+   "otel_genai_mcp": {
+    "path": "duration_ns",
+    "class": "TYPED",
+    "note": "end - start"
+   },
+   "aos": {
+    "path": "duration",
+    "class": "TYPED",
+    "note": "base OCSF; not shown in the AOS example"
+   },
+   "aos_example1": {
+    "path": "duration",
+    "class": "TYPED",
+    "note": "base OCSF; not shown in the AOS example"
+   }
+  },
+  {
+   "fact": "agent_uid",
+   "group": "context",
+   "ocsf_main": {
+    "path": "ai_agent.uid",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_agent.uid",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.agent.id",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "actor.user.uid",
+    "class": "TYPED",
+    "note": "agent as user, type_id 99 'AI Agent' (semantic stretch AOS documents)"
+   },
+   "aos_example1": {
+    "path": "actor.user.uid",
+    "class": "TYPED",
+    "note": "agent as user, type_id 99 'AI Agent' (semantic stretch AOS documents)"
+   }
+  },
+  {
+   "fact": "agent_name",
+   "group": "context",
+   "ocsf_main": {
+    "path": "ai_agent.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_agent.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.agent.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "actor.user.name",
+    "class": "TYPED",
+    "note": "same stretch"
+   },
+   "aos_example1": {
+    "path": "actor.user.name",
+    "class": "TYPED",
+    "note": "same stretch"
+   }
+  },
+  {
+   "fact": "agent_instance",
+   "group": "context",
+   "ocsf_main": {
+    "path": "ai_agent.instance_uid",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_agent.instance_uid",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.sdw.agent.instance_id",
+    "class": "UNMAPPED",
+    "note": "no instance attribute (service.instance.id is the process)"
+   },
+   "aos": {
+    "path": "unmapped.sdw.agent_instance",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.sdw.agent_instance",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "model_name",
+   "group": "context",
+   "ocsf_main": {
+    "path": "ai_agent.ai_model.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_agent.ai_model.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.request.model",
+    "class": "TYPED",
+    "note": "normally on the parent inference span"
+   },
+   "aos": {
+    "path": "unmapped.aos.context.model.id",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.aos.context.model.id",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "model_provider",
+   "group": "context",
+   "ocsf_main": {
+    "path": "ai_agent.ai_model.ai_provider",
+    "class": "TYPED",
+    "note": ""
+   },
+   "ocsf_1754_draft": {
+    "path": "ai_agent.ai_model.ai_provider",
+    "class": "TYPED",
+    "note": ""
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.provider.name",
+    "class": "TYPED",
+    "note": ""
+   },
+   "aos": {
+    "path": "unmapped.aos.context.model.provider.name",
+    "class": "UNMAPPED",
+    "note": ""
+   },
+   "aos_example1": {
+    "path": "unmapped.aos.context.model.provider.name",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  },
+  {
+   "fact": "session_uid",
+   "group": "context",
+   "ocsf_main": {
+    "path": "actor.session.uid",
+    "class": "TYPED",
+    "note": "or message_context.uid"
+   },
+   "ocsf_1754_draft": {
+    "path": "actor.session.uid",
+    "class": "TYPED",
+    "note": "or message_context.uid"
+   },
+   "otel_genai_mcp": {
+    "path": "attributes.gen_ai.conversation.id",
+    "class": "TYPED",
+    "note": "mcp.session.id exists but stdio has no MCP session id"
+   },
+   "aos": {
+    "path": "actor.session.uid",
+    "class": "TYPED",
+    "note": "example 2 uses actor.session.uid"
+   },
+   "aos_example1": {
+    "path": "unmapped.aos.context.session.id",
+    "class": "UNMAPPED",
+    "note": ""
+   }
+  }
+ ],
+ "checks": [
+  {
+   "schema": "ocsf_main",
+   "fact": "jsonrpc_version",
+   "path": "unmapped.jsonrpc",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "request_id",
+   "path": "ai_capability.transaction_uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "method",
+   "path": "api.operation",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "protocol_version",
+   "path": "api.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "transport",
+   "path": "ai_capability.transport_id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "primitive_kind",
+   "path": "ai_capability.type_id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "tool_name",
+   "path": "ai_capability.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "arguments",
+   "path": "api.request.data",
+   "class": "BLOB",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "result_content",
+   "path": "api.response.data.content",
+   "class": "BLOB",
+   "check": "ok:json"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "structured_content",
+   "path": "api.response.data.structuredContent",
+   "class": "BLOB",
+   "check": "ok:json"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "is_error",
+   "path": "status_id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "error_text",
+   "path": "api.response.error_message",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "server_name",
+   "path": "ai_capability.service.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "server_version",
+   "path": "ai_capability.service.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "server_instructions",
+   "path": "unmapped.mcp.server_instructions",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "server_capabilities",
+   "path": "unmapped.mcp.server_capabilities",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "client_name",
+   "path": "message_context.application.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "client_version",
+   "path": "message_context.application.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "tool_description",
+   "path": "ai_capability.desc_fingerprint",
+   "class": "HASHED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "tool_input_schema",
+   "path": "ai_capability.input_schema_fingerprint",
+   "class": "HASHED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "tool_output_schema",
+   "path": "ai_capability.output_schema_fingerprint",
+   "class": "HASHED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "ann_read_only",
+   "path": "ai_capability.is_readonly",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "ann_destructive",
+   "path": "ai_capability.is_destructive",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "ann_idempotent",
+   "path": "ai_capability.is_idempotent",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "ann_open_world",
+   "path": "ai_capability.is_open_world",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "start_time_ns",
+   "path": "start_time",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "duration_ns",
+   "path": "duration",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "agent_uid",
+   "path": "ai_agent.uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "agent_name",
+   "path": "ai_agent.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "agent_instance",
+   "path": "ai_agent.instance_uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "model_name",
+   "path": "ai_agent.ai_model.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "model_provider",
+   "path": "ai_agent.ai_model.ai_provider",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_main",
+   "fact": "session_uid",
+   "path": "actor.session.uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "jsonrpc_version",
+   "path": "unmapped.jsonrpc",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "request_id",
+   "path": "ai_capability.transaction_uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "method",
+   "path": "unmapped.mcp.method",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "protocol_version",
+   "path": "unmapped.mcp.protocol_version",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "transport",
+   "path": "ai_capability.transport_id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "primitive_kind",
+   "path": "ai_capability.type_id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "tool_name",
+   "path": "ai_agent_tool_use_info.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "arguments",
+   "path": "ai_agent_tool_use_info.ai_tool_input",
+   "class": "BLOB",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "result_content",
+   "path": "ai_agent_tool_use_info.ai_tool_response.content",
+   "class": "BLOB",
+   "check": "ok:json"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "structured_content",
+   "path": "ai_agent_tool_use_info.ai_tool_response.structuredContent",
+   "class": "BLOB",
+   "check": "ok:json"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "is_error",
+   "path": "status_id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "error_text",
+   "path": "status_detail",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "server_name",
+   "path": "ai_capability.service.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "server_version",
+   "path": "ai_capability.service.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "server_instructions",
+   "path": "unmapped.mcp.server_instructions",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "server_capabilities",
+   "path": "unmapped.mcp.server_capabilities",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "client_name",
+   "path": "message_context.application.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "client_version",
+   "path": "message_context.application.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "tool_description",
+   "path": "ai_capability.desc_fingerprint",
+   "class": "HASHED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "tool_input_schema",
+   "path": "ai_capability.input_schema_fingerprint",
+   "class": "HASHED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "tool_output_schema",
+   "path": "ai_capability.output_schema_fingerprint",
+   "class": "HASHED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "ann_read_only",
+   "path": "ai_capability.is_readonly",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "ann_destructive",
+   "path": "ai_capability.is_destructive",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "ann_idempotent",
+   "path": "ai_capability.is_idempotent",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "ann_open_world",
+   "path": "ai_capability.is_open_world",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "start_time_ns",
+   "path": "start_time",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "duration_ns",
+   "path": "duration",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "agent_uid",
+   "path": "ai_agent.uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "agent_name",
+   "path": "ai_agent.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "agent_instance",
+   "path": "ai_agent.instance_uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "model_name",
+   "path": "ai_agent.ai_model.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "model_provider",
+   "path": "ai_agent.ai_model.ai_provider",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "ocsf_1754_draft",
+   "fact": "session_uid",
+   "path": "actor.session.uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "jsonrpc_version",
+   "path": "attributes.jsonrpc.protocol.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "request_id",
+   "path": "attributes.jsonrpc.request.id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "method",
+   "path": "attributes.mcp.method.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "protocol_version",
+   "path": "attributes.mcp.protocol.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "transport",
+   "path": "attributes.network.transport",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "primitive_kind",
+   "path": "attributes.gen_ai.operation.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "tool_name",
+   "path": "attributes.gen_ai.tool.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "arguments",
+   "path": "attributes.gen_ai.tool.call.arguments",
+   "class": "BLOB",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "result_content",
+   "path": "attributes.gen_ai.tool.call.result.content",
+   "class": "BLOB",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "structured_content",
+   "path": "attributes.gen_ai.tool.call.result.structuredContent",
+   "class": "BLOB",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "is_error",
+   "path": "attributes.error.type",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "error_text",
+   "path": "status.description",
+   "class": "TYPED",
+   "check": "span-field"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "server_name",
+   "path": "attributes.sdw.mcp.server.name",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "server_version",
+   "path": "attributes.sdw.mcp.server.version",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "server_instructions",
+   "path": "attributes.sdw.mcp.server.instructions",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "server_capabilities",
+   "path": "attributes.sdw.mcp.server.capabilities",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "client_name",
+   "path": "resource.service.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "client_version",
+   "path": "resource.service.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "tool_description",
+   "path": "attributes.gen_ai.tool.description",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "tool_input_schema",
+   "path": "attributes.sdw.mcp.tool.input_schema",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "tool_output_schema",
+   "path": "attributes.sdw.mcp.tool.output_schema",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "ann_read_only",
+   "path": "attributes.sdw.mcp.tool.annotations.readOnlyHint",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "ann_destructive",
+   "path": "attributes.sdw.mcp.tool.annotations.destructiveHint",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "ann_idempotent",
+   "path": "attributes.sdw.mcp.tool.annotations.idempotentHint",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "ann_open_world",
+   "path": "attributes.sdw.mcp.tool.annotations.openWorldHint",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "start_time_ns",
+   "path": "start_time_unix_nano",
+   "class": "TYPED",
+   "check": "span-field"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "duration_ns",
+   "path": "duration_ns",
+   "class": "TYPED",
+   "check": "span-field"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "agent_uid",
+   "path": "attributes.gen_ai.agent.id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "agent_name",
+   "path": "attributes.gen_ai.agent.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "agent_instance",
+   "path": "attributes.sdw.agent.instance_id",
+   "class": "UNMAPPED",
+   "check": "custom"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "model_name",
+   "path": "attributes.gen_ai.request.model",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "model_provider",
+   "path": "attributes.gen_ai.provider.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "otel_genai_mcp",
+   "fact": "session_uid",
+   "path": "attributes.gen_ai.conversation.id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "jsonrpc_version",
+   "path": "unmapped.sdw.jsonrpc",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "request_id",
+   "path": "metadata.correlation_uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "method",
+   "path": "unmapped.aos.step.type",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "protocol_version",
+   "path": "unmapped.sdw.mcp_protocol_version",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "transport",
+   "path": "unmapped.sdw.transport",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "primitive_kind",
+   "path": "unmapped.aos.step.operation.type",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "tool_name",
+   "path": "api.operation",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "arguments",
+   "path": "unmapped.aos.step.operation.tool.inputs",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "result_content",
+   "path": "unmapped.aos.step.operation.tool.outputs",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "structured_content",
+   "path": "unmapped.sdw.structured_content",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "is_error",
+   "path": "status_id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "error_text",
+   "path": "api.response.message",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "server_name",
+   "path": "api.service.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "server_version",
+   "path": "api.service.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "server_instructions",
+   "path": "unmapped.sdw.server_instructions",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "server_capabilities",
+   "path": "unmapped.sdw.server_capabilities",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "client_name",
+   "path": "unmapped.sdw.client_name",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "client_version",
+   "path": "unmapped.sdw.client_version",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "tool_description",
+   "path": "unmapped.sdw.tool_description",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "tool_input_schema",
+   "path": "unmapped.sdw.tool_input_schema",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "tool_output_schema",
+   "path": "unmapped.sdw.tool_output_schema",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "ann_read_only",
+   "path": "unmapped.sdw.annotations.readOnlyHint",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "ann_destructive",
+   "path": "unmapped.sdw.annotations.destructiveHint",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "ann_idempotent",
+   "path": "unmapped.sdw.annotations.idempotentHint",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "ann_open_world",
+   "path": "unmapped.sdw.annotations.openWorldHint",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "start_time_ns",
+   "path": "time",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "duration_ns",
+   "path": "duration",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "agent_uid",
+   "path": "actor.user.uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "agent_name",
+   "path": "actor.user.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos",
+   "fact": "agent_instance",
+   "path": "unmapped.sdw.agent_instance",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "model_name",
+   "path": "unmapped.aos.context.model.id",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "model_provider",
+   "path": "unmapped.aos.context.model.provider.name",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos",
+   "fact": "session_uid",
+   "path": "actor.session.uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "jsonrpc_version",
+   "path": "unmapped.sdw.jsonrpc",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "request_id",
+   "path": "unmapped.aos.step.id",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "method",
+   "path": "api.operation",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "protocol_version",
+   "path": "unmapped.sdw.mcp_protocol_version",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "transport",
+   "path": "unmapped.sdw.transport",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "primitive_kind",
+   "path": "unmapped.aos.step.type",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "tool_name",
+   "path": "unmapped.aos.tool_call.name",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "arguments",
+   "path": "unmapped.aos.tool_call.arguments",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "result_content",
+   "path": "unmapped.sdw.result_content",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "structured_content",
+   "path": "unmapped.sdw.structured_content",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "is_error",
+   "path": "status_id",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "error_text",
+   "path": "unmapped.sdw.error_text",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "server_name",
+   "path": "api.service.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "server_version",
+   "path": "api.service.version",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "server_instructions",
+   "path": "unmapped.sdw.server_instructions",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "server_capabilities",
+   "path": "unmapped.sdw.server_capabilities",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "client_name",
+   "path": "unmapped.sdw.client_name",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "client_version",
+   "path": "unmapped.sdw.client_version",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "tool_description",
+   "path": "unmapped.sdw.tool_description",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "tool_input_schema",
+   "path": "unmapped.sdw.tool_input_schema",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "tool_output_schema",
+   "path": "unmapped.sdw.tool_output_schema",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "ann_read_only",
+   "path": "unmapped.sdw.annotations.readOnlyHint",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "ann_destructive",
+   "path": "unmapped.sdw.annotations.destructiveHint",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "ann_idempotent",
+   "path": "unmapped.sdw.annotations.idempotentHint",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "ann_open_world",
+   "path": "unmapped.sdw.annotations.openWorldHint",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "start_time_ns",
+   "path": "time",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "duration_ns",
+   "path": "duration",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "agent_uid",
+   "path": "actor.user.uid",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "agent_name",
+   "path": "actor.user.name",
+   "class": "TYPED",
+   "check": "ok"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "agent_instance",
+   "path": "unmapped.sdw.agent_instance",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "model_name",
+   "path": "unmapped.aos.context.model.id",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "model_provider",
+   "path": "unmapped.aos.context.model.provider.name",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  },
+  {
+   "schema": "aos_example1",
+   "fact": "session_uid",
+   "path": "unmapped.aos.context.session.id",
+   "class": "UNMAPPED",
+   "check": "unmapped"
+  }
+ ]
+}

@@ -1,0 +1,87 @@
+{
+ "path": "c",
+ "engine": "duckdb",
+ "versions": {
+  "pySigma": "2.0.3",
+  "backend": "pySigma-backend-sqlite 2.1.1",
+  "duckdb": "1.5.3",
+  "sqlite3": "3.45.1"
+ },
+ "rules": {
+  "s1_any_manifest_drift": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE class_uid=6002 AND (activity_id=1 OR activity_id=2 OR activity_id=8) AND `ai_capability.type_id`=1",
+   "results": {
+    "D0": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `= does not exist!\nDid you mean \"<=>\"?\n\nLINE 1: ... OR activity_id=2 OR activity_id=8) AND `ai_capability.type_id`=1\n                                                                         ^"
+    },
+    "D1": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `= does not exist!\nDid you mean \"<=>\"?\n\nLINE 1: ... OR activity_id=2 OR activity_id=8) AND `ai_capability.type_id`=1\n                                                                         ^"
+    }
+   }
+  },
+  "s2_contract_drift": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE (class_uid=6002 AND activity_id=8) AND (NOT COALESCE((`ai_capability.desc_fingerprint`=`unmapped.prev_desc_fingerprint` AND `ai_capability.input_schema_fingerprint`=`unmapped.prev_input_schema_fingerprint`), 0))",
+   "results": {
+    "D0": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `__postfix does not exist!\nDid you mean \"!__postfix\"?\n\nLINE 1: ...apability.desc_fingerprint`=`unmapped.prev_desc_fingerprint` AND `ai_capability.input_schema_fingerprint`=`unmapped...\n                                                                      ^"
+    },
+    "D1": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `__postfix does not exist!\nDid you mean \"!__postfix\"?\n\nLINE 1: ...apability.desc_fingerprint`=`unmapped.prev_desc_fingerprint` AND `ai_capability.input_schema_fingerprint`=`unmapped...\n                                                                      ^"
+    }
+   }
+  },
+  "s3_hidden_instruction": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE class_uid=6002 AND ((`unmapped.desc_added_text` LIKE '%<IMPORTANT>%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%</IMPORTANT>%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%do not mention%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%do not tell%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%ignore previous%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%ignore all previous%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%~/.ssh%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%id\\_rsa%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%.aws/credentials%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%mcp.json%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%.env%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%before using this tool%' ESCAPE '\\' OR `unmapped.desc_added_text` LIKE '%otherwise the tool will not work%' ESCAPE '\\') OR `unmapped.desc_added_text` REGEXP '[​-‏⁠﻿]')",
+   "results": {
+    "D0": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `__postfix does not exist!\nDid you mean \"!__postfix\"?\n\nLINE 1: ... FROM logs WHERE class_uid=6002 AND ((`unmapped.desc_added_text` LIKE '%<IMPORTANT>%' ESCAPE '\\' OR `unmapped.desc_added_text...\n                                                                "
+    },
+    "D1": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `__postfix does not exist!\nDid you mean \"!__postfix\"?\n\nLINE 1: ... FROM logs WHERE class_uid=6002 AND ((`unmapped.desc_added_text` LIKE '%<IMPORTANT>%' ESCAPE '\\' OR `unmapped.desc_added_text...\n                                                                "
+    }
+   }
+  },
+  "s4_description_rewrite": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE class_uid=6002 AND activity_id=8 AND `unmapped.desc_similarity` < 0.5",
+   "results": {
+    "D0": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `__postfix does not exist!\nDid you mean \"!__postfix\"?\n\nLINE 1: ... class_uid=6002 AND activity_id=8 AND `unmapped.desc_similarity` < 0.5\n                                                                          ^"
+    },
+    "D1": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `__postfix does not exist!\nDid you mean \"!__postfix\"?\n\nLINE 1: ... class_uid=6002 AND activity_id=8 AND `unmapped.desc_similarity` < 0.5\n                                                                          ^"
+    }
+   }
+  },
+  "s5_schema_widening": {
+   "compiled": true,
+   "compile_error": null,
+   "sql": "SELECT * FROM logs WHERE class_uid=6002 AND activity_id=8 AND (`unmapped.schema_widened`='true' OR `unmapped.schema_widened`=1)",
+   "results": {
+    "D0": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `= does not exist!\nDid you mean \"<=>\"?\n\nLINE 1: ... class_uid=6002 AND activity_id=8 AND (`unmapped.schema_widened`='true' OR `unmapped.schema_widened`=1)\n                                                                          ^"
+    },
+    "D1": {
+     "ok": false,
+     "error": "CatalogException: Catalog Error: Scalar Function with name `= does not exist!\nDid you mean \"<=>\"?\n\nLINE 1: ... class_uid=6002 AND activity_id=8 AND (`unmapped.schema_widened`='true' OR `unmapped.schema_widened`=1)\n                                                                          ^"
+    }
+   }
+  }
+ }
+}

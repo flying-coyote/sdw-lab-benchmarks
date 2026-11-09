@@ -1,0 +1,230 @@
+---
+type: benchmark-results
+title: "R2 results: one MCP tools/call, three schemas"
+created: 2026-11-09
+area: R2-toolcall-three-schemas
+---
+
+# R2 results: one MCP `tools/call`, three schemas
+
+**Pre-registration:** `PREREGISTRATION.md` sha256 `eddf681633f728b700e1d3b7bc6662ac9ddde1702bee8297ff4a8d3fa8410183`,
+frozen 2026-11-09T22:58:56Z, frozen by agent before run; not owner-reviewed.
+
+**Rig stamp (§7b):** Beelink, AMD Ryzen 7 5800H (14 threads visible to WSL2, 47 GiB), WSL2 kernel
+6.6.87.2-microsoft-standard-WSL2, Windows power plan not checked from inside the guest. Run date 2026-11-09.
+DuckDB 1.5.3 (default threads = 14), pyarrow 23.0.1, Python 3.12.3, MCP Python SDK 2.3.0. Clock: chrony; `chronyc
+tracking` read 0.32 s slow at the start of the formal timing run (above the methodology's milliseconds target,
+probably still slewing) and 0.00003 s at the end. Every duration is from `time.perf_counter` (monotonic), so the
+offset does not enter the latencies, but I note it rather than hide it. **Isolation was violated**: other lab
+agents were running benches on the same host during the formal run (1-minute load average 25 at one check
+afterwards), so absolute times are inflated and noisy; the within-pass ratios are the claim. See Deviations.
+
+**Tier:** B for method (first-party, single machine, synthetic corpus for the timing part, real wire capture for the
+mapping part). Schema facts come from the pinned upstream files in `ref/` (vendor/standards-body documentation of
+what a field is, Tier B for what a feature does).
+
+## Question
+
+One real MCP `tools/call` exchange, recorded in OCSF (main, with the `ai_operation` profile, and the #1754 draft
+class), OpenTelemetry GenAI + MCP semantic conventions, and OWASP AOS on OCSF: what does each keep typed, keep as an
+untyped blob, push to `unmapped`/custom attributes, or drop; and what does the unmapped-JSON shape cost at query time?
+
+## Part 1: capture and the loss table
+
+Ten `tools/call` requests went from the SDK `ClientSession` through a stdio tee (`proxy.py`) to an SDK `MCPServer`
+backed by DuckDB (`server.py`); 25 wire messages are in `capture/wire.jsonl` (initialize, initialized, tools/list,
+10 request/response pairs). Six calls succeeded and four returned `isError: true` (SQL syntax error, rejected
+`DROP`, missing table, unknown tool). Two things about the wire itself, before any schema gets involved:
+
+- The SDK client offered and the server accepted protocol `2025-11-25`, although SDK 2.3.0 advertises
+  `LATEST_PROTOCOL_VERSION = 2026-07-28`; the default client negotiates the older version.
+- The SDK server masks tool exceptions: the SQL syntax error, the rejected `DROP` and the missing table all reach
+  the wire as the same text, `Error executing tool <name>`. The cause never leaves the server process, so no
+  client-side record in any schema can carry it. The unknown tool came back as a tool result with `isError`, not a
+  JSON-RPC error, so `rpc.response.status_code` / a JSON-RPC error code never appears in this capture.
+
+The fact inventory is 33 facts per call (protocol, tool, payload, outcome, server, client, tool advertisement,
+timing, and six harness-supplied agent-context facts, since no agent runtime or model is in the loop). Each schema's
+mapping is a declared spec in `map_schemas.py`; the script writes every fact into the record, reads it back from the
+emitted record, and checks every OCSF path against the pinned OCSF main object definitions and every OTel key against
+the pinned registries. All paths resolved (0 failures). Records are in `results/records_*.jsonl`.
+
+| class | OCSF main (6003 + `ai_operation`) | OCSF #1754 draft | OTel GenAI + MCP | AOS on OCSF (example 2, primary) | AOS example 1 (sensitivity) |
+|---|---|---|---|---|---|
+| TYPED | 24 | 22 | 19 | 11 | 8 |
+| HASHED (fingerprint only) | 3 | 3 | 0 | 0 | 0 |
+| BLOB (`json_t` / `any`) | 3 | 3 | 3 | 0 | 0 |
+| UNMAPPED (`unmapped` / `sdw.*` custom) | 3 | 5 | 11 | 22 | 25 |
+| DROPPED | 0 | 0 | 0 | 0 | 0 |
+
+The per-fact table with every target path is `results/loss_table.md` (machine-readable: `results/loss_table.json`).
+What drives the differences:
+
+- **OCSF main** types the most because `ai_capability` (on main, not in the 1.9.0 release) has typed slots for the
+  server identity, transport (`transport_id` 1 = stdio), primitive kind, the request id (`transaction_uid`) and all
+  four MCP annotations (`is_readonly`, `is_destructive`, `is_idempotent`, `is_open_world`). It carries the tool
+  description and input/output schemas only as fingerprints, so the text is gone but a change is detectable. Its
+  unmapped residue is the JSON-RPC version, the server instructions and the server capabilities.
+- **OCSF #1754 draft** (`ai_agent_activity`, Tool Use) has no `api` object, so the MCP method and protocol version
+  fall to `unmapped`; otherwise it inherits the `ai_operation` profile through the Application category and matches
+  OCSF main. Its own `ai_agent_tool_use_info` adds a typed tool `name` and `is_pre_occurrence`, with input and
+  response as `json_t`.
+- **OTel** types the protocol layer most completely (it is the only one with a typed JSON-RPC version, and
+  `mcp.method.name`, `jsonrpc.request.id`, `mcp.protocol.version`, `network.transport = pipe`, `error.type =
+  tool_error`) and keeps the tool description as a plain string. It has no attribute for the MCP server's name or
+  version on a tool span, for the tool annotations, for the input/output schema on an `execute_tool` span, or for an
+  agent instance id, so those 11 facts go to custom `sdw.*` attributes. Every attribute used is `stability:
+  development`.
+- **AOS** puts the agent in `actor.user` (type_id 99, "AI Agent"), the server in `api.service`, and nearly
+  everything agent- or tool-specific under `unmapped.aos`. The two examples on the same AOS page disagree:
+  example 2 puts the tool name in `api.operation` (typed) and the session in `actor.session.uid`, example 1 puts
+  `tools/call` in `api.operation` and the tool name and session in `unmapped`. AOS's own SIEM query examples filter
+  on `unmapped.asop.*` (sic, "asop" not "aos"), so a consumer has to know which spelling a producer used.
+
+**OCSF validator check.** All 10 AOS records validate against the public OCSF 1.9.0 validator with zero errors (two
+warnings: `activity_name` "Tool Execution" does not match activity_id 1 "Create", and metadata.version 1.0.0). All 10
+OCSF-main records fail on `ai_capability` (not in 1.9.0) and on version `1.10.0-dev`, which is expected for a main-
+branch record. The point worth keeping is that schema-valid and queryable are different properties: the record with
+22 facts in `unmapped` is the one that passes (`results/ocsf_validator_1.9.0.json`).
+
+### Hypotheses H1 to H3
+
+- **H1 supported.** OCSF main types 24 facts against AOS's 11 (8 under example 1). Of the 12 agent- and
+  tool-specific facts named in H1 (tool name, four annotations, model name, model provider, session, arguments,
+  result content, structured content, isError), AOS puts 9 in `unmapped` under example 2 and 11 under example 1,
+  above the "at least half" threshold.
+- **H2 supported.** On the six protocol-level facts (method, request id, protocol version, session, tool name,
+  error indicator) OTel and OCSF main both type 6 of 6, and OTel has no typed attribute for the annotations or for a
+  schema fingerprint. OCSF main's `api.version` for the MCP protocol version is my judgment call; without it OCSF
+  main types 5 of 6.
+- **H3 supported.** No schema types individual argument values: OCSF main and #1754 carry arguments and results as
+  `json_t`, OTel as opt-in `any`, AOS in `unmapped`.
+
+## Part 2: query-time cost of the unmapped shape
+
+`gen_corpus.py` generated 1,000,000 synthetic calls (and a 100,000 sweep point) from one seeded RNG and wrote them
+three ways, each with DuckDB `COPY ... COMPRESSION zstd, ROW_GROUP_SIZE 122880`, ordered by time; footers read back
+ZSTD and 9 row groups at 1M for all three. `run_queries.py` ran the five pre-registered hunts, 2 warmups + 7 timed
+trials per (layout, query), in 3 separate processes with rotated layout order, so 21 samples per cell. Answers were
+identical across all three layouts for every query in every pass. Warm cache only (no root page-cache purge).
+
+1M calls, pooled over 21 samples per cell (full table, including 100k, in `results/timing_summary.md`):
+
+| query | L1 typed OCSF median ms (CV) | L2 OTel attributes map | L3 AOS `unmapped` JSON | L3 / L1 | L2 / L1 |
+|---|---|---|---|---|---|
+| Q1 tool by agent | 7.3 (54%) | 235.5 (8%) | 61.3 (21%) | 8.4x | 32.3x |
+| Q2 argument hunt (null control) | 36.1 (14%) | 265.3 (18%) | 190.9 (5%) | 5.3x | 7.4x |
+| Q3 tool breadth on errors | 24.5 (72%) | 260.2 (10%) | 131.4 (16%) | 5.4x | 10.6x |
+| Q4 failure bursts | 21.0 (65%) | 225.2 (9%) | 98.8 (22%) | 4.7x | 10.7x |
+| Q5 off-allowlist anti-join | 8.3 (59%) | 270.0 (8%) | 187.1 (7%) | 22.5x | 32.4x |
+
+On disk at 1M: L1 27.4 MB, L2 58.2 MB, L3 30.9 MB. Write time: L1 0.57 s, L2 3.27 s, L3 1.02 s.
+
+The L1 CVs are high because L1 queries finish in single-digit milliseconds, where a scheduler stall from the
+concurrent benches is a large fraction of the run; the L1 per-pass medians for Q3 were 7.5, 16.8 and 29.9 ms. The
+conservative floor (fastest L3 trial over slowest L1 trial) is still above 1 on every H4 query: Q1 2.2x, Q3 1.19x,
+Q4 1.62x, Q5 5.66x. At 100k the L3/L1 ratios were 6.1x, 5.6x, 11.3x, 16.3x and 20.6x for Q1 to Q5, so the direction
+does not flip with scale.
+
+### Hypotheses H4, H4b, H5
+
+- **H4 supported** on the pooled medians: L3/L1 is 8.4x, 5.4x, 4.7x and 22.5x on Q1, Q3, Q4, Q5, every one above the
+  3x prediction and each delta far outside the pooled CV. The prediction that the OTel map would sit between typed and
+  unmapped **failed**: L2 was the slowest layout on every query, 10.6x to 32.4x L1. In DuckDB a lookup on a
+  `MAP(VARCHAR, VARCHAR)` reads the whole map column, which in L2 includes the opt-in argument and result payloads,
+  so every hunt pays to read the payloads even when it only filters on the tool name.
+- **H4b refuted.** The argument hunt was predicted to be about equal because arguments are JSON in every layout, but
+  L3 was 5.3x and L2 7.4x L1. L1 filters on a typed tool name first and parses only the small `api.request.data`
+  string for the roughly 25% of calls (weight 30 of 121) that are `run_query`; L3 has to parse the whole `unmapped` document for every row just
+  to find the tool name, before it ever reaches the arguments. So the cost of `unmapped` shows up even in a query
+  whose target is untyped in every schema.
+- **H5 refuted.** L3 was 1.13x L1 on disk at 1M (predicted at least 1.3x). ZSTD absorbs most of the repeated JSON
+  keys. The cost of the unmapped shape is query time, not storage. L2 was 2.12x, but that figure includes trace_id
+  and span_id columns (27 MB of the 58 MB) that L1 and L3 do not carry, so it is not a like-for-like size comparison.
+
+## Rerun under lower load (deviation 2)
+
+Same code, 1M corpus, 3 passes × 7 trials, started once the 1-minute load average reached 3.9. Other agents kept
+working, though, and the load climbed to 5.7, 7.1 and 8.1 by the end of each pass, so this run is quieter but still
+not isolated. Answers were identical across all layouts again. Pooled medians (CV):
+
+| query | L1 typed | L2 OTel map | L3 AOS unmapped | L3 / L1 | L2 / L1 | answers equal |
+|---|---|---|---|---|---|---|
+| Q1 tool by agent | 6.6 (62%) | 201.5 (9%) | 56.1 (19%) | 8.5x (floor 2.24x) | 30.4x | True |
+| Q2 argument hunt | 35.0 (21%) | 221.6 (9%) | 173.3 (7%) | 4.9x (floor 2.90x) | 6.3x | True |
+| Q3 tool breadth on errors | 8.2 (65%) | 227.4 (16%) | 121.1 (24%) | 14.7x (floor 1.57x) | 27.6x | True |
+| Q4 failure bursts | 6.7 (73%) | 223.0 (15%) | 108.2 (24%) | 16.1x (floor 1.37x) | 33.2x | True |
+| Q5 off-allowlist anti-join | 7.9 (54%) | 222.3 (7%) | 170.7 (9%) | 21.6x (floor 5.31x) | 28.1x | True |
+
+All three conclusions from the formal run hold here:
+- L3 is at least 3x L1 on every H4 query.
+- L2 is the slowest layout on every query.
+- Q2 is not a null result.
+
+The Q3 and Q4 ratios move a lot between the two runs (5.4x to 14.7x, 4.7x to 16.1x). That movement comes almost
+entirely from L1's millisecond-scale medians (24.5 to 8.2 ms on Q3), which are the numbers most exposed to
+contention. So I would quote these ratios as "roughly 5x to 16x" and not as a point estimate. The Q1 and Q5 ratios
+barely moved (8.4x/8.5x and 22.5x/21.6x). Raw data: `results/timing_rerun_n1000000_pass*.json`,
+`results/timing_rerun_summary.json`, `results/rerun_log.txt`.
+
+## Exploratory, not pre-registered
+
+`explore_l2_nopayload.py` rewrote L2 without the opt-in argument/result keys (the OTel default, since both are
+`opt_in`) to test whether payloads explain the map cost. It ran while the host load average was about 25, and its
+results (Q1 255 ms, Q3 747 ms, Q4 732 ms, Q5 775 ms, CV up to 48%) are slower than the formal L2 numbers, which is
+implausible on mechanics alone and most likely contention. I do not draw a conclusion from it; the file
+(47.4 MB versus 58.2 MB) and the script stay in the directory, and the question stays open.
+
+## Deviations from the pre-registration
+
+1. **Smoke pass discarded.** One 100k pass was run before the formal run to check answer equality; its timings were
+   deleted and the formal run started from scratch with the same code.
+2. **Isolation.** Methodology §5 requires nothing heavy running during a timing pass. Sibling lab agents were running
+   their own benches throughout (seen afterwards: load average 25, several `rerun_measure.py`, `run_planted.py`,
+   `grype` and `astro check` processes). I added load-average logging to `run_queries.py` and reran the 1M passes once
+   the 1-minute load fell below 4 (or after a ~9-minute wait), recorded above. The formal-run numbers stay as the
+   pre-registered result.
+3. **HASHED class added.** The rubric did not anticipate OCSF carrying a fingerprint of a fact instead of the fact,
+   so I split it out from TYPED rather than count a hash as keeping the description.
+4. **AOS example 1 column added** as a sensitivity, because the AOS page's two examples disagree. The primary column
+   follows example 2 as pre-registered; the L3 query layout follows example 1, also as pre-registered (tool name and
+   session in `unmapped`).
+5. **Loss-table OCSF records** got `src_endpoint` (required by 6003) and integer-millisecond `duration` after the
+   1.9.0 validator flagged both; neither changes a fact's class.
+
+## Limits
+
+- stdio only. The review asked for one Streamable-HTTP server as well; HTTP adds `Mcp-Session-Id`, HTTP status,
+  and endpoint facts, so this inventory undercounts transport facts, and `mcp.session.id` was never exercised.
+- Agent and model identity are harness-supplied; no agent runtime emitted them.
+- AOS is scored on its published examples; a producer could put more AOS facts into typed OCSF attributes.
+- The OTel lake shape (one attributes map) is the ClickHouse-exporter pattern, one choice among several; a
+  column-per-attribute landing would behave much more like L1.
+- One engine (DuckDB 1.5.3), warm cache, one host under contention, synthetic corpus. Ratios within a pass are the
+  claim; absolute milliseconds are not.
+
+## Files
+
+- `PREREGISTRATION.md`, `PREREGISTRATION.sha256`, `requirements.txt`
+- `server.py`, `proxy.py`, `capture.py`, `capture/wire.jsonl`
+- `map_schemas.py`, `validate_ocsf.py`, `results/loss_table.{md,json}`, `results/records_*.jsonl`,
+  `results/ocsf_validator_1.9.0.json`
+- `gen_corpus.py`, `run_queries.py`, `analyze.py`, `explore_l2_nopayload.py`, `data/n*/corpus_meta.json` (pinned
+  logical fingerprints and manifests), `results/timing_*.json`, `results/timing_summary.{md,json}`,
+  `results/run_log.txt`, `results/rerun_log.txt`, `results/exploratory_l2b_nopayload.json`
+- `ref/`: the pinned upstream schema files (OCSF main @ d1cbd61, PR #1754 @ 08d6f53, OTel genai @ e6658f1 and
+  semconv v1.45.0, AOS @ 9a9bc37)
+
+## Commands
+
+```
+python3 -m venv .venv && .venv/bin/pip install mcp==2.3.0 duckdb==1.5.3 pyarrow==23.0.1 pyyaml
+.venv/bin/python capture.py
+.venv/bin/python map_schemas.py && .venv/bin/python validate_ocsf.py
+for p in 0 1 2; do .venv/bin/python run_queries.py 100000 $p; done
+.venv/bin/python gen_corpus.py 1000000      # (gen_corpus.py 100000 ran first)
+for p in 0 1 2; do .venv/bin/python run_queries.py 1000000 $p; done
+.venv/bin/python analyze.py
+for p in 0 1 2; do R2_TAG=_rerun .venv/bin/python run_queries.py 1000000 $p; done
+.venv/bin/python explore_l2_nopayload.py     # exploratory
+```

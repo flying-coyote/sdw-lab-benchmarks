@@ -1,0 +1,1 @@
+# stdlib only; nothing pip-installed. External tool: gh CLI (read-only).

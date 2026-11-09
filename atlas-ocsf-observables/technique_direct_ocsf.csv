@@ -1,0 +1,16 @@
+atlas_id,crosswalk_reason,grade,ocsf_object,ocsf_class_uid,ocsf_field,rationale
+AML.T0000.003,honest-no-fit,none,,,,Adversary reads a third-party scan service; nothing on the victim side to record.
+AML.T0011.001,killed (over-generic; candidate SoftwarePackage not adopted),direct,package,,package.purl,"Malicious package import: OCSF package (purl, version) records the package, and module load records an import."
+AML.T0011.002,class-gap (proposed new D3FEND class),none,,,,"OCSF 1.9.0 has no tool/capability object (ai_capability is the #1754 draft, not 1.9.0); ai_operation profile carries the agent and model, not the tool."
+AML.T0016.002,class-gap (proposal upheld; no row in current CSVs),none,,,,Adversary obtains a generative AI tool on its own side (Resource Development).
+AML.T0016.003,honest-no-fit (exploit is a role),none,,,,Adversary obtains exploits on its own side.
+AML.T0017.001,pending (rebaseline note recommends may-create Software; no row emitted),none,,,,Agent develops an exploit on adversary infrastructure.
+AML.T0025,no-record (tactic pointer to ATT&CK Exfiltration),direct,network_traffic,,network_traffic.bytes_out,"Exfiltration by cyber means is recorded by network classes (bytes_out, dst_endpoint)."
+AML.T0031,class-gap (proposed model artifact),generic,ai_model,,ai_model.name,"ai_operation profile identifies the model being queried; degradation of integrity is not a field."
+AML.T0048,no-record (impact outcome),none,,,,An external harm is an outcome in the world.
+AML.T0048.000,no-record (impact outcome),none,,,,Financial harm is an outcome.
+AML.T0048.002,no-record (impact outcome),none,,,,Societal harm is an outcome.
+AML.T0048.003,no-record (impact outcome),none,,,,User harm is an outcome.
+AML.T0054,class-gap (proposal killed; no LLM class in D3FEND),direct,message_context,,message_context.prompt_text,ai_operation profile message_context.prompt_text records the jailbreak prompt itself.
+AML.T0116,honest-no-fit (agent planning loop),generic,ai_agent,,ai_agent.name,ai_operation profile identifies the agent; the planning loop is not a field.
+AML.T0117,honest-no-fit (control loop),generic,ai_agent,,ai_agent.name,ai_operation profile identifies the agent; path adaptation is not a field.

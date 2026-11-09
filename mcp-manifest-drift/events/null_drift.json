@@ -1,0 +1,38 @@
+{
+ "everything": {
+  "D0": {
+   "pairs": 17,
+   "within_run_pairs": 15,
+   "events_emitted": 0
+  },
+  "D1": {
+   "pairs": 17,
+   "within_run_pairs": 15,
+   "events_emitted": 0
+  }
+ },
+ "filesystem": {
+  "D0": {
+   "pairs": 17,
+   "within_run_pairs": 15,
+   "events_emitted": 0
+  },
+  "D1": {
+   "pairs": 17,
+   "within_run_pairs": 15,
+   "events_emitted": 0
+  }
+ },
+ "scg": {
+  "D0": {
+   "pairs": 17,
+   "within_run_pairs": 15,
+   "events_emitted": 0
+  },
+  "D1": {
+   "pairs": 17,
+   "within_run_pairs": 15,
+   "events_emitted": 0
+  }
+ }
+}
