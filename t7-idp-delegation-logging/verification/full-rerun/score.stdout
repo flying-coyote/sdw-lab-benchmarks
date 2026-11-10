@@ -1,0 +1,165 @@
+{
+ "S": {
+  "H1": {
+   "hops_checked": 78,
+   "subject_jti_in_event": 0,
+   "subject_azp_in_details": 72,
+   "issued_jti_in_event": 72
+  },
+  "H3": 5,
+  "H4": {
+   "baseline": [
+    0,
+    0,
+    5
+   ],
+   "reacquire": [
+    5,
+    0,
+    5
+   ],
+   "new": [
+    0,
+    0,
+    5
+   ]
+  },
+  "H5_err_detail_keys": {
+   "reason": 6,
+   "auth_method": 6,
+   "client_policy_error": 6,
+   "client_policy_error_detail": 6,
+   "grant_type": 6,
+   "client_auth_method": 6
+  },
+  "claims": {
+   "T0-login": {
+    "n": 29,
+    "jti": 29,
+    "sid": 29,
+    "azp": 29,
+    "aud": 29,
+    "scope": 29,
+    "realm_access": 29,
+    "sig_verified": 29
+   },
+   "T1-agent-a": {
+    "n": 24,
+    "jti": 24,
+    "sid": 24,
+    "azp": 24,
+    "aud": 24,
+    "scope": 24,
+    "realm_access": 24,
+    "sig_verified": 24
+   },
+   "T2-agent-b": {
+    "n": 18,
+    "jti": 18,
+    "sid": 18,
+    "azp": 18,
+    "aud": 18,
+    "scope": 18,
+    "realm_access": 18,
+    "sig_verified": 18
+   },
+   "T1-k": {
+    "n": 15,
+    "jti": 15,
+    "sid": 15,
+    "azp": 15,
+    "aud": 15,
+    "scope": 15,
+    "realm_access": 15,
+    "sig_verified": 15
+   },
+   "T2-k": {
+    "n": 15,
+    "jti": 15,
+    "sid": 15,
+    "azp": 15,
+    "aud": 15,
+    "scope": 15,
+    "realm_access": 15,
+    "sig_verified": 15
+   }
+  }
+ },
+ "D": {
+  "H1": {
+   "hops_checked": 15,
+   "subject_jti_in_event": 0,
+   "subject_azp_in_details": 15,
+   "issued_jti_in_event": 9
+  },
+  "H3": null,
+  "H4": {
+   "baseline": [
+    0,
+    0,
+    3
+   ],
+   "reacquire": [
+    3,
+    0,
+    3
+   ],
+   "new": [
+    0,
+    0,
+    3
+   ]
+  },
+  "H5_err_detail_keys": {
+   "reason": 6,
+   "auth_method": 6,
+   "grant_type": 6,
+   "subject_token_client_id": 6,
+   "requested_token_type": 6,
+   "client_auth_method": 6,
+   "username": 6,
+   "actor": 3,
+   "actor_type": 3,
+   "actor_id": 3
+  },
+  "claims": {
+   "T0-login": {
+    "n": 9,
+    "jti": 9,
+    "sid": 9,
+    "azp": 9,
+    "aud": 9,
+    "scope": 9,
+    "may_act": 9,
+    "realm_access": 9,
+    "sig_verified": 9
+   },
+   "actor-agent-a": {
+    "n": 9,
+    "jti": 9,
+    "azp": 9,
+    "aud": 9,
+    "scope": 9,
+    "sig_verified": 9
+   },
+   "T1-agent-a-delegated": {
+    "n": 9,
+    "jti": 9,
+    "azp": 9,
+    "aud": 9,
+    "scope": 9,
+    "act": 9,
+    "realm_access": 9,
+    "sig_verified": 9
+   },
+   "actor-agent-b": {
+    "n": 3,
+    "jti": 3,
+    "azp": 3,
+    "aud": 3,
+    "scope": 3,
+    "sig_verified": 3
+   }
+  }
+ }
+}

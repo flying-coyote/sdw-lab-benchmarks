@@ -1,0 +1,1136 @@
+{
+ "M1_zeek": [
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "registry.ollama.ai",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.openai.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.anthropic.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "generativelanguage.googleapis.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.mistral.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "openrouter.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.groq.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.cohere.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "huggingface.co",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "chatgpt.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "claude.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "gemini.google.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "www.perplexity.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "copilot.microsoft.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "registry.ollama.ai",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "registry.ollama.ai",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.openai.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.openai.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.anthropic.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.anthropic.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "generativelanguage.googleapis.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "generativelanguage.googleapis.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.mistral.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.mistral.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "openrouter.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "openrouter.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.groq.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.groq.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.cohere.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.cohere.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "huggingface.co",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "huggingface.co",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "chatgpt.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "chatgpt.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "claude.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "claude.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "gemini.google.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "gemini.google.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "www.perplexity.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "www.perplexity.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "copilot.microsoft.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "copilot.microsoft.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z3_http",
+   "id": "172.24.0.4->172.24.0.3:11434 GET /api/tags",
+   "target": "S1",
+   "detail": "ua=Python-urllib/3.12"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "172.24.0.4->172.24.0.3:11434 POST /api/generate",
+   "target": "S1",
+   "detail": "ua=Python-urllib/3.12"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "172.24.0.4->172.24.0.3:8000 POST /v1/chat/completions",
+   "target": "S2",
+   "detail": "ua=Python-urllib/3.12"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "172.24.0.4->172.24.0.3:8080 GET /",
+   "target": "C1",
+   "detail": "ua=Python-urllib/3.12"
+  },
+  {
+   "rule": "Z4_conn_port",
+   "id": "172.24.0.4->172.24.0.3:11434",
+   "target": "S1",
+   "detail": "SF"
+  },
+  {
+   "rule": "Z4_conn_port",
+   "id": "172.24.0.4->172.24.0.3:8080",
+   "target": "C1",
+   "detail": "SF"
+  },
+  {
+   "rule": "Z4_conn_port",
+   "id": "172.24.0.4->172.24.0.3:8000",
+   "target": "S2",
+   "detail": "SF"
+  }
+ ],
+ "M1b_zeek_any": [
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "registry.ollama.ai",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.openai.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.anthropic.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "generativelanguage.googleapis.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.mistral.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "openrouter.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.groq.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "api.cohere.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "huggingface.co",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "chatgpt.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "claude.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "gemini.google.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "www.perplexity.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z1_ssl_sni",
+   "id": "copilot.microsoft.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "registry.ollama.ai",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "registry.ollama.ai",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.openai.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.openai.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.anthropic.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.anthropic.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "generativelanguage.googleapis.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "generativelanguage.googleapis.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.mistral.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.mistral.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "openrouter.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "openrouter.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.groq.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.groq.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.cohere.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.cohere.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "huggingface.co",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "huggingface.co",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "chatgpt.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "chatgpt.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "claude.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "claude.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "gemini.google.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "gemini.google.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "www.perplexity.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "www.perplexity.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "copilot.microsoft.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "copilot.microsoft.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "registry.ollama.ai",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.openai.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.anthropic.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "generativelanguage.googleapis.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.mistral.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "openrouter.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.groq.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "api.cohere.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "huggingface.co",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "chatgpt.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "claude.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "gemini.google.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "www.perplexity.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z2_dns_query",
+   "id": "copilot.microsoft.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "Z3_http",
+   "id": "127.0.0.1->127.0.0.1:11434 GET /api/version",
+   "target": "S1",
+   "detail": "ua=curl/8.14.1"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "127.0.0.1->127.0.0.1:11434 GET /api/version",
+   "target": "S1",
+   "detail": "ua=curl/8.14.1"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "127.0.0.1->127.0.0.1:8000 GET /v1/models",
+   "target": "S2",
+   "detail": "ua=curl/8.14.1"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "127.0.0.1->127.0.0.1:8080 GET /",
+   "target": "C1",
+   "detail": "ua=curl/8.14.1"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "127.0.0.1->127.0.0.1:11434 POST /api/generate",
+   "target": "S1",
+   "detail": "ua=curl/8.14.1"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "127.0.0.1->127.0.0.1:8000 POST /v1/chat/completions",
+   "target": "S2",
+   "detail": "ua=curl/8.14.1"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "127.0.0.1->127.0.0.1:11434 HEAD /",
+   "target": "S1",
+   "detail": "ua=ollama/0.20.6 (amd64 linux) Go/go1.24.1"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "127.0.0.1->127.0.0.1:11434 POST /api/pull",
+   "target": "S1",
+   "detail": "ua=ollama/0.20.6 (amd64 linux) Go/go1.24.1"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "172.24.0.4->172.24.0.3:11434 GET /api/tags",
+   "target": "S1",
+   "detail": "ua=Python-urllib/3.12"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "172.24.0.4->172.24.0.3:11434 POST /api/generate",
+   "target": "S1",
+   "detail": "ua=Python-urllib/3.12"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "172.24.0.4->172.24.0.3:8000 POST /v1/chat/completions",
+   "target": "S2",
+   "detail": "ua=Python-urllib/3.12"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "172.24.0.4->172.24.0.3:8080 GET /",
+   "target": "C1",
+   "detail": "ua=Python-urllib/3.12"
+  },
+  {
+   "rule": "Z3_http",
+   "id": "127.0.0.1->127.0.0.1:11434 GET /api/version",
+   "target": "S1",
+   "detail": "ua=ollama/0.20.6 (amd64 linux) Go/go1.24.1"
+  },
+  {
+   "rule": "Z4_conn_port",
+   "id": "127.0.0.1->127.0.0.1:11434",
+   "target": "S1",
+   "detail": "SF"
+  },
+  {
+   "rule": "Z4_conn_port",
+   "id": "127.0.0.1->127.0.0.1:8000",
+   "target": "S2",
+   "detail": "SF"
+  },
+  {
+   "rule": "Z4_conn_port",
+   "id": "127.0.0.1->127.0.0.1:8080",
+   "target": "C1",
+   "detail": "SF"
+  },
+  {
+   "rule": "Z4_conn_port",
+   "id": "172.24.0.4->172.24.0.3:11434",
+   "target": "S1",
+   "detail": "SF"
+  },
+  {
+   "rule": "Z4_conn_port",
+   "id": "172.24.0.4->172.24.0.3:8000",
+   "target": "S2",
+   "detail": "SF"
+  },
+  {
+   "rule": "Z4_conn_port",
+   "id": "172.24.0.4->172.24.0.3:8080",
+   "target": "C1",
+   "detail": "SF"
+  }
+ ],
+ "M2_dnslog": [
+  {
+   "rule": "D1_query",
+   "id": "api.anthropic.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "api.cohere.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "api.groq.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "api.mistral.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "api.openai.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "chatgpt.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "claude.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "copilot.microsoft.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "gemini.google.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "generativelanguage.googleapis.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "huggingface.co",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "openrouter.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "registry.ollama.ai",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "D1_query",
+   "id": "www.perplexity.ai",
+   "target": "S9",
+   "detail": ""
+  }
+ ],
+ "M3_osquery": [
+  {
+   "rule": "O1_process",
+   "id": "ollama ['ollama', 'serve']",
+   "target": "S1",
+   "detail": "pid=15 ollama serve"
+  },
+  {
+   "rule": "O1_process",
+   "id": "ollama ['/usr/local/bin/ollama', 'runner']",
+   "target": "S1",
+   "detail": "pid=58 /usr/local/bin/ollama runner --model /home/dev/.ollama/models/blobs/sha256-2af3b81862c6be03c769683af18efdadb2c33f60ff32a"
+  },
+  {
+   "rule": "O2_listen_port",
+   "id": "8080/6 ",
+   "target": "C1",
+   "detail": ""
+  },
+  {
+   "rule": "O2_listen_port",
+   "id": "8000/6 ",
+   "target": "S2",
+   "detail": ""
+  },
+  {
+   "rule": "O2_listen_port",
+   "id": "11434/6 ",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "O2_listen_port",
+   "id": "8080/6 ",
+   "target": "C1",
+   "detail": ""
+  },
+  {
+   "rule": "O2_listen_port",
+   "id": "8000/6 ",
+   "target": "S2",
+   "detail": ""
+  },
+  {
+   "rule": "O2_listen_port",
+   "id": "11434/6 ",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "O3_model_file_ext",
+   "id": "/home/dev/models/all-MiniLM-L6-v2/model.safetensors",
+   "target": "S7",
+   "detail": "90868376"
+  },
+  {
+   "rule": "O3_model_file_ext",
+   "id": "/home/dev/models/tinyllama-1.1b-chat.Q4_0.gguf",
+   "target": "S7",
+   "detail": "637699456"
+  },
+  {
+   "rule": "O4b_pkg_directed",
+   "id": "anthropic==2.3.0",
+   "target": "S6",
+   "detail": "/home/dev/ml-venv/lib/python3.12/site-packages"
+  },
+  {
+   "rule": "O4b_pkg_directed",
+   "id": "gguf==0.19.0",
+   "target": "S6",
+   "detail": "/home/dev/ml-venv/lib/python3.12/site-packages"
+  },
+  {
+   "rule": "O4b_pkg_directed",
+   "id": "huggingface-hub==2.3.0",
+   "target": "S6",
+   "detail": "/home/dev/ml-venv/lib/python3.12/site-packages"
+  },
+  {
+   "rule": "O4b_pkg_directed",
+   "id": "langchain-core==1.7.0",
+   "target": "S6",
+   "detail": "/home/dev/ml-venv/lib/python3.12/site-packages"
+  },
+  {
+   "rule": "O4b_pkg_directed",
+   "id": "mcp==2.3.0",
+   "target": "S6",
+   "detail": "/home/dev/ml-venv/lib/python3.12/site-packages"
+  },
+  {
+   "rule": "O4b_pkg_directed",
+   "id": "openai==3.37.0",
+   "target": "S6",
+   "detail": "/home/dev/ml-venv/lib/python3.12/site-packages"
+  },
+  {
+   "rule": "O4b_pkg_directed",
+   "id": "safetensors==0.8.0",
+   "target": "S6",
+   "detail": "/home/dev/ml-venv/lib/python3.12/site-packages"
+  },
+  {
+   "rule": "O4b_pkg_directed",
+   "id": "tokenizers==0.23.3",
+   "target": "S6",
+   "detail": "/home/dev/ml-venv/lib/python3.12/site-packages"
+  },
+  {
+   "rule": "O5_vscode_ext",
+   "id": "saoudrizwan.claude-dev@4.1.26",
+   "target": "S3",
+   "detail": "/home/dev/.vscode/extensions/saoudrizwan.claude-dev-4.1.26"
+  },
+  {
+   "rule": "O6_chrome_ext",
+   "id": "AI Chat Sidebar (lab fixture) id=ibblkdemnkhbajcbggadodldikoimicf",
+   "target": "S5",
+   "detail": "storage, activeTab, scripting"
+  },
+  {
+   "rule": "O7a_mcp_config_path",
+   "id": "/home/dev/.cursor/mcp.json",
+   "target": "S4",
+   "detail": "size=284"
+  },
+  {
+   "rule": "O7a_mcp_config_path",
+   "id": "/home/dev/.config/Claude/claude_desktop_config.json",
+   "target": "S4",
+   "detail": "size=284"
+  },
+  {
+   "rule": "O7b_mcp_config_yara",
+   "id": "/home/dev/.cursor/mcp.json",
+   "target": "S4",
+   "detail": "mcp_client_config"
+  },
+  {
+   "rule": "O7b_mcp_config_yara",
+   "id": "/home/dev/.config/Claude/claude_desktop_config.json",
+   "target": "S4",
+   "detail": "mcp_client_config"
+  }
+ ],
+ "M4_syft": [
+  {
+   "rule": "S2_model_component",
+   "id": "MiniLM-L6-H384-uncased@UNKNOWN",
+   "target": "S7",
+   "detail": "model purl= locs=['/models/all-MiniLM-L6-v2/model.safetensors', '/models/all-MiniLM-L6-v2/config.json']"
+  },
+  {
+   "rule": "S2_model_component",
+   "id": "TinyLlama@UNKNOWN",
+   "target": "S7",
+   "detail": "model purl= locs=['/models/tinyllama-1.1b-chat.Q4_0.gguf']"
+  },
+  {
+   "rule": "S1_ai_package",
+   "id": "anthropic==2.3.0",
+   "target": "S6",
+   "detail": "python pkg:pypi/anthropic@2.3.0"
+  },
+  {
+   "rule": "S1_ai_package",
+   "id": "gguf==0.19.0",
+   "target": "S6",
+   "detail": "python pkg:pypi/gguf@0.19.0"
+  },
+  {
+   "rule": "S1_ai_package",
+   "id": "huggingface-hub==2.3.0",
+   "target": "S6",
+   "detail": "python pkg:pypi/huggingface-hub@2.3.0"
+  },
+  {
+   "rule": "S1_ai_package",
+   "id": "langchain-core==1.7.0",
+   "target": "S6",
+   "detail": "python pkg:pypi/langchain-core@1.7.0"
+  },
+  {
+   "rule": "S1_ai_package",
+   "id": "mcp==2.3.0",
+   "target": "S6",
+   "detail": "python pkg:pypi/mcp@2.3.0"
+  },
+  {
+   "rule": "S1_ai_package",
+   "id": "openai==3.37.0",
+   "target": "S6",
+   "detail": "python pkg:pypi/openai@3.37.0"
+  },
+  {
+   "rule": "S1_ai_package",
+   "id": "safetensors==0.8.0",
+   "target": "S6",
+   "detail": "python pkg:pypi/safetensors@0.8.0"
+  },
+  {
+   "rule": "S1_ai_package",
+   "id": "tokenizers==0.23.3",
+   "target": "S6",
+   "detail": "python pkg:pypi/tokenizers@0.23.3"
+  }
+ ],
+ "M5_egress": [
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "api.anthropic.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "api.cohere.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "api.groq.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "api.mistral.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "api.openai.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "chatgpt.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "claude.ai",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "copilot.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "copilot.microsoft.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "gemini.google.com",
+   "target": "S9",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "generativelanguage.googleapis.com",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "huggingface.co",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "openrouter.ai",
+   "target": "S8",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "registry.ollama.ai",
+   "target": "S1",
+   "detail": ""
+  },
+  {
+   "rule": "E1_not_allowlisted",
+   "id": "www.perplexity.ai",
+   "target": "S9",
+   "detail": ""
+  }
+ ]
+}

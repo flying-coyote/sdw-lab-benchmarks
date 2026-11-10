@@ -1,0 +1,9 @@
+title: Agent tool request carries a destructive command
+description: AML.M0020 "evaluate ... agent actions before they are accepted, executed". Enforcement; event unit. Table api_activity (tool calls on agent-runtime).
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    metadata_product_name: agent-runtime
+    api_request_data|contains: ['rm -rf', 'terminate-instances', 'delete-bucket', 's3 rb', 'DROP TABLE']
+  condition: sel

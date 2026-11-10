@@ -1,0 +1,11 @@
+click==8.5.1
+fickling==0.1.12
+h5py==3.16.0
+markdown-it-py==4.2.0
+mdurl==0.1.2
+modelscan==0.8.8
+numpy==2.5.4
+picklescan==1.0.5
+Pygments==2.21.0
+rich==14.3.4
+tomlkit==0.13.3

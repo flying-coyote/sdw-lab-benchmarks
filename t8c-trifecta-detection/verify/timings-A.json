@@ -1,0 +1,685 @@
+{
+ "note": "perf_counter medians of 3, under host contention, taskset 0-3 nice 10, duckdb threads=4",
+ "timings": {
+  "20261109": {
+   "_seed_wall_s": 264.69,
+   "a1_ingest_mail": {
+    "duckdb": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.008,
+      "median_s": 0.0077,
+      "min_s": 0.0041
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.0122,
+      "median_s": 0.0091,
+      "min_s": 0.0079
+     }
+    }
+   },
+   "a2_ingest_repo": {
+    "duckdb": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.0171,
+      "median_s": 0.002,
+      "min_s": 0.0018
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.0084,
+      "median_s": 0.0084,
+      "min_s": 0.0083
+     }
+    }
+   },
+   "a3_collect_mailbox": {
+    "duckdb": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.0139,
+      "median_s": 0.0071,
+      "min_s": 0.0026
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.0137,
+      "median_s": 0.0136,
+      "min_s": 0.009
+     }
+    }
+   },
+   "a4_read_procenv": {
+    "duckdb": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.009,
+      "median_s": 0.0019,
+      "min_s": 0.0017
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.0105,
+      "median_s": 0.0084,
+      "min_s": 0.0056
+     }
+    }
+   },
+   "a5_outbound_offlist": {
+    "duckdb": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.016,
+      "median_s": 0.0153,
+      "min_s": 0.0022
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.0164,
+      "median_s": 0.0135,
+      "min_s": 0.0058
+     }
+    }
+   },
+   "a6_credential_shape": {
+    "duckdb": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.0268,
+      "median_s": 0.0241,
+      "min_s": 0.011
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.0123,
+      "median_s": 0.0122,
+      "min_s": 0.0044
+     }
+    }
+   },
+   "a7_url_burst": {
+    "duckdb": {
+     "loadavg_1m_before": 18.19,
+     "timing": null
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 1.0357,
+      "median_s": 0.9749,
+      "min_s": 0.7207
+     }
+    }
+   },
+   "b1_session_temporal": {
+    "duckdb": {
+     "loadavg_1m_before": 18.97,
+     "timing": null
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.19,
+     "timing": {
+      "max_s": 0.5924,
+      "median_s": 0.3148,
+      "min_s": 0.2549
+     }
+    }
+   },
+   "b2_session_temporal_ordered": {
+    "duckdb": {
+     "loadavg_1m_before": 18.49,
+     "timing": null
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.97,
+     "timing": {
+      "max_s": 2.017,
+      "median_s": 1.6473,
+      "min_s": 1.2413
+     }
+    }
+   },
+   "b3_session_sql": {
+    "duckdb": {
+     "loadavg_1m_before": 18.49,
+     "timing": {
+      "max_s": 0.0528,
+      "median_s": 0.0251,
+      "min_s": 0.0143
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.49,
+     "timing": {
+      "max_s": 0.0809,
+      "median_s": 0.0636,
+      "min_s": 0.0424
+     }
+    }
+   },
+   "b4_session_sql_qualified": {
+    "duckdb": {
+     "loadavg_1m_before": 18.49,
+     "timing": {
+      "max_s": 0.1778,
+      "median_s": 0.0678,
+      "min_s": 0.036
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.49,
+     "timing": {
+      "max_s": 0.0412,
+      "median_s": 0.0378,
+      "min_s": 0.0342
+     }
+    }
+   },
+   "c1_walk_sql": {
+    "duckdb": {
+     "loadavg_1m_before": 18.49,
+     "timing": {
+      "max_s": 0.0661,
+      "median_s": 0.0542,
+      "min_s": 0.0223
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.49,
+     "timing": {
+      "max_s": 0.1111,
+      "median_s": 0.0487,
+      "min_s": 0.0443
+     }
+    }
+   },
+   "c2_walk_sql_qualified": {
+    "duckdb": {
+     "loadavg_1m_before": 18.49,
+     "timing": {
+      "max_s": 0.078,
+      "median_s": 0.0441,
+      "min_s": 0.044
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 18.49,
+     "timing": {
+      "max_s": 0.2057,
+      "median_s": 0.1171,
+      "min_s": 0.0978
+     }
+    }
+   }
+  },
+  "20261110": {
+   "_seed_wall_s": 183.6,
+   "a1_ingest_mail": {
+    "duckdb": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0017,
+      "median_s": 0.0012,
+      "min_s": 0.0012
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0082,
+      "median_s": 0.0082,
+      "min_s": 0.0078
+     }
+    }
+   },
+   "a2_ingest_repo": {
+    "duckdb": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0018,
+      "median_s": 0.0014,
+      "min_s": 0.0012
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0043,
+      "median_s": 0.0043,
+      "min_s": 0.0043
+     }
+    }
+   },
+   "a3_collect_mailbox": {
+    "duckdb": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0023,
+      "median_s": 0.002,
+      "min_s": 0.0019
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0056,
+      "median_s": 0.0054,
+      "min_s": 0.0052
+     }
+    }
+   },
+   "a4_read_procenv": {
+    "duckdb": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0019,
+      "median_s": 0.0017,
+      "min_s": 0.0015
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0077,
+      "median_s": 0.0039,
+      "min_s": 0.0037
+     }
+    }
+   },
+   "a5_outbound_offlist": {
+    "duckdb": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0135,
+      "median_s": 0.0121,
+      "min_s": 0.0024
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0062,
+      "median_s": 0.0056,
+      "min_s": 0.0054
+     }
+    }
+   },
+   "a6_credential_shape": {
+    "duckdb": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0231,
+      "median_s": 0.012,
+      "min_s": 0.0043
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.0164,
+      "median_s": 0.0044,
+      "min_s": 0.0041
+     }
+    }
+   },
+   "a7_url_burst": {
+    "duckdb": {
+     "loadavg_1m_before": 15.06,
+     "timing": null
+    },
+    "sqlite": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 1.1732,
+      "median_s": 1.0056,
+      "min_s": 1.0047
+     }
+    }
+   },
+   "b1_session_temporal": {
+    "duckdb": {
+     "loadavg_1m_before": 15.21,
+     "timing": null
+    },
+    "sqlite": {
+     "loadavg_1m_before": 15.06,
+     "timing": {
+      "max_s": 0.5173,
+      "median_s": 0.4875,
+      "min_s": 0.3393
+     }
+    }
+   },
+   "b2_session_temporal_ordered": {
+    "duckdb": {
+     "loadavg_1m_before": 14.96,
+     "timing": null
+    },
+    "sqlite": {
+     "loadavg_1m_before": 15.21,
+     "timing": {
+      "max_s": 1.4141,
+      "median_s": 1.3487,
+      "min_s": 1.3069
+     }
+    }
+   },
+   "b3_session_sql": {
+    "duckdb": {
+     "loadavg_1m_before": 14.96,
+     "timing": {
+      "max_s": 0.028,
+      "median_s": 0.0265,
+      "min_s": 0.0199
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 14.96,
+     "timing": {
+      "max_s": 0.023,
+      "median_s": 0.023,
+      "min_s": 0.0196
+     }
+    }
+   },
+   "b4_session_sql_qualified": {
+    "duckdb": {
+     "loadavg_1m_before": 14.96,
+     "timing": {
+      "max_s": 0.0285,
+      "median_s": 0.0222,
+      "min_s": 0.0183
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 14.96,
+     "timing": {
+      "max_s": 0.0566,
+      "median_s": 0.0229,
+      "min_s": 0.0227
+     }
+    }
+   },
+   "c1_walk_sql": {
+    "duckdb": {
+     "loadavg_1m_before": 14.96,
+     "timing": {
+      "max_s": 0.0541,
+      "median_s": 0.0508,
+      "min_s": 0.0403
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 14.96,
+     "timing": {
+      "max_s": 0.0683,
+      "median_s": 0.0613,
+      "min_s": 0.0556
+     }
+    }
+   },
+   "c2_walk_sql_qualified": {
+    "duckdb": {
+     "loadavg_1m_before": 14.96,
+     "timing": {
+      "max_s": 0.0441,
+      "median_s": 0.0414,
+      "min_s": 0.028
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 14.96,
+     "timing": {
+      "max_s": 0.0744,
+      "median_s": 0.0629,
+      "min_s": 0.0625
+     }
+    }
+   }
+  },
+  "20261111": {
+   "_seed_wall_s": 167.6,
+   "a1_ingest_mail": {
+    "duckdb": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0017,
+      "median_s": 0.0013,
+      "min_s": 0.0012
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0049,
+      "median_s": 0.0043,
+      "min_s": 0.0043
+     }
+    }
+   },
+   "a2_ingest_repo": {
+    "duckdb": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0018,
+      "median_s": 0.0016,
+      "min_s": 0.0013
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0048,
+      "median_s": 0.0045,
+      "min_s": 0.0044
+     }
+    }
+   },
+   "a3_collect_mailbox": {
+    "duckdb": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0024,
+      "median_s": 0.0023,
+      "min_s": 0.0022
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0057,
+      "median_s": 0.0055,
+      "min_s": 0.0053
+     }
+    }
+   },
+   "a4_read_procenv": {
+    "duckdb": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0126,
+      "median_s": 0.0118,
+      "min_s": 0.0102
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0136,
+      "median_s": 0.0096,
+      "min_s": 0.0093
+     }
+    }
+   },
+   "a5_outbound_offlist": {
+    "duckdb": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0119,
+      "median_s": 0.0105,
+      "min_s": 0.0023
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0139,
+      "median_s": 0.0138,
+      "min_s": 0.0138
+     }
+    }
+   },
+   "a6_credential_shape": {
+    "duckdb": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0158,
+      "median_s": 0.0152,
+      "min_s": 0.0084
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.0148,
+      "median_s": 0.0147,
+      "min_s": 0.0107
+     }
+    }
+   },
+   "a7_url_burst": {
+    "duckdb": {
+     "loadavg_1m_before": 13.42,
+     "timing": null
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 1.0698,
+      "median_s": 1.0563,
+      "min_s": 0.7424
+     }
+    }
+   },
+   "b1_session_temporal": {
+    "duckdb": {
+     "loadavg_1m_before": 13.42,
+     "timing": null
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.3304,
+      "median_s": 0.2388,
+      "min_s": 0.2093
+     }
+    }
+   },
+   "b2_session_temporal_ordered": {
+    "duckdb": {
+     "loadavg_1m_before": 13.7,
+     "timing": null
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.42,
+     "timing": {
+      "max_s": 0.9457,
+      "median_s": 0.9148,
+      "min_s": 0.7723
+     }
+    }
+   },
+   "b3_session_sql": {
+    "duckdb": {
+     "loadavg_1m_before": 13.7,
+     "timing": {
+      "max_s": 0.0271,
+      "median_s": 0.0219,
+      "min_s": 0.0212
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.7,
+     "timing": {
+      "max_s": 0.0232,
+      "median_s": 0.023,
+      "min_s": 0.0187
+     }
+    }
+   },
+   "b4_session_sql_qualified": {
+    "duckdb": {
+     "loadavg_1m_before": 13.7,
+     "timing": {
+      "max_s": 0.0598,
+      "median_s": 0.04,
+      "min_s": 0.0122
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.7,
+     "timing": {
+      "max_s": 0.0564,
+      "median_s": 0.0488,
+      "min_s": 0.0267
+     }
+    }
+   },
+   "c1_walk_sql": {
+    "duckdb": {
+     "loadavg_1m_before": 13.7,
+     "timing": {
+      "max_s": 0.0408,
+      "median_s": 0.0332,
+      "min_s": 0.0274
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.7,
+     "timing": {
+      "max_s": 0.0624,
+      "median_s": 0.0504,
+      "min_s": 0.0333
+     }
+    }
+   },
+   "c2_walk_sql_qualified": {
+    "duckdb": {
+     "loadavg_1m_before": 13.7,
+     "timing": {
+      "max_s": 0.0334,
+      "median_s": 0.0325,
+      "min_s": 0.0322
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 13.7,
+     "timing": {
+      "max_s": 0.101,
+      "median_s": 0.0705,
+      "min_s": 0.0679
+     }
+    }
+   }
+  }
+ },
+ "versions": {
+  "duckdb": "1.5.3",
+  "python": "3.12.3",
+  "sqlite": "3.45.1"
+ }
+}

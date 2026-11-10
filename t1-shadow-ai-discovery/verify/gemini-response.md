@@ -1,0 +1,9 @@
+1. **AGREE.** The evidence matrix across all three runs and the independent re-run confirms that the union reaches 8 cells at found (S1, S3, S4, S5, S6, S7, S8, S9), 1 partial (S2), and misses 1 (S7b). The claim accurately reflects the matrix totals without overstating the evidence.
+
+2. **PARTLY.** The evidence confirms that osquery reached found on 6 of 10 cells (S1, S3, S4, S5, S6, S7) in the final runs, but claiming this falsifies H5 overstates the evidence. Under the pre-registered rules alone, S3 is a miss without reading the `name` column, S4 fails without the switch to `yara_file`, and S6 returns 0 of 8 packages without a non-default directed query.
+
+3. **AGREE.** The evidence directly supports that all 13 remote AI hostnames were captured across all runs in both Zeek's `ssl.log` (SNI) and `dns.log`, and that local runtime endpoints appeared on `eth0` solely due to calls from the peer container. The claim accurately reflects the data and does not overstate the evidence.
+
+4. **PARTLY.** The evidence supports that no benign controls fired domain, package, process, extension, or model-file rules, and that only the benign control on port 8080 (C1) triggered port rules. However, claiming false positives were strictly the pre-registered one overstates the evidence because the egress allowlist also flagged `copilot.com`, an out-of-scope domain not in the frozen pre-registered list that avoided being an anomaly or false positive only through a post-shakeout ground truth adjustment.
+
+5. **PARTLY.** The evidence supports that Syft reported zero components for the extension directories, Chrome extension, and MCP configs. However, it does not support that Syft's model results reproduced R4 "exactly" (the excerpt only documents R4's missing Ollama store row), and claiming neither benchmark found a tool for the Ollama store overstates the evidence because osquery successfully retrieved all five blobs when queried with an explicit path.

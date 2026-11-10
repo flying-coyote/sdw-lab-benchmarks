@@ -1,0 +1,12 @@
+No settings file detected at /tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/modelscan-settings.toml. Using defaults. 
+
+Scanning /tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/fixtures-variants/A5-N2/dns_exfiltration.bin using modelscan.scanners.PyTorchUnsafeOpScan model scan
+{"summary": {"total_issues_by_severity": {"LOW": 0, "MEDIUM": 0, "HIGH": 0, 
+"CRITICAL": 0}, "total_issues": 0, "input_path": 
+"/tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/fixtures-variants/A
+5-N2/dns_exfiltration.bin", "absolute_path": 
+"/tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/fixtures-variants/A
+5-N2", "modelscan_version": "0.8.8", "timestamp": "2026-11-09T20:48:20.650207", 
+"scanned": {"total_scanned": 0}, "skipped": {"total_skipped": 1, 
+"skipped_files": [{"category": "MAGIC_NUMBER", "description": "Invalid magic 
+number", "source": "dns_exfiltration.bin"}]}}, "issues": [], "errors": []}

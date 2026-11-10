@@ -1,0 +1,6 @@
+Reference ID    : 1798A04A (23.152.160.74)
+Stratum         : 3
+Ref time (UTC)  : Tue Nov 10 00:40:01 2026
+System time     : 0.608758509 seconds slow of NTP time
+Last offset     : -0.000354157 seconds
+RMS offset      : 0.082901038 seconds

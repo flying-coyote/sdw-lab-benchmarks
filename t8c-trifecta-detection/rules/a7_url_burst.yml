@@ -1,0 +1,22 @@
+title: Agent outbound call (base for burst correlation)
+name: a7_outbound_any
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation:
+      - http.open
+      - web.fetch
+  condition: sel
+---
+title: Burst of outbound calls from one agent session to one host
+name: a7_url_burst
+description: Leg 3 (way out), CS0066 shape, AML.T0054 + AML.T0086 (one URL per character). Sigma event_count correlation; the sqlite backend emits SQLite-dialect SQL.
+status: experimental
+correlation:
+  type: event_count
+  rules: [a7_outbound_any]
+  group-by: [actor_session_uid, dst_endpoint_hostname]
+  timespan: 5m
+  condition:
+    gte: 20

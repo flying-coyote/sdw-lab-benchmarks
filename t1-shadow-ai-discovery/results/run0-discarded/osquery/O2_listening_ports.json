@@ -1,0 +1,14 @@
+[
+  {"address":"0.0.0.0","cmdline":"","name":"","pid":"-1","port":"8080","protocol":"6"},
+  {"address":"0.0.0.0","cmdline":"","name":"","pid":"-1","port":"8000","protocol":"6"},
+  {"address":"127.0.0.1","cmdline":"","name":"","pid":"-1","port":"37189","protocol":"6"},
+  {"address":"127.0.0.11","cmdline":"","name":"","pid":"-1","port":"33817","protocol":"6"},
+  {"address":"::","cmdline":"","name":"","pid":"-1","port":"11434","protocol":"6"},
+  {"address":"127.0.0.11","cmdline":"","name":"","pid":"-1","port":"33395","protocol":"17"},
+  {"address":"0.0.0.0","cmdline":"","name":"","pid":"-1","port":"8080","protocol":"6"},
+  {"address":"0.0.0.0","cmdline":"","name":"","pid":"-1","port":"8000","protocol":"6"},
+  {"address":"127.0.0.1","cmdline":"","name":"","pid":"-1","port":"37189","protocol":"6"},
+  {"address":"127.0.0.11","cmdline":"","name":"","pid":"-1","port":"33817","protocol":"6"},
+  {"address":"::","cmdline":"","name":"","pid":"-1","port":"11434","protocol":"6"},
+  {"address":"127.0.0.11","cmdline":"","name":"","pid":"-1","port":"33395","protocol":"17"}
+]

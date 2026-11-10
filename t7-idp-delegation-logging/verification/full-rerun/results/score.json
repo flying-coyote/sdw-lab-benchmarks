@@ -1,0 +1,6563 @@
+{
+ "S": {
+  "arm": "S",
+  "reps": 8,
+  "n_events": 107,
+  "n_admin_events": 21,
+  "n_log_event_lines": 107,
+  "rest_inventory": {
+   "LOGIN": {
+    "n": 29,
+    "top": {
+     "clientId": 29,
+     "id": 29,
+     "ipAddress": 29,
+     "realmId": 29,
+     "sessionId": 29,
+     "time": 29,
+     "type": 29,
+     "userId": 29
+    },
+    "details": {
+     "auth_method": 29,
+     "client_auth_method": 29,
+     "grant_type": 29,
+     "refresh_token_id": 29,
+     "refresh_token_provider_id": 29,
+     "refresh_token_type": 29,
+     "scope": 29,
+     "token_id": 29,
+     "username": 29
+    }
+   },
+   "TOKEN_EXCHANGE": {
+    "n": 72,
+    "top": {
+     "clientId": 72,
+     "id": 72,
+     "ipAddress": 72,
+     "realmId": 72,
+     "sessionId": 72,
+     "time": 72,
+     "type": 72,
+     "userId": 72
+    },
+    "details": {
+     "audience": 72,
+     "auth_method": 72,
+     "client_auth_method": 72,
+     "grant_type": 72,
+     "requested_token_type": 72,
+     "scope": 72,
+     "subject_token_client_id": 72,
+     "token_id": 72,
+     "username": 72
+    }
+   },
+   "TOKEN_EXCHANGE_ERROR": {
+    "n": 6,
+    "top": {
+     "clientId": 6,
+     "error": 6,
+     "id": 6,
+     "ipAddress": 6,
+     "realmId": 6,
+     "time": 6,
+     "type": 6
+    },
+    "details": {
+     "auth_method": 6,
+     "client_auth_method": 6,
+     "client_policy_error": 6,
+     "client_policy_error_detail": 6,
+     "grant_type": 6,
+     "reason": 6
+    }
+   }
+  },
+  "admin_inventory": {
+   "CREATE:CLIENT": {
+    "n": 4,
+    "top": {
+     "authDetails": 4,
+     "id": 4,
+     "operationType": 4,
+     "realmId": 4,
+     "representation": 4,
+     "resourcePath": 4,
+     "resourceType": 4,
+     "time": 4
+    }
+   },
+   "CREATE:PROTOCOL_MAPPER": {
+    "n": 3,
+    "top": {
+     "authDetails": 3,
+     "id": 3,
+     "operationType": 3,
+     "realmId": 3,
+     "representation": 3,
+     "resourcePath": 3,
+     "resourceType": 3,
+     "time": 3
+    }
+   },
+   "CREATE:CLIENT_SCOPE": {
+    "n": 6,
+    "top": {
+     "authDetails": 6,
+     "id": 6,
+     "operationType": 6,
+     "realmId": 6,
+     "representation": 6,
+     "resourcePath": 6,
+     "resourceType": 6,
+     "time": 6
+    }
+   },
+   "CREATE:REALM_SCOPE_MAPPING": {
+    "n": 3,
+    "top": {
+     "authDetails": 3,
+     "id": 3,
+     "operationType": 3,
+     "realmId": 3,
+     "representation": 3,
+     "resourcePath": 3,
+     "resourceType": 3,
+     "time": 3
+    }
+   },
+   "CREATE:REALM_ROLE_MAPPING": {
+    "n": 1,
+    "top": {
+     "authDetails": 1,
+     "id": 1,
+     "operationType": 1,
+     "realmId": 1,
+     "representation": 1,
+     "resourcePath": 1,
+     "resourceType": 1,
+     "time": 1
+    }
+   },
+   "CREATE:USER": {
+    "n": 1,
+    "top": {
+     "authDetails": 1,
+     "id": 1,
+     "operationType": 1,
+     "realmId": 1,
+     "representation": 1,
+     "resourcePath": 1,
+     "resourceType": 1,
+     "time": 1
+    }
+   },
+   "CREATE:REALM_ROLE": {
+    "n": 3,
+    "top": {
+     "authDetails": 3,
+     "id": 3,
+     "operationType": 3,
+     "realmId": 3,
+     "representation": 3,
+     "resourcePath": 3,
+     "resourceType": 3,
+     "time": 3
+    }
+   }
+  },
+  "log_inventory": {
+   "LOGIN": {
+    "n": 29,
+    "keys": {
+     "type": 29,
+     "realmId": 29,
+     "realmName": 29,
+     "clientId": 29,
+     "userId": 29,
+     "sessionId": 29,
+     "ipAddress": 29,
+     "refresh_token_provider_id": 29,
+     "auth_method": 29,
+     "token_id": 29,
+     "grant_type": 29,
+     "refresh_token_type": 29,
+     "scope": 29,
+     "refresh_token_id": 29,
+     "client_auth_method": 29,
+     "username": 29,
+     "authSessionParentId": 29,
+     "authSessionTabId": 29
+    }
+   },
+   "TOKEN_EXCHANGE": {
+    "n": 72,
+    "keys": {
+     "type": 72,
+     "realmId": 72,
+     "realmName": 72,
+     "clientId": 72,
+     "userId": 72,
+     "sessionId": 72,
+     "ipAddress": 72,
+     "auth_method": 72,
+     "audience": 72,
+     "token_id": 72,
+     "grant_type": 72,
+     "scope": 72,
+     "subject_token_client_id": 72,
+     "requested_token_type": 72,
+     "client_auth_method": 72,
+     "username": 72,
+     "authSessionParentId": 72,
+     "authSessionTabId": 72
+    }
+   },
+   "TOKEN_EXCHANGE_ERROR": {
+    "n": 6,
+    "keys": {
+     "type": 6,
+     "realmId": 6,
+     "realmName": 6,
+     "clientId": 6,
+     "userId": 6,
+     "ipAddress": 6,
+     "error": 6,
+     "reason": 6,
+     "auth_method": 6,
+     "client_policy_error": 6,
+     "client_policy_error_detail": 6,
+     "grant_type": 6,
+     "client_auth_method": 6
+    }
+   }
+  },
+  "H7_parity": {
+   "LOGIN": {
+    "rest_only": [
+     "id"
+    ],
+    "log_only": [
+     "authSessionParentId",
+     "authSessionTabId",
+     "realmId",
+     "type"
+    ],
+    "n_rest": 29,
+    "n_log": 29
+   },
+   "TOKEN_EXCHANGE": {
+    "rest_only": [
+     "id"
+    ],
+    "log_only": [
+     "authSessionParentId",
+     "authSessionTabId",
+     "realmId",
+     "type"
+    ],
+    "n_rest": 72,
+    "n_log": 72
+   },
+   "TOKEN_EXCHANGE_ERROR": {
+    "rest_only": [
+     "id"
+    ],
+    "log_only": [
+     "realmId",
+     "type",
+     "userId"
+    ],
+    "n_rest": 6,
+    "n_log": 6
+   }
+  },
+  "hop_rows": [
+   {
+    "rep": 1,
+    "enforcer": true,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 172909226,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "Bk4uXc017QCUaM23k7g9uVIc",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:91c2198c-c45e-972a-e8d8-6cf6c105e8f0",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "14cab00f-3061-3afd-e614-d20bc64f6838",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "Bk4uXc017QCUaM23k7g9uVIc",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": true,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 62478901,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "Bk4uXc017QCUaM23k7g9uVIc",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:8c5bc063-8f0a-7181-db17-27a1fea02e13",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "Bk4uXc017QCUaM23k7g9uVIc",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": true,
+    "scenario": "baseline",
+    "label": "baseline/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 80397446,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "Bk4uXc017QCUaM23k7g9uVIc",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:091e2a21-2ac8-ab71-2108-fd710b4d5bfd",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "Bk4uXc017QCUaM23k7g9uVIc",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": true,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 91846067,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "BOOsn2vsXB-3e7nom2vSrTzS",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:888e2460-28d4-dfba-165a-81079a48c306",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "5177e410-081a-87aa-1176-abe28b7aafee",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "BOOsn2vsXB-3e7nom2vSrTzS",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": true,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 60671866,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "BOOsn2vsXB-3e7nom2vSrTzS",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:b77c3e9e-14ec-14fa-17b7-3fef97047819",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "BOOsn2vsXB-3e7nom2vSrTzS",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": true,
+    "scenario": "reacquire",
+    "label": "reacquire/T2-agent-b",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 38893648,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "client_policy_error",
+     "auth_method": "token_exchange",
+     "client_policy_error": "invalid_scope",
+     "client_policy_error_detail": "Scopes [data:write] not present in the initial access token [data:read]",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": null,
+    "error": "invalid_scope",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": false,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": true,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 118189973,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "SvjOu_ItdEcEr0pOVgsGze9a",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:e4fca7f2-59d0-a729-0242-1ab66bd92fdc",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "dfb54e14-7b40-71cc-56bf-b0d22bc4a96b",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "SvjOu_ItdEcEr0pOVgsGze9a",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": true,
+    "scenario": "new",
+    "label": "new/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 34398861,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "SvjOu_ItdEcEr0pOVgsGze9a",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:d430c8ed-43f5-0fae-f8f3-525c889cc4a7",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "SvjOu_ItdEcEr0pOVgsGze9a",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": true,
+    "scenario": "new",
+    "label": "new/T2-agent-b",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 20256390,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "client_policy_error",
+     "auth_method": "token_exchange",
+     "client_policy_error": "invalid_scope",
+     "client_policy_error_detail": "Scopes [data:admin] not present in the initial access token [data:read]",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": null,
+    "error": "invalid_scope",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": false,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 337354219,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "FM6D0f4iEPL9jq2hXcxh-Q_Q",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:e0230d47-3225-ce3c-80b8-7e29e9eb4b70",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "b85f9741-f9e9-230a-685b-5a89a9c884e7",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "FM6D0f4iEPL9jq2hXcxh-Q_Q",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 77923509,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "FM6D0f4iEPL9jq2hXcxh-Q_Q",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:923d024b-958e-3bca-1817-75529f788d2a",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "FM6D0f4iEPL9jq2hXcxh-Q_Q",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 45074155,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "FM6D0f4iEPL9jq2hXcxh-Q_Q",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:16005d22-0e37-c9ab-2596-51671d2f5ced",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "FM6D0f4iEPL9jq2hXcxh-Q_Q",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 130211237,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "MUrmZWZCiakzwaZjqnMrUEQR",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:5df72b4f-d2f7-c6a5-5fe3-a50fcfd4b036",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "40e2377c-0ea5-c881-6f88-278e1ac12845",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "MUrmZWZCiakzwaZjqnMrUEQR",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 36623302,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "MUrmZWZCiakzwaZjqnMrUEQR",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:096599a8-0c75-f8d7-d458-145afc092d54",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "MUrmZWZCiakzwaZjqnMrUEQR",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 45657693,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "MUrmZWZCiakzwaZjqnMrUEQR",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:d4ee62a5-6b5e-ebdb-79f9-adc0276c3f6d",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "MUrmZWZCiakzwaZjqnMrUEQR",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 161681801,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "gho8yiYiSDt8lSCms5Jd4SRe",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:7b45688d-b732-253a-94c7-535b447d221f",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "ae11a26d-a882-8889-7bcf-9899a883f8c3",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "gho8yiYiSDt8lSCms5Jd4SRe",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 44897943,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "gho8yiYiSDt8lSCms5Jd4SRe",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:a57cdab1-1dd4-1683-0e7e-2132647ac461",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "gho8yiYiSDt8lSCms5Jd4SRe",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 58936465,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "gho8yiYiSDt8lSCms5Jd4SRe",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:a69acbaf-0869-8660-38c6-401bba84c83f",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "gho8yiYiSDt8lSCms5Jd4SRe",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 111906437,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "B9qELgj9js6l1zbx02u1XT_b",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:3adaeca3-53c1-83f4-6084-4b39682746fc",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "c3536e16-1298-34bc-c3b0-68dcfda8df06",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "B9qELgj9js6l1zbx02u1XT_b",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 37909285,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "B9qELgj9js6l1zbx02u1XT_b",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:2a7bd1c9-3264-f585-b06d-64f2daa39b02",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "B9qELgj9js6l1zbx02u1XT_b",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 72868778,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "B9qELgj9js6l1zbx02u1XT_b",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:44e2cc24-0d2a-4dc5-e6a9-00088c294715",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "B9qELgj9js6l1zbx02u1XT_b",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 33162874,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "B9qELgj9js6l1zbx02u1XT_b",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:0d365ce6-8a13-6a92-4c92-789db66fc7a9",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "B9qELgj9js6l1zbx02u1XT_b",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 37391852,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "B9qELgj9js6l1zbx02u1XT_b",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:a6c81205-5c33-627b-f7d4-23ce1df8e34c",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "B9qELgj9js6l1zbx02u1XT_b",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 33823618,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "B9qELgj9js6l1zbx02u1XT_b",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:1750b5b5-1b1f-4906-af35-a433b7aa28ce",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "B9qELgj9js6l1zbx02u1XT_b",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 46239732,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "B9qELgj9js6l1zbx02u1XT_b",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:3d80492c-2d5e-f4d3-5ebd-a4ff423fba17",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "B9qELgj9js6l1zbx02u1XT_b",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": true,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 118269174,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "vs8LV4pyGoGNVe7_YnSV1B13",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:eb2f46b0-002b-97ec-b2dd-ec9c9108a633",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "c4d3b9b2-515a-94b5-6de9-4b78629a2276",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "vs8LV4pyGoGNVe7_YnSV1B13",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": true,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 24173200,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "vs8LV4pyGoGNVe7_YnSV1B13",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:d4ffe407-e59e-86ed-8dae-d562255eae8a",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "vs8LV4pyGoGNVe7_YnSV1B13",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": true,
+    "scenario": "baseline",
+    "label": "baseline/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 30056859,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "vs8LV4pyGoGNVe7_YnSV1B13",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:cd95058b-0b64-549e-bf08-09b29fd5515e",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "vs8LV4pyGoGNVe7_YnSV1B13",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": true,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 96801409,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "Df9xW1n4qC9ILu_TQFZUNASa",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:a6a344f5-2c43-abf8-004b-98e61d125fbd",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "6f66a4f1-67fe-4e19-ac8a-ade8b48dd764",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "Df9xW1n4qC9ILu_TQFZUNASa",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": true,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 23095197,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "Df9xW1n4qC9ILu_TQFZUNASa",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:f55763dd-0a9e-c194-08f7-3188dc1e7b1a",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "Df9xW1n4qC9ILu_TQFZUNASa",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": true,
+    "scenario": "reacquire",
+    "label": "reacquire/T2-agent-b",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 25363013,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "client_policy_error",
+     "auth_method": "token_exchange",
+     "client_policy_error": "invalid_scope",
+     "client_policy_error_detail": "Scopes [data:write] not present in the initial access token [data:read]",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": null,
+    "error": "invalid_scope",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": false,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": true,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 105552542,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "mVexN6_9EZRLBqg7gAmOI8k-",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:88ef9e0b-c8bc-523a-87e9-78725c978883",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "7eb3269a-ed44-a4eb-eeb6-225ba2cd419f",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "mVexN6_9EZRLBqg7gAmOI8k-",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": true,
+    "scenario": "new",
+    "label": "new/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 81039209,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "mVexN6_9EZRLBqg7gAmOI8k-",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:80a43320-15c6-48ac-cb98-99cd31b1a0f3",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "mVexN6_9EZRLBqg7gAmOI8k-",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": true,
+    "scenario": "new",
+    "label": "new/T2-agent-b",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 26974066,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "client_policy_error",
+     "auth_method": "token_exchange",
+     "client_policy_error": "invalid_scope",
+     "client_policy_error_detail": "Scopes [data:admin] not present in the initial access token [data:read]",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": null,
+    "error": "invalid_scope",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": false,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 116626846,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "i2in0JKPslK8s5gUWwHvBvIU",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:2cc35024-f3ac-ffdc-3f05-8ae62d7767a9",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "cf2b466e-420d-9d9b-1ee3-b0e668419d3a",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "i2in0JKPslK8s5gUWwHvBvIU",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 41512622,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "i2in0JKPslK8s5gUWwHvBvIU",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:c86d8a77-68af-3e1a-2713-b6b53e2312ef",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "i2in0JKPslK8s5gUWwHvBvIU",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 26686750,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "i2in0JKPslK8s5gUWwHvBvIU",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:fe8f8124-0eca-f522-4579-f7a525c4a8a0",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "i2in0JKPslK8s5gUWwHvBvIU",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 92481963,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "4P1DX7ne6DaknTcWrNG9g70y",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:f8ec5926-342a-bc12-9660-b35c4078b1f1",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "69f2f224-406b-8746-1d4e-b957edf41f8a",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "4P1DX7ne6DaknTcWrNG9g70y",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 37292145,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "4P1DX7ne6DaknTcWrNG9g70y",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:f63e6b15-7383-4646-4eae-7f2722b2f125",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "4P1DX7ne6DaknTcWrNG9g70y",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 28388961,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "4P1DX7ne6DaknTcWrNG9g70y",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:7f0baf2f-15a0-cd22-f0f3-9b2d0478b5f2",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "4P1DX7ne6DaknTcWrNG9g70y",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 129852214,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "Wq0wkobA-fkJdC9kDmERXFhc",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:436dcbb2-a16d-cc9d-cd62-c6b306de31be",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "74e126f6-61bf-aa79-ff12-ad50f872e316",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "Wq0wkobA-fkJdC9kDmERXFhc",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 22059547,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "Wq0wkobA-fkJdC9kDmERXFhc",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:ccc5930b-d54d-ff90-36b0-29a04795c366",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "Wq0wkobA-fkJdC9kDmERXFhc",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 42987718,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "Wq0wkobA-fkJdC9kDmERXFhc",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:d225c155-a4c1-d68b-99b2-be2d4de734a8",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "Wq0wkobA-fkJdC9kDmERXFhc",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 124550367,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "ldAv75yP_G90kONYzrLJfIrg",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:e2f270fa-4d9a-a84b-5b1d-4f2f33824742",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "7cd7d67b-53b0-3d1b-7480-2be0b2be547d",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ldAv75yP_G90kONYzrLJfIrg",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 25788691,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "ldAv75yP_G90kONYzrLJfIrg",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:e567beef-f9e7-08f1-ac2f-b1d99e66fab8",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ldAv75yP_G90kONYzrLJfIrg",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 47822236,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "ldAv75yP_G90kONYzrLJfIrg",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:8cf1d242-d73b-078d-d8e9-0e938261b8bc",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ldAv75yP_G90kONYzrLJfIrg",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 42983918,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "ldAv75yP_G90kONYzrLJfIrg",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:1293f5dc-4ef9-3c54-7da3-40783b0e9119",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ldAv75yP_G90kONYzrLJfIrg",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 40180435,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "ldAv75yP_G90kONYzrLJfIrg",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:16266ea8-ad59-6802-515b-ac871567af29",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ldAv75yP_G90kONYzrLJfIrg",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 39281376,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "ldAv75yP_G90kONYzrLJfIrg",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:250b8dee-c5a7-8f47-cea5-8e775d63e947",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ldAv75yP_G90kONYzrLJfIrg",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 43598559,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "ldAv75yP_G90kONYzrLJfIrg",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:266afb88-393c-3fc5-5377-4694c1150159",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ldAv75yP_G90kONYzrLJfIrg",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": true,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 91793233,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "0MUTJQQL9s4AyRouU8ZXwsjj",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:cddde9c3-0103-af7d-5b34-7757d3767859",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "b70cfb67-997f-f7ea-bde5-81fe10c9972c",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "0MUTJQQL9s4AyRouU8ZXwsjj",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": true,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 21832578,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "0MUTJQQL9s4AyRouU8ZXwsjj",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:0e7fd32b-473a-dff7-3643-3678fb8503a0",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "0MUTJQQL9s4AyRouU8ZXwsjj",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": true,
+    "scenario": "baseline",
+    "label": "baseline/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 39711578,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "0MUTJQQL9s4AyRouU8ZXwsjj",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:933723b9-f951-efae-3669-8de0928b340d",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "0MUTJQQL9s4AyRouU8ZXwsjj",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": true,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 94638103,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "meoTnRl37hF7J8fAGR_gkpLJ",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:bbd3ef9a-6348-8a29-fa4a-4fa30672ae12",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "e6cb3f05-efbf-d84e-44d1-f94bb354e80c",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "meoTnRl37hF7J8fAGR_gkpLJ",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": true,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 42364730,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "meoTnRl37hF7J8fAGR_gkpLJ",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:89a31440-eb84-1514-6e39-06e4950c0003",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "meoTnRl37hF7J8fAGR_gkpLJ",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": true,
+    "scenario": "reacquire",
+    "label": "reacquire/T2-agent-b",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 13445579,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "client_policy_error",
+     "auth_method": "token_exchange",
+     "client_policy_error": "invalid_scope",
+     "client_policy_error_detail": "Scopes [data:write] not present in the initial access token [data:read]",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": null,
+    "error": "invalid_scope",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": false,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": true,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 95377674,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "J6feu-GsfEcsmWvAP-B5X44R",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:ee79c3eb-1d20-aae6-e70b-b489e476933e",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "311dffbf-d791-6d4b-5792-25aade70732c",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "J6feu-GsfEcsmWvAP-B5X44R",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": true,
+    "scenario": "new",
+    "label": "new/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 22952083,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "J6feu-GsfEcsmWvAP-B5X44R",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:27191657-654e-05a5-b2d3-466f4ee7fe69",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "J6feu-GsfEcsmWvAP-B5X44R",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": true,
+    "scenario": "new",
+    "label": "new/T2-agent-b",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 15165443,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "client_policy_error",
+     "auth_method": "token_exchange",
+     "client_policy_error": "invalid_scope",
+     "client_policy_error_detail": "Scopes [data:admin] not present in the initial access token [data:read]",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": null,
+    "error": "invalid_scope",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": false,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 130207437,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "hPU2ZYklzCgkC7zaDQfRrywC",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:76a2cd28-0e69-9256-785b-8c7db7152d27",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "40b61314-9255-006e-886e-d52f3299d3cc",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "hPU2ZYklzCgkC7zaDQfRrywC",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 33411191,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "hPU2ZYklzCgkC7zaDQfRrywC",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:89d83cd1-1a27-e8e5-283c-68bd36d9054f",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "hPU2ZYklzCgkC7zaDQfRrywC",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 40902881,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "hPU2ZYklzCgkC7zaDQfRrywC",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:92dd593b-232a-b697-1941-e145c52990e4",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "hPU2ZYklzCgkC7zaDQfRrywC",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 117221485,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "7TpczmSBjKEn-SwdHnjn3VQ5",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:4a3cdd3a-9033-a2f4-8394-5dd71896e504",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "d6a13d4d-d26c-fcd9-73c3-6ef81ede059d",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "7TpczmSBjKEn-SwdHnjn3VQ5",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 38900651,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "7TpczmSBjKEn-SwdHnjn3VQ5",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:28b6c6fc-1dbc-b19e-ca4f-43b61a6aab29",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "7TpczmSBjKEn-SwdHnjn3VQ5",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 108115089,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "7TpczmSBjKEn-SwdHnjn3VQ5",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:38645335-de22-55ff-c18a-592f5d1c86b3",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "7TpczmSBjKEn-SwdHnjn3VQ5",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 205350564,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "1fn45C2_S_QM5SEseomdeI-w",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:00b5b088-03bb-28f5-bde9-0e41f3e894a2",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "6939735f-3bda-8889-7387-db7fb3516943",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "1fn45C2_S_QM5SEseomdeI-w",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 47666625,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "1fn45C2_S_QM5SEseomdeI-w",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:cdf52c6a-05bb-93fb-09d7-cd0e385b4be0",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "1fn45C2_S_QM5SEseomdeI-w",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 55837461,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "1fn45C2_S_QM5SEseomdeI-w",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:4322c157-f0b8-1b07-3f1c-1bae7c97cbac",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "1fn45C2_S_QM5SEseomdeI-w",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 138308268,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:721a034e-8338-7092-f1a9-d6f072fc363f",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "9c5652eb-3fd9-4ba2-43fc-b167f5bb5713",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 38381217,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:adeb5bf9-7ff9-9952-1253-5e6b751a98db",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 52935218,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:0bb9bd1a-287f-53ef-c19a-5bb1e85de34e",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 58107818,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:987f1564-fd59-7177-5f38-ed5d10d86f78",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 38747645,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:243db247-7e70-41b8-634d-cd2b42349a34",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 35139375,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:eff8816c-ca52-bffc-fefe-2c53a87c6ff6",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 31957815,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:254b459c-d6d7-779c-8309-98940e35cd23",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "5Y88jwXGcrlcjdEh8x4Y0Hrq",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 104782816,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "gYWpVDxQyUDraWDLtB5C8d8o",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:c19db70e-51ad-d189-d893-519c6e1ccf11",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "379810d7-f6da-9340-b41e-4d6a8bcd62dc",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "gYWpVDxQyUDraWDLtB5C8d8o",
+    "error": null
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 31427904,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "gYWpVDxQyUDraWDLtB5C8d8o",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:53c50b9c-e66d-ddf8-dfe8-48a9ffbe7a96",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "gYWpVDxQyUDraWDLtB5C8d8o",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 44997765,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "gYWpVDxQyUDraWDLtB5C8d8o",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:2873d65f-de24-7384-7da4-381f1eb8ad1f",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "gYWpVDxQyUDraWDLtB5C8d8o",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 101874159,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "MYC0d000XkzEhEFyl4sLRXK4",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:c26eed35-ca03-033e-5cdf-7dca35d857f1",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "1f8afa55-ec8c-214a-4966-f97e354a765b",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "MYC0d000XkzEhEFyl4sLRXK4",
+    "error": null
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 26580211,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "MYC0d000XkzEhEFyl4sLRXK4",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:905c522a-35d9-2efb-73fa-cdd14e9cd600",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "MYC0d000XkzEhEFyl4sLRXK4",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 26960719,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "MYC0d000XkzEhEFyl4sLRXK4",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:4a941f7f-7aeb-421b-539f-2a40d8db4aa9",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "MYC0d000XkzEhEFyl4sLRXK4",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 107233162,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "ehLknLgRn9Wtrt9H6wYx-uAp",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:3ff4a4bb-77a4-2951-4ff7-85685b5847e2",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "5f93a871-bd85-287d-aa32-2fc455adeac0",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ehLknLgRn9Wtrt9H6wYx-uAp",
+    "error": null
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 40340076,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "ehLknLgRn9Wtrt9H6wYx-uAp",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:9d91fc93-772c-1957-cfd2-6c819ac6c981",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ehLknLgRn9Wtrt9H6wYx-uAp",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 33683148,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "ehLknLgRn9Wtrt9H6wYx-uAp",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:665f47d7-3438-2b69-49d0-a22104063ea2",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "ehLknLgRn9Wtrt9H6wYx-uAp",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 117392558,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:e274aed8-1e62-9668-9f6e-e0ad441a6435",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "442ff7ba-cbdf-ba7e-3ca7-fb86719b8e37",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "error": null
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 34963272,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:df2cbcf9-1d2c-c4f2-0460-05c09b13c6ae",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 61504783,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:fe7fdbd6-ab64-25da-79d6-448f7c8afcde",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 28632650,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:111a5f08-30ea-c814-03ce-d79746fa0eed",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 21843020,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:cd4b0f61-6b77-1e60-b3ef-a2d4ce9142a0",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 53529830,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:c294f003-d5a6-1ec5-654e-41bdb7bc5434",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 4,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 33513844,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:119c3b9f-81a0-5216-e6bd-02f1540ff89b",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "cB3Bea9lBrRW2g7qsk6mdQKd",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 119019589,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "DfCxzECXFKmdyOPCiF-bnlyh",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:8c728c10-29c9-3f18-fa60-f82f6fd97604",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "d0a88eb7-8713-468d-9b21-496ccc0da1d7",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "DfCxzECXFKmdyOPCiF-bnlyh",
+    "error": null
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 50069962,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "DfCxzECXFKmdyOPCiF-bnlyh",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:ef5ff994-0cf4-9a3c-8f5f-79930b49baa8",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "DfCxzECXFKmdyOPCiF-bnlyh",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 44288552,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "DfCxzECXFKmdyOPCiF-bnlyh",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:60fcb937-9e34-f553-052f-d9370785870d",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "DfCxzECXFKmdyOPCiF-bnlyh",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 97490475,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "AUze4-hr7gXEP_Utv-ePUW3V",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:c5b07df2-f71f-3ed0-5247-7f3dc615bfe5",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "76f7d4ad-8347-51f9-6161-1b0aec7f7083",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "AUze4-hr7gXEP_Utv-ePUW3V",
+    "error": null
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 44955765,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "AUze4-hr7gXEP_Utv-ePUW3V",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:27902f18-f1a7-5115-628b-3d9bda6a6ee9",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "AUze4-hr7gXEP_Utv-ePUW3V",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 34039954,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "AUze4-hr7gXEP_Utv-ePUW3V",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:ea628322-0912-5945-956f-777dd45b34f6",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "AUze4-hr7gXEP_Utv-ePUW3V",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 120470017,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "JD82-oCINLBSbzHz1CWvsmsd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:bc149062-3d7c-270c-8d20-c8b7cf5ffd4e",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "73cb2516-8bac-a010-d9d0-b0e68d9056f3",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "JD82-oCINLBSbzHz1CWvsmsd",
+    "error": null
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T1-agent-a",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 30073978,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "JD82-oCINLBSbzHz1CWvsmsd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:a67f2c67-594a-7a91-0dd3-30213e19ce9b",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "JD82-oCINLBSbzHz1CWvsmsd",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T2-agent-b",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 40905087,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "JD82-oCINLBSbzHz1CWvsmsd",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:35aab010-ecc0-1c9b-20ca-1257a2b00b35",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "JD82-oCINLBSbzHz1CWvsmsd",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T0-login",
+    "status": 200,
+    "event_type": "LOGIN",
+    "match": "token_id_detail",
+    "ns": 101660855,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "auth_method": "openid-connect",
+     "token_id": "onrtro:bf7abc5b-cb90-bb59-decc-349143720be0",
+     "grant_type": "password",
+     "refresh_token_type": "Refresh",
+     "scope": "data:read data:write",
+     "refresh_token_id": "600b8de6-4e1a-4056-aab2-fa3adf00ef7b",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "error": null
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 36307698,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:2af8ee34-0b94-2d2d-ea8f-a64fdf36af9c",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 57450105,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:37ab4135-abac-6ea0-6a70-9d66693af13d",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T1-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 35269278,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "token_id": "ntrtte:983d03a5-25e7-163e-b000-24bf4a600b4b",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "app-frontend",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-1",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 39133453,
+    "scope_claim": "data:read data:write",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:0b5ff21c-ec2e-d22e-ea11-1e73ff910f7c",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-2",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 38629843,
+    "scope_claim": "data:write",
+    "roles": [
+     "data-write"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:04a618b6-2f8b-8a5f-1f7a-49b99a16856e",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 5,
+    "enforcer": false,
+    "scenario": "interleaved",
+    "label": "interleaved/T2-0",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 45594977,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "auth_method": "token_exchange",
+     "audience": "tool-api",
+     "token_id": "ntrtte:00e452e7-61e5-e355-f8f8-e58d94373608",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": "RgjneUfHcMSE2ES9wtlrTwYk",
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   }
+  ],
+  "claims_inventory": {
+   "T0-login": {
+    "n": 29,
+    "jti": 29,
+    "sid": 29,
+    "azp": 29,
+    "aud": 29,
+    "scope": 29,
+    "realm_access": 29,
+    "sig_verified": 29
+   },
+   "T1-agent-a": {
+    "n": 24,
+    "jti": 24,
+    "sid": 24,
+    "azp": 24,
+    "aud": 24,
+    "scope": 24,
+    "realm_access": 24,
+    "sig_verified": 24
+   },
+   "T2-agent-b": {
+    "n": 18,
+    "jti": 18,
+    "sid": 18,
+    "azp": 18,
+    "aud": 18,
+    "scope": 18,
+    "realm_access": 18,
+    "sig_verified": 18
+   },
+   "T1-k": {
+    "n": 15,
+    "jti": 15,
+    "sid": 15,
+    "azp": 15,
+    "aud": 15,
+    "scope": 15,
+    "realm_access": 15,
+    "sig_verified": 15
+   },
+   "T2-k": {
+    "n": 15,
+    "jti": 15,
+    "sid": 15,
+    "azp": 15,
+    "aud": 15,
+    "scope": 15,
+    "realm_access": 15,
+    "sig_verified": 15
+   }
+  },
+  "H1": {
+   "hops_checked": 78,
+   "subject_jti_in_event": 0,
+   "subject_azp_in_details": 72,
+   "issued_jti_in_event": 72
+  },
+  "match_methods": {
+   "token_id_detail": 101,
+   "client+session+time": 6
+  },
+  "H4_detection": {
+   "baseline": {
+    "chain_aware": 0,
+    "root_only": 0,
+    "n": 5,
+    "scope_detail_present": 5,
+    "example_scopes": [
+     [
+      "data:read",
+      "data:write"
+     ],
+     [
+      "data:read"
+     ],
+     [
+      "data:read"
+     ]
+    ],
+    "example_types": [
+     "LOGIN",
+     "TOKEN_EXCHANGE",
+     "TOKEN_EXCHANGE"
+    ]
+   },
+   "reacquire": {
+    "chain_aware": 5,
+    "root_only": 0,
+    "n": 5,
+    "scope_detail_present": 5,
+    "example_scopes": [
+     [
+      "data:read",
+      "data:write"
+     ],
+     [
+      "data:read"
+     ],
+     [
+      "data:read",
+      "data:write"
+     ]
+    ],
+    "example_types": [
+     "LOGIN",
+     "TOKEN_EXCHANGE",
+     "TOKEN_EXCHANGE"
+    ]
+   },
+   "new": {
+    "chain_aware": 0,
+    "root_only": 0,
+    "n": 5,
+    "scope_detail_present": 5,
+    "example_scopes": [
+     [
+      "data:read",
+      "data:write"
+     ],
+     [
+      "data:read"
+     ],
+     [
+      "data:read"
+     ]
+    ],
+    "example_types": [
+     "LOGIN",
+     "TOKEN_EXCHANGE",
+     "TOKEN_EXCHANGE"
+    ]
+   }
+  },
+  "requested_vs_effective": {
+   "hops": 72,
+   "silently_reduced": 5,
+   "requested_scope_recorded_anywhere": 0,
+   "examples": [
+    {
+     "label": "new/T2-agent-b",
+     "asked": [
+      "data:admin",
+      "data:read"
+     ],
+     "event_scope": [
+      "data:read"
+     ],
+     "token_scope": "data:read"
+    },
+    {
+     "label": "new/T2-agent-b",
+     "asked": [
+      "data:admin",
+      "data:read"
+     ],
+     "event_scope": [
+      "data:read"
+     ],
+     "token_scope": "data:read"
+    }
+   ]
+  },
+  "H3_attribution": {
+   "correct": 5,
+   "total": 15,
+   "per_rep": [
+    {
+     "rep": 1,
+     "correct_of_3": 1,
+     "order": [
+      2,
+      0,
+      1
+     ],
+     "event_mapping": "token_id_detail"
+    },
+    {
+     "rep": 2,
+     "correct_of_3": 1,
+     "order": [
+      0,
+      2,
+      1
+     ],
+     "event_mapping": "token_id_detail"
+    },
+    {
+     "rep": 3,
+     "correct_of_3": 1,
+     "order": [
+      1,
+      2,
+      0
+     ],
+     "event_mapping": "token_id_detail"
+    },
+    {
+     "rep": 4,
+     "correct_of_3": 1,
+     "order": [
+      1,
+      2,
+      0
+     ],
+     "event_mapping": "token_id_detail"
+    },
+    {
+     "rep": 5,
+     "correct_of_3": 1,
+     "order": [
+      1,
+      2,
+      0
+     ],
+     "event_mapping": "token_id_detail"
+    }
+   ]
+  },
+  "H5_error_events": {
+   "n": 6,
+   "detail_keys": {
+    "reason": 6,
+    "auth_method": 6,
+    "client_policy_error": 6,
+    "client_policy_error_detail": 6,
+    "grant_type": 6,
+    "client_auth_method": 6
+   },
+   "errors": {
+    "invalid_scope": 6
+   },
+   "example": {
+    "id": "4a00a008-0014-433e-8932-4b7e5b284898",
+    "time": 1794274031355,
+    "type": "TOKEN_EXCHANGE_ERROR",
+    "realmId": "bb5b4a20-1a07-41e8-8b11-186e465dfe46",
+    "clientId": "agent-b",
+    "ipAddress": "172.17.0.1",
+    "error": "invalid_scope",
+    "details": {
+     "reason": "client_policy_error",
+     "auth_method": "token_exchange",
+     "client_policy_error": "invalid_scope",
+     "client_policy_error_detail": "Scopes [data:write] not present in the initial access token [data:read]",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "client_auth_method": "client-secret"
+    }
+   }
+  },
+  "latency_ms": {
+   "T0-login": {
+    "n": 29,
+    "median": 117.2,
+    "cv": 0.375,
+    "min": 91.8,
+    "max": 337.4
+   },
+   "T1-agent-a": {
+    "n": 24,
+    "median": 38.1,
+    "cv": 0.394,
+    "min": 21.8,
+    "max": 81.0
+   },
+   "T2-agent-b": {
+    "n": 18,
+    "median": 41.9,
+    "cv": 0.429,
+    "min": 26.7,
+    "max": 108.1
+   },
+   "T1-k": {
+    "n": 15,
+    "median": 38.4,
+    "cv": 0.297,
+    "min": 25.8,
+    "max": 72.9
+   },
+   "T2-k": {
+    "n": 15,
+    "median": 38.7,
+    "cv": 0.183,
+    "min": 21.8,
+    "max": 53.5
+   }
+  },
+  "loadavg": [
+   [
+    1,
+    true,
+    24.2841796875,
+    24.2841796875
+   ],
+   [
+    1,
+    false,
+    24.43505859375,
+    24.39990234375
+   ],
+   [
+    2,
+    true,
+    24.2841796875,
+    24.58203125
+   ],
+   [
+    2,
+    false,
+    24.39990234375,
+    24.39990234375
+   ],
+   [
+    3,
+    true,
+    24.58203125,
+    24.58203125
+   ],
+   [
+    3,
+    false,
+    24.39990234375,
+    24.04736328125
+   ],
+   [
+    4,
+    false,
+    24.04736328125,
+    24.04736328125
+   ],
+   [
+    5,
+    false,
+    24.04736328125,
+    24.2841796875
+   ]
+  ],
+  "status_by_label": {
+   "enf:baseline/T0-login": {
+    "200": 3
+   },
+   "enf:baseline/T1-agent-a": {
+    "200": 3
+   },
+   "enf:baseline/T2-agent-b": {
+    "200": 3
+   },
+   "enf:reacquire/T0-login": {
+    "200": 3
+   },
+   "enf:reacquire/T1-agent-a": {
+    "200": 3
+   },
+   "enf:reacquire/T2-agent-b": {
+    "400": 3
+   },
+   "enf:new/T0-login": {
+    "200": 3
+   },
+   "enf:new/T1-agent-a": {
+    "200": 3
+   },
+   "enf:new/T2-agent-b": {
+    "400": 3
+   },
+   "baseline/T0-login": {
+    "200": 5
+   },
+   "baseline/T1-agent-a": {
+    "200": 5
+   },
+   "baseline/T2-agent-b": {
+    "200": 5
+   },
+   "reacquire/T0-login": {
+    "200": 5
+   },
+   "reacquire/T1-agent-a": {
+    "200": 5
+   },
+   "reacquire/T2-agent-b": {
+    "200": 5
+   },
+   "new/T0-login": {
+    "200": 5
+   },
+   "new/T1-agent-a": {
+    "200": 5
+   },
+   "new/T2-agent-b": {
+    "200": 5
+   },
+   "interleaved/T0-login": {
+    "200": 5
+   },
+   "interleaved/T1-k": {
+    "200": 15
+   },
+   "interleaved/T2-k": {
+    "200": 15
+   }
+  },
+  "event_set_stability": {
+   "enf:baseline": {
+    "reps": 3,
+    "distinct_signatures": 1
+   },
+   "enf:reacquire": {
+    "reps": 3,
+    "distinct_signatures": 1
+   },
+   "enf:new": {
+    "reps": 3,
+    "distinct_signatures": 1
+   },
+   "baseline": {
+    "reps": 5,
+    "distinct_signatures": 1
+   },
+   "reacquire": {
+    "reps": 5,
+    "distinct_signatures": 1
+   },
+   "new": {
+    "reps": 5,
+    "distinct_signatures": 1
+   },
+   "interleaved": {
+    "reps": 5,
+    "distinct_signatures": 1
+   }
+  }
+ },
+ "D": {
+  "arm": "D",
+  "reps": 3,
+  "n_events": 48,
+  "n_admin_events": 23,
+  "n_log_event_lines": 48,
+  "rest_inventory": {
+   "LOGIN": {
+    "n": 9,
+    "top": {
+     "clientId": 9,
+     "id": 9,
+     "ipAddress": 9,
+     "realmId": 9,
+     "sessionId": 9,
+     "time": 9,
+     "type": 9,
+     "userId": 9
+    },
+    "details": {
+     "auth_method": 9,
+     "code_id": 9,
+     "consent": 9,
+     "redirect_uri": 9,
+     "remember_me": 9,
+     "response_mode": 9,
+     "response_type": 9,
+     "username": 9
+    }
+   },
+   "CODE_TO_TOKEN": {
+    "n": 9,
+    "top": {
+     "clientId": 9,
+     "id": 9,
+     "ipAddress": 9,
+     "realmId": 9,
+     "sessionId": 9,
+     "time": 9,
+     "type": 9,
+     "userId": 9
+    },
+    "details": {
+     "client_auth_method": 9,
+     "code_id": 9,
+     "grant_type": 9,
+     "refresh_token_id": 9,
+     "refresh_token_provider_id": 9,
+     "refresh_token_type": 9,
+     "scope": 9,
+     "token_id": 9
+    }
+   },
+   "CLIENT_LOGIN": {
+    "n": 12,
+    "top": {
+     "clientId": 12,
+     "id": 12,
+     "ipAddress": 12,
+     "realmId": 12,
+     "time": 12,
+     "type": 12,
+     "userId": 12
+    },
+    "details": {
+     "client_auth_method": 12,
+     "grant_type": 12,
+     "token_id": 12,
+     "username": 12
+    }
+   },
+   "TOKEN_EXCHANGE": {
+    "n": 9,
+    "top": {
+     "clientId": 9,
+     "id": 9,
+     "ipAddress": 9,
+     "realmId": 9,
+     "time": 9,
+     "type": 9,
+     "userId": 9
+    },
+    "details": {
+     "actor": 9,
+     "actor_id": 9,
+     "actor_type": 9,
+     "audience": 9,
+     "auth_method": 9,
+     "client_auth_method": 9,
+     "grant_type": 9,
+     "requested_token_type": 9,
+     "scope": 9,
+     "subject_token_client_id": 9,
+     "token_id": 9,
+     "username": 9
+    }
+   },
+   "TOKEN_EXCHANGE_ERROR": {
+    "n": 6,
+    "top": {
+     "clientId": 6,
+     "error": 6,
+     "id": 6,
+     "ipAddress": 6,
+     "realmId": 6,
+     "time": 6,
+     "type": 6,
+     "userId": 6
+    },
+    "details": {
+     "auth_method": 6,
+     "client_auth_method": 6,
+     "grant_type": 6,
+     "reason": 6,
+     "requested_token_type": 6,
+     "subject_token_client_id": 6,
+     "username": 6,
+     "actor": 3,
+     "actor_id": 3,
+     "actor_type": 3
+    }
+   },
+   "LOGIN_ERROR": {
+    "n": 3,
+    "top": {
+     "clientId": 3,
+     "error": 3,
+     "id": 3,
+     "ipAddress": 3,
+     "realmId": 3,
+     "time": 3,
+     "type": 3
+    },
+    "details": {
+     "reason": 3,
+     "redirect_uri": 3,
+     "response_mode": 3,
+     "response_type": 3
+    }
+   }
+  },
+  "admin_inventory": {
+   "CREATE:AUTHORIZATION_POLICY": {
+    "n": 2,
+    "top": {
+     "authDetails": 2,
+     "id": 2,
+     "operationType": 2,
+     "realmId": 2,
+     "representation": 2,
+     "resourcePath": 2,
+     "resourceType": 2,
+     "time": 2
+    }
+   },
+   "CREATE:CLIENT": {
+    "n": 4,
+    "top": {
+     "authDetails": 4,
+     "id": 4,
+     "operationType": 4,
+     "realmId": 4,
+     "representation": 4,
+     "resourcePath": 4,
+     "resourceType": 4,
+     "time": 4
+    }
+   },
+   "CREATE:PROTOCOL_MAPPER": {
+    "n": 3,
+    "top": {
+     "authDetails": 3,
+     "id": 3,
+     "operationType": 3,
+     "realmId": 3,
+     "representation": 3,
+     "resourcePath": 3,
+     "resourceType": 3,
+     "time": 3
+    }
+   },
+   "CREATE:CLIENT_SCOPE": {
+    "n": 6,
+    "top": {
+     "authDetails": 6,
+     "id": 6,
+     "operationType": 6,
+     "realmId": 6,
+     "representation": 6,
+     "resourcePath": 6,
+     "resourceType": 6,
+     "time": 6
+    }
+   },
+   "CREATE:REALM_SCOPE_MAPPING": {
+    "n": 3,
+    "top": {
+     "authDetails": 3,
+     "id": 3,
+     "operationType": 3,
+     "realmId": 3,
+     "representation": 3,
+     "resourcePath": 3,
+     "resourceType": 3,
+     "time": 3
+    }
+   },
+   "CREATE:REALM_ROLE_MAPPING": {
+    "n": 1,
+    "top": {
+     "authDetails": 1,
+     "id": 1,
+     "operationType": 1,
+     "realmId": 1,
+     "representation": 1,
+     "resourcePath": 1,
+     "resourceType": 1,
+     "time": 1
+    }
+   },
+   "CREATE:USER": {
+    "n": 1,
+    "top": {
+     "authDetails": 1,
+     "id": 1,
+     "operationType": 1,
+     "realmId": 1,
+     "representation": 1,
+     "resourcePath": 1,
+     "resourceType": 1,
+     "time": 1
+    }
+   },
+   "CREATE:REALM_ROLE": {
+    "n": 3,
+    "top": {
+     "authDetails": 3,
+     "id": 3,
+     "operationType": 3,
+     "realmId": 3,
+     "representation": 3,
+     "resourcePath": 3,
+     "resourceType": 3,
+     "time": 3
+    }
+   }
+  },
+  "log_inventory": {
+   "LOGIN": {
+    "n": 9,
+    "keys": {
+     "type": 9,
+     "realmId": 9,
+     "realmName": 9,
+     "clientId": 9,
+     "userId": 9,
+     "sessionId": 9,
+     "ipAddress": 9,
+     "auth_method": 9,
+     "response_type": 9,
+     "redirect_uri": 9,
+     "remember_me": 9,
+     "consent": 9,
+     "code_id": 9,
+     "response_mode": 9,
+     "username": 9,
+     "authSessionParentId": 9,
+     "authSessionTabId": 9
+    }
+   },
+   "CODE_TO_TOKEN": {
+    "n": 9,
+    "keys": {
+     "type": 9,
+     "realmId": 9,
+     "realmName": 9,
+     "clientId": 9,
+     "userId": 9,
+     "sessionId": 9,
+     "ipAddress": 9,
+     "refresh_token_provider_id": 9,
+     "token_id": 9,
+     "grant_type": 9,
+     "refresh_token_type": 9,
+     "scope": 9,
+     "refresh_token_id": 9,
+     "code_id": 9,
+     "client_auth_method": 9
+    }
+   },
+   "CLIENT_LOGIN": {
+    "n": 12,
+    "keys": {
+     "type": 12,
+     "realmId": 12,
+     "realmName": 12,
+     "clientId": 12,
+     "userId": 12,
+     "ipAddress": 12,
+     "token_id": 12,
+     "grant_type": 12,
+     "client_auth_method": 12,
+     "username": 12,
+     "authSessionParentId": 12,
+     "authSessionTabId": 12
+    }
+   },
+   "TOKEN_EXCHANGE": {
+    "n": 9,
+    "keys": {
+     "type": 9,
+     "realmId": 9,
+     "realmName": 9,
+     "clientId": 9,
+     "userId": 9,
+     "ipAddress": 9,
+     "actor": 9,
+     "auth_method": 9,
+     "audience": 9,
+     "actor_type": 9,
+     "token_id": 9,
+     "grant_type": 9,
+     "scope": 9,
+     "subject_token_client_id": 9,
+     "actor_id": 9,
+     "requested_token_type": 9,
+     "client_auth_method": 9,
+     "username": 9,
+     "authSessionParentId": 9,
+     "authSessionTabId": 9
+    }
+   },
+   "TOKEN_EXCHANGE_ERROR": {
+    "n": 6,
+    "keys": {
+     "type": 6,
+     "realmId": 6,
+     "realmName": 6,
+     "clientId": 6,
+     "userId": 6,
+     "ipAddress": 6,
+     "error": 6,
+     "reason": 6,
+     "auth_method": 6,
+     "grant_type": 6,
+     "subject_token_client_id": 6,
+     "requested_token_type": 6,
+     "client_auth_method": 6,
+     "username": 6,
+     "actor": 3,
+     "actor_type": 3,
+     "actor_id": 3
+    }
+   },
+   "LOGIN_ERROR": {
+    "n": 3,
+    "keys": {
+     "type": 3,
+     "realmId": 3,
+     "realmName": 3,
+     "clientId": 3,
+     "userId": 3,
+     "ipAddress": 3,
+     "error": 3,
+     "reason": 3,
+     "response_type": 3,
+     "redirect_uri": 3,
+     "response_mode": 3
+    }
+   }
+  },
+  "H7_parity": {
+   "LOGIN": {
+    "rest_only": [
+     "id"
+    ],
+    "log_only": [
+     "authSessionParentId",
+     "authSessionTabId",
+     "realmId",
+     "type"
+    ],
+    "n_rest": 9,
+    "n_log": 9
+   },
+   "CODE_TO_TOKEN": {
+    "rest_only": [
+     "id"
+    ],
+    "log_only": [
+     "realmId",
+     "type"
+    ],
+    "n_rest": 9,
+    "n_log": 9
+   },
+   "CLIENT_LOGIN": {
+    "rest_only": [
+     "id"
+    ],
+    "log_only": [
+     "authSessionParentId",
+     "authSessionTabId",
+     "realmId",
+     "type"
+    ],
+    "n_rest": 12,
+    "n_log": 12
+   },
+   "TOKEN_EXCHANGE": {
+    "rest_only": [
+     "id"
+    ],
+    "log_only": [
+     "authSessionParentId",
+     "authSessionTabId",
+     "realmId",
+     "type"
+    ],
+    "n_rest": 9,
+    "n_log": 9
+   },
+   "TOKEN_EXCHANGE_ERROR": {
+    "rest_only": [
+     "id"
+    ],
+    "log_only": [
+     "realmId",
+     "type"
+    ],
+    "n_rest": 6,
+    "n_log": 6
+   },
+   "LOGIN_ERROR": {
+    "rest_only": [
+     "id"
+    ],
+    "log_only": [
+     "realmId",
+     "type",
+     "userId"
+    ],
+    "n_rest": 3,
+    "n_log": 3
+   }
+  },
+  "hop_rows": [
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "CODE_TO_TOKEN",
+    "match": "token_id_detail",
+    "ns": 78506776,
+    "scope_claim": "openid data:write data:read delegation:client:agent-a",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "TnzH97re0k1CFXI5v0Cfr_S7",
+    "act": null,
+    "may_act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "token_id": "onrtac:ec64d904-fa1c-d0b3-029f-701e83495378",
+     "grant_type": "authorization_code",
+     "refresh_token_type": "Refresh",
+     "scope": "openid data:write data:read delegation:client:agent-a",
+     "refresh_token_id": "6ed22b15-6500-7d4a-29ac-308156ee9775",
+     "code_id": "TnzH97re0k1CFXI5v0Cfr_S7",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": "TnzH97re0k1CFXI5v0Cfr_S7",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/actor-agent-a",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 45982134,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:9d92f144-0196-049b-a802-6b01b3c28c20",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-a"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a-delegated",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 62257256,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-a",
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "actor_type": "client",
+     "token_id": "trrtte:7778b5f5-d689-4fdf-eed0-03c504681625",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "actor_id": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2a-agent-b-standard",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 43611542,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "subject_token with a 'may_act' or 'act' claim is not allowed for standard token exchange",
+     "auth_method": "token_exchange",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": "invalid_request",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/actor-agent-b",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 29909929,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:a57620a8-172f-5bac-b0a4-de7146264662",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-b"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2b-agent-b-delegated",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 29557201,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-b",
+     "reason": "Invalid may_act claim in the subject_token",
+     "auth_method": "token_exchange",
+     "actor_type": "client",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "subject_token_client_id": "agent-a",
+     "actor_id": "c2f37afd-07ab-4e70-9ecb-9543d6c044f7",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": "invalid_token",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "CODE_TO_TOKEN",
+    "match": "token_id_detail",
+    "ns": 34078468,
+    "scope_claim": "openid data:read delegation:client:agent-a",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "aR_77B24AKM7h0Fn75ZZGPGU",
+    "act": null,
+    "may_act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "token_id": "onrtac:784ea786-cd2b-c33c-6957-aaaa7f5258fc",
+     "grant_type": "authorization_code",
+     "refresh_token_type": "Refresh",
+     "scope": "openid data:read delegation:client:agent-a",
+     "refresh_token_id": "1cd7320a-13e5-044d-589d-694fe3df10cc",
+     "code_id": "aR_77B24AKM7h0Fn75ZZGPGU",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": "aR_77B24AKM7h0Fn75ZZGPGU",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/actor-agent-a",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 17404013,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:421e421d-f911-2fb3-1e17-d7fcc2a3096f",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-a"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a-delegated",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 20013225,
+    "scope_claim": "data:write data:read",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-a",
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "actor_type": "client",
+     "token_id": "trrtte:25bdd982-b38b-6f2d-ad43-2d88f32f3f4d",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write data:read",
+     "subject_token_client_id": "app-frontend",
+     "actor_id": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "CODE_TO_TOKEN",
+    "match": "token_id_detail",
+    "ns": 34786825,
+    "scope_claim": "openid data:write data:read delegation:client:agent-a",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "RXVga3vk6LZ3nMG33K5mGdUR",
+    "act": null,
+    "may_act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "token_id": "onrtac:8d2033fb-4aaa-0a03-4de0-1253cedbfd1b",
+     "grant_type": "authorization_code",
+     "refresh_token_type": "Refresh",
+     "scope": "openid data:write data:read delegation:client:agent-a",
+     "refresh_token_id": "696080b6-7bbd-22e5-0a2e-d32d52b41612",
+     "code_id": "RXVga3vk6LZ3nMG33K5mGdUR",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": "RXVga3vk6LZ3nMG33K5mGdUR",
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/actor-agent-a",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 29179470,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:d2ffd7d2-8c51-0c87-d09c-b959c880e0e7",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-a"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T1-agent-a-delegated",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 37533649,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-a",
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "actor_type": "client",
+     "token_id": "trrtte:8b793811-0a77-7fca-3e3b-d9d1fccad14b",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "actor_id": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 1,
+    "enforcer": false,
+    "scenario": "two-actors",
+    "label": "two-actors/T0-login",
+    "status": 302,
+    "event_type": "LOGIN_ERROR",
+    "match": "client+session+time",
+    "ns": 0,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "Invalid scopes: openid data:read delegation:client:agent-a delegation:client:agent-b",
+     "response_type": "code",
+     "redirect_uri": "http://127.0.0.1:9/cb",
+     "response_mode": "query"
+    },
+    "event_sessionId": null,
+    "error": "invalid_request"
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "CODE_TO_TOKEN",
+    "match": "token_id_detail",
+    "ns": 48072736,
+    "scope_claim": "openid data:write data:read delegation:client:agent-a",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "xOOT0kgWXuKLk5l03ozCUPny",
+    "act": null,
+    "may_act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "token_id": "onrtac:dc241f0b-4bfc-48e5-b1f7-793fdb1c0d05",
+     "grant_type": "authorization_code",
+     "refresh_token_type": "Refresh",
+     "scope": "openid data:write data:read delegation:client:agent-a",
+     "refresh_token_id": "3fb59e90-d708-a9ec-33c2-f1fa82f9d13e",
+     "code_id": "xOOT0kgWXuKLk5l03ozCUPny",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": "xOOT0kgWXuKLk5l03ozCUPny",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/actor-agent-a",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 29070380,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:b657bd36-9045-a2ed-6e5e-090418e670bf",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-a"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a-delegated",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 35774329,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-a",
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "actor_type": "client",
+     "token_id": "trrtte:8cf66060-c946-7c28-ba99-c904790036fd",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "actor_id": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2a-agent-b-standard",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 25333374,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "subject_token with a 'may_act' or 'act' claim is not allowed for standard token exchange",
+     "auth_method": "token_exchange",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": "invalid_request",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/actor-agent-b",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 57056772,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:5b96a808-58b6-0aa8-6d78-16ff75c8cb11",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-b"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2b-agent-b-delegated",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 24650018,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-b",
+     "reason": "Invalid may_act claim in the subject_token",
+     "auth_method": "token_exchange",
+     "actor_type": "client",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "subject_token_client_id": "agent-a",
+     "actor_id": "c2f37afd-07ab-4e70-9ecb-9543d6c044f7",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": "invalid_token",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "CODE_TO_TOKEN",
+    "match": "token_id_detail",
+    "ns": 35602915,
+    "scope_claim": "openid data:read delegation:client:agent-a",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "_Tu0W8AOmL4_0IU9TSfMg3Cg",
+    "act": null,
+    "may_act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "token_id": "onrtac:1b626fd4-a5c7-dcea-97a0-eabc0e680226",
+     "grant_type": "authorization_code",
+     "refresh_token_type": "Refresh",
+     "scope": "openid data:read delegation:client:agent-a",
+     "refresh_token_id": "dbe861f9-6fb1-bdf6-3a68-017ca50985a5",
+     "code_id": "_Tu0W8AOmL4_0IU9TSfMg3Cg",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": "_Tu0W8AOmL4_0IU9TSfMg3Cg",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/actor-agent-a",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 31268360,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:50f82c7c-510d-eac2-7108-d88424766ea9",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-a"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a-delegated",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 45817852,
+    "scope_claim": "data:write data:read",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-a",
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "actor_type": "client",
+     "token_id": "trrtte:6425efd4-9f69-c728-5ec0-a1d9c87f438f",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write data:read",
+     "subject_token_client_id": "app-frontend",
+     "actor_id": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "CODE_TO_TOKEN",
+    "match": "token_id_detail",
+    "ns": 41951535,
+    "scope_claim": "openid data:write data:read delegation:client:agent-a",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "2deSefbccbFHF3oeVVu7S-nQ",
+    "act": null,
+    "may_act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "token_id": "onrtac:e804d1ce-88e0-da2f-1ffb-4ef4079d1b2a",
+     "grant_type": "authorization_code",
+     "refresh_token_type": "Refresh",
+     "scope": "openid data:write data:read delegation:client:agent-a",
+     "refresh_token_id": "652439c0-e092-41e2-363c-fb61b89ac68a",
+     "code_id": "2deSefbccbFHF3oeVVu7S-nQ",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": "2deSefbccbFHF3oeVVu7S-nQ",
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/actor-agent-a",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 24041668,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:7545bc39-0ee7-478c-2848-289473e0fa74",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-a"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T1-agent-a-delegated",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 30201072,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-a",
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "actor_type": "client",
+     "token_id": "trrtte:b7b4fbe5-e923-f989-75c4-b8e95a53e068",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "actor_id": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 2,
+    "enforcer": false,
+    "scenario": "two-actors",
+    "label": "two-actors/T0-login",
+    "status": 302,
+    "event_type": "LOGIN_ERROR",
+    "match": "client+session+time",
+    "ns": 0,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "Invalid scopes: openid data:read delegation:client:agent-a delegation:client:agent-b",
+     "response_type": "code",
+     "redirect_uri": "http://127.0.0.1:9/cb",
+     "response_mode": "query"
+    },
+    "event_sessionId": null,
+    "error": "invalid_request"
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T0-login",
+    "status": 200,
+    "event_type": "CODE_TO_TOKEN",
+    "match": "token_id_detail",
+    "ns": 26013129,
+    "scope_claim": "openid data:write data:read delegation:client:agent-a",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "44Y9CGBT2SVj7Ex10eA2V9Sz",
+    "act": null,
+    "may_act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "token_id": "onrtac:89f77c55-b144-82af-d58e-b73ae2b5b068",
+     "grant_type": "authorization_code",
+     "refresh_token_type": "Refresh",
+     "scope": "openid data:write data:read delegation:client:agent-a",
+     "refresh_token_id": "3b532cd2-c4fd-2b6d-ef47-0714606e4568",
+     "code_id": "44Y9CGBT2SVj7Ex10eA2V9Sz",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": "44Y9CGBT2SVj7Ex10eA2V9Sz",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/actor-agent-a",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 21741180,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:ccbc68f9-0484-a50a-cf10-7b9cbf9591a2",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-a"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T1-agent-a-delegated",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 21337447,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-a",
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "actor_type": "client",
+     "token_id": "trrtte:49a07495-50ba-948f-42d4-2a2c8c4e9c79",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "actor_id": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2a-agent-b-standard",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 20114547,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "subject_token with a 'may_act' or 'act' claim is not allowed for standard token exchange",
+     "auth_method": "token_exchange",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": "invalid_request",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/actor-agent-b",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 24849534,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-b",
+    "aud": "tool-api",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:cc7055a9-904b-e96c-f2ad-abd25266a221",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-b"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "baseline",
+    "label": "baseline/T2b-agent-b-delegated",
+    "status": 400,
+    "event_type": "TOKEN_EXCHANGE_ERROR",
+    "match": "client+session+time",
+    "ns": 30529499,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-b",
+     "reason": "Invalid may_act claim in the subject_token",
+     "auth_method": "token_exchange",
+     "actor_type": "client",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "subject_token_client_id": "agent-a",
+     "actor_id": "c2f37afd-07ab-4e70-9ecb-9543d6c044f7",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": "invalid_token",
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": null
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T0-login",
+    "status": 200,
+    "event_type": "CODE_TO_TOKEN",
+    "match": "token_id_detail",
+    "ns": 28089000,
+    "scope_claim": "openid data:read delegation:client:agent-a",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "ZlDmtV_lh_NsSKt4bENToqHJ",
+    "act": null,
+    "may_act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "token_id": "onrtac:5eb8c575-6a64-0776-8ae3-5f14f9b4a069",
+     "grant_type": "authorization_code",
+     "refresh_token_type": "Refresh",
+     "scope": "openid data:read delegation:client:agent-a",
+     "refresh_token_id": "97cdc925-8fc3-dad4-b8dd-084d1760058a",
+     "code_id": "ZlDmtV_lh_NsSKt4bENToqHJ",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": "ZlDmtV_lh_NsSKt4bENToqHJ",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/actor-agent-a",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 27036814,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:671f7b37-a533-5a91-d99b-98605c82824a",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-a"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "reacquire",
+    "label": "reacquire/T1-agent-a-delegated",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 24659819,
+    "scope_claim": "data:write data:read",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-a",
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "actor_type": "client",
+     "token_id": "trrtte:47527080-1fb5-c9bc-166f-555f52dc2646",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:write data:read",
+     "subject_token_client_id": "app-frontend",
+     "actor_id": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T0-login",
+    "status": 200,
+    "event_type": "CODE_TO_TOKEN",
+    "match": "token_id_detail",
+    "ns": 29562120,
+    "scope_claim": "openid data:write data:read delegation:client:agent-a",
+    "roles": [
+     "data-write",
+     "data-read"
+    ],
+    "azp": "app-frontend",
+    "aud": "agent-a",
+    "sid": "9aXb0dJApXy9q7rDSUteLShk",
+    "act": null,
+    "may_act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "event_details": {
+     "refresh_token_provider_id": "default",
+     "token_id": "onrtac:e2a003ca-6cf0-bd13-d127-d5c73bb9095f",
+     "grant_type": "authorization_code",
+     "refresh_token_type": "Refresh",
+     "scope": "openid data:write data:read delegation:client:agent-a",
+     "refresh_token_id": "1c9c2256-8da5-e55d-5d61-4bce94c88b99",
+     "code_id": "9aXb0dJApXy9q7rDSUteLShk",
+     "client_auth_method": "client-secret"
+    },
+    "event_sessionId": "9aXb0dJApXy9q7rDSUteLShk",
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/actor-agent-a",
+    "status": 200,
+    "event_type": "CLIENT_LOGIN",
+    "match": "token_id_detail",
+    "ns": 17653245,
+    "scope_claim": "",
+    "roles": null,
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "token_id": "trrtcc:80779c1e-4f09-f2ef-443d-1e53394b1915",
+     "grant_type": "client_credentials",
+     "client_auth_method": "client-secret",
+     "username": "service-account-agent-a"
+    },
+    "event_sessionId": null,
+    "error": null
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "new",
+    "label": "new/T1-agent-a-delegated",
+    "status": 200,
+    "event_type": "TOKEN_EXCHANGE",
+    "match": "token_id_detail",
+    "ns": 29010375,
+    "scope_claim": "data:read",
+    "roles": [
+     "data-read"
+    ],
+    "azp": "agent-a",
+    "aud": "agent-b",
+    "sid": null,
+    "act": {
+     "sub": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "client_id": "agent-a"
+    },
+    "may_act": null,
+    "event_details": {
+     "actor": "agent-a",
+     "auth_method": "token_exchange",
+     "audience": "agent-b",
+     "actor_type": "client",
+     "token_id": "trrtte:236469b7-5579-1fa7-4666-4fe39e9c00cc",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "scope": "data:read",
+     "subject_token_client_id": "app-frontend",
+     "actor_id": "83c1532d-2c7f-4506-93d0-c5d53168514b",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    },
+    "event_sessionId": null,
+    "error": null,
+    "H1": {
+     "subject_jti_in_event": false,
+     "subject_azp_in_details": true,
+     "issued_jti_in_event": true
+    }
+   },
+   {
+    "rep": 3,
+    "enforcer": false,
+    "scenario": "two-actors",
+    "label": "two-actors/T0-login",
+    "status": 302,
+    "event_type": "LOGIN_ERROR",
+    "match": "client+session+time",
+    "ns": 0,
+    "scope_claim": null,
+    "roles": null,
+    "azp": null,
+    "aud": null,
+    "sid": null,
+    "act": null,
+    "may_act": null,
+    "event_details": {
+     "reason": "Invalid scopes: openid data:read delegation:client:agent-a delegation:client:agent-b",
+     "response_type": "code",
+     "redirect_uri": "http://127.0.0.1:9/cb",
+     "response_mode": "query"
+    },
+    "event_sessionId": null,
+    "error": "invalid_request"
+   }
+  ],
+  "claims_inventory": {
+   "T0-login": {
+    "n": 9,
+    "jti": 9,
+    "sid": 9,
+    "azp": 9,
+    "aud": 9,
+    "scope": 9,
+    "may_act": 9,
+    "realm_access": 9,
+    "sig_verified": 9
+   },
+   "actor-agent-a": {
+    "n": 9,
+    "jti": 9,
+    "azp": 9,
+    "aud": 9,
+    "scope": 9,
+    "sig_verified": 9
+   },
+   "T1-agent-a-delegated": {
+    "n": 9,
+    "jti": 9,
+    "azp": 9,
+    "aud": 9,
+    "scope": 9,
+    "act": 9,
+    "realm_access": 9,
+    "sig_verified": 9
+   },
+   "actor-agent-b": {
+    "n": 3,
+    "jti": 3,
+    "azp": 3,
+    "aud": 3,
+    "scope": 3,
+    "sig_verified": 3
+   }
+  },
+  "H1": {
+   "hops_checked": 15,
+   "subject_jti_in_event": 0,
+   "subject_azp_in_details": 15,
+   "issued_jti_in_event": 9
+  },
+  "match_methods": {
+   "token_id_detail": 30,
+   "client+session+time": 9
+  },
+  "H4_detection": {
+   "baseline": {
+    "chain_aware": 0,
+    "root_only": 0,
+    "n": 3,
+    "scope_detail_present": 3,
+    "linked_by": "userId+subject_token_client_id+nearest-earlier-time",
+    "example_scopes": [
+     [
+      "data:read",
+      "data:write"
+     ],
+     [
+      "data:read"
+     ]
+    ],
+    "example_types": [
+     "CODE_TO_TOKEN",
+     "TOKEN_EXCHANGE"
+    ],
+    "parent_link_correct": 3
+   },
+   "reacquire": {
+    "chain_aware": 3,
+    "root_only": 0,
+    "n": 3,
+    "scope_detail_present": 3,
+    "linked_by": "userId+subject_token_client_id+nearest-earlier-time",
+    "example_scopes": [
+     [
+      "data:read"
+     ],
+     [
+      "data:read",
+      "data:write"
+     ]
+    ],
+    "example_types": [
+     "CODE_TO_TOKEN",
+     "TOKEN_EXCHANGE"
+    ],
+    "parent_link_correct": 3
+   },
+   "new": {
+    "chain_aware": 0,
+    "root_only": 0,
+    "n": 3,
+    "scope_detail_present": 3,
+    "linked_by": "userId+subject_token_client_id+nearest-earlier-time",
+    "example_scopes": [
+     [
+      "data:read",
+      "data:write"
+     ],
+     [
+      "data:read"
+     ]
+    ],
+    "example_types": [
+     "CODE_TO_TOKEN",
+     "TOKEN_EXCHANGE"
+    ],
+    "parent_link_correct": 3
+   }
+  },
+  "requested_vs_effective": {
+   "hops": 9,
+   "silently_reduced": 3,
+   "requested_scope_recorded_anywhere": 0,
+   "examples": [
+    {
+     "label": "new/T1-agent-a-delegated",
+     "asked": [
+      "data:admin",
+      "data:read"
+     ],
+     "event_scope": [
+      "data:read"
+     ],
+     "token_scope": "data:read"
+    },
+    {
+     "label": "new/T1-agent-a-delegated",
+     "asked": [
+      "data:admin",
+      "data:read"
+     ],
+     "event_scope": [
+      "data:read"
+     ],
+     "token_scope": "data:read"
+    }
+   ]
+  },
+  "H5_error_events": {
+   "n": 6,
+   "detail_keys": {
+    "reason": 6,
+    "auth_method": 6,
+    "grant_type": 6,
+    "subject_token_client_id": 6,
+    "requested_token_type": 6,
+    "client_auth_method": 6,
+    "username": 6,
+    "actor": 3,
+    "actor_type": 3,
+    "actor_id": 3
+   },
+   "errors": {
+    "invalid_request": 3,
+    "invalid_token": 3
+   },
+   "example": {
+    "id": "154c776f-0980-40e8-979b-e9f9cb493abd",
+    "time": 1794274102021,
+    "type": "TOKEN_EXCHANGE_ERROR",
+    "realmId": "9c4b42c2-4e18-4aea-a6b1-0bdcd09c24ca",
+    "clientId": "agent-b",
+    "userId": "fa2d84a2-2810-44fd-b4c8-34a71c610a5b",
+    "ipAddress": "172.17.0.1",
+    "error": "invalid_request",
+    "details": {
+     "reason": "subject_token with a 'may_act' or 'act' claim is not allowed for standard token exchange",
+     "auth_method": "token_exchange",
+     "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+     "subject_token_client_id": "agent-a",
+     "requested_token_type": "urn:ietf:params:oauth:token-type:access_token",
+     "client_auth_method": "client-secret",
+     "username": "alice"
+    }
+   }
+  },
+  "latency_ms": {
+   "T0-login": {
+    "n": 9,
+    "median": 34.8,
+    "cv": 0.383,
+    "min": 26.0,
+    "max": 78.5
+   },
+   "actor-agent-a": {
+    "n": 9,
+    "median": 27.0,
+    "cv": 0.303,
+    "min": 17.4,
+    "max": 46.0
+   },
+   "T1-agent-a-delegated": {
+    "n": 9,
+    "median": 30.2,
+    "cv": 0.371,
+    "min": 20.0,
+    "max": 62.3
+   },
+   "actor-agent-b": {
+    "n": 3,
+    "median": 29.9,
+    "cv": 0.379,
+    "min": 24.8,
+    "max": 57.1
+   }
+  },
+  "loadavg": [
+   [
+    1,
+    false,
+    22.810546875,
+    22.10498046875
+   ],
+   [
+    2,
+    false,
+    22.10498046875,
+    22.10498046875
+   ],
+   [
+    3,
+    false,
+    22.10498046875,
+    21.61572265625
+   ]
+  ],
+  "status_by_label": {
+   "baseline/T0-login": {
+    "200": 3
+   },
+   "baseline/actor-agent-a": {
+    "200": 3
+   },
+   "baseline/T1-agent-a-delegated": {
+    "200": 3
+   },
+   "baseline/T2a-agent-b-standard": {
+    "400": 3
+   },
+   "baseline/actor-agent-b": {
+    "200": 3
+   },
+   "baseline/T2b-agent-b-delegated": {
+    "400": 3
+   },
+   "reacquire/T0-login": {
+    "200": 3
+   },
+   "reacquire/actor-agent-a": {
+    "200": 3
+   },
+   "reacquire/T1-agent-a-delegated": {
+    "200": 3
+   },
+   "new/T0-login": {
+    "200": 3
+   },
+   "new/actor-agent-a": {
+    "200": 3
+   },
+   "new/T1-agent-a-delegated": {
+    "200": 3
+   },
+   "two-actors/T0-login": {
+    "302": 3
+   }
+  },
+  "event_set_stability": {
+   "baseline": {
+    "reps": 3,
+    "distinct_signatures": 1
+   },
+   "reacquire": {
+    "reps": 3,
+    "distinct_signatures": 1
+   },
+   "new": {
+    "reps": 3,
+    "distinct_signatures": 1
+   },
+   "two-actors": {
+    "reps": 3,
+    "distinct_signatures": 1
+   }
+  }
+ }
+}

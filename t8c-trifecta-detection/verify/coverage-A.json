@@ -1,0 +1,2702 @@
+{
+ "benchmark": "t8c-trifecta-detection",
+ "burst": {
+  "n": 20,
+  "span_s": 300
+ },
+ "n_sessions": 2000,
+ "per_seed": {
+  "20261109": {
+   "benign_leg_prevalence": {
+    "n_benign_sessions": 2067,
+    "sessions_by_leg_set": {
+     "1": 509,
+     "1+2": 726,
+     "1+2+3": 38,
+     "1+3": 46,
+     "2": 13,
+     "2+3": 47
+    }
+   },
+   "lookalike_counts": {
+    "LA1": 80,
+    "LA2": 73,
+    "LA3": 47,
+    "LA4": 37,
+    "LA5": 11,
+    "LA6": 13,
+    "LA7": 67,
+    "LA7-sub": 67,
+    "none": 1672
+   },
+   "n_events": 17035,
+   "n_sessions": 2101,
+   "rules": {
+    "a1_ingest_mail": {
+     "duckdb": {
+      "fp": 781,
+      "fp_by_session_class": {
+       "LA1": 36,
+       "LA2": 30,
+       "LA4": 11,
+       "LA5": 4,
+       "LA7": 26,
+       "none": 674
+      },
+      "matches": 791,
+      "precision": 0.0126,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 1,
+     "sqlite": {
+      "fp": 781,
+      "fp_by_session_class": {
+       "LA1": 36,
+       "LA2": 30,
+       "LA4": 11,
+       "LA5": 4,
+       "LA7": 26,
+       "none": 674
+      },
+      "matches": 791,
+      "precision": 0.0126,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 1.0,
+       "CS0067": 0.0
+      },
+      "session_level_oracle_root": {
+       "fp": 781,
+       "fp_by_session_class": {
+        "LA1": 36,
+        "LA2": 30,
+        "LA4": 11,
+        "LA5": 4,
+        "LA7": 26,
+        "none": 674
+       },
+       "matches": 791,
+       "precision": 0.0126,
+       "recall": 0.5,
+       "state": "NOISY",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a2_ingest_repo": {
+     "duckdb": {
+      "fp": 542,
+      "fp_by_session_class": {
+       "LA1": 44,
+       "LA2": 43,
+       "LA4": 14,
+       "LA5": 11,
+       "LA7": 16,
+       "none": 414
+      },
+      "matches": 552,
+      "precision": 0.0181,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 1,
+     "sqlite": {
+      "fp": 542,
+      "fp_by_session_class": {
+       "LA1": 44,
+       "LA2": 43,
+       "LA4": 14,
+       "LA5": 11,
+       "LA7": 16,
+       "none": 414
+      },
+      "matches": 552,
+      "precision": 0.0181,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 0.0,
+       "CS0067": 1.0
+      },
+      "session_level_oracle_root": {
+       "fp": 542,
+       "fp_by_session_class": {
+        "LA1": 44,
+        "LA2": 43,
+        "LA4": 14,
+        "LA5": 11,
+        "LA7": 16,
+        "none": 414
+       },
+       "matches": 552,
+       "precision": 0.0181,
+       "recall": 0.5,
+       "state": "NOISY",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a3_collect_mailbox": {
+     "duckdb": {
+      "fp": 2253,
+      "fp_by_session_class": {
+       "LA1": 167,
+       "LA2": 79,
+       "LA4": 28,
+       "LA5": 10,
+       "LA7": 79,
+       "none": 1890
+      },
+      "matches": 2273,
+      "precision": 0.0088,
+      "recall": 0.6667,
+      "state": "NOISY",
+      "tp": 20
+     },
+     "engines_agree": true,
+     "leg": 2,
+     "sqlite": {
+      "fp": 2253,
+      "fp_by_session_class": {
+       "LA1": 167,
+       "LA2": 79,
+       "LA4": 28,
+       "LA5": 10,
+       "LA7": 79,
+       "none": 1890
+      },
+      "matches": 2273,
+      "precision": 0.0088,
+      "recall": 0.6667,
+      "state": "NOISY",
+      "tp": 20
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 1.0,
+       "CS0067": 0.0
+      },
+      "session_level_oracle_root": {
+       "fp": 713,
+       "fp_by_session_class": {
+        "LA1": 36,
+        "LA2": 27,
+        "LA4": 9,
+        "LA5": 4,
+        "LA7": 25,
+        "none": 612
+       },
+       "matches": 723,
+       "precision": 0.0138,
+       "recall": 0.5,
+       "state": "NOISY",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a4_read_procenv": {
+     "duckdb": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.3333,
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 2,
+     "sqlite": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.3333,
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 0.0,
+       "CS0067": 1.0
+      },
+      "session_level_oracle_root": {
+       "fp": 0,
+       "fp_by_session_class": {},
+       "matches": 10,
+       "precision": 1.0,
+       "recall": 0.5,
+       "state": "DETECTED",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a5_outbound_offlist": {
+     "duckdb": {
+      "fp": 131,
+      "fp_by_session_class": {
+       "LA2": 73,
+       "LA3": 47,
+       "LA5": 11
+      },
+      "matches": 381,
+      "precision": 0.6562,
+      "recall": 1.0,
+      "state": "NOISY",
+      "tp": 250
+     },
+     "engines_agree": true,
+     "leg": 3,
+     "sqlite": {
+      "fp": 131,
+      "fp_by_session_class": {
+       "LA2": 73,
+       "LA3": 47,
+       "LA5": 11
+      },
+      "matches": 381,
+      "precision": 0.6562,
+      "recall": 1.0,
+      "state": "NOISY",
+      "tp": 250
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 1.0,
+       "CS0067": 1.0
+      },
+      "session_level_oracle_root": {
+       "fp": 131,
+       "fp_by_session_class": {
+        "LA2": 73,
+        "LA3": 47,
+        "LA5": 11
+       },
+       "matches": 151,
+       "precision": 0.1325,
+       "recall": 1.0,
+       "state": "NOISY",
+       "tp": 20
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a6_credential_shape": {
+     "duckdb": {
+      "fp": 10,
+      "fp_by_session_class": {
+       "PLANT-CS0067-deleg-sub": 5,
+       "PLANT-CS0067-direct-0": 1,
+       "PLANT-CS0067-direct-1": 1,
+       "PLANT-CS0067-direct-2": 1,
+       "PLANT-CS0067-direct-3": 1,
+       "PLANT-CS0067-direct-4": 1
+      },
+      "matches": 20,
+      "precision": 0.5,
+      "recall": 0.04,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 3,
+     "sqlite": {
+      "fp": 10,
+      "fp_by_session_class": {
+       "PLANT-CS0067-deleg-sub": 5,
+       "PLANT-CS0067-direct-0": 1,
+       "PLANT-CS0067-direct-1": 1,
+       "PLANT-CS0067-direct-2": 1,
+       "PLANT-CS0067-direct-3": 1,
+       "PLANT-CS0067-direct-4": 1
+      },
+      "matches": 20,
+      "precision": 0.5,
+      "recall": 0.04,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 0.0,
+       "CS0067": 1.0
+      },
+      "rescored_with_channel_events_as_truth": {
+       "fp": 0,
+       "matches": 20,
+       "precision": 1.0,
+       "recall": 0.0769,
+       "state": "DETECTED",
+       "tp": 20
+      },
+      "session_level_oracle_root": {
+       "fp": 0,
+       "fp_by_session_class": {},
+       "matches": 10,
+       "precision": 1.0,
+       "recall": 0.5,
+       "state": "DETECTED",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a7_url_burst": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 0,
+      "miss_reason": "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_fffcc564c5af_n0_grouped AS (SELECT start, end, g0, g1, MAX(metric) AS metric, json_group",
+      "precision": 0.0,
+      "recall": 0.0,
+      "state": "MISSED",
+      "tp": 0
+     },
+     "leg": 3,
+     "sqlite": {
+      "alerts": 453,
+      "fp": 1106,
+      "fp_by_session_class": {
+       "LA4": 1106
+      },
+      "matches": 1346,
+      "note": "scored against all leg-3 events; CS0067 leg-3 events are single calls, so recall < 1 by design",
+      "precision": 0.1783,
+      "recall": 0.96,
+      "state": "NOISY",
+      "tp": 240
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "b1_session_temporal": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 0,
+      "miss_reason": "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_92431cccd63f_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_arr",
+      "precision": 0.0,
+      "recall": 0.0,
+      "state": "MISSED",
+      "tp": 0
+     },
+     "sqlite": {
+      "alerts": 163,
+      "fp": 38,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 11
+      },
+      "matches": 48,
+      "precision": 0.2083,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "b2_session_temporal_ordered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 0,
+      "miss_reason": "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_f11dbabf1eb3_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_arr",
+      "precision": 0.0,
+      "recall": 0.0,
+      "state": "MISSED",
+      "tp": 0
+     },
+     "sqlite": {
+      "alerts": 163,
+      "fp": 38,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 11
+      },
+      "matches": 48,
+      "precision": 0.2083,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "b3_session_sql": {
+     "duckdb": {
+      "fp": 38,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 11
+      },
+      "matches": 48,
+      "precision": 0.2083,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 38,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 11
+      },
+      "matches": 48,
+      "precision": 0.2083,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "fp": 38,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 11
+      },
+      "matches": 58,
+      "precision": 0.3448,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 38,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 11
+      },
+      "matches": 58,
+      "precision": 0.3448,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "tier": "c",
+     "unit": "root session"
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "tier": "c",
+     "unit": "root session"
+    }
+   }
+  },
+  "20261110": {
+   "benign_leg_prevalence": {
+    "n_benign_sessions": 2064,
+    "sessions_by_leg_set": {
+     "1": 509,
+     "1+2": 771,
+     "1+2+3": 37,
+     "1+3": 35,
+     "2": 20,
+     "2+3": 62
+    }
+   },
+   "lookalike_counts": {
+    "LA1": 69,
+    "LA2": 62,
+    "LA3": 62,
+    "LA4": 49,
+    "LA5": 10,
+    "LA6": 20,
+    "LA7": 64,
+    "LA7-sub": 64,
+    "none": 1664
+   },
+   "n_events": 17431,
+   "n_sessions": 2098,
+   "rules": {
+    "a1_ingest_mail": {
+     "duckdb": {
+      "fp": 806,
+      "fp_by_session_class": {
+       "LA1": 23,
+       "LA2": 28,
+       "LA4": 20,
+       "LA5": 6,
+       "LA7": 24,
+       "none": 705
+      },
+      "matches": 816,
+      "precision": 0.0123,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 1,
+     "sqlite": {
+      "fp": 806,
+      "fp_by_session_class": {
+       "LA1": 23,
+       "LA2": 28,
+       "LA4": 20,
+       "LA5": 6,
+       "LA7": 24,
+       "none": 705
+      },
+      "matches": 816,
+      "precision": 0.0123,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 1.0,
+       "CS0067": 0.0
+      },
+      "session_level_oracle_root": {
+       "fp": 806,
+       "fp_by_session_class": {
+        "LA1": 23,
+        "LA2": 28,
+        "LA4": 20,
+        "LA5": 6,
+        "LA7": 24,
+        "none": 705
+       },
+       "matches": 816,
+       "precision": 0.0123,
+       "recall": 0.5,
+       "state": "NOISY",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a2_ingest_repo": {
+     "duckdb": {
+      "fp": 552,
+      "fp_by_session_class": {
+       "LA1": 46,
+       "LA2": 34,
+       "LA4": 10,
+       "LA5": 10,
+       "LA7": 17,
+       "none": 435
+      },
+      "matches": 562,
+      "precision": 0.0178,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 1,
+     "sqlite": {
+      "fp": 552,
+      "fp_by_session_class": {
+       "LA1": 46,
+       "LA2": 34,
+       "LA4": 10,
+       "LA5": 10,
+       "LA7": 17,
+       "none": 435
+      },
+      "matches": 562,
+      "precision": 0.0178,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 0.0,
+       "CS0067": 1.0
+      },
+      "session_level_oracle_root": {
+       "fp": 552,
+       "fp_by_session_class": {
+        "LA1": 46,
+        "LA2": 34,
+        "LA4": 10,
+        "LA5": 10,
+        "LA7": 17,
+        "none": 435
+       },
+       "matches": 562,
+       "precision": 0.0178,
+       "recall": 0.5,
+       "state": "NOISY",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a3_collect_mailbox": {
+     "duckdb": {
+      "fp": 2435,
+      "fp_by_session_class": {
+       "LA1": 120,
+       "LA2": 84,
+       "LA4": 47,
+       "LA5": 25,
+       "LA7": 73,
+       "none": 2086
+      },
+      "matches": 2455,
+      "precision": 0.0081,
+      "recall": 0.6667,
+      "state": "NOISY",
+      "tp": 20
+     },
+     "engines_agree": true,
+     "leg": 2,
+     "sqlite": {
+      "fp": 2435,
+      "fp_by_session_class": {
+       "LA1": 120,
+       "LA2": 84,
+       "LA4": 47,
+       "LA5": 25,
+       "LA7": 73,
+       "none": 2086
+      },
+      "matches": 2455,
+      "precision": 0.0081,
+      "recall": 0.6667,
+      "state": "NOISY",
+      "tp": 20
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 1.0,
+       "CS0067": 0.0
+      },
+      "session_level_oracle_root": {
+       "fp": 758,
+       "fp_by_session_class": {
+        "LA1": 23,
+        "LA2": 27,
+        "LA4": 20,
+        "LA5": 6,
+        "LA7": 24,
+        "none": 658
+       },
+       "matches": 768,
+       "precision": 0.013,
+       "recall": 0.5,
+       "state": "NOISY",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a4_read_procenv": {
+     "duckdb": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.3333,
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 2,
+     "sqlite": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.3333,
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 0.0,
+       "CS0067": 1.0
+      },
+      "session_level_oracle_root": {
+       "fp": 0,
+       "fp_by_session_class": {},
+       "matches": 10,
+       "precision": 1.0,
+       "recall": 0.5,
+       "state": "DETECTED",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a5_outbound_offlist": {
+     "duckdb": {
+      "fp": 134,
+      "fp_by_session_class": {
+       "LA2": 62,
+       "LA3": 62,
+       "LA5": 10
+      },
+      "matches": 384,
+      "precision": 0.651,
+      "recall": 1.0,
+      "state": "NOISY",
+      "tp": 250
+     },
+     "engines_agree": true,
+     "leg": 3,
+     "sqlite": {
+      "fp": 134,
+      "fp_by_session_class": {
+       "LA2": 62,
+       "LA3": 62,
+       "LA5": 10
+      },
+      "matches": 384,
+      "precision": 0.651,
+      "recall": 1.0,
+      "state": "NOISY",
+      "tp": 250
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 1.0,
+       "CS0067": 1.0
+      },
+      "session_level_oracle_root": {
+       "fp": 134,
+       "fp_by_session_class": {
+        "LA2": 62,
+        "LA3": 62,
+        "LA5": 10
+       },
+       "matches": 154,
+       "precision": 0.1299,
+       "recall": 1.0,
+       "state": "NOISY",
+       "tp": 20
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a6_credential_shape": {
+     "duckdb": {
+      "fp": 10,
+      "fp_by_session_class": {
+       "PLANT-CS0067-deleg-sub": 5,
+       "PLANT-CS0067-direct-0": 1,
+       "PLANT-CS0067-direct-1": 1,
+       "PLANT-CS0067-direct-2": 1,
+       "PLANT-CS0067-direct-3": 1,
+       "PLANT-CS0067-direct-4": 1
+      },
+      "matches": 20,
+      "precision": 0.5,
+      "recall": 0.04,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 3,
+     "sqlite": {
+      "fp": 10,
+      "fp_by_session_class": {
+       "PLANT-CS0067-deleg-sub": 5,
+       "PLANT-CS0067-direct-0": 1,
+       "PLANT-CS0067-direct-1": 1,
+       "PLANT-CS0067-direct-2": 1,
+       "PLANT-CS0067-direct-3": 1,
+       "PLANT-CS0067-direct-4": 1
+      },
+      "matches": 20,
+      "precision": 0.5,
+      "recall": 0.04,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 0.0,
+       "CS0067": 1.0
+      },
+      "rescored_with_channel_events_as_truth": {
+       "fp": 0,
+       "matches": 20,
+       "precision": 1.0,
+       "recall": 0.0769,
+       "state": "DETECTED",
+       "tp": 20
+      },
+      "session_level_oracle_root": {
+       "fp": 0,
+       "fp_by_session_class": {},
+       "matches": 10,
+       "precision": 1.0,
+       "recall": 0.5,
+       "state": "DETECTED",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a7_url_burst": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 0,
+      "miss_reason": "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_fffcc564c5af_n0_grouped AS (SELECT start, end, g0, g1, MAX(metric) AS metric, json_group",
+      "precision": 0.0,
+      "recall": 0.0,
+      "state": "MISSED",
+      "tp": 0
+     },
+     "leg": 3,
+     "sqlite": {
+      "alerts": 468,
+      "fp": 1349,
+      "fp_by_session_class": {
+       "LA4": 1349
+      },
+      "matches": 1589,
+      "note": "scored against all leg-3 events; CS0067 leg-3 events are single calls, so recall < 1 by design",
+      "precision": 0.151,
+      "recall": 0.96,
+      "state": "NOISY",
+      "tp": 240
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "b1_session_temporal": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 0,
+      "miss_reason": "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_92431cccd63f_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_arr",
+      "precision": 0.0,
+      "recall": 0.0,
+      "state": "MISSED",
+      "tp": 0
+     },
+     "sqlite": {
+      "alerts": 162,
+      "fp": 37,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 10
+      },
+      "matches": 47,
+      "precision": 0.2128,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "b2_session_temporal_ordered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 0,
+      "miss_reason": "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_f11dbabf1eb3_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_arr",
+      "precision": 0.0,
+      "recall": 0.0,
+      "state": "MISSED",
+      "tp": 0
+     },
+     "sqlite": {
+      "alerts": 162,
+      "fp": 37,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 10
+      },
+      "matches": 47,
+      "precision": 0.2128,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "b3_session_sql": {
+     "duckdb": {
+      "fp": 37,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 10
+      },
+      "matches": 47,
+      "precision": 0.2128,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 37,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 10
+      },
+      "matches": 47,
+      "precision": 0.2128,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "fp": 37,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 10
+      },
+      "matches": 57,
+      "precision": 0.3509,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 37,
+      "fp_by_session_class": {
+       "LA2": 27,
+       "LA5": 10
+      },
+      "matches": 57,
+      "precision": 0.3509,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "tier": "c",
+     "unit": "root session"
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "tier": "c",
+     "unit": "root session"
+    }
+   }
+  },
+  "20261111": {
+   "benign_leg_prevalence": {
+    "n_benign_sessions": 2055,
+    "sessions_by_leg_set": {
+     "1": 481,
+     "1+2": 733,
+     "1+2+3": 42,
+     "1+3": 47,
+     "2": 10,
+     "2+3": 76
+    }
+   },
+   "lookalike_counts": {
+    "LA1": 80,
+    "LA2": 72,
+    "LA3": 76,
+    "LA4": 46,
+    "LA5": 17,
+    "LA6": 10,
+    "LA7": 55,
+    "LA7-sub": 55,
+    "none": 1644
+   },
+   "n_events": 17443,
+   "n_sessions": 2089,
+   "rules": {
+    "a1_ingest_mail": {
+     "duckdb": {
+      "fp": 771,
+      "fp_by_session_class": {
+       "LA1": 40,
+       "LA2": 26,
+       "LA4": 17,
+       "LA5": 6,
+       "LA7": 24,
+       "none": 658
+      },
+      "matches": 781,
+      "precision": 0.0128,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 1,
+     "sqlite": {
+      "fp": 771,
+      "fp_by_session_class": {
+       "LA1": 40,
+       "LA2": 26,
+       "LA4": 17,
+       "LA5": 6,
+       "LA7": 24,
+       "none": 658
+      },
+      "matches": 781,
+      "precision": 0.0128,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 1.0,
+       "CS0067": 0.0
+      },
+      "session_level_oracle_root": {
+       "fp": 771,
+       "fp_by_session_class": {
+        "LA1": 40,
+        "LA2": 26,
+        "LA4": 17,
+        "LA5": 6,
+        "LA7": 24,
+        "none": 658
+       },
+       "matches": 781,
+       "precision": 0.0128,
+       "recall": 0.5,
+       "state": "NOISY",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a2_ingest_repo": {
+     "duckdb": {
+      "fp": 538,
+      "fp_by_session_class": {
+       "LA1": 40,
+       "LA2": 46,
+       "LA4": 9,
+       "LA5": 17,
+       "LA7": 10,
+       "none": 416
+      },
+      "matches": 548,
+      "precision": 0.0182,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 1,
+     "sqlite": {
+      "fp": 538,
+      "fp_by_session_class": {
+       "LA1": 40,
+       "LA2": 46,
+       "LA4": 9,
+       "LA5": 17,
+       "LA7": 10,
+       "none": 416
+      },
+      "matches": 548,
+      "precision": 0.0182,
+      "recall": 0.5,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 0.0,
+       "CS0067": 1.0
+      },
+      "session_level_oracle_root": {
+       "fp": 538,
+       "fp_by_session_class": {
+        "LA1": 40,
+        "LA2": 46,
+        "LA4": 9,
+        "LA5": 17,
+        "LA7": 10,
+        "none": 416
+       },
+       "matches": 548,
+       "precision": 0.0182,
+       "recall": 0.5,
+       "state": "NOISY",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a3_collect_mailbox": {
+     "duckdb": {
+      "fp": 2394,
+      "fp_by_session_class": {
+       "LA1": 211,
+       "LA2": 91,
+       "LA4": 42,
+       "LA5": 17,
+       "LA7": 62,
+       "none": 1971
+      },
+      "matches": 2414,
+      "precision": 0.0083,
+      "recall": 0.6667,
+      "state": "NOISY",
+      "tp": 20
+     },
+     "engines_agree": true,
+     "leg": 2,
+     "sqlite": {
+      "fp": 2394,
+      "fp_by_session_class": {
+       "LA1": 211,
+       "LA2": 91,
+       "LA4": 42,
+       "LA5": 17,
+       "LA7": 62,
+       "none": 1971
+      },
+      "matches": 2414,
+      "precision": 0.0083,
+      "recall": 0.6667,
+      "state": "NOISY",
+      "tp": 20
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 1.0,
+       "CS0067": 0.0
+      },
+      "session_level_oracle_root": {
+       "fp": 724,
+       "fp_by_session_class": {
+        "LA1": 40,
+        "LA2": 25,
+        "LA4": 16,
+        "LA5": 6,
+        "LA7": 21,
+        "none": 616
+       },
+       "matches": 734,
+       "precision": 0.0136,
+       "recall": 0.5,
+       "state": "NOISY",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a4_read_procenv": {
+     "duckdb": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.3333,
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 2,
+     "sqlite": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.3333,
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 0.0,
+       "CS0067": 1.0
+      },
+      "session_level_oracle_root": {
+       "fp": 0,
+       "fp_by_session_class": {},
+       "matches": 10,
+       "precision": 1.0,
+       "recall": 0.5,
+       "state": "DETECTED",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a5_outbound_offlist": {
+     "duckdb": {
+      "fp": 165,
+      "fp_by_session_class": {
+       "LA2": 72,
+       "LA3": 76,
+       "LA5": 17
+      },
+      "matches": 415,
+      "precision": 0.6024,
+      "recall": 1.0,
+      "state": "NOISY",
+      "tp": 250
+     },
+     "engines_agree": true,
+     "leg": 3,
+     "sqlite": {
+      "fp": 165,
+      "fp_by_session_class": {
+       "LA2": 72,
+       "LA3": 76,
+       "LA5": 17
+      },
+      "matches": 415,
+      "precision": 0.6024,
+      "recall": 1.0,
+      "state": "NOISY",
+      "tp": 250
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 1.0,
+       "CS0067": 1.0
+      },
+      "session_level_oracle_root": {
+       "fp": 165,
+       "fp_by_session_class": {
+        "LA2": 72,
+        "LA3": 76,
+        "LA5": 17
+       },
+       "matches": 185,
+       "precision": 0.1081,
+       "recall": 1.0,
+       "state": "NOISY",
+       "tp": 20
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a6_credential_shape": {
+     "duckdb": {
+      "fp": 10,
+      "fp_by_session_class": {
+       "PLANT-CS0067-deleg-sub": 5,
+       "PLANT-CS0067-direct-0": 1,
+       "PLANT-CS0067-direct-1": 1,
+       "PLANT-CS0067-direct-2": 1,
+       "PLANT-CS0067-direct-3": 1,
+       "PLANT-CS0067-direct-4": 1
+      },
+      "matches": 20,
+      "precision": 0.5,
+      "recall": 0.04,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "leg": 3,
+     "sqlite": {
+      "fp": 10,
+      "fp_by_session_class": {
+       "PLANT-CS0067-deleg-sub": 5,
+       "PLANT-CS0067-direct-0": 1,
+       "PLANT-CS0067-direct-1": 1,
+       "PLANT-CS0067-direct-2": 1,
+       "PLANT-CS0067-direct-3": 1,
+       "PLANT-CS0067-direct-4": 1
+      },
+      "matches": 20,
+      "precision": 0.5,
+      "recall": 0.04,
+      "state": "NOISY",
+      "tp": 10
+     },
+     "supplementary": {
+      "recall_by_shape": {
+       "CS0066": 0.0,
+       "CS0067": 1.0
+      },
+      "rescored_with_channel_events_as_truth": {
+       "fp": 0,
+       "matches": 20,
+       "precision": 1.0,
+       "recall": 0.0769,
+       "state": "DETECTED",
+       "tp": 20
+      },
+      "session_level_oracle_root": {
+       "fp": 0,
+       "fp_by_session_class": {},
+       "matches": 10,
+       "precision": 1.0,
+       "recall": 0.5,
+       "state": "DETECTED",
+       "tp": 10
+      }
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "a7_url_burst": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 0,
+      "miss_reason": "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_fffcc564c5af_n0_grouped AS (SELECT start, end, g0, g1, MAX(metric) AS metric, json_group",
+      "precision": 0.0,
+      "recall": 0.0,
+      "state": "MISSED",
+      "tp": 0
+     },
+     "leg": 3,
+     "sqlite": {
+      "alerts": 523,
+      "fp": 1347,
+      "fp_by_session_class": {
+       "LA4": 1347
+      },
+      "matches": 1587,
+      "note": "scored against all leg-3 events; CS0067 leg-3 events are single calls, so recall < 1 by design",
+      "precision": 0.1512,
+      "recall": 0.96,
+      "state": "NOISY",
+      "tp": 240
+     },
+     "tier": "a",
+     "unit": "event"
+    },
+    "b1_session_temporal": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 0,
+      "miss_reason": "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_92431cccd63f_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_arr",
+      "precision": 0.0,
+      "recall": 0.0,
+      "state": "MISSED",
+      "tp": 0
+     },
+     "sqlite": {
+      "alerts": 167,
+      "fp": 42,
+      "fp_by_session_class": {
+       "LA2": 25,
+       "LA5": 17
+      },
+      "matches": 52,
+      "precision": 0.1923,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "b2_session_temporal_ordered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 0,
+      "miss_reason": "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_f11dbabf1eb3_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_arr",
+      "precision": 0.0,
+      "recall": 0.0,
+      "state": "MISSED",
+      "tp": 0
+     },
+     "sqlite": {
+      "alerts": 167,
+      "fp": 42,
+      "fp_by_session_class": {
+       "LA2": 25,
+       "LA5": 17
+      },
+      "matches": 52,
+      "precision": 0.1923,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "b3_session_sql": {
+     "duckdb": {
+      "fp": 42,
+      "fp_by_session_class": {
+       "LA2": 25,
+       "LA5": 17
+      },
+      "matches": 52,
+      "precision": 0.1923,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 42,
+      "fp_by_session_class": {
+       "LA2": 25,
+       "LA5": 17
+      },
+      "matches": 52,
+      "precision": 0.1923,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "tier": "b",
+     "unit": "session"
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "fp": 42,
+      "fp_by_session_class": {
+       "LA2": 25,
+       "LA5": 17
+      },
+      "matches": 62,
+      "precision": 0.3226,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 42,
+      "fp_by_session_class": {
+       "LA2": 25,
+       "LA5": 17
+      },
+      "matches": 62,
+      "precision": 0.3226,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "tier": "c",
+     "unit": "root session"
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "fp": 0,
+      "fp_by_session_class": {},
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "tier": "c",
+     "unit": "root session"
+    }
+   }
+  }
+ },
+ "precision_floor_T": 0.9,
+ "seeds": [
+  20261109,
+  20261110,
+  20261111
+ ],
+ "sql": {
+  "a1_ingest_mail": "SELECT metadata_uid FROM api WHERE api_operation='mail.fetch'",
+  "a2_ingest_repo": "SELECT metadata_uid FROM api WHERE api_operation='issue.read' OR api_operation='pr.read'",
+  "a3_collect_mailbox": "SELECT metadata_uid FROM api WHERE api_operation='mail.search' OR api_operation='contacts.list'",
+  "a4_read_procenv": "SELECT metadata_uid FROM api WHERE api_operation='file.read' AND api_request_data LIKE '%/proc/self/environ%' ESCAPE '\\'",
+  "a5_outbound_offlist": "SELECT metadata_uid FROM api WHERE (api_operation='http.open' OR api_operation='web.fetch') AND (NOT COALESCE((dst_endpoint_hostname='docs.python.org' OR dst_endpoint_hostname='github.com' OR dst_endpoint_hostname='api.github.com' OR dst_endpoint_hostname='pypi.org' OR dst_endpoint_hostname='intranet.example' OR dst_endpoint_hostname='wiki.example' OR dst_endpoint_hostname='calendar.example' OR dst_endpoint_hostname='mail.example' OR dst_endpoint_hostname='registry.example'), 0))",
+  "a6_credential_shape": "SELECT metadata_uid FROM api WHERE (api_operation='web.fetch' OR api_operation='bash.exec') AND api_request_data LIKE '%api03-%' ESCAPE '\\'",
+  "a7_url_burst": "WITH sigma_fffcc564c5af_raw0 AS (SELECT CAST(`rowid` AS TEXT) AS rid, '0:' || CAST(`rowid` AS TEXT) AS eid, ROUND((julianday(time) - 2440587.5) * 86400000) / 1000.0 AS ts, json_object('f0', CASE WHEN typeof(`actor_session_uid`)='real' AND abs(`actor_session_uid`) > 1.7976931348623157e308 THEN NULL ELSE `actor_session_uid` END, 'f1', CASE WHEN typeof(`dst_endpoint_hostname`)='real' AND abs(`dst_endpoint_hostname`) > 1.7976931348623157e308 THEN NULL ELSE `dst_endpoint_hostname` END) AS payload, COALESCE(((api_operation='http.open' OR api_operation='web.fetch')), 0) AS b0 FROM api), sigma_fffcc564c5af_horizon AS (SELECT (SELECT MAX(ts) FROM (SELECT ts FROM sigma_fffcc564c5af_raw0)) AS ts), sigma_fffcc564c5af_n0_input AS (SELECT s.*, 0 AS slot, CASE WHEN typeof(json_extract(s.payload, '$.f0'))='text' THEN lower(json_extract(s.payload, '$.f0')) ELSE json_extract(s.payload, '$.f0') END AS g0, CASE WHEN typeof(json_extract(s.payload, '$.f1'))='text' THEN lower(json_extract(s.payload, '$.f1')) ELSE json_extract(s.payload, '$.f1') END AS g1, NULL AS v FROM (SELECT 'e:' || eid AS eid, ts, payload, json_array(eid) AS evidence, '[]' AS children FROM sigma_fffcc564c5af_raw0 WHERE b0) s), sigma_fffcc564c5af_n0_matches AS (SELECT DISTINCT * FROM sigma_fffcc564c5af_n0_input WHERE ts IS NOT NULL AND eid IS NOT NULL AND g0 IS NOT NULL AND g1 IS NOT NULL), sigma_fffcc564c5af_n0_events AS (SELECT DISTINCT eid, ts, g0, g1, v FROM sigma_fffcc564c5af_n0_matches), sigma_fffcc564c5af_n0_unique_events AS (SELECT DISTINCT eid, ts, g0, g1 FROM sigma_fffcc564c5af_n0_events), sigma_fffcc564c5af_n0_metrics AS (SELECT DISTINCT ts AS end, g0, g1, COUNT(*) OVER (PARTITION BY g0, g1 ORDER BY ts RANGE BETWEEN 300 PRECEDING AND CURRENT ROW) AS metric FROM sigma_fffcc564c5af_n0_unique_events), sigma_fffcc564c5af_n0_t0_anchors AS (SELECT DISTINCT ts - 300 AS start, ts AS end, g0, g1 FROM sigma_fffcc564c5af_n0_matches), sigma_fffcc564c5af_n0_t0_measured AS (SELECT a.*, (SELECT m.metric FROM sigma_fffcc564c5af_n0_metrics m WHERE m.g0 = a.g0 AND m.g1 = a.g1 AND m.end=a.end) AS metric FROM sigma_fffcc564c5af_n0_t0_anchors a WHERE 1), sigma_fffcc564c5af_n0_t0_qualified AS (SELECT * FROM sigma_fffcc564c5af_n0_t0_measured WHERE metric >= 20), sigma_fffcc564c5af_n0_combined AS (SELECT a.start, a.end, g0, g1, a.metric, (SELECT json_group_array(DISTINCT e.value) FROM sigma_fffcc564c5af_n0_matches m, json_each(m.evidence) e WHERE m.g0 = a.g0 AND m.g1 = a.g1 AND m.ts BETWEEN a.start AND a.end) AS evidence, (SELECT json_group_array(DISTINCT c.value) FROM sigma_fffcc564c5af_n0_matches m, json_each(m.children) c WHERE m.g0 = a.g0 AND m.g1 = a.g1 AND m.ts BETWEEN a.start AND a.end) AS children FROM sigma_fffcc564c5af_n0_t0_qualified a), sigma_fffcc564c5af_n0_grouped AS (SELECT start, end, g0, g1, MAX(metric) AS metric, json_group_array(json(evidence)) AS evidence, json_group_array(json(children)) AS children FROM sigma_fffcc564c5af_n0_combined GROUP BY start, end, g0, g1), sigma_fffcc564c5af_n0_merged AS (SELECT start, end, g0, g1, metric, (SELECT json_group_array(value) FROM (SELECT DISTINCT e.value FROM json_each(w.evidence) a, json_each(a.value) e ORDER BY e.value)) AS evidence, (SELECT json_group_array(value) FROM (SELECT DISTINCT e.value FROM json_each(w.children) a, json_each(a.value) e ORDER BY e.value)) AS children FROM sigma_fffcc564c5af_n0_grouped w), sigma_fffcc564c5af_n0_alerts AS (SELECT 'sigma_alert_fffcc564c5af57bd:' || ROW_NUMBER() OVER (ORDER BY g0, g1, end, start, metric, evidence) AS alert_id, start, end, json_object('actor_session_uid', `g0`, 'dst_endpoint_hostname', `g1`) AS group_keys, metric, evidence, children, json_object('f0', `g0`, 'f1', `g1`) AS payload FROM sigma_fffcc564c5af_n0_merged) SELECT alert_id, group_keys, end AS occurrence_time, start AS window_start, end AS window_end, 'event_count' AS metric_name, metric AS metric_value, json_array_length(evidence) AS event_count, evidence AS event_ids, children AS child_alert_ids FROM sigma_fffcc564c5af_n0_alerts ORDER BY occurrence_time, alert_id",
+  "b1_session_temporal": "WITH sigma_92431cccd63f_raw0 AS (SELECT CAST(`rowid` AS TEXT) AS rid, '0:' || CAST(`rowid` AS TEXT) AS eid, ROUND((julianday(time) - 2440587.5) * 86400000) / 1000.0 AS ts, json_object('f0', CASE WHEN typeof(`actor_session_uid`)='real' AND abs(`actor_session_uid`) > 1.7976931348623157e308 THEN NULL ELSE `actor_session_uid` END) AS payload, COALESCE(((api_operation='mail.fetch' OR api_operation='issue.read' OR api_operation='pr.read')), 0) AS b0, COALESCE((((api_operation='mail.search' OR api_operation='contacts.list') OR (api_operation='file.read' AND (api_request_data LIKE '%/proc/self/environ%' ESCAPE '\\' OR api_request_data LIKE '%.env%' ESCAPE '\\' OR api_request_data LIKE '%credentials.json%' ESCAPE '\\')))), 0) AS b1, COALESCE((((api_operation='http.open' OR api_operation='web.fetch') AND (NOT COALESCE((dst_endpoint_hostname='docs.python.org' OR dst_endpoint_hostname='github.com' OR dst_endpoint_hostname='api.github.com' OR dst_endpoint_hostname='pypi.org' OR dst_endpoint_hostname='intranet.example' OR dst_endpoint_hostname='wiki.example' OR dst_endpoint_hostname='calendar.example' OR dst_endpoint_hostname='mail.example' OR dst_endpoint_hostname='registry.example'), 0)))), 0) AS b2 FROM api), sigma_92431cccd63f_horizon AS (SELECT (SELECT MAX(ts) FROM (SELECT ts FROM sigma_92431cccd63f_raw0)) AS ts), sigma_92431cccd63f_n0_input AS (SELECT s.*, 0 AS slot, CASE WHEN typeof(json_extract(s.payload, '$.f0'))='text' THEN lower(json_extract(s.payload, '$.f0')) ELSE json_extract(s.payload, '$.f0') END AS g0, NULL AS v FROM (SELECT 'e:' || eid AS eid, ts, payload, json_array(eid) AS evidence, '[]' AS children FROM sigma_92431cccd63f_raw0 WHERE b0) s UNION ALL SELECT s.*, 1 AS slot, CASE WHEN typeof(json_extract(s.payload, '$.f0'))='text' THEN lower(json_extract(s.payload, '$.f0')) ELSE json_extract(s.payload, '$.f0') END AS g0, NULL AS v FROM (SELECT 'e:' || eid AS eid, ts, payload, json_array(eid) AS evidence, '[]' AS children FROM sigma_92431cccd63f_raw0 WHERE b1) s UNION ALL SELECT s.*, 2 AS slot, CASE WHEN typeof(json_extract(s.payload, '$.f0'))='text' THEN lower(json_extract(s.payload, '$.f0')) ELSE json_extract(s.payload, '$.f0') END AS g0, NULL AS v FROM (SELECT 'e:' || eid AS eid, ts, payload, json_array(eid) AS evidence, '[]' AS children FROM sigma_92431cccd63f_raw0 WHERE b2) s), sigma_92431cccd63f_n0_matches AS (SELECT DISTINCT * FROM sigma_92431cccd63f_n0_input WHERE ts IS NOT NULL AND eid IS NOT NULL AND g0 IS NOT NULL), sigma_92431cccd63f_n0_events AS (SELECT DISTINCT eid, ts, g0, v FROM sigma_92431cccd63f_n0_matches), sigma_92431cccd63f_n0_t0_anchors AS (SELECT DISTINCT ts - 3600 AS start, ts AS end, g0 FROM sigma_92431cccd63f_n0_matches), sigma_92431cccd63f_n0_t0_measured AS (SELECT a.*, (SELECT COUNT(DISTINCT m.slot) FROM sigma_92431cccd63f_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end) AS metric FROM sigma_92431cccd63f_n0_t0_anchors a WHERE 1), sigma_92431cccd63f_n0_t0_qualified AS (SELECT * FROM sigma_92431cccd63f_n0_t0_measured WHERE metric >= 3), sigma_92431cccd63f_n0_combined AS (SELECT a.start, a.end, g0, a.metric, (SELECT json_group_array(DISTINCT e.value) FROM sigma_92431cccd63f_n0_matches m, json_each(m.evidence) e WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end) AS evidence, (SELECT json_group_array(DISTINCT c.value) FROM sigma_92431cccd63f_n0_matches m, json_each(m.children) c WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end) AS children FROM sigma_92431cccd63f_n0_t0_qualified a), sigma_92431cccd63f_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_array(json(evidence)) AS evidence, json_group_array(json(children)) AS children FROM sigma_92431cccd63f_n0_combined GROUP BY start, end, g0), sigma_92431cccd63f_n0_merged AS (SELECT start, end, g0, metric, (SELECT json_group_array(value) FROM (SELECT DISTINCT e.value FROM json_each(w.evidence) a, json_each(a.value) e ORDER BY e.value)) AS evidence, (SELECT json_group_array(value) FROM (SELECT DISTINCT e.value FROM json_each(w.children) a, json_each(a.value) e ORDER BY e.value)) AS children FROM sigma_92431cccd63f_n0_grouped w), sigma_92431cccd63f_n0_alerts AS (SELECT 'sigma_alert_92431cccd63f6c1b:' || ROW_NUMBER() OVER (ORDER BY g0, end, start, metric, evidence) AS alert_id, start, end, json_object('actor_session_uid', `g0`) AS group_keys, metric, evidence, children, json_object('f0', `g0`) AS payload FROM sigma_92431cccd63f_n0_merged) SELECT alert_id, group_keys, end AS occurrence_time, start AS window_start, end AS window_end, 'temporal' AS metric_name, metric AS metric_value, json_array_length(evidence) AS event_count, evidence AS event_ids, children AS child_alert_ids FROM sigma_92431cccd63f_n0_alerts ORDER BY occurrence_time, alert_id",
+  "b2_session_temporal_ordered": "WITH sigma_f11dbabf1eb3_raw0 AS (SELECT CAST(`rowid` AS TEXT) AS rid, '0:' || CAST(`rowid` AS TEXT) AS eid, ROUND((julianday(time) - 2440587.5) * 86400000) / 1000.0 AS ts, json_object('f0', CASE WHEN typeof(`actor_session_uid`)='real' AND abs(`actor_session_uid`) > 1.7976931348623157e308 THEN NULL ELSE `actor_session_uid` END) AS payload, COALESCE(((api_operation='mail.fetch' OR api_operation='issue.read' OR api_operation='pr.read')), 0) AS b0, COALESCE((((api_operation='mail.search' OR api_operation='contacts.list') OR (api_operation='file.read' AND (api_request_data LIKE '%/proc/self/environ%' ESCAPE '\\' OR api_request_data LIKE '%.env%' ESCAPE '\\' OR api_request_data LIKE '%credentials.json%' ESCAPE '\\')))), 0) AS b1, COALESCE((((api_operation='http.open' OR api_operation='web.fetch') AND (NOT COALESCE((dst_endpoint_hostname='docs.python.org' OR dst_endpoint_hostname='github.com' OR dst_endpoint_hostname='api.github.com' OR dst_endpoint_hostname='pypi.org' OR dst_endpoint_hostname='intranet.example' OR dst_endpoint_hostname='wiki.example' OR dst_endpoint_hostname='calendar.example' OR dst_endpoint_hostname='mail.example' OR dst_endpoint_hostname='registry.example'), 0)))), 0) AS b2 FROM api), sigma_f11dbabf1eb3_horizon AS (SELECT (SELECT MAX(ts) FROM (SELECT ts FROM sigma_f11dbabf1eb3_raw0)) AS ts), sigma_f11dbabf1eb3_n0_input AS (SELECT s.*, 0 AS slot, CASE WHEN typeof(json_extract(s.payload, '$.f0'))='text' THEN lower(json_extract(s.payload, '$.f0')) ELSE json_extract(s.payload, '$.f0') END AS g0, NULL AS v FROM (SELECT 'e:' || eid AS eid, ts, payload, json_array(eid) AS evidence, '[]' AS children FROM sigma_f11dbabf1eb3_raw0 WHERE b0) s UNION ALL SELECT s.*, 1 AS slot, CASE WHEN typeof(json_extract(s.payload, '$.f0'))='text' THEN lower(json_extract(s.payload, '$.f0')) ELSE json_extract(s.payload, '$.f0') END AS g0, NULL AS v FROM (SELECT 'e:' || eid AS eid, ts, payload, json_array(eid) AS evidence, '[]' AS children FROM sigma_f11dbabf1eb3_raw0 WHERE b1) s UNION ALL SELECT s.*, 2 AS slot, CASE WHEN typeof(json_extract(s.payload, '$.f0'))='text' THEN lower(json_extract(s.payload, '$.f0')) ELSE json_extract(s.payload, '$.f0') END AS g0, NULL AS v FROM (SELECT 'e:' || eid AS eid, ts, payload, json_array(eid) AS evidence, '[]' AS children FROM sigma_f11dbabf1eb3_raw0 WHERE b2) s), sigma_f11dbabf1eb3_n0_matches AS (SELECT DISTINCT * FROM sigma_f11dbabf1eb3_n0_input WHERE ts IS NOT NULL AND eid IS NOT NULL AND g0 IS NOT NULL), sigma_f11dbabf1eb3_n0_events AS (SELECT DISTINCT eid, ts, g0, v FROM sigma_f11dbabf1eb3_n0_matches), sigma_f11dbabf1eb3_n0_t0_anchors AS (SELECT DISTINCT ts - 3600 AS start, ts AS end, g0 FROM sigma_f11dbabf1eb3_n0_matches), sigma_f11dbabf1eb3_n0_t0_seq0 AS (SELECT a.*, (SELECT MIN(m.ts) FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND m.slot=0) AS q0 FROM sigma_f11dbabf1eb3_n0_t0_anchors a), sigma_f11dbabf1eb3_n0_t0_seq1 AS (SELECT a.*, (SELECT MIN(m.ts) FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND m.slot=1 AND (q0 IS NULL OR m.ts > q0)) AS q1 FROM sigma_f11dbabf1eb3_n0_t0_seq0 a), sigma_f11dbabf1eb3_n0_t0_seq2 AS (SELECT a.*, (SELECT MIN(m.ts) FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND m.slot=2 AND (COALESCE(q1, q0) IS NULL OR m.ts > COALESCE(q1, q0))) AS q2 FROM sigma_f11dbabf1eb3_n0_t0_seq1 a), sigma_f11dbabf1eb3_n0_t0_measured AS (SELECT a.*, (SELECT COUNT(DISTINCT m.slot) FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end) AS metric FROM sigma_f11dbabf1eb3_n0_t0_seq2 a WHERE EXISTS (SELECT 1 FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND m.slot=0) AND EXISTS (SELECT 1 FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND m.slot=1) AND EXISTS (SELECT 1 FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND m.slot=2) AND (NOT EXISTS (SELECT 1 FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND m.slot=0) OR a.q0 IS NOT NULL) AND (NOT EXISTS (SELECT 1 FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND m.slot=1) OR a.q1 IS NOT NULL) AND (NOT EXISTS (SELECT 1 FROM sigma_f11dbabf1eb3_n0_matches m WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND m.slot=2) OR a.q2 IS NOT NULL)), sigma_f11dbabf1eb3_n0_t0_qualified AS (SELECT * FROM sigma_f11dbabf1eb3_n0_t0_measured WHERE metric >= 3), sigma_f11dbabf1eb3_n0_combined AS (SELECT a.start, a.end, g0, a.metric, (SELECT json_group_array(DISTINCT e.value) FROM sigma_f11dbabf1eb3_n0_matches m, json_each(m.evidence) e WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND ((m.slot=0 AND m.ts=a.q0) OR (m.slot=1 AND m.ts=a.q1) OR (m.slot=2 AND m.ts=a.q2))) AS evidence, (SELECT json_group_array(DISTINCT c.value) FROM sigma_f11dbabf1eb3_n0_matches m, json_each(m.children) c WHERE m.g0 = a.g0 AND m.ts BETWEEN a.start AND a.end AND ((m.slot=0 AND m.ts=a.q0) OR (m.slot=1 AND m.ts=a.q1) OR (m.slot=2 AND m.ts=a.q2))) AS children FROM sigma_f11dbabf1eb3_n0_t0_qualified a), sigma_f11dbabf1eb3_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_array(json(evidence)) AS evidence, json_group_array(json(children)) AS children FROM sigma_f11dbabf1eb3_n0_combined GROUP BY start, end, g0), sigma_f11dbabf1eb3_n0_merged AS (SELECT start, end, g0, metric, (SELECT json_group_array(value) FROM (SELECT DISTINCT e.value FROM json_each(w.evidence) a, json_each(a.value) e ORDER BY e.value)) AS evidence, (SELECT json_group_array(value) FROM (SELECT DISTINCT e.value FROM json_each(w.children) a, json_each(a.value) e ORDER BY e.value)) AS children FROM sigma_f11dbabf1eb3_n0_grouped w), sigma_f11dbabf1eb3_n0_alerts AS (SELECT 'sigma_alert_f11dbabf1eb396ce:' || ROW_NUMBER() OVER (ORDER BY g0, end, start, metric, evidence) AS alert_id, start, end, json_object('actor_session_uid', `g0`) AS group_keys, metric, evidence, children, json_object('f0', `g0`) AS payload FROM sigma_f11dbabf1eb3_n0_merged) SELECT alert_id, group_keys, end AS occurrence_time, start AS window_start, end AS window_end, 'temporal_ordered' AS metric_name, metric AS metric_value, json_array_length(evidence) AS event_count, evidence AS event_ids, children AS child_alert_ids FROM sigma_f11dbabf1eb3_n0_alerts ORDER BY occurrence_time, alert_id",
+  "b3_session_sql": "WITH RECURSIVE \nlegs AS (\n  SELECT actor_session_uid AS s, time_epoch AS t, dst_endpoint_hostname AS h, api_request_data AS d,\n    CASE WHEN api_operation IN ('mail.fetch','issue.read','pr.read') THEN 1\n         WHEN api_operation IN ('mail.search','contacts.list')\n           OR (api_operation = 'file.read' AND (api_request_data LIKE '%/proc/self/environ%'\n               OR api_request_data LIKE '%.env%' OR api_request_data LIKE '%credentials.json%')) THEN 2\n         WHEN api_operation IN ('http.open','web.fetch') AND dst_endpoint_hostname NOT IN ('docs.python.org', 'github.com', 'api.github.com', 'pypi.org', 'intranet.example', 'wiki.example', 'calendar.example', 'mail.example', 'registry.example') THEN 3\n    END AS leg\n  FROM api)\nSELECT s AS unit FROM legs WHERE leg IS NOT NULL GROUP BY s HAVING COUNT(DISTINCT leg) = 3 AND MAX(t) - MIN(t) <= 3600",
+  "b4_session_sql_qualified": "WITH RECURSIVE \nlegs AS (\n  SELECT actor_session_uid AS s, time_epoch AS t, dst_endpoint_hostname AS h, api_request_data AS d,\n    CASE WHEN api_operation IN ('mail.fetch','issue.read','pr.read') THEN 1\n         WHEN api_operation IN ('mail.search','contacts.list')\n           OR (api_operation = 'file.read' AND (api_request_data LIKE '%/proc/self/environ%'\n               OR api_request_data LIKE '%.env%' OR api_request_data LIKE '%credentials.json%')) THEN 2\n         WHEN api_operation IN ('http.open','web.fetch') AND dst_endpoint_hostname NOT IN ('docs.python.org', 'github.com', 'api.github.com', 'pypi.org', 'intranet.example', 'wiki.example', 'calendar.example', 'mail.example', 'registry.example') THEN 3\n    END AS leg\n  FROM api),\nbursts AS (\n  SELECT s, h FROM legs WHERE leg = 3 GROUP BY s, h HAVING COUNT(*) >= 20 AND MAX(t) - MIN(t) <= 300),\nqlegs AS (\n  SELECT l.s, l.t, CASE WHEN l.leg = 3 AND NOT (l.d LIKE '%api03-%' OR EXISTS (SELECT 1 FROM bursts b WHERE b.s = l.s AND b.h = l.h))\n                        THEN NULL ELSE l.leg END AS leg\n  FROM legs l)\nSELECT s AS unit FROM qlegs WHERE leg IS NOT NULL GROUP BY s HAVING COUNT(DISTINCT leg) = 3 AND MAX(t) - MIN(t) <= 3600",
+  "c1_walk_sql": "WITH RECURSIVE \nlegs AS (\n  SELECT actor_session_uid AS s, time_epoch AS t, dst_endpoint_hostname AS h, api_request_data AS d,\n    CASE WHEN api_operation IN ('mail.fetch','issue.read','pr.read') THEN 1\n         WHEN api_operation IN ('mail.search','contacts.list')\n           OR (api_operation = 'file.read' AND (api_request_data LIKE '%/proc/self/environ%'\n               OR api_request_data LIKE '%.env%' OR api_request_data LIKE '%credentials.json%')) THEN 2\n         WHEN api_operation IN ('http.open','web.fetch') AND dst_endpoint_hostname NOT IN ('docs.python.org', 'github.com', 'api.github.com', 'pypi.org', 'intranet.example', 'wiki.example', 'calendar.example', 'mail.example', 'registry.example') THEN 3\n    END AS leg\n  FROM api),\nparents AS (SELECT DISTINCT actor_session_uid AS s, delegation_parent_uid AS p FROM api),\nwalk AS (\n  SELECT s, s AS root, 0 AS depth FROM parents WHERE p IS NULL\n  UNION ALL\n  SELECT c.s, w.root, w.depth + 1 FROM parents c JOIN walk w ON c.p = w.s WHERE w.depth < 8)\nSELECT w.root AS unit FROM legs l JOIN walk w ON w.s = l.s WHERE l.leg IS NOT NULL GROUP BY w.root HAVING COUNT(DISTINCT leg) = 3 AND MAX(t) - MIN(t) <= 3600",
+  "c2_walk_sql_qualified": "WITH RECURSIVE \nlegs AS (\n  SELECT actor_session_uid AS s, time_epoch AS t, dst_endpoint_hostname AS h, api_request_data AS d,\n    CASE WHEN api_operation IN ('mail.fetch','issue.read','pr.read') THEN 1\n         WHEN api_operation IN ('mail.search','contacts.list')\n           OR (api_operation = 'file.read' AND (api_request_data LIKE '%/proc/self/environ%'\n               OR api_request_data LIKE '%.env%' OR api_request_data LIKE '%credentials.json%')) THEN 2\n         WHEN api_operation IN ('http.open','web.fetch') AND dst_endpoint_hostname NOT IN ('docs.python.org', 'github.com', 'api.github.com', 'pypi.org', 'intranet.example', 'wiki.example', 'calendar.example', 'mail.example', 'registry.example') THEN 3\n    END AS leg\n  FROM api),\nbursts AS (\n  SELECT s, h FROM legs WHERE leg = 3 GROUP BY s, h HAVING COUNT(*) >= 20 AND MAX(t) - MIN(t) <= 300),\nqlegs AS (\n  SELECT l.s, l.t, CASE WHEN l.leg = 3 AND NOT (l.d LIKE '%api03-%' OR EXISTS (SELECT 1 FROM bursts b WHERE b.s = l.s AND b.h = l.h))\n                        THEN NULL ELSE l.leg END AS leg\n  FROM legs l),\nparents AS (SELECT DISTINCT actor_session_uid AS s, delegation_parent_uid AS p FROM api),\nwalk AS (\n  SELECT s, s AS root, 0 AS depth FROM parents WHERE p IS NULL\n  UNION ALL\n  SELECT c.s, w.root, w.depth + 1 FROM parents c JOIN walk w ON c.p = w.s WHERE w.depth < 8)\nSELECT w.root AS unit FROM qlegs l JOIN walk w ON w.s = l.s WHERE l.leg IS NOT NULL GROUP BY w.root HAVING COUNT(DISTINCT leg) = 3 AND MAX(t) - MIN(t) <= 3600"
+ },
+ "summary": {
+  "a1_ingest_mail": {
+   "duckdb": {
+    "fp_per_seed": [
+     781,
+     806,
+     771
+    ],
+    "precision_min_median_max": [
+     0.0123,
+     0.0126,
+     0.0128
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     781,
+     806,
+     771
+    ],
+    "precision_min_median_max": [
+     0.0123,
+     0.0126,
+     0.0128
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "a2_ingest_repo": {
+   "duckdb": {
+    "fp_per_seed": [
+     542,
+     552,
+     538
+    ],
+    "precision_min_median_max": [
+     0.0178,
+     0.0181,
+     0.0182
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     542,
+     552,
+     538
+    ],
+    "precision_min_median_max": [
+     0.0178,
+     0.0181,
+     0.0182
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "a3_collect_mailbox": {
+   "duckdb": {
+    "fp_per_seed": [
+     2253,
+     2435,
+     2394
+    ],
+    "precision_min_median_max": [
+     0.0081,
+     0.0083,
+     0.0088
+    ],
+    "recall_min_median_max": [
+     0.6667,
+     0.6667,
+     0.6667
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     2253,
+     2435,
+     2394
+    ],
+    "precision_min_median_max": [
+     0.0081,
+     0.0083,
+     0.0088
+    ],
+    "recall_min_median_max": [
+     0.6667,
+     0.6667,
+     0.6667
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "a4_read_procenv": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "recall_min_median_max": [
+     0.3333,
+     0.3333,
+     0.3333
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "recall_min_median_max": [
+     0.3333,
+     0.3333,
+     0.3333
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   }
+  },
+  "a5_outbound_offlist": {
+   "duckdb": {
+    "fp_per_seed": [
+     131,
+     134,
+     165
+    ],
+    "precision_min_median_max": [
+     0.6024,
+     0.651,
+     0.6562
+    ],
+    "recall_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     131,
+     134,
+     165
+    ],
+    "precision_min_median_max": [
+     0.6024,
+     0.651,
+     0.6562
+    ],
+    "recall_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "a6_credential_shape": {
+   "duckdb": {
+    "fp_per_seed": [
+     10,
+     10,
+     10
+    ],
+    "precision_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "recall_min_median_max": [
+     0.04,
+     0.04,
+     0.04
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     10,
+     10,
+     10
+    ],
+    "precision_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "recall_min_median_max": [
+     0.04,
+     0.04,
+     0.04
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "a7_url_burst": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "miss_reason": [
+     "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_fffcc564c5af_n0_grouped AS (SELECT start, end, g0, g1, MAX(metric) AS metric, json_group"
+    ],
+    "precision_min_median_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "recall_min_median_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "states": [
+     "MISSED",
+     "MISSED",
+     "MISSED"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     1106,
+     1349,
+     1347
+    ],
+    "precision_min_median_max": [
+     0.151,
+     0.1512,
+     0.1783
+    ],
+    "recall_min_median_max": [
+     0.96,
+     0.96,
+     0.96
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "b1_session_temporal": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "miss_reason": [
+     "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_92431cccd63f_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_arr"
+    ],
+    "precision_min_median_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "recall_min_median_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "states": [
+     "MISSED",
+     "MISSED",
+     "MISSED"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     38,
+     37,
+     42
+    ],
+    "precision_min_median_max": [
+     0.1923,
+     0.2083,
+     0.2128
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "b2_session_temporal_ordered": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "miss_reason": [
+     "exec_error: Parser Error: syntax error at or near \"end\" LINE 1: ...lified a), sigma_f11dbabf1eb3_n0_grouped AS (SELECT start, end, g0, MAX(metric) AS metric, json_group_arr"
+    ],
+    "precision_min_median_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "recall_min_median_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "states": [
+     "MISSED",
+     "MISSED",
+     "MISSED"
+    ]
+   },
+   "sqlite": {
+    "fp_per_seed": [
+     38,
+     37,
+     42
+    ],
+    "precision_min_median_max": [
+     0.1923,
+     0.2083,
+     0.2128
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "b3_session_sql": {
+   "duckdb": {
+    "fp_per_seed": [
+     38,
+     37,
+     42
+    ],
+    "precision_min_median_max": [
+     0.1923,
+     0.2083,
+     0.2128
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     38,
+     37,
+     42
+    ],
+    "precision_min_median_max": [
+     0.1923,
+     0.2083,
+     0.2128
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "b4_session_sql_qualified": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 0.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 0.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     0.5,
+     0.5,
+     0.5
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   }
+  },
+  "c1_walk_sql": {
+   "duckdb": {
+    "fp_per_seed": [
+     38,
+     37,
+     42
+    ],
+    "precision_min_median_max": [
+     0.3226,
+     0.3448,
+     0.3509
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     38,
+     37,
+     42
+    ],
+    "precision_min_median_max": [
+     0.3226,
+     0.3448,
+     0.3509
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "NOISY",
+     "NOISY",
+     "NOISY"
+    ]
+   }
+  },
+  "c2_walk_sql_qualified": {
+   "duckdb": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   },
+   "engines_agree_per_seed": [
+    true,
+    true,
+    true
+   ],
+   "sqlite": {
+    "fp_per_seed": [
+     0,
+     0,
+     0
+    ],
+    "precision_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "recall_by_stratum_per_seed": [
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     },
+     {
+      "CS0066-delegated": 1.0,
+      "CS0066-direct": 1.0,
+      "CS0067-delegated": 1.0,
+      "CS0067-direct": 1.0
+     }
+    ],
+    "recall_min_median_max": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "states": [
+     "DETECTED",
+     "DETECTED",
+     "DETECTED"
+    ]
+   }
+  }
+ },
+ "versions": {
+  "duckdb": "1.5.3",
+  "python": "3.12.3",
+  "sqlite": "3.45.1"
+ },
+ "window_s": 3600
+}

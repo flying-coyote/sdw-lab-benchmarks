@@ -1,0 +1,14 @@
+title: Agent executed a destructive action
+description: AML.M0024 "capture security-relevant access, changes, and operations" for agentic systems; the executed-action log. Detection; event unit. Table api_activity.
+status: experimental
+logsource: {category: api}
+detection:
+  base:
+    metadata_product_name: agent-runtime
+    status_id: 1
+  del:
+    api_operation: fs.delete
+  sh:
+    api_operation: bash.execute
+    api_request_data|contains: ['rm -rf', 'terminate-instances', 'delete-bucket', 's3 rb', 'DROP TABLE']
+  condition: base and (del or sh)

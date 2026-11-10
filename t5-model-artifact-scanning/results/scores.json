@@ -1,0 +1,4915 @@
+{
+ "coverage": {
+  "fickling": {
+   ".7z": {
+    "flagged": 1
+   },
+   ".bin": {
+    "flagged": 5
+   },
+   ".gguf": {
+    "flagged": 1
+   },
+   ".h5": {
+    "flagged": 1
+   },
+   ".npy": {
+    "flagged": 3
+   },
+   ".npz": {
+    "skipped": 4
+   },
+   ".onnx": {
+    "flagged": 2
+   },
+   ".pickle": {
+    "flagged": 2
+   },
+   ".pkl": {
+    "clean": 3,
+    "error": 3,
+    "flagged": 79
+   },
+   ".pt": {
+    "flagged": 4
+   },
+   ".safetensors": {
+    "flagged": 1
+   },
+   ".zip": {
+    "error": 3,
+    "flagged": 3,
+    "skipped": 3
+   },
+   "ALL": {
+    "clean": 3,
+    "error": 6,
+    "flagged": 102,
+    "skipped": 7
+   },
+   "set:benign-models": {
+    "flagged": 6
+   },
+   "set:fickling-fixtures": {
+    "flagged": 1
+   },
+   "set:modelscan-data": {
+    "flagged": 1,
+    "skipped": 1
+   },
+   "set:picklescan-data": {
+    "clean": 3,
+    "error": 4,
+    "flagged": 37,
+    "skipped": 2
+   },
+   "set:picklescan-data2": {
+    "error": 2,
+    "flagged": 57,
+    "skipped": 4
+   }
+  },
+  "modelscan": {
+   ".7z": {
+    "skipped": 1
+   },
+   ".bin": {
+    "clean": 3,
+    "skipped": 2
+   },
+   ".gguf": {
+    "skipped": 1
+   },
+   ".h5": {
+    "skipped": 1
+   },
+   ".npy": {
+    "skipped": 3
+   },
+   ".npz": {
+    "skipped": 4
+   },
+   ".onnx": {
+    "skipped": 2
+   },
+   ".pickle": {
+    "flagged": 2
+   },
+   ".pkl": {
+    "clean": 56,
+    "flagged": 25,
+    "skipped": 4
+   },
+   ".pt": {
+    "clean": 1,
+    "flagged": 1,
+    "skipped": 2
+   },
+   ".safetensors": {
+    "skipped": 1
+   },
+   ".zip": {
+    "flagged": 1,
+    "skipped": 8
+   },
+   "ALL": {
+    "clean": 60,
+    "flagged": 29,
+    "skipped": 29
+   },
+   "set:benign-models": {
+    "clean": 1,
+    "skipped": 5
+   },
+   "set:fickling-fixtures": {
+    "clean": 1
+   },
+   "set:modelscan-data": {
+    "flagged": 1,
+    "skipped": 1
+   },
+   "set:picklescan-data": {
+    "clean": 10,
+    "flagged": 25,
+    "skipped": 11
+   },
+   "set:picklescan-data2": {
+    "clean": 48,
+    "flagged": 3,
+    "skipped": 12
+   }
+  },
+  "picklescan-dir": {
+   ".7z": {
+    "error": 1
+   },
+   ".bin": {
+    "clean": 4,
+    "flagged": 1
+   },
+   ".gguf": {
+    "skipped": 1
+   },
+   ".h5": {
+    "skipped": 1
+   },
+   ".npy": {
+    "skipped": 3
+   },
+   ".npz": {
+    "clean": 4
+   },
+   ".onnx": {
+    "skipped": 2
+   },
+   ".pickle": {
+    "flagged": 2
+   },
+   ".pkl": {
+    "clean": 3,
+    "error": 2,
+    "flagged": 80
+   },
+   ".pt": {
+    "clean": 2,
+    "flagged": 2
+   },
+   ".safetensors": {
+    "skipped": 1
+   },
+   ".zip": {
+    "flagged": 6,
+    "skipped": 3
+   },
+   "ALL": {
+    "clean": 13,
+    "error": 3,
+    "flagged": 91,
+    "skipped": 11
+   },
+   "set:benign-models": {
+    "clean": 1,
+    "skipped": 5
+   },
+   "set:fickling-fixtures": {
+    "clean": 1
+   },
+   "set:modelscan-data": {
+    "flagged": 1,
+    "skipped": 1
+   },
+   "set:picklescan-data": {
+    "clean": 7,
+    "error": 3,
+    "flagged": 35,
+    "skipped": 1
+   },
+   "set:picklescan-data2": {
+    "clean": 4,
+    "flagged": 55,
+    "skipped": 4
+   }
+  },
+  "picklescan-file": {
+   ".7z": {
+    "error": 1
+   },
+   ".bin": {
+    "clean": 4,
+    "flagged": 1
+   },
+   ".gguf": {
+    "clean": 1
+   },
+   ".h5": {
+    "clean": 1
+   },
+   ".npy": {
+    "clean": 2,
+    "flagged": 1
+   },
+   ".npz": {
+    "clean": 4
+   },
+   ".onnx": {
+    "clean": 2
+   },
+   ".pickle": {
+    "flagged": 2
+   },
+   ".pkl": {
+    "clean": 3,
+    "error": 2,
+    "flagged": 80
+   },
+   ".pt": {
+    "clean": 2,
+    "flagged": 2
+   },
+   ".safetensors": {
+    "clean": 1
+   },
+   ".zip": {
+    "flagged": 6,
+    "skipped": 3
+   },
+   "ALL": {
+    "clean": 20,
+    "error": 3,
+    "flagged": 92,
+    "skipped": 3
+   },
+   "set:benign-models": {
+    "clean": 6
+   },
+   "set:fickling-fixtures": {
+    "clean": 1
+   },
+   "set:modelscan-data": {
+    "flagged": 1,
+    "skipped": 1
+   },
+   "set:picklescan-data": {
+    "clean": 7,
+    "error": 3,
+    "flagged": 35,
+    "skipped": 1
+   },
+   "set:picklescan-data2": {
+    "clean": 6,
+    "flagged": 56,
+    "skipped": 1
+   }
+  }
+ },
+ "detection": {
+  "fickling": {
+   "ALL": {
+    "error": 6,
+    "flagged": 89,
+    "skipped": 1
+   },
+   "modelscan-data": {
+    "flagged": 1
+   },
+   "picklescan-data": {
+    "error": 4,
+    "flagged": 33,
+    "skipped": 1
+   },
+   "picklescan-data2": {
+    "error": 2,
+    "flagged": 55
+   }
+  },
+  "modelscan": {
+   "ALL": {
+    "clean": 53,
+    "flagged": 29,
+    "skipped": 14
+   },
+   "modelscan-data": {
+    "flagged": 1
+   },
+   "picklescan-data": {
+    "clean": 5,
+    "flagged": 25,
+    "skipped": 8
+   },
+   "picklescan-data2": {
+    "clean": 48,
+    "flagged": 3,
+    "skipped": 6
+   }
+  },
+  "picklescan-dir": {
+   "ALL": {
+    "error": 3,
+    "flagged": 91,
+    "skipped": 2
+   },
+   "modelscan-data": {
+    "flagged": 1
+   },
+   "picklescan-data": {
+    "error": 3,
+    "flagged": 35
+   },
+   "picklescan-data2": {
+    "flagged": 55,
+    "skipped": 2
+   }
+  },
+  "picklescan-file": {
+   "ALL": {
+    "error": 3,
+    "flagged": 92,
+    "skipped": 1
+   },
+   "modelscan-data": {
+    "flagged": 1
+   },
+   "picklescan-data": {
+    "error": 3,
+    "flagged": 35
+   },
+   "picklescan-data2": {
+    "flagged": 56,
+    "skipped": 1
+   }
+  }
+ },
+ "evasion": [
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N1",
+   "variant": "malicious1_v4"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N2",
+   "variant": "malicious1_v4.bin"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N3",
+   "variant": "malicious1_v4.txt"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N4",
+   "variant": "malicious1_v4.safetensors"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N5",
+   "variant": "malicious1_v4.pth"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C1",
+   "variant": "malicious1_v4.pkl.zip"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C2",
+   "variant": "malicious1_v4.zip"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C3",
+   "variant": "malicious1_v4.pkl.tar"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C4",
+   "variant": "malicious1_v4.pkl.tar.gz"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C5",
+   "variant": "malicious1_v4.pkl.gz"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "transform": "C6",
+   "variant": "malicious1_v4-nested.zip"
+  },
+  {
+   "anchor": "A1",
+   "base": "picklescan-data/malicious1_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C7",
+   "variant": "malicious1_v4-torchlayout.pt"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N1",
+   "variant": "malicious2_v4"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N2",
+   "variant": "malicious2_v4.bin"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N3",
+   "variant": "malicious2_v4.txt"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N4",
+   "variant": "malicious2_v4.safetensors"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N5",
+   "variant": "malicious2_v4.pth"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C1",
+   "variant": "malicious2_v4.pkl.zip"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C2",
+   "variant": "malicious2_v4.zip"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C3",
+   "variant": "malicious2_v4.pkl.tar"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C4",
+   "variant": "malicious2_v4.pkl.tar.gz"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C5",
+   "variant": "malicious2_v4.pkl.gz"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "transform": "C6",
+   "variant": "malicious2_v4-nested.zip"
+  },
+  {
+   "anchor": "A2",
+   "base": "picklescan-data/malicious2_v4.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C7",
+   "variant": "malicious2_v4-torchlayout.pt"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N1",
+   "variant": "GHSA-4675-36f9-wf6r"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N2",
+   "variant": "GHSA-4675-36f9-wf6r.bin"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N3",
+   "variant": "GHSA-4675-36f9-wf6r.txt"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N4",
+   "variant": "GHSA-4675-36f9-wf6r.safetensors"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N5",
+   "variant": "GHSA-4675-36f9-wf6r.pth"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": false,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C1",
+   "variant": "GHSA-4675-36f9-wf6r.pkl.zip"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C2",
+   "variant": "GHSA-4675-36f9-wf6r.zip"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C3",
+   "variant": "GHSA-4675-36f9-wf6r.pkl.tar"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C4",
+   "variant": "GHSA-4675-36f9-wf6r.pkl.tar.gz"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C5",
+   "variant": "GHSA-4675-36f9-wf6r.pkl.gz"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "transform": "C6",
+   "variant": "GHSA-4675-36f9-wf6r-nested.zip"
+  },
+  {
+   "anchor": "A3",
+   "base": "picklescan-data2/GHSA-4675-36f9-wf6r.pkl",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": false,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C7",
+   "variant": "GHSA-4675-36f9-wf6r-torchlayout.pt"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N1",
+   "variant": "unsafe_zip_pytorch"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N2",
+   "variant": "unsafe_zip_pytorch.bin"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N3",
+   "variant": "unsafe_zip_pytorch.txt"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N4",
+   "variant": "unsafe_zip_pytorch.safetensors"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "N5",
+   "variant": "unsafe_zip_pytorch.pth"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "transform": "C1",
+   "variant": "unsafe_zip_pytorch.pt.zip"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "transform": "C2",
+   "variant": "unsafe_zip_pytorch.zip"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C3",
+   "variant": "unsafe_zip_pytorch.pt.tar"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C4",
+   "variant": "unsafe_zip_pytorch.pt.tar.gz"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C5",
+   "variant": "unsafe_zip_pytorch.pt.gz"
+  },
+  {
+   "anchor": "A4",
+   "base": "modelscan-data/unsafe_zip_pytorch.pt",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "transform": "C6",
+   "variant": "unsafe_zip_pytorch-nested.zip"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "error"
+   },
+   "transform": "N1",
+   "variant": "dns_exfiltration"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": false,
+    "variant": "error"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "error"
+   },
+   "transform": "N2",
+   "variant": "dns_exfiltration.bin"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "error"
+   },
+   "transform": "N3",
+   "variant": "dns_exfiltration.txt"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "error"
+   },
+   "transform": "N4",
+   "variant": "dns_exfiltration.safetensors"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": false,
+    "variant": "error"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "error"
+   },
+   "transform": "N5",
+   "variant": "dns_exfiltration.pth"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C1",
+   "variant": "dns_exfiltration.npy.zip"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "transform": "C2",
+   "variant": "dns_exfiltration.zip"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C3",
+   "variant": "dns_exfiltration.npy.tar"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C4",
+   "variant": "dns_exfiltration.npy.tar.gz"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": false,
+    "variant": "flagged"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "clean"
+   },
+   "transform": "C5",
+   "variant": "dns_exfiltration.npy.gz"
+  },
+  {
+   "anchor": "A5",
+   "base": "picklescan-data2/dns_exfiltration.npy",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "label": "unsafe",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": false,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": true,
+    "variant": "skipped"
+   },
+   "transform": "C6",
+   "variant": "dns_exfiltration-nested.zip"
+  },
+  {
+   "anchor": "B1",
+   "base": "benign-models/tinyllama-1.1b-chat.Q4_0.gguf",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N1",
+   "variant": "tinyllama-1.1b-chat.Q4_0"
+  },
+  {
+   "anchor": "B1",
+   "base": "benign-models/tinyllama-1.1b-chat.Q4_0.gguf",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N2",
+   "variant": "tinyllama-1.1b-chat.Q4_0.bin"
+  },
+  {
+   "anchor": "B1",
+   "base": "benign-models/tinyllama-1.1b-chat.Q4_0.gguf",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N3",
+   "variant": "tinyllama-1.1b-chat.Q4_0.txt"
+  },
+  {
+   "anchor": "B1",
+   "base": "benign-models/tinyllama-1.1b-chat.Q4_0.gguf",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N4",
+   "variant": "tinyllama-1.1b-chat.Q4_0.safetensors"
+  },
+  {
+   "anchor": "B1",
+   "base": "benign-models/tinyllama-1.1b-chat.Q4_0.gguf",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N5",
+   "variant": "tinyllama-1.1b-chat.Q4_0.pth"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N1",
+   "variant": "all-MiniLM-L6-v2"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N2",
+   "variant": "all-MiniLM-L6-v2.bin"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N3",
+   "variant": "all-MiniLM-L6-v2.txt"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N4",
+   "variant": "all-MiniLM-L6-v2.safetensors"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N5",
+   "variant": "all-MiniLM-L6-v2.pth"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "transform": "C1",
+   "variant": "all-MiniLM-L6-v2.safetensors.zip"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "transform": "C2",
+   "variant": "all-MiniLM-L6-v2.zip"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C3",
+   "variant": "all-MiniLM-L6-v2.safetensors.tar"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C4",
+   "variant": "all-MiniLM-L6-v2.safetensors.tar.gz"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C5",
+   "variant": "all-MiniLM-L6-v2.safetensors.gz"
+  },
+  {
+   "anchor": "B2",
+   "base": "benign-models/all-MiniLM-L6-v2.safetensors",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "transform": "C6",
+   "variant": "all-MiniLM-L6-v2-nested.zip"
+  },
+  {
+   "anchor": "B3",
+   "base": "benign-models/all-MiniLM-L6-v2.pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N1",
+   "variant": "all-MiniLM-L6-v2.pytorch_model"
+  },
+  {
+   "anchor": "B3",
+   "base": "benign-models/all-MiniLM-L6-v2.pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N2",
+   "variant": "all-MiniLM-L6-v2.pytorch_model.bin"
+  },
+  {
+   "anchor": "B3",
+   "base": "benign-models/all-MiniLM-L6-v2.pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N3",
+   "variant": "all-MiniLM-L6-v2.pytorch_model.txt"
+  },
+  {
+   "anchor": "B3",
+   "base": "benign-models/all-MiniLM-L6-v2.pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N4",
+   "variant": "all-MiniLM-L6-v2.pytorch_model.safetensors"
+  },
+  {
+   "anchor": "B3",
+   "base": "benign-models/all-MiniLM-L6-v2.pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N5",
+   "variant": "all-MiniLM-L6-v2.pytorch_model.pth"
+  },
+  {
+   "anchor": "B4",
+   "base": "benign-models/all-MiniLM-L6-v2.tf_model.h5",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N1",
+   "variant": "all-MiniLM-L6-v2.tf_model"
+  },
+  {
+   "anchor": "B4",
+   "base": "benign-models/all-MiniLM-L6-v2.tf_model.h5",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N2",
+   "variant": "all-MiniLM-L6-v2.tf_model.bin"
+  },
+  {
+   "anchor": "B4",
+   "base": "benign-models/all-MiniLM-L6-v2.tf_model.h5",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N3",
+   "variant": "all-MiniLM-L6-v2.tf_model.txt"
+  },
+  {
+   "anchor": "B4",
+   "base": "benign-models/all-MiniLM-L6-v2.tf_model.h5",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N4",
+   "variant": "all-MiniLM-L6-v2.tf_model.safetensors"
+  },
+  {
+   "anchor": "B4",
+   "base": "benign-models/all-MiniLM-L6-v2.tf_model.h5",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N5",
+   "variant": "all-MiniLM-L6-v2.tf_model.pth"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N1",
+   "variant": "mnist-8"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N2",
+   "variant": "mnist-8.bin"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N3",
+   "variant": "mnist-8.txt"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N4",
+   "variant": "mnist-8.safetensors"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N5",
+   "variant": "mnist-8.pth"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "transform": "C1",
+   "variant": "mnist-8.onnx.zip"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "transform": "C2",
+   "variant": "mnist-8.zip"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C3",
+   "variant": "mnist-8.onnx.tar"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C4",
+   "variant": "mnist-8.onnx.tar.gz"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C5",
+   "variant": "mnist-8.onnx.gz"
+  },
+  {
+   "anchor": "B5",
+   "base": "benign-models/mnist-8.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "transform": "C6",
+   "variant": "mnist-8-nested.zip"
+  },
+  {
+   "anchor": "B6",
+   "base": "benign-models/all-MiniLM-L6-v2.model_O4.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N1",
+   "variant": "all-MiniLM-L6-v2.model_O4"
+  },
+  {
+   "anchor": "B6",
+   "base": "benign-models/all-MiniLM-L6-v2.model_O4.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N2",
+   "variant": "all-MiniLM-L6-v2.model_O4.bin"
+  },
+  {
+   "anchor": "B6",
+   "base": "benign-models/all-MiniLM-L6-v2.model_O4.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N3",
+   "variant": "all-MiniLM-L6-v2.model_O4.txt"
+  },
+  {
+   "anchor": "B6",
+   "base": "benign-models/all-MiniLM-L6-v2.model_O4.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N4",
+   "variant": "all-MiniLM-L6-v2.model_O4.safetensors"
+  },
+  {
+   "anchor": "B6",
+   "base": "benign-models/all-MiniLM-L6-v2.model_O4.onnx",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "skipped",
+    "changed": false,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "skipped",
+    "changed": true,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N5",
+   "variant": "all-MiniLM-L6-v2.model_O4.pth"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N1",
+   "variant": "benign0_v4"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N2",
+   "variant": "benign0_v4.bin"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N3",
+   "variant": "benign0_v4.txt"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N4",
+   "variant": "benign0_v4.safetensors"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N5",
+   "variant": "benign0_v4.pth"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C1",
+   "variant": "benign0_v4.pkl.zip"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C2",
+   "variant": "benign0_v4.zip"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C3",
+   "variant": "benign0_v4.pkl.tar"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C4",
+   "variant": "benign0_v4.pkl.tar.gz"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C5",
+   "variant": "benign0_v4.pkl.gz"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "transform": "C6",
+   "variant": "benign0_v4-nested.zip"
+  },
+  {
+   "anchor": "B7",
+   "base": "picklescan-data/benign0_v4.pkl",
+   "fickling": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C7",
+   "variant": "benign0_v4-torchlayout.pt"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "error"
+   },
+   "transform": "N1",
+   "variant": "pytorch_model"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N2",
+   "variant": "pytorch_model.bin"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "error"
+   },
+   "transform": "N3",
+   "variant": "pytorch_model.txt"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "error"
+   },
+   "transform": "N4",
+   "variant": "pytorch_model.safetensors"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "N5",
+   "variant": "pytorch_model.pth"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "error"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "error"
+   },
+   "transform": "C1",
+   "variant": "pytorch_model.bin.zip"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "error"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "error"
+   },
+   "transform": "C2",
+   "variant": "pytorch_model.zip"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C3",
+   "variant": "pytorch_model.bin.tar"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C4",
+   "variant": "pytorch_model.bin.tar.gz"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": false,
+    "defeated": null,
+    "variant": "flagged"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": false,
+    "defeated": null,
+    "variant": "clean"
+   },
+   "transform": "C5",
+   "variant": "pytorch_model.bin.gz"
+  },
+  {
+   "anchor": "B8",
+   "base": "picklescan-data/pytorch_model.bin",
+   "fickling": {
+    "base": "flagged",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "label": "benign",
+   "modelscan": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-dir": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "picklescan-file": {
+    "base": "clean",
+    "changed": true,
+    "defeated": null,
+    "variant": "skipped"
+   },
+   "transform": "C6",
+   "variant": "pytorch_model-nested.zip"
+  }
+ ],
+ "evasion_summary": {
+  "C1|fickling": {
+   "applicable": 5,
+   "benign_changed": 2,
+   "benign_flagged": 1,
+   "benign_total": 4,
+   "defeated": 2
+  },
+  "C1|modelscan": {
+   "applicable": 3,
+   "benign_total": 4,
+   "defeated": 1
+  },
+  "C1|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 1,
+   "benign_total": 4,
+   "defeated": 1
+  },
+  "C1|picklescan-file": {
+   "applicable": 5,
+   "benign_changed": 3,
+   "benign_total": 4,
+   "defeated": 1
+  },
+  "C2|fickling": {
+   "applicable": 5,
+   "benign_changed": 4,
+   "benign_total": 4,
+   "defeated": 5
+  },
+  "C2|modelscan": {
+   "applicable": 3,
+   "benign_changed": 2,
+   "benign_total": 4,
+   "defeated": 3
+  },
+  "C2|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 1,
+   "benign_total": 4,
+   "defeated": 1
+  },
+  "C2|picklescan-file": {
+   "applicable": 5,
+   "benign_changed": 3,
+   "benign_total": 4,
+   "defeated": 1
+  },
+  "C3|fickling": {
+   "applicable": 5,
+   "benign_changed": 1,
+   "benign_flagged": 4,
+   "benign_total": 4
+  },
+  "C3|modelscan": {
+   "applicable": 3,
+   "benign_changed": 2,
+   "benign_total": 4,
+   "defeated": 3
+  },
+  "C3|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 2,
+   "benign_total": 4,
+   "defeated": 4
+  },
+  "C3|picklescan-file": {
+   "applicable": 5,
+   "benign_total": 4,
+   "defeated": 4
+  },
+  "C4|fickling": {
+   "applicable": 5,
+   "benign_changed": 1,
+   "benign_flagged": 4,
+   "benign_total": 4
+  },
+  "C4|modelscan": {
+   "applicable": 3,
+   "benign_changed": 2,
+   "benign_total": 4,
+   "defeated": 3
+  },
+  "C4|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 2,
+   "benign_total": 4,
+   "defeated": 4
+  },
+  "C4|picklescan-file": {
+   "applicable": 5,
+   "benign_total": 4,
+   "defeated": 5
+  },
+  "C5|fickling": {
+   "applicable": 5,
+   "benign_changed": 1,
+   "benign_flagged": 4,
+   "benign_total": 4
+  },
+  "C5|modelscan": {
+   "applicable": 3,
+   "benign_changed": 2,
+   "benign_total": 4,
+   "defeated": 3
+  },
+  "C5|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 2,
+   "benign_total": 4,
+   "defeated": 4
+  },
+  "C5|picklescan-file": {
+   "applicable": 5,
+   "benign_total": 4,
+   "defeated": 5
+  },
+  "C6|fickling": {
+   "applicable": 5,
+   "benign_changed": 4,
+   "benign_total": 4,
+   "defeated": 5
+  },
+  "C6|modelscan": {
+   "applicable": 3,
+   "benign_changed": 2,
+   "benign_total": 4,
+   "defeated": 3
+  },
+  "C6|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 2,
+   "benign_total": 4,
+   "defeated": 4
+  },
+  "C6|picklescan-file": {
+   "applicable": 5,
+   "benign_changed": 4,
+   "benign_total": 4,
+   "defeated": 5
+  },
+  "C7|fickling": {
+   "applicable": 3,
+   "benign_total": 1
+  },
+  "C7|modelscan": {
+   "applicable": 2,
+   "benign_total": 1
+  },
+  "C7|picklescan-dir": {
+   "applicable": 3,
+   "benign_total": 1
+  },
+  "C7|picklescan-file": {
+   "applicable": 3,
+   "benign_total": 1
+  },
+  "N1|fickling": {
+   "applicable": 5,
+   "benign_flagged": 7,
+   "benign_total": 8
+  },
+  "N1|modelscan": {
+   "applicable": 3,
+   "benign_changed": 2,
+   "benign_total": 8,
+   "defeated": 2
+  },
+  "N1|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 3,
+   "benign_total": 8,
+   "defeated": 4
+  },
+  "N1|picklescan-file": {
+   "applicable": 5,
+   "benign_changed": 1,
+   "benign_total": 8,
+   "defeated": 1
+  },
+  "N2|fickling": {
+   "applicable": 5,
+   "benign_flagged": 7,
+   "benign_total": 8
+  },
+  "N2|modelscan": {
+   "applicable": 3,
+   "benign_changed": 1,
+   "benign_total": 8,
+   "defeated": 2
+  },
+  "N2|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 5,
+   "benign_total": 8
+  },
+  "N2|picklescan-file": {
+   "applicable": 5,
+   "benign_total": 8,
+   "defeated": 1
+  },
+  "N3|fickling": {
+   "applicable": 5,
+   "benign_flagged": 7,
+   "benign_total": 8
+  },
+  "N3|modelscan": {
+   "applicable": 3,
+   "benign_changed": 2,
+   "benign_total": 8,
+   "defeated": 2
+  },
+  "N3|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 3,
+   "benign_total": 8,
+   "defeated": 4
+  },
+  "N3|picklescan-file": {
+   "applicable": 5,
+   "benign_changed": 1,
+   "benign_total": 8,
+   "defeated": 1
+  },
+  "N4|fickling": {
+   "applicable": 5,
+   "benign_flagged": 7,
+   "benign_total": 8
+  },
+  "N4|modelscan": {
+   "applicable": 3,
+   "benign_changed": 2,
+   "benign_total": 8,
+   "defeated": 2
+  },
+  "N4|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 3,
+   "benign_total": 8,
+   "defeated": 4
+  },
+  "N4|picklescan-file": {
+   "applicable": 5,
+   "benign_changed": 1,
+   "benign_total": 8,
+   "defeated": 1
+  },
+  "N5|fickling": {
+   "applicable": 5,
+   "benign_flagged": 7,
+   "benign_total": 8
+  },
+  "N5|modelscan": {
+   "applicable": 3,
+   "benign_changed": 1,
+   "benign_total": 8,
+   "defeated": 2
+  },
+  "N5|picklescan-dir": {
+   "applicable": 4,
+   "benign_changed": 5,
+   "benign_total": 8
+  },
+  "N5|picklescan-file": {
+   "applicable": 5,
+   "benign_total": 8,
+   "defeated": 1
+  }
+ },
+ "false_positives": {
+  "fickling": {
+   "error_or_skipped": [
+    {
+     "file": "picklescan-data2/int_arrays.npz",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/int_arrays_compressed.npz",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/object_arrays.npz",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/object_arrays_compressed.npz",
+     "verdict": "skipped"
+    }
+   ],
+   "flagged": [
+    {
+     "detail": {
+      "errors": [
+       "Parse error (EmptyPickleError): No pickle files detected"
+      ],
+      "mode": "raw",
+      "n_members": 1,
+      "results": [],
+      "severities": [
+       "SUSPICIOUS"
+      ]
+     },
+     "file": "benign-models/all-MiniLM-L6-v2.model_O4.onnx"
+    },
+    {
+     "detail": {
+      "errors": [],
+      "mode": "zip",
+      "n_members": 1,
+      "results": [
+       "`from torch._utils import _rebuild_tensor_v2` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\n`from torch import LongStorage` imports a Python module that is not a part of the standard library; this can execute arbitrary co"
+      ],
+      "severities": [
+       "LIKELY_UNSAFE"
+      ]
+     },
+     "file": "benign-models/all-MiniLM-L6-v2.pytorch_model.bin"
+    },
+    {
+     "detail": {
+      "errors": [],
+      "mode": "raw",
+      "n_members": 1,
+      "results": [
+       "The file has invalid opcode(s). It is either corrupted or attempting to bypass the pickle security analysis\nThe pickle file has malformed opcode sequences. It is either corrupted or attempting to bypass the pickle security analysis"
+      ],
+      "severities": [
+       "LIKELY_UNSAFE"
+      ]
+     },
+     "file": "benign-models/all-MiniLM-L6-v2.safetensors"
+    },
+    {
+     "detail": {
+      "errors": [],
+      "mode": "raw",
+      "n_members": 1,
+      "results": [
+       "The file has invalid opcode(s). It is either corrupted or attempting to bypass the pickle security analysis"
+      ],
+      "severities": [
+       "LIKELY_UNSAFE"
+      ]
+     },
+     "file": "benign-models/all-MiniLM-L6-v2.tf_model.h5"
+    },
+    {
+     "detail": {
+      "errors": [
+       "Parse error (EmptyPickleError): No pickle files detected"
+      ],
+      "mode": "raw",
+      "n_members": 1,
+      "results": [],
+      "severities": [
+       "SUSPICIOUS"
+      ]
+     },
+     "file": "benign-models/mnist-8.onnx"
+    },
+    {
+     "detail": {
+      "errors": [],
+      "mode": "raw",
+      "n_members": 1,
+      "results": [
+       "The file has invalid opcode(s). It is either corrupted or attempting to bypass the pickle security analysis"
+      ],
+      "severities": [
+       "LIKELY_UNSAFE"
+      ]
+     },
+     "file": "benign-models/tinyllama-1.1b-chat.Q4_0.gguf"
+    },
+    {
+     "detail": {
+      "errors": [],
+      "mode": "zip",
+      "n_members": 2,
+      "results": [
+       "`from __torch__.torchvision.models.squeezenet import SqueezeNet` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\n`from __torch__.torch.nn.modules.container import Sequential` imports a Python module that is not a part of th",
+       ""
+      ],
+      "severities": [
+       "LIKELY_SAFE",
+       "LIKELY_UNSAFE"
+      ]
+     },
+     "file": "fickling-fixtures/squeezenet1_0_torchscript_v1_4.pt"
+    },
+    {
+     "detail": {
+      "errors": [],
+      "mode": "zip",
+      "n_members": 1,
+      "results": [
+       "`from torch._utils import _rebuild_tensor_v2` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\n`from torch import FloatStorage` imports a Python module that is not a part of the standard library; this can execute arbitrary c"
+      ],
+      "severities": [
+       "LIKELY_UNSAFE"
+      ]
+     },
+     "file": "picklescan-data/new_pytorch_model.bin"
+    },
+    {
+     "detail": {
+      "errors": [],
+      "mode": "raw",
+      "n_members": 1,
+      "results": [
+       "",
+       "",
+       "",
+       "`from torch._utils import _rebuild_tensor_v2` imports a Python module that is not a part of the standard library; this can execute arbitrary code and is inherently unsafe\n`from torch import FloatStorage` imports a Python module that is not a part of the standard library; this can execute arbitrary c",
+       ""
+      ],
+      "severities": [
+       "LIKELY_UNSAFE"
+      ]
+     },
+     "file": "picklescan-data/pytorch_model.bin"
+    },
+    {
+     "detail": {
+      "errors": [],
+      "mode": "raw",
+      "n_members": 1,
+      "results": [
+       "The file has invalid opcode(s). It is either corrupted or attempting to bypass the pickle security analysis\nThe pickle file has malformed opcode sequences (IndexError: Opcode StackGlobal(info=<pickletools.OpcodeInfo object at 0x7759ac0813c0>, argument=None, data=b'\\x93', position=0) attempted to pop",
+       "The file has invalid opcode(s). It is either corrupted or attempting to bypass the pickle security analysis"
+      ],
+      "severities": [
+       "LIKELY_UNSAFE"
+      ]
+     },
+     "file": "picklescan-data2/int_array.npy"
+    },
+    {
+     "detail": {
+      "errors": [],
+      "mode": "raw",
+      "n_members": 1,
+      "results": [
+       "The file has invalid opcode(s). It is either corrupted or attempting to bypass the pickle security analysis\nThe pickle file has malformed opcode sequences (IndexError: Opcode StackGlobal(info=<pickletools.OpcodeInfo object at 0x75306590d3c0>, argument=None, data=b'\\x93', position=0) attempted to pop",
+       "The file has invalid opcode(s). It is either corrupted or attempting to bypass the pickle security analysis"
+      ],
+      "severities": [
+       "LIKELY_UNSAFE"
+      ]
+     },
+     "file": "picklescan-data2/object_array.npy"
+    }
+   ]
+  },
+  "modelscan": {
+   "error_or_skipped": [
+    {
+     "file": "benign-models/all-MiniLM-L6-v2.model_O4.onnx",
+     "verdict": "skipped"
+    },
+    {
+     "file": "benign-models/all-MiniLM-L6-v2.safetensors",
+     "verdict": "skipped"
+    },
+    {
+     "file": "benign-models/all-MiniLM-L6-v2.tf_model.h5",
+     "verdict": "skipped"
+    },
+    {
+     "file": "benign-models/mnist-8.onnx",
+     "verdict": "skipped"
+    },
+    {
+     "file": "benign-models/tinyllama-1.1b-chat.Q4_0.gguf",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/int_array.npy",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/int_arrays.npz",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/int_arrays_compressed.npz",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/object_array.npy",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/object_arrays.npz",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/object_arrays_compressed.npz",
+     "verdict": "skipped"
+    }
+   ],
+   "flagged": []
+  },
+  "picklescan-dir": {
+   "error_or_skipped": [
+    {
+     "file": "benign-models/all-MiniLM-L6-v2.model_O4.onnx",
+     "verdict": "skipped"
+    },
+    {
+     "file": "benign-models/all-MiniLM-L6-v2.safetensors",
+     "verdict": "skipped"
+    },
+    {
+     "file": "benign-models/all-MiniLM-L6-v2.tf_model.h5",
+     "verdict": "skipped"
+    },
+    {
+     "file": "benign-models/mnist-8.onnx",
+     "verdict": "skipped"
+    },
+    {
+     "file": "benign-models/tinyllama-1.1b-chat.Q4_0.gguf",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/int_array.npy",
+     "verdict": "skipped"
+    },
+    {
+     "file": "picklescan-data2/object_array.npy",
+     "verdict": "skipped"
+    }
+   ],
+   "flagged": []
+  },
+  "picklescan-file": {
+   "error_or_skipped": [],
+   "flagged": []
+  }
+ },
+ "fickling_severity_breakdown": {
+  "benign": {
+   "clean|LIKELY_SAFE|no-error": 3,
+   "flagged|LIKELY_SAFE+LIKELY_UNSAFE|no-error": 1,
+   "flagged|LIKELY_UNSAFE|no-error": 8,
+   "flagged|SUSPICIOUS|parse-error": 2,
+   "skipped|?|no-error": 4
+  },
+  "junk": {
+   "flagged|LIKELY_UNSAFE|parse-error": 1,
+   "flagged|SUSPICIOUS|parse-error": 1,
+   "skipped|?|no-error": 2
+  },
+  "unsafe": {
+   "error|?|no-error": 6,
+   "flagged|LIKELY_OVERTLY_MALICIOUS|no-error": 69,
+   "flagged|LIKELY_UNSAFE|no-error": 9,
+   "flagged|OVERTLY_MALICIOUS|no-error": 9,
+   "flagged|SUSPICIOUS|parse-error": 2,
+   "skipped|?|no-error": 1
+  }
+ },
+ "flips": [],
+ "harness_fails": [],
+ "identity_in_output": {},
+ "junk": {
+  "fickling": {
+   "modelscan-data/password_protected.zip": "skipped",
+   "picklescan-data/bad_pytorch.pt": "flagged",
+   "picklescan-data/benign_password_protected.zip": "skipped",
+   "picklescan-data/not_a_pickle.bin": "flagged"
+  },
+  "modelscan": {
+   "modelscan-data/password_protected.zip": "skipped",
+   "picklescan-data/bad_pytorch.pt": "skipped",
+   "picklescan-data/benign_password_protected.zip": "skipped",
+   "picklescan-data/not_a_pickle.bin": "skipped"
+  },
+  "picklescan-dir": {
+   "modelscan-data/password_protected.zip": "skipped",
+   "picklescan-data/bad_pytorch.pt": "clean",
+   "picklescan-data/benign_password_protected.zip": "skipped",
+   "picklescan-data/not_a_pickle.bin": "clean"
+  },
+  "picklescan-file": {
+   "modelscan-data/password_protected.zip": "skipped",
+   "picklescan-data/bad_pytorch.pt": "clean",
+   "picklescan-data/benign_password_protected.zip": "skipped",
+   "picklescan-data/not_a_pickle.bin": "clean"
+  }
+ },
+ "n_scans": 2892,
+ "n_targets": 241,
+ "runs": 3,
+ "timing": {
+  "fickling": {
+   "base_median_of_medians_s": 0.15,
+   "base_total_cv_pct": 31.3,
+   "base_total_per_run_s": [
+    28.7,
+    22.6,
+    14.9
+   ],
+   "models": {
+    "all-MiniLM-L6-v2.model_O4.onnx": {
+     "cv_pct": 33.7,
+     "median_s": 0.362
+    },
+    "all-MiniLM-L6-v2.pytorch_model.bin": {
+     "cv_pct": 42.9,
+     "median_s": 0.237
+    },
+    "all-MiniLM-L6-v2.safetensors": {
+     "cv_pct": 48.2,
+     "median_s": 0.392
+    },
+    "all-MiniLM-L6-v2.tf_model.h5": {
+     "cv_pct": 24.8,
+     "median_s": 0.429
+    },
+    "mnist-8.onnx": {
+     "cv_pct": 19.0,
+     "median_s": 0.193
+    },
+    "tinyllama-1.1b-chat.Q4_0.gguf": {
+     "cv_pct": 28.1,
+     "median_s": 2.036
+    }
+   }
+  },
+  "modelscan": {
+   "base_median_of_medians_s": 0.556,
+   "base_total_cv_pct": 29.0,
+   "base_total_per_run_s": [
+    90.2,
+    68.7,
+    49.9
+   ],
+   "models": {
+    "all-MiniLM-L6-v2.model_O4.onnx": {
+     "cv_pct": 27.9,
+     "median_s": 0.604
+    },
+    "all-MiniLM-L6-v2.pytorch_model.bin": {
+     "cv_pct": 30.7,
+     "median_s": 0.965
+    },
+    "all-MiniLM-L6-v2.safetensors": {
+     "cv_pct": 29.9,
+     "median_s": 0.673
+    },
+    "all-MiniLM-L6-v2.tf_model.h5": {
+     "cv_pct": 48.9,
+     "median_s": 0.714
+    },
+    "mnist-8.onnx": {
+     "cv_pct": 45.6,
+     "median_s": 0.683
+    },
+    "tinyllama-1.1b-chat.Q4_0.gguf": {
+     "cv_pct": 53.9,
+     "median_s": 0.764
+    }
+   }
+  },
+  "picklescan-dir": {
+   "base_median_of_medians_s": 0.224,
+   "base_total_cv_pct": 29.9,
+   "base_total_per_run_s": [
+    38.4,
+    29.9,
+    20.7
+   ],
+   "models": {
+    "all-MiniLM-L6-v2.model_O4.onnx": {
+     "cv_pct": 67.9,
+     "median_s": 0.183
+    },
+    "all-MiniLM-L6-v2.pytorch_model.bin": {
+     "cv_pct": 38.4,
+     "median_s": 0.261
+    },
+    "all-MiniLM-L6-v2.safetensors": {
+     "cv_pct": 33.3,
+     "median_s": 0.339
+    },
+    "all-MiniLM-L6-v2.tf_model.h5": {
+     "cv_pct": 37.0,
+     "median_s": 0.355
+    },
+    "mnist-8.onnx": {
+     "cv_pct": 48.0,
+     "median_s": 0.305
+    },
+    "tinyllama-1.1b-chat.Q4_0.gguf": {
+     "cv_pct": 32.1,
+     "median_s": 0.27
+    }
+   }
+  },
+  "picklescan-file": {
+   "base_median_of_medians_s": 0.215,
+   "base_total_cv_pct": 30.9,
+   "base_total_per_run_s": [
+    39.9,
+    29.8,
+    21.2
+   ],
+   "models": {
+    "all-MiniLM-L6-v2.model_O4.onnx": {
+     "cv_pct": 35.4,
+     "median_s": 0.329
+    },
+    "all-MiniLM-L6-v2.pytorch_model.bin": {
+     "cv_pct": 58.6,
+     "median_s": 0.346
+    },
+    "all-MiniLM-L6-v2.safetensors": {
+     "cv_pct": 49.4,
+     "median_s": 0.403
+    },
+    "all-MiniLM-L6-v2.tf_model.h5": {
+     "cv_pct": 35.0,
+     "median_s": 0.372
+    },
+    "mnist-8.onnx": {
+     "cv_pct": 64.3,
+     "median_s": 0.339
+    },
+    "tinyllama-1.1b-chat.Q4_0.gguf": {
+     "cv_pct": 50.0,
+     "median_s": 0.211
+    }
+   }
+  }
+ }
+}

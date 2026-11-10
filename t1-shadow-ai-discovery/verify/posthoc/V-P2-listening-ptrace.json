@@ -1,0 +1,5 @@
+[
+  {"name":"python3","pid":"36","port":"8000"},
+  {"name":"python3","pid":"42","port":"8080"},
+  {"name":"ollama","pid":"12","port":"11434"}
+]

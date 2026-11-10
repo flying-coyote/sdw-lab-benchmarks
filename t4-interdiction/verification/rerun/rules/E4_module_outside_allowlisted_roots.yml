@@ -1,0 +1,10 @@
+title: Library loaded from outside the allowlisted roots
+description: AML.M0011 "configuring appropriate library loading mechanisms". Enforcement; event unit. Table module_activity.
+status: experimental
+logsource: {category: image_load}
+detection:
+  sel:
+    activity_id: 1
+  roots:
+    module_file_path|startswith: ['/usr/lib', '/usr/local/lib', '/opt/venv/lib', 'C:\Windows\System32', 'C:\Program Files']
+  condition: sel and not roots

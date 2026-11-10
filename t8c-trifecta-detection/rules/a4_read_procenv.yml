@@ -1,0 +1,10 @@
+title: Agent file tool reads the process environment
+name: a4_read_procenv
+description: Leg 2 (sensitive read) for the CS0067 shape, AML.T0053 + AML.T0098. Signal plus the one path the case study names.
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation: file.read
+    api_request_data|contains: /proc/self/environ
+  condition: sel

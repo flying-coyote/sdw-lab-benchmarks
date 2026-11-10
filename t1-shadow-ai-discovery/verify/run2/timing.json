@@ -1,0 +1,19 @@
+{
+ "activity_endpoint": 21.028,
+ "activity_peer": 21.596,
+ "osquery_per_query": {
+  "O1_processes": 0.56,
+  "O2_listening_ports": 0.549,
+  "O3_files_home": 1.795,
+  "O4a_python_packages_default": 0.558,
+  "O4b_python_packages_directed": 0.783,
+  "O5_vscode_extensions": 0.486,
+  "O6_chrome_extensions": 0.322,
+  "O7a_mcp_config_files": 0.521,
+  "O7b_mcp_config_yara": 0.555,
+  "X_osquery_info": 0.57,
+  "X_deb_packages": 0.31,
+  "X_process_open_sockets": 0.409
+ },
+ "osquery_total": 7.418
+}

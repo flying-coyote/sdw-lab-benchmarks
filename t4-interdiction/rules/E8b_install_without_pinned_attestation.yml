@@ -1,0 +1,22 @@
+title: Package installed without an attestation, or from an unexpected publisher
+description: AML.M0013 "cryptographically sign SBOM and AIBOM components"; verified at install. Enforcement; event unit. Table application_lifecycle (install=1, update=8).
+status: experimental
+logsource: {category: application}
+detection:
+  inst:
+    activity_id: [1, 8]
+  none:
+    attestation_list_authority_uid: null
+  torch:
+    app_name: torch
+  torch_ok:
+    attestation_list_authority_uid: pytorch
+  numpy:
+    app_name: numpy
+  numpy_ok:
+    attestation_list_authority_uid: numpy
+  requests:
+    app_name: requests
+  requests_ok:
+    attestation_list_authority_uid: psf
+  condition: inst and (none or (torch and not torch_ok) or (numpy and not numpy_ok) or (requests and not requests_ok))

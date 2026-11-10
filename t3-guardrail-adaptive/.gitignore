@@ -1,0 +1,8 @@
+.venv*/
+fixtures/*.jsonl
+cache/
+__pycache__/
+pip-freeze-raw.txt
+results/scores-*.jsonl
+results/stability-*.jsonl
+results/aborted-*

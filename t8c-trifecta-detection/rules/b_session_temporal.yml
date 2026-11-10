@@ -1,0 +1,69 @@
+title: Leg 1 ingest (any shape)
+name: leg1_ingest
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation:
+      - mail.fetch
+      - issue.read
+      - pr.read
+  condition: sel
+---
+title: Leg 2 sensitive read (any shape)
+name: leg2_sensitive_read
+status: experimental
+logsource: {category: api}
+detection:
+  mail:
+    api_operation:
+      - mail.search
+      - contacts.list
+  file:
+    api_operation: file.read
+    api_request_data|contains:
+      - /proc/self/environ
+      - .env
+      - credentials.json
+  condition: mail or file
+---
+title: Leg 3 outbound off-allowlist (any shape)
+name: leg3_outbound_offlist
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation:
+      - http.open
+      - web.fetch
+  allow:
+    dst_endpoint_hostname:
+      - docs.python.org
+      - github.com
+      - api.github.com
+      - pypi.org
+      - intranet.example
+      - wiki.example
+      - calendar.example
+      - mail.example
+      - registry.example
+  condition: sel and not allow
+---
+title: One agent session holds all three trifecta legs
+name: b1_session_temporal
+description: Tier (b). ATT&CK T1698 AN2293 / T1700 AN2079 shape without content provenance or authorization context, which the schema does not carry.
+status: experimental
+correlation:
+  type: temporal
+  rules: [leg1_ingest, leg2_sensitive_read, leg3_outbound_offlist]
+  group-by: [actor_session_uid]
+  timespan: 60m
+---
+title: One agent session holds all three trifecta legs in order
+name: b2_session_temporal_ordered
+status: experimental
+correlation:
+  type: temporal_ordered
+  rules: [leg1_ingest, leg2_sensitive_read, leg3_outbound_offlist]
+  group-by: [actor_session_uid]
+  timespan: 60m

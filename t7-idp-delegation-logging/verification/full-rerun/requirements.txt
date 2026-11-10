@@ -1,0 +1,5 @@
+# T7 venv (Python 3.12.3). Only PyJWT + cryptography are direct deps (signature-verified claim decoding).
+PyJWT==2.15.1
+cryptography==50.0.2
+cffi==2.1.1
+pycparser==3.12

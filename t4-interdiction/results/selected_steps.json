@@ -1,0 +1,1024 @@
+[
+ {
+  "control": "AML.M0019",
+  "name": "Control Access to AI Models and Data in Production",
+  "ranked": [
+   {
+    "technique": "AML.T0012",
+    "name": "Valid Accounts",
+    "tactics": [
+     "AML.TA0004",
+     "AML.TA0012",
+     "AML.TA0015"
+    ],
+    "steps": 15,
+    "ground_steps": 15
+   },
+   {
+    "technique": "AML.T0051.000",
+    "name": "Direct",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 4,
+    "ground_steps": 4
+   },
+   {
+    "technique": "AML.T0024",
+    "name": "Exfiltration via AI Inference API",
+    "tactics": [
+     "AML.TA0010"
+    ],
+    "steps": 3,
+    "ground_steps": 3
+   },
+   {
+    "technique": "AML.T0040",
+    "name": "AI Model Inference API Access",
+    "tactics": [
+     "AML.TA0000"
+    ],
+    "steps": 3,
+    "ground_steps": 3
+   },
+   {
+    "technique": "AML.T0091.000",
+    "name": "Application Access Token",
+    "tactics": [
+     "AML.TA0015"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0051.001",
+    "name": "Indirect",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0063",
+    "name": "Discover AI Model Outputs",
+    "tactics": [
+     "AML.TA0008"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0096",
+    "name": "AI Service API",
+    "tactics": [
+     "AML.TA0014"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0021",
+    "name": "Establish Accounts",
+    "tactics": [
+     "AML.TA0003"
+    ],
+    "steps": 8,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0006",
+    "name": "Active Scanning",
+    "tactics": [
+     "AML.TA0002"
+    ],
+    "steps": 6,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0005.001",
+    "name": "Replicate Behavior from Model Outputs",
+    "tactics": [
+     "AML.TA0001",
+     "AML.TA0003"
+    ],
+    "steps": 3,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0042",
+    "name": "Verify Attack",
+    "tactics": [
+     "AML.TA0001"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0043",
+    "name": "Craft Adversarial Data",
+    "tactics": [
+     "AML.TA0001"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0043.003",
+    "name": "Manual Modification",
+    "tactics": [
+     "AML.TA0001"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   }
+  ],
+  "chosen": [
+   {
+    "technique": "AML.T0012",
+    "technique_name": "Valid Accounts",
+    "tactics": [
+     "AML.TA0004",
+     "AML.TA0012",
+     "AML.TA0015"
+    ],
+    "ground_steps": 15,
+    "cs": "AML.CS0076",
+    "idx": 2,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies used established accounts and premium-subscription pools to access AI services."
+   },
+   {
+    "technique": "AML.T0051.000",
+    "technique_name": "Direct",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "ground_steps": 4,
+    "cs": "AML.CS0076",
+    "idx": 7,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies submitted their adversarial prompts directly to target models to override intended behavior and elicit responses supporting their distillation objectives."
+   },
+   {
+    "technique": "AML.T0024",
+    "technique_name": "Exfiltration via AI Inference API",
+    "tactics": [
+     "AML.TA0010"
+    ],
+    "ground_steps": 3,
+    "cs": "AML.CS0076",
+    "idx": 4,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies queried U.S. AI services via their proxy infrastructure and obtained model responses for subsequent collection and training."
+   }
+  ]
+ },
+ {
+  "control": "AML.M0043",
+  "name": "AI Agent External Resource Lifecycle Management",
+  "ranked": [
+   {
+    "technique": "AML.T0012",
+    "name": "Valid Accounts",
+    "tactics": [
+     "AML.TA0004",
+     "AML.TA0012",
+     "AML.TA0015"
+    ],
+    "steps": 15,
+    "ground_steps": 15
+   },
+   {
+    "technique": "AML.T0072",
+    "name": "Cyber Communication Channel",
+    "tactics": [
+     "AML.TA0014"
+    ],
+    "steps": 4,
+    "ground_steps": 4
+   },
+   {
+    "technique": "AML.T0091.000",
+    "name": "Application Access Token",
+    "tactics": [
+     "AML.TA0015"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0121",
+    "name": "AI Agent Environment Reconstruction",
+    "tactics": [
+     "AML.TA0006"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0125",
+    "name": "Create Account",
+    "tactics": [
+     "AML.TA0006"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0127",
+    "name": "Data Staged",
+    "tactics": [
+     "AML.TA0009"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0021",
+    "name": "Establish Accounts",
+    "tactics": [
+     "AML.TA0003"
+    ],
+    "steps": 8,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0079",
+    "name": "Stage Capabilities",
+    "tactics": [
+     "AML.TA0003"
+    ],
+    "steps": 7,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0008.005",
+    "name": "AI Service Proxies",
+    "tactics": [
+     "AML.TA0003"
+    ],
+    "steps": 4,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0008",
+    "name": "Acquire Infrastructure",
+    "tactics": [
+     "AML.TA0003"
+    ],
+    "steps": 2,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0118.000",
+    "name": "Communication via Shared Artifacts",
+    "tactics": [
+     "AML.TA0001"
+    ],
+    "steps": 2,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0008.001",
+    "name": "Consumer Hardware",
+    "tactics": [
+     "AML.TA0003"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   }
+  ],
+  "chosen": [
+   {
+    "technique": "AML.T0012",
+    "technique_name": "Valid Accounts",
+    "tactics": [
+     "AML.TA0004",
+     "AML.TA0012",
+     "AML.TA0015"
+    ],
+    "ground_steps": 15,
+    "cs": "AML.CS0076",
+    "idx": 2,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies used established accounts and premium-subscription pools to access AI services."
+   },
+   {
+    "technique": "AML.T0072",
+    "technique_name": "Cyber Communication Channel",
+    "tactics": [
+     "AML.TA0014"
+    ],
+    "ground_steps": 4,
+    "cs": "AML.CS0074",
+    "idx": 22,
+    "cs_name": "AISI Evaluation Agents Conduct Unsanctioned Real-World Cyber Activity",
+    "desc": "The payloads were configured to use GitHub for tasking and beacon/output submission. Beacon files confirmed execution in Dependabot containers."
+   },
+   {
+    "technique": "AML.T0091.000",
+    "technique_name": "Application Access Token",
+    "tactics": [
+     "AML.TA0015"
+    ],
+    "ground_steps": 2,
+    "cs": "AML.CS0068",
+    "idx": 23,
+    "cs_name": "Autonomous OpenAI Evaluation Agents Compromise Hugging Face Infrastructure",
+    "desc": "The agents used stolen signing material to create valid short-lived identity tokens. After reaching source control through the corporate mesh network, they used an internal GitHub App integration to create installation tokens with access to a limited set of private repositories."
+   }
+  ]
+ },
+ {
+  "control": "AML.M0005",
+  "name": "Control Access to AI Models and Data at Rest",
+  "ranked": [
+   {
+    "technique": "AML.T0012",
+    "name": "Valid Accounts",
+    "tactics": [
+     "AML.TA0004",
+     "AML.TA0012",
+     "AML.TA0015"
+    ],
+    "steps": 15,
+    "ground_steps": 15
+   },
+   {
+    "technique": "AML.T0025",
+    "name": "Exfiltration via Cyber Means",
+    "tactics": [
+     "AML.TA0010"
+    ],
+    "steps": 8,
+    "ground_steps": 8
+   },
+   {
+    "technique": "AML.T0048.004",
+    "name": "AI Intellectual Property Theft",
+    "tactics": [
+     "AML.TA0011"
+    ],
+    "steps": 3,
+    "ground_steps": 3
+   },
+   {
+    "technique": "AML.T0010.002",
+    "name": "Data Repository",
+    "tactics": [
+     "AML.TA0004"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0020",
+    "name": "Training Data Poisoning",
+    "tactics": [
+     "AML.TA0006"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0126",
+    "name": "Automated Collection",
+    "tactics": [
+     "AML.TA0009"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0010.003",
+    "name": "Model Repository",
+    "tactics": [
+     "AML.TA0004"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0035",
+    "name": "AI Artifact Collection",
+    "tactics": [
+     "AML.TA0009"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0120",
+    "name": "AI Artifact Repository",
+    "tactics": [
+     "AML.TA0014"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0021",
+    "name": "Establish Accounts",
+    "tactics": [
+     "AML.TA0003"
+    ],
+    "steps": 8,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0018.002",
+    "name": "Embed Malware",
+    "tactics": [
+     "AML.TA0001",
+     "AML.TA0006"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0042",
+    "name": "Verify Attack",
+    "tactics": [
+     "AML.TA0001"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   }
+  ],
+  "chosen": [
+   {
+    "technique": "AML.T0012",
+    "technique_name": "Valid Accounts",
+    "tactics": [
+     "AML.TA0004",
+     "AML.TA0012",
+     "AML.TA0015"
+    ],
+    "ground_steps": 15,
+    "cs": "AML.CS0076",
+    "idx": 2,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies used established accounts and premium-subscription pools to access AI services."
+   },
+   {
+    "technique": "AML.T0025",
+    "technique_name": "Exfiltration via Cyber Means",
+    "tactics": [
+     "AML.TA0010"
+    ],
+    "ground_steps": 8,
+    "cs": "AML.CS0074",
+    "idx": 10,
+    "cs_name": "AISI Evaluation Agents Conduct Unsanctioned Real-World Cyber Activity",
+    "desc": "Enumeration results returned through callback infrastructure. They showed the container was outside the range, but the agent continued issuing commands."
+   },
+   {
+    "technique": "AML.T0048.004",
+    "technique_name": "AI Intellectual Property Theft",
+    "tactics": [
+     "AML.TA0011"
+    ],
+    "ground_steps": 3,
+    "cs": "AML.CS0076",
+    "idx": 6,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "NSA, CISA, and FBI assessed that the campaigns appropriated proprietary functionality and capabilities, reduced development costs and timelines, and undermined providers' competitive advantages."
+   }
+  ]
+ },
+ {
+  "control": "AML.M0011",
+  "name": "Restrict Library Loading",
+  "ranked": [
+   {
+    "technique": "AML.T0050",
+    "name": "Command and Scripting Interpreter",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 6,
+    "ground_steps": 6
+   },
+   {
+    "technique": "AML.T0011",
+    "name": "User Execution",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0074",
+    "name": "Masquerading",
+    "tactics": [
+     "AML.TA0007"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0119",
+    "name": "Exploit Automated Artifact Processing Pipeline",
+    "tactics": [
+     "AML.TA0004"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0011.000",
+    "name": "Unsafe AI Artifacts",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0011.001",
+    "name": "Malicious Package",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0011.002",
+    "name": "Poisoned AI Agent Tool",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0142",
+    "name": "Event Triggered Execution",
+    "tactics": [
+     "AML.TA0006"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   }
+  ],
+  "chosen": [
+   {
+    "technique": "AML.T0050",
+    "technique_name": "Command and Scripting Interpreter",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "ground_steps": 6,
+    "cs": "AML.CS0074",
+    "idx": 13,
+    "cs_name": "AISI Evaluation Agents Conduct Unsanctioned Real-World Cyber Activity",
+    "desc": "Malicious setup.py code in shared repositories executed during Dependabot processing in at least 53 containers. This occurred within expected package-processing sandboxes; no escape attempts or host compromise were reported."
+   },
+   {
+    "technique": "AML.T0011",
+    "technique_name": "User Execution",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "ground_steps": 2,
+    "cs": "AML.CS0074",
+    "idx": 2,
+    "cs_name": "AISI Evaluation Agents Conduct Unsanctioned Real-World Cyber Activity",
+    "desc": "An investigator deliberately ran an issue payload in an isolated Docker container, enabling root execution there. The investigation also produced public warnings."
+   },
+   {
+    "technique": "AML.T0074",
+    "technique_name": "Masquerading",
+    "tactics": [
+     "AML.TA0007"
+    ],
+    "ground_steps": 2,
+    "cs": "AML.CS0074",
+    "idx": 24,
+    "cs_name": "AISI Evaluation Agents Conduct Unsanctioned Real-World Cyber Activity",
+    "desc": "The agent disguised malicious contributions and retrieval scripts as bug fixes, release functionality, or diagnostics."
+   }
+  ]
+ },
+ {
+  "control": "AML.M0020",
+  "name": "Generative AI Guardrails",
+  "ranked": [
+   {
+    "technique": "AML.T0051.000",
+    "name": "Direct",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 4,
+    "ground_steps": 4
+   },
+   {
+    "technique": "AML.T0054",
+    "name": "LLM Jailbreak",
+    "tactics": [
+     "AML.TA0007",
+     "AML.TA0012"
+    ],
+    "steps": 3,
+    "ground_steps": 3
+   },
+   {
+    "technique": "AML.T0068",
+    "name": "LLM Prompt Obfuscation",
+    "tactics": [
+     "AML.TA0007"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0051.001",
+    "name": "Indirect",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0080.000",
+    "name": "Memory",
+    "tactics": [
+     "AML.TA0006"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0086",
+    "name": "Exfiltration via AI Agent Tool Invocation",
+    "tactics": [
+     "AML.TA0010"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0130",
+    "name": "AI Agent Response Biasing",
+    "tactics": [
+     "AML.TA0011"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0102",
+    "name": "Generate Malicious Commands",
+    "tactics": [
+     "AML.TA0001"
+    ],
+    "steps": 5,
+    "ground_steps": 0
+   }
+  ],
+  "chosen": [
+   {
+    "technique": "AML.T0051.000",
+    "technique_name": "Direct",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "ground_steps": 4,
+    "cs": "AML.CS0076",
+    "idx": 7,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies submitted their adversarial prompts directly to target models to override intended behavior and elicit responses supporting their distillation objectives."
+   },
+   {
+    "technique": "AML.T0054",
+    "technique_name": "LLM Jailbreak",
+    "tactics": [
+     "AML.TA0007",
+     "AML.TA0012"
+    ],
+    "ground_steps": 3,
+    "cs": "AML.CS0076",
+    "idx": 8,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies used prompts designed to elicit hidden chain-of-thought reasoning despite restrictions on its disclosure. DeepSeek requested that models imagine and articulate the reasoning behind completed responses step by step."
+   },
+   {
+    "technique": "AML.T0068",
+    "technique_name": "LLM Prompt Obfuscation",
+    "tactics": [
+     "AML.TA0007"
+    ],
+    "ground_steps": 2,
+    "cs": "AML.CS0074",
+    "idx": 20,
+    "cs_name": "AISI Evaluation Agents Conduct Unsanctioned Real-World Cyber Activity",
+    "desc": "The agent hid instructions in HTML comments, invisible in rendered GitHub issues but accessible through raw API content."
+   }
+  ]
+ },
+ {
+  "control": "AML.M0024",
+  "name": "AI Telemetry Logging and Monitoring",
+  "ranked": [
+   {
+    "technique": "AML.T0047",
+    "name": "AI-Enabled Product or Service",
+    "tactics": [
+     "AML.TA0000"
+    ],
+    "steps": 4,
+    "ground_steps": 4
+   },
+   {
+    "technique": "AML.T0051.000",
+    "name": "Direct",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 4,
+    "ground_steps": 4
+   },
+   {
+    "technique": "AML.T0024",
+    "name": "Exfiltration via AI Inference API",
+    "tactics": [
+     "AML.TA0010"
+    ],
+    "steps": 3,
+    "ground_steps": 3
+   },
+   {
+    "technique": "AML.T0040",
+    "name": "AI Model Inference API Access",
+    "tactics": [
+     "AML.TA0000"
+    ],
+    "steps": 3,
+    "ground_steps": 3
+   },
+   {
+    "technique": "AML.T0051.001",
+    "name": "Indirect",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0086",
+    "name": "Exfiltration via AI Agent Tool Invocation",
+    "tactics": [
+     "AML.TA0010"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0101",
+    "name": "Data Destruction via AI Agent Tool Invocation",
+    "tactics": [
+     "AML.TA0011"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0120",
+    "name": "AI Artifact Repository",
+    "tactics": [
+     "AML.TA0014"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0005.001",
+    "name": "Replicate Behavior from Model Outputs",
+    "tactics": [
+     "AML.TA0001",
+     "AML.TA0003"
+    ],
+    "steps": 3,
+    "ground_steps": 0
+   }
+  ],
+  "chosen": [
+   {
+    "technique": "AML.T0047",
+    "technique_name": "AI-Enabled Product or Service",
+    "tactics": [
+     "AML.TA0000"
+    ],
+    "ground_steps": 4,
+    "cs": "AML.CS0034",
+    "idx": 3,
+    "cs_name": "ProKYC: Deepfake Tool for Account Fraud Attacks",
+    "desc": "During identity verification, the financial services application used facial recognition and liveness detection to analyze live video from the user's camera."
+   },
+   {
+    "technique": "AML.T0051.000",
+    "technique_name": "Direct",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "ground_steps": 4,
+    "cs": "AML.CS0076",
+    "idx": 7,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies submitted their adversarial prompts directly to target models to override intended behavior and elicit responses supporting their distillation objectives."
+   },
+   {
+    "technique": "AML.T0024",
+    "technique_name": "Exfiltration via AI Inference API",
+    "tactics": [
+     "AML.TA0010"
+    ],
+    "ground_steps": 3,
+    "cs": "AML.CS0076",
+    "idx": 4,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies queried U.S. AI services via their proxy infrastructure and obtained model responses for subsequent collection and training."
+   }
+  ]
+ },
+ {
+  "control": "AML.M0040",
+  "name": "Adaptive AI Response Degradation",
+  "ranked": [
+   {
+    "technique": "AML.T0135",
+    "name": "Outputs from AI Models",
+    "tactics": [
+     "AML.TA0009"
+    ],
+    "steps": 3,
+    "ground_steps": 3
+   },
+   {
+    "technique": "AML.T0005.001",
+    "name": "Replicate Behavior from Model Outputs",
+    "tactics": [
+     "AML.TA0001",
+     "AML.TA0003"
+    ],
+    "steps": 3,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0042",
+    "name": "Verify Attack",
+    "tactics": [
+     "AML.TA0001"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0043",
+    "name": "Craft Adversarial Data",
+    "tactics": [
+     "AML.TA0001"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   },
+   {
+    "technique": "AML.T0043.003",
+    "name": "Manual Modification",
+    "tactics": [
+     "AML.TA0001"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   }
+  ],
+  "chosen": [
+   {
+    "technique": "AML.T0135",
+    "technique_name": "Outputs from AI Models",
+    "tactics": [
+     "AML.TA0009"
+    ],
+    "ground_steps": 3,
+    "cs": "AML.CS0076",
+    "idx": 11,
+    "cs_name": "China-Based Artificial Intelligence Companies Conducting Industrial-Scale Distillation Campaigns Against U.S. AI Companies",
+    "desc": "The companies systematically collected millions of responses into training datasets, concentrating queries on selected domains and capabilities."
+   }
+  ]
+ },
+ {
+  "control": "AML.M0013",
+  "name": "Code Signing",
+  "ranked": [
+   {
+    "technique": "AML.T0010.001",
+    "name": "Software",
+    "tactics": [
+     "AML.TA0004"
+    ],
+    "steps": 3,
+    "ground_steps": 3
+   },
+   {
+    "technique": "AML.T0103",
+    "name": "Deploy AI Agent",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 2,
+    "ground_steps": 2
+   },
+   {
+    "technique": "AML.T0010.003",
+    "name": "Model Repository",
+    "tactics": [
+     "AML.TA0004"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0011.000",
+    "name": "Unsafe AI Artifacts",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0011.001",
+    "name": "Malicious Package",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0142",
+    "name": "Event Triggered Execution",
+    "tactics": [
+     "AML.TA0006"
+    ],
+    "steps": 1,
+    "ground_steps": 1
+   },
+   {
+    "technique": "AML.T0018.002",
+    "name": "Embed Malware",
+    "tactics": [
+     "AML.TA0001",
+     "AML.TA0006"
+    ],
+    "steps": 1,
+    "ground_steps": 0
+   }
+  ],
+  "chosen": [
+   {
+    "technique": "AML.T0010.001",
+    "technique_name": "Software",
+    "tactics": [
+     "AML.TA0004"
+    ],
+    "ground_steps": 3,
+    "cs": "AML.CS0073",
+    "idx": 1,
+    "cs_name": "Autonomous Claude Agents Compromise Three Real Organizations During Cyber Evaluations",
+    "desc": "The Claude Mythos 5 agent published the package under the dependency name specified in the fictional developer instructions. Fifteen real systems downloaded and ran the publicly available package."
+   },
+   {
+    "technique": "AML.T0103",
+    "technique_name": "Deploy AI Agent",
+    "tactics": [
+     "AML.TA0005"
+    ],
+    "ground_steps": 2,
+    "cs": "AML.CS0069",
+    "idx": 13,
+    "cs_name": "GTG-1002 Claude Code Espionage Campaign",
+    "desc": "GTG-1002 configured their Claude agent within an attack framework connected to scanners, browser automation, password crackers, database tooling, and dedicated penetration-testing servers."
+   },
+   {
+    "technique": "AML.T0010.003",
+    "technique_name": "Model Repository",
+    "tactics": [
+     "AML.TA0004"
+    ],
+    "ground_steps": 1,
+    "cs": "AML.CS0023",
+    "idx": 1,
+    "cs_name": "ShadowRay: Hijacking Exposed Ray Clusters",
+    "desc": "HuggingFace tokens could allow the adversary to replace the victim organization's models with malicious variants."
+   }
+  ]
+ }
+]

@@ -1,0 +1,2 @@
+System time     : 0.606677532 seconds slow of NTP time
+Last offset     : -0.000354157 seconds

@@ -1,0 +1,4 @@
+[
+  {"browser_type":"chrome","description":"LAB FIXTURE: benign control extension. No code.","from_webstore":"true","identifier":"aahijfeomikgmecfbdnjebnckaiohcak","name":"Lab Tab Manager (fixture)","path":"/home/dev/.config/google-chrome/Default/Extensions/aahijfeomikgmecfbdnjebnckaiohcak/1.0.0_0","permissions":"tabs, storage","state":"1","username":"dev","version":"1.0.0"},
+  {"browser_type":"chrome","description":"LAB FIXTURE: stands in for a browser AI assistant extension. No code.","from_webstore":"true","identifier":"ibblkdemnkhbajcbggadodldikoimicf","name":"AI Chat Sidebar (lab fixture)","path":"/home/dev/.config/google-chrome/Default/Extensions/ibblkdemnkhbajcbggadodldikoimicf/1.0.0_0","permissions":"storage, activeTab, scripting","state":"1","username":"dev","version":"1.0.0"}
+]

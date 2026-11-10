@@ -1,0 +1,13 @@
+/tmp/claude-1000/lab-ai-research/t3-guardrail-adaptive/.venv/bin/python /tmp/claude-1000/lab-ai-research/t3-guardrail-adaptive/run.py protectai-v2 --sets A1-deepset-test,B1-deepset-test,B2-notinject --transforms T0,T1 --repeat 3 --out /tmp/claude-1000/lab-ai-research/t3-guardrail-adaptive/results/stability-protectai-v2.jsonl
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+/tmp/claude-1000/lab-ai-research/t3-guardrail-adaptive/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 2306.24it/s]
+{"model_id": "protectai-v2", "repo": "protectai/deberta-v3-base-prompt-injection-v2", "revision": "90c9989b1a342275dd0d1a95aad283c04e075671", "id2label": {"0": "SAFE", "1": "INJECTION"}, "pos_label": "INJECTION", "max_len": 512, "batch": 16, "threads": 4, "torch": "2.15.0+cpu", "n_items": 455, "transforms": ["T0", "T1"], "repeat": 3, "cap_sets": "", "cap": 0, "affinity": [10, 11, 12, 13], "nice": 10, "start_utc": "2026-11-10T02:15:38Z"}
+[protectai-v2] rep0 T0 done; 455 scored; 44s elapsed; 10.2 items/s
+[protectai-v2] rep0 T1 done; 910 scored; 163s elapsed; 5.6 items/s
+[protectai-v2] rep1 T0 done; 1365 scored; 208s elapsed; 6.6 items/s
+[protectai-v2] rep1 T1 done; 1820 scored; 334s elapsed; 5.4 items/s
+[protectai-v2] rep2 T0 done; 2275 scored; 372s elapsed; 6.1 items/s
+[protectai-v2] rep2 T1 done; 2730 scored; 489s elapsed; 5.6 items/s
+wrote /tmp/claude-1000/lab-ai-research/t3-guardrail-adaptive/results/stability-protectai-v2.jsonl

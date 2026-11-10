@@ -1,0 +1,6 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+/tmp/claude-1000/lab-ai-research/t3-guardrail-adaptive/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  85%|████████▍ | 171/202 [00:00<00:00, 1707.14it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1958.69it/s]
+{"model_id": "deepset", "repo": "deepset/deberta-v3-base-injection", "revision": "80dda00d0b0d9a03917a7685e2ddbcd28e04dbb1", "id2label": {"0": "LEGIT", "1": "INJECTION"}, "pos_label": "INJECTION", "max_len": 512, "batch": 16, "threads": 4, "torch": "2.15.0+cpu", "n_items": 300, "transforms": ["T0", "T1"], "repeat": 1, "cap_sets": "A3-itw-jailbreak,B4-itw-regular", "cap": 150, "affinity": [10, 11, 12, 13], "nice": 10, "start_utc": "2026-11-10T02:49:35Z"}
+[deepset] rep0 T0 done; 300 scored; 345s elapsed; 0.9 items/s

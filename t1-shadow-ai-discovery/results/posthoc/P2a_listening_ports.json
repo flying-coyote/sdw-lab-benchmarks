@@ -1,0 +1,8 @@
+[
+  {"address":"0.0.0.0","name":"","pid":"-1","port":"8000"},
+  {"address":"0.0.0.0","name":"","pid":"-1","port":"8080"},
+  {"address":"::","name":"","pid":"-1","port":"11434"},
+  {"address":"0.0.0.0","name":"","pid":"-1","port":"8000"},
+  {"address":"0.0.0.0","name":"","pid":"-1","port":"8080"},
+  {"address":"::","name":"","pid":"-1","port":"11434"}
+]

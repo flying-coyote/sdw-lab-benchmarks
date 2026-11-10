@@ -1,0 +1,11 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+/tmp/claude-1000/lab-ai-research/t3-guardrail-adaptive/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 2213.89it/s]
+{"model_id": "protectai-v2", "repo": "protectai/deberta-v3-base-prompt-injection-v2", "revision": "90c9989b1a342275dd0d1a95aad283c04e075671", "id2label": {"0": "SAFE", "1": "INJECTION"}, "pos_label": "INJECTION", "max_len": 512, "batch": 16, "threads": 4, "torch": "2.15.0+cpu", "n_items": 100, "transforms": ["T2", "T3", "T4", "T5", "T7"], "repeat": 1, "cap_sets": "A3-itw-jailbreak,B4-itw-regular", "cap": 50, "affinity": [10, 11, 12, 13], "nice": 10, "start_utc": "2026-11-10T02:02:58Z"}
+[protectai-v2] rep0 T2 done; 100 scored; 161s elapsed; 0.6 items/s
+[protectai-v2] rep0 T3 done; 200 scored; 296s elapsed; 0.7 items/s
+[protectai-v2] rep0 T4 done; 300 scored; 446s elapsed; 0.7 items/s
+[protectai-v2] rep0 T5 done; 400 scored; 554s elapsed; 0.7 items/s
+[protectai-v2] rep0 T7 done; 500 scored; 753s elapsed; 0.7 items/s
+wrote results/scores-protectai-v2-long50.jsonl

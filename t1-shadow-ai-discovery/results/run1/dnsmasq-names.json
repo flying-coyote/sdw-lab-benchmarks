@@ -1,0 +1,22 @@
+[
+ "api.anthropic.com",
+ "api.cohere.com",
+ "api.groq.com",
+ "api.mistral.ai",
+ "api.openai.com",
+ "chatgpt.com",
+ "claude.ai",
+ "copilot.com",
+ "copilot.microsoft.com",
+ "deb.debian.org",
+ "example.com",
+ "gemini.google.com",
+ "generativelanguage.googleapis.com",
+ "github.com",
+ "huggingface.co",
+ "openrouter.ai",
+ "pypi.org",
+ "registry.ollama.ai",
+ "www.perplexity.ai",
+ "www.wikipedia.org"
+]

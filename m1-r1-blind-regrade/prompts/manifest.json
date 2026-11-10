@@ -1,0 +1,487 @@
+{
+ "batch": 10,
+ "excerpt_bytes": 62340,
+ "excerpt_sha256": "85138738960ff4ce3d2054caf9bb25b5439e80e1e620767a2b890977955c5340",
+ "n_classes": 87,
+ "n_objects": 194,
+ "passes": {
+  "1": {
+   "batches": [
+    {
+     "bytes": 68046,
+     "file": "artifact-b1.txt",
+     "rows": [
+      "d3f:SoftwareRepository",
+      "d3f:GroupPolicy",
+      "d3f:WebAPIResource",
+      "d3f:Application",
+      "d3f:CodeRepository",
+      "d3f:ProxyServer",
+      "d3f:OutboundInternetNetworkTraffic",
+      "d3f:ApplicationConfiguration",
+      "d3f:ArtifactServer",
+      "d3f:CommandHistoryLog"
+     ]
+    },
+    {
+     "bytes": 67909,
+     "file": "artifact-b2.txt",
+     "rows": [
+      "d3f:RemoteTerminalSession",
+      "d3f:EventLog",
+      "d3f:AccessToken",
+      "d3f:InitScript",
+      "d3f:Credential",
+      "d3f:CollaborativeSoftware",
+      "d3f:MACAddress",
+      "d3f:DatabaseQuery",
+      "d3f:ShellCommand",
+      "d3f:Email"
+     ]
+    },
+    {
+     "bytes": 67667,
+     "file": "artifact-b3.txt",
+     "rows": [
+      "d3f:SystemConfigurationDatabase",
+      "d3f:GetRunningProcesses",
+      "d3f:DefaultUserAccount",
+      "d3f:DigitalMedia",
+      "d3f:Host",
+      "d3f:DigitalMessage",
+      "d3f:Repository",
+      "d3f:SoftwarePackage",
+      "d3f:ConfigurationFile",
+      "d3f:Server"
+     ]
+    },
+    {
+     "bytes": 67078,
+     "file": "artifact-b4.txt",
+     "rows": [
+      "d3f:FileSystemMetadata",
+      "d3f:DocumentFile",
+      "d3f:ProcessSegment",
+      "d3f:RemoteSession",
+      "d3f:RemoteShellCommand",
+      "d3f:DatabaseRecord",
+      "d3f:ExecutableBinary",
+      "d3f:MoveFile",
+      "d3f:WebFileResource",
+      "d3f:SoftwareLibrary"
+     ]
+    },
+    {
+     "bytes": 67717,
+     "file": "artifact-b5.txt",
+     "rows": [
+      "d3f:PersonalComputer",
+      "d3f:Metadata",
+      "d3f:CloudConfiguration",
+      "d3f:AuthenticationService",
+      "d3f:Command",
+      "d3f:CommandHistoryLogFile",
+      "d3f:CreateProcess",
+      "d3f:ServiceApplication",
+      "d3f:CreateFile",
+      "d3f:WebResource"
+     ]
+    },
+    {
+     "bytes": 68663,
+     "file": "artifact-b6.txt",
+     "rows": [
+      "d3f:Process",
+      "d3f:URL",
+      "d3f:AccessControlConfiguration",
+      "d3f:UserAccount",
+      "d3f:ExecutableFile",
+      "d3f:PrivateKey",
+      "d3f:CloudUserAccount",
+      "d3f:ExecutableScript",
+      "d3f:OperatingSystemExecutableFile",
+      "d3f:NetworkTraffic"
+     ]
+    },
+    {
+     "bytes": 67441,
+     "file": "artifact-b7.txt",
+     "rows": [
+      "d3f:Log",
+      "d3f:ServiceApplicationProcess",
+      "d3f:DigitalIdentity",
+      "d3f:File",
+      "d3f:DomainRegistration",
+      "d3f:JobSchedule",
+      "d3f:Software",
+      "d3f:CloudStorage",
+      "d3f:CloudInstanceMetadata",
+      "d3f:OutboundInternetWebTraffic"
+     ]
+    },
+    {
+     "bytes": 67551,
+     "file": "artifact-b8.txt",
+     "rows": [
+      "d3f:InboundInternetMailTraffic",
+      "d3f:DigitalText",
+      "d3f:ConfigurationResource",
+      "d3f:WindowsRegistryKey",
+      "d3f:Database",
+      "d3f:IntrusionDetectionSystem",
+      "d3f:ProcessEnvironmentVariable",
+      "d3f:ArchiveFile",
+      "d3f:InboundInternetNetworkTraffic"
+     ]
+    },
+    {
+     "bytes": 70777,
+     "file": "technique-b1.txt",
+     "rows": [
+      "AML.T0000.003",
+      "AML.T0011.002",
+      "AML.T0054",
+      "AML.T0016.002",
+      "AML.T0016.003",
+      "AML.T0116",
+      "AML.T0025",
+      "AML.T0048.000",
+      "AML.T0031",
+      "AML.T0011.001"
+     ]
+    },
+    {
+     "bytes": 67110,
+     "file": "technique-b2.txt",
+     "rows": [
+      "AML.T0117",
+      "AML.T0048.002",
+      "AML.T0048.003",
+      "AML.T0048",
+      "AML.T0017.001"
+     ]
+    }
+   ],
+   "seed": 1
+  },
+  "2": {
+   "batches": [
+    {
+     "bytes": 67347,
+     "file": "artifact-b1.txt",
+     "rows": [
+      "d3f:File",
+      "d3f:Software",
+      "d3f:ArtifactServer",
+      "d3f:PrivateKey",
+      "d3f:PersonalComputer",
+      "d3f:Repository",
+      "d3f:InboundInternetNetworkTraffic",
+      "d3f:ShellCommand",
+      "d3f:RemoteShellCommand",
+      "d3f:ProcessSegment"
+     ]
+    },
+    {
+     "bytes": 68449,
+     "file": "artifact-b2.txt",
+     "rows": [
+      "d3f:DefaultUserAccount",
+      "d3f:CollaborativeSoftware",
+      "d3f:CommandHistoryLogFile",
+      "d3f:ProxyServer",
+      "d3f:URL",
+      "d3f:CloudUserAccount",
+      "d3f:InitScript",
+      "d3f:DatabaseQuery",
+      "d3f:CreateProcess",
+      "d3f:JobSchedule"
+     ]
+    },
+    {
+     "bytes": 66871,
+     "file": "artifact-b3.txt",
+     "rows": [
+      "d3f:Log",
+      "d3f:Email",
+      "d3f:FileSystemMetadata",
+      "d3f:CloudStorage",
+      "d3f:SoftwareLibrary",
+      "d3f:CreateFile",
+      "d3f:CloudInstanceMetadata",
+      "d3f:DigitalText",
+      "d3f:DigitalMessage",
+      "d3f:InboundInternetMailTraffic"
+     ]
+    },
+    {
+     "bytes": 67914,
+     "file": "artifact-b4.txt",
+     "rows": [
+      "d3f:SoftwarePackage",
+      "d3f:WindowsRegistryKey",
+      "d3f:ExecutableBinary",
+      "d3f:RemoteTerminalSession",
+      "d3f:AccessControlConfiguration",
+      "d3f:OutboundInternetWebTraffic",
+      "d3f:ServiceApplicationProcess",
+      "d3f:DigitalIdentity",
+      "d3f:OperatingSystemExecutableFile",
+      "d3f:Process"
+     ]
+    },
+    {
+     "bytes": 67617,
+     "file": "artifact-b5.txt",
+     "rows": [
+      "d3f:AuthenticationService",
+      "d3f:GetRunningProcesses",
+      "d3f:ArchiveFile",
+      "d3f:ProcessEnvironmentVariable",
+      "d3f:CommandHistoryLog",
+      "d3f:MACAddress",
+      "d3f:Host",
+      "d3f:DocumentFile",
+      "d3f:ExecutableScript",
+      "d3f:Database"
+     ]
+    },
+    {
+     "bytes": 67681,
+     "file": "artifact-b6.txt",
+     "rows": [
+      "d3f:Metadata",
+      "d3f:WebFileResource",
+      "d3f:EventLog",
+      "d3f:CloudConfiguration",
+      "d3f:ConfigurationFile",
+      "d3f:ServiceApplication",
+      "d3f:Server",
+      "d3f:RemoteSession",
+      "d3f:DigitalMedia",
+      "d3f:UserAccount"
+     ]
+    },
+    {
+     "bytes": 67842,
+     "file": "artifact-b7.txt",
+     "rows": [
+      "d3f:ApplicationConfiguration",
+      "d3f:WebAPIResource",
+      "d3f:ConfigurationResource",
+      "d3f:WebResource",
+      "d3f:DatabaseRecord",
+      "d3f:SoftwareRepository",
+      "d3f:Application",
+      "d3f:MoveFile",
+      "d3f:DomainRegistration",
+      "d3f:ExecutableFile"
+     ]
+    },
+    {
+     "bytes": 68351,
+     "file": "artifact-b8.txt",
+     "rows": [
+      "d3f:Credential",
+      "d3f:Command",
+      "d3f:IntrusionDetectionSystem",
+      "d3f:OutboundInternetNetworkTraffic",
+      "d3f:CodeRepository",
+      "d3f:NetworkTraffic",
+      "d3f:SystemConfigurationDatabase",
+      "d3f:GroupPolicy",
+      "d3f:AccessToken"
+     ]
+    },
+    {
+     "bytes": 70360,
+     "file": "technique-b1.txt",
+     "rows": [
+      "AML.T0000.003",
+      "AML.T0048.003",
+      "AML.T0116",
+      "AML.T0016.002",
+      "AML.T0011.001",
+      "AML.T0017.001",
+      "AML.T0011.002",
+      "AML.T0025",
+      "AML.T0048.000",
+      "AML.T0048.002"
+     ]
+    },
+    {
+     "bytes": 67527,
+     "file": "technique-b2.txt",
+     "rows": [
+      "AML.T0048",
+      "AML.T0117",
+      "AML.T0016.003",
+      "AML.T0031",
+      "AML.T0054"
+     ]
+    }
+   ],
+   "seed": 2
+  },
+  "3": {
+   "batches": [
+    {
+     "bytes": 67636,
+     "file": "artifact-b1.txt",
+     "rows": [
+      "d3f:Software",
+      "d3f:DatabaseRecord",
+      "d3f:ExecutableBinary",
+      "d3f:OutboundInternetWebTraffic",
+      "d3f:OutboundInternetNetworkTraffic",
+      "d3f:WebFileResource",
+      "d3f:DigitalIdentity",
+      "d3f:NetworkTraffic",
+      "d3f:DigitalMessage",
+      "d3f:WebResource"
+     ]
+    },
+    {
+     "bytes": 68248,
+     "file": "artifact-b2.txt",
+     "rows": [
+      "d3f:CloudStorage",
+      "d3f:PersonalComputer",
+      "d3f:URL",
+      "d3f:DocumentFile",
+      "d3f:Database",
+      "d3f:OperatingSystemExecutableFile",
+      "d3f:AccessToken",
+      "d3f:Process",
+      "d3f:ApplicationConfiguration",
+      "d3f:FileSystemMetadata"
+     ]
+    },
+    {
+     "bytes": 69128,
+     "file": "artifact-b3.txt",
+     "rows": [
+      "d3f:GroupPolicy",
+      "d3f:ProcessSegment",
+      "d3f:CloudInstanceMetadata",
+      "d3f:Metadata",
+      "d3f:CreateProcess",
+      "d3f:Application",
+      "d3f:ExecutableFile",
+      "d3f:SoftwarePackage",
+      "d3f:IntrusionDetectionSystem",
+      "d3f:CodeRepository"
+     ]
+    },
+    {
+     "bytes": 67552,
+     "file": "artifact-b4.txt",
+     "rows": [
+      "d3f:AuthenticationService",
+      "d3f:CommandHistoryLogFile",
+      "d3f:SoftwareLibrary",
+      "d3f:AccessControlConfiguration",
+      "d3f:MACAddress",
+      "d3f:PrivateKey",
+      "d3f:DigitalMedia",
+      "d3f:ArchiveFile",
+      "d3f:ServiceApplicationProcess",
+      "d3f:CollaborativeSoftware"
+     ]
+    },
+    {
+     "bytes": 67386,
+     "file": "artifact-b5.txt",
+     "rows": [
+      "d3f:ProxyServer",
+      "d3f:Command",
+      "d3f:ConfigurationResource",
+      "d3f:RemoteShellCommand",
+      "d3f:Log",
+      "d3f:InboundInternetNetworkTraffic",
+      "d3f:ConfigurationFile",
+      "d3f:WindowsRegistryKey",
+      "d3f:WebAPIResource",
+      "d3f:CloudUserAccount"
+     ]
+    },
+    {
+     "bytes": 68037,
+     "file": "artifact-b6.txt",
+     "rows": [
+      "d3f:InboundInternetMailTraffic",
+      "d3f:SystemConfigurationDatabase",
+      "d3f:Credential",
+      "d3f:JobSchedule",
+      "d3f:GetRunningProcesses",
+      "d3f:File",
+      "d3f:InitScript",
+      "d3f:Host",
+      "d3f:EventLog",
+      "d3f:DomainRegistration"
+     ]
+    },
+    {
+     "bytes": 66864,
+     "file": "artifact-b7.txt",
+     "rows": [
+      "d3f:DefaultUserAccount",
+      "d3f:RemoteTerminalSession",
+      "d3f:ExecutableScript",
+      "d3f:DatabaseQuery",
+      "d3f:MoveFile",
+      "d3f:Repository",
+      "d3f:ArtifactServer",
+      "d3f:ServiceApplication",
+      "d3f:RemoteSession",
+      "d3f:CloudConfiguration"
+     ]
+    },
+    {
+     "bytes": 67221,
+     "file": "artifact-b8.txt",
+     "rows": [
+      "d3f:CreateFile",
+      "d3f:UserAccount",
+      "d3f:ProcessEnvironmentVariable",
+      "d3f:DigitalText",
+      "d3f:SoftwareRepository",
+      "d3f:Email",
+      "d3f:Server",
+      "d3f:CommandHistoryLog",
+      "d3f:ShellCommand"
+     ]
+    },
+    {
+     "bytes": 70641,
+     "file": "technique-b1.txt",
+     "rows": [
+      "AML.T0016.003",
+      "AML.T0048.000",
+      "AML.T0048.003",
+      "AML.T0016.002",
+      "AML.T0011.002",
+      "AML.T0000.003",
+      "AML.T0048",
+      "AML.T0025",
+      "AML.T0054",
+      "AML.T0017.001"
+     ]
+    },
+    {
+     "bytes": 67246,
+     "file": "technique-b2.txt",
+     "rows": [
+      "AML.T0117",
+      "AML.T0116",
+      "AML.T0048.002",
+      "AML.T0031",
+      "AML.T0011.001"
+     ]
+    }
+   ],
+   "seed": 3
+  }
+ },
+ "prereg_sha256": "a2eed4adbab81c3980220e3c7e4ec3f9bff304f6a60736116fac4327b6a240cf"
+}

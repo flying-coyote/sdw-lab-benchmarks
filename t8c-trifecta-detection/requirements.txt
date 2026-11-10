@@ -1,0 +1,17 @@
+certifi==2026.10.23
+charset-normalizer==3.5.2
+diskcache-community==5.8.4
+duckdb==1.5.3
+google-re2==1.1.20251105
+idna==3.20
+Jinja2==3.1.6
+jq==1.13.0
+MarkupSafe==3.0.4
+packaging==26.3
+pyparsing==3.3.3
+pySigma==2.0.3
+pySigma-backend-sqlite==2.1.1
+PyYAML==6.0.3
+requests==2.34.2
+types-PyYAML==6.0.12.20261103
+urllib3==2.8.0

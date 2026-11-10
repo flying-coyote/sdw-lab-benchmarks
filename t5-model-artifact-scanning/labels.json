@@ -1,0 +1,777 @@
+{
+ "counts": {
+  "benign": 18,
+  "junk": 4,
+  "unsafe": 96
+ },
+ "files": {
+  "benign-models/all-MiniLM-L6-v2.model_O4.onnx": {
+   "label": "benign",
+   "source": "public model, permissive licence",
+   "why": "same model, onnx/model_O4.onnx, HF rev 1110a24"
+  },
+  "benign-models/all-MiniLM-L6-v2.pytorch_model.bin": {
+   "label": "benign",
+   "source": "public model, permissive licence",
+   "why": "same model, pytorch_model.bin (zip-format torch pickle), HF rev 1110a24"
+  },
+  "benign-models/all-MiniLM-L6-v2.safetensors": {
+   "label": "benign",
+   "source": "public model, permissive licence",
+   "why": "sentence-transformers/all-MiniLM-L6-v2 model.safetensors, HF rev 1110a24 (Apache-2.0), same file as R4 T3"
+  },
+  "benign-models/all-MiniLM-L6-v2.tf_model.h5": {
+   "label": "benign",
+   "source": "public model, permissive licence",
+   "why": "same model, tf_model.h5 (Keras HDF5), HF rev 1110a24"
+  },
+  "benign-models/mnist-8.onnx": {
+   "label": "benign",
+   "source": "public model, permissive licence",
+   "why": "onnx/models validated/vision/classification/mnist/model/mnist-8.onnx at main c5cae0f (Apache-2.0)"
+  },
+  "benign-models/tinyllama-1.1b-chat.Q4_0.gguf": {
+   "label": "benign",
+   "source": "public model, permissive licence",
+   "why": "TinyLlama 1.1B chat Q4_0 GGUF (Apache-2.0), bytes from Ollama tinyllama:latest, same file as R4 T1"
+  },
+  "fickling-fixtures/squeezenet1_0_torchscript_v1_4.pt": {
+   "label": "benign",
+   "source": "fickling v0.1.12 test/fixtures",
+   "why": "TorchScript v1.4 of torchvision squeezenet1_0 (BSD-3 torchvision), fickling test fixture"
+  },
+  "modelscan-data/password_protected.zip": {
+   "label": "junk",
+   "source": "modelscan v0.8.8 tests/data",
+   "why": "password-protected zip"
+  },
+  "modelscan-data/unsafe_zip_pytorch.pt": {
+   "label": "unsafe",
+   "mechanism": [
+    "(modelscan suite: unsafe PyTorch zip)"
+   ],
+   "source": "modelscan v0.8.8 tests/data"
+  },
+  "picklescan-data/bad_pytorch.pt": {
+   "label": "junk",
+   "source": "picklescan v1.0.5 tests",
+   "why": "PNG bytes with a .pt name; suite expects 0 issues, scan_err False"
+  },
+  "picklescan-data/benign0_v0.pkl": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "suite benign fixture"
+  },
+  "picklescan-data/benign0_v3.pkl": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "suite benign fixture"
+  },
+  "picklescan-data/benign0_v4.pkl": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "suite benign fixture"
+  },
+  "picklescan-data/benign_password_protected.zip": {
+   "label": "junk",
+   "source": "picklescan v1.0.5 tests",
+   "why": "password-protected zip; cannot be opened without the password"
+  },
+  "picklescan-data/broken_model.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.exec"
+   ],
+   "source": "picklescan v1.0.5 tests",
+   "why": "truncated pickle carrying builtins.exec; suite counts it in the directory total with scan_err=True"
+  },
+  "picklescan-data/malicious-invalid-bytes.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "os.system"
+   ],
+   "source": "picklescan v1.0.5 tests",
+   "why": "suite expects os.system Dangerous AND scan_err=True (partial parse)"
+  },
+  "picklescan-data/malicious0.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "__builtin__.compile",
+    "__builtin__.apply",
+    "__builtin__.getattr",
+    "__builtin__.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1.7z": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1.zip": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious10.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "__builtin__.exec"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious11.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious12.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious13a.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious13b.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious14.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "runpy._run_code"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious15a.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious15b.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious16.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious17.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious18.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious19.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1_0x1.zip": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1_0x20.zip": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1_0x40.zip": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1_central_directory.zip": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1_v0.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "__builtin__.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1_v3.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1_v4.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious1_wrong_ext.zip": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious20.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious2_v0.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "posix.system"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious2_v3.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "posix.system"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious2_v4.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "posix.system"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious3.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "httplib.HTTPSConnection"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious4.pickle": {
+   "label": "unsafe",
+   "mechanism": [
+    "requests.api.get"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious5.pickle": {
+   "label": "unsafe",
+   "mechanism": [
+    "aiohttp.client.ClientSession"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious6.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "requests.api.get"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious7.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "socket.create_connection"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious8.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "subprocess.run"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/malicious9.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "sys.exit"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/new_pytorch_model.bin": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "zip-format PyTorch, suite expects 0 issues"
+  },
+  "picklescan-data/not_a_pickle.bin": {
+   "label": "junk",
+   "source": "picklescan v1.0.5 tests",
+   "why": "starts with a GLOBAL opcode but is invalid UTF-8; suite expects 0 issues"
+  },
+  "picklescan-data/pytorch_magic_bypass.pt": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data/pytorch_model.bin": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "legacy PyTorch pickle, suite expects 0 issues"
+  },
+  "picklescan-data/sys_module_override_sploit.pkl": {
+   "label": "unsafe",
+   "mechanism": [],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-3gf5-cxq9-w223.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "idlelib.pyshell.ModifiedInterpreter.runcode"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-3vg9-h568-4w9m.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "idlelib.debugobj.ObjectTreeItem.SetText"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-4675-36f9-wf6r.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "ctypes.CDLL"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-46h3-79wf-xr6c.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "_operator.attrgetter"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-49gj-c84q-6qm9.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "cProfile.run"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-4r9r-ch6f-vxmx.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "torch.utils.bottleneck.__main__.run_cprofile"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-4whj-rm5r-c2v8.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "torch.utils.bottleneck.__main__.run_autograd_prof"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-5qwp-399c-mjwf.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "trace.Trace.run"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-6vqj-c2q5-j97w.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "profile.Profile.runctx"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-6w4w-5w54-rjvr.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "idlelib.autocomplete.AutoComplete.get_entity"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-7cq8-mj8x-j263.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "idlelib.autocomplete.AutoComplete.fetch_completions"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-7wx9-6375-f5wh.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "profile.run"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-84r2-jw7c-4r5q.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "pydoc.locate",
+    "operator.methodcaller"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-86cj-95qr-2p4f.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "torch._dynamo.guards.GuardBuilder.get"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-8r4j-24qv-fmq9.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "idlelib.calltip.Calltip.fetch_tip"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-955r-x9j8-7rhh.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "_operator.methodcaller"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-9w88-8rmg-7g2p.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "cProfile.runctx"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-9xph-j2h6-g47v.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "idlelib.calltip.get_entity"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-cj3c-v495-4xqh.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "code.InteractiveInterpreter.runcode"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-f4x7-rfwp-v3xw.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "torch.fx.experimental.symbolic_shapes.ShapeEnv.evaluate_guards_expression"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-f54q-57x4-jg88.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "lib2to3.pgen2.grammar.Grammar.loads"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-f745-w6jp-hpxx.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "torch.utils.collect_env.run"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-fqq6-7vqf-w3fg.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "doctest.debug_script"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-g344-hcph-8vgg.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "trace.Trace.runctx"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-g38g-8gr9-h9xp-aix-support.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "_aix_support._read_cmd_output"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-g38g-8gr9-h9xp-imaplib.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "imaplib.IMAP4_stream"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-g38g-8gr9-h9xp-osx-support.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "_osx_support._read_output"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-g38g-8gr9-h9xp-pyrepl-pager.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "_pyrepl.pager.pipe_pager"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-g38g-8gr9-h9xp-test.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "test.support.script_helper.assert_python_ok"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-g38g-8gr9-h9xp-uuid.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "uuid._get_command_stdout"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-h3qp-7fh3-f8h4.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "torch.utils.data.datapipes.utils.decoder.basichandlers"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-j343-8v2j-ff7w.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "idlelib.pyshell.ModifiedInterpreter.runcommand"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-jgw4-cr84-mqxg.bin": {
+   "label": "unsafe",
+   "mechanism": [
+    "asyncio.unix_events._UnixSubprocessTransport._start"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-jhph-76pp-mggw.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "torch.utils.collect_env.run"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-m273-6v24-x4m4.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "distutils.file_util.write_file"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-m869-42cg-3xwr.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "idlelib.run.Executive.runcode"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-p9w7-82w4-7q8m.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "lib2to3.pgen2.pgen.ParserGenerator.make_label"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-q77w-mwjj-7mqx.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "asyncio.unix_events._UnixSubprocessTransport._start"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-r8g5-cgf2-4m4m.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "numpy.f2py.crackfortran.getlincoef"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-vqmv-47xg-9wpr.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "pty.spawn"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-vr7h-p6mm-wpmh.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "torch.jit.unsupported_tensor_ops.execWrapper"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-vv6j-3g6g-2pvj.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "torch.utils._config_module.ConfigModule.load_config"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-vvpj-8cmc-gx39.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "pkgutil.resolve_name"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-x696-vm39-cp64.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "profile.Profile.run"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/GHSA-xp4f-hrf8-rxw7.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "ensurepip._run_pip"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/cloudpickle_codeinjection.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "cloudpickle.cloudpickle._function_setstate",
+    "cloudpickle.cloudpickle._builtin_type",
+    "cloudpickle.cloudpickle._make_function",
+    "cloudpickle.cloudpickle._make_cell",
+    "cloudpickle.cloudpickle._make_empty_cell",
+    "cloudpickle.cloudpickle.subimport"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/dns_exfiltration.npy": {
+   "label": "unsafe",
+   "mechanism": [
+    "ssl.get_server_certificate"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/int_array.npy": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "numpy int array, suite expects 0 issues"
+  },
+  "picklescan-data2/int_arrays.npz": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "numpy int arrays, suite expects 0 issues"
+  },
+  "picklescan-data2/int_arrays_compressed.npz": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "numpy int arrays, suite expects 0 issues"
+  },
+  "picklescan-data2/io_FileIO.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "_io.FileIO"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/keyerror-exploit.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "os.system",
+    "unknown.os"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/logging_FileHandler.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "logging.FileHandler"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/malicious1_crc.zip": {
+   "label": "unsafe",
+   "mechanism": [
+    "builtins.eval"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/malicious21.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "timeit.timeit"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/malicious22.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "numpy.testing._private.utils.runstring"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/malicious23.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "os.system"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/object_array.npy": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "numpy object array; suite marks its globals Innocuous, 0 issues (policy call: object arrays are pickles)"
+  },
+  "picklescan-data2/object_arrays.npz": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "same as object_array.npy"
+  },
+  "picklescan-data2/object_arrays_compressed.npz": {
+   "label": "benign",
+   "source": "picklescan v1.0.5 tests",
+   "why": "same as object_array.npy"
+  },
+  "picklescan-data2/type-confusion-exploit.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "os.system"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/types_CodeType.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "types.CodeType"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  },
+  "picklescan-data2/urllib_request_urlopen.pkl": {
+   "label": "unsafe",
+   "mechanism": [
+    "urllib.request.urlopen"
+   ],
+   "source": "picklescan v1.0.5 tests"
+  }
+ }
+}

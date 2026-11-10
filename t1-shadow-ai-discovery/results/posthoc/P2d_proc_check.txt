@@ -1,0 +1,9 @@
+-r--r--r-- 1 root root 0 Nov 10 01:12 /proc/net/tcp
+-r--r--r-- 1 root root 0 Nov 10 01:12 /proc/net/tcp6
+  sl  local_address                         remote_address                        st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+   0: 00000000000000000000000000000000:2CAA 00000000000000000000000000000000:0000 0A 00000000:00000000 00:00000000 00000000  1000        0 13747716 1 0000000000000000 100 0 0 10 0
+ls: cannot read symbolic link '/proc/31/fd/0': Permission denied
+ls: cannot read symbolic link '/proc/31/fd/1': Permission denied
+ls: cannot read symbolic link '/proc/31/fd/2': Permission denied
+ls: cannot read symbolic link '/proc/31/fd/3': Permission denied
+total 0

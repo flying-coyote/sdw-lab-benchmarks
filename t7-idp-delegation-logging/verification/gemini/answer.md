@@ -1,0 +1,14 @@
+**CLAIM 1: AGREE**  
+The data directly confirms that successful exchange events record `subject_token_client_id` (72/72 in Arm S, 15/15 in Arm D), providing an explicit parent client pointer, while the subject token’s `jti` is entirely absent across all events (0/78 S, 0/15 D), forcing token-level linkage to rely on implicit heuristics (`sessionId` + timestamp). A minor nuance/overreach to note is that Arm S error events omit `subject_token_client_id` entirely (0/6), meaning client-level linkage is not logged on failed exchanges in standard mode.
+
+**CLAIM 2: AGREE**  
+The excerpt confirms the heuristic achieved 5 of 15 correct attributions (1 per rep across 5 reps of 3 hop-2 events) and that no event field links hop 2 to hop 1 (as established by the absence of subject token `jti`). The 5/15 (33.3%) score is an expected artifact of the batching schedule—because all three hop-1 exchanges preceded all hop-2 exchanges, the "nearest earlier" rule deterministically selected the final hop-1 event, succeeding only at random chance; conversely, the 15/15 scope heuristic was an artifact of the fixture design.
+
+**CLAIM 3: AGREE**  
+The data supports that the 'reacquire' escalation was detected 5/5 (S) and 3/3 (D) by the chain-aware detector because it observed scope expansion between hops ([read] $\rightarrow$ [read, write]), whereas root-only checks flagged 0/5 and 0/3 because the requested scopes never exceeded Alice's initial authority. For the 'new' class, Keycloak silently dropped `data:admin` without logging the requested scope anywhere (0/8 hops), leaving only the granted `data:read` and thus leaving no trace in IdP events. The only operational caveat is that "detectable from IdP events alone" assumes chains can be disambiguated, which degrades during concurrent interleaving.
+
+**CLAIM 4: DISAGREE**  
+This claim overreaches by treating Arm S behavior as universal. While the refusal events under Arm S omit `userId` and `sessionId` (logging `userId="null"`), the excerpt explicitly notes that "Arm D delegation refusals do carry userId and subject_token_client_id." Consequently, under Arm D, refusals *can* be attributed to both a user (`userId`) and the immediate chain step (`subject_token_client_id`) from the event alone, refuting the blanket claim.
+
+**CLAIM 5: AGREE**  
+The measured validation results confirm that OCSF 1.9.0 validation under the `ai_operation` profile passed cleanly for all shapes except refusal events, where the missing user caused `attribute_required_missing@user` on `TOKEN_EXCHANGE_ERROR` (S) and `LOGIN_ERROR` (D). Furthermore, `delegation.uid` was populated for all 81 hops (72 S + 9 D) from `token_id`, `parent_uid` was empty (0/81), and the expanded delegation schema attributes (including scope and audience) were confirmed to exist only in OCSF main (1.10.0-dev) rather than 1.9.0.

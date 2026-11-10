@@ -1,0 +1,14 @@
+# chronyc tracking, immediately before freeze/run (UTC 2026-11-10T00:52:49Z)
+Reference ID    : 50484330 (PHC0)
+Stratum         : 1
+Ref time (UTC)  : Tue Nov 10 00:52:41 2026
+System time     : 0.000039105 seconds slow of NTP time
+Last offset     : -0.000018806 seconds
+RMS offset      : 0.000024512 seconds
+Frequency       : 40.250 ppm slow
+Residual freq   : -0.016 ppm
+Skew            : 1.306 ppm
+Root delay      : 0.000000001 seconds
+Root dispersion : 0.000196345 seconds
+Update interval : 8.0 seconds
+Leap status     : Normal

@@ -1,0 +1,10 @@
+title: Process launched from a binary whose signature is not valid
+description: AML.M0013 "digital signature verification to prevent untrusted code from executing". Enforcement; event unit. Table process_activity.
+status: experimental
+logsource: {category: process_creation}
+detection:
+  sel:
+    activity_id: 1
+  valid:
+    process_file_signature_state_id: 1
+  condition: sel and not valid

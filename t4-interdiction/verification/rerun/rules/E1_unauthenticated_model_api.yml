@@ -1,0 +1,9 @@
+title: Production model API call with no authenticated principal
+description: AML.M0019 "Require authentication for API endpoints". Enforcement; event unit. Table api_activity.
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_service_name: chat
+    actor_user_name: null
+  condition: sel

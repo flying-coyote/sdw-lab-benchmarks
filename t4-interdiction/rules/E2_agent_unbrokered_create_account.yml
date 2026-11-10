@@ -1,0 +1,10 @@
+title: Agent creates an account without a broker delegation
+description: AML.M0043, same check on account_change (activity 1 = Create).
+status: experimental
+logsource: {category: account_change}
+detection:
+  sel:
+    activity_id: 1
+    ai_agent_name|exists: true
+    delegation_uid: null
+  condition: sel

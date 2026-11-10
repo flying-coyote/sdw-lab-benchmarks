@@ -1,0 +1,155 @@
+time=2026-11-09T20:02:36.866-05:00 level=DEBUG source=runner.go:264 msg="refreshing free memory"
+time=2026-11-09T20:02:36.866-05:00 level=DEBUG source=runner.go:40 msg="overall device VRAM discovery took" duration=101.005µs
+time=2026-11-09T20:02:36.868-05:00 level=DEBUG source=sched.go:220 msg="updating default concurrency" OLLAMA_MAX_LOADED_MODELS=3 gpu_count=0
+time=2026-11-09T20:02:36.868-05:00 level=DEBUG source=sched.go:229 msg="loading first model" model=/usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a
+time=2026-11-09T20:02:37.046-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=general.alignment default=32
+time=2026-11-09T20:02:37.151-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=general.alignment default=32
+time=2026-11-09T20:02:37.159-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.pooling_type default=0
+time=2026-11-09T20:02:37.159-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=tokenizer.ggml.eot_token_id default=106
+time=2026-11-09T20:02:37.164-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+time=2026-11-09T20:02:37.165-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.attention.global_head_count_kv default=0
+time=2026-11-09T20:02:37.165-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.attention.head_count_kv default="&{size:0 values:[]}"
+time=2026-11-09T20:02:37.165-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.expert_count default=0
+time=2026-11-09T20:02:37.165-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.expert_used_count default=0
+time=2026-11-09T20:02:37.165-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.audio.num_mel_bins default=128
+time=2026-11-09T20:02:37.165-05:00 level=INFO source=server.go:259 msg="enabling flash attention"
+time=2026-11-09T20:02:37.165-05:00 level=INFO source=server.go:444 msg="starting runner" cmd="/usr/local/bin/ollama runner --ollama-engine --model /usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a --port 42291"
+time=2026-11-09T20:02:37.165-05:00 level=DEBUG source=server.go:445 msg=subprocess OLLAMA_MODELS=/usr/share/ollama/.ollama/models OLLAMA_HOST=127.0.0.1:11435 OLLAMA_KEEP_ALIVE=30m OLLAMA_DEBUG=1 PATH="/home/jerem/.local/bin:/home/jerem/.local/bin:/home/jerem/bin:/home/jerem/.local/bin:/home/jerem/.opencode/bin:/home/jerem/.nvm/versions/node/v22.23.4/bin:/home/jerem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Python314/Scripts/:/mnt/c/Python314/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/jerem/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/jerem/AppData/Roaming/npm:/mnt/c/Users/jerem/.local/bin:/snap/bin:/home/jerem/.pulumi/bin" LD_LIBRARY_PATH=/usr/local/lib/ollama OLLAMA_LIBRARY_PATH=/usr/local/lib/ollama
+time=2026-11-09T20:02:37.169-05:00 level=INFO source=sched.go:484 msg="system memory" total="47.0 GiB" free="21.1 GiB" free_swap="6.6 GiB"
+time=2026-11-09T20:02:37.169-05:00 level=INFO source=server.go:771 msg="loading model" "model layers"=43 requested=-1
+time=2026-11-09T20:02:37.218-05:00 level=INFO source=runner.go:1417 msg="starting ollama engine"
+time=2026-11-09T20:02:37.229-05:00 level=INFO source=runner.go:1452 msg="Server listening on 127.0.0.1:42291"
+time=2026-11-09T20:02:37.232-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:fit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:4096 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+time=2026-11-09T20:02:37.418-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=general.alignment default=32
+time=2026-11-09T20:02:37.423-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=general.name default=""
+time=2026-11-09T20:02:37.428-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=general.description default=""
+time=2026-11-09T20:02:37.428-05:00 level=INFO source=ggml.go:136 msg="" architecture=gemma4 file_type=Q4_K_M name="" description="" num_tensors=2131 num_key_values=55
+time=2026-11-09T20:02:37.429-05:00 level=DEBUG source=ggml.go:94 msg="ggml backend load all from path" path=/usr/local/lib/ollama
+load_backend: loaded CPU backend from /usr/local/lib/ollama/libggml-cpu-haswell.so
+time=2026-11-09T20:02:37.442-05:00 level=INFO source=ggml.go:104 msg=system CPU.0.SSE3=1 CPU.0.SSSE3=1 CPU.0.AVX=1 CPU.0.AVX2=1 CPU.0.F16C=1 CPU.0.FMA=1 CPU.0.BMI2=1 CPU.0.LLAMAFILE=1 CPU.1.LLAMAFILE=1 compiler=cgo(gcc)
+time=2026-11-09T20:02:37.492-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.pooling_type default=0
+time=2026-11-09T20:02:37.492-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=tokenizer.ggml.eot_token_id default=106
+time=2026-11-09T20:02:37.494-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+time=2026-11-09T20:02:37.494-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.attention.global_head_count_kv default=0
+time=2026-11-09T20:02:37.494-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.attention.head_count_kv default="&{size:0 values:[]}"
+time=2026-11-09T20:02:37.494-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.expert_count default=0
+time=2026-11-09T20:02:37.494-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.expert_used_count default=0
+time=2026-11-09T20:02:37.494-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.audio.num_mel_bins default=128
+time=2026-11-09T20:02:37.546-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=4.130386ms bounds=(0,0)-(2048,2048)
+time=2026-11-09T20:02:37.743-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=197.36036ms size="[768 768]"
+time=2026-11-09T20:02:37.743-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+time=2026-11-09T20:02:37.743-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+time=2026-11-09T20:02:37.744-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=202.810606ms shape="[2560 256]"
+time=2026-11-09T20:02:37.746-05:00 level=DEBUG source=ggml.go:852 msg="compute graph" nodes=684 splits=1
+time=2026-11-09T20:02:37.793-05:00 level=DEBUG source=ggml.go:852 msg="compute graph" nodes=1831 splits=1
+time=2026-11-09T20:02:37.797-05:00 level=DEBUG source=ggml.go:852 msg="compute graph" nodes=1829 splits=1
+time=2026-11-09T20:02:37.799-05:00 level=DEBUG source=device.go:245 msg="model weights" device=CPU size="9.4 GiB"
+time=2026-11-09T20:02:37.799-05:00 level=DEBUG source=device.go:256 msg="kv cache" device=CPU size="224.0 MiB"
+time=2026-11-09T20:02:37.799-05:00 level=DEBUG source=device.go:267 msg="compute graph" device=CPU size="125.0 MiB"
+time=2026-11-09T20:02:37.799-05:00 level=DEBUG source=device.go:272 msg="total memory" size="9.8 GiB"
+time=2026-11-09T20:02:37.799-05:00 level=DEBUG source=server.go:796 msg=memory success=true required.InputWeights=615514112 required.CPU.Weights="[109888288 110040992 109888288 109888288 109888288 110842656 103129888 109888288 102791968 102791968 109888288 110166816 52401184 59497504 52401184 52401184 59497504 59776032 52401184 59497504 52401184 52401184 59497504 59776032 52401184 59497504 52401184 52401184 59497504 59776032 52401184 59497504 52401184 52401184 59497504 59776032 59159584 59497504 59159584 59159584 59497504 66534432 6521478144]" required.CPU.Cache="[8388608 8388608 8388608 8388608 8388608 16777216 8388608 8388608 8388608 8388608 8388608 16777216 8388608 8388608 8388608 8388608 8388608 16777216 8388608 8388608 8388608 8388608 8388608 16777216 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]" required.CPU.Graph=131072000
+time=2026-11-09T20:02:37.799-05:00 level=DEBUG source=server.go:807 msg="new layout created" layers=[]
+time=2026-11-09T20:02:37.799-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:alloc LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:4096 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+time=2026-11-09T20:02:37.920-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=general.alignment default=32
+time=2026-11-09T20:02:38.014-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.pooling_type default=0
+time=2026-11-09T20:02:38.014-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=tokenizer.ggml.eot_token_id default=106
+time=2026-11-09T20:02:38.015-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+time=2026-11-09T20:02:38.015-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.attention.global_head_count_kv default=0
+time=2026-11-09T20:02:38.015-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.attention.head_count_kv default="&{size:0 values:[]}"
+time=2026-11-09T20:02:38.015-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.expert_count default=0
+time=2026-11-09T20:02:38.015-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.expert_used_count default=0
+time=2026-11-09T20:02:38.016-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.audio.num_mel_bins default=128
+time=2026-11-09T20:02:38.047-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=1.691876ms bounds=(0,0)-(2048,2048)
+time=2026-11-09T20:02:38.303-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=255.520523ms size="[768 768]"
+time=2026-11-09T20:02:38.312-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+time=2026-11-09T20:02:38.312-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+time=2026-11-09T20:02:38.313-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=267.65957ms shape="[2560 256]"
+time=2026-11-09T20:02:38.314-05:00 level=DEBUG source=ggml.go:852 msg="compute graph" nodes=684 splits=1
+time=2026-11-09T20:02:38.716-05:00 level=DEBUG source=ggml.go:852 msg="compute graph" nodes=1831 splits=1
+time=2026-11-09T20:02:38.721-05:00 level=DEBUG source=ggml.go:852 msg="compute graph" nodes=1829 splits=1
+time=2026-11-09T20:02:38.723-05:00 level=DEBUG source=device.go:245 msg="model weights" device=CPU size="9.4 GiB"
+time=2026-11-09T20:02:38.723-05:00 level=DEBUG source=device.go:256 msg="kv cache" device=CPU size="224.0 MiB"
+time=2026-11-09T20:02:38.723-05:00 level=DEBUG source=device.go:267 msg="compute graph" device=CPU size="125.0 MiB"
+time=2026-11-09T20:02:38.723-05:00 level=DEBUG source=device.go:272 msg="total memory" size="9.8 GiB"
+time=2026-11-09T20:02:38.723-05:00 level=DEBUG source=server.go:796 msg=memory success=true required.InputWeights=615514112 required.CPU.Weights="[109888288 110040992 109888288 109888288 109888288 110842656 103129888 109888288 102791968 102791968 109888288 110166816 52401184 59497504 52401184 52401184 59497504 59776032 52401184 59497504 52401184 52401184 59497504 59776032 52401184 59497504 52401184 52401184 59497504 59776032 52401184 59497504 52401184 52401184 59497504 59776032 59159584 59497504 59159584 59159584 59497504 66534432 6521478144]" required.CPU.Cache="[8388608 8388608 8388608 8388608 8388608 16777216 8388608 8388608 8388608 8388608 8388608 16777216 8388608 8388608 8388608 8388608 8388608 16777216 8388608 8388608 8388608 8388608 8388608 16777216 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]" required.CPU.Graph=131072000
+time=2026-11-09T20:02:38.723-05:00 level=DEBUG source=server.go:807 msg="new layout created" layers=[]
+time=2026-11-09T20:02:38.723-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:commit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:4096 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+time=2026-11-09T20:02:38.724-05:00 level=INFO source=ggml.go:482 msg="offloading 0 repeating layers to GPU"
+time=2026-11-09T20:02:38.724-05:00 level=INFO source=ggml.go:486 msg="offloading output layer to CPU"
+time=2026-11-09T20:02:38.724-05:00 level=INFO source=ggml.go:494 msg="offloaded 0/43 layers to GPU"
+time=2026-11-09T20:02:38.737-05:00 level=INFO source=device.go:245 msg="model weights" device=CPU size="9.4 GiB"
+time=2026-11-09T20:02:38.737-05:00 level=INFO source=device.go:256 msg="kv cache" device=CPU size="224.0 MiB"
+time=2026-11-09T20:02:38.737-05:00 level=INFO source=device.go:267 msg="compute graph" device=CPU size="125.0 MiB"
+time=2026-11-09T20:02:38.737-05:00 level=INFO source=device.go:272 msg="total memory" size="9.8 GiB"
+time=2026-11-09T20:02:38.737-05:00 level=INFO source=sched.go:561 msg="loaded runners" count=1
+time=2026-11-09T20:02:38.737-05:00 level=INFO source=server.go:1364 msg="waiting for llama runner to start responding"
+time=2026-11-09T20:02:38.740-05:00 level=INFO source=server.go:1398 msg="waiting for server to become available" status="llm server loading model"
+time=2026-11-09T20:02:38.741-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.00"
+time=2026-11-09T20:02:39.005-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.04"
+time=2026-11-09T20:02:39.256-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.08"
+time=2026-11-09T20:02:39.507-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.11"
+time=2026-11-09T20:02:39.759-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.13"
+time=2026-11-09T20:02:40.010-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.16"
+time=2026-11-09T20:02:40.261-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.19"
+time=2026-11-09T20:02:40.513-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.21"
+time=2026-11-09T20:02:40.773-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.23"
+time=2026-11-09T20:02:41.024-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.26"
+time=2026-11-09T20:02:41.277-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.28"
+time=2026-11-09T20:02:41.528-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.31"
+time=2026-11-09T20:02:41.785-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.34"
+time=2026-11-09T20:02:42.037-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.36"
+time=2026-11-09T20:02:42.288-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.38"
+time=2026-11-09T20:02:42.539-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.41"
+time=2026-11-09T20:02:42.790-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.43"
+time=2026-11-09T20:02:43.041-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.45"
+time=2026-11-09T20:02:43.292-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.47"
+time=2026-11-09T20:02:43.543-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.49"
+time=2026-11-09T20:02:43.794-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.51"
+time=2026-11-09T20:02:44.045-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.52"
+time=2026-11-09T20:02:44.296-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.54"
+time=2026-11-09T20:02:44.548-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.55"
+time=2026-11-09T20:02:44.799-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.56"
+time=2026-11-09T20:02:45.051-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.57"
+time=2026-11-09T20:02:45.302-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.57"
+time=2026-11-09T20:02:45.553-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.58"
+time=2026-11-09T20:02:45.809-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.59"
+time=2026-11-09T20:02:46.059-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.60"
+time=2026-11-09T20:02:46.311-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.60"
+time=2026-11-09T20:02:46.562-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.61"
+time=2026-11-09T20:02:46.813-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.62"
+time=2026-11-09T20:02:47.065-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.64"
+time=2026-11-09T20:02:47.316-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.65"
+time=2026-11-09T20:02:47.567-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.65"
+time=2026-11-09T20:02:47.821-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.67"
+time=2026-11-09T20:02:48.071-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.69"
+time=2026-11-09T20:02:48.322-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.71"
+time=2026-11-09T20:02:48.573-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.73"
+time=2026-11-09T20:02:48.824-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.74"
+time=2026-11-09T20:02:49.076-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.76"
+time=2026-11-09T20:02:49.326-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.78"
+time=2026-11-09T20:02:49.577-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.80"
+time=2026-11-09T20:02:49.828-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.83"
+time=2026-11-09T20:02:50.079-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.85"
+time=2026-11-09T20:02:50.330-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.88"
+time=2026-11-09T20:02:50.580-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.90"
+time=2026-11-09T20:02:50.831-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.92"
+time=2026-11-09T20:02:51.083-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.93"
+time=2026-11-09T20:02:51.333-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.95"
+time=2026-11-09T20:02:51.585-05:00 level=DEBUG source=server.go:1408 msg="model load progress 0.97"
+time=2026-11-09T20:02:51.836-05:00 level=DEBUG source=server.go:1408 msg="model load progress 1.00"
+time=2026-11-09T20:02:51.883-05:00 level=DEBUG source=ggml.go:325 msg="key with type not found" key=gemma4.pooling_type default=0
+time=2026-11-09T20:02:52.087-05:00 level=INFO source=server.go:1402 msg="llama runner started in 14.92 seconds"
+time=2026-11-09T20:02:52.087-05:00 level=DEBUG source=sched.go:573 msg="finished setting up" runner.name=registry.ollama.ai/library/gemma4:e4b runner.size="9.8 GiB" runner.vram="0 B" runner.parallel=1 runner.pid=62173 runner.model=/usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a runner.num_ctx=4096
+time=2026-11-09T20:02:52.250-05:00 level=DEBUG source=server.go:1550 msg="completion request" images=0 prompt=448 format=""
+time=2026-11-09T20:02:52.405-05:00 level=DEBUG source=cache.go:151 msg="loading cache slot" id=0 cache=0 prompt=98 used=0 remaining=98
+[GIN] 2026/11/09 - 20:10:33 | 200 |         7m57s |       127.0.0.1 | POST     "/api/chat"
+time=2026-11-09T20:10:33.924-05:00 level=DEBUG source=sched.go:581 msg="context for request finished"
+time=2026-11-09T20:10:33.924-05:00 level=DEBUG source=sched.go:309 msg="runner with non-zero duration has gone idle, adding timer" runner.name=registry.ollama.ai/library/gemma4:e4b runner.size="9.8 GiB" runner.vram="0 B" runner.parallel=1 runner.pid=62173 runner.model=/usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a runner.num_ctx=4096 duration=30m0s
+time=2026-11-09T20:10:33.924-05:00 level=DEBUG source=sched.go:327 msg="after processing request finished event" runner.name=registry.ollama.ai/library/gemma4:e4b runner.size="9.8 GiB" runner.vram="0 B" runner.parallel=1 runner.pid=62173 runner.model=/usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a runner.num_ctx=4096 refCount=0
+time=2026-11-09T20:10:34.542-05:00 level=DEBUG source=sched.go:672 msg="evaluating already loaded" model=/usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a
+time=2026-11-09T20:10:34.545-05:00 level=DEBUG source=server.go:1550 msg="completion request" images=0 prompt=1090 format=""
+time=2026-11-09T20:10:34.549-05:00 level=DEBUG source=cache.go:151 msg="loading cache slot" id=0 cache=205 prompt=267 used=186 remaining=81
+[GIN] 2026/11/09 - 20:10:46 | 200 | 12.422616433s |       127.0.0.1 | POST     "/api/chat"
+time=2026-11-09T20:10:46.353-05:00 level=DEBUG source=sched.go:404 msg="context for request finished" runner.name=registry.ollama.ai/library/gemma4:e4b runner.size="9.8 GiB" runner.vram="0 B" runner.parallel=1 runner.pid=62173 runner.model=/usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a runner.num_ctx=4096
+time=2026-11-09T20:10:46.353-05:00 level=DEBUG source=sched.go:309 msg="runner with non-zero duration has gone idle, adding timer" runner.name=registry.ollama.ai/library/gemma4:e4b runner.size="9.8 GiB" runner.vram="0 B" runner.parallel=1 runner.pid=62173 runner.model=/usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a runner.num_ctx=4096 duration=30m0s
+time=2026-11-09T20:10:46.353-05:00 level=DEBUG source=sched.go:327 msg="after processing request finished event" runner.name=registry.ollama.ai/library/gemma4:e4b runner.size="9.8 GiB" runner.vram="0 B" runner.parallel=1 runner.pid=62173 runner.model=/usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a runner.num_ctx=4096 refCount=0

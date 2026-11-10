@@ -1,0 +1,14 @@
+No settings file detected at /tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/modelscan-settings.toml. Using defaults. 
+
+{"summary": {"total_issues_by_severity": {"LOW": 0, "MEDIUM": 0, "HIGH": 0, 
+"CRITICAL": 0}, "total_issues": 0, "input_path": 
+"/tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/fixtures-variants/A
+5-C6/dns_exfiltration-nested.zip", "absolute_path": 
+"/tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/fixtures-variants/A
+5-C6", "modelscan_version": "0.8.8", "timestamp": "2026-11-09T20:48:19.675081", 
+"scanned": {"total_scanned": 0}, "skipped": {"total_skipped": 1, 
+"skipped_files": [{"category": "SCAN_NOT_SUPPORTED", "description": "Model Scan 
+did not scan file", "source": "dns_exfiltration-nested.zip"}]}}, "issues": [], 
+"errors": [{"category": "NESTED_ZIP", "description": "ModelScan does not support
+nested zip files.", "source": 
+"dns_exfiltration-nested.zip:dns_exfiltration.npy.zip"}]}

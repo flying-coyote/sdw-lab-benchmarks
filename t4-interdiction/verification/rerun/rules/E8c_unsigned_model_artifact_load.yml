@@ -1,0 +1,15 @@
+title: Model artifact read whose signature is not valid
+description: AML.M0013 applied to model artifacts (AIBOM). Enforcement; event unit. Table file_activity.
+status: experimental
+logsource: {category: file_event}
+detection:
+  sel:
+    activity_id: 2
+    file_ext: ['bin', 'pkl', 'pt', 'safetensors']
+  loc_models:
+    file_path|startswith: '/models/'
+  loc_hub:
+    file_path|contains: '/.cache/huggingface'
+  valid:
+    file_signature_state_id: 1
+  condition: sel and (loc_models or loc_hub) and not valid

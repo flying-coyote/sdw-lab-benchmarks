@@ -1,0 +1,10 @@
+title: Gated or training dataset bucket accessed by a principal outside the approved list
+description: AML.M0005, same check on datastore_activity (databucket).
+status: experimental
+logsource: {category: datastore}
+detection:
+  sel:
+    databucket_name|startswith: ['gated-', 'train-']
+  approved:
+    actor_user_name: ['ray', 'svc-trainer', 'svc-registry', 'svc-feature-store', 'svc-eval', 'svc-serving', 'ml-eng-ana', 'ml-eng-bo', 'ml-eng-cy', 'ml-eng-di']
+  condition: sel and not approved

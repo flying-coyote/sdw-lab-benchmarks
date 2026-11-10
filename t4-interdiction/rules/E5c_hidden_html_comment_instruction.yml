@@ -1,0 +1,11 @@
+title: Retrieved context hides an imperative inside an HTML comment
+description: AML.M0020 "evaluate ... retrieved context". Enforcement; event unit. Table api_activity (retrieval tool results on agent-runtime).
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    metadata_product_name: agent-runtime
+    api_response_data|contains: '<!--'
+  verb:
+    api_response_data|contains: ['ignore', 'run', 'execute', 'fetch', 'curl', 'please']
+  condition: sel and verb

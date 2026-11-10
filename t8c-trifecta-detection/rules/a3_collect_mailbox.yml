@@ -1,0 +1,11 @@
+title: Agent collects mailbox content or contacts
+name: a3_collect_mailbox
+description: Leg 2 (sensitive read) for the CS0066 shape, AML.T0085.001 via AML.T0053. Kind match on the tool.
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation:
+      - mail.search
+      - contacts.list
+  condition: sel

@@ -1,0 +1,185 @@
+{
+ "host": "http://127.0.0.1:11434",
+ "model": "gemma4:e4b",
+ "prompt": "Read the file fixtures/known.txt and reply with exactly the sentinel token it contains, nothing else.",
+ "turns": [
+  {
+   "request": {
+    "model": "gemma4:e4b",
+    "messages": [
+     {
+      "role": "user",
+      "content": "Read the file fixtures/known.txt and reply with exactly the sentinel token it contains, nothing else."
+     },
+     {
+      "role": "assistant",
+      "content": "",
+      "thinking": "The user wants to read the content of a specific file named `fixtures/known.txt`.\nI have a tool `read_file` that can read the contents of a file given its path.\nI should call `read_file` with the path `fixtures/known.txt`.\nThe user also specified that the reply must contain *exactly* the sentinel token found in the file, and nothing else.",
+      "tool_calls": [
+       {
+        "id": "call_qo76v3hq",
+        "function": {
+         "index": 0,
+         "name": "read_file",
+         "arguments": {
+          "path": "fixtures/known.txt"
+         }
+        }
+       }
+      ]
+     },
+     {
+      "role": "tool",
+      "content": "TEST FIXTURE for sdw-lab-benchmarks T2 (platform telemetry fidelity). Inert content, no secrets.\nSENTINEL: SDW-T2-SENTINEL-7f3a9c2e\n",
+      "tool_name": "read_file"
+     }
+    ],
+    "tools": [
+     {
+      "type": "function",
+      "function": {
+       "name": "read_file",
+       "description": "Read a UTF-8 text file from the working directory and return its contents.",
+       "parameters": {
+        "type": "object",
+        "properties": {
+         "path": {
+          "type": "string",
+          "description": "relative file path"
+         }
+        },
+        "required": [
+         "path"
+        ]
+       }
+      }
+     }
+    ],
+    "stream": false,
+    "options": {
+     "num_thread": 4,
+     "temperature": 0
+    }
+   },
+   "response": {
+    "model": "gemma4:e4b",
+    "created_at": "2026-11-10T01:00:50.392709327Z",
+    "message": {
+     "role": "assistant",
+     "content": "",
+     "thinking": "The user wants to read the content of a specific file named `fixtures/known.txt`.\nI have a tool `read_file` that can read the contents of a file given its path.\nI should call `read_file` with the path `fixtures/known.txt`.\nThe user also specified that the reply must contain *exactly* the sentinel token found in the file, and nothing else.",
+     "tool_calls": [
+      {
+       "id": "call_qo76v3hq",
+       "function": {
+        "index": 0,
+        "name": "read_file",
+        "arguments": {
+         "path": "fixtures/known.txt"
+        }
+       }
+      }
+     ]
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 45138285760,
+    "load_duration": 26816551934,
+    "prompt_eval_count": 98,
+    "prompt_eval_duration": 4713249278,
+    "eval_count": 108,
+    "eval_duration": 13182961153
+   },
+   "latency_s": 45.189
+  },
+  {
+   "request": {
+    "model": "gemma4:e4b",
+    "messages": [
+     {
+      "role": "user",
+      "content": "Read the file fixtures/known.txt and reply with exactly the sentinel token it contains, nothing else."
+     },
+     {
+      "role": "assistant",
+      "content": "",
+      "thinking": "The user wants to read the content of a specific file named `fixtures/known.txt`.\nI have a tool `read_file` that can read the contents of a file given its path.\nI should call `read_file` with the path `fixtures/known.txt`.\nThe user also specified that the reply must contain *exactly* the sentinel token found in the file, and nothing else.",
+      "tool_calls": [
+       {
+        "id": "call_qo76v3hq",
+        "function": {
+         "index": 0,
+         "name": "read_file",
+         "arguments": {
+          "path": "fixtures/known.txt"
+         }
+        }
+       }
+      ]
+     },
+     {
+      "role": "tool",
+      "content": "TEST FIXTURE for sdw-lab-benchmarks T2 (platform telemetry fidelity). Inert content, no secrets.\nSENTINEL: SDW-T2-SENTINEL-7f3a9c2e\n",
+      "tool_name": "read_file"
+     }
+    ],
+    "tools": [
+     {
+      "type": "function",
+      "function": {
+       "name": "read_file",
+       "description": "Read a UTF-8 text file from the working directory and return its contents.",
+       "parameters": {
+        "type": "object",
+        "properties": {
+         "path": {
+          "type": "string",
+          "description": "relative file path"
+         }
+        },
+        "required": [
+         "path"
+        ]
+       }
+      }
+     }
+    ],
+    "stream": false,
+    "options": {
+     "num_thread": 4,
+     "temperature": 0
+    }
+   },
+   "response": {
+    "model": "gemma4:e4b",
+    "created_at": "2026-11-10T01:01:49.224839766Z",
+    "message": {
+     "role": "assistant",
+     "content": "SENTINEL: SDW-T2-SENTINEL-7f3a9c2e"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 58832077649,
+    "load_duration": 41511059067,
+    "prompt_eval_count": 267,
+    "prompt_eval_duration": 14507952328,
+    "eval_count": 22,
+    "eval_duration": 2481662171
+   },
+   "latency_s": 58.833
+  }
+ ],
+ "start_utc": "2026-11-10T01:00:05.206755+00:00",
+ "tool_call_made": true,
+ "tool_executed": {
+  "name": "read_file",
+  "args": {
+   "path": "fixtures/known.txt"
+  },
+  "result_len": 132
+ },
+ "final_text": "SENTINEL: SDW-T2-SENTINEL-7f3a9c2e",
+ "wall_s_monotonic": 104.023,
+ "end_utc": "2026-11-10T01:01:49.225749+00:00",
+ "sentinel_in_final": true
+}

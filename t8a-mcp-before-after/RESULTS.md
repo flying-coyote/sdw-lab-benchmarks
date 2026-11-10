@@ -1,0 +1,283 @@
+---
+type: benchmark-results
+title: "T8a results: MCP logging before and after 2026-07-28, stdio and Streamable HTTP, at client, server and proxy"
+created: 2026-11-09
+area: T8a-mcp-before-after
+---
+
+# T8a results: what an MCP exchange leaves behind, before and after 2026-07-28
+
+**Pre-registration:** `PREREGISTRATION.md` sha256 `010317ad3d18f7b291cbdba24716a6c4214b1f023e8175a94f8475356ecc043a`,
+frozen 2026-11-10T00:55:38Z (local date 2026-11-09), frozen by agent before run; not owner-reviewed.
+
+**Rig stamp (§7b):** Beelink, AMD Ryzen 7 5800H, WSL2 6.6.87.2-microsoft-standard-WSL2, 14 threads visible, 47 GiB;
+Windows power plan not checked from the guest. Run date 2026-11-10 00:56 to 01:05 UTC. Python 3.12.3; `mcp` 1.30.0
+and `mcp` 2.3.0 (+ `mcp-types` 2.3.0); `opentelemetry-sdk` 1.45.2; `starlette` 1.10.0; `uvicorn` 0.54.0. Clock:
+chrony running; `chronyc tracking` read 0.000055 s fast at the start of the formal runs (`COMMANDS.log`, 01:01:36Z)
+and **0.63 s slow** at the final analysis (01:06:07Z), which is above the methodology's milliseconds target, so every
+absolute duration here is suspect. (An earlier draft of this file said "0.59 s slow before"; no logged reading
+supports that figure and it was corrected at verification.) All durations come from
+`time.monotonic_ns` / `perf_counter_ns`, so the offset does not enter them, but the host was **under contention**
+the whole time (1-minute load 13 at the end of the formal runs, 17 at the end of the sub-arm; the harness and every
+child ran under `taskset -c 0-3 nice -n 10`). **No latency claim is made in this file.** The timing table exists
+only because the pre-registration said it would (`results/timing.md`).
+
+**Tier:** B for method (first-party, single machine, one fixture server on two SDK releases, real wire captures).
+Statements about what the SDK does are from reading the pinned SDK source (`file:line` cited) and are Tier B for
+what a feature does.
+
+**Independent verification:** `VERIFICATION.md`, verdict VERIFIED-WITH-FIXES (full rerun reproduced every presence
+fact; fixes listed there and marked in this file). Every number below is reproducible from `runs/` with
+`./venv-v2/bin/python analyze.py` (writes `results/facts.json`, `results/matrix.md`, `results/stability.md`,
+`results/timing.md`); the figures in this file were copied from those outputs.
+
+## Question
+
+For one stdio MCP server and one Streamable-HTTP MCP server, each run under the official Python SDK release that
+implements protocol revision 2025-11-25 (`mcp` 1.30.0) and the release that implements 2026-07-28 (`mcp` 2.3.0),
+which facts about a `tools/call` exchange are observable at the wire (proxy), the client process, the server's
+stderr and an OpenTelemetry exporter, through which channel, and which facts move or disappear between the two
+revisions, with the SDK rewrite separated from the protocol change.
+
+## Headline
+
+Across 10 cells (5 arms × 2 transports), 3 repeats each, plus 5 single-run checks, the presence record was
+identical across repeats in every cell (`results/stability.md`, 15 of 15 cells). The B-vs-C comparison (same
+SDK 2.3.0, revision 2025-11-25 vs 2026-07-28) and the A-vs-B comparison (same revision, SDK 1.30.0 vs 2.3.0)
+split the facts cleanly:
+
+| Fact | Moved by the **revision** (B→C) | Moved by the **SDK** (A→B) |
+|---|---|---|
+| `initialize` handshake on the wire | 1 → 0; replaced by one `server/discover` | unchanged |
+| `Mcp-Session-Id` header (HTTP) | on 11 of 12 POSTs (all but `initialize`) and on all 14 HTTP responses (12 POST, the GET, the DELETE) → **0** | unchanged |
+| Per-request `_meta` protocol version + `clientInfo` | 0/11 → **11/11** requests | unchanged (0) |
+| Per-result `_meta` `serverInfo` | 0/10 → **10/10** results | unchanged (0) |
+| `Mcp-Method` header (HTTP) | 0 → **11/11** POSTs, equal to body method | unchanged (0) |
+| `Mcp-Name` header (HTTP) | 0 → **6/6** `tools/call` (verbatim, incl. `scan.v2-beta`) and 2/2 `resources/read` (carries the URI) | unchanged (0); the pre-registered worry that 2.3.0 legacy mode would send it did not materialize |
+| `ttlMs` / `cacheScope` on `tools/list` | absent → present (`0` / `private`) | unchanged |
+| In-protocol `notifications/message` (two `ctx.info()` calls) | 2 → **0** by default; 2 again with `Client(log_level="info")`, which stamps `logLevel` on 10/10 requests | unchanged (2, no `logging/setLevel` needed in either SDK) |
+| JSON-RPC error for a missing resource | `-32602` in both (**HTTP status 200 → 400** over HTTP) | **`0` → `-32602`**: the 1.30.0 server never emitted `-32002` |
+| Failure cause of a raising tool | unchanged | **client text → server stderr**: 1.30.0 tells the client `Error executing tool fail_tool: fixture raised: fixture failure`; 2.3.0 tells it `Error executing tool fail_tool` and writes the traceback (37 lines) to stderr |
+| Server stderr per request | unchanged (none) | **10 INFO lines (one per request after `initialize`) → 0**; 2.3.0 writes only per-failure lines |
+| OTel spans | 11 client spans and 11 request server spans in both, same attribute set; B has a 12th, unparented server span for `notifications/initialized` (12 → 11 server spans) | **0 → 11 client + 12 server** (11 request spans client-parented, 11/11 shared trace ids, plus the unparented notification span), `traceparent` in `_meta` on every request |
+| `MCPDeprecationWarning` on stderr for `ctx.info()` | unchanged (4 lines in both B and C) | 0 → 4 |
+
+So of the facts the draft asked about, the session id, the handshake, the per-request self-description, the
+routing headers, the cache hints and the default silence of in-protocol logging are revision facts; the OTel spans,
+the trace context, the error-cause masking, the loss of the per-request stderr line and the resource error code are
+SDK facts that arrive with 2.3.0 whether or not the connection speaks 2026-07-28. A team upgrading the SDK but
+pinning the old revision (arm B) gets the second list and not the first.
+
+## Arms
+
+| Arm | Client | Server | Negotiated (all reps, both transports) |
+|---|---|---|---|
+| A | `mcp` 1.30.0 `ClientSession` | `mcp` 1.30.0 `FastMCP` | 2025-11-25 |
+| B | `mcp` 2.3.0 `Client(mode="legacy")` | `mcp` 2.3.0 `MCPServer` | 2025-11-25 |
+| C | `mcp` 2.3.0 `Client(mode="auto")` (the default) | `mcp` 2.3.0 `MCPServer` | 2026-07-28 |
+| C-log | `mcp` 2.3.0 `Client(mode="auto", log_level="info")` | `mcp` 2.3.0 `MCPServer` | 2026-07-28 |
+| D | `mcp` 2.3.0 `Client(mode="auto")` | `mcp` 1.30.0 `FastMCP` | 2025-11-25 after fallback |
+
+Answer to the draft's "can 2.3.0 be made to speak 2026-07-28, and with what flag": no flag is needed; the
+high-level `mcp.Client` defaults to `mode="auto"`, which probes `server/discover` and adopts 2026-07-28 when the
+server answers (`mcp/client/client.py:336-341`, `mcp/client/_probe.py`). R2 negotiated 2025-11-25 because it used
+the low-level `ClientSession.initialize()`, which by design offers `LATEST_HANDSHAKE_VERSION` = 2025-11-25
+(`mcp/client/session.py:657`; `mcp_types/version.py:33-44` splits the known revisions into handshake-era and
+modern). `initialize()` is handshake-era only; a bare `ClientSession` reaches 2026-07-28 through
+`send_discover()` and `adopt()` (`mcp/client/session.py:722`, `:675`), which is exactly what `Client(mode="auto")`
+drives for you (`mcp/client/_probe.py:negotiate_auto`).
+
+## Hypotheses: verdicts
+
+- **H1 (wire shape) supported.** C: 0 `initialize`, 0 `notifications/initialized`, 1 `server/discover`; 11/11
+  requests carry `_meta` `io.modelcontextprotocol/protocolVersion` = `2026-07-28` and `clientInfo`; 10/10 results
+  carry `_meta` `io.modelcontextprotocol/serverInfo`. A and B: 1 `initialize`, 0 stamps. Both transports.
+- **H2 (sessions) supported.** A, B: `Mcp-Session-Id` on 11 of 12 POSTs (every one after `initialize`) and on all 14
+  HTTP responses (12 POST responses, the standalone GET, and the response to the DELETE at session end; the matrix
+  row counts 13 because it counts only responses carrying a JSON-RPC message, corrected at verification). C: 0 on every request and response, no GET,
+  no DELETE, and the whole run used 1 TCP connection (A and B used 14, one per request).
+- **H3 (routing headers) supported, with the pre-registered uncertainty resolved toward the revision.** C: 11/11
+  POSTs carry `MCP-Protocol-Version` and `Mcp-Method` equal to the body method; 6/6 `tools/call` carry `Mcp-Name`
+  equal to the body tool name, `scan.v2-beta` verbatim (header-safe ASCII; the SDK's base64 wrapper at
+  `mcp/shared/inbound.py:149-159` was not triggered); 2/2 `resources/read` carry `Mcp-Name` = the URI. B carries
+  `MCP-Protocol-Version` on 11 of 12 POSTs (all but `initialize`) and **no** `Mcp-Method` or `Mcp-Name`, so the
+  gateway hook for the tool name is a revision fact in this SDK, not an SDK fact. A: `MCP-Protocol-Version` only
+  (11 of 12 POSTs, all but `initialize`).
+- **H4 (stderr) supported.** A: 10 lines `Processing request of type …` (one per request after `initialize`,
+  which gets none; `mcp/server/lowlevel/server.py:733`) and 1 line
+  `Tool 'no_such_tool' not listed, no validation will be performed`; nothing at all for the raising tool, so A's
+  stderr has neither the tool name nor the cause of the failure. B and C are identical to each other (45 lines
+  stdio, 55 to 57 HTTP including 10 uvicorn startup/shutdown lines): 0 per-request lines, `Tool 'fail_tool' raised
+  an unexpected exception` plus a 37-line chained traceback ending `ValueError: fixture raised: fixture failure`,
+  `Tool 'no_such_tool' failed: 'Unknown tool: no_such_tool'`, `Tool 'echo' rejected arguments: ['text']`,
+  `Resource 'fixture://missing' failed: …`, and 4 `MCPDeprecationWarning` lines for two `ctx.info()` calls (two
+  pointing at the fixture's lines 45-46, two at `mcp/server/mcpserver/context.py:281,381`). B's two extra lines
+  over C are session lifecycle (`Created new transport with session ID`, `Terminating session`). No uvicorn
+  access log appeared in any arm. The falsification clause held, but one sub-prediction missed: the pre-registration
+  expected a tool-failure line in A and "the same `Tool %r failed` INFO line" in B and C, whereas A logs nothing for
+  the raising tool and 2.3.0 logs `raised an unexpected exception` plus a traceback (noted at verification).
+- **H5 (OTel) falsified on the letter of one clause, supported in substance.** The pre-registered falsifier "wrong if
+  B differs from C on span count" is triggered: B emits 12 server spans, C 11. The difference is one SERVER span for
+  `notifications/initialized`, a notification that carries no `traceparent` and so has no parent; it exists only in
+  the handshake era. On requests the hypothesis held: A exporter configured, 0 spans at either end (1.30.0 has no
+  OTel code); B and C 11 request server spans each, every one a child of a client span, same attribute keys.
+  (Verdict reworded at verification; the original said "supported, one nuance".)
+  Both: 11 CLIENT spans named `MCP send <method> [<name>]`, 11 shared trace ids, 11/11 server spans with a remote
+  parent. Server attribute keys in both: `mcp.method.name`, `mcp.protocol.version` (carries `2025-11-25` in B,
+  `2026-07-28` in C), `jsonrpc.request.id`, `gen_ai.operation.name` = `execute_tool`, `gen_ai.tool.name`, and on
+  failures `error.type` (`tool_error` ×3, `-32602` ×1) with `rpc.response.status_code`. Client keys:
+  `mcp.method.name`, `jsonrpc.request.id`, `error.type`, `rpc.response.status_code`. No `gen_ai.tool.call.arguments`
+  or result on any span (opt-in in the semconv; the SDK does not set them). `traceparent` rides `_meta` on every
+  JSON-RPC request in B (11 of 11, `initialize` included) and C (11 of 11); the one message without it is B's
+  `notifications/initialized`, which is a notification, not a request. (The matrix row counts non-`initialize`
+  requests, hence its 10 for B.)
+- **H6 (OTel by default) supported.** With the API importable and no `TracerProvider`: 0 `traceparent` on the wire
+  and nothing exported, B and C alike. The spans are non-recording and `inject()` writes nothing.
+- **H7 (in-protocol logging) supported.** A and B: 2 `notifications/message` on the wire and 2 delivered to the
+  client's `logging_callback`, with no `logging/setLevel` sent. C: 0 and 0. C-log: 2 and 2, with
+  `io.modelcontextprotocol/logLevel` on 10/10 post-discover requests. Over HTTP, C-log's `log_then_echo` response
+  was the only `text/event-stream` body in the run (the other 10 were `application/json`), because the modern entry
+  commits to SSE only when the handler emits a notification (`mcp/server/_streamable_http_modern.py` module
+  docstring). In A and B, 11 of 12 POST responses were SSE regardless.
+- **H8 (`server/discover` against a 2025-era server) wrong in both details, right on the outcome.** stdio: the
+  1.30.0 server answered `-32602 Invalid request parameters` (not `-32601`), and wrote `Failed to validate request:
+  31 validation errors for ClientRequest` followed by about 90 lines of pydantic union errors to stderr (D-stdio:
+  105 stderr lines vs A's 11). HTTP: the 1.30.0 server answered **HTTP 400** with body
+  `{"jsonrpc":"2.0","id":"server-error","error":{"code":-32600,"message":"Bad Request: Missing session ID"}}`
+  and, oddly, an `mcp-session-id` header on the 400 (a different value from the session later created). In both
+  transports the client then ran `initialize` and landed on 2025-11-25, and the rest of the run matched arm A
+  except that the client is 2.3.0 (so it has client spans, 12, and sends `traceparent` on all 12 requests, the
+  `server/discover` probe and `initialize` included, to a server that ignores it; 0 shared trace ids; the matrix row
+  counts the 11 non-`initialize` requests).
+- **H9 (error codes) half wrong.** Missing resource: A returns `code: 0` on the wire in both transports. The site:
+  `FastMCP.read_resource` raises `ResourceError` (`mcp/server/fastmcp/server.py:404`), and the 1.30.0 low-level
+  dispatcher turns any handler exception into `ErrorData(code=0, message=str(err))`
+  (`mcp/server/lowlevel/server.py:794`), so no 1.30.0 `FastMCP` handler exception ever carries `-32002`. B and C
+  return `-32602`. So in
+  this SDK pair the `-32002`→`-32602` change in the changelog never shows, because 1.30.0 did not send `-32002`
+  for this path; what does change with the revision is the HTTP status: 200 in A and B, 400 in C (the modern entry
+  maps JSON-RPC error codes to HTTP statuses). Unknown tool and missing argument: `CallToolResult` with
+  `isError: true` in every arm, cause as text, as predicted.
+- **H10 (cache hints) supported.** C: `ttlMs: 0`, `cacheScope: "private"` on `tools/list`, and both `tools/list`
+  requests reached the wire (2/2); `server/discover` also returned `ttlMs: 0`. A and B: neither key.
+- **H11 (trace hop) supported.** Uninstrumented: the backend saw 5 headers and no `traceparent`. With
+  `opentelemetry-instrumentation-httpx` 0.66b2 activated in the server: the backend saw
+  `traceparent: 00-3d7bf70f…-…-03`, whose trace id equals the server's `tools/call fetch_backend` span, and the
+  server exporter gained a 13th span (`CLIENT GET`, scope `opentelemetry.instrumentation.httpx`). The MCP SDK's own
+  instrumentation stops at the MCP boundary; the hop needs the HTTP client instrumented.
+- **H12 (repeatability) supported.** 15/15 cells identical across repeats on every presence fact (ids, durations
+  and the user-agent string excluded by design).
+
+## Where each fact is reachable, per revision (the table the draft's section 3 was waiting for)
+
+Capture points: W = wire via proxy, H = HTTP header at proxy, C = client process, S = server stderr, O = OTel
+exporter (operator-configured). OCSF path and R2 class are for OCSF main with the `ai_operation` profile
+(`agent-toolcall-schemas/map_schemas.py`, `OCSF_MAIN`); rows marked *new* were not in R2 and the path is a
+judgment call made here.
+
+| Fact | A (1.30.0, 2025-11-25) | B (2.3.0, 2025-11-25) | C (2.3.0, 2026-07-28) | OCSF main path (class) |
+|---|---|---|---|---|
+| Tool name | W, C; O: no | W, C, O (`gen_ai.tool.name`) | W, **H** (`Mcp-Name`), C, O | `ai_capability.name` (TYPED, R2) |
+| MCP method | W, C | W, C, O (`mcp.method.name`) | W, **H** (`Mcp-Method`), C, O | `api.operation` (TYPED, R2) |
+| Protocol version | W (`initialize` only), H (after init), C | W (`initialize`), H, C, O (`mcp.protocol.version`) | W (**every request**), H, C, O | `api.version` (TYPED, R2 judgment) |
+| Client name/version | W (`initialize` only), C | W (`initialize` only), C | W (**every request**, `_meta.clientInfo`) | `message_context.application.name/.version` (TYPED, R2) |
+| Server name/version | W (`initialize` result), C | same | W (**every result**, `_meta.serverInfo`; also `server/discover`) | `ai_capability.service.name/.version` (TYPED, R2) |
+| Session id (HTTP) | H (`Mcp-Session-Id`), S (`session ID` lines), C (`get_session_id`) | H, S, C | **none**; servers mint their own handles in tool arguments (SEP-2567) | *new* `session.uid` (TYPED) in A/B; DROPPED in C |
+| Request id | W, C | W, C, O (`jsonrpc.request.id`) | W, C, O | `ai_capability.transaction_uid` (TYPED, R2) |
+| Arguments | W, C | W, C (not on spans) | W, C (not on spans) | `api.request.data` (BLOB, R2) |
+| Result content / `isError` | W, C | W, C, O (`error.type=tool_error`) | W, C, O | `api.response.data` (BLOB) / `status_id` (TYPED), R2 |
+| Failure cause (raising tool) | W, **C** (in the error text) | **S** only (traceback) | **S** only | `api.response.error_message` (TYPED) in A; outside any record unless stderr is shipped, in B/C |
+| Unknown tool / bad arguments | W, C (text), S (A: unknown tool only) | W, C, S (both), O (`tool_error`) | same as B | `status_id` + `api.response.error_message` (TYPED, R2) |
+| Server-side log lines (`ctx.info`) | W + C (`notifications/message`), 2/2 | W + C, 2/2 | **0 by default**; W + C with `log_level` opt-in, riding the request's own stream | *new* `unmapped.mcp.log` (UNMAPPED): API Activity has no home for a server log line |
+| Trace context | none | W (`_meta.traceparent`), O (parented spans) | W, O | *new* `metadata.correlation_uid` = trace id (TYPED, judgment); native in OTel |
+| Cache hints `ttlMs`/`cacheScope` | none | none | W, C | *new* `unmapped.mcp.cache` (UNMAPPED) |
+| `server/discover` (versions, capabilities, instructions) | none (`-32602` + 90 stderr lines when probed) | none | W, C | *new* `unmapped.mcp.server_capabilities` (UNMAPPED, as R2's `server_capabilities`) |
+| Per-request server stderr line | **S** (`Processing request of type`) | none | none | not a record field; the operator's only per-request server-side signal in A |
+| Deprecation of `ctx.info` | none | S (4 lines / 2 calls) | S (4 lines / 2 calls) | none |
+| HTTP status of a JSON-RPC error | always 200 | always 200 | **400** for `-32602` | *new* `http_response.code` (TYPED) |
+
+Counting the table: between B and C, 7 facts **appear** at a new point (tool name and method as headers, protocol
+version and client info on every request, server info on every result, cache hints, discover) and 2 **disappear**
+(the session id, and in-protocol log lines by default); between A and B, 2 facts **move** (failure cause from client
+text to server stderr; nothing per request on stderr), 1 **appears** (trace context and spans at O) and the
+resource error code changes value.
+
+## Counts per cell (rep 1; identical across reps; stderr lines are non-blank lines, so B/C files run 2 lines longer by `wc -l`)
+
+| cell | wire requests | results | log notifs | HTTP conns / POSTs | stderr lines | server spans | client spans |
+|---|---|---|---|---|---|---|---|
+| A-stdio | 11 | 10 | 2 | – | 11 | 0 | 0 |
+| B-stdio | 11 | 10 | 2 | – | 45 | 12 | 11 |
+| C-stdio | 11 | 10 | 0 | – | 45 | 11 | 11 |
+| Clog-stdio | 11 | 10 | 2 | – | 45 | 11 | 11 |
+| D-stdio | 12 | 10 | 2 | – | 105 | 0 | 12 |
+| A-http | 11 | 10 | 2 | 14 / 12 (+1 GET, +1 DELETE) | 33 | 0 | 0 |
+| B-http | 11 | 10 | 2 | 14 / 12 (+1 GET, +1 DELETE) | 57 | 12 | 11 |
+| C-http | 11 | 10 | 0 | 1 / 11 | 55 | 11 | 11 |
+| Clog-http | 11 | 10 | 2 | 2 / 11 | 55 | 11 | 11 |
+| D-http | 12 | 10 | 2 | 14 / 13 | 35 | 0 | 12 |
+
+Full matrix with every fact: `results/matrix.md`. Timings (median, CV over 3 reps, under contention, no claim):
+`results/timing.md`; for the record, `tools/call echo` round trips were 1.9 to 14.9 ms medians with CVs of 19 to
+89 percent, which is noise, not a comparison.
+
+## Deviations from the pre-registration
+
+1. **Smoke runs before the formal runs.** Four cells (A/C × stdio/http) ran once as `rep0` to debug the harness,
+   then were deleted before the formal runs (logged in `COMMANDS.log` at 00:57 to 01:00 UTC). Two harness bugs were
+   fixed between smoke and formal: the SDK's `stdio_client` passes only a safe environment subset to the child, so
+   the stdio server never received its OTel file path until the client passed `env=` explicitly
+   (`t8a_common.server_env`), and the HTTP parser mishandled CRLF SSE blocks and client-closed chunked streams. The
+   smoke captures that survived in my notes agree with the formal ones on every presence fact.
+2. **No DuckDB.** The pre-registration does not include one (it is silent on DuckDB rather than dropping it
+   explicitly); noted because the R2 server this fixture descends from had one.
+3. **Sub-arm package installed after the formal runs.** `opentelemetry-instrumentation-httpx` 0.66b2 (with
+   `opentelemetry-instrumentation`, `opentelemetry-util-http`, `wrapt` 2.5.2, `packaging` 26.3) went into `venv-v2`
+   at 01:04 UTC; `requirements-v2.txt` is the formal-run freeze, `requirements-v2-subarm.txt` the post-install one.
+   Instrumentation activates only when `T8A_HTTPX_INSTRUMENT=1`, which only the `-instr` cell sets.
+4. **Analysis script tag bug**, fixed before this file was written: the first `analyze.py` pass merged the
+   instrumented and uninstrumented backend cells under one tag; the fix is the `-instr` suffix. Both cells are
+   single runs as pre-registered.
+5. **The A-arm backend check** (`A-stdio-backend`, one run) was not pre-registered; it was added so the trace-hop
+   row has a 1.30.0 reference (no `traceparent`, as expected for an SDK with no OTel code).
+6. **Clock.** The logged check at the start of the formal runs read chrony 0.000055 s fast; the reading at final
+   analysis, five minutes later, was 0.63 s slow, above the methodology's target. This bench's claims are presence
+   facts and counts, not durations, so every duration is marked suspect. (Corrected at verification: an earlier
+   version said the pre-run check found 0.59 s slow, which no logged reading supports.)
+7. **Harness files edited after the formal runs** (found at verification). `server_v2.py`, `t8a_common.py` and
+   `run_cell.py` carry mtimes of 01:04Z, after the formal runs ended (01:03:34Z) and before the sub-arm cells; the
+   edit added the env-gated `--instrument` / `T8A_HTTPX_INSTRUMENT` path. So the formal cells ran an earlier version
+   of those three files, which was not kept. The verification rerun on the current files reproduced every presence
+   fact in all 15 cells, which is the evidence that the edit is inert outside the `-instr` cell.
+8. **`COMMANDS.log` timestamps for venv creation are backfilled** (found at verification): the log stamps both venv
+   installs at the freeze time 00:55:38Z, while the `venv-v1`/`venv-v2` directories date from 00:47Z, eight minutes
+   before the freeze. Installing packages is not a run; the first capture file is 01:01:37Z.
+
+## Limits
+
+- One fixture server, written on each SDK's high-level API (`FastMCP` 1.30.0, `MCPServer` 2.3.0), defaults untouched.
+  A low-level `Server` on either SDK, or a server written in the TypeScript or Go SDK, may log differently; the
+  draft's own R5 showed three TypeScript servers still on 2025-06-18.
+- One client per arm. Other MCP clients (an IDE, an agent runtime) choose their own `mode` and may never probe
+  `server/discover`.
+- The OTel results describe the SDK's built-in middleware with the operator-supplied provider. A real deployment
+  that also instruments uvicorn, httpx or the model call would see more spans; this bench measured only what the MCP
+  SDK itself emits.
+- `Mcp-Name` fidelity was tested with a header-safe name only. The SDK's base64 wrapping for non-ASCII or
+  whitespace names (`inbound.py:149-159`) exists in code and was not exercised, because SEP-986's tool-name grammar
+  (`^[A-Za-z0-9._-]{1,128}$`, enforced by both SDKs) does not admit such names; URIs in `resources/read` could.
+- The missing-resource code in A is a `FastMCP` 1.30.0 behaviour (`code: 0`), not a statement about the 2025-11-25
+  specification, which did define `-32002`.
+- Timings are under contention and behind a clock 0.6 s off; they are not evidence of anything.
+- Single machine, single day, Tier B. No owner review of the pre-registration.
+
+## Files
+
+- `PREREGISTRATION.md`, `PREREGISTRATION.sha256` (hash + freeze time), `COMMANDS.log` (every command, UTC).
+- `requirements-v1.txt`, `requirements-v2.txt` (formal), `requirements-v2-subarm.txt`.
+- Fixtures: `server_v1.py`, `server_v2.py`, `client_v1.py`, `client_v2.py`, `t8a_common.py`, `backend.py`.
+- Capture: `proxy_stdio.py` (R2 tee with stderr redirect), `proxy_tcp.py` (raw TCP tee), `parse_http.py` (h11).
+- Harness: `run_cell.py`, `run_all.sh`; analysis: `analyze.py`.
+- `runs/<cell>/rep<N>/`: `wire.jsonl` or `tcp.jsonl` + `http.jsonl`, `client.jsonl`, `server.stderr`,
+  `server.otel.jsonl`, `client.otel.jsonl`, `backend.jsonl` (sub-arm), `run.json`. 2.5 MB, 154 JSONL files.
+- `results/facts.json`, `results/matrix.md`, `results/stability.md`, `results/timing.md`.

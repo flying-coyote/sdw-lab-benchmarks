@@ -1,0 +1,10 @@
+title: Model deserialization imports a module outside the model-loading allowlist
+description: AML.M0011 "pickle files ... can contain exploits that allow for loading of malicious libraries". Enforcement; event unit. Table module_activity.
+status: experimental
+logsource: {category: image_load}
+detection:
+  sel:
+    actor_process_cmd_line|contains: ['torch.load', 'pickle.load']
+  allow:
+    module_file_name: ['torch', 'numpy', 'collections', 'typing', 'pickle', '_pickle', 'codecs']
+  condition: sel and not allow

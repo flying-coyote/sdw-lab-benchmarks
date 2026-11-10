@@ -1,0 +1,19 @@
+# Repeat stability (H12)
+
+| cell | reps | identical presence record across reps | differing keys |
+|---|---|---|---|
+| A-http | 3 | yes |  |
+| A-stdio | 3 | yes |  |
+| A-stdio-backend | 1 | yes |  |
+| B-http | 3 | yes |  |
+| B-stdio | 3 | yes |  |
+| B-stdio-nootel | 1 | yes |  |
+| C-http | 3 | yes |  |
+| C-stdio | 3 | yes |  |
+| C-stdio-backend | 1 | yes |  |
+| C-stdio-backend-instr | 1 | yes |  |
+| C-stdio-nootel | 1 | yes |  |
+| Clog-http | 3 | yes |  |
+| Clog-stdio | 3 | yes |  |
+| D-http | 3 | yes |  |
+| D-stdio | 3 | yes |  |

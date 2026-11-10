@@ -1,0 +1,37 @@
+## verify start 2026-11-10T01:23:49Z
+System time     : 0.000018309 seconds fast of NTP time
+Last offset     : -0.000016529 seconds
+14
+               total        used        free      shared  buff/cache   available
+Mem:              47          23           9           0          14          23
+6.6.87.2-microsoft-standard-WSL2
+docker 29.5.3
+fixture-sha: sha256sum: osquery_5.24.0-1.linux_amd64.deb: No such file or directory
+fixture-sha: osquery_5.24.0-1.linux_amd64.deb: FAILED open or read
+fixture-sha: sha256sum: saoudrizwan.claude-dev-4.1.26.vsix: No such file or directory
+fixture-sha: saoudrizwan.claude-dev-4.1.26.vsix: FAILED open or read
+fixture-sha: sha256sum: WARNING: 2 listed files could not be read
+osquery_5.24.0-1.linux_amd64.deb: OK
+saoudrizwan.claude-dev-4.1.26.vsix: OK
+tcpdump version 4.99.5
+Dnsmasq version 2.91  Copyright (c) 2000-2025 Simon Kelley
+3.22.8
+zeek version 8.0.11
+Server:		192.168.65.7
+Address:	192.168.65.7:53
+
+Non-authoritative answer:
+
+Non-authoritative answer:
+CREATE TABLE yara_events(`target_path` TEXT, `category` TEXT, `action` TEXT, `matches` TEXT, `count` INTEGER, `strings` TEXT, `tags` TEXT, `time` BIGINT, `eid` TEXT HIDDEN, `transaction_id` BIGINT HIDDEN);
+CREATE TABLE yara_file(`path` TEXT, `matches` TEXT, `count` INTEGER, `sig_group` TEXT, `sigfile` TEXT, `sigrule` TEXT HIDDEN, `strings` TEXT, `tags` TEXT, `sigurl` TEXT HIDDEN, `pid_with_namespace` INTEGER HIDDEN, PRIMARY KEY (`path`, `sig_group`, `sigfile`, `sigrule`, `sigurl`, `pid_with_namespace`)) WITHOUT ROWID;
+CREATE TABLE yara_process(`pid` INTEGER, `matches` TEXT, `count` INTEGER, `sig_group` TEXT, `sigfile` TEXT, `sigrule` TEXT HIDDEN, `strings` TEXT, `tags` TEXT, `sigurl` TEXT HIDDEN, `pid_with_namespace` INTEGER HIDDEN, PRIMARY KEY (`pid`, `sig_group`, `sigfile`, `sigrule`, `sigurl`, `pid_with_namespace`)) WITHOUT ROWID;
+CREATE TABLE yara_file(`path` TEXT, `matches` TEXT, `count` INTEGER, `sig_group` TEXT, `sigfile` TEXT, `sigrule` TEXT HIDDEN, `strings` TEXT, `tags` TEXT, `sigurl` TEXT HIDDEN, `pid_with_namespace` INTEGER HIDDEN, PRIMARY KEY (`path`, `sig_group`, `sigfile`, `sigrule`, `sigurl`, `pid_with_namespace`)) WITHOUT ROWID;
+[
+  {"name":"yara_events"},
+  {"name":"yara_file"},
+  {"name":"yara_process"}
+]
+Application:   syft
+Version:       1.55.0
+BuildDate:     2026-10-19T18:54:46Z

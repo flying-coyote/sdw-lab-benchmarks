@@ -1,0 +1,8 @@
+[
+  {"family":"2","local_address":"0.0.0.0","local_port":"8000","pid":"-1","state":"LISTEN"},
+  {"family":"2","local_address":"0.0.0.0","local_port":"8080","pid":"-1","state":"LISTEN"},
+  {"family":"10","local_address":"::","local_port":"11434","pid":"-1","state":"LISTEN"},
+  {"family":"2","local_address":"0.0.0.0","local_port":"8000","pid":"-1","state":"LISTEN"},
+  {"family":"2","local_address":"0.0.0.0","local_port":"8080","pid":"-1","state":"LISTEN"},
+  {"family":"10","local_address":"::","local_port":"11434","pid":"-1","state":"LISTEN"}
+]

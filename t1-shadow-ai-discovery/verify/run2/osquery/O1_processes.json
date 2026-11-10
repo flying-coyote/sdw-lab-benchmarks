@@ -1,0 +1,9 @@
+[
+  {"cmdline":"sleep infinity","name":"sleep","path":"/usr/bin/sleep","pid":"1","uid":"0"},
+  {"cmdline":"ollama serve","name":"ollama","path":"","pid":"13","uid":"1000"},
+  {"cmdline":"osqueryi --json --logger_min_status=2 SELECT pid, name, path, cmdline, uid FROM processes WHERE pid > 0;","name":"osqueryi","path":"/opt/osquery/bin/osqueryd","pid":"178","uid":"0"},
+  {"cmdline":"python3 /home/dev/openai_compat_stub.py 8000","name":"python3","path":"","pid":"44","uid":"1000"},
+  {"cmdline":"bash /opt/activity.sh","name":"bash","path":"","pid":"46","uid":"1000"},
+  {"cmdline":"python3 -m http.server 8080 --bind 0.0.0.0","name":"python3","path":"","pid":"47","uid":"1000"},
+  {"cmdline":"/usr/local/bin/ollama runner --model /home/dev/.ollama/models/blobs/sha256-2af3b81862c6be03c769683af18efdadb2c33f60ff32ab6f83e42c043d6c7816 --port 44363","name":"ollama","path":"","pid":"55","uid":"1000"}
+]

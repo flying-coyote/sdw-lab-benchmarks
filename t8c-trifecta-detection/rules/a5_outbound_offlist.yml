@@ -1,0 +1,22 @@
+title: Agent outbound call to a destination outside the allowlist
+name: a5_outbound_offlist
+description: Leg 3 (way out) for both shapes, AML.T0086 / ATT&CK T1700 (AN2079 "unauthorized destination"). Allowlist fixed in PREREGISTRATION.md before any row existed.
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation:
+      - http.open
+      - web.fetch
+  allow:
+    dst_endpoint_hostname:
+      - docs.python.org
+      - github.com
+      - api.github.com
+      - pypi.org
+      - intranet.example
+      - wiki.example
+      - calendar.example
+      - mail.example
+      - registry.example
+  condition: sel and not allow

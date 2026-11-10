@@ -1,0 +1,11 @@
+title: Agent ingests repository issue or PR content
+name: a2_ingest_repo
+description: Leg 1 (untrusted content) for the CS0067 shape, AML.T0093 -> AML.T0051.001 / ATT&CK T1698. Kind match on the tool; no content read.
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation:
+      - issue.read
+      - pr.read
+  condition: sel

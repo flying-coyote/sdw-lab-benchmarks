@@ -1,0 +1,24 @@
+freeze_time_utc 2026-11-10T01:05:35Z
+f95931e86b33294284ac58c989f62bb6dd4e9cced4f70a85122cb7177d6e8ef6  PREREGISTRATION.md
+0d6db9b2ca27a92c5a0530a5b3bfc1f2d6b67d40cd835457ccc686ad0cc5d4bf  kc.py
+8aaa0eeab98b69e3f78698a16c777a552f2e3a6c8c504a69089d2289a1a3975b  harness.py
+eee1669863f806e93082094dbfb0f8649382c9b313e8d26ccdc310ad6f745e8f  run_all.sh
+af2667434e969d733ce7127d9161b8f43dd5b213cf6d24fd80b7e84433c19d1e  requirements.txt
+chronyc: System time     : 0.633134067 seconds slow of NTP time
+loadavg: 15.62 12.37 8.36 14/1612 72539
+
+post_freeze_analysis_hashes 2026-11-10T01:17:51Z
+47ecc42ae26920bd806d3311e222fb374c3ca9e4ffa33864bf547669b3eb20f4  score.py
+c15fcfc08172faf0b049692ec628a4d318d604e8b44409041c7f51355c10ffdb  map_ocsf.py
+10814580b7f2255c5c4533f0a85078e51ef08900bd5c1e70f9fb5524ade1409e  PREREGISTRATION.md
+b8dd8e6849004157e736215c10d0b4c8c711375b5b5f8742c8aeff022c3ce1f1  RESULTS.md
+a741dcabc85708b445276ec824b0068b8052d547a993abb7a8948d27fc2a49b2  README.md
+RESULTS.md re-hashed 2026-11-10T01:18:15Z: f044900790b7b435cd666d0e1392ff1ce89ff100cf376b38125a3962d6ae10a2  RESULTS.md
+final_hashes 2026-11-10T01:22:17Z
+6ac1caf24b8f53bf9e9f4119aea5c900be3dcc18426367d67d962a7e00934d8a  RESULTS.md
+1abe07efc4505cfc47aa59de1b742f6e810e771899353b4704261330e32c6f7d  README.md
+1ed56e5a581a6575114aaff5fd64d1f34b9da7b169d39c7261e3c71043e58787  results/raw/S/fixture-secrets.json
+f07c8ad6f27a5796cf0844393682ae20087af9cd5baeb3d432f0a3a2ce74a156  results/raw/S/realm-config.json
+4262d18a3eca7af872fcd63683fada01ca513aa478b98f000f00ed431b54e8ad  results/raw/D/fixture-secrets.json
+5505935fc05cc2a25a7d3e094333af9ea85c369e788db38ff9a9f0f5ffc79dd6  results/raw/D/realm-config.json
+4e33eec17f75254b0ca13fb9840d6ffdd6984ebc1bb36cf6db1e0cdfadd49f91  results/raw/serverinfo-enums.json

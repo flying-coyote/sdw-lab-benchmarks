@@ -1,0 +1,7546 @@
+{
+ "benchmark": "t4-interdiction",
+ "compiled_sql": {
+  "AML.M0005|E3.datastore": "SELECT event_uid FROM logs WHERE (databucket_name LIKE 'gated-%' ESCAPE '\\' OR databucket_name LIKE 'train-%' ESCAPE '\\') AND (NOT COALESCE((actor_user_name='ray' OR actor_user_name='svc-trainer' OR actor_user_name='svc-registry' OR actor_user_name='svc-feature-store' OR actor_user_name='svc-eval' OR actor_user_name='svc-serving' OR actor_user_name='ml-eng-ana' OR actor_user_name='ml-eng-bo' OR actor_user_name='ml-eng-cy' OR actor_user_name='ml-eng-di'), 0))",
+  "AML.M0005|E3.file": "SELECT event_uid FROM logs WHERE (file_path LIKE '/models/%' ESCAPE '\\' OR file_path LIKE '/data/train/%' ESCAPE '\\') AND (NOT COALESCE((actor_user_name='ray' OR actor_user_name='svc-trainer' OR actor_user_name='svc-registry' OR actor_user_name='svc-feature-store' OR actor_user_name='svc-eval' OR actor_user_name='svc-serving' OR actor_user_name='ml-eng-ana' OR actor_user_name='ml-eng-bo' OR actor_user_name='ml-eng-cy' OR actor_user_name='ml-eng-di'), 0))",
+  "AML.M0011|E4": "SELECT event_uid FROM logs WHERE activity_id=1 AND (NOT COALESCE((module_file_path LIKE '/usr/lib%' ESCAPE '\\' OR module_file_path LIKE '/usr/local/lib%' ESCAPE '\\' OR module_file_path LIKE '/opt/venv/lib%' ESCAPE '\\' OR module_file_path LIKE 'C:\\\\Windows\\\\System32%' ESCAPE '\\' OR module_file_path LIKE 'C:\\\\Program Files%' ESCAPE '\\'), 0))",
+  "AML.M0011|E4b": "SELECT event_uid FROM logs WHERE (actor_process_cmd_line LIKE '%torch.load%' ESCAPE '\\' OR actor_process_cmd_line LIKE '%pickle.load%' ESCAPE '\\') AND (NOT COALESCE((module_file_name='torch' OR module_file_name='numpy' OR module_file_name='collections' OR module_file_name='typing' OR module_file_name='pickle' OR module_file_name LIKE '\\_pickle' ESCAPE '\\' OR module_file_name='codecs'), 0))",
+  "AML.M0013|E8a.module": "SELECT event_uid FROM logs WHERE activity_id=1 AND (NOT COALESCE((module_file_signature_state_id=1), 0))",
+  "AML.M0013|E8a.process": "SELECT event_uid FROM logs WHERE activity_id=1 AND (NOT COALESCE((process_file_signature_state_id=1), 0))",
+  "AML.M0013|E8b": "SELECT event_uid FROM logs WHERE (activity_id=1 OR activity_id=8) AND (attestation_list_authority_uid IS NULL OR (app_name='torch' AND (NOT COALESCE((attestation_list_authority_uid='pytorch'), 0))) OR (app_name='numpy' AND (NOT COALESCE((attestation_list_authority_uid='numpy'), 0))) OR (app_name='requests' AND (NOT COALESCE((attestation_list_authority_uid='psf'), 0))))",
+  "AML.M0013|E8c": "SELECT event_uid FROM logs WHERE (activity_id=2 AND (file_ext='bin' OR file_ext='pkl' OR file_ext='pt' OR file_ext='safetensors')) AND (file_path LIKE '/models/%' ESCAPE '\\' OR file_path LIKE '%/.cache/huggingface%' ESCAPE '\\') AND (NOT COALESCE((file_signature_state_id=1), 0))",
+  "AML.M0019|D1": "\n        SELECT actor_user_name AS entity, (time - (time % 3600000)) AS bucket, COUNT(*) AS n\n        FROM api_activity\n        WHERE metadata_product_name = 'model-gateway' AND api_operation = 'chat.completions' AND actor_user_name IS NOT NULL\n        GROUP BY actor_user_name, (time - (time % 3600000))\n        HAVING COUNT(*) > 500",
+  "AML.M0019|E1": "SELECT event_uid FROM logs WHERE api_service_name='chat' AND actor_user_name IS NULL",
+  "AML.M0020|E5a": "SELECT event_uid FROM logs WHERE message_context_prompt_text LIKE '%ignore previous instructions%' ESCAPE '\\' OR message_context_prompt_text LIKE '%ignore all previous%' ESCAPE '\\' OR message_context_prompt_text LIKE '%disregard your%' ESCAPE '\\' OR message_context_prompt_text LIKE '%you are now%' ESCAPE '\\' OR message_context_prompt_text LIKE '%developer mode%' ESCAPE '\\' OR message_context_prompt_text LIKE '%do anything now%' ESCAPE '\\' OR message_context_prompt_text LIKE '%reveal your system prompt%' ESCAPE '\\'",
+  "AML.M0020|E5b": "SELECT event_uid FROM logs WHERE metadata_product_name='agent-runtime' AND (api_request_data LIKE '%rm -rf%' ESCAPE '\\' OR api_request_data LIKE '%terminate-instances%' ESCAPE '\\' OR api_request_data LIKE '%delete-bucket%' ESCAPE '\\' OR api_request_data LIKE '%s3 rb%' ESCAPE '\\' OR api_request_data LIKE '%DROP TABLE%' ESCAPE '\\')",
+  "AML.M0020|E5c": "SELECT event_uid FROM logs WHERE (metadata_product_name='agent-runtime' AND api_response_data LIKE '%<!--%' ESCAPE '\\') AND (api_response_data LIKE '%ignore%' ESCAPE '\\' OR api_response_data LIKE '%run%' ESCAPE '\\' OR api_response_data LIKE '%execute%' ESCAPE '\\' OR api_response_data LIKE '%fetch%' ESCAPE '\\' OR api_response_data LIKE '%curl%' ESCAPE '\\' OR api_response_data LIKE '%please%' ESCAPE '\\')",
+  "AML.M0024|D6a": "\n        SELECT e.message_trace_uid AS entity, a.event_uid AS req_uid, e.event_uid AS rec_uid\n        FROM api_activity a\n        JOIN email_activity e\n          ON e.message_trace_uid = replace(substr(a.api_request_data, instr(a.api_request_data, '\"trace\": \"') + 10), '\"}', '')\n        WHERE a.metadata_product_name = 'agent-runtime' AND a.api_operation = 'postmark.sendEmail'\n          AND e.metadata_product_name = 'mail-provider'\n          AND e.email_bcc IS NOT NULL AND a.api_request_data NOT LIKE '%\"bcc\"%'",
+  "AML.M0024|D6b": "SELECT event_uid FROM logs WHERE (metadata_product_name='agent-runtime' AND status_id=1) AND (api_operation='fs.delete' OR (api_operation='bash.execute' AND (api_request_data LIKE '%rm -rf%' ESCAPE '\\' OR api_request_data LIKE '%terminate-instances%' ESCAPE '\\' OR api_request_data LIKE '%delete-bucket%' ESCAPE '\\' OR api_request_data LIKE '%s3 rb%' ESCAPE '\\' OR api_request_data LIKE '%DROP TABLE%' ESCAPE '\\')))",
+  "AML.M0024|D6c": "\n        SELECT src_endpoint_ip AS entity, (time - (time % 3600000)) AS bucket, COUNT(DISTINCT actor_user_name) AS n\n        FROM api_activity\n        WHERE metadata_product_name = 'model-gateway' AND api_operation = 'chat.completions' AND actor_user_name IS NOT NULL\n        GROUP BY src_endpoint_ip, (time - (time % 3600000))\n        HAVING COUNT(DISTINCT actor_user_name) >= 10",
+  "AML.M0040|D7": "\n        SELECT actor_user_name AS entity, (time - (time % 3600000)) AS bucket, COUNT(*) AS n, SUM(message_context_total_tokens) AS toks\n        FROM api_activity\n        WHERE metadata_product_name = 'model-gateway' AND api_operation = 'chat.completions' AND actor_user_name IS NOT NULL\n        GROUP BY actor_user_name, (time - (time % 3600000))\n        HAVING COUNT(*) > 500 OR SUM(message_context_total_tokens) > 200000",
+  "AML.M0043|E2.account": "SELECT event_uid FROM logs WHERE activity_id=1 AND ai_agent_name IS NOT NULL AND delegation_uid IS NULL",
+  "AML.M0043|E2.api": "SELECT event_uid FROM logs WHERE (api_operation='github.repos.create' OR api_operation='gists.create' OR api_operation='ec2.RunInstances' OR api_operation='iam.createUser' OR api_operation='s3.createBucket' OR api_operation='sandbox.create') AND ai_agent_name IS NOT NULL AND delegation_uid IS NULL"
+ },
+ "per_seed": {
+  "20261109": {
+   "checks": {
+    "AML.M0005|E3.datastore|duckdb": {
+     "alerts": 4,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 4,
+     "precision": 1.0,
+     "table": "datastore_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0005|E3.datastore|sqlite": {
+     "alerts": 4,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 4,
+     "precision": 1.0,
+     "table": "datastore_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0005|E3.file|duckdb": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "file_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0005|E3.file|sqlite": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "file_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0011|E4b|duckdb": {
+     "alerts": 3,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 3,
+     "precision": 1.0,
+     "table": "module_activity",
+     "tp_alerts": 3,
+     "unit": "event"
+    },
+    "AML.M0011|E4b|sqlite": {
+     "alerts": 3,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 3,
+     "precision": 1.0,
+     "table": "module_activity",
+     "tp_alerts": 3,
+     "unit": "event"
+    },
+    "AML.M0011|E4|duckdb": {
+     "alerts": 151,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 151,
+     "precision": 0.351,
+     "table": "module_activity",
+     "tp_alerts": 53,
+     "unit": "event"
+    },
+    "AML.M0011|E4|sqlite": {
+     "alerts": 151,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 151,
+     "precision": 0.351,
+     "table": "module_activity",
+     "tp_alerts": 53,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.module|duckdb": {
+     "alerts": 43,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 43,
+     "precision": 0.0,
+     "table": "module_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.module|sqlite": {
+     "alerts": 43,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 43,
+     "precision": 0.0,
+     "table": "module_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.process|duckdb": {
+     "alerts": 38,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 38,
+     "precision": 0.0,
+     "table": "process_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.process|sqlite": {
+     "alerts": 38,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 38,
+     "precision": 0.0,
+     "table": "process_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8b|duckdb": {
+     "alerts": 444,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 444,
+     "precision": 0.0338,
+     "table": "application_lifecycle",
+     "tp_alerts": 15,
+     "unit": "event"
+    },
+    "AML.M0013|E8b|sqlite": {
+     "alerts": 444,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 444,
+     "precision": 0.0338,
+     "table": "application_lifecycle",
+     "tp_alerts": 15,
+     "unit": "event"
+    },
+    "AML.M0013|E8c|duckdb": {
+     "alerts": 67,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 67,
+     "precision": 0.0746,
+     "table": "file_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0013|E8c|sqlite": {
+     "alerts": 67,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 67,
+     "precision": 0.0746,
+     "table": "file_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0019|D1|duckdb": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0019|D1|sqlite": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0019|E1|duckdb": {
+     "alerts": 20,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 20,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0019|E1|sqlite": {
+     "alerts": 20,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 20,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0020|E5a|duckdb": {
+     "alerts": 20,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 20,
+     "precision": 0.3,
+     "supplementary_case_folded": {
+      "alerts": 29,
+      "matched_events": 29,
+      "precision": 0.5172,
+      "tp_alerts": 15
+     },
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    },
+    "AML.M0020|E5a|sqlite": {
+     "alerts": 29,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 29,
+     "precision": 0.5172,
+     "supplementary_case_folded": {
+      "alerts": 29,
+      "matched_events": 29,
+      "precision": 0.5172,
+      "tp_alerts": 15
+     },
+     "table": "api_activity",
+     "tp_alerts": 15,
+     "unit": "event"
+    },
+    "AML.M0020|E5b|duckdb": {
+     "alerts": 5,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 5,
+     "precision": 0.8,
+     "supplementary_case_folded": {
+      "alerts": 5,
+      "matched_events": 5,
+      "precision": 0.8,
+      "tp_alerts": 4
+     },
+     "table": "api_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0020|E5b|sqlite": {
+     "alerts": 5,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 5,
+     "precision": 0.8,
+     "supplementary_case_folded": {
+      "alerts": 5,
+      "matched_events": 5,
+      "precision": 0.8,
+      "tp_alerts": 4
+     },
+     "table": "api_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0020|E5c|duckdb": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 1.0,
+     "supplementary_case_folded": {
+      "alerts": 21,
+      "matched_events": 21,
+      "precision": 0.4762,
+      "tp_alerts": 10
+     },
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    },
+    "AML.M0020|E5c|sqlite": {
+     "alerts": 21,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 21,
+     "precision": 0.4762,
+     "supplementary_case_folded": {
+      "alerts": 21,
+      "matched_events": 21,
+      "precision": 0.4762,
+      "tp_alerts": 10
+     },
+     "table": "api_activity",
+     "tp_alerts": 10,
+     "unit": "event"
+    },
+    "AML.M0024|D6a|duckdb": {
+     "alerts": 8,
+     "entities": [
+      "trace-pm-00",
+      "trace-pm-01",
+      "trace-pm-02",
+      "trace-pm-03",
+      "trace-pm-04",
+      "trace-pm-05",
+      "trace-pm-06",
+      "trace-pm-07"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 16,
+     "precision": 1.0,
+     "table": "api_activity+email_activity",
+     "tp_alerts": 8,
+     "unit": "message"
+    },
+    "AML.M0024|D6a|sqlite": {
+     "alerts": 8,
+     "entities": [
+      "trace-pm-00",
+      "trace-pm-01",
+      "trace-pm-02",
+      "trace-pm-03",
+      "trace-pm-04",
+      "trace-pm-05",
+      "trace-pm-06",
+      "trace-pm-07"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 16,
+     "precision": 1.0,
+     "table": "api_activity+email_activity",
+     "tp_alerts": 8,
+     "unit": "message"
+    },
+    "AML.M0024|D6b|duckdb": {
+     "alerts": 14,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 14,
+     "precision": 0.3571,
+     "table": "api_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0024|D6b|sqlite": {
+     "alerts": 14,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 14,
+     "precision": 0.3571,
+     "table": "api_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0024|D6c|duckdb": {
+     "alerts": 5,
+     "entities": [
+      "10.250.0.1",
+      "10.250.0.2",
+      "198.18.10.5",
+      "198.18.20.7",
+      "198.18.30.9"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 1542,
+     "precision": 0.6,
+     "table": "api_activity",
+     "tp_alerts": 3,
+     "unit": "ip"
+    },
+    "AML.M0024|D6c|sqlite": {
+     "alerts": 5,
+     "entities": [
+      "10.250.0.1",
+      "10.250.0.2",
+      "198.18.10.5",
+      "198.18.20.7",
+      "198.18.30.9"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 1542,
+     "precision": 0.6,
+     "table": "api_activity",
+     "tp_alerts": 3,
+     "unit": "ip"
+    },
+    "AML.M0040|D7|duckdb": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0040|D7|sqlite": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0043|E2.account|duckdb": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "account_change",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0043|E2.account|sqlite": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "account_change",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0043|E2.api|duckdb": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 1.0,
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    },
+    "AML.M0043|E2.api|sqlite": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 1.0,
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    }
+   },
+   "planted_per_step": {
+    "CS0023[1]": 5,
+    "CS0023[3]": 10,
+    "CS0031[1]": 4,
+    "CS0034[3]": 15,
+    "CS0047[1]": 20,
+    "CS0047[2]": 7,
+    "CS0047[5]": 6,
+    "CS0053[5]": 16,
+    "CS0068[0]": 6,
+    "CS0068[23]": 3,
+    "CS0073[1]": 15,
+    "CS0074[13]": 53,
+    "CS0074[20]": 10,
+    "CS0074[22]": 6,
+    "CS0074[2]": 8,
+    "CS0075[7]": 1000,
+    "CS0076[11]": 720,
+    "CS0076[2]": 720,
+    "CS0076[4]": 720,
+    "CS0076[7]": 30,
+    "CS0076[8]": 30
+   },
+   "slots": [
+    {
+     "by_construction": false,
+     "control": "AML.M0019",
+     "per_check": {
+      "D1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[2]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0019",
+     "per_check": {
+      "D1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0019",
+     "per_check": {
+      "D1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[4]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0043",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0076[2]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0043",
+     "per_check": {
+      "E2.account|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.account|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.api|duckdb": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      },
+      "E2.api|sqlite": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      }
+     },
+     "planted_events": 6,
+     "set": "rule",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0074[22]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0043",
+     "per_check": {
+      "E2.account|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.account|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.api|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.api|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 3,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0068[23]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0005",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0076[2]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0005",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0074[10]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0005",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0076[6]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0005",
+     "per_check": {
+      "E3.datastore|duckdb": {
+       "precision": 1.0,
+       "recall": 0.6667,
+       "state": "CAUGHT"
+      },
+      "E3.datastore|sqlite": {
+       "precision": 1.0,
+       "recall": 0.6667,
+       "state": "CAUGHT"
+      },
+      "E3.file|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.file|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 6,
+     "set": "mech",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0068[0]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0005",
+     "per_check": {
+      "E3.datastore|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.datastore|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.file|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.file|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 10,
+     "set": "mech",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0023[3]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0011",
+     "per_check": {
+      "E4b|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4b|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|duckdb": {
+       "precision": 0.351,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E4|sqlite": {
+       "precision": 0.351,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 53,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0074[13]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0011",
+     "per_check": {
+      "E4b|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4b|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|duckdb": {
+       "precision": 0.351,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|sqlite": {
+       "precision": 0.351,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 8,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0074[2]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0011",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0074[24]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0011",
+     "per_check": {
+      "E4b|duckdb": {
+       "precision": 1.0,
+       "recall": 0.75,
+       "state": "CAUGHT"
+      },
+      "E4b|sqlite": {
+       "precision": 1.0,
+       "recall": 0.75,
+       "state": "CAUGHT"
+      },
+      "E4|duckdb": {
+       "precision": 0.351,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|sqlite": {
+       "precision": 0.351,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 4,
+     "set": "mech",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0031[1]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.3,
+       "recall": 0.2,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.5
+      },
+      "E5a|sqlite": {
+       "precision": 0.5172,
+       "recall": 0.5,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 0.5
+      },
+      "E5b|duckdb": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|sqlite": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.4762,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0076[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.3,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5a|sqlite": {
+       "precision": 0.5172,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|duckdb": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|sqlite": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.4762,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[8]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.3,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5a|sqlite": {
+       "precision": 0.5172,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|duckdb": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|sqlite": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.6,
+       "state": "CAUGHT",
+       "supplementary_case_folded_recall": 1.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.4762,
+       "recall": 1.0,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 1.0
+      }
+     },
+     "planted_events": 10,
+     "set": "rule",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0074[20]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.3,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5a|sqlite": {
+       "precision": 0.5172,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|duckdb": {
+       "precision": 0.8,
+       "recall": 0.5714,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 0.5714
+      },
+      "E5b|sqlite": {
+       "precision": 0.8,
+       "recall": 0.5714,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 0.5714
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.4762,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      }
+     },
+     "planted_events": 7,
+     "set": "mech",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0047[2]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3571,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3571,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 15,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0034[3]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3571,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3571,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0076[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3571,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3571,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0076[4]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3571,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3571,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 16,
+     "set": "mech",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0053[5]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3571,
+       "recall": 0.8333,
+       "state": "NOISY"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3571,
+       "recall": 0.8333,
+       "state": "NOISY"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 6,
+     "set": "mech",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0047[5]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0040",
+     "per_check": {
+      "D7|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D7|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[11]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0040",
+     "per_check": {
+      "D7|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D7|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 1000,
+     "set": "mech",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0075[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0013",
+     "per_check": {
+      "E8a.module|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.module|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|duckdb": {
+       "precision": 0.0338,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E8b|sqlite": {
+       "precision": 0.0338,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E8c|duckdb": {
+       "precision": 0.0746,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|sqlite": {
+       "precision": 0.0746,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 15,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0073[1]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0013",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0069[13]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0013",
+     "per_check": {
+      "E8a.module|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.module|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|duckdb": {
+       "precision": 0.0338,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|sqlite": {
+       "precision": 0.0338,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|duckdb": {
+       "precision": 0.0746,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E8c|sqlite": {
+       "precision": 0.0746,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 5,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0023[1]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0013",
+     "per_check": {
+      "E8a.module|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.module|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|duckdb": {
+       "precision": 0.0338,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|sqlite": {
+       "precision": 0.0338,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|duckdb": {
+       "precision": 0.0746,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|sqlite": {
+       "precision": 0.0746,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 20,
+     "set": "mech",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0047[1]"
+    }
+   ],
+   "truth_sha256": "dcfe888ba9500dd8816434b26205fe0fd55bbbb064e7382e46b2cf30aa3b9d27"
+  },
+  "20261110": {
+   "checks": {
+    "AML.M0005|E3.datastore|duckdb": {
+     "alerts": 4,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 4,
+     "precision": 1.0,
+     "table": "datastore_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0005|E3.datastore|sqlite": {
+     "alerts": 4,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 4,
+     "precision": 1.0,
+     "table": "datastore_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0005|E3.file|duckdb": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "file_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0005|E3.file|sqlite": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "file_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0011|E4b|duckdb": {
+     "alerts": 3,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 3,
+     "precision": 1.0,
+     "table": "module_activity",
+     "tp_alerts": 3,
+     "unit": "event"
+    },
+    "AML.M0011|E4b|sqlite": {
+     "alerts": 3,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 3,
+     "precision": 1.0,
+     "table": "module_activity",
+     "tp_alerts": 3,
+     "unit": "event"
+    },
+    "AML.M0011|E4|duckdb": {
+     "alerts": 163,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 163,
+     "precision": 0.3252,
+     "table": "module_activity",
+     "tp_alerts": 53,
+     "unit": "event"
+    },
+    "AML.M0011|E4|sqlite": {
+     "alerts": 163,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 163,
+     "precision": 0.3252,
+     "table": "module_activity",
+     "tp_alerts": 53,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.module|duckdb": {
+     "alerts": 43,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 43,
+     "precision": 0.0,
+     "table": "module_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.module|sqlite": {
+     "alerts": 43,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 43,
+     "precision": 0.0,
+     "table": "module_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.process|duckdb": {
+     "alerts": 42,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 42,
+     "precision": 0.0,
+     "table": "process_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.process|sqlite": {
+     "alerts": 42,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 42,
+     "precision": 0.0,
+     "table": "process_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8b|duckdb": {
+     "alerts": 461,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 461,
+     "precision": 0.0325,
+     "table": "application_lifecycle",
+     "tp_alerts": 15,
+     "unit": "event"
+    },
+    "AML.M0013|E8b|sqlite": {
+     "alerts": 461,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 461,
+     "precision": 0.0325,
+     "table": "application_lifecycle",
+     "tp_alerts": 15,
+     "unit": "event"
+    },
+    "AML.M0013|E8c|duckdb": {
+     "alerts": 63,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 63,
+     "precision": 0.0794,
+     "table": "file_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0013|E8c|sqlite": {
+     "alerts": 63,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 63,
+     "precision": 0.0794,
+     "table": "file_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0019|D1|duckdb": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0019|D1|sqlite": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0019|E1|duckdb": {
+     "alerts": 20,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 20,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0019|E1|sqlite": {
+     "alerts": 20,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 20,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0020|E5a|duckdb": {
+     "alerts": 23,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 23,
+     "precision": 0.2609,
+     "supplementary_case_folded": {
+      "alerts": 32,
+      "matched_events": 32,
+      "precision": 0.4688,
+      "tp_alerts": 15
+     },
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    },
+    "AML.M0020|E5a|sqlite": {
+     "alerts": 32,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 32,
+     "precision": 0.4688,
+     "supplementary_case_folded": {
+      "alerts": 32,
+      "matched_events": 32,
+      "precision": 0.4688,
+      "tp_alerts": 15
+     },
+     "table": "api_activity",
+     "tp_alerts": 15,
+     "unit": "event"
+    },
+    "AML.M0020|E5b|duckdb": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 0.6667,
+     "supplementary_case_folded": {
+      "alerts": 6,
+      "matched_events": 6,
+      "precision": 0.6667,
+      "tp_alerts": 4
+     },
+     "table": "api_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0020|E5b|sqlite": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 0.6667,
+     "supplementary_case_folded": {
+      "alerts": 6,
+      "matched_events": 6,
+      "precision": 0.6667,
+      "tp_alerts": 4
+     },
+     "table": "api_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0020|E5c|duckdb": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 1.0,
+     "supplementary_case_folded": {
+      "alerts": 21,
+      "matched_events": 21,
+      "precision": 0.4762,
+      "tp_alerts": 10
+     },
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    },
+    "AML.M0020|E5c|sqlite": {
+     "alerts": 21,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 21,
+     "precision": 0.4762,
+     "supplementary_case_folded": {
+      "alerts": 21,
+      "matched_events": 21,
+      "precision": 0.4762,
+      "tp_alerts": 10
+     },
+     "table": "api_activity",
+     "tp_alerts": 10,
+     "unit": "event"
+    },
+    "AML.M0024|D6a|duckdb": {
+     "alerts": 8,
+     "entities": [
+      "trace-pm-00",
+      "trace-pm-01",
+      "trace-pm-02",
+      "trace-pm-03",
+      "trace-pm-04",
+      "trace-pm-05",
+      "trace-pm-06",
+      "trace-pm-07"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 16,
+     "precision": 1.0,
+     "table": "api_activity+email_activity",
+     "tp_alerts": 8,
+     "unit": "message"
+    },
+    "AML.M0024|D6a|sqlite": {
+     "alerts": 8,
+     "entities": [
+      "trace-pm-00",
+      "trace-pm-01",
+      "trace-pm-02",
+      "trace-pm-03",
+      "trace-pm-04",
+      "trace-pm-05",
+      "trace-pm-06",
+      "trace-pm-07"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 16,
+     "precision": 1.0,
+     "table": "api_activity+email_activity",
+     "tp_alerts": 8,
+     "unit": "message"
+    },
+    "AML.M0024|D6b|duckdb": {
+     "alerts": 8,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 8,
+     "precision": 0.625,
+     "table": "api_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0024|D6b|sqlite": {
+     "alerts": 8,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 8,
+     "precision": 0.625,
+     "table": "api_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0024|D6c|duckdb": {
+     "alerts": 5,
+     "entities": [
+      "10.250.0.1",
+      "10.250.0.2",
+      "198.18.10.5",
+      "198.18.20.7",
+      "198.18.30.9"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 1529,
+     "precision": 0.6,
+     "table": "api_activity",
+     "tp_alerts": 3,
+     "unit": "ip"
+    },
+    "AML.M0024|D6c|sqlite": {
+     "alerts": 5,
+     "entities": [
+      "10.250.0.1",
+      "10.250.0.2",
+      "198.18.10.5",
+      "198.18.20.7",
+      "198.18.30.9"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 1529,
+     "precision": 0.6,
+     "table": "api_activity",
+     "tp_alerts": 3,
+     "unit": "ip"
+    },
+    "AML.M0040|D7|duckdb": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0040|D7|sqlite": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0043|E2.account|duckdb": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "account_change",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0043|E2.account|sqlite": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "account_change",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0043|E2.api|duckdb": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 1.0,
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    },
+    "AML.M0043|E2.api|sqlite": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 1.0,
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    }
+   },
+   "planted_per_step": {
+    "CS0023[1]": 5,
+    "CS0023[3]": 10,
+    "CS0031[1]": 4,
+    "CS0034[3]": 15,
+    "CS0047[1]": 20,
+    "CS0047[2]": 7,
+    "CS0047[5]": 6,
+    "CS0053[5]": 16,
+    "CS0068[0]": 6,
+    "CS0068[23]": 3,
+    "CS0073[1]": 15,
+    "CS0074[13]": 53,
+    "CS0074[20]": 10,
+    "CS0074[22]": 6,
+    "CS0074[2]": 8,
+    "CS0075[7]": 1000,
+    "CS0076[11]": 720,
+    "CS0076[2]": 720,
+    "CS0076[4]": 720,
+    "CS0076[7]": 30,
+    "CS0076[8]": 30
+   },
+   "slots": [
+    {
+     "by_construction": false,
+     "control": "AML.M0019",
+     "per_check": {
+      "D1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[2]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0019",
+     "per_check": {
+      "D1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0019",
+     "per_check": {
+      "D1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[4]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0043",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0076[2]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0043",
+     "per_check": {
+      "E2.account|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.account|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.api|duckdb": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      },
+      "E2.api|sqlite": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      }
+     },
+     "planted_events": 6,
+     "set": "rule",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0074[22]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0043",
+     "per_check": {
+      "E2.account|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.account|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.api|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.api|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 3,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0068[23]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0005",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0076[2]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0005",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0074[10]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0005",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0076[6]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0005",
+     "per_check": {
+      "E3.datastore|duckdb": {
+       "precision": 1.0,
+       "recall": 0.6667,
+       "state": "CAUGHT"
+      },
+      "E3.datastore|sqlite": {
+       "precision": 1.0,
+       "recall": 0.6667,
+       "state": "CAUGHT"
+      },
+      "E3.file|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.file|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 6,
+     "set": "mech",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0068[0]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0005",
+     "per_check": {
+      "E3.datastore|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.datastore|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.file|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.file|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 10,
+     "set": "mech",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0023[3]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0011",
+     "per_check": {
+      "E4b|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4b|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|duckdb": {
+       "precision": 0.3252,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E4|sqlite": {
+       "precision": 0.3252,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 53,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0074[13]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0011",
+     "per_check": {
+      "E4b|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4b|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|duckdb": {
+       "precision": 0.3252,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|sqlite": {
+       "precision": 0.3252,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 8,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0074[2]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0011",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0074[24]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0011",
+     "per_check": {
+      "E4b|duckdb": {
+       "precision": 1.0,
+       "recall": 0.75,
+       "state": "CAUGHT"
+      },
+      "E4b|sqlite": {
+       "precision": 1.0,
+       "recall": 0.75,
+       "state": "CAUGHT"
+      },
+      "E4|duckdb": {
+       "precision": 0.3252,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|sqlite": {
+       "precision": 0.3252,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 4,
+     "set": "mech",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0031[1]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.2609,
+       "recall": 0.2,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.5
+      },
+      "E5a|sqlite": {
+       "precision": 0.4688,
+       "recall": 0.5,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 0.5
+      },
+      "E5b|duckdb": {
+       "precision": 0.6667,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|sqlite": {
+       "precision": 0.6667,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.4762,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0076[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.2609,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5a|sqlite": {
+       "precision": 0.4688,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|duckdb": {
+       "precision": 0.6667,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|sqlite": {
+       "precision": 0.6667,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.4762,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[8]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.2609,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5a|sqlite": {
+       "precision": 0.4688,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|duckdb": {
+       "precision": 0.6667,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|sqlite": {
+       "precision": 0.6667,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.6,
+       "state": "CAUGHT",
+       "supplementary_case_folded_recall": 1.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.4762,
+       "recall": 1.0,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 1.0
+      }
+     },
+     "planted_events": 10,
+     "set": "rule",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0074[20]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.2609,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5a|sqlite": {
+       "precision": 0.4688,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|duckdb": {
+       "precision": 0.6667,
+       "recall": 0.5714,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 0.5714
+      },
+      "E5b|sqlite": {
+       "precision": 0.6667,
+       "recall": 0.5714,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 0.5714
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.4762,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      }
+     },
+     "planted_events": 7,
+     "set": "mech",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0047[2]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.625,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.625,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 15,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0034[3]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.625,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.625,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0076[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.625,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.625,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0076[4]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      },
+      "D6b|duckdb": {
+       "precision": 0.625,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.625,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 16,
+     "set": "mech",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0053[5]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.625,
+       "recall": 0.8333,
+       "state": "NOISY"
+      },
+      "D6b|sqlite": {
+       "precision": 0.625,
+       "recall": 0.8333,
+       "state": "NOISY"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 6,
+     "set": "mech",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0047[5]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0040",
+     "per_check": {
+      "D7|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D7|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[11]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0040",
+     "per_check": {
+      "D7|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D7|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 1000,
+     "set": "mech",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0075[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0013",
+     "per_check": {
+      "E8a.module|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.module|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|duckdb": {
+       "precision": 0.0325,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E8b|sqlite": {
+       "precision": 0.0325,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E8c|duckdb": {
+       "precision": 0.0794,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|sqlite": {
+       "precision": 0.0794,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 15,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0073[1]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0013",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0069[13]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0013",
+     "per_check": {
+      "E8a.module|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.module|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|duckdb": {
+       "precision": 0.0325,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|sqlite": {
+       "precision": 0.0325,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|duckdb": {
+       "precision": 0.0794,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E8c|sqlite": {
+       "precision": 0.0794,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 5,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0023[1]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0013",
+     "per_check": {
+      "E8a.module|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.module|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|duckdb": {
+       "precision": 0.0325,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|sqlite": {
+       "precision": 0.0325,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|duckdb": {
+       "precision": 0.0794,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|sqlite": {
+       "precision": 0.0794,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 20,
+     "set": "mech",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0047[1]"
+    }
+   ],
+   "truth_sha256": "9b81a897e8dab62e1def0497ece620856c27fed90934628154aa19e839de727f"
+  },
+  "20261111": {
+   "checks": {
+    "AML.M0005|E3.datastore|duckdb": {
+     "alerts": 4,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 4,
+     "precision": 1.0,
+     "table": "datastore_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0005|E3.datastore|sqlite": {
+     "alerts": 4,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 4,
+     "precision": 1.0,
+     "table": "datastore_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0005|E3.file|duckdb": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "file_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0005|E3.file|sqlite": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "file_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0011|E4b|duckdb": {
+     "alerts": 3,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 3,
+     "precision": 1.0,
+     "table": "module_activity",
+     "tp_alerts": 3,
+     "unit": "event"
+    },
+    "AML.M0011|E4b|sqlite": {
+     "alerts": 3,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 3,
+     "precision": 1.0,
+     "table": "module_activity",
+     "tp_alerts": 3,
+     "unit": "event"
+    },
+    "AML.M0011|E4|duckdb": {
+     "alerts": 156,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 156,
+     "precision": 0.3397,
+     "table": "module_activity",
+     "tp_alerts": 53,
+     "unit": "event"
+    },
+    "AML.M0011|E4|sqlite": {
+     "alerts": 156,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 156,
+     "precision": 0.3397,
+     "table": "module_activity",
+     "tp_alerts": 53,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.module|duckdb": {
+     "alerts": 36,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 36,
+     "precision": 0.0,
+     "table": "module_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.module|sqlite": {
+     "alerts": 36,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 36,
+     "precision": 0.0,
+     "table": "module_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.process|duckdb": {
+     "alerts": 36,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 36,
+     "precision": 0.0,
+     "table": "process_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8a.process|sqlite": {
+     "alerts": 36,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 36,
+     "precision": 0.0,
+     "table": "process_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0013|E8b|duckdb": {
+     "alerts": 442,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 442,
+     "precision": 0.0339,
+     "table": "application_lifecycle",
+     "tp_alerts": 15,
+     "unit": "event"
+    },
+    "AML.M0013|E8b|sqlite": {
+     "alerts": 442,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 442,
+     "precision": 0.0339,
+     "table": "application_lifecycle",
+     "tp_alerts": 15,
+     "unit": "event"
+    },
+    "AML.M0013|E8c|duckdb": {
+     "alerts": 72,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 72,
+     "precision": 0.0694,
+     "table": "file_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0013|E8c|sqlite": {
+     "alerts": 72,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 72,
+     "precision": 0.0694,
+     "table": "file_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0019|D1|duckdb": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0019|D1|sqlite": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0019|E1|duckdb": {
+     "alerts": 20,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 20,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0019|E1|sqlite": {
+     "alerts": 20,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 20,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0020|E5a|duckdb": {
+     "alerts": 19,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 19,
+     "precision": 0.3158,
+     "supplementary_case_folded": {
+      "alerts": 28,
+      "matched_events": 28,
+      "precision": 0.5357,
+      "tp_alerts": 15
+     },
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    },
+    "AML.M0020|E5a|sqlite": {
+     "alerts": 28,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 28,
+     "precision": 0.5357,
+     "supplementary_case_folded": {
+      "alerts": 28,
+      "matched_events": 28,
+      "precision": 0.5357,
+      "tp_alerts": 15
+     },
+     "table": "api_activity",
+     "tp_alerts": 15,
+     "unit": "event"
+    },
+    "AML.M0020|E5b|duckdb": {
+     "alerts": 5,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 5,
+     "precision": 0.8,
+     "supplementary_case_folded": {
+      "alerts": 5,
+      "matched_events": 5,
+      "precision": 0.8,
+      "tp_alerts": 4
+     },
+     "table": "api_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0020|E5b|sqlite": {
+     "alerts": 5,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 5,
+     "precision": 0.8,
+     "supplementary_case_folded": {
+      "alerts": 5,
+      "matched_events": 5,
+      "precision": 0.8,
+      "tp_alerts": 4
+     },
+     "table": "api_activity",
+     "tp_alerts": 4,
+     "unit": "event"
+    },
+    "AML.M0020|E5c|duckdb": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 1.0,
+     "supplementary_case_folded": {
+      "alerts": 19,
+      "matched_events": 19,
+      "precision": 0.5263,
+      "tp_alerts": 10
+     },
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    },
+    "AML.M0020|E5c|sqlite": {
+     "alerts": 19,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 19,
+     "precision": 0.5263,
+     "supplementary_case_folded": {
+      "alerts": 19,
+      "matched_events": 19,
+      "precision": 0.5263,
+      "tp_alerts": 10
+     },
+     "table": "api_activity",
+     "tp_alerts": 10,
+     "unit": "event"
+    },
+    "AML.M0024|D6a|duckdb": {
+     "alerts": 8,
+     "entities": [
+      "trace-pm-00",
+      "trace-pm-01",
+      "trace-pm-02",
+      "trace-pm-03",
+      "trace-pm-04",
+      "trace-pm-05",
+      "trace-pm-06",
+      "trace-pm-07"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 16,
+     "precision": 1.0,
+     "table": "api_activity+email_activity",
+     "tp_alerts": 8,
+     "unit": "message"
+    },
+    "AML.M0024|D6a|sqlite": {
+     "alerts": 8,
+     "entities": [
+      "trace-pm-00",
+      "trace-pm-01",
+      "trace-pm-02",
+      "trace-pm-03",
+      "trace-pm-04",
+      "trace-pm-05",
+      "trace-pm-06",
+      "trace-pm-07"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 16,
+     "precision": 1.0,
+     "table": "api_activity+email_activity",
+     "tp_alerts": 8,
+     "unit": "message"
+    },
+    "AML.M0024|D6b|duckdb": {
+     "alerts": 13,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 13,
+     "precision": 0.3846,
+     "table": "api_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0024|D6b|sqlite": {
+     "alerts": 13,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 13,
+     "precision": 0.3846,
+     "table": "api_activity",
+     "tp_alerts": 5,
+     "unit": "event"
+    },
+    "AML.M0024|D6c|duckdb": {
+     "alerts": 5,
+     "entities": [
+      "10.250.0.1",
+      "10.250.0.2",
+      "198.18.10.5",
+      "198.18.20.7",
+      "198.18.30.9"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 1514,
+     "precision": 0.6,
+     "table": "api_activity",
+     "tp_alerts": 3,
+     "unit": "ip"
+    },
+    "AML.M0024|D6c|sqlite": {
+     "alerts": 5,
+     "entities": [
+      "10.250.0.1",
+      "10.250.0.2",
+      "198.18.10.5",
+      "198.18.20.7",
+      "198.18.30.9"
+     ],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 1514,
+     "precision": 0.6,
+     "table": "api_activity",
+     "tp_alerts": 3,
+     "unit": "ip"
+    },
+    "AML.M0040|D7|duckdb": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0040|D7|sqlite": {
+     "alerts": 0,
+     "entities": [],
+     "error": null,
+     "kind": "sql",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "api_activity",
+     "tp_alerts": 0,
+     "unit": "identity"
+    },
+    "AML.M0043|E2.account|duckdb": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "account_change",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0043|E2.account|sqlite": {
+     "alerts": 0,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 0,
+     "precision": 0.0,
+     "table": "account_change",
+     "tp_alerts": 0,
+     "unit": "event"
+    },
+    "AML.M0043|E2.api|duckdb": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 1.0,
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    },
+    "AML.M0043|E2.api|sqlite": {
+     "alerts": 6,
+     "error": null,
+     "kind": "sigma",
+     "matched_events": 6,
+     "precision": 1.0,
+     "table": "api_activity",
+     "tp_alerts": 6,
+     "unit": "event"
+    }
+   },
+   "planted_per_step": {
+    "CS0023[1]": 5,
+    "CS0023[3]": 10,
+    "CS0031[1]": 4,
+    "CS0034[3]": 15,
+    "CS0047[1]": 20,
+    "CS0047[2]": 7,
+    "CS0047[5]": 6,
+    "CS0053[5]": 16,
+    "CS0068[0]": 6,
+    "CS0068[23]": 3,
+    "CS0073[1]": 15,
+    "CS0074[13]": 53,
+    "CS0074[20]": 10,
+    "CS0074[22]": 6,
+    "CS0074[2]": 8,
+    "CS0075[7]": 1000,
+    "CS0076[11]": 720,
+    "CS0076[2]": 720,
+    "CS0076[4]": 720,
+    "CS0076[7]": 30,
+    "CS0076[8]": 30
+   },
+   "slots": [
+    {
+     "by_construction": false,
+     "control": "AML.M0019",
+     "per_check": {
+      "D1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[2]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0019",
+     "per_check": {
+      "D1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0019",
+     "per_check": {
+      "D1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E1|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[4]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0043",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0076[2]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0043",
+     "per_check": {
+      "E2.account|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.account|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.api|duckdb": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      },
+      "E2.api|sqlite": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      }
+     },
+     "planted_events": 6,
+     "set": "rule",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0074[22]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0043",
+     "per_check": {
+      "E2.account|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.account|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.api|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E2.api|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 3,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0068[23]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0005",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0076[2]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0005",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0074[10]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0005",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0076[6]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0005",
+     "per_check": {
+      "E3.datastore|duckdb": {
+       "precision": 1.0,
+       "recall": 0.6667,
+       "state": "CAUGHT"
+      },
+      "E3.datastore|sqlite": {
+       "precision": 1.0,
+       "recall": 0.6667,
+       "state": "CAUGHT"
+      },
+      "E3.file|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.file|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 6,
+     "set": "mech",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0068[0]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0005",
+     "per_check": {
+      "E3.datastore|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.datastore|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.file|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E3.file|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 10,
+     "set": "mech",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0023[3]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0011",
+     "per_check": {
+      "E4b|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4b|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|duckdb": {
+       "precision": 0.3397,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E4|sqlite": {
+       "precision": 0.3397,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 53,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0074[13]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0011",
+     "per_check": {
+      "E4b|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4b|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|duckdb": {
+       "precision": 0.3397,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|sqlite": {
+       "precision": 0.3397,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 8,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0074[2]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0011",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0074[24]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0011",
+     "per_check": {
+      "E4b|duckdb": {
+       "precision": 1.0,
+       "recall": 0.75,
+       "state": "CAUGHT"
+      },
+      "E4b|sqlite": {
+       "precision": 1.0,
+       "recall": 0.75,
+       "state": "CAUGHT"
+      },
+      "E4|duckdb": {
+       "precision": 0.3397,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E4|sqlite": {
+       "precision": 0.3397,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 4,
+     "set": "mech",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0031[1]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.3158,
+       "recall": 0.2,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.5
+      },
+      "E5a|sqlite": {
+       "precision": 0.5357,
+       "recall": 0.5,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 0.5
+      },
+      "E5b|duckdb": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|sqlite": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.5263,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0076[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.3158,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5a|sqlite": {
+       "precision": 0.5357,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|duckdb": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|sqlite": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.5263,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[8]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.3158,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5a|sqlite": {
+       "precision": 0.5357,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|duckdb": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|sqlite": {
+       "precision": 0.8,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.6,
+       "state": "CAUGHT",
+       "supplementary_case_folded_recall": 1.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.5263,
+       "recall": 1.0,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 1.0
+      }
+     },
+     "planted_events": 10,
+     "set": "rule",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0074[20]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0020",
+     "per_check": {
+      "E5a|duckdb": {
+       "precision": 0.3158,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5a|sqlite": {
+       "precision": 0.5357,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5b|duckdb": {
+       "precision": 0.8,
+       "recall": 0.5714,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 0.5714
+      },
+      "E5b|sqlite": {
+       "precision": 0.8,
+       "recall": 0.5714,
+       "state": "NOISY",
+       "supplementary_case_folded_recall": 0.5714
+      },
+      "E5c|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      },
+      "E5c|sqlite": {
+       "precision": 0.5263,
+       "recall": 0.0,
+       "state": "MISSED",
+       "supplementary_case_folded_recall": 0.0
+      }
+     },
+     "planted_events": 7,
+     "set": "mech",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0047[2]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3846,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3846,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 15,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0034[3]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3846,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3846,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 30,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0076[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3846,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3846,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0076[4]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 1.0,
+       "state": "CAUGHT"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3846,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3846,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 16,
+     "set": "mech",
+     "state": {
+      "duckdb": "CAUGHT",
+      "sqlite": "CAUGHT"
+     },
+     "step": "CS0053[5]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0024",
+     "per_check": {
+      "D6a|duckdb": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6a|sqlite": {
+       "precision": 1.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6b|duckdb": {
+       "precision": 0.3846,
+       "recall": 0.8333,
+       "state": "NOISY"
+      },
+      "D6b|sqlite": {
+       "precision": 0.3846,
+       "recall": 0.8333,
+       "state": "NOISY"
+      },
+      "D6c|duckdb": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D6c|sqlite": {
+       "precision": 0.6,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 6,
+     "set": "mech",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0047[5]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0040",
+     "per_check": {
+      "D7|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D7|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 720,
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0076[11]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0040",
+     "per_check": {
+      "D7|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "D7|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 1000,
+     "set": "mech",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0075[7]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0013",
+     "per_check": {
+      "E8a.module|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.module|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|duckdb": {
+       "precision": 0.0339,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E8b|sqlite": {
+       "precision": 0.0339,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E8c|duckdb": {
+       "precision": 0.0694,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|sqlite": {
+       "precision": 0.0694,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 15,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0073[1]"
+    },
+    {
+     "by_construction": true,
+     "control": "AML.M0013",
+     "set": "rule",
+     "state": {
+      "duckdb": "MISSED-by-construction",
+      "sqlite": "MISSED-by-construction"
+     },
+     "step": "CS0069[13]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0013",
+     "per_check": {
+      "E8a.module|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.module|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|duckdb": {
+       "precision": 0.0339,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|sqlite": {
+       "precision": 0.0339,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|duckdb": {
+       "precision": 0.0694,
+       "recall": 1.0,
+       "state": "NOISY"
+      },
+      "E8c|sqlite": {
+       "precision": 0.0694,
+       "recall": 1.0,
+       "state": "NOISY"
+      }
+     },
+     "planted_events": 5,
+     "set": "rule",
+     "state": {
+      "duckdb": "NOISY",
+      "sqlite": "NOISY"
+     },
+     "step": "CS0023[1]"
+    },
+    {
+     "by_construction": false,
+     "control": "AML.M0013",
+     "per_check": {
+      "E8a.module|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.module|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|duckdb": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8a.process|sqlite": {
+       "precision": 0.0,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|duckdb": {
+       "precision": 0.0339,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8b|sqlite": {
+       "precision": 0.0339,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|duckdb": {
+       "precision": 0.0694,
+       "recall": 0.0,
+       "state": "MISSED"
+      },
+      "E8c|sqlite": {
+       "precision": 0.0694,
+       "recall": 0.0,
+       "state": "MISSED"
+      }
+     },
+     "planted_events": 20,
+     "set": "mech",
+     "state": {
+      "duckdb": "MISSED",
+      "sqlite": "MISSED"
+     },
+     "step": "CS0047[1]"
+    }
+   ],
+   "truth_sha256": "6813ae0e045f08b8c34746bbc788047f6ddad4e8557ed8cc49194031ddbea160"
+  }
+ },
+ "precision_floor_T": 0.9,
+ "recall_floor": 0.5,
+ "seeds": [
+  20261109,
+  20261110,
+  20261111
+ ],
+ "summary": {
+  "counts": {
+   "mech|duckdb": {
+    "CAUGHT": 3,
+    "MISSED": 3,
+    "MISSED-by-construction": 0,
+    "NOISY": 2,
+    "slots": 8
+   },
+   "mech|sqlite": {
+    "CAUGHT": 3,
+    "MISSED": 3,
+    "MISSED-by-construction": 0,
+    "NOISY": 2,
+    "slots": 8
+   },
+   "rule|duckdb": {
+    "CAUGHT": 2,
+    "MISSED": 9,
+    "MISSED-by-construction": 6,
+    "NOISY": 5,
+    "slots": 22
+   },
+   "rule|sqlite": {
+    "CAUGHT": 1,
+    "MISSED": 8,
+    "MISSED-by-construction": 6,
+    "NOISY": 7,
+    "slots": 22
+   }
+  },
+  "per_control": {
+   "AML.M0005": {
+    "duckdb": {
+     "CAUGHT": 1,
+     "MISSED": 1,
+     "MISSED-by-construction": 3,
+     "NOISY": 0
+    },
+    "sqlite": {
+     "CAUGHT": 1,
+     "MISSED": 1,
+     "MISSED-by-construction": 3,
+     "NOISY": 0
+    }
+   },
+   "AML.M0011": {
+    "duckdb": {
+     "CAUGHT": 1,
+     "MISSED": 1,
+     "MISSED-by-construction": 1,
+     "NOISY": 1
+    },
+    "sqlite": {
+     "CAUGHT": 1,
+     "MISSED": 1,
+     "MISSED-by-construction": 1,
+     "NOISY": 1
+    }
+   },
+   "AML.M0013": {
+    "duckdb": {
+     "CAUGHT": 0,
+     "MISSED": 1,
+     "MISSED-by-construction": 1,
+     "NOISY": 2
+    },
+    "sqlite": {
+     "CAUGHT": 0,
+     "MISSED": 1,
+     "MISSED-by-construction": 1,
+     "NOISY": 2
+    }
+   },
+   "AML.M0019": {
+    "duckdb": {
+     "CAUGHT": 0,
+     "MISSED": 3,
+     "MISSED-by-construction": 0,
+     "NOISY": 0
+    },
+    "sqlite": {
+     "CAUGHT": 0,
+     "MISSED": 3,
+     "MISSED-by-construction": 0,
+     "NOISY": 0
+    }
+   },
+   "AML.M0020": {
+    "duckdb": {
+     "CAUGHT": 1,
+     "MISSED": 2,
+     "MISSED-by-construction": 0,
+     "NOISY": 1
+    },
+    "sqlite": {
+     "CAUGHT": 0,
+     "MISSED": 1,
+     "MISSED-by-construction": 0,
+     "NOISY": 3
+    }
+   },
+   "AML.M0024": {
+    "duckdb": {
+     "CAUGHT": 1,
+     "MISSED": 1,
+     "MISSED-by-construction": 0,
+     "NOISY": 3
+    },
+    "sqlite": {
+     "CAUGHT": 1,
+     "MISSED": 1,
+     "MISSED-by-construction": 0,
+     "NOISY": 3
+    }
+   },
+   "AML.M0040": {
+    "duckdb": {
+     "CAUGHT": 0,
+     "MISSED": 2,
+     "MISSED-by-construction": 0,
+     "NOISY": 0
+    },
+    "sqlite": {
+     "CAUGHT": 0,
+     "MISSED": 2,
+     "MISSED-by-construction": 0,
+     "NOISY": 0
+    }
+   },
+   "AML.M0043": {
+    "duckdb": {
+     "CAUGHT": 1,
+     "MISSED": 1,
+     "MISSED-by-construction": 1,
+     "NOISY": 0
+    },
+    "sqlite": {
+     "CAUGHT": 1,
+     "MISSED": 1,
+     "MISSED-by-construction": 1,
+     "NOISY": 0
+    }
+   }
+  },
+  "slots": [
+   {
+    "by_construction": false,
+    "control": "AML.M0019",
+    "duckdb": {
+     "checks": {
+      "D1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "D1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0076[2]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0019",
+    "duckdb": {
+     "checks": {
+      "D1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "D1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0076[7]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0019",
+    "duckdb": {
+     "checks": {
+      "D1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "D1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E1": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0076[4]"
+   },
+   {
+    "by_construction": true,
+    "control": "AML.M0043",
+    "duckdb": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "step": "CS0076[2]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0043",
+    "duckdb": {
+     "checks": {
+      "E2.account": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E2.api": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "CAUGHT",
+        "CAUGHT",
+        "CAUGHT"
+       ]
+      }
+     },
+     "modal": "CAUGHT",
+     "seeds_agreeing": 3,
+     "states": [
+      "CAUGHT",
+      "CAUGHT",
+      "CAUGHT"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "E2.account": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E2.api": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "CAUGHT",
+        "CAUGHT",
+        "CAUGHT"
+       ]
+      }
+     },
+     "modal": "CAUGHT",
+     "seeds_agreeing": 3,
+     "states": [
+      "CAUGHT",
+      "CAUGHT",
+      "CAUGHT"
+     ]
+    },
+    "step": "CS0074[22]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0043",
+    "duckdb": {
+     "checks": {
+      "E2.account": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E2.api": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "E2.account": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E2.api": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0068[23]"
+   },
+   {
+    "by_construction": true,
+    "control": "AML.M0005",
+    "duckdb": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "step": "CS0076[2]"
+   },
+   {
+    "by_construction": true,
+    "control": "AML.M0005",
+    "duckdb": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "step": "CS0074[10]"
+   },
+   {
+    "by_construction": true,
+    "control": "AML.M0005",
+    "duckdb": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "step": "CS0076[6]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0005",
+    "duckdb": {
+     "checks": {
+      "E3.datastore": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.6667,
+        0.6667,
+        0.6667
+       ],
+       "states": [
+        "CAUGHT",
+        "CAUGHT",
+        "CAUGHT"
+       ]
+      },
+      "E3.file": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "CAUGHT",
+     "seeds_agreeing": 3,
+     "states": [
+      "CAUGHT",
+      "CAUGHT",
+      "CAUGHT"
+     ]
+    },
+    "set": "mech",
+    "sqlite": {
+     "checks": {
+      "E3.datastore": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.6667,
+        0.6667,
+        0.6667
+       ],
+       "states": [
+        "CAUGHT",
+        "CAUGHT",
+        "CAUGHT"
+       ]
+      },
+      "E3.file": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "CAUGHT",
+     "seeds_agreeing": 3,
+     "states": [
+      "CAUGHT",
+      "CAUGHT",
+      "CAUGHT"
+     ]
+    },
+    "step": "CS0068[0]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0005",
+    "duckdb": {
+     "checks": {
+      "E3.datastore": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E3.file": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "mech",
+    "sqlite": {
+     "checks": {
+      "E3.datastore": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E3.file": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0023[3]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0011",
+    "duckdb": {
+     "checks": {
+      "E4": {
+       "precision_min_med_max": [
+        0.3252,
+        0.3397,
+        0.351
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      },
+      "E4b": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "E4": {
+       "precision_min_med_max": [
+        0.3252,
+        0.3397,
+        0.351
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      },
+      "E4b": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "step": "CS0074[13]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0011",
+    "duckdb": {
+     "checks": {
+      "E4": {
+       "precision_min_med_max": [
+        0.3252,
+        0.3397,
+        0.351
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E4b": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "E4": {
+       "precision_min_med_max": [
+        0.3252,
+        0.3397,
+        0.351
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E4b": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0074[2]"
+   },
+   {
+    "by_construction": true,
+    "control": "AML.M0011",
+    "duckdb": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "step": "CS0074[24]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0011",
+    "duckdb": {
+     "checks": {
+      "E4": {
+       "precision_min_med_max": [
+        0.3252,
+        0.3397,
+        0.351
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E4b": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.75,
+        0.75,
+        0.75
+       ],
+       "states": [
+        "CAUGHT",
+        "CAUGHT",
+        "CAUGHT"
+       ]
+      }
+     },
+     "modal": "CAUGHT",
+     "seeds_agreeing": 3,
+     "states": [
+      "CAUGHT",
+      "CAUGHT",
+      "CAUGHT"
+     ]
+    },
+    "set": "mech",
+    "sqlite": {
+     "checks": {
+      "E4": {
+       "precision_min_med_max": [
+        0.3252,
+        0.3397,
+        0.351
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E4b": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.75,
+        0.75,
+        0.75
+       ],
+       "states": [
+        "CAUGHT",
+        "CAUGHT",
+        "CAUGHT"
+       ]
+      }
+     },
+     "modal": "CAUGHT",
+     "seeds_agreeing": 3,
+     "states": [
+      "CAUGHT",
+      "CAUGHT",
+      "CAUGHT"
+     ]
+    },
+    "step": "CS0031[1]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0020",
+    "duckdb": {
+     "checks": {
+      "E5a": {
+       "precision_min_med_max": [
+        0.2609,
+        0.3,
+        0.3158
+       ],
+       "recall_min_med_max": [
+        0.2,
+        0.2,
+        0.2
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5b": {
+       "precision_min_med_max": [
+        0.6667,
+        0.8,
+        0.8
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5c": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "E5a": {
+       "precision_min_med_max": [
+        0.4688,
+        0.5172,
+        0.5357
+       ],
+       "recall_min_med_max": [
+        0.5,
+        0.5,
+        0.5
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      },
+      "E5b": {
+       "precision_min_med_max": [
+        0.6667,
+        0.8,
+        0.8
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5c": {
+       "precision_min_med_max": [
+        0.4762,
+        0.4762,
+        0.5263
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "step": "CS0076[7]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0020",
+    "duckdb": {
+     "checks": {
+      "E5a": {
+       "precision_min_med_max": [
+        0.2609,
+        0.3,
+        0.3158
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5b": {
+       "precision_min_med_max": [
+        0.6667,
+        0.8,
+        0.8
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5c": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "E5a": {
+       "precision_min_med_max": [
+        0.4688,
+        0.5172,
+        0.5357
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5b": {
+       "precision_min_med_max": [
+        0.6667,
+        0.8,
+        0.8
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5c": {
+       "precision_min_med_max": [
+        0.4762,
+        0.4762,
+        0.5263
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0076[8]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0020",
+    "duckdb": {
+     "checks": {
+      "E5a": {
+       "precision_min_med_max": [
+        0.2609,
+        0.3,
+        0.3158
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5b": {
+       "precision_min_med_max": [
+        0.6667,
+        0.8,
+        0.8
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5c": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "states": [
+        "CAUGHT",
+        "CAUGHT",
+        "CAUGHT"
+       ]
+      }
+     },
+     "modal": "CAUGHT",
+     "seeds_agreeing": 3,
+     "states": [
+      "CAUGHT",
+      "CAUGHT",
+      "CAUGHT"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "E5a": {
+       "precision_min_med_max": [
+        0.4688,
+        0.5172,
+        0.5357
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5b": {
+       "precision_min_med_max": [
+        0.6667,
+        0.8,
+        0.8
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5c": {
+       "precision_min_med_max": [
+        0.4762,
+        0.4762,
+        0.5263
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "step": "CS0074[20]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0020",
+    "duckdb": {
+     "checks": {
+      "E5a": {
+       "precision_min_med_max": [
+        0.2609,
+        0.3,
+        0.3158
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5b": {
+       "precision_min_med_max": [
+        0.6667,
+        0.8,
+        0.8
+       ],
+       "recall_min_med_max": [
+        0.5714,
+        0.5714,
+        0.5714
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      },
+      "E5c": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "set": "mech",
+    "sqlite": {
+     "checks": {
+      "E5a": {
+       "precision_min_med_max": [
+        0.4688,
+        0.5172,
+        0.5357
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E5b": {
+       "precision_min_med_max": [
+        0.6667,
+        0.8,
+        0.8
+       ],
+       "recall_min_med_max": [
+        0.5714,
+        0.5714,
+        0.5714
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      },
+      "E5c": {
+       "precision_min_med_max": [
+        0.4762,
+        0.4762,
+        0.5263
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "step": "CS0047[2]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0024",
+    "duckdb": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0034[3]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0024",
+    "duckdb": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "step": "CS0076[7]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0024",
+    "duckdb": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "step": "CS0076[4]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0024",
+    "duckdb": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "CAUGHT",
+        "CAUGHT",
+        "CAUGHT"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "CAUGHT",
+     "seeds_agreeing": 3,
+     "states": [
+      "CAUGHT",
+      "CAUGHT",
+      "CAUGHT"
+     ]
+    },
+    "set": "mech",
+    "sqlite": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "CAUGHT",
+        "CAUGHT",
+        "CAUGHT"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "CAUGHT",
+     "seeds_agreeing": 3,
+     "states": [
+      "CAUGHT",
+      "CAUGHT",
+      "CAUGHT"
+     ]
+    },
+    "step": "CS0053[5]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0024",
+    "duckdb": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.8333,
+        0.8333,
+        0.8333
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "set": "mech",
+    "sqlite": {
+     "checks": {
+      "D6a": {
+       "precision_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "D6b": {
+       "precision_min_med_max": [
+        0.3571,
+        0.3846,
+        0.625
+       ],
+       "recall_min_med_max": [
+        0.8333,
+        0.8333,
+        0.8333
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      },
+      "D6c": {
+       "precision_min_med_max": [
+        0.6,
+        0.6,
+        0.6
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "step": "CS0047[5]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0040",
+    "duckdb": {
+     "checks": {
+      "D7": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "D7": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0076[11]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0040",
+    "duckdb": {
+     "checks": {
+      "D7": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "mech",
+    "sqlite": {
+     "checks": {
+      "D7": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0075[7]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0013",
+    "duckdb": {
+     "checks": {
+      "E8a.module": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8a.process": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8b": {
+       "precision_min_med_max": [
+        0.0325,
+        0.0338,
+        0.0339
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      },
+      "E8c": {
+       "precision_min_med_max": [
+        0.0694,
+        0.0746,
+        0.0794
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "E8a.module": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8a.process": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8b": {
+       "precision_min_med_max": [
+        0.0325,
+        0.0338,
+        0.0339
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      },
+      "E8c": {
+       "precision_min_med_max": [
+        0.0694,
+        0.0746,
+        0.0794
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "step": "CS0073[1]"
+   },
+   {
+    "by_construction": true,
+    "control": "AML.M0013",
+    "duckdb": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "modal": "MISSED-by-construction",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED-by-construction",
+      "MISSED-by-construction",
+      "MISSED-by-construction"
+     ]
+    },
+    "step": "CS0069[13]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0013",
+    "duckdb": {
+     "checks": {
+      "E8a.module": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8a.process": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8b": {
+       "precision_min_med_max": [
+        0.0325,
+        0.0338,
+        0.0339
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8c": {
+       "precision_min_med_max": [
+        0.0694,
+        0.0746,
+        0.0794
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "set": "rule",
+    "sqlite": {
+     "checks": {
+      "E8a.module": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8a.process": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8b": {
+       "precision_min_med_max": [
+        0.0325,
+        0.0338,
+        0.0339
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8c": {
+       "precision_min_med_max": [
+        0.0694,
+        0.0746,
+        0.0794
+       ],
+       "recall_min_med_max": [
+        1.0,
+        1.0,
+        1.0
+       ],
+       "states": [
+        "NOISY",
+        "NOISY",
+        "NOISY"
+       ]
+      }
+     },
+     "modal": "NOISY",
+     "seeds_agreeing": 3,
+     "states": [
+      "NOISY",
+      "NOISY",
+      "NOISY"
+     ]
+    },
+    "step": "CS0023[1]"
+   },
+   {
+    "by_construction": false,
+    "control": "AML.M0013",
+    "duckdb": {
+     "checks": {
+      "E8a.module": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8a.process": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8b": {
+       "precision_min_med_max": [
+        0.0325,
+        0.0338,
+        0.0339
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8c": {
+       "precision_min_med_max": [
+        0.0694,
+        0.0746,
+        0.0794
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "set": "mech",
+    "sqlite": {
+     "checks": {
+      "E8a.module": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8a.process": {
+       "precision_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8b": {
+       "precision_min_med_max": [
+        0.0325,
+        0.0338,
+        0.0339
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      },
+      "E8c": {
+       "precision_min_med_max": [
+        0.0694,
+        0.0746,
+        0.0794
+       ],
+       "recall_min_med_max": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "states": [
+        "MISSED",
+        "MISSED",
+        "MISSED"
+       ]
+      }
+     },
+     "modal": "MISSED",
+     "seeds_agreeing": 3,
+     "states": [
+      "MISSED",
+      "MISSED",
+      "MISSED"
+     ]
+    },
+    "step": "CS0047[1]"
+   }
+  ]
+ },
+ "versions": {
+  "duckdb": "1.5.3",
+  "python": "3.12.3",
+  "sqlite": "3.45.1"
+ }
+}

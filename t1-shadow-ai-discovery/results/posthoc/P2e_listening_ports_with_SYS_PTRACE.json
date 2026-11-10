@@ -1,0 +1,5 @@
+[
+  {"address":"0.0.0.0","cmdline":"python3 /home/dev/openai_compat_stub.py 8000","name":"python3","pid":"27","port":"8000"},
+  {"address":"0.0.0.0","cmdline":"python3 -m http.server 8080 --bind 0.0.0.0 --directory /home/dev/public","name":"python3","pid":"41","port":"8080"},
+  {"address":"::","cmdline":"ollama serve","name":"ollama","pid":"7","port":"11434"}
+]

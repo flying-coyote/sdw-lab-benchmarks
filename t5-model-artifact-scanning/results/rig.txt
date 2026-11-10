@@ -1,0 +1,23 @@
+rig stamp (methodology §7b)
+date_utc=2026-11-10T01:02:21Z
+host=Beelink, AMD Ryzen 7 5800H with Radeon Graphics, 14 vCPU to WSL2, 47 GB
+kernel=6.6.87.2-microsoft-standard-WSL2
+power_plan=Windows High performance (per methodology; not re-verified from inside WSL)
+pin=nice -n 10 taskset -c 0-3, OMP/OPENBLAS/MKL_NUM_THREADS=4; other benches running concurrently (contended)
+clock=chrony; chronyc tracking:
+Stratum         : 3
+System time     : 0.624536872 seconds slow of NTP time
+Last offset     : -0.000737937 seconds
+load_at_start=10.77 9.88 6.83 6/1519 61355
+python=Python 3.12.3
+pkg=click==8.5.1
+pkg=fickling==0.1.12
+pkg=h5py==3.16.0
+pkg=markdown-it-py==4.2.0
+pkg=mdurl==0.1.2
+pkg=modelscan==0.8.8
+pkg=numpy==2.5.4
+pkg=picklescan==1.0.5
+pkg=Pygments==2.21.0
+pkg=rich==14.3.4
+pkg=tomlkit==0.13.3

@@ -1,0 +1,5 @@
+# T1-shadow-ai-discovery harness: stdlib only (json, subprocess, re, statistics, time, urllib, zipfile, hashlib, base64).
+# No third-party Python package is needed to run run_lab.py or run_methods.py; the venv exists to satisfy the
+# lab's "run with -I inside a venv" rule and pins nothing beyond the interpreter (host Python 3.12.3).
+# The planted endpoint venv (surface S6) is pinned separately in fixtures/ml-requirements.txt and frozen in
+# fixtures/ml-venv-freeze.txt.

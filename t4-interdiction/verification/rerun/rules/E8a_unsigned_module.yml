@@ -1,0 +1,10 @@
+title: Library loaded whose signature is not valid
+description: AML.M0013, same check on module_activity.
+status: experimental
+logsource: {category: image_load}
+detection:
+  sel:
+    activity_id: 1
+  valid:
+    module_file_signature_state_id: 1
+  condition: sel and not valid

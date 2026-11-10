@@ -1,0 +1,5 @@
+[
+  {"name":"curl","version":"8.14.1-2+deb13u7"},
+  {"name":"osquery","version":"5.24.0-1.linux"},
+  {"name":"procps","version":"2:4.0.4-9"}
+]

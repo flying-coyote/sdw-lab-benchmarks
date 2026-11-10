@@ -1,0 +1,12 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+revision 93efa2f097d58c2a74874c7e644dbc9b0cee75a2
+'the alarm panel code is 4817.' [1195, 12991, 8253, 2909, 314, 216, 36, 40, 33, 39, 30] ['the', ' alarm', ' panel', ' code', ' is', ' ', '4', '8', '1', '7', '.']
+' 4817' [216, 36, 40, 33, 39] [' ', '4', '8', '1', '7']
+'4817' [36, 40, 33, 39] ['4', '8', '1', '7']
+' 48173' [216, 36, 40, 33, 39, 35] [' ', '4', '8', '1', '7', '3']
+'code is 0092.' [4635, 314, 216, 32, 32, 41, 34, 30] ['code', ' is', ' ', '0', '0', '9', '2', '.']
+vocab 49152 pad None eos <|endoftext|> bos <|endoftext|>
+score fwd batch256x24: 14.50s -> 424 tok/s
+trainable params: 4,884,480 || all params: 139,399,488 || trainable%: 3.5039
+lora step batch8x256: 12.20s -> 168 tok/s
+fullft step batch8x256: 16.71s -> 123 tok/s

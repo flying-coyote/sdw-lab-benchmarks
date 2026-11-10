@@ -1,0 +1,10 @@
+title: Model artifact or training data read by a principal outside the approved list
+description: AML.M0005 "access controls on internal model registries ... training data only to approved users". Enforcement; event unit. Table file_activity.
+status: experimental
+logsource: {category: file_event}
+detection:
+  sel:
+    file_path|startswith: ['/models/', '/data/train/']
+  approved:
+    actor_user_name: ['ray', 'svc-trainer', 'svc-registry', 'svc-feature-store', 'svc-eval', 'svc-serving', 'ml-eng-ana', 'ml-eng-bo', 'ml-eng-cy', 'ml-eng-di']
+  condition: sel and not approved

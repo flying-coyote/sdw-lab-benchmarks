@@ -1,0 +1,635 @@
+{
+ "default": {
+  "ollama-default-t1": {
+   "server_log": {
+    "lines": 132,
+    "gin_lines": 4,
+    "api_chat_lines": 3,
+    "F1 user identity": false,
+    "F2 session id": false,
+    "F3 prompt text": false,
+    "F4 tool name": false,
+    "F5 tool args": false,
+    "F6 tool output": false,
+    "F7 model id (name per request)": false,
+    "F7b model identity at load (blob digest / arch)": true,
+    "F8 token counts": false,
+    "F8 input tokens seen in log": [],
+    "F8 output tokens in log": false,
+    "F3b prompt length (chars) in log": [],
+    "F9 cost": false,
+    "F10 response text": false,
+    "F11 client ip": true,
+    "F12 timestamps": true,
+    "levels": {
+     "INFO": 124
+    },
+    "distinct_sources": 28,
+    "top_sources": [
+     [
+      "model.go:97",
+      12
+     ],
+     [
+      "runner.go:1290",
+      11
+     ],
+     [
+      "model.go:138",
+      8
+     ],
+     [
+      "model.go:145",
+      7
+     ],
+     [
+      "model.go:148",
+      7
+     ],
+     [
+      "model.go:152",
+      7
+     ],
+     [
+      "model.go:156",
+      7
+     ],
+     [
+      "server.go:259",
+      4
+     ]
+    ],
+    "sample_chat_line": "58:02+00:00 mine ollama[631]: [GIN] 2026/11/09 - 19:58:02 | 200 |   44.9325209s |       127.0.0.1 | POST     \"/api/chat\""
+   },
+   "client": {
+    "response_keys": [
+     "created_at",
+     "done",
+     "done_reason",
+     "eval_count",
+     "eval_duration",
+     "load_duration",
+     "message",
+     "model",
+     "prompt_eval_count",
+     "prompt_eval_duration",
+     "total_duration"
+    ],
+    "F7 model id": "gemma4:e4b",
+    "F8 token counts": {
+     "prompt_eval_count": 267,
+     "eval_count": 22
+    },
+    "F4/F5 tool call in response": [
+     {
+      "id": "call_068ggomq",
+      "function": {
+       "index": 0,
+       "name": "read_file",
+       "arguments": {
+        "path": "fixtures/known.txt"
+       }
+      }
+     }
+    ],
+    "F10 response text has sentinel": true,
+    "F12 created_at": "2026-11-10T00:58:52.374228458Z",
+    "durations_ns_present": true,
+    "F1/F2/F9 (user, session, cost) in response": false,
+    "latencies_s": [
+     44.972,
+     49.56
+    ],
+    "wall_s_monotonic": 94.532
+   }
+  },
+  "ollama-default-t2": {
+   "server_log": {
+    "lines": 137,
+    "gin_lines": 5,
+    "api_chat_lines": 5,
+    "F1 user identity": false,
+    "F2 session id": false,
+    "F3 prompt text": false,
+    "F4 tool name": false,
+    "F5 tool args": false,
+    "F6 tool output": false,
+    "F7 model id (name per request)": false,
+    "F7b model identity at load (blob digest / arch)": true,
+    "F8 token counts": false,
+    "F8 input tokens seen in log": [],
+    "F8 output tokens in log": false,
+    "F3b prompt length (chars) in log": [],
+    "F9 cost": false,
+    "F10 response text": false,
+    "F11 client ip": true,
+    "F12 timestamps": true,
+    "levels": {
+     "INFO": 128
+    },
+    "distinct_sources": 28,
+    "top_sources": [
+     [
+      "model.go:97",
+      12
+     ],
+     [
+      "runner.go:1290",
+      11
+     ],
+     [
+      "model.go:138",
+      8
+     ],
+     [
+      "model.go:145",
+      8
+     ],
+     [
+      "model.go:148",
+      8
+     ],
+     [
+      "model.go:152",
+      8
+     ],
+     [
+      "model.go:156",
+      8
+     ],
+     [
+      "GIN",
+      5
+     ]
+    ],
+    "sample_chat_line": "00:03+00:00 mine ollama[631]: [GIN] 2026/11/09 - 20:00:03 | 200 | 13.674435541s |       127.0.0.1 | POST     \"/api/chat\""
+   },
+   "client": {
+    "response_keys": [
+     "created_at",
+     "done",
+     "done_reason",
+     "eval_count",
+     "eval_duration",
+     "load_duration",
+     "message",
+     "model",
+     "prompt_eval_count",
+     "prompt_eval_duration",
+     "total_duration"
+    ],
+    "F7 model id": "gemma4:e4b",
+    "F8 token counts": {
+     "prompt_eval_count": 267,
+     "eval_count": 22
+    },
+    "F4/F5 tool call in response": [
+     {
+      "id": "call_qo76v3hq",
+      "function": {
+       "index": 0,
+       "name": "read_file",
+       "arguments": {
+        "path": "fixtures/known.txt"
+       }
+      }
+     }
+    ],
+    "F10 response text has sentinel": true,
+    "F12 created_at": "2026-11-10T01:01:49.224839766Z",
+    "durations_ns_present": true,
+    "F1/F2/F9 (user, session, cost) in response": false,
+    "latencies_s": [
+     45.189,
+     58.833
+    ],
+    "wall_s_monotonic": 104.023
+   }
+  },
+  "ollama-default-t3": {
+   "server_log": {
+    "lines": 151,
+    "gin_lines": 7,
+    "api_chat_lines": 7,
+    "F1 user identity": false,
+    "F2 session id": false,
+    "F3 prompt text": false,
+    "F4 tool name": false,
+    "F5 tool args": false,
+    "F6 tool output": false,
+    "F7 model id (name per request)": false,
+    "F7b model identity at load (blob digest / arch)": true,
+    "F8 token counts": false,
+    "F8 input tokens seen in log": [],
+    "F8 output tokens in log": false,
+    "F3b prompt length (chars) in log": [],
+    "F9 cost": false,
+    "F10 response text": false,
+    "F11 client ip": true,
+    "F12 timestamps": true,
+    "levels": {
+     "INFO": 140
+    },
+    "distinct_sources": 28,
+    "top_sources": [
+     [
+      "model.go:97",
+      12
+     ],
+     [
+      "runner.go:1290",
+      12
+     ],
+     [
+      "model.go:138",
+      8
+     ],
+     [
+      "model.go:145",
+      8
+     ],
+     [
+      "model.go:148",
+      8
+     ],
+     [
+      "model.go:152",
+      8
+     ],
+     [
+      "model.go:156",
+      8
+     ],
+     [
+      "GIN",
+      7
+     ]
+    ],
+    "sample_chat_line": "01:49+00:00 mine ollama[631]: [GIN] 2026/11/09 - 20:01:49 | 200 | 58.832164853s |       127.0.0.1 | POST     \"/api/chat\""
+   },
+   "client": {
+    "response_keys": [
+     "created_at",
+     "done",
+     "done_reason",
+     "eval_count",
+     "eval_duration",
+     "load_duration",
+     "message",
+     "model",
+     "prompt_eval_count",
+     "prompt_eval_duration",
+     "total_duration"
+    ],
+    "F7 model id": "gemma4:e4b",
+    "F8 token counts": {
+     "prompt_eval_count": 267,
+     "eval_count": 22
+    },
+    "F4/F5 tool call in response": [
+     {
+      "id": "call_x44sdlg6",
+      "function": {
+       "index": 0,
+       "name": "read_file",
+       "arguments": {
+        "path": "fixtures/known.txt"
+       }
+      }
+     }
+    ],
+    "F10 response text has sentinel": true,
+    "F12 created_at": "2026-11-10T01:03:48.652979638Z",
+    "durations_ns_present": true,
+    "F1/F2/F9 (user, session, cost) in response": false,
+    "latencies_s": [
+     58.122,
+     61.26
+    ],
+    "wall_s_monotonic": 119.382
+   }
+  }
+ },
+ "debug": {
+  "ollama-debug-t1": {
+   "server_log": {
+    "lines": 155,
+    "gin_lines": 2,
+    "api_chat_lines": 2,
+    "F1 user identity": false,
+    "F2 session id": false,
+    "F3 prompt text": false,
+    "F4 tool name": false,
+    "F5 tool args": false,
+    "F6 tool output": false,
+    "F7 model id (name per request)": true,
+    "F7b model identity at load (blob digest / arch)": true,
+    "F8 token counts": true,
+    "F8 input tokens seen in log": [
+     98,
+     267
+    ],
+    "F8 output tokens in log": false,
+    "F3b prompt length (chars) in log": [
+     448,
+     1090
+    ],
+    "F9 cost": false,
+    "F10 response text": false,
+    "F11 client ip": true,
+    "F12 timestamps": true,
+    "levels": {
+     "DEBUG": 117,
+     "INFO": 35
+    },
+    "distinct_sources": 47,
+    "top_sources": [
+     [
+      "server.go:1408",
+      53
+     ],
+     [
+      "ggml.go:325",
+      28
+     ],
+     [
+      "ggml.go:852",
+      6
+     ],
+     [
+      "model.go:97",
+      3
+     ],
+     [
+      "runner.go:1290",
+      3
+     ],
+     [
+      "device.go:245",
+      3
+     ],
+     [
+      "device.go:256",
+      3
+     ],
+     [
+      "device.go:267",
+      3
+     ]
+    ],
+    "sample_chat_line": "[GIN] 2026/11/09 - 20:10:33 | 200 |         7m57s |       127.0.0.1 | POST     \"/api/chat\""
+   },
+   "client": {
+    "response_keys": [
+     "created_at",
+     "done",
+     "done_reason",
+     "eval_count",
+     "eval_duration",
+     "load_duration",
+     "message",
+     "model",
+     "prompt_eval_count",
+     "prompt_eval_duration",
+     "total_duration"
+    ],
+    "F7 model id": "gemma4:e4b",
+    "F8 token counts": {
+     "prompt_eval_count": 267,
+     "eval_count": 22
+    },
+    "F4/F5 tool call in response": [
+     {
+      "id": "call_6gvga8lo",
+      "function": {
+       "index": 0,
+       "name": "read_file",
+       "arguments": {
+        "path": "fixtures/known.txt"
+       }
+      }
+     }
+    ],
+    "F10 response text has sentinel": true,
+    "F12 created_at": "2026-11-10T01:10:46.353393273Z",
+    "durations_ns_present": true,
+    "F1/F2/F9 (user, session, cost) in response": false,
+    "latencies_s": [
+     477.733,
+     12.437
+    ],
+    "wall_s_monotonic": 490.171
+   }
+  },
+  "ollama-debug-t2": {
+   "server_log": {
+    "lines": 14,
+    "gin_lines": 2,
+    "api_chat_lines": 2,
+    "F1 user identity": false,
+    "F2 session id": false,
+    "F3 prompt text": false,
+    "F4 tool name": false,
+    "F5 tool args": false,
+    "F6 tool output": false,
+    "F7 model id (name per request)": true,
+    "F7b model identity at load (blob digest / arch)": true,
+    "F8 token counts": true,
+    "F8 input tokens seen in log": [
+     98,
+     267
+    ],
+    "F8 output tokens in log": false,
+    "F3b prompt length (chars) in log": [
+     448,
+     1090
+    ],
+    "F9 cost": false,
+    "F10 response text": false,
+    "F11 client ip": true,
+    "F12 timestamps": true,
+    "levels": {
+     "DEBUG": 12
+    },
+    "distinct_sources": 7,
+    "top_sources": [
+     [
+      "sched.go:672",
+      2
+     ],
+     [
+      "server.go:1550",
+      2
+     ],
+     [
+      "cache.go:151",
+      2
+     ],
+     [
+      "GIN",
+      2
+     ],
+     [
+      "sched.go:404",
+      2
+     ],
+     [
+      "sched.go:309",
+      2
+     ],
+     [
+      "sched.go:327",
+      2
+     ]
+    ],
+    "sample_chat_line": "[GIN] 2026/11/09 - 20:11:18 | 200 | 29.457019851s |       127.0.0.1 | POST     \"/api/chat\""
+   },
+   "client": {
+    "response_keys": [
+     "created_at",
+     "done",
+     "done_reason",
+     "eval_count",
+     "eval_duration",
+     "load_duration",
+     "message",
+     "model",
+     "prompt_eval_count",
+     "prompt_eval_duration",
+     "total_duration"
+    ],
+    "F7 model id": "gemma4:e4b",
+    "F8 token counts": {
+     "prompt_eval_count": 267,
+     "eval_count": 22
+    },
+    "F4/F5 tool call in response": [
+     {
+      "id": "call_8wkb64rh",
+      "function": {
+       "index": 0,
+       "name": "read_file",
+       "arguments": {
+        "path": "fixtures/known.txt"
+       }
+      }
+     }
+    ],
+    "F10 response text has sentinel": true,
+    "F12 created_at": "2026-11-10T01:11:28.161385324Z",
+    "durations_ns_present": true,
+    "F1/F2/F9 (user, session, cost) in response": false,
+    "latencies_s": [
+     29.543,
+     10.003
+    ],
+    "wall_s_monotonic": 39.547
+   }
+  },
+  "ollama-debug-t3": {
+   "server_log": {
+    "lines": 14,
+    "gin_lines": 2,
+    "api_chat_lines": 2,
+    "F1 user identity": false,
+    "F2 session id": false,
+    "F3 prompt text": false,
+    "F4 tool name": false,
+    "F5 tool args": false,
+    "F6 tool output": false,
+    "F7 model id (name per request)": true,
+    "F7b model identity at load (blob digest / arch)": true,
+    "F8 token counts": true,
+    "F8 input tokens seen in log": [
+     98,
+     267
+    ],
+    "F8 output tokens in log": false,
+    "F3b prompt length (chars) in log": [
+     448,
+     1090
+    ],
+    "F9 cost": false,
+    "F10 response text": false,
+    "F11 client ip": true,
+    "F12 timestamps": true,
+    "levels": {
+     "DEBUG": 12
+    },
+    "distinct_sources": 7,
+    "top_sources": [
+     [
+      "sched.go:672",
+      2
+     ],
+     [
+      "server.go:1550",
+      2
+     ],
+     [
+      "cache.go:151",
+      2
+     ],
+     [
+      "GIN",
+      2
+     ],
+     [
+      "sched.go:404",
+      2
+     ],
+     [
+      "sched.go:309",
+      2
+     ],
+     [
+      "sched.go:327",
+      2
+     ]
+    ],
+    "sample_chat_line": "[GIN] 2026/11/09 - 20:11:59 | 200 | 29.086061375s |       127.0.0.1 | POST     \"/api/chat\""
+   },
+   "client": {
+    "response_keys": [
+     "created_at",
+     "done",
+     "done_reason",
+     "eval_count",
+     "eval_duration",
+     "load_duration",
+     "message",
+     "model",
+     "prompt_eval_count",
+     "prompt_eval_duration",
+     "total_duration"
+    ],
+    "F7 model id": "gemma4:e4b",
+    "F8 token counts": {
+     "prompt_eval_count": 267,
+     "eval_count": 22
+    },
+    "F4/F5 tool call in response": [
+     {
+      "id": "call_o1e8ob0g",
+      "function": {
+       "index": 0,
+       "name": "read_file",
+       "arguments": {
+        "path": "fixtures/known.txt"
+       }
+      }
+     }
+    ],
+    "F10 response text has sentinel": true,
+    "F12 created_at": "2026-11-10T01:12:08.96236785Z",
+    "durations_ns_present": true,
+    "F1/F2/F9 (user, session, cost) in response": false,
+    "latencies_s": [
+     29.124,
+     9.475
+    ],
+    "wall_s_monotonic": 38.6
+   }
+  }
+ }
+}

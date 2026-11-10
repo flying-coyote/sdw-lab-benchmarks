@@ -1,0 +1,12 @@
+No settings file detected at /tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/modelscan-settings.toml. Using defaults. 
+
+Scanning /tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/fixtures-variants/A5-C1/dns_exfiltration.npy.zip:dns_exfiltration.npy using modelscan.scanners.NumpyUnsafeOpScan model scan
+{"summary": {"total_issues_by_severity": {"LOW": 0, "MEDIUM": 0, "HIGH": 0, 
+"CRITICAL": 0}, "total_issues": 0, "input_path": 
+"/tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/fixtures-variants/A
+5-C1/dns_exfiltration.npy.zip", "absolute_path": 
+"/tmp/claude-1000/lab-ai-research/t5-model-artifact-scanning/fixtures-variants/A
+5-C1", "modelscan_version": "0.8.8", "timestamp": "2026-11-09T20:48:08.455258", 
+"scanned": {"total_scanned": 1, "scanned_files": 
+["dns_exfiltration.npy.zip:dns_exfiltration.npy"]}, "skipped": {"total_skipped":
+0, "skipped_files": []}}, "issues": [], "errors": []}

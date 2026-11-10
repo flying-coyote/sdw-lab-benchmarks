@@ -1,0 +1,151 @@
+2026-11-10T01:01:49+00:00 mine ollama[631]: [GIN] 2026/11/09 - 20:01:49 | 200 | 58.832164853s |       127.0.0.1 | POST     "/api/chat"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.242-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.242-05:00 level=INFO source=server.go:259 msg="enabling flash attention"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.242-05:00 level=INFO source=server.go:444 msg="starting runner" cmd="/usr/local/bin/ollama runner --ollama-engine --model /usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a --port 37367"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.243-05:00 level=INFO source=sched.go:484 msg="system memory" total="47.0 GiB" free="31.5 GiB" free_swap="6.6 GiB"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.243-05:00 level=INFO source=server.go:771 msg="loading model" "model layers"=43 requested=-1
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.263-05:00 level=INFO source=runner.go:1417 msg="starting ollama engine"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.266-05:00 level=INFO source=runner.go:1452 msg="Server listening on 127.0.0.1:37367"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.276-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:fit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:8192 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.361-05:00 level=INFO source=ggml.go:136 msg="" architecture=gemma4 file_type=Q4_K_M name="" description="" num_tensors=2131 num_key_values=55
+2026-11-10T01:01:51+00:00 mine ollama[631]: load_backend: loaded CPU backend from /usr/local/lib/ollama/libggml-cpu-haswell.so
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.368-05:00 level=INFO source=ggml.go:104 msg=system CPU.0.SSE3=1 CPU.0.SSSE3=1 CPU.0.AVX=1 CPU.0.AVX2=1 CPU.0.F16C=1 CPU.0.FMA=1 CPU.0.BMI2=1 CPU.0.LLAMAFILE=1 CPU.1.LLAMAFILE=1 compiler=cgo(gcc)
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.393-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.432-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=5.112754ms bounds=(0,0)-(2048,2048)
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.605-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=172.723972ms size="[768 768]"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.605-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.605-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.607-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=179.189194ms shape="[2560 256]"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.709-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:alloc LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:8192 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.829-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.848-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=984.849µs bounds=(0,0)-(2048,2048)
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.962-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=113.718544ms size="[768 768]"
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.968-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.968-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+2026-11-10T01:01:51+00:00 mine ollama[631]: time=2026-11-09T20:01:51.969-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=121.678439ms shape="[2560 256]"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.335-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:commit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:8192 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.335-05:00 level=INFO source=ggml.go:482 msg="offloading 0 repeating layers to GPU"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.335-05:00 level=INFO source=ggml.go:486 msg="offloading output layer to CPU"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.335-05:00 level=INFO source=ggml.go:494 msg="offloaded 0/43 layers to GPU"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.335-05:00 level=INFO source=device.go:245 msg="model weights" device=CPU size="9.4 GiB"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.335-05:00 level=INFO source=device.go:256 msg="kv cache" device=CPU size="308.0 MiB"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.335-05:00 level=INFO source=device.go:267 msg="compute graph" device=CPU size="125.5 MiB"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.335-05:00 level=INFO source=device.go:272 msg="total memory" size="9.9 GiB"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.335-05:00 level=INFO source=sched.go:561 msg="loaded runners" count=2
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.336-05:00 level=INFO source=server.go:1364 msg="waiting for llama runner to start responding"
+2026-11-10T01:01:52+00:00 mine ollama[631]: time=2026-11-09T20:01:52.336-05:00 level=INFO source=server.go:1398 msg="waiting for server to become available" status="llm server loading model"
+2026-11-10T01:01:58+00:00 mine ollama[631]: time=2026-11-09T20:01:58.370-05:00 level=INFO source=server.go:1402 msg="llama runner started in 7.13 seconds"
+2026-11-10T01:02:19+00:00 mine ollama[631]: [GIN] 2026/11/09 - 20:02:19 | 200 | 56.457778295s |       127.0.0.1 | POST     "/api/chat"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.239-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.239-05:00 level=INFO source=server.go:259 msg="enabling flash attention"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.239-05:00 level=INFO source=server.go:444 msg="starting runner" cmd="/usr/local/bin/ollama runner --ollama-engine --model /usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a --port 34855"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.240-05:00 level=INFO source=sched.go:484 msg="system memory" total="47.0 GiB" free="31.9 GiB" free_swap="6.6 GiB"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.240-05:00 level=INFO source=server.go:771 msg="loading model" "model layers"=43 requested=-1
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.260-05:00 level=INFO source=runner.go:1417 msg="starting ollama engine"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.264-05:00 level=INFO source=runner.go:1452 msg="Server listening on 127.0.0.1:34855"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.274-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:fit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:4096 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.357-05:00 level=INFO source=ggml.go:136 msg="" architecture=gemma4 file_type=Q4_K_M name="" description="" num_tensors=2131 num_key_values=55
+2026-11-10T01:02:21+00:00 mine ollama[631]: load_backend: loaded CPU backend from /usr/local/lib/ollama/libggml-cpu-haswell.so
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.363-05:00 level=INFO source=ggml.go:104 msg=system CPU.0.SSE3=1 CPU.0.SSSE3=1 CPU.0.AVX=1 CPU.0.AVX2=1 CPU.0.F16C=1 CPU.0.FMA=1 CPU.0.BMI2=1 CPU.0.LLAMAFILE=1 CPU.1.LLAMAFILE=1 compiler=cgo(gcc)
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.386-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.421-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=3.879176ms bounds=(0,0)-(2048,2048)
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.586-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=164.48066ms size="[768 768]"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.586-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.586-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.587-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=169.435784ms shape="[2560 256]"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.646-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:alloc LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:4096 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.808-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.837-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=801.136µs bounds=(0,0)-(2048,2048)
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.948-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=110.852233ms size="[768 768]"
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.954-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.955-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+2026-11-10T01:02:21+00:00 mine ollama[631]: time=2026-11-09T20:02:21.955-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=118.960501ms shape="[2560 256]"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:commit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:4096 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=ggml.go:482 msg="offloading 0 repeating layers to GPU"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=ggml.go:486 msg="offloading output layer to CPU"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=ggml.go:494 msg="offloaded 0/43 layers to GPU"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=device.go:245 msg="model weights" device=CPU size="9.4 GiB"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=device.go:256 msg="kv cache" device=CPU size="224.0 MiB"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=device.go:267 msg="compute graph" device=CPU size="125.0 MiB"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=device.go:272 msg="total memory" size="9.8 GiB"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=sched.go:561 msg="loaded runners" count=2
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.204-05:00 level=INFO source=server.go:1364 msg="waiting for llama runner to start responding"
+2026-11-10T01:02:22+00:00 mine ollama[631]: time=2026-11-09T20:02:22.210-05:00 level=INFO source=server.go:1398 msg="waiting for server to become available" status="llm server loading model"
+2026-11-10T01:02:28+00:00 mine ollama[631]: time=2026-11-09T20:02:28.491-05:00 level=INFO source=server.go:1402 msg="llama runner started in 7.25 seconds"
+2026-11-10T01:02:47+00:00 mine ollama[631]: [GIN] 2026/11/09 - 20:02:47 | 200 | 58.100896039s |       127.0.0.1 | POST     "/api/chat"
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.729-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.729-05:00 level=INFO source=server.go:259 msg="enabling flash attention"
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.730-05:00 level=INFO source=server.go:444 msg="starting runner" cmd="/usr/local/bin/ollama runner --ollama-engine --model /usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a --port 37575"
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.730-05:00 level=INFO source=sched.go:484 msg="system memory" total="47.0 GiB" free="24.8 GiB" free_swap="5.6 GiB"
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.730-05:00 level=INFO source=server.go:771 msg="loading model" "model layers"=43 requested=-1
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.749-05:00 level=INFO source=runner.go:1417 msg="starting ollama engine"
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.753-05:00 level=INFO source=runner.go:1452 msg="Server listening on 127.0.0.1:37575"
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.764-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:fit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:8192 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.853-05:00 level=INFO source=ggml.go:136 msg="" architecture=gemma4 file_type=Q4_K_M name="" description="" num_tensors=2131 num_key_values=55
+2026-11-10T01:02:49+00:00 mine ollama[631]: load_backend: loaded CPU backend from /usr/local/lib/ollama/libggml-cpu-haswell.so
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.860-05:00 level=INFO source=ggml.go:104 msg=system CPU.0.SSE3=1 CPU.0.SSSE3=1 CPU.0.AVX=1 CPU.0.AVX2=1 CPU.0.F16C=1 CPU.0.FMA=1 CPU.0.BMI2=1 CPU.0.LLAMAFILE=1 CPU.1.LLAMAFILE=1 compiler=cgo(gcc)
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.883-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:02:49+00:00 mine ollama[631]: time=2026-11-09T20:02:49.917-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=3.658165ms bounds=(0,0)-(2048,2048)
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.086-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=168.21412ms size="[768 768]"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.086-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.086-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.087-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=172.883731ms shape="[2560 256]"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.165-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:alloc LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:8192 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.267-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.286-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=793.236µs bounds=(0,0)-(2048,2048)
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.397-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=110.830421ms size="[768 768]"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.401-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.401-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.402-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=117.034502ms shape="[2560 256]"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:commit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:8192 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=ggml.go:482 msg="offloading 0 repeating layers to GPU"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=ggml.go:486 msg="offloading output layer to CPU"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=ggml.go:494 msg="offloaded 0/43 layers to GPU"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=device.go:245 msg="model weights" device=CPU size="9.4 GiB"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=device.go:256 msg="kv cache" device=CPU size="308.0 MiB"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=device.go:267 msg="compute graph" device=CPU size="125.5 MiB"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=device.go:272 msg="total memory" size="9.9 GiB"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=sched.go:561 msg="loaded runners" count=2
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.757-05:00 level=INFO source=server.go:1364 msg="waiting for llama runner to start responding"
+2026-11-10T01:02:50+00:00 mine ollama[631]: time=2026-11-09T20:02:50.758-05:00 level=INFO source=server.go:1398 msg="waiting for server to become available" status="llm server loading model"
+2026-11-10T01:02:57+00:00 mine ollama[631]: time=2026-11-09T20:02:57.302-05:00 level=INFO source=server.go:1402 msg="llama runner started in 7.57 seconds"
+2026-11-10T01:03:17+00:00 mine ollama[631]: [GIN] 2026/11/09 - 20:03:17 | 200 | 57.969324609s |       127.0.0.1 | POST     "/api/chat"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.381-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.381-05:00 level=INFO source=server.go:259 msg="enabling flash attention"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.382-05:00 level=INFO source=server.go:444 msg="starting runner" cmd="/usr/local/bin/ollama runner --ollama-engine --model /usr/share/ollama/.ollama/models/blobs/sha256-4c27e0f5b5adf02ac956c7322bd2ee7636fe3f45a8512c9aba5385242cb6e09a --port 46721"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.383-05:00 level=INFO source=sched.go:484 msg="system memory" total="47.0 GiB" free="22.8 GiB" free_swap="4.8 GiB"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.383-05:00 level=INFO source=server.go:771 msg="loading model" "model layers"=43 requested=-1
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.407-05:00 level=INFO source=runner.go:1417 msg="starting ollama engine"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.411-05:00 level=INFO source=runner.go:1452 msg="Server listening on 127.0.0.1:46721"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.417-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:fit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:4096 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.509-05:00 level=INFO source=ggml.go:136 msg="" architecture=gemma4 file_type=Q4_K_M name="" description="" num_tensors=2131 num_key_values=55
+2026-11-10T01:03:19+00:00 mine ollama[631]: load_backend: loaded CPU backend from /usr/local/lib/ollama/libggml-cpu-haswell.so
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.517-05:00 level=INFO source=ggml.go:104 msg=system CPU.0.SSE3=1 CPU.0.SSSE3=1 CPU.0.AVX=1 CPU.0.AVX2=1 CPU.0.F16C=1 CPU.0.FMA=1 CPU.0.BMI2=1 CPU.0.LLAMAFILE=1 CPU.1.LLAMAFILE=1 compiler=cgo(gcc)
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.544-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.583-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=4.248794ms bounds=(0,0)-(2048,2048)
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.749-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=165.974579ms size="[768 768]"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.749-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.749-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.750-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=171.480931ms shape="[2560 256]"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.812-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:alloc LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:4096 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.920-05:00 level=INFO source=model.go:97 msg="gemma4: token IDs" image=255999 image_end=258882 audio=256000 audio_end=258883
+2026-11-10T01:03:19+00:00 mine ollama[631]: time=2026-11-09T20:03:19.942-05:00 level=INFO source=model.go:138 msg="vision: decode" elapsed=1.167353ms bounds=(0,0)-(2048,2048)
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.072-05:00 level=INFO source=model.go:145 msg="vision: preprocess" elapsed=129.654021ms size="[768 768]"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.079-05:00 level=INFO source=model.go:148 msg="vision: pixelValues" shape="[768 768 3]" dim0=768 dim1=768 dim2=3
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.079-05:00 level=INFO source=model.go:152 msg="vision: patches" patchesX=48 patchesY=48 total=2304 patchSize=16
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.080-05:00 level=INFO source=model.go:156 msg="vision: encoded" elapsed=139.166655ms shape="[2560 256]"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=runner.go:1290 msg=load request="{Operation:commit LoraPath:[] Parallel:1 BatchSize:512 FlashAttention:Enabled KvSize:4096 KvCacheType: NumThreads:4 GPULayers:[] MultiUserCache:false ProjectorPath: MainGPU:0 UseMmap:false}"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=ggml.go:482 msg="offloading 0 repeating layers to GPU"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=ggml.go:486 msg="offloading output layer to CPU"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=ggml.go:494 msg="offloaded 0/43 layers to GPU"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=device.go:245 msg="model weights" device=CPU size="9.4 GiB"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=device.go:256 msg="kv cache" device=CPU size="224.0 MiB"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=device.go:267 msg="compute graph" device=CPU size="125.0 MiB"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=device.go:272 msg="total memory" size="9.8 GiB"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=sched.go:561 msg="loaded runners" count=2
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=server.go:1364 msg="waiting for llama runner to start responding"
+2026-11-10T01:03:20+00:00 mine ollama[631]: time=2026-11-09T20:03:20.359-05:00 level=INFO source=server.go:1398 msg="waiting for server to become available" status="llm server loading model"
+2026-11-10T01:03:27+00:00 mine ollama[631]: time=2026-11-09T20:03:27.650-05:00 level=INFO source=server.go:1402 msg="llama runner started in 8.27 seconds"
+2026-11-10T01:03:40+00:00 mine ollama[631]: [GIN] 2026/11/09 - 20:03:40 | 200 | 22.981064339s |       127.0.0.1 | POST     "/api/chat"
+2026-11-10T01:03:41+00:00 mine ollama[631]: [GIN] 2026/11/09 - 20:03:41 | 200 |  1.296875998s |       127.0.0.1 | POST     "/api/chat"
+2026-11-10T01:03:48+00:00 mine ollama[631]: [GIN] 2026/11/09 - 20:03:48 | 200 |          1m1s |       127.0.0.1 | POST     "/api/chat"

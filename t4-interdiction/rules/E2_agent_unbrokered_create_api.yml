@@ -1,0 +1,10 @@
+title: Agent creates an external resource without a broker delegation (API)
+description: AML.M0043 "agents should create such resources through a broker or management layer". Enforcement; event unit. Table api_activity.
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation: ['github.repos.create', 'gists.create', 'ec2.RunInstances', 'iam.createUser', 's3.createBucket', 'sandbox.create']
+    ai_agent_name|exists: true
+    delegation_uid: null
+  condition: sel

@@ -1,0 +1,9 @@
+title: Agent ingests mailbox content
+name: a1_ingest_mail
+description: Leg 1 (untrusted content) for the CS0066 shape, AML.T0093 -> AML.T0051.001 / ATT&CK T1698. Kind match on the tool; no content read.
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    api_operation: mail.fetch
+  condition: sel

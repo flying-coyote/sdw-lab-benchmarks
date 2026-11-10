@@ -1,0 +1,75 @@
+=== T7 run start 2026-11-10T01:05:35Z
+--- clock
+Reference ID    : 1798A04A (23.152.160.74)
+Stratum         : 3
+Ref time (UTC)  : Tue Nov 10 00:57:08 2026
+System time     : 0.633136034 seconds slow of NTP time
+Last offset     : -0.000737937 seconds
+RMS offset      : 0.078647181 seconds
+Frequency       : 44.278 ppm slow
+Residual freq   : -0.032 ppm
+Skew            : 0.145 ppm
+Root delay      : 0.036786817 seconds
+Root dispersion : 0.020729648 seconds
+Update interval : 1026.9 seconds
+Leap status     : Normal
+--- load
+15.62 12.37 8.36 14/1613 72548
+--- versions
+docker server 29.5.3
+Python 3.12.3
+cffi==2.1.1
+cryptography==50.0.2
+pycparser==3.12
+PyJWT==2.15.1
+image quay.io/keycloak/keycloak@sha256:3f3c5f8e03c614774b4bd9173b88391fefa4153bfc010d8012d59ad825377332 created 2026-10-31T10:43:54.224918634Z
+=== ARM S: standard token exchange, default features  2026-11-10T01:05:35Z
+2026-11-10 01:06:16,951 INFO  [io.quarkus] (main) Keycloak 26.8.1 on JVM (powered by Quarkus 3.40.1) started in 22.954s. Listening on: http://0.0.0.0:8080
+2026-11-10 01:06:16,952 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-h2, keycloak, narayana-jta, opentelemetry, rest, rest-jackson, smallrye-context-propagation, vertx]
+{"setup": "t7s", "arm": "S", "at": "2026-11-10T01:06:24Z"}
+--- S rep 1 load 18.76 13.64 9.00
+{"run": "rep1", "arm": "S", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/T1-agent-a", 200], ["baseline/T2-agent-b", 200]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/T1-agent-a", 200], ["reacquire/T2-agent-b", 200]], "new": [["new/T0-login", 200], ["new/T1-agent-a", 200], ["new/T2-agent-b", 200]], "interleaved": [["interleaved/T0-login", 200], ["interleaved/T1-0", 200], ["interleaved/T1-1", 200], ["interleaved/T1-2", 200], ["interleaved/T2-2", 200], ["interleaved/T2-0", 200], ["interleaved/T2-1", 200]]}}
+--- S rep 2 load 18.38 13.65 9.03
+{"run": "rep2", "arm": "S", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/T1-agent-a", 200], ["baseline/T2-agent-b", 200]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/T1-agent-a", 200], ["reacquire/T2-agent-b", 200]], "new": [["new/T0-login", 200], ["new/T1-agent-a", 200], ["new/T2-agent-b", 200]], "interleaved": [["interleaved/T0-login", 200], ["interleaved/T1-0", 200], ["interleaved/T1-1", 200], ["interleaved/T1-2", 200], ["interleaved/T2-0", 200], ["interleaved/T2-2", 200], ["interleaved/T2-1", 200]]}}
+--- S rep 3 load 18.38 13.65 9.03
+{"run": "rep3", "arm": "S", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/T1-agent-a", 200], ["baseline/T2-agent-b", 200]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/T1-agent-a", 200], ["reacquire/T2-agent-b", 200]], "new": [["new/T0-login", 200], ["new/T1-agent-a", 200], ["new/T2-agent-b", 200]], "interleaved": [["interleaved/T0-login", 200], ["interleaved/T1-0", 200], ["interleaved/T1-1", 200], ["interleaved/T1-2", 200], ["interleaved/T2-1", 200], ["interleaved/T2-2", 200], ["interleaved/T2-0", 200]]}}
+--- S rep 4 load 18.38 13.65 9.03
+{"run": "rep4", "arm": "S", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/T1-agent-a", 200], ["baseline/T2-agent-b", 200]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/T1-agent-a", 200], ["reacquire/T2-agent-b", 200]], "new": [["new/T0-login", 200], ["new/T1-agent-a", 200], ["new/T2-agent-b", 200]], "interleaved": [["interleaved/T0-login", 200], ["interleaved/T1-0", 200], ["interleaved/T1-1", 200], ["interleaved/T1-2", 200], ["interleaved/T2-1", 200], ["interleaved/T2-2", 200], ["interleaved/T2-0", 200]]}}
+--- S rep 5 load 18.38 13.65 9.03
+{"run": "rep5", "arm": "S", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/T1-agent-a", 200], ["baseline/T2-agent-b", 200]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/T1-agent-a", 200], ["reacquire/T2-agent-b", 200]], "new": [["new/T0-login", 200], ["new/T1-agent-a", 200], ["new/T2-agent-b", 200]], "interleaved": [["interleaved/T0-login", 200], ["interleaved/T1-0", 200], ["interleaved/T1-1", 200], ["interleaved/T1-2", 200], ["interleaved/T2-1", 200], ["interleaved/T2-2", 200], ["interleaved/T2-0", 200]]}}
+{"enforcer": true, "realm": "t7s", "at": "2026-11-10T01:06:32Z"}
+--- S enforcer rep 1 load 18.43 13.74 9.08
+{"run": "rep1-enforcer", "arm": "S", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/T1-agent-a", 200], ["baseline/T2-agent-b", 200]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/T1-agent-a", 200], ["reacquire/T2-agent-b", 400]], "new": [["new/T0-login", 200], ["new/T1-agent-a", 200], ["new/T2-agent-b", 400]]}}
+--- S enforcer rep 2 load 18.43 13.74 9.08
+{"run": "rep2-enforcer", "arm": "S", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/T1-agent-a", 200], ["baseline/T2-agent-b", 200]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/T1-agent-a", 200], ["reacquire/T2-agent-b", 400]], "new": [["new/T0-login", 200], ["new/T1-agent-a", 200], ["new/T2-agent-b", 400]]}}
+--- S enforcer rep 3 load 18.43 13.74 9.08
+{"run": "rep3-enforcer", "arm": "S", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/T1-agent-a", 200], ["baseline/T2-agent-b", 200]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/T1-agent-a", 200], ["reacquire/T2-agent-b", 400]], "new": [["new/T0-login", 200], ["new/T1-agent-a", 200], ["new/T2-agent-b", 400]]}}
+{"enforcer": false, "realm": "t7s", "at": "2026-11-10T01:06:34Z"}
+{"capture": "capture", "events": 107, "admin_events": 21, "log_lines": 152, "at": "2026-11-10T01:06:37Z"}
+=== ARM D: preview token-exchange-delegation + parameterized-scopes  2026-11-10T01:06:38Z
+2026-11-10 01:06:47,407 INFO  [org.keycloak.common.Profile] (build-4) Preview features enabled: parameterized-scopes:v1, token-exchange-delegation:v1
+2026-11-10 01:07:03,977 INFO  [org.keycloak.common.Profile] (main) Preview features enabled: parameterized-scopes:v1, token-exchange-delegation:v1
+2026-11-10 01:07:16,268 INFO  [io.quarkus] (main) Keycloak 26.8.1 on JVM (powered by Quarkus 3.40.1) started in 18.847s. Listening on: http://0.0.0.0:8080
+{"setup": "t7d", "arm": "D", "at": "2026-11-10T01:07:24Z"}
+--- D rep 1 load 19.38 14.70 9.65
+{"run": "rep1", "arm": "D", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/actor-agent-a", 200], ["baseline/T1-agent-a-delegated", 200], ["baseline/T2a-agent-b-standard", 400], ["baseline/actor-agent-b", 200], ["baseline/T2b-agent-b-delegated", 400]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/actor-agent-a", 200], ["reacquire/T1-agent-a-delegated", 200]], "new": [["new/T0-login", 200], ["new/actor-agent-a", 200], ["new/T1-agent-a-delegated", 200]], "two-actors": [["two-actors/T0-login", 302]]}}
+--- D rep 2 load 19.19 14.74 9.69
+{"run": "rep2", "arm": "D", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/actor-agent-a", 200], ["baseline/T1-agent-a-delegated", 200], ["baseline/T2a-agent-b-standard", 400], ["baseline/actor-agent-b", 200], ["baseline/T2b-agent-b-delegated", 400]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/actor-agent-a", 200], ["reacquire/T1-agent-a-delegated", 200]], "new": [["new/T0-login", 200], ["new/actor-agent-a", 200], ["new/T1-agent-a-delegated", 200]], "two-actors": [["two-actors/T0-login", 302]]}}
+--- D rep 3 load 19.19 14.74 9.69
+{"run": "rep3", "arm": "D", "statuses": {"baseline": [["baseline/T0-login", 200], ["baseline/actor-agent-a", 200], ["baseline/T1-agent-a-delegated", 200], ["baseline/T2a-agent-b-standard", 400], ["baseline/actor-agent-b", 200], ["baseline/T2b-agent-b-delegated", 400]], "reacquire": [["reacquire/T0-login", 200], ["reacquire/actor-agent-a", 200], ["reacquire/T1-agent-a-delegated", 200]], "new": [["new/T0-login", 200], ["new/actor-agent-a", 200], ["new/T1-agent-a-delegated", 200]], "two-actors": [["two-actors/T0-login", 302]]}}
+{"capture": "capture", "events": 48, "admin_events": 23, "log_lines": 101, "at": "2026-11-10T01:07:33Z"}
+--- clock
+Reference ID    : 50484330 (PHC0)
+Stratum         : 1
+Ref time (UTC)  : Tue Nov 10 01:07:28 2026
+System time     : 0.000002690 seconds fast of NTP time
+Last offset     : +0.000015666 seconds
+RMS offset      : 0.000025695 seconds
+Frequency       : 46.031 ppm slow
+Residual freq   : +0.018 ppm
+Skew            : 1.299 ppm
+Root delay      : 0.000000001 seconds
+Root dispersion : 0.000185073 seconds
+Update interval : 8.0 seconds
+Leap status     : Normal
+=== T7 run end 2026-11-10T01:07:34Z

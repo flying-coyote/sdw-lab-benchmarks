@@ -1,0 +1,8 @@
+title: Prompt contains a blocklisted injection phrase
+description: AML.M0020 "rule-based controls such as filters, allowlists, blocklists, regular expressions" on prompts. Enforcement; event unit. Table api_activity (ai_operation profile).
+status: experimental
+logsource: {category: api}
+detection:
+  sel:
+    message_context_prompt_text|contains: ['ignore previous instructions', 'ignore all previous', 'disregard your', 'you are now', 'developer mode', 'do anything now', 'reveal your system prompt']
+  condition: sel

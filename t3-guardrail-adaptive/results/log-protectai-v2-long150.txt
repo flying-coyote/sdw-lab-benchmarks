@@ -1,0 +1,7 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+/tmp/claude-1000/lab-ai-research/t3-guardrail-adaptive/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 2396.84it/s]
+{"model_id": "protectai-v2", "repo": "protectai/deberta-v3-base-prompt-injection-v2", "revision": "90c9989b1a342275dd0d1a95aad283c04e075671", "id2label": {"0": "SAFE", "1": "INJECTION"}, "pos_label": "INJECTION", "max_len": 512, "batch": 16, "threads": 4, "torch": "2.15.0+cpu", "n_items": 300, "transforms": ["T1"], "repeat": 1, "cap_sets": "A3-itw-jailbreak,B4-itw-regular", "cap": 150, "affinity": [10, 11, 12, 13], "nice": 10, "start_utc": "2026-11-10T01:55:29Z"}
+[protectai-v2] rep0 T1 done; 300 scored; 442s elapsed; 0.7 items/s
+wrote results/scores-protectai-v2-long150.jsonl

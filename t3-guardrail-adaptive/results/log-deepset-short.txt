@@ -1,0 +1,13 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+/tmp/claude-1000/lab-ai-research/t3-guardrail-adaptive/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Loading weights:   0%|          | 0/202 [00:00<?, ?it/s]Loading weights:  66%|██████▌   | 133/202 [00:00<00:00, 1300.57it/s]Loading weights: 100%|██████████| 202/202 [00:00<00:00, 1278.38it/s]
+{"model_id": "deepset", "repo": "deepset/deberta-v3-base-injection", "revision": "80dda00d0b0d9a03917a7685e2ddbcd28e04dbb1", "id2label": {"0": "LEGIT", "1": "INJECTION"}, "pos_label": "INJECTION", "max_len": 512, "batch": 16, "threads": 4, "torch": "2.15.0+cpu", "n_items": 1155, "transforms": ["T0", "T1", "T2", "T3", "T4", "T5", "T7"], "repeat": 1, "cap_sets": "", "cap": 0, "affinity": [10, 11, 12, 13], "nice": 10, "start_utc": "2026-11-10T02:23:57Z"}
+[deepset] rep0 T0 done; 1155 scored; 120s elapsed; 9.6 items/s
+[deepset] rep0 T1 done; 2310 scored; 368s elapsed; 6.3 items/s
+[deepset] rep0 T2 done; 3465 scored; 621s elapsed; 5.6 items/s
+[deepset] rep0 T3 done; 4620 scored; 750s elapsed; 6.2 items/s
+[deepset] rep0 T4 done; 5775 scored; 917s elapsed; 6.3 items/s
+[deepset] rep0 T5 done; 6930 scored; 1006s elapsed; 6.9 items/s
+[deepset] rep0 T7 done; 8085 scored; 1529s elapsed; 5.3 items/s
+wrote results/scores-deepset-short.jsonl

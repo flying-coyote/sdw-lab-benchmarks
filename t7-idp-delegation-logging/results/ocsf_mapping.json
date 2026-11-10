@@ -1,0 +1,465 @@
+{
+ "producers": {
+  "S": {
+   "user_events": 107,
+   "admin_events": 21,
+   "mapping_notes": {
+    "TOKEN_EXCHANGE": "3002 activity_id 4 (Service Ticket Request): Kerberos caption reused for an OAuth 2.0 token requested for a named audience; alternative is 99 Other.",
+    "LOGIN": "3002 activity_id 1 (Logon); ROPC in arm S, authorization code in arm D.",
+    "CODE_TO_TOKEN": "3002 activity_id 99 (Other, 'Code to token'): token issuance step of the code flow; the LOGIN event is the authentication.",
+    "CLIENT_LOGIN": "3002 activity_id 1 (Logon) with user.type_id 4 (Service): the client's service account.",
+    "TOKEN_EXCHANGE_ERROR": "3002 activity_id 4, status_id 2 (Failure). Keycloak emits no userId on an enforcer refusal, so `user` (required) is left absent and the validator result is the finding.",
+    "LOGIN_ERROR": "3002 activity_id 1, status_id 2."
+   }
+  },
+  "D": {
+   "user_events": 48,
+   "admin_events": 23,
+   "mapping_notes": {
+    "TOKEN_EXCHANGE": "3002 activity_id 4 (Service Ticket Request): Kerberos caption reused for an OAuth 2.0 token requested for a named audience; alternative is 99 Other.",
+    "LOGIN": "3002 activity_id 1 (Logon); ROPC in arm S, authorization code in arm D.",
+    "CODE_TO_TOKEN": "3002 activity_id 99 (Other, 'Code to token'): token issuance step of the code flow; the LOGIN event is the authentication.",
+    "CLIENT_LOGIN": "3002 activity_id 1 (Logon) with user.type_id 4 (Service): the client's service account.",
+    "TOKEN_EXCHANGE_ERROR": "3002 activity_id 4, status_id 2 (Failure). Keycloak emits no userId on an enforcer refusal, so `user` (required) is left absent and the validator result is the finding.",
+    "LOGIN_ERROR": "3002 activity_id 1, status_id 2."
+   }
+  }
+ },
+ "fill": {
+  "S": {
+   "TOKEN_EXCHANGE": {
+    "n": 72,
+    "events_only": {
+     "uid": 72,
+     "issuer_uid": 72,
+     "scopes (main-only)": 72,
+     "audience (main-only)": 72,
+     "created_time": 72
+    },
+    "token_in_hand": {
+     "uid": 72,
+     "parent_uid": 72,
+     "issuer_uid": 72,
+     "scopes (main-only)": 72,
+     "audience (main-only)": 72,
+     "created_time": 72,
+     "expiration_time (main-only)": 72
+    }
+   },
+   "LOGIN": {
+    "n": 29,
+    "events_only": {
+     "uid": 29,
+     "issuer_uid": 29,
+     "scopes (main-only)": 29,
+     "created_time": 29
+    },
+    "token_in_hand": {
+     "uid": 29,
+     "issuer_uid": 29,
+     "scopes (main-only)": 29,
+     "created_time": 29,
+     "expiration_time (main-only)": 29
+    }
+   }
+  },
+  "D": {
+   "TOKEN_EXCHANGE": {
+    "n": 9,
+    "events_only": {
+     "uid": 9,
+     "issuer_uid": 9,
+     "scopes (main-only)": 9,
+     "audience (main-only)": 9,
+     "created_time": 9
+    },
+    "token_in_hand": {
+     "uid": 9,
+     "parent_uid": 9,
+     "issuer_uid": 9,
+     "scopes (main-only)": 9,
+     "audience (main-only)": 9,
+     "created_time": 9,
+     "expiration_time (main-only)": 9
+    }
+   },
+   "CODE_TO_TOKEN": {
+    "n": 9,
+    "events_only": {
+     "uid": 9,
+     "issuer_uid": 9,
+     "scopes (main-only)": 9,
+     "created_time": 9
+    },
+    "token_in_hand": {
+     "uid": 9,
+     "issuer_uid": 9,
+     "scopes (main-only)": 9,
+     "created_time": 9,
+     "expiration_time (main-only)": 9
+    }
+   },
+   "LOGIN": {
+    "n": 9,
+    "events_only": {},
+    "token_in_hand": {}
+   }
+  }
+ },
+ "validation": {
+  "S": {
+   "events_only@1.9.0": {
+    "distinct_shapes_validated": 3,
+    "records": 107,
+    "error_kinds": {
+     "attribute_required_missing@user": 1
+    },
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_name": 3,
+     "attribute_enum_sibling_incorrect@authentication_token.type": 2
+    },
+    "per_event_code": {
+     "TOKEN_EXCHANGE_ERROR": {
+      "n": 1,
+      "errors": {
+       "attribute_required_missing@user": 1
+      }
+     },
+     "TOKEN_EXCHANGE": {
+      "n": 1,
+      "errors": {}
+     },
+     "LOGIN": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   },
+   "token_in_hand@1.9.0": {
+    "distinct_shapes_validated": 3,
+    "records": 107,
+    "error_kinds": {
+     "attribute_required_missing@user": 1
+    },
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_name": 3,
+     "attribute_enum_sibling_incorrect@authentication_token.type": 2
+    },
+    "per_event_code": {
+     "TOKEN_EXCHANGE_ERROR": {
+      "n": 1,
+      "errors": {
+       "attribute_required_missing@user": 1
+      }
+     },
+     "TOKEN_EXCHANGE": {
+      "n": 1,
+      "errors": {}
+     },
+     "LOGIN": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   },
+   "admin@1.9.0": {
+    "distinct_shapes_validated": 7,
+    "records": 21,
+    "error_kinds": {},
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_uid": 7,
+     "class_deprecated@None": 2
+    },
+    "per_event_code": {
+     "ADMIN:CREATE:CLIENT": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:PROTOCOL_MAPPER": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:CLIENT_SCOPE": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:REALM_SCOPE_MAPPING": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:REALM_ROLE_MAPPING": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:USER": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:REALM_ROLE": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   },
+   "events_only@1.10.0-dev": {
+    "distinct_shapes_validated": 3,
+    "records": 107,
+    "error_kinds": {
+     "attribute_required_missing@user": 1
+    },
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_name": 3,
+     "version_earlier@metadata.version": 3,
+     "attribute_enum_sibling_incorrect@authentication_token.type": 2
+    },
+    "per_event_code": {
+     "TOKEN_EXCHANGE_ERROR": {
+      "n": 1,
+      "errors": {
+       "attribute_required_missing@user": 1
+      }
+     },
+     "TOKEN_EXCHANGE": {
+      "n": 1,
+      "errors": {}
+     },
+     "LOGIN": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   },
+   "token_in_hand@1.10.0-dev": {
+    "distinct_shapes_validated": 3,
+    "records": 107,
+    "error_kinds": {
+     "attribute_required_missing@user": 1
+    },
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_name": 3,
+     "version_earlier@metadata.version": 3,
+     "attribute_enum_sibling_incorrect@authentication_token.type": 2
+    },
+    "per_event_code": {
+     "TOKEN_EXCHANGE_ERROR": {
+      "n": 1,
+      "errors": {
+       "attribute_required_missing@user": 1
+      }
+     },
+     "TOKEN_EXCHANGE": {
+      "n": 1,
+      "errors": {}
+     },
+     "LOGIN": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   }
+  },
+  "D": {
+   "events_only@1.9.0": {
+    "distinct_shapes_validated": 6,
+    "records": 48,
+    "error_kinds": {
+     "attribute_required_missing@user": 1
+    },
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_name": 6,
+     "attribute_enum_sibling_incorrect@authentication_token.type": 3
+    },
+    "per_event_code": {
+     "LOGIN_ERROR": {
+      "n": 1,
+      "errors": {
+       "attribute_required_missing@user": 1
+      }
+     },
+     "TOKEN_EXCHANGE": {
+      "n": 1,
+      "errors": {}
+     },
+     "CLIENT_LOGIN": {
+      "n": 1,
+      "errors": {}
+     },
+     "CODE_TO_TOKEN": {
+      "n": 1,
+      "errors": {}
+     },
+     "LOGIN": {
+      "n": 1,
+      "errors": {}
+     },
+     "TOKEN_EXCHANGE_ERROR": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   },
+   "token_in_hand@1.9.0": {
+    "distinct_shapes_validated": 6,
+    "records": 48,
+    "error_kinds": {
+     "attribute_required_missing@user": 1
+    },
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_name": 6,
+     "attribute_enum_sibling_incorrect@authentication_token.type": 3
+    },
+    "per_event_code": {
+     "LOGIN_ERROR": {
+      "n": 1,
+      "errors": {
+       "attribute_required_missing@user": 1
+      }
+     },
+     "TOKEN_EXCHANGE": {
+      "n": 1,
+      "errors": {}
+     },
+     "CLIENT_LOGIN": {
+      "n": 1,
+      "errors": {}
+     },
+     "CODE_TO_TOKEN": {
+      "n": 1,
+      "errors": {}
+     },
+     "LOGIN": {
+      "n": 1,
+      "errors": {}
+     },
+     "TOKEN_EXCHANGE_ERROR": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   },
+   "admin@1.9.0": {
+    "distinct_shapes_validated": 8,
+    "records": 23,
+    "error_kinds": {},
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_uid": 8,
+     "class_deprecated@None": 2
+    },
+    "per_event_code": {
+     "ADMIN:CREATE:AUTHORIZATION_POLICY": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:CLIENT": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:PROTOCOL_MAPPER": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:CLIENT_SCOPE": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:REALM_SCOPE_MAPPING": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:REALM_ROLE_MAPPING": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:USER": {
+      "n": 1,
+      "errors": {}
+     },
+     "ADMIN:CREATE:REALM_ROLE": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   },
+   "events_only@1.10.0-dev": {
+    "distinct_shapes_validated": 6,
+    "records": 48,
+    "error_kinds": {
+     "attribute_required_missing@user": 1
+    },
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_name": 6,
+     "version_earlier@metadata.version": 6,
+     "attribute_enum_sibling_incorrect@authentication_token.type": 3
+    },
+    "per_event_code": {
+     "LOGIN_ERROR": {
+      "n": 1,
+      "errors": {
+       "attribute_required_missing@user": 1
+      }
+     },
+     "TOKEN_EXCHANGE": {
+      "n": 1,
+      "errors": {}
+     },
+     "CLIENT_LOGIN": {
+      "n": 1,
+      "errors": {}
+     },
+     "CODE_TO_TOKEN": {
+      "n": 1,
+      "errors": {}
+     },
+     "LOGIN": {
+      "n": 1,
+      "errors": {}
+     },
+     "TOKEN_EXCHANGE_ERROR": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   },
+   "token_in_hand@1.10.0-dev": {
+    "distinct_shapes_validated": 6,
+    "records": 48,
+    "error_kinds": {
+     "attribute_required_missing@user": 1
+    },
+    "warning_kinds": {
+     "attribute_deprecated@actor.app_name": 6,
+     "version_earlier@metadata.version": 6,
+     "attribute_enum_sibling_incorrect@authentication_token.type": 3
+    },
+    "per_event_code": {
+     "LOGIN_ERROR": {
+      "n": 1,
+      "errors": {
+       "attribute_required_missing@user": 1
+      }
+     },
+     "TOKEN_EXCHANGE": {
+      "n": 1,
+      "errors": {}
+     },
+     "CLIENT_LOGIN": {
+      "n": 1,
+      "errors": {}
+     },
+     "CODE_TO_TOKEN": {
+      "n": 1,
+      "errors": {}
+     },
+     "LOGIN": {
+      "n": 1,
+      "errors": {}
+     },
+     "TOKEN_EXCHANGE_ERROR": {
+      "n": 1,
+      "errors": {}
+     }
+    }
+   }
+  }
+ }
+}
