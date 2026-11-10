@@ -2,77 +2,39 @@
 type: benchmark-verification
 bench: M1-r1-blind-regrade
 verified: 2026-11-09
-verdict: NOT-VERIFIED
+verdict: VERIFIED-WITH-FIXES
 verifier: independent agent (Claude Opus 5.5), no git
 ---
 
 # Verification: M1 r1-blind-regrade
 
-## Verdict: NOT-VERIFIED (run incomplete, nothing to verify yet)
+VERIFIED-WITH-FIXES: every headline number reproduces byte-for-byte from the saved raw responses and independently from a separate script, the pre-registration hash matches and predates the run, deviations are disclosed, and no identifier or secret appears; four small wording imprecisions in RESULTS.md were corrected and marked `[fixed in verify]`. H4 (consensus) remains untested, as RESULTS says.
 
-This file is a pre-run check only. Replace it with a full verification once RESULTS.md exists.
+## History
 
-There is no RESULTS.md and no grading output in this folder, so no result claim exists to confirm or
-refute. The verdict is not a finding against the bench's method; the pre-run checks below all pass, and
-the bench should be re-verified once it has actually run.
+An earlier pass of this file (written 20:09 EST, before any grading call) recorded NOT-VERIFIED because the freeze-era agent had died with zero calls made; its pre-run checks (prereg hash, blinding, prompt-size cap, Grader A gate, versions, spend) all passed. That record is the evidence behind RESULTS' first deviation, and it independently fixes the prereg hash at a time before any response existed.
 
-## What is on disk (checked 2026-11-09 19:55 to 20:10 EST)
+## Checks
 
-- `PREREGISTRATION.md` (mtime 19:51:43 EST), `results/PREREG.sha256`, `results/PREREG.frozen_at`
-  (`2026-11-10T00:51:49Z` = 19:51:49 EST), scripts and prompts written 19:52 to 19:55, a venv,
-  `responses/pass1.out` (0 bytes, 19:53:04) and `responses/pass1/run.log` (0 bytes, 19:55:20).
-- No `RESULTS.md`, no `results/grader_b.json`, `consensus.json` or `headline.json`, no response `.md` files.
-- I watched the folder for roughly 15 minutes: `run.log` stayed empty. At 20:09 EST, `ps` found no
-  `run_pass`, `agy-tracked` or `xargs -P` process, and a scan of every live shell's full
-  `/proc/<pid>/cmdline` for the string `m1-r1-blind-regrade` matched only my own watchers (the one
-  long-running `taskset` shell turned out to be the t3-guardrail-adaptive bench). The agy ledger (`~/.local/share/agy-usage/ledger.jsonl`) has no
-  `m1-*` entry (its last entry is 2026-11-07). So no grading call has been made; the run appears to have
-  been launched and died (most likely its parent agent ended), not to be in progress.
+**Pre-registration.** `sha256sum PREREGISTRATION.md` = `a2eed4adbab81c3980220e3c7e4ec3f9bff304f6a60736116fac4327b6a240cf`, identical to `results/PREREG.sha256` and to `prompts/manifest.json` `prereg_sha256`. Freeze `2026-11-10T00:51:49Z` (19:51:49 EST). Prompt files and manifest mtime 19:52:48. First grading call completed 22:07:01 local after 366 s, so it started about 22:00:55, roughly 2 h 9 min after the freeze; the same hash was recorded by the 20:09 pre-run verification. `run_pass.sh` was patched at 22:00:39, about 16 s before the first call started, consistent with "patched before any call". Mtimes are not tamper-proof, but the 20:09 record is an independent timestamp.
 
-## Pre-run checks that pass
+**Reproduction from raw outputs.** Copied scripts, prompts and responses to a scratch tree and re-ran `analyze.py` and `recompute.py` (Grader A gate passed): `grader_b.json`, `agreement.json`, `disagreements.csv` and `headline.json` are byte-identical to the bench's `results/`. A separate script written for this verification (parses the 30 responses, modal grade, Cohen's kappa) gives the same numbers: five-category 62.03% / expected 30.75% / kappa 0.4516; specific binary 83.54% / 0.6695; observable binary 84.81% / 0.1222; flip 9 of 282 (3.19%), 0 ties; disagreements 30 (direct/generic 12, generic/none 6, none/proxy 6, generic/proxy 5, event/proxy 1); B modal distribution 31/26/13/5/4; pass-pair kappa 0.9267, 0.9112, 0.8964; technique rows all `none`, 60%, kappa 0.0. Invented object or class: 0 of 282 checked against the 194 objects and 87 class uids in R1's `sources/`. Confusion matrix matches `agreement.json`. Profile arm under B equals core in every pass (168, 173, 167). Technique moves: 30 (15 to none, 9 to direct, 6 to generic).
 
-- **Pre-registration integrity.** `sha256sum PREREGISTRATION.md` =
-  `a2eed4adbab81c3980220e3c7e4ec3f9bff304f6a60736116fac4327b6a240cf`, identical to `results/PREREG.sha256`.
-  The freeze time precedes every script, prompt and response file by mtime. Mtimes are not tamper-proof,
-  but with no responses at all there is nothing the pre-registration could have been written after.
-- **Blinding.** 30 prompt files (3 passes × 10 batches, 94 rows per pass = 79 artifact + 15 technique).
-  A substring search for the first 50 characters of every R1 `rationale` and `crosswalk_reason` across all
-  prompt text found 0 matches; prompts carry the D3FEND/ATLAS definition, the rubric word for word as
-  pre-registered, the four-clause discipline, and the OCSF 1.9.0 excerpt (194 objects, 87 classes, 62,340
-  bytes).
-- **Argument-size assertion.** Largest prompt 70,777 bytes, under the pre-registered 120,000 cap.
-- **Grader A gate.** Running `recompute.evaluate` on R1's CSVs alone (the full `recompute.py` needs
-  `grader_b.json`, which does not exist) reproduces core-arm 161/235/290 steps, 112/155/182 defender-ground
-  steps and 55/91/107 techniques, matching R1 and the pre-registered gate exactly. Input hashes match the
-  pre-registration prefixes (`0622cb6c…`, `d914f59b…`, `0de548fa…`).
-- **Versions.** Python 3.12.3, `PyYAML==6.0.3` pinned; `agy --version` is promised for RESULTS and
-  cannot be checked yet. `run_pass.sh` defaults to `gemini-3.8-flash-high`, matching the pre-registration.
-- **Spend.** Zero calls made, zero dollars; well inside the 36 Flash / 4 Argon cap.
-- **Safety scope.** Fixtures are public ontology text (D3FEND 1.4.0 definitions, ATLAS v2026.10
-  technique descriptions, OCSF 1.9.0 schema excerpt). No attack payloads, exploit code, credentials or
-  containers.
+**Headline tracing.** Every line reference in RESULTS.md to `results/headline.json` (1529 to 1589) and `results/agreement.json` (3 to 7, 61 to 109, 165 to 182) resolves to the quoted value. Supporting figures also check: 36 disagreement rows; 30 adjudication rows in 3 batches whose complement is exactly the six listed; excerpt sha256 `85138738…`, 62,340 bytes; ledger has 30 `m1-p*` rows, all `gemini-3.8-flash-high`, all SUCCESS, 30 distinct conversation ids, 1,889,180 tokens, 131.98 call-minutes; `responses/calls.count` = 30; three Argon attempts all `SKIPPED` by the wrapper at 0.1866; `agy --version` = 1.5.3.
 
-## Observations for when the run resumes (not errors)
+**Re-run slice.** Re-sent pass-1 `artifact-b3` and `technique-b2` (15 rows) to `gemini-3.8-flash-high` through `agy-tracked.sh`: 14 of 15 grades equal the original pass-1 grades and the modal grades (one flip, `d3f:Server` direct to generic), in line with the 3.2% flip rate and pass-pair agreement of about 93% to 95%.
 
-- `run_pass.sh` makes up to 3 tries per batch (1 + 2 retries), which matches stop rule (a), but 30
-  batches × up to 2 retries could reach 90 Flash calls against the 36-call cap; the script does not count
-  calls across batches, so the cap is enforced only by the operator.
-- `run_pass.sh` checks for the string `"row_id"` but not for valid JSON or the right row count; that
-  `analyze.py` parses with `json.loads` and records missing batches and rows as problems (lines 17, 46,
-  51), which covers it at analysis time, though a malformed batch would not trigger a retry.
-- The prereg says the smoke test used `agy` directly; it is not in the tracked ledger, which is consistent
-  with that, but RESULTS should say so.
+**Deviations.** Disclosed: second agent executed the run; `run_pass.sh` operational patch (call cap under flock, `gemini-5h` stop rule, stricter retry check, halt marker, skip-valid); `run_adj.sh` added and its "argon calls: 3" meaning attempts; adjudication and consensus missing; the prereg's untracked smoke test. I found no undisclosed change to hypotheses, metrics, thresholds, prompts or the tie rule.
 
-## Cross-provider leg
+**Identifiers and secrets.** Regex scan of `results/` and `RESULTS.md` for emails, API keys and tokens (Google, OpenAI, GitHub, OAuth bearer), UUIDs and conversation ids, home paths, account and employer names: no hits. The `secret`, `password` and `account` matches are rubric rationales about D3FEND credential and account artifacts, not values.
 
-Not run. There are no result claims to send to Gemini; sending the pre-registration's hypotheses would
-test nothing about the data.
+## Fixes applied to RESULTS.md (each marked `[fixed in verify]`)
 
-## Not done, and why
+1. Frontmatter `run_date`: the 22:01 start was labelled a ledger timestamp; ledger `ts` values are completion times (22:07:01 to 22:38:20).
+2. H5 cell: "3.19% (9 of 94 rows…)" mixed denominators; 3.19% is 9 of 282 row-grades.
+3. Technique stratum: agreement is 60% on the five-category and observable collapses but 80% on the specific collapse (`agreement.json` line 182).
+4. Argon draw-down: narrowed to 22:16:52 to 22:25:30 from the ledger's `quota_after` trail, during which only this bench's Flash calls were logged; the claim that it came from unseen use is softened to include quota accounting the ledger cannot attribute.
 
-- No re-run of the bench. Running the 30 grading calls and the adjudication myself would make me the
-  bench author rather than its verifier, and could collide with the original agent if it resumes in this
-  folder. Before anyone relaunches, re-check that no M1 process is alive, because a second launch into
-  this folder would duplicate responses and push past the 36-call cap. Then the orchestrator should relaunch the bench (`./run_pass.sh 1|2|3`, then `analyze.py`,
-  `adjudicate.py`, `recompute.py`) and queue a fresh verification.
-- No files in the bench were edited.
+## Verifier footprint
+
+Two calls, ledger ids `m1-verify-p1-technique-b2` and `m1-verify-p1-artifact-b3` (88,520 tokens, zero dollars), are verifier spend outside the bench's 36-call cap, so `grep -c '"m1-'` on the ledger now returns 32. `responses/calls.count` and every bench file other than RESULTS.md and this file were left untouched. Re-run outputs are at `/tmp/claude-1000/-home-jerem-project1/af12c3ec-6e7f-4f5c-a239-70fb7dfd0d6e/scratchpad/rerun/artifact-b3.md` and `/tmp/claude-1000/-home-jerem-project1/af12c3ec-6e7f-4f5c-a239-70fb7dfd0d6e/scratchpad/rerun/technique-b2.md`; the independent scoring script is `/tmp/claude-1000/-home-jerem-project1/af12c3ec-6e7f-4f5c-a239-70fb7dfd0d6e/scratchpad/scripts/indep.py`. No cross-provider leg was run.

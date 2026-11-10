@@ -1,0 +1,13 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 10890.50it/s]
+{"model_id": "jackhhao-jb", "repo": "jackhhao/jailbreak-classifier", "revision": "771aa6f1391933e7cba0b21f0f17750c7a74a901", "id2label": {"0": "benign", "1": "jailbreak"}, "pos_label": "jailbreak", "max_len": 512, "batch": 16, "threads": 4, "torch": "2.15.0+cpu", "n_items": 1155, "transforms": ["T0", "T1", "T2", "T3", "T4", "T5", "T7"], "repeat": 1, "cap_sets": "", "cap": 0, "affinity": [10, 11, 12, 13], "nice": 10, "start_utc": "2026-11-10T03:34:43Z"}
+[jackhhao-jb] rep0 T0 done; 1155 scored; 102s elapsed; 11.3 items/s
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (530 > 512). Running this sequence through the model will result in indexing errors
+[jackhhao-jb] rep0 T1 done; 2310 scored; 339s elapsed; 6.8 items/s
+[jackhhao-jb] rep0 T2 done; 3465 scored; 478s elapsed; 7.2 items/s
+[jackhhao-jb] rep0 T3 done; 4620 scored; 576s elapsed; 8.0 items/s
+[jackhhao-jb] rep0 T4 done; 5775 scored; 692s elapsed; 8.3 items/s
+[jackhhao-jb] rep0 T5 done; 6930 scored; 753s elapsed; 9.2 items/s
+[jackhhao-jb] rep0 T7 done; 8085 scored; 815s elapsed; 9.9 items/s
+wrote results/scores-jackhhao-jb-short.jsonl

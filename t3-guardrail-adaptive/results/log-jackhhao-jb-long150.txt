@@ -1,0 +1,8 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 9714.63it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (590 > 512). Running this sequence through the model will result in indexing errors
+{"model_id": "jackhhao-jb", "repo": "jackhhao/jailbreak-classifier", "revision": "771aa6f1391933e7cba0b21f0f17750c7a74a901", "id2label": {"0": "benign", "1": "jailbreak"}, "pos_label": "jailbreak", "max_len": 512, "batch": 16, "threads": 4, "torch": "2.15.0+cpu", "n_items": 300, "transforms": ["T0", "T1"], "repeat": 1, "cap_sets": "A3-itw-jailbreak,B4-itw-regular", "cap": 150, "affinity": [10, 11, 12, 13], "nice": 10, "start_utc": "2026-11-10T03:48:26Z"}
+[jackhhao-jb] rep0 T0 done; 300 scored; 164s elapsed; 1.8 items/s
+[jackhhao-jb] rep0 T1 done; 600 scored; 380s elapsed; 1.6 items/s
+wrote results/scores-jackhhao-jb-long150.jsonl

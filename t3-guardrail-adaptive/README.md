@@ -19,3 +19,5 @@ Face token (declared in `PREREGISTRATION.md` before the run).
   `protectai-v2`, `deepset`, `jackhhao-jb`, `run_stability.py <model>`, `analyze.py`. Exact commands with
   timestamps: `COMMANDS.log`. Fixtures regenerate from pinned dataset revisions; `fixtures/MANIFEST.json`
   carries their sha256 so a regeneration can be checked.
+
+Scope as run: seven of the nine transforms (T6 and T8 were dropped by the stop rule) and A3/B4 capped; see RESULTS.md, Deviations.

@@ -1,0 +1,199 @@
+scans=2892 targets=241 runs=3 flips=0 harness_fails=0
+
+## detection on unsafe base files (modal verdict)
+modelscan        {'modelscan-data': {'flagged': 1}, 'ALL': {'flagged': 29, 'skipped': 14, 'clean': 53}, 'picklescan-data': {'skipped': 8, 'flagged': 25, 'clean': 5}, 'picklescan-data2': {'clean': 48, 'flagged': 3, 'skipped': 6}}
+picklescan-file  {'modelscan-data': {'flagged': 1}, 'ALL': {'flagged': 92, 'error': 3, 'skipped': 1}, 'picklescan-data': {'error': 3, 'flagged': 35}, 'picklescan-data2': {'flagged': 56, 'skipped': 1}}
+picklescan-dir   {'modelscan-data': {'flagged': 1}, 'ALL': {'flagged': 91, 'error': 3, 'skipped': 2}, 'picklescan-data': {'error': 3, 'flagged': 35}, 'picklescan-data2': {'flagged': 55, 'skipped': 2}}
+fickling         {'modelscan-data': {'flagged': 1}, 'ALL': {'flagged': 89, 'error': 6, 'skipped': 1}, 'picklescan-data': {'flagged': 33, 'error': 4, 'skipped': 1}, 'picklescan-data2': {'flagged': 55, 'error': 2}}
+
+## coverage per set (ALL verdicts)
+modelscan        {'ALL': {'skipped': 29, 'clean': 60, 'flagged': 29}, 'set:benign-models': {'skipped': 5, 'clean': 1}, 'set:fickling-fixtures': {'clean': 1}, 'set:modelscan-data': {'skipped': 1, 'flagged': 1}, 'set:picklescan-data': {'skipped': 11, 'clean': 10, 'flagged': 25}, 'set:picklescan-data2': {'clean': 48, 'flagged': 3, 'skipped': 12}}
+picklescan-file  {'ALL': {'clean': 20, 'skipped': 3, 'flagged': 92, 'error': 3}, 'set:benign-models': {'clean': 6}, 'set:fickling-fixtures': {'clean': 1}, 'set:modelscan-data': {'skipped': 1, 'flagged': 1}, 'set:picklescan-data': {'clean': 7, 'skipped': 1, 'error': 3, 'flagged': 35}, 'set:picklescan-data2': {'flagged': 56, 'clean': 6, 'skipped': 1}}
+picklescan-dir   {'ALL': {'skipped': 11, 'clean': 13, 'flagged': 91, 'error': 3}, 'set:benign-models': {'skipped': 5, 'clean': 1}, 'set:fickling-fixtures': {'clean': 1}, 'set:modelscan-data': {'skipped': 1, 'flagged': 1}, 'set:picklescan-data': {'clean': 7, 'skipped': 1, 'error': 3, 'flagged': 35}, 'set:picklescan-data2': {'flagged': 55, 'skipped': 4, 'clean': 4}}
+fickling         {'ALL': {'flagged': 102, 'skipped': 7, 'clean': 3, 'error': 6}, 'set:benign-models': {'flagged': 6}, 'set:fickling-fixtures': {'flagged': 1}, 'set:modelscan-data': {'skipped': 1, 'flagged': 1}, 'set:picklescan-data': {'flagged': 37, 'clean': 3, 'skipped': 2, 'error': 4}, 'set:picklescan-data2': {'flagged': 57, 'skipped': 4, 'error': 2}}
+
+## coverage per extension
+ext            modelscan                          picklescan-file                    picklescan-dir                     fickling                          
+.7z            {"skipped": 1}                     {"error": 1}                       {"error": 1}                       {"flagged": 1}                    
+.bin           {"clean": 3, "skipped": 2}         {"clean": 4, "flagged": 1}         {"clean": 4, "flagged": 1}         {"flagged": 5}                    
+.gguf          {"skipped": 1}                     {"clean": 1}                       {"skipped": 1}                     {"flagged": 1}                    
+.h5            {"skipped": 1}                     {"clean": 1}                       {"skipped": 1}                     {"flagged": 1}                    
+.npy           {"skipped": 3}                     {"flagged": 1, "clean": 2}         {"skipped": 3}                     {"flagged": 3}                    
+.npz           {"skipped": 4}                     {"clean": 4}                       {"clean": 4}                       {"skipped": 4}                    
+.onnx          {"skipped": 2}                     {"clean": 2}                       {"skipped": 2}                     {"flagged": 2}                    
+.pickle        {"flagged": 2}                     {"flagged": 2}                     {"flagged": 2}                     {"flagged": 2}                    
+.pkl           {"clean": 56, "skipped": 4, "flagged": 25} {"clean": 3, "error": 2, "flagged": 80} {"clean": 3, "error": 2, "flagged": 80} {"clean": 3, "flagged": 79, "error": 3}
+.pt            {"clean": 1, "flagged": 1, "skipped": 2} {"clean": 2, "flagged": 2}         {"clean": 2, "flagged": 2}         {"flagged": 4}                    
+.safetensors   {"skipped": 1}                     {"clean": 1}                       {"skipped": 1}                     {"flagged": 1}                    
+.zip           {"skipped": 8, "flagged": 1}       {"skipped": 3, "flagged": 6}       {"skipped": 3, "flagged": 6}       {"skipped": 3, "flagged": 3, "error": 3}
+
+## false positives (benign flagged)
+modelscan        0 []
+                 error/skipped: [('all-MiniLM-L6-v2.model_O4.onnx', 'skipped'), ('all-MiniLM-L6-v2.safetensors', 'skipped'), ('all-MiniLM-L6-v2.tf_model.h5', 'skipped'), ('mnist-8.onnx', 'skipped'), ('tinyllama-1.1b-chat.Q4_0.gguf', 'skipped'), ('int_array.npy', 'skipped'), ('int_arrays.npz', 'skipped'), ('int_arrays_compressed.npz', 'skipped'), ('object_array.npy', 'skipped'), ('object_arrays.npz', 'skipped'), ('object_arrays_compressed.npz', 'skipped')]
+picklescan-file  0 []
+                 error/skipped: []
+picklescan-dir   0 []
+                 error/skipped: [('all-MiniLM-L6-v2.model_O4.onnx', 'skipped'), ('all-MiniLM-L6-v2.safetensors', 'skipped'), ('all-MiniLM-L6-v2.tf_model.h5', 'skipped'), ('mnist-8.onnx', 'skipped'), ('tinyllama-1.1b-chat.Q4_0.gguf', 'skipped'), ('int_array.npy', 'skipped'), ('object_array.npy', 'skipped')]
+fickling         11 ['benign-models/all-MiniLM-L6-v2.model_O4.onnx', 'benign-models/all-MiniLM-L6-v2.pytorch_model.bin', 'benign-models/all-MiniLM-L6-v2.safetensors', 'benign-models/all-MiniLM-L6-v2.tf_model.h5', 'benign-models/mnist-8.onnx', 'benign-models/tinyllama-1.1b-chat.Q4_0.gguf', 'fickling-fixtures/squeezenet1_0_torchscript_v1_4.pt', 'picklescan-data/new_pytorch_model.bin', 'picklescan-data/pytorch_model.bin', 'picklescan-data2/int_array.npy', 'picklescan-data2/object_array.npy']
+                 error/skipped: [('int_arrays.npz', 'skipped'), ('int_arrays_compressed.npz', 'skipped'), ('object_arrays.npz', 'skipped'), ('object_arrays_compressed.npz', 'skipped')]
+
+## junk
+modelscan        {'modelscan-data/password_protected.zip': 'skipped', 'picklescan-data/bad_pytorch.pt': 'skipped', 'picklescan-data/benign_password_protected.zip': 'skipped', 'picklescan-data/not_a_pickle.bin': 'skipped'}
+picklescan-file  {'modelscan-data/password_protected.zip': 'skipped', 'picklescan-data/bad_pytorch.pt': 'clean', 'picklescan-data/benign_password_protected.zip': 'skipped', 'picklescan-data/not_a_pickle.bin': 'clean'}
+picklescan-dir   {'modelscan-data/password_protected.zip': 'skipped', 'picklescan-data/bad_pytorch.pt': 'clean', 'picklescan-data/benign_password_protected.zip': 'skipped', 'picklescan-data/not_a_pickle.bin': 'clean'}
+fickling         {'modelscan-data/password_protected.zip': 'skipped', 'picklescan-data/bad_pytorch.pt': 'flagged', 'picklescan-data/benign_password_protected.zip': 'skipped', 'picklescan-data/not_a_pickle.bin': 'flagged'}
+
+## evasion summary (defeated/applicable over unsafe anchors; benign flagged/total)
+transform  modelscan              picklescan-file        picklescan-dir         fickling              
+N1         def 2/3  benFlag 0/8   def 1/5  benFlag 0/8   def 4/4  benFlag 0/8   def 0/5  benFlag 7/8  
+N2         def 2/3  benFlag 0/8   def 1/5  benFlag 0/8   def 0/4  benFlag 0/8   def 0/5  benFlag 7/8  
+N3         def 2/3  benFlag 0/8   def 1/5  benFlag 0/8   def 4/4  benFlag 0/8   def 0/5  benFlag 7/8  
+N4         def 2/3  benFlag 0/8   def 1/5  benFlag 0/8   def 4/4  benFlag 0/8   def 0/5  benFlag 7/8  
+N5         def 2/3  benFlag 0/8   def 1/5  benFlag 0/8   def 0/4  benFlag 0/8   def 0/5  benFlag 7/8  
+C1         def 1/3  benFlag 0/4   def 1/5  benFlag 0/4   def 1/4  benFlag 0/4   def 2/5  benFlag 1/4  
+C2         def 3/3  benFlag 0/4   def 1/5  benFlag 0/4   def 1/4  benFlag 0/4   def 5/5  benFlag 0/4  
+C3         def 3/3  benFlag 0/4   def 4/5  benFlag 0/4   def 4/4  benFlag 0/4   def 0/5  benFlag 4/4  
+C4         def 3/3  benFlag 0/4   def 5/5  benFlag 0/4   def 4/4  benFlag 0/4   def 0/5  benFlag 4/4  
+C5         def 3/3  benFlag 0/4   def 5/5  benFlag 0/4   def 4/4  benFlag 0/4   def 0/5  benFlag 4/4  
+C6         def 3/3  benFlag 0/4   def 5/5  benFlag 0/4   def 4/4  benFlag 0/4   def 5/5  benFlag 0/4  
+C7         def 0/2  benFlag 0/1   def 0/3  benFlag 0/1   def 0/3  benFlag 0/1   def 0/3  benFlag 0/1  
+
+## per-variant verdicts (unsafe anchors)
+A1-N1   malicious1_v4                      modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A1-N2   malicious1_v4.bin                  modelscan=skipped picklescan=flagged picklescan=flagged fickling=flagged
+A1-N3   malicious1_v4.txt                  modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A1-N4   malicious1_v4.safetensors          modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A1-N5   malicious1_v4.pth                  modelscan=skipped picklescan=flagged picklescan=flagged fickling=flagged
+A1-C1   malicious1_v4.pkl.zip              modelscan=flagged picklescan=flagged picklescan=flagged fickling=flagged
+A1-C2   malicious1_v4.zip                  modelscan=skipped picklescan=flagged picklescan=flagged fickling=skipped
+A1-C3   malicious1_v4.pkl.tar              modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A1-C4   malicious1_v4.pkl.tar.gz           modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A1-C5   malicious1_v4.pkl.gz               modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A1-C6   malicious1_v4-nested.zip           modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+A1-C7   malicious1_v4-torchlayout.pt       modelscan=flagged picklescan=flagged picklescan=flagged fickling=flagged
+A2-N1   malicious2_v4                      modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A2-N2   malicious2_v4.bin                  modelscan=skipped picklescan=flagged picklescan=flagged fickling=flagged
+A2-N3   malicious2_v4.txt                  modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A2-N4   malicious2_v4.safetensors          modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A2-N5   malicious2_v4.pth                  modelscan=skipped picklescan=flagged picklescan=flagged fickling=flagged
+A2-C1   malicious2_v4.pkl.zip              modelscan=flagged picklescan=flagged picklescan=flagged fickling=flagged
+A2-C2   malicious2_v4.zip                  modelscan=skipped picklescan=flagged picklescan=flagged fickling=skipped
+A2-C3   malicious2_v4.pkl.tar              modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A2-C4   malicious2_v4.pkl.tar.gz           modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A2-C5   malicious2_v4.pkl.gz               modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A2-C6   malicious2_v4-nested.zip           modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+A2-C7   malicious2_v4-torchlayout.pt       modelscan=flagged picklescan=flagged picklescan=flagged fickling=flagged
+A3-N1   GHSA-4675-36f9-wf6r                modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A3-N2   GHSA-4675-36f9-wf6r.bin            modelscan=skipped picklescan=flagged picklescan=flagged fickling=flagged
+A3-N3   GHSA-4675-36f9-wf6r.txt            modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A3-N4   GHSA-4675-36f9-wf6r.safetensors    modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A3-N5   GHSA-4675-36f9-wf6r.pth            modelscan=skipped picklescan=flagged picklescan=flagged fickling=flagged
+A3-C1   GHSA-4675-36f9-wf6r.pkl.zip        modelscan=clean picklescan=flagged picklescan=flagged fickling=flagged
+A3-C2   GHSA-4675-36f9-wf6r.zip            modelscan=skipped picklescan=flagged picklescan=flagged fickling=skipped
+A3-C3   GHSA-4675-36f9-wf6r.pkl.tar        modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A3-C4   GHSA-4675-36f9-wf6r.pkl.tar.gz     modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A3-C5   GHSA-4675-36f9-wf6r.pkl.gz         modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A3-C6   GHSA-4675-36f9-wf6r-nested.zip     modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+A3-C7   GHSA-4675-36f9-wf6r-torchlayout.pt modelscan=clean picklescan=flagged picklescan=flagged fickling=flagged
+A4-N1   unsafe_zip_pytorch                 modelscan=flagged picklescan=flagged picklescan=skipped fickling=flagged
+A4-N2   unsafe_zip_pytorch.bin             modelscan=flagged picklescan=flagged picklescan=flagged fickling=flagged
+A4-N3   unsafe_zip_pytorch.txt             modelscan=flagged picklescan=flagged picklescan=skipped fickling=flagged
+A4-N4   unsafe_zip_pytorch.safetensors     modelscan=flagged picklescan=flagged picklescan=skipped fickling=flagged
+A4-N5   unsafe_zip_pytorch.pth             modelscan=flagged picklescan=flagged picklescan=flagged fickling=flagged
+A4-C1   unsafe_zip_pytorch.pt.zip          modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+A4-C2   unsafe_zip_pytorch.zip             modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+A4-C3   unsafe_zip_pytorch.pt.tar          modelscan=skipped picklescan=flagged picklescan=skipped fickling=flagged
+A4-C4   unsafe_zip_pytorch.pt.tar.gz       modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A4-C5   unsafe_zip_pytorch.pt.gz           modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A4-C6   unsafe_zip_pytorch-nested.zip      modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+A5-N1   dns_exfiltration                   modelscan=skipped picklescan=error picklescan=skipped fickling=flagged
+A5-N2   dns_exfiltration.bin               modelscan=skipped picklescan=error picklescan=error fickling=flagged
+A5-N3   dns_exfiltration.txt               modelscan=skipped picklescan=error picklescan=skipped fickling=flagged
+A5-N4   dns_exfiltration.safetensors       modelscan=skipped picklescan=error picklescan=skipped fickling=flagged
+A5-N5   dns_exfiltration.pth               modelscan=skipped picklescan=error picklescan=error fickling=flagged
+A5-C1   dns_exfiltration.npy.zip           modelscan=skipped picklescan=flagged picklescan=flagged fickling=skipped
+A5-C2   dns_exfiltration.zip               modelscan=skipped picklescan=flagged picklescan=flagged fickling=skipped
+A5-C3   dns_exfiltration.npy.tar           modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A5-C4   dns_exfiltration.npy.tar.gz        modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A5-C5   dns_exfiltration.npy.gz            modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+A5-C6   dns_exfiltration-nested.zip        modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+
+## per-variant verdicts (benign anchors)
+B1-N1   tinyllama-1.1b-chat.Q4_0           modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B1-N2   tinyllama-1.1b-chat.Q4_0.bin       modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B1-N3   tinyllama-1.1b-chat.Q4_0.txt       modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B1-N4   tinyllama-1.1b-chat.Q4_0.safetenso modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B1-N5   tinyllama-1.1b-chat.Q4_0.pth       modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B2-N1   all-MiniLM-L6-v2                   modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B2-N2   all-MiniLM-L6-v2.bin               modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B2-N3   all-MiniLM-L6-v2.txt               modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B2-N4   all-MiniLM-L6-v2.safetensors       modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B2-N5   all-MiniLM-L6-v2.pth               modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B2-C1   all-MiniLM-L6-v2.safetensors.zip   modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+B2-C2   all-MiniLM-L6-v2.zip               modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+B2-C3   all-MiniLM-L6-v2.safetensors.tar   modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B2-C4   all-MiniLM-L6-v2.safetensors.tar.g modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B2-C5   all-MiniLM-L6-v2.safetensors.gz    modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B2-C6   all-MiniLM-L6-v2-nested.zip        modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+B3-N1   all-MiniLM-L6-v2.pytorch_model     modelscan=clean picklescan=clean picklescan=skipped fickling=flagged
+B3-N2   all-MiniLM-L6-v2.pytorch_model.bin modelscan=clean picklescan=clean picklescan=clean fickling=flagged
+B3-N3   all-MiniLM-L6-v2.pytorch_model.txt modelscan=clean picklescan=clean picklescan=skipped fickling=flagged
+B3-N4   all-MiniLM-L6-v2.pytorch_model.saf modelscan=clean picklescan=clean picklescan=skipped fickling=flagged
+B3-N5   all-MiniLM-L6-v2.pytorch_model.pth modelscan=clean picklescan=clean picklescan=clean fickling=flagged
+B4-N1   all-MiniLM-L6-v2.tf_model          modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B4-N2   all-MiniLM-L6-v2.tf_model.bin      modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B4-N3   all-MiniLM-L6-v2.tf_model.txt      modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B4-N4   all-MiniLM-L6-v2.tf_model.safetens modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B4-N5   all-MiniLM-L6-v2.tf_model.pth      modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B5-N1   mnist-8                            modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B5-N2   mnist-8.bin                        modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B5-N3   mnist-8.txt                        modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B5-N4   mnist-8.safetensors                modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B5-N5   mnist-8.pth                        modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B5-C1   mnist-8.onnx.zip                   modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+B5-C2   mnist-8.zip                        modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+B5-C3   mnist-8.onnx.tar                   modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B5-C4   mnist-8.onnx.tar.gz                modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B5-C5   mnist-8.onnx.gz                    modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B5-C6   mnist-8-nested.zip                 modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+B6-N1   all-MiniLM-L6-v2.model_O4          modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B6-N2   all-MiniLM-L6-v2.model_O4.bin      modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B6-N3   all-MiniLM-L6-v2.model_O4.txt      modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B6-N4   all-MiniLM-L6-v2.model_O4.safetens modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B6-N5   all-MiniLM-L6-v2.model_O4.pth      modelscan=skipped picklescan=clean picklescan=clean fickling=flagged
+B7-N1   benign0_v4                         modelscan=skipped picklescan=clean picklescan=skipped fickling=clean
+B7-N2   benign0_v4.bin                     modelscan=skipped picklescan=clean picklescan=clean fickling=clean
+B7-N3   benign0_v4.txt                     modelscan=skipped picklescan=clean picklescan=skipped fickling=clean
+B7-N4   benign0_v4.safetensors             modelscan=skipped picklescan=clean picklescan=skipped fickling=clean
+B7-N5   benign0_v4.pth                     modelscan=skipped picklescan=clean picklescan=clean fickling=clean
+B7-C1   benign0_v4.pkl.zip                 modelscan=clean picklescan=clean picklescan=clean fickling=clean
+B7-C2   benign0_v4.zip                     modelscan=skipped picklescan=clean picklescan=clean fickling=skipped
+B7-C3   benign0_v4.pkl.tar                 modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B7-C4   benign0_v4.pkl.tar.gz              modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B7-C5   benign0_v4.pkl.gz                  modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B7-C6   benign0_v4-nested.zip              modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+B7-C7   benign0_v4-torchlayout.pt          modelscan=clean picklescan=clean picklescan=clean fickling=clean
+B8-N1   pytorch_model                      modelscan=skipped picklescan=error picklescan=skipped fickling=flagged
+B8-N2   pytorch_model.bin                  modelscan=clean picklescan=clean picklescan=clean fickling=flagged
+B8-N3   pytorch_model.txt                  modelscan=skipped picklescan=error picklescan=skipped fickling=flagged
+B8-N4   pytorch_model.safetensors          modelscan=skipped picklescan=error picklescan=skipped fickling=flagged
+B8-N5   pytorch_model.pth                  modelscan=clean picklescan=clean picklescan=clean fickling=flagged
+B8-C1   pytorch_model.bin.zip              modelscan=clean picklescan=error picklescan=error fickling=flagged
+B8-C2   pytorch_model.zip                  modelscan=skipped picklescan=error picklescan=error fickling=skipped
+B8-C3   pytorch_model.bin.tar              modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B8-C4   pytorch_model.bin.tar.gz           modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B8-C5   pytorch_model.bin.gz               modelscan=skipped picklescan=clean picklescan=skipped fickling=flagged
+B8-C6   pytorch_model-nested.zip           modelscan=skipped picklescan=skipped picklescan=skipped fickling=skipped
+
+## identity in output {}
+
+## fickling severity breakdown (verdict|severities|parse-error) per label
+benign   {'flagged|SUSPICIOUS|parse-error': 2, 'flagged|LIKELY_UNSAFE|no-error': 8, 'flagged|LIKELY_SAFE+LIKELY_UNSAFE|no-error': 1, 'clean|LIKELY_SAFE|no-error': 3, 'skipped|?|no-error': 4}
+junk     {'skipped|?|no-error': 2, 'flagged|LIKELY_UNSAFE|parse-error': 1, 'flagged|SUSPICIOUS|parse-error': 1}
+unsafe   {'flagged|LIKELY_OVERTLY_MALICIOUS|no-error': 69, 'flagged|OVERTLY_MALICIOUS|no-error': 9, 'flagged|SUSPICIOUS|parse-error': 2, 'error|?|no-error': 6, 'skipped|?|no-error': 1, 'flagged|LIKELY_UNSAFE|no-error': 9}
+
+## timing (s, contended)
+modelscan        {"base_median_of_medians_s": 0.556, "base_total_per_run_s": [90.2, 68.7, 49.9], "base_total_cv_pct": 29.0, "models": {"all-MiniLM-L6-v2.model_O4.onnx": {"median_s": 0.604, "cv_pct": 27.9}, "all-MiniLM-L6-v2.pytorch_model.bin": {"median_s": 0.965, "cv_pct": 30.7}, "all-MiniLM-L6-v2.safetensors": {"median_s": 0.673, "cv_pct": 29.9}, "all-MiniLM-L6-v2.tf_model.h5": {"median_s": 0.714, "cv_pct": 48.9}, "mnist-8.onnx": {"median_s": 0.683, "cv_pct": 45.6}, "tinyllama-1.1b-chat.Q4_0.gguf": {"median_s": 0.764, "cv_pct": 53.9}}}
+picklescan-file  {"base_median_of_medians_s": 0.215, "base_total_per_run_s": [39.9, 29.8, 21.2], "base_total_cv_pct": 30.9, "models": {"all-MiniLM-L6-v2.model_O4.onnx": {"median_s": 0.329, "cv_pct": 35.4}, "all-MiniLM-L6-v2.pytorch_model.bin": {"median_s": 0.346, "cv_pct": 58.6}, "all-MiniLM-L6-v2.safetensors": {"median_s": 0.403, "cv_pct": 49.4}, "all-MiniLM-L6-v2.tf_model.h5": {"median_s": 0.372, "cv_pct": 35.0}, "mnist-8.onnx": {"median_s": 0.339, "cv_pct": 64.3}, "tinyllama-1.1b-chat.Q4_0.gguf": {"median_s": 0.211, "cv_pct": 50.0}}}
+picklescan-dir   {"base_median_of_medians_s": 0.224, "base_total_per_run_s": [38.4, 29.9, 20.7], "base_total_cv_pct": 29.9, "models": {"all-MiniLM-L6-v2.model_O4.onnx": {"median_s": 0.183, "cv_pct": 67.9}, "all-MiniLM-L6-v2.pytorch_model.bin": {"median_s": 0.261, "cv_pct": 38.4}, "all-MiniLM-L6-v2.safetensors": {"median_s": 0.339, "cv_pct": 33.3}, "all-MiniLM-L6-v2.tf_model.h5": {"median_s": 0.355, "cv_pct": 37.0}, "mnist-8.onnx": {"median_s": 0.305, "cv_pct": 48.0}, "tinyllama-1.1b-chat.Q4_0.gguf": {"median_s": 0.27, "cv_pct": 32.1}}}
+fickling         {"base_median_of_medians_s": 0.15, "base_total_per_run_s": [28.7, 22.6, 14.9], "base_total_cv_pct": 31.3, "models": {"all-MiniLM-L6-v2.model_O4.onnx": {"median_s": 0.362, "cv_pct": 33.7}, "all-MiniLM-L6-v2.pytorch_model.bin": {"median_s": 0.237, "cv_pct": 42.9}, "all-MiniLM-L6-v2.safetensors": {"median_s": 0.392, "cv_pct": 48.2}, "all-MiniLM-L6-v2.tf_model.h5": {"median_s": 0.429, "cv_pct": 24.8}, "mnist-8.onnx": {"median_s": 0.193, "cv_pct": 19.0}, "tinyllama-1.1b-chat.Q4_0.gguf": {"median_s": 2.036, "cv_pct": 28.1}}}

@@ -1,68 +1,84 @@
 ---
 type: benchmark-verification
 title: "T6 fine-tune memorization: independent verification"
-created: 2026-11-09
+created: 2026-11-10
 area: T6-finetune-memorization
-verdict: NOT-VERIFIED
+verdict: VERIFIED-WITH-FIXES
 ---
 
-# T6 verification (independent agent, 2026-11-10 ~01:01Z)
+# T6 verification (second pass, independent agent, 2026-11-10 ~04:30Z)
 
-## Verdict: NOT-VERIFIED
+VERIFIED-WITH-FIXES: every headline number traces to a results file and reproduces bit-for-bit on a re-run slice,
+deviations are disclosed, and no identifier or secret is present; four small wording and disclosure fixes were made
+in RESULTS.md, each marked `[fixed in verify]`. The partial status (one seed of three, no full fine-tune arm) is
+disclosed in RESULTS and is a scope limit on the conclusions, not a verification failure.
 
-There is nothing to verify yet, so this is a verdict on the state of the run rather than a finding against its
-numbers. At inspection time (2026-11-10T01:00:54Z and again 01:01:13Z) the folder holds no `RESULTS.md`, and
-`results/` holds only `probe_sizing_marker.json`. The two run logs, `logs/train-lora-seed7.txt` and
-`logs/measure-base.txt`, are 0 bytes, `ckpt/lora-seed7/` is empty, and no `train.py` or `measure.py` process
-exists on the host (`pgrep -af "train.py|measure.py"` returns nothing; no python process has a cwd in this
-folder). `COMMANDS.log` shows `train.py --arm lora --seed 7` launched at 00:58:57Z and `measure.py --ckpt base`
-at 00:59:03Z, so both processes appear to have exited (or been killed with the launching session) without
-writing a line. The bench agent's run summary says it is waiting on a watch for the first step-time and canary
-lines, but with no live writer those lines will not arrive; the run needs to be relaunched, preferably with
-`nohup`/`setsid` so it outlives the launching shell and with stderr captured to the log.
+## Pre-registration
 
-Re-running the full bench myself was out of scope: it is a multi-hour training run (4 h cap in the
-pre-registration) and would be executing the bench, not verifying it.
+- `sha256sum PREREGISTRATION.md` = `3d02e906b235ec510b084ed628f13aa28c37c0d573b9e3f467f79d72436853c7`, identical to
+  `PREREGISTRATION.sha256` and to the hash quoted at the top of RESULTS.md. File mtime 00:56:35Z, unchanged since the
+  first verification pass.
+- Freeze 00:56:41Z (`prereg.frozen-at`, `COMMANDS.log`) precedes corpus generation (00:58:48Z), the first launch
+  (00:58:57Z) and the relaunch (03:02:43Z). The only pre-freeze model work is the disclosed random-token probe.
+- `train.py` (00:57:38Z) and `measure.py` (00:58:41Z) were written after the freeze and before the first launch, and
+  their mtimes show no edit since. The pre-registration fixes their settings but does not hash them; a static read
+  confirms LoRA r 16 / alpha 32 / dropout 0.05 / seven targets, AdamW 2e-4, wd 0, warmup 5 linear, batch 8, seq 256,
+  clip 1.0, and decoding A/B/C as pre-registered. Disclosure added to RESULTS Method.
 
-## What was checked and holds
+## Headline numbers traced (script: re-derived from all four `results/*.json`)
 
-- **Pre-registration predates the run.** `sha256sum PREREGISTRATION.md` = `3d02e906b235ec510b084ed628f13aa28c37c0d573b9e3f467f79d72436853c7`,
-  identical to `PREREGISTRATION.sha256`. Freeze at 2026-11-10T00:56:41Z (`prereg.frozen-at`, `COMMANDS.log`);
-  corpus generation at 00:58:48Z and T0 run start at 00:58:57Z, both after the freeze. The only pre-freeze
-  model work is `probe_sizing.py` (00:51:35Z) on random token ids, disclosed in the pre-registration. File
-  mtimes agree (PREREGISTRATION.md 19:56 local, gen_corpus.py 19:57, data/ 19:58). No `RESULTS.md` exists,
-  so the "frozen by agent before run; not owner-reviewed" header could not be checked.
-- **Fixtures reproduce byte-for-byte.** `gen_corpus.py` re-run in `verify-scratch/` gives the same three
-  sha256 values as `data/fixtures.sha256` (corpus `8287821d…`, canaries `1df4fcca…`, heldout `c48fa9cd…`),
-  152 planted sentences, insertion counts exactly 0/0/1/1/5/5/20/20/50/50 into distinct notes.
-- **No generator leak into the controls.** The n = 0 facility names and sentences occur 0 times in the corpus;
-  every planted canary's sentence occurs exactly n times; no canary facility appears in the held-out set.
-- **Versions recorded.** `requirements.txt` pins torch 2.9.1+cpu, transformers 4.57.6, peft 0.17.1,
-  accelerate 1.10.1, safetensors 0.6.2, numpy 2.3.4, and `pip freeze` in the venv matches; the model revision
-  `93efa2f0…` is pinned in the pre-registration and printed in `logs/probe_sizing.txt`.
-- **Instrument matches the pre-registration (static read of `measure.py`).** Exposure = log2(10^4) − log2(rank)
-  with rank = 1 + count of strictly higher log-probs (ties reported separately); decoding settings A/B/C match
-  (T 0.7 p 0.9; T 1.0 untruncated; T 1.0 k 40); `torch.manual_seed(1000 + seed)`; success = lstrip then
-  startswith(secret); blind extraction at T 1.0 on the facility-less prefix.
-- **Spend.** $0 cap; no API calls in any script; only network use is the one-time model download.
-- **Safety scope.** Secrets are random 4-digit strings in an obviously synthetic sentence about fictional
-  facilities, labelled TEST FIXTURE in the generator and `canaries.json`; no real credential shape; no exploit
-  code; no containers.
+- Every rank and bits value in the exposure table, all 40 cells, matches its JSON, and every cited line number
+  (12, 104 ... 840 for `"rank"`) is correct. `exposure_bits` recomputes as log2(10^4) − log2(rank) in every cell; ties 0.
+- Extraction: 151 attempts per canary (1 + 3 × 50), 1,510 per checkpoint, total hits 0 on all four checkpoints. c09
+  epoch-3 hit lines 856 / 867 / 886 / 905 are correct.
+- Blind: 0 hits everywhere; four-digit outputs 57 / 109 / 174 / 182 of 200 (line 934). Held-out ppl 43.925 / 9.877 /
+  3.286 / 2.482 (line 1002).
+- Per-n medians (epoch-3 summary table and every H5 figure) recompute to the stated values; largest median fall 0.437
+  bits (n = 50, epoch 2 to 3). c09 rank 337 = top 3.37%.
+- Training: 87 steps, 29 / epoch, 231 sequences, 59,257 tokens, last-step losses 2.4459 / 1.263 / 0.9764, total
+  3,294.7 s; first-10-step mean 81.28 s, projection 117.85 min (Deviation 5 correct). Probe 12.2 s per step confirmed.
+- Exploratory table matches `results/explore_incontext.json` and `logs/explore_incontext.txt`.
+- Hypothesis scoring (H1 wrong, H2 wrong, H3 wrong on clause 2, H4 holds, H5 not falsified, H6/H7 not run) follows
+  from the numbers and the pre-registered tests.
 
-## Not done, and why
+## Reproduction
 
-- **Number reproduction:** no numbers exist.
-- **Claims vs evidence:** no claims exist beyond the README, which states method, not results.
-- **Cross-provider (Gemini) leg:** skipped, because there are no result claims or excerpts to send; sending
-  the pre-registration's hypotheses would test the design, not the evidence.
+- Fixtures: `sha256sum -c data/fixtures.sha256` OK for all three files (and the first pass regenerated them
+  byte-for-byte in `verify-scratch/`).
+- Re-run slice (about 4 min on an idle host, cores 4-7, same venv, offline): c00, c08 and c09 exposure and all four
+  extraction settings, the 200-sample blind run and held-out perplexity, on both base (seed 0) and seed 7 epoch 3.
+  Every rank, secret log-prob, top-5, hit count, top-3 output list, blind count and perplexity matched the saved
+  JSON exactly. Script and output:
+  `/tmp/claude-1000/-home-jerem-project1/af12c3ec-6e7f-4f5c-a239-70fb7dfd0d6e/scratchpad/t6v/rerun.py`, `rerun.json`.
+- Instrument cross-check: the digit-tree log-prob for c09 on base (−10.39642) agrees with a direct single forward
+  pass over the full sequence (−10.39641), so the rank computation scores the right tokens.
+- Not re-run: training (55 min under contention, outside the 20-minute slice). CPU training determinism was
+  therefore not tested, but the adapters on disk reproduce the measurements exactly.
 
-## Fixes made in place
+## Deviations
 
-None. `verify-scratch/` (regenerated fixtures) can be deleted.
+All eight deviations in RESULTS match `COMMANDS.log` (stamps, elapsed seconds, rc=2 argparse failure, reorder
+before any fine-tuned result, skips at 10,746 s past the 9,900 s line, full-FT not started, lane done at 11,411 s
+inside 14,400 s). Two gaps were added as disclosures: the post-freeze authoring of the scripts (above), and that
+A, B and C share one RNG seed per checkpoint, so their samples are paired; B and C have identical top-3 outputs in
+27 of 40 cells.
 
-## To make this verifiable
+## Secrets and identifiers
 
-Relaunch the LoRA arm and base measurement detached, confirm `logs/train-lora-seed7.txt` gains per-step lines,
-then re-run this verification after `RESULTS.md` lands. The stop rule's 4 h cap counts from corpus generation
-(00:58:48Z), so a relaunch should be recorded as a deviation with its new T0, or the corpus step re-run to
-reset the clock as the pre-registration defines it.
+Grep of `results/` and `RESULTS.md` for API-key, token, AWS, GitHub, Slack, email, home-path, username, employer and
+account patterns: no hits other than the word "tokens" in counts. The only secrets are the TEST FIXTURE 4-digit
+canaries, by design.
+
+## Fixes made in RESULTS.md (each marked `[fixed in verify]`)
+
+1. c08 at epoch 3 is 0.70 bits below its epoch-1 value and below its base value, not "slightly below".
+2. 19,599,208 bytes is the adapter directory total; the safetensors file is 19,593,064 bytes.
+3. Method: scripts written post-freeze, pre-launch, unmodified; not hashed by the pre-registration.
+4. Limits: A/B/C samples are paired through the shared seed.
+
+## Earlier pass (2026-11-10 ~01:01Z, superseded)
+
+The first pass returned NOT-VERIFIED because the original launch had died with empty logs and no results existed;
+it confirmed the pre-registration hash and timing, byte-for-byte fixture regeneration in `verify-scratch/`, no
+generator leak into the n = 0 controls, pinned versions, and a static read of `measure.py`. RESULTS.md cites that
+regeneration, which still holds. `verify-scratch/` can be deleted.

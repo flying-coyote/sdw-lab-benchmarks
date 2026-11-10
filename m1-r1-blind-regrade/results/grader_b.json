@@ -1,0 +1,4148 @@
+{
+ "modal": {
+  "AML.T0000.003": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Adversaries query external scan databases like Shodan or Censys without directly interacting with the victim target, producing no victim-side telemetry or observable events in OCSF.",
+    "Querying third-party scan databases occurs externally without interacting with the target system, producing no victim-side activity or telemetry directly recordable by OCSF schema classes or objects.",
+    "Searching third-party internet-scanning databases is passive reconnaissance that does not touch victim infrastructure, generating no victim-side OCSF observable events or objects."
+   ],
+   "tie": false
+  },
+  "AML.T0011.001": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Developing and introducing malicious software packages is not directly recorded by OCSF 1.9.0; package inventory objects describe metadata but do not record malicious package techniques.",
+    "Developing malicious software packages is an adversary-side activity; OCSF contains no object, event class, or field directly recording the development or delivery of malicious packages as a technique.",
+    "OCSF 1.9.0 lacks an event class or object recording the execution or importation of a malicious package on the victim side; package represents static software package metadata rather than this attack technique."
+   ],
+   "tie": false
+  },
+  "AML.T0011.002": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF 1.9.0 lacks any object, event class, or field for observing AI agent tool invocations, tool execution logic, or poisoned tool interactions on the victim side.",
+    "OCSF 1.9.0 does not define any object, event class, or field representing AI agent tools, tool poisoning, or malicious tool invocations.",
+    "OCSF 1.9.0 defines an ai_agent object but provides no dedicated object, class, or field representing AI agent tools, tool poisoning, or poisoned tool execution."
+   ],
+   "tie": false
+  },
+  "AML.T0016.002": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Adversaries searching for and obtaining generative AI models occurs entirely on adversary-controlled infrastructure during resource development, generating no victim-side telemetry in OCSF.",
+    "Adversaries obtaining generative AI tools is an adversary-side resource development activity that does not execute on or interact with the victim side, leaving no directly recordable OCSF telemetry.",
+    "Adversaries obtaining generative AI models or tools occurs in adversary-controlled environments; OCSF 1.9.0 has no object or event class to observe adversary resource acquisition."
+   ],
+   "tie": false
+  },
+  "AML.T0016.003": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Obtaining exploits is an adversary-side resource development technique conducted prior to an attack, leaving no observable trace or telemetry on victim systems in OCSF.",
+    "Searching for and obtaining exploits is an adversary resource-development technique occurring off-victim; OCSF 1.9.0 provides no object or event class to observe it.",
+    "Adversaries searching for and acquiring exploits is an off-victim resource development technique; OCSF 1.9.0 has no object or event class recording exploit acquisition."
+   ],
+   "tie": false
+  },
+  "AML.T0017.001": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Autonomous exploit development is an adversary-side capability involving vulnerability analysis and payload synthesis. Victim-side systems may observe individual probes, but OCSF 1.9.0 has no object or event class directly recording the autonomous development of exploits.",
+    "Autonomous exploit development occurs on the adversary side as part of resource development, producing no direct telemetry or observable event recorded by OCSF on the victim side.",
+    "Autonomous exploit development is an adversary-side resource development technique; OCSF 1.9.0 has no telemetry objects or event classes for AI-driven exploit authoring."
+   ],
+   "tie": false
+  },
+  "AML.T0025": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Exfiltration via cyber means is an attack technique; OCSF records network traffic generically but lacks a dedicated class or field directly recording data exfiltration itself.",
+    "Exfiltration via cyber means is an adversarial tactic; OCSF records transport-level network traffic but has no dedicated object or event class directly denoting exfiltration activity.",
+    "Exfiltration via cyber means is an adversarial tactic; OCSF 1.9.0 records network and file telemetry but lacks an object or dedicated field directly recording exfiltration."
+   ],
+   "tie": false
+  },
+  "AML.T0031": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF 1.9.0 contains no object, metric, or event class to monitor AI model performance degradation, accuracy loss, or model integrity erosion over time.",
+    "OCSF 1.9.0 does not contain any event class or object field to record the erosion or degradation of AI model integrity or performance.",
+    "OCSF 1.9.0 lacks an object or event class recording the erosion or degradation of AI model integrity over time; ai_model represents the model entity itself, not this degradation technique."
+   ],
+   "tie": false
+  },
+  "AML.T0048": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "External harms describe organizational, reputational, or societal consequences occurring outside the victim system boundary. OCSF 1.9.0 captures system and security telemetry, but lacks any object, event class, or field modeling external harms.",
+    "OCSF 1.9.0 has no object or event class to record external harms, such as financial, reputational, or societal harm, resulting from system abuse.",
+    "External harms represent high-level societal, organizational, or reputational consequences; OCSF 1.9.0 models technical security telemetry and findings rather than external impact outcomes."
+   ],
+   "tie": false
+  },
+  "AML.T0048.000": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Financial harm is an impact outcome involving monetary or asset loss; OCSF 1.9.0 does not define any financial loss objects, classes, or attributes.",
+    "Financial harm is an impact outcome involving loss of monetary assets, which OCSF 1.9.0 does not model in any event class, object, or field.",
+    "Financial harm is an organizational business impact resulting from an attack; OCSF 1.9.0 does not model monetary loss or financial impact."
+   ],
+   "tie": false
+  },
+  "AML.T0048.002": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Societal harm represents external downstream impact on the public or vulnerable groups outside the monitored technical boundary. OCSF 1.9.0 does not record societal impacts or external harms; no object, class, or attribute denotes this technique.",
+    "Societal harm is an impact outcome affecting the public or vulnerable groups; OCSF 1.9.0 contains no schema constructs or fields to record societal impacts.",
+    "Societal harm is an external societal impact affecting the public or vulnerable groups; OCSF 1.9.0 provides technical system telemetry and has no object or event class for societal harm."
+   ],
+   "tie": false
+  },
+  "AML.T0048.003": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "User harm encompasses financial, reputational, or psychological harm experienced by individual victims. OCSF 1.9.0 records technical user accounts and authentication activity, but contains no object, event class, or field capturing harm suffered by users.",
+    "OCSF 1.9.0 lacks any event class, object, or field to represent user harm, individual reputational damage, or personal financial harm resulting from an attack.",
+    "User harm describes personal, financial, or reputational consequences to individual victims; OCSF 1.9.0 does not track individual victim harms or post-attack impacts."
+   ],
+   "tie": false
+  },
+  "AML.T0054": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF 1.9.0 lacks an event class or dedicated object/field for recording LLM jailbreak attempts, adversarial prompt injections, or safety alignment overrides on the victim system.",
+    "OCSF 1.9.0 has no event class or object directly recording an LLM jailbreak or the circumvention of AI safety guardrails on the victim side.",
+    "LLM jailbreak is an adversarial prompt-evasion technique against safety guardrails; OCSF 1.9.0 contains no object, event class, or field directly recording jailbreak occurrences."
+   ],
+   "tie": false
+  },
+  "AML.T0116": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Autonomous reconnaissance planning and agentic execution take place on adversary infrastructure; victim telemetry cannot observe or record whether incoming reconnaissance originates from an autonomous AI agent.",
+    "Autonomous decision-making and reconnaissance planning by an adversary's AI agent occur externally; OCSF possesses no object or event class recording autonomous adversary reconnaissance on the victim side.",
+    "OCSF 1.9.0 has no object or event class recording autonomous AI-driven reconnaissance on the victim side; ai_agent identifies the actor rather than the reconnaissance activity."
+   ],
+   "tie": false
+  },
+  "AML.T0117": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "Autonomous attack-path adaptation occurs within the adversary's or agent's cognitive reasoning loop. Victim-side telemetry cannot directly observe or record the autonomous generation, evaluation, or adaptation of attack paths; no OCSF 1.9.0 object or class represents this technique.",
+    "OCSF 1.9.0 lacks an event class or object to record autonomous attack-path adaptation. The ai_agent object represents the actor, not the technique itself.",
+    "OCSF 1.9.0 lacks an object or event class recording an adversary AI agent's autonomous attack-path planning or adaptation on the victim side; ai_agent denotes the actor, not this technique."
+   ],
+   "tie": false
+  },
+  "d3f:AccessControlConfiguration": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "policy.name",
+   "ocsf_object": "policy",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the generic policy object to represent policies and configurations, but lacks a dedicated object or field specifically denoting access control configurations granting permissions to users for objects.",
+    "OCSF provides the parent `policy` object to describe applicable policies, but lacks a dedicated object or field specifically denoting access control configurations.",
+    "OCSF policy represents the parent kind (configuration policy), but lacks a dedicated field specifying an access control configuration."
+   ],
+   "tie": false
+  },
+  "d3f:AccessToken": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "authentication_token.uid",
+   "ocsf_object": "authentication_token",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF directly provides the authentication_token object (extending token) to represent authentication and access tokens, using uid as its identifier.",
+    "OCSF authentication_token object directly represents standardized authentication and access tokens conforming to established authentication protocols.",
+    "OCSF defines the token object to represent authentication credentials and tokens across contexts, with token.type_id specifically denoting an access token."
+   ],
+   "tie": false
+  },
+  "d3f:Application": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "application.name",
+   "ocsf_object": "application",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines a direct application object describing an inventoried application or program, with fields such as application.name.",
+    "OCSF defines a dedicated application object representing an application.",
+    "OCSF directly defines the application object to represent an application."
+   ],
+   "tie": false
+  },
+  "d3f:ApplicationConfiguration": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF lacks an object or dedicated field for application configuration settings or parameters, and no carrier field applies.",
+    "OCSF lacks an object or dedicated field for application configuration, and does not define its parent kind ConfigurationResource.",
+    "OCSF 1.9.0 does not define an object or dedicated field representing application configuration settings or initial parameters."
+   ],
+   "tie": false
+  },
+  "d3f:ArchiveFile": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.type",
+   "ocsf_object": "file",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent file object, but does not have a dedicated archive file object or field identifying archive files.",
+    "OCSF has the parent file object, but lacks a dedicated object or field to distinguish an archive file from other files.",
+    "OCSF file represents the parent kind (file), but lacks a dedicated field or object distinguishing an archive file from other files."
+   ],
+   "tie": false
+  },
+  "d3f:ArtifactServer": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF lacks an object or dedicated field for an artifact server or web server, and its parent kind does not exist in the schema.",
+    "OCSF has no dedicated object or field for artifact servers or web servers, and does not model repository server infrastructure.",
+    "OCSF 1.9.0 has no object or field representing an artifact server or web server; neither the artifact nor its parent kind is modeled in the schema."
+   ],
+   "tie": false
+  },
+  "d3f:AuthenticationService": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "idp.name",
+   "ocsf_object": "idp",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF idp directly denotes an identity provider service responsible for offering authentication services to applications.",
+    "OCSF idp object represents an identity provider responsible for offering authentication services to applications, denoting the same kind as an authentication service.",
+    "OCSF idp object describes an identity provider offering authentication services to applications, directly denoting the authentication service artifact."
+   ],
+   "tie": false
+  },
+  "d3f:CloudConfiguration": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF lacks an object or dedicated field representing cloud service instance configuration settings or parameters.",
+    "OCSF 1.9.0 has no object or field for cloud configuration settings; the cloud object only records environment context such as provider and region.",
+    "OCSF 1.9.0 has no object or field representing cloud configuration settings; the cloud object only captures environment metadata like provider, region, and account."
+   ],
+   "tie": false
+  },
+  "d3f:CloudInstanceMetadata": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "proxy",
+    "none"
+   ],
+   "rationales": [
+    "OCSF has no object or field representing cloud instance metadata or configuration (such as security groups, public keys, or user data initialization scripts).",
+    "OCSF lacks an object for cloud instance metadata; access to the instance metadata service (IMDS) can only be referenced through a carrier field such as url.url_string.",
+    "OCSF lacks an object or field for cloud instance metadata or configuration; cloud defines the hosting environment."
+   ],
+   "tie": false
+  },
+  "d3f:CloudStorage": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "databucket.name",
+   "ocsf_object": "databucket",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the databucket object for containers holding partitioned data in cloud storage environments (e.g., S3 or GCS), directly representing cloud storage.",
+    "The OCSF databucket object directly represents cloud storage containers (such as S3 buckets) held within a computing cloud, identified by databucket.name.",
+    "OCSF defines the databucket object to represent cloud datastores and storage containers, identified by databucket.name."
+   ],
+   "tie": false
+  },
+  "d3f:CloudUserAccount": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "account.type",
+   "ocsf_object": "account",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent user object, but lacks a dedicated object or field distinguishing cloud user accounts from general user accounts.",
+    "OCSF provides the parent account object, but lacks a dedicated subkind field defining a local cloud user account on a host.",
+    "OCSF provides the parent kind account, but lacks a dedicated object or field identifying the account specifically as a cloud user account."
+   ],
+   "tie": false
+  },
+  "d3f:CodeRepository": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "database.name",
+   "ocsf_object": "database",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent database object for datastores, but lacks a dedicated code repository object or field to distinguish source code repositories.",
+    "OCSF provides the parent database object, but lacks a dedicated object or specific field denoting a source code repository.",
+    "OCSF models the parent database object, but lacks a dedicated object or field distinguishing code repositories."
+   ],
+   "tie": false
+  },
+  "d3f:CollaborativeSoftware": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "application.name",
+   "ocsf_object": "application",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the generic application object representing software applications, but lacks a dedicated collaborative software object or field denoting groupware or collaboration functionality.",
+    "OCSF models software applications via the application object, but has no specific field or type classifying groupware or collaborative software.",
+    "OCSF application represents the parent kind (application), but lacks a dedicated field to identify collaborative software or groupware."
+   ],
+   "tie": false
+  },
+  "d3f:Command": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "process.cmd_line",
+   "ocsf_object": "process",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF process.cmd_line is a dedicated field that directly records the directive or command line executed by the system.",
+    "OCSF process.cmd_line is a dedicated field that directly records the command directive issued to execute a process or computation.",
+    "OCSF provides the dedicated field process.cmd_line to directly record the command directive issued to execute a process."
+   ],
+   "tie": false
+  },
+  "d3f:CommandHistoryLog": {
+   "grade": "proxy",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.path",
+   "ocsf_object": "file",
+   "passes": [
+    "proxy",
+    "proxy",
+    "proxy"
+   ],
+   "rationales": [
+    "OCSF lacks an object for command history logs or event logs; shell command history is recorded only via a file path carrier field (file.path).",
+    "OCSF lacks an object for command history logs; shell command history files can only be referenced indirectly via a file carrier field such as file.path.",
+    "OCSF has no dedicated command history log object; the shell history log file can only be referenced indirectly via a carrier path field like file.path."
+   ],
+   "tie": false
+  },
+  "d3f:CommandHistoryLogFile": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.path",
+   "ocsf_object": "file",
+   "passes": [
+    "proxy",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF has no dedicated object for a command history log file; it can only be identified and referenced through the carrier field file.path.",
+    "OCSF models files via the file object, but lacks a dedicated field or classification distinguishing command history log files from other files.",
+    "OCSF file represents the parent kind (file), but lacks a dedicated field to identify a command history log file."
+   ],
+   "tie": false
+  },
+  "d3f:ConfigurationFile": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.type",
+   "ocsf_object": "file",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent file object, but contains no field or type distinguishing configuration files from general files.",
+    "OCSF provides the parent file object, but lacks a dedicated field or enum value to distinguish a configuration file from any other file.",
+    "OCSF defines the generic parent object file, but lacks a dedicated object or attribute specifying that the file is a configuration file."
+   ],
+   "tie": false
+  },
+  "d3f:ConfigurationResource": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "resource_details.type",
+   "ocsf_object": "resource_details",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF defines the generic parent resource_details object, but lacks a dedicated object or field specifically denoting configuration resources.",
+    "OCSF provides the parent kind resource_details for generic resources, but lacks a dedicated object or field for configuration resources.",
+    "OCSF provides resource_details for generic resources (the parent kind), but lacks a dedicated object or field distinguishing a configuration resource."
+   ],
+   "tie": false
+  },
+  "d3f:CreateFile": {
+   "grade": "event",
+   "ocsf_class_uid": "1001",
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "event",
+    "event",
+    "event"
+   ],
+   "rationales": [
+    "The artifact is an occurrent (system call). OCSF captures file creation through the file_activity event class (class_uid 1001).",
+    "CreateFile is a system-call occurrent recorded in OCSF as a File System Activity event (class UID 1001), where creation is indicated by the activity_id.",
+    "CreateFile is a system call occurrent. OCSF records file creation as an event under the file_activity event class (UID 1001) via an activity_id rather than a standalone object."
+   ],
+   "tie": false
+  },
+  "d3f:CreateProcess": {
+   "grade": "event",
+   "ocsf_class_uid": "1007",
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "event",
+    "event",
+    "event"
+   ],
+   "rationales": [
+    "The artifact is an occurrent (system call). OCSF records process creation via event class process_activity (class_uid 1007).",
+    "Create Process is a system call occurrent representing process creation, recorded as the process_activity event class (uid 1007) with a launch activity ID.",
+    "CreateProcess is an occurrent system call mapped to OCSF process_activity (class UID 1007), which captures process launch activities."
+   ],
+   "tie": false
+  },
+  "d3f:Credential": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF lacks an object or dedicated field for credentials. While reference fields like credential_uid and specific factor types exist, no schema element denotes the general credential artifact itself.",
+    "OCSF lacks an object or dedicated field representing general credentials (such as passwords, physical tokens, or biometrics); specific digital token objects exist, but no generic credential entity is defined.",
+    "OCSF lacks an object or dedicated field representing credentials broadly. Related objects like token or certificate only cover specific subtypes, and the parent kind DigitalInformationBearer is absent from OCSF."
+   ],
+   "tie": false
+  },
+  "d3f:Database": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "database.name",
+   "ocsf_object": "database",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines a dedicated database object for datastore services and collections of data, with the name attribute identifying it.",
+    "OCSF database object directly represents databases containing organized collections of data, denoting the same kind as the D3FEND database artifact.",
+    "OCSF defines a dedicated database object representing an organized collection of data, identified by database.name."
+   ],
+   "tie": false
+  },
+  "d3f:DatabaseQuery": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "query_info.query_string",
+   "ocsf_object": "query_info",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the query_info object with the dedicated query_string field to record SQL or other database query statements executed against a datastore.",
+    "The query_info object directly represents datastore queries, with query_string holding the database query text.",
+    "OCSF directly defines the query_info object for datastore access queries, with query_info.query_string capturing the specific query text (such as SQL) executed against a database."
+   ],
+   "tie": false
+  },
+  "d3f:DatabaseRecord": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF defines database and table objects, but has no object, parent kind, or field representing an individual database record or row.",
+    "OCSF has no object or field representing an individual database record or its parent Record kind.",
+    "OCSF defines database and table objects, but does not provide an object or field representing an individual database record or row."
+   ],
+   "tie": false
+  },
+  "d3f:DefaultUserAccount": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "account.type",
+   "ocsf_object": "account",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent user object, but lacks a dedicated attribute or object to denote default or built-in user accounts.",
+    "OCSF provides the parent account object, but lacks a dedicated field or boolean indicating that an account is a built-in or default system account.",
+    "OCSF defines the parent account object but lacks a dedicated field or value to indicate that an account is a built-in or default account; account.type only provides generic account typing."
+   ],
+   "tie": false
+  },
+  "d3f:DigitalIdentity": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "account.uid",
+   "ocsf_object": "account",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the user object to describe a security principal or user representing the subject's digital identity in online transactions, directly matching the artifact.",
+    "OCSF directly defines the `account` object to represent the unique representation or account of a subject within a system or application, identified by `uid`.",
+    "OCSF's account object directly represents a digital identity in a system or service, with account.uid uniquely identifying the subject."
+   ],
+   "tie": false
+  },
+  "d3f:DigitalMedia": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF 1.9.0 has no object, field, or event class denoting digital communication media.",
+    "OCSF 1.9.0 does not define an object or field representing communication media or digital media formats.",
+    "OCSF contains no object or field representing digital communication media or digital information generally."
+   ],
+   "tie": false
+  },
+  "d3f:DigitalMessage": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF lacks a general digital message object, only providing specialized protocol structures like email without a generic application-layer message representation.",
+    "OCSF has no generic object for an application-layer digital message, nor does it define the parent DigitalInformationBearer kind. OCSF models specific communication types individually.",
+    "OCSF lacks an object or field representing a generic digital message, only providing specialized objects for specific message protocols like email."
+   ],
+   "tie": false
+  },
+  "d3f:DigitalText": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF 1.9.0 has no object or dedicated field denoting digital text or digital media.",
+    "OCSF has no object or dedicated field for generic digital text or digital media. Written text is only stored within context-specific string fields rather than as an independent artifact.",
+    "OCSF 1.9.0 does not define an object, dedicated field, or parent class representing generic digital text or digital media content."
+   ],
+   "tie": false
+  },
+  "d3f:DocumentFile": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.type",
+   "ocsf_object": "file",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent file object, but lacks a specific object or dedicated field for document files.",
+    "OCSF defines the parent file object, but lacks a dedicated object or field distinguishing a document file from other files.",
+    "OCSF provides the parent file object, but lacks a dedicated object or attribute denoting a document file specifically."
+   ],
+   "tie": false
+  },
+  "d3f:DomainRegistration": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "whois.domain",
+   "ocsf_object": "whois",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the whois object to record domain registration data, including registrar, domain, and contact details, directly matching the artifact.",
+    "OCSF defines the whois object specifically representing domain registration data from WHOIS/RDAP services.",
+    "OCSF directly models domain registration data via the whois object, which captures WHOIS and RDAP domain registration records, identified by whois.domain."
+   ],
+   "tie": false
+  },
+  "d3f:Email": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "email.message_uid",
+   "ocsf_object": "email",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines a dedicated email object representing email messages and their metadata, with message_uid as the unique message identifier.",
+    "The OCSF email object directly represents an email message, with email.message_uid uniquely identifying the email message document.",
+    "The OCSF email object directly represents an email message, with email.message_uid providing the unique message identifier."
+   ],
+   "tie": false
+  },
+  "d3f:EventLog": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "metadata.log_name",
+   "ocsf_object": "metadata",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF provides the dedicated metadata.log_name field to identify the specific event log (e.g., System, Security, Application) in which the event was recorded.",
+    "OCSF provides the dedicated field metadata.log_name to record the specific event log (such as Security or System) in which events are recorded.",
+    "OCSF directly identifies the specific event log using the dedicated field metadata.log_name (or logger.log_name) on the event."
+   ],
+   "tie": false
+  },
+  "d3f:ExecutableBinary": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.type",
+   "ocsf_object": "file",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent file object, but lacks a specific object or dedicated field distinguishing executable binaries from other files.",
+    "OCSF provides the parent `file` object, but lacks a dedicated object or field to distinguish an executable binary from other file types.",
+    "OCSF provides the parent file object, but lacks a dedicated object or field to distinguish executable binaries from other file types."
+   ],
+   "tie": false
+  },
+  "d3f:ExecutableFile": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.type",
+   "ocsf_object": "file",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent file object, but lacks a dedicated object or specific field distinguishing executable files from other file types.",
+    "OCSF provides the parent kind file object, but lacks a dedicated object or field distinguishing executable files.",
+    "OCSF provides the parent file object, but lacks a dedicated object or attribute distinguishing executable files from other files."
+   ],
+   "tie": false
+  },
+  "d3f:ExecutableScript": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "script.name",
+   "ocsf_object": "script",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the script object to describe an executable script or command executed by an interpreter or shell, directly matching the D3FEND Executable Script artifact.",
+    "OCSF script object directly represents a script or command executed by a shell or interpreter, denoting the same kind as an executable script.",
+    "OCSF directly defines the script object to describe a script or command executed by an interpreter or shell, denoting the same kind as an executable script."
+   ],
+   "tie": false
+  },
+  "d3f:File": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.name",
+   "ocsf_object": "file",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the file object to represent metadata associated with a file stored in a computer system, directly matching the artifact.",
+    "OCSF directly defines the `file` object to represent metadata of files stored on a computer system, identified by attributes like `name` and `path`.",
+    "OCSF directly models files stored in computer systems via the file object, with file.name identifying the file."
+   ],
+   "tie": false
+  },
+  "d3f:FileSystemMetadata": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.attributes",
+   "ocsf_object": "file",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF's file object represents metadata associated with a file, and file.attributes directly records file system attributes.",
+    "The OCSF file object directly represents the metadata associated with a file in a computer system, and file.attributes captures specific file system attribute flags.",
+    "OCSF defines the file object specifically as the metadata associated with a file, providing dedicated attributes like file.attributes to capture file system metadata."
+   ],
+   "tie": false
+  },
+  "d3f:GetRunningProcesses": {
+   "grade": "event",
+   "ocsf_class_uid": "5015",
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "event",
+    "event",
+    "event"
+   ],
+   "rationales": [
+    "As a system call occurrent querying running processes, this artifact maps to OCSF's process_query event class (UID 5015).",
+    "Get Running Processes is a system call occurrent mapped to OCSF process_query event class (UID 5015), which reports information about running processes.",
+    "As a system-call occurrent, this is recorded in OCSF as an event class rather than an object; class 5015 (process_query) specifically reports discovered running processes."
+   ],
+   "tie": false
+  },
+  "d3f:GroupPolicy": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "policy.name",
+   "ocsf_object": "policy",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the generic policy object representing applicable policies, but lacks a dedicated object or attribute specifically denoting Windows Group Policy.",
+    "OCSF provides the parent policy object, but lacks a dedicated object or specific field for Windows Group Policy.",
+    "OCSF defines the generic policy object, but lacks a dedicated object or field for Windows Group Policy."
+   ],
+   "tie": false
+  },
+  "d3f:Host": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "device.hostname",
+   "ocsf_object": "device",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF directly defines the device object as an addressable computer system or host, with hostname providing the host identifier.",
+    "OCSF device object explicitly represents an addressable computer system or host connected to a network, with hostname denoting the host.",
+    "The OCSF device object explicitly represents an addressable computer system or host connected to a network, identified by device.hostname."
+   ],
+   "tie": false
+  },
+  "d3f:InboundInternetMailTraffic": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "network_traffic.bytes_in",
+   "ocsf_object": "network_traffic",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent network_traffic object, but lacks a dedicated object or field denoting inbound internet mail traffic.",
+    "OCSF provides the parent kind network_traffic, but what specializes it as inbound internet mail traffic (mail protocol, external boundary) is not an attribute of the network_traffic object itself.",
+    "OCSF provides the parent object network_traffic for traffic metrics, but lacks fields to specify that the traffic is inbound, internet-facing, or using an email protocol."
+   ],
+   "tie": false
+  },
+  "d3f:InboundInternetNetworkTraffic": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "network_traffic.bytes",
+   "ocsf_object": "network_traffic",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent network_traffic object, but lacks a dedicated object or field specifying inbound internet network traffic.",
+    "OCSF provides the parent kind `network_traffic` for traffic volume metrics, but lacks a field distinguishing traffic as specifically internet-originated.",
+    "OCSF provides the parent kind network_traffic, but what makes the traffic specifically inbound internet traffic is not an attribute of the network_traffic object."
+   ],
+   "tie": false
+  },
+  "d3f:InitScript": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "script.name",
+   "ocsf_object": "script",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the generic script object representing executable scripts, but lacks a dedicated init script object or field denoting that the script serves an initialization role.",
+    "OCSF represents executable scripts via the script object, but lacks a field denoting that the script is an initialization script.",
+    "OCSF provides the generic parent object script for executable scripts, but lacks a dedicated object or field to designate a script specifically as an initialization or boot script."
+   ],
+   "tie": false
+  },
+  "d3f:IntrusionDetectionSystem": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF 1.9.0 does not define an object or dedicated field representing an intrusion detection system.",
+    "OCSF lacks an object or dedicated field for an intrusion detection system, and does not model its generic parent entity.",
+    "OCSF lacks a dedicated object or field for an intrusion detection system, and does not model the parent DigitalInformationBearer."
+   ],
+   "tie": false
+  },
+  "d3f:JobSchedule": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "job.name",
+   "ocsf_object": "job",
+   "passes": [
+    "direct",
+    "none",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the job object to record scheduled jobs and tasks, including their actions, triggers, and execution times, directly denoting the artifact.",
+    "OCSF lacks an object or field representing a job schedule specification or timing plan; job and trigger objects capture task execution state rather than the schedule.",
+    "OCSF directly represents scheduled jobs and tasks via the job object, capturing task commands, triggers, and schedule specifications in fields such as job.name and job.job_triggers."
+   ],
+   "tie": false
+  },
+  "d3f:Log": {
+   "grade": "proxy",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.path",
+   "ocsf_object": "file",
+   "passes": [
+    "proxy",
+    "proxy",
+    "none"
+   ],
+   "rationales": [
+    "OCSF lacks a dedicated object for a log; when maintained on a system, it can only be referenced via carrier fields such as file.path.",
+    "OCSF lacks an object representing a log (logger represents the logging device; log_name is a label). A log stored on a filesystem can only be referenced through a carrier field such as file.path.",
+    "OCSF models individual event records rather than a log container (a historical record of events). No object represents a log; metadata.log_name merely names the source log."
+   ],
+   "tie": false
+  },
+  "d3f:MACAddress": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "network_interface.mac",
+   "ocsf_object": "network_interface",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF provides the dedicated mac field on the network_interface object to record the Media Access Control address assigned to a network interface controller.",
+    "OCSF network_interface object contains a dedicated mac attribute representing the MAC address of a network interface controller.",
+    "OCSF network_interface.mac is a dedicated field directly recording a MAC address assigned to a network interface controller."
+   ],
+   "tie": false
+  },
+  "d3f:Metadata": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF metadata describes event record envelope telemetry rather than the monitored digital artifact itself. OCSF has no object or field recording arbitrary digital information metadata.",
+    "Mapping by meaning (Discipline 1), D3FEND Metadata refers to data describing target digital artifacts. OCSF's metadata object captures event logging envelope details, not target artifact metadata; OCSF has no object or field for generic artifact metadata.",
+    "OCSF metadata defines event logging metadata rather than the digital artifact of metadata describing other information; no target object exists."
+   ],
+   "tie": false
+  },
+  "d3f:MoveFile": {
+   "grade": "event",
+   "ocsf_class_uid": "1001",
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "event",
+    "event",
+    "event"
+   ],
+   "rationales": [
+    "Move File is a system-call occurrent; OCSF models file move and rename operations within the file_activity event class (uid 1001) via activity_id.",
+    "MoveFile is a system call occurrent recorded by OCSF file_activity (class UID 1001) via its activity_id.",
+    "MoveFile is an occurrent (system call) recorded in OCSF as the file_activity event class (UID 1001) using an activity_id for rename/move, rather than as a standalone object."
+   ],
+   "tie": false
+  },
+  "d3f:NetworkTraffic": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "network_traffic.bytes",
+   "ocsf_object": "network_traffic",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the network_traffic object to describe characteristics and metrics of data moving across a network, directly matching the D3FEND Network Traffic artifact.",
+    "OCSF network_traffic object directly denotes the volume and characteristics of data moving across a network over a time period.",
+    "OCSF's network_traffic object directly represents network traffic, with the bytes attribute measuring the amount of data moving across the network."
+   ],
+   "tie": false
+  },
+  "d3f:OperatingSystemExecutableFile": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.is_system",
+   "ocsf_object": "file",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent file object with an is_system attribute, but lacks a dedicated object or field identifying the system file specifically as an executable.",
+    "OCSF provides the parent `file` object with `is_system` for operating system files, but lacks a dedicated field distinguishing OS executable files from other OS files.",
+    "OCSF provides the generic file object. While file.is_system indicates system files, OCSF lacks a dedicated field distinguishing operating system executables from other system files."
+   ],
+   "tie": false
+  },
+  "d3f:OutboundInternetNetworkTraffic": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "network_traffic.bytes_out",
+   "ocsf_object": "network_traffic",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent network_traffic object, but does not distinguish outbound internet network traffic through a dedicated object or specific traffic attribute.",
+    "OCSF provides the parent network_traffic object, but lacks a dedicated field denoting that the traffic is destined for the external internet.",
+    "OCSF has the parent network_traffic object, capturing outgoing traffic volume via bytes_out, but lacks a dedicated object or field specifically denoting outbound internet traffic."
+   ],
+   "tie": false
+  },
+  "d3f:OutboundInternetWebTraffic": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "network_traffic.bytes_out",
+   "ocsf_object": "network_traffic",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent kind network_traffic, but lacks fields within that object to denote that traffic is outbound, internet-scoped, or web-protocol specific.",
+    "OCSF provides the parent `network_traffic` object, but lacks fields to specify that traffic is outbound, internet-facing, and using a web protocol.",
+    "OCSF provides the parent network_traffic object (with bytes_out), but lacks a dedicated object or field to specify that the traffic is outbound internet web traffic."
+   ],
+   "tie": false
+  },
+  "d3f:PersonalComputer": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "device.type",
+   "ocsf_object": "device",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent device object, but lacks a dedicated type or field distinguishing a personal computer from other computing systems.",
+    "OCSF provides the parent object `device` for host computer systems, but lacks a dedicated type or field denoting a personal computer.",
+    "OCSF provides the parent device object, but lacks a dedicated type denoting a personal computer. The attribute device.is_personal denotes BYOD ownership rather than the PC form factor."
+   ],
+   "tie": false
+  },
+  "d3f:PrivateKey": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF 1.9.0 does not define an object or dedicated field representing private cryptographic keys.",
+    "OCSF contains no object or field for private keys. Telemetry schemas intentionally omit private cryptographic keys to avoid exposing sensitive secrets.",
+    "OCSF does not define any object or field representing an asymmetric private key."
+   ],
+   "tie": false
+  },
+  "d3f:Process": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "process.name",
+   "ocsf_object": "process",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the process object to describe a running instance of a program, directly denoting the same kind as the D3FEND Process artifact.",
+    "OCSF directly defines the `process` object to describe a running instance of a launched program, identified by `pid`.",
+    "OCSF defines a dedicated process object that directly represents a running instance of a program, identified by process.name."
+   ],
+   "tie": false
+  },
+  "d3f:ProcessEnvironmentVariable": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "environment_variable.name",
+   "ocsf_object": "environment_variable",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF provides the dedicated environment_variable object to represent process environment variables, with attributes including name and value.",
+    "OCSF provides a dedicated environment_variable object (and process.environment_variables field) that directly records environment variables in which a process runs.",
+    "OCSF directly models process environment variables via the environment_variable object (environment_variable.name), which are also recorded on processes under process.environment_variables."
+   ],
+   "tie": false
+  },
+  "d3f:ProcessSegment": {
+   "grade": "none",
+   "ocsf_class_uid": null,
+   "ocsf_field": null,
+   "ocsf_object": null,
+   "passes": [
+    "none",
+    "none",
+    "none"
+   ],
+   "rationales": [
+    "OCSF does not define an object, parent object, or field to represent process memory segments such as heap or stack.",
+    "OCSF lacks any object or field representing process memory space partitions such as heap, data, or stack segments.",
+    "OCSF lacks an object or field representing process memory segments such as heap, stack, or data segments."
+   ],
+   "tie": false
+  },
+  "d3f:ProxyServer": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "network_proxy.hostname",
+   "ocsf_object": "network_proxy",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines a dedicated network_proxy object that directly represents a proxy server intermediary between clients and servers.",
+    "The network_proxy object directly describes a proxy server acting as an intermediary between a client and server.",
+    "OCSF defines the network_proxy object specifically to describe a proxy server acting as an intermediary between clients and servers."
+   ],
+   "tie": false
+  },
+  "d3f:RemoteSession": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "session.is_remote",
+   "ocsf_object": "session",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF's session object includes the dedicated boolean attribute is_remote to indicate that an authenticated session is remote.",
+    "OCSF defines the session object with a dedicated boolean field is_remote that explicitly denotes whether a session is remote.",
+    "OCSF's session object includes the dedicated boolean field is_remote, which directly indicates whether an authenticated session is a remote login session."
+   ],
+   "tie": false
+  },
+  "d3f:RemoteShellCommand": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "process.cmd_line",
+   "ocsf_object": "process",
+   "passes": [
+    "none",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF lacks an object, parent kind, or field representing remote commands or commands transmitted over a network for remote execution.",
+    "OCSF captures commands via the parent kind `process.cmd_line`, but lacks an object or dedicated field indicating that execution was remotely initiated.",
+    "OCSF models commands via the parent kind process.cmd_line, but lacks a dedicated object or field indicating that the command was executed remotely."
+   ],
+   "tie": false
+  },
+  "d3f:RemoteTerminalSession": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "session.terminal",
+   "ocsf_object": "session",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the generic session object representing authenticated sessions. While session includes terminal and is_remote attributes, it lacks a dedicated object or discriminator field denoting a remote terminal session.",
+    "OCSF provides the parent `session` object with `terminal` and `is_remote` attributes, but lacks a dedicated object or field specifically denoting a remote terminal session.",
+    "OCSF provides the generic session object with terminal and is_remote attributes, but lacks a dedicated object or field denoting a remote terminal session specifically."
+   ],
+   "tie": false
+  },
+  "d3f:Repository": {
+   "grade": "proxy",
+   "ocsf_class_uid": null,
+   "ocsf_field": "url.url_string",
+   "ocsf_object": "url",
+   "passes": [
+    "proxy",
+    "proxy",
+    "proxy"
+   ],
+   "rationales": [
+    "OCSF lacks a dedicated repository object; storage repositories for code or files are referenced only through carrier fields like URLs.",
+    "OCSF lacks an object for code or artifact repositories; they can only be referenced indirectly through carrier fields such as `url.url_string`.",
+    "OCSF has no object for a code or file repository; a repository is referenced only through carrier fields such as url.url_string or a file path."
+   ],
+   "tie": false
+  },
+  "d3f:Server": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "device.type",
+   "ocsf_object": "device",
+   "passes": [
+    "direct",
+    "direct",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF models servers using the device object with the dedicated type field indicating a server host.",
+    "OCSF's device object represents a host, and the dedicated type_id field specifically identifies the device type as a server.",
+    "OCSF provides the parent kind Host via the device object, but lacks a dedicated server object, classifying device roles generically through device.type."
+   ],
+   "tie": false
+  },
+  "d3f:ServiceApplication": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "service.name",
+   "ocsf_object": "service",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF provides the service object to describe software functionalities and services provided to clients.",
+    "OCSF defines the service object, which directly denotes a service application providing software functionalities to multiple clients.",
+    "OCSF directly provides the service object to describe software services that provide functionalities to clients, denoting the same kind as a service application."
+   ],
+   "tie": false
+  },
+  "d3f:ServiceApplicationProcess": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "process.name",
+   "ocsf_object": "process",
+   "passes": [
+    "generic",
+    "generic",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF provides the parent kind process for running programs, but lacks a dedicated field to classify a process specifically as a service application process.",
+    "OCSF provides the parent `process` object, but lacks a dedicated object or field classifying a process specifically as a service application process.",
+    "OCSF service object describes a service that performs tasks or provides functionality to support applications and users, directly denoting this artifact."
+   ],
+   "tie": false
+  },
+  "d3f:ShellCommand": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "process.cmd_line",
+   "ocsf_object": "process",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF provides the dedicated cmd_line attribute on the process object to record the command-line directive or shell command executed.",
+    "OCSF provides the dedicated field `process.cmd_line` to record command-line directives, and also models shell commands via `script.script_content`.",
+    "OCSF directly records shell command invocations via the dedicated process.cmd_line field, as well as the script object (script.script_content) representing shell commands."
+   ],
+   "tie": false
+  },
+  "d3f:Software": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "product.name",
+   "ocsf_object": "product",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the product object to describe software products, directly representing computer software with attributes like name, vendor, and version.",
+    "OCSF defines `product` to describe characteristics of software products, directly representing software by meaning via attributes like `name` and `cpe_name`.",
+    "OCSF represents software using the product object, which captures software characteristics including name, vendor, and version."
+   ],
+   "tie": false
+  },
+  "d3f:SoftwareLibrary": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "package.name",
+   "ocsf_object": "package",
+   "passes": [
+    "generic",
+    "direct",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the parent package object representing software packages, but has no dedicated object or specific field defining a software library.",
+    "The OCSF package object directly denotes software packages and libraries used to build software products, with package.name identifying the library.",
+    "OCSF package represents the parent kind (software package), but lacks a dedicated field distinguishing a software library from other software packages."
+   ],
+   "tie": false
+  },
+  "d3f:SoftwarePackage": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "package.name",
+   "ocsf_object": "package",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF contains a dedicated package object representing software packages, with name identifying the package.",
+    "OCSF directly defines the `package` object to describe details about a software package, including its name and version.",
+    "OCSF directly defines the package object representing a software package."
+   ],
+   "tie": false
+  },
+  "d3f:SoftwareRepository": {
+   "grade": "proxy",
+   "ocsf_class_uid": null,
+   "ocsf_field": "package.src_url",
+   "ocsf_object": "package",
+   "passes": [
+    "proxy",
+    "proxy",
+    "proxy"
+   ],
+   "rationales": [
+    "OCSF lacks an object for software repositories; a software repository can only be referenced by a carrier URL field such as url.url_string.",
+    "OCSF has no object for a software repository; only carrier fields like package.src_url can reference the repository location.",
+    "OCSF lacks a software repository object; repositories can only be referenced indirectly through carrier URL fields such as package.src_url or package.package_manager_url."
+   ],
+   "tie": false
+  },
+  "d3f:SystemConfigurationDatabase": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "database.type",
+   "ocsf_object": "database",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF defines the generic database datastore object, but lacks a dedicated object or attribute for system configuration databases.",
+    "OCSF provides the parent database object, but lacks a dedicated object or field identifying it specifically as a system configuration database.",
+    "OCSF defines the generic parent object database, but lacks a dedicated object or field indicating that the database holds system configuration data."
+   ],
+   "tie": false
+  },
+  "d3f:URL": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "url.url_string",
+   "ocsf_object": "url",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the url object with attribute url_string to represent Uniform Resource Locators, directly denoting the same kind as the D3FEND URL artifact.",
+    "The url object directly represents a Uniform Resource Locator, with url_string recording the full URL address.",
+    "OCSF defines a dedicated url object whose url_string attribute directly records the Uniform Resource Locator."
+   ],
+   "tie": false
+  },
+  "d3f:UserAccount": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "account.name",
+   "ocsf_object": "account",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF defines the user object to describe a user or security principal, directly denoting the same kind as the D3FEND User Account artifact.",
+    "OCSF's account object directly represents an account used for authentication and authorization, with fields such as name and type.",
+    "The OCSF account object directly denotes a user or system account, with account.name identifying the specific account within an application or system."
+   ],
+   "tie": false
+  },
+  "d3f:WebAPIResource": {
+   "grade": "generic",
+   "ocsf_class_uid": null,
+   "ocsf_field": "web_resource.url_string",
+   "ocsf_object": "web_resource",
+   "passes": [
+    "generic",
+    "generic",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF provides the generic parent web_resource object, but lacks a dedicated object or field distinguishing Web API resources from other web resources.",
+    "OCSF provides the parent kind web_resource, but lacks a dedicated object or specific field distinguishing a web API resource.",
+    "OCSF provides the parent kind web_resource, but lacks a dedicated object or field specific to a Web API resource."
+   ],
+   "tie": false
+  },
+  "d3f:WebFileResource": {
+   "grade": "proxy",
+   "ocsf_class_uid": null,
+   "ocsf_field": "file.url",
+   "ocsf_object": "file",
+   "passes": [
+    "proxy",
+    "proxy",
+    "generic"
+   ],
+   "rationales": [
+    "OCSF lacks an object for web file resources; the carrier field file.url holds the URL reference to the remotely accessible file.",
+    "OCSF has no dedicated object for a web file resource; it is only referenced through a carrier field holding a URL, such as url.url_string.",
+    "OCSF provides the parent web_resource object, but does not have a dedicated field or object distinguishing file resources from other web resources."
+   ],
+   "tie": false
+  },
+  "d3f:WebResource": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "web_resource.url_string",
+   "ocsf_object": "web_resource",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF web_resource directly represents resources identified by URIs and accessed over web protocols, with url_string recording the URI.",
+    "OCSF defines the web_resource object specifically representing resources identified by a URI and accessed via web protocols.",
+    "OCSF's web_resource object directly represents a web resource, with url_string identifying the resource via its URI."
+   ],
+   "tie": false
+  },
+  "d3f:WindowsRegistryKey": {
+   "grade": "direct",
+   "ocsf_class_uid": null,
+   "ocsf_field": "reg_key.path",
+   "ocsf_object": "reg_key",
+   "passes": [
+    "direct",
+    "direct",
+    "direct"
+   ],
+   "rationales": [
+    "OCSF provides the dedicated reg_key object to represent Windows registry keys, with the path attribute identifying the key.",
+    "OCSF directly defines the `reg_key` object to describe a Windows registry key, identified by its path.",
+    "OCSF directly defines the reg_key object to represent a Windows registry key, including its path and security descriptor."
+   ],
+   "tie": false
+  }
+ },
+ "per_pass": {
+  "1": {
+   "AML.T0000.003": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Adversaries query external scan databases like Shodan or Censys without directly interacting with the victim target, producing no victim-side telemetry or observable events in OCSF.",
+    "scored_grade": "none"
+   },
+   "AML.T0011.001": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Developing and introducing malicious software packages is not directly recorded by OCSF 1.9.0; package inventory objects describe metadata but do not record malicious package techniques.",
+    "scored_grade": "none"
+   },
+   "AML.T0011.002": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 lacks any object, event class, or field for observing AI agent tool invocations, tool execution logic, or poisoned tool interactions on the victim side.",
+    "scored_grade": "none"
+   },
+   "AML.T0016.002": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Adversaries searching for and obtaining generative AI models occurs entirely on adversary-controlled infrastructure during resource development, generating no victim-side telemetry in OCSF.",
+    "scored_grade": "none"
+   },
+   "AML.T0016.003": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Obtaining exploits is an adversary-side resource development technique conducted prior to an attack, leaving no observable trace or telemetry on victim systems in OCSF.",
+    "scored_grade": "none"
+   },
+   "AML.T0017.001": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Autonomous exploit development is an adversary-side capability involving vulnerability analysis and payload synthesis. Victim-side systems may observe individual probes, but OCSF 1.9.0 has no object or event class directly recording the autonomous development of exploits.",
+    "scored_grade": "none"
+   },
+   "AML.T0025": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Exfiltration via cyber means is an attack technique; OCSF records network traffic generically but lacks a dedicated class or field directly recording data exfiltration itself.",
+    "scored_grade": "none"
+   },
+   "AML.T0031": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 contains no object, metric, or event class to monitor AI model performance degradation, accuracy loss, or model integrity erosion over time.",
+    "scored_grade": "none"
+   },
+   "AML.T0048": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "External harms describe organizational, reputational, or societal consequences occurring outside the victim system boundary. OCSF 1.9.0 captures system and security telemetry, but lacks any object, event class, or field modeling external harms.",
+    "scored_grade": "none"
+   },
+   "AML.T0048.000": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Financial harm is an impact outcome involving monetary or asset loss; OCSF 1.9.0 does not define any financial loss objects, classes, or attributes.",
+    "scored_grade": "none"
+   },
+   "AML.T0048.002": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Societal harm represents external downstream impact on the public or vulnerable groups outside the monitored technical boundary. OCSF 1.9.0 does not record societal impacts or external harms; no object, class, or attribute denotes this technique.",
+    "scored_grade": "none"
+   },
+   "AML.T0048.003": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "User harm encompasses financial, reputational, or psychological harm experienced by individual victims. OCSF 1.9.0 records technical user accounts and authentication activity, but contains no object, event class, or field capturing harm suffered by users.",
+    "scored_grade": "none"
+   },
+   "AML.T0054": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 lacks an event class or dedicated object/field for recording LLM jailbreak attempts, adversarial prompt injections, or safety alignment overrides on the victim system.",
+    "scored_grade": "none"
+   },
+   "AML.T0116": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Autonomous reconnaissance planning and agentic execution take place on adversary infrastructure; victim telemetry cannot observe or record whether incoming reconnaissance originates from an autonomous AI agent.",
+    "scored_grade": "none"
+   },
+   "AML.T0117": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Autonomous attack-path adaptation occurs within the adversary's or agent's cognitive reasoning loop. Victim-side telemetry cannot directly observe or record the autonomous generation, evaluation, or adaptation of attack paths; no OCSF 1.9.0 object or class represents this technique.",
+    "scored_grade": "none"
+   },
+   "d3f:AccessControlConfiguration": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "policy.name",
+    "ocsf_object": "policy",
+    "rationale": "OCSF provides the generic policy object to represent policies and configurations, but lacks a dedicated object or field specifically denoting access control configurations granting permissions to users for objects.",
+    "scored_grade": "generic"
+   },
+   "d3f:AccessToken": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "authentication_token.uid",
+    "ocsf_object": "authentication_token",
+    "rationale": "OCSF directly provides the authentication_token object (extending token) to represent authentication and access tokens, using uid as its identifier.",
+    "scored_grade": "direct"
+   },
+   "d3f:Application": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "application.name",
+    "ocsf_object": "application",
+    "rationale": "OCSF defines a direct application object describing an inventoried application or program, with fields such as application.name.",
+    "scored_grade": "direct"
+   },
+   "d3f:ApplicationConfiguration": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or dedicated field for application configuration settings or parameters, and no carrier field applies.",
+    "scored_grade": "none"
+   },
+   "d3f:ArchiveFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object, but does not have a dedicated archive file object or field identifying archive files.",
+    "scored_grade": "generic"
+   },
+   "d3f:ArtifactServer": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or dedicated field for an artifact server or web server, and its parent kind does not exist in the schema.",
+    "scored_grade": "none"
+   },
+   "d3f:AuthenticationService": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "idp.name",
+    "ocsf_object": "idp",
+    "rationale": "OCSF idp directly denotes an identity provider service responsible for offering authentication services to applications.",
+    "scored_grade": "direct"
+   },
+   "d3f:CloudConfiguration": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or dedicated field representing cloud service instance configuration settings or parameters.",
+    "scored_grade": "none"
+   },
+   "d3f:CloudInstanceMetadata": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF has no object or field representing cloud instance metadata or configuration (such as security groups, public keys, or user data initialization scripts).",
+    "scored_grade": "none"
+   },
+   "d3f:CloudStorage": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "databucket.name",
+    "ocsf_object": "databucket",
+    "rationale": "OCSF defines the databucket object for containers holding partitioned data in cloud storage environments (e.g., S3 or GCS), directly representing cloud storage.",
+    "scored_grade": "direct"
+   },
+   "d3f:CloudUserAccount": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "user.type",
+    "ocsf_object": "user",
+    "rationale": "OCSF provides the parent user object, but lacks a dedicated object or field distinguishing cloud user accounts from general user accounts.",
+    "scored_grade": "generic"
+   },
+   "d3f:CodeRepository": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "database.name",
+    "ocsf_object": "database",
+    "rationale": "OCSF provides the parent database object for datastores, but lacks a dedicated code repository object or field to distinguish source code repositories.",
+    "scored_grade": "generic"
+   },
+   "d3f:CollaborativeSoftware": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "application.name",
+    "ocsf_object": "application",
+    "rationale": "OCSF provides the generic application object representing software applications, but lacks a dedicated collaborative software object or field denoting groupware or collaboration functionality.",
+    "scored_grade": "generic"
+   },
+   "d3f:Command": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.cmd_line",
+    "ocsf_object": "process",
+    "rationale": "OCSF process.cmd_line is a dedicated field that directly records the directive or command line executed by the system.",
+    "scored_grade": "direct"
+   },
+   "d3f:CommandHistoryLog": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.path",
+    "ocsf_object": "file",
+    "rationale": "OCSF lacks an object for command history logs or event logs; shell command history is recorded only via a file path carrier field (file.path).",
+    "scored_grade": "proxy"
+   },
+   "d3f:CommandHistoryLogFile": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.path",
+    "ocsf_object": "file",
+    "rationale": "OCSF has no dedicated object for a command history log file; it can only be identified and referenced through the carrier field file.path.",
+    "scored_grade": "proxy"
+   },
+   "d3f:ConfigurationFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object, but contains no field or type distinguishing configuration files from general files.",
+    "scored_grade": "generic"
+   },
+   "d3f:ConfigurationResource": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "resource_details.type",
+    "ocsf_object": "resource_details",
+    "rationale": "OCSF defines the generic parent resource_details object, but lacks a dedicated object or field specifically denoting configuration resources.",
+    "scored_grade": "generic"
+   },
+   "d3f:CreateFile": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "1001",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "The artifact is an occurrent (system call). OCSF captures file creation through the file_activity event class (class_uid 1001).",
+    "scored_grade": "event"
+   },
+   "d3f:CreateProcess": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "1007",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "The artifact is an occurrent (system call). OCSF records process creation via event class process_activity (class_uid 1007).",
+    "scored_grade": "event"
+   },
+   "d3f:Credential": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or dedicated field for credentials. While reference fields like credential_uid and specific factor types exist, no schema element denotes the general credential artifact itself.",
+    "scored_grade": "none"
+   },
+   "d3f:Database": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "database.name",
+    "ocsf_object": "database",
+    "rationale": "OCSF defines a dedicated database object for datastore services and collections of data, with the name attribute identifying it.",
+    "scored_grade": "direct"
+   },
+   "d3f:DatabaseQuery": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "query_info.query_string",
+    "ocsf_object": "query_info",
+    "rationale": "OCSF defines the query_info object with the dedicated query_string field to record SQL or other database query statements executed against a datastore.",
+    "scored_grade": "direct"
+   },
+   "d3f:DatabaseRecord": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF defines database and table objects, but has no object, parent kind, or field representing an individual database record or row.",
+    "scored_grade": "none"
+   },
+   "d3f:DefaultUserAccount": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "user.type",
+    "ocsf_object": "user",
+    "rationale": "OCSF provides the parent user object, but lacks a dedicated attribute or object to denote default or built-in user accounts.",
+    "scored_grade": "generic"
+   },
+   "d3f:DigitalIdentity": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "user.uid",
+    "ocsf_object": "user",
+    "rationale": "OCSF defines the user object to describe a security principal or user representing the subject's digital identity in online transactions, directly matching the artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:DigitalMedia": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 has no object, field, or event class denoting digital communication media.",
+    "scored_grade": "none"
+   },
+   "d3f:DigitalMessage": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks a general digital message object, only providing specialized protocol structures like email without a generic application-layer message representation.",
+    "scored_grade": "none"
+   },
+   "d3f:DigitalText": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 has no object or dedicated field denoting digital text or digital media.",
+    "scored_grade": "none"
+   },
+   "d3f:DocumentFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object, but lacks a specific object or dedicated field for document files.",
+    "scored_grade": "generic"
+   },
+   "d3f:DomainRegistration": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "whois.domain",
+    "ocsf_object": "whois",
+    "rationale": "OCSF defines the whois object to record domain registration data, including registrar, domain, and contact details, directly matching the artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:Email": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "email.message_uid",
+    "ocsf_object": "email",
+    "rationale": "OCSF defines a dedicated email object representing email messages and their metadata, with message_uid as the unique message identifier.",
+    "scored_grade": "direct"
+   },
+   "d3f:EventLog": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "metadata.log_name",
+    "ocsf_object": "metadata",
+    "rationale": "OCSF provides the dedicated metadata.log_name field to identify the specific event log (e.g., System, Security, Application) in which the event was recorded.",
+    "scored_grade": "direct"
+   },
+   "d3f:ExecutableBinary": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object, but lacks a specific object or dedicated field distinguishing executable binaries from other files.",
+    "scored_grade": "generic"
+   },
+   "d3f:ExecutableFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object, but lacks a dedicated object or specific field distinguishing executable files from other file types.",
+    "scored_grade": "generic"
+   },
+   "d3f:ExecutableScript": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "script.name",
+    "ocsf_object": "script",
+    "rationale": "OCSF defines the script object to describe an executable script or command executed by an interpreter or shell, directly matching the D3FEND Executable Script artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:File": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.name",
+    "ocsf_object": "file",
+    "rationale": "OCSF defines the file object to represent metadata associated with a file stored in a computer system, directly matching the artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:FileSystemMetadata": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.attributes",
+    "ocsf_object": "file",
+    "rationale": "OCSF's file object represents metadata associated with a file, and file.attributes directly records file system attributes.",
+    "scored_grade": "direct"
+   },
+   "d3f:GetRunningProcesses": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "5015",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "As a system call occurrent querying running processes, this artifact maps to OCSF's process_query event class (UID 5015).",
+    "scored_grade": "event"
+   },
+   "d3f:GroupPolicy": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "policy.name",
+    "ocsf_object": "policy",
+    "rationale": "OCSF provides the generic policy object representing applicable policies, but lacks a dedicated object or attribute specifically denoting Windows Group Policy.",
+    "scored_grade": "generic"
+   },
+   "d3f:Host": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "device.hostname",
+    "ocsf_object": "device",
+    "rationale": "OCSF directly defines the device object as an addressable computer system or host, with hostname providing the host identifier.",
+    "scored_grade": "direct"
+   },
+   "d3f:InboundInternetMailTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent network_traffic object, but lacks a dedicated object or field denoting inbound internet mail traffic.",
+    "scored_grade": "generic"
+   },
+   "d3f:InboundInternetNetworkTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent network_traffic object, but lacks a dedicated object or field specifying inbound internet network traffic.",
+    "scored_grade": "generic"
+   },
+   "d3f:InitScript": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "script.name",
+    "ocsf_object": "script",
+    "rationale": "OCSF provides the generic script object representing executable scripts, but lacks a dedicated init script object or field denoting that the script serves an initialization role.",
+    "scored_grade": "generic"
+   },
+   "d3f:IntrusionDetectionSystem": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 does not define an object or dedicated field representing an intrusion detection system.",
+    "scored_grade": "none"
+   },
+   "d3f:JobSchedule": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "job.name",
+    "ocsf_object": "job",
+    "rationale": "OCSF defines the job object to record scheduled jobs and tasks, including their actions, triggers, and execution times, directly denoting the artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:Log": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.path",
+    "ocsf_object": "file",
+    "rationale": "OCSF lacks a dedicated object for a log; when maintained on a system, it can only be referenced via carrier fields such as file.path.",
+    "scored_grade": "proxy"
+   },
+   "d3f:MACAddress": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_interface.mac",
+    "ocsf_object": "network_interface",
+    "rationale": "OCSF provides the dedicated mac field on the network_interface object to record the Media Access Control address assigned to a network interface controller.",
+    "scored_grade": "direct"
+   },
+   "d3f:Metadata": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF metadata describes event record envelope telemetry rather than the monitored digital artifact itself. OCSF has no object or field recording arbitrary digital information metadata.",
+    "scored_grade": "none"
+   },
+   "d3f:MoveFile": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "1001",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Move File is a system-call occurrent; OCSF models file move and rename operations within the file_activity event class (uid 1001) via activity_id.",
+    "scored_grade": "event"
+   },
+   "d3f:NetworkTraffic": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF defines the network_traffic object to describe characteristics and metrics of data moving across a network, directly matching the D3FEND Network Traffic artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:OperatingSystemExecutableFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.is_system",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object with an is_system attribute, but lacks a dedicated object or field identifying the system file specifically as an executable.",
+    "scored_grade": "generic"
+   },
+   "d3f:OutboundInternetNetworkTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes_out",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent network_traffic object, but does not distinguish outbound internet network traffic through a dedicated object or specific traffic attribute.",
+    "scored_grade": "generic"
+   },
+   "d3f:OutboundInternetWebTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent kind network_traffic, but lacks fields within that object to denote that traffic is outbound, internet-scoped, or web-protocol specific.",
+    "scored_grade": "generic"
+   },
+   "d3f:PersonalComputer": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "device.type",
+    "ocsf_object": "device",
+    "rationale": "OCSF provides the parent device object, but lacks a dedicated type or field distinguishing a personal computer from other computing systems.",
+    "scored_grade": "generic"
+   },
+   "d3f:PrivateKey": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 does not define an object or dedicated field representing private cryptographic keys.",
+    "scored_grade": "none"
+   },
+   "d3f:Process": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.name",
+    "ocsf_object": "process",
+    "rationale": "OCSF defines the process object to describe a running instance of a program, directly denoting the same kind as the D3FEND Process artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:ProcessEnvironmentVariable": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "environment_variable.name",
+    "ocsf_object": "environment_variable",
+    "rationale": "OCSF provides the dedicated environment_variable object to represent process environment variables, with attributes including name and value.",
+    "scored_grade": "direct"
+   },
+   "d3f:ProcessSegment": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF does not define an object, parent object, or field to represent process memory segments such as heap or stack.",
+    "scored_grade": "none"
+   },
+   "d3f:ProxyServer": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_proxy.hostname",
+    "ocsf_object": "network_proxy",
+    "rationale": "OCSF defines a dedicated network_proxy object that directly represents a proxy server intermediary between clients and servers.",
+    "scored_grade": "direct"
+   },
+   "d3f:RemoteSession": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "session.is_remote",
+    "ocsf_object": "session",
+    "rationale": "OCSF's session object includes the dedicated boolean attribute is_remote to indicate that an authenticated session is remote.",
+    "scored_grade": "direct"
+   },
+   "d3f:RemoteShellCommand": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object, parent kind, or field representing remote commands or commands transmitted over a network for remote execution.",
+    "scored_grade": "none"
+   },
+   "d3f:RemoteTerminalSession": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "session.terminal",
+    "ocsf_object": "session",
+    "rationale": "OCSF provides the generic session object representing authenticated sessions. While session includes terminal and is_remote attributes, it lacks a dedicated object or discriminator field denoting a remote terminal session.",
+    "scored_grade": "generic"
+   },
+   "d3f:Repository": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "url.url_string",
+    "ocsf_object": "url",
+    "rationale": "OCSF lacks a dedicated repository object; storage repositories for code or files are referenced only through carrier fields like URLs.",
+    "scored_grade": "proxy"
+   },
+   "d3f:Server": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "device.type",
+    "ocsf_object": "device",
+    "rationale": "OCSF models servers using the device object with the dedicated type field indicating a server host.",
+    "scored_grade": "direct"
+   },
+   "d3f:ServiceApplication": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "service.name",
+    "ocsf_object": "service",
+    "rationale": "OCSF provides the service object to describe software functionalities and services provided to clients.",
+    "scored_grade": "direct"
+   },
+   "d3f:ServiceApplicationProcess": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.name",
+    "ocsf_object": "process",
+    "rationale": "OCSF provides the parent kind process for running programs, but lacks a dedicated field to classify a process specifically as a service application process.",
+    "scored_grade": "generic"
+   },
+   "d3f:ShellCommand": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.cmd_line",
+    "ocsf_object": "process",
+    "rationale": "OCSF provides the dedicated cmd_line attribute on the process object to record the command-line directive or shell command executed.",
+    "scored_grade": "direct"
+   },
+   "d3f:Software": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "product.name",
+    "ocsf_object": "product",
+    "rationale": "OCSF defines the product object to describe software products, directly representing computer software with attributes like name, vendor, and version.",
+    "scored_grade": "direct"
+   },
+   "d3f:SoftwareLibrary": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "package.type",
+    "ocsf_object": "package",
+    "rationale": "OCSF provides the parent package object representing software packages, but has no dedicated object or specific field defining a software library.",
+    "scored_grade": "generic"
+   },
+   "d3f:SoftwarePackage": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "package.name",
+    "ocsf_object": "package",
+    "rationale": "OCSF contains a dedicated package object representing software packages, with name identifying the package.",
+    "scored_grade": "direct"
+   },
+   "d3f:SoftwareRepository": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "url.url_string",
+    "ocsf_object": "url",
+    "rationale": "OCSF lacks an object for software repositories; a software repository can only be referenced by a carrier URL field such as url.url_string.",
+    "scored_grade": "proxy"
+   },
+   "d3f:SystemConfigurationDatabase": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "database.type",
+    "ocsf_object": "database",
+    "rationale": "OCSF defines the generic database datastore object, but lacks a dedicated object or attribute for system configuration databases.",
+    "scored_grade": "generic"
+   },
+   "d3f:URL": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "url.url_string",
+    "ocsf_object": "url",
+    "rationale": "OCSF defines the url object with attribute url_string to represent Uniform Resource Locators, directly denoting the same kind as the D3FEND URL artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:UserAccount": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "user.name",
+    "ocsf_object": "user",
+    "rationale": "OCSF defines the user object to describe a user or security principal, directly denoting the same kind as the D3FEND User Account artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:WebAPIResource": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "web_resource.url_string",
+    "ocsf_object": "web_resource",
+    "rationale": "OCSF provides the generic parent web_resource object, but lacks a dedicated object or field distinguishing Web API resources from other web resources.",
+    "scored_grade": "generic"
+   },
+   "d3f:WebFileResource": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.url",
+    "ocsf_object": "file",
+    "rationale": "OCSF lacks an object for web file resources; the carrier field file.url holds the URL reference to the remotely accessible file.",
+    "scored_grade": "proxy"
+   },
+   "d3f:WebResource": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "web_resource.url_string",
+    "ocsf_object": "web_resource",
+    "rationale": "OCSF web_resource directly represents resources identified by URIs and accessed over web protocols, with url_string recording the URI.",
+    "scored_grade": "direct"
+   },
+   "d3f:WindowsRegistryKey": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "reg_key.path",
+    "ocsf_object": "reg_key",
+    "rationale": "OCSF provides the dedicated reg_key object to represent Windows registry keys, with the path attribute identifying the key.",
+    "scored_grade": "direct"
+   }
+  },
+  "2": {
+   "AML.T0000.003": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Querying third-party scan databases occurs externally without interacting with the target system, producing no victim-side activity or telemetry directly recordable by OCSF schema classes or objects.",
+    "scored_grade": "none"
+   },
+   "AML.T0011.001": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Developing malicious software packages is an adversary-side activity; OCSF contains no object, event class, or field directly recording the development or delivery of malicious packages as a technique.",
+    "scored_grade": "none"
+   },
+   "AML.T0011.002": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 does not define any object, event class, or field representing AI agent tools, tool poisoning, or malicious tool invocations.",
+    "scored_grade": "none"
+   },
+   "AML.T0016.002": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Adversaries obtaining generative AI tools is an adversary-side resource development activity that does not execute on or interact with the victim side, leaving no directly recordable OCSF telemetry.",
+    "scored_grade": "none"
+   },
+   "AML.T0016.003": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Searching for and obtaining exploits is an adversary resource-development technique occurring off-victim; OCSF 1.9.0 provides no object or event class to observe it.",
+    "scored_grade": "none"
+   },
+   "AML.T0017.001": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Autonomous exploit development occurs on the adversary side as part of resource development, producing no direct telemetry or observable event recorded by OCSF on the victim side.",
+    "scored_grade": "none"
+   },
+   "AML.T0025": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Exfiltration via cyber means is an adversarial tactic; OCSF records transport-level network traffic but has no dedicated object or event class directly denoting exfiltration activity.",
+    "scored_grade": "none"
+   },
+   "AML.T0031": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 does not contain any event class or object field to record the erosion or degradation of AI model integrity or performance.",
+    "scored_grade": "none"
+   },
+   "AML.T0048": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 has no object or event class to record external harms, such as financial, reputational, or societal harm, resulting from system abuse.",
+    "scored_grade": "none"
+   },
+   "AML.T0048.000": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Financial harm is an impact outcome involving loss of monetary assets, which OCSF 1.9.0 does not model in any event class, object, or field.",
+    "scored_grade": "none"
+   },
+   "AML.T0048.002": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Societal harm is an impact outcome affecting the public or vulnerable groups; OCSF 1.9.0 contains no schema constructs or fields to record societal impacts.",
+    "scored_grade": "none"
+   },
+   "AML.T0048.003": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 lacks any event class, object, or field to represent user harm, individual reputational damage, or personal financial harm resulting from an attack.",
+    "scored_grade": "none"
+   },
+   "AML.T0054": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 has no event class or object directly recording an LLM jailbreak or the circumvention of AI safety guardrails on the victim side.",
+    "scored_grade": "none"
+   },
+   "AML.T0116": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Autonomous decision-making and reconnaissance planning by an adversary's AI agent occur externally; OCSF possesses no object or event class recording autonomous adversary reconnaissance on the victim side.",
+    "scored_grade": "none"
+   },
+   "AML.T0117": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 lacks an event class or object to record autonomous attack-path adaptation. The ai_agent object represents the actor, not the technique itself.",
+    "scored_grade": "none"
+   },
+   "d3f:AccessControlConfiguration": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "policy.name",
+    "ocsf_object": "policy",
+    "rationale": "OCSF provides the parent `policy` object to describe applicable policies, but lacks a dedicated object or field specifically denoting access control configurations.",
+    "scored_grade": "generic"
+   },
+   "d3f:AccessToken": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "authentication_token.uid",
+    "ocsf_object": "authentication_token",
+    "rationale": "OCSF authentication_token object directly represents standardized authentication and access tokens conforming to established authentication protocols.",
+    "scored_grade": "direct"
+   },
+   "d3f:Application": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "application.name",
+    "ocsf_object": "application",
+    "rationale": "OCSF defines a dedicated application object representing an application.",
+    "scored_grade": "direct"
+   },
+   "d3f:ApplicationConfiguration": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or dedicated field for application configuration, and does not define its parent kind ConfigurationResource.",
+    "scored_grade": "none"
+   },
+   "d3f:ArchiveFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.name",
+    "ocsf_object": "file",
+    "rationale": "OCSF has the parent file object, but lacks a dedicated object or field to distinguish an archive file from other files.",
+    "scored_grade": "generic"
+   },
+   "d3f:ArtifactServer": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF has no dedicated object or field for artifact servers or web servers, and does not model repository server infrastructure.",
+    "scored_grade": "none"
+   },
+   "d3f:AuthenticationService": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "idp.name",
+    "ocsf_object": "idp",
+    "rationale": "OCSF idp object represents an identity provider responsible for offering authentication services to applications, denoting the same kind as an authentication service.",
+    "scored_grade": "direct"
+   },
+   "d3f:CloudConfiguration": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 has no object or field for cloud configuration settings; the cloud object only records environment context such as provider and region.",
+    "scored_grade": "none"
+   },
+   "d3f:CloudInstanceMetadata": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "url.url_string",
+    "ocsf_object": "url",
+    "rationale": "OCSF lacks an object for cloud instance metadata; access to the instance metadata service (IMDS) can only be referenced through a carrier field such as url.url_string.",
+    "scored_grade": "proxy"
+   },
+   "d3f:CloudStorage": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "databucket.name",
+    "ocsf_object": "databucket",
+    "rationale": "The OCSF databucket object directly represents cloud storage containers (such as S3 buckets) held within a computing cloud, identified by databucket.name.",
+    "scored_grade": "direct"
+   },
+   "d3f:CloudUserAccount": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "account.type",
+    "ocsf_object": "account",
+    "rationale": "OCSF provides the parent account object, but lacks a dedicated subkind field defining a local cloud user account on a host.",
+    "scored_grade": "generic"
+   },
+   "d3f:CodeRepository": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "database.name",
+    "ocsf_object": "database",
+    "rationale": "OCSF provides the parent database object, but lacks a dedicated object or specific field denoting a source code repository.",
+    "scored_grade": "generic"
+   },
+   "d3f:CollaborativeSoftware": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "application.type",
+    "ocsf_object": "application",
+    "rationale": "OCSF models software applications via the application object, but has no specific field or type classifying groupware or collaborative software.",
+    "scored_grade": "generic"
+   },
+   "d3f:Command": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.cmd_line",
+    "ocsf_object": "process",
+    "rationale": "OCSF process.cmd_line is a dedicated field that directly records the command directive issued to execute a process or computation.",
+    "scored_grade": "direct"
+   },
+   "d3f:CommandHistoryLog": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.path",
+    "ocsf_object": "file",
+    "rationale": "OCSF lacks an object for command history logs; shell command history files can only be referenced indirectly via a file carrier field such as file.path.",
+    "scored_grade": "proxy"
+   },
+   "d3f:CommandHistoryLogFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF models files via the file object, but lacks a dedicated field or classification distinguishing command history log files from other files.",
+    "scored_grade": "generic"
+   },
+   "d3f:ConfigurationFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object, but lacks a dedicated field or enum value to distinguish a configuration file from any other file.",
+    "scored_grade": "generic"
+   },
+   "d3f:ConfigurationResource": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "resource_details.type",
+    "ocsf_object": "resource_details",
+    "rationale": "OCSF provides the parent kind resource_details for generic resources, but lacks a dedicated object or field for configuration resources.",
+    "scored_grade": "generic"
+   },
+   "d3f:CreateFile": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "1001",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "CreateFile is a system-call occurrent recorded in OCSF as a File System Activity event (class UID 1001), where creation is indicated by the activity_id.",
+    "scored_grade": "event"
+   },
+   "d3f:CreateProcess": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "1007",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Create Process is a system call occurrent representing process creation, recorded as the process_activity event class (uid 1007) with a launch activity ID.",
+    "scored_grade": "event"
+   },
+   "d3f:Credential": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or dedicated field representing general credentials (such as passwords, physical tokens, or biometrics); specific digital token objects exist, but no generic credential entity is defined.",
+    "scored_grade": "none"
+   },
+   "d3f:Database": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "database.name",
+    "ocsf_object": "database",
+    "rationale": "OCSF database object directly represents databases containing organized collections of data, denoting the same kind as the D3FEND database artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:DatabaseQuery": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "query_info.query_string",
+    "ocsf_object": "query_info",
+    "rationale": "The query_info object directly represents datastore queries, with query_string holding the database query text.",
+    "scored_grade": "direct"
+   },
+   "d3f:DatabaseRecord": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF has no object or field representing an individual database record or its parent Record kind.",
+    "scored_grade": "none"
+   },
+   "d3f:DefaultUserAccount": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "account.type",
+    "ocsf_object": "account",
+    "rationale": "OCSF provides the parent account object, but lacks a dedicated field or boolean indicating that an account is a built-in or default system account.",
+    "scored_grade": "generic"
+   },
+   "d3f:DigitalIdentity": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "account.uid",
+    "ocsf_object": "account",
+    "rationale": "OCSF directly defines the `account` object to represent the unique representation or account of a subject within a system or application, identified by `uid`.",
+    "scored_grade": "direct"
+   },
+   "d3f:DigitalMedia": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 does not define an object or field representing communication media or digital media formats.",
+    "scored_grade": "none"
+   },
+   "d3f:DigitalMessage": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF has no generic object for an application-layer digital message, nor does it define the parent DigitalInformationBearer kind. OCSF models specific communication types individually.",
+    "scored_grade": "none"
+   },
+   "d3f:DigitalText": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF has no object or dedicated field for generic digital text or digital media. Written text is only stored within context-specific string fields rather than as an independent artifact.",
+    "scored_grade": "none"
+   },
+   "d3f:DocumentFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.name",
+    "ocsf_object": "file",
+    "rationale": "OCSF defines the parent file object, but lacks a dedicated object or field distinguishing a document file from other files.",
+    "scored_grade": "generic"
+   },
+   "d3f:DomainRegistration": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "whois.domain",
+    "ocsf_object": "whois",
+    "rationale": "OCSF defines the whois object specifically representing domain registration data from WHOIS/RDAP services.",
+    "scored_grade": "direct"
+   },
+   "d3f:Email": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "email.message_uid",
+    "ocsf_object": "email",
+    "rationale": "The OCSF email object directly represents an email message, with email.message_uid uniquely identifying the email message document.",
+    "scored_grade": "direct"
+   },
+   "d3f:EventLog": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "metadata.log_name",
+    "ocsf_object": "metadata",
+    "rationale": "OCSF provides the dedicated field metadata.log_name to record the specific event log (such as Security or System) in which events are recorded.",
+    "scored_grade": "direct"
+   },
+   "d3f:ExecutableBinary": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent `file` object, but lacks a dedicated object or field to distinguish an executable binary from other file types.",
+    "scored_grade": "generic"
+   },
+   "d3f:ExecutableFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent kind file object, but lacks a dedicated object or field distinguishing executable files.",
+    "scored_grade": "generic"
+   },
+   "d3f:ExecutableScript": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "script.name",
+    "ocsf_object": "script",
+    "rationale": "OCSF script object directly represents a script or command executed by a shell or interpreter, denoting the same kind as an executable script.",
+    "scored_grade": "direct"
+   },
+   "d3f:File": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.name",
+    "ocsf_object": "file",
+    "rationale": "OCSF directly defines the `file` object to represent metadata of files stored on a computer system, identified by attributes like `name` and `path`.",
+    "scored_grade": "direct"
+   },
+   "d3f:FileSystemMetadata": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.attributes",
+    "ocsf_object": "file",
+    "rationale": "The OCSF file object directly represents the metadata associated with a file in a computer system, and file.attributes captures specific file system attribute flags.",
+    "scored_grade": "direct"
+   },
+   "d3f:GetRunningProcesses": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "5015",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Get Running Processes is a system call occurrent mapped to OCSF process_query event class (UID 5015), which reports information about running processes.",
+    "scored_grade": "event"
+   },
+   "d3f:GroupPolicy": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "policy.name",
+    "ocsf_object": "policy",
+    "rationale": "OCSF provides the parent policy object, but lacks a dedicated object or specific field for Windows Group Policy.",
+    "scored_grade": "generic"
+   },
+   "d3f:Host": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "device.hostname",
+    "ocsf_object": "device",
+    "rationale": "OCSF device object explicitly represents an addressable computer system or host connected to a network, with hostname denoting the host.",
+    "scored_grade": "direct"
+   },
+   "d3f:InboundInternetMailTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes_in",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent kind network_traffic, but what specializes it as inbound internet mail traffic (mail protocol, external boundary) is not an attribute of the network_traffic object itself.",
+    "scored_grade": "generic"
+   },
+   "d3f:InboundInternetNetworkTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes_in",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent kind `network_traffic` for traffic volume metrics, but lacks a field distinguishing traffic as specifically internet-originated.",
+    "scored_grade": "generic"
+   },
+   "d3f:InitScript": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "script.type",
+    "ocsf_object": "script",
+    "rationale": "OCSF represents executable scripts via the script object, but lacks a field denoting that the script is an initialization script.",
+    "scored_grade": "generic"
+   },
+   "d3f:IntrusionDetectionSystem": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or dedicated field for an intrusion detection system, and does not model its generic parent entity.",
+    "scored_grade": "none"
+   },
+   "d3f:JobSchedule": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or field representing a job schedule specification or timing plan; job and trigger objects capture task execution state rather than the schedule.",
+    "scored_grade": "none"
+   },
+   "d3f:Log": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.path",
+    "ocsf_object": "file",
+    "rationale": "OCSF lacks an object representing a log (logger represents the logging device; log_name is a label). A log stored on a filesystem can only be referenced through a carrier field such as file.path.",
+    "scored_grade": "proxy"
+   },
+   "d3f:MACAddress": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_interface.mac",
+    "ocsf_object": "network_interface",
+    "rationale": "OCSF network_interface object contains a dedicated mac attribute representing the MAC address of a network interface controller.",
+    "scored_grade": "direct"
+   },
+   "d3f:Metadata": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Mapping by meaning (Discipline 1), D3FEND Metadata refers to data describing target digital artifacts. OCSF's metadata object captures event logging envelope details, not target artifact metadata; OCSF has no object or field for generic artifact metadata.",
+    "scored_grade": "none"
+   },
+   "d3f:MoveFile": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "1001",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "MoveFile is a system call occurrent recorded by OCSF file_activity (class UID 1001) via its activity_id.",
+    "scored_grade": "event"
+   },
+   "d3f:NetworkTraffic": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF network_traffic object directly denotes the volume and characteristics of data moving across a network over a time period.",
+    "scored_grade": "direct"
+   },
+   "d3f:OperatingSystemExecutableFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.is_system",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent `file` object with `is_system` for operating system files, but lacks a dedicated field distinguishing OS executable files from other OS files.",
+    "scored_grade": "generic"
+   },
+   "d3f:OutboundInternetNetworkTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent network_traffic object, but lacks a dedicated field denoting that the traffic is destined for the external internet.",
+    "scored_grade": "generic"
+   },
+   "d3f:OutboundInternetWebTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes_out",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent `network_traffic` object, but lacks fields to specify that traffic is outbound, internet-facing, and using a web protocol.",
+    "scored_grade": "generic"
+   },
+   "d3f:PersonalComputer": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "device.type",
+    "ocsf_object": "device",
+    "rationale": "OCSF provides the parent object `device` for host computer systems, but lacks a dedicated type or field denoting a personal computer.",
+    "scored_grade": "generic"
+   },
+   "d3f:PrivateKey": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF contains no object or field for private keys. Telemetry schemas intentionally omit private cryptographic keys to avoid exposing sensitive secrets.",
+    "scored_grade": "none"
+   },
+   "d3f:Process": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.pid",
+    "ocsf_object": "process",
+    "rationale": "OCSF directly defines the `process` object to describe a running instance of a launched program, identified by `pid`.",
+    "scored_grade": "direct"
+   },
+   "d3f:ProcessEnvironmentVariable": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "environment_variable.name",
+    "ocsf_object": "environment_variable",
+    "rationale": "OCSF provides a dedicated environment_variable object (and process.environment_variables field) that directly records environment variables in which a process runs.",
+    "scored_grade": "direct"
+   },
+   "d3f:ProcessSegment": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks any object or field representing process memory space partitions such as heap, data, or stack segments.",
+    "scored_grade": "none"
+   },
+   "d3f:ProxyServer": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_proxy.hostname",
+    "ocsf_object": "network_proxy",
+    "rationale": "The network_proxy object directly describes a proxy server acting as an intermediary between a client and server.",
+    "scored_grade": "direct"
+   },
+   "d3f:RemoteSession": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "session.is_remote",
+    "ocsf_object": "session",
+    "rationale": "OCSF defines the session object with a dedicated boolean field is_remote that explicitly denotes whether a session is remote.",
+    "scored_grade": "direct"
+   },
+   "d3f:RemoteShellCommand": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.cmd_line",
+    "ocsf_object": "process",
+    "rationale": "OCSF captures commands via the parent kind `process.cmd_line`, but lacks an object or dedicated field indicating that execution was remotely initiated.",
+    "scored_grade": "generic"
+   },
+   "d3f:RemoteTerminalSession": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "session.terminal",
+    "ocsf_object": "session",
+    "rationale": "OCSF provides the parent `session` object with `terminal` and `is_remote` attributes, but lacks a dedicated object or field specifically denoting a remote terminal session.",
+    "scored_grade": "generic"
+   },
+   "d3f:Repository": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "url.url_string",
+    "ocsf_object": "url",
+    "rationale": "OCSF lacks an object for code or artifact repositories; they can only be referenced indirectly through carrier fields such as `url.url_string`.",
+    "scored_grade": "proxy"
+   },
+   "d3f:Server": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "device.type_id",
+    "ocsf_object": "device",
+    "rationale": "OCSF's device object represents a host, and the dedicated type_id field specifically identifies the device type as a server.",
+    "scored_grade": "direct"
+   },
+   "d3f:ServiceApplication": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "service.name",
+    "ocsf_object": "service",
+    "rationale": "OCSF defines the service object, which directly denotes a service application providing software functionalities to multiple clients.",
+    "scored_grade": "direct"
+   },
+   "d3f:ServiceApplicationProcess": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.hosted_services",
+    "ocsf_object": "process",
+    "rationale": "OCSF provides the parent `process` object, but lacks a dedicated object or field classifying a process specifically as a service application process.",
+    "scored_grade": "generic"
+   },
+   "d3f:ShellCommand": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.cmd_line",
+    "ocsf_object": "process",
+    "rationale": "OCSF provides the dedicated field `process.cmd_line` to record command-line directives, and also models shell commands via `script.script_content`.",
+    "scored_grade": "direct"
+   },
+   "d3f:Software": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "product.name",
+    "ocsf_object": "product",
+    "rationale": "OCSF defines `product` to describe characteristics of software products, directly representing software by meaning via attributes like `name` and `cpe_name`.",
+    "scored_grade": "direct"
+   },
+   "d3f:SoftwareLibrary": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "package.name",
+    "ocsf_object": "package",
+    "rationale": "The OCSF package object directly denotes software packages and libraries used to build software products, with package.name identifying the library.",
+    "scored_grade": "direct"
+   },
+   "d3f:SoftwarePackage": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "package.name",
+    "ocsf_object": "package",
+    "rationale": "OCSF directly defines the `package` object to describe details about a software package, including its name and version.",
+    "scored_grade": "direct"
+   },
+   "d3f:SoftwareRepository": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "package.src_url",
+    "ocsf_object": "package",
+    "rationale": "OCSF has no object for a software repository; only carrier fields like package.src_url can reference the repository location.",
+    "scored_grade": "proxy"
+   },
+   "d3f:SystemConfigurationDatabase": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "database.name",
+    "ocsf_object": "database",
+    "rationale": "OCSF provides the parent database object, but lacks a dedicated object or field identifying it specifically as a system configuration database.",
+    "scored_grade": "generic"
+   },
+   "d3f:URL": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "url.url_string",
+    "ocsf_object": "url",
+    "rationale": "The url object directly represents a Uniform Resource Locator, with url_string recording the full URL address.",
+    "scored_grade": "direct"
+   },
+   "d3f:UserAccount": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "account.name",
+    "ocsf_object": "account",
+    "rationale": "OCSF's account object directly represents an account used for authentication and authorization, with fields such as name and type.",
+    "scored_grade": "direct"
+   },
+   "d3f:WebAPIResource": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "web_resource.type",
+    "ocsf_object": "web_resource",
+    "rationale": "OCSF provides the parent kind web_resource, but lacks a dedicated object or specific field distinguishing a web API resource.",
+    "scored_grade": "generic"
+   },
+   "d3f:WebFileResource": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "url.url_string",
+    "ocsf_object": "url",
+    "rationale": "OCSF has no dedicated object for a web file resource; it is only referenced through a carrier field holding a URL, such as url.url_string.",
+    "scored_grade": "proxy"
+   },
+   "d3f:WebResource": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "web_resource.url_string",
+    "ocsf_object": "web_resource",
+    "rationale": "OCSF defines the web_resource object specifically representing resources identified by a URI and accessed via web protocols.",
+    "scored_grade": "direct"
+   },
+   "d3f:WindowsRegistryKey": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "reg_key.path",
+    "ocsf_object": "reg_key",
+    "rationale": "OCSF directly defines the `reg_key` object to describe a Windows registry key, identified by its path.",
+    "scored_grade": "direct"
+   }
+  },
+  "3": {
+   "AML.T0000.003": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Searching third-party internet-scanning databases is passive reconnaissance that does not touch victim infrastructure, generating no victim-side OCSF observable events or objects.",
+    "scored_grade": "none"
+   },
+   "AML.T0011.001": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 lacks an event class or object recording the execution or importation of a malicious package on the victim side; package represents static software package metadata rather than this attack technique.",
+    "scored_grade": "none"
+   },
+   "AML.T0011.002": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 defines an ai_agent object but provides no dedicated object, class, or field representing AI agent tools, tool poisoning, or poisoned tool execution.",
+    "scored_grade": "none"
+   },
+   "AML.T0016.002": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Adversaries obtaining generative AI models or tools occurs in adversary-controlled environments; OCSF 1.9.0 has no object or event class to observe adversary resource acquisition.",
+    "scored_grade": "none"
+   },
+   "AML.T0016.003": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Adversaries searching for and acquiring exploits is an off-victim resource development technique; OCSF 1.9.0 has no object or event class recording exploit acquisition.",
+    "scored_grade": "none"
+   },
+   "AML.T0017.001": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Autonomous exploit development is an adversary-side resource development technique; OCSF 1.9.0 has no telemetry objects or event classes for AI-driven exploit authoring.",
+    "scored_grade": "none"
+   },
+   "AML.T0025": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Exfiltration via cyber means is an adversarial tactic; OCSF 1.9.0 records network and file telemetry but lacks an object or dedicated field directly recording exfiltration.",
+    "scored_grade": "none"
+   },
+   "AML.T0031": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 lacks an object or event class recording the erosion or degradation of AI model integrity over time; ai_model represents the model entity itself, not this degradation technique.",
+    "scored_grade": "none"
+   },
+   "AML.T0048": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "External harms represent high-level societal, organizational, or reputational consequences; OCSF 1.9.0 models technical security telemetry and findings rather than external impact outcomes.",
+    "scored_grade": "none"
+   },
+   "AML.T0048.000": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Financial harm is an organizational business impact resulting from an attack; OCSF 1.9.0 does not model monetary loss or financial impact.",
+    "scored_grade": "none"
+   },
+   "AML.T0048.002": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "Societal harm is an external societal impact affecting the public or vulnerable groups; OCSF 1.9.0 provides technical system telemetry and has no object or event class for societal harm.",
+    "scored_grade": "none"
+   },
+   "AML.T0048.003": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "User harm describes personal, financial, or reputational consequences to individual victims; OCSF 1.9.0 does not track individual victim harms or post-attack impacts.",
+    "scored_grade": "none"
+   },
+   "AML.T0054": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "LLM jailbreak is an adversarial prompt-evasion technique against safety guardrails; OCSF 1.9.0 contains no object, event class, or field directly recording jailbreak occurrences.",
+    "scored_grade": "none"
+   },
+   "AML.T0116": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 has no object or event class recording autonomous AI-driven reconnaissance on the victim side; ai_agent identifies the actor rather than the reconnaissance activity.",
+    "scored_grade": "none"
+   },
+   "AML.T0117": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 lacks an object or event class recording an adversary AI agent's autonomous attack-path planning or adaptation on the victim side; ai_agent denotes the actor, not this technique.",
+    "scored_grade": "none"
+   },
+   "d3f:AccessControlConfiguration": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "policy.name",
+    "ocsf_object": "policy",
+    "rationale": "OCSF policy represents the parent kind (configuration policy), but lacks a dedicated field specifying an access control configuration.",
+    "scored_grade": "generic"
+   },
+   "d3f:AccessToken": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "token.type_id",
+    "ocsf_object": "token",
+    "rationale": "OCSF defines the token object to represent authentication credentials and tokens across contexts, with token.type_id specifically denoting an access token.",
+    "scored_grade": "direct"
+   },
+   "d3f:Application": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "application.name",
+    "ocsf_object": "application",
+    "rationale": "OCSF directly defines the application object to represent an application.",
+    "scored_grade": "direct"
+   },
+   "d3f:ApplicationConfiguration": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 does not define an object or dedicated field representing application configuration settings or initial parameters.",
+    "scored_grade": "none"
+   },
+   "d3f:ArchiveFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF file represents the parent kind (file), but lacks a dedicated field or object distinguishing an archive file from other files.",
+    "scored_grade": "generic"
+   },
+   "d3f:ArtifactServer": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 has no object or field representing an artifact server or web server; neither the artifact nor its parent kind is modeled in the schema.",
+    "scored_grade": "none"
+   },
+   "d3f:AuthenticationService": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "idp.name",
+    "ocsf_object": "idp",
+    "rationale": "OCSF idp object describes an identity provider offering authentication services to applications, directly denoting the authentication service artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:CloudConfiguration": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 has no object or field representing cloud configuration settings; the cloud object only captures environment metadata like provider, region, and account.",
+    "scored_grade": "none"
+   },
+   "d3f:CloudInstanceMetadata": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or field for cloud instance metadata or configuration; cloud defines the hosting environment.",
+    "scored_grade": "none"
+   },
+   "d3f:CloudStorage": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "databucket.name",
+    "ocsf_object": "databucket",
+    "rationale": "OCSF defines the databucket object to represent cloud datastores and storage containers, identified by databucket.name.",
+    "scored_grade": "direct"
+   },
+   "d3f:CloudUserAccount": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "account.name",
+    "ocsf_object": "account",
+    "rationale": "OCSF provides the parent kind account, but lacks a dedicated object or field identifying the account specifically as a cloud user account.",
+    "scored_grade": "generic"
+   },
+   "d3f:CodeRepository": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "database.name",
+    "ocsf_object": "database",
+    "rationale": "OCSF models the parent database object, but lacks a dedicated object or field distinguishing code repositories.",
+    "scored_grade": "generic"
+   },
+   "d3f:CollaborativeSoftware": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "application.name",
+    "ocsf_object": "application",
+    "rationale": "OCSF application represents the parent kind (application), but lacks a dedicated field to identify collaborative software or groupware.",
+    "scored_grade": "generic"
+   },
+   "d3f:Command": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.cmd_line",
+    "ocsf_object": "process",
+    "rationale": "OCSF provides the dedicated field process.cmd_line to directly record the command directive issued to execute a process.",
+    "scored_grade": "direct"
+   },
+   "d3f:CommandHistoryLog": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.path",
+    "ocsf_object": "file",
+    "rationale": "OCSF has no dedicated command history log object; the shell history log file can only be referenced indirectly via a carrier path field like file.path.",
+    "scored_grade": "proxy"
+   },
+   "d3f:CommandHistoryLogFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.name",
+    "ocsf_object": "file",
+    "rationale": "OCSF file represents the parent kind (file), but lacks a dedicated field to identify a command history log file.",
+    "scored_grade": "generic"
+   },
+   "d3f:ConfigurationFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.name",
+    "ocsf_object": "file",
+    "rationale": "OCSF defines the generic parent object file, but lacks a dedicated object or attribute specifying that the file is a configuration file.",
+    "scored_grade": "generic"
+   },
+   "d3f:ConfigurationResource": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "resource_details.type",
+    "ocsf_object": "resource_details",
+    "rationale": "OCSF provides resource_details for generic resources (the parent kind), but lacks a dedicated object or field distinguishing a configuration resource.",
+    "scored_grade": "generic"
+   },
+   "d3f:CreateFile": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "1001",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "CreateFile is a system call occurrent. OCSF records file creation as an event under the file_activity event class (UID 1001) via an activity_id rather than a standalone object.",
+    "scored_grade": "event"
+   },
+   "d3f:CreateProcess": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "1007",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "CreateProcess is an occurrent system call mapped to OCSF process_activity (class UID 1007), which captures process launch activities.",
+    "scored_grade": "event"
+   },
+   "d3f:Credential": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or dedicated field representing credentials broadly. Related objects like token or certificate only cover specific subtypes, and the parent kind DigitalInformationBearer is absent from OCSF.",
+    "scored_grade": "none"
+   },
+   "d3f:Database": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "database.name",
+    "ocsf_object": "database",
+    "rationale": "OCSF defines a dedicated database object representing an organized collection of data, identified by database.name.",
+    "scored_grade": "direct"
+   },
+   "d3f:DatabaseQuery": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "query_info.query_string",
+    "ocsf_object": "query_info",
+    "rationale": "OCSF directly defines the query_info object for datastore access queries, with query_info.query_string capturing the specific query text (such as SQL) executed against a database.",
+    "scored_grade": "direct"
+   },
+   "d3f:DatabaseRecord": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF defines database and table objects, but does not provide an object or field representing an individual database record or row.",
+    "scored_grade": "none"
+   },
+   "d3f:DefaultUserAccount": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "account.type",
+    "ocsf_object": "account",
+    "rationale": "OCSF defines the parent account object but lacks a dedicated field or value to indicate that an account is a built-in or default account; account.type only provides generic account typing.",
+    "scored_grade": "generic"
+   },
+   "d3f:DigitalIdentity": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "account.uid",
+    "ocsf_object": "account",
+    "rationale": "OCSF's account object directly represents a digital identity in a system or service, with account.uid uniquely identifying the subject.",
+    "scored_grade": "direct"
+   },
+   "d3f:DigitalMedia": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF contains no object or field representing digital communication media or digital information generally.",
+    "scored_grade": "none"
+   },
+   "d3f:DigitalMessage": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or field representing a generic digital message, only providing specialized objects for specific message protocols like email.",
+    "scored_grade": "none"
+   },
+   "d3f:DigitalText": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF 1.9.0 does not define an object, dedicated field, or parent class representing generic digital text or digital media content.",
+    "scored_grade": "none"
+   },
+   "d3f:DocumentFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type_id",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object, but lacks a dedicated object or attribute denoting a document file specifically.",
+    "scored_grade": "generic"
+   },
+   "d3f:DomainRegistration": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "whois.domain",
+    "ocsf_object": "whois",
+    "rationale": "OCSF directly models domain registration data via the whois object, which captures WHOIS and RDAP domain registration records, identified by whois.domain.",
+    "scored_grade": "direct"
+   },
+   "d3f:Email": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "email.message_uid",
+    "ocsf_object": "email",
+    "rationale": "The OCSF email object directly represents an email message, with email.message_uid providing the unique message identifier.",
+    "scored_grade": "direct"
+   },
+   "d3f:EventLog": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "metadata.log_name",
+    "ocsf_object": "metadata",
+    "rationale": "OCSF directly identifies the specific event log using the dedicated field metadata.log_name (or logger.log_name) on the event.",
+    "scored_grade": "direct"
+   },
+   "d3f:ExecutableBinary": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.type",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object, but lacks a dedicated object or field to distinguish executable binaries from other file types.",
+    "scored_grade": "generic"
+   },
+   "d3f:ExecutableFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.name",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the parent file object, but lacks a dedicated object or attribute distinguishing executable files from other files.",
+    "scored_grade": "generic"
+   },
+   "d3f:ExecutableScript": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "script.name",
+    "ocsf_object": "script",
+    "rationale": "OCSF directly defines the script object to describe a script or command executed by an interpreter or shell, denoting the same kind as an executable script.",
+    "scored_grade": "direct"
+   },
+   "d3f:File": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.name",
+    "ocsf_object": "file",
+    "rationale": "OCSF directly models files stored in computer systems via the file object, with file.name identifying the file.",
+    "scored_grade": "direct"
+   },
+   "d3f:FileSystemMetadata": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.attributes",
+    "ocsf_object": "file",
+    "rationale": "OCSF defines the file object specifically as the metadata associated with a file, providing dedicated attributes like file.attributes to capture file system metadata.",
+    "scored_grade": "direct"
+   },
+   "d3f:GetRunningProcesses": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "5015",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "As a system-call occurrent, this is recorded in OCSF as an event class rather than an object; class 5015 (process_query) specifically reports discovered running processes.",
+    "scored_grade": "event"
+   },
+   "d3f:GroupPolicy": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "policy.name",
+    "ocsf_object": "policy",
+    "rationale": "OCSF defines the generic policy object, but lacks a dedicated object or field for Windows Group Policy.",
+    "scored_grade": "generic"
+   },
+   "d3f:Host": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "device.hostname",
+    "ocsf_object": "device",
+    "rationale": "The OCSF device object explicitly represents an addressable computer system or host connected to a network, identified by device.hostname.",
+    "scored_grade": "direct"
+   },
+   "d3f:InboundInternetMailTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes_in",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent object network_traffic for traffic metrics, but lacks fields to specify that the traffic is inbound, internet-facing, or using an email protocol.",
+    "scored_grade": "generic"
+   },
+   "d3f:InboundInternetNetworkTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent kind network_traffic, but what makes the traffic specifically inbound internet traffic is not an attribute of the network_traffic object.",
+    "scored_grade": "generic"
+   },
+   "d3f:InitScript": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "script.name",
+    "ocsf_object": "script",
+    "rationale": "OCSF provides the generic parent object script for executable scripts, but lacks a dedicated object or field to designate a script specifically as an initialization or boot script.",
+    "scored_grade": "generic"
+   },
+   "d3f:IntrusionDetectionSystem": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks a dedicated object or field for an intrusion detection system, and does not model the parent DigitalInformationBearer.",
+    "scored_grade": "none"
+   },
+   "d3f:JobSchedule": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "job.name",
+    "ocsf_object": "job",
+    "rationale": "OCSF directly represents scheduled jobs and tasks via the job object, capturing task commands, triggers, and schedule specifications in fields such as job.name and job.job_triggers.",
+    "scored_grade": "direct"
+   },
+   "d3f:Log": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF models individual event records rather than a log container (a historical record of events). No object represents a log; metadata.log_name merely names the source log.",
+    "scored_grade": "none"
+   },
+   "d3f:MACAddress": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_interface.mac",
+    "ocsf_object": "network_interface",
+    "rationale": "OCSF network_interface.mac is a dedicated field directly recording a MAC address assigned to a network interface controller.",
+    "scored_grade": "direct"
+   },
+   "d3f:Metadata": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF metadata defines event logging metadata rather than the digital artifact of metadata describing other information; no target object exists.",
+    "scored_grade": "none"
+   },
+   "d3f:MoveFile": {
+    "flags": [],
+    "grade": "event",
+    "ocsf_class_uid": "1001",
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "MoveFile is an occurrent (system call) recorded in OCSF as the file_activity event class (UID 1001) using an activity_id for rename/move, rather than as a standalone object.",
+    "scored_grade": "event"
+   },
+   "d3f:NetworkTraffic": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF's network_traffic object directly represents network traffic, with the bytes attribute measuring the amount of data moving across the network.",
+    "scored_grade": "direct"
+   },
+   "d3f:OperatingSystemExecutableFile": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "file.is_system",
+    "ocsf_object": "file",
+    "rationale": "OCSF provides the generic file object. While file.is_system indicates system files, OCSF lacks a dedicated field distinguishing operating system executables from other system files.",
+    "scored_grade": "generic"
+   },
+   "d3f:OutboundInternetNetworkTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes_out",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF has the parent network_traffic object, capturing outgoing traffic volume via bytes_out, but lacks a dedicated object or field specifically denoting outbound internet traffic.",
+    "scored_grade": "generic"
+   },
+   "d3f:OutboundInternetWebTraffic": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_traffic.bytes_out",
+    "ocsf_object": "network_traffic",
+    "rationale": "OCSF provides the parent network_traffic object (with bytes_out), but lacks a dedicated object or field to specify that the traffic is outbound internet web traffic.",
+    "scored_grade": "generic"
+   },
+   "d3f:PersonalComputer": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "device.type_id",
+    "ocsf_object": "device",
+    "rationale": "OCSF provides the parent device object, but lacks a dedicated type denoting a personal computer. The attribute device.is_personal denotes BYOD ownership rather than the PC form factor.",
+    "scored_grade": "generic"
+   },
+   "d3f:PrivateKey": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF does not define any object or field representing an asymmetric private key.",
+    "scored_grade": "none"
+   },
+   "d3f:Process": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.name",
+    "ocsf_object": "process",
+    "rationale": "OCSF defines a dedicated process object that directly represents a running instance of a program, identified by process.name.",
+    "scored_grade": "direct"
+   },
+   "d3f:ProcessEnvironmentVariable": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "environment_variable.name",
+    "ocsf_object": "environment_variable",
+    "rationale": "OCSF directly models process environment variables via the environment_variable object (environment_variable.name), which are also recorded on processes under process.environment_variables.",
+    "scored_grade": "direct"
+   },
+   "d3f:ProcessSegment": {
+    "flags": [],
+    "grade": "none",
+    "ocsf_class_uid": null,
+    "ocsf_field": null,
+    "ocsf_object": null,
+    "rationale": "OCSF lacks an object or field representing process memory segments such as heap, stack, or data segments.",
+    "scored_grade": "none"
+   },
+   "d3f:ProxyServer": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "network_proxy.hostname",
+    "ocsf_object": "network_proxy",
+    "rationale": "OCSF defines the network_proxy object specifically to describe a proxy server acting as an intermediary between clients and servers.",
+    "scored_grade": "direct"
+   },
+   "d3f:RemoteSession": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "session.is_remote",
+    "ocsf_object": "session",
+    "rationale": "OCSF's session object includes the dedicated boolean field is_remote, which directly indicates whether an authenticated session is a remote login session.",
+    "scored_grade": "direct"
+   },
+   "d3f:RemoteShellCommand": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.cmd_line",
+    "ocsf_object": "process",
+    "rationale": "OCSF models commands via the parent kind process.cmd_line, but lacks a dedicated object or field indicating that the command was executed remotely.",
+    "scored_grade": "generic"
+   },
+   "d3f:RemoteTerminalSession": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "session.terminal",
+    "ocsf_object": "session",
+    "rationale": "OCSF provides the generic session object with terminal and is_remote attributes, but lacks a dedicated object or field denoting a remote terminal session specifically.",
+    "scored_grade": "generic"
+   },
+   "d3f:Repository": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "url.url_string",
+    "ocsf_object": "url",
+    "rationale": "OCSF has no object for a code or file repository; a repository is referenced only through carrier fields such as url.url_string or a file path.",
+    "scored_grade": "proxy"
+   },
+   "d3f:Server": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "device.type",
+    "ocsf_object": "device",
+    "rationale": "OCSF provides the parent kind Host via the device object, but lacks a dedicated server object, classifying device roles generically through device.type.",
+    "scored_grade": "generic"
+   },
+   "d3f:ServiceApplication": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "service.name",
+    "ocsf_object": "service",
+    "rationale": "OCSF directly provides the service object to describe software services that provide functionalities to clients, denoting the same kind as a service application.",
+    "scored_grade": "direct"
+   },
+   "d3f:ServiceApplicationProcess": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "service.name",
+    "ocsf_object": "service",
+    "rationale": "OCSF service object describes a service that performs tasks or provides functionality to support applications and users, directly denoting this artifact.",
+    "scored_grade": "direct"
+   },
+   "d3f:ShellCommand": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "process.cmd_line",
+    "ocsf_object": "process",
+    "rationale": "OCSF directly records shell command invocations via the dedicated process.cmd_line field, as well as the script object (script.script_content) representing shell commands.",
+    "scored_grade": "direct"
+   },
+   "d3f:Software": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "product.name",
+    "ocsf_object": "product",
+    "rationale": "OCSF represents software using the product object, which captures software characteristics including name, vendor, and version.",
+    "scored_grade": "direct"
+   },
+   "d3f:SoftwareLibrary": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "package.name",
+    "ocsf_object": "package",
+    "rationale": "OCSF package represents the parent kind (software package), but lacks a dedicated field distinguishing a software library from other software packages.",
+    "scored_grade": "generic"
+   },
+   "d3f:SoftwarePackage": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "package.name",
+    "ocsf_object": "package",
+    "rationale": "OCSF directly defines the package object representing a software package.",
+    "scored_grade": "direct"
+   },
+   "d3f:SoftwareRepository": {
+    "flags": [],
+    "grade": "proxy",
+    "ocsf_class_uid": null,
+    "ocsf_field": "package.src_url",
+    "ocsf_object": "package",
+    "rationale": "OCSF lacks a software repository object; repositories can only be referenced indirectly through carrier URL fields such as package.src_url or package.package_manager_url.",
+    "scored_grade": "proxy"
+   },
+   "d3f:SystemConfigurationDatabase": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "database.type",
+    "ocsf_object": "database",
+    "rationale": "OCSF defines the generic parent object database, but lacks a dedicated object or field indicating that the database holds system configuration data.",
+    "scored_grade": "generic"
+   },
+   "d3f:URL": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "url.url_string",
+    "ocsf_object": "url",
+    "rationale": "OCSF defines a dedicated url object whose url_string attribute directly records the Uniform Resource Locator.",
+    "scored_grade": "direct"
+   },
+   "d3f:UserAccount": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "account.name",
+    "ocsf_object": "account",
+    "rationale": "The OCSF account object directly denotes a user or system account, with account.name identifying the specific account within an application or system.",
+    "scored_grade": "direct"
+   },
+   "d3f:WebAPIResource": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "web_resource.url_string",
+    "ocsf_object": "web_resource",
+    "rationale": "OCSF provides the parent kind web_resource, but lacks a dedicated object or field specific to a Web API resource.",
+    "scored_grade": "generic"
+   },
+   "d3f:WebFileResource": {
+    "flags": [],
+    "grade": "generic",
+    "ocsf_class_uid": null,
+    "ocsf_field": "web_resource.url_string",
+    "ocsf_object": "web_resource",
+    "rationale": "OCSF provides the parent web_resource object, but does not have a dedicated field or object distinguishing file resources from other web resources.",
+    "scored_grade": "generic"
+   },
+   "d3f:WebResource": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "web_resource.url_string",
+    "ocsf_object": "web_resource",
+    "rationale": "OCSF's web_resource object directly represents a web resource, with url_string identifying the resource via its URI.",
+    "scored_grade": "direct"
+   },
+   "d3f:WindowsRegistryKey": {
+    "flags": [],
+    "grade": "direct",
+    "ocsf_class_uid": null,
+    "ocsf_field": "reg_key.path",
+    "ocsf_object": "reg_key",
+    "rationale": "OCSF directly defines the reg_key object to represent a Windows registry key, including its path and security descriptor.",
+    "scored_grade": "direct"
+   }
+  }
+ }
+}

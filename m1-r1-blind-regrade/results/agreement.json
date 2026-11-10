@@ -1,0 +1,186 @@
+{
+ "artifact_disagreement_pairs": {
+  "direct|generic": 12,
+  "event|proxy": 1,
+  "generic|none": 6,
+  "generic|proxy": 5,
+  "none|proxy": 6
+ },
+ "artifact_rows": {
+  "A_distribution": {
+   "direct": 35,
+   "event": 3,
+   "generic": 29,
+   "none": 1,
+   "proxy": 11
+  },
+  "B_distribution": {
+   "direct": 31,
+   "event": 4,
+   "generic": 26,
+   "none": 13,
+   "proxy": 5
+  },
+  "confusion_A_rows_B_cols": {
+   "direct": {
+    "direct": 27,
+    "event": 0,
+    "generic": 8,
+    "none": 0,
+    "proxy": 0
+   },
+   "event": {
+    "direct": 0,
+    "event": 3,
+    "generic": 0,
+    "none": 0,
+    "proxy": 0
+   },
+   "generic": {
+    "direct": 4,
+    "event": 0,
+    "generic": 16,
+    "none": 6,
+    "proxy": 3
+   },
+   "none": {
+    "direct": 0,
+    "event": 0,
+    "generic": 0,
+    "none": 1,
+    "proxy": 0
+   },
+   "proxy": {
+    "direct": 0,
+    "event": 1,
+    "generic": 2,
+    "none": 6,
+    "proxy": 2
+   }
+  },
+  "five_category": {
+   "expected": 0.3075,
+   "kappa": 0.4516,
+   "n": 79,
+   "percent_agreement": 0.6203
+  },
+  "observable_binary": {
+   "expected": 0.827,
+   "kappa": 0.1222,
+   "n": 79,
+   "percent_agreement": 0.8481
+  },
+  "same_target_share": 0.5823,
+  "specific_binary": {
+   "expected": 0.5022,
+   "kappa": 0.6695,
+   "n": 79,
+   "percent_agreement": 0.8354
+  }
+ },
+ "grader_b_stability": {
+  "flip_rate": 0.0319,
+  "pairwise_kappa": {
+   "1v2": {
+    "expected": 0.2744,
+    "kappa": 0.9267,
+    "n": 94,
+    "percent_agreement": 0.9468
+   },
+   "1v3": {
+    "expected": 0.2811,
+    "kappa": 0.9112,
+    "n": 94,
+    "percent_agreement": 0.9362
+   },
+   "2v3": {
+    "expected": 0.2809,
+    "kappa": 0.8964,
+    "n": 94,
+    "percent_agreement": 0.9255
+   }
+  },
+  "rows_with_any_flip": 9
+ },
+ "invention_counts": {},
+ "invention_rate_attribute": 0.0,
+ "invention_rate_object_or_class": 0.0,
+ "n_disagreements": {
+  "artifact": 30,
+  "technique": 6
+ },
+ "passes_found": [
+  "1",
+  "2",
+  "3"
+ ],
+ "problems": [],
+ "row_grades_total": 282,
+ "technique_rows": {
+  "A_distribution": {
+   "direct": 3,
+   "generic": 3,
+   "none": 9
+  },
+  "B_distribution": {
+   "none": 15
+  },
+  "confusion_A_rows_B_cols": {
+   "direct": {
+    "direct": 0,
+    "event": 0,
+    "generic": 0,
+    "none": 3,
+    "proxy": 0
+   },
+   "event": {
+    "direct": 0,
+    "event": 0,
+    "generic": 0,
+    "none": 0,
+    "proxy": 0
+   },
+   "generic": {
+    "direct": 0,
+    "event": 0,
+    "generic": 0,
+    "none": 3,
+    "proxy": 0
+   },
+   "none": {
+    "direct": 0,
+    "event": 0,
+    "generic": 0,
+    "none": 9,
+    "proxy": 0
+   },
+   "proxy": {
+    "direct": 0,
+    "event": 0,
+    "generic": 0,
+    "none": 0,
+    "proxy": 0
+   }
+  },
+  "five_category": {
+   "expected": 0.6,
+   "kappa": 0.0,
+   "n": 15,
+   "percent_agreement": 0.6
+  },
+  "observable_binary": {
+   "expected": 0.6,
+   "kappa": 0.0,
+   "n": 15,
+   "percent_agreement": 0.6
+  },
+  "same_target_share": 0.6,
+  "specific_binary": {
+   "expected": 0.8,
+   "kappa": 0.0,
+   "n": 15,
+   "percent_agreement": 0.8
+  }
+ },
+ "ties": []
+}

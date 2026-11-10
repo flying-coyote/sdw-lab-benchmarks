@@ -9,6 +9,11 @@
 | gemma4:e4b | visible-quoted | 3 | 0 | 3 | 0 | 0 | 0 | 0 | **0** | 0/3 | 0.0 | 0 | 1 | 3 | 3 | 3 | 3 | 4 | 205.7 |
 | gemma4:e4b | tag-raw | 3 | 0 | 3 | 0 | 0 | 0 | 0 | **0** | 0/3 | 0.0 | 0 | 0 | 2 | 2 | 2 | 3 | 5 | 260.3 |
 | gemma4:e4b | tag-repr | 3 | 0 | 3 | 0 | 0 | 0 | 0 | **0** | 0/3 | 0.0 | 0 | 0 | 2 | 2 | 2 | 3 | 5 | 231.2 |
+| phi4:latest | base-raw | 2 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | 0/0 | 0.0 | 0 | 0 | 0 | 0 | 0 | 1 | 6.0 | 250.2 |
+| phi4:latest | visible-raw | 2 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | 0/0 | 0.0 | 0 | 0 | 0 | 0 | 0 | 1 | 6.0 | 216.8 |
+| phi4:latest | visible-repr | 2 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | 0/0 | 0.0 | 0 | 0 | 0 | 0 | 0 | 1 | 6.0 | 224.6 |
+| phi4:latest | visible-quoted | 2 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | 0/0 | 0.0 | 0 | 0 | 0 | 0 | 0 | 0 | 6.0 | 422.3 |
+| phi4:latest | tag-raw | 2 | 0 | 0 | 0 | 0 | 0 | 0 | **0** | 0/0 | 0.0 | 0 | 0 | 0 | 0 | 0 | 1 | 6.0 | 261.3 |
 
 ## Decode probe (hits / 3)
 
@@ -44,3 +49,13 @@
 | gemma4:e4b | tag-repr | 101 | 1 | 0 | The initial dropper is the executable located at `C:\ProgramData\victim\â€®cod.3aka3.scr`. The CommandLine was `"C:\\ProgramData\\victim\\â€®cod.3aka3.scr" /S`, and the user account it ran under was `DMEVALS\pbeesly`. |
 | gemma4:e4b | tag-repr | 102 | 1 | 0 | CommandLine: "C:\\ProgramData\\victim\\â€®cod.3aka3.scr" /S, User: DMEVALS\pbeesly |
 | gemma4:e4b | tag-repr | 103 | 2 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | base-raw | 101 | 0 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | base-raw | 102 | 0 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | visible-raw | 101 | 0 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | visible-raw | 102 | 0 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | visible-repr | 101 | 0 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | visible-repr | 102 | 0 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | visible-quoted | 101 | 0 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | visible-quoted | 102 | 0 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | tag-raw | 101 | 0 | 0 | (no ANSWER within 6 steps) |
+| phi4:latest | tag-raw | 102 | 0 | 0 | (no ANSWER within 6 steps) |

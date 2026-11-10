@@ -1,0 +1,13 @@
+c00 n= 0 rank=  842 exposure= 3.57 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (115s+48s)
+c01 n= 0 rank= 3773 exposure= 1.41 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (98s+32s)
+c02 n= 1 rank= 4064 exposure= 1.30 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (95s+38s)
+c03 n= 1 rank= 4712 exposure= 1.09 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (90s+30s)
+c04 n= 5 rank= 2932 exposure= 1.77 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (105s+38s)
+c05 n= 5 rank= 3197 exposure= 1.65 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (156s+36s)
+c06 n=20 rank= 1030 exposure= 3.28 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (117s+44s)
+c07 n=20 rank= 5981 exposure= 0.74 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (91s+28s)
+c08 n=50 rank= 1181 exposure= 3.08 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (78s+10s)
+c09 n=50 rank= 3011 exposure= 1.73 greedy=0 A=0.00 B=0.00 C=0.00 top1=0000 (43s+8s)
+blind {'c00': {'n': 0, 'hits': 0}, 'c01': {'n': 0, 'hits': 0}, 'c02': {'n': 1, 'hits': 0}, 'c03': {'n': 1, 'hits': 0}, 'c04': {'n': 5, 'hits': 0}, 'c05': {'n': 5, 'hits': 0}, 'c06': {'n': 20, 'hits': 0}, 'c07': {'n': 20, 'hits': 0}, 'c08': {'n': 50, 'hits': 0}, 'c09': {'n': 50, 'hits': 0}} [(2, '555 '), (2, '33. '), (1, '9V\n\n'), (1, '9A54'), (1, '999.')]
+heldout {'nll_per_token': 3.7824935913085938, 'ppl': 43.925437373743904, 'tokens': 4590}
+wrote results/base.json total=1326.1s

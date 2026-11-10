@@ -1,0 +1,182 @@
+{
+ "assignment": {
+  "AML.T0011.001": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "AML.T0025": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "AML.T0031": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "AML.T0116": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "AML.T0117": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:ApplicationConfiguration": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:AuthenticationService": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:CloudConfiguration": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:CloudInstanceMetadata": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:CodeRepository": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:CommandHistoryLog": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:Credential": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:DatabaseRecord": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:DigitalIdentity": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:DigitalMedia": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:DigitalMessage": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:DigitalText": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:InboundInternetMailTraffic": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:InboundInternetNetworkTraffic": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:IntrusionDetectionSystem": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:Log": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:OutboundInternetNetworkTraffic": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:OutboundInternetWebTraffic": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:PersonalComputer": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:PrivateKey": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:RemoteTerminalSession": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:ServiceApplication": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:Software": {
+   "grader1": "A",
+   "grader2": "B"
+  },
+  "d3f:SoftwareLibrary": {
+   "grader1": "B",
+   "grader2": "A"
+  },
+  "d3f:WebFileResource": {
+   "grader1": "B",
+   "grader2": "A"
+  }
+ },
+ "batches": [
+  {
+   "file": "adj-b1.txt",
+   "rows": [
+    "AML.T0011.001",
+    "AML.T0025",
+    "AML.T0031",
+    "AML.T0116",
+    "AML.T0117",
+    "d3f:ApplicationConfiguration",
+    "d3f:AuthenticationService",
+    "d3f:CloudConfiguration",
+    "d3f:CloudInstanceMetadata",
+    "d3f:CodeRepository"
+   ]
+  },
+  {
+   "file": "adj-b2.txt",
+   "rows": [
+    "d3f:CommandHistoryLog",
+    "d3f:Credential",
+    "d3f:DatabaseRecord",
+    "d3f:DigitalIdentity",
+    "d3f:DigitalMedia",
+    "d3f:DigitalMessage",
+    "d3f:DigitalText",
+    "d3f:InboundInternetMailTraffic",
+    "d3f:InboundInternetNetworkTraffic",
+    "d3f:IntrusionDetectionSystem"
+   ]
+  },
+  {
+   "file": "adj-b3.txt",
+   "rows": [
+    "d3f:Log",
+    "d3f:OutboundInternetNetworkTraffic",
+    "d3f:OutboundInternetWebTraffic",
+    "d3f:PersonalComputer",
+    "d3f:PrivateKey",
+    "d3f:RemoteTerminalSession",
+    "d3f:ServiceApplication",
+    "d3f:Software",
+    "d3f:SoftwareLibrary",
+    "d3f:WebFileResource"
+   ]
+  }
+ ],
+ "n_adjudicated": 30,
+ "n_disagreements": 36,
+ "seed": 20261109,
+ "unadjudicated": [
+  "AML.T0054",
+  "d3f:ArtifactServer",
+  "d3f:CloudUserAccount",
+  "d3f:GetRunningProcesses",
+  "d3f:GroupPolicy",
+  "d3f:ProcessSegment"
+ ]
+}

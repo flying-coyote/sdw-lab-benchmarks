@@ -1,0 +1,193 @@
+{
+ "note": "perf_counter medians of 3, under host contention, taskset 0-3 nice 10, duckdb threads=4",
+ "timings": {
+  "20261109": {
+   "_seed_wall_s": 1601.78,
+   "a1_ingest_mail": {
+    "duckdb": {
+     "loadavg_1m_before": 12.7,
+     "timing": {
+      "max_s": 0.0218,
+      "median_s": 0.015,
+      "min_s": 0.0128
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.7,
+     "timing": {
+      "max_s": 0.0971,
+      "median_s": 0.0655,
+      "min_s": 0.0628
+     }
+    }
+   },
+   "a2_ingest_repo": {
+    "duckdb": {
+     "loadavg_1m_before": 12.7,
+     "timing": {
+      "max_s": 0.0452,
+      "median_s": 0.0401,
+      "min_s": 0.0121
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.7,
+     "timing": {
+      "max_s": 0.0915,
+      "median_s": 0.0692,
+      "min_s": 0.0667
+     }
+    }
+   },
+   "a3_collect_mailbox": {
+    "duckdb": {
+     "loadavg_1m_before": 12.7,
+     "timing": {
+      "max_s": 0.0378,
+      "median_s": 0.0373,
+      "min_s": 0.0294
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.7,
+     "timing": {
+      "max_s": 0.0959,
+      "median_s": 0.092,
+      "min_s": 0.0726
+     }
+    }
+   },
+   "a4_read_procenv": {
+    "duckdb": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.0176,
+      "median_s": 0.0131,
+      "min_s": 0.0118
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.7,
+     "timing": {
+      "max_s": 0.1085,
+      "median_s": 0.0855,
+      "min_s": 0.0807
+     }
+    }
+   },
+   "a5_outbound_offlist": {
+    "duckdb": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.0413,
+      "median_s": 0.0354,
+      "min_s": 0.0218
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.1449,
+      "median_s": 0.1399,
+      "min_s": 0.0679
+     }
+    }
+   },
+   "a6_credential_shape": {
+    "duckdb": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.0251,
+      "median_s": 0.0192,
+      "min_s": 0.0169
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.1082,
+      "median_s": 0.0663,
+      "min_s": 0.0505
+     }
+    }
+   },
+   "b3_session_sql": {
+    "duckdb": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.0849,
+      "median_s": 0.0562,
+      "min_s": 0.0499
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.201,
+      "median_s": 0.1791,
+      "min_s": 0.1566
+     }
+    }
+   },
+   "b4_session_sql_qualified": {
+    "duckdb": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.1823,
+      "median_s": 0.1501,
+      "min_s": 0.1251
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.4242,
+      "median_s": 0.3616,
+      "min_s": 0.321
+     }
+    }
+   },
+   "c1_walk_sql": {
+    "duckdb": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.1419,
+      "median_s": 0.1357,
+      "min_s": 0.1243
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.56,
+     "timing": {
+      "max_s": 0.6015,
+      "median_s": 0.5542,
+      "min_s": 0.5508
+     }
+    }
+   },
+   "c2_walk_sql_qualified": {
+    "duckdb": {
+     "loadavg_1m_before": 12.6,
+     "timing": {
+      "max_s": 0.223,
+      "median_s": 0.2147,
+      "min_s": 0.1871
+     }
+    },
+    "sqlite": {
+     "loadavg_1m_before": 12.6,
+     "timing": {
+      "max_s": 0.8013,
+      "median_s": 0.6796,
+      "min_s": 0.6543
+     }
+    }
+   }
+  }
+ },
+ "versions": {
+  "duckdb": "1.5.3",
+  "python": "3.12.3",
+  "sqlite": "3.45.1"
+ }
+}

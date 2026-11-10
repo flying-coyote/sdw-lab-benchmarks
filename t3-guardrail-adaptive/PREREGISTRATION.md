@@ -199,3 +199,13 @@ published as such.
 - Indirect injection embedded in documents or tool output; every fixture here is a user-turn string.
 - Adaptive white-box attacks (GCG-style suffixes, gradient search) against the classifiers: deliberately out of
   scope because they require authoring new attack strings.
+
+## Amendment 2026-11-10 (appended after the run; the body above is what FROZEN.sha256 covers)
+
+What changed: (1) at 01:17:13Z the stop rule was applied before the first model finished, on a projection from the
+aborted run 1 under host contention: T6 and T8 dropped and A3, B4 cut to their first 150, for all three models;
+(2) at 01:29:09Z A3 and B4 were further cut to their first 50 for T2, T3, T4, T5 and T7 (T0 and T1 kept at 150),
+which goes beyond the stop rule; (3) CPU affinity moved from cores 0-3 to 10-13. Why: throughput under contention
+(load average 13 to 24, see COMMANDS.log at those timestamps). Both cuts were made before any transformed result for
+the long sets existed. No hypothesis, metric, threshold or decision rule changed. Results and their effect on each
+hypothesis are in RESULTS.md, Deviations.

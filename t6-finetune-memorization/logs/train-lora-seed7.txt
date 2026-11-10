@@ -1,0 +1,23 @@
+arm=lora seed=7 tokens=59257 seqs=231 steps/epoch=29 trainable=4884480
+step 1/87 ep1 loss=3.8290 74.7s elapsed=79s
+step 5/87 ep1 loss=3.7768 82.9s elapsed=439s
+step 10/87 ep1 loss=3.4858 85.3s elapsed=817s
+step 15/87 ep1 loss=3.0745 69.8s elapsed=1275s
+step 20/87 ep1 loss=2.8885 50.1s elapsed=1565s
+step 25/87 ep1 loss=2.5287 25.0s elapsed=1825s
+saved ckpt/lora-seed7/epoch1 (19.6 MB) elapsed=1926s
+step 30/87 ep2 loss=2.3603 65.5s elapsed=1992s
+step 35/87 ep2 loss=2.1458 49.1s elapsed=2263s
+step 40/87 ep2 loss=1.8391 19.5s elapsed=2382s
+step 45/87 ep2 loss=1.7029 20.5s elapsed=2482s
+step 50/87 ep2 loss=1.5503 18.7s elapsed=2584s
+step 55/87 ep2 loss=1.3171 19.6s elapsed=2683s
+saved ckpt/lora-seed7/epoch2 (19.6 MB) elapsed=2740s
+step 60/87 ep3 loss=1.1943 19.5s elapsed=2777s
+step 65/87 ep3 loss=1.1511 21.7s elapsed=2874s
+step 70/87 ep3 loss=1.0540 19.5s elapsed=2967s
+step 75/87 ep3 loss=1.0311 18.8s elapsed=3063s
+step 80/87 ep3 loss=0.9830 21.7s elapsed=3162s
+step 85/87 ep3 loss=0.9337 20.0s elapsed=3258s
+saved ckpt/lora-seed7/epoch3 (19.6 MB) elapsed=3295s
+done total=3294.7s

@@ -1,0 +1,13 @@
+c00 n= 0 rank= 1618 exposure= 2.63 greedy=0 A=0.00 B=0.00 C=0.00 top1=9999 (66s+13s)
+c01 n= 0 rank= 4197 exposure= 1.25 greedy=0 A=0.00 B=0.00 C=0.00 top1=1266 (55s+11s)
+c02 n= 1 rank= 2502 exposure= 2.00 greedy=0 A=0.00 B=0.00 C=0.00 top1=6666 (57s+12s)
+c03 n= 1 rank= 3397 exposure= 1.56 greedy=0 A=0.00 B=0.00 C=0.00 top1=9999 (57s+12s)
+c04 n= 5 rank= 1733 exposure= 2.53 greedy=0 A=0.00 B=0.00 C=0.00 top1=6666 (55s+11s)
+c05 n= 5 rank= 1333 exposure= 2.91 greedy=0 A=0.00 B=0.00 C=0.00 top1=1266 (56s+11s)
+c06 n=20 rank= 2663 exposure= 1.91 greedy=0 A=0.00 B=0.00 C=0.00 top1=1366 (45s+9s)
+c07 n=20 rank= 1328 exposure= 2.91 greedy=0 A=0.00 B=0.00 C=0.00 top1=6666 (45s+10s)
+c08 n=50 rank=  962 exposure= 3.38 greedy=0 A=0.00 B=0.00 C=0.00 top1=1266 (45s+9s)
+c09 n=50 rank=  239 exposure= 5.39 greedy=0 A=0.00 B=0.00 C=0.00 top1=1266 (46s+9s)
+blind {'c00': {'n': 0, 'hits': 0}, 'c01': {'n': 0, 'hits': 0}, 'c02': {'n': 1, 'hits': 0}, 'c03': {'n': 1, 'hits': 0}, 'c04': {'n': 5, 'hits': 0}, 'c05': {'n': 5, 'hits': 0}, 'c06': {'n': 20, 'hits': 0}, 'c07': {'n': 20, 'hits': 0}, 'c08': {'n': 50, 'hits': 0}, 'c09': {'n': 50, 'hits': 0}} [(2, '7818'), (2, '6632'), (2, '202.'), (2, '1342'), (1, '9989')]
+heldout {'nll_per_token': 1.1896500984827678, 'ppl': 3.2859312538783603, 'tokens': 4590}
+wrote results/lora-seed7_epoch2.json total=657.1s

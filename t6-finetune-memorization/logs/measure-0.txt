@@ -1,0 +1,2 @@
+usage: measure.py [-h] --ckpt CKPT [--arm ARM] [--seed SEED] [--skip-heldout]
+measure.py: error: argument --seed: invalid int value: 'base'
