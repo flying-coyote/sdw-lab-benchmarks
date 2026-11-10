@@ -1,0 +1,59 @@
+Here is an independent review of the five claims based on the stated evidence and public Claude Code documentation (`code.claude.com` on settings, permissions, hooks, and monitoring/OpenTelemetry).
+
+*(Note on version specificity: Claude Code 2.1.321 postdates my verified knowledge cutoff for exact point-release changelogs; where exact field-level or version-specific documentation details cannot be independently confirmed from memory, I note that explicitly below rather than guessing.)*
+
+---
+
+### Claim 1
+> *"Deny controls held in every layer they were placed in; deny from any source beat allow from every other source."*
+
+* **Documentation consistency:** **Consistent.** Public Claude Code permissions and hooks documentation states that `deny` rules take precedence over `allow` rules across settings scopes, that `--disallowedTools` enforces tool denial at the CLI level, and that a `PreToolUse` hook returning a `deny` decision or exiting with code `2` blocks tool execution (and that a `PreToolUse` hook returning `allow` does not bypass configured `permissions.deny` rules).
+* **Evidence vs. wording:** **Exceeds the stated evidence.** While the first clause ("held in every layer they were placed in") is true for the tested cells, the second clause ("deny from **any** source beat allow from **every** other source") claims full $N \times M$ cross-layer coverage. The evidence summary explicitly notes unmeasured combinations: `project-deny` vs. `local-allow`, `--settings-deny` vs. other layers, and `managed` enterprise settings (`managed-settings.json`), plus single-run-per-cell sample size ($n=1$).
+* **Verdict:** **OVERSTATED** — The universal claim that deny from *any* source beats allow from *every* other source generalizes beyond the test matrix, which omitted `project-deny` vs. `local-allow`, `--settings-deny` cross-pairs, and managed settings.
+
+---
+
+### Claim 2
+> *"disableAllHooks: true in .claude/settings.local.json disables a hook defined in the committed .claude/settings.json, even when the project file pins disableAllHooks: false; a user-file true also disables the project hook when the project file is silent, and loses only when the project file pins false."*
+
+* **Documentation consistency:** **Partially consistent / partially undocumented or surprising.** Public settings documentation defines the scalar precedence hierarchy (from lowest to highest among non-managed file scopes) as: User (`~/.claude/settings.json`) $\rightarrow$ Project (`.claude/settings.json`) $\rightarrow$ Local project (`.claude/settings.local.json`) $\rightarrow$ CLI flags (`--settings`) $\rightarrow$ Managed settings. Under standard scalar key override rules:
+  * `.claude/settings.local.json` overriding `.claude/settings.json` (`true` beating `false`) is **consistent** with local settings having higher precedence than shared project settings.
+  * Lower-precedence User settings (`disableAllHooks: true`) inheriting into the merged configuration when the higher-precedence Project file omits the key—and being overridden when the Project file explicitly sets `disableAllHooks: false`—is also **consistent** with standard hierarchical key merging.
+  * However, I do not know whether `code.claude.com` explicitly documents this exact tri-layer interaction for `disableAllHooks` as a security boundary caveat (specifically that an unpinned project file allows user-level `disableAllHooks: true` to silence project hooks, or that a developer can always override a pinned project `false` via `settings.local.json`).
+* **Evidence vs. wording:** **Matches the stated evidence, except for "only".** The phrase *"and loses **only** when the project file pins false"* is slightly broader than what a non-exhaustive matrix proves unless all other layers (e.g., `--settings`, managed settings) were also held constant or tested, though within the user-vs-project pair it accurately describes the observed boolean override behavior (at $n=1$ per cell).
+* **Verdict:** **SUPPORTED** *(or **OVERSTATED** strictly on the word "only" if non-project layers are considered)* — Within the user, project, and local project settings layers, the observed behavior directly reflects standard Claude Code settings merge precedence (Local > Project > User, with explicit keys overriding inherited ones).
+
+---
+
+### Claim 3
+> *"PreToolUse hooks fire for a subagent's tool calls (stdin carries agent_id and agent_type) and for MCP tool calls (tool_name mcp__server__tool plus mcp_server {name, source}); the subagent's denial does not appear in the parent's stream-json permission_denials."*
+
+* **Documentation consistency:** **Mostly consistent, with schema details I cannot fully verify.**
+  * Public hooks documentation confirms that `PreToolUse` hooks fire for both subagent tool invocations and MCP tool calls, and that MCP tools use the `mcp__<server>__<tool>` naming convention.
+  * I cannot independently verify from memory whether public docs specify `agent_id`, `agent_type`, and the extra `mcp_server: {name, source}` object on `PreToolUse` stdin JSON (earlier hook schemas documented `session_id`, `transcript_path`, `cwd`, `hook_event_name`, `tool_name`, and `tool_input`; `SubagentStop` was also documented, while per-call subagent/MCP metadata fields on `PreToolUse` may have been added in 2.x).
+  * I do not know of public documentation specifying how `permission_denials` in `--output-format stream-json` `result` events aggregates across subagent boundaries.
+* **Evidence vs. wording:** **Contradicted by the stated evidence.** The claim flatly asserts that *"the subagent's denial does not appear in the parent's stream-json permission_denials."* Yet the evidence note explicitly states that the raw `stream-json` output contains **two** `result` events in the subagent cell, and **the first `result` event does list the subagent's denied `Bash` call in `permission_denials`** (while only the second/final `result` event has an empty `permission_denials` array). Saying it "does not appear" in `stream-json permission_denials` misrepresents the raw stream-json trace; it appears in the first `result` event and is omitted/cleared in the final `result` event.
+* **Verdict:** **CONTRADICTED** — The claim states that the subagent denial does not appear in the parent's `stream-json` `permission_denials`, which is directly contradicted by the evidence note showing the denial is present in the first `result` event of the stream and only absent from the second (final) `result` event.
+
+---
+
+### Claim 4
+> *"OpenTelemetry tool_decision events carry decision=reject and source=hook or config but not which rule or settings file matched; the console exporter produced nothing in headless mode (debug: Created 0 log exporter(s)); a developer disabling the team hook leaves no wire-side trace except the absence of a hook_registered startup event."*
+
+* **Documentation consistency:** **Partially consistent, partially unverified.**
+  * Public monitoring/OpenTelemetry documentation confirms that Claude Code emits `claude_code.tool_decision` log/event records with attributes including `decision` (`accept` / `reject`) and `source` (such as config vs. hook vs. user decision), and does **not** document exporting the specific matching rule string or file path for privacy/cardinality reasons.
+  * For the `console` exporter producing `Created 0 log exporter(s)` in `-p` headless mode, public docs describe `OTEL_LOGS_EXPORTER=console` for debugging, though I do not know if docs explicitly state that `-p` suppresses the console exporter to avoid corrupting stdout/stream-json output (or if a specific env var combination caused 0 exporters to initialize).
+  * I cannot independently verify from memory whether `hook_registered` is a documented public OTel startup event name in `code.claude.com` monitoring docs.
+* **Evidence vs. wording:** **Exceeds the stated evidence.** Saying that disabling a team hook *"leaves **no** wire-side trace except the absence of a `hook_registered` startup event"* is a strong negative claim derived from a single OTLP `http/json` sink capturing OTel telemetry on one configuration. Unless raw network/API traffic, all OTel metric/log/trace signal streams, and all diagnostic payloads were exhaustively inspected across configurations, the evidence only supports that *in the captured OTLP log events*, no dedicated "hook disabled" event was emitted and the difference observed was the absence of `hook_registered`.
+* **Verdict:** **OVERSTATED** — While the `tool_decision` attributes and console exporter behavior match the observations, claiming there is "no wire-side trace" beyond the missing `hook_registered` event generalizes from a single OTLP collector's observed log events to all wire-level traffic without qualification.
+
+---
+
+### Claim 5
+> *"Headless -p runs do not trust the project: a project-file allow rule is dropped (debug: workspace not yet trusted) while project hooks and project deny rules still apply."*
+
+* **Documentation consistency:** **Inconsistent with expectations / highlights a critical nuance or bug if reproduced on an untrusted directory.**
+  * Public documentation states that workspace trust is required before Claude Code automatically loads dangerous project-scoped execution primitives from `.claude/settings.json` (and `.mcp.json`), and that in non-interactive (`-p`) mode Claude Code cannot show the interactive workspace trust prompt.
+  * However, in public security documentation, **project hooks** (`.claude/settings.json` `hooks`) are explicitly highlighted as a primary code-execution vector gated by workspace trust (since an untrusted repo's `PreToolUse` hook runs arbitrary shell commands). For an untrusted workspace in `-p` mode to drop `.claude/settings.json` `permissions.allow` due to `workspace not yet trusted` **while still executing `.claude/settings.json` shell hooks** would contradict the documented security purpose of the workspace trust boundary. (By contrast, honoring project `deny` rules in an untrusted workspace is fail-safe).
+* **Evidence vs. wording:** **Exceeds the stated evidence unless workspace trust state was controlled.** The claim states broadly that *"Headless `-p` runs do not trust the project."* In Claude Code, workspace trust is persisted per-directory in user state (`~/.claude.json` / user state files) once accepted interactively. If the lab bench ran in a fresh `/tmp` or unapproved directory on that host, `-p` would lack prior trust for that directory (`workspace not yet trusted`), whereas a `-p` run in a previously trusted directory on the same host would be trusted. Furthermore, asserting this as a general rule of `-p` without qualifying that the workspace had not been previously trusted—and relying on a single run—overstates the scope.
+* **Verdict:** **OVERSTATED** — The claim attributes the `workspace not yet trusted` state to headless `-p` runs universally rather than to running `-p` in an unapproved directory without prior persisted trust, and the finding that untrusted project hooks still executed contradicts the documented purpose of workspace trust gating.

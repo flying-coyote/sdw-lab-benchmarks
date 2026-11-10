@@ -1,0 +1,1 @@
+{"mcpServers": {"t9fixture": {"type": "stdio", "command": "/tmp/claude-1000/lab-ai-research/t8a-mcp-before-after/venv-v2/bin/python", "args": ["/tmp/claude-1000/lab-ai-research/t9-pretooluse-hook-enforcement/mcp/server.py"]}}}

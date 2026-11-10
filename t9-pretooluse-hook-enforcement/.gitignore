@@ -1,0 +1,8 @@
+home/
+verify/home/
+runs/
+verify/runs/
+proj/
+verify/proj/
+evidence/otel_collector*.jsonl
+verify/evidence/otel_*.jsonl
