@@ -1,0 +1,85 @@
+{
+ "H8a": true,
+ "H8b": false,
+ "H8c": true,
+ "account_change_1.8.0": {
+  "activities": {
+   "user.lifecycle.activate": {
+    "activity_id": 2,
+    "how": "exact caption"
+   },
+   "user.lifecycle.create": {
+    "activity_id": 1,
+    "how": "exact caption"
+   }
+  },
+  "class_uid": 3001,
+  "tally": {
+   "coerced": 5,
+   "coverage": 0.62,
+   "total": 50,
+   "typed": 31,
+   "unmapped": 14
+  }
+ },
+ "cost": {
+  "activity_id": 1,
+  "class_uid": 1,
+  "paths_class_move_i": [],
+  "paths_shared_deprecation_ii": [
+   "client.id"
+  ],
+  "total_decisions_changed": 5,
+  "type_uid": 2
+ },
+ "event_types": [
+  "user.lifecycle.create",
+  "user.lifecycle.activate"
+ ],
+ "fields_lost": [],
+ "inventory_fields": 50,
+ "six_source_drift_count": 1,
+ "user_management_1.9.0": {
+  "activities": {
+   "user.lifecycle.activate": {
+    "activity_id": 4,
+    "how": "exact caption"
+   },
+   "user.lifecycle.create": {
+    "activity_id": 1,
+    "how": "exact caption"
+   }
+  },
+  "class_uid": 3007,
+  "tally": {
+   "coerced": 5,
+   "coverage": 0.62,
+   "total": 50,
+   "typed": 31,
+   "unmapped": 14
+  }
+ }
+}
+  legacyEventType                                1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0
+  actor.id                                       1.8.0 actor.user.uid                     | 1.9.0 actor.user.uid                     | role rule: Okta actor = the principal making the change -> actor.user.* || kept
+  actor.type                                     1.8.0 actor.user.type                    | 1.9.0 actor.user.type                    | role rule: Okta actor = the principal making the change -> actor.user.* || kept
+  actor.alternateId                              1.8.0 actor.user.email_addr              | 1.9.0 actor.user.email_addr              | role rule: Okta actor = the principal making the change -> actor.user.* || kept
+  actor.displayName                              1.8.0 actor.user.full_name               | 1.9.0 actor.user.full_name               | role rule: Okta actor = the principal making the change -> actor.user.* || kept
+  actor.detailEntry                              1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0
+  client.id                                      1.8.0 actor.app_uid                      | 1.9.0 actor.application.uid              | kept from the Authentication mapping || 'actor.app_uid' deprecated in 1.9.0 (object:actor.app_uid since 1.9.0); re-homed to 'actor.application.uid'
+  client.userAgent.browser                       1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0
+  target.id                                      1.8.0 user.uid                           | 1.9.0 user.uid                           | role rule: Okta target = the user acted on -> user.* || kept
+  target.type                                    1.8.0 user.type                          | 1.9.0 user.type                          | role rule: Okta target = the user acted on -> user.* || kept
+  target.alternateId                             1.8.0 user.email_addr                    | 1.9.0 user.email_addr                    | role rule: Okta target = the user acted on -> user.* || kept
+  target.displayName                             1.8.0 user.full_name                     | 1.9.0 user.full_name                     | role rule: Okta target = the user acted on -> user.* || kept
+  target.detailEntry                             1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0
+  transaction.type                               1.8.0 unmapped                           | 1.9.0 unmapped                           | 'logon_type_id' invalid in account_change ('logon_type_id' is not an attribute of class:account_change); no same-named class attribute -> unmapped || unmapped in 1.8.0
+  transaction.detail                             1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0
+  debugContext.debugData                         1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0
+  authenticationContext.authenticationProvider   1.8.0 unmapped                           | 1.9.0 unmapped                           | 'auth_protocol_id' invalid in account_change ('auth_protocol_id' is not an attribute of class:account_change); no same-named class attribute -> unmapped || unmapped in 1.8.0
+  authenticationContext.authenticationStep       1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0
+  authenticationContext.issuer.id                1.8.0 unmapped                           | 1.9.0 unmapped                           | 'session.issuer' invalid in account_change ('session' is not an attribute of class:account_change); no same-named class attribute -> unmapped || unmapped in 1.8.0
+  authenticationContext.issuer.type              1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0
+  authenticationContext.externalSessionId        1.8.0 unmapped                           | 1.9.0 unmapped                           | 'session.uid' invalid in account_change ('session' is not an attribute of class:account_change); no same-named class attribute -> unmapped || unmapped in 1.8.0
+  authenticationContext.interface                1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0
+  securityContext.isProxy                        1.8.0 unmapped                           | 1.9.0 unmapped                           | unmapped in the Authentication mapping || unmapped in 1.8.0

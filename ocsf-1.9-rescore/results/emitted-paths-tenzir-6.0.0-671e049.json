@@ -1,0 +1,346 @@
+{
+ "all_paths": [
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "activity_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "app_protocol_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "category_uid",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "class_uid",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "connection_info.flag_history",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "connection_info.protocol_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "connection_info.protocol_num",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "connection_info.protocol_ver_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "connection_info.uid",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "dst_endpoint.ip",
+   "records": 100000,
+   "type": "ip_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "dst_endpoint.port",
+   "records": 100000,
+   "type": "port_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "duration",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "end_time",
+   "records": 100000,
+   "type": "timestamp_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.correlation_uid",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.log_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "metadata.logged_time",
+   "records": 100000,
+   "type": "timestamp_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.original_event_uid",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.product.cpe_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.product.name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.product.vendor_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.version",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "severity_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "src_endpoint.ip",
+   "records": 100000,
+   "type": "ip_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "src_endpoint.port",
+   "records": 100000,
+   "type": "port_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "start_time",
+   "records": 100000,
+   "type": "timestamp_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "status",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "status_code",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "status_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "time",
+   "records": 100000,
+   "type": "timestamp_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "traffic.bytes",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "traffic.bytes_in",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "traffic.bytes_missed",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "traffic.bytes_out",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "traffic.packets",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "traffic.packets_in",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "traffic.packets_out",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "type_uid",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  }
+ ],
+ "class": "network_activity",
+ "declared_versions": {
+  "1.8.0": 100000
+ },
+ "deprecated": [],
+ "emitted": "../pipeline-normalization-fidelity/results/tenzir_zeek_conn.emitted.jsonl",
+ "emitted_sha256": "561ce680eff0f0393aaa26d14be2265cd5ec70d9ab0686e0cf4673ccc661929c",
+ "invalid": [],
+ "validated_against": "schemas/1.8.0/export-profiles.json"
+}

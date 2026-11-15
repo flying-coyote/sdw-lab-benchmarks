@@ -1,0 +1,54 @@
+{
+ "class_uid": 1007,
+ "coverage": 1.0,
+ "field_fidelity": {
+  "homed_field_instances": 1300000,
+  "landed": 1100000,
+  "score": 0.8462,
+  "top_dropped": [
+   {
+    "count": 100000,
+    "field": "LogonId"
+   },
+   {
+    "count": 100000,
+    "field": "User"
+   }
+  ]
+ },
+ "ocsf_class": "process_activity",
+ "records": 100000,
+ "semantic_fidelity": {
+  "activity_id": 1.0,
+  "class_assignment": 1.0,
+  "failure_classes": {
+   "multi_event_collapse": {
+    "reproduced_fraction": 0.0,
+    "reproduced_records": 0,
+    "total_records": 100000
+   },
+   "observables_flattening": {
+    "reproduced_fraction": 0.0,
+    "reproduced_records": 0,
+    "total_records": 100000
+   }
+  },
+  "type_uid": 1.0
+ },
+ "source": "sysmon",
+ "value_fidelity": {
+  "landed_field_instances": 1100000,
+  "score": 0.8182,
+  "top_mangled": [
+   {
+    "count": 100000,
+    "field": "Hashes"
+   },
+   {
+    "count": 100000,
+    "field": "UtcTime"
+   }
+  ],
+  "value_preserved": 900000
+ }
+}

@@ -1,0 +1,3 @@
+tenzir-v6.22.0-lib9949f753 declared {'1.9.0': 100000} validated against 1.9.0 network_activity paths 37
+tenzir-6.0.0-671e049 declared {'1.8.0': 100000} validated against 1.8.0 network_activity paths 37
+tenzir-sysmon-v6.22.0-lib9949f753 declared {'1.9.0': 100000} validated against 1.9.0 process_activity paths 84

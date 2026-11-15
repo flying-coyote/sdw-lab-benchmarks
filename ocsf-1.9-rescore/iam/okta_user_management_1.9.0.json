@@ -1,0 +1,361 @@
+{
+ "class": "user_management",
+ "class_deprecation_1.9.0_of_account_change": {
+  "message": "Use the <code>user_management</code> class instead.",
+  "since": "1.9.0",
+  "superseded_by": [
+   "user_management"
+  ]
+ },
+ "class_uid": 3007,
+ "event_types": {
+  "user.lifecycle.activate": {
+   "activity_id": 4,
+   "how": "exact caption"
+  },
+  "user.lifecycle.create": {
+   "activity_id": 1,
+   "how": "exact caption"
+  }
+ },
+ "export_sha256": "a25650f12f3a7c7f606022969bb20a506b7b111867918640f04b44aa6a97bf9a",
+ "fields": {
+  "actor.alternateId": {
+   "note": "kept",
+   "ocsf": "actor.user.email_addr",
+   "path_1.8.0": "actor.user.email_addr",
+   "path_change": null,
+   "status": "typed"
+  },
+  "actor.detailEntry": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "actor.displayName": {
+   "note": "kept",
+   "ocsf": "actor.user.full_name",
+   "path_1.8.0": "actor.user.full_name",
+   "path_change": null,
+   "status": "typed"
+  },
+  "actor.id": {
+   "note": "kept",
+   "ocsf": "actor.user.uid",
+   "path_1.8.0": "actor.user.uid",
+   "path_change": null,
+   "status": "typed"
+  },
+  "actor.type": {
+   "note": "kept",
+   "ocsf": "actor.user.type",
+   "path_1.8.0": "actor.user.type",
+   "path_change": null,
+   "status": "typed"
+  },
+  "authenticationContext.authenticationProvider": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "authenticationContext.authenticationStep": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "authenticationContext.credentialProvider": {
+   "note": "kept",
+   "ocsf": "auth_factors",
+   "path_1.8.0": "auth_factors",
+   "path_change": null,
+   "status": "coerced"
+  },
+  "authenticationContext.credentialType": {
+   "note": "kept",
+   "ocsf": "auth_factors",
+   "path_1.8.0": "auth_factors",
+   "path_change": null,
+   "status": "coerced"
+  },
+  "authenticationContext.externalSessionId": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "authenticationContext.interface": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "authenticationContext.issuer.id": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "authenticationContext.issuer.type": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "client.device": {
+   "note": "kept",
+   "ocsf": "device.type",
+   "path_1.8.0": "device.type",
+   "path_change": null,
+   "status": "coerced"
+  },
+  "client.geographicalContext.city": {
+   "note": "kept",
+   "ocsf": "src_endpoint.location.city",
+   "path_1.8.0": "src_endpoint.location.city",
+   "path_change": null,
+   "status": "typed"
+  },
+  "client.geographicalContext.country": {
+   "note": "kept",
+   "ocsf": "src_endpoint.location.country",
+   "path_1.8.0": "src_endpoint.location.country",
+   "path_change": null,
+   "status": "typed"
+  },
+  "client.geographicalContext.geolocation.lat": {
+   "note": "kept",
+   "ocsf": "src_endpoint.location.lat",
+   "path_1.8.0": "src_endpoint.location.lat",
+   "path_change": null,
+   "status": "typed"
+  },
+  "client.geographicalContext.geolocation.lon": {
+   "note": "kept",
+   "ocsf": "src_endpoint.location.long",
+   "path_1.8.0": "src_endpoint.location.long",
+   "path_change": null,
+   "status": "typed"
+  },
+  "client.geographicalContext.postalCode": {
+   "note": "kept",
+   "ocsf": "src_endpoint.location.postal_code",
+   "path_1.8.0": "src_endpoint.location.postal_code",
+   "path_change": null,
+   "status": "typed"
+  },
+  "client.geographicalContext.state": {
+   "note": "kept",
+   "ocsf": "src_endpoint.location.region",
+   "path_1.8.0": "src_endpoint.location.region",
+   "path_change": null,
+   "status": "typed"
+  },
+  "client.id": {
+   "note": "'actor.app_uid' deprecated in 1.9.0 (object:actor.app_uid since 1.9.0); re-homed to 'actor.application.uid'",
+   "ocsf": "actor.application.uid",
+   "path_1.8.0": "actor.app_uid",
+   "path_change": "shared_deprecation",
+   "status": "typed"
+  },
+  "client.ipAddress": {
+   "note": "kept",
+   "ocsf": "src_endpoint.ip",
+   "path_1.8.0": "src_endpoint.ip",
+   "path_change": null,
+   "status": "typed"
+  },
+  "client.userAgent.browser": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "client.userAgent.os": {
+   "note": "kept",
+   "ocsf": "src_endpoint.os.name",
+   "path_1.8.0": "src_endpoint.os.name",
+   "path_change": null,
+   "status": "typed"
+  },
+  "client.userAgent.rawUserAgent": {
+   "note": "kept",
+   "ocsf": "http_request.user_agent",
+   "path_1.8.0": "http_request.user_agent",
+   "path_change": null,
+   "status": "typed"
+  },
+  "client.zone": {
+   "note": "kept",
+   "ocsf": "src_endpoint.zone",
+   "path_1.8.0": "src_endpoint.zone",
+   "path_change": null,
+   "status": "typed"
+  },
+  "debugContext.debugData": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "displayMessage": {
+   "note": "kept",
+   "ocsf": "message",
+   "path_1.8.0": "message",
+   "path_change": null,
+   "status": "typed"
+  },
+  "eventType": {
+   "note": "kept",
+   "ocsf": "metadata.event_code",
+   "path_1.8.0": "metadata.event_code",
+   "path_change": null,
+   "status": "typed"
+  },
+  "legacyEventType": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "outcome.reason": {
+   "note": "kept",
+   "ocsf": "status_detail",
+   "path_1.8.0": "status_detail",
+   "path_change": null,
+   "status": "typed"
+  },
+  "outcome.result": {
+   "note": "kept",
+   "ocsf": "status_id",
+   "path_1.8.0": "status_id",
+   "path_change": null,
+   "status": "coerced"
+  },
+  "published": {
+   "note": "kept",
+   "ocsf": "time",
+   "path_1.8.0": "time",
+   "path_change": null,
+   "status": "typed"
+  },
+  "request.ipChain": {
+   "note": "kept",
+   "ocsf": "src_endpoint.intermediate_ips",
+   "path_1.8.0": "src_endpoint.intermediate_ips",
+   "path_change": null,
+   "status": "coerced"
+  },
+  "securityContext.asNumber": {
+   "note": "kept",
+   "ocsf": "src_endpoint.autonomous_system.number",
+   "path_1.8.0": "src_endpoint.autonomous_system.number",
+   "path_change": null,
+   "status": "typed"
+  },
+  "securityContext.asOrg": {
+   "note": "kept",
+   "ocsf": "src_endpoint.autonomous_system.name",
+   "path_1.8.0": "src_endpoint.autonomous_system.name",
+   "path_change": null,
+   "status": "typed"
+  },
+  "securityContext.domain": {
+   "note": "kept",
+   "ocsf": "src_endpoint.domain",
+   "path_1.8.0": "src_endpoint.domain",
+   "path_change": null,
+   "status": "typed"
+  },
+  "securityContext.isProxy": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "securityContext.isp": {
+   "note": "kept",
+   "ocsf": "src_endpoint.isp",
+   "path_1.8.0": "src_endpoint.isp",
+   "path_change": null,
+   "status": "typed"
+  },
+  "severity": {
+   "note": "kept",
+   "ocsf": "severity_id",
+   "path_1.8.0": "severity_id",
+   "path_change": null,
+   "status": "typed"
+  },
+  "target.alternateId": {
+   "note": "kept",
+   "ocsf": "user.email_addr",
+   "path_1.8.0": "user.email_addr",
+   "path_change": null,
+   "status": "typed"
+  },
+  "target.detailEntry": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "target.displayName": {
+   "note": "kept",
+   "ocsf": "user.full_name",
+   "path_1.8.0": "user.full_name",
+   "path_change": null,
+   "status": "typed"
+  },
+  "target.id": {
+   "note": "kept",
+   "ocsf": "user.uid",
+   "path_1.8.0": "user.uid",
+   "path_change": null,
+   "status": "typed"
+  },
+  "target.type": {
+   "note": "kept",
+   "ocsf": "user.type",
+   "path_1.8.0": "user.type",
+   "path_change": null,
+   "status": "typed"
+  },
+  "transaction.detail": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "transaction.id": {
+   "note": "kept",
+   "ocsf": "metadata.correlation_uid",
+   "path_1.8.0": "metadata.correlation_uid",
+   "path_change": null,
+   "status": "typed"
+  },
+  "transaction.type": {
+   "note": "unmapped in 1.8.0",
+   "ocsf": "unmapped",
+   "path_change": null,
+   "status": "unmapped"
+  },
+  "uuid": {
+   "note": "kept",
+   "ocsf": "metadata.uid",
+   "path_1.8.0": "metadata.uid",
+   "path_change": null,
+   "status": "typed"
+  },
+  "version": {
+   "note": "kept",
+   "ocsf": "metadata.log_version",
+   "path_1.8.0": "metadata.log_version",
+   "path_change": null,
+   "status": "typed"
+  }
+ },
+ "ocsf_version": "1.9.0"
+}

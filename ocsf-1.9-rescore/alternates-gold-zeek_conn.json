@@ -1,0 +1,71 @@
+{
+  "_about": "Alternates-accepting gold for pipeline-normalization-fidelity zeek_conn -> OCSF Network Activity (4001). Frozen with PREREGISTRATION.md (its sha256 is recorded there). Each source field has one primary OCSF path and zero or more accepted alternates. An alternate is accepted only when the OCSF 1.8.0 dictionary or object text (schemas/1.8.0/export-profiles.json) describes the source field's semantics; the same test was applied to every field, including the original gold's choices, and paths that fail it are listed under rejected with the reason. Zeek semantics are from docs.zeek.org base/protocols/conn/main.zeek (conn.log field docs, fetched 2026-11-15). Written with knowledge of what Tenzir 6.0.0 emitted (see PREREGISTRATION.md, 'What I knew before freezing').",
+  "ocsf_version_for_text": "1.8.0",
+  "fields": {
+    "ts": {
+      "primary": "time",
+      "alternates": ["start_time"],
+      "value_rule": "epoch_ms_long",
+      "why": "Zeek ts = time of the first packet. OCSF time = normalized event occurrence time (timestamp_t); start_time = start of the time period the event covers (timestamp_t). Both hold it."
+    },
+    "uid": {
+      "primary": "connection_info.uid",
+      "alternates": ["metadata.original_event_uid", "metadata.correlation_uid"],
+      "rejected": {"metadata.uid": "1.8.0 text: 'specific to the OCSF event itself and is distinct from the original event identifier in the source system (see original_event_uid)'."},
+      "value_rule": "equal",
+      "why": "Zeek uid = unique identifier of the connection, shared across Zeek logs for that connection. connection_info.uid = 'The unique identifier of the connection.' original_event_uid = the source system's native event identifier (for conn.log, one record per connection). correlation_uid = identifier used to correlate related OCSF events, which is what the Zeek uid does across conn/http/dns logs."
+    },
+    "id.orig_h": {"primary": "src_endpoint.ip", "alternates": [], "value_rule": "equal"},
+    "id.orig_p": {"primary": "src_endpoint.port", "alternates": [], "value_rule": "equal"},
+    "id.resp_h": {"primary": "dst_endpoint.ip", "alternates": [], "value_rule": "equal"},
+    "id.resp_p": {"primary": "dst_endpoint.port", "alternates": [], "value_rule": "equal"},
+    "proto": {"primary": "connection_info.protocol_name", "alternates": [], "value_rule": "equal",
+              "why": "protocol_name = IANA IP protocol name in lowercase (tcp/udp). protocol_num carries a number, a different value, so it is not an alternate for the string."},
+    "service": {
+      "primary": "app_protocol_name",
+      "alternates": [],
+      "rejected": {"app_name": "1.8.0 text: network application identified by NBAR/App ID (youtube, facebook, webex) that uses standard protocols; Zeek service is the detected protocol, not an application."},
+      "value_rule": "equal",
+      "dash_rule": "Records whose source service is '-' (Zeek's unset marker) are not a field obligation and are excluded from the field and value denominators for this field; a tool emitting '-', null or nothing on those records is not penalised.",
+      "why": "Zeek service = application protocol detected by dynamic protocol detection. app_protocol_name = L7 protocol identified by DPI or packet parsing, as an IANA service name."
+    },
+    "duration": {"primary": "duration", "alternates": [], "value_rule": "ms_within_1",
+                 "why": "Accepted when |emitted - source_seconds*1000| < 1, so floor, ceil, round-half-even and round-half-up are all faithful ms conversions."},
+    "orig_bytes": {"primary": "traffic.bytes_out", "alternates": [], "value_rule": "equal"},
+    "resp_bytes": {"primary": "traffic.bytes_in", "alternates": [], "value_rule": "equal"},
+    "conn_state": {"primary": "status_code", "alternates": [], "value_rule": "equal",
+                   "why": "status_code = event status code as reported by the source; the raw state string."},
+    "history": {
+      "primary": "connection_info.flag_history",
+      "alternates": [],
+      "rejected": {"connection_info.tcp_flags": "1.8.0 types tcp_flags integer_t (TCP header control bits); Zeek history is a letter string, which flag_history ('For example flags ShAD ...') holds."},
+      "value_rule": "equal"
+    },
+    "orig_pkts": {"primary": "traffic.packets_out", "alternates": [], "value_rule": "equal"},
+    "resp_pkts": {"primary": "traffic.packets_in", "alternates": [], "value_rule": "equal"}
+  },
+  "value_rules": {
+    "equal": "emitted value equals the source value (numeric int/float equal compare equal; else exact JSON equality).",
+    "epoch_ms_long": "STRICT: emitted value is a JSON integer equal to floor(source_seconds_6dp * 1000). INFORMATION-PRESERVING (secondary metric): an integer equal to that, OR an RFC 3339 string that, parsed exactly and rounded to the microsecond, equals the source value at its 6-decimal precision.",
+    "ms_within_1": "emitted is a JSON number and |emitted - source_seconds*1000| < 1."
+  },
+  "activity_rule": {
+    "_about": "Zeek conn_state -> OCSF Network Activity activity_id. accept = the accepted set (the alternates-accepting headline); primary = the single derived value (the 'derived-primary' secondary metric). 0 Unknown and 99 Other are never accepted. Traffic (6, 'Network traffic report.') is accepted for every state because conn.log is a per-connection traffic summary. Reset (3) text says 'abnormally terminated or closed by a middle device like firewalls'; Zeek's RST states are endpoint resets, so Reset is the closest bucket, accepted with that caveat.",
+    "states": {
+      "S0":     {"zeek": "Connection attempt seen, no reply.", "accept": [4, 6], "primary": 4, "why": "Fail = 'failed. For example a connection timeout or no route to host.' No reply reads as a timeout. Open ('A new network connection was opened') is not accepted: no connection was opened."},
+      "S1":     {"zeek": "Connection established, not terminated.", "accept": [1, 6], "primary": 1},
+      "SF":     {"zeek": "Normal establishment and termination.", "accept": [2, 6], "primary": 2, "why": "Close = 'The network connection was closed.'"},
+      "REJ":    {"zeek": "Connection attempt rejected.", "accept": [5, 6], "primary": 5, "why": "Refuse = 'refused. For example an attempt to connect to a server port which is not open.'"},
+      "S2":     {"zeek": "Established, close attempt by originator seen (no reply from responder).", "accept": [2, 6], "primary": 2},
+      "S3":     {"zeek": "Established, close attempt by responder seen (no reply from originator).", "accept": [2, 6], "primary": 2},
+      "RSTO":   {"zeek": "Connection established, originator aborted (sent a RST).", "accept": [3, 6], "primary": 3},
+      "RSTR":   {"zeek": "Responder sent a RST.", "accept": [3, 6], "primary": 3},
+      "RSTOS0": {"zeek": "Originator sent a SYN followed by a RST, no SYN-ACK seen.", "accept": [3, 4, 6], "primary": 4},
+      "RSTRH":  {"zeek": "Responder sent a SYN ACK followed by a RST, no SYN from originator seen.", "accept": [3, 6], "primary": 3},
+      "SH":     {"zeek": "Originator sent a SYN followed by a FIN, no SYN ACK seen (half open).", "accept": [4, 6], "primary": 4},
+      "SHR":    {"zeek": "Responder sent a SYN ACK followed by a FIN, no SYN from originator seen.", "accept": [6], "primary": 6},
+      "OTH":    {"zeek": "No SYN seen, just midstream traffic.", "accept": [6], "primary": 6}
+    },
+    "type_uid": "type_uid is scored as class_uid*100 + activity_id under the same accept / primary sets."
+  }
+}

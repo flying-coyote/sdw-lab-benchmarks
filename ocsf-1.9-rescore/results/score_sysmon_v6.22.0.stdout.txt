@@ -1,0 +1,50 @@
+{
+ "coverage": 1.0,
+ "field_fidelity": {
+  "homed_field_instances": 1300000,
+  "landed": 1100000,
+  "score": 0.8462,
+  "top_dropped": [
+   {
+    "field": "LogonId",
+    "count": 100000
+   },
+   {
+    "field": "User",
+    "count": 100000
+   }
+  ]
+ },
+ "value_fidelity": {
+  "landed_field_instances": 1100000,
+  "value_preserved": 900000,
+  "score": 0.8182,
+  "top_mangled": [
+   {
+    "field": "Hashes",
+    "count": 100000
+   },
+   {
+    "field": "UtcTime",
+    "count": 100000
+   }
+  ]
+ },
+ "semantic_fidelity": {
+  "class_assignment": 1.0,
+  "activity_id": 1.0,
+  "type_uid": 1.0,
+  "failure_classes": {
+   "multi_event_collapse": {
+    "reproduced_fraction": 0.0,
+    "reproduced_records": 0,
+    "total_records": 100000
+   },
+   "observables_flattening": {
+    "reproduced_fraction": 0.0,
+    "reproduced_records": 0,
+    "total_records": 100000
+   }
+  }
+ }
+}

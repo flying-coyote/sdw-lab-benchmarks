@@ -1,0 +1,126 @@
+{
+ "activity_agreement_records": 16702,
+ "crosstab_conn_state_gold_tenzir": [
+  [
+   "OTH",
+   6,
+   6,
+   16702
+  ],
+  [
+   "REJ",
+   6,
+   5,
+   16677
+  ],
+  [
+   "RSTO",
+   6,
+   3,
+   16629
+  ],
+  [
+   "RSTR",
+   6,
+   3,
+   16716
+  ],
+  [
+   "S0",
+   6,
+   1,
+   16697
+  ],
+  [
+   "SF",
+   6,
+   2,
+   16579
+  ]
+ ],
+ "duration_diff_rule": {
+  "emitted==ceil": 53
+ },
+ "duration_diffs_emitted_minus_gold_ms": {
+  "1": 53
+ },
+ "emitted_metadata_version": {
+  "1.8.0": 100000
+ },
+ "generated_by": "ocsf-1.9-rescore/scripts/erratum_derive.py",
+ "gold_activity_id_distribution": {
+  "6": 100000
+ },
+ "inputs_sha256": {
+  "c1_subset": "9f27462602c57010f7f83bc4db15d9ffb7079b1b0a8e9fec8e9c7e60306ed944",
+  "corpus": "30f624f1642ede2aa95eec02c4a2891e0a9a8388de369b36a7079ebf433aa1bd",
+  "emitted": "561ce680eff0f0393aaa26d14be2265cd5ec70d9ab0686e0cf4673ccc661929c",
+  "ext_subset": "b31620256d5bc97f27707338058302dfbb13b36567b6846fa4282d8e24ec354d",
+  "gold": "f6e54d5cae6386f0f46953bb9ae320c5a8b737e7f5f3a84f9ad4bb662b6742c1"
+ },
+ "landing": {
+  "history": {
+   "connection_info.flag_history": {
+    "equals_source_value": 100000,
+    "present_non_null": 100000,
+    "resolves_in_merged_1.8.0_subset": "full"
+   },
+   "connection_info.tcp_flags": {
+    "equals_source_value": 0,
+    "present_non_null": 0,
+    "resolves_in_merged_1.8.0_subset": "full"
+   }
+  },
+  "service": {
+   "app_name": {
+    "equals_source_value": 0,
+    "present_non_null": 0,
+    "resolves_in_merged_1.8.0_subset": "full"
+   },
+   "app_protocol_name": {
+    "equals_source_value": 100000,
+    "present_non_null": 100000,
+    "resolves_in_merged_1.8.0_subset": "full"
+   }
+  },
+  "uid": {
+   "connection_info.uid": {
+    "equals_source_value": 100000,
+    "present_non_null": 100000,
+    "resolves_in_merged_1.8.0_subset": "full"
+   },
+   "metadata.correlation_uid": {
+    "equals_source_value": 100000,
+    "present_non_null": 100000,
+    "resolves_in_merged_1.8.0_subset": "full"
+   },
+   "metadata.original_event_uid": {
+    "equals_source_value": 100000,
+    "present_non_null": 100000,
+    "resolves_in_merged_1.8.0_subset": "full"
+   },
+   "metadata.uid": {
+    "equals_source_value": 0,
+    "present_non_null": 0,
+    "resolves_in_merged_1.8.0_subset": "full"
+   }
+  }
+ },
+ "records": 100000,
+ "service_dash_app_protocol_name_values": {
+  "'-'": 20166
+ },
+ "service_dash_records": 20166,
+ "time_json_types": {
+  "str": 100000
+ },
+ "time_parse_back": {
+  "max_abs_err_ns": 240,
+  "ms_equals_gold_int_ms": 99963,
+  "ns_exact_vs_corpus_6dp": 3025,
+  "us_equals_corpus_6dp": 100000
+ },
+ "unmapped_keysets": {
+  "_id": 100000
+ }
+}

@@ -1,0 +1,769 @@
+{
+ "all_paths": [
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "activity_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "activity_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "actor.process.cmd_line",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "actor.process.file.name",
+   "records": 100000,
+   "type": "file_name_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "actor.process.file.path",
+   "records": 100000,
+   "type": "file_path_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "actor.process.file.type",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "actor.process.file.type_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "actor.process.name",
+   "records": 100000,
+   "type": "process_name_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "actor.process.path",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "actor.process.pid",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "actor.process.uid",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "actor.process.user.domain",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "actor.process.user.name",
+   "records": 100000,
+   "type": "username_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "actor.user.domain",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "actor.user.name",
+   "records": 100000,
+   "type": "username_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "category_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "category_uid",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "class_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "class_uid",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "device.hostname",
+   "records": 100000,
+   "type": "hostname_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "launch_type",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "launch_type_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.event_code",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.extensions.name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "metadata.log_level",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.log_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "metadata.log_version",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "metadata.logged_time",
+   "records": 100000,
+   "type": "timestamp_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "metadata.loggers.device.hostname",
+   "records": 100000,
+   "type": "hostname_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.loggers.log_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.loggers.log_provider",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "metadata.loggers.logged_time",
+   "records": 100000,
+   "type": "timestamp_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "metadata.loggers.name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.loggers.product.name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.loggers.product.vendor_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "metadata.original_event_uid",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.processed_time",
+   "records": 100000,
+   "type": "timestamp_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.product.name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "metadata.product.uid",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.product.vendor_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.profiles",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "metadata.version",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.cmd_line",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.created_time",
+   "records": 100000,
+   "type": "timestamp_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.file.company_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.file.desc",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.file.hashes.algorithm",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.file.hashes.algorithm_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.file.hashes.value",
+   "records": 100000,
+   "type": "file_hash_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.file.internal_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.file.name",
+   "records": 100000,
+   "type": "file_name_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.file.path",
+   "records": 100000,
+   "type": "file_path_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.file.product.name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.file.type",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.file.type_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.file.version",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.integrity",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.integrity_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.name",
+   "records": 100000,
+   "type": "process_name_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.parent_process.cmd_line",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.parent_process.file.name",
+   "records": 100000,
+   "type": "file_name_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.parent_process.file.path",
+   "records": 100000,
+   "type": "file_path_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.parent_process.file.type",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.parent_process.file.type_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.parent_process.path",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.parent_process.pid",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.parent_process.uid",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.parent_process.user.domain",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.parent_process.user.name",
+   "records": 100000,
+   "type": "username_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.path",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.pid",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.session.uid",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.session.uid_alt",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.uid",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.user.domain",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "process.user.name",
+   "records": 100000,
+   "type": "username_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 100000,
+   "path": "process.working_directory",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "severity",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "severity_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "status",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "status_id",
+   "records": 100000,
+   "type": "integer_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "time",
+   "records": 100000,
+   "type": "timestamp_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "type_name",
+   "records": 100000,
+   "type": "string_t",
+   "valid": true
+  },
+  {
+   "deprecations": [],
+   "error": null,
+   "null_records": 0,
+   "path": "type_uid",
+   "records": 100000,
+   "type": "long_t",
+   "valid": true
+  }
+ ],
+ "class": "process_activity",
+ "declared_versions": {
+  "1.9.0": 100000
+ },
+ "deprecated": [],
+ "emitted": "results/tenzir_sysmon.v6.22.0-lib9949f753.emitted.jsonl",
+ "emitted_sha256": "5e42e0de862c6bfbaeeea684d89f98c7bfcc92acda436dbab2bd9e09b3cd2a57",
+ "invalid": [],
+ "validated_against": "schemas/1.9.0/export-profiles.json"
+}

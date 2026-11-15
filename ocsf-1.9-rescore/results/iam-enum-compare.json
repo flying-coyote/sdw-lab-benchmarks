@@ -1,0 +1,145 @@
+{
+ "account_change_1.9.0": {
+  "0": "Unknown",
+  "1": "Create",
+  "2": "Enable",
+  "3": "Password Change",
+  "4": "Password Reset",
+  "5": "Disable",
+  "6": "Delete",
+  "7": "Attach Policy",
+  "8": "Detach Policy",
+  "9": "Lock",
+  "10": "MFA Factor Enable",
+  "11": "MFA Factor Disable",
+  "12": "Unlock",
+  "99": "Other"
+ },
+ "account_change_1.9.0_equals_1.8.0": true,
+ "matched": 12,
+ "rows": [
+  {
+   "account_change_caption": "Create",
+   "account_change_id": 1,
+   "same_integer": true,
+   "user_management_caption": "Create",
+   "user_management_caption_at_same_integer": "Create",
+   "user_management_id": 1
+  },
+  {
+   "account_change_caption": "Enable",
+   "account_change_id": 2,
+   "same_integer": false,
+   "user_management_caption": "Enable",
+   "user_management_caption_at_same_integer": "Update",
+   "user_management_id": 4
+  },
+  {
+   "account_change_caption": "Password Change",
+   "account_change_id": 3,
+   "same_integer": false,
+   "user_management_caption": "Password Change",
+   "user_management_caption_at_same_integer": "Delete",
+   "user_management_id": 8
+  },
+  {
+   "account_change_caption": "Password Reset",
+   "account_change_id": 4,
+   "same_integer": false,
+   "user_management_caption": "Password Reset",
+   "user_management_caption_at_same_integer": "Enable",
+   "user_management_id": 9
+  },
+  {
+   "account_change_caption": "Disable",
+   "account_change_id": 5,
+   "same_integer": true,
+   "user_management_caption": "Disable",
+   "user_management_caption_at_same_integer": "Disable",
+   "user_management_id": 5
+  },
+  {
+   "account_change_caption": "Delete",
+   "account_change_id": 6,
+   "same_integer": false,
+   "user_management_caption": "Delete",
+   "user_management_caption_at_same_integer": "Lock",
+   "user_management_id": 3
+  },
+  {
+   "account_change_caption": "Attach Policy",
+   "account_change_id": 7,
+   "same_integer": false,
+   "user_management_caption": "Attach Policies",
+   "user_management_caption_at_same_integer": "Unlock",
+   "user_management_id": 10
+  },
+  {
+   "account_change_caption": "Detach Policy",
+   "account_change_id": 8,
+   "same_integer": false,
+   "user_management_caption": "Detach Policies",
+   "user_management_caption_at_same_integer": "Password Change",
+   "user_management_id": 11
+  },
+  {
+   "account_change_caption": "Lock",
+   "account_change_id": 9,
+   "same_integer": false,
+   "user_management_caption": "Lock",
+   "user_management_caption_at_same_integer": "Password Reset",
+   "user_management_id": 6
+  },
+  {
+   "account_change_caption": "MFA Factor Enable",
+   "account_change_id": 10,
+   "same_integer": false,
+   "user_management_caption": "Enable MFA Factors",
+   "user_management_caption_at_same_integer": "Attach Policies",
+   "user_management_id": 12
+  },
+  {
+   "account_change_caption": "MFA Factor Disable",
+   "account_change_id": 11,
+   "same_integer": false,
+   "user_management_caption": "Disable MFA Factors",
+   "user_management_caption_at_same_integer": "Detach Policies",
+   "user_management_id": 13
+  },
+  {
+   "account_change_caption": "Unlock",
+   "account_change_id": 12,
+   "same_integer": false,
+   "user_management_caption": "Unlock",
+   "user_management_caption_at_same_integer": "Enable MFA Factors",
+   "user_management_id": 7
+  }
+ ],
+ "same_integer": [
+  "Create",
+  "Disable"
+ ],
+ "user_management_1.9.0": {
+  "0": "Unknown",
+  "1": "Create",
+  "2": "Update",
+  "3": "Delete",
+  "4": "Enable",
+  "5": "Disable",
+  "6": "Lock",
+  "7": "Unlock",
+  "8": "Password Change",
+  "9": "Password Reset",
+  "10": "Attach Policies",
+  "11": "Detach Policies",
+  "12": "Enable MFA Factors",
+  "13": "Disable MFA Factors",
+  "14": "Assign Privileges",
+  "15": "Remove Privileges",
+  "16": "Assign Roles",
+  "17": "Remove Roles",
+  "18": "Add Programmatic Credentials",
+  "19": "Remove Programmatic Credentials",
+  "99": "Other"
+ }
+}

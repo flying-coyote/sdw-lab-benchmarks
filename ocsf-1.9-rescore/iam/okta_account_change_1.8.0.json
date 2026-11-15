@@ -1,0 +1,318 @@
+{
+ "class": "account_change",
+ "class_uid": 3001,
+ "event_types": {
+  "user.lifecycle.activate": {
+   "activity_id": 2,
+   "how": "exact caption"
+  },
+  "user.lifecycle.create": {
+   "activity_id": 1,
+   "how": "exact caption"
+  }
+ },
+ "export_sha256": "53b9ead66b269b1323378a4f059e511dc8d318d16a3872bf9053f83ce35755db",
+ "fields": {
+  "actor.alternateId": {
+   "auth_mapping": "user.email_addr",
+   "note": "role rule: Okta actor = the principal making the change -> actor.user.*",
+   "ocsf": "actor.user.email_addr",
+   "status": "typed"
+  },
+  "actor.detailEntry": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "actor.displayName": {
+   "auth_mapping": "user.full_name",
+   "note": "role rule: Okta actor = the principal making the change -> actor.user.*",
+   "ocsf": "actor.user.full_name",
+   "status": "typed"
+  },
+  "actor.id": {
+   "auth_mapping": "user.uid",
+   "note": "role rule: Okta actor = the principal making the change -> actor.user.*",
+   "ocsf": "actor.user.uid",
+   "status": "typed"
+  },
+  "actor.type": {
+   "auth_mapping": "user.type",
+   "note": "role rule: Okta actor = the principal making the change -> actor.user.*",
+   "ocsf": "actor.user.type",
+   "status": "typed"
+  },
+  "authenticationContext.authenticationProvider": {
+   "auth_mapping": "auth_protocol_id",
+   "note": "'auth_protocol_id' invalid in account_change ('auth_protocol_id' is not an attribute of class:account_change); no same-named class attribute -> unmapped",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "authenticationContext.authenticationStep": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "authenticationContext.credentialProvider": {
+   "auth_mapping": "auth_factors",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "auth_factors",
+   "status": "coerced"
+  },
+  "authenticationContext.credentialType": {
+   "auth_mapping": "auth_factors",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "auth_factors",
+   "status": "coerced"
+  },
+  "authenticationContext.externalSessionId": {
+   "auth_mapping": "session.uid",
+   "note": "'session.uid' invalid in account_change ('session' is not an attribute of class:account_change); no same-named class attribute -> unmapped",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "authenticationContext.interface": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "authenticationContext.issuer.id": {
+   "auth_mapping": "session.issuer",
+   "note": "'session.issuer' invalid in account_change ('session' is not an attribute of class:account_change); no same-named class attribute -> unmapped",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "authenticationContext.issuer.type": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "client.device": {
+   "auth_mapping": "device.type",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "device.type",
+   "status": "coerced"
+  },
+  "client.geographicalContext.city": {
+   "auth_mapping": "src_endpoint.location.city",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.location.city",
+   "status": "typed"
+  },
+  "client.geographicalContext.country": {
+   "auth_mapping": "src_endpoint.location.country",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.location.country",
+   "status": "typed"
+  },
+  "client.geographicalContext.geolocation.lat": {
+   "auth_mapping": "src_endpoint.location.lat",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.location.lat",
+   "status": "typed"
+  },
+  "client.geographicalContext.geolocation.lon": {
+   "auth_mapping": "src_endpoint.location.long",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.location.long",
+   "status": "typed"
+  },
+  "client.geographicalContext.postalCode": {
+   "auth_mapping": "src_endpoint.location.postal_code",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.location.postal_code",
+   "status": "typed"
+  },
+  "client.geographicalContext.state": {
+   "auth_mapping": "src_endpoint.location.region",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.location.region",
+   "status": "typed"
+  },
+  "client.id": {
+   "auth_mapping": "actor.app_uid",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "actor.app_uid",
+   "status": "typed"
+  },
+  "client.ipAddress": {
+   "auth_mapping": "src_endpoint.ip",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.ip",
+   "status": "typed"
+  },
+  "client.userAgent.browser": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "client.userAgent.os": {
+   "auth_mapping": "src_endpoint.os.name",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.os.name",
+   "status": "typed"
+  },
+  "client.userAgent.rawUserAgent": {
+   "auth_mapping": "http_request.user_agent",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "http_request.user_agent",
+   "status": "typed"
+  },
+  "client.zone": {
+   "auth_mapping": "src_endpoint.zone",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.zone",
+   "status": "typed"
+  },
+  "debugContext.debugData": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "displayMessage": {
+   "auth_mapping": "message",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "message",
+   "status": "typed"
+  },
+  "eventType": {
+   "auth_mapping": "metadata.event_code",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "metadata.event_code",
+   "status": "typed"
+  },
+  "legacyEventType": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "outcome.reason": {
+   "auth_mapping": "status_detail",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "status_detail",
+   "status": "typed"
+  },
+  "outcome.result": {
+   "auth_mapping": "status_id",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "status_id",
+   "status": "coerced"
+  },
+  "published": {
+   "auth_mapping": "time",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "time",
+   "status": "typed"
+  },
+  "request.ipChain": {
+   "auth_mapping": "src_endpoint.intermediate_ips",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.intermediate_ips",
+   "status": "coerced"
+  },
+  "securityContext.asNumber": {
+   "auth_mapping": "src_endpoint.autonomous_system.number",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.autonomous_system.number",
+   "status": "typed"
+  },
+  "securityContext.asOrg": {
+   "auth_mapping": "src_endpoint.autonomous_system.name",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.autonomous_system.name",
+   "status": "typed"
+  },
+  "securityContext.domain": {
+   "auth_mapping": "src_endpoint.domain",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.domain",
+   "status": "typed"
+  },
+  "securityContext.isProxy": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "securityContext.isp": {
+   "auth_mapping": "src_endpoint.isp",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "src_endpoint.isp",
+   "status": "typed"
+  },
+  "severity": {
+   "auth_mapping": "severity_id",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "severity_id",
+   "status": "typed"
+  },
+  "target.alternateId": {
+   "auth_mapping": "unmapped",
+   "note": "role rule: Okta target = the user acted on -> user.*",
+   "ocsf": "user.email_addr",
+   "status": "typed"
+  },
+  "target.detailEntry": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "target.displayName": {
+   "auth_mapping": "unmapped",
+   "note": "role rule: Okta target = the user acted on -> user.*",
+   "ocsf": "user.full_name",
+   "status": "typed"
+  },
+  "target.id": {
+   "auth_mapping": "unmapped",
+   "note": "role rule: Okta target = the user acted on -> user.*",
+   "ocsf": "user.uid",
+   "status": "typed"
+  },
+  "target.type": {
+   "auth_mapping": "unmapped",
+   "note": "role rule: Okta target = the user acted on -> user.*",
+   "ocsf": "user.type",
+   "status": "typed"
+  },
+  "transaction.detail": {
+   "auth_mapping": "unmapped",
+   "note": "unmapped in the Authentication mapping",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "transaction.id": {
+   "auth_mapping": "metadata.correlation_uid",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "metadata.correlation_uid",
+   "status": "typed"
+  },
+  "transaction.type": {
+   "auth_mapping": "logon_type_id",
+   "note": "'logon_type_id' invalid in account_change ('logon_type_id' is not an attribute of class:account_change); no same-named class attribute -> unmapped",
+   "ocsf": "unmapped",
+   "status": "unmapped"
+  },
+  "uuid": {
+   "auth_mapping": "metadata.uid",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "metadata.uid",
+   "status": "typed"
+  },
+  "version": {
+   "auth_mapping": "metadata.log_version",
+   "note": "kept from the Authentication mapping",
+   "ocsf": "metadata.log_version",
+   "status": "typed"
+  }
+ },
+ "ocsf_version": "1.8.0"
+}

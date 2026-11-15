@@ -1,0 +1,42 @@
+1.8.0 profiles  typed=146 coerced=33 unmapped=72 invalid=2 deprecated=1 cov=0.5817 lossy=0.4183
+1.8.0 noprofile typed=133 coerced=26 unmapped=92 invalid=22 deprecated=1 cov=0.5299 lossy=0.4701
+    1.8.0 palo_alto src_model src_endpoint.hw_info.model INVALID 'model' is not an attribute of object:device_hw_info
+    1.8.0 palo_alto dst_model dst_endpoint.hw_info.model INVALID 'model' is not an attribute of object:device_hw_info
+    1.8.0 zscaler respcode http_status DEPRECATED since 1.1.0 class:http_activity.http_status: Use the <code>http_response.code</code> attribute instead.
+1.9.0 profiles  typed=146 coerced=33 unmapped=72 invalid=2 deprecated=2 cov=0.5817 lossy=0.4183
+1.9.0 noprofile typed=133 coerced=26 unmapped=92 invalid=22 deprecated=2 cov=0.5299 lossy=0.4701
+    1.9.0 okta client.id actor.app_uid DEPRECATED since 1.9.0 object:actor.app_uid: Use the <code>application.uid</code> attribute instead.
+    1.9.0 palo_alto src_model src_endpoint.hw_info.model INVALID 'model' is not an attribute of object:device_hw_info
+    1.9.0 palo_alto dst_model dst_endpoint.hw_info.model INVALID 'model' is not an attribute of object:device_hw_info
+    1.9.0 zscaler respcode http_status DEPRECATED since 1.1.0 class:http_activity.http_status: Use the <code>http_response.code</code> attribute instead.
+per-source 1.8.0 strict vs 1.9.0 strict (profiles):
+  okta            published cov=0.58 1.8.0 cov=0.58 lossy=0.42  1.9.0 cov=0.58 lossy=0.42
+  crowdstrike     published cov=0.6977 1.8.0 cov=0.6977 lossy=0.3023  1.9.0 cov=0.6977 lossy=0.3023
+  palo_alto       published cov=0.5542 1.8.0 cov=0.5301 lossy=0.4699  1.9.0 cov=0.5301 lossy=0.4699
+  cisco_asa       published cov=0.6154 1.8.0 cov=0.6154 lossy=0.3846  1.9.0 cov=0.6154 lossy=0.3846
+  cisco_umbrella  published cov=0.4615 1.8.0 cov=0.4615 lossy=0.5385  1.9.0 cov=0.4615 lossy=0.5385
+  zscaler         published cov=0.5833 1.8.0 cov=0.5833 lossy=0.4167  1.9.0 cov=0.5833 lossy=0.4167
+drift: [
+ {
+  "source": "okta",
+  "field": "client.id",
+  "ocsf": "actor.app_uid",
+  "became_invalid": false,
+  "new_deprecations": [
+   {
+    "where": "object:actor.app_uid",
+    "since": "1.9.0",
+    "message": "Use the <code>application.uid</code> attribute instead."
+   }
+  ]
+ }
+]
+detections: [
+ {
+  "name": "HTTP error-rate / response monitoring",
+  "source": "zscaler",
+  "fields": [
+   "respcode"
+  ]
+ }
+]

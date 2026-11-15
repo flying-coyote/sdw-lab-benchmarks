@@ -1,0 +1,504 @@
+{
+ "1.8.0": {
+  "noprofile": {
+   "attribute_names_list": [
+    "signature"
+   ],
+   "attribute_names_since_version": 1,
+   "attribute_slots_since_version": 1,
+   "classes_deprecated_since_version": [],
+   "context_any_since": {
+    "attribute_names": 46,
+    "attribute_slots": 66,
+    "classes": [
+     "admin_group_query",
+     "config_state",
+     "email_file_activity",
+     "email_url_activity",
+     "file_query",
+     "folder_query",
+     "job_query",
+     "kernel_object_query",
+     "module_query",
+     "network_connection_query",
+     "network_file_activity",
+     "networks_query",
+     "peripheral_device_query",
+     "process_query",
+     "security_finding",
+     "service_query",
+     "session_query",
+     "startup_item_query",
+     "user_query",
+     "web_resource_access_activity",
+     "win/prefetch_query",
+     "win/registry_key_query",
+     "win/registry_value_query"
+    ],
+    "objects_deprecated": [
+     "cis_benchmark",
+     "cis_benchmark_result",
+     "cis_csc",
+     "finding"
+    ],
+    "slots_by_since": {
+     "1.0.0": 1,
+     "1.1.0": 25,
+     "1.2.0": 3,
+     "1.3.0": 2,
+     "1.4.0": 22,
+     "1.5.0": 9,
+     "1.6.0": 3,
+     "1.8.0": 1
+    }
+   },
+   "export": "schemas/1.8.0/export-noprofile.json",
+   "sha256": "8b3cfc80faee06a0162efef121621f2d5c2bc721dd43328be749a8d6458d8c1a"
+  },
+  "profiles": {
+   "attribute_names_list": [
+    "signature"
+   ],
+   "attribute_names_since_version": 1,
+   "attribute_slots_since_version": 1,
+   "classes_deprecated_since_version": [],
+   "context_any_since": {
+    "attribute_names": 47,
+    "attribute_slots": 81,
+    "classes": [
+     "admin_group_query",
+     "config_state",
+     "email_file_activity",
+     "email_url_activity",
+     "file_query",
+     "folder_query",
+     "job_query",
+     "kernel_object_query",
+     "module_query",
+     "network_connection_query",
+     "network_file_activity",
+     "networks_query",
+     "peripheral_device_query",
+     "process_query",
+     "security_finding",
+     "service_query",
+     "session_query",
+     "startup_item_query",
+     "user_query",
+     "web_resource_access_activity",
+     "win/prefetch_query",
+     "win/registry_key_query",
+     "win/registry_value_query"
+    ],
+    "objects_deprecated": [
+     "cis_benchmark",
+     "cis_benchmark_result",
+     "cis_csc",
+     "finding"
+    ],
+    "slots_by_since": {
+     "1.0.0": 1,
+     "1.1.0": 25,
+     "1.2.0": 3,
+     "1.3.0": 2,
+     "1.4.0": 31,
+     "1.5.0": 15,
+     "1.6.0": 3,
+     "1.8.0": 1
+    }
+   },
+   "export": "schemas/1.8.0/export-profiles.json",
+   "sha256": "53b9ead66b269b1323378a4f059e511dc8d318d16a3872bf9053f83ce35755db"
+  },
+  "tag_events_with_class_deprecation": [
+   {
+    "file": "events/discovery/admin_group_query.json",
+    "name": "admin_group_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/config_state.json",
+    "name": "config_state",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/network/email_file_activity.json",
+    "name": "email_file_activity",
+    "since": "1.3.0"
+   },
+   {
+    "file": "events/network/email_url_activity.json",
+    "name": "email_url_activity",
+    "since": "1.3.0"
+   },
+   {
+    "file": "events/discovery/file_query.json",
+    "name": "file_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/folder_query.json",
+    "name": "folder_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/job_query.json",
+    "name": "job_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/kernel_object_query.json",
+    "name": "kernel_object_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/module_query.json",
+    "name": "module_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/network_connection_query.json",
+    "name": "network_connection_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/network/network_file_activity.json",
+    "name": "network_file_activity",
+    "since": "1.1.0"
+   },
+   {
+    "file": "events/discovery/networks_query.json",
+    "name": "networks_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/peripheral_device_query.json",
+    "name": "peripheral_device_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/process_query.json",
+    "name": "process_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/findings/security_finding.json",
+    "name": "security_finding",
+    "since": "1.1.0"
+   },
+   {
+    "file": "events/discovery/service_query.json",
+    "name": "service_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/session_query.json",
+    "name": "session_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/startup_item_query.json",
+    "name": "startup_item_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/user_query.json",
+    "name": "user_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/application/web_resource_access_activity.json",
+    "name": "web_resource_access_activity",
+    "since": "1.1.0"
+   }
+  ]
+ },
+ "1.9.0": {
+  "noprofile": {
+   "attribute_names_list": [
+    "app",
+    "app_name",
+    "app_uid",
+    "cmd_line",
+    "comment",
+    "cpu_architecture",
+    "cpu_architecture_id",
+    "cpu_bits",
+    "cpu_cores",
+    "cpu_speed",
+    "cpu_type",
+    "entity_result",
+    "flag_ids",
+    "flags",
+    "group",
+    "is_src_dst_assignment_known",
+    "last_run_time",
+    "message",
+    "next_run_time",
+    "opcode",
+    "opcode_id",
+    "packet_uid",
+    "resource",
+    "user",
+    "user_result",
+    "web_resources_result"
+   ],
+   "attribute_names_since_version": 26,
+   "attribute_slots_since_version": 33,
+   "classes_deprecated_since_version": [
+    "account_change",
+    "user_access"
+   ],
+   "context_any_since": {
+    "attribute_names": 70,
+    "attribute_slots": 99,
+    "classes": [
+     "account_change",
+     "admin_group_query",
+     "config_state",
+     "email_file_activity",
+     "email_url_activity",
+     "file_query",
+     "folder_query",
+     "job_query",
+     "kernel_object_query",
+     "module_query",
+     "network_connection_query",
+     "network_file_activity",
+     "networks_query",
+     "peripheral_device_query",
+     "process_query",
+     "security_finding",
+     "service_query",
+     "session_query",
+     "startup_item_query",
+     "user_access",
+     "user_query",
+     "web_resource_access_activity",
+     "win/prefetch_query",
+     "win/registry_key_query",
+     "win/registry_value_query"
+    ],
+    "objects_deprecated": [
+     "cis_benchmark",
+     "cis_benchmark_result",
+     "cis_csc",
+     "finding"
+    ],
+    "slots_by_since": {
+     "1.0.0": 1,
+     "1.1.0": 25,
+     "1.2.0": 3,
+     "1.3.0": 2,
+     "1.4.0": 22,
+     "1.5.0": 9,
+     "1.6.0": 3,
+     "1.8.0": 1,
+     "1.9.0": 33
+    }
+   },
+   "export": "schemas/1.9.0/export-noprofile.json",
+   "sha256": "7745b8ce09ad9a6eb33a86bd5e7f3f6d371c50fc860dbf713f67e19d1ff87b94"
+  },
+  "profiles": {
+   "attribute_names_list": [
+    "app",
+    "app_name",
+    "app_uid",
+    "cmd_line",
+    "comment",
+    "cpu_architecture",
+    "cpu_architecture_id",
+    "cpu_bits",
+    "cpu_cores",
+    "cpu_speed",
+    "cpu_type",
+    "entity_result",
+    "flag_ids",
+    "flags",
+    "group",
+    "is_src_dst_assignment_known",
+    "last_run_time",
+    "last_run_time_dt",
+    "message",
+    "next_run_time",
+    "next_run_time_dt",
+    "opcode",
+    "opcode_id",
+    "packet_uid",
+    "resource",
+    "user",
+    "user_result",
+    "web_resources_result"
+   ],
+   "attribute_names_since_version": 28,
+   "attribute_slots_since_version": 35,
+   "classes_deprecated_since_version": [
+    "account_change",
+    "user_access"
+   ],
+   "context_any_since": {
+    "attribute_names": 73,
+    "attribute_slots": 116,
+    "classes": [
+     "account_change",
+     "admin_group_query",
+     "config_state",
+     "email_file_activity",
+     "email_url_activity",
+     "file_query",
+     "folder_query",
+     "job_query",
+     "kernel_object_query",
+     "module_query",
+     "network_connection_query",
+     "network_file_activity",
+     "networks_query",
+     "peripheral_device_query",
+     "process_query",
+     "security_finding",
+     "service_query",
+     "session_query",
+     "startup_item_query",
+     "user_access",
+     "user_query",
+     "web_resource_access_activity",
+     "win/prefetch_query",
+     "win/registry_key_query",
+     "win/registry_value_query"
+    ],
+    "objects_deprecated": [
+     "cis_benchmark",
+     "cis_benchmark_result",
+     "cis_csc",
+     "finding"
+    ],
+    "slots_by_since": {
+     "1.0.0": 1,
+     "1.1.0": 25,
+     "1.2.0": 3,
+     "1.3.0": 2,
+     "1.4.0": 31,
+     "1.5.0": 15,
+     "1.6.0": 3,
+     "1.8.0": 1,
+     "1.9.0": 35
+    }
+   },
+   "export": "schemas/1.9.0/export-profiles.json",
+   "sha256": "a25650f12f3a7c7f606022969bb20a506b7b111867918640f04b44aa6a97bf9a"
+  },
+  "tag_events_with_class_deprecation": [
+   {
+    "file": "events/iam/account_change.json",
+    "name": "account_change",
+    "since": "1.9.0"
+   },
+   {
+    "file": "events/discovery/admin_group_query.json",
+    "name": "admin_group_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/config_state.json",
+    "name": "config_state",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/network/email_file_activity.json",
+    "name": "email_file_activity",
+    "since": "1.3.0"
+   },
+   {
+    "file": "events/network/email_url_activity.json",
+    "name": "email_url_activity",
+    "since": "1.3.0"
+   },
+   {
+    "file": "events/discovery/file_query.json",
+    "name": "file_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/folder_query.json",
+    "name": "folder_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/job_query.json",
+    "name": "job_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/kernel_object_query.json",
+    "name": "kernel_object_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/module_query.json",
+    "name": "module_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/network_connection_query.json",
+    "name": "network_connection_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/network/network_file_activity.json",
+    "name": "network_file_activity",
+    "since": "1.1.0"
+   },
+   {
+    "file": "events/discovery/networks_query.json",
+    "name": "networks_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/peripheral_device_query.json",
+    "name": "peripheral_device_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/process_query.json",
+    "name": "process_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/findings/security_finding.json",
+    "name": "security_finding",
+    "since": "1.1.0"
+   },
+   {
+    "file": "events/discovery/service_query.json",
+    "name": "service_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/session_query.json",
+    "name": "session_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/discovery/startup_item_query.json",
+    "name": "startup_item_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/iam/user_access.json",
+    "name": "user_access",
+    "since": "1.9.0"
+   },
+   {
+    "file": "events/discovery/user_query.json",
+    "name": "user_query",
+    "since": "1.5.0"
+   },
+   {
+    "file": "events/application/web_resource_access_activity.json",
+    "name": "web_resource_access_activity",
+    "since": "1.1.0"
+   }
+  ]
+ }
+}

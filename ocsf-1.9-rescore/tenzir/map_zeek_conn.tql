@@ -1,0 +1,14 @@
+// ocsf-1.9-rescore arm (d): Zeek conn.log -> OCSF via Tenzir's SHIPPED library package `zeek`,
+// entry point `zeek::ocsf::normalize` (the package's own examples/map.tql). The mapping is not edited.
+// Input shaping only, mirroring the June 671e049 run and the package's own tests/ocsf/conn.tql:
+//   read_json + this.unflatten(".")  -> nested Zeek records (id.orig_h -> id.orig_h nested)
+//   this._path = "conn"             -> Zeek's JSON logger emits _path; the corpus omits it
+//   this._id = unmapped._id?        -> lift the bench join key back to top level for scoring
+from_file "/work/zeek_conn.corpus.jsonl" {
+  read_json
+  this = this.unflatten(".")
+}
+this._path = "conn"
+zeek::ocsf::normalize
+this._id = unmapped._id?
+write_ndjson

@@ -1,0 +1,18 @@
+// ocsf-1.9-rescore arm (d), sysmon availability probe (judgement disclosed in RESULTS.md).
+// Shipped package `microsoft`, entry `microsoft::windows::ocsf::normalize event, into=ocsf` as in the
+// package's examples/windows-event-log-nxlog-to-ocsf.tql (mapping unedited). The corpus is flat
+// pre-parsed Sysmon EID 1 JSON, the shape NXLog im_msvistalog emits with AddPrefix disabled, minus
+// NXLog's own metadata. Shaping adds three collector-metadata constants a real NXLog record carries
+// (SourceModuleType routes canonicalize to the NXLog adapter; SourceName/Channel name the provider),
+// analogous to the June run's `_path = "conn"`.
+from_file "/work/sysmon.corpus.jsonl" {
+  read_json
+}
+this.SourceModuleType = "im_msvistalog"
+this.SourceName = "Microsoft-Windows-Sysmon"
+this.Channel = "Microsoft-Windows-Sysmon/Operational"
+this = {event: this}
+microsoft::windows::ocsf::normalize event, into=ocsf
+this = ocsf_cast(ocsf_derive(ocsf))
+this._id = unmapped.EventData._id?
+write_ndjson

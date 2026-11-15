@@ -1,0 +1,54 @@
+{
+ "metadata_version": {
+  "1.9.0": 100000
+ },
+ "time_json_type": {
+  "str": 100000
+ },
+ "original": {
+  "field": 0.7333,
+  "value": 0.9091,
+  "activity_id": 0.167,
+  "class": 1.0
+ },
+ "alt_field": {
+  "landed": 1379834,
+  "total": 1479834,
+  "score": 0.9324
+ },
+ "alt_value_strict": {
+  "ok": 1279834,
+  "total": 1379834,
+  "score": 0.9275
+ },
+ "alt_value_info": {
+  "ok": 1379834,
+  "total": 1379834,
+  "score": 1.0
+ },
+ "alt_activity": {
+  "original_gold_6": {
+   "ok": 16702,
+   "score": 0.167
+  },
+  "accept_set": {
+   "ok": 83303,
+   "score": 0.833
+  },
+  "derived_primary": {
+   "ok": 83303,
+   "score": 0.833
+  }
+ },
+ "alt_type_uid": {
+  "accept_set": {
+   "ok": 83303,
+   "score": 0.833
+  },
+  "derived_primary": {
+   "ok": 83303,
+   "score": 0.833
+  }
+ },
+ "class": 1.0
+}

@@ -1,0 +1,13 @@
+{'account_change_id': 1, 'account_change_caption': 'Create', 'user_management_id': 1, 'user_management_caption': 'Create', 'same_integer': True, 'user_management_caption_at_same_integer': 'Create'}
+{'account_change_id': 2, 'account_change_caption': 'Enable', 'user_management_id': 4, 'user_management_caption': 'Enable', 'same_integer': False, 'user_management_caption_at_same_integer': 'Update'}
+{'account_change_id': 3, 'account_change_caption': 'Password Change', 'user_management_id': 8, 'user_management_caption': 'Password Change', 'same_integer': False, 'user_management_caption_at_same_integer': 'Delete'}
+{'account_change_id': 4, 'account_change_caption': 'Password Reset', 'user_management_id': 9, 'user_management_caption': 'Password Reset', 'same_integer': False, 'user_management_caption_at_same_integer': 'Enable'}
+{'account_change_id': 5, 'account_change_caption': 'Disable', 'user_management_id': 5, 'user_management_caption': 'Disable', 'same_integer': True, 'user_management_caption_at_same_integer': 'Disable'}
+{'account_change_id': 6, 'account_change_caption': 'Delete', 'user_management_id': 3, 'user_management_caption': 'Delete', 'same_integer': False, 'user_management_caption_at_same_integer': 'Lock'}
+{'account_change_id': 7, 'account_change_caption': 'Attach Policy', 'user_management_id': 10, 'user_management_caption': 'Attach Policies', 'same_integer': False, 'user_management_caption_at_same_integer': 'Unlock'}
+{'account_change_id': 8, 'account_change_caption': 'Detach Policy', 'user_management_id': 11, 'user_management_caption': 'Detach Policies', 'same_integer': False, 'user_management_caption_at_same_integer': 'Password Change'}
+{'account_change_id': 9, 'account_change_caption': 'Lock', 'user_management_id': 6, 'user_management_caption': 'Lock', 'same_integer': False, 'user_management_caption_at_same_integer': 'Password Reset'}
+{'account_change_id': 10, 'account_change_caption': 'MFA Factor Enable', 'user_management_id': 12, 'user_management_caption': 'Enable MFA Factors', 'same_integer': False, 'user_management_caption_at_same_integer': 'Attach Policies'}
+{'account_change_id': 11, 'account_change_caption': 'MFA Factor Disable', 'user_management_id': 13, 'user_management_caption': 'Disable MFA Factors', 'same_integer': False, 'user_management_caption_at_same_integer': 'Detach Policies'}
+{'account_change_id': 12, 'account_change_caption': 'Unlock', 'user_management_id': 7, 'user_management_caption': 'Unlock', 'same_integer': False, 'user_management_caption_at_same_integer': 'Enable MFA Factors'}
+ac 1.9.0 == ac 1.8.0: True matched 12 of 12 same integer: ['Create', 'Disable']

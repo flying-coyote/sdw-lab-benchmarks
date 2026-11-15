@@ -1,0 +1,376 @@
+warning: record does not have field
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:34:28
+   |
+34 | $ocsf._parent_user = (move $windows.EventData.ParentUser).split("\\")
+   |                            ~~~~~~~~~~~~~~~~~~
+   ⋮
+34 | $ocsf._parent_user = (move $windows.EventData.ParentUser).split("\\")
+   |                                               ---------- field does not exist
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning
+
+warning: record does not have field
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:41:27
+   |
+41 |   working_directory: move $windows.EventData.CurrentDirectory,
+   |                           ~~~~~~~~~~~~~~~~~~
+   ⋮
+41 |   working_directory: move $windows.EventData.CurrentDirectory,
+   |                                              ---------------- field does not exist
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning
+
+warning: record does not have field
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:45:20
+   |
+45 |     version: (move $windows.EventData.FileVersion).string(),
+   |                    ~~~~~~~~~~~~~~~~~~
+   ⋮
+45 |     version: (move $windows.EventData.FileVersion).string(),
+   |                                       ----------- field does not exist
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning
+
+warning: record does not have field
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:46:16
+   |
+46 |     desc: move $windows.EventData.Description,
+   |                ~~~~~~~~~~~~~~~~~~
+   ⋮
+46 |     desc: move $windows.EventData.Description,
+   |                                   ----------- field does not exist
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning
+
+warning: record does not have field
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:47:24
+   |
+47 |     company_name: move $windows.EventData.Company,
+   |                        ~~~~~~~~~~~~~~~~~~
+   ⋮
+47 |     company_name: move $windows.EventData.Company,
+   |                                           ------- field does not exist
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning
+
+warning: record does not have field
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:48:25
+   |
+48 |     internal_name: move $windows.EventData.OriginalFileName,
+   |                         ~~~~~~~~~~~~~~~~~~
+   ⋮
+48 |     internal_name: move $windows.EventData.OriginalFileName,
+   |                                            ---------------- field does not exist
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning
+
+warning: record does not have field
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:50:18
+   |
+50 |       name: move $windows.EventData.Product,
+   |                  ~~~~~~~~~~~~~~~~~~
+   ⋮
+50 |       name: move $windows.EventData.Product,
+   |                                     ------- field does not exist
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning
+
+warning: record does not have field
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:58:15
+   |
+58 |     uid: move $windows.EventData.LogonGuid,
+   |               ~~~~~~~~~~~~~~~~~~
+   ⋮
+58 |     uid: move $windows.EventData.LogonGuid,
+   |                                  --------- field does not exist
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning
+
+warning: record does not have field
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:63:15
+   |
+63 |     uid: move $windows.EventData.ParentProcessGuid,
+   |               ~~~~~~~~~~~~~~~~~~
+   ⋮
+63 |     uid: move $windows.EventData.ParentProcessGuid,
+   |                                  ----------------- field does not exist
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning
+
+warning: cannot index into `null`
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/events/process_create.tql:70:13
+   |
+70 |       name: $ocsf._parent_user[-1],
+   |             ~~~~~~~~~~~~~~~~~~ is null
+   |
+  --> /library/microsoft/operators/windows/ocsf/providers/sysmon/map.tql:79:5
+   |
+79 |     microsoft::windows::ocsf::providers::sysmon::events::process_create $windows, $ocsf
+   |     ------------------------------------------------------------------- called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/map.tql:14:3
+   |
+14 |   microsoft::windows::ocsf::providers::sysmon::map $windows, $ocsf
+   |   ------------------------------------------------ called from here
+   |
+  --> /library/microsoft/operators/windows/ocsf/normalize.tql:21:1
+   |
+21 | microsoft::windows::ocsf::map $into.windows, $into.ocsf
+   | ----------------------------- called from here
+   |
+  --> /q.tql:15:1
+   |
+15 | microsoft::windows::ocsf::normalize event, into=ocsf
+   | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: use `[…]?` to suppress this warning
+
+warning: `actor.process.user` needs at least one of `account`, `name`, `uid`, but has none
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |
+
+warning: `actor.user` needs at least one of `account`, `name`, `uid`, but has none
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |
+
+warning: required field `device.type_id` is missing
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |
+
+warning: `device` needs at least one of `ip`, `uid`, `name`, `hostname`, `instance_uid`, `interface_uid`, `interface_name`, but has none
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |
+
+warning: required field `metadata.extensions[].version` is missing
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |
+
+warning: required field `metadata.loggers[].device.type_id` is missing
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |
+
+warning: `metadata.loggers[].device` needs at least one of `ip`, `uid`, `name`, `hostname`, `instance_uid`, `interface_uid`, `interface_name`, but has none
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |
+
+warning: `metadata.loggers[]` needs at least one of `name`, `uid`, but has none
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |
+
+warning: `process.file.product` needs at least one of `name`, `uid`, but has none
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |
+
+warning: `process.parent_process.user` needs at least one of `account`, `name`, `uid`, but has none
+  --> /q.tql:16:8
+   |
+16 | this = ocsf_cast(ocsf_derive(ocsf))
+   |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   |

@@ -1,0 +1,241 @@
+{
+ "alternates": {
+  "activity": {
+   "accept_set": {
+    "ok": 83303,
+    "score": 0.833
+   },
+   "derived_primary": {
+    "ok": 83303,
+    "score": 0.833
+   },
+   "original_gold_6": {
+    "ok": 16702,
+    "score": 0.167
+   }
+  },
+  "activity_by_conn_state": {
+   "OTH": {
+    "accept_set": 16702,
+    "derived_primary": 16702,
+    "emitted_values": {
+     "6": 16702
+    },
+    "n": 16702
+   },
+   "REJ": {
+    "accept_set": 16677,
+    "derived_primary": 16677,
+    "emitted_values": {
+     "5": 16677
+    },
+    "n": 16677
+   },
+   "RSTO": {
+    "accept_set": 16629,
+    "derived_primary": 16629,
+    "emitted_values": {
+     "3": 16629
+    },
+    "n": 16629
+   },
+   "RSTR": {
+    "accept_set": 16716,
+    "derived_primary": 16716,
+    "emitted_values": {
+     "3": 16716
+    },
+    "n": 16716
+   },
+   "S0": {
+    "accept_set": 0,
+    "derived_primary": 0,
+    "emitted_values": {
+     "1": 16697
+    },
+    "n": 16697
+   },
+   "SF": {
+    "accept_set": 16579,
+    "derived_primary": 16579,
+    "emitted_values": {
+     "2": 16579
+    },
+    "n": 16579
+   }
+  },
+  "class_uid_4001": 1.0,
+  "covered": 100000,
+  "field": {
+   "landed": 1379834,
+   "score": 0.9324,
+   "total": 1479834
+  },
+  "per_field": {
+   "conn_state": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "duration": {
+    "field_landed": 0,
+    "field_total": 100000,
+    "value_info_ok": 0,
+    "value_strict_ok": 0
+   },
+   "history": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "id.orig_h": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "id.orig_p": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "id.resp_h": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "id.resp_p": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "orig_bytes": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "orig_pkts": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "proto": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "resp_bytes": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "resp_pkts": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   },
+   "service": {
+    "field_landed": 79834,
+    "field_total": 79834,
+    "value_info_ok": 79834,
+    "value_strict_ok": 79834
+   },
+   "ts": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 0
+   },
+   "uid": {
+    "field_landed": 100000,
+    "field_total": 100000,
+    "value_info_ok": 100000,
+    "value_strict_ok": 100000
+   }
+  },
+  "records": 100000,
+  "type_uid": {
+   "accept_set": {
+    "ok": 83303,
+    "score": 0.833
+   },
+   "derived_primary": {
+    "ok": 83303,
+    "score": 0.833
+   }
+  },
+  "value_info_preserving": {
+   "ok": 1379834,
+   "score": 1.0,
+   "total": 1379834
+  },
+  "value_strict": {
+   "ok": 1279834,
+   "score": 0.9275,
+   "total": 1379834
+  }
+ },
+ "alternates_gold_sha256": "8eda25148935f143b6a684e21ec5d34c933711aa38133c602d90cd23af2390e5",
+ "emitted": "ocsf-1.9-rescore/results/tenzir_zeek_conn.v6.22.0-lib9949f753.emitted.jsonl",
+ "emitted_sha256": "5077a09ec49ce268d12754c9874fe89740990baa26d0f94ff44235c924c08e08",
+ "label": "tenzir-v6.22.0-lib9949f753",
+ "metadata_version": {
+  "1.9.0": 100000
+ },
+ "original_scorer": {
+  "activity_id": 0.167,
+  "class": 1.0,
+  "failure_classes": {
+   "entity_role": {
+    "reproduced_fraction": 0.0,
+    "reproduced_records": 0,
+    "total_records": 100000
+   },
+   "observables_flattening": {
+    "reproduced_fraction": 0.0,
+    "reproduced_records": 0,
+    "total_records": 100000
+   }
+  },
+  "field": 0.7333,
+  "top_dropped": [
+   {
+    "count": 100000,
+    "field": "duration"
+   },
+   {
+    "count": 100000,
+    "field": "history"
+   },
+   {
+    "count": 100000,
+    "field": "service"
+   },
+   {
+    "count": 100000,
+    "field": "uid"
+   }
+  ],
+  "top_mangled": [
+   {
+    "count": 100000,
+    "field": "ts"
+   }
+  ],
+  "type_uid": 0.167,
+  "value": 0.9091
+ },
+ "time_json_type": {
+  "str": 100000
+ }
+}

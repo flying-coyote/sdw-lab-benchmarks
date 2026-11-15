@@ -1,0 +1,27 @@
+warning: record does not have field
+  --> /library/zeek/operators/ocsf/normalize.tql:6:17
+   |
+ 6 | zeek::ocsf::map source, ocsf
+   |                 ~~~~~~
+   |
+  --> /library/zeek/operators/ocsf/logs/conn.tql:84:29
+   |
+84 |   bytes_missed: move $event.missed_bytes,
+   |                             ------------ field does not exist
+   |
+  --> /library/zeek/operators/ocsf/map.tql:47:5
+   |
+47 |     zeek::ocsf::logs::conn $event, $ocsf
+   |     ---------------------- called from here
+   |
+  --> /library/zeek/operators/ocsf/normalize.tql:6:1
+   |
+ 6 | zeek::ocsf::map source, ocsf
+   | --------------- called from here
+   |
+  --> /q.tql:12:1
+   |
+12 | zeek::ocsf::normalize
+   | ~~~~~~~~~~~~~~~~~~~~~ called from here
+   |
+   = hint: append `?` to suppress this warning

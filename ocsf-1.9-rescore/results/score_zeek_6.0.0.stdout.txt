@@ -1,0 +1,57 @@
+G1 True 0.8 0.9166 0.167
+G2 True
+{
+ "metadata_version": {
+  "1.8.0": 100000
+ },
+ "time_json_type": {
+  "str": 100000
+ },
+ "original": {
+  "field": 0.8,
+  "value": 0.9166,
+  "activity_id": 0.167,
+  "class": 1.0
+ },
+ "alt_field": {
+  "landed": 1479834,
+  "total": 1479834,
+  "score": 1.0
+ },
+ "alt_value_strict": {
+  "ok": 1379834,
+  "total": 1479834,
+  "score": 0.9324
+ },
+ "alt_value_info": {
+  "ok": 1479834,
+  "total": 1479834,
+  "score": 1.0
+ },
+ "alt_activity": {
+  "original_gold_6": {
+   "ok": 16702,
+   "score": 0.167
+  },
+  "accept_set": {
+   "ok": 83303,
+   "score": 0.833
+  },
+  "derived_primary": {
+   "ok": 83303,
+   "score": 0.833
+  }
+ },
+ "alt_type_uid": {
+  "accept_set": {
+   "ok": 83303,
+   "score": 0.833
+  },
+  "derived_primary": {
+   "ok": 83303,
+   "score": 0.833
+  }
+ },
+ "class": 1.0
+}
+original gold as mapper under new gold: {'landed': 1200000, 'total': 1479834, 'score': 0.8109} {'original_gold_6': {'ok': 100000, 'score': 1.0}, 'accept_set': {'ok': 100000, 'score': 1.0}, 'derived_primary': {'ok': 16702, 'score': 0.167}}
