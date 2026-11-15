@@ -2,7 +2,7 @@
 type: benchmark-results
 title: "OCSF 1.9.0 re-score: results"
 created: 2026-11-15
-status: complete (agent-run, not owner-reviewed, no independent verification pass)
+status: complete (agent-run, not owner-reviewed; independently verified 2026-11-15, VERIFIED-WITH-FIXES, see VERIFICATION.md)
 prereg: PREREGISTRATION.md (sha256 938eb121a7d41986dc01ef1d109c7aa8899aa8f0238d9d1132642a57589a5844, frozen 2026-11-15T20:02:50Z; alternates gold sha256 8eda25148935f143b6a684e21ec5d34c933711aa38133c602d90cd23af2390e5)
 ---
 
@@ -10,7 +10,7 @@ prereg: PREREGISTRATION.md (sha256 938eb121a7d41986dc01ef1d109c7aa8899aa8f0238d9
 
 ## Headline
 
-Of the 11 pre-registered hypotheses and sub-hypotheses (H1 to H9, with H8 split into a, b and c), 8 held outright: H2, H3, H4, H5, H6, H8a, H8c and H9. Two were falsified on one clause each (H1 and H7), and one was falsified (H8b).
+Of the 11 pre-registered hypotheses and sub-hypotheses (H1 to H9, with H8 split into a, b and c), 8 held outright: H2, H3, H4, H5, H6, H8a, H8c and H9, and 3 were falsified (H1, H7, H8b). H1 failed only on its reference-mapper percentage and H7 only on its field clause; every tool clause of H1 and H7's activity clause held.
 
 - **H1 (one clause).** This was an arithmetic slip in my own prediction.
 - **H7 (field clause).** Tenzir's current Zeek mapping stopped emitting a top-level `duration`.
@@ -49,13 +49,13 @@ Spend $0. Local CPU and Docker only, no paid API.
 | H6 | Current Zeek mapping declares `metadata.version` 1.9.0 on every record | 1.9.0 on 100,000 of 100,000 | **Held** (partly blind, given the commit titles) |
 | H7 | Current Zeek mapping: field ≥ 99% and accept-set activity ≥ 80% under the alternates gold | Field 1,379,834 / 1,479,834 = **93.24%** (`duration` absent on every record); accept-set activity 83.30% | **Falsified** on the field clause; the activity clause held |
 | H8a | IAM decisions changed ≥ 3 × six-source drift (≥ 3) | 5 changed (class_uid 1, activity_id 1, type_uid 2, shared deprecation 1) against a six-source drift of 1 | **Held**, and near-guaranteed by construction, as the pre-registration said |
-| H8b | ≥ 1 Okta attribute path changes because of the class move | 0. Every 1.8.0 `account_change` path resolves, not deprecated, in `user_management` 1.9.0 | **Falsified** |
+| H8b | ≥ 1 Okta attribute path changes because of the class move | 0. Every 1.8.0 `account_change` path resolves in `user_management` 1.9.0; the only one deprecated there is `actor.app_uid`, deprecated on the `actor` object in every class (count (ii)), so count (i) is 0 | **Falsified** |
 | H8c | No field lost in the move | None lost: 31 typed / 5 coerced / 14 unmapped before and after | **Held** |
 | H9 | Current mapping still writes `time` as a string | String on 100,000 of 100,000; strict value fails on `ts` for all of them | **Held** |
 
 Confidence consequence, per the pre-registration:
 - **Draft 12.** H1 lets it state corrected Tenzir 6.0.0 numbers under a pre-registered gold.
-- **Draft 15.** H3 held and H8b was falsified, so draft 15 should say that on this source (Okta lifecycle create and activate) the 1.9.0 IAM cost is a class and activity-enum remap, not an attribute re-map. Other identity sources, `user_access` mappings and anything that wrote `user_result` are untested.
+- **Draft 15.** H3 held and H8b was falsified, so draft 15 should say that on this source (Okta lifecycle create and activate) the 1.9.0 IAM cost is a class and activity-enum remap plus the one `actor.app_uid` deprecation that the six sources share, not an attribute re-map. Other identity sources, `user_access` mappings and anything that wrote `user_result` are untested.
 - **Not triggered by any frozen consequence, but an owner call for draft 12.** H5 held, yet JSON-shaped Sysmon now maps through the shipped `microsoft` package on the current release once three NXLog metadata constants are added (section d). If that shaping is accepted, draft 12's availability table (Tenzir 1 of 4) and its JSON-versus-EVTX "input-shape trap" paragraph are stale for the current version. They still describe 6.0.0 / `671e049` correctly.
 - **Hub hypotheses.** None moves on this bench. That goes through the evidence gate and the owner.
 
@@ -166,3 +166,14 @@ python3 -I ocsf-1.9-rescore/scripts/iam_arm.py
 ```
 
 Single host (Beelink 5800H, WSL2, load average 10 to 18 from other work during the run). No timing claims are made.
+
+## Corrections after independent verification (2026-11-15)
+
+`VERIFICATION.md` reproduced every reachable number and changed no verdict. Applied in place: the status line, the headline count (H1 and H7 are plainly falsified under their frozen falsifiers), the H8b result cell (`actor.app_uid` is deprecated in `user_management`, count (i) still 0) and the draft 15 consequence line. Recorded here rather than rewritten:
+
+- **Deviation not listed at run time.** Gate G1 ran with the imported June `score.py`, not a re-implementation as the pre-registration says, so it checks that the June scorer reproduces its own numbers. The new scorer is covered by G2 and by the verification's independent re-derivation.
+- **H5 scope.** At library `9949f753` two shipped packages do map to Authentication 3002, `okta` (Okta System Log) and `openssh` (sshd syslog). Neither applies, because the `auth` corpus is a synthetic generic shape (`auth_protocol` SAML/NTLM, SID `user_id`, `logon_type`) that is neither Okta LogEvent nor sshd text.
+- **Wording in section (a).** "with one regression" should read "with one field the frozen gold no longer credits"; the `duration` move is a choice about where to put the time span, not a schema violation.
+- **Reproduce block.** Run from inside `ocsf-1.9-rescore/`, or path strings in `emitted-paths-*.json` differ. Missing commands: the sysmon scorer, the two `validate_emitted` runs, `compare_iam_enums` and the sysmon Tenzir run.
+- **Stdout capture.** `results/validate_six_source.stdout.txt` predates the "valid only with profiles" print in the committed script; the JSON output is identical.
+- **Unscored, post-hoc.** Tenzir's shipped Okta mapping at `9949f753` declares OCSF 1.9.0 but still emits the deprecated `account_change` (3001) class for `user.lifecycle.*`.
