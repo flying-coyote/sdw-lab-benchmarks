@@ -1,0 +1,50 @@
+{
+ "mode": "sr_rerun",
+ "runs": [
+  {
+   "id": "join_3to4_04",
+   "i": 0,
+   "s": 77.929,
+   "load": [
+    13.33,
+    12.88,
+    12.6
+   ],
+   "err": "(1064, 'Memory of process exceed limit. try consume:8589934592 Backend: 127.0.0.1, Used: 2277126400, Limit: 20873541058. Mem usage has exceed the limit of BE: BE:10001')"
+  },
+  {
+   "id": "join_3to4_04",
+   "i": 1,
+   "s": 2.713,
+   "load": [
+    16.12,
+    13.8,
+    12.94
+   ],
+   "matches_oracle": true
+  },
+  {
+   "id": "join_3to4_04",
+   "i": 2,
+   "s": 2.056,
+   "load": [
+    16.12,
+    13.8,
+    12.94
+   ],
+   "matches_oracle": true
+  },
+  {
+   "id": "join_3to4_09",
+   "i": 0,
+   "s": 1.953,
+   "load": [
+    17.07,
+    14.03,
+    13.03
+   ],
+   "matches_oracle": true
+  }
+ ],
+ "version": "4.1.7-b81ff9c"
+}

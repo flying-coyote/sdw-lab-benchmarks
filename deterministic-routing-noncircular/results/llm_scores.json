@@ -1,0 +1,2038 @@
+{
+ "agy": {
+  "by_family": {
+   "correlated_exists": {
+    "correct": 1,
+    "minor": 1
+   },
+   "dim_enrichment": {
+    "correct": 2
+   },
+   "ioc_match": {
+    "correct": 2
+   },
+   "join_3to4": {
+    "correct": 2
+   },
+   "join_5to6": {
+    "correct": 2
+   },
+   "large_large": {
+    "correct": 1,
+    "minor": 1
+   },
+   "point_lookup": {
+    "correct": 1,
+    "minor": 1
+   },
+   "scan_agg": {
+    "correct": 2
+   },
+   "topn_agg": {
+    "correct": 1,
+    "minor": 1
+   },
+   "two_stream": {
+    "correct": 2
+   },
+   "ueba_two_level": {
+    "silent_wrong": 2
+   },
+   "window_seq": {
+    "correct": 2
+   }
+  },
+  "decisions_with_any_flip": 7,
+  "flip_rate_mean": 0.083,
+  "invalid_calls": 0,
+  "latency_median_s": 28.068,
+  "latency_p90_s": 104.204,
+  "n_calls": 127,
+  "n_decisions": 24,
+  "partial_decisions_excluded": 7,
+  "per_trial_tie_tolerant_mean": 0.767,
+  "rows": [
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "correlated_exists",
+    "id": "correlated_exists_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "correlated_exists",
+    "id": "correlated_exists_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_native",
+     "starrocks",
+     "starrocks",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_iceberg",
+     "starrocks"
+    ],
+    "best": "clickhouse_iceberg",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "dim_enrichment",
+    "id": "dim_enrichment_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "clickhouse_iceberg",
+     "starrocks"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "dim_enrichment",
+    "id": "dim_enrichment_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "ioc_match",
+    "id": "ioc_match_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native",
+     "starrocks"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "ioc_match",
+    "id": "ioc_match_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "join_3to4",
+    "id": "join_3to4_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "join_3to4",
+    "id": "join_3to4_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "join_5to6",
+    "id": "join_5to6_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_native": "dnf:timeout"
+    },
+    "family": "join_5to6",
+    "id": "join_5to6_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "large_large",
+    "id": "large_large_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "large_large",
+    "id": "large_large_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "point_lookup",
+    "id": "point_lookup_01",
+    "modal": "clickhouse_iceberg",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "starrocks",
+     "clickhouse_iceberg",
+     "starrocks"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "point_lookup",
+    "id": "point_lookup_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_iceberg",
+     "starrocks"
+    ],
+    "best": "clickhouse_iceberg",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "scan_agg",
+    "id": "scan_agg_01",
+    "modal": "clickhouse_iceberg",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "scan_agg",
+    "id": "scan_agg_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "topn_agg",
+    "id": "topn_agg_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "topn_agg",
+    "id": "topn_agg_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_iceberg",
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "two_stream",
+    "id": "two_stream_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "clickhouse_iceberg",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "two_stream",
+    "id": "two_stream_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "ueba_two_level",
+    "id": "ueba_two_level_01",
+    "modal": "clickhouse_iceberg",
+    "outcome_modal": "silent_wrong",
+    "picks": [
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "ueba_two_level",
+    "id": "ueba_two_level_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "silent_wrong",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "window_seq",
+    "id": "window_seq_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native",
+     "starrocks"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "window_seq",
+    "id": "window_seq_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "starrocks"
+    ],
+    "strict_modal": true
+   }
+  ],
+  "rule_stack_S2_same_decisions": {
+   "decisions_with_any_flip": 0,
+   "latency_median_ms": 0.753,
+   "latency_p90_ms": 1.264,
+   "rows": [
+    {
+     "cell": "cold",
+     "id": "correlated_exists_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "correlated_exists_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "dim_enrichment_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "dim_enrichment_01",
+     "outcome": "minor",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "ioc_match_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "ioc_match_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "join_3to4_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_3to4_01",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "join_5to6_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_5to6_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "large_large_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "large_large_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "point_lookup_01",
+     "outcome": "minor",
+     "pick": "clickhouse_iceberg"
+    },
+    {
+     "cell": "hot",
+     "id": "point_lookup_01",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "scan_agg_01",
+     "outcome": "correct",
+     "pick": "clickhouse_iceberg"
+    },
+    {
+     "cell": "hot",
+     "id": "scan_agg_01",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "topn_agg_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "topn_agg_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "two_stream_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "two_stream_01",
+     "outcome": "minor",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "ueba_two_level_01",
+     "outcome": "silent_wrong",
+     "pick": "clickhouse_iceberg"
+    },
+    {
+     "cell": "hot",
+     "id": "ueba_two_level_01",
+     "outcome": "silent_wrong",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "window_seq_01",
+     "outcome": "minor",
+     "pick": "clickhouse_iceberg"
+    },
+    {
+     "cell": "hot",
+     "id": "window_seq_01",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    }
+   ],
+   "summary": {
+    "all": {
+     "acc_tie_tolerant": 0.75,
+     "correct": 18,
+     "minor": 4,
+     "n": 24,
+     "silent_wrong": 2
+    },
+    "cold": {
+     "acc_tie_tolerant": 0.75,
+     "correct": 9,
+     "minor": 2,
+     "n": 12,
+     "silent_wrong": 1
+    },
+    "hot": {
+     "acc_tie_tolerant": 0.75,
+     "correct": 9,
+     "minor": 2,
+     "n": 12,
+     "silent_wrong": 1
+    }
+   }
+  },
+  "summary": {
+   "all": {
+    "acc_strict_modal": 0.708,
+    "acc_tie_tolerant_modal": 0.75,
+    "correct": 18,
+    "minor": 4,
+    "n": 24,
+    "silent_wrong": 2
+   },
+   "cold": {
+    "acc_strict_modal": 0.75,
+    "acc_tie_tolerant_modal": 0.833,
+    "correct": 10,
+    "minor": 1,
+    "n": 12,
+    "silent_wrong": 1
+   },
+   "hot": {
+    "acc_strict_modal": 0.667,
+    "acc_tie_tolerant_modal": 0.667,
+    "correct": 8,
+    "minor": 3,
+    "n": 12,
+    "silent_wrong": 1
+   }
+  },
+  "trials_per_decision": {
+   "5": 24
+  }
+ },
+ "agy_cliffprobe_posthoc": {
+  "by_family": {
+   "join_3to4": {
+    "catastrophic": 2,
+    "correct": 4
+   },
+   "join_5to6": {
+    "correct": 4
+   }
+  },
+  "decisions_with_any_flip": 2,
+  "flip_rate_mean": 0.06,
+  "invalid_calls": 0,
+  "latency_median_s": 40.752,
+  "latency_p90_s": 117.94,
+  "n_calls": 50,
+  "n_decisions": 10,
+  "partial_decisions_excluded": 0,
+  "per_trial_tie_tolerant_mean": 0.78,
+  "rows": [
+   {
+    "accept": [
+     "clickhouse_iceberg"
+    ],
+    "best": "clickhouse_iceberg",
+    "cell": "cold",
+    "cliffs": {
+     "starrocks": "dnf:resource"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_04",
+    "modal": "starrocks",
+    "outcome_modal": "catastrophic",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_iceberg"
+    ],
+    "best": "clickhouse_iceberg",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_native": "soft",
+     "starrocks": "dnf:resource"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_04",
+    "modal": "clickhouse_native",
+    "outcome_modal": "catastrophic",
+    "picks": [
+     "starrocks",
+     "clickhouse_native",
+     "starrocks",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {
+     "clickhouse_iceberg": "soft"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_06",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_iceberg": "soft"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_06",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "starrocks",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "join_3to4",
+    "id": "join_3to4_09",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_native": "soft"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_09",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "join_5to6",
+    "id": "join_5to6_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_native": "dnf:timeout"
+    },
+    "family": "join_5to6",
+    "id": "join_5to6_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "join_5to6",
+    "id": "join_5to6_04",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_native": "dnf:timeout"
+    },
+    "family": "join_5to6",
+    "id": "join_5to6_04",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   }
+  ],
+  "rule_stack_S2_same_decisions": {
+   "decisions_with_any_flip": 0,
+   "latency_median_ms": 1.179,
+   "latency_p90_ms": 1.307,
+   "rows": [
+    {
+     "cell": "cold",
+     "id": "join_3to4_04",
+     "outcome": "catastrophic",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_3to4_04",
+     "outcome": "catastrophic",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "join_3to4_06",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_3to4_06",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "join_3to4_09",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_3to4_09",
+     "outcome": "catastrophic",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "join_5to6_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_5to6_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "join_5to6_04",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_5to6_04",
+     "outcome": "correct",
+     "pick": "starrocks"
+    }
+   ],
+   "summary": {
+    "all": {
+     "acc_tie_tolerant": 0.7,
+     "catastrophic": 3,
+     "correct": 7,
+     "n": 10
+    },
+    "cold": {
+     "acc_tie_tolerant": 0.8,
+     "catastrophic": 1,
+     "correct": 4,
+     "n": 5
+    },
+    "hot": {
+     "acc_tie_tolerant": 0.6,
+     "catastrophic": 2,
+     "correct": 3,
+     "n": 5
+    }
+   }
+  },
+  "summary": {
+   "all": {
+    "acc_strict_modal": 0.8,
+    "acc_tie_tolerant_modal": 0.8,
+    "catastrophic": 2,
+    "correct": 8,
+    "n": 10
+   },
+   "cold": {
+    "acc_strict_modal": 0.8,
+    "acc_tie_tolerant_modal": 0.8,
+    "catastrophic": 1,
+    "correct": 4,
+    "n": 5
+   },
+   "hot": {
+    "acc_strict_modal": 0.8,
+    "acc_tie_tolerant_modal": 0.8,
+    "catastrophic": 1,
+    "correct": 4,
+    "n": 5
+   }
+  },
+  "trials_per_decision": {
+   "5": 10
+  }
+ },
+ "local": {
+  "by_family": {
+   "correlated_exists": {
+    "correct": 1,
+    "minor": 1
+   },
+   "dim_enrichment": {
+    "correct": 2
+   },
+   "ioc_match": {
+    "correct": 2
+   },
+   "join_3to4": {
+    "correct": 2
+   },
+   "join_5to6": {
+    "catastrophic": 1,
+    "correct": 1
+   },
+   "large_large": {
+    "minor": 2
+   },
+   "point_lookup": {
+    "correct": 1,
+    "minor": 1
+   },
+   "scan_agg": {
+    "correct": 2
+   },
+   "topn_agg": {
+    "correct": 1,
+    "minor": 1
+   },
+   "two_stream": {
+    "correct": 2
+   },
+   "ueba_two_level": {
+    "silent_wrong": 2
+   },
+   "window_seq": {
+    "correct": 1,
+    "minor": 1
+   }
+  },
+  "decisions_with_any_flip": 0,
+  "flip_rate_mean": 0.0,
+  "invalid_calls": 0,
+  "latency_median_s": 31.314,
+  "latency_p90_s": 39.161,
+  "n_calls": 120,
+  "n_decisions": 24,
+  "partial_decisions_excluded": 0,
+  "per_trial_tie_tolerant_mean": 0.625,
+  "rows": [
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "correlated_exists",
+    "id": "correlated_exists_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "correlated_exists",
+    "id": "correlated_exists_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_iceberg",
+     "starrocks"
+    ],
+    "best": "clickhouse_iceberg",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "dim_enrichment",
+    "id": "dim_enrichment_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "dim_enrichment",
+    "id": "dim_enrichment_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "ioc_match",
+    "id": "ioc_match_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native",
+     "starrocks"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "ioc_match",
+    "id": "ioc_match_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "join_3to4",
+    "id": "join_3to4_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "join_3to4",
+    "id": "join_3to4_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "join_5to6",
+    "id": "join_5to6_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_native": "dnf:timeout"
+    },
+    "family": "join_5to6",
+    "id": "join_5to6_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "catastrophic",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "large_large",
+    "id": "large_large_01",
+    "modal": "clickhouse_iceberg",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "large_large",
+    "id": "large_large_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "point_lookup",
+    "id": "point_lookup_01",
+    "modal": "clickhouse_iceberg",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "point_lookup",
+    "id": "point_lookup_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_iceberg",
+     "starrocks"
+    ],
+    "best": "clickhouse_iceberg",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "scan_agg",
+    "id": "scan_agg_01",
+    "modal": "clickhouse_iceberg",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "scan_agg",
+    "id": "scan_agg_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "topn_agg",
+    "id": "topn_agg_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "topn_agg",
+    "id": "topn_agg_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_iceberg",
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "two_stream",
+    "id": "two_stream_01",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks",
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "two_stream",
+    "id": "two_stream_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "ueba_two_level",
+    "id": "ueba_two_level_01",
+    "modal": "clickhouse_iceberg",
+    "outcome_modal": "silent_wrong",
+    "picks": [
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "ueba_two_level",
+    "id": "ueba_two_level_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "silent_wrong",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {},
+    "family": "window_seq",
+    "id": "window_seq_01",
+    "modal": "clickhouse_iceberg",
+    "outcome_modal": "minor",
+    "picks": [
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg",
+     "clickhouse_iceberg"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_native",
+     "starrocks"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {},
+    "family": "window_seq",
+    "id": "window_seq_01",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native",
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   }
+  ],
+  "rule_stack_S2_same_decisions": {
+   "decisions_with_any_flip": 0,
+   "latency_median_ms": 0.77,
+   "latency_p90_ms": 1.276,
+   "rows": [
+    {
+     "cell": "cold",
+     "id": "correlated_exists_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "correlated_exists_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "dim_enrichment_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "dim_enrichment_01",
+     "outcome": "minor",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "ioc_match_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "ioc_match_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "join_3to4_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_3to4_01",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "join_5to6_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_5to6_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "large_large_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "large_large_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "point_lookup_01",
+     "outcome": "minor",
+     "pick": "clickhouse_iceberg"
+    },
+    {
+     "cell": "hot",
+     "id": "point_lookup_01",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "scan_agg_01",
+     "outcome": "correct",
+     "pick": "clickhouse_iceberg"
+    },
+    {
+     "cell": "hot",
+     "id": "scan_agg_01",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "topn_agg_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "topn_agg_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "two_stream_01",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "two_stream_01",
+     "outcome": "minor",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "cold",
+     "id": "ueba_two_level_01",
+     "outcome": "silent_wrong",
+     "pick": "clickhouse_iceberg"
+    },
+    {
+     "cell": "hot",
+     "id": "ueba_two_level_01",
+     "outcome": "silent_wrong",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "window_seq_01",
+     "outcome": "minor",
+     "pick": "clickhouse_iceberg"
+    },
+    {
+     "cell": "hot",
+     "id": "window_seq_01",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    }
+   ],
+   "summary": {
+    "all": {
+     "acc_tie_tolerant": 0.75,
+     "correct": 18,
+     "minor": 4,
+     "n": 24,
+     "silent_wrong": 2
+    },
+    "cold": {
+     "acc_tie_tolerant": 0.75,
+     "correct": 9,
+     "minor": 2,
+     "n": 12,
+     "silent_wrong": 1
+    },
+    "hot": {
+     "acc_tie_tolerant": 0.75,
+     "correct": 9,
+     "minor": 2,
+     "n": 12,
+     "silent_wrong": 1
+    }
+   }
+  },
+  "summary": {
+   "all": {
+    "acc_strict_modal": 0.583,
+    "acc_tie_tolerant_modal": 0.625,
+    "catastrophic": 1,
+    "correct": 15,
+    "minor": 6,
+    "n": 24,
+    "silent_wrong": 2
+   },
+   "cold": {
+    "acc_strict_modal": 0.583,
+    "acc_tie_tolerant_modal": 0.667,
+    "correct": 8,
+    "minor": 3,
+    "n": 12,
+    "silent_wrong": 1
+   },
+   "hot": {
+    "acc_strict_modal": 0.583,
+    "acc_tie_tolerant_modal": 0.583,
+    "catastrophic": 1,
+    "correct": 7,
+    "minor": 3,
+    "n": 12,
+    "silent_wrong": 1
+   }
+  },
+  "trials_per_decision": {
+   "5": 24
+  }
+ },
+ "local_cliffprobe_posthoc": {
+  "by_family": {
+   "join_3to4": {
+    "catastrophic": 3,
+    "correct": 2
+   }
+  },
+  "decisions_with_any_flip": 0,
+  "flip_rate_mean": 0.0,
+  "invalid_calls": 0,
+  "latency_median_s": 159.54,
+  "latency_p90_s": 224.984,
+  "n_calls": 5,
+  "n_decisions": 5,
+  "partial_decisions_excluded": 0,
+  "per_trial_tie_tolerant_mean": 0.4,
+  "rows": [
+   {
+    "accept": [
+     "clickhouse_iceberg"
+    ],
+    "best": "clickhouse_iceberg",
+    "cell": "cold",
+    "cliffs": {
+     "starrocks": "dnf:resource"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_04",
+    "modal": "starrocks",
+    "outcome_modal": "catastrophic",
+    "picks": [
+     "starrocks"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "clickhouse_iceberg"
+    ],
+    "best": "clickhouse_iceberg",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_native": "soft",
+     "starrocks": "dnf:resource"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_04",
+    "modal": "clickhouse_native",
+    "outcome_modal": "catastrophic",
+    "picks": [
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "cold",
+    "cliffs": {
+     "clickhouse_iceberg": "soft"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_06",
+    "modal": "starrocks",
+    "outcome_modal": "correct",
+    "picks": [
+     "starrocks"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "clickhouse_native"
+    ],
+    "best": "clickhouse_native",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_iceberg": "soft"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_06",
+    "modal": "clickhouse_native",
+    "outcome_modal": "correct",
+    "picks": [
+     "clickhouse_native"
+    ],
+    "strict_modal": true
+   },
+   {
+    "accept": [
+     "starrocks"
+    ],
+    "best": "starrocks",
+    "cell": "hot",
+    "cliffs": {
+     "clickhouse_native": "soft"
+    },
+    "family": "join_3to4",
+    "id": "join_3to4_09",
+    "modal": "clickhouse_native",
+    "outcome_modal": "catastrophic",
+    "picks": [
+     "clickhouse_native"
+    ],
+    "strict_modal": false
+   }
+  ],
+  "rule_stack_S2_same_decisions": {
+   "decisions_with_any_flip": 0,
+   "latency_median_ms": 1.104,
+   "latency_p90_ms": 1.266,
+   "rows": [
+    {
+     "cell": "cold",
+     "id": "join_3to4_04",
+     "outcome": "catastrophic",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_3to4_04",
+     "outcome": "catastrophic",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "cold",
+     "id": "join_3to4_06",
+     "outcome": "correct",
+     "pick": "starrocks"
+    },
+    {
+     "cell": "hot",
+     "id": "join_3to4_06",
+     "outcome": "correct",
+     "pick": "clickhouse_native"
+    },
+    {
+     "cell": "hot",
+     "id": "join_3to4_09",
+     "outcome": "catastrophic",
+     "pick": "clickhouse_native"
+    }
+   ],
+   "summary": {
+    "all": {
+     "acc_tie_tolerant": 0.4,
+     "catastrophic": 3,
+     "correct": 2,
+     "n": 5
+    },
+    "cold": {
+     "acc_tie_tolerant": 0.5,
+     "catastrophic": 1,
+     "correct": 1,
+     "n": 2
+    },
+    "hot": {
+     "acc_tie_tolerant": 0.333,
+     "catastrophic": 2,
+     "correct": 1,
+     "n": 3
+    }
+   }
+  },
+  "summary": {
+   "all": {
+    "acc_strict_modal": 0.4,
+    "acc_tie_tolerant_modal": 0.4,
+    "catastrophic": 3,
+    "correct": 2,
+    "n": 5
+   },
+   "cold": {
+    "acc_strict_modal": 0.5,
+    "acc_tie_tolerant_modal": 0.5,
+    "catastrophic": 1,
+    "correct": 1,
+    "n": 2
+   },
+   "hot": {
+    "acc_strict_modal": 0.333,
+    "acc_tie_tolerant_modal": 0.333,
+    "catastrophic": 2,
+    "correct": 1,
+    "n": 3
+   }
+  },
+  "trials_per_decision": {
+   "1": 5
+  }
+ }
+}

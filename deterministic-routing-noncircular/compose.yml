@@ -1,0 +1,99 @@
+# deterministic-routing-noncircular: a rebuilt copy of the engine-join-specialization stack under its own
+# project name, container names, volumes and network, so nothing here touches the original bench's
+# results or _work files. Parquet inputs are mounted read-only from the original bench's pinned _work.
+name: drn-bench
+
+networks:
+  drn:
+
+volumes:
+  drn-minio-data:
+  drn-ch-data:
+
+services:
+  minio:
+    # minio/minio and minio/mc are no longer pullable from Docker Hub (2026-11-15); the Chainguard build
+    # of the same MinIO server binary stands in. Bucket is created by lab_init.py (no mc image).
+    image: cgr.dev/chainguard/minio:latest
+    container_name: drn-minio
+    networks: [drn]
+    command: ["server", "/data"]
+    environment:
+      MINIO_ROOT_USER: drnbench
+      MINIO_ROOT_PASSWORD: drnbench123
+    volumes: ["drn-minio-data:/data"]
+
+  nessie:
+    image: ghcr.io/projectnessie/nessie:latest
+    container_name: drn-nessie
+    networks: [drn]
+    depends_on: [minio]
+    environment:
+      nessie.version.store.type: IN_MEMORY
+      nessie.catalog.default-warehouse: warehouse
+      nessie.catalog.warehouses.warehouse.location: s3://warehouse/
+      nessie.catalog.service.s3.default-options.region: us-east-1
+      nessie.catalog.service.s3.default-options.endpoint: http://minio:9000
+      nessie.catalog.service.s3.default-options.path-style-access: "true"
+      nessie.catalog.service.s3.default-options.auth-mode: STATIC
+      nessie.catalog.service.s3.default-options.access-key: urn:nessie-secret:quarkus:nessie.catalog.secrets.access-key
+      nessie.catalog.secrets.access-key.name: drnbench
+      nessie.catalog.secrets.access-key.secret: drnbench123
+
+  lab:
+    build:
+      context: .
+      dockerfile: Dockerfile.lab
+    container_name: drn-lab
+    networks: [drn]
+    volumes:
+      - "./:/bench"
+      - "../engine-join-specialization/_work/tpch:/data/tpch:ro"
+      - "../engine-join-specialization/_work/soc:/data/soc:ro"
+    working_dir: /bench
+    command: sleep infinity
+    mem_limit: 8g
+
+  starrocks:
+    image: starrocks/allin1-ubuntu:4.1-latest
+    container_name: drn-starrocks
+    profiles: ["engine-starrocks"]
+    networks: [drn]
+    mem_limit: 24g
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -P 9030 -h 127.0.0.1 -u root -N -B -e 'SHOW BACKENDS' 2>/dev/null | grep -q true || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 90s
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:26.5.1.882
+    container_name: drn-clickhouse
+    profiles: ["engine-clickhouse"]
+    networks: [drn]
+    environment:
+      CLICKHOUSE_USER: default
+      CLICKHOUSE_PASSWORD: drnbench123
+    volumes: ["drn-ch-data:/var/lib/clickhouse"]
+    ulimits:
+      nofile: {soft: 262144, hard: 262144}
+    mem_limit: 24g
+    healthcheck:
+      test: ["CMD", "clickhouse-client", "--password", "drnbench123", "--query", "SELECT 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 24
+
+  trino:
+    image: trinodb/trino:481
+    container_name: drn-trino
+    profiles: ["engine-trino"]
+    networks: [drn]
+    volumes: ["./trino-iceberg.properties:/etc/trino/catalog/iceberg.properties:ro"]
+    mem_limit: 24g
+    healthcheck:
+      test: ["CMD", "trino", "--execute", "SELECT 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 24

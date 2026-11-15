@@ -1,0 +1,107 @@
+{
+ "mode": "ch_order",
+ "runs": [
+  {
+   "id": "join_3to4_04",
+   "join_order_limit": "0",
+   "s": 5.779,
+   "load": [
+    16.0,
+    14.06,
+    13.07
+   ],
+   "matches_oracle": true
+  },
+  {
+   "id": "join_3to4_04",
+   "join_order_limit": "default",
+   "s": 212.848,
+   "load": [
+    16.88,
+    14.28,
+    13.14
+   ],
+   "matches_oracle": true
+  },
+  {
+   "id": "join_3to4_09",
+   "join_order_limit": "0",
+   "s": 7.058,
+   "load": [
+    23.16,
+    18.61,
+    15.08
+   ],
+   "matches_oracle": true
+  },
+  {
+   "id": "join_3to4_09",
+   "join_order_limit": "default",
+   "s": 304.177,
+   "load": [
+    23.44,
+    18.82,
+    15.19
+   ],
+   "err": "Received ClickHouse exception, code: 159, server response: Code: 159. DB::Exception: Timeout exceeded: elapsed 300026.497604 ms, maximum: 300000 ms. (TIMEOUT_EXCEEDED) (for url http://clickhouse:8123)"
+  }
+ ],
+ "explain": {
+  "join_3to4_04": [
+   "Expression (Project names)",
+   "  Sorting (Sorting for ORDER BY)",
+   "    Expression ((Before ORDER BY + Projection))",
+   "      Aggregating",
+   "        Expression",
+   "          Join (JOIN FillRightFirst)",
+   "            Expression (Left Pre Join Actions)",
+   "              Expression",
+   "                Join (JOIN FillRightFirst)",
+   "                  Expression",
+   "                    Join (JOIN FillRightFirst)",
+   "                      Expression",
+   "                        ReadFromMergeTree (bench.customer)",
+   "                      Expression",
+   "                        BuildRuntimeFilter (Build runtime join filter on __table4.s_nationkey)",
+   "                          Expression",
+   "                            ReadFromMergeTree (bench.supplier)",
+   "                  Expression",
+   "                    BuildRuntimeFilter (Build runtime join filter on __table2.o_custkey)",
+   "                      Expression",
+   "                        ReadFromMergeTree (bench.orders)",
+   "            Expression (Right Pre Join Actions)",
+   "              BuildRuntimeFilter (Build runtime join filter on __table3.l_suppkey)",
+   "                BuildRuntimeFilter (Build runtime join filter on __table3.l_orderkey)",
+   "                  Expression (Change column names to column identifiers)",
+   "                    ReadFromMergeTree (bench.lineitem)"
+  ],
+  "join_3to4_09": [
+   "Expression (Project names)",
+   "  Sorting (Sorting for ORDER BY)",
+   "    Expression ((Before ORDER BY + Projection))",
+   "      Aggregating",
+   "        Expression",
+   "          Join (JOIN FillRightFirst)",
+   "            Expression (Left Pre Join Actions)",
+   "              Expression",
+   "                Join (JOIN FillRightFirst)",
+   "                  Expression",
+   "                    Join (JOIN FillRightFirst)",
+   "                      Expression",
+   "                        ReadFromMergeTree (bench.customer)",
+   "                      Expression",
+   "                        BuildRuntimeFilter (Build runtime join filter on __table4.s_nationkey)",
+   "                          Expression",
+   "                            ReadFromMergeTree (bench.supplier)",
+   "                  Expression",
+   "                    BuildRuntimeFilter (Build runtime join filter on __table2.o_custkey)",
+   "                      Expression",
+   "                        ReadFromMergeTree (bench.orders)",
+   "            Expression (Right Pre Join Actions)",
+   "              BuildRuntimeFilter (Build runtime join filter on __table3.l_suppkey)",
+   "                BuildRuntimeFilter (Build runtime join filter on __table3.l_orderkey)",
+   "                  Expression (Change column names to column identifiers)",
+   "                    ReadFromMergeTree (bench.lineitem)"
+  ]
+ }
+}

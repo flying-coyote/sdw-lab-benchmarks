@@ -1,0 +1,1 @@
+{"leg": "local", "id": "scan_agg_01", "family": "scan_agg", "cell": "hot", "trial": 0, "seed": 1000, "pick": "invalid", "latency_s": 106.752, "reply_head": "The user wants me to select the fastest engine for a given SQL query, considering"}

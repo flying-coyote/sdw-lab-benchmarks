@@ -1,0 +1,426 @@
+{
+ "n": 84,
+ "queries": [
+  {
+   "family": "scan_agg",
+   "id": "scan_agg_01",
+   "sql": "SELECT conn_state, count(*) AS n_conn, sum(orig_bytes) AS b_out FROM $conn c WHERE resp_p IN (443, 21) GROUP BY conn_state ORDER BY conn_state"
+  },
+  {
+   "family": "scan_agg",
+   "id": "scan_agg_02",
+   "sql": "SELECT qtype, count(*) AS n_q, min(ts) AS first_ts FROM $dns d WHERE ts > 1781082878 GROUP BY qtype ORDER BY qtype"
+  },
+  {
+   "family": "scan_agg",
+   "id": "scan_agg_03",
+   "sql": "SELECT l_shipmode, count(*) AS n_l, sum(l_quantity) AS qty FROM $lineitem l WHERE l_shipdate >= DATE '1997-03-12' GROUP BY l_shipmode ORDER BY l_shipmode"
+  },
+  {
+   "family": "scan_agg",
+   "id": "scan_agg_04",
+   "sql": "SELECT dept, count(*) AS n_conn, sum(resp_bytes) AS b_in FROM $conn_enriched e WHERE proto = 'udp' GROUP BY dept ORDER BY dept"
+  },
+  {
+   "family": "scan_agg",
+   "id": "scan_agg_05",
+   "sql": "SELECT resp_p, count(*) AS n_conn, sum(orig_bytes) AS b_out FROM $conn c WHERE resp_p IN (3389, 80) GROUP BY resp_p ORDER BY resp_p"
+  },
+  {
+   "family": "scan_agg",
+   "id": "scan_agg_06",
+   "sql": "SELECT qtype, count(*) AS n_q, min(ts) AS first_ts FROM $dns d WHERE ts > 1781080191 GROUP BY qtype ORDER BY qtype"
+  },
+  {
+   "family": "scan_agg",
+   "id": "scan_agg_07",
+   "sql": "SELECT l_returnflag, count(*) AS n_l, sum(l_quantity) AS qty FROM $lineitem l WHERE l_shipdate >= DATE '1997-11-06' GROUP BY l_returnflag ORDER BY l_returnflag"
+  },
+  {
+   "family": "scan_agg",
+   "id": "scan_agg_08",
+   "sql": "SELECT dept, count(*) AS n_conn, sum(resp_bytes) AS b_in FROM $conn_enriched e WHERE proto = 'tcp' GROUP BY dept ORDER BY dept"
+  },
+  {
+   "family": "point_lookup",
+   "id": "point_lookup_01",
+   "sql": "SELECT uid, orig_h, resp_h, resp_p, ts FROM $conn c WHERE orig_h = '172.28.53.153' ORDER BY uid LIMIT 50"
+  },
+  {
+   "family": "point_lookup",
+   "id": "point_lookup_02",
+   "sql": "SELECT uid, resp_h, orig_bytes FROM $conn c WHERE orig_h = '10.220.36.123' AND resp_p = 123 ORDER BY uid LIMIT 25"
+  },
+  {
+   "family": "point_lookup",
+   "id": "point_lookup_03",
+   "sql": "SELECT orig_h, query, ts FROM $dns d WHERE orig_h = '172.17.84.89' ORDER BY ts, query LIMIT 20"
+  },
+  {
+   "family": "point_lookup",
+   "id": "point_lookup_04",
+   "sql": "SELECT l_orderkey, l_linenumber, l_quantity FROM $lineitem l WHERE l_orderkey = 24488194 ORDER BY l_linenumber LIMIT 10"
+  },
+  {
+   "family": "dim_enrichment",
+   "id": "dim_enrichment_01",
+   "sql": "SELECT a.dept, count(*) AS n_conn, sum(c.orig_bytes) AS b_out FROM $conn c JOIN $assets a ON c.orig_h = a.ip WHERE c.resp_p = 445 GROUP BY a.dept ORDER BY a.dept"
+  },
+  {
+   "family": "dim_enrichment",
+   "id": "dim_enrichment_02",
+   "sql": "SELECT a.criticality, count(*) AS n_q FROM $dns d JOIN $assets a ON d.orig_h = a.ip WHERE d.qtype = 'A' GROUP BY a.criticality ORDER BY a.criticality"
+  },
+  {
+   "family": "dim_enrichment",
+   "id": "dim_enrichment_03",
+   "sql": "SELECT s.s_nationkey, count(*) AS n_l, sum(l.l_extendedprice) AS rev FROM $lineitem l JOIN $supplier s ON l.l_suppkey = s.s_suppkey WHERE l.l_shipmode = 'AIR' GROUP BY s.s_nationkey ORDER BY s.s_nationkey"
+  },
+  {
+   "family": "dim_enrichment",
+   "id": "dim_enrichment_04",
+   "sql": "SELECT c.c_mktsegment, count(*) AS n_o, sum(o.o_totalprice) AS tot FROM $orders o JOIN $customer c ON o.o_custkey = c.c_custkey WHERE o.o_orderdate < DATE '1996-01-12' GROUP BY c.c_mktsegment ORDER BY c.c_mktsegment"
+  },
+  {
+   "family": "dim_enrichment",
+   "id": "dim_enrichment_05",
+   "sql": "SELECT a.criticality, count(*) AS n_conn, sum(c.orig_bytes) AS b_out FROM $conn c JOIN $assets a ON c.orig_h = a.ip WHERE c.resp_p = 22 GROUP BY a.criticality ORDER BY a.criticality"
+  },
+  {
+   "family": "dim_enrichment",
+   "id": "dim_enrichment_06",
+   "sql": "SELECT a.dept, count(*) AS n_q FROM $dns d JOIN $assets a ON d.orig_h = a.ip WHERE d.qtype = 'CNAME' GROUP BY a.dept ORDER BY a.dept"
+  },
+  {
+   "family": "dim_enrichment",
+   "id": "dim_enrichment_07",
+   "sql": "SELECT s.s_nationkey, count(*) AS n_l, sum(l.l_extendedprice) AS rev FROM $lineitem l JOIN $supplier s ON l.l_suppkey = s.s_suppkey WHERE l.l_shipmode = 'SHIP' GROUP BY s.s_nationkey ORDER BY s.s_nationkey"
+  },
+  {
+   "family": "dim_enrichment",
+   "id": "dim_enrichment_08",
+   "sql": "SELECT c.c_mktsegment, count(*) AS n_o, sum(o.o_totalprice) AS tot FROM $orders o JOIN $customer c ON o.o_custkey = c.c_custkey WHERE o.o_orderdate < DATE '1993-12-07' GROUP BY c.c_mktsegment ORDER BY c.c_mktsegment"
+  },
+  {
+   "family": "ioc_match",
+   "id": "ioc_match_01",
+   "sql": "SELECT i.severity, count(*) AS hits, sum(c.orig_bytes) AS b_out FROM $conn c JOIN $ioc i ON c.resp_h = i.ioc_value WHERE i.severity <> 'low' GROUP BY i.severity ORDER BY i.severity"
+  },
+  {
+   "family": "ioc_match",
+   "id": "ioc_match_02",
+   "sql": "SELECT c.resp_p, count(*) AS hits FROM $conn c WHERE c.resp_h IN (SELECT i.ioc_value FROM $ioc i WHERE i.severity = 'low') GROUP BY c.resp_p ORDER BY c.resp_p"
+  },
+  {
+   "family": "ioc_match",
+   "id": "ioc_match_03",
+   "sql": "SELECT d.qtype, count(*) AS hits FROM $dns d JOIN $ioc i ON d.answer = i.ioc_value WHERE i.source = 'internal' GROUP BY d.qtype ORDER BY d.qtype"
+  },
+  {
+   "family": "ioc_match",
+   "id": "ioc_match_04",
+   "sql": "SELECT count(*) AS hits, sum(c.resp_bytes) AS b_in FROM $conn c WHERE c.resp_p = 21 AND c.resp_h IN (SELECT i.ioc_value FROM $ioc i)"
+  },
+  {
+   "family": "ioc_match",
+   "id": "ioc_match_05",
+   "sql": "SELECT i.severity, count(*) AS hits, sum(c.orig_bytes) AS b_out FROM $conn c JOIN $ioc i ON c.resp_h = i.ioc_value WHERE i.severity <> 'high' GROUP BY i.severity ORDER BY i.severity"
+  },
+  {
+   "family": "ioc_match",
+   "id": "ioc_match_06",
+   "sql": "SELECT c.resp_p, count(*) AS hits FROM $conn c WHERE c.resp_h IN (SELECT i.ioc_value FROM $ioc i WHERE i.severity = 'medium') GROUP BY c.resp_p ORDER BY c.resp_p"
+  },
+  {
+   "family": "ioc_match",
+   "id": "ioc_match_07",
+   "sql": "SELECT d.qtype, count(*) AS hits FROM $dns d JOIN $ioc i ON d.answer = i.ioc_value WHERE i.source = 'osint-feed-a' GROUP BY d.qtype ORDER BY d.qtype"
+  },
+  {
+   "family": "ioc_match",
+   "id": "ioc_match_08",
+   "sql": "SELECT count(*) AS hits, sum(c.resp_bytes) AS b_in FROM $conn c WHERE c.resp_p = 80 AND c.resp_h IN (SELECT i.ioc_value FROM $ioc i)"
+  },
+  {
+   "family": "two_stream",
+   "id": "two_stream_01",
+   "sql": "SELECT count(*) AS hosts, sum(x.n_c) AS conns, sum(y.n_d) AS dnsq FROM (SELECT orig_h, count(*) AS n_c FROM $conn WHERE resp_p = 80 GROUP BY orig_h) x JOIN (SELECT orig_h, count(*) AS n_d FROM $dns GROUP BY orig_h) y ON x.orig_h = y.orig_h WHERE x.n_c > 24 AND y.n_d > 78"
+  },
+  {
+   "family": "two_stream",
+   "id": "two_stream_02",
+   "sql": "SELECT count(*) AS hosts, sum(x.n_dst) AS dsts FROM (SELECT orig_h, count(DISTINCT resp_h) AS n_dst FROM $conn WHERE proto = 'tcp' GROUP BY orig_h) x JOIN (SELECT orig_h, count(DISTINCT query) AS n_qn FROM $dns GROUP BY orig_h) y ON x.orig_h = y.orig_h WHERE x.n_dst > 210 AND y.n_qn > 35"
+  },
+  {
+   "family": "two_stream",
+   "id": "two_stream_03",
+   "sql": "SELECT count(*) AS hosts, sum(x.n_c) AS conns, sum(y.n_d) AS dnsq FROM (SELECT orig_h, count(*) AS n_c FROM $conn WHERE resp_p = 161 GROUP BY orig_h) x JOIN (SELECT orig_h, count(*) AS n_d FROM $dns GROUP BY orig_h) y ON x.orig_h = y.orig_h WHERE x.n_c > 27 AND y.n_d > 61"
+  },
+  {
+   "family": "two_stream",
+   "id": "two_stream_04",
+   "sql": "SELECT count(*) AS hosts, sum(x.n_dst) AS dsts FROM (SELECT orig_h, count(DISTINCT resp_h) AS n_dst FROM $conn WHERE proto = 'tcp' GROUP BY orig_h) x JOIN (SELECT orig_h, count(DISTINCT query) AS n_qn FROM $dns GROUP BY orig_h) y ON x.orig_h = y.orig_h WHERE x.n_dst > 60 AND y.n_qn > 18"
+  },
+  {
+   "family": "two_stream",
+   "id": "two_stream_05",
+   "sql": "SELECT count(*) AS hosts, sum(x.n_c) AS conns, sum(y.n_d) AS dnsq FROM (SELECT orig_h, count(*) AS n_c FROM $conn WHERE resp_p = 53 GROUP BY orig_h) x JOIN (SELECT orig_h, count(*) AS n_d FROM $dns GROUP BY orig_h) y ON x.orig_h = y.orig_h WHERE x.n_c > 24 AND y.n_d > 77"
+  },
+  {
+   "family": "two_stream",
+   "id": "two_stream_06",
+   "sql": "SELECT count(*) AS hosts, sum(x.n_dst) AS dsts FROM (SELECT orig_h, count(DISTINCT resp_h) AS n_dst FROM $conn WHERE proto = 'tcp' GROUP BY orig_h) x JOIN (SELECT orig_h, count(DISTINCT query) AS n_qn FROM $dns GROUP BY orig_h) y ON x.orig_h = y.orig_h WHERE x.n_dst > 140 AND y.n_qn > 28"
+  },
+  {
+   "family": "large_large",
+   "id": "large_large_01",
+   "sql": "SELECT count(*) AS pairs, sum(c.orig_bytes) AS b_out FROM $conn c JOIN $dns d ON c.orig_h = d.orig_h AND CAST(floor(c.ts / 600) AS BIGINT) = CAST(floor(d.ts / 600) AS BIGINT) WHERE c.resp_p = 53"
+  },
+  {
+   "family": "large_large",
+   "id": "large_large_02",
+   "sql": "SELECT e.criticality, count(*) AS n_pair, sum(c.duration) AS dur FROM $conn c JOIN $conn_enriched e ON c.uid = e.uid WHERE c.conn_state = 'REJ' GROUP BY e.criticality ORDER BY e.criticality"
+  },
+  {
+   "family": "large_large",
+   "id": "large_large_03",
+   "sql": "SELECT count(*) AS n_pair, sum(l.l_quantity) AS qty FROM $lineitem l JOIN $orders o ON l.l_orderkey = o.o_orderkey WHERE o.o_orderdate >= DATE '1994-11-26' AND l.l_shipmode = 'TRUCK'"
+  },
+  {
+   "family": "large_large",
+   "id": "large_large_04",
+   "sql": "SELECT count(*) AS pairs, sum(c.orig_bytes) AS b_out FROM $conn c JOIN $dns d ON c.orig_h = d.orig_h AND CAST(floor(c.ts / 300) AS BIGINT) = CAST(floor(d.ts / 300) AS BIGINT) WHERE c.resp_p = 123"
+  },
+  {
+   "family": "large_large",
+   "id": "large_large_05",
+   "sql": "SELECT e.criticality, count(*) AS n_pair, sum(c.duration) AS dur FROM $conn c JOIN $conn_enriched e ON c.uid = e.uid WHERE c.conn_state = 'SF' GROUP BY e.criticality ORDER BY e.criticality"
+  },
+  {
+   "family": "large_large",
+   "id": "large_large_06",
+   "sql": "SELECT count(*) AS n_pair, sum(l.l_quantity) AS qty FROM $lineitem l JOIN $orders o ON l.l_orderkey = o.o_orderkey WHERE o.o_orderdate >= DATE '1997-08-12' AND l.l_shipmode = 'TRUCK'"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_01",
+   "sql": "SELECT l.l_returnflag, count(*) AS n_l, sum(l.l_extendedprice * (1 - l.l_discount)) AS rev FROM $customer c JOIN $orders o ON c.c_custkey = o.o_custkey JOIN $lineitem l ON l.l_orderkey = o.o_orderkey WHERE o.o_orderdate >= DATE '1997-10-04' GROUP BY l.l_returnflag ORDER BY l.l_returnflag"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_02",
+   "sql": "SELECT s.s_nationkey, count(*) AS n_ps, sum(ps.ps_availqty) AS avail FROM $partsupp ps JOIN $part p ON ps.ps_partkey = p.p_partkey JOIN $supplier s ON ps.ps_suppkey = s.s_suppkey WHERE p.p_name LIKE '%navy%' GROUP BY s.s_nationkey ORDER BY s.s_nationkey"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_03",
+   "sql": "SELECT n.n_name, count(*) AS n_l, sum(l.l_quantity) AS qty FROM $orders o JOIN $lineitem l ON l.l_orderkey = o.o_orderkey JOIN $supplier s ON l.l_suppkey = s.s_suppkey JOIN $nation n ON s.s_nationkey = n.n_nationkey WHERE o.o_orderstatus = 'P' GROUP BY n.n_name ORDER BY n.n_name"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_04",
+   "sql": "SELECT s.s_nationkey, count(*) AS n_l, sum(l.l_extendedprice) AS rev FROM $customer c JOIN $orders o ON c.c_custkey = o.o_custkey JOIN $lineitem l ON l.l_orderkey = o.o_orderkey JOIN $supplier s ON l.l_suppkey = s.s_suppkey AND c.c_nationkey = s.s_nationkey WHERE o.o_orderdate >= DATE '1997-07-20' AND c.c_mktsegment = 'AUTOMOBILE' GROUP BY s.s_nationkey ORDER BY s.s_nationkey"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_05",
+   "sql": "SELECT a.site AS grp, count(*) AS hits FROM $conn c JOIN $assets a ON c.orig_h = a.ip JOIN $ioc i ON c.resp_h = i.ioc_value WHERE i.severity = 'medium' GROUP BY grp ORDER BY grp"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_06",
+   "sql": "SELECT l.l_shipmode, count(*) AS n_l, sum(l.l_extendedprice * (1 - l.l_discount)) AS rev FROM $customer c JOIN $orders o ON c.c_custkey = o.o_custkey JOIN $lineitem l ON l.l_orderkey = o.o_orderkey WHERE o.o_orderdate >= DATE '1994-03-07' GROUP BY l.l_shipmode ORDER BY l.l_shipmode"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_07",
+   "sql": "SELECT s.s_nationkey, count(*) AS n_ps, sum(ps.ps_availqty) AS avail FROM $partsupp ps JOIN $part p ON ps.ps_partkey = p.p_partkey JOIN $supplier s ON ps.ps_suppkey = s.s_suppkey WHERE p.p_name LIKE '%red%' GROUP BY s.s_nationkey ORDER BY s.s_nationkey"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_08",
+   "sql": "SELECT n.n_name, count(*) AS n_l, sum(l.l_quantity) AS qty FROM $orders o JOIN $lineitem l ON l.l_orderkey = o.o_orderkey JOIN $supplier s ON l.l_suppkey = s.s_suppkey JOIN $nation n ON s.s_nationkey = n.n_nationkey WHERE o.o_orderstatus = 'O' GROUP BY n.n_name ORDER BY n.n_name"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_09",
+   "sql": "SELECT s.s_nationkey, count(*) AS n_l, sum(l.l_extendedprice) AS rev FROM $customer c JOIN $orders o ON c.c_custkey = o.o_custkey JOIN $lineitem l ON l.l_orderkey = o.o_orderkey JOIN $supplier s ON l.l_suppkey = s.s_suppkey AND c.c_nationkey = s.s_nationkey WHERE o.o_orderdate >= DATE '1996-01-14' AND c.c_mktsegment = 'AUTOMOBILE' GROUP BY s.s_nationkey ORDER BY s.s_nationkey"
+  },
+  {
+   "family": "join_3to4",
+   "id": "join_3to4_10",
+   "sql": "SELECT a.dept AS grp, count(*) AS hits FROM $conn c JOIN $assets a ON c.orig_h = a.ip JOIN $ioc i ON c.resp_h = i.ioc_value WHERE i.severity = 'low' GROUP BY grp ORDER BY grp"
+  },
+  {
+   "family": "join_5to6",
+   "id": "join_5to6_01",
+   "sql": "SELECT n.n_name, sum(l.l_extendedprice * (1 - l.l_discount)) AS rev FROM $customer c JOIN $orders o ON c.c_custkey = o.o_custkey JOIN $lineitem l ON l.l_orderkey = o.o_orderkey JOIN $supplier s ON l.l_suppkey = s.s_suppkey AND c.c_nationkey = s.s_nationkey JOIN $nation n ON s.s_nationkey = n.n_nationkey WHERE o.o_orderdate >= DATE '1993-12-22' GROUP BY n.n_name ORDER BY n.n_name"
+  },
+  {
+   "family": "join_5to6",
+   "id": "join_5to6_02",
+   "sql": "SELECT n.n_name, sum(l.l_extendedprice - ps.ps_supplycost * l.l_quantity) AS profit FROM $part p JOIN $lineitem l ON p.p_partkey = l.l_partkey JOIN $partsupp ps ON ps.ps_partkey = l.l_partkey AND ps.ps_suppkey = l.l_suppkey JOIN $supplier s ON s.s_suppkey = l.l_suppkey JOIN $nation n ON s.s_nationkey = n.n_nationkey WHERE p.p_name LIKE '%olive%' GROUP BY n.n_name ORDER BY n.n_name"
+  },
+  {
+   "family": "join_5to6",
+   "id": "join_5to6_03",
+   "sql": "SELECT r.r_name, count(*) AS n_l, sum(l.l_quantity) AS qty FROM $orders o JOIN $lineitem l ON l.l_orderkey = o.o_orderkey JOIN $supplier s ON l.l_suppkey = s.s_suppkey JOIN $nation n ON s.s_nationkey = n.n_nationkey JOIN $region r ON n.n_regionkey = r.r_regionkey WHERE l.l_shipmode = 'AIR' GROUP BY r.r_name ORDER BY r.r_name"
+  },
+  {
+   "family": "join_5to6",
+   "id": "join_5to6_04",
+   "sql": "SELECT n.n_name, sum(l.l_extendedprice * (1 - l.l_discount)) AS rev FROM $customer c JOIN $orders o ON c.c_custkey = o.o_custkey JOIN $lineitem l ON l.l_orderkey = o.o_orderkey JOIN $supplier s ON l.l_suppkey = s.s_suppkey AND c.c_nationkey = s.s_nationkey JOIN $nation n ON s.s_nationkey = n.n_nationkey WHERE o.o_orderdate >= DATE '1997-04-28' GROUP BY n.n_name ORDER BY n.n_name"
+  },
+  {
+   "family": "join_5to6",
+   "id": "join_5to6_05",
+   "sql": "SELECT n.n_name, sum(l.l_extendedprice - ps.ps_supplycost * l.l_quantity) AS profit FROM $part p JOIN $lineitem l ON p.p_partkey = l.l_partkey JOIN $partsupp ps ON ps.ps_partkey = l.l_partkey AND ps.ps_suppkey = l.l_suppkey JOIN $supplier s ON s.s_suppkey = l.l_suppkey JOIN $nation n ON s.s_nationkey = n.n_nationkey WHERE p.p_name LIKE '%khaki%' GROUP BY n.n_name ORDER BY n.n_name"
+  },
+  {
+   "family": "join_5to6",
+   "id": "join_5to6_06",
+   "sql": "SELECT r.r_name, count(*) AS n_l, sum(l.l_quantity) AS qty FROM $orders o JOIN $lineitem l ON l.l_orderkey = o.o_orderkey JOIN $supplier s ON l.l_suppkey = s.s_suppkey JOIN $nation n ON s.s_nationkey = n.n_nationkey JOIN $region r ON n.n_regionkey = r.r_regionkey WHERE l.l_shipmode = 'MAIL' GROUP BY r.r_name ORDER BY r.r_name"
+  },
+  {
+   "family": "topn_agg",
+   "id": "topn_agg_01",
+   "sql": "SELECT c.orig_h, sum(c.orig_bytes) AS b_out FROM $conn c JOIN $assets a ON c.orig_h = a.ip WHERE a.criticality = 'critical' GROUP BY c.orig_h ORDER BY b_out DESC, c.orig_h LIMIT 50"
+  },
+  {
+   "family": "topn_agg",
+   "id": "topn_agg_02",
+   "sql": "SELECT o.o_custkey, sum(l.l_quantity) AS qty FROM $orders o JOIN $lineitem l ON o.o_orderkey = l.l_orderkey WHERE o.o_orderdate >= DATE '1994-07-15' GROUP BY o.o_custkey ORDER BY qty DESC, o.o_custkey LIMIT 20"
+  },
+  {
+   "family": "topn_agg",
+   "id": "topn_agg_03",
+   "sql": "SELECT c.c_name, c.c_custkey, sum(o.o_totalprice) AS tot FROM $customer c JOIN $orders o ON c.c_custkey = o.o_custkey JOIN $nation n ON c.c_nationkey = n.n_nationkey WHERE n.n_name = 'INDIA' GROUP BY c.c_name, c.c_custkey HAVING sum(o.o_totalprice) > 2000000 ORDER BY tot DESC, c.c_custkey LIMIT 20"
+  },
+  {
+   "family": "topn_agg",
+   "id": "topn_agg_04",
+   "sql": "SELECT d.orig_h, count(*) AS n_q FROM $dns d JOIN $assets a ON d.orig_h = a.ip WHERE a.dept = 'legal' GROUP BY d.orig_h ORDER BY n_q DESC, d.orig_h LIMIT 10"
+  },
+  {
+   "family": "topn_agg",
+   "id": "topn_agg_05",
+   "sql": "SELECT c.orig_h, sum(c.orig_bytes) AS b_out FROM $conn c JOIN $assets a ON c.orig_h = a.ip WHERE a.criticality = 'low' GROUP BY c.orig_h ORDER BY b_out DESC, c.orig_h LIMIT 50"
+  },
+  {
+   "family": "topn_agg",
+   "id": "topn_agg_06",
+   "sql": "SELECT o.o_custkey, sum(l.l_quantity) AS qty FROM $orders o JOIN $lineitem l ON o.o_orderkey = l.l_orderkey WHERE o.o_orderdate >= DATE '1995-04-04' GROUP BY o.o_custkey ORDER BY qty DESC, o.o_custkey LIMIT 10"
+  },
+  {
+   "family": "topn_agg",
+   "id": "topn_agg_07",
+   "sql": "SELECT c.c_name, c.c_custkey, sum(o.o_totalprice) AS tot FROM $customer c JOIN $orders o ON c.c_custkey = o.o_custkey JOIN $nation n ON c.c_nationkey = n.n_nationkey WHERE n.n_name = 'ALGERIA' GROUP BY c.c_name, c.c_custkey HAVING sum(o.o_totalprice) > 6000000 ORDER BY tot DESC, c.c_custkey LIMIT 50"
+  },
+  {
+   "family": "topn_agg",
+   "id": "topn_agg_08",
+   "sql": "SELECT d.orig_h, count(*) AS n_q FROM $dns d JOIN $assets a ON d.orig_h = a.ip WHERE a.dept = 'marketing' GROUP BY d.orig_h ORDER BY n_q DESC, d.orig_h LIMIT 10"
+  },
+  {
+   "family": "correlated_exists",
+   "id": "correlated_exists_01",
+   "sql": "SELECT o.o_orderpriority, count(*) AS n_o FROM $orders o WHERE o.o_orderdate >= DATE '1995-11-08' AND EXISTS (SELECT 1 FROM $lineitem l WHERE l.l_orderkey = o.o_orderkey AND l.l_commitdate < l.l_receiptdate) GROUP BY o.o_orderpriority ORDER BY o.o_orderpriority"
+  },
+  {
+   "family": "correlated_exists",
+   "id": "correlated_exists_02",
+   "sql": "SELECT a.criticality, count(*) AS n_hosts FROM $assets a WHERE EXISTS (SELECT 1 FROM $conn c WHERE c.orig_h = a.ip AND c.resp_p = 123) GROUP BY a.criticality ORDER BY a.criticality"
+  },
+  {
+   "family": "correlated_exists",
+   "id": "correlated_exists_03",
+   "sql": "SELECT a.site, count(*) AS n_hosts FROM $assets a WHERE a.dept = 'soc' AND NOT EXISTS (SELECT 1 FROM $dns d WHERE d.orig_h = a.ip AND d.qtype = 'AAAA') GROUP BY a.site ORDER BY a.site"
+  },
+  {
+   "family": "correlated_exists",
+   "id": "correlated_exists_04",
+   "sql": "SELECT s.s_nationkey, count(*) AS n_s FROM $supplier s WHERE NOT EXISTS (SELECT 1 FROM $partsupp ps WHERE ps.ps_suppkey = s.s_suppkey AND ps.ps_availqty < 53) GROUP BY s.s_nationkey ORDER BY s.s_nationkey"
+  },
+  {
+   "family": "correlated_exists",
+   "id": "correlated_exists_05",
+   "sql": "SELECT o.o_orderpriority, count(*) AS n_o FROM $orders o WHERE o.o_orderdate >= DATE '1996-01-24' AND EXISTS (SELECT 1 FROM $lineitem l WHERE l.l_orderkey = o.o_orderkey AND l.l_commitdate < l.l_receiptdate) GROUP BY o.o_orderpriority ORDER BY o.o_orderpriority"
+  },
+  {
+   "family": "correlated_exists",
+   "id": "correlated_exists_06",
+   "sql": "SELECT a.criticality, count(*) AS n_hosts FROM $assets a WHERE EXISTS (SELECT 1 FROM $conn c WHERE c.orig_h = a.ip AND c.resp_p = 161) GROUP BY a.criticality ORDER BY a.criticality"
+  },
+  {
+   "family": "correlated_exists",
+   "id": "correlated_exists_07",
+   "sql": "SELECT a.site, count(*) AS n_hosts FROM $assets a WHERE a.dept = 'finance' AND NOT EXISTS (SELECT 1 FROM $dns d WHERE d.orig_h = a.ip AND d.qtype = 'AAAA') GROUP BY a.site ORDER BY a.site"
+  },
+  {
+   "family": "correlated_exists",
+   "id": "correlated_exists_08",
+   "sql": "SELECT s.s_nationkey, count(*) AS n_s FROM $supplier s WHERE NOT EXISTS (SELECT 1 FROM $partsupp ps WHERE ps.ps_suppkey = s.s_suppkey AND ps.ps_availqty < 26) GROUP BY s.s_nationkey ORDER BY s.s_nationkey"
+  },
+  {
+   "family": "ueba_two_level",
+   "id": "ueba_two_level_01",
+   "sql": "SELECT count(*) AS hosts, sum(h.peak) AS peak_sum FROM (SELECT b.orig_h, max(b.n_c) AS peak, sum(b.n_c) AS total, count(*) AS nb FROM (SELECT orig_h, CAST(floor(ts / 60) AS BIGINT) AS bkt, count(*) AS n_c FROM $conn WHERE resp_p = 445 GROUP BY orig_h, CAST(floor(ts / 60) AS BIGINT)) b GROUP BY b.orig_h) h WHERE h.peak * h.nb > 3 * h.total"
+  },
+  {
+   "family": "ueba_two_level",
+   "id": "ueba_two_level_02",
+   "sql": "SELECT count(*) AS hosts, sum(h.peak) AS peak_sum FROM (SELECT b.orig_h, max(b.b_out) AS peak, sum(b.b_out) AS total, count(*) AS nb FROM (SELECT orig_h, CAST(floor(ts / 60) AS BIGINT) AS bkt, sum(orig_bytes) AS b_out FROM $conn GROUP BY orig_h, CAST(floor(ts / 60) AS BIGINT)) b GROUP BY b.orig_h) h WHERE h.peak * h.nb > 3 * h.total"
+  },
+  {
+   "family": "ueba_two_level",
+   "id": "ueba_two_level_03",
+   "sql": "SELECT count(*) AS hosts, sum(h.peak) AS peak_sum FROM (SELECT b.orig_h, max(b.n_q) AS peak, sum(b.n_q) AS total, count(*) AS nb FROM (SELECT orig_h, CAST(floor(ts / 300) AS BIGINT) AS bkt, count(*) AS n_q FROM $dns WHERE qtype = 'A' GROUP BY orig_h, CAST(floor(ts / 300) AS BIGINT)) b GROUP BY b.orig_h) h WHERE h.peak * h.nb > 4 * h.total"
+  },
+  {
+   "family": "ueba_two_level",
+   "id": "ueba_two_level_04",
+   "sql": "SELECT h.dept, count(*) AS hosts, sum(h.peak) AS peak_sum FROM (SELECT a.dept, b.orig_h, max(b.n_c) AS peak, sum(b.n_c) AS total, count(*) AS nb FROM (SELECT orig_h, CAST(floor(ts / 60) AS BIGINT) AS bkt, count(*) AS n_c FROM $conn GROUP BY orig_h, CAST(floor(ts / 60) AS BIGINT)) b JOIN $assets a ON b.orig_h = a.ip GROUP BY a.dept, b.orig_h) h WHERE h.peak * h.nb > 2 * h.total GROUP BY h.dept ORDER BY h.dept"
+  },
+  {
+   "family": "ueba_two_level",
+   "id": "ueba_two_level_05",
+   "sql": "SELECT count(*) AS hosts, sum(h.peak) AS peak_sum FROM (SELECT b.orig_h, max(b.n_c) AS peak, sum(b.n_c) AS total, count(*) AS nb FROM (SELECT orig_h, CAST(floor(ts / 120) AS BIGINT) AS bkt, count(*) AS n_c FROM $conn WHERE resp_p = 80 GROUP BY orig_h, CAST(floor(ts / 120) AS BIGINT)) b GROUP BY b.orig_h) h WHERE h.peak * h.nb > 3 * h.total"
+  },
+  {
+   "family": "ueba_two_level",
+   "id": "ueba_two_level_06",
+   "sql": "SELECT count(*) AS hosts, sum(h.peak) AS peak_sum FROM (SELECT b.orig_h, max(b.b_out) AS peak, sum(b.b_out) AS total, count(*) AS nb FROM (SELECT orig_h, CAST(floor(ts / 300) AS BIGINT) AS bkt, sum(orig_bytes) AS b_out FROM $conn GROUP BY orig_h, CAST(floor(ts / 300) AS BIGINT)) b GROUP BY b.orig_h) h WHERE h.peak * h.nb > 4 * h.total"
+  },
+  {
+   "family": "ueba_two_level",
+   "id": "ueba_two_level_07",
+   "sql": "SELECT count(*) AS hosts, sum(h.peak) AS peak_sum FROM (SELECT b.orig_h, max(b.n_q) AS peak, sum(b.n_q) AS total, count(*) AS nb FROM (SELECT orig_h, CAST(floor(ts / 300) AS BIGINT) AS bkt, count(*) AS n_q FROM $dns WHERE qtype = 'A' GROUP BY orig_h, CAST(floor(ts / 300) AS BIGINT)) b GROUP BY b.orig_h) h WHERE h.peak * h.nb > 3 * h.total"
+  },
+  {
+   "family": "ueba_two_level",
+   "id": "ueba_two_level_08",
+   "sql": "SELECT h.dept, count(*) AS hosts, sum(h.peak) AS peak_sum FROM (SELECT a.dept, b.orig_h, max(b.n_c) AS peak, sum(b.n_c) AS total, count(*) AS nb FROM (SELECT orig_h, CAST(floor(ts / 120) AS BIGINT) AS bkt, count(*) AS n_c FROM $conn GROUP BY orig_h, CAST(floor(ts / 120) AS BIGINT)) b JOIN $assets a ON b.orig_h = a.ip GROUP BY a.dept, b.orig_h) h WHERE h.peak * h.nb > 2 * h.total GROUP BY h.dept ORDER BY h.dept"
+  },
+  {
+   "family": "window_seq",
+   "id": "window_seq_01",
+   "sql": "SELECT count(*) AS n_gaps FROM (SELECT orig_h, ts - lag(ts) OVER (PARTITION BY orig_h ORDER BY ts, uid) AS gap FROM $conn WHERE resp_p = 445) g WHERE g.gap < 5"
+  },
+  {
+   "family": "window_seq",
+   "id": "window_seq_02",
+   "sql": "SELECT count(*) AS n_first, sum(f.orig_bytes) AS b_out FROM (SELECT orig_h, orig_bytes, row_number() OVER (PARTITION BY orig_h ORDER BY ts, uid) AS rn FROM $conn WHERE resp_p = 22) f WHERE f.rn = 1"
+  },
+  {
+   "family": "window_seq",
+   "id": "window_seq_03",
+   "sql": "SELECT count(*) AS n_gaps FROM (SELECT orig_h, ts - lag(ts) OVER (PARTITION BY orig_h ORDER BY ts, uid) AS gap FROM $conn WHERE resp_p = 80) g WHERE g.gap < 10"
+  },
+  {
+   "family": "window_seq",
+   "id": "window_seq_04",
+   "sql": "SELECT count(*) AS n_first, sum(f.orig_bytes) AS b_out FROM (SELECT orig_h, orig_bytes, row_number() OVER (PARTITION BY orig_h ORDER BY ts, uid) AS rn FROM $conn WHERE resp_p = 3389) f WHERE f.rn = 1"
+  }
+ ],
+ "seed": 20261115
+}
