@@ -1,0 +1,151 @@
+{
+ "attributes": {
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The Record Creation Date identifies when the CVE ID was issued to a CVE Numbering Authority (CNA) or the CVE Record was published on the CVE List. Note that the Record Creation Date does not necessarily indicate when this vulnerability was discovered, shared with the affected vendor, publicly disclosed, or updated in CVE.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The Record Creation Date identifies when the CVE ID was issued to a CVE Numbering Authority (CNA) or the CVE Record was published on the CVE List. Note that the Record Creation Date does not necessarily indicate when this vulnerability was discovered, shared with the affected vendor, publicly disclosed, or updated in CVE.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "cvss": {
+   "caption": "CVSS Score",
+   "description": "The CVSS object details Common Vulnerability Scoring System (<a target='_blank' href='https://www.first.org/cvss/'>CVSS</a>) scores from the advisory that are related to the vulnerability.",
+   "is_array": true,
+   "object_name": "CVSS Score",
+   "object_type": "cvss",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "cwe": {
+   "@deprecated": {
+    "message": "Use <code>related_cwes</code> attribute instead.",
+    "since": "1.4.0"
+   },
+   "caption": "CWE",
+   "description": "The CWE object represents a weakness in a software system that can be exploited by a threat actor to perform an attack. The CWE object is based on the <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> catalog.",
+   "object_name": "CWE",
+   "object_type": "cwe",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "cwe_uid": {
+   "@deprecated": {
+    "message": "Use the <code>related_cwes</code> object attributes instead.",
+    "since": "1.1.0"
+   },
+   "caption": "CWE UID",
+   "description": "The <a target='_blank' href='https://cwe.mitre.org/'>Common Weakness Enumeration (CWE)</a> unique identifier. For example: <code>CWE-787</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "cwe_url": {
+   "@deprecated": {
+    "message": "Use the <code>related_cwes</code> object attributes instead.",
+    "since": "1.1.0"
+   },
+   "caption": "CWE URL",
+   "description": "Common Weakness Enumeration (CWE) definition URL. For example: <code>https://cwe.mitre.org/data/definitions/787.html</code>.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "A brief description of the CVE Record.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "epss": {
+   "caption": "EPSS",
+   "description": "The Exploit Prediction Scoring System (EPSS) object describes the estimated probability a vulnerability will be exploited. EPSS is a community-driven effort to combine descriptive information about vulnerabilities (CVEs) with evidence of actual exploitation in-the-wild. (<a target='_blank' href='https://www.first.org/epss/'>EPSS</a>).",
+   "object_name": "EPSS",
+   "object_type": "epss",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The Record Modified Date identifies when the CVE record was last updated.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The Record Modified Date identifies when the CVE record was last updated.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "product": {
+   "caption": "Product",
+   "description": "The product where the vulnerability was discovered.",
+   "object_name": "Product",
+   "object_type": "product",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "references": {
+   "caption": "References",
+   "description": "A list of reference URLs with additional information about the CVE Record.",
+   "is_array": true,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "related_cwes": {
+   "caption": "Related CWEs",
+   "description": "Describes the Common Weakness Enumeration <a target='_blank' href='https://cwe.mitre.org/'>(CWE)</a> details related to the CVE Record.",
+   "is_array": true,
+   "object_name": "CWE",
+   "object_type": "cwe",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "title": {
+   "caption": "Title",
+   "description": "A title or a brief phrase summarizing the CVE record.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Vulnerability Type",
+   "description": "<p>The vulnerability type as selected from a large dropdown menu during CVE refinement.</p>Most frequently used vulnerability types are: <code>DoS</code>, <code>Code Execution</code>, <code>Overflow</code>, <code>Memory Corruption</code>, <code>Sql Injection</code>, <code>XSS</code>, <code>Directory Traversal</code>, <code>Http Response Splitting</code>, <code>Bypass something</code>, <code>Gain Information</code>, <code>Gain Privileges</code>, <code>CSRF</code>, <code>File Inclusion</code>. For more information see <a target='_blank' href='https://www.cvedetails.com/vulnerabilities-by-types.php'>Vulnerabilities By Type</a> distributions.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "CVE ID",
+   "description": "The Common Vulnerabilities and Exposures unique number assigned to a specific computer vulnerability. A CVE Identifier begins with 4 digits representing the year followed by a sequence of digits that acts as a unique identifier. For example: <code>CVE-2021-12345</code>.",
+   "observable": 18,
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "CVE",
+ "description": "The Common Vulnerabilities and Exposures (CVE) object represents publicly disclosed cybersecurity vulnerabilities defined in CVE Program catalog (<a target='_blank' href='https://cve.mitre.org/'>CVE</a>). There is one CVE Record for each vulnerability in the catalog.",
+ "extends": "object",
+ "name": "cve",
+ "profiles": [
+  "data_classification",
+  "datetime"
+ ]
+}

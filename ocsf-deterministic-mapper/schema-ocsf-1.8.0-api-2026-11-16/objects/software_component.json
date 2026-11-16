@@ -1,0 +1,124 @@
+{
+ "attributes": {
+  "author": {
+   "caption": "Author",
+   "description": "The author(s) who published the software component.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "hash": {
+   "caption": "Hash",
+   "description": "Cryptographic hash to identify the binary instance of a software component.",
+   "object_name": "Fingerprint",
+   "object_type": "fingerprint",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "license": {
+   "caption": "Software License",
+   "description": "The software license applied to this component.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The software component name.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "purl": {
+   "caption": "Package URL",
+   "description": "The Package URL (PURL) to identify the software component. This is a URL that uniquely identifies the component, including the component's name, version, and type. The URL is used to locate and retrieve the component's metadata and content.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "related_component": {
+   "caption": "Related Component",
+   "description": "The package URL (PURL) of the component that this software component has a relationship with.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "relationship": {
+   "caption": "Relationship",
+   "description": "The relationship between two software components, normalized to the caption of the <code>relationship_id</code> value. In the case of 'Other', it is defined by the source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "relationship_id": {
+   "caption": "Relationship ID",
+   "description": "The normalized identifier of the relationship between two software components.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The relationship is unknown."
+    },
+    "1": {
+     "caption": "Depends On",
+     "description": "The component is a dependency of another component. Can be used to define both direct and transitive dependencies."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The relationship is not mapped. See the <code>relationship</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "relationship",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The type of software component, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The type of software component.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "Framework",
+     "description": "A software framework."
+    },
+    "2": {
+     "caption": "Library",
+     "description": "A software library."
+    },
+    "3": {
+     "caption": "Operating System",
+     "description": "An operating system. Useful for SBOMs of container images."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The software component version.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Software Component",
+ "description": "The Software Component object describes characteristics of a software component within a software package.",
+ "extends": "object",
+ "name": "software_component"
+}

@@ -1,0 +1,114 @@
+{
+ "attributes": {
+  "hash": {
+   "caption": "Hash",
+   "description": "Commit hash of image created for docker or the SHA256 hash of the container. For example: <code>13550340a8681c84c861aac2e5b440161c2b33a3e4f302ac680ca5b686de48de</code>.",
+   "object_name": "Fingerprint",
+   "object_type": "fingerprint",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "image": {
+   "caption": "Image",
+   "description": "The container image used as a template to run the container.",
+   "object_name": "Image",
+   "object_type": "image",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "labels": {
+   "caption": "Labels",
+   "description": "The list of labels associated to the container.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The container name.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "network_driver": {
+   "caption": "Network Driver",
+   "description": "The network driver used by the container. For example, bridge, overlay, host, none, etc.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "orchestrator": {
+   "caption": "Orchestrator",
+   "description": "The orchestrator managing the container, such as ECS, EKS, K8s, or OpenShift.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "pod_uuid": {
+   "caption": "Pod UUID",
+   "description": "The unique identifier of the pod (or equivalent) that the container is executing on.",
+   "requirement": "optional",
+   "type": "uuid_t",
+   "type_name": "UUID"
+  },
+  "runtime": {
+   "caption": "Runtime",
+   "description": "The backend running the container, such as containerd or cri-o.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "size": {
+   "caption": "Size",
+   "description": "The size of the container image.",
+   "requirement": "recommended",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "tag": {
+   "@deprecated": {
+    "message": "Use the <code>labels or tags</code> attribute instead.",
+    "since": "1.4.0"
+   },
+   "caption": "Image Tag",
+   "description": "The tag used by the container. It can indicate version, format, OS.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "tags": {
+   "caption": "Tags",
+   "description": "The list of tags; <code>{key:value}</code> pairs associated to the container.",
+   "is_array": true,
+   "object_name": "Key:Value object",
+   "object_type": "key_value_object",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The full container unique identifier for this instantiation of the container. For example: <code>ac2ea168264a08f9aaca0dfc82ff3551418dfd22d02b713142a6843caa2f61bf</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Container",
+ "constraints": {
+  "at_least_one": [
+   "uid",
+   "name"
+  ]
+ },
+ "description": "The Container object describes an instance of a specific container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
+ "extends": "object",
+ "name": "container",
+ "observable": 27,
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:ContainerProcess.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:ContainerProcess/"
+  }
+ ]
+}

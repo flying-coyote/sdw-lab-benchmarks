@@ -1,0 +1,144 @@
+{
+ "attributes": {
+  "cmd_line": {
+   "caption": "Command Line",
+   "description": "The job command line.",
+   "observable": 13,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the job was created.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the job was created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "The description of the job.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "file": {
+   "caption": "File",
+   "description": "The file that pertains to the job.",
+   "object_name": "File",
+   "object_type": "file",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "last_run_time": {
+   "caption": "Last Run",
+   "description": "The time when the job was last run.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "last_run_time_dt": {
+   "caption": "Last Run",
+   "description": "The time when the job was last run.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the job.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "next_run_time": {
+   "caption": "Next Run",
+   "description": "The time when the job will next be run.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "next_run_time_dt": {
+   "caption": "Next Run",
+   "description": "The time when the job will next be run.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "run_state": {
+   "caption": "Run State",
+   "description": "The run state of the job.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "run_state_id": {
+   "caption": "Run State ID",
+   "description": "The run state ID of the job.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The run state is unknown."
+    },
+    "1": {
+     "caption": "Ready"
+    },
+    "2": {
+     "caption": "Queued"
+    },
+    "3": {
+     "caption": "Running"
+    },
+    "4": {
+     "caption": "Stopped"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The run state is not mapped. See the <code>run_state</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "run_state",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "user": {
+   "caption": "User",
+   "description": "The user that created the job.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "optional",
+   "type": "object_t"
+  }
+ },
+ "caption": "Job",
+ "description": "The Job object provides information about a scheduled job or task, including its name, command line, and state. It encompasses attributes that describe the properties and status of the scheduled job.",
+ "extends": "object",
+ "name": "job",
+ "profiles": [
+  "data_classification",
+  "datetime"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:ScheduledJob.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:ScheduledJob/"
+  }
+ ]
+}

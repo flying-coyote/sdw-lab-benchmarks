@@ -1,0 +1,79 @@
+{
+ "attributes": {
+  "is_unused": {
+   "caption": "Is Unused",
+   "description": "Indicates whether the privilege is unused within the analysis timeframe.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "last_used_time": {
+   "caption": "Last Used Time",
+   "description": "The most recent time this privilege was used.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "last_used_time_dt": {
+   "caption": "Last Used Time",
+   "description": "The most recent time this privilege was used.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the privilege, action, or permission. Examples: <code>GetObject</code>, <code>CreateStoreImageTask</code> (AWS); <code>Microsoft.Storage/storageAccounts/read</code> (Azure); <code>storage.objects.get</code> (GCP).",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The type or category of the privilege, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The normalized type of the privilege.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The privilege type is unknown."
+    },
+    "1": {
+     "caption": "Read",
+     "description": "A read-type privilege that permits viewing or retrieving data. Examples: <code>s3:GetObject</code>, <code>Microsoft.Storage/storageAccounts/read</code>, <code>storage.objects.get</code>."
+    },
+    "2": {
+     "caption": "Write",
+     "description": "A write-type privilege that permits creating, modifying, or deleting data. Examples: <code>s3:PutObject</code>, <code>Microsoft.Storage/storageAccounts/write</code>, <code>storage.objects.create</code>."
+    },
+    "3": {
+     "caption": "Execute",
+     "description": "An execute-type privilege that permits running operations or invoking functions. Examples: <code>lambda:InvokeFunction</code>, <code>Microsoft.Compute/virtualMachines/start/action</code>."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The privilege type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "optional",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  }
+ },
+ "caption": "Privilege Info",
+ "description": "The Privilege Info object describes information about a specific privilege, action, or permission. It captures the privilege name, type, usage status, and when it was last used.",
+ "extends": "object",
+ "name": "privilege_info",
+ "profiles": [
+  "datetime"
+ ]
+}

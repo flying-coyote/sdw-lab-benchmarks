@@ -1,0 +1,94 @@
+{
+ "attributes": {
+  "class": {
+   "caption": "Resource Record Class",
+   "description": "The class of DNS data contained in this resource record. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc1035.txt'>RFC1035</a>. For example: <code>IN</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "flag_ids": {
+   "caption": "DNS Header Flags",
+   "description": "The list of DNS answer header flag IDs.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The flag is unknown."
+    },
+    "1": {
+     "caption": "Authoritative Answer"
+    },
+    "2": {
+     "caption": "Truncated Response"
+    },
+    "3": {
+     "caption": "Recursion Desired"
+    },
+    "4": {
+     "caption": "Recursion Available"
+    },
+    "5": {
+     "caption": "Authentic Data"
+    },
+    "6": {
+     "caption": "Checking Disabled"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The flag is not mapped. See the <code>flags</code> attribute, which contains a data source specific value."
+    }
+   },
+   "is_array": true,
+   "requirement": "recommended",
+   "sibling": "flags",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "flags": {
+   "caption": "DNS Header Flags",
+   "description": "The list of DNS answer header flags.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "packet_uid": {
+   "caption": "Packet UID",
+   "description": "The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "rdata": {
+   "caption": "DNS RData",
+   "description": "The data describing the DNS resource. The meaning of this data depends on the type and class of the resource record.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "ttl": {
+   "caption": "TTL",
+   "description": "The time interval that the resource record may be cached. Zero value means that the resource record can only be used for the transaction in progress, and should not be cached.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "type": {
+   "caption": "Resource Record Type",
+   "description": "The type of data contained in this resource record. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc1035.txt'>RFC1035</a>. For example: <code>CNAME</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "DNS Answer",
+ "description": "The DNS Answer object represents a specific response provided by the Domain Name System (DNS) when querying for information about a domain or performing a DNS operation. It encapsulates the relevant details and data returned by the DNS server in response to a query.",
+ "extends": "_dns",
+ "name": "dns_answer",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:InboundInternetDNSResponseTraffic.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:InboundInternetDNSResponseTraffic/"
+  }
+ ]
+}

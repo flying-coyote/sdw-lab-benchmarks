@@ -1,0 +1,88 @@
+{
+ "attributes": {
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the table was known to have been created.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the table was known to have been created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "The description of the table.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "groups": {
+   "caption": "Groups",
+   "description": "The group names to which the table belongs.",
+   "is_array": true,
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The most recent time when any changes, updates, or modifications were made within the table.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The most recent time when any changes, updates, or modifications were made within the table.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The table name, ordinarily as assigned by a database administrator.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "size": {
+   "caption": "Size",
+   "description": "The size of the data table in bytes.",
+   "requirement": "optional",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the table.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Table",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The table object represents a table within a structured relational database or datastore, which contains columns and rows of data that are able to be create, updated, deleted and queried.",
+ "extends": "_entity",
+ "name": "table",
+ "profiles": [
+  "datetime"
+ ]
+}

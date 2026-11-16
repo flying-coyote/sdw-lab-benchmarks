@@ -1,0 +1,92 @@
+{
+ "attributes": {
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the enrichment data was generated.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the enrichment data was generated.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "data": {
+   "caption": "Data",
+   "description": "The enrichment data associated with the attribute and value. The meaning of this data depends on the type the enrichment record.",
+   "requirement": "required",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "A long description of the enrichment data.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the attribute to which the enriched data pertains.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "provider": {
+   "caption": "Provider",
+   "description": "The enrichment data provider name.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "reputation": {
+   "caption": "Reputation Scores",
+   "description": "The reputation of the enrichment data.",
+   "object_name": "Reputation",
+   "object_type": "reputation",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "short_desc": {
+   "caption": "Short Description",
+   "description": "A short description of the enrichment data.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "src_url": {
+   "caption": "Source URL",
+   "description": "The URL of the source of the enrichment data.",
+   "requirement": "recommended",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The enrichment type. For example: <code>location</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "value": {
+   "caption": "Value",
+   "description": "The value of the attribute to which the enriched data pertains.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Enrichment",
+ "description": "The Enrichment object provides inline enrichment data for specific attributes of interest within an event. It serves as a mechanism to enhance or supplement the information associated with the event by adding additional relevant details or context.",
+ "extends": "object",
+ "name": "enrichment",
+ "profiles": [
+  "datetime"
+ ]
+}

@@ -1,0 +1,72 @@
+source,class,field,gold,alias_pred
+Okta System Log,authentication,actor.id,user.uid,actor.user.name
+Okta System Log,authentication,actor.type,user.type,actor.user.name
+Okta System Log,authentication,actor.alternateId,user.email_addr,actor.user.name
+Okta System Log,authentication,actor.displayName,user.full_name,actor.user.name
+Okta System Log,authentication,client.userAgent.rawUserAgent,http_request.user_agent,actor.user.name
+Okta System Log,authentication,client.userAgent.os,src_endpoint.os.name,actor.user.name
+Okta System Log,authentication,client.geographicalContext.geolocation.lat,src_endpoint.location.lat,message
+Okta System Log,authentication,client.geographicalContext.geolocation.lon,src_endpoint.location.long,message
+Okta System Log,authentication,client.geographicalContext.city,src_endpoint.location.city,message
+Okta System Log,authentication,client.geographicalContext.state,src_endpoint.location.region,message
+Okta System Log,authentication,client.geographicalContext.country,src_endpoint.location.country,message
+Okta System Log,authentication,client.geographicalContext.postalCode,src_endpoint.location.postal_code,message
+Okta System Log,authentication,client.device,device.type,device.hostname
+Okta System Log,authentication,request.ipChain,src_endpoint.intermediate_ips,src_endpoint.ip
+Okta System Log,authentication,transaction.id,metadata.correlation_uid,metadata.event_code
+Okta System Log,authentication,authenticationContext.issuer.id,session.issuer,message
+Okta System Log,authentication,authenticationContext.externalSessionId,session.uid,message
+Okta System Log,authentication,securityContext.asNumber,src_endpoint.autonomous_system.number,message
+Okta System Log,authentication,securityContext.asOrg,src_endpoint.autonomous_system.name,message
+Okta System Log,authentication,securityContext.isp,src_endpoint.isp,message
+Okta System Log,authentication,securityContext.domain,src_endpoint.domain,message
+CrowdStrike Detection Summary,detection_finding,event.DetectName,finding_info.title,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.DetectDescription,finding_info.desc,device.ip
+CrowdStrike Detection Summary,detection_finding,event.Tactic,attacks.tactic,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.Technique,attacks.technique,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.FileName,evidences.process.file.name,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.FilePath,evidences.process.file.path,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.CommandLine,evidences.process.cmd_line,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.MD5String,evidences.process.file.hashes,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.SHA1String,evidences.process.file.hashes,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.SHA256String,evidences.process.file.hashes,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.UserName,evidences.actor.user.name,actor.user.name
+CrowdStrike Detection Summary,detection_finding,event.MACAddress,device.mac,device.ip
+CrowdStrike Detection Summary,detection_finding,event.SensorId,device.agent_list,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.MachineDomain,device.domain,device.hostname
+CrowdStrike Detection Summary,detection_finding,event.ProcessId,evidences.process.pid,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.ParentProcessId,evidences.process.parent_process.pid,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.ParentImageFileName,evidences.process.parent_process.file.path,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.ParentCommandLine,evidences.process.parent_process.cmd_line,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.GrandparentImageFileName,evidences.process.ancestry,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.IOCType,observables.type_id,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.IOCValue,observables.value,metadata.event_code
+CrowdStrike Detection Summary,detection_finding,event.FalconHostLink,finding_info.src_url,device.hostname
+CrowdStrike Detection Summary,detection_finding,event.ProcessStartTime,evidences.process.created_time,time
+CrowdStrike Detection Summary,detection_finding,event.ProcessEndTime,evidences.process.terminated_time,time
+CrowdStrike Detection Summary,detection_finding,event.DetectId,finding_info.uid,metadata.event_code
+Palo Alto PAN-OS TRAFFIC,network_activity,receive_time,metadata.logged_time,time
+Palo Alto PAN-OS TRAFFIC,network_activity,srcuser,src_endpoint.owner.name,actor.user.name
+Palo Alto PAN-OS TRAFFIC,network_activity,dstuser,dst_endpoint.owner.name,actor.user.name
+Palo Alto PAN-OS TRAFFIC,network_activity,sport,src_endpoint.port,dst_endpoint.port
+Palo Alto PAN-OS TRAFFIC,network_activity,bytes_received,traffic.bytes_in,traffic.bytes
+Palo Alto PAN-OS TRAFFIC,network_activity,packets,traffic.packets,time
+Palo Alto PAN-OS TRAFFIC,network_activity,pkts_sent,traffic.packets_out,time
+Palo Alto PAN-OS TRAFFIC,network_activity,pkts_received,traffic.packets_in,time
+Palo Alto PAN-OS TRAFFIC,network_activity,rule_uuid,firewall_rule.uid,firewall_rule.name
+Palo Alto PAN-OS TRAFFIC,network_activity,dynusergroup_name,src_endpoint.owner.groups.name,actor.user.name
+Palo Alto PAN-OS TRAFFIC,network_activity,xff_ip,src_endpoint.intermediate_ips,src_endpoint.ip
+Palo Alto PAN-OS TRAFFIC,network_activity,src_host,src_endpoint.hostname,device.hostname
+Palo Alto PAN-OS TRAFFIC,network_activity,dst_host,dst_endpoint.hostname,device.hostname
+Cisco ASA connection syslog,network_activity,message_id,metadata.event_code,message
+Cisco ASA connection syslog,network_activity,user,src_endpoint.owner.name,actor.user.name
+Cisco Umbrella DNS,dns_activity,query_type,query.type,query.hostname
+Zscaler ZIA Web,http_activity,url,http_request.url.url_string,http_request.url
+Zscaler ZIA Web,http_activity,host,http_request.url.hostname,device.hostname
+Zscaler ZIA Web,http_activity,urlcategory,http_request.url.categories,http_request.url
+Zscaler ZIA Web,http_activity,requestmethod,http_request.http_method,metadata.event_code
+Zscaler ZIA Web,http_activity,requestsize,http_request.length,time
+Zscaler ZIA Web,http_activity,responsesize,http_response.length,traffic.bytes_in
+Zscaler ZIA Web,http_activity,useragent,http_request.user_agent,actor.user.name
+Zscaler ZIA Web,http_activity,rulelabel,policy.name,firewall_rule.name
+Zscaler ZIA Web,http_activity,deviceowner,device.owner.name,device.hostname

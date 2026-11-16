@@ -1,0 +1,58 @@
+{
+ "attributes": {
+  "labels": {
+   "caption": "Labels",
+   "description": "The list of labels associated with the service.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the service.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "tags": {
+   "caption": "Tags",
+   "description": "The list of tags; <code>{key:value}</code> pairs associated to the service.",
+   "is_array": true,
+   "object_name": "Key:Value object",
+   "object_type": "key_value_object",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the service.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The version of the service.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Service",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The Service object describes characteristics of a service, <code> e.g. AWS EC2. </code>",
+ "extends": "_entity",
+ "name": "service",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:ServiceApplication.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:ServiceApplication/"
+  }
+ ]
+}

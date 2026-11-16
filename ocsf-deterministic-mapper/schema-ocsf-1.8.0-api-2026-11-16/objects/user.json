@@ -1,0 +1,234 @@
+{
+ "attributes": {
+  "account": {
+   "caption": "Account",
+   "description": "The user's account or the account associated with the user.",
+   "object_name": "Account",
+   "object_type": "account",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "credential_uid": {
+   "@deprecated": {
+    "message": "Use <code>programmatic_credentials</code> instead.",
+    "since": "1.6.0"
+   },
+   "caption": "User Credential ID",
+   "description": "The unique identifier of the user's credential. For example, AWS Access Key ID.",
+   "observable": 19,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "display_name": {
+   "caption": "Display Name",
+   "description": "The display name of the user, as reported by the product.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "domain": {
+   "caption": "Domain",
+   "description": "The domain where the user is defined. For example: the LDAP or Active Directory domain.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "email_addr": {
+   "caption": "Email Address",
+   "description": "The user's primary email address.",
+   "requirement": "optional",
+   "type": "email_t",
+   "type_name": "Email Address"
+  },
+  "forward_addr": {
+   "caption": "Forwarding Address",
+   "description": "The user's forwarding email address.",
+   "requirement": "optional",
+   "type": "email_t",
+   "type_name": "Email Address"
+  },
+  "full_name": {
+   "caption": "Full Name",
+   "description": "The full name of the user, as reported by the product.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "groups": {
+   "caption": "Groups",
+   "description": "The administrative groups to which the user belongs.",
+   "is_array": true,
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "has_mfa": {
+   "caption": "MFA Assigned",
+   "description": "The user has a multi-factor or secondary-factor device assigned.",
+   "requirement": "recommended",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "ldap_person": {
+   "caption": "LDAP Person",
+   "description": "The additional LDAP attributes that describe a person.",
+   "object_name": "LDAP Person",
+   "object_type": "ldap_person",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The username. For example, <code>janedoe1</code>.",
+   "requirement": "recommended",
+   "type": "username_t",
+   "type_name": "User Name"
+  },
+  "org": {
+   "caption": "Organization",
+   "description": "Organization and org unit related to the user.",
+   "object_name": "Organization",
+   "object_type": "organization",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "phone_number": {
+   "caption": "Telephone Number",
+   "description": "The telephone number of the user.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "programmatic_credentials": {
+   "caption": "Programmatic Credentials",
+   "description": "Details about the programmatic credential (API keys, access tokens, certificates, etc) associated to the user.",
+   "is_array": true,
+   "object_name": "Programmatic Credential",
+   "object_type": "programmatic_credential",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "risk_level": {
+   "caption": "Risk Level",
+   "description": "The risk level, normalized to the caption of the risk_level_id value.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "risk_level_id": {
+   "caption": "Risk Level ID",
+   "description": "The normalized risk level id.",
+   "enum": {
+    "0": {
+     "caption": "Info"
+    },
+    "1": {
+     "caption": "Low"
+    },
+    "2": {
+     "caption": "Medium"
+    },
+    "3": {
+     "caption": "High"
+    },
+    "4": {
+     "caption": "Critical"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The risk level is not mapped. See the <code>risk_level</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "optional",
+   "sibling": "risk_level",
+   "suppress_checks": [
+    "enum_convention"
+   ],
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "risk_score": {
+   "caption": "Risk Score",
+   "description": "The risk score as reported by the event source.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The type of the user. For example, System, AWS IAM User, etc.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The account type identifier.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "User",
+     "description": "Regular user account."
+    },
+    "2": {
+     "caption": "Admin",
+     "description": "Admin/root user account."
+    },
+    "3": {
+     "caption": "System",
+     "description": "System account. For example, Windows computer accounts with a trailing dollar sign ($)."
+    },
+    "4": {
+     "caption": "Service",
+     "description": "Service account. For example, Windows service account."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique user identifier. For example, the Windows user SID, ActiveDirectory DN or AWS user ARN.",
+   "observable": 31,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid_alt": {
+   "caption": "Alternate ID",
+   "description": "The alternate user identifier. For example, the Active Directory user GUID or AWS user Principal ID.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "User",
+ "constraints": {
+  "at_least_one": [
+   "account",
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The User object describes the characteristics of a user/person or a security principal.",
+ "extends": "_entity",
+ "name": "user",
+ "observable": 21,
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:UserAccount",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:UserAccount/"
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "attributes": {
+  "all_privileges_unused": {
+   "caption": "All Privileges Unused",
+   "description": "Indicates whether all privileges within this service are unused.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "analyzed_privileges_count": {
+   "caption": "Analyzed Privileges Count",
+   "description": "The total count of privileges analyzed within this service.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "execute_count": {
+   "caption": "Execute Privilege Count",
+   "description": "The count of execute-type privileges within this service.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "last_used_time": {
+   "caption": "Last Used Time",
+   "description": "The most recent time any privilege in this service was used.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "last_used_time_dt": {
+   "caption": "Last Used Time",
+   "description": "The most recent time any privilege in this service was used.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The service or namespace identifier. Examples: <code>s3</code>, <code>ec2</code> (AWS); <code>Microsoft.Storage</code> (Azure); <code>storage</code> (GCP).",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "privilege_attack_info_list": {
+   "caption": "Privilege Attack Info List",
+   "description": "The list of privilege-to-attack mappings for this service.",
+   "is_array": true,
+   "object_name": "Privilege Attack Info",
+   "object_type": "privilege_attack_info",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "read_count": {
+   "caption": "Read Privilege Count",
+   "description": "The count of read-type privileges within this service.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "unused_privileges_count": {
+   "caption": "Unused Privileges Count",
+   "description": "The count of unused privileges within this service.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "write_count": {
+   "caption": "Write Privilege Count",
+   "description": "The count of write-type privileges within this service.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  }
+ },
+ "caption": "Service Privilege Analysis",
+ "description": "The Service Privilege Analysis object describes privilege analysis results for a single cloud service or resource namespace. It provides metrics on privilege usage, counts by type, and mappings to potential attack techniques.",
+ "extends": "object",
+ "name": "service_privilege_analysis",
+ "profiles": [
+  "datetime"
+ ]
+}

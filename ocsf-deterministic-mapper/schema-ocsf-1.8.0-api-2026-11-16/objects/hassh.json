@@ -1,0 +1,23 @@
+{
+ "attributes": {
+  "algorithm": {
+   "caption": "Algorithm",
+   "description": "The concatenation of key exchange, encryption, authentication and compression algorithms (separated by ';'). NOTE: This is not the underlying algorithm for the hash implementation.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "fingerprint": {
+   "caption": "Fingerprint",
+   "description": "The hash of the key exchange, encryption, authentication and compression algorithms.",
+   "object_name": "Fingerprint",
+   "object_type": "fingerprint",
+   "requirement": "required",
+   "type": "object_t"
+  }
+ },
+ "caption": "HASSH",
+ "description": "The HASSH object contains SSH network fingerprinting values for specific client/server implementations. It provides a standardized way of identifying and categorizing SSH connections based on their unique characteristics and behavior.",
+ "extends": "object",
+ "name": "hassh"
+}

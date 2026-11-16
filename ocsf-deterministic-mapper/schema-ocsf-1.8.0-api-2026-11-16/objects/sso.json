@@ -1,0 +1,185 @@
+{
+ "attributes": {
+  "auth_protocol": {
+   "caption": "Auth Protocol",
+   "description": "The authorization protocol as defined by the caption of <code>auth_protocol_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "auth_protocol_id": {
+   "caption": "Auth Protocol ID",
+   "description": "The normalized identifier of the authentication protocol used by the SSO resource.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The authentication protocol is unknown."
+    },
+    "1": {
+     "caption": "NTLM"
+    },
+    "10": {
+     "caption": "RADIUS"
+    },
+    "11": {
+     "caption": "Basic Authentication"
+    },
+    "12": {
+     "caption": "LDAP"
+    },
+    "2": {
+     "caption": "Kerberos"
+    },
+    "3": {
+     "caption": "Digest"
+    },
+    "4": {
+     "caption": "OpenID"
+    },
+    "5": {
+     "caption": "SAML"
+    },
+    "6": {
+     "caption": "OAUTH 2.0"
+    },
+    "7": {
+     "caption": "PAP"
+    },
+    "8": {
+     "caption": "CHAP"
+    },
+    "9": {
+     "caption": "EAP"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The authentication protocol is not mapped. See the <code>auth_protocol</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "optional",
+   "sibling": "auth_protocol",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "certificate": {
+   "caption": "SAML Certificate",
+   "description": "Digital Signature associated with the SSO resource, e.g., SAML X.509 certificate details.",
+   "object_name": "Digital Certificate",
+   "object_type": "certificate",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "When the SSO resource was created.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "When the SSO resource was created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "duration_mins": {
+   "caption": "SSO Session Duration",
+   "description": "The duration (in minutes) for an SSO session, after which re-authentication is required.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "idle_timeout": {
+   "caption": "SSO Idle Timeout",
+   "description": "Duration (in minutes) of allowed inactivity before Single Sign-On (SSO) session expiration.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "login_endpoint": {
+   "caption": "SSO Login Endpoint",
+   "description": "URL for initiating an SSO login request.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "logout_endpoint": {
+   "caption": "SSO Logout Endpoint",
+   "description": "URL for initiating an SSO logout request, allowing sessions to be terminated across applications.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "metadata_endpoint": {
+   "caption": "SSO Metadata Endpoint",
+   "description": "URL where metadata about the SSO configuration is available (e.g., for SAML configurations).",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The most recent time when the SSO resource was updated.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The most recent time when the SSO resource was updated.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the SSO resource.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "protocol_name": {
+   "caption": "Supported Protocol",
+   "description": "The supported protocol for the SSO resource. E.g., <code>SAML</code> or <code>OIDC</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "scopes": {
+   "caption": "Scopes",
+   "description": "Scopes define the specific permissions or actions that the client is allowed to perform on behalf of the user. Each scope represents a different set of permissions, and the user can selectively grant or deny access to specific scopes during the authorization process.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "A unique identifier for a SSO resource.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "vendor_name": {
+   "caption": "Service Provider",
+   "description": "Name of the vendor or service provider implementing SSO. E.g., <code>Okta</code>, <code>Auth0</code>, <code>Microsoft</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "SSO",
+ "description": "The Single Sign-On (SSO) object provides a structure for normalizing SSO attributes, configuration, and/or settings from Identity Providers.",
+ "extends": "object",
+ "name": "sso",
+ "profiles": [
+  "datetime"
+ ]
+}

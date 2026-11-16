@@ -1,0 +1,122 @@
+{
+  "environment": {
+    "chdb": "4.4.0",
+    "chdb-core": "26.11.1",
+    "datafusion": "55.0.0",
+    "duckdb": "2.0.0",
+    "polars": "2.1.0",
+    "pyarrow": "26.0.1"
+  },
+  "extra_opt_in_from_probe": {},
+  "knob_probe": {
+    "chdb": [
+      {
+        "name": "input_format_parquet_verify_checksums",
+        "value": "1"
+      },
+      {
+        "name": "output_format_parquet_write_checksums",
+        "value": "1"
+      }
+    ],
+    "datafusion": [],
+    "duckdb": [],
+    "duckdb_read_parquet_params": [],
+    "polars_read_parquet_params": [],
+    "polars_scan_parquet_params": [],
+    "pyarrow_read_table_params": [
+      "page_checksum_verification"
+    ]
+  },
+  "label": "current",
+  "no_checksum_control": {
+    "chdb": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "datafusion": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "duckdb": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "polars": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "pyarrow": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    }
+  },
+  "opt_in_verification": {
+    "polars(via pyarrow)": {
+      "error": "OSError: could not verify page integrity, CRC checksum verification failed for page_ordinal 0",
+      "result": null,
+      "verdict": "ERRORED (caught it)",
+      "verifies": true
+    },
+    "pyarrow": {
+      "error": "OSError: could not verify page integrity, CRC checksum verification failed for page_ordinal 0",
+      "result": null,
+      "verdict": "ERRORED (caught it)",
+      "verifies": true
+    }
+  },
+  "python": "3.12.3",
+  "run_utc": "2026-11-16T13:15:05Z",
+  "silent_wrong_stock": [
+    "datafusion",
+    "duckdb",
+    "polars",
+    "pyarrow"
+  ],
+  "truth_sum": 72623864790332856,
+  "verify_by_default": [
+    "chdb"
+  ],
+  "with_checksum_stock": {
+    "chdb": {
+      "error": "ChdbError: Code: 117. DB::Exception: Page CRC checksum verification failed: read stage: ColumnData: c",
+      "result": null,
+      "verdict": "ERRORED (caught it)",
+      "verifies": true
+    },
+    "datafusion": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "duckdb": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "polars": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    },
+    "pyarrow": {
+      "delta": 1,
+      "result": 72623864790332857,
+      "verdict": "SILENT-WRONG",
+      "verifies": false
+    }
+  }
+}

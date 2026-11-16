@@ -1,0 +1,190 @@
+{
+ "attributes": {
+  "avg_timespan": {
+   "caption": "Average Timespan",
+   "description": "The average time to patch.",
+   "object_name": "Time Span",
+   "object_type": "timespan",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "bulletin": {
+   "caption": "Patch Bulletin",
+   "description": "The Advisory bulletin identifier.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "classification": {
+   "caption": "Classification",
+   "description": "The vendors classification of the Advisory.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the Advisory record was created.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the Advisory record was created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "A brief description of the Advisory Record.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "install_state": {
+   "caption": "Install State",
+   "description": "The install state of the Advisory.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "install_state_id": {
+   "caption": "Install State ID",
+   "description": "The normalized install state ID of the Advisory.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The normalized install state is unknown."
+    },
+    "1": {
+     "caption": "Installed",
+     "description": "The item is installed."
+    },
+    "2": {
+     "caption": "Not Installed",
+     "description": "The item is not installed."
+    },
+    "3": {
+     "caption": "Installed Pending Reboot",
+     "description": "The item is installed pending reboot operation."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The install state is not mapped. See the <code>install_state</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "install_state",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "is_superseded": {
+   "caption": "The patch is superseded.",
+   "description": "The Advisory has been replaced by another.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The time when the Advisory record was last updated.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The time when the Advisory record was last updated.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "os": {
+   "caption": "OS",
+   "description": "The operating system the Advisory applies to.",
+   "object_name": "Operating System (OS)",
+   "object_type": "os",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "product": {
+   "caption": "Product",
+   "description": "The product where the vulnerability was discovered.",
+   "object_name": "Product",
+   "object_type": "product",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "references": {
+   "caption": "References",
+   "description": "A list of reference URLs with additional information about the vulnerabilities disclosed in the Advisory.",
+   "is_array": true,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "related_cves": {
+   "caption": "Related CVEs",
+   "description": "A list of Common Vulnerabilities and Exposures <a target='_blank' href='https://cve.mitre.org/'>(CVE)</a> identifiers related to the vulnerabilities disclosed in the Advisory.",
+   "is_array": true,
+   "object_name": "CVE",
+   "object_type": "cve",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "related_cwes": {
+   "caption": "Related CWEs",
+   "description": "A list of Common Weakness Enumeration <a target='_blank' href='https://cwe.mitre.org/'>(CWE)</a> identifiers related to the vulnerabilities disclosed in the Advisory.",
+   "is_array": true,
+   "object_name": "CWE",
+   "object_type": "cwe",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "size": {
+   "caption": "Size",
+   "description": "The size in bytes for the Advisory. Usually populated for a KB Article patch.",
+   "requirement": "optional",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "src_url": {
+   "caption": "Source URL",
+   "description": "The Advisory link from the source vendor.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "title": {
+   "caption": "Title",
+   "description": "A title or a brief phrase summarizing the Advisory.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Advisory ID",
+   "description": "The unique identifier assigned to the advisory or disclosed vulnerability, e.g, <code>GHSA-5mrr-rgp6-x4gr</code>.",
+   "observable": 44,
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Advisory",
+ "description": "The Advisory object represents publicly disclosed cybersecurity vulnerabilities defined in a Security advisory. e.g. <code> Microsoft KB Article</code>, <code>Apple Security Advisory</code>, or a <code>GitHub Security Advisory (GHSA)</code>",
+ "extends": "object",
+ "name": "advisory",
+ "profiles": [
+  "data_classification",
+  "datetime"
+ ]
+}

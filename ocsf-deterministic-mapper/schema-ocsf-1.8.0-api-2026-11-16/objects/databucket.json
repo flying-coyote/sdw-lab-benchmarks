@@ -1,0 +1,329 @@
+{
+ "attributes": {
+  "agent_list": {
+   "caption": "Agent List",
+   "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
+   "is_array": true,
+   "object_name": "Agent",
+   "object_type": "agent",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "cloud_partition": {
+   "caption": "Cloud Partition",
+   "description": "The logical grouping or isolated segment within a cloud provider's infrastructure where the databucket is located.",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the databucket was known to have been created.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the databucket was known to have been created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "criticality": {
+   "caption": "Criticality",
+   "description": "The criticality of the databucket as defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "data": {
+   "caption": "Data",
+   "description": "Additional data describing the resource.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "data_classification": {
+   "@deprecated": {
+    "message": "Use the attribute <code>data_classifications</code> instead",
+    "since": "1.4.0"
+   },
+   "caption": "Data Classification",
+   "description": "The Data Classification object includes information about data classification levels and data category types.",
+   "group": "context",
+   "object_name": "Data Classification",
+   "object_type": "data_classification",
+   "profiles": [
+    "data_classification"
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "data_classifications": {
+   "caption": "Data Classification",
+   "description": "A list of Data Classification objects, that include information about data classification levels and data category types, identified by a classifier.",
+   "group": "context",
+   "is_array": true,
+   "object_name": "Data Classification",
+   "object_type": "data_classification",
+   "profiles": [
+    "data_classification"
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "The description of the databucket.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "encryption_details": {
+   "caption": "Encryption Details",
+   "description": "The encryption details of the databucket. Should be populated if the databucket is encrypted.",
+   "object_name": "Encryption Details",
+   "object_type": "encryption_details",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "file": {
+   "caption": "File",
+   "description": "Details about the file/object within a databucket.",
+   "object_name": "File",
+   "object_type": "file",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "group": {
+   "@deprecated": {
+    "message": "Use the <code>groups</code> attribute instead.",
+    "since": "1.6.0"
+   },
+   "caption": "Group",
+   "description": "The name of the related resource group.",
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "groups": {
+   "caption": "Groups",
+   "description": "The group names to which the databucket belongs.",
+   "is_array": true,
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "hostname": {
+   "caption": "Hostname",
+   "description": "The fully qualified hostname of the databucket.",
+   "requirement": "recommended",
+   "type": "hostname_t",
+   "type_name": "Hostname"
+  },
+  "ip": {
+   "caption": "IP Address",
+   "description": "The IP address of the resource, in either IPv4 or IPv6 format.",
+   "requirement": "recommended",
+   "type": "ip_t",
+   "type_name": "IP Address"
+  },
+  "is_backed_up": {
+   "caption": "Back Ups Configured",
+   "description": "Indicates whether the device or resource has a backup enabled, such as an automated snapshot or a cloud backup. For example, this is indicated by the <code>cloudBackupEnabled</code> value within JAMF Pro mobile devices or the registration of an AWS ARN with the AWS Backup service.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_encrypted": {
+   "caption": "Encrypted",
+   "description": "Indicates if the databucket is encrypted.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_public": {
+   "caption": "Public",
+   "description": "Indicates if the databucket is publicly accessible.",
+   "requirement": "recommended",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "labels": {
+   "caption": "Labels",
+   "description": "The list of labels associated to the resource.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The most recent time when any changes, updates, or modifications were made within the databucket.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The most recent time when any changes, updates, or modifications were made within the databucket.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The databucket name.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "namespace": {
+   "caption": "Namespace",
+   "description": "The namespace is useful when similar entities exist that you need to keep separate.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "owner": {
+   "caption": "Owner",
+   "description": "The identity of the service or user account that owns the databucket.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "region": {
+   "caption": "Region",
+   "description": "The cloud region of the databucket.",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "resource_relationship": {
+   "caption": "Resource Relationship",
+   "description": "A graph representation showing how this databucket relates to and interacts with other entities in the environment. This can include parent/child relationships, dependencies, or other connections.",
+   "object_name": "Graph",
+   "object_type": "graph",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "size": {
+   "caption": "Size",
+   "description": "The size of the databucket in bytes.",
+   "requirement": "optional",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "tags": {
+   "caption": "Tags",
+   "description": "The list of tags; <code>{key:value}</code> pairs associated to the resource.",
+   "is_array": true,
+   "object_name": "Key:Value object",
+   "object_type": "key_value_object",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The databucket type.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The normalized identifier of the databucket type.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "S3"
+    },
+    "2": {
+     "caption": "Azure Blob"
+    },
+    "3": {
+     "caption": "GCP Bucket"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "required",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the databucket.",
+   "requirement": "recommended",
+   "type": "resource_uid_t",
+   "type_name": "Resource UID"
+  },
+  "uid_alt": {
+   "caption": "Alternate ID",
+   "description": "The alternative unique identifier of the resource.",
+   "requirement": "optional",
+   "type": "resource_uid_t",
+   "type_name": "Resource UID"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The version of the resource. For example <code>1.2.3</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "zone": {
+   "caption": "Cloud Availability Zone",
+   "description": "The specific availability zone within a cloud region where the databucket is located.",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Databucket",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The databucket object is a basic container that holds data, typically organized through the use of data partitions.",
+ "extends": "_resource",
+ "name": "databucket",
+ "profiles": [
+  "cloud",
+  "data_classification",
+  "datetime"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:CloudStorage.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:CloudStorage/"
+  }
+ ]
+}

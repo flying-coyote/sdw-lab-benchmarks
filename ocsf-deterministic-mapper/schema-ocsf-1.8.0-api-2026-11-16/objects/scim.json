@@ -1,0 +1,267 @@
+{
+ "attributes": {
+  "auth_protocol": {
+   "caption": "Auth Protocol",
+   "description": "The authorization protocol as defined by the caption of <code>auth_protocol_id</code>. In the case of <code>Other</code>, it is defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "auth_protocol_id": {
+   "caption": "Auth Protocol ID",
+   "description": "The normalized identifier of the authorization protocol used by the SCIM resource.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The authentication protocol is unknown."
+    },
+    "1": {
+     "caption": "NTLM"
+    },
+    "10": {
+     "caption": "RADIUS"
+    },
+    "11": {
+     "caption": "Basic Authentication"
+    },
+    "12": {
+     "caption": "LDAP"
+    },
+    "2": {
+     "caption": "Kerberos"
+    },
+    "3": {
+     "caption": "Digest"
+    },
+    "4": {
+     "caption": "OpenID"
+    },
+    "5": {
+     "caption": "SAML"
+    },
+    "6": {
+     "caption": "OAUTH 2.0"
+    },
+    "7": {
+     "caption": "PAP"
+    },
+    "8": {
+     "caption": "CHAP"
+    },
+    "9": {
+     "caption": "EAP"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The authentication protocol is not mapped. See the <code>auth_protocol</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "optional",
+   "sibling": "auth_protocol",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "When the SCIM resource was added to the service provider.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "When the SCIM resource was added to the service provider.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "error_message": {
+   "caption": "Last Error Message",
+   "description": "Message or code associated with the last encountered error.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "is_group_provisioning_enabled": {
+   "caption": "SCIM Group Provisioning Enabled",
+   "description": "Indicates whether the SCIM resource is configured to provision groups, automatically or otherwise.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_user_provisioning_enabled": {
+   "caption": "SCIM User Provisioning Enabled",
+   "description": "Indicates whether the SCIM resource is configured to provision users, automatically or otherwise.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "last_run_time": {
+   "caption": "Last Sync Time",
+   "description": "Timestamp of the most recent successful synchronization.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "last_run_time_dt": {
+   "caption": "Last Sync Time",
+   "description": "Timestamp of the most recent successful synchronization.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The most recent time when the SCIM resource was updated at the service provider.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The most recent time when the SCIM resource was updated at the service provider.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the SCIM resource.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "protocol_name": {
+   "caption": "Supported Protocol",
+   "description": "The supported protocol for the SCIM resource. E.g., <code>SAML</code>, <code>OIDC</code>, or <code>OAuth2</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "rate_limit": {
+   "caption": "Rate Limit",
+   "description": "Maximum number of requests allowed by the SCIM resource within a specified time frame to avoid throttling.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "scim_group_schema": {
+   "caption": "SCIM Group Schema",
+   "description": "SCIM provides a schema for representing groups, identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:Group</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. This attribute will capture key-value pairs for the scheme implemented in a SCIM resource.",
+   "references": [
+    {
+     "description": "System for Cross-domain Identity Management (SCIM) RFC spec.",
+     "url": "https://datatracker.ietf.org/doc/html/rfc7643"
+    }
+   ],
+   "requirement": "recommended",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "scim_user_schema": {
+   "caption": "SCIM User Schema",
+   "description": "SCIM provides a resource type for user resources. The core schema for user is identified using the following schema URI: <code>urn:ietf:params:scim:schemas:core:2.0:User</code> as defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>. his attribute will capture key-value pairs for the scheme implemented in a SCIM resource. This object is inclusive of both the basic and Enterprise User Schema Extension.",
+   "references": [
+    {
+     "description": "System for Cross-domain Identity Management (SCIM) RFC spec.",
+     "url": "https://datatracker.ietf.org/doc/html/rfc7643"
+    }
+   ],
+   "requirement": "recommended",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "state": {
+   "caption": "State",
+   "description": "The provisioning state of the SCIM resource, normalized to the caption of the <code>state_id</code> value. In the case of <code>Other</code>, it is defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "state_id": {
+   "caption": "State ID",
+   "description": "The normalized state ID of the SCIM resource to reflect its activation status.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The provisioning state of the SCIM resource is unknown."
+    },
+    "1": {
+     "caption": "Pending",
+     "description": "The SCIM resource is Pending activation or creation."
+    },
+    "2": {
+     "caption": "Active",
+     "description": "The SCIM resource is in an Active state, or otherwise enabled."
+    },
+    "3": {
+     "caption": "Failed",
+     "description": "The SCIM resource is in a Failed state."
+    },
+    "4": {
+     "caption": "Deleted",
+     "description": "The SCIM resource is in a Deleted state, or otherwise disabled."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The provisioning state of the SCIM resource is not mapped. See the <code>state</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "optional",
+   "sibling": "state",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "A unique identifier for a SCIM resource as defined by the service provider.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid_alt": {
+   "caption": "External ID",
+   "description": "A String that is an identifier for the resource as defined by the provisioning client. The <code>externalId</code> may simplify identification of a resource between the provisioning client and the service provider by allowing the client to use a filter to locate the resource with an identifier from the provisioning domain, obviating the need to store a local mapping between the provisioning domain's identifier of the resource and the identifier used by the service provider.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "url_string": {
+   "caption": "SCIM Endpoint URL",
+   "description": "The primary URL for SCIM API requests.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "vendor_name": {
+   "caption": "Service Provider",
+   "description": "Name of the vendor or service provider implementing SCIM. E.g., <code>Okta</code>, <code>Auth0</code>, <code>Microsoft</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "version": {
+   "caption": "SCIM Version",
+   "description": "SCIM protocol version supported e.g., <code>SCIM 2.0</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "SCIM",
+ "description": "The System for Cross-domain Identity Management (SCIM) Configuration object provides a structured set of attributes related to SCIM protocols used for identity provisioning and management across cloud-based platforms. It standardizes user and group provisioning details, enabling identity synchronization and lifecycle management with compatible Identity Providers (IdPs) and applications. SCIM is defined in <a target='_blank' href='https://datatracker.ietf.org/doc/html/rfc7643'>RFC-7634</a>",
+ "extends": "object",
+ "name": "scim",
+ "profiles": [
+  "datetime"
+ ]
+}

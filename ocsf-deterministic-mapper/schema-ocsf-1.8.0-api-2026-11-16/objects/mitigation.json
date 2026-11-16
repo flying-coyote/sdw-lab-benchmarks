@@ -1,0 +1,58 @@
+{
+ "attributes": {
+  "countermeasures": {
+   "caption": "Countermeasures",
+   "description": "The D3FEND countermeasures that are associated with the attack technique. For example: ATT&CK Technique <code>T1003</code> is addressed by Mitigation <code>M1027</code>, and D3FEND Technique <code>D3-OTP</code>.",
+   "is_array": true,
+   "object_name": "MITRE D3FEND\u2122",
+   "object_type": "d3fend",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The Mitigation name that is associated with the attack technique. For example: <code>Password Policies</code>, or <code>Code Signing</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "src_url": {
+   "caption": "Source URL",
+   "description": "The versioned permalink of the Mitigation. For example: <code>https://attack.mitre.org/versions/v14/mitigations/M1027</code>.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The Mitigation ID that is associated with the attack technique. For example: <code>M1027</code>, or <code>AML.M0013</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "MITRE Mitigation",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The MITRE Mitigation object describes the ATT&CK\u00ae or ATLAS\u2122 Mitigation ID and/or name that is associated to an attack.",
+ "extends": "_entity",
+ "name": "mitigation",
+ "references": [
+  {
+   "description": "ATT&CK\u00ae Matrix",
+   "url": "https://attack.mitre.org"
+  },
+  {
+   "description": "ATLAS\u2122 Matrix",
+   "url": "https://atlas.mitre.org/matrices/ATLAS"
+  },
+  {
+   "description": "ATT&CK\u00ae Mitigation to D3FEND\u2122 Technique Mappings",
+   "url": "https://d3fend.mitre.org/mappings/attack-mitigations/"
+  }
+ ]
+}

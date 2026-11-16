@@ -1,0 +1,857 @@
+{
+  "alias_correct_n": 23,
+  "alias_valid_but_non_gold_n": 71,
+  "benchmark": "ocsf-deterministic-mapper / frontier-behind-constraint (POST-HOC re-score)",
+  "date": "2026-11-16",
+  "frontier_per_condition_full": {
+    "run1": {
+      "formal": {
+        "raw": {
+          "coverage": 0.922,
+          "n": 141,
+          "path_correct": 0.5887,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0426,
+          "silent_invented_not_in_full_1_8_0": 0.0426,
+          "silent_real_1_8_0_outside_subset": 0.1064,
+          "valid_but_non_gold": 0.2908
+        },
+        "reject": {
+          "coverage": 0.8794,
+          "n": 141,
+          "path_correct": 0.5887,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2908
+        }
+      },
+      "none": {
+        "raw": {
+          "coverage": 0.8582,
+          "n": 141,
+          "path_correct": 0.5532,
+          "silent_and_gold_correct": 1,
+          "silent_error_rate": 0.1064,
+          "silent_invented_not_in_full_1_8_0": 0.1064,
+          "silent_real_1_8_0_outside_subset": 0.1348,
+          "valid_but_non_gold": 0.2057
+        },
+        "reject": {
+          "coverage": 0.7518,
+          "n": 141,
+          "path_correct": 0.5461,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2057
+        }
+      },
+      "schema": {
+        "raw": {
+          "coverage": 0.8652,
+          "n": 141,
+          "path_correct": 0.5745,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0071,
+          "silent_invented_not_in_full_1_8_0": 0.0071,
+          "silent_real_1_8_0_outside_subset": 0.1206,
+          "valid_but_non_gold": 0.2837
+        },
+        "reject": {
+          "coverage": 0.8582,
+          "n": 141,
+          "path_correct": 0.5745,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2837
+        }
+      },
+      "skill": {
+        "raw": {
+          "coverage": 0.9362,
+          "n": 141,
+          "path_correct": 0.6028,
+          "silent_and_gold_correct": 1,
+          "silent_error_rate": 0.0426,
+          "silent_invented_not_in_full_1_8_0": 0.0426,
+          "silent_real_1_8_0_outside_subset": 0.1206,
+          "valid_but_non_gold": 0.2979
+        },
+        "reject": {
+          "coverage": 0.8936,
+          "n": 141,
+          "path_correct": 0.5957,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2979
+        }
+      },
+      "wrong_grounding": {
+        "raw": {
+          "coverage": 0.9007,
+          "n": 141,
+          "path_correct": 0.5603,
+          "silent_and_gold_correct": 1,
+          "silent_error_rate": 0.0496,
+          "silent_invented_not_in_full_1_8_0": 0.0496,
+          "silent_real_1_8_0_outside_subset": 0.1206,
+          "valid_but_non_gold": 0.2979
+        },
+        "reject": {
+          "coverage": 0.8511,
+          "n": 141,
+          "path_correct": 0.5532,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2979
+        }
+      }
+    },
+    "run2": {
+      "formal": {
+        "raw": {
+          "coverage": 0.9929,
+          "n": 141,
+          "path_correct": 0.6312,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.1206,
+          "silent_invented_not_in_full_1_8_0": 0.1206,
+          "silent_real_1_8_0_outside_subset": 0.1489,
+          "valid_but_non_gold": 0.2553
+        },
+        "reject": {
+          "coverage": 0.8723,
+          "n": 141,
+          "path_correct": 0.617,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2553
+        }
+      },
+      "none": {
+        "raw": {
+          "coverage": 1.0,
+          "n": 141,
+          "path_correct": 0.6241,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.0993,
+          "silent_invented_not_in_full_1_8_0": 0.0993,
+          "silent_real_1_8_0_outside_subset": 0.2128,
+          "valid_but_non_gold": 0.2908
+        },
+        "reject": {
+          "coverage": 0.9007,
+          "n": 141,
+          "path_correct": 0.6099,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2908
+        }
+      },
+      "schema": {
+        "raw": {
+          "coverage": 1.0,
+          "n": 141,
+          "path_correct": 0.6596,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.0993,
+          "silent_invented_not_in_full_1_8_0": 0.0993,
+          "silent_real_1_8_0_outside_subset": 0.1844,
+          "valid_but_non_gold": 0.2553
+        },
+        "reject": {
+          "coverage": 0.9007,
+          "n": 141,
+          "path_correct": 0.6454,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2553
+        }
+      },
+      "skill": {
+        "raw": {
+          "coverage": 1.0,
+          "n": 141,
+          "path_correct": 0.7092,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.0993,
+          "silent_invented_not_in_full_1_8_0": 0.0993,
+          "silent_real_1_8_0_outside_subset": 0.1702,
+          "valid_but_non_gold": 0.2057
+        },
+        "reject": {
+          "coverage": 0.9007,
+          "n": 141,
+          "path_correct": 0.695,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2057
+        }
+      },
+      "wrong_grounding": {
+        "raw": {
+          "coverage": 1.0,
+          "n": 141,
+          "path_correct": 0.7376,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.0355,
+          "silent_invented_not_in_full_1_8_0": 0.0355,
+          "silent_real_1_8_0_outside_subset": 0.1631,
+          "valid_but_non_gold": 0.2411
+        },
+        "reject": {
+          "coverage": 0.9645,
+          "n": 141,
+          "path_correct": 0.7234,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2411
+        }
+      }
+    },
+    "run3": {
+      "formal": {
+        "raw": {
+          "coverage": 1.0,
+          "n": 141,
+          "path_correct": 0.6241,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.1064,
+          "silent_invented_not_in_full_1_8_0": 0.1064,
+          "silent_real_1_8_0_outside_subset": 0.1702,
+          "valid_but_non_gold": 0.2837
+        },
+        "reject": {
+          "coverage": 0.8936,
+          "n": 141,
+          "path_correct": 0.6099,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2837
+        }
+      },
+      "none": {
+        "raw": {
+          "coverage": 1.0,
+          "n": 141,
+          "path_correct": 0.6738,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.0922,
+          "silent_invented_not_in_full_1_8_0": 0.0922,
+          "silent_real_1_8_0_outside_subset": 0.1773,
+          "valid_but_non_gold": 0.2482
+        },
+        "reject": {
+          "coverage": 0.9078,
+          "n": 141,
+          "path_correct": 0.6596,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2482
+        }
+      },
+      "schema": {
+        "raw": {
+          "coverage": 1.0,
+          "n": 141,
+          "path_correct": 0.8936,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.0567,
+          "silent_invented_not_in_full_1_8_0": 0.0567,
+          "silent_real_1_8_0_outside_subset": 0.1418,
+          "valid_but_non_gold": 0.0638
+        },
+        "reject": {
+          "coverage": 0.9433,
+          "n": 141,
+          "path_correct": 0.8794,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.0638
+        }
+      },
+      "skill": {
+        "raw": {
+          "coverage": 1.0,
+          "n": 141,
+          "path_correct": 0.6241,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.0922,
+          "silent_invented_not_in_full_1_8_0": 0.0922,
+          "silent_real_1_8_0_outside_subset": 0.1702,
+          "valid_but_non_gold": 0.2979
+        },
+        "reject": {
+          "coverage": 0.9078,
+          "n": 141,
+          "path_correct": 0.6099,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2979
+        }
+      },
+      "wrong_grounding": {
+        "raw": {
+          "coverage": 1.0,
+          "n": 141,
+          "path_correct": 0.6099,
+          "silent_and_gold_correct": 2,
+          "silent_error_rate": 0.1064,
+          "silent_invented_not_in_full_1_8_0": 0.1064,
+          "silent_real_1_8_0_outside_subset": 0.1915,
+          "valid_but_non_gold": 0.2979
+        },
+        "reject": {
+          "coverage": 0.8936,
+          "n": 141,
+          "path_correct": 0.5957,
+          "silent_and_gold_correct": 0,
+          "silent_error_rate": 0.0,
+          "valid_but_non_gold": 0.2979
+        }
+      }
+    }
+  },
+  "full_schema": "OCSF 1.8.0 via schema.ocsf.io/1.8.0/api, read 2026-11-16, profile-inclusive",
+  "gemma4_full_validator": {
+    "formal": {
+      "n": 141,
+      "path_correct": 0.078,
+      "silent_full_1_8_0": 0.1915,
+      "silent_subset": 0.1915
+    },
+    "none": {
+      "n": 141,
+      "path_correct": 0.0284,
+      "silent_full_1_8_0": 0.8298,
+      "silent_subset": 0.8298
+    },
+    "schema": {
+      "n": 141,
+      "path_correct": 0.078,
+      "silent_full_1_8_0": 0.1844,
+      "silent_subset": 0.1844
+    },
+    "skill": {
+      "n": 141,
+      "path_correct": 0.0496,
+      "silent_full_1_8_0": 0.305,
+      "silent_subset": 0.305
+    },
+    "wrong_grounding": {
+      "n": 141,
+      "path_correct": 0.0638,
+      "silent_full_1_8_0": 0.1773,
+      "silent_subset": 0.1773
+    }
+  },
+  "gold_fields_not_in_subset_closure_n": 24,
+  "gold_paths_not_in_full_walk": [
+    [
+      "network_activity",
+      "dst_endpoint.hw_info.model"
+    ],
+    [
+      "network_activity",
+      "src_endpoint.hw_info.model"
+    ]
+  ],
+  "gold_paths_not_in_subset_closure": [
+    [
+      "authentication",
+      "src_endpoint.autonomous_system.name"
+    ],
+    [
+      "authentication",
+      "src_endpoint.autonomous_system.number"
+    ],
+    [
+      "detection_finding",
+      "evidences.actor.user.name"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.ancestry"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.cmd_line"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.created_time"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.file.hashes"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.file.name"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.file.path"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.parent_process.cmd_line"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.parent_process.file.path"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.parent_process.pid"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.pid"
+    ],
+    [
+      "detection_finding",
+      "evidences.process.terminated_time"
+    ],
+    [
+      "http_activity",
+      "malware.name"
+    ],
+    [
+      "http_activity",
+      "policy.name"
+    ],
+    [
+      "http_activity",
+      "src_endpoint.owner.org.ou_name"
+    ],
+    [
+      "network_activity",
+      "dst_endpoint.hw_info.model"
+    ],
+    [
+      "network_activity",
+      "dst_endpoint.hw_info.vendor_name"
+    ],
+    [
+      "network_activity",
+      "src_endpoint.hw_info.model"
+    ],
+    [
+      "network_activity",
+      "src_endpoint.hw_info.vendor_name"
+    ],
+    [
+      "network_activity",
+      "src_endpoint.owner.groups.name"
+    ]
+  ],
+  "headline_condition": "schema (fixed before looking; the condition the phi3 arm used)",
+  "model_of_predictions": "claude-opus-4-8 via Claude Code subagents, June 2026",
+  "phi3_full_wall": {
+    "reject": {
+      "coverage": 0.3191,
+      "path_correct": 0.0071
+    },
+    "snap": {
+      "coverage": 0.6809,
+      "path_correct": 0.0213
+    }
+  },
+  "phi3_schema_raw_silent": {
+    "full_1_8_0": 0.6809,
+    "n": 141,
+    "subset": 0.6879
+  },
+  "phi3_snap_correct_n": 3,
+  "phi3_snap_correct_not_in_alias_correct": [
+    [
+      "Cisco Umbrella DNS",
+      "query_type"
+    ],
+    [
+      "Zscaler ZIA Web",
+      "contenttype"
+    ]
+  ],
+  "runs": {
+    "run1": {
+      "full": {
+        "all": {
+          "raw": {
+            "coverage": 0.8965,
+            "n": 705,
+            "path_correct": 0.5759,
+            "silent_and_gold_correct": 3,
+            "silent_error_rate": 0.0496,
+            "silent_invented_not_in_full_1_8_0": 0.0496,
+            "silent_real_1_8_0_outside_subset": 0.1206,
+            "valid_but_non_gold": 0.2752
+          },
+          "reject": {
+            "coverage": 0.8468,
+            "n": 705,
+            "path_correct": 0.5716,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.2752
+          },
+          "snap": {
+            "coverage": 0.8965,
+            "n": 705,
+            "path_correct": 0.5759,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 3,
+            "snapped_n": 35,
+            "valid_but_non_gold": 0.3206
+          }
+        },
+        "schema": {
+          "raw": {
+            "coverage": 0.8652,
+            "n": 141,
+            "path_correct": 0.5745,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0071,
+            "silent_invented_not_in_full_1_8_0": 0.0071,
+            "silent_real_1_8_0_outside_subset": 0.1206,
+            "valid_but_non_gold": 0.2837
+          },
+          "reject": {
+            "coverage": 0.8582,
+            "n": 141,
+            "path_correct": 0.5745,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.2837
+          },
+          "snap": {
+            "coverage": 0.8652,
+            "n": 141,
+            "path_correct": 0.5745,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 0,
+            "snapped_n": 1,
+            "valid_but_non_gold": 0.2908
+          }
+        }
+      },
+      "subset": {
+        "all": {
+          "raw": {
+            "coverage": 0.8965,
+            "n": 705,
+            "path_correct": 0.5759,
+            "silent_and_gold_correct": 28,
+            "silent_error_rate": 0.1702,
+            "silent_invented_not_in_full_1_8_0": 0.0496,
+            "silent_real_1_8_0_outside_subset": 0.1206,
+            "valid_but_non_gold": 0.1901
+          },
+          "reject": {
+            "coverage": 0.7262,
+            "n": 705,
+            "path_correct": 0.5362,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.1901
+          },
+          "snap": {
+            "coverage": 0.895,
+            "n": 705,
+            "path_correct": 0.5574,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 15,
+            "snapped_n": 119,
+            "valid_but_non_gold": 0.3376
+          }
+        },
+        "schema": {
+          "raw": {
+            "coverage": 0.8652,
+            "n": 141,
+            "path_correct": 0.5745,
+            "silent_and_gold_correct": 8,
+            "silent_error_rate": 0.1277,
+            "silent_invented_not_in_full_1_8_0": 0.0071,
+            "silent_real_1_8_0_outside_subset": 0.1206,
+            "valid_but_non_gold": 0.2199
+          },
+          "reject": {
+            "coverage": 0.7376,
+            "n": 141,
+            "path_correct": 0.5177,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.2199
+          },
+          "snap": {
+            "coverage": 0.8652,
+            "n": 141,
+            "path_correct": 0.539,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 3,
+            "snapped_n": 18,
+            "valid_but_non_gold": 0.3262
+          }
+        }
+      }
+    },
+    "run2": {
+      "full": {
+        "all": {
+          "raw": {
+            "coverage": 0.9986,
+            "n": 705,
+            "path_correct": 0.6723,
+            "silent_and_gold_correct": 10,
+            "silent_error_rate": 0.0908,
+            "silent_invented_not_in_full_1_8_0": 0.0908,
+            "silent_real_1_8_0_outside_subset": 0.1759,
+            "valid_but_non_gold": 0.2496
+          },
+          "reject": {
+            "coverage": 0.9078,
+            "n": 705,
+            "path_correct": 0.6582,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.2496
+          },
+          "snap": {
+            "coverage": 0.9986,
+            "n": 705,
+            "path_correct": 0.6709,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 9,
+            "snapped_n": 64,
+            "valid_but_non_gold": 0.3277
+          }
+        },
+        "schema": {
+          "raw": {
+            "coverage": 1.0,
+            "n": 141,
+            "path_correct": 0.6596,
+            "silent_and_gold_correct": 2,
+            "silent_error_rate": 0.0993,
+            "silent_invented_not_in_full_1_8_0": 0.0993,
+            "silent_real_1_8_0_outside_subset": 0.1844,
+            "valid_but_non_gold": 0.2553
+          },
+          "reject": {
+            "coverage": 0.9007,
+            "n": 141,
+            "path_correct": 0.6454,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.2553
+          },
+          "snap": {
+            "coverage": 1.0,
+            "n": 141,
+            "path_correct": 0.6525,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 1,
+            "snapped_n": 14,
+            "valid_but_non_gold": 0.3475
+          }
+        }
+      },
+      "subset": {
+        "all": {
+          "raw": {
+            "coverage": 0.9986,
+            "n": 705,
+            "path_correct": 0.6723,
+            "silent_and_gold_correct": 81,
+            "silent_error_rate": 0.2667,
+            "silent_invented_not_in_full_1_8_0": 0.0908,
+            "silent_real_1_8_0_outside_subset": 0.1759,
+            "valid_but_non_gold": 0.1745
+          },
+          "reject": {
+            "coverage": 0.7319,
+            "n": 705,
+            "path_correct": 0.5574,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.1745
+          },
+          "snap": {
+            "coverage": 0.9986,
+            "n": 705,
+            "path_correct": 0.5787,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 15,
+            "snapped_n": 188,
+            "valid_but_non_gold": 0.4199
+          }
+        },
+        "schema": {
+          "raw": {
+            "coverage": 1.0,
+            "n": 141,
+            "path_correct": 0.6596,
+            "silent_and_gold_correct": 15,
+            "silent_error_rate": 0.2837,
+            "silent_invented_not_in_full_1_8_0": 0.0993,
+            "silent_real_1_8_0_outside_subset": 0.1844,
+            "valid_but_non_gold": 0.1631
+          },
+          "reject": {
+            "coverage": 0.7163,
+            "n": 141,
+            "path_correct": 0.5532,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.1631
+          },
+          "snap": {
+            "coverage": 1.0,
+            "n": 141,
+            "path_correct": 0.5745,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 3,
+            "snapped_n": 40,
+            "valid_but_non_gold": 0.4255
+          }
+        }
+      }
+    },
+    "run3": {
+      "full": {
+        "all": {
+          "raw": {
+            "coverage": 1.0,
+            "n": 705,
+            "path_correct": 0.6851,
+            "silent_and_gold_correct": 10,
+            "silent_error_rate": 0.0908,
+            "silent_invented_not_in_full_1_8_0": 0.0908,
+            "silent_real_1_8_0_outside_subset": 0.1702,
+            "valid_but_non_gold": 0.2383
+          },
+          "reject": {
+            "coverage": 0.9092,
+            "n": 705,
+            "path_correct": 0.6709,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.2383
+          },
+          "snap": {
+            "coverage": 1.0,
+            "n": 705,
+            "path_correct": 0.6865,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 11,
+            "snapped_n": 64,
+            "valid_but_non_gold": 0.3135
+          }
+        },
+        "schema": {
+          "raw": {
+            "coverage": 1.0,
+            "n": 141,
+            "path_correct": 0.8936,
+            "silent_and_gold_correct": 2,
+            "silent_error_rate": 0.0567,
+            "silent_invented_not_in_full_1_8_0": 0.0567,
+            "silent_real_1_8_0_outside_subset": 0.1418,
+            "valid_but_non_gold": 0.0638
+          },
+          "reject": {
+            "coverage": 0.9433,
+            "n": 141,
+            "path_correct": 0.8794,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.0638
+          },
+          "snap": {
+            "coverage": 1.0,
+            "n": 141,
+            "path_correct": 0.9007,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 3,
+            "snapped_n": 8,
+            "valid_but_non_gold": 0.0993
+          }
+        }
+      },
+      "subset": {
+        "all": {
+          "raw": {
+            "coverage": 1.0,
+            "n": 705,
+            "path_correct": 0.6851,
+            "silent_and_gold_correct": 85,
+            "silent_error_rate": 0.261,
+            "silent_invented_not_in_full_1_8_0": 0.0908,
+            "silent_real_1_8_0_outside_subset": 0.1702,
+            "valid_but_non_gold": 0.1745
+          },
+          "reject": {
+            "coverage": 0.739,
+            "n": 705,
+            "path_correct": 0.5645,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.1745
+          },
+          "snap": {
+            "coverage": 1.0,
+            "n": 705,
+            "path_correct": 0.5801,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 11,
+            "snapped_n": 184,
+            "valid_but_non_gold": 0.4199
+          }
+        },
+        "schema": {
+          "raw": {
+            "coverage": 1.0,
+            "n": 141,
+            "path_correct": 0.8936,
+            "silent_and_gold_correct": 20,
+            "silent_error_rate": 0.1986,
+            "silent_invented_not_in_full_1_8_0": 0.0567,
+            "silent_real_1_8_0_outside_subset": 0.1418,
+            "valid_but_non_gold": 0.0496
+          },
+          "reject": {
+            "coverage": 0.8014,
+            "n": 141,
+            "path_correct": 0.7518,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "valid_but_non_gold": 0.0496
+          },
+          "snap": {
+            "coverage": 1.0,
+            "n": 141,
+            "path_correct": 0.7589,
+            "silent_and_gold_correct": 0,
+            "silent_error_rate": 0.0,
+            "snapped_landing_on_gold": 1,
+            "snapped_n": 28,
+            "valid_but_non_gold": 0.2411
+          }
+        }
+      }
+    }
+  },
+  "subset_paths_not_in_full_walk": []
+}

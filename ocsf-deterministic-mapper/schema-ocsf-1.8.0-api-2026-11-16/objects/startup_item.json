@@ -1,0 +1,272 @@
+{
+ "attributes": {
+  "driver": {
+   "caption": "Kernel Driver",
+   "description": "The startup item kernel driver resource.",
+   "object_name": "Kernel Extension",
+   "object_type": "kernel_driver",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "job": {
+   "caption": "Job",
+   "description": "The startup item job resource.",
+   "object_name": "Job",
+   "object_type": "job",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The unique name of the startup item.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "process": {
+   "caption": "Process",
+   "description": "The startup item process resource.",
+   "object_name": "Process",
+   "object_type": "process",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "run_mode_ids": {
+   "caption": "Run Mode IDs",
+   "description": "The list of normalized identifiers that describe the startup items' properties when it is running.  Use this field to capture extended information about the process, which may depend on the type of startup item.  E.g., A Windows service that interacts with the desktop.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The run mode is unknown."
+    },
+    "1": {
+     "caption": "Interactive",
+     "description": "The startup item interacts with the desktop."
+    },
+    "2": {
+     "caption": "Own Process",
+     "description": "The startup item runs in its own process."
+    },
+    "3": {
+     "caption": "Shared Process",
+     "description": "The startup item runs in a shared process."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The run mode is not mapped. See the <code>run_modes</code> attribute, which contains data source specific values."
+    }
+   },
+   "is_array": true,
+   "requirement": "optional",
+   "sibling": "run_modes",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "run_modes": {
+   "caption": "Run Modes",
+   "description": "The list of run_modes, normalized to the captions of the run_mode_id values.  In the case of 'Other', they are defined by the event source.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "run_state": {
+   "caption": "Run State",
+   "description": "The run state of the startup item.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "run_state_id": {
+   "caption": "Run State ID",
+   "description": "The run state ID of the startup item.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The run state is unknown."
+    },
+    "1": {
+     "caption": "Stopped",
+     "description": "The service is not running."
+    },
+    "2": {
+     "caption": "Start Pending",
+     "description": "The service is starting."
+    },
+    "3": {
+     "caption": "Stop Pending",
+     "description": "The service is stopping."
+    },
+    "4": {
+     "caption": "Running",
+     "description": "The service is running."
+    },
+    "5": {
+     "caption": "Continue Pending",
+     "description": "The service is pending continue."
+    },
+    "6": {
+     "caption": "Pause Pending",
+     "description": "The service is pending pause."
+    },
+    "7": {
+     "caption": "Paused",
+     "description": "The service is paused."
+    },
+    "8": {
+     "caption": "Restart Pending",
+     "description": "The service is pending restart."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The run state is not mapped. See the <code>run_state</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "run_state",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "start_type": {
+   "caption": "Start Type",
+   "description": "The start type of the startup item.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "start_type_id": {
+   "caption": "Start Type ID",
+   "description": "The start type ID of the startup item.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The start type is unknown."
+    },
+    "1": {
+     "caption": "Auto",
+     "description": "Service started automatically during system startup."
+    },
+    "2": {
+     "caption": "Boot",
+     "description": "Device driver started by the system loader."
+    },
+    "3": {
+     "caption": "On Demand",
+     "description": "Started on demand. For example, by the Windows Service Control Manager when a process calls the <i>StartService</i> function."
+    },
+    "4": {
+     "caption": "Disabled",
+     "description": "The service is disabled, and cannot be started."
+    },
+    "5": {
+     "caption": "All Logins",
+     "description": "Started on all user logins."
+    },
+    "6": {
+     "caption": "Specific User Login",
+     "description": "Started on specific user logins."
+    },
+    "7": {
+     "caption": "Scheduled",
+     "description": "Stared according to a schedule."
+    },
+    "8": {
+     "caption": "System Changed",
+     "description": "Started when a system item, such as a file or registry key, changes."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The start type is not mapped. See the <code>start_type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "required",
+   "sibling": "start_type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The startup item type.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The startup item type identifier.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "Kernel Mode Driver",
+     "description": "Kernel mode driver."
+    },
+    "2": {
+     "caption": "User Mode Driver",
+     "description": "User mode driver."
+    },
+    "3": {
+     "caption": "Service",
+     "description": "A background process typically managed by the operating system, e.g., a service process on Windows or a systemd-managed daemon on Linux."
+    },
+    "4": {
+     "caption": "User Mode Application",
+     "description": "An application that runs in the user space."
+    },
+    "5": {
+     "caption": "Autoload",
+     "description": "The macOS Autoload Application."
+    },
+    "6": {
+     "caption": "System Extension",
+     "description": "System extensions on macOS enables 3rd parties to extend the capabilities of macOS."
+    },
+    "7": {
+     "caption": "Kernel Extension",
+     "description": "Kernel extensions on macOS includes Apple provided pre-installs and 3rd party installs which enables support for specific hardware or software features not natively supported by macOS."
+    },
+    "8": {
+     "caption": "Scheduled Job, Task",
+     "description": "A job or task that runs on a configured schedule."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The startup item type is not mapped. See the <code>type</code> attribute, which contains data source specific values."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "win_service": {
+   "caption": "Windows Service",
+   "description": "The startup item Windows service resource.",
+   "extension": "win",
+   "extension_id": 2,
+   "object_name": "Windows Service",
+   "object_type": "win/win_service",
+   "requirement": "optional",
+   "type": "object_t"
+  }
+ },
+ "caption": "Startup Item",
+ "constraints": {
+  "just_one": [
+   "driver",
+   "job",
+   "process",
+   "win_service"
+  ]
+ },
+ "description": "The startup item object describes an application component that has associated startup criteria and configurations.",
+ "name": "startup_item",
+ "profiles": [
+  "container",
+  "data_classification",
+  "linux/linux_users",
+  "macos/macos_users"
+ ]
+}

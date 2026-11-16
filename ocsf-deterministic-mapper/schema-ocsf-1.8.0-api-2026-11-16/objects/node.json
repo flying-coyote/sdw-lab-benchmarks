@@ -1,0 +1,49 @@
+{
+ "attributes": {
+  "data": {
+   "caption": "Data",
+   "description": "Additional data about the node stored as key-value pairs. Can include custom properties specific to the node.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "A human-readable description of the node's purpose or meaning in the graph.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "A human-readable name or label for the node. Should be descriptive and unique within the graph context.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "Categorizes the node into a specific class or type. Useful for grouping and filtering nodes.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "A unique string or numeric identifier that distinguishes this node from all others in the graph. Must be unique across all nodes.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Node",
+ "description": "Represents a node or a vertex in a graph structure.",
+ "extends": "object",
+ "name": "node",
+ "references": [
+  {
+   "description": "JSON graph specification.",
+   "url": "https://github.com/jsongraph/json-graph-specification/"
+  }
+ ]
+}

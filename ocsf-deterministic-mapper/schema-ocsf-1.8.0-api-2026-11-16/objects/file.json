@@ -1,0 +1,507 @@
+{
+ "attributes": {
+  "accessed_time": {
+   "caption": "Accessed Time",
+   "description": "The time when the file was last accessed.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "accessed_time_dt": {
+   "caption": "Accessed Time",
+   "description": "The time when the file was last accessed.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "accessor": {
+   "caption": "Accessor",
+   "description": "The name of the user who last accessed the object.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "attributes": {
+   "caption": "Attributes",
+   "description": "The bitmask value that represents the file attributes.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "company_name": {
+   "caption": "Company Name",
+   "description": "The name of the company that published the file. For example: <code>Microsoft Corporation</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "confidentiality": {
+   "caption": "Confidentiality",
+   "description": "The file content confidentiality, normalized to the confidentiality_id value. In the case of 'Other', it is defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "confidentiality_id": {
+   "caption": "Confidentiality ID",
+   "description": "The normalized identifier of the file content confidentiality indicator.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The confidentiality is unknown."
+    },
+    "1": {
+     "caption": "Not Confidential"
+    },
+    "2": {
+     "caption": "Confidential"
+    },
+    "3": {
+     "caption": "Secret"
+    },
+    "4": {
+     "caption": "Top Secret"
+    },
+    "5": {
+     "caption": "Private"
+    },
+    "6": {
+     "caption": "Restricted"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The confidentiality is not mapped. See the <code>confidentiality</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "optional",
+   "sibling": "confidentiality",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the file was created.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the file was created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "creator": {
+   "caption": "Creator",
+   "description": "The user that created the file.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "data_classification": {
+   "@deprecated": {
+    "message": "Use the attribute <code>data_classifications</code> instead",
+    "since": "1.4.0"
+   },
+   "caption": "Data Classification",
+   "description": "The Data Classification object includes information about data classification levels and data category types.",
+   "group": "context",
+   "object_name": "Data Classification",
+   "object_type": "data_classification",
+   "profiles": [
+    "data_classification"
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "data_classifications": {
+   "caption": "Data Classification",
+   "description": "A list of Data Classification objects, that include information about data classification levels and data category types, identified by a classifier.",
+   "group": "context",
+   "is_array": true,
+   "object_name": "Data Classification",
+   "object_type": "data_classification",
+   "profiles": [
+    "data_classification"
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "The description of the file, as returned by file system. For example: the description as returned by the Unix file command or the Windows file type.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "drive_type": {
+   "caption": "Drive Type",
+   "description": "The drive type, normalized to the caption of the <code>drive_type_id</code> value. In the case of <code>Other</code>, it is defined by the source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "drive_type_id": {
+   "caption": "Drive Type ID",
+   "description": "Identifies the type of a disk drive, i.e. fixed, removable, etc.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The drive type is unknown."
+    },
+    "1": {
+     "caption": "Removable",
+     "description": "The drive has removable media; for example, a floppy drive, thumb drive, or flash card reader."
+    },
+    "2": {
+     "caption": "Fixed",
+     "description": "The drive has fixed media; for example, a hard disk drive or flash drive."
+    },
+    "3": {
+     "caption": "Remote",
+     "description": "The drive is a remote (network) drive."
+    },
+    "4": {
+     "caption": "CD-ROM",
+     "description": "The drive is a CD-ROM drive."
+    },
+    "5": {
+     "caption": "RAM Disk",
+     "description": "The drive is a RAM disk."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The drive type is not mapped. See the <code>drive_type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "optional",
+   "sibling": "drive_type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "encryption_details": {
+   "caption": "Encryption Details",
+   "description": "The encryption details of the file. Should be populated if the file is encrypted.",
+   "object_name": "Encryption Details",
+   "object_type": "encryption_details",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "ext": {
+   "caption": "File Extension",
+   "description": "The extension of the file, excluding the leading dot. For example: <code>exe</code> from <code>svchost.exe</code>, or <code>gz</code> from <code>export.tar.gz</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "hashes": {
+   "caption": "Hashes",
+   "description": "An array of hash attributes.",
+   "is_array": true,
+   "object_name": "Fingerprint",
+   "object_type": "fingerprint",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "imported_symbols": {
+   "caption": "Imported Symbols",
+   "description": "A list of symbols imported by the executable file.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "internal_name": {
+   "caption": "Internal Name",
+   "description": "The name of the file as identified within the file itself. This contrasts with the name by which the file is known on disk. Where available, the internal name is widely used by security practitioners and detection content because the on-disk file name is not reliable. On the Windows OS, most PE files contain a <a href=\"https://learn.microsoft.com/en-us/windows/win32/menurc/versioninfo-resource\">VERSIONINFO</a> resource from which the internal name can be obtained. On macOS, binaries can optionally embed a copy of the application's Info.plist file which in turn contains the name of the executable.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "is_deleted": {
+   "caption": "Deleted",
+   "description": "Indicates if the file was deleted from the filesystem.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_encrypted": {
+   "caption": "Encrypted",
+   "description": "Indicates if the file is encrypted.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_public": {
+   "caption": "Public",
+   "description": "Indicates if the file is publicly accessible. For example in an object's public access in AWS S3",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_readonly": {
+   "caption": "Read-Only",
+   "description": "Indicates that the file cannot be modified.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_system": {
+   "caption": "System",
+   "description": "The indication of whether the object is part of the operating system.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "mime_type": {
+   "caption": "MIME type",
+   "description": "The Multipurpose Internet Mail Extensions (MIME) type of the file, if applicable.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The time when the file was last modified.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The time when the file was last modified.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "modifier": {
+   "caption": "Modifier",
+   "description": "The user that last modified the file.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the file. For example: <code>svchost.exe</code>",
+   "requirement": "required",
+   "type": "file_name_t",
+   "type_name": "File Name"
+  },
+  "owner": {
+   "caption": "Owner",
+   "description": "The user that owns the file/object.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "parent_folder": {
+   "caption": "Parent Folder",
+   "description": "The parent folder in which the file resides. For example: <code>c:\\windows\\system32</code>",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "path": {
+   "caption": "Path",
+   "description": "The full path to the file. For example: <code>c:\\windows\\system32\\svchost.exe</code>.",
+   "requirement": "recommended",
+   "type": "file_path_t",
+   "type_name": "File Path"
+  },
+  "product": {
+   "caption": "Product",
+   "description": "The product that created or installed the file.",
+   "object_name": "Product",
+   "object_type": "product",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "security_descriptor": {
+   "caption": "Security Descriptor",
+   "description": "The object security descriptor.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "signature": {
+   "@deprecated": {
+    "message": "Use the <code>signatures</code> attribute.",
+    "since": "1.8.0"
+   },
+   "caption": "Digital Signature",
+   "description": "The digital signature of the file.",
+   "object_name": "Digital Signature",
+   "object_type": "digital_signature",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "signatures": {
+   "caption": "Digital Signatures",
+   "description": "A collection of <code>Digital Signature</code> objects.",
+   "is_array": true,
+   "object_name": "Digital Signature",
+   "object_type": "digital_signature",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "size": {
+   "caption": "Size",
+   "description": "The size of data, in bytes.",
+   "requirement": "optional",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "storage_class": {
+   "caption": "Storage Class",
+   "description": "The storage class of the file. For example in AWS S3: <code>STANDARD, STANDARD_IA, GLACIER</code>.",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "tags": {
+   "caption": "Tags",
+   "description": "The list of tags; <code>{key:value}</code> pairs associated to the file.",
+   "is_array": true,
+   "object_name": "Key:Value object",
+   "object_type": "key_value_object",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The file type.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The file type ID. Note the distinction between a <code>Regular File</code> and an <code>Executable File</code>. If the distinction is not known, or not indicated by the log, use <code>Regular File</code>. In this case, it should not be assumed that a Regular File is not executable.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "Regular File"
+    },
+    "2": {
+     "caption": "Folder"
+    },
+    "3": {
+     "caption": "Character Device"
+    },
+    "4": {
+     "caption": "Block Device"
+    },
+    "5": {
+     "caption": "Local Socket"
+    },
+    "6": {
+     "caption": "Named Pipe"
+    },
+    "7": {
+     "caption": "Symbolic Link"
+    },
+    "8": {
+     "caption": "Executable File"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "required",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the file as defined by the storage system, such the file system file ID.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uri": {
+   "caption": "File URI",
+   "description": "The file URI, such as those reporting by static analysis tools. E.g., <code>file:///C:/dev/sarif/sarif-tutorials/samples/Introduction/simple-example.js</code>",
+   "references": [
+    {
+     "description": "RFC 3986",
+     "url": "https://datatracker.ietf.org/doc/html/rfc3986"
+    }
+   ],
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "url": {
+   "caption": "URL",
+   "description": "The URL of the file, when applicable.",
+   "object_name": "Uniform Resource Locator",
+   "object_type": "url",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The file version. For example: <code>8.0.7601.17514</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "volume": {
+   "caption": "Volume",
+   "description": "The volume on the storage device where the file is located.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "xattributes": {
+   "caption": "Extended Attributes",
+   "description": "An unordered collection of zero or more name/value pairs where each pair represents a file or folder extended attribute.</p>For example: Windows alternate data stream attributes (ADS stream name, ADS size, etc.), user-defined or application-defined attributes, ACL, owner, primary group, etc. Examples from DCS: </p><ul><li><strong>ads_name</strong></li><li><strong>ads_size</strong></li><li><strong>dacl</strong></li><li><strong>owner</strong></li><li><strong>primary_group</strong></li><li><strong>link_name</strong> - name of the link associated to the file.</li><li><strong>hard_link_count</strong> - the number of links that are associated to the file.</li></ul>",
+   "object_name": "Object",
+   "object_type": "object",
+   "requirement": "optional",
+   "type": "object_t"
+  }
+ },
+ "caption": "File",
+ "constraints": {},
+ "description": "The File object represents the metadata associated with a file stored in a computer system. It encompasses information about the file itself, including its attributes, properties, and organizational details.",
+ "extends": "_entity",
+ "name": "file",
+ "observable": 24,
+ "profiles": [
+  "data_classification",
+  "datetime"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:File",
+   "url": "https://next.d3fend.mitre.org/dao/artifact/d3f:File/"
+  }
+ ]
+}

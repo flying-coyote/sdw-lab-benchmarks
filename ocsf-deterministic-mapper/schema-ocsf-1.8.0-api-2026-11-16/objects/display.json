@@ -1,0 +1,43 @@
+{
+ "attributes": {
+  "color_depth": {
+   "caption": "Color Depth",
+   "description": "The numeric color depth.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "physical_height": {
+   "caption": "Physical Height",
+   "description": "The numeric physical height of display.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "physical_orientation": {
+   "caption": "Physical Orientation",
+   "description": "The numeric physical orientation of display.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "physical_width": {
+   "caption": "Physical Width",
+   "description": "The numeric physical width of display.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "scale_factor": {
+   "caption": "Scale Factor",
+   "description": "The numeric scale factor of display.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  }
+ },
+ "caption": "Display",
+ "description": "The Display object contains information about the physical or virtual display connected to a computer system.",
+ "extends": "object",
+ "name": "display"
+}

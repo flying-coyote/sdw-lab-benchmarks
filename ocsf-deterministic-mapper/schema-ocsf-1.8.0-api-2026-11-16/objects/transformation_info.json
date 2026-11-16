@@ -1,0 +1,71 @@
+{
+ "attributes": {
+  "lang": {
+   "caption": "Language",
+   "description": "The transformation language used to transform the data.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the transformation or mapping.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "product": {
+   "caption": "Product",
+   "description": "The product or instance used to make the transformation",
+   "object_name": "Product",
+   "object_type": "product",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "time": {
+   "caption": "Event Time",
+   "description": "Time of the transformation.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "time_dt": {
+   "caption": "Event Time",
+   "description": "Time of the transformation.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the mapping or transformation.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "url_string": {
+   "caption": "URL String",
+   "description": "The Uniform Resource Locator String where the mapping or transformation exists.",
+   "requirement": "recommended",
+   "type": "url_t",
+   "type_name": "URL String"
+  }
+ },
+ "caption": "Transformation Info",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The transformation_info object represents the mapping or transformation used.",
+ "extends": "_entity",
+ "name": "transformation_info",
+ "profiles": [
+  "data_classification",
+  "datetime"
+ ]
+}

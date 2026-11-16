@@ -1,0 +1,291 @@
+{
+ "attributes": {
+  "agent_list": {
+   "caption": "Agent List",
+   "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
+   "is_array": true,
+   "object_name": "Agent",
+   "object_type": "agent",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "cloud_partition": {
+   "caption": "Cloud Partition",
+   "description": "The logical grouping or isolated segment within a cloud provider's infrastructure where the resource is located. Examples include AWS partitions (aws, aws-cn, aws-us-gov), Azure cloud environments (AzureCloud, AzureUSGovernment, AzureChinaCloud), or similar logical divisions in other cloud providers.",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the resource was created.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the resource was created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "criticality": {
+   "caption": "Criticality",
+   "description": "The criticality of the resource as defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "data": {
+   "caption": "Data",
+   "description": "Additional data describing the resource.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "data_classification": {
+   "@deprecated": {
+    "message": "Use the attribute <code>data_classifications</code> instead",
+    "since": "1.4.0"
+   },
+   "caption": "Data Classification",
+   "description": "The Data Classification object includes information about data classification levels and data category types.",
+   "group": "context",
+   "object_name": "Data Classification",
+   "object_type": "data_classification",
+   "profiles": [
+    "data_classification"
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "data_classifications": {
+   "caption": "Data Classification",
+   "description": "A list of Data Classification objects, that include information about data classification levels and data category types, identified by a classifier.",
+   "group": "context",
+   "is_array": true,
+   "object_name": "Data Classification",
+   "object_type": "data_classification",
+   "profiles": [
+    "data_classification"
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "group": {
+   "caption": "Group",
+   "description": "The name of the related resource group.",
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "hostname": {
+   "caption": "Hostname",
+   "description": "The fully qualified name of the resource.",
+   "requirement": "recommended",
+   "type": "hostname_t",
+   "type_name": "Hostname"
+  },
+  "ip": {
+   "caption": "IP Address",
+   "description": "The IP address of the resource, in either IPv4 or IPv6 format.",
+   "requirement": "recommended",
+   "type": "ip_t",
+   "type_name": "IP Address"
+  },
+  "is_backed_up": {
+   "caption": "Back Ups Configured",
+   "description": "Indicates whether the device or resource has a backup enabled, such as an automated snapshot or a cloud backup. For example, this is indicated by the <code>cloudBackupEnabled</code> value within JAMF Pro mobile devices or the registration of an AWS ARN with the AWS Backup service.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "labels": {
+   "caption": "Labels",
+   "description": "The list of labels associated to the resource.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The time when the resource was last modified.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The time when the resource was last modified.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the resource.",
+   "observable": 38,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "namespace": {
+   "caption": "Namespace",
+   "description": "The namespace is useful when similar entities exist that you need to keep separate.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "owner": {
+   "caption": "Owner",
+   "description": "The details of the entity that owns the resource. This object includes properties such as the owner's name, unique identifier, type, domain, and other relevant attributes that help identify the resource owner within the environment.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "provider": {
+   "caption": "Cloud Provider",
+   "description": "The cloud service provider that hosts or manages the resource. This field is typically used when the resource is managed by a different provider than the one generating the event or finding. Examples include AWS, Azure, GCP (Google Cloud Platform), Oracle Cloud, IBM Cloud, Alibaba Cloud, or other public, private, or hybrid cloud providers.",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "region": {
+   "caption": "Region",
+   "description": "The cloud region where the resource is hosted, as defined by the cloud provider. This represents the physical or logical geographic area containing the infrastructure supporting the resource. Examples include AWS regions (us-east-1, eu-west-1), Azure regions (East US, West Europe), GCP regions (us-central1, europe-west1), or Oracle Cloud regions (us-ashburn-1, uk-london-1).",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "resource_relationship": {
+   "caption": "Resource Relationship",
+   "description": "A graph representation showing how this resource relates to and interacts with other entities in the environment. This can include parent/child relationships, dependencies, or other connections.",
+   "object_name": "Graph",
+   "object_type": "graph",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "role": {
+   "caption": "Role",
+   "description": "The role of the resource in the context of the event or finding, normalized to the caption of the role_id value. In the case of 'Other', it is defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "role_id": {
+   "caption": "Role ID",
+   "description": "The normalized identifier of the resource's role in the context of the event or finding.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The role is unknown."
+    },
+    "1": {
+     "caption": "Target",
+     "description": "The resource is the primary target or subject of the event/finding."
+    },
+    "2": {
+     "caption": "Actor",
+     "description": "The resource is acting as the initiator or performer in the context of the event/finding."
+    },
+    "3": {
+     "caption": "Affected",
+     "description": "The resource was impacted or affected by the event/finding."
+    },
+    "4": {
+     "caption": "Related",
+     "description": "The resource is related to or associated with the event/finding."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The role is not mapped. See the role attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "role",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "tags": {
+   "caption": "Tags",
+   "description": "The list of tags; <code>{key:value}</code> pairs associated to the resource.",
+   "is_array": true,
+   "object_name": "Key:Value object",
+   "object_type": "key_value_object",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The resource type as defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the resource.",
+   "requirement": "recommended",
+   "type": "resource_uid_t",
+   "type_name": "Resource UID"
+  },
+  "uid_alt": {
+   "caption": "Alternate ID",
+   "description": "The alternative unique identifier of the resource.",
+   "requirement": "optional",
+   "type": "resource_uid_t",
+   "type_name": "Resource UID"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The version of the resource. For example <code>1.2.3</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "zone": {
+   "caption": "Cloud Availability Zone",
+   "description": "The availability zone within a cloud region where the resource is located. Examples include AWS availability zones (us-east-1a, us-east-1b), Azure availability zones (1, 2, 3 within a region), GCP zones (us-central1-a, us-central1-b), or Oracle Cloud availability domains (AD-1, AD-2, AD-3).",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Resource Details",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The Resource Details object describes details about resources that were affected by the activity/event.",
+ "extends": "_resource",
+ "name": "resource_details",
+ "profiles": [
+  "cloud",
+  "data_classification",
+  "datetime"
+ ]
+}

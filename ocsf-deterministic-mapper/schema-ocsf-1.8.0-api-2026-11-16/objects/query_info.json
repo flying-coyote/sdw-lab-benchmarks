@@ -1,0 +1,69 @@
+{
+ "attributes": {
+  "bytes": {
+   "caption": "Total Bytes",
+   "description": "The size of the data returned from the query.",
+   "requirement": "optional",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "data": {
+   "caption": "Data",
+   "description": "The data returned from the query execution.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The query name for a saved or scheduled query.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "query_string": {
+   "caption": "Query String",
+   "description": "A string representing the query code being run. For example: <code>SELECT * FROM my_table</code>",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "query_time": {
+   "caption": "Query Time",
+   "description": "The time when the query was run.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "query_time_dt": {
+   "caption": "Query Time",
+   "description": "The time when the query was run.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the query.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Query Information",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The query info object holds information related to data access within a datastore. To access, manipulate, delete, or retrieve data from a datastore, a query must be written using a specific syntax.",
+ "extends": "_entity",
+ "name": "query_info",
+ "profiles": [
+  "datetime"
+ ]
+}

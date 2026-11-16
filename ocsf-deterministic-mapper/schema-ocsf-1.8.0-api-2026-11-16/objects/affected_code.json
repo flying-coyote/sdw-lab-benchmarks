@@ -1,0 +1,71 @@
+{
+ "attributes": {
+  "end_column": {
+   "caption": "End Column",
+   "description": "The column number of the last part of the assessed code identified as vulnerable.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "end_line": {
+   "caption": "End Line",
+   "description": "The line number of the last line of code block identified as vulnerable.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "file": {
+   "caption": "File",
+   "description": "Details about the file that contains the affected code block.",
+   "object_name": "File",
+   "object_type": "file",
+   "requirement": "required",
+   "type": "object_t"
+  },
+  "owner": {
+   "caption": "Owner",
+   "description": "Details about the user that owns the affected file.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "remediation": {
+   "caption": "Remediation Guidance",
+   "description": "Describes the recommended remediation steps to address identified issue(s).",
+   "object_name": "Remediation",
+   "object_type": "remediation",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "rule": {
+   "caption": "Related Rule",
+   "description": "Details about the specific rule, e.g., those defined as part of a larger <code>policy</code>, that triggered the finding.",
+   "object_name": "Rule",
+   "object_type": "rule",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "start_column": {
+   "caption": "Start Column",
+   "description": "The column number of the first part of the assessed code identified as vulnerable.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "start_line": {
+   "caption": "Start Line",
+   "description": "The line number of the first line of code block identified as vulnerable.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  }
+ },
+ "caption": "Affected Code",
+ "description": "The Affected Code object describes details about a code block identified as vulnerable.",
+ "extends": "object",
+ "name": "affected_code",
+ "profiles": [
+  "data_classification"
+ ]
+}

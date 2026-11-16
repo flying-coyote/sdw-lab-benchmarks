@@ -1,0 +1,110 @@
+{
+ "attributes": {
+  "file": {
+   "caption": "File",
+   "description": "Present if this script is associated with a file. Not present in the case of a file-less script.",
+   "object_name": "File",
+   "object_type": "file",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "hashes": {
+   "caption": "Hashes",
+   "description": "An array of the script's cryptographic hashes. Note that these hashes are calculated on the script in its original encoding, and not on the normalized UTF-8 encoding found in the <code>script_content</code> attribute.",
+   "is_array": true,
+   "object_name": "Fingerprint",
+   "object_type": "fingerprint",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "Unique identifier for the script or macro, independent of the containing file, used for tracking, auditing, and security analysis.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "parent_uid": {
+   "caption": "Parent Unique ID",
+   "description": "This attribute relates a sub-script to a parent script having the matching <code>uid</code> attribute. In the case of PowerShell, sub-script execution can be identified by matching the activity correlation ID of the raw ETW events provided by the OS.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "script_content": {
+   "caption": "Script Content",
+   "description": "The script content, normalized to UTF-8 encoding irrespective of its original encoding. When emitting this attribute, it may be appropriate to truncate large scripts. When consuming this attribute, large scripts should be anticipated.",
+   "object_name": "Long String",
+   "object_type": "long_string",
+   "observable": 36,
+   "requirement": "required",
+   "type": "object_t"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The script type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The normalized script type ID.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The script type is unknown."
+    },
+    "1": {
+     "caption": "Windows Command Prompt"
+    },
+    "2": {
+     "caption": "PowerShell"
+    },
+    "3": {
+     "caption": "Python"
+    },
+    "4": {
+     "caption": "JavaScript"
+    },
+    "5": {
+     "caption": "VBScript"
+    },
+    "6": {
+     "caption": "Unix Shell"
+    },
+    "7": {
+     "caption": "VBA"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The script type is not mapped. See the <code>type</code> attribute which contains an event source specific value."
+    }
+   },
+   "requirement": "required",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "Some script engines assign a unique ID to each individual execution of a given script. This attribute captures that unique ID. In the case of PowerShell, the unique ID corresponds to the <code>ScriptBlockId</code> in the raw ETW events provided by the OS.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Script",
+ "description": "The Script object describes a script or command that can be executed by a shell, script engine, or interpreter. Examples include Bash, JavsScript, PowerShell, Python, VBScript, etc. Note that the term <em>script</em> here denotes not only a script contained within a file but also a script or command typed interactively by a user, supplied on the command line, or provided by some other file-less mechanism.",
+ "extends": "object",
+ "name": "script",
+ "profiles": [
+  "data_classification"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:ExecutableScript.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:ExecutableScript/"
+  }
+ ]
+}

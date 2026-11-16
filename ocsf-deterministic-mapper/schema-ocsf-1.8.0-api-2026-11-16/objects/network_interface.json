@@ -1,0 +1,118 @@
+{
+ "attributes": {
+  "hostname": {
+   "caption": "Hostname",
+   "description": "The hostname associated with the network interface.",
+   "requirement": "recommended",
+   "type": "hostname_t",
+   "type_name": "Hostname"
+  },
+  "ip": {
+   "caption": "IP Address",
+   "description": "The IP address associated with the network interface.",
+   "requirement": "recommended",
+   "type": "ip_t",
+   "type_name": "IP Address"
+  },
+  "mac": {
+   "caption": "MAC Address",
+   "description": "The MAC address of the network interface.",
+   "requirement": "recommended",
+   "type": "mac_t",
+   "type_name": "MAC Address"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the network interface.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "namespace": {
+   "caption": "Namespace",
+   "description": "The namespace is useful in merger or acquisition situations. For example, when similar entities exist that you need to keep separate.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "open_ports": {
+   "caption": "Open Ports",
+   "description": "The list of open ports on a network interface, including port numbers and associated protocol information.",
+   "is_array": true,
+   "object_name": "Port Information",
+   "object_type": "port_info",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "subnet_prefix": {
+   "caption": "Subnet Prefix Length",
+   "description": "The subnet prefix length determines the number of bits used to represent the network part of the IP address. The remaining bits are reserved for identifying individual hosts within that subnet.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The type of network interface.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The network interface type identifier.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "Wired"
+    },
+    "2": {
+     "caption": "Wireless"
+    },
+    "3": {
+     "caption": "Mobile"
+    },
+    "4": {
+     "caption": "Tunnel"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier for the network interface.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Network Interface",
+ "constraints": {
+  "at_least_one": [
+   "ip",
+   "mac",
+   "name",
+   "hostname",
+   "uid"
+  ]
+ },
+ "description": "The Network Interface object describes the type and associated attributes of a physical or virtual network interface.",
+ "extends": "_entity",
+ "name": "network_interface",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:NetworkInterfaceCard.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:NetworkInterfaceCard/"
+  }
+ ]
+}

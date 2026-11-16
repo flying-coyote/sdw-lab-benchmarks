@@ -1,0 +1,60 @@
+{
+ "attributes": {
+  "code": {
+   "caption": "Response Code",
+   "description": "The numeric response sent to a request.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "containers": {
+   "caption": "Containers",
+   "description": "When working with containerized applications, the set of containers which write to the standard the output of a particular logging driver. For example, this may be the set of containers involved in handling api requests and responses for a containerized application.",
+   "is_array": true,
+   "object_name": "Container",
+   "object_type": "container",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "data": {
+   "caption": "Data",
+   "description": "The additional data that is associated with the api response.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "error": {
+   "caption": "Error Code",
+   "description": "Error Code",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "error_message": {
+   "caption": "Error Message",
+   "description": "Error Message",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "flags": {
+   "caption": "Flags",
+   "description": "The communication flags that are associated with the api response.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "message": {
+   "caption": "Message",
+   "description": "The description of the event/finding, as defined by the source.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Response Elements",
+ "description": "The Response Elements object describes characteristics of an API response.",
+ "extends": "object",
+ "name": "response"
+}

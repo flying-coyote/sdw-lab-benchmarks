@@ -1,0 +1,41 @@
+{
+ "attributes": {
+  "name": {
+   "caption": "Name",
+   "description": "The tactic name that is associated with the defensive technique. For example: <code>Isolate</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "src_url": {
+   "caption": "Source URL",
+   "description": "The versioned permalink of the defensive tactic. For example: <code>https://d3fend.mitre.org/tactic/d3f:Isolate/</code>.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the defensive tactic.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "MITRE D3FEND\u2122 Tactic",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The MITRE D3FEND\u2122 Tactic object describes the tactic ID and/or name that is associated to an attack.",
+ "extends": "_entity",
+ "name": "d3f_tactic",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Matrix",
+   "url": "https://d3fend.mitre.org"
+  }
+ ]
+}

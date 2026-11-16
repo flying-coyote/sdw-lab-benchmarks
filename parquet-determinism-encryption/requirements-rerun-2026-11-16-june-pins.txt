@@ -1,0 +1,12 @@
+chdb==4.1.8
+chdb-core==26.11.1
+datafusion==53.0.0
+duckdb==1.5.3
+numpy==2.5.5
+pandas==3.1.1
+polars==1.41.2
+polars-runtime-32==1.41.2
+pyarrow==23.0.1
+python-dateutil==4.0.0
+typing_extensions==4.16.0
+tzdata==2026.6

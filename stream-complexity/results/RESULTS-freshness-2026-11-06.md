@@ -19,6 +19,8 @@ What this supports: for a detection that alerts when a 60-second window closes, 
 | B-900 | 450.01 | 450.01 | 300–600 | 479.53 | 479.53 | 330–630 |
 | B-5/L300 (5 s poll over 300 s files) | 120.63 | 120.63 | 80–170 | 153.64 | 153.64 | 130–180 |
 
+(Corrected 2026-11-16: the B-5 W pooled medians are set by single samples, not by lander lag. Each of the four phase-stratified B-5 replicas sits within milliseconds of its own median (0.629, 1.879, 3.129 and 4.379 s on both trials, `fresh/trial{1,2}/latency.json`), and the lander-lag p50 is about 0.006 s, so the pooled median of 120 falls in the gap between the second and third cluster and one stray sample decides it: a 5.629 s outlier in r0 gives 3.128 in trial 1, a 2.72 s sample in r1 gives 2.924 in trial 2, and the lag-subtracted 2.40 / 2.85 and P1's 0.22 / 0.70 s inherit that. The median of the replica medians is 2.50 s on both trials, about 0.32 s and 0.35 s behind S. P1 (gap < 3 s) holds on every estimator, so no verdict changes.)
+
 W is measured from the window close to the alert landing, and I from the event's scheduled replay time to the alert landing. Every arm landed inside its frozen band on both trials. The batch I medians are identical across the two trials because the planted IOC times and the stratified poll phases are deterministic, so the only thing that varies between trials is jitter in the lander and the poll loop.
 
 ## Predictions

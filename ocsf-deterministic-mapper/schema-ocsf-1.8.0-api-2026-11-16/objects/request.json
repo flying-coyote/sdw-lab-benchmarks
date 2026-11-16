@@ -1,0 +1,39 @@
+{
+ "attributes": {
+  "containers": {
+   "caption": "Containers",
+   "description": "When working with containerized applications, the set of containers which write to the standard the output of a particular logging driver. For example, this may be the set of containers involved in handling api requests and responses for a containerized application.",
+   "is_array": true,
+   "object_name": "Container",
+   "object_type": "container",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "data": {
+   "caption": "Data",
+   "description": "The additional data that is associated with the api request.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "flags": {
+   "caption": "Flags",
+   "description": "The communication flags that are associated with the api request.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique request identifier.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Request Elements",
+ "description": "The Request Elements object describes characteristics of an API request.",
+ "extends": "object",
+ "name": "request"
+}

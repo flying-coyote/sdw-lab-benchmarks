@@ -1,0 +1,168 @@
+{
+ "attributes": {
+  "duration": {
+   "caption": "Duration Milliseconds",
+   "description": "The duration of the time span in milliseconds.",
+   "requirement": "recommended",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "duration_days": {
+   "caption": "Duration Days",
+   "description": "The duration of the time span in days.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "duration_hours": {
+   "caption": "Duration Hours",
+   "description": "The duration of the time span in hours.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "duration_mins": {
+   "caption": "Duration Minutes",
+   "description": "The duration of the time span in minutes.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "duration_months": {
+   "caption": "Duration Months",
+   "description": "The duration of the time span in months.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "duration_secs": {
+   "caption": "Duration Seconds",
+   "description": "The duration of the time span in seconds.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "duration_weeks": {
+   "caption": "Duration Weeks",
+   "description": "The duration of the time span in weeks.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "duration_years": {
+   "caption": "Duration Years",
+   "description": "The duration of the time span in years.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "end_time": {
+   "caption": "End Time",
+   "description": "The end time or conclusion of the timespan's interval.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "end_time_dt": {
+   "caption": "End Time",
+   "description": "The end time or conclusion of the timespan's interval.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "start_time": {
+   "caption": "Start Time",
+   "description": "The start time or beginning of the timespan's interval.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "start_time_dt": {
+   "caption": "Start Time",
+   "description": "The start time or beginning of the timespan's interval.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "type": {
+   "caption": "Time Span Type",
+   "description": "The type of time span duration the object represents.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Time Span Type ID",
+   "description": "The normalized identifier for the time span duration type.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "Milliseconds"
+    },
+    "2": {
+     "caption": "Seconds"
+    },
+    "3": {
+     "caption": "Minutes"
+    },
+    "4": {
+     "caption": "Hours"
+    },
+    "5": {
+     "caption": "Days"
+    },
+    "6": {
+     "caption": "Weeks"
+    },
+    "7": {
+     "caption": "Months"
+    },
+    "8": {
+     "caption": "Years"
+    },
+    "9": {
+     "caption": "Time Interval",
+     "description": "The <code>start_time</code> and <code>end_time</code> should be set."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  }
+ },
+ "caption": "Time Span",
+ "constraints": {
+  "at_least_one": [
+   "duration",
+   "duration_days",
+   "duration_hours",
+   "duration_mins",
+   "duration_months",
+   "duration_secs",
+   "duration_weeks",
+   "duration_years",
+   "end_time",
+   "start_time"
+  ]
+ },
+ "description": "The Time Span object represents different time period durations. If a timespan is fractional, i.e. crosses one period, e.g. a week and 3 days, more than one may be populated since each member is of integral type. In that case <code>type_id</code> if present should be set to <code>Other.</code><P>A timespan may also be defined by its time interval boundaries, <code>start_time</code> and <code>end_time</code>.",
+ "extends": "object",
+ "name": "timespan",
+ "profiles": [
+  "datetime"
+ ]
+}

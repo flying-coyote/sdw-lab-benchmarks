@@ -1,0 +1,93 @@
+{
+ "attributes": {
+  "class": {
+   "caption": "Resource Record Class",
+   "description": "The class of resource records being queried. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc1035.txt'>RFC1035</a>. For example: <code>IN</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "hostname": {
+   "caption": "Hostname",
+   "description": "The hostname or domain being queried. For example: <code>www.example.com</code>",
+   "requirement": "required",
+   "type": "hostname_t",
+   "type_name": "Hostname"
+  },
+  "opcode": {
+   "caption": "DNS Opcode",
+   "description": "The DNS opcode specifies the type of the query message.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "opcode_id": {
+   "caption": "DNS Opcode ID",
+   "description": "The DNS opcode ID specifies the normalized query message type as defined in <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc5395.html'>RFC-5395</a>.",
+   "enum": {
+    "0": {
+     "caption": "Query",
+     "description": "Standard query"
+    },
+    "1": {
+     "caption": "Inverse Query",
+     "description": "Inverse query, obsolete"
+    },
+    "2": {
+     "caption": "Status",
+     "description": "Server status request"
+    },
+    "3": {
+     "caption": "Reserved",
+     "description": "Reserved, not used"
+    },
+    "4": {
+     "caption": "Notify",
+     "description": "Zone change notification"
+    },
+    "5": {
+     "caption": "Update",
+     "description": "Dynamic DNS update"
+    },
+    "6": {
+     "caption": "DSO Message",
+     "description": "DNS Stateful Operations (DSO)"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The DNS Opcode is not defined by the RFC. See the <code>opcode</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "suppress_checks": [
+    "enum_convention"
+   ],
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "packet_uid": {
+   "caption": "Packet UID",
+   "description": "The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "type": {
+   "caption": "Resource Record Type",
+   "description": "The type of resource records being queried. See <a target='_blank' href='https://www.rfc-editor.org/rfc/rfc1035.txt'>RFC1035</a>. For example: A, AAAA, CNAME, MX, and NS.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "DNS Query",
+ "description": "The DNS query object represents a specific request made to the Domain Name System (DNS) to retrieve information about a domain or perform a DNS operation. This object encapsulates the necessary attributes and methods to construct and send DNS queries, specify the query type (e.g., A, AAAA, MX).",
+ "extends": "_dns",
+ "name": "dns_query",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:DNSLookup.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:DNSLookup/"
+  }
+ ]
+}

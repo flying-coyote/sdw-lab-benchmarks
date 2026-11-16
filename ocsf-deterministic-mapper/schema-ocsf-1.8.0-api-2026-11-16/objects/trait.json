@@ -1,0 +1,50 @@
+{
+ "attributes": {
+  "category": {
+   "caption": "Category",
+   "description": "The high-level grouping or classification this trait belongs to.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the trait.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The type of the trait. For example, this can be used to indicate if the trait acts as a contributing factor (increases risk/severity) or a mitigating factor (decreases risk/severity), in the context of the related finding.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the trait.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "values": {
+   "caption": "Values",
+   "description": "The values of the trait.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Trait",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "Describes a characteristic or feature of an entity that was observed. For example, this object can be used to represent specific characteristics derived from events or findings that can be surfaced as distinguishing traits of the entity in question.",
+ "extends": "_entity",
+ "name": "trait"
+}

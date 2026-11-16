@@ -1,0 +1,73 @@
+{
+ "attributes": {
+  "is_system": {
+   "caption": "System",
+   "description": "The indication of whether the object is part of the operating system.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the kernel resource.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "path": {
+   "caption": "Path",
+   "description": "The full path of the kernel resource.",
+   "requirement": "optional",
+   "type": "file_path_t",
+   "type_name": "File Path"
+  },
+  "system_call": {
+   "caption": "System Call",
+   "description": "The system call that was invoked.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The type of the kernel resource.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The type of the kernel resource.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "Shared Mutex"
+    },
+    "2": {
+     "caption": "System Call"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "required",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  }
+ },
+ "caption": "Kernel Resource",
+ "description": "The Kernel Resource object provides information about a specific kernel resource, including its name and type. It describes essential attributes associated with a resource managed by the kernel of an operating system.",
+ "extends": "object",
+ "name": "kernel",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:Kernel",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:Kernel/"
+  }
+ ]
+}

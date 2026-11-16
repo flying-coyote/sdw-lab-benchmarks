@@ -1,0 +1,38 @@
+{
+ "attributes": {
+  "error": {
+   "caption": "Error Code",
+   "description": "The error indication returned from the function. This may differ from the return value (e.g. when <code>errno</code> is used).",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "parameters": {
+   "caption": "Parameters",
+   "description": "The parameters passed into a function invocation.",
+   "is_array": true,
+   "object_name": "Parameter",
+   "object_type": "parameter",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "return_value": {
+   "caption": "Return Value",
+   "description": "The value returned from a function.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Function Invocation",
+ "constraints": {
+  "at_least_one": [
+   "parameters",
+   "return_value",
+   "error"
+  ]
+ },
+ "description": "The Function Invocation object provides details regarding the invocation of a function.",
+ "extends": "object",
+ "name": "function_invocation"
+}

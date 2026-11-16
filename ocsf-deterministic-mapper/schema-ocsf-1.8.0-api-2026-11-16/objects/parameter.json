@@ -1,0 +1,36 @@
+{
+ "attributes": {
+  "name": {
+   "caption": "Name",
+   "description": "The parameter name.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "post_value": {
+   "caption": "Post-Value",
+   "description": "The parameter value after function execution.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "pre_value": {
+   "caption": "Pre-Value",
+   "description": "The parameter value before function execution.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Parameter",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "pre_value",
+   "post_value"
+  ]
+ },
+ "description": "The Parameter object provides details regarding a parameter of a a function.",
+ "extends": "object",
+ "name": "parameter"
+}

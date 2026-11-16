@@ -1,0 +1,36 @@
+{
+ "attributes": {
+  "ack_reason": {
+   "caption": "Acknowledgement Reason",
+   "description": "An integer that provides a reason code or additional information about the acknowledgment result.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "ack_result": {
+   "caption": "Acknowledgement Result",
+   "description": "An integer that denotes the acknowledgment result of the DCE/RPC call.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uuid": {
+   "caption": "UUID",
+   "description": "The unique identifier of the particular remote procedure or service.",
+   "requirement": "required",
+   "type": "uuid_t",
+   "type_name": "UUID"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The version of the DCE/RPC protocol being used in the session.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "RPC Interface",
+ "description": "The RPC Interface represents the remote procedure call interface used in the DCE/RPC session.",
+ "extends": "object",
+ "name": "rpc_interface"
+}

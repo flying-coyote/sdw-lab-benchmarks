@@ -1,0 +1,99 @@
+{
+ "attributes": {
+  "category": {
+   "caption": "Category",
+   "description": "The rule category.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "condition": {
+   "caption": "Condition",
+   "description": "The rule trigger condition for the rule. For example: SQL_INJECTION.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "The description of the rule that generated the event.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "duration": {
+   "caption": "Duration Milliseconds",
+   "description": "The rule response time duration, usually used for challenge completion time.",
+   "requirement": "optional",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "match_details": {
+   "caption": "Match Details",
+   "description": "The data in a request that rule matched. For example: '[\"10\",\"and\",\"1\"]'.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "match_location": {
+   "caption": "Match Location",
+   "description": "The location of the matched data in the source which resulted in the triggered firewall rule. For example: HEADER.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the rule that generated the event.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "rate_limit": {
+   "caption": "Rate Limit",
+   "description": "The rate limit for a rate-based rule.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "sensitivity": {
+   "caption": "Sensitivity",
+   "description": "The sensitivity of the firewall rule in the matched event. For example: HIGH.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The rule type.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the rule that generated the event.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The rule version. For example: <code>1.1</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Firewall Rule",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The Firewall Rule object represents a specific rule within a firewall policy or event. It contains information about a rule's configuration, properties, and associated actions that define how network traffic is handled by the firewall.",
+ "extends": "rule",
+ "name": "firewall_rule"
+}

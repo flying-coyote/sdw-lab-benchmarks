@@ -1,0 +1,89 @@
+{
+ "attributes": {
+  "email_addr": {
+   "caption": "Contact Email",
+   "description": "The user's primary email address.",
+   "requirement": "recommended",
+   "type": "email_t",
+   "type_name": "Email Address"
+  },
+  "location": {
+   "caption": "Contact Location Information",
+   "description": "Location details for the contract such as the city, state/province, country, etc.",
+   "object_name": "Geo Location",
+   "object_type": "location",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The individual or organization name for the contact.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "phone_number": {
+   "caption": "Phone Number",
+   "description": "The number associated with the phone.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Domain Contact Type",
+   "description": "The Domain Contact type, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Domain Contact Type ID",
+   "description": "The normalized domain contact type ID.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "Registrant",
+     "description": "The contact information provided is for the domain registrant."
+    },
+    "2": {
+     "caption": "Administrative",
+     "description": "The contact information provided is for the domain administrator."
+    },
+    "3": {
+     "caption": "Technical",
+     "description": "The contact information provided is for the domain technical lead."
+    },
+    "4": {
+     "caption": "Billing",
+     "description": "The contact information provided is for the domain billing lead."
+    },
+    "5": {
+     "caption": "Abuse",
+     "description": "The contact information provided is for the domain abuse contact."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "required",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the contact information, typically provided in WHOIS information.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Domain Contact",
+ "description": "The contact information related to a domain registration, e.g., registrant, administrator, abuse, billing, or technical contact.",
+ "extends": "object",
+ "name": "domain_contact"
+}

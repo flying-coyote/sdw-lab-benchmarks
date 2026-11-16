@@ -1,0 +1,52 @@
+{
+ "attributes": {
+  "ai_provider": {
+   "caption": "AI Provider",
+   "description": "AI service provider or organization name. For example: <code>OpenAI</code>, <code>Anthropic</code>, <code>Google</code>, or <code>Internal</code>.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "Human-readable model name. For example: <code>gpt-4o</code>, <code>claude-3-sonnet</code>, or <code>text-embedding-ada-002</code>.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the AI model.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "Model version identifier. For example: <code>2024-05-13</code>, <code>v2.1.0</code>, or <code>beta</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "AI Model",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The AI Model object describes the characteristics of an AI/ML model. Examples include language models like GPT-4, embedding models like text-embedding-ada-002, and computer vision models like CLIP.",
+ "extends": "_entity",
+ "name": "ai_model",
+ "references": [
+  {
+   "description": "AI Model Registry and Documentation Standards",
+   "url": "https://huggingface.co/docs/hub/models"
+  },
+  {
+   "description": "OpenAI Model Documentation",
+   "url": "https://platform.openai.com/docs/models"
+  }
+ ]
+}

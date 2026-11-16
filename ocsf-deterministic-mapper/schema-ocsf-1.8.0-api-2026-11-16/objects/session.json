@@ -1,0 +1,129 @@
+{
+ "attributes": {
+  "count": {
+   "caption": "Count",
+   "description": "The number of identical sessions spawned from the same source IP, destination IP, application, and content/threat type seen over a period of time.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the session was created.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the session was created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "credential_uid": {
+   "caption": "User Credential ID",
+   "description": "The unique identifier of the user's credential. For example, AWS Access Key ID.",
+   "observable": 19,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "expiration_reason": {
+   "caption": "Expiration Reason",
+   "description": "The reason which triggered the session expiration.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "expiration_time": {
+   "caption": "Expiration Time",
+   "description": "The session expiration time.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "expiration_time_dt": {
+   "caption": "Expiration Time",
+   "description": "The session expiration time.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "is_mfa": {
+   "caption": "Multi Factor Authentication",
+   "description": "Indicates whether Multi Factor Authentication was used during authentication.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_remote": {
+   "caption": "Remote",
+   "description": "The indication of whether the session is remote.",
+   "requirement": "recommended",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_vpn": {
+   "caption": "VPN Session",
+   "description": "The indication of whether the session is a VPN session.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "issuer": {
+   "caption": "Issuer Details",
+   "description": "The identifier of the session issuer.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "terminal": {
+   "caption": "Terminal",
+   "description": "The Pseudo Terminal associated with the session. Ex: the tty or pts value.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the session.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid_alt": {
+   "caption": "Alternate ID",
+   "description": "The alternate unique identifier of the session. e.g. AWS ARN - <code>arn:aws:sts::123344444444:assumed-role/Admin/example-session</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uuid": {
+   "caption": "UUID",
+   "description": "The universally unique identifier of the session.",
+   "requirement": "optional",
+   "type": "uuid_t",
+   "type_name": "UUID"
+  }
+ },
+ "caption": "Session",
+ "description": "The Session object describes details about an authenticated session. e.g. Session Creation Time, Session Issuer.",
+ "extends": "object",
+ "name": "session",
+ "profiles": [
+  "datetime"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:Session",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:Session/"
+  }
+ ]
+}

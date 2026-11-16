@@ -1,0 +1,19 @@
+{
+  "label": "current",
+  "run_utc": "2026-11-16T13:25:59Z",
+  "environment": {
+    "datafusion": "55.0.0",
+    "pyarrow": "26.0.1",
+    "duckdb": "2.0.0"
+  },
+  "datafusion_table_option": {
+    "pyarrow (explicit key)": {
+      "read": false,
+      "error": "ValueError: Parquet error: Parquet error: Parquet file has an encrypted footer but the encryption feature is disabled"
+    },
+    "duckdb": {
+      "read": false,
+      "error": "ValueError: Parquet error: Parquet error: Parquet file has an encrypted footer but the encryption feature is disabled"
+    }
+  }
+}

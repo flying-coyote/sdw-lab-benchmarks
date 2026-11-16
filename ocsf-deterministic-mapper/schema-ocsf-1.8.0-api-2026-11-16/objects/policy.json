@@ -1,0 +1,72 @@
+{
+ "attributes": {
+  "data": {
+   "caption": "Data",
+   "description": "Additional data about the policy such as the underlying JSON policy itself or other details.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "The description of the policy.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "group": {
+   "caption": "Group",
+   "description": "The policy group.",
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "is_applied": {
+   "caption": "Applied",
+   "description": "A determination if the content of a policy was applied to a target or request, or not.",
+   "requirement": "recommended",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The policy name. For example: <code>AdministratorAccess Policy</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The policy type. For example: <code>Identity Policy, Resource Policy, Service Control Policy, etc.</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "A unique identifier of the policy instance.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The policy version number.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Policy",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "type",
+   "uid"
+  ]
+ },
+ "description": "The Policy object describes the policies that are applicable. <p>Policy attributes provide traceability to the operational state of the security product at the time that the event was captured, facilitating forensics, troubleshooting, and policy tuning/adjustments.</p>",
+ "extends": "_entity",
+ "name": "policy"
+}

@@ -1,0 +1,56 @@
+{
+ "attributes": {
+  "category": {
+   "caption": "Category",
+   "description": "The rule category.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "The description of the rule that generated the event.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the rule that generated the event.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The rule type.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the rule that generated the event.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The rule version. For example: <code>1.1</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Rule",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The Rule object describes characteristics of a rule associated with a policy or an event.",
+ "extends": "_entity",
+ "name": "rule"
+}

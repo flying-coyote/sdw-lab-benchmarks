@@ -1,0 +1,69 @@
+{
+ "attributes": {
+  "data": {
+   "caption": "Data",
+   "description": "Additional data about the edge such as weight, distance, or custom properties.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "is_directed": {
+   "caption": "Directed",
+   "description": "Indicates whether the edge is (<code>true</code>) or undirected (<code>false</code>).",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The human-readable name or label for the edge.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "relation": {
+   "caption": "Relation",
+   "description": "The type of relationship between nodes (e.g. is-attached-to , depends-on, etc).",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "source": {
+   "caption": "Source",
+   "description": "The unique identifier of the node where the edge originates.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "target": {
+   "caption": "Target",
+   "description": "The unique identifier of the node where the edge terminates.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "Unique identifier of the edge.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Edge",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "Represents a connection or relationship between two nodes in a graph.",
+ "extends": "_entity",
+ "name": "edge",
+ "references": [
+  {
+   "description": "JSON graph specification.",
+   "url": "https://github.com/jsongraph/json-graph-specification/"
+  }
+ ]
+}

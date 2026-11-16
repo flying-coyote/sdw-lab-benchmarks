@@ -1,0 +1,55 @@
+{
+ "attributes": {
+  "d3f_tactic": {
+   "caption": "MITRE D3FEND\u2122 Tactic",
+   "description": "The Tactic object describes the tactic ID and/or name that is associated with a countermeasure.",
+   "object_name": "MITRE D3FEND\u2122 Tactic",
+   "object_type": "d3f_tactic",
+   "references": [
+    {
+     "description": "D3FEND\u2122 Matrix",
+     "url": "https://d3fend.mitre.org"
+    }
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "d3f_technique": {
+   "caption": "MITRE D3FEND\u2122 Technique",
+   "description": "The Technique object describes the technique ID and/or name associated with a countermeasure.",
+   "object_name": "MITRE D3FEND\u2122 Technique",
+   "object_type": "d3f_technique",
+   "references": [
+    {
+     "description": "D3FEND\u2122 Matrix",
+     "url": "https://d3fend.mitre.org"
+    }
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The D3FEND\u2122 Matrix version.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "MITRE D3FEND\u2122",
+ "constraints": {
+  "at_least_one": [
+   "d3f_tactic",
+   "d3f_technique"
+  ]
+ },
+ "description": "The MITRE D3FEND\u2122 object describes the tactic & technique associated with a countermeasure.",
+ "extends": "object",
+ "name": "d3fend",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Matrix",
+   "url": "https://d3fend.mitre.org"
+  }
+ ]
+}

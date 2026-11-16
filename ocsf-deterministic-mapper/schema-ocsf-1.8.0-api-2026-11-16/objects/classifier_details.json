@@ -1,0 +1,29 @@
+{
+ "attributes": {
+  "name": {
+   "caption": "Name",
+   "description": "The name of the classifier.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The type of the classifier.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the classifier.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Classifier Details",
+ "description": "The Classifier Details object describes details about the classifier used for data classification.",
+ "extends": "object",
+ "name": "classifier_details"
+}

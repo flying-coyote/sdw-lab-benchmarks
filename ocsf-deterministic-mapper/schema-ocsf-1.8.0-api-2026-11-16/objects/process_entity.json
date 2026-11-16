@@ -1,0 +1,90 @@
+{
+ "attributes": {
+  "cmd_line": {
+   "caption": "Command Line",
+   "description": "The full command line used to launch an application, service, process, or job. For example: <code>ssh user@10.0.0.10</code>. If the command line is unavailable or missing, the empty string <code>''</code> is to be used.",
+   "observable": 13,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "cpid": {
+   "caption": "Common Process Identifier",
+   "description": "A unique process identifier that can be assigned deterministically by multiple system data producers.",
+   "references": [
+    {
+     "description": "OCSF Common Process Identifier (CPID) Specification",
+     "url": "https://github.com/ocsf/common-process-id"
+    }
+   ],
+   "requirement": "recommended",
+   "source": "cpid",
+   "type": "uuid_t",
+   "type_name": "UUID"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the process was created/started.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the process was created/started.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The friendly name of the process, for example: <code>Notepad++</code>.",
+   "requirement": "recommended",
+   "type": "process_name_t",
+   "type_name": "Process Name"
+  },
+  "path": {
+   "caption": "Path",
+   "description": "The process file path.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "pid": {
+   "caption": "Process ID",
+   "description": "The process identifier, as reported by the operating system. Process ID (PID) is a number used by the operating system to uniquely identify an active process.",
+   "observable": 15,
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "A unique identifier for this process assigned by the producer (tool).  Facilitates correlation of a process event with other events for that process.",
+   "observable": 39,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Process Entity",
+ "constraints": {
+  "at_least_one": [
+   "cmd_line",
+   "name",
+   "path",
+   "pid",
+   "uid",
+   "cpid"
+  ]
+ },
+ "description": "The Process Entity object provides critical fields for referencing a process.",
+ "extends": "_entity",
+ "name": "process_entity",
+ "profiles": [
+  "datetime"
+ ]
+}

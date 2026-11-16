@@ -1,0 +1,152 @@
+{
+ "attributes": {
+  "avg_timespan": {
+   "caption": "Average Timespan",
+   "description": "The average time to patch.",
+   "object_name": "Time Span",
+   "object_type": "timespan",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "bulletin": {
+   "caption": "Patch Bulletin",
+   "description": "The kb article bulletin identifier.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "classification": {
+   "caption": "Classification",
+   "description": "The vendors classification of the kb article.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The date the kb article was released by the vendor.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The date the kb article was released by the vendor.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "install_state": {
+   "caption": "Install State",
+   "description": "The install state of the kb article.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "install_state_id": {
+   "caption": "Install State ID",
+   "description": "The normalized install state ID of the kb article.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The normalized install state is unknown."
+    },
+    "1": {
+     "caption": "Installed",
+     "description": "The item is installed."
+    },
+    "2": {
+     "caption": "Not Installed",
+     "description": "The item is not installed."
+    },
+    "3": {
+     "caption": "Installed Pending Reboot",
+     "description": "The item is installed pending reboot operation."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The install state is not mapped. See the <code>install_state</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "install_state",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "is_superseded": {
+   "caption": "The patch is superseded.",
+   "description": "The kb article has been replaced by another.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "os": {
+   "caption": "OS",
+   "description": "The operating system the kb article applies.",
+   "object_name": "Operating System (OS)",
+   "object_type": "os",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "product": {
+   "caption": "Product",
+   "description": "The product details the kb article applies.",
+   "object_name": "Product",
+   "object_type": "product",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "severity": {
+   "caption": "Severity",
+   "description": "The severity of the kb article.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "size": {
+   "caption": "Size",
+   "description": "The size in bytes for the kb article.",
+   "requirement": "optional",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "src_url": {
+   "caption": "Source URL",
+   "description": "The kb article link from the source vendor.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "title": {
+   "caption": "Title",
+   "description": "The title of the kb article.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier for the kb article.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "KB Article",
+ "constraints": {
+  "at_least_one": [
+   "uid",
+   "src_url"
+  ]
+ },
+ "description": "The KB Article object contains metadata that describes the patch or update.",
+ "extends": "object",
+ "name": "kb_article",
+ "profiles": [
+  "data_classification",
+  "datetime"
+ ]
+}

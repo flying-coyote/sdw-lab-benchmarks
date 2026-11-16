@@ -1,0 +1,62 @@
+{
+ "attributes": {
+  "group": {
+   "caption": "Group",
+   "description": "The information pertaining to the API group.",
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "operation": {
+   "caption": "Operation",
+   "description": "Verb/Operation associated with the request",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "request": {
+   "caption": "API Request Details",
+   "description": "Details pertaining to the API request.",
+   "object_name": "Request Elements",
+   "object_type": "request",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "response": {
+   "caption": "API Response Details",
+   "description": "Details pertaining to the API response.",
+   "object_name": "Response Elements",
+   "object_type": "response",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "service": {
+   "caption": "Service",
+   "description": "The information pertaining to the API service.",
+   "object_name": "Service",
+   "object_type": "service",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "token": {
+   "caption": "Token",
+   "description": "The API or client token used to authenticate or authorize the API request. This attribute contains the base <code>token</code> object that represents: (1) IdP-issued client tokens (type_id: 6) such as Okta API tokens or Microsoft Entra ID Application Registration client secrets, or (2) generic API tokens/keys (type_id: 7) used for SaaS application authentication. Use this attribute when the API request was authenticated using a token that should be tracked as part of the API activity event. Note: Protocol-specific authentication tokens (Kerberos, OIDC, SAML) should be represented using <code>authentication_token</code> in authentication events, not in API activity events.",
+   "object_name": "Token",
+   "object_type": "token",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The version of the API service.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "API",
+ "description": "The API, or Application Programming Interface, object represents  information pertaining to an API request and response.",
+ "extends": "object",
+ "name": "api"
+}

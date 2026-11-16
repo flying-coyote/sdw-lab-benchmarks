@@ -1,0 +1,642 @@
+{
+ "attributes": {
+  "agent_list": {
+   "caption": "Agent List",
+   "description": "A list of <code>agent</code> objects associated with a device, endpoint, or resource.",
+   "is_array": true,
+   "object_name": "Agent",
+   "object_type": "agent",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "autoscale_uid": {
+   "caption": "Autoscale UID",
+   "description": "The unique identifier of the cloud autoscale configuration.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "boot_time": {
+   "caption": "Boot Time",
+   "description": "The time the system was booted.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "boot_time_dt": {
+   "caption": "Boot Time",
+   "description": "The time the system was booted.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "boot_uid": {
+   "caption": "Boot UID",
+   "description": "A unique identifier of the device that changes after every reboot. For example, the value of <code>/proc/sys/kernel/random/boot_id</code> from Linux's procfs.",
+   "references": [
+    {
+     "description": "Linux kernel's documentation",
+     "url": "https://docs.kernel.org/admin-guide/sysctl/kernel.html#random"
+    }
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "container": {
+   "caption": "Container",
+   "description": "The information describing an instance of a container. A container is a prepackaged, portable system image that runs isolated on an existing system using a container runtime like containerd.",
+   "group": "context",
+   "object_name": "Container",
+   "object_type": "container",
+   "profiles": [
+    "container"
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the device was known to have been created.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the device was known to have been created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "The description of the device, ordinarily as reported by the operating system.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "domain": {
+   "caption": "Domain",
+   "description": "The network domain where the device resides. For example: <code>work.example.com</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "eid": {
+   "caption": "EID",
+   "description": "An Embedded Identity Document, is a unique serial number that identifies an eSIM-enabled device.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "first_seen_time": {
+   "caption": "First Seen",
+   "description": "The initial discovery time of the device.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "first_seen_time_dt": {
+   "caption": "First Seen",
+   "description": "The initial discovery time of the device.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "groups": {
+   "caption": "Groups",
+   "description": "The group names to which the device belongs. For example: <code>[\"Windows Laptops\", \"Engineering\"]</code>.",
+   "is_array": true,
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "hostname": {
+   "caption": "Hostname",
+   "description": "The device hostname.",
+   "requirement": "recommended",
+   "type": "hostname_t",
+   "type_name": "Hostname"
+  },
+  "hw_info": {
+   "caption": "Hardware Info",
+   "description": "The endpoint hardware information.",
+   "object_name": "Device Hardware Info",
+   "object_type": "device_hw_info",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "hypervisor": {
+   "caption": "Hypervisor",
+   "description": "The name of the hypervisor running on the device. For example, <code>Xen</code>, <code>VMware</code>, <code>Hyper-V</code>, <code>VirtualBox</code>, etc.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "iccid": {
+   "caption": "ICCID",
+   "description": "The Integrated Circuit Card Identification of a mobile device. Typically it is a unique 18 to 22 digit number that identifies a SIM card.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "image": {
+   "caption": "Image",
+   "description": "The image used as a template to run the virtual machine.",
+   "object_name": "Image",
+   "object_type": "image",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "imei": {
+   "@deprecated": {
+    "message": "Use the <code>imei_list</code> attribute instead.",
+    "since": "1.4.0"
+   },
+   "caption": "IMEI",
+   "description": "The International Mobile Equipment Identity that is associated with the device.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "imei_list": {
+   "caption": "IMEI List",
+   "description": "The International Mobile Equipment Identity values that are associated with the device.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "instance_uid": {
+   "caption": "Instance ID",
+   "description": "The unique identifier of a VM instance.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "interface_name": {
+   "caption": "Network Interface Name",
+   "description": "The name of the network interface (e.g. eth2).",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "interface_uid": {
+   "caption": "Network Interface ID",
+   "description": "The unique identifier of the network interface.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "ip": {
+   "caption": "IP Address",
+   "description": "The device IP address, in either IPv4 or IPv6 format.",
+   "requirement": "optional",
+   "type": "ip_t",
+   "type_name": "IP Address"
+  },
+  "is_backed_up": {
+   "caption": "Back Ups Configured",
+   "description": "Indicates whether the device or resource has a backup enabled, such as an automated snapshot or a cloud backup. For example, this is indicated by the <code>cloudBackupEnabled</code> value within JAMF Pro mobile devices or the registration of an AWS ARN with the AWS Backup service.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_compliant": {
+   "caption": "Compliant Device",
+   "description": "The event occurred on a compliant device.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_managed": {
+   "caption": "Managed Device",
+   "description": "The event occurred on a managed device.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_mobile_account_active": {
+   "caption": "Mobile Account Active",
+   "description": "Indicates whether the device has an active mobile account. For example, this is indicated by the <code>itunesStoreAccountActive</code> value within JAMF Pro mobile devices.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_personal": {
+   "caption": "Personal Device",
+   "description": "The event occurred on a personal device.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_shared": {
+   "caption": "Shared Device",
+   "description": "The event occurred on a shared device.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_supervised": {
+   "caption": "Supervised Device",
+   "description": "The event occurred on a supervised device. Devices that are supervised are typically mobile devices managed by a Mobile Device Management solution and are restricted from specific behaviors such as Apple AirDrop.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_trusted": {
+   "caption": "Trusted Device",
+   "description": "The event occurred on a trusted device.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "last_seen_time": {
+   "caption": "Last Seen",
+   "description": "The most recent discovery time of the device.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "last_seen_time_dt": {
+   "caption": "Last Seen",
+   "description": "The most recent discovery time of the device.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "location": {
+   "caption": "Geo Location",
+   "description": "The geographical location of the device.",
+   "object_name": "Geo Location",
+   "object_type": "location",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "mac": {
+   "caption": "MAC Address",
+   "description": "The Media Access Control (MAC) address of the endpoint.",
+   "requirement": "optional",
+   "type": "mac_t",
+   "type_name": "MAC Address"
+  },
+  "mac_vendor": {
+   "caption": "MAC Vendor",
+   "description": "The vendor or manufacturer of the endpoint's network interface controller (NIC), as identified from the MAC address.",
+   "references": [
+    {
+     "description": "IEEE Registration Authority",
+     "url": "https://standards.ieee.org/products-programs/regauth/"
+    }
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "meid": {
+   "caption": "MEID",
+   "description": "The Mobile Equipment Identifier. It's a unique number that identifies a Code Division Multiple Access (CDMA) mobile device.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "model": {
+   "caption": "Model",
+   "description": "The model of the device. For example <code>ThinkPad X1 Carbon</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The time when the device was last known to have been modified.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The time when the device was last known to have been modified.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The alternate device name, ordinarily as assigned by an administrator. <p><b>Note:</b> The <b>Name</b> could be any other string that helps to identify the device, such as a phone number; for example <code>310-555-1234</code>.</p>",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "namespace_pid": {
+   "caption": "Namespace PID",
+   "description": "If running under a process namespace (such as in a container), the process identifier within that process namespace.",
+   "group": "context",
+   "profiles": [
+    "container"
+   ],
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "network_interfaces": {
+   "caption": "Network Interfaces",
+   "description": "The physical or virtual network interfaces that are associated with the device, one for each unique MAC address/IP address/hostname/name combination.<p><b>Note:</b> The first element of the array is the network information that pertains to the event.</p>",
+   "is_array": true,
+   "object_name": "Network Interface",
+   "object_type": "network_interface",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "org": {
+   "caption": "Organization",
+   "description": "Organization and org unit related to the device.",
+   "object_name": "Organization",
+   "object_type": "organization",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "os": {
+   "caption": "OS",
+   "description": "The endpoint operating system.",
+   "object_name": "Operating System (OS)",
+   "object_type": "os",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "os_machine_uuid": {
+   "caption": "OS Machine UUID",
+   "description": "The operating system assigned Machine ID. In Windows, this is the value stored at the registry path: <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Cryptography\\MachineGuid</code>. In Linux, this is stored in the file: <code>/etc/machine-id</code>.",
+   "requirement": "optional",
+   "type": "uuid_t",
+   "type_name": "UUID"
+  },
+  "owner": {
+   "caption": "Owner",
+   "description": "The identity of the service or user account that owns the endpoint or was last logged into it.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "pool": {
+   "caption": "Pool",
+   "description": "The pool of desktops or virtual machines to which the endpoint belongs.",
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "region": {
+   "caption": "Region",
+   "description": "The region where the virtual machine is located. For example, an AWS Region.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "risk_level": {
+   "caption": "Risk Level",
+   "description": "The risk level, normalized to the caption of the risk_level_id value.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "risk_level_id": {
+   "caption": "Risk Level ID",
+   "description": "The normalized risk level id.",
+   "enum": {
+    "0": {
+     "caption": "Info"
+    },
+    "1": {
+     "caption": "Low"
+    },
+    "2": {
+     "caption": "Medium"
+    },
+    "3": {
+     "caption": "High"
+    },
+    "4": {
+     "caption": "Critical"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The risk level is not mapped. See the <code>risk_level</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "optional",
+   "sibling": "risk_level",
+   "suppress_checks": [
+    "enum_convention"
+   ],
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "risk_score": {
+   "caption": "Risk Score",
+   "description": "The risk score as reported by the event source.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "subnet": {
+   "caption": "Subnet",
+   "description": "The subnet mask.",
+   "requirement": "optional",
+   "type": "subnet_t",
+   "type_name": "Subnet"
+  },
+  "subnet_uid": {
+   "caption": "Subnet UID",
+   "description": "The unique identifier of a virtual subnet.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The device type. For example: <code>unknown</code>, <code>server</code>, <code>desktop</code>, <code>laptop</code>, <code>tablet</code>, <code>mobile</code>, <code>virtual</code>, <code>browser</code>, or <code>other</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The device type ID.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "Server",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Server/'>server</a>."
+    },
+    "10": {
+     "caption": "Switch",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Switch/'>networking switch</a>."
+    },
+    "11": {
+     "caption": "Hub",
+     "description": "A <a target='_blank' href='https://en.wikipedia.org/wiki/Ethernet_hub'>networking hub</a>."
+    },
+    "12": {
+     "caption": "Router",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Router/'>networking router</a>."
+    },
+    "13": {
+     "caption": "IDS",
+     "description": "An <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:IntrusionDetectionSystem/'>intrusion detection system</a>."
+    },
+    "14": {
+     "caption": "IPS",
+     "description": "An <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:IntrusionPreventionSystem/'>intrusion prevention system</a>."
+    },
+    "15": {
+     "caption": "Load Balancer",
+     "description": "A <a target='_blank' href='https://en.wikipedia.org/wiki/Load_balancing_(computing)'>Load Balancer device.</a>"
+    },
+    "2": {
+     "caption": "Desktop",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:DesktopComputer/'>desktop computer</a>."
+    },
+    "3": {
+     "caption": "Laptop",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:LaptopComputer/'>laptop computer</a>."
+    },
+    "4": {
+     "caption": "Tablet",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:TabletComputer/'>tablet computer</a>."
+    },
+    "5": {
+     "caption": "Mobile",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:MobilePhone/'>mobile phone</a>."
+    },
+    "6": {
+     "caption": "Virtual",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:VirtualizationSoftware/'>virtual machine</a>."
+    },
+    "7": {
+     "caption": "IOT",
+     "description": "An <a target='_blank' href='https://www.techtarget.com/iotagenda/definition/IoT-device'>IOT (Internet of Things) device</a>."
+    },
+    "8": {
+     "caption": "Browser",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Browser/'>web browser</a>."
+    },
+    "9": {
+     "caption": "Firewall",
+     "description": "A <a target='_blank' href='https://d3fend.mitre.org/dao/artifact/d3f:Firewall/'>networking firewall</a>."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "required",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "udid": {
+   "caption": "Unique Device Identifier",
+   "description": "The Apple assigned Unique Device Identifier (UDID). For iOS, iPadOS, tvOS, watchOS and visionOS devices, this is the UDID. For macOS devices, it is the Provisioning UDID. For example: <code>00008020-008D4548007B4F26</code>",
+   "references": [
+    {
+     "description": "Apple Wiki",
+     "url": "https://theapplewiki.com/wiki/UDID"
+    }
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the device. For example the Windows TargetSID or AWS EC2 ARN.",
+   "observable": 47,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid_alt": {
+   "caption": "Alternate ID",
+   "description": "An alternate unique identifier of the device if any. For example the ActiveDirectory DN.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "vendor_name": {
+   "caption": "Vendor Name",
+   "description": "The vendor for the device. For example <code>Dell</code> or <code>Lenovo</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "vlan_uid": {
+   "caption": "VLAN",
+   "description": "The Virtual LAN identifier.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "vpc_uid": {
+   "caption": "VPC UID",
+   "description": "The unique identifier of the Virtual Private Cloud (VPC).",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "zone": {
+   "caption": "Network Zone",
+   "description": "The network zone or LAN segment.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Device",
+ "constraints": {
+  "at_least_one": [
+   "ip",
+   "uid",
+   "name",
+   "hostname",
+   "instance_uid",
+   "interface_uid",
+   "interface_name"
+  ]
+ },
+ "description": "The Device object represents an addressable computer system or host, which is typically connected to a computer network and participates in the transmission or processing of data within the computer network.",
+ "extends": "endpoint",
+ "name": "device",
+ "observable": 20,
+ "profiles": [
+  "container",
+  "datetime"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:Host.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:Host/"
+  }
+ ]
+}

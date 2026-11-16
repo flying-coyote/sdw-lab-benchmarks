@@ -1,0 +1,153 @@
+{
+ "attributes": {
+  "architecture": {
+   "caption": "Architecture",
+   "description": "Architecture is a shorthand name describing the type of computer hardware the packaged software is meant to run on.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "cpe_name": {
+   "caption": "The product CPE identifier",
+   "description": "The Common Platform Enumeration (CPE) name as described by (<a target='_blank' href='https://nvd.nist.gov/products/cpe'>NIST</a>) For example: <code>cpe:/a:apple:safari:16.2</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "epoch": {
+   "caption": "Epoch",
+   "description": "The software package epoch. Epoch is a way to define weighted dependencies based on version numbers.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "hash": {
+   "caption": "Hash",
+   "description": "Cryptographic hash to identify the binary instance of a software component. This can include any component such file, package, or library.",
+   "object_name": "Fingerprint",
+   "object_type": "fingerprint",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "license": {
+   "caption": "Software License",
+   "description": "The software license applied to this package.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "license_url": {
+   "caption": "Software License URL",
+   "description": "The URL pointing to the license applied on package or software. This is typically a <code>LICENSE.md</code> file within a repository.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The software package name.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "package_manager": {
+   "caption": "Package Manager",
+   "description": "The software packager manager utilized to manage a package on a system, e.g. npm, yum, dpkg etc.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "package_manager_url": {
+   "caption": "Package Manager URL",
+   "description": "The URL of the package or library at the package manager, or the specific URL or URI of an internal package manager link such as <code>AWS CodeArtifact</code> or <code>Artifactory</code>.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "purl": {
+   "caption": "Package URL",
+   "description": "A purl is a URL string used to identify and locate a software package in a mostly universal and uniform way across programming languages, package managers, packaging conventions, tools, APIs and databases.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "release": {
+   "caption": "Software Release Details",
+   "description": "Release is the number of times a version of the software has been packaged.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "src_url": {
+   "caption": "Source URL",
+   "description": "The link to the specific library or package such as within <code>GitHub</code>, this is different from the link to the package manager where the library or package is hosted.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The type of software package, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The type of software package.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "Application",
+     "description": "An application software package."
+    },
+    "2": {
+     "caption": "Operating System",
+     "description": "An operating system software package."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "Package UID",
+   "description": "A unique identifier for the package or library reported by the source tool. E.g., the <code>libId</code> within the <code>sbom</code> field of an OX Security Issue or the SPDX <code>components.*.bom-ref</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "vendor_name": {
+   "caption": "Vendor Name",
+   "description": "The name of the vendor who published the software package.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The software package version.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Software Package",
+ "description": "The Software Package object describes details about a software package.",
+ "extends": "object",
+ "name": "package",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:SoftwarePackage.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/"
+  }
+ ]
+}

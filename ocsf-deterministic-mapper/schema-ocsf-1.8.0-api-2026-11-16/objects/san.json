@@ -1,0 +1,22 @@
+{
+ "attributes": {
+  "name": {
+   "caption": "Name",
+   "description": "Name of SAN (e.g. The actual IP Address or domain.)",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "Type descriptor of SAN (e.g. IP Address/domain/etc.)",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Subject Alternative Name",
+ "description": "The Subject Alternative name (SAN) object describes a SAN secured by a digital certificate",
+ "extends": "object",
+ "name": "san"
+}

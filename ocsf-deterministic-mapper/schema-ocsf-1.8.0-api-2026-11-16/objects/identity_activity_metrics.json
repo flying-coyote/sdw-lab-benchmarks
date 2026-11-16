@@ -1,0 +1,88 @@
+{
+ "attributes": {
+  "first_seen_time": {
+   "caption": "First Seen",
+   "description": "The timestamp when this identity was first observed or created in the system. This helps establish the identity's age and lifecycle stage for risk assessment.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "first_seen_time_dt": {
+   "caption": "First Seen",
+   "description": "The timestamp when this identity was first observed or created in the system. This helps establish the identity's age and lifecycle stage for risk assessment.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "last_authentication_time": {
+   "caption": "Last Authentication Time",
+   "description": "The timestamp when this identity last successfully authenticated to any system or service. This differs from <code>last_seen_time</code> as it specifically tracks authentication events rather than all activities.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "last_authentication_time_dt": {
+   "caption": "Last Authentication Time",
+   "description": "The timestamp when this identity last successfully authenticated to any system or service. This differs from <code>last_seen_time</code> as it specifically tracks authentication events rather than all activities.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "last_seen_time": {
+   "caption": "Last Seen",
+   "description": "The timestamp of the most recent activity performed by this identity, including authentication, resource access, or API calls. This is the most comprehensive indicator of identity usage recency.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "last_seen_time_dt": {
+   "caption": "Last Seen",
+   "description": "The timestamp of the most recent activity performed by this identity, including authentication, resource access, or API calls. This is the most comprehensive indicator of identity usage recency.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "password_last_used_time": {
+   "caption": "Password Last Used Time",
+   "description": "The timestamp when password-based authentication was last used by this identity. This helps distinguish between password and other authentication methods (MFA, SSO, certificates) and identify password-specific usage patterns.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "password_last_used_time_dt": {
+   "caption": "Password Last Used Time",
+   "description": "The timestamp when password-based authentication was last used by this identity. This helps distinguish between password and other authentication methods (MFA, SSO, certificates) and identify password-specific usage patterns.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "programmatic_credentials": {
+   "caption": "Programmatic Credentials",
+   "description": "Details about the programmatic credentials associated with this identity, such as API keys, service account keys, access tokens, and client certificates used for automated access.",
+   "is_array": true,
+   "object_name": "Programmatic Credential",
+   "object_type": "programmatic_credential",
+   "requirement": "optional",
+   "type": "object_t"
+  }
+ },
+ "caption": "Identity Activity Metrics",
+ "description": "The Identity Activity Metrics object captures usage patterns, authentication activity, credential usage and other metrics for identities across cloud and on-premises environments. Example identities include AWS IAM Users, Roles, Azure AD Principals, GCP Service Accounts, on-premises Active Directory accounts.",
+ "extends": "object",
+ "name": "identity_activity_metrics",
+ "profiles": [
+  "datetime"
+ ]
+}

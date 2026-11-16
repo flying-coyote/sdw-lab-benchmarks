@@ -1,0 +1,153 @@
+{
+ "attributes": {
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the resource was created.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the resource was created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "data": {
+   "caption": "Data",
+   "description": "Details of the web resource, e.g, <code>file</code> details, <code>search</code> results or application-defined resource.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "data_classification": {
+   "@deprecated": {
+    "message": "Use the attribute <code>data_classifications</code> instead",
+    "since": "1.4.0"
+   },
+   "caption": "Data Classification",
+   "description": "The Data Classification object includes information about data classification levels and data category types.",
+   "group": "context",
+   "object_name": "Data Classification",
+   "object_type": "data_classification",
+   "profiles": [
+    "data_classification"
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "data_classifications": {
+   "caption": "Data Classification",
+   "description": "A list of Data Classification objects, that include information about data classification levels and data category types, identified by a classifier.",
+   "group": "context",
+   "is_array": true,
+   "object_name": "Data Classification",
+   "object_type": "data_classification",
+   "profiles": [
+    "data_classification"
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "desc": {
+   "caption": "Description",
+   "description": "Description of the web resource.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "labels": {
+   "caption": "Labels",
+   "description": "The list of labels associated to the resource.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The time when the resource was last modified.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The time when the resource was last modified.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the web resource.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "tags": {
+   "caption": "Tags",
+   "description": "The list of tags; <code>{key:value}</code> pairs associated to the resource.",
+   "is_array": true,
+   "object_name": "Key:Value object",
+   "object_type": "key_value_object",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The web resource type as defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the web resource.",
+   "requirement": "recommended",
+   "type": "resource_uid_t",
+   "type_name": "Resource UID"
+  },
+  "uid_alt": {
+   "caption": "Alternate ID",
+   "description": "The alternative unique identifier of the resource.",
+   "requirement": "optional",
+   "type": "resource_uid_t",
+   "type_name": "Resource UID"
+  },
+  "url_string": {
+   "caption": "URL String",
+   "description": "The URL pointing towards the source of the web resource.",
+   "requirement": "recommended",
+   "type": "url_t",
+   "type_name": "URL String"
+  }
+ },
+ "caption": "Web Resource",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The Web Resource object describes characteristics of a web resource that was affected by the activity/event.",
+ "extends": "_resource",
+ "name": "web_resource",
+ "profiles": [
+  "data_classification",
+  "datetime"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:WebResource.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:WebResource/"
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "read": "2026-11-16",
+ "api_version_endpoint_now": {
+  "version": "1.8.0"
+ },
+ "base": "https://schema.ocsf.io/1.8.0/api",
+ "classes": [
+  "authentication",
+  "detection_finding",
+  "network_activity",
+  "dns_activity",
+  "http_activity"
+ ],
+ "n_objects": 178,
+ "skipped": []
+}

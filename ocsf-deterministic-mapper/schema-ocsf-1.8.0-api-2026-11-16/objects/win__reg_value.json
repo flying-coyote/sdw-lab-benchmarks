@@ -1,0 +1,179 @@
+{
+ "attributes": {
+  "data": {
+   "caption": "Data",
+   "description": "The data of the registry value. Where the value type is known, implementers should instead use a type-specific attribute, i.e. <code>reg_binary_data</code>, <code>reg_integer_data</code>, <code>reg_string_data</code>, or <code>reg_string_list_data</code>.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "is_default": {
+   "caption": "Default Value",
+   "description": "The indication of whether the value is from a default value name. For example, the value name could be missing.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "is_system": {
+   "caption": "System",
+   "description": "The indication of whether the object is part of the operating system.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The time when the registry value was last modified.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The time when the registry value was last modified.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The name of the registry value.",
+   "observable": 43,
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "path": {
+   "caption": "Path",
+   "description": "The full path to the registry key, where the value is located.",
+   "requirement": "required",
+   "type": "reg_key_path_t",
+   "type_name": "Registry Key Path"
+  },
+  "reg_binary_data": {
+   "caption": "Registry Binary Data",
+   "description": "The data of the registry value when <code>type_id</code> is <code>REG_BINARY</code> or <code>REG_NONE</code>.",
+   "extension": "win",
+   "extension_id": 2,
+   "requirement": "optional",
+   "type": "bytestring_t",
+   "type_name": "Byte String"
+  },
+  "reg_integer_data": {
+   "caption": "Registry Integer Data",
+   "description": "The data of the registry value when <code>type_id</code> is <code>REG_DWORD</code>, <code>REG_DWORD_BIG_ENDIAN</code>, or <code>REG_QWORD</code>.",
+   "extension": "win",
+   "extension_id": 2,
+   "requirement": "optional",
+   "type": "long_t",
+   "type_name": "Long"
+  },
+  "reg_string_data": {
+   "caption": "Registry String Data",
+   "description": "The data of the registry value when <code>type_id</code> is <code>REG_SZ</code>, <code>REG_EXPAND_SZ</code>, or <code>REG_LINK</code>.",
+   "extension": "win",
+   "extension_id": 2,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "reg_string_list_data": {
+   "caption": "Registry String List Data",
+   "description": "The data of the registry value when <code>type_id</code> is <code>REG_MULTI_SZ</code>.",
+   "extension": "win",
+   "extension_id": 2,
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "A string representation of the value type as specified in <a target='_blank' href='https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry-value-types'>Registry Value Types</a>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The value type ID.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "REG_BINARY",
+     "description": "Arbitrary binary data."
+    },
+    "10": {
+     "caption": "REG_SZ",
+     "description": "A string."
+    },
+    "2": {
+     "caption": "REG_DWORD",
+     "description": "A 32-bit integer."
+    },
+    "3": {
+     "caption": "REG_DWORD_BIG_ENDIAN",
+     "description": "A 32-bit integer in big-endian byte order."
+    },
+    "4": {
+     "caption": "REG_EXPAND_SZ",
+     "description": "A string containing unexpanded environment variables, e.g. <code>%USERPROFILE%\\Downloads</code>."
+    },
+    "5": {
+     "caption": "REG_LINK",
+     "description": "A string containing the target path of a symbolic link created by calling <code>RegCreateKeyEx</code> with <code>REG_OPTION_CREATE_LINK</code>."
+    },
+    "6": {
+     "caption": "REG_MULTI_SZ",
+     "description": "A sequence of zero or more strings."
+    },
+    "7": {
+     "caption": "REG_NONE",
+     "description": "A value with no declared type."
+    },
+    "8": {
+     "caption": "REG_QWORD",
+     "description": "A 64-bit integer."
+    },
+    "9": {
+     "@deprecated": {
+      "message": "Use <code>REG_QWORD</code> instead.",
+      "since": "1.6.0"
+     },
+     "caption": "REG_QWORD_LITTLE_ENDIAN",
+     "description": "Not defined in Windows documentation and previously added to OCSF in error."
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "recommended",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  }
+ },
+ "caption": "Registry Value",
+ "description": "The registry value object describes a Windows registry value.",
+ "extends": "object",
+ "extension": "win",
+ "extension_id": 2,
+ "name": "reg_value",
+ "observable": 29,
+ "profiles": [
+  "datetime"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:WindowsRegistryValue.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:WindowsRegistryValue/"
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "attributes": {
+  "desc": {
+   "caption": "Description",
+   "description": "The group description.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "domain": {
+   "caption": "Domain",
+   "description": "The domain where the group is defined. For example: the LDAP or Active Directory domain.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Name",
+   "description": "The group name.",
+   "observable": 32,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "privileges": {
+   "caption": "Privileges",
+   "description": "The group privileges.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type": {
+   "caption": "Group Type",
+   "description": "The type of the group.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the group. For example, for Windows events this is the security identifier (SID) of the group. Another example, pool id or desktop id that the device belongs to.",
+   "observable": 33,
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid_alt": {
+   "caption": "Alternate ID",
+   "description": "The alternate unique identifier.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Group",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The Group object represents a collection or association of entities, such as users, policies, or devices. It serves as a logical grouping mechanism to organize and manage entities with similar characteristics or permissions within a system or organization, including but not limited to purposes of access control.",
+ "extends": "_entity",
+ "name": "group",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:AccessControlGroup.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:AccessControlGroup/"
+  }
+ ]
+}

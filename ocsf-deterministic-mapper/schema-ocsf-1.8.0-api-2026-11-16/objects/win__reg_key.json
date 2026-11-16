@@ -1,0 +1,58 @@
+{
+ "attributes": {
+  "is_system": {
+   "caption": "System",
+   "description": "The indication of whether the object is part of the operating system.",
+   "requirement": "optional",
+   "type": "boolean_t",
+   "type_name": "Boolean"
+  },
+  "modified_time": {
+   "caption": "Modified Time",
+   "description": "The time when the registry key was last modified.",
+   "requirement": "optional",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "modified_time_dt": {
+   "caption": "Modified Time",
+   "description": "The time when the registry key was last modified.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "path": {
+   "caption": "Path",
+   "description": "The full path to the registry key.",
+   "requirement": "required",
+   "type": "reg_key_path_t",
+   "type_name": "Registry Key Path"
+  },
+  "security_descriptor": {
+   "caption": "Security Descriptor",
+   "description": "The security descriptor of the registry key.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Registry Key",
+ "description": "The registry key object describes a Windows registry key.",
+ "extends": "object",
+ "extension": "win",
+ "extension_id": 2,
+ "name": "reg_key",
+ "observable": 28,
+ "profiles": [
+  "datetime"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:WindowsRegistryKey.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:WindowsRegistryKey/"
+  }
+ ]
+}

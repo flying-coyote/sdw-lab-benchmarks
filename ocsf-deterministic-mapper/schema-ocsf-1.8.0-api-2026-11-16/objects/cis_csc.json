@@ -1,0 +1,26 @@
+{
+ "@deprecated": {
+  "message": "Use the cis_control object instead.",
+  "since": "1.5.0"
+ },
+ "attributes": {
+  "control": {
+   "caption": "Security Control",
+   "description": "A Control is prescriptive, prioritized, and simplified set of best practices that one can use to strengthen their cybersecurity posture. e.g. AWS SecurityHub Controls, CIS Controls.",
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The CIS critical security control version.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "CIS CSC",
+ "description": "The CIS Critical Security Control (CSC) contains information as defined by the Center for Internet Security Critical Security Control <a target='_blank' href='https://www.cisecurity.org/controls'>(CIS CSC)</a>. Prioritized set of actions to protect your organization and data from cyber-attack vectors.",
+ "extends": "object",
+ "name": "cis_csc"
+}

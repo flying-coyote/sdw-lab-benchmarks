@@ -1,0 +1,40 @@
+gold not in full walk: [('network_activity', 'src_endpoint.hw_info.model'), ('network_activity', 'dst_endpoint.hw_info.model'), ('network_activity', 'src_endpoint.hw_info.model'), ('network_activity', 'dst_endpoint.hw_info.model'), ('network_activity', 'src_endpoint.hw_info.model')] | subset paths not in full walk: 0
+gold fields not in subset closure: 24 of 141
+run1  subset schema raw    path_correct=0.5745  silent_error_rate=0.1277  coverage=0.8652  valid_but_non_gold=0.2199  silent_and_gold_correct=8  silent_invented_not_in_full_1_8_0=0.0071  silent_real_1_8_0_outside_subset=0.1206
+run1  subset schema reject path_correct=0.5177  silent_error_rate=0.0  coverage=0.7376  valid_but_non_gold=0.2199  silent_and_gold_correct=0
+run1  subset schema snap   path_correct=0.539  silent_error_rate=0.0  coverage=0.8652  valid_but_non_gold=0.3262  silent_and_gold_correct=0  snapped_n=18  snapped_landing_on_gold=3
+run1  subset all    raw    path_correct=0.5759  silent_error_rate=0.1702  coverage=0.8965  valid_but_non_gold=0.1901  silent_and_gold_correct=28  silent_invented_not_in_full_1_8_0=0.0496  silent_real_1_8_0_outside_subset=0.1206
+run1  subset all    reject path_correct=0.5362  silent_error_rate=0.0  coverage=0.7262  valid_but_non_gold=0.1901  silent_and_gold_correct=0
+run1  subset all    snap   path_correct=0.5574  silent_error_rate=0.0  coverage=0.895  valid_but_non_gold=0.3376  silent_and_gold_correct=0  snapped_n=119  snapped_landing_on_gold=15
+run1  full   schema raw    path_correct=0.5745  silent_error_rate=0.0071  coverage=0.8652  valid_but_non_gold=0.2837  silent_and_gold_correct=0  silent_invented_not_in_full_1_8_0=0.0071  silent_real_1_8_0_outside_subset=0.1206
+run1  full   schema reject path_correct=0.5745  silent_error_rate=0.0  coverage=0.8582  valid_but_non_gold=0.2837  silent_and_gold_correct=0
+run1  full   schema snap   path_correct=0.5745  silent_error_rate=0.0  coverage=0.8652  valid_but_non_gold=0.2908  silent_and_gold_correct=0  snapped_n=1  snapped_landing_on_gold=0
+run1  full   all    raw    path_correct=0.5759  silent_error_rate=0.0496  coverage=0.8965  valid_but_non_gold=0.2752  silent_and_gold_correct=3  silent_invented_not_in_full_1_8_0=0.0496  silent_real_1_8_0_outside_subset=0.1206
+run1  full   all    reject path_correct=0.5716  silent_error_rate=0.0  coverage=0.8468  valid_but_non_gold=0.2752  silent_and_gold_correct=0
+run1  full   all    snap   path_correct=0.5759  silent_error_rate=0.0  coverage=0.8965  valid_but_non_gold=0.3206  silent_and_gold_correct=0  snapped_n=35  snapped_landing_on_gold=3
+run2  subset schema raw    path_correct=0.6596  silent_error_rate=0.2837  coverage=1.0  valid_but_non_gold=0.1631  silent_and_gold_correct=15  silent_invented_not_in_full_1_8_0=0.0993  silent_real_1_8_0_outside_subset=0.1844
+run2  subset schema reject path_correct=0.5532  silent_error_rate=0.0  coverage=0.7163  valid_but_non_gold=0.1631  silent_and_gold_correct=0
+run2  subset schema snap   path_correct=0.5745  silent_error_rate=0.0  coverage=1.0  valid_but_non_gold=0.4255  silent_and_gold_correct=0  snapped_n=40  snapped_landing_on_gold=3
+run2  subset all    raw    path_correct=0.6723  silent_error_rate=0.2667  coverage=0.9986  valid_but_non_gold=0.1745  silent_and_gold_correct=81  silent_invented_not_in_full_1_8_0=0.0908  silent_real_1_8_0_outside_subset=0.1759
+run2  subset all    reject path_correct=0.5574  silent_error_rate=0.0  coverage=0.7319  valid_but_non_gold=0.1745  silent_and_gold_correct=0
+run2  subset all    snap   path_correct=0.5787  silent_error_rate=0.0  coverage=0.9986  valid_but_non_gold=0.4199  silent_and_gold_correct=0  snapped_n=188  snapped_landing_on_gold=15
+run2  full   schema raw    path_correct=0.6596  silent_error_rate=0.0993  coverage=1.0  valid_but_non_gold=0.2553  silent_and_gold_correct=2  silent_invented_not_in_full_1_8_0=0.0993  silent_real_1_8_0_outside_subset=0.1844
+run2  full   schema reject path_correct=0.6454  silent_error_rate=0.0  coverage=0.9007  valid_but_non_gold=0.2553  silent_and_gold_correct=0
+run2  full   schema snap   path_correct=0.6525  silent_error_rate=0.0  coverage=1.0  valid_but_non_gold=0.3475  silent_and_gold_correct=0  snapped_n=14  snapped_landing_on_gold=1
+run2  full   all    raw    path_correct=0.6723  silent_error_rate=0.0908  coverage=0.9986  valid_but_non_gold=0.2496  silent_and_gold_correct=10  silent_invented_not_in_full_1_8_0=0.0908  silent_real_1_8_0_outside_subset=0.1759
+run2  full   all    reject path_correct=0.6582  silent_error_rate=0.0  coverage=0.9078  valid_but_non_gold=0.2496  silent_and_gold_correct=0
+run2  full   all    snap   path_correct=0.6709  silent_error_rate=0.0  coverage=0.9986  valid_but_non_gold=0.3277  silent_and_gold_correct=0  snapped_n=64  snapped_landing_on_gold=9
+run3  subset schema raw    path_correct=0.8936  silent_error_rate=0.1986  coverage=1.0  valid_but_non_gold=0.0496  silent_and_gold_correct=20  silent_invented_not_in_full_1_8_0=0.0567  silent_real_1_8_0_outside_subset=0.1418
+run3  subset schema reject path_correct=0.7518  silent_error_rate=0.0  coverage=0.8014  valid_but_non_gold=0.0496  silent_and_gold_correct=0
+run3  subset schema snap   path_correct=0.7589  silent_error_rate=0.0  coverage=1.0  valid_but_non_gold=0.2411  silent_and_gold_correct=0  snapped_n=28  snapped_landing_on_gold=1
+run3  subset all    raw    path_correct=0.6851  silent_error_rate=0.261  coverage=1.0  valid_but_non_gold=0.1745  silent_and_gold_correct=85  silent_invented_not_in_full_1_8_0=0.0908  silent_real_1_8_0_outside_subset=0.1702
+run3  subset all    reject path_correct=0.5645  silent_error_rate=0.0  coverage=0.739  valid_but_non_gold=0.1745  silent_and_gold_correct=0
+run3  subset all    snap   path_correct=0.5801  silent_error_rate=0.0  coverage=1.0  valid_but_non_gold=0.4199  silent_and_gold_correct=0  snapped_n=184  snapped_landing_on_gold=11
+run3  full   schema raw    path_correct=0.8936  silent_error_rate=0.0567  coverage=1.0  valid_but_non_gold=0.0638  silent_and_gold_correct=2  silent_invented_not_in_full_1_8_0=0.0567  silent_real_1_8_0_outside_subset=0.1418
+run3  full   schema reject path_correct=0.8794  silent_error_rate=0.0  coverage=0.9433  valid_but_non_gold=0.0638  silent_and_gold_correct=0
+run3  full   schema snap   path_correct=0.9007  silent_error_rate=0.0  coverage=1.0  valid_but_non_gold=0.0993  silent_and_gold_correct=0  snapped_n=8  snapped_landing_on_gold=3
+run3  full   all    raw    path_correct=0.6851  silent_error_rate=0.0908  coverage=1.0  valid_but_non_gold=0.2383  silent_and_gold_correct=10  silent_invented_not_in_full_1_8_0=0.0908  silent_real_1_8_0_outside_subset=0.1702
+run3  full   all    reject path_correct=0.6709  silent_error_rate=0.0  coverage=0.9092  valid_but_non_gold=0.2383  silent_and_gold_correct=0
+run3  full   all    snap   path_correct=0.6865  silent_error_rate=0.0  coverage=1.0  valid_but_non_gold=0.3135  silent_and_gold_correct=0  snapped_n=64  snapped_landing_on_gold=11
+phi3 raw silent {'subset': 0.6879, 'full_1_8_0': 0.6809, 'n': 141} phi3 full wall {'reject': {'path_correct': 0.0071, 'coverage': 0.3191}, 'snap': {'path_correct': 0.0213, 'coverage': 0.6809}}
+alias correct 23 | valid-but-non-gold 71 | phi3 snap correct 3 not in alias set: [['Cisco Umbrella DNS', 'query_type'], ['Zscaler ZIA Web', 'contenttype']]

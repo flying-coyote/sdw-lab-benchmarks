@@ -1,0 +1,41 @@
+{
+ "attributes": {
+  "name": {
+   "caption": "Name",
+   "description": "The name of the defensive technique. For example: <code>IO Port Restriction</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "src_url": {
+   "caption": "Source URL",
+   "description": "The versioned permalink of the defensive technique. For example: <code>https://d3fend.mitre.org/technique/d3f:IOPortRestriction/</code>.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the defensive technique. For example: <code>D3-IOPR</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "MITRE D3FEND\u2122 Technique",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The MITRE D3FEND\u2122 Technique object describes the leaf defensive technique ID and/or name associated to a countermeasure.",
+ "extends": "_entity",
+ "name": "d3f_technique",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Matrix",
+   "url": "href='https://d3fend.mitre.org"
+  }
+ ]
+}

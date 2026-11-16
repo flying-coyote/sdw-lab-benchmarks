@@ -1,0 +1,45 @@
+{
+ "attributes": {
+  "name": {
+   "caption": "Name",
+   "description": "The name of the attack technique. For example: <code>Active Scanning</code> or <code>AI Model Inference API Access</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "src_url": {
+   "caption": "Source URL",
+   "description": "The versioned permalink of the attack technique. For example: <code>https://attack.mitre.org/versions/v14/techniques/T1595/</code>.",
+   "requirement": "optional",
+   "type": "url_t",
+   "type_name": "URL String"
+  },
+  "uid": {
+   "caption": "Unique ID",
+   "description": "The unique identifier of the attack technique. For example: <code>T1595</code> or <code>AML.T0040</code>.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "MITRE Technique",
+ "constraints": {
+  "at_least_one": [
+   "name",
+   "uid"
+  ]
+ },
+ "description": "The MITRE Technique object describes the ATT&CK\u00ae or ATLAS\u2122 Technique ID and/or name associated to an attack.",
+ "extends": "_entity",
+ "name": "technique",
+ "references": [
+  {
+   "description": "ATT&CK\u00ae Matrix",
+   "url": "https://attack.mitre.org"
+  },
+  {
+   "description": "ATLAS\u2122 Matrix",
+   "url": "https://atlas.mitre.org/matrices/ATLAS"
+  }
+ ]
+}

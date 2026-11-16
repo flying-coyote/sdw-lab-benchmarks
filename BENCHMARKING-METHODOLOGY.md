@@ -105,6 +105,11 @@ they inherited the same slow clock and the same steps. Three consequences for re
 host before that date:
 - Absolute durations read about 4% short.
 - Ratios between arms measured in the same run are unaffected, because every arm saw the same clock.
+  (Corrected 2026-11-16: this holds only where both arms' timing ran on the same kind of clock. In the
+  stream-complexity real-clock trials the batch lander's ~58 s `time.sleep` ran on the monotonic clock while
+  the latency baseline used the wall clock, so batch's 1x medians carry the drift and the stream arm's don't:
+  v2's ~2.3 s lander lag (`RESULTS-v2-2026-11-03.md` l.123, about 58 s x 4%) and v3's negative batch median
+  (`RESULTS-v3-risingwave-2026-11-07.md` l.110). Counts and the 20x medians are unaffected.)
 - Comparisons between event time and wall-clock time may contain steps. The stream-complexity RisingWave
   v3 results (`stream-complexity/results/RESULTS-v3-risingwave-2026-11-07.md`) already carry this caveat.
 

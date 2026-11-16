@@ -1,0 +1,117 @@
+{
+ "attributes": {
+  "mitigation": {
+   "caption": "MITRE Mitigation",
+   "description": "The Mitigation object describes the MITRE ATT&CK\u00ae or ATLAS\u2122 Mitigation ID and/or name that is associated to an attack.",
+   "object_name": "MITRE Mitigation",
+   "object_type": "mitigation",
+   "references": [
+    {
+     "description": "ATT&CK\u00ae Matrix",
+     "url": "https://attack.mitre.org"
+    },
+    {
+     "description": "ATLAS\u2122 Matrix",
+     "url": "https://atlas.mitre.org/matrices/ATLAS"
+    }
+   ],
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "sub_technique": {
+   "caption": "MITRE Sub-technique",
+   "description": "The Sub-technique object describes the MITRE ATT&CK\u00ae or ATLAS\u2122 Sub-technique ID and/or name associated to an attack.",
+   "object_name": "MITRE Sub-technique",
+   "object_type": "sub_technique",
+   "references": [
+    {
+     "description": "ATT&CK\u00ae Matrix",
+     "url": "https://attack.mitre.org"
+    },
+    {
+     "description": "ATLAS\u2122 Matrix",
+     "url": "https://atlas.mitre.org/matrices/ATLAS"
+    }
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "tactic": {
+   "caption": "MITRE Tactic",
+   "description": "The Tactic object describes the MITRE ATT&CK\u00ae or ATLAS\u2122 Tactic ID and/or name that is associated to an attack.",
+   "object_name": "MITRE Tactic",
+   "object_type": "tactic",
+   "references": [
+    {
+     "description": "ATT&CK\u00ae Matrix",
+     "url": "https://attack.mitre.org"
+    },
+    {
+     "description": "ATLAS\u2122 Matrix",
+     "url": "https://atlas.mitre.org/matrices/ATLAS"
+    }
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "tactics": {
+   "@deprecated": {
+    "message": "Use the <code>tactic</code> attribute instead.",
+    "since": "1.1.0"
+   },
+   "caption": "Tactics",
+   "description": "The Tactic object describes the tactic ID and/or tactic name that are associated with the attack technique, as defined by <a target='_blank' href='https://attack.mitre.org/wiki/ATT&CK_Matrix'>ATT&CK\u00ae Matrix</a>.",
+   "is_array": true,
+   "object_name": "MITRE Tactic",
+   "object_type": "tactic",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "technique": {
+   "caption": "MITRE Technique",
+   "description": "The Technique object describes the MITRE ATT&CK\u00ae or ATLAS\u2122 Technique ID and/or name associated to an attack.",
+   "object_name": "MITRE Technique",
+   "object_type": "technique",
+   "references": [
+    {
+     "description": "ATT&CK\u00ae Matrix",
+     "url": "https://attack.mitre.org"
+    },
+    {
+     "description": "ATLAS\u2122 Matrix",
+     "url": "https://atlas.mitre.org/matrices/ATLAS"
+    }
+   ],
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The ATT&CK\u00ae or ATLAS\u2122 Matrix version.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "MITRE ATT&CK\u00ae & ATLAS\u2122",
+ "constraints": {
+  "at_least_one": [
+   "tactic",
+   "technique",
+   "sub_technique"
+  ]
+ },
+ "description": "The MITRE ATT&CK\u00ae & ATLAS\u2122 object describes the tactic, technique, sub-technique & mitigation associated to an attack.",
+ "extends": "object",
+ "name": "attack",
+ "references": [
+  {
+   "description": "ATT&CK\u00ae Matrix",
+   "url": "https://attack.mitre.org"
+  },
+  {
+   "description": "ATLAS\u2122 Matrix",
+   "url": "https://atlas.mitre.org/matrices/ATLAS"
+  }
+ ]
+}

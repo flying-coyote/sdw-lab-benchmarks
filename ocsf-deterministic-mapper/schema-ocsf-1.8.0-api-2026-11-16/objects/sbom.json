@@ -1,0 +1,137 @@
+{
+ "attributes": {
+  "created_time": {
+   "caption": "Created Time",
+   "description": "The time when the SBOM was created.",
+   "requirement": "recommended",
+   "type": "timestamp_t",
+   "type_name": "Timestamp"
+  },
+  "created_time_dt": {
+   "caption": "Created Time",
+   "description": "The time when the SBOM was created.",
+   "profiles": [
+    "datetime"
+   ],
+   "requirement": "optional",
+   "type": "datetime_t",
+   "type_name": "Datetime"
+  },
+  "package": {
+   "caption": "Software Package",
+   "description": "The software package or library that is being discovered or inventoried by an SBOM.",
+   "object_name": "Software Package",
+   "object_type": "package",
+   "references": [
+    {
+     "description": "D3FEND\u2122 Ontology d3f:SoftwarePackage.",
+     "url": "https://d3fend.mitre.org/dao/artifact/d3f:SoftwarePackage/"
+    }
+   ],
+   "requirement": "required",
+   "type": "object_t"
+  },
+  "product": {
+   "caption": "Product",
+   "description": "Details about the upstream product that generated the SBOM e.g. <code>cdxgen</code> or <code>Syft</code>.",
+   "object_name": "Product",
+   "object_type": "product",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "software_components": {
+   "caption": "Software Components",
+   "description": "The list of software components used in the software package.",
+   "is_array": true,
+   "object_name": "Software Component",
+   "object_type": "software_component",
+   "requirement": "required",
+   "type": "object_t"
+  },
+  "type": {
+   "caption": "Type",
+   "description": "The type of SBOM, normalized to the caption of the <code>type_id</code> value. In the case of 'Other', it is defined by the source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "type_id": {
+   "caption": "Type ID",
+   "description": "The type of SBOM.",
+   "enum": {
+    "0": {
+     "caption": "Unknown",
+     "description": "The type is unknown."
+    },
+    "1": {
+     "caption": "SPDX",
+     "description": "System Package Data Exchange (SPDX\u00ae) is an open standard capable of representing systems with software components in as SBOMs (Software Bill of Materials) and other AI, data and security references supporting a range of risk management use cases. The SPDX specification is a freely available international open standard (ISO/IEC 5692:2021)."
+    },
+    "2": {
+     "caption": "CycloneDX",
+     "description": "CycloneDX is an International Standard for Bill of Materials (ECMA-424)."
+    },
+    "3": {
+     "caption": "SWID",
+     "description": "The International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC) publishes, ISO/IEC 19770-2, a standard for software identification (SWID) tags that defines a structured metadata format for describing a software product. A SWID tag document is composed of a structured set of data elements that identify the software product"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The type is not mapped. See the <code>type</code> attribute, which contains a data source specific value."
+    }
+   },
+   "references": [
+    {
+     "description": "SPDX",
+     "url": "https://spdx.dev/"
+    },
+    {
+     "description": "ISO/IEC 5692:2021",
+     "url": "https://www.iso.org/standard/81870.html"
+    },
+    {
+     "description": "CycloneDX",
+     "url": "https://cyclonedx.org/"
+    },
+    {
+     "description": "ECMA-424",
+     "url": "https://ecma-international.org/publications-and-standards/standards/ecma-424/"
+    },
+    {
+     "description": "SWID",
+     "url": "https://nvd.nist.gov/products/swid"
+    },
+    {
+     "description": "ISO/IEC 19770-2:2015",
+     "url": "https://www.iso.org/standard/65666.html"
+    }
+   ],
+   "requirement": "recommended",
+   "sibling": "type",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "uid": {
+   "caption": "SBOM ID",
+   "description": "A unique identifier for the SBOM or the SBOM generation by a source tool, such as the SPDX <code>metadata.component.bom-ref</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "version": {
+   "caption": "Version",
+   "description": "The specification (spec) version of the particular SBOM, e.g., <code>1.6</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Software Bill of Materials",
+ "description": "The Software Bill of Materials object describes characteristics of a generated SBOM.",
+ "extends": "object",
+ "name": "sbom",
+ "profiles": [
+  "data_classification",
+  "datetime"
+ ]
+}

@@ -1,0 +1,199 @@
+{
+ "attributes": {
+  "criticality": {
+   "caption": "Business Criticality",
+   "description": "The criticality of the application as defined by the event source.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "data": {
+   "caption": "Data",
+   "description": "Additional data describing the application.",
+   "requirement": "optional",
+   "type": "json_t",
+   "type_name": "JSON"
+  },
+  "desc": {
+   "caption": "Application Description",
+   "description": "A description or commentary for an application, usually retrieved from an upstream system.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "group": {
+   "caption": "Group",
+   "description": "The name of the related application or associated resource group.",
+   "object_name": "Group",
+   "object_type": "group",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "hostname": {
+   "caption": "Hostname",
+   "description": "The fully qualified name of the application.",
+   "requirement": "optional",
+   "type": "hostname_t",
+   "type_name": "Hostname"
+  },
+  "labels": {
+   "caption": "Labels",
+   "description": "The list of labels associated to the application.",
+   "is_array": true,
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "name": {
+   "caption": "Application Name",
+   "description": "The name of the application.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "owner": {
+   "caption": "Owner",
+   "description": "The identity of the service or user account that owns the application.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "region": {
+   "caption": "Region",
+   "description": "The cloud region of the resource.",
+   "profiles": [
+    "cloud"
+   ],
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "resource_relationship": {
+   "caption": "Application Relationship",
+   "description": "A graph representation showing how this application relates to and interacts with other entities in the environment. This can include parent/child relationships, dependencies, or other connections.",
+   "object_name": "Graph",
+   "object_type": "graph",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "risk_level": {
+   "caption": "Risk Level",
+   "description": "The risk level, normalized to the caption of the risk_level_id value.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "risk_level_id": {
+   "caption": "Risk Level ID",
+   "description": "The normalized risk level id.",
+   "enum": {
+    "0": {
+     "caption": "Info"
+    },
+    "1": {
+     "caption": "Low"
+    },
+    "2": {
+     "caption": "Medium"
+    },
+    "3": {
+     "caption": "High"
+    },
+    "4": {
+     "caption": "Critical"
+    },
+    "99": {
+     "caption": "Other",
+     "description": "The risk level is not mapped. See the <code>risk_level</code> attribute, which contains a data source specific value."
+    }
+   },
+   "requirement": "optional",
+   "sibling": "risk_level",
+   "suppress_checks": [
+    "enum_convention"
+   ],
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "risk_score": {
+   "caption": "Risk Score",
+   "description": "The risk score as reported by the event source.",
+   "requirement": "optional",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "sbom": {
+   "caption": "Related SBOM",
+   "description": "The Software Bill of Materials (SBOM) associated with the application",
+   "object_name": "Software Bill of Materials",
+   "object_type": "sbom",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "tags": {
+   "caption": "Tags",
+   "description": "The list of tags; <code>{key:value}</code> pairs associated to the application.",
+   "is_array": true,
+   "object_name": "Key:Value object",
+   "object_type": "key_value_object",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "type": {
+   "caption": "Application Type",
+   "description": "The type of application as defined by the event source, e.g., <code>GitHub</code>, <code>Azure Logic App</code>, or <code>Amazon Elastic BeanStalk</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid": {
+   "caption": "Application ID",
+   "description": "The unique identifier for the application.",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "uid_alt": {
+   "caption": "Application Alternative ID",
+   "description": "An alternative or contextual identifier for the application, such as a configuration, organization, or license UID.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "url": {
+   "caption": "URL",
+   "description": "The URL of the application.",
+   "object_name": "Uniform Resource Locator",
+   "object_type": "url",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "version": {
+   "caption": "Application Version",
+   "description": "The semantic version of the application, e.g., <code>1.7.4</code>.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  }
+ },
+ "caption": "Application",
+ "constraints": {
+  "at_least_one": [
+   "uid",
+   "name"
+  ]
+ },
+ "description": "An Application describes the details for an inventoried application as reported by an Application Security tool or other Developer-centric tooling. Applications can be defined as Kubernetes resources, Containerized resources, or application hosting-specific cloud sources such as AWS Elastic BeanStalk, AWS Lightsail, or Azure Logic Apps.",
+ "extends": "object",
+ "name": "application",
+ "profiles": [
+  "data_classification"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:Application.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:Application/"
+  }
+ ]
+}

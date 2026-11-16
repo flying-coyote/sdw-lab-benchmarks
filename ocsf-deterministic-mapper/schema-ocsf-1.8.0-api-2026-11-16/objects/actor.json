@@ -1,0 +1,96 @@
+{
+ "attributes": {
+  "app_name": {
+   "caption": "Application Name",
+   "description": "The client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present.  Note that <code>app_name</code> is distinct from the <code>process</code> if present.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "app_uid": {
+   "caption": "Application ID",
+   "description": "The unique identifier of the client application or service that initiated the activity. This can be in conjunction with the <code>user</code> if present. Note that <code>app_name</code> is distinct from the <code>process.pid</code> or <code>process.uid</code> if present.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "authorizations": {
+   "caption": "Authorization Information",
+   "description": "Provides details about an authorization, such as authorization outcome, and any associated policies related to the activity/event.",
+   "is_array": true,
+   "object_name": "Authorization Result",
+   "object_type": "authorization",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "idp": {
+   "caption": "Identity Provider",
+   "description": "This object describes details about the Identity Provider used.",
+   "object_name": "Identity Provider",
+   "object_type": "idp",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "invoked_by": {
+   "@deprecated": {
+    "message": "Use <code> app_name, app_uid </code> attributes instead.",
+    "since": "1.2.0"
+   },
+   "caption": "Invoked by",
+   "description": "The name of the service that invoked the activity as described in the event.",
+   "requirement": "optional",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "process": {
+   "caption": "Process",
+   "description": "The process that initiated the activity.",
+   "object_name": "Process",
+   "object_type": "process",
+   "requirement": "recommended",
+   "type": "object_t"
+  },
+  "session": {
+   "caption": "Session",
+   "description": "The user session from which the activity was initiated.",
+   "object_name": "Session",
+   "object_type": "session",
+   "requirement": "optional",
+   "type": "object_t"
+  },
+  "user": {
+   "caption": "User",
+   "description": "The user that initiated the activity or the user context from which the activity was initiated.",
+   "object_name": "User",
+   "object_type": "user",
+   "requirement": "recommended",
+   "type": "object_t"
+  }
+ },
+ "caption": "Actor",
+ "constraints": {
+  "at_least_one": [
+   "process",
+   "user",
+   "invoked_by",
+   "session",
+   "app_name",
+   "app_uid"
+  ]
+ },
+ "description": "The Actor object contains details about the user, role, application, service, or process that initiated or performed a specific activity. Note that Actor is not the threat actor of a campaign but may be part of a campaign.",
+ "extends": "object",
+ "name": "actor",
+ "profiles": [
+  "container",
+  "data_classification",
+  "linux/linux_users",
+  "macos/macos_users"
+ ],
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:Agent.",
+   "url": "https://next.d3fend.mitre.org/agent/d3f:Agent/"
+  }
+ ]
+}

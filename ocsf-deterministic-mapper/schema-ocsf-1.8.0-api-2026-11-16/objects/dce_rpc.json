@@ -1,0 +1,51 @@
+{
+ "attributes": {
+  "command": {
+   "caption": "Command",
+   "description": "The request command (e.g. REQUEST, BIND).",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "command_response": {
+   "caption": "Command Response",
+   "description": "The reply to the request command (e.g. RESPONSE, BINDACK or FAULT).",
+   "requirement": "recommended",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "flags": {
+   "caption": "Flags",
+   "description": "The list of interface flags.",
+   "is_array": true,
+   "requirement": "required",
+   "type": "string_t",
+   "type_name": "String"
+  },
+  "opnum": {
+   "caption": "Opnum",
+   "description": "An operation number used to identify a specific remote procedure call (RPC) method or a method in an interface.",
+   "requirement": "recommended",
+   "type": "integer_t",
+   "type_name": "Integer"
+  },
+  "rpc_interface": {
+   "caption": "Remote Procedure Call Interface",
+   "description": "The RPC Interface object describes the details pertaining to the remote procedure call interface.",
+   "object_name": "RPC Interface",
+   "object_type": "rpc_interface",
+   "requirement": "required",
+   "type": "object_t"
+  }
+ },
+ "caption": "DCE/RPC",
+ "description": "The DCE/RPC, or Distributed Computing Environment/Remote Procedure Call, object describes the remote procedure call system for distributed computing environments.",
+ "extends": "object",
+ "name": "dce_rpc",
+ "references": [
+  {
+   "description": "D3FEND\u2122 Ontology d3f:RemoteProcedureCall.",
+   "url": "https://d3fend.mitre.org/dao/artifact/d3f:RemoteProcedureCall/"
+  }
+ ]
+}

@@ -1,0 +1,106 @@
+{
+  "direction1_pyarrow_writes": {
+    "dek_bits": 256,
+    "duckdb_without_key": {
+      "error": "InvalidInputException: Invalid Input Error: File '/tmp/pme_keys_cp6req98/pyarrow_pme.parquet' is encrypted, but 'encryption_config' was not set\n\nLINE 1: SELECT v FROM read_parquet('/t",
+      "read": false
+    },
+    "readers_given_the_dek": {
+      "chdb": {
+        "error": "RuntimeError: no Parquet decryption setting in this chDB build (system.settings lists none)",
+        "read": false
+      },
+      "datafusion": {
+        "error": "RuntimeError: no parquet crypto/decryption config key in this Python build (SHOW ALL lists none)",
+        "read": false
+      },
+      "duckdb": {
+        "correct": true,
+        "read": true,
+        "values": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      },
+      "polars": {
+        "error": "RuntimeError: no Parquet decryption API in this Polars build (no pl.ParquetDecryptionProperties)",
+        "read": false
+      },
+      "pyarrow (KMS control)": {
+        "correct": true,
+        "read": true,
+        "values": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      }
+    },
+    "writer": "pyarrow KMS path (uniform PME, double_wrapping=False, 256-bit DEK, default algorithm)"
+  },
+  "direction2_duckdb_writes": {
+    "pyarrow_without_key": {
+      "error": "OSError: Error creating dataset. Could not read schema from '/tmp/pme_keys_cp6req98/duckdb_pme.parquet'. Is this a 'parquet' file?: Could not open Parquet input source '",
+      "read": false
+    },
+    "readers_given_the_key": {
+      "chdb": {
+        "error": "RuntimeError: no Parquet decryption setting in this chDB build (system.settings lists none)",
+        "read": false
+      },
+      "datafusion": {
+        "error": "RuntimeError: no parquet crypto/decryption config key in this Python build (SHOW ALL lists none)",
+        "read": false
+      },
+      "duckdb (control)": {
+        "correct": true,
+        "read": true,
+        "values": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      },
+      "polars": {
+        "error": "RuntimeError: no Parquet decryption API in this Polars build (no pl.ParquetDecryptionProperties)",
+        "read": false
+      },
+      "pyarrow (KMS returning the known key)": {
+        "error": "OSError: Error creating dataset. Could not read schema from '/tmp/pme_keys_cp6req98/duckdb_pme.parquet'. Is this a 'parquet' file?: Could not open Parquet input source '",
+        "read": false
+      },
+      "pyarrow (explicit-key API)": {
+        "error": "RuntimeError: no explicit-key decryption API in this pyarrow build",
+        "read": false
+      }
+    },
+    "write": {
+      "correct": true,
+      "read": true,
+      "values": [
+        1.0,
+        2.0,
+        3.0
+      ]
+    },
+    "writer": "duckdb (ENCRYPTION_CONFIG footer_key, 128-bit)"
+  },
+  "direction3_pyarrow_explicit_key_writes": {
+    "write": {
+      "error": "RuntimeError: no explicit-key encryption API in this pyarrow build",
+      "read": false
+    },
+    "writer": "pyarrow explicit-key API (uniform, 128-bit known key, AES_GCM_V1)"
+  },
+  "environment": {
+    "chdb": "4.1.8",
+    "datafusion": "53.0.0",
+    "duckdb": "1.5.3",
+    "polars": "1.41.2",
+    "pyarrow": "23.0.1"
+  },
+  "label": "june-pins",
+  "python": "3.12.3",
+  "run_utc": "2026-11-16T13:17:48Z"
+}
