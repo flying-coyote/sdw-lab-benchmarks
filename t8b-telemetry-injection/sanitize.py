@@ -4,7 +4,7 @@ Why this exists: ingestion (LinkedIn, RSS, Substack, Medium) writes captured
 external text into markdown notes and dedup/state JSON that LLM sessions later
 read. On 2026-11-04 a captured LinkedIn display name was found carrying 21
 invisible Unicode tag characters (U+E0000-U+E007F) that decode to
-" enter goal here __", which is a prompt-injection channel: invisible to a human
+a short instruction-shaped string, which is a prompt-injection channel: invisible to a human
 reviewer, readable by a model. Every ingestion write point runs external text
 through ``sanitize_text`` (or ``sanitize_record``) before it touches disk.
 
