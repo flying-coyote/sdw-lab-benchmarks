@@ -103,3 +103,34 @@ which OCSF has no `prev_` field for and would ride in `unmapped` as S2's fingerp
 - Releases are treated as benign by the pre-registration; the one firing is a genuine capability change, which is
   exactly the ambiguity a description-similarity rule cannot resolve.
 - Post-hoc as stated above; single host; not yet independently re-run.
+
+## Correction (2026-11-16, after review)
+
+An external review (Fable, 2026-11-16) found, and I reproduced, that the replay did not reconstruct each release as
+published. `npx -y <pkg>@<version>` resolves transitive dependencies to their current versions, so on 2026-11-16
+every one of the 13 versions ran on `@modelcontextprotocol/sdk` 1.32.2, every `server-filesystem` version ran on
+`zod` 4.6.7 with `zod-to-json-schema` 3.25.2, and `server-everything` ran on `zod` 3.25.76 up to 2026.1.26 and
+4.6.7 from 2026.7.4 (which declares `zod ^4.0.0` itself). Evidence: the `package.json` files under
+`~/.npm/_npx/*/node_modules/` for each version, and `zodToJsonSchema(z.object({path: z.string()}))` run against the
+two cached dependency sets, which returns only `{"$schema":"http://json-schema.org/draft-07/schema#"}` under zod
+4.6.7 and the full object schema under zod 3.25.76.
+
+Consequences, superseding the earlier text where they conflict:
+- The "13 went from a bare `$schema` to full properties" cell for `filesystem` 2025.8.21 → 2025.11.25, and the
+  "13 of the 14 S2 matches … are input schemas being filled in" bullet, describe a replay artifact. 2025.8.21
+  declares `zod-to-json-schema ^3.23.5` and no `zod`, so under today's zod 4 its schema conversion returns an empty
+  schema; the maintainers did not ship 13 empty input schemas. That transition still emits 14 events from changes in
+  the package's own code (annotations, titles, output schemas, one description edit at 0.648), but its 14 S2 matches
+  cannot be separated from the artifact.
+- S2: 25 events across 4 transitions as replayed; 11 across 3 transitions without the 2025.8.21 → 2025.11.25
+  transition.
+- The composite firing (S4 on `read_media_file`, 0.494) comes from the package's own description string and
+  stands. Both descriptions end with " Only works within allowed directories."; without that shared sentence the
+  similarity is 0.326. It is one of three description edits in the 65 events (0.494, 0.648, 0.857).
+- The `additionalProperties: false` drop on 9 `server-everything` tools coincides with that release moving its own
+  declared dependency from zod 3 to zod 4, so it is probably the release's own change, though the SDK that converts
+  the schema had also floated to 1.32.2.
+- "Every version negotiated 2025-06-18" means each server accepted the 2025-06-18 the snapshotter offered
+  (`snapshot.py` `PROTO`); it says nothing about the newest version each server supports.
+- A faithful replay would install each version with dependency resolution pinned to its publish date
+  (`npm install --before=<date>`); not run.
