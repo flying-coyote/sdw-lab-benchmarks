@@ -157,7 +157,7 @@
     "list_filter_lambda_kw|type_id=21": 250,
     "version": "1.5.3"
   },
-  "parquet": "/tmp/claude-1000/-home-jerem-project1/e104b038-768f-4534-8613-e2298e868850/scratchpad/nested_vjune/_work/nested_ocsf.parquet",
+  "parquet": "<scratch>",
   "post_hoc": true,
   "run_utc": "2026-11-16T13:15:29+00:00",
   "truth": {

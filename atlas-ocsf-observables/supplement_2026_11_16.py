@@ -28,7 +28,7 @@ sys.path.insert(0, M1)
 import join      # noqa: E402
 import recompute  # noqa: E402
 
-HUB = "/home/jerem/project1/02-projects/atlas-mitigations"
+HUB = os.environ.get("ATLAS_MITIGATIONS_DIR", os.path.expanduser("~/project1/02-projects/atlas-mitigations"))
 CAND = HUB + "/research-returns/atlas-candidate-mappings.csv"
 REFS = HUB + "/data/attack_refs.csv"
 # Copied from ai-flows-2026-11-09/analysis/critical_controls.py l.34-38 (itself copied from atlas_pin.py).

@@ -17,7 +17,7 @@
       "default": {
         "data_files": 10,
         "manifests": 10,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_10/s/t/metadata/00010-a01e8ccb-c4c7-466c-960b-21a8961a80eb.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_10/s/t/metadata/00010-a01e8ccb-c4c7-466c-960b-21a8961a80eb.metadata.json",
         "plan": {
           "median_ms": 13.809,
           "cv_pct": 9.4,
@@ -43,7 +43,7 @@
       "rewrite_manifests": {
         "data_files": 10,
         "manifests": 1,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_10/s/t/metadata/00012-49909f52-bb28-4e94-92b0-962a9b3bc510.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_10/s/t/metadata/00012-49909f52-bb28-4e94-92b0-962a9b3bc510.metadata.json",
         "plan": {
           "median_ms": 2.252,
           "cv_pct": 3.4,
@@ -69,7 +69,7 @@
       "compacted": {
         "data_files": 1,
         "manifests": 1,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_10/s/t/metadata/00013-b37fe9d3-d2bb-4386-875d-e64068c860fd.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_10/s/t/metadata/00013-b37fe9d3-d2bb-4386-875d-e64068c860fd.metadata.json",
         "plan": {
           "median_ms": 1.618,
           "cv_pct": 5.9,
@@ -95,7 +95,7 @@
       "merge_on": {
         "data_files": 10,
         "manifests": 10,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_merge_10/s/t/metadata/00010-079ce796-7e80-4cee-a8a1-d0a81423e0c6.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_merge_10/s/t/metadata/00010-079ce796-7e80-4cee-a8a1-d0a81423e0c6.metadata.json",
         "plan": {
           "median_ms": 12.322,
           "cv_pct": 1.9,
@@ -124,7 +124,7 @@
       "default": {
         "data_files": 100,
         "manifests": 100,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_100/s/t/metadata/00100-873b23a2-dc4b-4536-a6e3-6bec24941181.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_100/s/t/metadata/00100-873b23a2-dc4b-4536-a6e3-6bec24941181.metadata.json",
         "plan": {
           "median_ms": 116.387,
           "cv_pct": 1.4,
@@ -150,7 +150,7 @@
       "rewrite_manifests": {
         "data_files": 100,
         "manifests": 1,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_100/s/t/metadata/00102-1086f606-edf9-4ede-92c5-22b2252f5706.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_100/s/t/metadata/00102-1086f606-edf9-4ede-92c5-22b2252f5706.metadata.json",
         "plan": {
           "median_ms": 6.979,
           "cv_pct": 4.3,
@@ -176,7 +176,7 @@
       "compacted": {
         "data_files": 1,
         "manifests": 1,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_100/s/t/metadata/00103-959eaeff-e3e1-4686-b794-abf7dfc08c9d.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_100/s/t/metadata/00103-959eaeff-e3e1-4686-b794-abf7dfc08c9d.metadata.json",
         "plan": {
           "median_ms": 1.65,
           "cv_pct": 4.4,
@@ -202,7 +202,7 @@
       "merge_on": {
         "data_files": 100,
         "manifests": 1,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_merge_100/s/t/metadata/00100-bb9f8669-a8dd-4483-b5e5-4161a942d6ca.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_merge_100/s/t/metadata/00100-bb9f8669-a8dd-4483-b5e5-4161a942d6ca.metadata.json",
         "plan": {
           "median_ms": 14.543,
           "cv_pct": 104.9,
@@ -231,7 +231,7 @@
       "default": {
         "data_files": 1000,
         "manifests": 1000,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_1000/s/t/metadata/01000-0af25905-7052-44a9-8fc5-20a03349e7a0.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_1000/s/t/metadata/01000-0af25905-7052-44a9-8fc5-20a03349e7a0.metadata.json",
         "plan": {
           "median_ms": 1226.957,
           "cv_pct": 2.4,
@@ -257,7 +257,7 @@
       "rewrite_manifests": {
         "data_files": 1000,
         "manifests": 1,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_1000/s/t/metadata/01002-a70d4b3d-3eee-41de-bff0-2858778d728a.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_1000/s/t/metadata/01002-a70d4b3d-3eee-41de-bff0-2858778d728a.metadata.json",
         "plan": {
           "median_ms": 65.671,
           "cv_pct": 29.4,
@@ -283,7 +283,7 @@
       "compacted": {
         "data_files": 1,
         "manifests": 1,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_1000/s/t/metadata/01003-ed7776b8-56e0-46c0-a248-6f4675491940.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_1000/s/t/metadata/01003-ed7776b8-56e0-46c0-a248-6f4675491940.metadata.json",
         "plan": {
           "median_ms": 1.651,
           "cv_pct": 7.6,
@@ -309,7 +309,7 @@
       "merge_on": {
         "data_files": 1000,
         "manifests": 10,
-        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_merge_1000/s/t/metadata/01000-94258c66-7a34-4aef-9ca0-83123cadad03.metadata.json",
+        "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_merge_1000/s/t/metadata/01000-94258c66-7a34-4aef-9ca0-83123cadad03.metadata.json",
         "plan": {
           "median_ms": 71.505,
           "cv_pct": 26.0,
@@ -340,7 +340,7 @@
     "default": {
       "data_files": 500,
       "manifests": 500,
-      "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_default/s/t/metadata/00500-37bfbc4c-bc91-4f5e-ab48-e8de816e7553.metadata.json",
+      "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_default/s/t/metadata/00500-37bfbc4c-bc91-4f5e-ab48-e8de816e7553.metadata.json",
       "plan": {
         "median_ms": 666.038,
         "cv_pct": 4.9,
@@ -496,7 +496,7 @@
     "rewrite_manifests": {
       "data_files": 500,
       "manifests": 1,
-      "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_default/s/t/metadata/00502-4bccb0d7-3fd5-457a-a99c-29c64c2be125.metadata.json",
+      "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_default/s/t/metadata/00502-4bccb0d7-3fd5-457a-a99c-29c64c2be125.metadata.json",
       "plan": {
         "median_ms": 33.664,
         "cv_pct": 3.1,
@@ -656,7 +656,7 @@
     "compacted": {
       "data_files": 4,
       "manifests": 1,
-      "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_default/s/t/metadata/00503-6602b67b-24d4-4791-930a-e1e124446304.metadata.json",
+      "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_default/s/t/metadata/00503-6602b67b-24d4-4791-930a-e1e124446304.metadata.json",
       "plan": {
         "median_ms": 2.224,
         "cv_pct": 1.9,
@@ -816,7 +816,7 @@
     "merge_on": {
       "data_files": 500,
       "manifests": 5,
-      "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_merge/s/t/metadata/00500-97d49dea-811d-4cf7-a436-42b17845a89b.metadata.json",
+      "metadata_location": "file://~/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_merge/s/t/metadata/00500-97d49dea-811d-4cf7-a436-42b17845a89b.metadata.json",
       "plan": {
         "median_ms": 40.765,
         "cv_pct": 9.3,

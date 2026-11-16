@@ -15,4 +15,4 @@ B default: 500 files 500 manifests count_all 108.138 protocol_distribution 163.9
 B rewrite_manifests: 500 files 1 manifests count_all 21.28 protocol_distribution 55.216 long_duration_scan 171.487 bytes_by_source 231.667
 B compacted: 4 files 1 manifests count_all 5.009 protocol_distribution 25.229 long_duration_scan 106.059 bytes_by_source 140.476
 B merge_on: 500 files 5 manifests count_all 19.129 protocol_distribution 49.964 long_duration_scan 169.854 bytes_by_source 235.241
-wrote /home/jerem/sdw-lab-benchmarks/iceberg-compaction/results/manifest_arm_2026-11-16.json
+wrote ~/sdw-lab-benchmarks/iceberg-compaction/results/manifest_arm_2026-11-16.json
