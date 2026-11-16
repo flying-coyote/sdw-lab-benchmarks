@@ -1,0 +1,62 @@
+{
+ "mode": "sr_fresh_probe_posthoc",
+ "id": "join_3to4_04",
+ "runs": [
+  {
+   "i": 0,
+   "s": 21.822,
+   "load": [
+    0.77,
+    0.3,
+    0.4,
+    1794817319.053
+   ],
+   "err": "(1064, 'Memory of query_pool exceed limit. try consume:1073741824 Backend: 127.0.0.1, Used: 15715704104, Limit: 18786186952. Mem usage has exceed the limit of query pool: BE:10001')"
+  },
+  {
+   "i": 1,
+   "s": 13.866,
+   "load": [
+    1.39,
+    0.49,
+    0.46,
+    1794817340.893
+   ],
+   "err": "(1064, 'Memory of query_pool exceed limit. try consume:1342177280 Backend: 127.0.0.1, Used: 15522831768, Limit: 18786186952. Mem usage has exceed the limit of query pool: BE:10001')"
+  },
+  {
+   "i": 2,
+   "s": 15.845,
+   "load": [
+    1.49,
+    0.54,
+    0.47,
+    1794817354.776
+   ],
+   "err": "(1064, 'Memory of query_pool exceed limit. try consume:1342177280 Backend: 127.0.0.1, Used: 15221868656, Limit: 18786186952. Mem usage has exceed the limit of query pool: BE:10001')"
+  },
+  {
+   "i": 3,
+   "s": 14.857,
+   "load": [
+    3.78,
+    1.13,
+    0.67,
+    1794817370.635
+   ],
+   "err": "(1064, 'Memory of query_pool exceed limit. try consume:1342177280 Backend: 127.0.0.1, Used: 16396760840, Limit: 18786186952. Mem usage has exceed the limit of query pool: BE:10001')"
+  },
+  {
+   "i": 4,
+   "s": 33.121,
+   "load": [
+    4.98,
+    1.5,
+    0.8,
+    1794817385.504
+   ],
+   "err": "(1064, 'Memory of process exceed limit. try consume:8589934592 Backend: 127.0.0.1, Used: 2130820024, Limit: 20873541058. Mem usage has exceed the limit of BE: BE:10001')"
+  }
+ ],
+ "version": "4.1.7-b81ff9c"
+}

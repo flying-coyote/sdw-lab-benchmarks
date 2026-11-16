@@ -1,0 +1,135 @@
+{
+ "all_match": true,
+ "counts": {
+  "clickhouse_iceberg:tpch.lineitem": {
+   "count": 59986052,
+   "rows_1115": 59986052,
+   "match": true
+  },
+  "clickhouse_iceberg:tpch.orders": {
+   "count": 15000000,
+   "rows_1115": 15000000,
+   "match": true
+  },
+  "clickhouse_iceberg:tpch.customer": {
+   "count": 1500000,
+   "rows_1115": 1500000,
+   "match": true
+  },
+  "clickhouse_iceberg:tpch.supplier": {
+   "count": 100000,
+   "rows_1115": 100000,
+   "match": true
+  },
+  "clickhouse_iceberg:tpch.nation": {
+   "count": 25,
+   "rows_1115": 25,
+   "match": true
+  },
+  "clickhouse_iceberg:tpch.region": {
+   "count": 5,
+   "rows_1115": 5,
+   "match": true
+  },
+  "clickhouse_iceberg:tpch.part": {
+   "count": 2000000,
+   "rows_1115": 2000000,
+   "match": true
+  },
+  "clickhouse_iceberg:tpch.partsupp": {
+   "count": 8000000,
+   "rows_1115": 8000000,
+   "match": true
+  },
+  "clickhouse_iceberg:soc.conn": {
+   "count": 10000000,
+   "rows_1115": 10000000,
+   "match": true
+  },
+  "clickhouse_iceberg:soc.dns": {
+   "count": 1000000,
+   "rows_1115": 1000000,
+   "match": true
+  },
+  "clickhouse_iceberg:soc.assets": {
+   "count": 14788,
+   "rows_1115": 14788,
+   "match": true
+  },
+  "clickhouse_iceberg:soc.ioc": {
+   "count": 5000,
+   "rows_1115": 5000,
+   "match": true
+  },
+  "clickhouse_iceberg:soc.conn_enriched": {
+   "count": 10000000,
+   "rows_1115": 10000000,
+   "match": true
+  },
+  "clickhouse_native:tpch.lineitem": {
+   "count": 59986052,
+   "rows_1115": 59986052,
+   "match": true
+  },
+  "clickhouse_native:tpch.orders": {
+   "count": 15000000,
+   "rows_1115": 15000000,
+   "match": true
+  },
+  "clickhouse_native:tpch.customer": {
+   "count": 1500000,
+   "rows_1115": 1500000,
+   "match": true
+  },
+  "clickhouse_native:tpch.supplier": {
+   "count": 100000,
+   "rows_1115": 100000,
+   "match": true
+  },
+  "clickhouse_native:tpch.nation": {
+   "count": 25,
+   "rows_1115": 25,
+   "match": true
+  },
+  "clickhouse_native:tpch.region": {
+   "count": 5,
+   "rows_1115": 5,
+   "match": true
+  },
+  "clickhouse_native:tpch.part": {
+   "count": 2000000,
+   "rows_1115": 2000000,
+   "match": true
+  },
+  "clickhouse_native:tpch.partsupp": {
+   "count": 8000000,
+   "rows_1115": 8000000,
+   "match": true
+  },
+  "clickhouse_native:soc.conn": {
+   "count": 10000000,
+   "rows_1115": 10000000,
+   "match": true
+  },
+  "clickhouse_native:soc.dns": {
+   "count": 1000000,
+   "rows_1115": 1000000,
+   "match": true
+  },
+  "clickhouse_native:soc.assets": {
+   "count": 14788,
+   "rows_1115": 14788,
+   "match": true
+  },
+  "clickhouse_native:soc.ioc": {
+   "count": 5000,
+   "rows_1115": 5000,
+   "match": true
+  },
+  "clickhouse_native:soc.conn_enriched": {
+   "count": 10000000,
+   "rows_1115": 10000000,
+   "match": true
+  }
+ }
+}

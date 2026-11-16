@@ -1,0 +1,9 @@
+== 2026-11-16T03:13:23Z ClickHouse
+2026-11-16T03:13:30Z cell=arm:clickhouse_iceberg load=0.19 0.21 0.14 waited_s=0 gate_expired=no chrony_system_time="0.000012082 seconds slow of NTP time"
+2026-11-16T03:23:19Z cell=arm:clickhouse_native load=0.98 5.89 4.30 waited_s=165 gate_expired=no chrony_system_time="0.000046502 seconds fast of NTP time"
+== 2026-11-16T04:26:21Z StarRocks
+2026-11-16T04:29:11Z cell=arm:starrocks load=0.80 2.85 4.07 waited_s=135 gate_expired=no chrony_system_time="0.897414386 seconds slow of NTP time"
+2026-11-16T04:36:34Z cell=sr_attempts_probe load=0.78 5.46 5.55 waited_s=210 gate_expired=no chrony_system_time="0.916742623 seconds slow of NTP time"
+== 2026-11-16T04:36:41Z Trino
+2026-11-16T04:37:09Z cell=arm:trino load=0.88 4.97 5.39 waited_s=15 gate_expired=no chrony_system_time="0.000019288 seconds slow of NTP time"
+== 2026-11-16T04:49:44Z DONE

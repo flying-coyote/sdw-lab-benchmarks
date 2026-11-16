@@ -1,0 +1,373 @@
+[
+ {
+  "shape": "S",
+  "cap_mb": 4096,
+  "frac": "7/8",
+  "memory_limit_mb": 3584,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 0.682,
+  "cv": 0.101,
+  "cg_anon_peak_mib": 101.2,
+  "bm_peak_mib": 78.6,
+  "spill_peak_mib": 0.0,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.11,
+   0.11,
+   0.18,
+   0.18,
+   0.18
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "cap_mb": 256,
+  "frac": "7/8",
+  "memory_limit_mb": 224,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 0.67,
+  "cv": 0.014,
+  "cg_anon_peak_mib": 101.1,
+  "bm_peak_mib": 78.6,
+  "spill_peak_mib": 0.0,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.18,
+   0.33,
+   0.33,
+   0.33,
+   0.38
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "cap_mb": 256,
+  "frac": "1/2",
+  "memory_limit_mb": 128,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 0.996,
+  "cv": 0.01,
+  "cg_anon_peak_mib": 151.2,
+  "bm_peak_mib": 121.9,
+  "spill_peak_mib": 61.7,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.38,
+   0.38,
+   0.43,
+   0.43,
+   0.43
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "cap_mb": 128,
+  "frac": "1/2",
+  "memory_limit_mb": 64,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 1.305,
+  "cv": 0.013,
+  "cg_anon_peak_mib": 92.2,
+  "bm_peak_mib": 61.0,
+  "spill_peak_mib": 114.1,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.48,
+   0.48,
+   0.48,
+   0.52,
+   0.52
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "cap_mb": 64,
+  "frac": "1/2",
+  "memory_limit_mb": 32,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 1.762,
+  "cv": 0.01,
+  "cg_anon_peak_mib": 59.3,
+  "bm_peak_mib": 30.4,
+  "spill_peak_mib": 136.7,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.56,
+   0.56,
+   0.59,
+   0.59,
+   0.63
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "cap_mb": 4096,
+  "frac": "7/8",
+  "memory_limit_mb": 3584,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 2.225,
+  "cv": 0.03,
+  "cg_anon_peak_mib": 1076.2,
+  "bm_peak_mib": 972.6,
+  "spill_peak_mib": 0.0,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.63,
+   0.66,
+   0.66,
+   0.69,
+   0.71
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "cap_mb": 256,
+  "frac": "7/8",
+  "memory_limit_mb": 224,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 4.643,
+  "cv": 0.017,
+  "cg_anon_peak_mib": 250.4,
+  "bm_peak_mib": 213.7,
+  "spill_peak_mib": 497.5,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.71,
+   0.73,
+   0.76,
+   0.78,
+   0.96
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "cap_mb": 256,
+  "frac": "1/2",
+  "memory_limit_mb": 128,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 4.495,
+  "cv": 0.009,
+  "cg_anon_peak_mib": 149.0,
+  "bm_peak_mib": 121.9,
+  "spill_peak_mib": 514.6,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.97,
+   1.05,
+   1.45,
+   1.41,
+   1.38
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "cap_mb": 128,
+  "frac": "1/2",
+  "memory_limit_mb": 64,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 5.15,
+  "cv": 0.007,
+  "cg_anon_peak_mib": 91.4,
+  "bm_peak_mib": 61.0,
+  "spill_peak_mib": 551.8,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.97,
+   0.97,
+   0.97,
+   1.06,
+   1.05
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "cap_mb": 64,
+  "frac": "1/2",
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mib": 0.0,
+  "bm_peak_mib": 0.0,
+  "spill_peak_mib": 560.0,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.63,
+   0.74
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.3 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-"
+  ]
+ },
+ {
+  "shape": "J",
+  "cap_mb": 4096,
+  "frac": "7/8",
+  "memory_limit_mb": 3584,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "median_s": 14.102,
+  "cv": 0.004,
+  "cg_anon_peak_mib": 1357.1,
+  "bm_peak_mib": 1330.5,
+  "spill_peak_mib": 0.0,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.76,
+   0.9,
+   0.92,
+   0.94,
+   0.95
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "cap_mb": 256,
+  "frac": "7/8",
+  "memory_limit_mb": 224,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mib": 0.0,
+  "bm_peak_mib": 0.0,
+  "spill_peak_mib": 506.7,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.96,
+   1.05
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "cap_mb": 256,
+  "frac": "1/2",
+  "memory_limit_mb": 128,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mib": 0.0,
+  "bm_peak_mib": 0.0,
+  "spill_peak_mib": 1000.7,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.8,
+   0.92
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to pin block of size 256.0 KiB (121.9 MiB/122.0 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-"
+  ]
+ },
+ {
+  "shape": "J",
+  "cap_mb": 128,
+  "frac": "1/2",
+  "memory_limit_mb": 64,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mib": 0.0,
+  "bm_peak_mib": 0.0,
+  "spill_peak_mib": 653.8,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.67,
+   0.7
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (60.9 MiB/61.0 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti"
+  ]
+ },
+ {
+  "shape": "J",
+  "cap_mb": 64,
+  "frac": "1/2",
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mib": 0.0,
+  "bm_peak_mib": 0.0,
+  "spill_peak_mib": 604.9,
+  "spill_left_after_non_killed_max": 0,
+  "load1": [
+   0.72,
+   0.74
+  ],
+  "errors": []
+ }
+]

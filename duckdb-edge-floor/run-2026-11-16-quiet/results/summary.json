@@ -1,0 +1,3192 @@
+{
+ "cells": [
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 2.247,
+   "min_s": 2.2219,
+   "max_s": 2.3135,
+   "cv": 0.014,
+   "memory_peak_mb_max": 1049.0,
+   "cg_anon_peak_mb_max": 1045.5,
+   "vm_hwm_mb_max": 1086.6,
+   "vm_hwm_mb_min": 1053.6,
+   "bm_peak_mb_max": 971.1,
+   "anon_minus_bm_mb_min": 37.1,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.89,
+    0.89,
+    0.9,
+    0.9
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 4.567,
+   "min_s": 4.5053,
+   "max_s": 4.6453,
+   "cv": 0.012,
+   "memory_peak_mb_max": 256.0,
+   "cg_anon_peak_mb_max": 245.9,
+   "vm_hwm_mb_max": 287.4,
+   "vm_hwm_mb_min": 285.3,
+   "bm_peak_mb_max": 213.5,
+   "anon_minus_bm_mb_min": 30.2,
+   "spill_peak_mb_max": 482.7,
+   "spill_seen_trials": 5,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.91,
+    0.92,
+    0.92,
+    1.01,
+    1.01
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 2.0,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 2195456,
+   "poll_errors": 0,
+   "load1": [
+    0.61,
+    0.64
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.64,
+    0.64
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.64,
+    0.64
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.67,
+    0.67
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.62,
+   "min_s": 0.6027,
+   "max_s": 0.646,
+   "cv": 0.022,
+   "memory_peak_mb_max": 948.1,
+   "cg_anon_peak_mb_max": 943.7,
+   "vm_hwm_mb_max": 984.4,
+   "vm_hwm_mb_min": 980.5,
+   "bm_peak_mb_max": 899.9,
+   "anon_minus_bm_mb_min": 41.9,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.67,
+    0.67,
+    0.67,
+    0.94,
+    0.94
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 33.5,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 51122176,
+   "poll_errors": 0,
+   "load1": [
+    0.94,
+    1.26
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 1150976,
+   "poll_errors": 0,
+   "load1": [
+    0.76,
+    0.76
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.76,
+    0.76
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.76,
+    0.78
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.78,
+    0.78
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 2.164,
+   "min_s": 2.1228,
+   "max_s": 2.2148,
+   "cv": 0.015,
+   "memory_peak_mb_max": 882.7,
+   "cg_anon_peak_mb_max": 879.3,
+   "vm_hwm_mb_max": 920.1,
+   "vm_hwm_mb_min": 853.9,
+   "bm_peak_mb_max": 776.1,
+   "anon_minus_bm_mb_min": 48.8,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.89,
+    0.89,
+    0.9,
+    0.99
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 4.663,
+   "min_s": 4.4904,
+   "max_s": 5.1879,
+   "cv": 0.05,
+   "memory_peak_mb_max": 256.0,
+   "cg_anon_peak_mb_max": 244.2,
+   "vm_hwm_mb_max": 285.6,
+   "vm_hwm_mb_min": 283.2,
+   "bm_peak_mb_max": 213.5,
+   "anon_minus_bm_mb_min": 28.4,
+   "spill_peak_mb_max": 441.5,
+   "spill_seen_trials": 5,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.99,
+    0.99,
+    1.47,
+    1.43,
+    1.4
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.4,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 884736,
+   "poll_errors": 0,
+   "load1": [
+    0.87,
+    0.87
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.87,
+    0.87
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.89,
+    0.89
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.89,
+    0.89
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.604,
+   "min_s": 0.5909,
+   "max_s": 0.6363,
+   "cv": 0.025,
+   "memory_peak_mb_max": 938.3,
+   "cg_anon_peak_mb_max": 933.9,
+   "vm_hwm_mb_max": 974.7,
+   "vm_hwm_mb_min": 972.7,
+   "bm_peak_mb_max": 905.3,
+   "anon_minus_bm_mb_min": 26.5,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.89,
+    0.89,
+    0.89,
+    0.89,
+    0.89
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 23.7,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 37666816,
+   "poll_errors": 0,
+   "load1": [
+    0.69,
+    0.69
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 1163264,
+   "poll_errors": 0,
+   "load1": [
+    0.69,
+    0.69
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.69,
+    0.88
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.88
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.88
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 9.827,
+   "min_s": 9.6977,
+   "max_s": 10.0565,
+   "cv": 0.014,
+   "memory_peak_mb_max": 2826.0,
+   "cg_anon_peak_mb_max": 2814.5,
+   "vm_hwm_mb_max": 2859.8,
+   "vm_hwm_mb_min": 2731.6,
+   "bm_peak_mb_max": 2653.3,
+   "anon_minus_bm_mb_min": 36.6,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.78,
+    0.82,
+    0.85,
+    0.95,
+    0.96
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 546.2,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 576237568,
+   "poll_errors": 0,
+   "load1": [
+    0.96,
+    1.05
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.3,
+   "spill_seen_trials": 1,
+   "spill_left_after_max_bytes": 569344,
+   "poll_errors": 0,
+   "load1": [
+    0.63,
+    0.63
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.98,
+    0.98
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.98,
+    0.98
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.98,
+    0.98
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 2.402,
+   "min_s": 2.3768,
+   "max_s": 2.6285,
+   "cv": 0.038,
+   "memory_peak_mb_max": 2562.3,
+   "cg_anon_peak_mb_max": 2546.8,
+   "vm_hwm_mb_max": 2595.8,
+   "vm_hwm_mb_min": 2591.0,
+   "bm_peak_mb_max": 2538.7,
+   "anon_minus_bm_mb_min": -8.9,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.98,
+    0.98,
+    1.14,
+    1.37,
+    1.37
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 99.5,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 104366080,
+   "poll_errors": 0,
+   "load1": [
+    0.63,
+    0.63
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.63,
+    0.9
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.9,
+    0.9
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.9,
+    0.9
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.9,
+    1.07
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 11.472,
+   "min_s": 11.3491,
+   "max_s": 11.554,
+   "cv": 0.007,
+   "memory_peak_mb_max": 1249.4,
+   "cg_anon_peak_mb_max": 1245.4,
+   "vm_hwm_mb_max": 1286.5,
+   "vm_hwm_mb_min": 1284.7,
+   "bm_peak_mb_max": 1221.6,
+   "anon_minus_bm_mb_min": 22.4,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.9,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 849.2,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 890273792,
+   "poll_errors": 0,
+   "load1": [
+    0.65,
+    0.65
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.5,
+   "spill_seen_trials": 1,
+   "spill_left_after_max_bytes": 1048576,
+   "poll_errors": 0,
+   "load1": [
+    0.81,
+    0.81
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.81,
+    0.81
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.81,
+    0.99
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.99,
+    0.99
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 2.989,
+   "min_s": 2.9269,
+   "max_s": 3.2197,
+   "cv": 0.033,
+   "memory_peak_mb_max": 1252.5,
+   "cg_anon_peak_mb_max": 1247.8,
+   "vm_hwm_mb_max": 1288.0,
+   "vm_hwm_mb_min": 1287.6,
+   "bm_peak_mb_max": 1232.3,
+   "anon_minus_bm_mb_min": 14.8,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.99,
+    1.23,
+    1.45,
+    1.45,
+    1.74
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 89.8,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 97452032,
+   "poll_errors": 0,
+   "load1": [
+    0.7,
+    0.7
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.89,
+    0.89
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.89,
+    0.89
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.89,
+    0.89
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.97,
+    0.97
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.855,
+   "min_s": 0.8506,
+   "max_s": 0.9794,
+   "cv": 0.056,
+   "memory_peak_mb_max": 211.7,
+   "cg_anon_peak_mb_max": 117.0,
+   "vm_hwm_mb_max": 158.9,
+   "vm_hwm_mb_min": 158.2,
+   "bm_peak_mb_max": 92.4,
+   "anon_minus_bm_mb_min": 24.6,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.68,
+    0.68,
+    0.71,
+    0.71,
+    0.71
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 2.01,
+   "min_s": 1.9837,
+   "max_s": 2.0573,
+   "cv": 0.015,
+   "memory_peak_mb_max": 256.0,
+   "cg_anon_peak_mb_max": 244.3,
+   "vm_hwm_mb_max": 285.8,
+   "vm_hwm_mb_min": 278.8,
+   "bm_peak_mb_max": 213.4,
+   "anon_minus_bm_mb_min": 24.2,
+   "spill_peak_mb_max": 162.1,
+   "spill_seen_trials": 5,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.73,
+    0.73,
+    0.75,
+    0.75,
+    0.85
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 1.4,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 2654208,
+   "poll_errors": 0,
+   "load1": [
+    0.87,
+    0.87
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.87,
+    0.87
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.87,
+    0.88
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 1,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.88
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.386,
+   "min_s": 0.3722,
+   "max_s": 0.3907,
+   "cv": 0.016,
+   "memory_peak_mb_max": 610.6,
+   "cg_anon_peak_mb_max": 606.9,
+   "vm_hwm_mb_max": 647.9,
+   "vm_hwm_mb_min": 645.6,
+   "bm_peak_mb_max": 594.0,
+   "anon_minus_bm_mb_min": 12.0,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.88,
+    1.13,
+    1.13,
+    1.13
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 60.5,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 82481152,
+   "poll_errors": 0,
+   "load1": [
+    0.68,
+    0.79
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.79,
+    0.79
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.79,
+    0.79
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.79,
+    0.79
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 4,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.88
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.693,
+   "min_s": 0.6816,
+   "max_s": 0.8252,
+   "cv": 0.075,
+   "memory_peak_mb_max": 195.3,
+   "cg_anon_peak_mb_max": 100.8,
+   "vm_hwm_mb_max": 142.5,
+   "vm_hwm_mb_min": 141.7,
+   "bm_peak_mb_max": 78.3,
+   "anon_minus_bm_mb_min": 22.1,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.64,
+    0.64,
+    0.64,
+    0.67,
+    0.67
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.694,
+   "min_s": 0.6773,
+   "max_s": 0.6984,
+   "cv": 0.013,
+   "memory_peak_mb_max": 102.7,
+   "cg_anon_peak_mb_max": 101.0,
+   "vm_hwm_mb_max": 142.5,
+   "vm_hwm_mb_min": 142.2,
+   "bm_peak_mb_max": 78.3,
+   "anon_minus_bm_mb_min": 21.9,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.67,
+    0.7,
+    0.7,
+    0.7,
+    0.8
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 3.1,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 4145152,
+   "poll_errors": 0,
+   "load1": [
+    0.8,
+    0.8
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.8,
+    0.8
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.9,
+    0.9
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 1,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.9,
+    0.9
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.335,
+   "min_s": 0.3262,
+   "max_s": 0.344,
+   "cv": 0.021,
+   "memory_peak_mb_max": 384.5,
+   "cg_anon_peak_mb_max": 381.6,
+   "vm_hwm_mb_max": 422.9,
+   "vm_hwm_mb_min": 402.6,
+   "bm_peak_mb_max": 418.6,
+   "anon_minus_bm_mb_min": -44.5,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.9,
+    1.07,
+    1.07,
+    1.07,
+    1.07
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 12.0,
+   "spill_seen_trials": 2,
+   "spill_left_after_max_bytes": 20307968,
+   "poll_errors": 0,
+   "load1": [
+    0.75,
+    0.69
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.69,
+    0.69
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.69,
+    0.69
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.88
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 4,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.88,
+    0.88
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  },
+  {
+   "shape": "null",
+   "corpus": "-",
+   "threads": 1,
+   "cap_mb": 4096,
+   "memory_limit_mb": 3584,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.0,
+   "min_s": 0.0002,
+   "max_s": 0.0002,
+   "cv": 0.0,
+   "memory_peak_mb_max": 20.2,
+   "cg_anon_peak_mb_max": 18.4,
+   "vm_hwm_mb_max": 57.8,
+   "vm_hwm_mb_min": 57.4,
+   "bm_peak_mb_max": 0.0,
+   "anon_minus_bm_mb_min": 18.3,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.86,
+    0.86,
+    0.86,
+    0.86,
+    0.86
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "null",
+   "corpus": "-",
+   "threads": 1,
+   "cap_mb": 256,
+   "memory_limit_mb": 224,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.0,
+   "min_s": 0.0002,
+   "max_s": 0.0002,
+   "cv": 0.0,
+   "memory_peak_mb_max": 20.3,
+   "cg_anon_peak_mb_max": 18.4,
+   "vm_hwm_mb_max": 57.8,
+   "vm_hwm_mb_min": 57.4,
+   "bm_peak_mb_max": 0.0,
+   "anon_minus_bm_mb_min": 18.4,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.95,
+    0.95,
+    0.95,
+    0.95,
+    0.95
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "null",
+   "corpus": "-",
+   "threads": 1,
+   "cap_mb": 128,
+   "memory_limit_mb": 112,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.0,
+   "min_s": 0.0002,
+   "max_s": 0.0002,
+   "cv": 0.0,
+   "memory_peak_mb_max": 20.2,
+   "cg_anon_peak_mb_max": 18.4,
+   "vm_hwm_mb_max": 57.9,
+   "vm_hwm_mb_min": 57.6,
+   "bm_peak_mb_max": 0.0,
+   "anon_minus_bm_mb_min": 18.4,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.95,
+    1.03,
+    1.03,
+    1.03,
+    1.03
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "null",
+   "corpus": "-",
+   "threads": 1,
+   "cap_mb": 64,
+   "memory_limit_mb": 56,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.0,
+   "min_s": 0.0002,
+   "max_s": 0.0002,
+   "cv": 0.0,
+   "memory_peak_mb_max": 20.1,
+   "cg_anon_peak_mb_max": 18.4,
+   "vm_hwm_mb_max": 57.9,
+   "vm_hwm_mb_min": 57.5,
+   "bm_peak_mb_max": 0.0,
+   "anon_minus_bm_mb_min": 18.3,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.7,
+    0.7,
+    0.7,
+    0.96,
+    0.96
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "null",
+   "corpus": "-",
+   "threads": 1,
+   "cap_mb": 32,
+   "memory_limit_mb": 28,
+   "n_run": 5,
+   "n_skipped": 0,
+   "n_correct": 5,
+   "outcomes": {
+    "completed": 5
+   },
+   "wrong_answer": 0,
+   "median_s": 0.0,
+   "min_s": 0.0002,
+   "max_s": 0.0002,
+   "cv": 0.0,
+   "memory_peak_mb_max": 20.2,
+   "cg_anon_peak_mb_max": 18.4,
+   "vm_hwm_mb_max": 57.9,
+   "vm_hwm_mb_min": 57.5,
+   "bm_peak_mb_max": 0.0,
+   "anon_minus_bm_mb_min": 18.4,
+   "spill_peak_mb_max": 0.0,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.96,
+    0.96,
+    0.96,
+    0.96,
+    1.13
+   ],
+   "oom_events": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "errors": []
+  },
+  {
+   "shape": "null",
+   "corpus": "-",
+   "threads": 1,
+   "cap_mb": 16,
+   "memory_limit_mb": 14,
+   "n_run": 2,
+   "n_skipped": 3,
+   "n_correct": 0,
+   "outcomes": {
+    "kernel_oom_kill": 2,
+    "skipped_by_stop_rule": 3
+   },
+   "wrong_answer": 0,
+   "median_s": null,
+   "min_s": null,
+   "max_s": null,
+   "cv": null,
+   "memory_peak_mb_max": null,
+   "cg_anon_peak_mb_max": null,
+   "vm_hwm_mb_max": null,
+   "vm_hwm_mb_min": null,
+   "bm_peak_mb_max": null,
+   "anon_minus_bm_mb_min": null,
+   "spill_peak_mb_max": null,
+   "spill_seen_trials": 0,
+   "spill_left_after_max_bytes": 0,
+   "poll_errors": 0,
+   "load1": [
+    0.68,
+    0.68
+   ],
+   "oom_events": [
+    1,
+    1
+   ],
+   "errors": []
+  }
+ ],
+ "chains": [
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 1,
+   "floor_mb": 256,
+   "first_failing_cap_mb": 128,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "H",
+   "corpus": "U",
+   "threads": 4,
+   "floor_mb": 4096,
+   "first_failing_cap_mb": 256,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 1,
+   "floor_mb": 256,
+   "first_failing_cap_mb": 128,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "H",
+   "corpus": "Z",
+   "threads": 4,
+   "floor_mb": 4096,
+   "first_failing_cap_mb": 256,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 1,
+   "floor_mb": 4096,
+   "first_failing_cap_mb": 256,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "J",
+   "corpus": "U",
+   "threads": 4,
+   "floor_mb": 4096,
+   "first_failing_cap_mb": 256,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 1,
+   "floor_mb": 4096,
+   "first_failing_cap_mb": 256,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "J",
+   "corpus": "Z",
+   "threads": 4,
+   "floor_mb": 4096,
+   "first_failing_cap_mb": 256,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 1,
+   "floor_mb": 256,
+   "first_failing_cap_mb": 128,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "S",
+   "corpus": "U",
+   "threads": 4,
+   "floor_mb": 4096,
+   "first_failing_cap_mb": 256,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 1,
+   "floor_mb": 256,
+   "first_failing_cap_mb": 128,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "S",
+   "corpus": "Z",
+   "threads": 4,
+   "floor_mb": 4096,
+   "first_failing_cap_mb": 256,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  },
+  {
+   "shape": "null",
+   "corpus": "-",
+   "threads": 1,
+   "floor_mb": 32,
+   "first_failing_cap_mb": 16,
+   "failure_mode": "kernel_oom_kill",
+   "non_monotone": false
+  }
+ ]
+}

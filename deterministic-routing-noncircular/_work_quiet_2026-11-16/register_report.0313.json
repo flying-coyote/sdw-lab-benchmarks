@@ -1,0 +1,109 @@
+{
+ "all_match": true,
+ "tables": {
+  "tpch.lineitem": {
+   "rows_now": 59986052,
+   "rows_1115": 59986052,
+   "parquet_rows": 59986052,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 5557997996211891219
+  },
+  "tpch.orders": {
+   "rows_now": 15000000,
+   "rows_1115": 15000000,
+   "parquet_rows": 15000000,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 5686094740368768438
+  },
+  "tpch.customer": {
+   "rows_now": 1500000,
+   "rows_1115": 1500000,
+   "parquet_rows": 1500000,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 6136992731365107404
+  },
+  "tpch.supplier": {
+   "rows_now": 100000,
+   "rows_1115": 100000,
+   "parquet_rows": 100000,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 7661512971183020142
+  },
+  "tpch.nation": {
+   "rows_now": 25,
+   "rows_1115": 25,
+   "parquet_rows": 25,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 7250652322597172898
+  },
+  "tpch.region": {
+   "rows_now": 5,
+   "rows_1115": 5,
+   "parquet_rows": 5,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 4006597209423932976
+  },
+  "tpch.part": {
+   "rows_now": 2000000,
+   "rows_1115": 2000000,
+   "parquet_rows": 2000000,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 937642197454358905
+  },
+  "tpch.partsupp": {
+   "rows_now": 8000000,
+   "rows_1115": 8000000,
+   "parquet_rows": 8000000,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 578917484843854241
+  },
+  "soc.conn": {
+   "rows_now": 10000000,
+   "rows_1115": 10000000,
+   "parquet_rows": 10000000,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 117628449497381005
+  },
+  "soc.dns": {
+   "rows_now": 1000000,
+   "rows_1115": 1000000,
+   "parquet_rows": 1000000,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 265996602902937451
+  },
+  "soc.assets": {
+   "rows_now": 14788,
+   "rows_1115": 14788,
+   "parquet_rows": 14788,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 4347572217277968321
+  },
+  "soc.ioc": {
+   "rows_now": 5000,
+   "rows_1115": 5000,
+   "parquet_rows": 5000,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 4136439618723029572
+  },
+  "soc.conn_enriched": {
+   "rows_now": 10000000,
+   "rows_1115": 10000000,
+   "parquet_rows": 10000000,
+   "location_same": true,
+   "metadata_location_same": true,
+   "snapshot_id": 1799495243237495149
+  }
+ }
+}

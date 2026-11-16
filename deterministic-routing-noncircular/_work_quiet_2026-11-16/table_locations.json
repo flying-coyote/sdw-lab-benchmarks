@@ -1,0 +1,80 @@
+{
+  "tpch.lineitem": {
+    "location": "s3://warehouse/tpch/lineitem_f9ceea01-5b54-482a-9608-a86b6125d9e3",
+    "rows": 59986052,
+    "load_seconds": 58.9,
+    "metadata_location": "s3://warehouse/tpch/lineitem_f9ceea01-5b54-482a-9608-a86b6125d9e3/metadata/00000-389f867e-f78a-4c21-9a8f-fa30b36864dc.metadata.json"
+  },
+  "tpch.orders": {
+    "location": "s3://warehouse/tpch/orders_e98d42fd-f0e7-4047-85ad-8d69e49437f1",
+    "rows": 15000000,
+    "load_seconds": 13.2,
+    "metadata_location": "s3://warehouse/tpch/orders_e98d42fd-f0e7-4047-85ad-8d69e49437f1/metadata/00000-d738dfa0-65ad-4e21-81a0-d581c64fdc4e.metadata.json"
+  },
+  "tpch.customer": {
+    "location": "s3://warehouse/tpch/customer_facb98bf-bf46-496b-920b-aeaa31bff76c",
+    "rows": 1500000,
+    "load_seconds": 1.9,
+    "metadata_location": "s3://warehouse/tpch/customer_facb98bf-bf46-496b-920b-aeaa31bff76c/metadata/00000-1cae6d88-2521-4c9c-969b-b51c767db5aa.metadata.json"
+  },
+  "tpch.supplier": {
+    "location": "s3://warehouse/tpch/supplier_89aa3926-f7b8-4ec3-9b48-5dfb9b4c24ab",
+    "rows": 100000,
+    "load_seconds": 0.3,
+    "metadata_location": "s3://warehouse/tpch/supplier_89aa3926-f7b8-4ec3-9b48-5dfb9b4c24ab/metadata/00000-c798c22c-ad13-409e-9fb2-214f09e78d99.metadata.json"
+  },
+  "tpch.nation": {
+    "location": "s3://warehouse/tpch/nation_218ce854-0a43-4419-9087-9b0e32d8fad2",
+    "rows": 25,
+    "load_seconds": 0.1,
+    "metadata_location": "s3://warehouse/tpch/nation_218ce854-0a43-4419-9087-9b0e32d8fad2/metadata/00000-27f7e6c3-4b8d-4386-bac3-5dd2dd081976.metadata.json"
+  },
+  "tpch.region": {
+    "location": "s3://warehouse/tpch/region_2b9d2771-ca0b-41cc-9db7-491e844b1b2d",
+    "rows": 5,
+    "load_seconds": 0.1,
+    "metadata_location": "s3://warehouse/tpch/region_2b9d2771-ca0b-41cc-9db7-491e844b1b2d/metadata/00000-bd2f1fb7-deb6-4778-a8ca-2139d9924912.metadata.json"
+  },
+  "tpch.part": {
+    "location": "s3://warehouse/tpch/part_3d2b58f0-896f-4f14-9bf7-e919ebafb6f5",
+    "rows": 2000000,
+    "load_seconds": 1.5,
+    "metadata_location": "s3://warehouse/tpch/part_3d2b58f0-896f-4f14-9bf7-e919ebafb6f5/metadata/00000-3a8b54d7-b81f-4df7-8b4a-9641332a0b08.metadata.json"
+  },
+  "tpch.partsupp": {
+    "location": "s3://warehouse/tpch/partsupp_3cf2769d-ff5d-40dd-bd78-0478f08430a7",
+    "rows": 8000000,
+    "load_seconds": 8.6,
+    "metadata_location": "s3://warehouse/tpch/partsupp_3cf2769d-ff5d-40dd-bd78-0478f08430a7/metadata/00000-901d7271-5d81-4161-b5ea-281406c2cfcc.metadata.json"
+  },
+  "soc.conn": {
+    "location": "s3://warehouse/soc/conn_ffc44728-ef50-4493-a1f1-c9d3b0616cdc",
+    "rows": 10000000,
+    "load_seconds": 11.1,
+    "metadata_location": "s3://warehouse/soc/conn_ffc44728-ef50-4493-a1f1-c9d3b0616cdc/metadata/00000-c4289a06-00f5-437b-ae2a-8d115e408e69.metadata.json"
+  },
+  "soc.dns": {
+    "location": "s3://warehouse/soc/dns_4d1c7201-7917-4fd6-974a-d629f5db330f",
+    "rows": 1000000,
+    "load_seconds": 0.5,
+    "metadata_location": "s3://warehouse/soc/dns_4d1c7201-7917-4fd6-974a-d629f5db330f/metadata/00000-391d0536-b8e9-44a1-a61b-d458b4949d8d.metadata.json"
+  },
+  "soc.assets": {
+    "location": "s3://warehouse/soc/assets_f9fc1596-8219-4a9e-82dc-b5ac5c6174df",
+    "rows": 14788,
+    "load_seconds": 0.1,
+    "metadata_location": "s3://warehouse/soc/assets_f9fc1596-8219-4a9e-82dc-b5ac5c6174df/metadata/00000-ea1a2012-e51a-4103-8f3b-4c0fff3488fe.metadata.json"
+  },
+  "soc.ioc": {
+    "location": "s3://warehouse/soc/ioc_6142e1f9-0f93-4052-ae12-1995d33e475b",
+    "rows": 5000,
+    "load_seconds": 0.1,
+    "metadata_location": "s3://warehouse/soc/ioc_6142e1f9-0f93-4052-ae12-1995d33e475b/metadata/00000-47ee8e14-766a-487b-b65e-ef1963ddcbb1.metadata.json"
+  },
+  "soc.conn_enriched": {
+    "location": "s3://warehouse/soc/conn_enriched_a79b6622-200d-4a17-9a92-ebccb168fd40",
+    "rows": 10000000,
+    "load_seconds": 12.2,
+    "metadata_location": "s3://warehouse/soc/conn_enriched_a79b6622-200d-4a17-9a92-ebccb168fd40/metadata/00000-c45e425f-19f5-499d-ad0b-9c4883707209.metadata.json"
+  }
+}

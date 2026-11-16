@@ -1,0 +1,22 @@
+{
+ "shape": "J",
+ "corpus": "Z.parquet",
+ "memory_limit_mb": 32,
+ "threads": 1,
+ "duckdb": "1.5.3",
+ "latency_s": 3.8962,
+ "outcome": "duckdb_oom_error",
+ "error": "OutOfMemoryException: Out of Memory Error: failed to pin block of size 256.0 KiB (30.3 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-order preservation (SET preserve_insertion_order=false)\n* Increasing the memory limit (SET memory_limit='...GB')\n\nSee also h",
+ "vm_hwm_bytes": 113319936,
+ "peaks": {
+  "tmpfiles_bytes": 666796032,
+  "dir_bytes": 666861568,
+  "bm_bytes": 32153600,
+  "bm_temp_bytes": 666140672,
+  "rss_anon": 67444736,
+  "cg_anon": 67686400,
+  "samples": 72,
+  "poll_errors": 0
+ },
+ "wall_in_process_s": 3.9779
+}

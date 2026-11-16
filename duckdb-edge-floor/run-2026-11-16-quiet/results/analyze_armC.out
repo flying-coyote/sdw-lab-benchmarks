@@ -1,0 +1,15 @@
+S 4096 7/8 5/5 {'completed': 5} 0.682 0.101 101.2 78.6 0.0
+S 256 7/8 5/5 {'completed': 5} 0.67 0.014 101.1 78.6 0.0
+S 256 1/2 5/5 {'completed': 5} 0.996 0.01 151.2 121.9 61.7
+S 128 1/2 5/5 {'completed': 5} 1.305 0.013 92.2 61.0 114.1
+S 64 1/2 5/5 {'completed': 5} 1.762 0.01 59.3 30.4 136.7
+H 4096 7/8 5/5 {'completed': 5} 2.225 0.03 1076.2 972.6 0.0
+H 256 7/8 5/5 {'completed': 5} 4.643 0.017 250.4 213.7 497.5
+H 256 1/2 5/5 {'completed': 5} 4.495 0.009 149.0 121.9 514.6
+H 128 1/2 5/5 {'completed': 5} 5.15 0.007 91.4 61.0 551.8
+H 64 1/2 2/0 {'duckdb_oom_error': 2, 'skipped_by_stop_rule': 3} None None 0.0 0.0 560.0
+J 4096 7/8 5/5 {'completed': 5} 14.102 0.004 1357.1 1330.5 0.0
+J 256 7/8 2/0 {'kernel_oom_kill': 2, 'skipped_by_stop_rule': 3} None None 0.0 0.0 506.7
+J 256 1/2 2/0 {'duckdb_oom_error': 2, 'skipped_by_stop_rule': 3} None None 0.0 0.0 1000.7
+J 128 1/2 2/0 {'duckdb_oom_error': 2, 'skipped_by_stop_rule': 3} None None 0.0 0.0 653.8
+J 64 1/2 2/0 {'kernel_oom_kill': 2, 'skipped_by_stop_rule': 3} None None 0.0 0.0 604.9

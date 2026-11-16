@@ -1,0 +1,1468 @@
+[
+ {
+  "shape": "S",
+  "corpus": "U",
+  "frac": "1/2",
+  "cap_mb": 128,
+  "memory_limit_mb": 64,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 2.592,
+  "cv": 0.011,
+  "cg_anon_peak_mb_max": 93.6,
+  "bm_peak_mb_max": 61.0,
+  "vm_hwm_mb_max": 134.8,
+  "spill_peak_mb_max": 284.4,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.85,
+   0.86,
+   0.95,
+   0.95,
+   0.95
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "U",
+  "frac": "1/2",
+  "cap_mb": 64,
+  "memory_limit_mb": 32,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 3.411,
+  "cv": 0.007,
+  "cg_anon_peak_mb_max": 59.3,
+  "bm_peak_mb_max": 30.4,
+  "vm_hwm_mb_max": 100.4,
+  "spill_peak_mb_max": 303.8,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.96,
+   0.96,
+   1.04,
+   1.04,
+   1.04
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "U",
+  "frac": "1/2",
+  "cap_mb": 32,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.67,
+   0.67
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "U",
+  "frac": "1/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 32,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 2.952,
+  "cv": 0.13,
+  "cg_anon_peak_mb_max": 60.9,
+  "bm_peak_mb_max": 30.5,
+  "vm_hwm_mb_max": 102.1,
+  "spill_peak_mb_max": 321.9,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.67,
+   0.78,
+   0.8,
+   0.81,
+   0.81
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "U",
+  "frac": "1/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 4.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.83,
+   0.83
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (15.0 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti"
+  ]
+ },
+ {
+  "shape": "S",
+  "corpus": "U",
+  "frac": "1/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 8,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.84,
+   0.84
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (7.4 MiB/7.6 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion"
+  ]
+ },
+ {
+  "shape": "S",
+  "corpus": "U",
+  "frac": "3/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 96,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 2.788,
+  "cv": 0.028,
+  "cg_anon_peak_mb_max": 123.3,
+  "bm_peak_mb_max": 91.5,
+  "vm_hwm_mb_max": 164.5,
+  "spill_peak_mb_max": 256.9,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.97,
+   0.98,
+   0.98,
+   0.98,
+   0.98
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "U",
+  "frac": "3/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 48,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.98,
+   1.22
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "U",
+  "frac": "3/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 24,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.85,
+   0.85
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "corpus": "U",
+  "frac": "1/2",
+  "cap_mb": 128,
+  "memory_limit_mb": 64,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 5.052,
+  "cv": 0.017,
+  "cg_anon_peak_mb_max": 91.1,
+  "bm_peak_mb_max": 61.0,
+  "vm_hwm_mb_max": 132.4,
+  "spill_peak_mb_max": 569.6,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.87,
+   0.96,
+   0.96,
+   0.97,
+   1.05
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "corpus": "U",
+  "frac": "1/2",
+  "cap_mb": 64,
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 546.7,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.8,
+   0.82
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.2 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-",
+   "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.3 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "U",
+  "frac": "1/2",
+  "cap_mb": 32,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.83,
+   0.83
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "corpus": "U",
+  "frac": "1/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 594.9,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.83,
+   1.08
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.3 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "U",
+  "frac": "1/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.72,
+   0.72
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (15.2 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "U",
+  "frac": "1/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 8,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.72,
+   0.72
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (7.4 MiB/7.6 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "U",
+  "frac": "3/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 96,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 359.5,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.84,
+   0.84
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 256.0 KiB (91.4 MiB/91.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertio"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "U",
+  "frac": "3/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 48,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.7,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.86,
+   0.86
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "corpus": "U",
+  "frac": "3/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 24,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.86,
+   0.87
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "U",
+  "frac": "1/2",
+  "cap_mb": 128,
+  "memory_limit_mb": 64,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 633.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.78,
+   0.8
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (60.9 MiB/61.0 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti"
+  ]
+ },
+ {
+  "shape": "J",
+  "corpus": "U",
+  "frac": "1/2",
+  "cap_mb": 64,
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 584.2,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.82,
+   0.83
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "U",
+  "frac": "1/2",
+  "cap_mb": 32,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.93,
+   0.93
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "U",
+  "frac": "1/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 667.5,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.73,
+   0.76
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to pin block of size 256.0 KiB (30.3 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-or"
+  ]
+ },
+ {
+  "shape": "J",
+  "corpus": "U",
+  "frac": "1/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 630.2,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.76,
+   0.86
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 8.0 MiB (8.0 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-o"
+  ]
+ },
+ {
+  "shape": "J",
+  "corpus": "U",
+  "frac": "1/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 8,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 37.9,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.95,
+   1.99
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "U",
+  "frac": "3/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 96,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 558.7,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.74,
+   0.76
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "U",
+  "frac": "3/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 48,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.78,
+   0.78
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "U",
+  "frac": "3/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 24,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.78,
+   0.78
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "Z",
+  "frac": "1/2",
+  "cap_mb": 128,
+  "memory_limit_mb": 64,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 1.364,
+  "cv": 0.007,
+  "cg_anon_peak_mb_max": 90.7,
+  "bm_peak_mb_max": 60.9,
+  "vm_hwm_mb_max": 132.5,
+  "spill_peak_mb_max": 119.9,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.97,
+   0.97,
+   0.97,
+   0.97,
+   0.97
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "Z",
+  "frac": "1/2",
+  "cap_mb": 64,
+  "memory_limit_mb": 32,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 1.856,
+  "cv": 0.022,
+  "cg_anon_peak_mb_max": 59.1,
+  "bm_peak_mb_max": 30.4,
+  "vm_hwm_mb_max": 100.4,
+  "spill_peak_mb_max": 139.1,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.69,
+   0.69,
+   0.71,
+   0.71,
+   0.89
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "Z",
+  "frac": "1/2",
+  "cap_mb": 32,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.98,
+   0.98
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "Z",
+  "frac": "1/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 32,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 1.549,
+  "cv": 0.003,
+  "cg_anon_peak_mb_max": 60.4,
+  "bm_peak_mb_max": 30.4,
+  "vm_hwm_mb_max": 101.5,
+  "spill_peak_mb_max": 148.4,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.98,
+   0.98,
+   1.07,
+   1.07,
+   1.14
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "Z",
+  "frac": "1/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 2.3,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.69,
+   0.69
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (15.0 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti"
+  ]
+ },
+ {
+  "shape": "S",
+  "corpus": "Z",
+  "frac": "1/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 8,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.71,
+   0.71
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (7.4 MiB/7.6 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion"
+  ]
+ },
+ {
+  "shape": "S",
+  "corpus": "Z",
+  "frac": "3/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 96,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 1.353,
+  "cv": 0.02,
+  "cg_anon_peak_mb_max": 118.5,
+  "bm_peak_mb_max": 91.5,
+  "vm_hwm_mb_max": 159.8,
+  "spill_peak_mb_max": 83.1,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.76,
+   0.76,
+   0.78,
+   0.78,
+   0.88
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "Z",
+  "frac": "3/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 48,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.88,
+   0.88
+  ],
+  "errors": []
+ },
+ {
+  "shape": "S",
+  "corpus": "Z",
+  "frac": "3/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 24,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.88,
+   0.97
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "corpus": "Z",
+  "frac": "1/2",
+  "cap_mb": 128,
+  "memory_limit_mb": 64,
+  "n_run": 5,
+  "n_correct": 5,
+  "outcomes": {
+   "completed": 5
+  },
+  "wrong_answer": 0,
+  "median_s": 4.91,
+  "cv": 0.023,
+  "cg_anon_peak_mb_max": 91.6,
+  "bm_peak_mb_max": 61.0,
+  "vm_hwm_mb_max": 132.8,
+  "spill_peak_mb_max": 545.0,
+  "spill_left_after_completed_max": 0,
+  "load1": [
+   0.83,
+   0.85,
+   0.86,
+   0.87,
+   0.97
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "corpus": "Z",
+  "frac": "1/2",
+  "cap_mb": 64,
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 515.1,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.97,
+   0.97
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.5 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "Z",
+  "frac": "1/2",
+  "cap_mb": 32,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.7,
+   0.7
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "corpus": "Z",
+  "frac": "1/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 573.7,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.81,
+   0.81
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.5 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "Z",
+  "frac": "1/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.82,
+   0.82
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (15.2 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "Z",
+  "frac": "1/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 8,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.82,
+   0.82
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (7.4 MiB/7.6 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "Z",
+  "frac": "3/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 96,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 334.7,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.71,
+   0.82
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 256.0 KiB (91.4 MiB/91.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertio"
+  ]
+ },
+ {
+  "shape": "H",
+  "corpus": "Z",
+  "frac": "3/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 48,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.7,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.82,
+   0.82
+  ],
+  "errors": []
+ },
+ {
+  "shape": "H",
+  "corpus": "Z",
+  "frac": "3/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 24,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.83,
+   0.83
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "Z",
+  "frac": "1/2",
+  "cap_mb": 128,
+  "memory_limit_mb": 64,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 633.4,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.86,
+   0.87
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (60.9 MiB/61.0 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti"
+  ]
+ },
+ {
+  "shape": "J",
+  "corpus": "Z",
+  "frac": "1/2",
+  "cap_mb": 64,
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 571.1,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.88,
+   0.89
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "Z",
+  "frac": "1/2",
+  "cap_mb": 32,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.98,
+   1.14
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "Z",
+  "frac": "1/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 32,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 667.8,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.69,
+   0.72
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: failed to pin block of size 256.0 KiB (30.3 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-or"
+  ]
+ },
+ {
+  "shape": "J",
+  "corpus": "Z",
+  "frac": "1/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 16,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "duckdb_oom_error": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 662.3,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.74,
+   0.76
+  ],
+  "errors": [
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (15.0 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti",
+   "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (15.2 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti"
+  ]
+ },
+ {
+  "shape": "J",
+  "corpus": "Z",
+  "frac": "1/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 8,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 35.8,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.78,
+   0.78
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "Z",
+  "frac": "3/4",
+  "cap_mb": 128,
+  "memory_limit_mb": 96,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 542.9,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.84,
+   0.85
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "Z",
+  "frac": "3/4",
+  "cap_mb": 64,
+  "memory_limit_mb": 48,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.86,
+   0.86
+  ],
+  "errors": []
+ },
+ {
+  "shape": "J",
+  "corpus": "Z",
+  "frac": "3/4",
+  "cap_mb": 32,
+  "memory_limit_mb": 24,
+  "n_run": 2,
+  "n_correct": 0,
+  "outcomes": {
+   "kernel_oom_kill": 2,
+   "skipped_by_stop_rule": 3
+  },
+  "wrong_answer": 0,
+  "median_s": null,
+  "cv": null,
+  "cg_anon_peak_mb_max": null,
+  "bm_peak_mb_max": null,
+  "vm_hwm_mb_max": null,
+  "spill_peak_mb_max": 0.0,
+  "spill_left_after_completed_max": null,
+  "load1": [
+   0.86,
+   0.86
+  ],
+  "errors": []
+ }
+]

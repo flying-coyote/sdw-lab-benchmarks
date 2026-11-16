@@ -1,0 +1,22 @@
+{
+ "shape": "H",
+ "corpus": "U.parquet",
+ "memory_limit_mb": 32,
+ "threads": 1,
+ "duckdb": "1.5.3",
+ "latency_s": 3.3574,
+ "outcome": "duckdb_oom_error",
+ "error": "OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.2 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-order preservation (SET preserve_insertion_order=false)\n* Increasing the memory limit (SET memory_limit='...GB')\n\nSee also",
+ "vm_hwm_bytes": 105111552,
+ "peaks": {
+  "tmpfiles_bytes": 572686336,
+  "dir_bytes": 573210624,
+  "bm_bytes": 31908000,
+  "bm_temp_bytes": 571506688,
+  "rss_anon": 59498496,
+  "cg_anon": 59715584,
+  "samples": 62,
+  "poll_errors": 1
+ },
+ "wall_in_process_s": 3.439
+}

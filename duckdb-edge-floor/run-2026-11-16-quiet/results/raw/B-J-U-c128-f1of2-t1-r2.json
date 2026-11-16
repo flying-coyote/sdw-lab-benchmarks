@@ -1,0 +1,22 @@
+{
+ "shape": "J",
+ "corpus": "U.parquet",
+ "memory_limit_mb": 64,
+ "threads": 1,
+ "duckdb": "1.5.3",
+ "latency_s": 3.9805,
+ "outcome": "duckdb_oom_error",
+ "error": "OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (60.9 MiB/61.0 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-order preservation (SET preserve_insertion_order=false)\n* Increasing the memory limit (SET memory_limit='...GB')\n\nSee a",
+ "vm_hwm_bytes": 150556672,
+ "peaks": {
+  "tmpfiles_bytes": 663748608,
+  "dir_bytes": 663748608,
+  "bm_bytes": 63873024,
+  "bm_temp_bytes": 655523840,
+  "rss_anon": 104812544,
+  "cg_anon": 105037824,
+  "samples": 73,
+  "poll_errors": 0
+ },
+ "wall_in_process_s": 4.0622
+}

@@ -1,0 +1,94 @@
+| shape | corpus | thr | cap | lim | run/ok | outcomes | median s | CV | peak anon MB | VmHWM MB | BM peak MB | spill peak MB | memory.peak MB |
+|---|---|--:|--:|--:|--:|---|--:|--:|--:|--:|--:|--:|--:|
+| H | U | 1 | 4096 | 3584 | 5/5 | completed:5 | 2.247 | 0.014 | 1045.5 | 1086.6 | 971.1 | 0.0 | 1049.0 |
+| H | U | 1 | 256 | 224 | 5/5 | completed:5 | 4.567 | 0.012 | 245.9 | 287.4 | 213.5 | 482.7 | 256.0 |
+| H | U | 1 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 2.0 | None |
+| H | U | 1 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | U | 1 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | U | 1 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| H | U | 4 | 4096 | 3584 | 5/5 | completed:5 | 0.62 | 0.022 | 943.7 | 984.4 | 899.9 | 0.0 | 948.1 |
+| H | U | 4 | 256 | 224 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 33.5 | None |
+| H | U | 4 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | U | 4 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | U | 4 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | U | 4 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| H | Z | 1 | 4096 | 3584 | 5/5 | completed:5 | 2.164 | 0.015 | 879.3 | 920.1 | 776.1 | 0.0 | 882.7 |
+| H | Z | 1 | 256 | 224 | 5/5 | completed:5 | 4.663 | 0.05 | 244.2 | 285.6 | 213.5 | 441.5 | 256.0 |
+| H | Z | 1 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.4 | None |
+| H | Z | 1 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | Z | 1 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | Z | 1 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| H | Z | 4 | 4096 | 3584 | 5/5 | completed:5 | 0.604 | 0.025 | 933.9 | 974.7 | 905.3 | 0.0 | 938.3 |
+| H | Z | 4 | 256 | 224 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 23.7 | None |
+| H | Z | 4 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | Z | 4 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | Z | 4 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| H | Z | 4 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| J | U | 1 | 4096 | 3584 | 5/5 | completed:5 | 9.827 | 0.014 | 2814.5 | 2859.8 | 2653.3 | 0.0 | 2826.0 |
+| J | U | 1 | 256 | 224 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 546.2 | None |
+| J | U | 1 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.3 | None |
+| J | U | 1 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | U | 1 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | U | 1 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| J | U | 4 | 4096 | 3584 | 5/5 | completed:5 | 2.402 | 0.038 | 2546.8 | 2595.8 | 2538.7 | 0.0 | 2562.3 |
+| J | U | 4 | 256 | 224 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 99.5 | None |
+| J | U | 4 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | U | 4 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | U | 4 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | U | 4 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| J | Z | 1 | 4096 | 3584 | 5/5 | completed:5 | 11.472 | 0.007 | 1245.4 | 1286.5 | 1221.6 | 0.0 | 1249.4 |
+| J | Z | 1 | 256 | 224 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 849.2 | None |
+| J | Z | 1 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.5 | None |
+| J | Z | 1 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | Z | 1 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | Z | 1 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| J | Z | 4 | 4096 | 3584 | 5/5 | completed:5 | 2.989 | 0.033 | 1247.8 | 1288.0 | 1232.3 | 0.0 | 1252.5 |
+| J | Z | 4 | 256 | 224 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 89.8 | None |
+| J | Z | 4 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | Z | 4 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | Z | 4 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| J | Z | 4 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| S | U | 1 | 4096 | 3584 | 5/5 | completed:5 | 0.855 | 0.056 | 117.0 | 158.9 | 92.4 | 0.0 | 211.7 |
+| S | U | 1 | 256 | 224 | 5/5 | completed:5 | 2.01 | 0.015 | 244.3 | 285.8 | 213.4 | 162.1 | 256.0 |
+| S | U | 1 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 1.4 | None |
+| S | U | 1 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | U | 1 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | U | 1 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| S | U | 4 | 4096 | 3584 | 5/5 | completed:5 | 0.386 | 0.016 | 606.9 | 647.9 | 594.0 | 0.0 | 610.6 |
+| S | U | 4 | 256 | 224 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 60.5 | None |
+| S | U | 4 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | U | 4 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | U | 4 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | U | 4 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| S | Z | 1 | 4096 | 3584 | 5/5 | completed:5 | 0.693 | 0.075 | 100.8 | 142.5 | 78.3 | 0.0 | 195.3 |
+| S | Z | 1 | 256 | 224 | 5/5 | completed:5 | 0.694 | 0.013 | 101.0 | 142.5 | 78.3 | 0.0 | 102.7 |
+| S | Z | 1 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 3.1 | None |
+| S | Z | 1 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | Z | 1 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | Z | 1 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| S | Z | 4 | 4096 | 3584 | 5/5 | completed:5 | 0.335 | 0.021 | 381.6 | 422.9 | 418.6 | 0.0 | 384.5 |
+| S | Z | 4 | 256 | 224 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 12.0 | None |
+| S | Z | 4 | 128 | 112 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | Z | 4 | 64 | 56 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | Z | 4 | 32 | 28 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | 0.0 | None |
+| S | Z | 4 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+| null | - | 1 | 4096 | 3584 | 5/5 | completed:5 | 0.0 | 0.0 | 18.4 | 57.8 | 0.0 | 0.0 | 20.2 |
+| null | - | 1 | 256 | 224 | 5/5 | completed:5 | 0.0 | 0.0 | 18.4 | 57.8 | 0.0 | 0.0 | 20.3 |
+| null | - | 1 | 128 | 112 | 5/5 | completed:5 | 0.0 | 0.0 | 18.4 | 57.9 | 0.0 | 0.0 | 20.2 |
+| null | - | 1 | 64 | 56 | 5/5 | completed:5 | 0.0 | 0.0 | 18.4 | 57.9 | 0.0 | 0.0 | 20.1 |
+| null | - | 1 | 32 | 28 | 5/5 | completed:5 | 0.0 | 0.0 | 18.4 | 57.9 | 0.0 | 0.0 | 20.2 |
+| null | - | 1 | 16 | 14 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | None | None | None |
+
+{'shape': 'H', 'corpus': 'U', 'threads': 1, 'floor_mb': 256, 'first_failing_cap_mb': 128, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'H', 'corpus': 'U', 'threads': 4, 'floor_mb': 4096, 'first_failing_cap_mb': 256, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'H', 'corpus': 'Z', 'threads': 1, 'floor_mb': 256, 'first_failing_cap_mb': 128, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'H', 'corpus': 'Z', 'threads': 4, 'floor_mb': 4096, 'first_failing_cap_mb': 256, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'J', 'corpus': 'U', 'threads': 1, 'floor_mb': 4096, 'first_failing_cap_mb': 256, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'J', 'corpus': 'U', 'threads': 4, 'floor_mb': 4096, 'first_failing_cap_mb': 256, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'J', 'corpus': 'Z', 'threads': 1, 'floor_mb': 4096, 'first_failing_cap_mb': 256, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'J', 'corpus': 'Z', 'threads': 4, 'floor_mb': 4096, 'first_failing_cap_mb': 256, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'S', 'corpus': 'U', 'threads': 1, 'floor_mb': 256, 'first_failing_cap_mb': 128, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'S', 'corpus': 'U', 'threads': 4, 'floor_mb': 4096, 'first_failing_cap_mb': 256, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'S', 'corpus': 'Z', 'threads': 1, 'floor_mb': 256, 'first_failing_cap_mb': 128, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'S', 'corpus': 'Z', 'threads': 4, 'floor_mb': 4096, 'first_failing_cap_mb': 256, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}
+{'shape': 'null', 'corpus': '-', 'threads': 1, 'floor_mb': 32, 'first_failing_cap_mb': 16, 'failure_mode': 'kernel_oom_kill', 'non_monotone': False}

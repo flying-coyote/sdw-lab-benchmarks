@@ -1,0 +1,57 @@
+| shape | corpus | cap | frac | limit | run/ok | outcomes | median s | CV | peak anon | BM peak | spill peak |
+| S | U | 128 | 1/2 | 64 | 5/5 | completed:5 | 2.592 | 0.011 | 93.6 | 61.0 | 284.4 |
+| S | U | 64 | 1/2 | 32 | 5/5 | completed:5 | 3.411 | 0.007 | 59.3 | 30.4 | 303.8 |
+| S | U | 32 | 1/2 | 16 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| S | U | 128 | 1/4 | 32 | 5/5 | completed:5 | 2.952 | 0.13 | 60.9 | 30.5 | 321.9 |
+| S | U | 64 | 1/4 | 16 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 4.0 |
+| S | U | 32 | 1/4 | 8 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| S | U | 128 | 3/4 | 96 | 5/5 | completed:5 | 2.788 | 0.028 | 123.3 | 91.5 | 256.9 |
+| S | U | 64 | 3/4 | 48 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| S | U | 32 | 3/4 | 24 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| H | U | 128 | 1/2 | 64 | 5/5 | completed:5 | 5.052 | 0.017 | 91.1 | 61.0 | 569.6 |
+| H | U | 64 | 1/2 | 32 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 546.7 |
+| H | U | 32 | 1/2 | 16 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| H | U | 128 | 1/4 | 32 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 594.9 |
+| H | U | 64 | 1/4 | 16 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| H | U | 32 | 1/4 | 8 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| H | U | 128 | 3/4 | 96 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 359.5 |
+| H | U | 64 | 3/4 | 48 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.7 |
+| H | U | 32 | 3/4 | 24 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| J | U | 128 | 1/2 | 64 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 633.0 |
+| J | U | 64 | 1/2 | 32 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 584.2 |
+| J | U | 32 | 1/2 | 16 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| J | U | 128 | 1/4 | 32 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 667.5 |
+| J | U | 64 | 1/4 | 16 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 630.2 |
+| J | U | 32 | 1/4 | 8 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 37.9 |
+| J | U | 128 | 3/4 | 96 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 558.7 |
+| J | U | 64 | 3/4 | 48 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| J | U | 32 | 3/4 | 24 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| S | Z | 128 | 1/2 | 64 | 5/5 | completed:5 | 1.364 | 0.007 | 90.7 | 60.9 | 119.9 |
+| S | Z | 64 | 1/2 | 32 | 5/5 | completed:5 | 1.856 | 0.022 | 59.1 | 30.4 | 139.1 |
+| S | Z | 32 | 1/2 | 16 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| S | Z | 128 | 1/4 | 32 | 5/5 | completed:5 | 1.549 | 0.003 | 60.4 | 30.4 | 148.4 |
+| S | Z | 64 | 1/4 | 16 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 2.3 |
+| S | Z | 32 | 1/4 | 8 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| S | Z | 128 | 3/4 | 96 | 5/5 | completed:5 | 1.353 | 0.02 | 118.5 | 91.5 | 83.1 |
+| S | Z | 64 | 3/4 | 48 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| S | Z | 32 | 3/4 | 24 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| H | Z | 128 | 1/2 | 64 | 5/5 | completed:5 | 4.91 | 0.023 | 91.6 | 61.0 | 545.0 |
+| H | Z | 64 | 1/2 | 32 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 515.1 |
+| H | Z | 32 | 1/2 | 16 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| H | Z | 128 | 1/4 | 32 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 573.7 |
+| H | Z | 64 | 1/4 | 16 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| H | Z | 32 | 1/4 | 8 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| H | Z | 128 | 3/4 | 96 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 334.7 |
+| H | Z | 64 | 3/4 | 48 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.7 |
+| H | Z | 32 | 3/4 | 24 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| J | Z | 128 | 1/2 | 64 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 633.4 |
+| J | Z | 64 | 1/2 | 32 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 571.1 |
+| J | Z | 32 | 1/2 | 16 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| J | Z | 128 | 1/4 | 32 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 667.8 |
+| J | Z | 64 | 1/4 | 16 | 2/0 | duckdb_oom_error:2, skipped_by_stop_rule:3 | None | None | None | None | 662.3 |
+| J | Z | 32 | 1/4 | 8 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 35.8 |
+| J | Z | 128 | 3/4 | 96 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 542.9 |
+| J | Z | 64 | 3/4 | 48 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+| J | Z | 32 | 3/4 | 24 | 2/0 | kernel_oom_kill:2, skipped_by_stop_rule:3 | None | None | None | None | 0.0 |
+['OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (15.0 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti', 'OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (15.2 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti', 'OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (60.9 MiB/61.0 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling inserti', 'OutOfMemoryException: Out of Memory Error: could not allocate block of size 256.0 KiB (7.4 MiB/7.6 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion', 'OutOfMemoryException: Out of Memory Error: failed to allocate data of size 256.0 KiB (91.4 MiB/91.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertio', 'OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.2 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-', 'OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.3 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-', 'OutOfMemoryException: Out of Memory Error: failed to allocate data of size 4.0 MiB (28.5 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-', 'OutOfMemoryException: Out of Memory Error: failed to allocate data of size 8.0 MiB (8.0 MiB/15.2 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-o', 'OutOfMemoryException: Out of Memory Error: failed to pin block of size 256.0 KiB (30.3 MiB/30.5 MiB used)\n\nPossible solutions:\n* Reducing the number of threads (SET threads=X)\n* Disabling insertion-or']
+kernel kills by frac {'1/2': 16, '1/4': 4, '3/4': 28} wrong 0

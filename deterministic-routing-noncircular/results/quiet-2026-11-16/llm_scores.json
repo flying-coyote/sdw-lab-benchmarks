@@ -1,0 +1,1867 @@
+{
+ "local_gemma4": {
+  "model": "gemma4:e4b",
+  "n_calls": 3,
+  "invalid_calls": 3,
+  "utc_first_last": [
+   "2026-11-16T04:52:34Z",
+   "2026-11-16T04:53:02Z"
+  ],
+  "calls_in_cron_window": 0,
+  "load1_before_min_med_max": [
+   0.89,
+   2.12,
+   3.11
+  ],
+  "vs_quiet_truth": {
+   "n_decisions": 0,
+   "partial_excluded": 3,
+   "summary": {
+    "hot": {
+     "n": 0,
+     "acc_tie_tolerant_modal": null,
+     "acc_strict_modal": null
+    },
+    "cold": {
+     "n": 0,
+     "acc_tie_tolerant_modal": null,
+     "acc_strict_modal": null
+    },
+    "all": {
+     "n": 0,
+     "acc_tie_tolerant_modal": null,
+     "acc_strict_modal": null
+    }
+   },
+   "per_trial_tie_tolerant_mean": null,
+   "per_trial_catastrophic": 0,
+   "flip_rate_mean": null,
+   "decisions_with_any_flip": 0,
+   "rows": []
+  },
+  "vs_1115_truth": {
+   "n_decisions": 0,
+   "partial_excluded": 3,
+   "summary": {
+    "hot": {
+     "n": 0,
+     "acc_tie_tolerant_modal": null,
+     "acc_strict_modal": null
+    },
+    "cold": {
+     "n": 0,
+     "acc_tie_tolerant_modal": null,
+     "acc_strict_modal": null
+    },
+    "all": {
+     "n": 0,
+     "acc_tie_tolerant_modal": null,
+     "acc_strict_modal": null
+    }
+   },
+   "per_trial_tie_tolerant_mean": null,
+   "per_trial_catastrophic": 0,
+   "flip_rate_mean": null,
+   "decisions_with_any_flip": 0
+  },
+  "latency_median_s": null,
+  "latency_p90_s": null,
+  "latency_median_s_excl_cron": null,
+  "n_lat_excl_cron": 0,
+  "rule_stack_S2_same_decisions_quiet_truth": {},
+  "rule_stack_timed_at_load1": 0.1,
+  "rule_stack_vs_1115_truth": null
+ },
+ "local_phi4": {
+  "model": "phi4:latest",
+  "n_calls": 120,
+  "invalid_calls": 0,
+  "utc_first_last": [
+   "2026-11-16T04:54:43Z",
+   "2026-11-16T05:39:19Z"
+  ],
+  "calls_in_cron_window": 0,
+  "load1_before_min_med_max": [
+   0.88,
+   8.06,
+   8.47
+  ],
+  "vs_quiet_truth": {
+   "n_decisions": 24,
+   "partial_excluded": 0,
+   "summary": {
+    "hot": {
+     "n": 12,
+     "correct": 7,
+     "minor": 3,
+     "catastrophic": 1,
+     "silent_wrong": 1,
+     "acc_tie_tolerant_modal": 0.583,
+     "acc_strict_modal": 0.333
+    },
+    "cold": {
+     "n": 12,
+     "correct": 7,
+     "minor": 4,
+     "silent_wrong": 1,
+     "acc_tie_tolerant_modal": 0.583,
+     "acc_strict_modal": 0.583
+    },
+    "all": {
+     "n": 24,
+     "correct": 14,
+     "minor": 7,
+     "catastrophic": 1,
+     "silent_wrong": 2,
+     "acc_tie_tolerant_modal": 0.583,
+     "acc_strict_modal": 0.458
+    }
+   },
+   "per_trial_tie_tolerant_mean": 0.583,
+   "per_trial_catastrophic": 5,
+   "flip_rate_mean": 0.0,
+   "decisions_with_any_flip": 0,
+   "rows": [
+    {
+     "id": "correlated_exists_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "correlated_exists_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "clickhouse_native",
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "dim_enrichment_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "dim_enrichment_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "clickhouse_native",
+     "accept": [
+      "clickhouse_native",
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "ioc_match_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "ioc_match_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "join_3to4_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "join_3to4_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "clickhouse_native",
+     "accept": [
+      "clickhouse_native"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "join_5to6_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "join_5to6_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "catastrophic",
+     "per_trial_outcomes": [
+      "catastrophic",
+      "catastrophic",
+      "catastrophic",
+      "catastrophic",
+      "catastrophic"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {
+      "clickhouse_native": "dnf:timeout"
+     }
+    },
+    {
+     "id": "large_large_01",
+     "cell": "cold",
+     "modal": "clickhouse_iceberg",
+     "picks": [
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "large_large_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "clickhouse_native",
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "point_lookup_01",
+     "cell": "cold",
+     "modal": "clickhouse_iceberg",
+     "picks": [
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "point_lookup_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "clickhouse_native",
+     "accept": [
+      "clickhouse_native"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "scan_agg_01",
+     "cell": "cold",
+     "modal": "clickhouse_iceberg",
+     "picks": [
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "scan_agg_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "clickhouse_native",
+     "accept": [
+      "clickhouse_native"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "topn_agg_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "topn_agg_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "two_stream_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "two_stream_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "ueba_two_level_01",
+     "cell": "cold",
+     "modal": "clickhouse_iceberg",
+     "picks": [
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg"
+     ],
+     "outcome_modal": "silent_wrong",
+     "per_trial_outcomes": [
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "ueba_two_level_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "silent_wrong",
+     "per_trial_outcomes": [
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "window_seq_01",
+     "cell": "cold",
+     "modal": "clickhouse_iceberg",
+     "picks": [
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "window_seq_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "clickhouse_native",
+      "starrocks"
+     ],
+     "cliffs": {}
+    }
+   ]
+  },
+  "vs_1115_truth": {
+   "n_decisions": 24,
+   "partial_excluded": 0,
+   "summary": {
+    "hot": {
+     "n": 12,
+     "minor": 3,
+     "correct": 7,
+     "catastrophic": 1,
+     "silent_wrong": 1,
+     "acc_tie_tolerant_modal": 0.583,
+     "acc_strict_modal": 0.583
+    },
+    "cold": {
+     "n": 12,
+     "correct": 8,
+     "minor": 3,
+     "silent_wrong": 1,
+     "acc_tie_tolerant_modal": 0.667,
+     "acc_strict_modal": 0.583
+    },
+    "all": {
+     "n": 24,
+     "correct": 15,
+     "minor": 6,
+     "catastrophic": 1,
+     "silent_wrong": 2,
+     "acc_tie_tolerant_modal": 0.625,
+     "acc_strict_modal": 0.583
+    }
+   },
+   "per_trial_tie_tolerant_mean": 0.625,
+   "per_trial_catastrophic": 5,
+   "flip_rate_mean": 0.0,
+   "decisions_with_any_flip": 0
+  },
+  "latency_median_s": 21.6715,
+  "latency_p90_s": 26.063,
+  "latency_median_s_excl_cron": 21.6715,
+  "n_lat_excl_cron": 120,
+  "rule_stack_S2_same_decisions_quiet_truth": {
+   "summary": {
+    "hot": {
+     "n": 12,
+     "correct": 11,
+     "silent_wrong": 1,
+     "acc_tie_tolerant": 0.917
+    },
+    "cold": {
+     "n": 12,
+     "correct": 8,
+     "minor": 3,
+     "silent_wrong": 1,
+     "acc_tie_tolerant": 0.667
+    },
+    "all": {
+     "n": 24,
+     "correct": 19,
+     "minor": 3,
+     "silent_wrong": 2,
+     "acc_tie_tolerant": 0.792
+    }
+   },
+   "decisions_with_any_flip": 0,
+   "latency_median_ms": 0.58,
+   "latency_p90_ms": 0.999,
+   "rows": [
+    {
+     "id": "correlated_exists_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "correlated_exists_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "dim_enrichment_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "dim_enrichment_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "ioc_match_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "ioc_match_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "join_3to4_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "join_3to4_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "correct"
+    },
+    {
+     "id": "join_5to6_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "join_5to6_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "large_large_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "large_large_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "point_lookup_01",
+     "cell": "cold",
+     "pick": "clickhouse_iceberg",
+     "outcome": "minor"
+    },
+    {
+     "id": "point_lookup_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "correct"
+    },
+    {
+     "id": "scan_agg_01",
+     "cell": "cold",
+     "pick": "clickhouse_iceberg",
+     "outcome": "minor"
+    },
+    {
+     "id": "scan_agg_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "correct"
+    },
+    {
+     "id": "topn_agg_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "topn_agg_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "two_stream_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "two_stream_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "ueba_two_level_01",
+     "cell": "cold",
+     "pick": "clickhouse_iceberg",
+     "outcome": "silent_wrong"
+    },
+    {
+     "id": "ueba_two_level_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "silent_wrong"
+    },
+    {
+     "id": "window_seq_01",
+     "cell": "cold",
+     "pick": "clickhouse_iceberg",
+     "outcome": "minor"
+    },
+    {
+     "id": "window_seq_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "correct"
+    }
+   ]
+  },
+  "rule_stack_timed_at_load1": 0.1,
+  "rule_stack_vs_1115_truth": {
+   "hot": {
+    "n": 12,
+    "correct": 9,
+    "minor": 2,
+    "silent_wrong": 1,
+    "acc_tie_tolerant": 0.75
+   },
+   "cold": {
+    "n": 12,
+    "correct": 9,
+    "minor": 2,
+    "silent_wrong": 1,
+    "acc_tie_tolerant": 0.75
+   },
+   "all": {
+    "n": 24,
+    "correct": 18,
+    "minor": 4,
+    "silent_wrong": 2,
+    "acc_tie_tolerant": 0.75
+   }
+  },
+  "H9_margin_over_threshold": 21.7,
+  "H9_margin_over_rule_median": 37365.0
+ },
+ "agy": {
+  "model": "gemini-4-hydrogen-high",
+  "n_calls": 120,
+  "invalid_calls": 0,
+  "utc_first_last": [
+   "2026-11-16T05:41:59Z",
+   "2026-11-16T07:02:56Z"
+  ],
+  "calls_in_cron_window": 91,
+  "load1_before_min_med_max": [
+   0.01,
+   0.14,
+   0.89
+  ],
+  "vs_quiet_truth": {
+   "n_decisions": 24,
+   "partial_excluded": 0,
+   "summary": {
+    "hot": {
+     "n": 12,
+     "correct": 8,
+     "minor": 3,
+     "silent_wrong": 1,
+     "acc_tie_tolerant_modal": 0.667,
+     "acc_strict_modal": 0.417
+    },
+    "cold": {
+     "n": 12,
+     "correct": 9,
+     "minor": 2,
+     "silent_wrong": 1,
+     "acc_tie_tolerant_modal": 0.75,
+     "acc_strict_modal": 0.75
+    },
+    "all": {
+     "n": 24,
+     "correct": 17,
+     "minor": 5,
+     "silent_wrong": 2,
+     "acc_tie_tolerant_modal": 0.708,
+     "acc_strict_modal": 0.583
+    }
+   },
+   "per_trial_tie_tolerant_mean": 0.683,
+   "per_trial_catastrophic": 1,
+   "flip_rate_mean": 0.067,
+   "decisions_with_any_flip": 7,
+   "rows": [
+    {
+     "id": "correlated_exists_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "correlated_exists_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "clickhouse_native",
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "dim_enrichment_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "clickhouse_iceberg",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "minor",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "dim_enrichment_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "clickhouse_native",
+     "accept": [
+      "clickhouse_native",
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "ioc_match_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "ioc_match_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "join_3to4_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "join_3to4_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "starrocks",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "minor",
+      "correct"
+     ],
+     "best": "clickhouse_native",
+     "accept": [
+      "clickhouse_native"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "join_5to6_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "join_5to6_01",
+     "cell": "hot",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "catastrophic"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {
+      "clickhouse_native": "dnf:timeout"
+     }
+    },
+    {
+     "id": "large_large_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "large_large_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "clickhouse_native",
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "point_lookup_01",
+     "cell": "cold",
+     "modal": "clickhouse_iceberg",
+     "picks": [
+      "starrocks",
+      "clickhouse_iceberg",
+      "starrocks",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "correct",
+      "minor",
+      "correct",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "point_lookup_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "clickhouse_native",
+     "accept": [
+      "clickhouse_native"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "scan_agg_01",
+     "cell": "cold",
+     "modal": "clickhouse_iceberg",
+     "picks": [
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "scan_agg_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "clickhouse_native",
+     "accept": [
+      "clickhouse_native"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "topn_agg_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "clickhouse_iceberg",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "minor",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "topn_agg_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "two_stream_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "clickhouse_iceberg",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "minor",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "two_stream_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "minor",
+     "per_trial_outcomes": [
+      "minor",
+      "minor",
+      "minor",
+      "minor",
+      "minor"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "ueba_two_level_01",
+     "cell": "cold",
+     "modal": "clickhouse_iceberg",
+     "picks": [
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg",
+      "clickhouse_iceberg"
+     ],
+     "outcome_modal": "silent_wrong",
+     "per_trial_outcomes": [
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "ueba_two_level_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "silent_wrong",
+     "per_trial_outcomes": [
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong",
+      "silent_wrong"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "window_seq_01",
+     "cell": "cold",
+     "modal": "starrocks",
+     "picks": [
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks",
+      "starrocks"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "starrocks"
+     ],
+     "cliffs": {}
+    },
+    {
+     "id": "window_seq_01",
+     "cell": "hot",
+     "modal": "clickhouse_native",
+     "picks": [
+      "clickhouse_native",
+      "starrocks",
+      "clickhouse_native",
+      "clickhouse_native",
+      "clickhouse_native"
+     ],
+     "outcome_modal": "correct",
+     "per_trial_outcomes": [
+      "correct",
+      "correct",
+      "correct",
+      "correct",
+      "correct"
+     ],
+     "best": "starrocks",
+     "accept": [
+      "clickhouse_native",
+      "starrocks"
+     ],
+     "cliffs": {}
+    }
+   ]
+  },
+  "vs_1115_truth": {
+   "n_decisions": 24,
+   "partial_excluded": 0,
+   "summary": {
+    "hot": {
+     "n": 12,
+     "minor": 3,
+     "correct": 8,
+     "silent_wrong": 1,
+     "acc_tie_tolerant_modal": 0.667,
+     "acc_strict_modal": 0.667
+    },
+    "cold": {
+     "n": 12,
+     "correct": 10,
+     "minor": 1,
+     "silent_wrong": 1,
+     "acc_tie_tolerant_modal": 0.833,
+     "acc_strict_modal": 0.75
+    },
+    "all": {
+     "n": 24,
+     "correct": 18,
+     "minor": 4,
+     "silent_wrong": 2,
+     "acc_tie_tolerant_modal": 0.75,
+     "acc_strict_modal": 0.708
+    }
+   },
+   "per_trial_tie_tolerant_mean": 0.742,
+   "per_trial_catastrophic": 1,
+   "flip_rate_mean": 0.067,
+   "decisions_with_any_flip": 7
+  },
+  "latency_median_s": 31.456000000000003,
+  "latency_p90_s": 80.168,
+  "latency_median_s_excl_cron": 34.548,
+  "n_lat_excl_cron": 29,
+  "rule_stack_S2_same_decisions_quiet_truth": {
+   "summary": {
+    "hot": {
+     "n": 12,
+     "correct": 11,
+     "silent_wrong": 1,
+     "acc_tie_tolerant": 0.917
+    },
+    "cold": {
+     "n": 12,
+     "correct": 8,
+     "minor": 3,
+     "silent_wrong": 1,
+     "acc_tie_tolerant": 0.667
+    },
+    "all": {
+     "n": 24,
+     "correct": 19,
+     "minor": 3,
+     "silent_wrong": 2,
+     "acc_tie_tolerant": 0.792
+    }
+   },
+   "decisions_with_any_flip": 0,
+   "latency_median_ms": 0.574,
+   "latency_p90_ms": 0.962,
+   "rows": [
+    {
+     "id": "correlated_exists_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "correlated_exists_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "dim_enrichment_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "dim_enrichment_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "ioc_match_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "ioc_match_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "join_3to4_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "join_3to4_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "correct"
+    },
+    {
+     "id": "join_5to6_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "join_5to6_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "large_large_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "large_large_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "point_lookup_01",
+     "cell": "cold",
+     "pick": "clickhouse_iceberg",
+     "outcome": "minor"
+    },
+    {
+     "id": "point_lookup_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "correct"
+    },
+    {
+     "id": "scan_agg_01",
+     "cell": "cold",
+     "pick": "clickhouse_iceberg",
+     "outcome": "minor"
+    },
+    {
+     "id": "scan_agg_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "correct"
+    },
+    {
+     "id": "topn_agg_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "topn_agg_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "two_stream_01",
+     "cell": "cold",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "two_stream_01",
+     "cell": "hot",
+     "pick": "starrocks",
+     "outcome": "correct"
+    },
+    {
+     "id": "ueba_two_level_01",
+     "cell": "cold",
+     "pick": "clickhouse_iceberg",
+     "outcome": "silent_wrong"
+    },
+    {
+     "id": "ueba_two_level_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "silent_wrong"
+    },
+    {
+     "id": "window_seq_01",
+     "cell": "cold",
+     "pick": "clickhouse_iceberg",
+     "outcome": "minor"
+    },
+    {
+     "id": "window_seq_01",
+     "cell": "hot",
+     "pick": "clickhouse_native",
+     "outcome": "correct"
+    }
+   ]
+  },
+  "rule_stack_timed_at_load1": 0.1,
+  "rule_stack_vs_1115_truth": {
+   "hot": {
+    "n": 12,
+    "correct": 9,
+    "minor": 2,
+    "silent_wrong": 1,
+    "acc_tie_tolerant": 0.75
+   },
+   "cold": {
+    "n": 12,
+    "correct": 9,
+    "minor": 2,
+    "silent_wrong": 1,
+    "acc_tie_tolerant": 0.75
+   },
+   "all": {
+    "n": 24,
+    "correct": 18,
+    "minor": 4,
+    "silent_wrong": 2,
+    "acc_tie_tolerant": 0.75
+   }
+  },
+  "H9_margin_over_threshold": 15.7,
+  "H9_margin_over_rule_median": 54801.0
+ }
+}
