@@ -1,0 +1,578 @@
+{
+ "hand_sql": {
+  "leg2_credentials_json_path": {
+   "classified_as_leg": 2,
+   "column": "api_request_data",
+   "engines_agree": false,
+   "planted": {
+    "lower": "credentials.json",
+    "mixed": "cReDeNtIaLs.jSoN",
+    "original": "credentials.json",
+    "upper": "CREDENTIALS.JSON"
+   },
+   "result": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": true,
+     "original": true,
+     "upper": true
+    }
+   }
+  },
+  "leg2_dotenv_path": {
+   "classified_as_leg": 2,
+   "column": "api_request_data",
+   "engines_agree": false,
+   "planted": {
+    "lower": ".env",
+    "mixed": ".EnV",
+    "original": ".env",
+    "upper": ".ENV"
+   },
+   "result": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": true,
+     "original": true,
+     "upper": true
+    }
+   }
+  },
+  "leg2_procenv_path": {
+   "classified_as_leg": 2,
+   "column": "api_request_data",
+   "engines_agree": false,
+   "planted": {
+    "lower": "/proc/self/environ",
+    "mixed": "/PrOc/sElF/EnViRoN",
+    "original": "/proc/self/environ",
+    "upper": "/PROC/SELF/ENVIRON"
+   },
+   "result": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": true,
+     "original": true,
+     "upper": true
+    }
+   }
+  },
+  "leg3_allowlisted_host": {
+   "classified_as_leg": 3,
+   "column": "dst_endpoint_hostname",
+   "engines_agree": true,
+   "planted": {
+    "lower": "github.com",
+    "mixed": "gItHuB.CoM",
+    "original": "github.com",
+    "upper": "GITHUB.COM"
+   },
+   "result": {
+    "duckdb": {
+     "lower": false,
+     "mixed": true,
+     "original": false,
+     "upper": true
+    },
+    "sqlite": {
+     "lower": false,
+     "mixed": true,
+     "original": false,
+     "upper": true
+    }
+   }
+  },
+  "leg3_qualifier_credential": {
+   "classified_as_leg": 3,
+   "column": "api_request_data",
+   "engines_agree": false,
+   "planted": {
+    "lower": "api03-testfixture0testfixture0testfixture00000",
+    "mixed": "aPi03-tEsTfIxTuRe0tEsTfIxTuRe0tEsTfIxTuRe00000",
+    "original": "api03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000",
+    "token-upper": "API03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000",
+    "upper": "API03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000"
+   },
+   "result": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "original": true,
+     "token-upper": false,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": true,
+     "original": true,
+     "token-upper": true,
+     "upper": true
+    }
+   }
+  }
+ },
+ "session_rules": {
+  "vary_leg2_path": {
+   "fired": {
+    "b3_session_sql": {
+     "duckdb": {
+      "lower": true,
+      "mixed": false,
+      "original": true,
+      "upper": false
+     },
+     "engines_agree": false,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "upper": true
+     }
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "lower": true,
+      "mixed": false,
+      "original": true,
+      "upper": false
+     },
+     "engines_agree": false,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "upper": true
+     }
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "lower": true,
+      "mixed": false,
+      "original": true,
+      "upper": false
+     },
+     "engines_agree": false,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "upper": true
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "lower": true,
+      "mixed": false,
+      "original": true,
+      "upper": false
+     },
+     "engines_agree": false,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "upper": true
+     }
+    }
+   },
+   "planted": {
+    "lower": "/proc/self/environ",
+    "mixed": "/PrOc/sElF/EnViRoN",
+    "original": "/proc/self/environ",
+    "upper": "/PROC/SELF/ENVIRON"
+   }
+  },
+  "vary_leg3_credential": {
+   "fired": {
+    "b3_session_sql": {
+     "duckdb": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     }
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "lower": true,
+      "mixed": false,
+      "original": true,
+      "token-upper": false,
+      "upper": false
+     },
+     "engines_agree": false,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     }
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "lower": true,
+      "mixed": false,
+      "original": true,
+      "token-upper": false,
+      "upper": false
+     },
+     "engines_agree": false,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     }
+    }
+   },
+   "planted": {
+    "lower": "api03-testfixture0testfixture0testfixture00000",
+    "mixed": "aPi03-tEsTfIxTuRe0tEsTfIxTuRe0tEsTfIxTuRe00000",
+    "original": "api03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000",
+    "token-upper": "API03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000",
+    "upper": "API03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000"
+   }
+  }
+ },
+ "session_rules_lowered_candidate_fix": {
+  "vary_leg2_path": {
+   "fired": {
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "upper": true
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "upper": true
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "upper": true
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "upper": true
+     }
+    }
+   },
+   "planted": {
+    "lower": "/proc/self/environ",
+    "mixed": "/PrOc/sElF/EnViRoN",
+    "original": "/proc/self/environ",
+    "upper": "/PROC/SELF/ENVIRON"
+   }
+  },
+  "vary_leg3_credential": {
+   "fired": {
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     },
+     "engines_agree": true,
+     "sqlite": {
+      "lower": true,
+      "mixed": true,
+      "original": true,
+      "token-upper": true,
+      "upper": true
+     }
+    }
+   },
+   "planted": {
+    "lower": "api03-testfixture0testfixture0testfixture00000",
+    "mixed": "aPi03-tEsTfIxTuRe0tEsTfIxTuRe0tEsTfIxTuRe00000",
+    "original": "api03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000",
+    "token-upper": "API03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000",
+    "upper": "API03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000"
+   }
+  }
+ },
+ "tier_a_sigma": {
+  "a1_ingest_mail.yml": {
+   "column": "api_operation",
+   "compiled_sql": "SELECT metadata_uid FROM api WHERE api_operation='mail.fetch'",
+   "engines_agree": true,
+   "matched": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    }
+   },
+   "planted": {
+    "lower": "mail.fetch",
+    "mixed": "mAiL.FeTcH",
+    "non-match": "benign-value",
+    "original": "mail.fetch",
+    "upper": "MAIL.FETCH"
+   }
+  },
+  "a2_ingest_repo.yml": {
+   "column": "api_operation",
+   "compiled_sql": "SELECT metadata_uid FROM api WHERE api_operation='issue.read' OR api_operation='pr.read'",
+   "engines_agree": true,
+   "matched": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    }
+   },
+   "planted": {
+    "lower": "issue.read",
+    "mixed": "iSsUe.rEaD",
+    "non-match": "benign-value",
+    "original": "issue.read",
+    "upper": "ISSUE.READ"
+   }
+  },
+  "a3_collect_mailbox.yml": {
+   "column": "api_operation",
+   "compiled_sql": "SELECT metadata_uid FROM api WHERE api_operation='mail.search' OR api_operation='contacts.list'",
+   "engines_agree": true,
+   "matched": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    }
+   },
+   "planted": {
+    "lower": "mail.search",
+    "mixed": "mAiL.SeArCh",
+    "non-match": "benign-value",
+    "original": "mail.search",
+    "upper": "MAIL.SEARCH"
+   }
+  },
+  "a4_read_procenv.yml": {
+   "column": "api_request_data",
+   "compiled_sql": "SELECT metadata_uid FROM api WHERE api_operation='file.read' AND api_request_data LIKE '%/proc/self/environ%' ESCAPE '\\'",
+   "engines_agree": false,
+   "matched": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": true,
+     "non-match": false,
+     "original": true,
+     "upper": true
+    }
+   },
+   "planted": {
+    "lower": "/proc/self/environ",
+    "mixed": "/PrOc/sElF/EnViRoN",
+    "non-match": "benign-value",
+    "original": "/proc/self/environ",
+    "upper": "/PROC/SELF/ENVIRON"
+   }
+  },
+  "a5_outbound_offlist.yml#allowlisted": {
+   "column": "dst_endpoint_hostname",
+   "compiled_sql": "SELECT metadata_uid FROM api WHERE (api_operation='http.open' OR api_operation='web.fetch') AND (NOT COALESCE((dst_endpoint_hostname='docs.python.org' OR dst_endpoint_hostname='github.com' OR dst_endpoint_hostname='api.github.com' OR dst_endpoint_hostname='pypi.org' OR dst_endpoint_hostname='intranet.example' OR dst_endpoint_hostname='wiki.example' OR dst_endpoint_hostname='calendar.example' OR dst_endpoint_hostname='mail.example' OR dst_endpoint_hostname='registry.example'), 0))",
+   "engines_agree": true,
+   "matched": {
+    "duckdb": {
+     "lower": false,
+     "mixed": true,
+     "non-match": true,
+     "original": false,
+     "upper": true
+    },
+    "sqlite": {
+     "lower": false,
+     "mixed": true,
+     "non-match": true,
+     "original": false,
+     "upper": true
+    }
+   },
+   "planted": {
+    "lower": "github.com",
+    "mixed": "gItHuB.CoM",
+    "non-match": "benign-value",
+    "original": "github.com",
+    "upper": "GITHUB.COM"
+   }
+  },
+  "a5_outbound_offlist.yml#offlist": {
+   "column": "dst_endpoint_hostname",
+   "compiled_sql": "SELECT metadata_uid FROM api WHERE (api_operation='http.open' OR api_operation='web.fetch') AND (NOT COALESCE((dst_endpoint_hostname='docs.python.org' OR dst_endpoint_hostname='github.com' OR dst_endpoint_hostname='api.github.com' OR dst_endpoint_hostname='pypi.org' OR dst_endpoint_hostname='intranet.example' OR dst_endpoint_hostname='wiki.example' OR dst_endpoint_hostname='calendar.example' OR dst_endpoint_hostname='mail.example' OR dst_endpoint_hostname='registry.example'), 0))",
+   "engines_agree": true,
+   "matched": {
+    "duckdb": {
+     "lower": true,
+     "mixed": true,
+     "non-match": true,
+     "original": true,
+     "upper": true
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": true,
+     "non-match": true,
+     "original": true,
+     "upper": true
+    }
+   },
+   "planted": {
+    "lower": "exfil-sink.invalid",
+    "mixed": "eXfIl-sInK.InVaLiD",
+    "non-match": "benign-value",
+    "original": "exfil-sink.invalid",
+    "upper": "EXFIL-SINK.INVALID"
+   }
+  },
+  "a6_credential_shape.yml": {
+   "column": "api_request_data",
+   "compiled_sql": "SELECT metadata_uid FROM api WHERE (api_operation='web.fetch' OR api_operation='bash.exec') AND api_request_data LIKE '%api03-%' ESCAPE '\\'",
+   "engines_agree": false,
+   "matched": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "token-upper": false,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": true,
+     "non-match": false,
+     "original": true,
+     "token-upper": true,
+     "upper": true
+    }
+   },
+   "planted": {
+    "lower": "api03-testfixture0testfixture0testfixture00000",
+    "mixed": "aPi03-tEsTfIxTuRe0tEsTfIxTuRe0tEsTfIxTuRe00000",
+    "non-match": "benign-value",
+    "original": "api03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000",
+    "token-upper": "API03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000",
+    "upper": "API03-TESTFIXTURE0TESTFIXTURE0TESTFIXTURE00000"
+   }
+  }
+ },
+ "versions": {
+  "duckdb": "1.5.3",
+  "pySigma": "2.0.3",
+  "pySigma-backend-sqlite": "2.1.1",
+  "python": "3.12.3",
+  "sqlite": "3.45.1"
+ }
+}
