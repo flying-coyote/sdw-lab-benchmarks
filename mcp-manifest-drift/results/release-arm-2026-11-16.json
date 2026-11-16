@@ -1,0 +1,1980 @@
+{
+ "run": "2026-11-16",
+ "path": "a",
+ "versions": {
+  "pySigma": "1.5.1",
+  "backend": "pySigma-backend-duckdb 0.1.4",
+  "duckdb": "1.5.3"
+ },
+ "transitions": [
+  {
+   "transition": "filesystem:2025.8.21->2025.11.25",
+   "server": "filesystem",
+   "from": "2025.8.21",
+   "to": "2025.11.25",
+   "serverInfo_from": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "serverInfo_to": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 14,
+   "tools_to": 14
+  },
+  {
+   "transition": "filesystem:2025.11.25->2025.12.18",
+   "server": "filesystem",
+   "from": "2025.11.25",
+   "to": "2025.12.18",
+   "serverInfo_from": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "serverInfo_to": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 14,
+   "tools_to": 14
+  },
+  {
+   "transition": "filesystem:2025.12.18->2026.1.14",
+   "server": "filesystem",
+   "from": "2025.12.18",
+   "to": "2026.1.14",
+   "serverInfo_from": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "serverInfo_to": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 14,
+   "tools_to": 14
+  },
+  {
+   "transition": "filesystem:2026.1.14->2026.7.4",
+   "server": "filesystem",
+   "from": "2026.1.14",
+   "to": "2026.7.4",
+   "serverInfo_from": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "serverInfo_to": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 14,
+   "tools_to": 14
+  },
+  {
+   "transition": "filesystem:2026.7.4->2026.7.10",
+   "server": "filesystem",
+   "from": "2026.7.4",
+   "to": "2026.7.10",
+   "serverInfo_from": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "serverInfo_to": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 14,
+   "tools_to": 14
+  },
+  {
+   "transition": "filesystem:2026.7.10->2026.8.31",
+   "server": "filesystem",
+   "from": "2026.7.10",
+   "to": "2026.8.31",
+   "serverInfo_from": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "serverInfo_to": {
+    "name": "secure-filesystem-server",
+    "version": "0.2.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 14,
+   "tools_to": 14
+  },
+  {
+   "transition": "everything:2025.12.18->2026.1.14",
+   "server": "everything",
+   "from": "2025.12.18",
+   "to": "2026.1.14",
+   "serverInfo_from": {
+    "name": "example-servers/everything",
+    "title": "Everything Example Server",
+    "version": "1.0.0"
+   },
+   "serverInfo_to": {
+    "name": "mcp-servers/everything",
+    "title": "Everything Reference Server",
+    "version": "2.0.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 11,
+   "tools_to": 12
+  },
+  {
+   "transition": "everything:2026.1.14->2026.1.26",
+   "server": "everything",
+   "from": "2026.1.14",
+   "to": "2026.1.26",
+   "serverInfo_from": {
+    "name": "mcp-servers/everything",
+    "title": "Everything Reference Server",
+    "version": "2.0.0"
+   },
+   "serverInfo_to": {
+    "name": "mcp-servers/everything",
+    "title": "Everything Reference Server",
+    "version": "2.0.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 12,
+   "tools_to": 13
+  },
+  {
+   "transition": "everything:2026.1.26->2026.7.4",
+   "server": "everything",
+   "from": "2026.1.26",
+   "to": "2026.7.4",
+   "serverInfo_from": {
+    "name": "mcp-servers/everything",
+    "title": "Everything Reference Server",
+    "version": "2.0.0"
+   },
+   "serverInfo_to": {
+    "name": "mcp-servers/everything",
+    "title": "Everything Reference Server",
+    "version": "2.0.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 13,
+   "tools_to": 13
+  },
+  {
+   "transition": "everything:2026.7.4->2026.8.18",
+   "server": "everything",
+   "from": "2026.7.4",
+   "to": "2026.8.18",
+   "serverInfo_from": {
+    "name": "mcp-servers/everything",
+    "title": "Everything Reference Server",
+    "version": "2.0.0"
+   },
+   "serverInfo_to": {
+    "name": "mcp-servers/everything",
+    "title": "Everything Reference Server",
+    "version": "2.0.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 13,
+   "tools_to": 13
+  },
+  {
+   "transition": "everything:2026.8.18->2026.8.31",
+   "server": "everything",
+   "from": "2026.8.18",
+   "to": "2026.8.31",
+   "serverInfo_from": {
+    "name": "mcp-servers/everything",
+    "title": "Everything Reference Server",
+    "version": "2.0.0"
+   },
+   "serverInfo_to": {
+    "name": "mcp-servers/everything",
+    "title": "Everything Reference Server",
+    "version": "2.0.0"
+   },
+   "protocol_from": "2025-06-18",
+   "protocol_to": "2025-06-18",
+   "tools_from": 13,
+   "tools_to": 13
+  }
+ ],
+ "rules": {
+  "s1_any_manifest_drift": {
+   "D0": [
+    "rel-D0-everything:2025.12.18->2026.1.14-1",
+    "rel-D0-everything:2025.12.18->2026.1.14-10",
+    "rel-D0-everything:2025.12.18->2026.1.14-11",
+    "rel-D0-everything:2025.12.18->2026.1.14-12",
+    "rel-D0-everything:2025.12.18->2026.1.14-13",
+    "rel-D0-everything:2025.12.18->2026.1.14-14",
+    "rel-D0-everything:2025.12.18->2026.1.14-15",
+    "rel-D0-everything:2025.12.18->2026.1.14-16",
+    "rel-D0-everything:2025.12.18->2026.1.14-17",
+    "rel-D0-everything:2025.12.18->2026.1.14-18",
+    "rel-D0-everything:2025.12.18->2026.1.14-19",
+    "rel-D0-everything:2025.12.18->2026.1.14-2",
+    "rel-D0-everything:2025.12.18->2026.1.14-20",
+    "rel-D0-everything:2025.12.18->2026.1.14-21",
+    "rel-D0-everything:2025.12.18->2026.1.14-22",
+    "rel-D0-everything:2025.12.18->2026.1.14-3",
+    "rel-D0-everything:2025.12.18->2026.1.14-4",
+    "rel-D0-everything:2025.12.18->2026.1.14-5",
+    "rel-D0-everything:2025.12.18->2026.1.14-6",
+    "rel-D0-everything:2025.12.18->2026.1.14-7",
+    "rel-D0-everything:2025.12.18->2026.1.14-8",
+    "rel-D0-everything:2025.12.18->2026.1.14-9",
+    "rel-D0-everything:2026.1.14->2026.1.26-10",
+    "rel-D0-everything:2026.1.26->2026.7.4-1",
+    "rel-D0-everything:2026.1.26->2026.7.4-10",
+    "rel-D0-everything:2026.1.26->2026.7.4-11",
+    "rel-D0-everything:2026.1.26->2026.7.4-12",
+    "rel-D0-everything:2026.1.26->2026.7.4-13",
+    "rel-D0-everything:2026.1.26->2026.7.4-2",
+    "rel-D0-everything:2026.1.26->2026.7.4-3",
+    "rel-D0-everything:2026.1.26->2026.7.4-4",
+    "rel-D0-everything:2026.1.26->2026.7.4-5",
+    "rel-D0-everything:2026.1.26->2026.7.4-6",
+    "rel-D0-everything:2026.1.26->2026.7.4-7",
+    "rel-D0-everything:2026.1.26->2026.7.4-8",
+    "rel-D0-everything:2026.1.26->2026.7.4-9",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-1",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-10",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-11",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-12",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-13",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-14",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-2",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-3",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-4",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-5",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-6",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-7",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-8",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-9",
+    "rel-D0-filesystem:2026.1.14->2026.7.4-8",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-1",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-10",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-11",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-12",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-13",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-14",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-2",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-3",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-4",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-5",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-6",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-7",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-8",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-9"
+   ],
+   "D1": [
+    "rel-D1-everything:2025.12.18->2026.1.14-1",
+    "rel-D1-everything:2025.12.18->2026.1.14-10",
+    "rel-D1-everything:2025.12.18->2026.1.14-11",
+    "rel-D1-everything:2025.12.18->2026.1.14-12",
+    "rel-D1-everything:2025.12.18->2026.1.14-13",
+    "rel-D1-everything:2025.12.18->2026.1.14-14",
+    "rel-D1-everything:2025.12.18->2026.1.14-15",
+    "rel-D1-everything:2025.12.18->2026.1.14-16",
+    "rel-D1-everything:2025.12.18->2026.1.14-17",
+    "rel-D1-everything:2025.12.18->2026.1.14-18",
+    "rel-D1-everything:2025.12.18->2026.1.14-19",
+    "rel-D1-everything:2025.12.18->2026.1.14-2",
+    "rel-D1-everything:2025.12.18->2026.1.14-20",
+    "rel-D1-everything:2025.12.18->2026.1.14-21",
+    "rel-D1-everything:2025.12.18->2026.1.14-22",
+    "rel-D1-everything:2025.12.18->2026.1.14-3",
+    "rel-D1-everything:2025.12.18->2026.1.14-4",
+    "rel-D1-everything:2025.12.18->2026.1.14-5",
+    "rel-D1-everything:2025.12.18->2026.1.14-6",
+    "rel-D1-everything:2025.12.18->2026.1.14-7",
+    "rel-D1-everything:2025.12.18->2026.1.14-8",
+    "rel-D1-everything:2025.12.18->2026.1.14-9",
+    "rel-D1-everything:2026.1.14->2026.1.26-10",
+    "rel-D1-everything:2026.1.26->2026.7.4-1",
+    "rel-D1-everything:2026.1.26->2026.7.4-10",
+    "rel-D1-everything:2026.1.26->2026.7.4-11",
+    "rel-D1-everything:2026.1.26->2026.7.4-12",
+    "rel-D1-everything:2026.1.26->2026.7.4-13",
+    "rel-D1-everything:2026.1.26->2026.7.4-2",
+    "rel-D1-everything:2026.1.26->2026.7.4-3",
+    "rel-D1-everything:2026.1.26->2026.7.4-4",
+    "rel-D1-everything:2026.1.26->2026.7.4-5",
+    "rel-D1-everything:2026.1.26->2026.7.4-6",
+    "rel-D1-everything:2026.1.26->2026.7.4-7",
+    "rel-D1-everything:2026.1.26->2026.7.4-8",
+    "rel-D1-everything:2026.1.26->2026.7.4-9",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-1",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-10",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-11",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-12",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-13",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-14",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-2",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-3",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-4",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-5",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-6",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-7",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-8",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-9",
+    "rel-D1-filesystem:2026.1.14->2026.7.4-8",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-1",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-10",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-11",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-12",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-13",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-14",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-2",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-3",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-4",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-5",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-6",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-7",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-8",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-9"
+   ]
+  },
+  "s2_contract_drift": {
+   "D0": [
+    "rel-D0-everything:2025.12.18->2026.1.14-3",
+    "rel-D0-everything:2026.1.26->2026.7.4-1",
+    "rel-D0-everything:2026.1.26->2026.7.4-10",
+    "rel-D0-everything:2026.1.26->2026.7.4-13",
+    "rel-D0-everything:2026.1.26->2026.7.4-2",
+    "rel-D0-everything:2026.1.26->2026.7.4-4",
+    "rel-D0-everything:2026.1.26->2026.7.4-5",
+    "rel-D0-everything:2026.1.26->2026.7.4-6",
+    "rel-D0-everything:2026.1.26->2026.7.4-7",
+    "rel-D0-everything:2026.1.26->2026.7.4-9",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-1",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-10",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-11",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-12",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-13",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-14",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-2",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-3",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-4",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-5",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-6",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-7",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-8",
+    "rel-D0-filesystem:2025.8.21->2025.11.25-9",
+    "rel-D0-filesystem:2026.7.4->2026.7.10-10"
+   ],
+   "D1": [
+    "rel-D1-everything:2025.12.18->2026.1.14-3",
+    "rel-D1-everything:2026.1.26->2026.7.4-1",
+    "rel-D1-everything:2026.1.26->2026.7.4-10",
+    "rel-D1-everything:2026.1.26->2026.7.4-13",
+    "rel-D1-everything:2026.1.26->2026.7.4-2",
+    "rel-D1-everything:2026.1.26->2026.7.4-4",
+    "rel-D1-everything:2026.1.26->2026.7.4-5",
+    "rel-D1-everything:2026.1.26->2026.7.4-6",
+    "rel-D1-everything:2026.1.26->2026.7.4-7",
+    "rel-D1-everything:2026.1.26->2026.7.4-9",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-1",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-10",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-11",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-12",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-13",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-14",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-2",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-3",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-4",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-5",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-6",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-7",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-8",
+    "rel-D1-filesystem:2025.8.21->2025.11.25-9",
+    "rel-D1-filesystem:2026.7.4->2026.7.10-10"
+   ]
+  },
+  "s3_hidden_instruction": {
+   "D0": [],
+   "D1": []
+  },
+  "s4_description_rewrite": {
+   "D0": [
+    "rel-D0-filesystem:2026.7.4->2026.7.10-10"
+   ],
+   "D1": [
+    "rel-D1-filesystem:2026.7.4->2026.7.10-10"
+   ]
+  },
+  "s5_schema_widening": {
+   "D0": [],
+   "D1": []
+  }
+ },
+ "per_transition": {
+  "D0": {
+   "filesystem:2025.8.21->2025.11.25": {
+    "events": [
+     {
+      "tool": "create_directory",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "directory_tree",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "edit_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get_file_info",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_allowed_directories",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_directory",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_directory_with_sizes",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "move_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_media_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_multiple_files",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_text_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "search_files",
+      "activity_id": 8,
+      "desc_similarity": 0.648,
+      "desc_added_text": "T\n patterns should be glob-style pattern\nat match paths \nelative t\n the working directory. Use pattern like '*.ext' to match files in c\nrrent directory, and '**/*.ext' to matc\n files in",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "write_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "create_directory",
+      "directory_tree",
+      "edit_file",
+      "get_file_info",
+      "list_allowed_directories",
+      "list_directory",
+      "list_directory_with_sizes",
+      "move_file",
+      "read_file",
+      "read_media_file",
+      "read_multiple_files",
+      "read_text_file",
+      "search_files",
+      "write_file"
+     ],
+     "s2_contract_drift": [
+      "create_directory",
+      "directory_tree",
+      "edit_file",
+      "get_file_info",
+      "list_allowed_directories",
+      "list_directory",
+      "list_directory_with_sizes",
+      "move_file",
+      "read_file",
+      "read_media_file",
+      "read_multiple_files",
+      "read_text_file",
+      "search_files",
+      "write_file"
+     ],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "filesystem:2025.11.25->2025.12.18": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "filesystem:2025.12.18->2026.1.14": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "filesystem:2026.1.14->2026.7.4": {
+    "events": [
+     {
+      "tool": "move_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "move_file"
+     ],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "filesystem:2026.7.4->2026.7.10": {
+    "events": [
+     {
+      "tool": "create_directory",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "directory_tree",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "edit_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get_file_info",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_allowed_directories",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_directory",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_directory_with_sizes",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "move_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_media_file",
+      "activity_id": 8,
+      "desc_similarity": 0.494,
+      "desc_added_text": " file and retur\nt as a base64-encoded content block with its MIME type. I\nand\ns\nare r\ned a\nimage/audio content; any o\nr\nfile type is returned \n an\nmbed\nresourc",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_multiple_files",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_text_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "search_files",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "write_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "create_directory",
+      "directory_tree",
+      "edit_file",
+      "get_file_info",
+      "list_allowed_directories",
+      "list_directory",
+      "list_directory_with_sizes",
+      "move_file",
+      "read_file",
+      "read_media_file",
+      "read_multiple_files",
+      "read_text_file",
+      "search_files",
+      "write_file"
+     ],
+     "s2_contract_drift": [
+      "read_media_file"
+     ],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [
+      "read_media_file"
+     ],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [
+     "read_media_file"
+    ],
+    "composite_fired": true
+   },
+   "filesystem:2026.7.10->2026.8.31": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2025.12.18->2026.1.14": {
+    "events": [
+     {
+      "tool": "add",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "annotatedMessage",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "echo",
+      "activity_id": 8,
+      "desc_similarity": 0.857,
+      "desc_added_text": " string",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-annotated-message",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-env",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-resource-links",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-resource-reference",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-structured-content",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-sum",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-tiny-image",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "getResourceLinks",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "getResourceReference",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "getTinyImage",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "gzip-file-as-resource",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "longRunningOperation",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "printEnv",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "sampleLLM",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "structuredContent",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "toggle-simulated-logging",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "toggle-subscriber-updates",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "trigger-long-running-operation",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "zip",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "add",
+      "annotatedMessage",
+      "echo",
+      "get-annotated-message",
+      "get-env",
+      "get-resource-links",
+      "get-resource-reference",
+      "get-structured-content",
+      "get-sum",
+      "get-tiny-image",
+      "getResourceLinks",
+      "getResourceReference",
+      "getTinyImage",
+      "gzip-file-as-resource",
+      "longRunningOperation",
+      "printEnv",
+      "sampleLLM",
+      "structuredContent",
+      "toggle-simulated-logging",
+      "toggle-subscriber-updates",
+      "trigger-long-running-operation",
+      "zip"
+     ],
+     "s2_contract_drift": [
+      "echo"
+     ],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2026.1.14->2026.1.26": {
+    "events": [
+     {
+      "tool": "simulate-research-query",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "simulate-research-query"
+     ],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2026.1.26->2026.7.4": {
+    "events": [
+     {
+      "tool": "echo",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-annotated-message",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-env",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-resource-links",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-resource-reference",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-structured-content",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-sum",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-tiny-image",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "gzip-file-as-resource",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "simulate-research-query",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "toggle-simulated-logging",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "toggle-subscriber-updates",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "trigger-long-running-operation",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "echo",
+      "get-annotated-message",
+      "get-env",
+      "get-resource-links",
+      "get-resource-reference",
+      "get-structured-content",
+      "get-sum",
+      "get-tiny-image",
+      "gzip-file-as-resource",
+      "simulate-research-query",
+      "toggle-simulated-logging",
+      "toggle-subscriber-updates",
+      "trigger-long-running-operation"
+     ],
+     "s2_contract_drift": [
+      "echo",
+      "get-annotated-message",
+      "get-resource-links",
+      "get-resource-reference",
+      "get-structured-content",
+      "get-sum",
+      "gzip-file-as-resource",
+      "simulate-research-query",
+      "trigger-long-running-operation"
+     ],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2026.7.4->2026.8.18": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2026.8.18->2026.8.31": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   }
+  },
+  "D1": {
+   "filesystem:2025.8.21->2025.11.25": {
+    "events": [
+     {
+      "tool": "create_directory",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "directory_tree",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "edit_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get_file_info",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_allowed_directories",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_directory",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_directory_with_sizes",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "move_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_media_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_multiple_files",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_text_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "search_files",
+      "activity_id": 8,
+      "desc_similarity": 0.648,
+      "desc_added_text": "T\n patterns should be glob-style pattern\nat match paths \nelative t\n the working directory. Use pattern like '*.ext' to match files in c\nrrent directory, and '**/*.ext' to matc\n files in",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "write_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "create_directory",
+      "directory_tree",
+      "edit_file",
+      "get_file_info",
+      "list_allowed_directories",
+      "list_directory",
+      "list_directory_with_sizes",
+      "move_file",
+      "read_file",
+      "read_media_file",
+      "read_multiple_files",
+      "read_text_file",
+      "search_files",
+      "write_file"
+     ],
+     "s2_contract_drift": [
+      "create_directory",
+      "directory_tree",
+      "edit_file",
+      "get_file_info",
+      "list_allowed_directories",
+      "list_directory",
+      "list_directory_with_sizes",
+      "move_file",
+      "read_file",
+      "read_media_file",
+      "read_multiple_files",
+      "read_text_file",
+      "search_files",
+      "write_file"
+     ],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "filesystem:2025.11.25->2025.12.18": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "filesystem:2025.12.18->2026.1.14": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "filesystem:2026.1.14->2026.7.4": {
+    "events": [
+     {
+      "tool": "move_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "move_file"
+     ],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "filesystem:2026.7.4->2026.7.10": {
+    "events": [
+     {
+      "tool": "create_directory",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "directory_tree",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "edit_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get_file_info",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_allowed_directories",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_directory",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "list_directory_with_sizes",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "move_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_media_file",
+      "activity_id": 8,
+      "desc_similarity": 0.494,
+      "desc_added_text": " file and retur\nt as a base64-encoded content block with its MIME type. I\nand\ns\nare r\ned a\nimage/audio content; any o\nr\nfile type is returned \n an\nmbed\nresourc",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_multiple_files",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "read_text_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "search_files",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "write_file",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "create_directory",
+      "directory_tree",
+      "edit_file",
+      "get_file_info",
+      "list_allowed_directories",
+      "list_directory",
+      "list_directory_with_sizes",
+      "move_file",
+      "read_file",
+      "read_media_file",
+      "read_multiple_files",
+      "read_text_file",
+      "search_files",
+      "write_file"
+     ],
+     "s2_contract_drift": [
+      "read_media_file"
+     ],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [
+      "read_media_file"
+     ],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [
+     "read_media_file"
+    ],
+    "composite_fired": true
+   },
+   "filesystem:2026.7.10->2026.8.31": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2025.12.18->2026.1.14": {
+    "events": [
+     {
+      "tool": "add",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "annotatedMessage",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "echo",
+      "activity_id": 8,
+      "desc_similarity": 0.857,
+      "desc_added_text": " string",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-annotated-message",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-env",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-resource-links",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-resource-reference",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-structured-content",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-sum",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "get-tiny-image",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "getResourceLinks",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "getResourceReference",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "getTinyImage",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "gzip-file-as-resource",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "longRunningOperation",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "printEnv",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "sampleLLM",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "structuredContent",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "toggle-simulated-logging",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "toggle-subscriber-updates",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "trigger-long-running-operation",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     },
+     {
+      "tool": "zip",
+      "activity_id": 2,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "add",
+      "annotatedMessage",
+      "echo",
+      "get-annotated-message",
+      "get-env",
+      "get-resource-links",
+      "get-resource-reference",
+      "get-structured-content",
+      "get-sum",
+      "get-tiny-image",
+      "getResourceLinks",
+      "getResourceReference",
+      "getTinyImage",
+      "gzip-file-as-resource",
+      "longRunningOperation",
+      "printEnv",
+      "sampleLLM",
+      "structuredContent",
+      "toggle-simulated-logging",
+      "toggle-subscriber-updates",
+      "trigger-long-running-operation",
+      "zip"
+     ],
+     "s2_contract_drift": [
+      "echo"
+     ],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2026.1.14->2026.1.26": {
+    "events": [
+     {
+      "tool": "simulate-research-query",
+      "activity_id": 1,
+      "desc_similarity": null,
+      "desc_added_text": null,
+      "schema_widened": null,
+      "schema_widened_reasons": null
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "simulate-research-query"
+     ],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2026.1.26->2026.7.4": {
+    "events": [
+     {
+      "tool": "echo",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-annotated-message",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-env",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-resource-links",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-resource-reference",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-structured-content",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-sum",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "get-tiny-image",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "gzip-file-as-resource",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "simulate-research-query",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "toggle-simulated-logging",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "toggle-subscriber-updates",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     },
+     {
+      "tool": "trigger-long-running-operation",
+      "activity_id": 8,
+      "desc_similarity": 1.0,
+      "desc_added_text": "",
+      "schema_widened": false,
+      "schema_widened_reasons": ""
+     }
+    ],
+    "rule_hits": {
+     "s1_any_manifest_drift": [
+      "echo",
+      "get-annotated-message",
+      "get-env",
+      "get-resource-links",
+      "get-resource-reference",
+      "get-structured-content",
+      "get-sum",
+      "get-tiny-image",
+      "gzip-file-as-resource",
+      "simulate-research-query",
+      "toggle-simulated-logging",
+      "toggle-subscriber-updates",
+      "trigger-long-running-operation"
+     ],
+     "s2_contract_drift": [
+      "echo",
+      "get-annotated-message",
+      "get-resource-links",
+      "get-resource-reference",
+      "get-structured-content",
+      "get-sum",
+      "gzip-file-as-resource",
+      "simulate-research-query",
+      "trigger-long-running-operation"
+     ],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2026.7.4->2026.8.18": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   },
+   "everything:2026.8.18->2026.8.31": {
+    "events": [],
+    "rule_hits": {
+     "s1_any_manifest_drift": [],
+     "s2_contract_drift": [],
+     "s3_hidden_instruction": [],
+     "s4_description_rewrite": [],
+     "s5_schema_widening": []
+    },
+    "composite_tools": [],
+    "composite_fired": false
+   }
+  }
+ },
+ "summary_D1": {
+  "transitions": 11,
+  "transitions_with_any_event": 6,
+  "events": 65,
+  "s1_fired_on_every_changed_tool": true,
+  "composite_fired_transitions": 1,
+  "per_rule_transitions_fired": {
+   "s1_any_manifest_drift": 6,
+   "s2_contract_drift": 4,
+   "s3_hidden_instruction": 0,
+   "s4_description_rewrite": 1,
+   "s5_schema_widening": 0
+  },
+  "per_rule_events_fired": {
+   "s1_any_manifest_drift": 65,
+   "s2_contract_drift": 25,
+   "s3_hidden_instruction": 0,
+   "s4_description_rewrite": 1,
+   "s5_schema_widening": 0
+  }
+ }
+}

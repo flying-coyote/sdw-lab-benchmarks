@@ -1,0 +1,147 @@
+{
+  "datafusion": {
+    "clickhouse": {
+      "array_any_match_arrow|type_id=2": 1000,
+      "array_any_match_arrow|type_id=21": 250,
+      "array_any_match_lambda_kw|type_id=2": 1000,
+      "array_any_match_lambda_kw|type_id=21": 250,
+      "array_has_june|type_id=2": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "array_has_june|type_id=21": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "dialect_readback": "clickhouse",
+      "unnest_rewrite|type_id=2": 1000,
+      "unnest_rewrite|type_id=21": 250
+    },
+    "databricks": {
+      "array_any_match_arrow|type_id=2": 1000,
+      "array_any_match_arrow|type_id=21": 250,
+      "array_any_match_lambda_kw|type_id=2": 1000,
+      "array_any_match_lambda_kw|type_id=21": 250,
+      "array_has_june|type_id=2": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "array_has_june|type_id=21": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "dialect_readback": "databricks",
+      "unnest_rewrite|type_id=2": 1000,
+      "unnest_rewrite|type_id=21": 250
+    },
+    "default(unset)": {
+      "array_any_match_arrow|type_id=2": {
+        "error": "ValueError: Schema error: No field named x. Valid fields are t.time, t.class_uid, t.src_endpoint, t.dst_endpoint, t.observables."
+      },
+      "array_any_match_arrow|type_id=21": {
+        "error": "ValueError: Schema error: No field named x. Valid fields are t.time, t.class_uid, t.src_endpoint, t.dst_endpoint, t.observables."
+      },
+      "array_any_match_lambda_kw|type_id=2": {
+        "error": "ValueError: SQL error: ParserError(\"Expected: ), found: x at Line: 1, Column: 71\")"
+      },
+      "array_any_match_lambda_kw|type_id=21": {
+        "error": "ValueError: SQL error: ParserError(\"Expected: ), found: x at Line: 1, Column: 71\")"
+      },
+      "array_has_june|type_id=2": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "array_has_june|type_id=21": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "dialect_readback": "generic",
+      "unnest_rewrite|type_id=2": 1000,
+      "unnest_rewrite|type_id=21": 250
+    },
+    "duckdb": {
+      "array_any_match_arrow|type_id=2": 1000,
+      "array_any_match_arrow|type_id=21": 250,
+      "array_any_match_lambda_kw|type_id=2": 1000,
+      "array_any_match_lambda_kw|type_id=21": 250,
+      "array_has_june|type_id=2": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "array_has_june|type_id=21": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "dialect_readback": "duckdb",
+      "unnest_rewrite|type_id=2": 1000,
+      "unnest_rewrite|type_id=21": 250
+    },
+    "generic": {
+      "array_any_match_arrow|type_id=2": {
+        "error": "ValueError: Schema error: No field named x. Valid fields are t.time, t.class_uid, t.src_endpoint, t.dst_endpoint, t.observables."
+      },
+      "array_any_match_arrow|type_id=21": {
+        "error": "ValueError: Schema error: No field named x. Valid fields are t.time, t.class_uid, t.src_endpoint, t.dst_endpoint, t.observables."
+      },
+      "array_any_match_lambda_kw|type_id=2": {
+        "error": "ValueError: SQL error: ParserError(\"Expected: ), found: x at Line: 1, Column: 71\")"
+      },
+      "array_any_match_lambda_kw|type_id=21": {
+        "error": "ValueError: SQL error: ParserError(\"Expected: ), found: x at Line: 1, Column: 71\")"
+      },
+      "array_has_june|type_id=2": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "array_has_june|type_id=21": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "dialect_readback": "generic",
+      "unnest_rewrite|type_id=2": 1000,
+      "unnest_rewrite|type_id=21": 250
+    },
+    "postgres": {
+      "array_any_match_arrow|type_id=2": {
+        "error": "ValueError: Schema error: No field named x. Valid fields are t.time, t.class_uid, t.src_endpoint, t.dst_endpoint, t.observables."
+      },
+      "array_any_match_arrow|type_id=21": {
+        "error": "ValueError: Schema error: No field named x. Valid fields are t.time, t.class_uid, t.src_endpoint, t.dst_endpoint, t.observables."
+      },
+      "array_any_match_lambda_kw|type_id=2": {
+        "error": "ValueError: SQL error: ParserError(\"Expected: ), found: x at Line: 1, Column: 71\")"
+      },
+      "array_any_match_lambda_kw|type_id=21": {
+        "error": "ValueError: SQL error: ParserError(\"Expected: ), found: x at Line: 1, Column: 71\")"
+      },
+      "array_has_june|type_id=2": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "array_has_june|type_id=21": {
+        "error": "Exception: DataFusion error: type_coercion caused by Execution error: Cannot access field at argument 1: type List(Struct(\"name\": Utf8, \"type_id\": Int32), field: 'element') is not Struct, Map, or Null"
+      },
+      "dialect_readback": "postgresql",
+      "unnest_rewrite|type_id=2": 1000,
+      "unnest_rewrite|type_id=21": 250
+    },
+    "timestamptz_cast_side_probe": {
+      "America/New_York": {
+        "type": "Timestamp(ns, \"America/New_York\")",
+        "value": "2026-06-06T12:00:00-04:00"
+      },
+      "UTC": {
+        "type": "Timestamp(ns, \"UTC\")",
+        "value": "2026-06-06T12:00:00Z"
+      }
+    },
+    "version": "55.0.0"
+  },
+  "duckdb": {
+    "list_filter_arrow|type_id=2": {
+      "error": "BinderException: Binder Error: Deprecated lambda arrow (->) detected. Please transition to the new lambda syntax, i.e.., lambda x, i: x + i, before DuckDB's next release. Use SET lambda_syntax='ENABLE_SINGLE_ARROW' to"
+    },
+    "list_filter_arrow|type_id=21": {
+      "error": "BinderException: Binder Error: Deprecated lambda arrow (->) detected. Please transition to the new lambda syntax, i.e.., lambda x, i: x + i, before DuckDB's next release. Use SET lambda_syntax='ENABLE_SINGLE_ARROW' to"
+    },
+    "list_filter_lambda_kw|type_id=2": 1000,
+    "list_filter_lambda_kw|type_id=21": 250,
+    "version": "2.0.0"
+  },
+  "parquet": "/tmp/claude-1000/-home-jerem-project1/e104b038-768f-4534-8613-e2298e868850/scratchpad/nested_vcur/_work/nested_ocsf.parquet",
+  "post_hoc": true,
+  "run_utc": "2026-11-16T13:15:29+00:00",
+  "truth": {
+    "2": 1000,
+    "21": 250
+  }
+}

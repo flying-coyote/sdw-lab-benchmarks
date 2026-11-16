@@ -1,0 +1,16 @@
+{
+  "chdb|literal|transform_null_in=0": 80,
+  "chdb|literal|transform_null_in=1": 80,
+  "chdb|subquery|transform_null_in=0": 80,
+  "chdb|subquery|transform_null_in=1": 80,
+  "datafusion|subquery": 0,
+  "duckdb|subquery": 0,
+  "environment": {
+    "chdb": "4.4.0",
+    "datafusion": "55.0.0",
+    "duckdb": "2.0.0"
+  },
+  "post_hoc": true,
+  "run_utc": "2026-11-16T13:15:45+00:00",
+  "truth": 0
+}

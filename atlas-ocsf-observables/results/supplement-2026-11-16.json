@@ -1,0 +1,288 @@
+{
+ "gate": "Grader A reproduces R1 161/235 of 290 and 112/155 of 182",
+ "incidents_27": {
+  "A_r1": {
+   "atlas_native": {
+    "observable": 116,
+    "observable_pct": 69.0,
+    "specific": 57,
+    "specific_pct": 33.9,
+    "steps": 168,
+    "techniques": 71
+   },
+   "attack_referenced": {
+    "observable": 119,
+    "observable_pct": 97.5,
+    "specific": 104,
+    "specific_pct": 85.2,
+    "steps": 122,
+    "techniques": 36
+   },
+   "headline": {
+    "observable_ground": 155,
+    "observable_ground_pct": 85.2,
+    "observable_pct": 81.0,
+    "observable_steps": 235,
+    "specific_ground": 112,
+    "specific_ground_pct": 61.5,
+    "specific_pct": 55.5,
+    "specific_steps": 161,
+    "total_ground": 182,
+    "total_steps": 290
+   },
+   "sensitivity_drop_File_UserAccount": {
+    "observable": 202,
+    "specific": 123,
+    "total": 290
+   }
+  },
+  "B_modal": {
+   "atlas_native": {
+    "observable": 86,
+    "observable_pct": 51.2,
+    "specific": 56,
+    "specific_pct": 33.3,
+    "steps": 168,
+    "techniques": 71
+   },
+   "attack_referenced": {
+    "observable": 118,
+    "observable_pct": 96.7,
+    "specific": 112,
+    "specific_pct": 91.8,
+    "steps": 122,
+    "techniques": 36
+   },
+   "headline": {
+    "observable_ground": 136,
+    "observable_ground_pct": 74.7,
+    "observable_pct": 70.3,
+    "observable_steps": 204,
+    "specific_ground": 109,
+    "specific_ground_pct": 59.9,
+    "specific_pct": 57.9,
+    "specific_steps": 168,
+    "total_ground": 182,
+    "total_steps": 290
+   },
+   "sensitivity_drop_File_UserAccount": {
+    "observable": 169,
+    "specific": 130,
+    "total": 290
+   }
+  }
+ },
+ "incidents_48": {
+  "A_r1_high": {
+   "headline": {
+    "observable_ground": 233,
+    "observable_ground_pct": 79.5,
+    "observable_pct": 79.0,
+    "observable_steps": 332,
+    "specific_ground": 174,
+    "specific_ground_pct": 59.4,
+    "specific_pct": 56.9,
+    "specific_steps": 239,
+    "total_ground": 293,
+    "total_steps": 420
+   }
+  },
+  "A_r1_low": {
+   "headline": {
+    "observable_ground": 232,
+    "observable_ground_pct": 79.2,
+    "observable_pct": 78.8,
+    "observable_steps": 331,
+    "specific_ground": 169,
+    "specific_ground_pct": 57.7,
+    "specific_pct": 55.7,
+    "specific_steps": 234,
+    "total_ground": 293,
+    "total_steps": 420
+   }
+  },
+  "A_r1_point": {
+   "atlas_native": {
+    "observable": 164,
+    "observable_pct": 66.1,
+    "specific": 82,
+    "specific_pct": 33.1,
+    "steps": 248,
+    "techniques": 83
+   },
+   "attack_referenced": {
+    "observable": 168,
+    "observable_pct": 97.7,
+    "specific": 153,
+    "specific_pct": 89.0,
+    "steps": 172,
+    "techniques": 37
+   },
+   "headline": {
+    "observable_ground": 233,
+    "observable_ground_pct": 79.5,
+    "observable_pct": 79.0,
+    "observable_steps": 332,
+    "specific_ground": 170,
+    "specific_ground_pct": 58.0,
+    "specific_pct": 56.0,
+    "specific_steps": 235,
+    "total_ground": 293,
+    "total_steps": 420
+   },
+   "prior_only": {
+    "observable_ground": 78,
+    "observable_ground_pct": 70.3,
+    "observable_pct": 74.6,
+    "observable_steps": 97,
+    "specific_ground": 58,
+    "specific_ground_pct": 52.3,
+    "specific_pct": 56.9,
+    "specific_steps": 74,
+    "total_ground": 111,
+    "total_steps": 130
+   },
+   "sensitivity_drop_File_UserAccount": {
+    "observable": 289,
+    "specific": 187,
+    "total": 420
+   }
+  },
+  "B_modal_high": {
+   "headline": {
+    "observable_ground": 204,
+    "observable_ground_pct": 69.6,
+    "observable_pct": 68.6,
+    "observable_steps": 288,
+    "specific_ground": 164,
+    "specific_ground_pct": 56.0,
+    "specific_pct": 56.9,
+    "specific_steps": 239,
+    "total_ground": 293,
+    "total_steps": 420
+   }
+  },
+  "B_modal_low": {
+   "headline": {
+    "observable_ground": 199,
+    "observable_ground_pct": 67.9,
+    "observable_pct": 67.4,
+    "observable_steps": 283,
+    "specific_ground": 159,
+    "specific_ground_pct": 54.3,
+    "specific_pct": 55.7,
+    "specific_steps": 234,
+    "total_ground": 293,
+    "total_steps": 420
+   }
+  },
+  "B_modal_point": {
+   "atlas_native": {
+    "observable": 121,
+    "observable_pct": 48.8,
+    "specific": 78,
+    "specific_pct": 31.5,
+    "steps": 248,
+    "techniques": 83
+   },
+   "attack_referenced": {
+    "observable": 167,
+    "observable_pct": 97.1,
+    "specific": 156,
+    "specific_pct": 90.7,
+    "steps": 172,
+    "techniques": 37
+   },
+   "headline": {
+    "observable_ground": 204,
+    "observable_ground_pct": 69.6,
+    "observable_pct": 68.6,
+    "observable_steps": 288,
+    "specific_ground": 159,
+    "specific_ground_pct": 54.3,
+    "specific_pct": 55.7,
+    "specific_steps": 234,
+    "total_ground": 293,
+    "total_steps": 420
+   },
+   "prior_only": {
+    "observable_ground": 68,
+    "observable_ground_pct": 61.3,
+    "observable_pct": 64.6,
+    "observable_steps": 84,
+    "specific_ground": 50,
+    "specific_ground_pct": 45.0,
+    "specific_pct": 50.8,
+    "specific_steps": 66,
+    "total_ground": 111,
+    "total_steps": 130
+   },
+   "sensitivity_drop_File_UserAccount": {
+    "observable": 243,
+    "specific": 186,
+    "total": 420
+   }
+  }
+ },
+ "incidents_48_scope": {
+  "atlas_incidents": 27,
+  "atlas_steps": 290,
+  "new_cells": {
+   "AML.T0110": {
+    "analogue": "AML.T0011.002 (no tool object in OCSF 1.9.0)",
+    "grade": "none",
+    "ocsf_class_uid": "",
+    "ocsf_object": ""
+   },
+   "d3f:ApplicationConfigurationFile": {
+    "analogue": "d3f:ConfigurationFile",
+    "grade": "generic",
+    "ocsf_class_uid": "",
+    "ocsf_object": "file"
+   },
+   "d3f:InboundInternetWebTraffic": {
+    "analogue": "d3f:OutboundInternetWebTraffic",
+    "grade": "direct",
+    "ocsf_class_uid": "",
+    "ocsf_object": "http_request"
+   }
+  },
+  "new_techniques_without_crosswalk_row": [
+   "AML.T0110"
+  ],
+  "prior_duplicate_incident_technique_rows": 0,
+  "prior_ground_rows": 111,
+  "prior_incidents": 21,
+  "prior_rows": 130,
+  "prior_rows_blank_tactic": 0,
+  "prior_rows_dropped": {
+   "confidence low": 4,
+   "not Incident": 51,
+   "superseded by ATLAS CS0068-CS0075": 45
+  },
+  "techniques_new_vs_27": [
+   "AML.T0004",
+   "AML.T0034",
+   "AML.T0034.000",
+   "AML.T0053",
+   "AML.T0066",
+   "AML.T0078",
+   "AML.T0081",
+   "AML.T0083",
+   "AML.T0100",
+   "AML.T0110",
+   "AML.T0111",
+   "AML.T0112.000",
+   "AML.T0112.001"
+  ],
+  "techniques_total": 120
+ },
+ "inputs": {
+  "artifact_ocsf_map": "0622cb6c31728a16bd03967d6de3d48a83ae63d71e18124a07c1f4122993c3b2",
+  "attack_refs": "057723420c874831017cf1a3bea42c778e2704ff3643f1c732ce79f0ced0de20",
+  "candidate_csv": "fecdc6e0f9cd020bb0f0f03942a2d45ac9c7c06126d072ab4b08c316b2741992",
+  "grader_b": "a4d1f4dbccf9fa76939b03a3aadc42718d443caba4dae79b371d3f0199982aa6",
+  "ocsf_reach": "0de548fa84bd11ec481f435bb6c7af9dc6fef8d070e1afb95ee4394ab8e5f14d"
+ },
+ "label": "post-hoc supplement 2026-11-16, not pre-registered"
+}

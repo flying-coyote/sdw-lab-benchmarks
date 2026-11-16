@@ -257,7 +257,7 @@ Full matrix with every fact: `results/matrix.md`. Timings (median, CV over 3 rep
 
 - One fixture server, written on each SDK's high-level API (`FastMCP` 1.30.0, `MCPServer` 2.3.0), defaults untouched.
   A low-level `Server` on either SDK, or a server written in the TypeScript or Go SDK, may log differently; the
-  draft's own R5 showed three TypeScript servers still on 2025-06-18.
+  draft's own R5 showed three TypeScript servers still on 2025-06-18 (corrected 2026-11-16: R5's snapshot client asked for 2025-06-18, so its replies show no ceiling, and `scg` is a Python server on `mcp` 1.30.0; the server cap is arm D here).
 - One client per arm. Other MCP clients (an IDE, an agent runtime) choose their own `mode` and may never probe
   `server/discover`.
 - The OTel results describe the SDK's built-in middleware with the operator-supplied provider. A real deployment
@@ -265,7 +265,7 @@ Full matrix with every fact: `results/matrix.md`. Timings (median, CV over 3 rep
   SDK itself emits.
 - `Mcp-Name` fidelity was tested with a header-safe name only. The SDK's base64 wrapping for non-ASCII or
   whitespace names (`inbound.py:149-159`) exists in code and was not exercised, because SEP-986's tool-name grammar
-  (`^[A-Za-z0-9._-]{1,128}$`, enforced by both SDKs) does not admit such names; URIs in `resources/read` could.
+  (`^[A-Za-z0-9._-]{1,128}$`, enforced by both SDKs) does not admit such names; URIs in `resources/read` could (corrected 2026-11-16: the rule is a SHOULD, and `mcp/shared/tool_name_validation.py` in both 1.30.0 and 2.3.0 logs a warning and registers the name, so a non-conforming tool name can also reach `Mcp-Name`).
 - The missing-resource code in A is a `FastMCP` 1.30.0 behaviour (`code: 0`), not a statement about the 2025-11-25
   specification, which did define `-32002`.
 - Timings are under contention and behind a clock 0.6 s off; they are not evidence of anything.

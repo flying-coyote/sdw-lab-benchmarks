@@ -40,7 +40,7 @@ backed by DuckDB (`server.py`); 25 wire messages are in `capture/wire.jsonl` (in
 `DROP`, missing table, unknown tool). Two things about the wire itself, before any schema gets involved:
 
 - The SDK client offered and the server accepted protocol `2025-11-25`, although SDK 2.3.0 advertises
-  `LATEST_PROTOCOL_VERSION = 2026-07-28`; the default client negotiates the older version.
+  `LATEST_PROTOCOL_VERSION = 2026-07-28`; the default client negotiates the older version (corrected 2026-11-16: this run used the low-level `ClientSession.initialize()`, which offers only 2025-11-25 by design; the high-level `Client` at its default `mode="auto"` adopts 2026-07-28, per T8a).
 - The SDK server masks tool exceptions: the SQL syntax error, the rejected `DROP` and the missing table all reach
   the wire as the same text, `Error executing tool <name>`. The cause never leaves the server process, so no
   client-side record in any schema can carry it. The unknown tool came back as a tool result with `isError`, not a
@@ -76,8 +76,9 @@ What drives the differences:
   `mcp.method.name`, `jsonrpc.request.id`, `mcp.protocol.version`, `network.transport = pipe`, `error.type =
   tool_error`) and keeps the tool description as a plain string. It has no attribute for the MCP server's name or
   version on a tool span, for the tool annotations, for the input/output schema on an `execute_tool` span, or for an
-  agent instance id, so those 11 facts go to custom `sdw.*` attributes. Every attribute used is `stability:
-  development`.
+  agent instance id, so those 11 facts go to custom `sdw.*` attributes. Every GenAI and MCP attribute used is
+  `stability: development`; the general attributes it also uses (`network.transport`, `error.type`, `service.name`,
+  `service.version`) are stable (corrected 2026-11-16; the original said every attribute).
 - **AOS** puts the agent in `actor.user` (type_id 99, "AI Agent"), the server in `api.service`, and nearly
   everything agent- or tool-specific under `unmapped.aos`. The two examples on the same AOS page disagree:
   example 2 puts the tool name in `api.operation` (typed) and the session in `actor.session.uid`, example 1 puts

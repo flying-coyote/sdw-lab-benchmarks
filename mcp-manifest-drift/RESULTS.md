@@ -23,7 +23,7 @@ environment.
 
 ## Servers snapshotted
 
-| Server | `serverInfo` | Protocol returned | Tools | Snapshots |
+| Server | `serverInfo` | Protocol returned (corrected 2026-11-16: `snapshot.py:13,69` sends `protocolVersion` 2025-06-18 in `initialize`, so this column is the version the client asked for, echoed as the spec requires, and not the server's ceiling) | Tools | Snapshots |
 |---|---|---|---|---|
 | `scg` (lab, `security-context-graph/scg_mcp.py`, unmodified) | security-context-graph 1.30.0 | 2025-06-18 | 7 | 3 runs × 6 |
 | `everything` (`@modelcontextprotocol/server-everything@2026.8.31`) | mcp-servers/everything 2.0.0 | 2025-06-18 | 13 | 3 runs × 6 |

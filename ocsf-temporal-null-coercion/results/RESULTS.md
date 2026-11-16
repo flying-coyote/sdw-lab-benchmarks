@@ -48,8 +48,11 @@ The numbers are each engine's row count (✅ = equals the UTC-correct 600). They
 agree**: under a non-UTC session, DataFusion treats the tz-aware column and the literal as UTC and gets it
 right; DuckDB compares the tz-aware column against the *naive literal cast into the session zone* (shifting the
 window to empty) while reading the naive column directly (correct); chDB applies the session zone on both and
-lands on neither. No engine is "buggy" in isolation — the SQL standard leaves naive-timestamp and naive-literal
-tz-resolution to the engine — but the **same time-window query over the same bytes returns different counts on
+lands on neither. No engine is "buggy" in isolation, but they don't all follow the standard: SQL-92 (§4.5, §6.1
+rule 5) gives a timestamp without a time zone the SQL-session's zone, which is DuckDB's behavior on every row, while
+DataFusion resolves a naive literal against the column, and the Parquet-to-SQL type mapping is engine-specific
+(corrected 2026-11-16: this line previously said the standard leaves naive-timestamp and naive-literal
+tz-resolution to the engine; it does not) — and the **same time-window query over the same bytes returns different counts on
 different engines**, which is the answer-equivalence break that matters for any time-bucketed detection.
 
 ## Reading

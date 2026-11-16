@@ -1,0 +1,118 @@
+{
+ "rules": {
+  "c2_domain.yml": {
+   "column": "query_hostname",
+   "compiled_sql": "SELECT * FROM logs WHERE query_hostname='cdn-telemetry-sync.net'",
+   "engines_disagree_on": [],
+   "matched": {
+    "duckdb": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    }
+   },
+   "planted": {
+    "lower": "cdn-telemetry-sync.net",
+    "mixed": "cDn-tElEmEtRy-sYnC.NeT",
+    "non-match": "benign-value",
+    "original": "cdn-telemetry-sync.net",
+    "upper": "CDN-TELEMETRY-SYNC.NET"
+   }
+  },
+  "encoded_powershell.yml": {
+   "column": "cmd_line",
+   "compiled_sql": "SELECT * FROM logs WHERE cmd_line LIKE '%-EncodedCommand%' ESCAPE '\\' AND device_hostname='WS1'",
+   "engines_disagree_on": [
+    "lower",
+    "upper",
+    "mixed"
+   ],
+   "matched": {
+    "duckdb": {
+     "lower": false,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": true,
+     "mixed": true,
+     "non-match": false,
+     "original": true,
+     "upper": true
+    }
+   },
+   "planted": {
+    "lower": "powershell.exe -encodedcommand sqbfafga",
+    "mixed": "pOwErShElL.ExE -eNcOdEdCoMmAnD SqBfAfGa",
+    "non-match": "benign-value",
+    "original": "powershell.exe -EncodedCommand SQBFAFgA",
+    "upper": "POWERSHELL.EXE -ENCODEDCOMMAND SQBFAFGA"
+   }
+  },
+  "nomfa_privesc.yml": {
+   "column": "api_operation",
+   "compiled_sql": "SELECT * FROM logs WHERE api_operation='AttachUserPolicy' AND (NOT COALESCE(((mfa_present='true' OR mfa_present=1)), 0))",
+   "engines_disagree_on": [],
+   "matched": {
+    "duckdb": {
+     "lower": false,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    },
+    "sqlite": {
+     "lower": false,
+     "mixed": false,
+     "non-match": false,
+     "original": true,
+     "upper": false
+    }
+   },
+   "planted": {
+    "lower": "attachuserpolicy",
+    "mixed": "aTtAcHuSeRpOlIcY",
+    "non-match": "benign-value",
+    "original": "AttachUserPolicy",
+    "upper": "ATTACHUSERPOLICY"
+   }
+  },
+  "rdp_lateral.yml": {
+   "column": "dst_port",
+   "compiled_sql": "SELECT * FROM logs WHERE dst_port=3389",
+   "engines_disagree_on": [],
+   "matched": {
+    "duckdb": {
+     "non-match": false,
+     "original": true
+    },
+    "sqlite": {
+     "non-match": false,
+     "original": true
+    }
+   },
+   "planted": {
+    "non-match": 3390,
+    "original": 3389
+   }
+  }
+ },
+ "versions": {
+  "duckdb": "1.5.3",
+  "pySigma": "2.0.3",
+  "pySigma-backend-sqlite": "2.1.1",
+  "python": "3.12.3",
+  "sqlite": "3.45.1"
+ }
+}

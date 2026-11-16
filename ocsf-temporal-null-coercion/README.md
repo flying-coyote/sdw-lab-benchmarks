@@ -21,8 +21,9 @@ SQL engines: DuckDB `1.5.3`, DataFusion `53.0.0`, chDB `4.1.8`. Two patterns:
   rule, same data, different answer — and on two of three engines it's a silent total-bypass.
 - **Time-window counts under a non-UTC session** — the same `WHERE ts >= TIMESTAMP '…12:00' AND ts < '…13:00'`
   over 1,200 instants (UTC-correct window = 600) returns **DuckDB 0 / DataFusion 600 / chDB 0** on a
-  UTC-adjusted column and **600 / 600 / 0** on a naive column. No engine is buggy in isolation (the standard
-  leaves naive-timestamp + naive-literal tz-resolution to the engine), but a time-bucketed detection is **not
+  UTC-adjusted column and **600 / 600 / 0** on a naive column. No engine is buggy in isolation, though they don't all follow the standard, since SQL-92 (§4.5, §6.1 rule 5)
+  gives a zone-less timestamp the session's zone, which is what DuckDB does (corrected 2026-11-16: this line
+  previously said the standard leaves naive-timestamp + naive-literal tz-resolution to the engine, and it does not), but a time-bucketed detection is **not
   answer-equivalent** across engines when the session zone isn't UTC.
 
 The safe defaults fall straight out: pin sessions to UTC, store tz-aware (UTC) timestamps, and never let an
@@ -34,6 +35,11 @@ allowlist carry a NULL. Full tables in [results/RESULTS.md](results/RESULTS.md).
 pip install -r ocsf-temporal-null-coercion/requirements.txt
 python ocsf-temporal-null-coercion/run.py
 ```
+
+(Corrected 2026-11-16: in the June run `run.py` set only the process `TZ`, which DataFusion does not read, so
+DataFusion ran in a UTC session; the re-run with every session zone set and read back, `run_rerun_2026_11_16.py`,
+returns the same 600/600 for DataFusion under a verified New York session. See
+[results/RESULTS-RERUN-2026-11-16.md](results/RESULTS-RERUN-2026-11-16.md).)
 
 Deterministic; the bench forces `TZ=America/New_York` (and each engine's session timezone) so the timezone
 divergence is reproducible rather than dependent on the host clock. The per-engine behavior table is the
