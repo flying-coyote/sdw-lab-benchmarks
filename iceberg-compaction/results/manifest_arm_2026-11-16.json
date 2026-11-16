@@ -1,0 +1,977 @@
+{
+  "benchmark": "iceberg-compaction manifest arm (POST-HOC 2026-11-16)",
+  "label": "post-hoc, not pre-registered; single host, warm cache, Tier B",
+  "env": {
+    "pyiceberg": "0.11.1",
+    "duckdb": "1.5.3",
+    "pyarrow": "24.0.0",
+    "python": "3.12.3",
+    "host": "mine",
+    "catalog": "pyiceberg SqlCatalog (sqlite) on local filesystem",
+    "started_utc": "2026-11-16T13:55:21Z",
+    "finished_utc": "2026-11-16T14:16:16Z"
+  },
+  "shape_a_planning_sweep": [
+    {
+      "N_appends": 10,
+      "default": {
+        "data_files": 10,
+        "manifests": 10,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_10/s/t/metadata/00010-a01e8ccb-c4c7-466c-960b-21a8961a80eb.metadata.json",
+        "plan": {
+          "median_ms": 13.809,
+          "cv_pct": 9.4,
+          "trials": 5,
+          "min_ms": 12.935,
+          "max_ms": 16.529
+        },
+        "scan": {
+          "median_ms": 5.706,
+          "cv_pct": 7.9,
+          "trials": 5,
+          "min_ms": 5.503,
+          "max_ms": 6.814
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 0.6
+      },
+      "rewrite_manifests": {
+        "data_files": 10,
+        "manifests": 1,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_10/s/t/metadata/00012-49909f52-bb28-4e94-92b0-962a9b3bc510.metadata.json",
+        "plan": {
+          "median_ms": 2.252,
+          "cv_pct": 3.4,
+          "trials": 5,
+          "min_ms": 2.148,
+          "max_ms": 2.368
+        },
+        "scan": {
+          "median_ms": 3.745,
+          "cv_pct": 4.7,
+          "trials": 5,
+          "min_ms": 3.592,
+          "max_ms": 4.04
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 0.06
+      },
+      "compacted": {
+        "data_files": 1,
+        "manifests": 1,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_10/s/t/metadata/00013-b37fe9d3-d2bb-4386-875d-e64068c860fd.metadata.json",
+        "plan": {
+          "median_ms": 1.618,
+          "cv_pct": 5.9,
+          "trials": 5,
+          "min_ms": 1.526,
+          "max_ms": 1.815
+        },
+        "scan": {
+          "median_ms": 4.409,
+          "cv_pct": 1.0,
+          "trials": 5,
+          "min_ms": 4.362,
+          "max_ms": 4.479
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 0.32
+      },
+      "merge_on": {
+        "data_files": 10,
+        "manifests": 10,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_merge_10/s/t/metadata/00010-079ce796-7e80-4cee-a8a1-d0a81423e0c6.metadata.json",
+        "plan": {
+          "median_ms": 12.322,
+          "cv_pct": 1.9,
+          "trials": 5,
+          "min_ms": 11.831,
+          "max_ms": 12.474
+        },
+        "scan": {
+          "median_ms": 5.685,
+          "cv_pct": 6.2,
+          "trials": 5,
+          "min_ms": 5.032,
+          "max_ms": 6.055
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 0.6
+      }
+    },
+    {
+      "N_appends": 100,
+      "default": {
+        "data_files": 100,
+        "manifests": 100,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_100/s/t/metadata/00100-873b23a2-dc4b-4536-a6e3-6bec24941181.metadata.json",
+        "plan": {
+          "median_ms": 116.387,
+          "cv_pct": 1.4,
+          "trials": 5,
+          "min_ms": 114.537,
+          "max_ms": 118.93
+        },
+        "scan": {
+          "median_ms": 37.312,
+          "cv_pct": 1.4,
+          "trials": 5,
+          "min_ms": 36.553,
+          "max_ms": 37.887
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 5.4
+      },
+      "rewrite_manifests": {
+        "data_files": 100,
+        "manifests": 1,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_100/s/t/metadata/00102-1086f606-edf9-4ede-92c5-22b2252f5706.metadata.json",
+        "plan": {
+          "median_ms": 6.979,
+          "cv_pct": 4.3,
+          "trials": 5,
+          "min_ms": 6.792,
+          "max_ms": 7.529
+        },
+        "scan": {
+          "median_ms": 10.002,
+          "cv_pct": 10.5,
+          "trials": 5,
+          "min_ms": 8.109,
+          "max_ms": 11.229
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 0.25
+      },
+      "compacted": {
+        "data_files": 1,
+        "manifests": 1,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_100/s/t/metadata/00103-959eaeff-e3e1-4686-b794-abf7dfc08c9d.metadata.json",
+        "plan": {
+          "median_ms": 1.65,
+          "cv_pct": 4.4,
+          "trials": 5,
+          "min_ms": 1.638,
+          "max_ms": 1.813
+        },
+        "scan": {
+          "median_ms": 4.958,
+          "cv_pct": 7.5,
+          "trials": 5,
+          "min_ms": 4.324,
+          "max_ms": 5.312
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 0.42
+      },
+      "merge_on": {
+        "data_files": 100,
+        "manifests": 1,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_merge_100/s/t/metadata/00100-bb9f8669-a8dd-4483-b5e5-4161a942d6ca.metadata.json",
+        "plan": {
+          "median_ms": 14.543,
+          "cv_pct": 104.9,
+          "trials": 5,
+          "min_ms": 6.345,
+          "max_ms": 67.181
+        },
+        "scan": {
+          "median_ms": 9.799,
+          "cv_pct": 13.0,
+          "trials": 5,
+          "min_ms": 8.366,
+          "max_ms": 12.262
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 5.7
+      }
+    },
+    {
+      "N_appends": 1000,
+      "default": {
+        "data_files": 1000,
+        "manifests": 1000,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_1000/s/t/metadata/01000-0af25905-7052-44a9-8fc5-20a03349e7a0.metadata.json",
+        "plan": {
+          "median_ms": 1226.957,
+          "cv_pct": 2.4,
+          "trials": 5,
+          "min_ms": 1174.391,
+          "max_ms": 1243.991
+        },
+        "scan": {
+          "median_ms": 428.207,
+          "cv_pct": 4.3,
+          "trials": 5,
+          "min_ms": 393.181,
+          "max_ms": 446.058
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 406.5
+      },
+      "rewrite_manifests": {
+        "data_files": 1000,
+        "manifests": 1,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_1000/s/t/metadata/01002-a70d4b3d-3eee-41de-bff0-2858778d728a.metadata.json",
+        "plan": {
+          "median_ms": 65.671,
+          "cv_pct": 29.4,
+          "trials": 5,
+          "min_ms": 59.574,
+          "max_ms": 112.65
+        },
+        "scan": {
+          "median_ms": 46.427,
+          "cv_pct": 2.5,
+          "trials": 5,
+          "min_ms": 45.874,
+          "max_ms": 48.81
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 1.67
+      },
+      "compacted": {
+        "data_files": 1,
+        "manifests": 1,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_default_1000/s/t/metadata/01003-ed7776b8-56e0-46c0-a248-6f4675491940.metadata.json",
+        "plan": {
+          "median_ms": 1.651,
+          "cv_pct": 7.6,
+          "trials": 5,
+          "min_ms": 1.573,
+          "max_ms": 1.94
+        },
+        "scan": {
+          "median_ms": 9.766,
+          "cv_pct": 4.5,
+          "trials": 5,
+          "min_ms": 9.239,
+          "max_ms": 10.533
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 1.76
+      },
+      "merge_on": {
+        "data_files": 1000,
+        "manifests": 10,
+        "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/A_merge_1000/s/t/metadata/01000-94258c66-7a34-4aef-9ca0-83123cadad03.metadata.json",
+        "plan": {
+          "median_ms": 71.505,
+          "cv_pct": 26.0,
+          "trials": 5,
+          "min_ms": 66.471,
+          "max_ms": 121.736
+        },
+        "scan": {
+          "median_ms": 53.587,
+          "cv_pct": 5.6,
+          "trials": 5,
+          "min_ms": 51.533,
+          "max_ms": 60.355
+        },
+        "answer": [
+          [
+            100000
+          ]
+        ],
+        "answer_matches_default": true,
+        "step_s": 561.0
+      }
+    }
+  ],
+  "shape_b_zeek_500": {
+    "rows": 10000000,
+    "n_appends": 500,
+    "default": {
+      "data_files": 500,
+      "manifests": 500,
+      "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_default/s/t/metadata/00500-37bfbc4c-bc91-4f5e-ab48-e8de816e7553.metadata.json",
+      "plan": {
+        "median_ms": 666.038,
+        "cv_pct": 4.9,
+        "trials": 5,
+        "min_ms": 624.84,
+        "max_ms": 718.239
+      },
+      "battery": {
+        "count_all": {
+          "median_ms": 108.138,
+          "cv_pct": 5.3,
+          "trials": 7,
+          "min_ms": 105.75,
+          "max_ms": 123.939,
+          "answer": [
+            [
+              10000000
+            ]
+          ]
+        },
+        "protocol_distribution": {
+          "median_ms": 163.943,
+          "cv_pct": 10.5,
+          "trials": 7,
+          "min_ms": 149.573,
+          "max_ms": 207.6,
+          "answer": [
+            [
+              "tcp",
+              8918398
+            ],
+            [
+              "udp",
+              914986
+            ],
+            [
+              "icmp",
+              166616
+            ]
+          ]
+        },
+        "long_duration_scan": {
+          "median_ms": 367.949,
+          "cv_pct": 7.2,
+          "trials": 7,
+          "min_ms": 352.488,
+          "max_ms": 429.942,
+          "answer": [
+            [
+              "192.168.207.102",
+              "82.196.10.87",
+              3599.997171492552
+            ],
+            [
+              "192.168.80.79",
+              "124.4.132.142",
+              3599.9953347743094
+            ],
+            [
+              "10.26.73.223",
+              "113.148.190.126",
+              3599.99300081353
+            ],
+            [
+              "172.22.209.53",
+              "22.8.19.84",
+              3599.991890427935
+            ],
+            [
+              "192.168.21.11",
+              "45.106.63.138",
+              3599.9914232126844
+            ],
+            [
+              "192.168.208.7",
+              "10.54.162.198",
+              3599.9825761138386
+            ],
+            [
+              "192.168.31.161",
+              "172.155.115.123",
+              3599.9783072385467
+            ],
+            [
+              "192.168.150.112",
+              "129.121.126.110",
+              3599.970715591769
+            ],
+            [
+              "10.13.209.68",
+              "104.224.140.172",
+              3599.9693975325486
+            ],
+            [
+              "192.168.240.49",
+              "186.105.4.95",
+              3599.9673603050483
+            ]
+          ]
+        },
+        "bytes_by_source": {
+          "median_ms": 325.916,
+          "cv_pct": 6.3,
+          "trials": 7,
+          "min_ms": 318.576,
+          "max_ms": 375.023,
+          "answer": [
+            [
+              "172.18.196.29",
+              150041272
+            ],
+            [
+              "10.38.0.40",
+              148752399
+            ],
+            [
+              "192.168.13.71",
+              148420526
+            ],
+            [
+              "172.19.115.83",
+              148196330
+            ],
+            [
+              "10.126.30.127",
+              147754841
+            ],
+            [
+              "10.150.59.214",
+              147353064
+            ],
+            [
+              "192.168.140.43",
+              147329347
+            ],
+            [
+              "172.23.126.239",
+              146770532
+            ],
+            [
+              "172.18.181.70",
+              146760042
+            ],
+            [
+              "172.25.171.130",
+              146613244
+            ]
+          ]
+        }
+      },
+      "step_s": 107.4
+    },
+    "rewrite_manifests": {
+      "data_files": 500,
+      "manifests": 1,
+      "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_default/s/t/metadata/00502-4bccb0d7-3fd5-457a-a99c-29c64c2be125.metadata.json",
+      "plan": {
+        "median_ms": 33.664,
+        "cv_pct": 3.1,
+        "trials": 5,
+        "min_ms": 32.763,
+        "max_ms": 35.701
+      },
+      "battery": {
+        "count_all": {
+          "median_ms": 21.28,
+          "cv_pct": 8.9,
+          "trials": 7,
+          "min_ms": 19.601,
+          "max_ms": 25.564,
+          "answer": [
+            [
+              10000000
+            ]
+          ],
+          "answer_matches_default": true
+        },
+        "protocol_distribution": {
+          "median_ms": 55.216,
+          "cv_pct": 6.4,
+          "trials": 7,
+          "min_ms": 53.053,
+          "max_ms": 63.578,
+          "answer": [
+            [
+              "tcp",
+              8918398
+            ],
+            [
+              "udp",
+              914986
+            ],
+            [
+              "icmp",
+              166616
+            ]
+          ],
+          "answer_matches_default": true
+        },
+        "long_duration_scan": {
+          "median_ms": 171.487,
+          "cv_pct": 3.5,
+          "trials": 7,
+          "min_ms": 166.922,
+          "max_ms": 183.729,
+          "answer": [
+            [
+              "192.168.207.102",
+              "82.196.10.87",
+              3599.997171492552
+            ],
+            [
+              "192.168.80.79",
+              "124.4.132.142",
+              3599.9953347743094
+            ],
+            [
+              "10.26.73.223",
+              "113.148.190.126",
+              3599.99300081353
+            ],
+            [
+              "172.22.209.53",
+              "22.8.19.84",
+              3599.991890427935
+            ],
+            [
+              "192.168.21.11",
+              "45.106.63.138",
+              3599.9914232126844
+            ],
+            [
+              "192.168.208.7",
+              "10.54.162.198",
+              3599.9825761138386
+            ],
+            [
+              "192.168.31.161",
+              "172.155.115.123",
+              3599.9783072385467
+            ],
+            [
+              "192.168.150.112",
+              "129.121.126.110",
+              3599.970715591769
+            ],
+            [
+              "10.13.209.68",
+              "104.224.140.172",
+              3599.9693975325486
+            ],
+            [
+              "192.168.240.49",
+              "186.105.4.95",
+              3599.9673603050483
+            ]
+          ],
+          "answer_matches_default": true
+        },
+        "bytes_by_source": {
+          "median_ms": 231.667,
+          "cv_pct": 4.3,
+          "trials": 7,
+          "min_ms": 217.118,
+          "max_ms": 252.708,
+          "answer": [
+            [
+              "172.18.196.29",
+              150041272
+            ],
+            [
+              "10.38.0.40",
+              148752399
+            ],
+            [
+              "192.168.13.71",
+              148420526
+            ],
+            [
+              "172.19.115.83",
+              148196330
+            ],
+            [
+              "10.126.30.127",
+              147754841
+            ],
+            [
+              "10.150.59.214",
+              147353064
+            ],
+            [
+              "192.168.140.43",
+              147329347
+            ],
+            [
+              "172.23.126.239",
+              146770532
+            ],
+            [
+              "172.18.181.70",
+              146760042
+            ],
+            [
+              "172.25.171.130",
+              146613244
+            ]
+          ],
+          "answer_matches_default": true
+        }
+      },
+      "step_s": 1.04
+    },
+    "compacted": {
+      "data_files": 4,
+      "manifests": 1,
+      "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_default/s/t/metadata/00503-6602b67b-24d4-4791-930a-e1e124446304.metadata.json",
+      "plan": {
+        "median_ms": 2.224,
+        "cv_pct": 1.9,
+        "trials": 5,
+        "min_ms": 2.207,
+        "max_ms": 2.322
+      },
+      "battery": {
+        "count_all": {
+          "median_ms": 5.009,
+          "cv_pct": 14.2,
+          "trials": 7,
+          "min_ms": 4.614,
+          "max_ms": 6.935,
+          "answer": [
+            [
+              10000000
+            ]
+          ],
+          "answer_matches_default": true
+        },
+        "protocol_distribution": {
+          "median_ms": 25.229,
+          "cv_pct": 3.4,
+          "trials": 7,
+          "min_ms": 24.887,
+          "max_ms": 27.281,
+          "answer": [
+            [
+              "tcp",
+              8918398
+            ],
+            [
+              "udp",
+              914986
+            ],
+            [
+              "icmp",
+              166616
+            ]
+          ],
+          "answer_matches_default": true
+        },
+        "long_duration_scan": {
+          "median_ms": 106.059,
+          "cv_pct": 2.3,
+          "trials": 7,
+          "min_ms": 100.353,
+          "max_ms": 107.929,
+          "answer": [
+            [
+              "192.168.207.102",
+              "82.196.10.87",
+              3599.997171492552
+            ],
+            [
+              "192.168.80.79",
+              "124.4.132.142",
+              3599.9953347743094
+            ],
+            [
+              "10.26.73.223",
+              "113.148.190.126",
+              3599.99300081353
+            ],
+            [
+              "172.22.209.53",
+              "22.8.19.84",
+              3599.991890427935
+            ],
+            [
+              "192.168.21.11",
+              "45.106.63.138",
+              3599.9914232126844
+            ],
+            [
+              "192.168.208.7",
+              "10.54.162.198",
+              3599.9825761138386
+            ],
+            [
+              "192.168.31.161",
+              "172.155.115.123",
+              3599.9783072385467
+            ],
+            [
+              "192.168.150.112",
+              "129.121.126.110",
+              3599.970715591769
+            ],
+            [
+              "10.13.209.68",
+              "104.224.140.172",
+              3599.9693975325486
+            ],
+            [
+              "192.168.240.49",
+              "186.105.4.95",
+              3599.9673603050483
+            ]
+          ],
+          "answer_matches_default": true
+        },
+        "bytes_by_source": {
+          "median_ms": 140.476,
+          "cv_pct": 4.6,
+          "trials": 7,
+          "min_ms": 135.245,
+          "max_ms": 156.278,
+          "answer": [
+            [
+              "172.18.196.29",
+              150041272
+            ],
+            [
+              "10.38.0.40",
+              148752399
+            ],
+            [
+              "192.168.13.71",
+              148420526
+            ],
+            [
+              "172.19.115.83",
+              148196330
+            ],
+            [
+              "10.126.30.127",
+              147754841
+            ],
+            [
+              "10.150.59.214",
+              147353064
+            ],
+            [
+              "192.168.140.43",
+              147329347
+            ],
+            [
+              "172.23.126.239",
+              146770532
+            ],
+            [
+              "172.18.181.70",
+              146760042
+            ],
+            [
+              "172.25.171.130",
+              146613244
+            ]
+          ],
+          "answer_matches_default": true
+        }
+      },
+      "step_s": 3.09
+    },
+    "merge_on": {
+      "data_files": 500,
+      "manifests": 5,
+      "metadata_location": "file:///home/jerem/sdw-lab-benchmarks/iceberg-compaction/_work/manifest_arm/B_merge/s/t/metadata/00500-97d49dea-811d-4cf7-a436-42b17845a89b.metadata.json",
+      "plan": {
+        "median_ms": 40.765,
+        "cv_pct": 9.3,
+        "trials": 5,
+        "min_ms": 35.419,
+        "max_ms": 44.485
+      },
+      "battery": {
+        "count_all": {
+          "median_ms": 19.129,
+          "cv_pct": 2.5,
+          "trials": 7,
+          "min_ms": 18.253,
+          "max_ms": 19.869,
+          "answer": [
+            [
+              10000000
+            ]
+          ],
+          "answer_matches_default": true
+        },
+        "protocol_distribution": {
+          "median_ms": 49.964,
+          "cv_pct": 6.3,
+          "trials": 7,
+          "min_ms": 47.525,
+          "max_ms": 58.391,
+          "answer": [
+            [
+              "tcp",
+              8918398
+            ],
+            [
+              "udp",
+              914986
+            ],
+            [
+              "icmp",
+              166616
+            ]
+          ],
+          "answer_matches_default": true
+        },
+        "long_duration_scan": {
+          "median_ms": 169.854,
+          "cv_pct": 7.6,
+          "trials": 7,
+          "min_ms": 152.85,
+          "max_ms": 184.565,
+          "answer": [
+            [
+              "192.168.207.102",
+              "82.196.10.87",
+              3599.997171492552
+            ],
+            [
+              "192.168.80.79",
+              "124.4.132.142",
+              3599.9953347743094
+            ],
+            [
+              "10.26.73.223",
+              "113.148.190.126",
+              3599.99300081353
+            ],
+            [
+              "172.22.209.53",
+              "22.8.19.84",
+              3599.991890427935
+            ],
+            [
+              "192.168.21.11",
+              "45.106.63.138",
+              3599.9914232126844
+            ],
+            [
+              "192.168.208.7",
+              "10.54.162.198",
+              3599.9825761138386
+            ],
+            [
+              "192.168.31.161",
+              "172.155.115.123",
+              3599.9783072385467
+            ],
+            [
+              "192.168.150.112",
+              "129.121.126.110",
+              3599.970715591769
+            ],
+            [
+              "10.13.209.68",
+              "104.224.140.172",
+              3599.9693975325486
+            ],
+            [
+              "192.168.240.49",
+              "186.105.4.95",
+              3599.9673603050483
+            ]
+          ],
+          "answer_matches_default": true
+        },
+        "bytes_by_source": {
+          "median_ms": 235.241,
+          "cv_pct": 4.5,
+          "trials": 7,
+          "min_ms": 216.124,
+          "max_ms": 253.438,
+          "answer": [
+            [
+              "172.18.196.29",
+              150041272
+            ],
+            [
+              "10.38.0.40",
+              148752399
+            ],
+            [
+              "192.168.13.71",
+              148420526
+            ],
+            [
+              "172.19.115.83",
+              148196330
+            ],
+            [
+              "10.126.30.127",
+              147754841
+            ],
+            [
+              "10.150.59.214",
+              147353064
+            ],
+            [
+              "192.168.140.43",
+              147329347
+            ],
+            [
+              "172.23.126.239",
+              146770532
+            ],
+            [
+              "172.18.181.70",
+              146760042
+            ],
+            [
+              "172.25.171.130",
+              146613244
+            ]
+          ],
+          "answer_matches_default": true
+        }
+      },
+      "step_s": 115.4
+    }
+  }
+}

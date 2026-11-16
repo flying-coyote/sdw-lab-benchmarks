@@ -1,0 +1,18 @@
+env {'pyiceberg': '0.11.1', 'duckdb': '1.5.3', 'pyarrow': '24.0.0', 'python': '3.12.3', 'host': 'mine', 'catalog': 'pyiceberg SqlCatalog (sqlite) on local filesystem', 'started_utc': '2026-11-16T13:55:21Z'}
+A N=10 default: files 10 manifests 10 plan 13.809 ms (cv 9.4) scan 5.706 ms
+A N=10 rewrite_manifests: files 10 manifests 1 plan 2.252 ms (cv 3.4) scan 3.745 ms
+A N=10 compacted: files 1 manifests 1 plan 1.618 ms (cv 5.9) scan 4.409 ms
+A N=10 merge_on: files 10 manifests 10 plan 12.322 ms (cv 1.9) scan 5.685 ms
+A N=100 default: files 100 manifests 100 plan 116.387 ms (cv 1.4) scan 37.312 ms
+A N=100 rewrite_manifests: files 100 manifests 1 plan 6.979 ms (cv 4.3) scan 10.002 ms
+A N=100 compacted: files 1 manifests 1 plan 1.65 ms (cv 4.4) scan 4.958 ms
+A N=100 merge_on: files 100 manifests 1 plan 14.543 ms (cv 104.9) scan 9.799 ms
+A N=1000 default: files 1000 manifests 1000 plan 1226.957 ms (cv 2.4) scan 428.207 ms
+A N=1000 rewrite_manifests: files 1000 manifests 1 plan 65.671 ms (cv 29.4) scan 46.427 ms
+A N=1000 compacted: files 1 manifests 1 plan 1.651 ms (cv 7.6) scan 9.766 ms
+A N=1000 merge_on: files 1000 manifests 10 plan 71.505 ms (cv 26.0) scan 53.587 ms
+B default: 500 files 500 manifests count_all 108.138 protocol_distribution 163.943 long_duration_scan 367.949 bytes_by_source 325.916
+B rewrite_manifests: 500 files 1 manifests count_all 21.28 protocol_distribution 55.216 long_duration_scan 171.487 bytes_by_source 231.667
+B compacted: 4 files 1 manifests count_all 5.009 protocol_distribution 25.229 long_duration_scan 106.059 bytes_by_source 140.476
+B merge_on: 500 files 5 manifests count_all 19.129 protocol_distribution 49.964 long_duration_scan 169.854 bytes_by_source 235.241
+wrote /home/jerem/sdw-lab-benchmarks/iceberg-compaction/results/manifest_arm_2026-11-16.json
