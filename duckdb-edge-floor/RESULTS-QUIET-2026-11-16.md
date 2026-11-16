@@ -31,7 +31,8 @@ the ones to quote.**
   256 MiB (1.051 to 0.694 s), the CV-flagged H on Z at 256 MiB (9.417 to 4.663 s), and three of arm B's four S on U cells
   (for example 4.776 to 3.411 s at 64 MiB, 1/2; the 128 MiB, 1/4 cell moved 7.4%).
 - **Six of the eight capped-over-reference ratios move up**, because the references sped up more than most capped cells;
-  the two that move down, H on Z at 256 MiB and S on U at 64 MiB, had the most inflated 11-15 capped medians.
+  the two that move down, H on Z at 256 MiB and S on U at 64 MiB, are the ones whose capped cell sped up more than its
+  reference (-50.5% against -27.5%, and -28.6% against -24.6%).
   At the 7/8-rule floor: S on U 2.35x (11-15 2.2x), S on Z 1.00x (0.9x), H on U 2.03x (1.7x), H on Z 2.16x (3.2x,
   flagged). At the post-hoc arm-B floors: S on U at 64 MiB 3.99x (4.2x), S on Z at 64 MiB 2.68x (1.8x), H on U at
   128 MiB 2.25x (1.6x), H on Z at 128 MiB 2.27x (1.8x). The 11-15 ratios mixed references and capped cells taken hours
@@ -50,10 +51,12 @@ the ones to quote.**
 - chrony: arm-start readings were within 0.00004 s, but per-trial readings reached 1.38 s (arm C) and 1.41 s (main)
   slow, on 32 of 60 and 100 of 219 trials, the same WSL2 pattern as 11-15. Durations use the monotonic clock.
 - **Cron overlap:** 67 arm-B trials, all on corpus Z, started 08:00Z to 08:04:46Z, inside the 08:00 to 08:30Z window, and
-  are tagged `cron-overlap`. Their load was 0.78 to 1.14. Of those cells, only S-Z at (128, 1/2), (128, 1/4), (128, 3/4)
+  are tagged `cron-overlap`. Their load was 0.69 to 1.14. Of those cells, only S-Z at (128, 1/2), (128, 1/4), (128, 3/4)
   and (64, 1/2) and H-Z at (128, 1/2) completed and carry timings; they are 6% to 13% faster than 11-15, under the
   20% threshold, so the overlap does not affect any verdict. The direction matters, though: cron load would slow the quiet medians and
-  so shrink these deltas, which means it can only have hidden a larger speedup, not created one. The arm-B corpus-Z ratios
+  so shrink these deltas, which means it can only have hidden a larger speedup, not created one. That argument covers the quiet-vs-11-15 deltas
+  only: for the two arm-B corpus-Z capped-over-reference ratios, whose numerator ran in the window and whose main-arm
+  reference did not, any cron effect would push the ratio up. The arm-B corpus-Z ratios
   quoted in the headline (S-Z at 64 MiB, H-Z at 128 MiB) carry this `cron-overlap` tag, as do the 22 failed arm-B Z cells,
   whose failure modes match 11-15.
 
@@ -70,7 +73,7 @@ at (64, 1/2) in 1.762 s, H at (128, 1/2) in 5.150 s and refused at (64, 1/2), J 
 0). The minimum per-trial gap between anon and the buffer manager, both taken from the same trial, is 21.9 to 30.2 MiB at
 these cells (11-15: 21.6 to 29.1); differencing the cell-level maxima above gives larger numbers because the two maxima
 can come from different trials. At the post-hoc floor cells: arm B S at 64 MiB 59.3 / 59.1 MiB anon (U / Z; 11-15 59.8 /
-59.9), H at 128 MiB 91.1 / 91.6 (92.0 / 91.4), buffer manager 30.4 and 61.0 on both dates, spill 303.8 / 139.1 and
+59.9), H at 128 MiB 91.1 / 91.6 (92.0 / 91.4), buffer manager 30.4 and 61.0 (11-15: 30.5 / 30.4 and 61.0 / 60.9), spill 303.8 / 139.1 and
 569.6 / 545.0 MiB (311.3 / 141.8 and 557.6 / 532.4); arm C S at (64, 1/2) 59.3 anon, 136.7 spill (59.1, 139.0), H at
 (128, 1/2) 91.4 anon, 551.8 spill (91.0, 560.8). The client baseline is 18.4 MiB
 anon on both dates. No floor-cell spill peak moved by more than 25%.
@@ -149,3 +152,19 @@ in place:
 - Cron overlap: the masking direction stated, and the tag carried to the quoted arm-B Z ratios and failed Z cells.
 - The load-above-1.0 attribution marked as my inference.
 - Draft-18 summary now includes S on Z.
+
+## Corrections after independent verification (2026-11-16, second pass)
+
+`VERIFICATION-INDEPENDENT-2026-11-16.md` (a second agent, own scripts over the raw trial files, Gemini leg;
+VERIFIED-WITH-FIXES) reproduced every floor, outcome count, hash check, latency comparison, ratio and memory figure and
+changed no verdict. A post-hoc check there also supports the contention reading: across the 36 comparable non-null cells,
+the 11-15 median per-trial load and the quiet delta correlate at Spearman -0.91. Applied above, in place:
+
+- Cron-window trial load corrected from 0.78 to 1.14 to 0.69 to 1.14.
+- The two falling ratios: they did not have the most inflated capped medians (S on Z at 256 MiB, -33.9%, was more inflated
+  than arm-B S on U at 64 MiB, -28.6%); they fall because the capped cell sped up more than its reference.
+- Cron direction: the "can only hide a speedup" argument now says it covers the deltas only; for the two tagged arm-B
+  corpus-Z ratios (2.68x, 2.27x) the bias from any cron load would be upward.
+- Arm-B floor-cell buffer-manager figures now give the 11-15 values (30.5 / 30.4, 61.0 / 60.9 MiB) instead of "on both
+  dates".
+

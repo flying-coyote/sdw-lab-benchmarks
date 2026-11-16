@@ -18,16 +18,19 @@ replicated with it: the forced-tier scoring (S2) still sends the two 4-table dua
 MergeTree in the hot cell, where they take **92.6 s** and **159.8 s** against 0.64 s and 0.76 s on StarRocks, so H1 and
 H2 stay falsified. What changed is everything the 11-15 run had pinned on StarRocks and on the uneven load:
 
-- **StarRocks did not fail on the restarted engine, and failed every time on a fresh one.** On the 11-15 container,
+- **StarRocks did not fail on the restarted engine, and failed 5 of 5 on one freshly created container.** On the 11-15 container,
   restarted, `join_3to4_04` completed on **11 of 11 pre-registered attempts** (6 in the main pass, 5 in the probe), in
   0.63 to 0.80 s, against 3 failures in 5 on 11-15. With that DNF gone the cold cell has no cliff, the cold catastrophic
   pick disappears, and **always-StarRocks is tie-tolerant-correct on 0.940 of cold decisions** with 0.016 s mean regret,
   so **H3 holds as run** (falsified on 11-15). But a labelled **post-hoc** probe on a freshly created StarRocks container
   from the same image, on the same quiet host, failed **5 of 5** executions with memory-limit errors (13.9 to 33.1 s each).
-  So the 11-15 failures were not host contention; they depend on engine state, and the restarted engine carried 11-15's
-  accumulated column statistics. H3's change is therefore conditional on a warmed engine, and on a fresh engine, the
+  So host contention is not needed to produce the 11-15 failures, and engine state is the leading explanation; the
+  restarted engine carried 11-15's accumulated column statistics (an unrecorded `SHOW STATS META` reading), but the
+  mechanism is untested. H3's change is therefore conditional on a warmed engine, and on a fresh engine, the
   state the 11-15 main pass ran in, I would expect it to fail again.
-- **The hot cell tilted the way the 11-15 caveat predicted.** 29 decisions changed strict winner (21 hot, 8 cold). In
+- **The hot cell tilted in the direction the 11-15 caveat predicted**, though the StarRocks container state (fresh on
+  11-15, warmed quietly) is confounded with the load change, so this is consistent with the load tilt rather than a
+  confirmation of it. 29 decisions changed strict winner (21 hot, 8 cold). In
   the hot cell 15 of the 21 moved from native MergeTree to StarRocks, and in the cold cell 7 of 8 moved from
   ClickHouse-over-Iceberg to StarRocks. Native is now the strict hot winner on 39 of 84 decisions, down from 49.
 - **H5 is still falsified, but only in the hot cell.** Every cold shape class with at least 4 queries now has a
@@ -84,14 +87,18 @@ and is not gated: timed-execution 1-minute load ran 0.26 to 17.39 (median 13.19)
 medians of 17.16, 11.78, 20.76 and 16.94. Nothing else timed ran on the host; Ollama was empty before the passes and
 between legs. Run window: engines 03:13:23Z to 04:49:44Z, LLM legs 04:52:34Z to 07:04:16Z.
 
-**Cron overlap.** No engine execution falls in a cron window (every timestamp is between 03:13Z and 04:50Z). 91 of the
+**Cron overlap.** No execution in the pre-registered engine passes falls in a cron window (every timestamp is between
+03:13Z and 04:50Z); the post-hoc fresh-engine probe (08:21:59Z to 08:23:05Z) falls in the 08:00 to 08:30Z window and is
+tagged `cron-overlap` (see the StarRocks section). 91 of the
 120 agy calls started between 06:00 and 07:04Z and are tagged `cron-overlap`; agy's inference is remote, the host load
-before those calls was 0.01 to 0.89, and its median excluding them is 34.5 s (n = 29) against 31.5 s with them, so the
+before those calls was 0.01 to 0.38, and its median excluding them is 34.5 s (n = 29) against 31.5 s with them, so the
 H9 verdict doesn't depend on them. phi4 and gemma4 finished before 06:00Z.
 
 **Absolute timings.** On queries valid on both dates, the quiet median over the 11-15 median is 0.707 on StarRocks
-(p10 to p90 0.566 to 0.801), 0.789 on ClickHouse-Iceberg, 0.834 on native and 0.703 on Trino, so the contended run was
-roughly 17 to 30% slow by arm median (post-hoc summary, not a pre-registered comparison). Native, the least loaded arm on 11-15, moved least; the order among the other three does not track their 11-15 load exactly (Trino moved most at a lower load than StarRocks).
+(p10 to p90 0.566 to 0.801), 0.789 on ClickHouse-Iceberg, 0.834 on native and 0.703 on Trino, so the quiet
+medians were roughly 17 to 30% below 11-15's by arm (the contended run 20 to 42% slower; post-hoc summary, not a
+pre-registered comparison). Native, the least loaded arm on 11-15, moved least; Trino and StarRocks moved about equally
+(0.703, 0.707) although Trino's 11-15 load was lower, and StarRocks's container state also differed between the dates.
 
 ## Per-hypothesis comparison
 
@@ -102,7 +109,7 @@ Scored with the unchanged `score.py` against the quiet run's own measured truth 
 |---|---|---|---|
 | H1 S2 placement >= 0.90 both cells | falsified (0.643 hot, 0.738 cold) | falsified (**0.643** hot, **0.679** cold) | held (verdict) |
 | H2 zero catastrophic S2 picks | falsified: 3 as scored, 2 as registered | falsified: **2** as scored (`join_3to4_04` hot, `_09` hot), **1** as registered (`_09` excluded) | held (verdict), count changed |
-| H3 always-StarRocks cold: no cliff, mean regret <= 0.25 s | falsified (DNF; 3.57 s at the DNF price) | **holds as run** on the restarted engine: no cliff, 0.016 s mean regret, 0.940 tie-tolerant; post-hoc fresh engine fails `join_3to4_04` 5 of 5 | **changed, conditional on engine state** |
+| H3 always-StarRocks cold: no cliff, mean regret <= 0.25 s | falsified (DNF; 3.57 s at the DNF price) | **holds as run** on the restarted engine (a deviation from the frozen re-create): no cliff, 0.016 s mean regret, 0.940 tie-tolerant; not established under the frozen protocol, since a post-hoc fresh engine fails `join_3to4_04` 5 of 5 | **changed, conditional on engine state** |
 | H4 UEBA misclassified, StarRocks wins cold | holds (8 of 8 flat or non-depth; StarRocks 8 of 8) | holds (6 scan_aggregation, 2 large_large; StarRocks 8 of 8) | held |
 | H5 within-shape stability >= 80% | falsified (hot 5 classes, cold scan_aggregation 0.773) | falsified (hot: correlated_exists 0.75, join_3table 0.60, large_large 0.621, point_lookup 0.75, scan_aggregation 0.545; cold: none) | held (verdict), cold now stable |
 | H6 native q5 DNF, >= 6 of 7 anchors match June | holds (6 of 7; q21 moved; warmup completed 176.6 s) | holds (**7 of 7**; native q5 timeouts 304.4 s and 302.8 s after a warmup that completed in 140.1 s) | held (literal falsifier contested on both dates) |
@@ -141,16 +148,18 @@ allin1 container keeps its on-disk state across restarts.
 **Post-hoc fresh-engine probe (not pre-registered; run after verification, 08:21 to 08:23Z).** To test that rival
 explanation I created a second container from the same image (`drn-starrocks-fresh`, created 08:21:14Z, network alias
 `starrocks`, 24g, the 11-15 container left untouched) after re-registering the same Iceberg metadata in Nessie (report
-identical to the 03:06Z one), gated at load 0.77, and ran `join_3to4_04` 5 times on fresh clients
+identical to the 03:06Z one), gated at load 0.77, and ran `join_3to4_04` 5 times on fresh clients (08:21:59Z to 08:23:05Z, inside the 08:00 to
+08:30Z cron window, tagged `cron-overlap`; the errors are StarRocks-internal pool limits, so cron is an unlikely cause)
 (`sr_fresh_probe_posthoc.py`, `results/quiet-2026-11-16/sr_fresh_probe_posthoc.json`). **All 5 failed**: four with
 "Memory of query_pool exceed limit" (13.9 to 21.8 s) and the last with "Memory of process exceed limit ... try
 consume:8589934592" (33.1 s), the same 8 GiB allocation error as the 11-15 failures. That refutes the host-memory-pressure
-reading I gave before this probe. `SHOW STATS META` on the fresh engine afterwards showed column statistics for only four
+reading I gave before this probe. `SHOW STATS META` on the fresh engine afterwards (output not saved to any file) showed column statistics for only four
 tables, collected during the probe itself, while the 11-15 container holds statistics for all 13 tables collected on
 11-15 (21:53 to 21:58Z) and one more column during this morning's pass. My reading, Tier D, untested: StarRocks's
 automatic statistics collection on the Iceberg tables decides whether this q5-class join gets a plan that fits in memory,
-which also fits the 11-15 sequence (failure on the fresh main pass; on the 11-15 restart, one failure and then two
-successes). Whatever the mechanism, the pre-registered StarRocks count (0 of 11) describes a warmed engine only.
+which fits the failure on the fresh 11-15 main pass but not cleanly the 11-15 restart, which failed its first execution
+after those statistics had been collected (21:53 to 21:58Z) and then succeeded twice; a first-query-after-restart effect
+is an untested rival. Whatever the mechanism, the pre-registered StarRocks count (0 of 11) describes a warmed engine only.
 
 ## LLM-router arm
 
@@ -182,7 +191,8 @@ successes). Whatever the mechanism, the pre-registered StarRocks count (0 of 11)
 
 1. **Catalog registered, not reloaded** with `load.py`: the 11-15 metadata files were registered in Nessie, which
    restores the identical snapshots; declared in the addendum.
-2. **StarRocks restarted, not re-created** (see above).
+2. **StarRocks restarted, not re-created** (see above). Trino was also restarted rather than re-created (`drn-trino`
+   created 2026-11-15T21:59:19Z, started 2026-11-16T04:36:41Z); found by the second verification, no verdict depends on it.
 3. **Orchestration scripts written after the freeze** (03:12:43Z), before the first timed execution (03:13:30Z), both
    infrastructure with no scoring logic: `run_quiet.sh` and `check_counts_quiet.py`. `compare_quiet.py`,
    `analyze_llm_quiet.py` and `run_llm_quiet.sh` were written during the engine passes, before any quiet result was
@@ -240,3 +250,29 @@ reproduced every scored number and changed no verdict. Applied above, in place:
   values for that anchor. Corrected to `soc_j4_ioc_semijoin` and re-run: June, 11-15 and quiet all give native for j4,
   so H6 stays 7 of 7 (11-15: 6 of 7); the number above was right for the wrong reason before the fix.
 - Post-hoc labels added: the per-arm timing ratios and their load reading, and the restart argument.
+
+## Corrections after independent verification (2026-11-16, second pass)
+
+`VERIFICATION-INDEPENDENT-2026-11-16.md` (a second agent, own scripts over the raw files, Gemini leg; VERIFIED-WITH-FIXES)
+reproduced every scored number, count and ratio and changed no hypothesis verdict. Applied above, in place:
+
+- Absolute timings: "the contended run was roughly 17 to 30% slow" had the percentage on the wrong base; the quiet medians
+  are 17 to 30% below 11-15's (ratios 0.703 to 0.834), so the contended run was 20 to 42% slower. Trino and StarRocks moved
+  about equally (0.703, 0.707).
+- Cron overlap: load before the 91 cron-window agy calls was 0.01 to 0.38, not 0.01 to 0.89 (0.89 was the first,
+  pre-window call). The post-hoc fresh-engine probe ran 08:21:59Z to 08:23:05Z, inside the 08:00 to 08:30Z window, and is
+  now tagged `cron-overlap`.
+- StarRocks: "failed every time on a fresh one" narrowed to one freshly created container (5 of 5; the fresh 11-15
+  container failed 2 of 2). "The 11-15 failures were not host contention" narrowed to "host contention is not needed to
+  produce them". The `SHOW STATS META` reading is marked unrecorded, and the claim that the statistics reading fits the
+  11-15 sequence is qualified: the 11-15 restart failed once after its statistics existed.
+- Hot-cell tilt: "the way the 11-15 caveat predicted" now says consistent with, not confirming, because StarRocks's
+  container state (fresh on 11-15, warmed quietly) changed along with the load, and 14 of the 15 native-to-StarRocks flips
+  had 11-15 margins under 100 ms.
+- Deviation 2 now also records that Trino was restarted, not re-created as the addendum planned (`drn-trino` created
+  2026-11-15T21:59:19Z, started 04:36:41Z); no verdict depends on Trino.
+- H3 row: "holds as run" now says the engine was a deviation from the frozen re-create and that H3 is not established
+  under the frozen protocol.
+- Not changed: the StarRocks timing p90 (0.801; another percentile method gives 0.808). `compare_quiet.py` was edited at
+  08:06:58Z and is not in the frozen sidecar; every comparison it produces was recomputed independently and matches.
+
