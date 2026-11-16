@@ -1,0 +1,11 @@
+{
+ "ocsf_main@1.10.0-dev": {
+  "errors=0,warnings=0": 10
+ },
+ "aos_example1@1.9.0": {
+  "errors=0,warnings=2": 10
+ },
+ "aos@1.9.0": {
+  "errors=0,warnings=2": 10
+ }
+}

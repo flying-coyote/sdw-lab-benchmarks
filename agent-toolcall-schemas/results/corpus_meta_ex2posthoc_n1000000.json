@@ -1,0 +1,490 @@
+{
+ "n": 1000000,
+ "posthoc": true,
+ "duckdb": "1.5.3",
+ "pyarrow": "23.0.1",
+ "python": "3.12.3",
+ "layouts": {
+  "L1_typed": {
+   "bytes": 27439196,
+   "write_s": 0.623,
+   "pin": {
+    "path": "L1_typed.parquet",
+    "logical_fingerprint": "270b641f1e84205344145a42eff53dab",
+    "manifest": {
+     "n_rows": 1000000,
+     "n_row_groups": 9,
+     "columns": {
+      "activity_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, session, uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, ai_model, ai_provider": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, ai_model, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, instance_uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_agent, uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, is_destructive": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "ai_capability, is_readonly": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "ai_capability, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, service, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, service, version": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, source_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, transaction_uid": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "ai_capability, transport_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "ai_capability, type_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, operation": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, request, data": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "api, request, uid": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "api, response, data": {
+       "encodings": [
+        "PLAIN",
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, response, error_message": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, version": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "class_uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "duration": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "status_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "time": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      }
+     }
+    },
+    "bytes_sha256": "077fcc723f811e0260ea0b1dc13a80d72c8fefe803b7105a6f5f49d900918149"
+   }
+  },
+  "L2_otel_map": {
+   "bytes": 58221187,
+   "write_s": 2.778,
+   "pin": {
+    "path": "L2_otel_map.parquet",
+    "logical_fingerprint": "e62e7d23c4e7c09b03f1f0c9e3057ad2",
+    "manifest": {
+     "n_rows": 1000000,
+     "n_row_groups": 9,
+     "columns": {
+      "attributes, key_value, key": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "attributes, key_value, value": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "duration_ns": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "span_id": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "span_name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "start_time_unix_nano": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "status_code": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "trace_id": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      }
+     }
+    },
+    "bytes_sha256": "6b410682bbcec51852544eb18ff1b918360395dbe5704670c5107baa254842d5"
+   }
+  },
+  "L3_aos_unmapped": {
+   "bytes": 30860739,
+   "write_s": 1.012,
+   "pin": {
+    "path": "L3_aos_unmapped.parquet",
+    "logical_fingerprint": "7b0af388a9c2638214e31eefe32c5f1b",
+    "manifest": {
+     "n_rows": 1000000,
+     "n_row_groups": 9,
+     "columns": {
+      "activity_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "activity_name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, type": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, type_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, operation": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, service, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, service, version": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "class_uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "duration": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "src_endpoint, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "src_endpoint, type_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "status_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "time": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "unmapped": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      }
+     }
+    },
+    "bytes_sha256": "589e3254fb456146bfd44cd634450e5474d370200d7d72453fb40424b3e7a58a"
+   }
+  },
+  "L3b_aos_ex2": {
+   "bytes": 40591291,
+   "write_s": 1.243,
+   "pin": {
+    "path": "L3b_aos_ex2.parquet",
+    "logical_fingerprint": "938afd4b5e07dc7ccd1375469e02e0b3",
+    "manifest": {
+     "n_rows": 1000000,
+     "n_row_groups": 9,
+     "columns": {
+      "activity_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "activity_name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, session, uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, type": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, type_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "actor, user, uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, operation": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, response, message": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, service, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "api, service, version": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "class_uid": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "duration": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "metadata, correlation_uid": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "metadata, version": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "src_endpoint, name": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "src_endpoint, type_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "status_id": {
+       "encodings": [
+        "PLAIN_DICTIONARY"
+       ],
+       "has_bloom": true
+      },
+      "time": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      },
+      "unmapped": {
+       "encodings": [
+        "PLAIN"
+       ],
+       "has_bloom": false
+      }
+     }
+    },
+    "bytes_sha256": "a530d1a98e40f2abbec9000e6b9cfa57cd91af048371821ab7b97ba6480107a3"
+   }
+  }
+ }
+}

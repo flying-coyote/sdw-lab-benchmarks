@@ -195,6 +195,10 @@ implausible on mechanics alone and most likely contention. I do not draw a concl
 4. **AOS example 1 column added** as a sensitivity, because the AOS page's two examples disagree. The primary column
    follows example 2 as pre-registered; the L3 query layout follows example 1, also as pre-registered (tool name and
    session in `unmapped`).
+   *Note added 2026-11-16 (post-hoc, single agent, not independently verified):* the H4 query-time ratios therefore
+   price AOS example 1, not the example-2 record the loss table counts and the validator passes. A post-hoc example-2
+   layout on the same regenerated corpus (identical sizes and answers) ran level with L1 on Q1, Q3 and Q5 (1.00x to
+   1.09x), 3.0x on Q2 and 3.8x on Q4; see `RESULTS-EX2-POSTHOC-2026-11-16.md`.
 5. **Loss-table OCSF records** got `src_endpoint` (required by 6003) and integer-millisecond `duration` after the
    1.9.0 validator flagged both; neither changes a fact's class.
 
