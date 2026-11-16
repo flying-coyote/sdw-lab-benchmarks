@@ -110,7 +110,7 @@ design goal.
 - **H1 placement >= 0.90 in both cells: FALSIFIED.** S2 0.643 hot, 0.738 cold (S3 0.738 / 0.738).
 - **H2 zero catastrophic picks: FALSIFIED.** Three (`join_3to4_04` hot and cold, `join_3to4_09` hot). Prediction
   was about 80% hold in cold and 50% in hot; both cells failed.
-- **H3 always-StarRocks, cold, no cliff and mean regret <= 0.25 s: FALSIFIED on the cliff clause** (StarRocks DNF on
+- **H3 always-StarRocks, cold, no cliff and mean regret <= 0.25 s: FALSIFIED on both clauses as registered** (corrected 2026-11-15 after verification; StarRocks DNF on
   `join_3to4_04`, memory limit, both strikes). The regret clause holds comfortably if that one DNF is set aside (about
   0.03 s per query over 83 decisions); with the DNF priced at the 300 s floor the mean is 3.57 s. Because the
   StarRocks failure reproduced in only 1 of 3 post-hoc attempts, I'd read this as "StarRocks has an intermittent
@@ -125,7 +125,7 @@ design goal.
   join_6table (1.00) holds. Most hot-cell flips are StarRocks against native by tens of milliseconds, the class the
   uneven load tilts toward native, so the honest reading is that inside a shape the hot-cell winner is not stable at
   the resolution this run can measure, rather than strong support for the Null.
-- **H6 anchor reproduction: HOLDS.** Native q5 timed out on both strikes again (306 s, 307 s), and 6 of the 7 non-tie
+- **H6 anchor reproduction: HOLDS under the two-strike DNF rule.** Native q5 timed out on both strikes again (306 s, 307 s), but the discarded warmup completed in 176.6 s (answer not recorded), so the native q5 cliff is about 130x StarRocks rather than a hard wall, and a reader who takes the falsifier's "native q5 completes" literally would score H6 falsified (disclosed after verification, 2026-11-15); and 6 of the 7 non-tie
   anchor winners match June; q21 moved from StarRocks (June) to native (2.07 s vs StarRocks 2.70 s here). Most StarRocks
   anchors ran 19 to 110% slower than June (j2 ran 23% faster), consistent with the load and the 4.1.x drift. A side note on circularity:
   scored on the real anchor texts rather than the June sim's simplified ones, S2 places 9 of 11 anchors in the cold cell
@@ -141,11 +141,11 @@ so every LLM latency is contended and indicative only (`results/llm_scores.json`
 
 Decisions: the `_01` query of each of the 12 families in both cells, 24 decisions, 5 trials each (120 calls per leg),
 scored by modal pick against the same measured truth as the rules. Rule stack (S2) on the same 24 decisions: 0.75
-tie-tolerant, no catastrophic pick, zero flips over five repeats, 0.84 ms median per decision (p90 1.75 ms).
+tie-tolerant, no catastrophic pick, zero flips over five repeats, 0.75 ms median per decision (p90 1.26 ms; timed live on each `analyze_llm.py` run).
 
 | leg | modal acc (tie-tol / strict) | per-trial acc | catastrophic (modal / per trial) | decisions with any flip | flip rate | invalid | latency median / p90 |
 |---|---|---|---|---|---|---|---|
-| rule stack S2 | 0.750 / 0.667 | 0.750 | 0 / 0 | 0 of 24 | 0 | 0 | 0.84 ms / 1.75 ms |
+| rule stack S2 | 0.750 / 0.667 | 0.750 | 0 / 0 | 0 of 24 | 0 | 0 | 0.75 ms / 1.26 ms |
 | local, phi4 14.7B Q4_K_M (Ollama 0.20.6) | 0.625 / 0.583 | 0.625 | 1 / 5 of 120 | 0 of 24 | 0.000 | 0 | 31.3 s / 39.2 s |
 | hosted, agy 1.5.9 `gemini-4-hydrogen-high` | 0.750 / 0.708 | 0.767 | 0 / 1 of 120 | 7 of 24 | 0.083 | 0 | 28.1 s / 104.2 s |
 
@@ -197,8 +197,8 @@ milliseconds and costs minutes on the q5-class joins, which is the draft's "the 
 argument measured, with the uncomfortable addition that the June rules don't deliver it off their training shapes.
 
 Within-shape winner flips (H5) are real in the hot cell, where StarRocks and native trade wins by tens of milliseconds
-inside the same shape class, and mostly absent in the cold cell, where StarRocks wins nearly everything. At this scale
-that reads as support for the hypothesis's Alternative, and for the draft's lead: one front engine, plus a tier rule
+inside the same shape class, and absent in five of the six cold-cell classes with at least 4 queries (the exception is scan_aggregation, 0.773, 17 StarRocks to 5 ClickHouse-Iceberg). At this scale
+that reads, as the pre-registration maps a falsified H5, as support for the hypothesis's Null, with the caveat that the hot-cell flips sit inside the margin the uneven load tilts, and for the draft's lead: one front engine, plus a tier rule
 that keeps join-graph-risky queries off native MergeTree, rather than a per-shape router.
 
 ## Deviations
@@ -245,3 +245,16 @@ that keeps join-graph-risky queries off native MergeTree, rather than a per-shap
 `analyze_llm.py` -> `results/llm_scores.json`, `posthoc_probe.py` -> `results/posthoc_sr_rerun.json` and
 `results/posthoc_ch_order.json`, `ejs_queries.py`
 and `queries/anchor_ground_truth.json` (byte-identical copies of the June bench's), `logs/`. Spend: $0.
+
+## Corrections after independent verification (2026-11-15)
+
+`VERIFICATION.md` (VERIFIED-WITH-FIXES, Gemini cross-provider leg) reproduced every scored number from the raw files and changed no verdict as scored. Applied in place: H3 is falsified on both clauses (the frozen 300 s DNF price gives 3.57 s mean regret against 0.25 s; the 0.03 s per query on the other 83 decisions is a post-hoc reading), the q5 warmup completion under H6, the direction of support for H5 (the Null, as the pre-registration maps it) and the cold-cell exception, and the rule-stack latency. Recorded here rather than rewritten:
+
+- **Catastrophic count, as registered.** Re-freeze condition (a) says a query the oracle cannot answer is excluded. Keeping the oracle-retried `join_3to4_09` gives 3 catastrophic picks as scored; excluding it, as registered, gives n = 83, S2 0.651 hot and 0.735 cold, and 2 catastrophic picks (one per cell). H1 and H2 stay falsified either way.
+- **One template, not two queries.** `join_3to4_04` and `_09` are two parameterisations of one 4-table TPC-H template, differing only in a date literal.
+- **StarRocks failure.** It failed on 3 of 5 attempts and was not reproduced on the last two, one failure on a freshly started engine and one under LLM contention, so "intermittent" undersells it.
+- **LLM arm qualifier.** H7 to H9 were registered for gemma4:e4b on 48 decisions and judged on phi4 (substitute) and agy on 24; the cut went beyond what the pre-registration allowed. agy's H7 falsification rests on a tie at n = 24. Under H9, "even allowing for contention" has no uncontended measurement behind it; the 14x (agy) and 31x (phi4) margins carry the verdict.
+- **Contention.** The gemma4 unload at about 22:30Z shows no step in phi4 latency (it stepped up at about 22:27:40); the reload cost fell on the concurrent T8b run. The post-hoc StarRocks re-run (about 22:50 to 22:52Z) and ClickHouse join-order check (about 22:52 to 23:01Z) ran during the phi4 and agy legs.
+- **`llm_router.py`.** The committed file was saved at 22:42Z, after both scored LLM legs started; neither the frozen nor the launch version is preserved, so "prompt and parse unchanged" rests on the author's account.
+- **Rig stamp.** Anchor medians ran native +7%, ClickHouse-Iceberg +17%, Trino +44% and StarRocks +49% over June (single anchors up to 2.1x); the load ranges include warmups.
+- **Missed design goal.** Three queries return empty results (`two_stream_03`, `ueba_two_level_01`, `_03`).
