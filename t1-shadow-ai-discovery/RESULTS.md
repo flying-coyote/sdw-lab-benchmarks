@@ -49,7 +49,7 @@ of the ten cells on the osquery column (four of its six finds, plus the S7b miss
 look *[verification fix: the original said four while listing five]*: the venv packages appear only with
 the venv path in the query (the undirected `python_packages` returns just `pip` from `/usr/local`); the
 Ollama blobs do not appear under the pre-registered `/home/dev/%%` glob at all, because osquery's recursive
-wildcard skips hidden directories, so S7b is a miss for osquery under the frozen rule and a find under a
+wildcard skips hidden directories *(corrected 2026-11-16: `%%` skips dot-directories only at the first level under the query's base path, and deeper dot-directories are walked; see `POSTHOC-GLOB-2026-11-16.md`)*, so S7b is a miss for osquery under the frozen rule and a find under a
 labelled post-hoc query that names `.ollama/models/blobs/` (`results/posthoc/P1b`); the MCP configs were
 reached only because the query carried the seven client config paths; and the IDE and browser extensions were
 reached only because the analyst knew the `vscode_extensions` and `chrome_extensions` tables exist and the
@@ -122,7 +122,7 @@ Benign controls and false positives (per method, distinct controls flagged):
   in 5.24.0 and the fixtures carried the files those tables read (`extensions.json`; `Preferences` with a
   profile name and a manifest `key`); `python_packages` found the venv only when told the path; `file` skipped
   every hidden directory under `/home/dev/%%` (15,618 regular files returned, none under `.ollama`, `.vscode`,
-  `.config` or `.cursor`), and the MCP configs were reached only because `MCP_CONFIG_PATHS` named them. A fleet
+  `.config` or `.cursor`) *(corrected 2026-11-16: all four sat directly under `/home/dev`, which is the one level where `%%` skips dot-directories, since it walks dot-directories deeper in the tree; see `POSTHOC-GLOB-2026-11-16.md`)*, and the MCP configs were reached only because `MCP_CONFIG_PATHS` named them. A fleet
   query that does not already contain the path of the thing does not find the thing.
 
 ## Hypotheses
@@ -148,7 +148,7 @@ R4 found no tool for, the weights sitting in a runtime's own store.
 - **P1 osquery hidden directories.** `file WHERE path LIKE '/home/dev/.%%'` returns 15,874 regular files (the
   hidden tree, which is mostly Cline), and `path LIKE '/home/dev/.ollama/models/blobs/%'` returns the five blobs
   with sizes (637,699,456 bytes for the weights). `'/home/dev/%%'` returns 16,944 entries (all types), none hidden.
-  So the `%%` wildcard does not descend into dot-directories, and `.%%` also matched `..` and re-listed the
+  So the `%%` wildcard does not descend into dot-directories *(corrected 2026-11-16: `%%` skips dot-directories only at the first level under the query's base path, and deeper dot-directories are walked; see `POSTHOC-GLOB-2026-11-16.md`)*, and `.%%` also matched `..` and re-listed the
   visible tree under `/home/dev/../dev/`, which is why P1d shows the model files there. The rule gap is a glob
   semantics gap, and an analyst who does not know it writes exactly the query that was frozen here.
 - **P2 osquery socket-to-process mapping.** In the runs, `listening_ports` and `process_open_sockets` returned

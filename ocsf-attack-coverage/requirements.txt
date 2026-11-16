@@ -1,3 +1,9 @@
 duckdb==1.5.3
+# (corrected 2026-11-16) pySigma and the sqlite backend stay unpinned because the versions the June 2026 run
+# used were not recorded in results/ and cannot be determined. The 2026-11-16 mixed-case check
+# (mixed_case_check_2026_11_16.py, RESULTS-MIXED-CASE-2026-11-16.md) used pySigma==2.0.3 and
+# pysigma-backend-sqlite==2.1.1 with DuckDB 1.5.3, SQLite 3.45.1 and Python 3.12.3. Note that backend 2.1.1
+# emits `FROM logs`, while run.py l.89 replaces only the older `<TABLE_NAME>` placeholder, so run.py as written
+# scores every rule MISSED (exec_error) on 2.1.1; the June run, which scored detections, used an older backend.
 pysigma
 pysigma-backend-sqlite

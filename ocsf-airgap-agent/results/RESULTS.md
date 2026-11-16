@@ -21,6 +21,8 @@ mirrored SigmaHQ rules on disk). H-PRACTITIONER-OWNED-AGENTIC-01.
 | gemma4:e4b | 5 | 172.0s | dropper=✓ user=✓ ✅ |
 | phi4:latest | 6 | 198.1s | dropper=✗ user=✗ ❌ |
 
+*(corrected 2026-11-16: the phi4 row records a loud failure rather than a wrong answer, because all six steps were queries with no `FROM` clause or an unbound table alias, each returned a DuckDB binder error, the six steps are the `MAX_STEPS = 6` cap in `run.py`, and `final_answer` is `null` in `results.json`. Separately, "OCSF store" in this file's title and text is the bench's label for the corpus and doesn't describe its schema, since `run.py` reads the raw APT29 Parquet under `ocsf-context-collapse-apt29/_work/raw`, whose columns are Sigma field names (`Image`, `CommandLine`, `ParentImage`, `User`, `Hostname`), not OCSF attributes.)*
+
 ## What phoned home
 
 - Endpoints contacted: **http://localhost:11434 (Ollama — on-host, loopback only)**.
