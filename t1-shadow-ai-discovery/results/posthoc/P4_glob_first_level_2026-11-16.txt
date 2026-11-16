@@ -1,0 +1,19 @@
+osqueryi version 5.24.0
+== /home/dev/%%
+[
+  {"path":"/home/dev/a/.hidden/b/nested.txt"},
+  {"path":"/home/dev/projects/x/.cursor/mcp.json"},
+  {"path":"/home/dev/projects/x/.mcp.json"},
+  {"path":"/home/dev/projects/x/.vscode/mcp.json"},
+  {"path":"/home/dev/visible.txt"}
+]
+== /home/%%
+[
+  {"path":"/home/dev/.cursor/mcp.json"},
+  {"path":"/home/dev/.ollama/models/blobs/sha256-test"},
+  {"path":"/home/dev/a/.hidden/b/nested.txt"},
+  {"path":"/home/dev/projects/x/.cursor/mcp.json"},
+  {"path":"/home/dev/projects/x/.mcp.json"},
+  {"path":"/home/dev/projects/x/.vscode/mcp.json"},
+  {"path":"/home/dev/visible.txt"}
+]
