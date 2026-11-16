@@ -1,15 +1,16 @@
 # BENCH-B — mapping oracle
 
 Does grounding help a model map a source log field to the right OCSF attribute, and
-which kind of grounding? Four conditions on one task (source field → OCSF 1.8.0
+which kind of grounding? Five conditions on one task (source field → OCSF 1.8.0
 attribute path), scored against a hand-curated gold key:
 
 - **none** — the field and the target class only; parametric knowledge.
-- **schema** — plus the OCSF class's valid attribute paths in context.
+- **schema** — plus a partial list of the class's valid attribute paths in context (the first 80 paths of depth at most one, alphabetically; see results/RESULTS.md correction 2026-11-16).
 - **formal** — schema plus a conceptual grounding note for the class (what an actor, a
   user, an endpoint, traffic, metadata *mean* for this class), with no field-path hint.
 - **skill** — schema plus an ontology-thinking reasoning discipline: decide actor vs
   object first, choose the most specific path, preserve absent/null/false, don't invent.
+- **wrong_grounding** — schema plus a grounding note for the *wrong* class (the control).
 
 The primary metric is the **silent-error rate** — a field mapped to an OCSF path that
 does not exist in 1.8.0. That is the security-relevant failure: it validates and ships

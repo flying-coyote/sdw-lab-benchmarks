@@ -1,0 +1,80 @@
+{
+  "label": "current",
+  "run_utc": "2026-11-16T13:45:37Z",
+  "environment": {
+    "duckdb": "2.0.0",
+    "pyarrow": "26.0.1",
+    "polars": "2.1.0"
+  },
+  "reads": {
+    "duckdb": {
+      "duckdb (key)": {
+        "read": true,
+        "values": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      },
+      "duckdb (wrong key, control)": {
+        "read": false,
+        "error": "InvalidInputException: Invalid Input Error: Computed AES tag differs from read AES tag, are you using the right key?\n\nLINE 1: SELECT v FROM read_parquet('/tmp/aad_ltqfu60w/d"
+      },
+      "pyarrow (key)": {
+        "read": false,
+        "error": "OSError: Could not open Parquet input source '/tmp/aad_ltqfu60w/duckdb.parquet': Failed decryption finalization"
+      },
+      "polars (key)": {
+        "read": false,
+        "error": "ComputeError: parquet: Encryption error: AAD unique file identifier is not set"
+      }
+    },
+    "pyarrow_explicit_key": {
+      "duckdb (key)": {
+        "read": true,
+        "values": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      },
+      "duckdb (wrong key, control)": {
+        "read": false,
+        "error": "InvalidInputException: Invalid Input Error: Computed AES tag differs from read AES tag, are you using the right key?\n\nLINE 1: SELECT v FROM read_parquet('/tmp/aad_ltqfu60w/p"
+      },
+      "pyarrow (key)": {
+        "read": true,
+        "values": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      },
+      "polars (key)": {
+        "read": true,
+        "values": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      }
+    }
+  },
+  "footer_check": {
+    "cryptography": "41.0.7",
+    "duckdb.parquet": {
+      "FileCryptoMetaData_hex": "1c1c000000",
+      "aad_file_unique_hex": null,
+      "empty AAD, key": "decrypts (182 bytes)",
+      "empty AAD, wrong key": "fails (InvalidTag)"
+    },
+    "pyarrow.parquet": {
+      "FileCryptoMetaData_hex": "1c1c28085461b4c43ba0f7fb12000000",
+      "aad_file_unique_hex": "5461b4c43ba0f7fb",
+      "empty AAD, key": "fails (InvalidTag)",
+      "empty AAD, wrong key": "fails (InvalidTag)",
+      "aad_file_unique||0x00, key": "decrypts (369 bytes)",
+      "aad_file_unique||0x00, wrong key": "fails (InvalidTag)"
+    }
+  }
+}

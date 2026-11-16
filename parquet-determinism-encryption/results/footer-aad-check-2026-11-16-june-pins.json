@@ -1,0 +1,34 @@
+{
+  "label": "june-pins",
+  "run_utc": "2026-11-16T13:45:37Z",
+  "environment": {
+    "duckdb": "1.5.3",
+    "pyarrow": "23.0.1",
+    "polars": "1.41.2"
+  },
+  "reads": {
+    "duckdb": {
+      "duckdb (key)": {
+        "read": true,
+        "values": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      },
+      "duckdb (wrong key, control)": {
+        "read": false,
+        "error": "InvalidInputException: Invalid Input Error: Computed AES tag differs from read AES tag, are you using the right key?\n\nLINE 1: SELECT v FROM read_parquet('/tmp/aad_q647lkc0/d"
+      }
+    }
+  },
+  "footer_check": {
+    "cryptography": "41.0.7",
+    "duckdb.parquet": {
+      "FileCryptoMetaData_hex": "1c1c000000",
+      "aad_file_unique_hex": null,
+      "empty AAD, key": "decrypts (171 bytes)",
+      "empty AAD, wrong key": "fails (InvalidTag)"
+    }
+  }
+}

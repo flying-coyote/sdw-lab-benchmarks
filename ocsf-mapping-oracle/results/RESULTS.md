@@ -78,3 +78,19 @@ The **wrong_grounding** condition gives a grounding note for the *wrong* OCSF cl
 Silent-error rate is the headline because path-correctness on sub-frontier local models stays low — they rarely land the exact gold OCSF path. Where schema, grounding, and the ontology-thinking discipline cut the silent-error rate, that is the security-relevant signal: fewer invented attributes. The wrong-grounding control is the honesty check — if `formal` beats `wrong_grounding`, correct grounding content is doing work; if they tie, the lift was just more tokens. Across the model ladder, a lift that shrinks as the model grows reads as a sub-frontier teaching effect rather than a frontier moat (the question H-PRACTITIONER-OWNED-AGENTIC-01 asks; the frontier leg, pending an API key, would close it).
 
 Tier B: local models, single-shot, temperature 0; exact-match undercounts valid alternatives; the gold set is curated. Tier-A needs a published larger gold set, a named reviewer on the ambiguous calls, and an independent frontier model.
+## Correction (2026-11-16, appended)
+
+Two scorer facts found in a post-hoc re-score (`../ocsf-deterministic-mapper/results/RESULTS-FRONTIER-CONSTRAINED-2026-11-16.md`):
+
+- **The validator dropped the subset's deep-accept rule.** `load_valid_paths()` builds a strict depth-3
+  closure over the transcribed OCSF 1.8.0 subset, but `../ocsf-mapping-fidelity/schemas/ocsf/PROVENANCE.md`
+  documents that a reference to an object the subset does not hold is accepted as a deeper leaf. Without that
+  rule, 24 of the 141 gold mappings fall outside the closure, and a prediction matching the gold on one of them
+  was scored as correct and as a silent error at once (frontier proxy: 28 / 81 / 85 such predictions across
+  three runs). Re-scored against the full OCSF 1.8.0 schema (schema.ocsf.io API, read 2026-11-16), the
+  frontier proxy's invented-path rate is 5.0 / 9.1 / 9.1% of prompts (4.5 / 7.7 / 7.7% excluding two gold
+  paths, `src_endpoint.hw_info.model` and `dst_endpoint.hw_info.model`, that do not exist in 1.8.0), against
+  17.0 / 26.7 / 26.1% here. gemma4:26b is unchanged at every condition; phi3 (partial-list condition) moves
+  0.69 to 0.68.
+- **The `schema` condition is a partial path list**: `schema_block()` (run.py l.130-131) shows the first 80
+  class paths of depth at most one, alphabetically; 17 of the 141 gold paths appear in the list shown.

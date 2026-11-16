@@ -125,3 +125,44 @@ source host), and 18 CrowdStrike fields sent to `metadata.event_code`. Single-au
 second reader is the next step.
 
 Tier B for the re-score; Tier D for the adjudication.
+
+## Corrections (2026-11-16, after an independent review)
+
+Appended, not rewritten. The re-score arithmetic above was recomputed independently from the raw prediction
+files with a separately written walker and reproduced to the decimal; these corrections are about what the
+numbers mean.
+
+1. **The "schema" condition was a partial path list.** `../ocsf-mapping-oracle/run.py` l.130-131 shows the
+   first 80 class paths of depth at most one, alphabetically, under "Valid … attribute paths include:". For
+   `network_activity` the list runs from `action` to `device.mac` and contains no `src_endpoint` path; 17 of
+   the 141 gold paths appear in the list their prompt showed. Wherever this file says "schema condition", read
+   "partial path list". The frontier's remaining inventions sit mostly under `src_endpoint` / `dst_endpoint` /
+   `url`, which the list never showed, so the bench cannot say what a complete list would do.
+2. **Run 3's schema batch is excluded from headline figures.** In that batch 16 fields are gold-exact that no
+   other run-condition batch ever got right (the other fourteen batches: 0 to 3). `_frontier/frontier_prompts.json`
+   carries a `gold` key on every entry; gold-stripped inputs were archived for run 2 only (`run2/cond_*.json`),
+   so "subagents never saw the gold key" is file-evidenced for run 2 only. A second explanation, one subagent
+   hugging the shown list, is also consistent with the data (some unique hits are in the list). Both stay open;
+   a re-run from gold-stripped inputs would settle it. Run 3 without that batch (564 prompts): raw path-correct
+   63.3%, full-wall reject 61.9% (coverage 90.1%), invented 9.9% (8.5% excluding the two bad gold paths). So the
+   full-wall reject band across runs is 57.2 / 65.8 / 61.9%, i.e. 57 to 66%.
+3. **"Invented" includes the two non-existent gold paths.** Of 35 / 64 / 64 invented, 3 / 10 / 10 are
+   `*.hw_info.model`; excluding them the all-705 invented rate is 4.5 / 7.7 / 7.7%.
+4. **Root cause of the 24 off-subset gold fields.** `../ocsf-mapping-fidelity/schemas/ocsf/PROVENANCE.md`
+   documents a deep-accept rule (a reference to an object the subset does not hold is accepted as a deeper
+   leaf); the oracle's `load_valid_paths()` builds a strict closure without it. So the strict oracle closure
+   rejected right answers, while the fidelity bench's deep-accept rule is what let the two non-existent
+   `hw_info.model` paths into the gold key.
+5. **Alias mapper matcher artifact.** `run.py` l.30 matches substrings of the whole field name, so `ts` fires on
+   `packets`, `text` on `securityContext.*`, `ip` on `DetectDescription`, and CrowdStrike's `event.` envelope
+   fires the `event` rule (the 18 `metadata.event_code` rows). `alias_whole_token_check_2026_11_16.py` re-runs
+   the same rule table with whole-token matching and the envelope stripped: 17 of the 60 adjudicated-wrong
+   mappings remain valid-and-non-gold with camelCase split (18 correct of 43 mapped), 10 with camelCase left
+   whole (15 of 32). The 60-of-141 count describes this crude table, not alias mapping in general
+   (`results/alias-whole-token-check-2026-11-16.json`).
+6. **CrowdStrike's low alias score** is the `event.` envelope (item 5), not the subset gap: the rule table has
+   no `evidences.*` candidate, and the full-closure re-run is unchanged.
+7. **Run agreement.** Runs 2 and 3 (same method) map 553 of 705 prompts identically (78.4%), 449 of 564 (79.6%)
+   without run 3's schema batch, so about a fifth of paths differ under the same method.
+8. **"Headline fixed before looking"** is not backed by a frozen pre-registration; the schema condition was
+   taken as the comparison because the phi3 arm used it.

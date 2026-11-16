@@ -1,0 +1,185 @@
+{
+  "date": "2026-11-16",
+  "n_fields": 141,
+  "original": {
+    "correct": 23,
+    "mapped": 94,
+    "wrong_adjudicated": 60
+  },
+  "whole_token_camel_whole": {
+    "correct": 15,
+    "mapped": 32,
+    "adjudicated_wrong_still_valid_non_gold": 10,
+    "rows": [
+      [
+        "Okta System Log",
+        "actor.id",
+        "actor.user.name",
+        "user.uid"
+      ],
+      [
+        "Okta System Log",
+        "actor.type",
+        "actor.user.name",
+        "user.type"
+      ],
+      [
+        "Okta System Log",
+        "actor.displayName",
+        "actor.user.name",
+        "user.full_name"
+      ],
+      [
+        "Okta System Log",
+        "client.device",
+        "device.hostname",
+        "device.type"
+      ],
+      [
+        "Palo Alto PAN-OS TRAFFIC",
+        "rule_uuid",
+        "firewall_rule.name",
+        "firewall_rule.uid"
+      ],
+      [
+        "Palo Alto PAN-OS TRAFFIC",
+        "src_host",
+        "device.hostname",
+        "src_endpoint.hostname"
+      ],
+      [
+        "Palo Alto PAN-OS TRAFFIC",
+        "dst_host",
+        "device.hostname",
+        "dst_endpoint.hostname"
+      ],
+      [
+        "Cisco ASA connection syslog",
+        "message_id",
+        "message",
+        "metadata.event_code"
+      ],
+      [
+        "Cisco Umbrella DNS",
+        "query_type",
+        "query.hostname",
+        "query.type"
+      ],
+      [
+        "Zscaler ZIA Web",
+        "host",
+        "device.hostname",
+        "http_request.url.hostname"
+      ]
+    ]
+  },
+  "whole_token_camel_split": {
+    "correct": 18,
+    "mapped": 43,
+    "adjudicated_wrong_still_valid_non_gold": 17,
+    "rows": [
+      [
+        "Okta System Log",
+        "actor.id",
+        "actor.user.name",
+        "user.uid"
+      ],
+      [
+        "Okta System Log",
+        "actor.type",
+        "actor.user.name",
+        "user.type"
+      ],
+      [
+        "Okta System Log",
+        "actor.displayName",
+        "actor.user.name",
+        "user.full_name"
+      ],
+      [
+        "Okta System Log",
+        "client.userAgent.rawUserAgent",
+        "actor.user.name",
+        "http_request.user_agent"
+      ],
+      [
+        "Okta System Log",
+        "client.userAgent.os",
+        "actor.user.name",
+        "src_endpoint.os.name"
+      ],
+      [
+        "Okta System Log",
+        "client.device",
+        "device.hostname",
+        "device.type"
+      ],
+      [
+        "CrowdStrike Detection Summary",
+        "event.DetectDescription",
+        "message",
+        "finding_info.desc"
+      ],
+      [
+        "CrowdStrike Detection Summary",
+        "event.MachineDomain",
+        "device.hostname",
+        "device.domain"
+      ],
+      [
+        "CrowdStrike Detection Summary",
+        "event.FalconHostLink",
+        "device.hostname",
+        "finding_info.src_url"
+      ],
+      [
+        "CrowdStrike Detection Summary",
+        "event.ProcessStartTime",
+        "time",
+        "evidences.process.created_time"
+      ],
+      [
+        "CrowdStrike Detection Summary",
+        "event.ProcessEndTime",
+        "time",
+        "evidences.process.terminated_time"
+      ],
+      [
+        "Palo Alto PAN-OS TRAFFIC",
+        "rule_uuid",
+        "firewall_rule.name",
+        "firewall_rule.uid"
+      ],
+      [
+        "Palo Alto PAN-OS TRAFFIC",
+        "src_host",
+        "device.hostname",
+        "src_endpoint.hostname"
+      ],
+      [
+        "Palo Alto PAN-OS TRAFFIC",
+        "dst_host",
+        "device.hostname",
+        "dst_endpoint.hostname"
+      ],
+      [
+        "Cisco ASA connection syslog",
+        "message_id",
+        "message",
+        "metadata.event_code"
+      ],
+      [
+        "Cisco Umbrella DNS",
+        "query_type",
+        "query.hostname",
+        "query.type"
+      ],
+      [
+        "Zscaler ZIA Web",
+        "host",
+        "device.hostname",
+        "http_request.url.hostname"
+      ]
+    ]
+  }
+}

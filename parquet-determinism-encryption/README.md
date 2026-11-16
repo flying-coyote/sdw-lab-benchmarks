@@ -45,3 +45,16 @@ types are safe to compare bit-for-bit across engines and which need a stated tol
 Arm-B PME lockout additionally feeds **H-ICEBERG-METADATA-INTEGRITY-01** — in-file encryption
 silently revokes the open multi-engine read contract. *(IDs recorded 2026-06-10 per the
 benchmark-alignment audit.)*
+
+## Corrections (2026-11-16)
+
+- **Arm A(b), "last-ULP".** Decoded, the three float64 sums are 600,001,453,123,075.625 (DuckDB),
+  600,001,453,124,023.5 (pyarrow, Polars, DataFusion) and 600,001,453,124,023.25 (chDB). chDB is 2 ULPs from the
+  Arrow-family value; DuckDB is 7,583 ULPs away (947.875 absolute, about 1.6e-12 relative). "Three distinct last-ULP
+  results" holds for chDB only; read it as three distinct results in the low-order bits.
+- **Arm B, "locks out every other engine".** Arm B tested readers without the key only. Given the key
+  (`RESULTS-PME-WITH-KEYS-2026-11-16.md`), a pyarrow-written uniform PME file opens in DuckDB 1.5.3 and 2.0.0 and in
+  Polars 2.1.0, while a DuckDB-written file opens only in DuckDB among the five, because DuckDB writes no
+  `aad_file_unique` and encrypts with an empty AAD (`RESULTS-FOOTER-AAD-2026-11-16.md`). DataFusion's Python wheel is
+  built with Parquet encryption disabled, and chDB exposes no decryption setting. So the lock-out depends on the writer
+  and the reader's build, not on encryption as such.

@@ -74,3 +74,11 @@ engine here is locked out entirely — so turning on at-rest encryption silently
 the whole swap story depends on. For regulated data that *must* be encrypted, that means either standardizing
 on one PME-capable engine + KMS or keeping encryption at the storage layer (encrypted volume / SSE) rather
 than inside the Parquet file, so the file stays engine-portable. Tier B, single machine; re-check per version.
+
+## Correction (2026-11-16)
+
+The prose above says the float sums differ in the "last ULPs". Decoded from the bit patterns in the Arm A(b) table,
+chDB is 2 ULPs from the pyarrow/Polars/DataFusion value but DuckDB is 7,583 ULPs away (947.875 absolute on a sum of
+about 6.0e14, about 1.6e-12 relative), so "last ULPs" is right for chDB only. The Arm B reading ("every other engine
+here is locked out entirely") describes readers without the key; with the key, see
+`../RESULTS-PME-WITH-KEYS-2026-11-16.md` and `../RESULTS-FOOTER-AAD-2026-11-16.md`.
