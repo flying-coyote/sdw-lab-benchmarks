@@ -1,0 +1,3 @@
+{"t": 0.196, "tmpfiles_bytes": 0, "bm_bytes": 40960, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 19398656, "cg_anon": 19673088}
+{"t": 0.261, "tmpfiles_bytes": 0, "bm_bytes": 42385920, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 62652416, "cg_anon": 63012864}
+{"t": 0.321, "tmpfiles_bytes": 0, "bm_bytes": 84492800, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 104595456, "cg_anon": 105009152}

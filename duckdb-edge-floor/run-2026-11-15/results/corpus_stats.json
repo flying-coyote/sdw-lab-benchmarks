@@ -1,0 +1,42 @@
+{
+ "duckdb": "1.5.3",
+ "n_rows": 10000000,
+ "corpora": {
+  "U": {
+   "generator_sql": "SELECT (1781000000 + (hash(i) % 604800))::BIGINT AS ts,\n  'h' || ((hash(i) % 8000))::VARCHAR AS host,\n  'u' || ((hash(i+11) % 20000))::VARCHAR AS usr,\n  ('proc' || (hash(i+1) % 200))::VARCHAR AS process,\n  (hash(i+7) % 100000)::BIGINT AS bytes\n  FROM range(10000000) t(i)",
+   "file_bytes": 116104999,
+   "file_sha256": "48f2572ac1510db83d68dd7ee2a5eceb4368e021e3863f0f22105771df224e98",
+   "rows": 10000000,
+   "logical_xor": "13598003244921995641",
+   "distinct_hosts": 8000,
+   "distinct_usr": 20000,
+   "distinct_process": 200,
+   "H_groups": 9999996,
+   "S_host_hours": 1346361,
+   "J_host_minutes": 2913004,
+   "J_pair_rows_upper": 16544577,
+   "top_host_share": 0.000139,
+   "top10_host_share": 0.0013718,
+   "top_process_share": 0.0050691,
+   "corr_ts_hostnum": 0.00023720348948681776
+  },
+  "Z": {
+   "generator_sql": "SELECT (1781000000 + (hash(i, 'ts') % 604800))::BIGINT AS ts,\n  'h' || least(greatest(floor(pow(8001, ((hash(i, 'host') % 9007199254740992)::DOUBLE / 9007199254740992.0)))::BIGINT - 1, 0), 7999)::VARCHAR AS host,\n  'u' || least(greatest(floor(pow(20001, ((hash(i, 'usr') % 9007199254740992)::DOUBLE / 9007199254740992.0)))::BIGINT - 1, 0), 19999)::VARCHAR AS usr,\n  'proc' || least(greatest(floor(pow(201, ((hash(i, 'proc') % 9007199254740992)::DOUBLE / 9007199254740992.0)))::BIGINT - 1, 0), 199)::VARCHAR AS process,\n  (hash(i, 'bytes') % 100000)::BIGINT AS bytes\n  FROM range(10000000) t(i)",
+   "file_bytes": 108511453,
+   "file_sha256": "33f122c37635ae747777a26aeed89e3955abb0548aa708dc571af15171871e2b",
+   "rows": 10000000,
+   "logical_xor": "12295371504139653012",
+   "distinct_hosts": 8000,
+   "distinct_usr": 20000,
+   "distinct_process": 200,
+   "H_groups": 7657773,
+   "S_host_hours": 1088200,
+   "J_host_minutes": 5235145,
+   "J_pair_rows_upper": 59965692,
+   "top_host_share": 0.0770068,
+   "top10_host_share": 0.2668751,
+   "top_process_share": 0.1306189,
+   "corr_ts_hostnum": -0.0003493681346822496
+  }
+ }
+}

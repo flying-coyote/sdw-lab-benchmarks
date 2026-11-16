@@ -1,0 +1,23 @@
+{
+ "shape": "S",
+ "corpus": "Z.parquet",
+ "memory_limit_mb": 32,
+ "threads": 1,
+ "duckdb": "1.5.3",
+ "latency_s": 1.7298,
+ "outcome": "completed",
+ "n_rows": 50,
+ "answer_sha256": "0f8ab890d2bbf9198a4b844cbeb882678e9e66a0dafda83be065a83d03acc826",
+ "vm_hwm_bytes": 103133184,
+ "peaks": {
+  "tmpfiles_bytes": 142966784,
+  "dir_bytes": 142966784,
+  "bm_bytes": 31887456,
+  "bm_temp_bytes": 139853824,
+  "rss_anon": 61714432,
+  "cg_anon": 61800448,
+  "samples": 33,
+  "poll_errors": 0
+ },
+ "wall_in_process_s": 1.8149
+}

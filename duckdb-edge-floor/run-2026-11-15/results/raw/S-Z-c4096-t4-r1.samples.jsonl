@@ -1,0 +1,9 @@
+{"t": 0.109, "tmpfiles_bytes": 0, "bm_bytes": 40960, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 19529728, "cg_anon": 19935232}
+{"t": 0.163, "tmpfiles_bytes": 0, "bm_bytes": 96825728, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 89260032, "cg_anon": 89550848}
+{"t": 0.214, "tmpfiles_bytes": 0, "bm_bytes": 171954560, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 148504576, "cg_anon": 148905984}
+{"t": 0.271, "tmpfiles_bytes": 0, "bm_bytes": 219046272, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 211288064, "cg_anon": 211632128}
+{"t": 0.322, "tmpfiles_bytes": 0, "bm_bytes": 263135616, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 254148608, "cg_anon": 254496768}
+{"t": 0.379, "tmpfiles_bytes": 0, "bm_bytes": 305549696, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 300679168, "cg_anon": 301142016}
+{"t": 0.43, "tmpfiles_bytes": 0, "bm_bytes": 375447936, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 352452608, "cg_anon": 352854016}
+{"t": 0.483, "tmpfiles_bytes": 0, "bm_bytes": 388382816, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 401211392, "cg_anon": 401575936}
+{"t": 0.539, "tmpfiles_bytes": 0, "bm_bytes": 121053184, "bm_temp_bytes": 0, "dir_bytes": 0, "rss_anon": 404488192, "cg_anon": 404844544}

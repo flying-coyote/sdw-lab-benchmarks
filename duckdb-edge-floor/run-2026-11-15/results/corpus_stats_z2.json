@@ -1,0 +1,28 @@
+{
+ "duckdb": "1.5.3",
+ "n_rows": 10000000,
+ "corpora": {
+  "Z2": {
+   "generator_sql": "SELECT (1781000000 + (hash(i * 8 + 0) % 604800))::BIGINT AS ts,\n  'h' || least(greatest(floor(pow(8001, ((hash(i * 8 + 1) % 9007199254740992)::DOUBLE / 9007199254740992.0)))::BIGINT - 1, 0), 7999)::VARCHAR AS host,\n  'u' || least(greatest(floor(pow(20001, ((hash(i * 8 + 2) % 9007199254740992)::DOUBLE / 9007199254740992.0)))::BIGINT - 1, 0), 19999)::VARCHAR AS usr,\n  'proc' || least(greatest(floor(pow(201, ((hash(i * 8 + 3) % 9007199254740992)::DOUBLE / 9007199254740992.0)))::BIGINT - 1, 0), 199)::VARCHAR AS process,\n  (hash(i * 8 + 4) % 100000)::BIGINT AS bytes\n  FROM range(10000000) t(i)",
+   "file_bytes": 108515282,
+   "file_sha256": "480c02f410e9066329bad654ee9d609e28f7af3b2394d978258f672ecdebdf5d",
+   "rows": 10000000,
+   "logical_xor": "1800235379055598319",
+   "distinct_hosts": 8000,
+   "distinct_usr": 20000,
+   "distinct_process": 200,
+   "H_groups": 9980751,
+   "S_host_hours": 1087394,
+   "J_host_minutes": 5234695,
+   "J_pair_rows_upper": 59976081,
+   "top_host_share": 0.077084,
+   "top10_host_share": 0.2667948,
+   "top_process_share": 0.1307393,
+   "h0_distinct_process": 200,
+   "h0_distinct_usr": 19938,
+   "h0_distinct_minutes": 10081,
+   "distinct_host_process": 890549,
+   "corr_ts_hostnum": -2.149140069007899e-05
+  }
+ }
+}
