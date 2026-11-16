@@ -1,0 +1,248 @@
+{
+  "render": {
+    "visible|process_creation|raw": {
+      "planted_rendered": 96,
+      "planted_present": 96,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 96
+    },
+    "visible|process_creation|repr": {
+      "planted_rendered": 96,
+      "planted_present": 96,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 96
+    },
+    "visible|process_creation|strip": {
+      "planted_rendered": 96,
+      "planted_present": 96,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 96
+    },
+    "visible|process_creation|quoted": {
+      "planted_rendered": 96,
+      "planted_present": 96,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 96
+    },
+    "visible|network_connection|raw": {
+      "planted_rendered": 269,
+      "planted_present": 269,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 269
+    },
+    "visible|network_connection|repr": {
+      "planted_rendered": 269,
+      "planted_present": 269,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 269
+    },
+    "visible|network_connection|strip": {
+      "planted_rendered": 269,
+      "planted_present": 269,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 269
+    },
+    "visible|network_connection|quoted": {
+      "planted_rendered": 269,
+      "planted_present": 269,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 269
+    },
+    "visible|dns_query|raw": {
+      "planted_rendered": 16,
+      "planted_present": 16,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 16
+    },
+    "visible|dns_query|repr": {
+      "planted_rendered": 16,
+      "planted_present": 16,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 16
+    },
+    "visible|dns_query|strip": {
+      "planted_rendered": 16,
+      "planted_present": 16,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 16
+    },
+    "visible|dns_query|quoted": {
+      "planted_rendered": 16,
+      "planted_present": 16,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 16
+    },
+    "visible|authentication|raw": {
+      "planted_rendered": 78,
+      "planted_present": 78,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 78
+    },
+    "visible|authentication|repr": {
+      "planted_rendered": 78,
+      "planted_present": 78,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 78
+    },
+    "visible|authentication|strip": {
+      "planted_rendered": 78,
+      "planted_present": 78,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 78
+    },
+    "visible|authentication|quoted": {
+      "planted_rendered": 78,
+      "planted_present": 78,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 78
+    },
+    "visible|ps_script|raw": {
+      "planted_rendered": 68,
+      "planted_present": 68,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 68
+    },
+    "visible|ps_script|repr": {
+      "planted_rendered": 68,
+      "planted_present": 68,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 68
+    },
+    "visible|ps_script|strip": {
+      "planted_rendered": 68,
+      "planted_present": 68,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 68
+    },
+    "visible|ps_script|quoted": {
+      "planted_rendered": 68,
+      "planted_present": 68,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 68
+    },
+    "tag|process_creation|raw": {
+      "planted_rendered": 96,
+      "planted_present": 96,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 96
+    },
+    "tag|process_creation|repr": {
+      "planted_rendered": 96,
+      "planted_present": 96,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 96
+    },
+    "tag|process_creation|strip": {
+      "planted_rendered": 96,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 96,
+      "planted_in_table": 96
+    },
+    "tag|process_creation|quoted": {
+      "planted_rendered": 96,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 96,
+      "planted_in_table": 96
+    },
+    "tag|network_connection|raw": {
+      "planted_rendered": 269,
+      "planted_present": 269,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 269
+    },
+    "tag|network_connection|repr": {
+      "planted_rendered": 269,
+      "planted_present": 269,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 269
+    },
+    "tag|network_connection|strip": {
+      "planted_rendered": 269,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 269,
+      "planted_in_table": 269
+    },
+    "tag|network_connection|quoted": {
+      "planted_rendered": 269,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 269,
+      "planted_in_table": 269
+    },
+    "tag|dns_query|raw": {
+      "planted_rendered": 16,
+      "planted_present": 16,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 16
+    },
+    "tag|dns_query|repr": {
+      "planted_rendered": 16,
+      "planted_present": 16,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 16
+    },
+    "tag|dns_query|strip": {
+      "planted_rendered": 16,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 16,
+      "planted_in_table": 16
+    },
+    "tag|dns_query|quoted": {
+      "planted_rendered": 16,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 16,
+      "planted_in_table": 16
+    },
+    "tag|authentication|raw": {
+      "planted_rendered": 78,
+      "planted_present": 78,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 78
+    },
+    "tag|authentication|repr": {
+      "planted_rendered": 78,
+      "planted_present": 78,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 78
+    },
+    "tag|authentication|strip": {
+      "planted_rendered": 78,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 78,
+      "planted_in_table": 78
+    },
+    "tag|authentication|quoted": {
+      "planted_rendered": 78,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 78,
+      "planted_in_table": 78
+    },
+    "tag|ps_script|raw": {
+      "planted_rendered": 68,
+      "planted_present": 68,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 68
+    },
+    "tag|ps_script|repr": {
+      "planted_rendered": 68,
+      "planted_present": 68,
+      "planted_removed_by_treatment": 0,
+      "planted_in_table": 68
+    },
+    "tag|ps_script|strip": {
+      "planted_rendered": 68,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 68,
+      "planted_in_table": 68
+    },
+    "tag|ps_script|quoted": {
+      "planted_rendered": 68,
+      "planted_present": 0,
+      "planted_removed_by_treatment": 68,
+      "planted_in_table": 68
+    }
+  },
+  "safe_sql": {
+    "original_phi4_multiline_actions": 35,
+    "now_execute_without_error": 19
+  }
+}

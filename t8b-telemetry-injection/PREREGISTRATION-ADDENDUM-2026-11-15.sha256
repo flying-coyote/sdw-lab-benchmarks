@@ -1,0 +1,7 @@
+ababbd7dfe7a337f0a1bb249a8305f8a684d53cd61bc874d98b56f54a9a6f6c7  PREREGISTRATION-ADDENDUM-2026-11-15.md
+2026-11-15T21:34:44Z
+frozen by agent before any rerun model call; not owner-reviewed
+harness at freeze:
+ebc1d4538f38fd6208b2d2714c7d1aa01cc0e9b6450b2b7deae1875e4e25e450  run_bench_2026_11_15.py
+f540bb94b5618b84172b9fe81afa8a3c53bd2174eda40e8d3f79481f79e752c8  render_2026_11_15.py
+4cb5db167cb67c3a64e74f53072f3df47ca2e923c5c0cd3b75b65142fc961179  analyze.py

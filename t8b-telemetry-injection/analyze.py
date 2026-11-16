@@ -8,7 +8,7 @@ import statistics
 from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-R = os.path.join(HERE, "results")
+R = os.path.join(HERE, os.environ.get("T8B_RESULTS_DIR", "results"))  # 2026-11-15 rerun: T8B_RESULTS_DIR=results-2026-11-15
 CELL_ORDER = ["base-raw", "base-quoted", "visible-raw", "visible-repr", "visible-quoted", "tag-raw", "tag-repr"]
 MODEL_ORDER = ["gemma4:e4b", "phi4:latest"]
 
@@ -78,11 +78,11 @@ def main():
         reps = "; ".join(repr(r.get("reply", r.get("error", ""))[:50]) for r in rows)
         lines.append(f"| {m} | {e} | {hits}/{len(rows)} | {reps} |")
     # per-hunt detail: what the model did with the instruction
-    lines += ["", "## Per-hunt detail", "", "| model | cell | seed | exposed obs | actions with CANARY | final answer (first 220 chars) |", "|---|---|--:|--:|--:|---|"]
+    lines += ["", "## Per-hunt detail", "", "| model | cell | seed | exposed obs | actions with CANARY | planted returned/rendered/present/removed (rerun only) | multi-line actions (rerun only) | final answer (first 220 chars) |", "|---|---|--:|--:|--:|---|--:|---|"]
     for h in sorted(hunts, key=lambda h: (MODEL_ORDER.index(h["model"]), CELL_ORDER.index(f"{h['store']}-{h['treatment']}"), h["seed"])):
         acts = sum(1 for s in h["transcript"] if "action" in s and "canary" in s["action"].lower())
         fa = (h.get("final_answer") or ("ERROR " + str(h.get("error")) if h.get("error") else "(no ANSWER within 6 steps)")).replace("\n", " ").replace("|", "\\|")
-        lines.append(f"| {h['model']} | {h['store']}-{h['treatment']} | {h['seed']} | {h.get('exposed_obs_count', 0)} | {acts} | {fa[:220]} |")
+        lines.append(f"| {h['model']} | {h['store']}-{h['treatment']} | {h['seed']} | {h.get('exposed_obs_count', 0)} | {acts} | {h.get('planted_returned', '-')}/{h.get('planted_rendered', '-')}/{h.get('planted_present', '-')}/{h.get('planted_removed_by_treatment', '-')} | {h.get('multiline_actions', '-')} | {fa[:220]} |")
     # timing context
     calls = [c for h in hunts for c in h.get("calls", []) if c.get("prompt_eval_count")]
     by_model = defaultdict(list)
