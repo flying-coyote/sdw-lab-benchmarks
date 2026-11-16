@@ -1,0 +1,1318 @@
+{
+ "part_a_mixed_case_body": {
+  "fired": {
+   "b3_session_sql": {
+    "duckdb": {
+     "as_planted|delegated|noburst": false,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": true,
+     "prefix_titlecase|delegated|noburst": false,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": false,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": false,
+     "whole_value_upper|direct|noburst": true
+    },
+    "sqlite": {
+     "as_planted|delegated|noburst": false,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": true,
+     "prefix_titlecase|delegated|noburst": false,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": false,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": false,
+     "whole_value_upper|direct|noburst": true
+    }
+   },
+   "b4_lowered": {
+    "duckdb": {
+     "as_planted|delegated|noburst": false,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": false,
+     "prefix_titlecase|delegated|noburst": false,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": false,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": false,
+     "whole_value_upper|direct|noburst": true
+    },
+    "sqlite": {
+     "as_planted|delegated|noburst": false,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": false,
+     "prefix_titlecase|delegated|noburst": false,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": false,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": false,
+     "whole_value_upper|direct|noburst": true
+    }
+   },
+   "b4_session_sql_qualified": {
+    "duckdb": {
+     "as_planted|delegated|noburst": false,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": false,
+     "prefix_titlecase|delegated|noburst": false,
+     "prefix_titlecase|direct|noburst": false,
+     "prefix_upper_body_intact|delegated|noburst": false,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": false,
+     "whole_value_upper|delegated|noburst": false,
+     "whole_value_upper|direct|noburst": false
+    },
+    "sqlite": {
+     "as_planted|delegated|noburst": false,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": false,
+     "prefix_titlecase|delegated|noburst": false,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": false,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": false,
+     "whole_value_upper|direct|noburst": true
+    }
+   },
+   "c1_walk_sql": {
+    "duckdb": {
+     "as_planted|delegated|noburst": true,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": true,
+     "prefix_dropped|direct|noburst": true,
+     "prefix_titlecase|delegated|noburst": true,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": true,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": true,
+     "whole_value_upper|direct|noburst": true
+    },
+    "sqlite": {
+     "as_planted|delegated|noburst": true,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": true,
+     "prefix_dropped|direct|noburst": true,
+     "prefix_titlecase|delegated|noburst": true,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": true,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": true,
+     "whole_value_upper|direct|noburst": true
+    }
+   },
+   "c2_lowered": {
+    "duckdb": {
+     "as_planted|delegated|noburst": true,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": false,
+     "prefix_titlecase|delegated|noburst": true,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": true,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": true,
+     "whole_value_upper|direct|noburst": true
+    },
+    "sqlite": {
+     "as_planted|delegated|noburst": true,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": false,
+     "prefix_titlecase|delegated|noburst": true,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": true,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": true,
+     "whole_value_upper|direct|noburst": true
+    }
+   },
+   "c2_walk_sql_qualified": {
+    "duckdb": {
+     "as_planted|delegated|noburst": true,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": false,
+     "prefix_titlecase|delegated|noburst": false,
+     "prefix_titlecase|direct|noburst": false,
+     "prefix_upper_body_intact|delegated|noburst": false,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": false,
+     "whole_value_upper|delegated|noburst": false,
+     "whole_value_upper|direct|noburst": false
+    },
+    "sqlite": {
+     "as_planted|delegated|noburst": true,
+     "as_planted|direct|noburst": true,
+     "prefix_dropped|delegated|noburst": false,
+     "prefix_dropped|direct|noburst": false,
+     "prefix_titlecase|delegated|noburst": true,
+     "prefix_titlecase|direct|noburst": true,
+     "prefix_upper_body_intact|delegated|noburst": true,
+     "prefix_upper_body_intact|direct|burst": true,
+     "prefix_upper_body_intact|direct|noburst": true,
+     "whole_value_upper|delegated|noburst": true,
+     "whole_value_upper|direct|noburst": true
+    }
+   }
+  },
+  "fixture_body": "aB3xY_z9Q-kLmN0pQrStUvWx7Zq",
+  "variants": {
+   "as_planted": "api03-aB3xY_z9Q-kLmN0pQrStUvWx7Zq",
+   "prefix_dropped": "aB3xY_z9Q-kLmN0pQrStUvWx7Zq",
+   "prefix_titlecase": "Api03-aB3xY_z9Q-kLmN0pQrStUvWx7Zq",
+   "prefix_upper_body_intact": "API03-aB3xY_z9Q-kLmN0pQrStUvWx7Zq",
+   "whole_value_upper": "API03-AB3XY_Z9Q-KLMN0PQRSTUVWX7ZQ"
+  }
+ },
+ "part_b_corpus": {
+  "20261109": {
+   "as_planted": {
+    "a6_single_step_matches": {
+     "duckdb": 20,
+     "sqlite": 20
+    },
+    "b3_session_sql": {
+     "duckdb": {
+      "fp": 38,
+      "matches": 48,
+      "precision": 0.2083,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 38,
+      "matches": 48,
+      "precision": 0.2083,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     }
+    },
+    "b4_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "fp": 38,
+      "matches": 58,
+      "precision": 0.3448,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 38,
+      "matches": 58,
+      "precision": 0.3448,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     }
+    },
+    "c2_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    }
+   },
+   "mutated_rows": 10,
+   "prefix_upper": {
+    "a6_single_step_matches": {
+     "duckdb": 10,
+     "sqlite": 20
+    },
+    "b3_session_sql": {
+     "duckdb": {
+      "fp": 38,
+      "matches": 48,
+      "precision": 0.2083,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 38,
+      "matches": 48,
+      "precision": 0.2083,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     }
+    },
+    "b4_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 5,
+      "precision": 1.0,
+      "recall": 0.25,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 0.0
+      },
+      "state": "DETECTED",
+      "tp": 5
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "fp": 38,
+      "matches": 58,
+      "precision": 0.3448,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 38,
+      "matches": 58,
+      "precision": 0.3448,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     }
+    },
+    "c2_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 0.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    }
+   }
+  },
+  "20261110": {
+   "as_planted": {
+    "a6_single_step_matches": {
+     "duckdb": 20,
+     "sqlite": 20
+    },
+    "b3_session_sql": {
+     "duckdb": {
+      "fp": 37,
+      "matches": 47,
+      "precision": 0.2128,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 37,
+      "matches": 47,
+      "precision": 0.2128,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     }
+    },
+    "b4_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "fp": 37,
+      "matches": 57,
+      "precision": 0.3509,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 37,
+      "matches": 57,
+      "precision": 0.3509,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     }
+    },
+    "c2_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    }
+   },
+   "mutated_rows": 10,
+   "prefix_upper": {
+    "a6_single_step_matches": {
+     "duckdb": 10,
+     "sqlite": 20
+    },
+    "b3_session_sql": {
+     "duckdb": {
+      "fp": 37,
+      "matches": 47,
+      "precision": 0.2128,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 37,
+      "matches": 47,
+      "precision": 0.2128,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     }
+    },
+    "b4_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 5,
+      "precision": 1.0,
+      "recall": 0.25,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 0.0
+      },
+      "state": "DETECTED",
+      "tp": 5
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "fp": 37,
+      "matches": 57,
+      "precision": 0.3509,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 37,
+      "matches": 57,
+      "precision": 0.3509,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     }
+    },
+    "c2_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 0.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    }
+   }
+  },
+  "20261111": {
+   "as_planted": {
+    "a6_single_step_matches": {
+     "duckdb": 20,
+     "sqlite": 20
+    },
+    "b3_session_sql": {
+     "duckdb": {
+      "fp": 42,
+      "matches": 52,
+      "precision": 0.1923,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 42,
+      "matches": 52,
+      "precision": 0.1923,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     }
+    },
+    "b4_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "fp": 42,
+      "matches": 62,
+      "precision": 0.3226,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 42,
+      "matches": 62,
+      "precision": 0.3226,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     }
+    },
+    "c2_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    }
+   },
+   "mutated_rows": 10,
+   "prefix_upper": {
+    "a6_single_step_matches": {
+     "duckdb": 10,
+     "sqlite": 20
+    },
+    "b3_session_sql": {
+     "duckdb": {
+      "fp": 42,
+      "matches": 52,
+      "precision": 0.1923,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 42,
+      "matches": 52,
+      "precision": 0.1923,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 10
+     }
+    },
+    "b4_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "b4_session_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 5,
+      "precision": 1.0,
+      "recall": 0.25,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 0.0
+      },
+      "state": "DETECTED",
+      "tp": 5
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 0.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     }
+    },
+    "c1_walk_sql": {
+     "duckdb": {
+      "fp": 42,
+      "matches": 62,
+      "precision": 0.3226,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 42,
+      "matches": 62,
+      "precision": 0.3226,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "NOISY",
+      "tp": 20
+     }
+    },
+    "c2_lowered": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    },
+    "c2_walk_sql_qualified": {
+     "duckdb": {
+      "fp": 0,
+      "matches": 10,
+      "precision": 1.0,
+      "recall": 0.5,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 0.0,
+       "CS0067-direct": 0.0
+      },
+      "state": "DETECTED",
+      "tp": 10
+     },
+     "sqlite": {
+      "fp": 0,
+      "matches": 20,
+      "precision": 1.0,
+      "recall": 1.0,
+      "recall_by_stratum": {
+       "CS0066-delegated": 1.0,
+       "CS0066-direct": 1.0,
+       "CS0067-delegated": 1.0,
+       "CS0067-direct": 1.0
+      },
+      "state": "DETECTED",
+      "tp": 20
+     }
+    }
+   }
+  }
+ },
+ "status": "post-hoc, not pre-registered",
+ "validate_columns": "skipped (schema JSON not on disk)",
+ "versions": {
+  "duckdb": "1.5.3",
+  "pySigma": "2.0.3",
+  "pySigma-backend-sqlite": "2.1.1",
+  "python": "3.12.3",
+  "sqlite": "3.45.1"
+ }
+}
