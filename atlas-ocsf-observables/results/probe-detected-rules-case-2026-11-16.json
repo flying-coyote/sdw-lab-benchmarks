@@ -1,0 +1,61 @@
+{
+ "rules": {
+  "T0049_sqli_union.yml": {
+   "compiled_sql": "SELECT * FROM logs WHERE query_info_query_string LIKE '%UNION%' ESCAPE '\\' AND query_info_query_string LIKE '%SELECT%' ESCAPE '\\' AND query_info_query_string LIKE '%--%' ESCAPE '\\'",
+   "engines_disagree_on": [
+    "lower",
+    "mixed"
+   ],
+   "matched": {
+    "duckdb": {
+     "as_planted_upper": true,
+     "benign": false,
+     "lower": false,
+     "mixed": false
+    },
+    "sqlite": {
+     "as_planted_upper": true,
+     "benign": false,
+     "lower": true,
+     "mixed": true
+    }
+   },
+   "values": {
+    "as_planted_upper": "SELECT name FROM users WHERE id='x' UNION SELECT user,password FROM creds --",
+    "benign": "SELECT name FROM users WHERE id=42",
+    "lower": "select name from users where id='x' union select user,password from creds --",
+    "mixed": "SELECT name FROM users WHERE id='x' UnIoN SeLeCt user,password FROM creds --"
+   }
+  },
+  "T0050_python_exec_b64.yml": {
+   "compiled_sql": "SELECT * FROM logs WHERE process_cmd_line LIKE '% -c %' ESCAPE '\\' AND process_cmd_line LIKE '%exec(%' ESCAPE '\\' AND process_cmd_line LIKE '%b64decode%' ESCAPE '\\'",
+   "engines_disagree_on": [
+    "upper_b64decode"
+   ],
+   "matched": {
+    "duckdb": {
+     "as_planted": true,
+     "benign": false,
+     "upper_b64decode": false
+    },
+    "sqlite": {
+     "as_planted": true,
+     "benign": false,
+     "upper_b64decode": true
+    }
+   },
+   "values": {
+    "as_planted": "python3 -c \"import base64;exec(base64.b64decode('cHJpbnQoMSk='))\"",
+    "benign": "python3 -c \"print(1)\"",
+    "upper_b64decode": "python3 -c \"import base64;exec(base64.B64DECODE('cHJpbnQoMSk='))\""
+   }
+  }
+ },
+ "versions": {
+  "duckdb": "1.5.3",
+  "pySigma": "2.0.3",
+  "pySigma-backend-sqlite": "2.1.1",
+  "python": "3.12.3",
+  "sqlite": "3.45.1"
+ }
+}

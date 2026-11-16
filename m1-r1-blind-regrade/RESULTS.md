@@ -150,7 +150,10 @@ last Flash call: 0.8064, 0.7114, 0.1866. The `gemini-5h` stop rule (below 0.10) 
 - H1 clears its bar narrowly (0.452 against 0.40); a handful of different modal grades would put it under. The
   three-pass stability makes it unlikely that Grader B's side moves much, but R1's side is a single reading.
 - Grader B is one model and one provider family; with the adjudicator missing there is no within-family check either,
-  and no cross-provider leg (Anthropic or OpenAI) was run.
+  and no cross-provider leg (Anthropic or OpenAI) was run. (corrected 2026-11-16: "cross-provider" here is relative to
+  Grader B. Grader A, R1's grades, was Claude Opus 5.5, so the A-versus-B comparison is already Anthropic against
+  Google on the grading call; the M1 pre-registration, prompts and scripts were built by a Claude Fable 5.1 agent and
+  the verifier was Claude Opus 5.5, so only the grading call itself is cross-provider.)
 - The technique stratum's kappa of 0.0 is driven by a constant rater, which is a known degenerate case of Cohen's
   kappa; the 60% raw agreement and the framing difference described above are the informative numbers there.
 - The excerpt gives one-sentence descriptions and no nesting, so Grader B's tendency toward `none` over `proxy` may

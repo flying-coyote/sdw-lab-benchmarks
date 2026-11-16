@@ -13,7 +13,7 @@ frozen 2026-11-09T23:06:16Z. Frozen by agent before run; not owner-reviewed. `sh
 
 **Environment:** Beelink (Ryzen 7 5800H), WSL2 6.6.87.2, 14 vCPU, chrony offset 0.00005 s. Python 3.12.3,
 duckdb 1.5.3, pySigma 2.0.3, pySigma-backend-sqlite 2.1.1, PyYAML 6.0.3, stdlib sqlite3. No timings are reported,
-so no rig stamp applies. Zero spend, and no model calls.
+so no rig stamp applies. Zero spend, and no model calls. (corrected 2026-11-16: "no model calls" means the pipeline made none; the pre-registration, `artifact_ocsf_map.csv`, `technique_direct_ocsf.csv` and the artifact grades were written by the agent running the bench, Claude Opus 5.5, per the local session record.)
 
 **Inputs:** ATLAS v2026.10 YAML `ac41ee9f…e142d`; crosswalk @ `66b7726` (core `9160e460…`, rebaseline `53b4d52c…`,
 annex-10 `accceac6…`); OCSF 1.9.0 fetched from `schema.ocsf.io/api/1.9.0` at 2026-11-09T23:02Z (server default
@@ -115,7 +115,7 @@ seeds. The two that fire cleanly are the ones whose OCSF field carries the attac
 and the decoded-exec command line). Every rule that matches on an artifact *kind* rather than on content is
 caught in the background its lookalike produces: a built-in account name, an inference call, a large outbound
 transfer, a metadata-service URL, a `tasklist`. So a mapped field is necessary but nowhere near sufficient, and
-the mapping table alone would have scored all eight as covered.
+the mapping table alone would have scored all eight as covered. (corrected 2026-11-16: seven of the eight, since T0025 has no crosswalk row and is on the no-field list above; and T0051.000 is generic in core via `email`, with the prompt field profile-only.)
 
 **Supplementary, not pre-registered as a state.** A pySigma `event_count` correlation for T0024 (≥300 calls from
 one source in 1 h) went DETECTED on all three seeds, catching 600 of 600 burst events with 0 FP. It runs in SQLite
@@ -198,8 +198,10 @@ python3 -m venv .venv && .venv/bin/pip install duckdb==1.5.3 pysigma pysigma-bac
 ## Limits
 
 - The artifact→OCSF grades are my judgment, one pass with the ontology-thinking checklist, and nobody else has
-  reviewed them. The reachability is mechanical, but "direct" vs "generic" is not. Treat the specific share as
-  tier D until someone else grades the 80 rows.
+  reviewed them (corrected 2026-11-16: "my" is the bench agent, Claude Opus 5.5; a blind second grader has since
+  re-graded them, see `../m1-r1-blind-regrade/RESULTS.md`). The reachability is mechanical, but "direct" vs "generic" is not. Treat the specific share as
+  tier D until someone else grades the 80 rows (corrected 2026-11-16: 79 artifact rows; the CSV's 80 lines include
+  the header).
 - "Has a field" means the schema can hold the fact. It says nothing about whether any product emits it. The core
   arm also counts deep paths such as `actor.process.environment_variables`, which few sources populate.
 - The crosswalk is one dataset, mostly unmerged upstream. A different artifact choice per technique moves the
