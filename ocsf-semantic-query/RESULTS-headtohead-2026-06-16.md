@@ -7,13 +7,13 @@ tags: [bench-c, ocsf-semantic-query, silent-error, graphrag, text-to-sql, obda]
 
 # BENCH-C-GRAPHRAG head-to-head — RESULTS: the probabilistic silent-error problem is real on OCSF; graph structure and OBDA-same-question-safety are not the demonstrated solution (2026-06-16)
 
-The first first-party OCSF datapoint that runs the load-bearing H-CONCEPT-GRAPH-02 (deterministic OBDA)
+The first first-party OCSF datapoint that runs the central H-CONCEPT-GRAPH-02 (deterministic OBDA)
 vs H-CONCEPT-GRAPH-03 (probabilistic GraphRAG / text-to-SQL) head-to-head **at the frontier with
 run-to-run variance** (8 trials/query) — the variance discipline the single-pass `*_opus` arms lacked.
 Pre-registration: `BENCH-C-PREREGISTRATION.md` (locked params; a null is a valid, publishable finding).
 Shared scorer: `scoring.py` (correct / silent / loud, byte-identical kinds across arms). Corpus: Store F,
 ~177k synthetic OCSF events, one planted APT29-style chain, A1–A9 adversary-tail concept queries. Tier B,
-single host, **directional pilot (n=9, one chain)**. Every load-bearing claim was put through an
+single host, **directional pilot (n=9, one chain)**. Every claim the conclusions rest on was put through an
 adversarial-verification panel (workflow `wpr33e44g`) that re-executed the SQL against Store F; two of the
 three first-draft claims were caught as over-claims and are corrected below.
 
@@ -35,7 +35,7 @@ NODE_BUDGET=150, HOPS=1):
 
 Mean ~0.10; **0 of 6 literal-needle queries clear the 70% gate.** The needle nodes *exist* in the
 234,212-node graph (e.g. `proc:proc-needle-1` carries the encoded command), but entity-seeded vector
-retrieval at ~7 events/seed cannot surface one specific event among 40k–60k. I did **not** tune budgets to
+retrieval at ~7 events/seed cannot surface one specific event among 40k–60k. The run did **not** tune budgets to
 hit the planted needles (that violates the locked-params fairness contract). So per the pre-registration,
 the GraphRAG arm is retrieval-bottlenecked and the graph-structure-value question is downstream of a
 retrieval failure — which is itself the finding: naive entity-GraphRAG over OCSF event telemetry fails at
@@ -123,7 +123,7 @@ and it resolves **toward the problem, not toward either proposed solution**:
   with full data access silently and stably fails the aggregate/sequence/identity adversary tail (0.49
   silent overall, 0.84 on the tail with 0 correct). The silent-error tax falls on exactly the
   correctness-critical region. This supports the *problem statement* (probabilistic query is unsafe on the
-  tail where correctness is load-bearing), with the structural-silent and prompt-conditioned caveats.
+  tail where correctness matters most), with the structural-silent and prompt-conditioned caveats.
 - **The graph-structure solution (-02's GraphRAG sibling) is not demonstrated:** the pre-registered null is
   not refuted, the one apparent win is a sameAs-index artifact, and retrieval is the binding constraint at
   the locked config.
@@ -168,3 +168,5 @@ superseded for the variance claim by this multi-trial run.
 - adversarial verification: workflow `wpr33e44g` (3 refuters + synthesis)
 - prior arms: `run_obda.py` (OBDA 3/8, refusal-honest), `run.py` (text-to-SQL baseline), `run_graphrag.py`
   (local arm), `BENCH-C-PREREGISTRATION.md`
+
+*(corrected 2026-11-17: one first-person phrase in Finding 1 recast in neutral words, and three wording changes in the opening paragraph and Finding 1 with no change to any number or verdict. This file is no longer the current read; `RESULTS-v2-2026-06-17.md` and `RESULTS-v2.1-2026-06-17.md` re-ran the head-to-head after removing the confounds listed above, and `README.md` names them as current.)*

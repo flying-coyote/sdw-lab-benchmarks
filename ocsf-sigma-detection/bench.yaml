@@ -1,0 +1,14 @@
+name: ocsf-sigma-detection
+cluster: detection
+title: Do compiled Sigma rules fire over the OCSF store, and do correlation windows survive compilation
+status: first-pass
+tier: B
+claim_kind: mixed
+verdict: DEMONSTRATION
+prereg: PRE-REG-temporal-execution-2026-06-16.md; PRE-REG-sqlite-2ndbackend-2026-06-17.md; PRE-REG-lakehouse-engines-2026-06-22.md; PRE-REG-scheduled-arm-2026-06-24.md; PRE-REG-evidenceforge-arm-2026-07-04.md
+results: results/RESULTS.md
+reproduce: python ocsf-sigma-detection/run.py
+pins: requirements.txt
+essay: none
+superseded_by: none
+audited: 2026-11-17

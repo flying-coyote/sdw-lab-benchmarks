@@ -13,6 +13,8 @@ measures whether they *fire correctly* end-to-end — portable rule → compiler
 
 **4/4 planted-chain stages detected.**
 
+*(corrected 2026-11-17: read this as 4 of 4 planted stages matched by rules written for them; this shows the compile-and-execute round trip and is not a recall. Each rule keys on a value the testbed generator planted (`ocsf-semantic-testbed/generate.py:110`, `:113`, `:284`, `:342`, `:400-408`), the C2 rule's precision is 1.0 by the scoring definition in `run.py:74-77`, and the RDP rule's 0.0003 is the generator's background weight for port 3389. `run.py` regenerates this file, so the same correction is in the README.)*
+
 | stage | ATT&CK | compiled | detected | matches | false positives | precision |
 |---|---|---|---|---|---|---|
 | execution | T1059.001 | True | ✓ | 1 | 0 | 1.0 |

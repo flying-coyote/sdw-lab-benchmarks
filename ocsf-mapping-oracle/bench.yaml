@@ -1,0 +1,14 @@
+name: ocsf-mapping-oracle
+cluster: mapping-and-models
+title: Does grounding stop an LLM inventing OCSF paths when mapping source fields
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-mapping-oracle/run.py --models phi3:latest --fields-per-source 14
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/ocsf/harness-not-the-model
+superseded_by: none
+audited: 2026-11-17

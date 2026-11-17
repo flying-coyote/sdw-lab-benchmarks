@@ -7,9 +7,11 @@ evidence-tier: B
 
 # Intent self-audit — sdw-lab-benchmarks (2026-06-21)
 
+*Status, 2026-11-17: the index gap this audit found (Q2, Q9) is closed by the generated table in `README.md` (`scripts/bench_index.py`, 81 rows), and the determinism claim it accepted at `lib/common.py:1-30` was narrowed in the README after one generator (`zeek-flagship-rerun/zeek_generator.py:217`) turned out to draw timestamps from the wall clock; word choices were changed in six places, with no finding altered.*
+
 Run against the portable intent question bank in
 `~/claude-code-project-best-practices/analysis/intent-alignment-audit.md` (the nine "why"
-questions generalized from the Fable prompts). This is the **why** pass on the load-bearing
+questions generalized from the Fable prompts). This is the **why** pass on the central
 mechanisms, not a presence/absence inventory. Citations are real `file:line` from a read of the
 tree on 2026-06-21.
 
@@ -29,7 +31,7 @@ one `MASTER_SEED = 20260601`, a fixed `BASE_EPOCH`, no `datetime.now()` / no uns
 in corpus generation — so a re-run reproduces the corpus and therefore the answers exactly. The
 "reproducible part (assert identical) vs measured part (latency as a median on named hardware)"
 split (`README.md:51-58`) is the right honesty discipline for a benchmark portfolio, and the
-cross-engine answer-equality gate is the load-bearing idea: it is what caught the chDB Parquet
+cross-engine answer-equality gate is the central idea: it is what caught the chDB Parquet
 undercount the campaign treats as its strongest result (`SYNTHESIS.md`, `CAMPAIGN.md:46-53`).
 
 Verdict: **genuinely fine on intent.** The repo is doing the thing it says it is for, and the
@@ -72,8 +74,8 @@ Strong here, and model-free where it counts. The answer-equality gate is a deter
 regression check: corpus reproduces by construction, answers re-assert identical, and a
 divergence is a *finding*, not noise (the chDB and fastparquet bugs were both surfaced this way —
 `CAMPAIGN.md:133-160`). `VERSION-CURRENCY-2026-06-14.md` is the right kind of revalidation: it
-re-ran the literature-load-bearing results on bumped engine versions and recorded what moved
-(OpenSearch 2.18→3.7 was the one materially-stale foil). So the project can tell "better" from
+re-ran the results the literature leans on, on bumped engine versions and recorded what moved
+(OpenSearch 2.18→3.7 was the one materially-stale comparison baseline). So the project can tell "better" from
 "just changed" on the reproducible leg. The latency leg is honestly labelled as a median on named
 hardware with CV reported, never as a constant (`BENCHMARKING-METHODOLOGY.md`,
 `README.md:51-58`). No manufactured problem here.
@@ -112,7 +114,7 @@ single-box setup invites. The honest open falsifiers are stated: BENCH-A's "is S
 independent-reviewer gate, the deferred device-measured DWPD (R9, not viable under WSL2 — no
 `/dev/nvme*`), and the BENCH-B frontier / BENCH-C OBDA arms gated on external deps. None of these
 are hidden; they are labelled. So Q5 is in good shape — the repo states what would break each
-load-bearing claim.
+claim it leans on.
 
 ## The one constraint (Q6)
 
@@ -158,7 +160,7 @@ hand-maintained cross-file invariant with no linter). The highest-leverage singl
 generate the bench table from the per-directory docs (or at minimum add a CI/pre-commit check that
 every top-level bench dir with a `run.py` appears in the README), moving "the index is complete"
 from "the maintainer remembers" to "the check blocks." A secondary, smaller bus-factor: the whole
-portfolio is one person's working model of which benches are load-bearing vs illustrative
+portfolio is one person's working model of which benches carry the argument vs illustrate it
 (`README.md` tier/state column carries this, but only for the 25 listed).
 
 ## Dead weight

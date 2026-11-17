@@ -1,0 +1,14 @@
+name: t4-interdiction
+cluster: ai-security
+title: Of the incident steps a burn-down control is mapped to, how many a concrete check catches
+status: published
+tier: B for planted runs and scoring, D for the control-to-check mapping
+claim_kind: mixed
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: python t4-interdiction/run.py (needs control_burndown_2026.10.json, not committed)
+pins: requirements.txt
+essay: /writing/ai/which-controls-cover-ai-systems
+superseded_by: none
+audited: 2026-11-17

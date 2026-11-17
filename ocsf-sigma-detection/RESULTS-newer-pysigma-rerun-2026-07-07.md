@@ -48,7 +48,7 @@ both — in-memory `sqlite3`/`duckdb.connect(":memory:")`, pure-Python corpus ge
 calls) but **false for `temporal_execution.py`**, which POSTs to `OS_HOST` (default
 `localhost:9200`) over `_plugins/_ppl` — it needs a live OpenSearch instance, same as the original
 2026-06-16 leg. Full detail: `BLOCKER-temporal_execution.md` (this run's scratchpad). Rather than
-stand up a container solely to patch a container-free arm, I ran it **after** Arm A's
+stand up a container solely to patch a container-free arm, the run executed it **after** Arm A's
 `zfr-opensearch` stack came up (same container, same OpenSearch 3.7.0, brought up co-resident with
 `moar-*` for the NEEDLE-BM25 arm) — same unmodified script, same methodology, only the source of
 the OpenSearch instance differs from the (inaccurate) "no container" framing. This is not a

@@ -84,3 +84,41 @@ packet payloads) would compress less still; this EDR corpus is a moderate case, 
 .venv/bin/python second_corpus.py       # 2026-06-14 EDR/Sysmon byte-ratio sensitivity (10M rows)
 .venv/bin/python high_entropy_corpus.py # 2026-06-14 high-entropy floor (base64/hashes/GUIDs, 10M rows)
 ```
+
+---
+
+## Layout and audit notes (added 2026-11-17)
+
+Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+
+### Result, and whether it is measured
+
+Three different quantities come out of this folder, and they should be cited apart.
+
+- **Measured: bytes.** The same 10M Zeek events take 186.8 bytes per event in the OpenSearch index, 44.0 in Iceberg Parquet and 38.6 in cold zstd-19 Parquet (`results/measured_footprints.json`), so the index holds 4.24× the bytes of the Iceberg table and 4.84× the bytes of cold Parquet.
+- **Modelled: cost multiples.** `cost_model.py` multiplies those measured bytes by AWS us-east-1 list prices (gp3 $0.08, S3 Standard $0.023, Glacier Instant Retrieval $0.004 per GB-month) and gives 14.8× (index on gp3 against Iceberg on S3), 16.9× (against cold Parquet on S3), 96.7× (against cold Parquet on Glacier IR) and 5.4× (ClickHouse LZ4 on gp3 against Iceberg on S3) (`results/cost_curves.json`). These are storage-only, and they compare a search index on block storage with lakehouse tiers on object storage. The 16.9× comes from the rounded ratios in the footprints file; the exact byte counts give 16.82×.
+- **Desk: 130–227×.** The legacy list-price ratio for a SIEM's indexed storage against S3 is not computed anywhere in this folder. The arithmetic quoted for it, $3–10/GB over $0.023/GB, gives 130× to 435×, and the source of the 227× upper bound is not in the repository.
+
+### What would have made it fail
+
+The byte layer is a measurement on a pinned corpus, so any realization could have stored more or fewer bytes than expected. The priced layer cannot fail in the same sense: once the byte ratios and list prices are fixed, the multiples follow arithmetically, which is why they are labelled modelled here. A second and third corpus (EDR process creation, and a high-entropy corpus) show how far the Parquet compression ratio against raw JSON moves with the data: 8.5× for flat Zeek, 7.94× for EDR and 2.57× for high-entropy payloads at zstd defaults (`results/second_corpus.json`, `results/high_entropy.json`). No search index was built for the second and third corpora, so the index-over-lakehouse ratio is measured on Zeek only.
+
+### Pre-registration
+
+The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+
+### Results
+
+Entry point `results/RESULTS.md`, with a dated correction at the top; data `results/measured_footprints.json`, `results/cost_curves.json`, `results/second_corpus.json`, `results/high_entropy.json`.
+
+### Versions and pins
+
+The OpenSearch, ClickHouse LZ4 and Iceberg footprints are taken from `../zeek-flagship-rerun/results/load_*.json` (OpenSearch 2.18.0, ClickHouse 26.5.1.882, pyiceberg 0.11.1 per that folder's `results/env.json`); the ZSTD(22) and cold-Parquet arms were built by `measure.py`. Prices were verified on 2026-06-10 and again on 2026-06-14 (comment in `cost_model.py`).
+
+### Evidence tier and limits
+
+Tier B for the byte layer, one host and one synthetic corpus per measurement. The priced layer is AWS list price only, with no compute, licence, egress, IOPS or operations cost.
+
+### Corrections
+
+- 2026-11-17: dated note added to `results/RESULTS.md` separating the measured byte ratios, the modelled cost multiples and the desk figure.

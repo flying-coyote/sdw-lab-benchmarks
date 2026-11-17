@@ -1,0 +1,14 @@
+name: ocsf-write-inlining
+cluster: formats-and-lakehouse
+title: Does DuckLake data inlining avoid small files that Iceberg writes per commit
+status: first-pass
+tier: B
+claim_kind: demonstration
+verdict: DEMONSTRATION
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-write-inlining/run.py
+pins: requirements.txt
+essay: /writing/lakehouse/write-pattern-is-architectural
+superseded_by: none
+audited: 2026-11-17

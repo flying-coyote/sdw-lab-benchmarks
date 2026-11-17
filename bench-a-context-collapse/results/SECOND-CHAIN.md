@@ -20,6 +20,9 @@ Per-mechanism Δ — chain A: grain +1.00 · time +0.52 · bounded-context +0.55
 Headline difference A vs B: **0.009**. Both routine controls clean:
 True. Canonical chain-A corpus restored afterward: True.
 
+*(corrected 2026-11-17: routine Δ is 0.000 at every setting by construction, since R1 to R6 read no
+coarsened field; "clean" here is not evidence that Store N is realistic.)*
+
 ## Reading
 
 Chain B is a genuinely different attack — a different actor on a different subnet, different C2 domain and

@@ -1,0 +1,14 @@
+name: t8b-telemetry-injection
+cluster: ai-security
+title: Instruction-shaped text in telemetry fields through an air-gapped local analyst agent
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: PREREGISTRATION.md; PREREGISTRATION-ADDENDUM-2026-11-15.md
+results: RESULTS-2026-11-15.md; RESULTS.md
+reproduce: python t8b-telemetry-injection/make_fixtures.py then run_bench_2026_11_15.py then analyze.py
+pins: requirements.txt
+essay: /writing/ai/telemetry-prompt-injection-surface
+superseded_by: none
+audited: 2026-11-17

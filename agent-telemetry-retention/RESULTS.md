@@ -62,7 +62,7 @@ of magnitude while moving T2 by tens of percent.
   session and the compressor sees all of it at once. Forcing the check per row (`write_batch_size=1`,
   exploratory probe, seed 0) put coding session-sorted T3 at 303,234 bytes per million tokens at level 1
   and 192,184 at level 19, against 162,990 and 34,712 with the default batch. So most of the level-19
-  saving on T3 comes from the oversized pages, and I would not quote the 28 KB best case as something a
+  saving on T3 comes from the oversized pages, and the 28 KB best case should not be quoted as something a
   streaming writer will see. A collector that flushes small files every few seconds splits sessions across
   files and lands nearer the random-order row.
 
@@ -188,7 +188,7 @@ tokens per active day (average) or 54M (p90), 185 active days, 1,000 users.
 | Chat fleet, T3 full text, zstd default | 363,349–1,327,012 | 13.4–49.1 | $0.31–$1.13 | $3.7–$13.6 | $0.05–$0.20 | $1.08–$3.93 |
 
 The T3 row uses the defensible range from the page-framing probe rather than the zstd-19 best case;
-`results/tables.md` has the per-variant rows, including the zstd-19 figures I do not lead with.
+`results/tables.md` has the per-variant rows, including the zstd-19 figures this summary does not lead with.
 
 ## Hypotheses
 

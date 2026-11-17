@@ -1,0 +1,14 @@
+name: zeek-flagship-rerun
+cluster: catalogs-engines-cost
+title: Zeek flagship re-measured, OpenSearch baseline against ClickHouse native and over Iceberg
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: README.md
+results: results/RESULTS.md
+reproduce: see README Run order (docker compose, load_arms.py, run_bench.py per arm, run_bench.py --compare)
+pins: results/env.json records the published versions; compose.yml now differs (OpenSearch 3.7.0, ClickHouse latest)
+essay: https://securitydataworks.com/writing/engines/push-pull-engines
+superseded_by: none
+audited: 2026-11-17

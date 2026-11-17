@@ -35,7 +35,7 @@ not just count-matched.
 ClickHouse 26.5 ships an experimental `text` index (the renamed "inverted index") that accelerates
 `hasToken`/`hasAnyToken`/LIKE — and on a plain single-token exact match, it actually **beats**
 OpenSearch (21 ms vs 71 ms), reversing the pre-registered direction. Phrase search is a near-tie
-(1.1×, and the 6.9% gap barely clears the 6.4% CV gate — I'd call this a tie within noise, not a
+(1.1×, and the 6.9% gap barely clears the 6.4% CV gate — this reads as a tie within noise, not a
 real ClickHouse win or loss, given how thin the margin is over the isolation caveat below). So the
 part of the hypothesis that predicted a wide OpenSearch margin on **simple boolean full-text** was
 wrong: a modern lakehouse engine with its own text index closes that gap, sometimes past parity.
@@ -49,7 +49,7 @@ agree exactly at 2,001,030 matches; the OpenSearch fuzzy cell recorded a capped 
 index-terminated query against ClickHouse's exhaustive full-corpus `count()`) but has **no index
 support for it**: brute-force scan, and OpenSearch's indexed Lucene automaton wins by 139–175×. And ClickHouse has **no BM25 or
 any ranked-relevance function at all** (checked `system.functions`: `hasToken`/`hasAnyToken`/
-`hasAllTokens` only, no `bm25`/rank hit) — the 4.7–17.7× I report there is OpenSearch's real BM25
+`hasAllTokens` only, no `bm25`/rank hit) — the 4.7–17.7× reported there is OpenSearch's real BM25
 against a ClickHouse *proxy* (a naive matched-term count, no IDF, no term-frequency saturation, no
 document-length normalization), which is not the same computation, so the multiple is directional
 evidence for a capability gap, not an apples-to-apples speed comparison.
@@ -57,7 +57,7 @@ evidence for a capability gap, not an apples-to-apples speed comparison.
 **Falsification condition (from the pre-reg) revisited:** the pre-registered falsifier was "the
 lakehouse arm matches OpenSearch within CV on BM25-style relevance retrieval... no capability gap,
 multiple ≤ ~2×." On boolean token search, that falsifier **did trigger** (no gap, and ClickHouse
-edges the win) — I'm reporting that plainly rather than reframing it after the fact. On fuzzy and
+edges the win), and this file reports that plainly rather than reframing it after the fact. On fuzzy and
 ranked relevance, it did not: the capability gap is real (ClickHouse cannot rank by relevance at
 all) and the latency gap is wide (139–175× on fuzzy). So the two-regime claim survives, narrowed:
 it's not "full-text is a distinct regime," it's "**ranked/fuzzy retrieval** is a distinct regime" —
@@ -68,8 +68,8 @@ boolean token/phrase matching is not, once the lakehouse engine ships its own te
 - **Isolation caveat (constraint-driven, per pre-reg):** timed co-resident with the idle `moar-*`
   stack (not stopped, per the standing constraint), not a bare window. CVs ran 0.9%–11.7% across
   the 12 arm×query cells — none blew past a level that would force a downgrade to direction-only,
-  except the `phrase_exact` vs ch_native cell, which is thin enough (gap 6.9% vs gate 6.4%) that I
-  read it as a tie, not a claim, despite technically clearing the gate.
+  except the `phrase_exact` vs ch_native cell, which is thin enough (gap 6.9% vs gate 6.4%) that it is
+  read as a tie, not a claim, despite technically clearing the gate.
 - Iceberg is used only via ClickHouse's `icebergS3()` reader (no separate Iceberg-native full-text
   engine tested) — Iceberg/Parquet fundamentally has no index concept here, so this arm is really
   "does the *reading engine* have an index," not an Iceberg-specific finding.

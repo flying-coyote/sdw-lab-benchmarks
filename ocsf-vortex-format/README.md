@@ -1,5 +1,7 @@
 # Vortex vs Parquet on OCSF data
 
+## What it measures
+
 Vortex (the LF AI & Data columnar format, `vortex-data`) claims large random-access and scan speedups over
 Parquet with comparable compression. This tests that on security-shaped data — an OCSF Network Activity corpus
 with a realistic encoding mix — on the axes that decide a lakehouse format: on-disk size, write time, full
@@ -26,6 +28,10 @@ cascading encodings. Two scales, because the size conclusion turned out to be sc
 | 100K | **vortex** | **1.5 MB** | 57 ms | **2.5 ms** | **1.5 ms** |
 | 1M | parquet | **11.3 MB** | 192 ms | 33.2 ms | 34.7 ms |
 | 1M | **vortex** | 14.2 MB | 398 ms | **19.7 ms** | **10.4 ms** |
+
+*(corrected 2026-11-17: the 1M timings above do not re-derive from `results/results.json`, which gives
+Parquet 195 ms write, 40.4 ms decode and 36.9 ms needle, and Vortex 414 ms, 24.5 ms and 10.8 ms; see
+Corrections.)*
 
 The trade is consistent and clear: **Vortex reads faster — decode ~1.7–2.6×, the needle ~3.3–4× — at a write
 cost (~1.3–2× slower) and a storage cost that depends on scale** (Vortex ~9% smaller at 100K, ~26% larger at
@@ -57,7 +63,18 @@ LTS line), so a common-engine read isn't available here and decode-to-Arrow is t
   this is a standalone-format datapoint, not a swap-in for the Iceberg table format the rest of the MOAR stack
   reads — Vortex inside Iceberg stays a future arm.
 
-## Run it
+## What would have made it fail
+
+Every column of the table could have gone either way, and the size column did flip with scale. The
+answer check (row count, needle count, logical fingerprint) is the correctness gate, and it would have
+failed on any decode difference. There is no common-engine baseline, so the read columns compare two
+native readers, as the box above says.
+
+## Pre-registration
+
+None. No pre-registration file exists in this folder.
+
+## Reproduce
 
 ```bash
 pip install -r ocsf-vortex-format/requirements.txt
@@ -68,3 +85,32 @@ VX_N=100000 python ocsf-vortex-format/run.py     # a smaller scale point
 Deterministic corpus (seeded off `lib.common`). Tier B, single machine; the per-format table is version- and
 scale-bound — re-run on a `vortex-data` upgrade. The DuckDB-Vortex extension arm (DuckDB 1.4 LTS) and the
 Iceberg-Vortex path are future work, gated on the extension building for our DuckDB line and on #15416.
+Both scales write the same `results/results.json`, so the second run overwrites the first.
+
+## Results
+
+- [`results/results.json`](results/results.json), the only results file, holding the latest 1M run
+  (sizes, write ms, and decode and needle medians with CV over 5 trials after 1 warmup). There is no
+  RESULTS.md and no file for the 100K point.
+
+## Versions and pins
+
+`requirements.txt` pins pyarrow 23.0.1, DuckDB 1.5.3 and vortex-data 0.74.0, which match the JSON's
+`environment` block; `numpy` is unpinned.
+
+## Evidence tier and limits
+
+Tier B, single machine, native reader per format, seeded-random corpus. The JSON gives CV per arm (2.9% to
+16.7%), and the full-scan CVs are 11.1% (Parquet) and 16.7% (Vortex), so treat the decode ratio as
+approximate. No rig stamp (methodology §7b) was
+recorded, so read absolute milliseconds under §7a.
+
+## Corrections
+
+- *(corrected 2026-11-17: the 1M timings in the table above do not re-derive from `results/results.json`,
+  which holds a later 1M run: Parquet 40.4 ms decode, 36.9 ms needle, 195 ms write; Vortex 24.5 ms, 10.8 ms,
+  414 ms (sizes 11,847,345 and 14,916,824 bytes, 11.3 and 14.2 MiB, match). The ratios survive, decode 1.65×
+  and needle 3.42× in the JSON against 1.69× and 3.34× in the table, so the "~1.7–2.6× decode, ~3.3–4×
+  needle" ranges stand. The JSON write ratio is 2.1× (414 ms against 195 ms), just above the stated
+  "~1.3–2× slower" range. The 100K row, which sets the top of both ranges, has no results file in the repo.
+  Sizes in the table are MiB.)*

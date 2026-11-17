@@ -94,3 +94,5 @@ Two scorer facts found in a post-hoc re-score (`../ocsf-deterministic-mapper/res
   0.69 to 0.68.
 - **The `schema` condition is a partial path list**: `schema_block()` (run.py l.130-131) shows the first 80
   class paths of depth at most one, alphabetically; 17 of the 141 gold paths appear in the list shown.
+
+*(corrected 2026-11-17: the Reading above still calls the frontier leg pending; the claude-opus-4-8 section in this file is that leg, run three times (`../_frontier/REPLICATION-2026-06-14.md`). It is the same model family as the bench author's tooling, so an independent frontier model is still owed. `run.py --render-only` regenerates this file and drops this note and the 2026-11-16 correction; both are mirrored in `../README.md`.)*

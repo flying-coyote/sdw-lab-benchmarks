@@ -1,0 +1,14 @@
+name: t3-guardrail-adaptive
+cluster: ai-security
+title: What blocks prompt injection means for three open classifiers under published input transforms
+status: first-pass
+tier: unstated in RESULTS
+claim_kind: measured
+verdict: SOUND
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: python t3-guardrail-adaptive/fetch_data.py then run.py per model, run_stability.py, analyze.py, verdicts.py
+pins: requirements.txt
+essay: none
+superseded_by: none
+audited: 2026-11-17

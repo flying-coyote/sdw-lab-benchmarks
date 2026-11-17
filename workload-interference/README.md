@@ -115,3 +115,47 @@ for the cpuset).
 `results/RESULTS.md` (per-arm knee coordinate + failure shape + the P1–P7 scoring),
 raw per-step JSON, and the p95-vs-R curve data. Findings feed the transition-atlas
 dimension 2 gap (the scheduled:ad-hoc mix axis) and the program's §7 navigation map.
+
+---
+
+## Layout and audit notes (added 2026-11-17)
+
+Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+
+### Result, and whether it is measured
+
+Measured. On the pre-registered ladder (up to 4× the base scheduled rate) no engine reached a knee, and interactive p95 stayed flat. On a ladder extended afterwards to 64×, ClickHouse native, ClickHouse over Iceberg and StarRocks all hold flat through 32× and trip the stop rule at 64×, in three of three runs; the StarRocks arm with pre-built materialized views trips at the same step. Two arms, the embedded DuckDB and Trino, failed the null-load calibration gate and were not scored.
+
+### What would have made it fail
+
+An arm that failed the null-load calibration gate (client-added latency under 5% of the baseline probe median) could not be scored, and the mechanical stop rule above set each knee, which counts only when it reproduces three times at the same ladder step. A knee that tripped at different ladder steps across the three runs would not have been claimable.
+
+### Limits to carry with the knee
+
+- The extension past 4× is post-hoc, and the P1 to P7 scorecard in `INTERFERENCE-FINDINGS-2026-06-14.md` was scored on the 4× ladder and not rescored afterwards.
+- The ladder doubles, so the knee lies somewhere above 32× and at or below 64×. Every arm, the materialized-view upper bound included, trips at the same step, which fits a shared scheduler ceiling and makes "reproduced at the same step" a coarse test of where the knee is.
+- ClickHouse native stops on utilization with growing backlog; the other arms stop on errors that `engines.classify` maps to a resource break, a keyword match that would count an admission-limit error the same as an out-of-memory one.
+- The calibration passed at -24% to -35% client-added latency on 13 probe samples, so the 5% gate rules out added latency without saying much about the baseline it compares against.
+
+### Pre-registration
+
+The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+
+### Results: which file to read
+
+- **Entry point: `INTERFERENCE-FINDINGS-2026-06-14.md`**, the hand-written findings, scorecard, extended ladder and reproduction, with a dated note at the top.
+- `PHASE-C-FINDINGS-2026-06-14.md` and `PHASE-C-SUMMARY.json`: the three-run knee reproduction tables.
+- `results/results.json`: every arm's full per-step curve and calibration.
+- `results/RESULTS.md` is a scaffold that `run.py` regenerates for the last arm it ran (currently `starrocks_mv` only, with the scorecard left "TBD"); it is not the record of the bench, and a link that cites it for the per-step ladder should point to `results/results.json` or the findings file.
+
+### Versions and pins
+
+The arms run on the ejs stack images (`engine-join-specialization/compose.yml`, several on `:latest`); the result files record the host and cpuset split but not engine versions.
+
+### Evidence tier and limits
+
+Tier B, one host with a 12/2 engine/client cpuset split, one engine at a time, open-loop scheduled load. Ordering and failure shape travel; the absolute demand multiple belongs to this host.
+
+### Corrections
+
+- 2026-11-17: dated note added to `INTERFERENCE-FINDINGS-2026-06-14.md` on the post-hoc ladder, the coarse knee, clickhouse_native's stop reason and the calibration.

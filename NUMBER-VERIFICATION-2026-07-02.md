@@ -7,6 +7,8 @@ evidence-tier: B (all cited measurements)
 
 # Number verification — "8.5× smaller on disk" vs the "~8.2× ZSTD-22" canon (2026-07-02)
 
+*Status, 2026-11-17: the one open follow-up is closed, since `charts/_r20_schema-trained-zstd-dictionary-compression.py` no longer carries the unsourced 8.2× (a grep for `8.2` in it returns nothing); one word was changed below, with no finding altered.*
+
 The audit asked whether the essay claim that the open Iceberg table holds the same data
 **"8.5× smaller on disk than the raw logs"** conflicts with canon carrying **~8.2×
 compression (ZSTD-22, ClickHouse-side, Zeek benchmark)**. Both numbers were traced to
@@ -68,7 +70,7 @@ The audit also flagged `charts/_r29_engine_two_regime.py` as "currently includes
 was removed from the script and the PNG re-rendered Dremio-free in commit `c00084d`
 (2026-06-16 DeWitt sweep). A fresh render from the current script is byte-identical to
 the committed `charts/out/benchmark-8-engine.png`; visual inspection confirms the arms
-are foil 1×, Trino 3.6×, StarRocks 8.3×, ClickHouse-Iceberg 10.1×, ClickHouse native
+are the OpenSearch baseline 1×, Trino 3.6×, StarRocks 8.3×, ClickHouse-Iceberg 10.1×, ClickHouse native
 46.8×, with the point-lookup regime named in the subtitle and the Tier-B/single-host
 footer intact. The bar the audit saw is **Trino** at 3.6× (0.795 s,
 `zeek-flagship-rerun/results/starrocks_trino_arms.json`) — an independent, legitimate

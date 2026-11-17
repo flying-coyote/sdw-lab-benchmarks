@@ -1,0 +1,14 @@
+name: security-context-graph
+cluster: detection
+title: Concept graph joining OCSF, D3FEND, ATT&CK and controls with per-edge provenance
+status: foundation
+tier: none
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/reconcile.json
+reproduce: python security-context-graph/scg.py
+pins: none (standard library; scg_mcp.py needs mcp)
+essay: https://securitydataworks.com/writing/ocsf/controls-layer-crosswalk
+superseded_by: none
+audited: 2026-11-17

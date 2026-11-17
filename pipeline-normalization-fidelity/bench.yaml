@@ -1,0 +1,15 @@
+name: pipeline-normalization-fidelity
+cluster: mapping-and-models
+title: What pipeline tools' shipped OCSF mappings preserve, by field, value and semantics
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+# the pre-registration is the opening section of README.md and is unhashed
+prereg: README.md
+results: FINDINGS-2026-06-14.md
+reproduce: python pipeline-normalization-fidelity/gen_corpus.py --check && bash pipeline-normalization-fidelity/tenzir/run_tenzir_arm.sh
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/ocsf/what-ocsf-native-delivers
+superseded_by: ocsf-1.9-rescore/RESULTS.md
+audited: 2026-11-17

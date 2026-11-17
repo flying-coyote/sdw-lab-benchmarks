@@ -1,0 +1,14 @@
+name: t8c-trifecta-detection
+cluster: ai-security
+title: Can the lethal trifecta be detected as a sequence in one agent session over OCSF
+status: published
+tier: B for the mechanism, D for benign-session judgments
+claim_kind: demonstration
+verdict: DEMONSTRATION
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: python t8c-trifecta-detection/run.py
+pins: requirements.txt
+essay: /writing/detection/detecting-the-lethal-trifecta
+superseded_by: none
+audited: 2026-11-17

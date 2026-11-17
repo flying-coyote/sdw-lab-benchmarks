@@ -1,0 +1,14 @@
+name: workload-interference
+cluster: catalogs-engines-cost
+title: Where scheduled detection load breaks interactive query latency
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: README.md
+results: INTERFERENCE-FINDINGS-2026-06-14.md
+reproduce: see README (run.py per arm; extend_ladder.sh and phase_c_knee_repro.sh for the extended ladder)
+pins: none (ejs stack images; engine versions not recorded)
+essay: https://securitydataworks.com/writing/engines/isolation-first-platforms
+superseded_by: none
+audited: 2026-11-17

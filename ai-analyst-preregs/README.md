@@ -40,3 +40,34 @@ edited after this freeze, its new hash goes in a dated amendment line below, wit
   beside each technique's rule count. Because T1559 and T1559.001 rest on the same three dns/network/process
   rules, their two reported states are one test, not two, and the write-up says so. Whether to switch to
   exact-ID matching is left for the owner to rule on; it is not applied.
+
+## What it measures, result and what would make it fail
+
+Nothing yet. These are three frozen designs with no run behind them, so there is no result to read and
+no construction question to ask of one. Each design states its own falsifiers and its cost ceiling, and
+R3 and R11 call for paid model calls that wait on an owner decision.
+
+## Pre-registration
+
+The three hashes above verify against `R3.md`, `R9.md` and `R11.md` (checked 2026-11-17), and the
+verifier's file times put the freeze at 2026-11-09T23:03:24Z. All three were frozen by an agent and
+are not owner-reviewed. The frozen files cite the lab's private planning notes and one site source file
+by local paths; they are left as written, because editing them would break the hashes.
+
+## Reproduce
+
+Not runnable yet. `requirements.txt` lists the planned pins, and two lines in it are deliberately left
+open: pySigma and pySigma-backend-sqlite are to be pinned at run time.
+
+## Results
+
+`RESULTS.md` is a placeholder holding the freeze record. `VERIFICATION.md` is the independent check of
+the designs (VERIFIED, with one dated amendment above).
+
+## Evidence tier and limits
+
+Not applicable until a run exists.
+
+## Corrections
+
+- 2026-11-17: these layout sections added; no frozen file changed.

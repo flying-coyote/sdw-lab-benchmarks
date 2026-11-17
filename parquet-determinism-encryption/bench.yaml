@@ -1,0 +1,14 @@
+name: parquet-determinism-encryption
+cluster: formats-and-lakehouse
+title: Are float aggregates bit-identical across engines, and does Parquet Modular Encryption read across engines
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python parquet-determinism-encryption/run.py
+pins: requirements.txt
+essay: /writing/detection/tamper-evident-security-data
+superseded_by: none
+audited: 2026-11-17

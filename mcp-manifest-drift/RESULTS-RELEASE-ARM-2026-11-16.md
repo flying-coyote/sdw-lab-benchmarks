@@ -106,7 +106,7 @@ which OCSF has no `prev_` field for and would ride in `unmapped` as S2's fingerp
 
 ## Correction (2026-11-16, after review)
 
-An external review (Fable, 2026-11-16) found, and I reproduced, that the replay did not reconstruct each release as
+An external review (Fable, 2026-11-16) found, and the run agent reproduced, that the replay did not reconstruct each release as
 published. `npx -y <pkg>@<version>` resolves transitive dependencies to their current versions, so on 2026-11-16
 every one of the 13 versions ran on `@modelcontextprotocol/sdk` 1.32.2, every `server-filesystem` version ran on
 `zod` 4.6.7 with `zod-to-json-schema` 3.25.2, and `server-everything` ran on `zod` 3.25.76 up to 2026.1.26 and

@@ -7,6 +7,8 @@ tags: [flagship, clickhouse, opensearch, two-regime, revalidation, iceberg]
 
 # Flagship — triple-run band on the two-regime core (2026-06-14)
 
+*(corrected 2026-11-17: the per-arm table labels the OpenSearch row "foil 3.7.0" for all three draws, but draw 1 (`results/`, `started_unix` on 2026-06-10) ran OpenSearch 2.18.0 per `results/env.json`, and draw 2 (`results_revalidation_2026-06-14/`, started 04:32Z on 2026-06-14) ran before the 3.7.0 comparison at 04:52Z and is recorded as 2.18.0 in `VERSION-CURRENCY-2026-06-14.md`. Draw 3 (started 20:22Z) records no OpenSearch version; the compose file had moved to 3.7.0 by then, so it probably ran 3.7.0. The band therefore mixes two OpenSearch versions. The multiples re-derive from each draw's `comparison.json` as 10.12×, 10.59× and 11.35× for the baseline over ClickHouse-Iceberg and 4.62×, 4.25× and 4.24× for the open-format tax. The 145× sentence below describes a legacy pairing that cannot be checked from this folder.)*
+
 Three independent draws of the flagship benchmark (the 145×→two-regime number). Tier B,
 single host (Beelink 5800H, WSL2 48 GB/14t), one engine up at a time, 1 warmup + 7 trials,
 engine-cold, CV-gated. The benchmark runs four arms; the Dremio arm is withheld here under

@@ -1,0 +1,14 @@
+name: clickhouse-vs-duckdb
+cluster: formats-and-lakehouse
+title: Do ClickHouse (chDB) and DuckDB return the same answers over the same OCSF Parquet, and at what latency
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python clickhouse-vs-duckdb/run.py 1000000 10000000 100000000
+pins: ../requirements.txt
+essay: /writing/detection/silent-wrong-answer
+superseded_by: none
+audited: 2026-11-17

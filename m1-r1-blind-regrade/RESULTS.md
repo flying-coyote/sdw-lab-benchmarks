@@ -96,7 +96,7 @@ direct to generic, and 15 go from generic or proxy to none.
    and the unrun scripts. Nothing had been called before; `responses/pass1/run.log` and `responses/pass1.out` were
    empty and the agy ledger had no `m1-` row, so this was a fresh start of the grading, with the prompt build resumed
    rather than redone.
-3. Grader B: 30 calls to `gemini-3.8-flash-high` through `~/project1/automation/agy-tracked.sh` (prompt as the last
+3. Grader B: 30 calls to `gemini-3.8-flash-high` through the lab host's `agy-tracked.sh` usage-ledger wrapper, which is not in this repository (prompt as the last
    argument, `-p` last inside the wrapper), one new agy conversation per call, under `nice -n 10 taskset -c 0-3`. One
    smoke call (pass 1, artifact batch 1) ran alone first to confirm the model id and parse; it counts toward the 30.
    Then passes 1 and 2 ran concurrently (4 parallel each) and pass 3 after. 30 of 30 succeeded on the first try; no
@@ -183,3 +183,5 @@ last Flash call: 0.8064, 0.7114, 0.1866. The `gemini-5h` stop rule (below 0.10) 
 - No `LEDGER-ROW.md`: the pre-registration does not ask for one. The agy ledger convention it names is the usage
   ledger that `agy-tracked.sh` writes (ids, model, status, tokens, quota snapshot, never prompt text), and all 30
   calls are recorded there.
+
+*(corrected 2026-11-17: the wrapper's location on the lab host was replaced in Method step 3 by a description, since that path is outside this repository; `run_pass.sh`, `run_adj.sh` and `build_prompts.py` still name local paths and need editing before they run anywhere else.)*

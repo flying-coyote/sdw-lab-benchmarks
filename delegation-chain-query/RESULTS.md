@@ -21,7 +21,7 @@ the harness ran unprivileged.
 deterministic, with no LLM arm.
 
 Records are *delegation-shaped*. They are modeled on the OCSF 1.9.0 IAM `delegation` object, but the attribute
-names are mine and were not checked against the 1.9.0 schema JSON.
+names were chosen by the run agent and were not checked against the 1.9.0 schema JSON.
 
 ## Headline
 
@@ -36,7 +36,7 @@ numbers reproduced; the fixes are wording on H1, H3's chDB margin, D's recall an
   cell (1e5 rows, depth 12, 83 plants). That recall level is set by the generator's plant mix (about half of plants at
   hop 2 or later are `reacquire` by design), so it shows the blind spot exists, not how common it is in real logs. A hop that re-grants authority an
   intermediate agent had already dropped stays inside the human root's authority, so a check against only the
-  root's authority can't see it.
+  root's authority can't see it. *(corrected 2026-11-17: A, B and C returning exactly the planted set shows each query implements the same escalation definition the generator used (`PREREGISTRATION.md` H5, 'correctness'); it is a consistency check that a query bug could have failed, not a detection rate, because plants and arms share one definition.)*
 - **The walk works at this scale.** At 1e7 rows and depth 12 (833,333 chains), the recursive CTE ran in a median
   1.56 to 1.70 s in DuckDB and 0.87 to 0.99 s in chDB across the two runs. The within-run trial CV was 8% or
   less. Between the two runs the medians moved further: A by −8% in DuckDB (1702 to 1560 ms) and −13% in chDB

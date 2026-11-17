@@ -100,9 +100,9 @@ thinking and tool-use blocks) and their cause was not determined in this run; it
 effect. `input_tokens` was 2 on every request because almost the whole prompt was cache. Per-session
 `cost_usd` summed to about USD 0.00076 (A1 trial 1) and USD 0.00083 (A2 trial 1).
 
-Three attributes appeared on every event and metric that the documentation I fetched did not list:
+Three attributes appeared on every event and metric that the fetched documentation did not list:
 `anthropic.provider=firstParty`, `anthropic.custom_base_url=False`, `anthropic.plan=max`. They may be in
-the part of the page I did not read; I note them as present and undocumented-to-me rather than
+the part of the page the run did not read, so they are noted as present and not found in the fetched pages rather than
 undocumented.
 
 The A1 content fields are not merely absent: `prompt`, `prompt_text` and `response` exist on the event with
@@ -176,7 +176,7 @@ off. The Vertex columns are documented only.
   body, and both token counts; it lacks a cost field, and it is off by default. The ChatGPT Enterprise
   clause rests on tokens and cost being *not stated* rather than documented absent. So the hypothesis is
   not falsified, but the pattern it describes is
-  weaker than I pre-registered it: the real split is "content requires an opt-in" (Claude Code gates, Bedrock
+  weaker than the pre-registration stated it: the real split is "content requires an opt-in" (Claude Code gates, Bedrock
   logging, Vertex request-response logging, Copilot's preview API-usage stream) rather than "identity and
   content live on different platforms". The ChatGPT Enterprise column, which fits the hypothesis best, is
   also the weakest-sourced (public announcement plus search snippets; the help article is login-gated).
@@ -206,7 +206,7 @@ off. The Vertex columns are documented only.
    API shape, not quotations, and are labelled so in the table.
 7. The private debug-level Ollama instance was started on cores 0-3 as pre-registered; during debug trial 1
    those four cores were at 100% with two other benches' processes pinned to them as well, the first turn
-   took 7 m 57 s, and I re-pinned the server and its runner to cores 6, 9, 10 and 12 (still a four-core cap)
+   took 7 m 57 s, and the server and its runner were re-pinned to cores 6, 9, 10 and 12 (still a four-core cap)
    mid-trial. Trials 2 and 3 ran on those cores. This changes nothing scored; it is why the debug durations
    differ by an order of magnitude.
 8. Added at verification: the captured `results/*/env.txt` files carried the parent session's local

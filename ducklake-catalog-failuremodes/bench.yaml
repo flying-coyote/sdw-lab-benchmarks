@@ -1,0 +1,14 @@
+name: ducklake-catalog-failuremodes
+cluster: catalogs-engines-cost
+title: Three upstream DuckLake catalog bugs reproduced against current and filed versions
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: FINDINGS-2026-06-14.md
+reproduce: python ducklake-catalog-failuremodes/e1_crossstore_delete.py; bash ducklake-catalog-failuremodes/run_postgres_arms.sh; bash ducklake-catalog-failuremodes/run_e3_version_compare.sh
+pins: versions recorded per arm in results/summary.json (postgres:17 floating tag)
+essay: none
+superseded_by: none
+audited: 2026-11-17

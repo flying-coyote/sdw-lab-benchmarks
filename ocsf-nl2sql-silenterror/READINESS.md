@@ -7,6 +7,8 @@ tags: [nl2sql, ocsf, llm-evaluation, silent-error, bench-readiness, ollama]
 
 # OCSF NL2SQL silent-error benchmark — readiness doc
 
+*(status 2026-11-17: this is the pre-run readiness record. The eval has since run; results are in `results/RESULTS.md` and summarised in `README.md`.)*
+
 This benchmark is **authored and light-checked but NOT run**. The heavy evaluation
 (local LLM inference + DuckDB queries over Store F) is deferred because another
 benchmark currently holds the box; running DuckDB and a local model now would contend

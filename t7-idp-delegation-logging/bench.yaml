@@ -1,0 +1,14 @@
+name: t7-idp-delegation-logging
+cluster: ai-security
+title: Does an identity provider audit trail record an agent token-exchange delegation chain
+status: published
+tier: B
+claim_kind: measured
+verdict: SOUND
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: bash t7-idp-delegation-logging/run_all.sh then score.py then map_ocsf.py (Docker required)
+pins: requirements.txt; quay.io/keycloak/keycloak:26.8.1 by digest
+essay: /writing/ai/delegation-logon-event
+superseded_by: none
+audited: 2026-11-17

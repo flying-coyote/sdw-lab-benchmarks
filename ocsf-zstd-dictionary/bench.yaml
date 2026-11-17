@@ -1,0 +1,14 @@
+name: ocsf-zstd-dictionary
+cluster: formats-and-lakehouse
+title: When does a trained ZSTD dictionary help OCSF events, by block size
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-zstd-dictionary/run.py
+pins: none
+essay: none
+superseded_by: none
+audited: 2026-11-17

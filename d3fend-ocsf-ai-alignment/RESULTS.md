@@ -60,7 +60,7 @@ gaps rather than disagreements about what the thing is.
 
 - RESIDUAL.md says "4×MachineLearningModel" in its summary line while its own table and the #606
   thread list three techniques (AML.T0005.002, T0016.002, T0043.002). The "five residual nouns" in
-  the R8 brief are five techniques across three nouns. I flagged this and did not edit the file,
+  the R8 brief are five techniques across three nouns. The run flagged this and did not edit the file,
   which is outside this directory.
 - #1754 is a work-in-progress draft. 7 of its 9 info objects are empty stubs, so its rows will move.
 - The #606 MVP table is an image. Its four classes are transcribed from `sources/img/mvp.png`.
@@ -97,3 +97,5 @@ Version cells verified against tag trees: `ai_model`, `message_context` and the 
 profile first appear in v1.8.0 (none in v1.7.0); `ai_agent` and `delegation` first appear in
 v1.9.0; `ai_capability` and `ai_status` are on main only. `ai_role_id = 6 Retriever` is present in
 v1.9.0.
+
+*(corrected 2026-11-17: one first-person phrase in Source notes recast in neutral words. The R8 brief and RESIDUAL.md named above live in the lab's private planning notes and are not part of this repository.)*

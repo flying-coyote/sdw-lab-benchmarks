@@ -1,0 +1,14 @@
+name: ocsf-semantic-query
+cluster: mapping-and-models
+title: OBDA vs GraphRAG vs text-to-SQL on adversary-tail concept queries over OCSF
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: BENCH-C-PREREGISTRATION.md; BENCH-C-PREREGISTRATION-v2-rerun.md; BENCH-C-PREREGISTRATION-v2-ADDENDUM-impl-decisions.md; BENCH-C-PREREGISTRATION-v2.1-arm-extension.md
+results: RESULTS-v2.1-2026-06-17.md
+reproduce: see ocsf-semantic-query/RUN-v2.md
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/detection/capability-isnt-safety
+superseded_by: none
+audited: 2026-11-17

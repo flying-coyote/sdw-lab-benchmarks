@@ -70,7 +70,7 @@ for a range predicate). Actual engine pruning may be higher with page-index push
 | Q4_time_window_only | single_sort | 10.2 | 7.5 | ~ marginal (8% gap ≈ 7.5% CV — treat as no) |
 | Q4_time_window_only | zorder | 5.9 | 8.6 | ✓ real (47% gap > 8.6% CV) |
 
-A delta below the CV is not a real difference. Per [`BENCHMARKING-METHODOLOGY.md`](../BENCHMARKING-METHODOLOGY.md):
+A delta below the CV is not a real difference. Per [`BENCHMARKING-METHODOLOGY.md`](../../BENCHMARKING-METHODOLOGY.md):
 report CV alongside every median; claim a win only when the gap exceeds the CV. The
 "real delta?" column was filled in 2026-06-10 (full re-derivation against `results.json`):
 gap = (baseline median − layout median) / baseline median, claimed real only when it
@@ -82,6 +82,11 @@ CVs), so z-order's case rests on Q3/Q4 coverage, not on winning the queries a si
 already serves.
 
 ## Interpretation
+
+*(corrected 2026-11-17: the paragraph below was written before the run and does not match the pruning
+table above, where single-sort out-prunes z-order on Q1 and Q2 and z-order is the only layout that prunes
+Q3 and Q4. Use the Result section of `../README.md`, which carries this note because `run.py` rewrites
+this file.)*
 
 Z-order's pruning win appears most clearly on multi-predicate queries that touch two or
 more of the clustering dimensions (Q1, Q2, Q3). Q4 (time-window only) measures whether

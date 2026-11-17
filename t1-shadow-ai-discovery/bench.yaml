@@ -1,0 +1,14 @@
+name: t1-shadow-ai-discovery
+cluster: ai-security
+title: Which of five discovery methods sees which planted shadow-AI surface on one workstation
+status: published
+tier: unstated in RESULTS (post-hoc glob probe says B)
+claim_kind: mixed
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: bash t1-shadow-ai-discovery/build_fixtures.sh then run_lab.py 1-3 then run_methods.py 1 2 3 (fixtures/ is not committed)
+pins: requirements.txt (stdlib only); images python:3.12-slim and alpine:3.22 by tag, zeek/zeek:8.0.11
+essay: /writing/ai/finding-shadow-ai
+superseded_by: none
+audited: 2026-11-17

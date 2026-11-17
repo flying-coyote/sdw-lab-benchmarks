@@ -122,13 +122,13 @@ one source in 1 h) went DETECTED on all three seeds, catching 600 of 600 burst e
 only, because the backend emits SQLite-specific SQL (`julianday`, `json_each`, `rowid`). It also returned 301
 alert rows for one burst, one per anchor event, so alert deduplication would be needed downstream.
 
-**An engine finding I did not expect.** In the profile arm, the prompt-injection rule is NOISY in SQLite but
+**An engine finding the run did not expect.** In the profile arm, the prompt-injection rule is NOISY in SQLite but
 MISSED in DuckDB. The sqlite backend compiles `|contains` to `LIKE '%…%'`, which SQLite matches
 case-insensitively (as Sigma's semantics require) and DuckDB matches case-sensitively. So the planted
 "Ignore previous instructions…" was missed, while the 20 lower-case benign quotes still matched. The
 `ocsf-attack-coverage` pattern runs sqlite-backend SQL in DuckDB, so any of its rules that match mixed-case text
 are exposed to the same silent recall loss. Its four rules (for example `-EncodedCommand` on `WS1`) use values whose
-case matches the planted data, so the issue would not show up there. I have not checked them against mixed-case
+case matches the planted data, so the issue would not show up there. The run did not check them against mixed-case
 variants.
 
 ## Hypotheses
@@ -160,15 +160,15 @@ lookalike count moved: T0012 ranged 0.14–0.33 and T0055 ranged 0.056–0.083.
 ## Deviations from the pre-registration
 
 1. `d3f:ConfigurationFile` was missing from the frozen `artifact_ocsf_map.csv`, and `join.py`'s completeness
-   assert stopped the run. I added one row (generic, `file.path`), which changed the map sha from `d565ab33…` to
+   assert stopped the run. The run added one row (generic, `file.path`), which changed the map sha from `d565ab33…` to
    `0622cb6c…`. No other row changed.
 2. The authentication background puts 10% of all logons on external IPs, independent of the account, so about
    0.3% are built-in accounts logging on from outside. The pre-registered lookalike column named only internal
    built-in logons. This is the source of T0012's false positives.
-3. Rules were written after the freeze, as planned, under a rule I set myself at that point: each rule expresses
+3. Rules were written after the freeze, as planned, under a rule the bench agent set at that point: each rule expresses
    the artifact signal plus at most one discriminating filter that the technique's definition names, and no
    allowlist derived from the background. Under that rule, two NOISY results (T0055, T0089) would become
-   DETECTED with a parent-process allowlist, which is the real-world fix but would have been tuning to my own
+   DETECTED with a parent-process allowlist, which is the real-world fix but would have been tuning to the bench's own
    corpus.
 4. SQLite was added as a second engine next to DuckDB, because the backend targets SQLite. The correlation
    variant and `split_attack.py` (the ATT&CK split and the File/UserAccount sensitivity) are supplementary and
@@ -197,8 +197,8 @@ python3 -m venv .venv && .venv/bin/pip install duckdb==1.5.3 pysigma pysigma-bac
 
 ## Limits
 
-- The artifact→OCSF grades are my judgment, one pass with the ontology-thinking checklist, and nobody else has
-  reviewed them (corrected 2026-11-16: "my" is the bench agent, Claude Opus 5.5; a blind second grader has since
+- The artifact→OCSF grades are the bench agent's judgment, one pass with the ontology-thinking checklist, and nobody else has
+  reviewed them (corrected 2026-11-16: the bench agent is Claude Opus 5.5; a blind second grader has since
   re-graded them, see `../m1-r1-blind-regrade/RESULTS.md`). The reachability is mechanical, but "direct" vs "generic" is not. Treat the specific share as
   tier D until someone else grades the 80 rows (corrected 2026-11-16: 79 artifact rows; the CSV's 80 lines include
   the header).
@@ -206,7 +206,27 @@ python3 -m venv .venv && .venv/bin/pip install duckdb==1.5.3 pysigma pysigma-bac
   arm also counts deep paths such as `actor.process.environment_variables`, which few sources populate.
 - The crosswalk is one dataset, mostly unmerged upstream. A different artifact choice per technique moves the
   grade, and the best-grade rule rewards rows that list a broad parent.
-- The planted bench is synthetic, I wrote both the rules and the background, and there is one needle per
+- The planted bench is synthetic, the same agent wrote both the rules and the background, and there is one needle per
   technique. The precision figures show the mechanism, mapped-but-noisy; they are not field false-positive rates.
 - ATLAS-only weights. The review's 48-incident set would change the step counts, and the counts here should not
   be quoted as the 48-incident figure.
+
+## Corrections (2026-11-17, quality pass)
+
+- **The two DETECTED states follow from how the corpus and rules were written.** The same agent wrote
+  `gen_corpus.py` and the eight rules, and no file records whether the generator or the rules were
+  written first. The
+  T0049 rule requires `UNION`, `SELECT` and `--`; the background's UNION lookalikes are reporting queries
+  without a trailing comment (`gen_corpus.py` l.87-91) and the planted needle ends in `--` (l.97), so the
+  one discriminating filter is the one that separates the needle from the authored lookalikes. The T0050
+  rule matches `-c`, `exec(` and `b64decode`, which the planted command line carries (l.81). Read
+  "DETECTED x3" as a demonstration that a content-level rule separates a planted needle from authored
+  lookalikes, not as a detection rate; the 2026-11-16 probe (`RESULTS-PROBE-DETECTED-CASE-2026-11-16.md`)
+  shows the T0049 rule misses a lower-case `union select` on DuckDB, the pre-registered engine. The NOISY
+  states depend on the same agent's lookalikes, so they are no more independent of construction than the
+  DETECTED ones. What they show is that a kind-level rule collides with authored lookalikes, which is a
+  mechanism and not a false-positive rate. The rule-writing constraint (one filter, no allowlist) was set
+  by the bench agent when it wrote the rules (deviation 3) and is not in the frozen
+  `PREREGISTRATION.md`.
+- 2026-11-17: wording only in the engine-finding paragraph, deviations 1 and 3, and the Limits; no
+  number, state or verdict changed.

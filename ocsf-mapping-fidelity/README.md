@@ -34,6 +34,8 @@ attribute, where it crosses a boundary, and where it has no home but `unmapped`:
   array collapses to a scalar, an id/label is lost). Counts as lossy.
 - **`unmapped`** = no typed home; only `unmapped`/`raw_data` can carry it.
 
+*(corrected 2026-11-17: the table above is what `run.py` computes against the transcribed 1.8.0 subset, and it re-derives exactly from `results/results.json` (251 fields, 148 typed, 33 coerced, 70 unmapped, 58.96%). A later pre-registered re-score on a strict validator built from the full OCSF 1.8.0 export, in [`../ocsf-1.9-rescore/RESULTS.md`](../ocsf-1.9-rescore/RESULTS.md) section (b), found two PAN-OS targets that do not exist in 1.8.0 (`src_model` and `dst_model` to `*_endpoint.hw_info.model`, because `device_hw_info` has no `model` attribute) and one deprecated target (Zscaler `respcode` to `http_status`, deprecated since 1.1.0). Under that validator the total is 146 typed, 33 coerced and 72 unmapped, coverage 58.17% and lossy 41.83%, and Palo Alto moves from 46 / 8 / 29 (55%) to 44 / 8 / 31 (53.01%); the other five sources do not move. `mapping.py` has not been changed, so a re-run still prints the table above, and the replacement each record would need is listed in `../ocsf-1.9-rescore/results/proposed-mapping-changes.md`.)*
+
 Two findings, not one:
 
 1. **The schema gap.** Even mapping into the classes purpose-built for these events,
@@ -54,7 +56,7 @@ Two findings, not one:
    That asymmetry — most vendors do not publish a retrievable field-level OCSF mapping —
    is itself a result.
 
-**New seams the network / DNS / proxy sources surface.** The firewall, DNS, and proxy
+**New loss categories the network / DNS / proxy sources surface.** The firewall, DNS, and proxy
 sources add categories the first two did not, the strongest being **pre/post-NAT
 collapse**: OCSF Network / DNS / HTTP Activity model one address per role, so the
 translated or egress address (Palo Alto `natsrc`/`natdst`, ASA `mapped_*`, Umbrella
@@ -73,7 +75,11 @@ has typed attributes for. Detail in METHODOLOGY.
   server: the Authentication, Detection Finding, Network Activity, DNS Activity, and
   HTTP Activity classes plus the objects they reference). A mapping to an attribute
   that does not exist in OCSF 1.8.0 fails the run, so coverage can't be inflated by
-  inventing a home for a field.
+  inventing a home for a field. *(corrected 2026-11-17: this holds only as far as the
+  subset was transcribed. The validator accepts a reference to an object the subset does
+  not hold as a deeper leaf (the deep-accept rule in `schemas/ocsf/PROVENANCE.md`), and
+  that rule let the two non-existent PAN-OS `hw_info.model` paths through; the strict
+  re-score in `../ocsf-1.9-rescore/` is the check that caught them.)*
 - The inputs are static checked-in files, so the score is a pure function of them.
   `run.py` computes it twice and asserts the two are byte-identical before writing.
 - The mapping is not a black box: `mapping.py` carries one record per source field
@@ -101,11 +107,64 @@ has typed attributes for. Detail in METHODOLOGY.
   on. Per-source provenance (authoritative source + ≥2 independent mirrors) is in each
   `schemas/<source>/PROVENANCE.md`.
 
+## Hypothesis mapping
+
+This bench serves three hypotheses *(IDs recorded 2026-06-10 per the benchmark-alignment audit)*:
+
+- **H-SPEC-INTEGRITY-01** — the promotion instrument: the schema-validated scoring is how a
+  mapping claim gets promoted from assertion to measured result.
+- **H3-INTEGRATION-03** — the lossiness leg: the coerced/unmapped split quantifies what real
+  vendor schemas lose mapping into OCSF 1.8.0.
+- **H2-SCHEMA-02** — the scoring instrument: the per-field typed/coerced/unmapped protocol is
+  the reusable method for scoring any source→OCSF mapping.
+
+## What would have made it fail
+
+The score is a mapping judgement checked by a validator, so it fails in two ways. A target path
+that does not resolve in the schema the validator holds stops the run, and that check is real but
+only as complete as the transcribed subset (see the 2026-11-17 correction above, where two invalid
+PAN-OS paths passed it). A field whose call a reviewer disputes changes the counts by one, which is
+why every field carries its rationale in `mapping.py`. There is no baseline arm, because the result
+is a coverage count rather than a comparison, and no second reader has re-graded the 251 calls.
+
+## This mapping as an input to the "22 of 22" figure
+
+The 83-field PAN-OS mapping in `mapping.py` was used outside this repository as the input to a
+holdout check that reported "22 of 22" corrupted mappings caught by a reasoner. That figure follows
+from how the corruptions were built rather than from anything in this mapping: each corrupted class
+was asserted under two members of a set the same check had just declared disjoint, which makes it
+unsatisfiable whatever mapping it came from, so the reasoner flags every one by construction (the
+same construction is recorded for the 231 of 231 corpus figure in section 2 of
+`../ontology-vs-schema-gate/PREREGISTRATION.md`). This bench makes no catch-rate, recall or
+detection claim. What it measures is the coverage table above, and the 22 is the number of PAN-OS
+fields that check's type rules could test, not a result of this bench.
+
+## Pre-registration
+
+None. The bench was scored from checked-in inputs on 2026-06-02 without a frozen design file. The
+later re-score that corrects it, `../ocsf-1.9-rescore/`, is pre-registered (hash verified 2026-11-17).
+
+## Reproduce
+
+```bash
+cd ..                                   # repo root
+python3 -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt         # only the stdlib + duckdb/chdb shared pins; C1 itself is pure-stdlib
+cd ocsf-mapping-fidelity && python run.py
+```
+
+## Results
+
+- `results/RESULTS.md` and `results/results.json`, generated by `run.py` (the RESULTS frontmatter
+  and the dated correction note in it are hand-added and are dropped by a re-run).
+- Current strict figures for the same 251 fields: `../ocsf-1.9-rescore/RESULTS.md` section (b) and
+  `../ocsf-1.9-rescore/results/six-source-strict.json`.
+
 ## Files
 
 ```
 README.md            this
-METHODOLOGY.md       the scoring rules, the recurring seams, the caveats
+METHODOLOGY.md       the scoring rules, the recurring loss categories (its section "The recurring seams"), the caveats
 mapping.py           the reviewable field-by-field mappings + named detections
 map_fidelity.py      loaders, OCSF-path validator, scorer
 run.py               determinism check + results writers
@@ -119,22 +178,22 @@ schemas/zscaler/     Zscaler ZIA Web-log inventory + provenance
 results/             results.json + RESULTS.md (generated)
 ```
 
-## Reproduce
+## Versions and pins
 
-```bash
-cd ..                                   # repo root
-python3 -m venv .venv && . .venv/bin/activate
-pip install -r requirements.txt         # only the stdlib + duckdb/chdb shared pins; C1 itself is pure-stdlib
-cd ocsf-mapping-fidelity && python run.py
-```
+The scorer is standard-library Python and imports only `../lib/common.py` (which pulls `duckdb`
+from the root `requirements.txt`, pinned at `duckdb==1.5.3`). The OCSF target is the 1.8.0 subset
+transcribed in `schemas/ocsf/`, with provenance in `schemas/ocsf/PROVENANCE.md`. Vendor inventories
+are pinned by the dated sources in each `schemas/<source>/PROVENANCE.md`. Nothing here is unpinned.
 
-## Hypothesis mapping
+## Evidence tier and limits
 
-This bench serves three hypotheses *(IDs recorded 2026-06-10 per the benchmark-alignment audit)*:
+Tier B, as stated at the top: one author's mapping judgement against documented field sets and the
+real schema, with no second reader and no production telemetry. Coverage is over each source's
+scoped field set, not the vendor's whole telemetry.
 
-- **H-SPEC-INTEGRITY-01** — the promotion instrument: the schema-validated scoring is how a
-  mapping claim gets promoted from assertion to measured result.
-- **H3-INTEGRATION-03** — the lossiness leg: the coerced/unmapped split quantifies what real
-  vendor schemas lose mapping into OCSF 1.8.0.
-- **H2-SCHEMA-02** — the scoring instrument: the per-field typed/coerced/unmapped protocol is
-  the reusable method for scoring any source→OCSF mapping.
+## Corrections
+
+- 2026-11-17: strict 1.8.0 re-score (146 typed / 58.17%, PAN-OS 53.01%) added beside the subset
+  table; the "invented attribute fails the run" claim qualified by the deep-accept rule; the
+  detection count in `results/RESULTS.md` corrected from "Two" to 8 of 31 and `run.py` changed to
+  compute it; the "22 of 22" section added; one heading reworded.

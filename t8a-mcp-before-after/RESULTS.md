@@ -228,7 +228,7 @@ Full matrix with every fact: `results/matrix.md`. Timings (median, CV over 3 rep
    fixed between smoke and formal: the SDK's `stdio_client` passes only a safe environment subset to the child, so
    the stdio server never received its OTel file path until the client passed `env=` explicitly
    (`t8a_common.server_env`), and the HTTP parser mishandled CRLF SSE blocks and client-closed chunked streams. The
-   smoke captures that survived in my notes agree with the formal ones on every presence fact.
+   smoke captures that survived in the run agent's notes agree with the formal ones on every presence fact.
 2. **No DuckDB.** The pre-registration does not include one (it is silent on DuckDB rather than dropping it
    explicitly); noted because the R2 server this fixture descends from had one.
 3. **Sub-arm package installed after the formal runs.** `opentelemetry-instrumentation-httpx` 0.66b2 (with

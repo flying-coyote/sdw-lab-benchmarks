@@ -1,0 +1,14 @@
+name: ocsf-read-scan
+cluster: formats-and-lakehouse
+title: DuckLake against Iceberg on large OCSF scans, from default config to byte-identical files
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-read-scan/run.py
+pins: requirements.txt
+essay: /writing/lakehouse/encoder-is-the-read-lever
+superseded_by: none
+audited: 2026-11-17

@@ -27,6 +27,8 @@ queries (counts, top-N, egress rollups) exactly as the fidelity store does, so t
 adversary-tail degradation below is a property of *what coarse normalization drops*,
 not of a store crippled across the board. `void = False`.
 
+*(corrected 2026-11-17: the routine control's 0.000 follows from construction, because none of R1 to R6 reads a field any Store N mechanism changes (see the README, "What would have made it fail"), so it cannot show that Store N is not crippled; the APT29 sibling `../../ocsf-context-collapse-apt29/`, where routine recall-loss is 0.16, is the stronger test. `run.py` regenerates this file, so the correction is also in the README.)*
+
 ## Per-mechanism degradation (Store N vs Store F)
 
 | mechanism | mean Δ | reading |
@@ -88,8 +90,10 @@ Corpus fingerprint: `46af223bf406ee3be09bc024` · determinism re-check: **identi
 
 One synthetic APT29-style chain on one machine; the magnitudes are testbed-specific and
 the headline is Tier B. The contrast between routine-survives and adversary-degrades is
-the robust finding (it falls out of the architectures, not the data volume). Store N's
-normalization is a documented default, not a strawman, but "documented by me" is not the
-same as "reviewed" — the named-practitioner sign-off is the Tier-A gate and is Jeremy's
-to obtain. Public methodology genericizes the incumbent to a schema-on-read SIEM; no
+the robust finding (it falls out of the architectures, not the data volume). *(corrected 2026-11-17: the routine half
+survives by construction; what holds is that the adversary tail degrades under these knobs, and the
+routine-versus-adversary contrast is tested in ../../ocsf-context-collapse-apt29/.)* Store N's
+normalization is a documented default, not a strawman, but documented by the bench's author
+is not the same as reviewed, and the named-practitioner sign-off is the Tier-A gate and is
+the lab author's to obtain. Public methodology genericizes the incumbent to a schema-on-read SIEM; no
 customer data is involved.

@@ -17,7 +17,7 @@ versions it ran under, so every verdict is a version-bound statement, not a time
 the same version-currency method the chDB answer-equivalence bench used: a bug that "should be
 fixed" is only fixed when you run it on the current version and watch it not fire — and, for the
 one that doesn't fire, you confirm it *does* fire on the version it was filed against, so
-"fixed" is distinguished from "my repro under-triggers."
+"fixed" is distinguished from "the repro under-triggers."
 
 ## The three arms
 
@@ -109,3 +109,31 @@ are catalog-layer findings — they say nothing about DuckLake's read/scan perfo
 correctness and operability of the metadata catalog under the conditions each issue describes. The
 105× streaming claim is deliberately not reproduced here; it is an unequal-workload vendor number
 (see the Iceberg-V4-vs-DuckLake reconciliation), and this bench targets the failure modes instead.
+
+---
+
+## Layout and audit notes (added 2026-11-17)
+
+### Result, and whether it is measured
+
+Each arm is a reproduction that could have come out the other way, since a bug may not fire on the current version. E2 has a negative control (1,500 columns creates), and E3 has a positive control (the issue's own DuckDB 1.5.2 and DuckLake 415a9ebd, where the pool exhausts at 14 connections after 60.0 s) beside the current 1.5.3 (0.036 s) (`results/summary.json`). E1 has no same-store control, such as two parquet deletes racing on one row, that would show the conflict check firing where it should.
+
+### Pre-registration
+
+None in this folder; the README says the bench was registered as BENCH-E in the project backlog, which is outside this repository.
+
+### Results
+
+Entry point `FINDINGS-2026-06-14.md`; data `results/e1.json`, `results/e2.json`, `results/e3_v1.5.2.json`, `results/e3_v1.5.3.json`, `results/summary.json`.
+
+### Versions and pins
+
+Recorded per arm in `results/summary.json`: DuckDB 1.5.3 with DuckLake e6a3bd0a, and 1.5.2 with 415a9ebd for the E3 control; Postgres from the `postgres:17` image, a floating minor tag.
+
+### Evidence tier and limits
+
+Tier B, one host, the issues' own minimal repros. The verdicts are version-bound and say nothing about DuckLake's read or scan performance.
+
+### Corrections
+
+None.

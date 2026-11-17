@@ -39,7 +39,7 @@ W is measured from the window close to the alert landing, and I from the event's
 
 Tally: 7 hits, 2 misses across the nine scored rows (P5 is scored as three parts, P5a to P5c). Host load stayed low throughout: median 3.7–3.8% CPU, max 13.6%, no sample over 50%, so neither trial is flagged.
 
-**Why P5 missed.** I predicted that every arm would run about one query per landed file, so query counts would match and CPU would differ only through cheap directory listings. In fact `batch_fresh.py` runs one query per tick over every file that has landed since the last tick. A 900-second poll therefore folds fifteen 60-second files into one query: 9 queries a trial against 120 for the 5-second poll. So the CPU difference came from queries, not from polling. That cuts against the cost half of my model, but the absolute numbers are tiny next to the streaming stack's: 3.7 CPU-seconds for the 5-second poll over a 2¼-hour trial, against about 3,200 for Kafka + Flink, most of which is the broker. The P5 rule requires this cost to sit next to the B-5 freshness figure wherever that is quoted: here, a 5-second poll cost about three times the CPU of a 15-minute schedule, and about 0.1% of the streaming stack's.
+**Why P5 missed.** The pre-registration predicted that every arm would run about one query per landed file, so query counts would match and CPU would differ only through cheap directory listings. In fact `batch_fresh.py` runs one query per tick over every file that has landed since the last tick. A 900-second poll therefore folds fifteen 60-second files into one query: 9 queries a trial against 120 for the 5-second poll. So the CPU difference came from queries, not from polling. That cuts against the cost half of that model, but the absolute numbers are tiny next to the streaming stack's: 3.7 CPU-seconds for the 5-second poll over a 2¼-hour trial, against about 3,200 for Kafka + Flink, most of which is the broker. The P5 rule requires this cost to sit next to the B-5 freshness figure wherever that is quoted: here, a 5-second poll cost about three times the CPU of a 15-minute schedule, and about 0.1% of the streaming stack's.
 
 ## What it means, and what it doesn't
 
@@ -51,3 +51,5 @@ Tally: 7 hits, 2 misses across the nine scored rows (P5 is scored as three parts
   - local file polling, which is cheap, whereas SIEM scheduled searches usually re-run the query on every schedule, so P5's CPU numbers don't carry to those platforms;
   - the watermark was fixed at 2 s.
 - **Hypotheses.** H-IMPL-01 doesn't move under any outcome of this bench; its 2/5 rests on the v2 cost axes. The I result attaches to H-STREAMING-01 as first-party context at its next gate.
+
+*(corrected 2026-11-17: first-person narration of the agent's run recast in neutral words; no number, verdict or deviation changed.)*

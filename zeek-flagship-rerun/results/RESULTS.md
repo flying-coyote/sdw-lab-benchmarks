@@ -7,6 +7,8 @@ tags: [clickhouse, opensearch, iceberg, zeek, two-regime, performance]
 
 # RESULTS — the flagship, re-measured: the index wins the lookups, loses the hunt
 
+*(corrected 2026-11-17: two points. The Conditions section says engine-cold "is within noise of hot on every query", but the single engine-cold pass in `raw_opensearch.json` ran long_duration_connections at 0.0573 s against a 0.0108 s hot median (5.3×) and count_all at 0.0076 s against 0.0028 s (2.7×); the ClickHouse arms were within 0.93× to 1.26× of hot. Engine-cold is one ungated run per query, so these are not claims either way, but "within noise on every query" overstates it. Separately, `starrocks_trino_arms.json` in this folder (StarRocks 8.3×, Trino 3.6×) is not part of this result: it was a later single-session arm on a different stack that divides by this draw's 2.854 s OpenSearch time and records no CV or answer-equality check; see the README.)*
+
 **Tier B · single host (Beelink 5800H, WSL2, High Performance plan) · 10M-row synthetic Zeek
 conn corpus · 7 trials/query, CV-gated · answer-equality verified · 2026-06-10**
 

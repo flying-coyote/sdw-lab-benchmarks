@@ -1,0 +1,14 @@
+name: ocsf-1.9-rescore
+cluster: mapping-and-models
+title: Strict full-schema re-score of the C1 corpus and the Tenzir Zeek arm, carried to OCSF 1.9.0
+status: published
+tier: B
+claim_kind: measured
+verdict: SOUND
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: see RESULTS.md Reproduce block, run from inside ocsf-1.9-rescore/
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/ocsf/ocsf-version-drift-cost
+superseded_by: none
+audited: 2026-11-17

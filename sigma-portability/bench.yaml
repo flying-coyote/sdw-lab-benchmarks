@@ -1,0 +1,14 @@
+name: sigma-portability
+cluster: detection
+title: What pySigma emits for correlation rules on four backends
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python sigma-portability/run.py
+pins: requirements.txt
+essay: https://securitydataworks.com/writing/sigma/sigma-correlation-backends
+superseded_by: none
+audited: 2026-11-17

@@ -1,0 +1,14 @@
+name: delegation-chain-query
+cluster: ai-security
+title: What it costs to walk an agent delegation chain at query time
+status: published
+tier: unstated letter (first-party lab measurement)
+claim_kind: measured
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: python delegation-chain-query/run_all.py then summarize.py
+pins: requirements.txt (chdb 4.4.0, not the lab-wide 4.1.8)
+essay: /writing/ai/delegation-logon-event
+superseded_by: none
+audited: 2026-11-17

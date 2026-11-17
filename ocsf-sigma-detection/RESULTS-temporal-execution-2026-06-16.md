@@ -65,7 +65,7 @@ than silently wrong.
 
 ## Caveats (Tier B)
 
-- **The 1.0 miss rate and 40/40 over-fire are corpus-design-dependent** — I planted every straddler on a
+- **The 1.0 miss rate and 40/40 over-fire are corpus-design-dependent**: the corpus planted every straddler on a
   boundary and every wrong-order reversed, to isolate the mechanisms. The transferable finding is the
   **mechanism**, not the rate. The realistic tumbling-miss rate ≈ gap/window for randomly-placed sequences
   (e.g. a 15-min exec→lateral gap in a 2h tumbling window straddles a boundary ~12.5% of the time — so ~1 in

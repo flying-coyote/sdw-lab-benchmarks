@@ -1,0 +1,14 @@
+name: text-search-regex
+cluster: detection
+title: Columnar engine vs inverted index on token, substring and regex text filters
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: DESIGN-2026-06-15.md
+results: RESULTS-2026-06-15.md
+reproduce: python text-search-regex/synth_text_bench.py
+pins: root requirements.txt
+essay: none
+superseded_by: none
+audited: 2026-11-17

@@ -1,6 +1,8 @@
 # Security Context Graph (concept-only)
 
-A small, queryable concept graph that merges the scattered OCSF ↔ D3FEND ↔ ATT&CK ↔ NIST
+## What it measures
+
+It is a small, queryable concept graph that merges the scattered OCSF ↔ D3FEND ↔ ATT&CK ↔ NIST
 800-53 / CCI / SCF crosswalks into one structure whose differentiator is **honesty about its
 own joints**: every edge carries `{rel, source_file, tier, proxy_quality, proxy_note}`, so a
 consumer can see how cheap each join's proxy is rather than treating a documentation
@@ -17,7 +19,8 @@ not a rival mapping.
 
 The graph holds **concepts and entities, never telemetry events** — OCSF classes, digital
 artifacts, D3FEND defenses, ATT&CK techniques/tactics, controls, frameworks. That keeps it at
-a few thousand nodes (3,284 with SCF), not the 234k per-event nodes that stalled a separate
+a few thousand nodes (3,305 with SCF per the committed `results/reconcile-with-scf.json`; this line
+said 3,284 until a dated correction on 2026-11-17), not the 234k per-event nodes that stalled a separate
 telemetry benchmark on CPU embedding. The static map needs structure, not vectors, so there
 are no embeddings here.
 
@@ -43,6 +46,20 @@ field ─①─► OCSF class ─②─► digital artifact ─③─► D3FEND 
 
 `SCF↔D3FEND direct` does not exist — D3FEND is not one of SCF's 250 frameworks, so the
 governance bridge runs through ATT&CK (or through the shared 800-53 hop).
+
+## Result, and what would have made it fail
+
+This is a build with reconciliation asserts rather than a scored experiment. Every figure in the
+reconciliation table below is a count over the public D3FEND v1.4.0 ontology, the D3FEND Wall tables
+and (with `--with-scf`) the SCF Sankey, and the build hard-fails if a count differs from its expected
+value, which is how it caught the 25-versus-27 OCSF class drift. The counts are measured; what the
+graph cannot do is say a defense detects anything, since its largest edge class (6,085 of 7,618 deduped
+edges in the committed spine, by `(src, dst, rel)`) is the intent-blind `artifact_cooccurrence`
+inference. The committed spine `results/edges.json` holds 20,588 raw edge rows, which dedup to 7,618.
+
+## Pre-registration
+
+None, and none applies: the folder builds a graph and reconciles counts.
 
 ## Run
 
@@ -80,7 +97,7 @@ asserts need `--with-scf`. Confirmed:
 | wall defenses reaching an SCF control | 118 / 120 (98%) | derived; matches `scf_attack_d3fend_crosswalk.json` |
 | SCF ATT&CK-controls reached by a defense | 104 / 108 | derived |
 | wall ATT&CK with no SCF control (the Discovery gap) | 33 | derived |
-| node count (concept-only) | 3,284 with SCF, < 10k | invariant |
+| node count (concept-only) | 1,442 spine; 3,305 with SCF *(corrected 2026-11-17 from 3,284)*; < 10k | `results/reconcile.json`, `results/reconcile-with-scf.json` `total_nodes` |
 | event nodes | 0 | invariant |
 
 ### Integrity note — the build corrected a stale number
@@ -133,3 +150,26 @@ python3 test_scg_mcp.py            # offline smoke test (no MCP client needed)
 - not a telemetry graph (no events; record→defense runtime annotation does not exist today);
 - not a product (the map + thesis are public; per-vendor scoring is the paid Matrix);
 - not a rival to D3FEND/OCSF/CTID — it points at the upstream commons and contributes findings.
+
+## Results
+
+- `results/reconcile.json`, `results/nodes.json`, `results/edges.json`, `results/fingerprint.txt`: the public spine (1,442 nodes).
+- `results/reconcile-with-scf.json`: aggregate statistics of the local SCF build (3,305 nodes, 56,294 raw edge rows); the SCF node and edge files are not committed, under the licence gate above.
+
+## Versions and pins
+
+No `requirements.txt`; `scg.py` uses the standard library and `scg_mcp.py` needs the `mcp` package,
+unpinned. The inputs are the D3FEND v1.4.0 ontology and local copies of the Wall and SCF tables. The
+default input paths and the `sources` block in both reconcile files point to the author's private
+working copies, so a reader has to supply each input through its environment variable to rebuild.
+
+## Evidence tier and limits
+
+The graph carries no tier of its own; each edge carries the tier and `proxy_quality` of the source it
+rests on, and the build's reconciliation asserts are the checks that could fail. The limits are the ones
+under "What this is not" above, plus the unpinned `mcp` package and inputs read from private working
+copies (see "Versions and pins").
+
+## Corrections
+
+- *(corrected 2026-11-17: the with-SCF node count is 3,305 in the committed reconcile file, not 3,284.)*

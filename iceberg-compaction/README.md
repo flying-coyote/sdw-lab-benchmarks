@@ -1,5 +1,7 @@
 # Iceberg compaction → scan-latency recovery (B-COMPACT)
 
+## What it measures
+
 Built 2026-06-14, pre-registered in project1 `BENCHMARK-BACKLOG.md` as the P1 one-arm
 extension of the `zeek-flagship-rerun` corpus. It answers one question with a first-party,
 CV-gated number: **when a streaming security table fragments into many small files, how much
@@ -48,6 +50,22 @@ count-shaped queries the most), 500→4 files, single host, Tier B, CV-gated, an
 identical.* The metadata-bound `count_all` recovers most (24×) because it is dominated by
 file-planning, not data volume.
 
+### Attribution, as of the 2026-11-16 manifest arm (current)
+
+The ratios above are measured and stand as numbers for compacting a fast-append table, and the 2026-11-16
+manifest arm reproduced them (21.6×, 6.5×, 3.5× and 2.3×). What changed is what they are credited to.
+pyiceberg's default append writes one manifest per commit, so the 500-file table also carried 500
+manifests, and rewriting the manifests alone, with all 500 data files still in place, recovered 5.08× on
+`count_all`, 2.97× on `protocol_distribution`, 2.15× on `long_duration_scan` and 1.41× on
+`bytes_by_source` (re-derived from `results/manifest_arm_2026-11-16.json`, `shape_b_zeek_500`). In
+log-ratio terms the manifest rewrite accounts for 41% to 62% of each query's recovery and the data-file
+reduction for the rest, so "file-count reduction only" below should read "manifest and data-file
+reduction together". The same holds for the sort-clustered arm below, whose 500 fragmented appends were
+written the same way (`run_sorted.py:54`), so its 500-file-to-4-file ratios (6.0× and 2.0×) also include
+the manifest effect, and only its sorted-against-unsorted comparison (about 1.7×) isolates layout. A table written by Iceberg Java, which merges manifests by default above 100, would
+show a smaller recovery from compaction. Full tables in
+[`RESULTS-MANIFEST-ARM-2026-11-16.md`](RESULTS-MANIFEST-ARM-2026-11-16.md), which is post hoc.
+
 ## Recovery scales with fragmentation severity
 
 The recovery is a function of how badly the table fragmented, not a constant. A smoke run at
@@ -74,10 +92,12 @@ time-range scan (5% `ts` window) and a full-scan hunt.
 | full-scan hunt (port_scan) | 0.591 s | 0.300 s (2.0×, file-count) | 0.329 s (no gain) |
 
 So sort-by-ts compaction adds **~1.7× pruning** on top of the ~6× file-count recovery for the
-selective time-range scan — total **~10×** — because the time-clustered row groups let the
+selective time-range scan *(corrected 2026-11-17: the ~6× and the 2.0× in the table are file-count and
+manifest recovery together, per the attribution note above; the 1.7× is the layout-only figure)* — total **~10×** — because the time-clustered row groups let the
 scanner skip the files outside the window (answers identical). On a **full scan** the sort adds
 nothing (~0.9×, expected — a full scan prunes nothing), and the file-count effect alone gives
-~2×. The lesson for the essay: the base B-COMPACT 3.2–5.3× is the file-count floor; a
+~2×. The lesson for the essay: the base B-COMPACT 3.2–5.3× is the file-count floor *(corrected
+2026-11-17: the manifest-and-data-file floor, see the attribution note)*; a
 **well-sorted** compaction recovers more (~10× here) on the time-range "90-day scan" shape that
 motivated the claim — *if* the sort key matches the query's range predicate. Machine-readable in
 [`results/sorted.json`](results/sorted.json). (Caveat: the full-scan `port_scan` answer differs
@@ -95,16 +115,61 @@ everywhere.)
   `overwrite` compaction does not re-sort/cluster the data — it only reduces file count. Real
   `rewrite_data_files` with a sort order (e.g. by time) would additionally improve *pruning* on
   selective queries, recovering more than measured here. This bench isolates the small-file
-  penalty alone, which is the lower bound.
+  penalty alone, which is the lower bound. *(corrected 2026-11-17: the 2026-11-16 manifest arm shows the
+  measured recovery is not the file-count effect alone, because each of the 500 appends also wrote its
+  own manifest, and manifests account for roughly 41% to 62% of it; see the attribution note above.)*
 - **Does NOT cover** the unsourced $/day spot-compute cost or the FTE-burden figures the
   untangle also softened — those want named-operator published numbers, not a single-host bench.
 
-## Run
+## What would have made it fail
+
+Each recovery ratio is claimed only when the before-and-after gap exceeds the larger CV, and answers are
+checked identical before and after, so a recovery inside the noise or a changed answer would have shown.
+The 20-append smoke run, which recovered about 1×, shows the measure can come out near zero. The manifest
+arm is the control the June run lacked, separating manifest count from data-file count.
+
+## Pre-registration
+
+The README's opening says the bench was pre-registered in a backlog file outside this repository, so the
+registration cannot be checked from the tree, and no pre-registration file exists in this folder. The
+manifest arm and the sorted arm were added afterwards and are labelled as such.
+
+## Reproduce
 
 ```bash
-.venv/bin/python iceberg-compaction/run.py [N_APPENDS]   # default 500
+.venv/bin/python iceberg-compaction/run.py 500   # the published result; the script's default is 200
+.venv/bin/python iceberg-compaction/run_sorted.py        # the sort-clustered arm
+.venv/bin/python iceberg-compaction/manifest_arm.py --skip-3000 && .venv/bin/python iceberg-compaction/manifest_arm_report.py
 ```
 
 Outputs `results/results.json` (per-query before/after medians + CVs + answers, file counts,
 compaction duration, corpus sha256). Hypothesis: re-grounds the `iceberg-maintenance.astro`
-compaction claim from directional to measured.
+compaction claim from directional to measured. The corpus must exist first:
+`../zeek-flagship-rerun/_work/zeek_conn_10m.parquet`, built by that bench and git-ignored. The
+manifest arm took about 20 minutes on the run host.
+
+## Results
+
+- `results/results.json` (2026-06-14), the entry point; this README is its only rendering.
+- `results/sorted.json` (2026-06-14), the sort-clustered arm.
+- [`RESULTS-MANIFEST-ARM-2026-11-16.md`](RESULTS-MANIFEST-ARM-2026-11-16.md), with
+  `results/manifest_arm_2026-11-16.json` and `.log`, current for attribution. The aborted-run log that file
+  cites (`results/manifest_arm_2026-11-16-aborted-n3000.log`) is kept on the run host and excluded by the
+  repo's `*.log` ignore rule, so it is not in the published tree.
+
+## Versions and pins
+
+No requirements file. `results/results.json` records DuckDB 1.5.3, and the README and the manifest-arm file
+name pyiceberg 0.11.1 and pyarrow 24.0.0, the versions the lab's other Iceberg benches pin
+(`../ocsf-read-scan/requirements.txt`). DuckDB's iceberg extension is installed at run time and its version
+is not recorded.
+
+## Evidence tier and limits
+
+Tier B, single host, warm cache, local SqlCatalog. The June results carry no rig stamp (methodology §7b);
+the manifest arm names its host.
+
+## Corrections
+
+- *(corrected 2026-11-17: added the manifest-arm attribution as current; the June numbers are unchanged
+  and re-derive from `results/results.json`, `per_query`: 24.0, 5.34, 3.2, 2.23.)*

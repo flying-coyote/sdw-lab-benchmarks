@@ -113,7 +113,7 @@ design goal.
 - **H3 always-StarRocks, cold, no cliff and mean regret <= 0.25 s: FALSIFIED on both clauses as registered** (corrected 2026-11-15 after verification; StarRocks DNF on
   `join_3to4_04`, memory limit, both strikes). The regret clause holds comfortably if that one DNF is set aside (about
   0.03 s per query over 83 decisions); with the DNF priced at the 300 s floor the mean is 3.57 s. Because the
-  StarRocks failure reproduced in only 1 of 3 post-hoc attempts, I'd read this as "StarRocks has an intermittent
+  StarRocks failure reproduced in only 1 of 3 post-hoc attempts, the better reading is "StarRocks has an intermittent
   memory-admission failure on the q5-class 4-table join at 24 GB", not as a cliff of the native kind.
 - **H4 UEBA misclassified and StarRocks wins them: HOLDS.** The rules call 8 of 8 UEBA queries a flat or
   non-aggregation-depth shape (6 scan_aggregation, 2 large_large), and StarRocks is the cold-cell winner on 8 of 8, so
@@ -135,7 +135,7 @@ design goal.
 
 The pre-registered subsample turned out to hold one cliff-present decision (`join_5to6_01`, hot) and none of the three
 decisions the rules got catastrophically wrong, so on its own it can't say whether a model guards cliffs better or worse
-than the rules. I added a labelled post-hoc probe over the five cliff queries for that reason (below). Both legs ran
+than the rules. A labelled post-hoc probe was added over the five cliff queries for that reason (below). Both legs ran
 after every engine pass, concurrently with each other and with another session's T8b run on the same Ollama server,
 so every LLM latency is contended and indicative only (`results/llm_scores.json`, `analyze_llm.py`).
 
@@ -159,7 +159,7 @@ tie-tolerant, no catastrophic pick, zero flips over five repeats, 0.75 ms median
   `_04`) in both cells, 10 decisions. agy, 5 trials each: 2 catastrophic modal picks against the rules' 3 (both legs
   fail `join_3to4_04` in both cells, where only ClickHouse-Iceberg was safe; agy sent `join_3to4_09` hot to StarRocks
   on all five trials where the rules sent it to native), 10 of 50 per-trial picks on a cliff, 2 of 10 decisions with a
-  flip. phi4 completed only 5 calls (trial 0 of three queries) before I stopped it, because the shared Ollama server had
+  flip. phi4 completed only 5 calls (trial 0 of three queries) before the run stopped it, because the shared Ollama server had
   slowed it to 2 to 4 minutes per call; on those it made the same picks as the rules, including all three catastrophic
   ones (`join_3to4_04` hot and cold, `join_3to4_09` hot to native). Five trials on ten
   decisions is a probe, not a rate.
@@ -187,7 +187,7 @@ query with the same many-to-many edge to native, and that is two of the three ca
 property of the join graph (a many-to-many dimension-key edge that ClickHouse 26.5's greedy reorderer walks first, as
 the post-hoc EXPLAIN and the join-order-limit check show), not of the join count, so a rule that keys on join count protects the queries it was written from and misses their neighbours. A
 deterministic fix is easy to write and test (route any query whose join graph carries a non-key dimension equality off
-native), which still supports the draft's preference for rules you can read, but it is a rule I wrote after seeing the
+native), which still supports the draft's preference for rules you can read, but it is a rule written after seeing the
 failure, so it has no evidence behind it yet.
 
 The one-front-engine default comes out stronger than the router. In the cold cell always-StarRocks is right on 0.905 of
@@ -204,7 +204,7 @@ that keeps join-graph-risky queries off native MergeTree, rather than a per-shap
 ## Deviations
 
 1. **Oracle retry.** DuckDB ran out of memory on `join_3to4_09` at the pre-registered 8 GB. The re-freeze condition
-   said to exclude it; I instead re-ran that one query at 24 GB / 8 threads with a spill directory (467 s, about 93 GB
+   said to exclude it; the run instead re-ran that one query at 24 GB / 8 threads with a spill directory (467 s, about 93 GB
    spilled; the query text unchanged) and kept it, because it is one of the cliff probes and every engine arm agreed
    with the retried answer. Recorded in `results/oracle.json` under `retries`. Excluding it instead would remove one of
    the two hot-cell catastrophic picks.
@@ -224,12 +224,12 @@ that keeps join-graph-risky queries off native MergeTree, rather than a per-shap
    agy quota was 93% remaining). 24 decisions x 5 trials per leg instead of 48 x 5. Seven agy `_02` trial-0 calls made
    before the cut remain in `results/llm_agy.jsonl` and are excluded from scoring (fewer than 5 trials).
 9. **LLM legs ran concurrently** with each other and with another session's T8b run on the same Ollama server, and the
-   first few phi4 calls shared CPU with a still-loaded gemma4 runner, which I unloaded with `keep_alive: 0` at about
+   first few phi4 calls shared CPU with a still-loaded gemma4 runner, which was unloaded by hand with `keep_alive: 0` at about
    22:30Z. That runner most likely belonged to the concurrent T8b run, so that run will have paid one model reload at
    that time. Latencies are contended.
 10. **`llm_router.py` changed after the freeze** (the model swap above and a post-hoc `--ids` option for the cliff
     probe); frozen sha256 `c9d5388c...179c`, final `7678d896...60cb`. Prompt and parse unchanged. `score.py` gained
-    `sys.dont_write_bytecode` after its first run left a `.pyc` in `../deterministic-routing-sim/__pycache__/`, which I
+    `sys.dont_write_bytecode` after its first run left a `.pyc` in `../deterministic-routing-sim/__pycache__/`, which was
     removed (it was gitignored); frozen-run logic unchanged, final sha256 `838571da...490a`.
 11. **Post-hoc additions, labelled as such**: the StarRocks re-run (`posthoc_probe.py sr_rerun`), the ClickHouse
     join-order check (`posthoc_probe.py ch_order`), the empty-SUM sensitivity (`posthoc_empty_sum.py`) and the LLM cliff

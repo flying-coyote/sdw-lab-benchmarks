@@ -1,0 +1,14 @@
+name: soc-query-shapes
+cluster: detection
+title: Do beaconing, UEBA and rare-value query shapes reorder the Iceberg engines
+status: first-pass
+tier: B
+claim_kind: mixed
+verdict: CAVEAT
+prereg: none
+results: RESULTS-ueba-rare-2026-06-15.md
+reproduce: see README Reproduce (runs inside the ejs-lab container)
+pins: none
+essay: https://securitydataworks.com/writing/engines/single-front-engine
+superseded_by: none
+audited: 2026-11-17

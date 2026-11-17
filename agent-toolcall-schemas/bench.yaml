@@ -1,0 +1,14 @@
+name: agent-toolcall-schemas
+cluster: ai-security
+title: One MCP tools/call recorded in OCSF, OTel GenAI and OWASP AOS, and the query cost of unmapped fields
+status: published
+tier: B
+claim_kind: mixed
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md; RESULTS-EX2-POSTHOC-2026-11-16.md
+reproduce: see the Commands block in agent-toolcall-schemas/RESULTS.md
+pins: requirements.txt
+essay: /writing/ai/ocsf-ai-agent-objects
+superseded_by: none
+audited: 2026-11-17

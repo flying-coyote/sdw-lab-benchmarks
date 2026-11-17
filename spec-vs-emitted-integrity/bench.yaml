@@ -1,0 +1,14 @@
+name: spec-vs-emitted-integrity
+cluster: mapping-and-models
+title: Does a spec-vs-emitted disagreement corrupt silently, by format class
+status: first-pass
+tier: B
+claim_kind: mixed
+verdict: DEMONSTRATION
+prereg: none
+results: RESULTS-loghub-prevalence-2026-06-16.md
+reproduce: python3 spec-vs-emitted-integrity/realvendor_spec_vs_emitted.py
+pins: none (standard library only)
+essay: https://securitydataworks.com/writing/detection/tamper-evident-security-data
+superseded_by: none
+audited: 2026-11-17

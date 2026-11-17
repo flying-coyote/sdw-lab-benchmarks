@@ -22,6 +22,9 @@ Headline spread across draws: **0.009** (+0.710 … +0.719).
 Routine control clean on every draw: **True**. Canonical corpus restored afterward:
 True.
 
+*(corrected 2026-11-17: routine Δ is 0.000 at every setting by construction, since R1 to R6 read no
+coarsened field; "clean" here is not evidence that Store N is realistic.)*
+
 ## Reading
 
 The headline is stable across background re-draws and the routine control stays clean on each, so the

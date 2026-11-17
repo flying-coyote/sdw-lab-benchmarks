@@ -1,0 +1,14 @@
+name: ocsf-mapping-fidelity
+cluster: mapping-and-models
+title: How much of six vendor field schemas lands on typed OCSF 1.8.0 attributes
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-mapping-fidelity/run.py
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/ocsf/six-schemas-into-ocsf
+superseded_by: none
+audited: 2026-11-17

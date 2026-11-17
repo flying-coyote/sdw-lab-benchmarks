@@ -1,6 +1,6 @@
 ---
 type: asset-registry
-title: "SDW Lab Benchmark Chart Asset Manifest — 34 Charts, 5 Correctness Tables, Campaign and Book Figures"
+title: "SDW Lab Benchmark Chart Asset Manifest: 34 Lab Charts, 5 Correctness Tables, 7 Campaign Graphics, 6 Book Figures, 2 Transition Figures"
 created: 2026-06-09
 tags: [asset-registry, charts, lab-benchmarks, publication-mapping, chart-manifest, securitydataworks]
 ---
@@ -10,6 +10,16 @@ tags: [asset-registry, charts, lab-benchmarks, publication-mapping, chart-manife
 Built 34 lab charts + 5 correctness tables from first-party `sdw-lab-benchmarks` results, plus 7 campaign graphics (2026-06-10, `_p*`/`_pb*` scripts) and 6 book figures (2026-06-10, `_bk*` scripts, MOAR restructure Wave C) — see the bottom sections.
 All numbers re-derived from source `RESULTS.md`; brand-styled via `chartstyle.py`; collision guards enforced (the two 96.3%s, the two storage premiums, the two recall headlines never cross).
 Web-served at `securitydataworks.com/research/charts/<file>`.
+
+*(Noted 2026-11-17: the title now counts every row below, by table, where it had counted only the lab
+charts. Three rendered charts in `out/` have no row yet: `benchmark-8-engine.png` (`_r29_engine_two_regime.py`),
+`needle-where-the-index-wins.png` (`_r30_needle_where_index_wins.py`) and
+`schema-grounding-cuts-invented-paths-2026-11-16.png` (`_r06b_schema_grounding_ladder_2026_11_16.py`, the
+re-score of rank 6). The ranks run 1 to 42 with gaps and two shared ranks, so the rank is an ordering and
+not a count. Most chart scripts carry their numbers as constants transcribed from a RESULTS file named in
+a `# Source:` comment, so a dated correction to a bench result reaches a chart only when its script is
+edited and re-rendered. The captions that repeat numbers under review on 2026-11-17 are listed in
+[`docs/AUDIT-2026-11-17-open-items.md`](../docs/AUDIT-2026-11-17-open-items.md).)*
 
 ## Charts
 

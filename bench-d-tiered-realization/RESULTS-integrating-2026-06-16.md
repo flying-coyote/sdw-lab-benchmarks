@@ -7,6 +7,13 @@ tags: [bench-d, tiered-realization, ducklake, iceberg, h-tiered-realization-01, 
 
 # BENCH-D integrating run — RESULTS: the null wins at lab scale (H-TIERED-REALIZATION-01, 2026-06-16)
 
+*(corrected 2026-11-17: four points to read beside this file, none of which changes the three null-wins verdicts.)*
+
+- The verdict paragraph's planning figures (47 ms, 541 ms, 4,090 ms) are the independent first pass quoted in the Window 3 section; the scored JSON, `results/bench_d_integrating_sweep.json`, holds 43.6, 480.9 and 4,083.3 ms, which is what the Window 3 table shows.
+- The 10-append fragmented planning cell has a CV of 94.1% and `cv_blown: true` in that JSON, above this file's own 30% ceiling, so its 43.6 ms is not a claimable number; the 100, 1,000 and 3,000-append cells have CVs of 16.7%, 3.6% and 0.4%, and the roughly linear growth holds on those alone.
+- `expire_snapshots` failed at all four sweep steps (`expire_ok`: "Nessie Catalog does not allow external snapshot management"), so the compacted arm is an overwrite without snapshot expiry, not the overwrite-plus-expiry mechanism the Window 3 section describes.
+- The pre-registration requires a named external reviewer to sign off the decision rule before execution, and the sign-off box in `PRE-REGISTRATION-integrating-2026-06-16.md` and `STATUS-integrating-2026-06-16.md` is still unchecked, so the run went ahead without it; the Gate section below moves the sign-off to "before the verdict is read as final", which departs from the frozen text.
+
 The first end-to-end test of the *integrating* claim this hypothesis owns — does DuckLake-hot →
 Iceberg-warm → compacted-cold behind one read contract beat a single backend run end-to-end? Every
 prior leg (commit-tax, z-order, BENCH-D commit floor, MV accelerator) scored an individual matrix

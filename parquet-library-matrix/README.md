@@ -1,5 +1,7 @@
 # Parquet encoding × library correctness matrix
 
+## What it measures
+
 Lower-level bake-off #2, the home for the bug-class. Both silent-wrong-answer findings the Lab turned up this
 year — chDB's Bloom-pushdown undercount and fastparquet's dictionary mis-decode — lived in the Parquet
 *library* layer, not the engine. So the question here is direct: for each physical encoding, does each library
@@ -30,17 +32,60 @@ safe rather than silently. That contrast with the page-checksum bench (where the
 corruption *silently*) is the point: which failure mode you get is per-layer and per-version, so you measure
 it rather than assume it. Full matrix in [results/RESULTS.md](results/RESULTS.md).
 
-## Run it
+Each cell is measured, a decode compared with a known answer, and the result is bound to the corpus as
+well as to the versions: the matrix uses 20,000 rows of clean-ASCII values, and on the same fastparquet
+2026.5.0 a high-cardinality corpus written with small row groups is mis-decoded (see Corrections), so
+"no silent-wrong cells" holds for this corpus and not for every file a security pipeline writes.
+
+## What would have made it fail
+
+Any cell whose decoded values differed from the ground truth without an error would have been marked
+silent-wrong, and Arm 1 reads the emitted encoding from the file metadata before any reader is judged, so
+a writer that ignored the forced encoding could not pass as a covered cell. What the matrix lacks is a
+known-positive control: no cell reproduces the fastparquet `PLAIN_DICTIONARY` mis-decode that the
+answer-equality work found on the same version, so a clean matrix cannot be read as evidence that defect
+is absent.
+
+## Pre-registration
+
+None. No pre-registration file exists in this folder.
+
+## Reproduce
 
 ```bash
 pip install -r parquet-library-matrix/requirements.txt
 python parquet-library-matrix/run.py
 ```
 
+`run.py` rewrites `results/RESULTS.md`, so dated corrections live in this README.
+
+## Results
+
+- [results/RESULTS.md](results/RESULTS.md) and `results/results.json`, the 2026-06-06 run, the only one.
+
+## Versions and pins
+
+`requirements.txt` pins pyarrow 23.0.1, DuckDB 1.5.3, Polars 1.41.2, DataFusion 53.0.0, chDB 4.1.8,
+fastparquet 2026.5.0 and pandas 3.0.3, the versions the results file records.
+
+## Evidence tier and limits
+
+Tier B, single machine, one synthetic corpus per type, exact ground truth. No timings are reported.
+
 The per-cell result is version-bound and is the transferable finding — re-run on any library upgrade, because
 encoding support is actively moving (BYTE_STREAM_SPLIT for integers and the DELTA family are the active edges,
 and a reader in the "errors" column today can move to "decodes correctly" — or, the case to watch for,
-"silently wrong" — on an upgrade). Tier B, single machine.
+"silently wrong" — on an upgrade).
+
+## Corrections
+
+- *(corrected 2026-11-17: Arm 3's "every reader reads every writer's default file correctly, including
+  DuckDB's `PLAIN_DICTIONARY` strings read by fastparquet" holds on this bench's 20,000-row clean-ASCII
+  corpus only. On the same fastparquet 2026.5.0, a DuckDB-written high-cardinality file with small row
+  groups mis-decodes 4,672 of 1,000,000 rows with no error
+  (`../clickhouse-vs-duckdb/results/RECONFIRMATION-2026-06-14.md`) and returns a wrong count on all 24
+  cells of the 10M multi-engine scorecard (`../clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md`).
+  Read the headline as "at default settings, on a small clean corpus, the libraries interoperate".)*
 
 ## Hypothesis mapping
 

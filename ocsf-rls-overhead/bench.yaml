@@ -1,0 +1,14 @@
+name: ocsf-rls-overhead
+cluster: catalogs-engines-cost
+title: Engine-side cost of a row-level security predicate in DuckDB
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-rls-overhead/run.py
+pins: requirements.txt
+essay: https://securitydataworks.com/writing/catalogs/catalog-governance
+superseded_by: none
+audited: 2026-11-17

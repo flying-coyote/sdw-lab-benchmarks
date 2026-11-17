@@ -658,7 +658,7 @@ for a range predicate). Actual engine pruning may be higher with page-index push
 {lat_sep}
 {chr(10).join(lat_rows)}
 
-A delta below the CV is not a real difference. Per [`BENCHMARKING-METHODOLOGY.md`](../BENCHMARKING-METHODOLOGY.md):
+A delta below the CV is not a real difference. Per [`BENCHMARKING-METHODOLOGY.md`](../../BENCHMARKING-METHODOLOGY.md):
 report CV alongside every median; claim a win only when the gap exceeds the CV. The
 "real delta?" column should be filled in by the reader after comparing each layout's
 median gap to the maximum of the two CVs.

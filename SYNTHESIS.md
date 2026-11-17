@@ -5,29 +5,41 @@ created: 2026-06-05
 tags: [synthesis, benchmark-campaign, chdb-correctness, ocsf-context-collapse, ducklake, iceberg]
 ---
 
-# Campaign synthesis — what the benchmarks actually argue
+# Campaign synthesis: what the June benchmarks argue
+
+> *Status, 2026-11-17.* Written on 2026-06-05 after runs R0 to R6 of the June campaign, and kept as written
+> apart from the dated notes below, which were added after every number here was re-derived against the
+> bench results it cites, and punctuation and wording edits made on 2026-11-17 that change no number or
+> finding. It covers that campaign only, so it says nothing about the benches added since
+> (the mapping, routing, streaming and AI-security work); the generated index in [`README.md`](README.md)
+> is the current map of the lab.
 
 This is the through-line across the extended benchmark campaign (R0–R6), written after the runs rather
-than before, so it reflects what the measurements forced me to change my mind about. The per-run results
-and the nine corrected assumptions live in [`CAMPAIGN.md`](CAMPAIGN.md); the methodology spine — CV on
-every comparative run, config-parity or same-files registration when writers differ, isolation, the
-single-machine caveat — lives in [`BENCHMARKING-METHODOLOGY.md`](BENCHMARKING-METHODOLOGY.md). What
-follows is the argument the campaign makes when you read the runs together.
+than before, so it reflects what the measurements forced the campaign to change its mind about. The
+per-run results and the nine corrected assumptions live in [`CAMPAIGN.md`](CAMPAIGN.md), and the
+methodology the runs were held to (CV on every comparative run, config-parity or same-files registration
+when writers differ, isolation, the single-machine caveat) lives in
+[`BENCHMARKING-METHODOLOGY.md`](BENCHMARKING-METHODOLOGY.md). What follows is the argument the campaign
+makes when you read the runs together.
 
 ## The strongest result wasn't a speed number
 
 The single most important thing the campaign produced is the chDB correctness divergence (R3): at 100
 million rows, embedded ClickHouse returned a selective-lookup `count(*)` forty-nine rows short of DuckDB
 over the *same Parquet bytes*, with no error raised, and it only surfaced because the benchmark refuses
-to report a latency until both engines return identical answers. The defect is narrow and real — chDB
+to report a latency until both engines return identical answers. The defect is narrow and real: chDB
 4.1.8's Parquet equality filter drops matching rows in the tail row groups of a many-group file, while
-`LIKE`, chDB's own MergeTree store, and DuckDB all match the generator's ground truth — and I reproduced
-it deterministically down to a cheap 10M-row case. A benchmark that only timed the two engines would have
+`LIKE`, chDB's own MergeTree store, and DuckDB all match the generator's ground truth, and the campaign
+reproduced it deterministically down to a cheap 10M-row case. A benchmark that only timed the two engines would have
 published chDB as competitive on that query and never noticed the number was wrong. For security data
 this is the whole game: a `count(*)` under a filter is a detection threshold or a compliance figure, so a
 fast engine that is silently wrong is worse than a slow engine that is right. The cross-engine
 answer-equality gate is not ceremony, it is the product — and that is the empirical core of the
-fair-broker position, that the value is in the verification, not the speed.
+fair-broker position, that the value is in the verification, not the speed. *(Noted 2026-11-17: the
+undercount is fixed in chDB 4.1.9, per `clickhouse-vs-duckdb/results/RECONFIRMATION-2026-06-14.md:82`,
+so it is a finding about 4.1.8, the version the June results ran on; the fastparquet decode bug found later
+in the same probe was still live on fastparquet 2026.5.0, the latest release when re-checked on 2026-06-14
+(`RECONFIRMATION-2026-06-14.md:83`).)*
 
 ## The thing people argue about is rarely the lever
 
@@ -52,7 +64,7 @@ made on a vendor's default.
 ## Scale, and then trust the number
 
 The coefficient of variation collapsed from roughly 19% at one million rows to about 4% at a hundred
-million, and below ten million the micro-query rankings were noise — several apparent wins at small scale
+million, and below ten million the micro-query rankings were noise, since several apparent wins at small scale
 were ties inside the noise floor. The practical rule the campaign earns is that a comparison which
 doesn't report its CV and scale past the noise floor is decoration, and it is why the audit pass (R0 and
 the re-runs that opened the campaign) was worth doing before any new measurement: it put a stability
@@ -65,7 +77,7 @@ The detection runs (R1, with R2's dose-response and second-chain behind them) sh
 context-collapse does not impose a uniform fidelity tax. The same portable Sigma rules that fire cleanly
 on the fidelity store split two ways on the coarse store, and which way depends on which coarsening knob
 touched the field the rule keys on: a generic rare-DNS sampling default drops the single C2 resolution
-and the rule goes *blind* (recall 1→0, and silently — no alert is raised at all), while coercing
+and the rule goes *blind* (recall 1→0, and silently, with no alert raised at all), while coercing
 MFA-absence to false makes the priv-esc rule *cry wolf* (precision 1.0→0.004 as 267 routine MFA failures
 join the one real needle). The dose-response curve is flat-then-step rather than smooth, and a second,
 independent attack chain reproduced the headline within 0.01, so the effect is a property of what coarse
@@ -76,11 +88,12 @@ to be evaluated against the detections you actually run, because the worst failu
 
 The materialized-view run (R5) is the cleanest example of the campaign refusing a one-number answer. The
 read speedup is real and large (45–77× to serve a SOC-dashboard panel from a few hundred pre-aggregated
-rows instead of scanning twenty million), but the honest accounting is three numbers, not one:
+rows instead of scanning twenty million *(corrected 2026-11-17: the three views hold 12, 288 and 2,000
+rows, per `ocsf-mv-acceleration/results/results.json`)*), but the honest accounting is three numbers, not one:
 incremental maintenance is only cheaper than full recompute when the base is large relative to the
 arriving batch (2.9× for a low-cardinality panel here, break-even for a high-cardinality one), storage
 overhead scales with the aggregate's cardinality rather than the table's, and an MV answers only the
-questions you pre-decided — an ad-hoc hunt still pays the base scan. An MV is a bet that a fixed question
+questions you pre-decided, so an ad-hoc hunt still pays the base scan. An MV is a bet that a fixed question
 set is worth paying storage and per-batch maintenance to answer fast, which is exactly right for an
 always-on dashboard and wrong for exploration.
 
@@ -106,10 +119,17 @@ percentiles, read-while-write coherence, and where DuckLake's inlining inverts) 
 (same-files at one billion rows, the format-neutrality result at scale rather than at 100M) follows, with
 the caveat that routing its data to the E: SSD over drvfs inflates absolute latencies and the relative
 comparison is the part that survives; R9 (device-measured DWPD under sustained ingest) likely stays
-non-viable on this box because WSL2 can't read the host NVMe's SMART data through `smartctl`, and I'd
-rather say so than fake it. The frontier leg of BENCH-B (needs an API key), the OBDA arm of BENCH-C
+non-viable on this box because WSL2 can't read the host NVMe's SMART data through `smartctl`, and saying
+so is better than faking it. The frontier leg of BENCH-B (needs an API key), the OBDA arm of BENCH-C
 (needs an Ontop + R2RML setup), and the named-practitioner realism sign-off on BENCH-A all need a
 dependency or a human and sit outside the single-box autonomous run. The essay slate in `CAMPAIGN.md`
 maps each finding to a `/writing` pillar; all of it goes through the voice and publication gates before
-anything reaches the site, and the per-vendor magnitudes stay paid IP — only the method and the
+anything reaches the site, and the per-vendor magnitudes stay paid IP, while only the method and the
 relative shapes are public.
+
+*(Noted 2026-11-17: most of what this section lists as open has since run. R7 and R8 are done and
+recorded in `CAMPAIGN.md`, where R8 found three of four queries at parity on byte-identical data at one
+billion rows and one high-cardinality aggregation 1.30× faster on DuckLake. A 100M-row follow-up did not reproduce the
+1.30× and read it as consistent with a 1B-specific spill effect, which no run isolated (see the corrected
+T2.5 entry in `CAMPAIGN.md`). The BENCH-B frontier leg and the BENCH-C OBDA arm ran in June
+(see the note in `CAMPAIGN.md` under R9). R9 stays deferred and the BENCH-A realism sign-off stays open.)*

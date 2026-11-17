@@ -1,0 +1,14 @@
+name: m1-r1-blind-regrade
+cluster: mapping-and-models
+title: Blind second grader on R1's artifact-to-OCSF grades
+status: published
+tier: not stated
+claim_kind: measured
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: cd m1-r1-blind-regrade && python3 -I analyze.py && python3 -I recompute.py
+pins: m1-r1-blind-regrade/requirements.txt
+essay: https://securitydataworks.com/writing/ai/atlas-missing-detection-column
+superseded_by: none
+audited: 2026-11-17

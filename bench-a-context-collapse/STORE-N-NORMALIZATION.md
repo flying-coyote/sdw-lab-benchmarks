@@ -9,17 +9,19 @@ tags: [ocsf-context-collapse, store-n, normalization, sigma, detection-fidelity,
 
 BENCH-A measures one thing: the difference between two OCSF stores built from the same
 corpus. The whole result rests on Store N being a *fair* coarse store, the kind a real
-pipeline produces under cost pressure, rather than one I crippled to fail the adversary
+pipeline produces under cost pressure, rather than one crippled to fail the adversary
 queries. So every coarsening choice in `stores.py` is written down here with the
-real-world practice it stands for, and the result carries the honest caveat that
-"documented by me" is not "reviewed by a practitioner" — that sign-off is the Tier-A
-gate, below.
+real-world practice it stands for, and the result carries the caveat that documented by
+the bench's author is not reviewed by a practitioner, which is the Tier-A gate below.
 
 The test that the default is fair is the routine control: R1–R6 (counts, top-N, egress
 rollups) come back from Store N identical to Store F (Δ-routine = 0.000 in the results).
 A store that broke those too would be a strawman, and the run would void. Store N breaks
 the adversary queries while leaving the routine ones intact, which is the signature of
 real volume-reduction, not of deliberate sabotage.
+
+*(corrected 2026-11-17: the routine control cannot test fairness, because none of R1 to R6 reads a
+coarsened field; see "The blind-to-queries discipline" below.)*
 
 ## The choices, and their basis
 
@@ -75,17 +77,28 @@ the price.
 
 ## The blind-to-queries discipline
 
-I wrote both the corpus and the query battery, which is the obvious place for bias to
-enter, so the guardrails are: the query battery was frozen first (2026-05-31, in the
-private benchmark repo), the choices above each name a practice that exists regardless of
-my queries, and the routine control proves Store N isn't sabotaged. None of that fully
-removes my thumb from the scale — it bounds it.
+The same author wrote the corpus and the query battery, which is the obvious place
+for bias to enter, so the guardrails are that the query battery was frozen first (2026-05-31,
+in a private benchmark repo that this public repo cannot show), and that the choices above each
+name a practice that exists regardless of the queries. None of that removes the author's thumb
+from the scale; it bounds it.
+
+*(corrected 2026-11-17: this section used to say the routine control "proves Store N isn't
+sabotaged". It cannot, because none of the six routine queries reads a field any Store N
+mechanism changes. Store N keeps every auth, process and API row; R2 asks for the top 20 of the 12
+ports the generator draws (`../ocsf-semantic-testbed/generate.py:84`) and is answered on Store N
+with `sum(flow_count)`, which undoes the rollup (`bench.py:90`); R4 sums bytes the rollup keeps; R5
+asks for the top 50 of about 20 image names, which truncation does not touch. So the routine Δ of
+0.000 holds under any setting of these knobs, as the dose-response table shows up to 3600 s / 12 /
+12. Store N was also built knowing at least one routine query, R4: `stores.py:146` keeps rollup
+bytes so that "R4 must survive". The routine control shows the battery's routine half avoids every coarsened
+field; it does not show the coarsening is realistic.)*
 
 ## Tier-A gate
 
-This is the gate the pre-registration names and the one piece I cannot supply myself: an
-independent practitioner (Jake Thomas / Hunter Madison) confirming that Store N's
+This is the gate the pre-registration names and the one piece the bench cannot supply for
+itself: an independent practitioner (Jake Thomas / Hunter Madison) confirming that Store N's
 coarsening resembles what shops actually build. Until that sign-off, the result is Tier B
-and the write-up says so in the headline, not a footnote. Getting the sign-off is
-Jeremy's outward step, and it is what would move the finding from "a defensible synthetic
+and the write-up says so in the headline, not a footnote. Getting the sign-off is the
+lab author's outward step, and it is what would move the finding from "a defensible synthetic
 contrast" to "a reviewed one."

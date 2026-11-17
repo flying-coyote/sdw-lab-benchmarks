@@ -1,0 +1,14 @@
+name: duckdb-edge-floor
+cluster: catalogs-engines-cost
+title: DuckDB memory floor for hunting detections under an enforced container cap
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: PREREGISTRATION-2026-11-15.md; PREREGISTRATION-2026-11-15-ADDENDUM-A.md; PREREGISTRATION-2026-11-15-ADDENDUM-B.md; PREREGISTRATION-2026-11-16-ADDENDUM-QUIET.md
+results: RESULTS-QUIET-2026-11-16.md
+reproduce: python3 duckdb-edge-floor/run-2026-11-15/driver.py; bash duckdb-edge-floor/run-2026-11-16-quiet/run_quiet.sh
+pins: run-2026-11-15/image/Dockerfile (DuckDB 1.5.3, Python 3.12.3)
+essay: https://securitydataworks.com/writing/engines/hunting-at-the-edge-duckdb
+superseded_by: none
+audited: 2026-11-17

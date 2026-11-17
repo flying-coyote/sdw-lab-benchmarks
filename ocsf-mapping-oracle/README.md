@@ -44,14 +44,53 @@ capability gap (H-PRACTITIONER-OWNED-AGENTIC-01) is approached by a local model 
 rather than resolved; an independent frontier leg (needs an API key) closes it. Results in
 [results/RESULTS.md](results/RESULTS.md).
 
-## Run it
+*(corrected 2026-11-17: this section predates three later results in the folder. A larger local model,
+gemma4:26b, is in `results/RESULTS.md` (silent error 0.18 under `schema`, 0.83 under `none`). A frontier
+proxy leg ran in June through Claude Code subagents rather than an API key, three blind runs of all 705
+prompts (`_frontier/REPLICATION-2026-06-14.md`: path-correct 57.6 / 67.2 / 68.5%), and that is one
+model family, so the independent non-same-family leg is still open. And the silent-error metric itself
+was found to be subset-sensitive: the validator dropped the subset's deep-accept rule, so 24 of the 141
+gold paths sat outside the closure, and against the full OCSF 1.8.0 schema the frontier proxy's
+invented-path rate is 5.0 / 9.1 / 9.1% of prompts rather than 17.0 / 26.7 / 26.1%, while phi3 under the
+partial-list condition moves only from 0.69 to 0.68 (`results/RESULTS.md`, correction of 2026-11-16, and
+`../ocsf-deterministic-mapper/results/RESULTS-FRONTIER-CONSTRAINED-2026-11-16.md`). The phi3 contrasts in
+the paragraph above were measured against the June closure and should be read with that note.)*
+
+## What would have made it fail
+
+Every condition can fail, since the model's paths are scored against an independent hand-built gold key
+and a schema validator, and the `wrong_grounding` arm is a real control for the grounding-note content.
+The `none` arm is the contamination floor. The weak point is the validator, which was narrower than the
+schema (see the 2026-11-17 note above), so the June silent-error figures overstate invented paths for
+any model that emits real paths outside the transcribed subset.
+
+## Pre-registration
+
+None for the June local and frontier runs. The re-scores that correct them are post-hoc and say so.
+
+## Reproduce
 
 ```bash
 # the local model must be pulled in Ollama first (e.g. `ollama pull phi3`)
 .venv/bin/python ocsf-mapping-oracle/run.py --models phi3:latest --fields-per-source 14
 .venv/bin/python ocsf-mapping-oracle/run.py --render-only        # regenerate RESULTS.md
-# frontier leg (Jeremy's key) is the expansion — a pinned API model as a second --models entry
+# frontier leg: a pinned API model as a second --models entry; the June frontier-proxy runs used
+# dump_frontier_prompts.py + subagents + score_frontier.py instead (see _frontier/REPLICATION-2026-06-14.md)
 ```
+
+## Results
+
+- `results/RESULTS.md` and `results/results.json` (local ladder plus the frontier-proxy section and the
+  appended 2026-11-16 correction); `results/gemma4_full_checkpoint.jsonl` holds the gemma4 predictions.
+- `_frontier/REPLICATION-2026-06-14.md` and `_frontier/run2/`, `_frontier/run3/`: the three frontier
+  runs. Gold-stripped inputs are archived for run 2 only.
+- Current read on silent error: `../ocsf-deterministic-mapper/results/RESULTS-FRONTIER-CONSTRAINED-2026-11-16.md`.
+
+## Versions and pins
+
+Ollama tags `phi3:latest` and `gemma4:26b` (tags, not digests); the frontier proxy is claude-opus-4-8
+through Claude Code at harness defaults, with no temperature or seed control. Python dependencies come
+from the root `requirements.txt` (`requests==2.34.2`).
 
 ## Evidence tier
 
@@ -63,3 +102,9 @@ mappings dispersed through the larger task, scored for precision and recall, wit
 as a first-class outcome) is a cheap scoring method that one practitioner team reports tracks whole-run
 performance (methodology §10). Tier-A needs a published larger gold set, a named reviewer on
 the ambiguous adjudications, and an independent (non-same-family) frontier model.
+
+## Corrections
+
+- 2026-11-16: validator deep-accept and partial-list findings appended to `results/RESULTS.md`.
+- 2026-11-17: the "State" section annotated with the gemma4, frontier-proxy and full-schema results; the
+  run comment reworded.

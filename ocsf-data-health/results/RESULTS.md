@@ -27,6 +27,8 @@ Synthetic estate of **20,000 assets x 7 attributes = 140,000 ground-truth cells*
 
 The cross-tool merge recovers **75.6%** of the estate's true state against the best single tool's **47.7%** — a **+27.9%** lift, the central thesis claim made measurable: *assurance lives in the cross-tool view*. The residual **24.4%** is the blind spot no tool covers correctly — the actual risk surface — and the merge tops out at its ceiling of 75.6% (any-tool-correct), which equals 100% − residual by construction.
 
+*(corrected 2026-11-17: the scored merge equals the any-tool-correct ceiling at v1 and at every EXT-1 grid point, because the flaw model in `run.py:267-363` always gives the wrong reading on a cell the lower confidence. So no merge can beat it, measures (2) and (3) are one number, and the lever (4) is the ceiling minus the fixed-authority merge; these follow from the flaw model and are not a measured property of the merge. `run.py` regenerates this file, so the correction is also in the README.)*
+
 ## (1) Single-tool recovery — each tool's partial, flawed view
 
 Recovery = correct cells / all true cells (coverage x freshness x authority). Accuracy-where-reported isolates staleness/authority error from pure absence.
@@ -62,7 +64,7 @@ Two different effects show up in this table, and they are worth keeping apart. T
 
 ## (EXT-1) Parameter sweep — is the ORDER robust, not just the magnitude?
 
-The v1 headline numbers are functions of the flaw-model parameters. We sweep the two that genuinely move them on this corpus — the **staleness window** (a multiplier on how much of the CMDB's volatile inventory is stale: ×0.6, ×1.0, ×1.4) and a **per-tool coverage** multiplier (×0.8, ×1.0, ×1.15) — across a 9-point grid, recomputing all four measures at every point. The transferable claim is the **order**, so what matters is whether it holds at every cell, not the v1 magnitude.
+The v1 headline numbers are functions of the flaw-model parameters. The sweep moves the two that genuinely move them on this corpus — the **staleness window** (a multiplier on how much of the CMDB's volatile inventory is stale: ×0.6, ×1.0, ×1.4) and a **per-tool coverage** multiplier (×0.8, ×1.0, ×1.15) — across a 9-point grid, recomputing all four measures at every point. The transferable claim is the **order**, so what matters is whether it holds at every cell, not the v1 magnitude.
 
 | metric | min (at) | max (at) |
 |---|--:|--:|
@@ -97,11 +99,11 @@ The magnitudes move with the parameters exactly as the methodology predicts — 
 
 ### Freshness half-life — a swept axis that turns out inert here (a null, reported)
 
-We also swept the **freshness half-life** (how fast confidence decays) across 7, 14, 28, 90 days at v1 staleness and coverage. On this corpus it is **inert**: cross-tool recovery takes the distinct value(s) 75.6% and the lever +25.1% across the whole range. The reason is structural — the fresh source (EDR) is also the higher-confidence one, so freshness decay never flips a per-cell winner, and the lever is carried by the confidence+authority ordering rather than by the decay rate. That is worth stating plainly: on an estate where the freshest source were the *lower*-confidence one, the half-life would bite; here it does not, and pretending the axis moved would be the dishonest move.
+A separate sweep moved the **freshness half-life** (how fast confidence decays) across 7, 14, 28, 90 days at v1 staleness and coverage. On this corpus it is **inert**: cross-tool recovery takes the distinct value(s) 75.6% and the lever +25.1% across the whole range. The reason is structural — the fresh source (EDR) is also the higher-confidence one, so freshness decay never flips a per-cell winner, and the lever is carried by the confidence+authority ordering rather than by the decay rate. That is worth stating plainly: on an estate where the freshest source were the *lower*-confidence one, the half-life would bite; here it does not, and pretending the axis moved would be the dishonest move.
 
 ## (EXT-2) Identities with a contested join key — entity resolution is part of the gap
 
-v1 assets share one clean key (`asset_id`) across every tool, so the cross-tool merge is a clean equi-join. Identity data is harder: the four tools key on **different, disagreeing** columns (HR `employee_id`, IdP `email`, EDR `upn`, directory `sAMAccountName`), and no single column joins all four. The merge must first reconcile which records are the same human — entity resolution — before it can recover any attribute. We plant the true person↔key mapping (12,000 identities × 5 attributes = 60,000 cells), then score two regimes.
+v1 assets share one clean key (`asset_id`) across every tool, so the cross-tool merge is a clean equi-join. Identity data is harder: the four tools key on **different, disagreeing** columns (HR `employee_id`, IdP `email`, EDR `upn`, directory `sAMAccountName`), and no single column joins all four. The merge must first reconcile which records are the same human — entity resolution — before it can recover any attribute. The generator plants the true person↔key mapping (12,000 identities × 5 attributes = 60,000 cells), and the run scores two regimes.
 
 | regime | recovery |
 |---|--:|

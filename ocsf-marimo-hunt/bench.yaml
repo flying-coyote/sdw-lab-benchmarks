@@ -1,0 +1,14 @@
+name: ocsf-marimo-hunt
+cluster: detection
+title: Notebook format for detection-as-code: marimo .py vs .ipynb
+status: first-pass
+tier: B/C
+claim_kind: demonstration
+verdict: DEMONSTRATION
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-marimo-hunt/run.py
+pins: requirements.txt
+essay: https://securitydataworks.com/writing/detection/detection-as-code-notebooks
+superseded_by: none
+audited: 2026-11-17

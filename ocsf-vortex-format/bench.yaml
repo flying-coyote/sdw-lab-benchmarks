@@ -1,0 +1,14 @@
+name: ocsf-vortex-format
+cluster: formats-and-lakehouse
+title: Vortex against Parquet on OCSF data, size, write, decode and a needle query
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/results.json
+reproduce: python ocsf-vortex-format/run.py
+pins: requirements.txt
+essay: /writing/lakehouse/v4-vs-ducklake
+superseded_by: none
+audited: 2026-11-17

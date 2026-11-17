@@ -1,0 +1,14 @@
+name: deterministic-routing-noncircular
+cluster: catalogs-engines-cost
+title: The June routing rules scored on 84 generated queries against measured engine winners
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: PREREGISTRATION.md; PREREGISTRATION-ADDENDUM-QUIET-2026-11-16.md
+results: RESULTS-QUIET-2026-11-16.md
+reproduce: bash deterministic-routing-noncircular/run_all.sh; bash deterministic-routing-noncircular/run_quiet.sh
+pins: compose.yml (ClickHouse 26.5.1.882 and Trino 481 pinned; StarRocks, Nessie and MinIO on latest tags)
+essay: https://securitydataworks.com/writing/engines/deterministic-query-routing
+superseded_by: none
+audited: 2026-11-17

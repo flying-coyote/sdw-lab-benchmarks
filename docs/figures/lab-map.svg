@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1176" width="1800" height="1176" role="img" aria-labelledby="lm-title lm-desc">
+<title id="lm-title">81 lab folders in five clusters; 6 hold no scored result yet</title>
+<desc id="lm-desc">Each column is one cluster of bench folders. The shared planted-chain testbed is connected to the 6 benches whose code reads its corpus. Folders highlighted in blue have a status of foundation, scaffold, spec or frozen design, so they hold no scored result to cite.</desc>
+<rect width="1800" height="1176" fill="#ffffff"/>
+<text x="40" y="78" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="46" font-weight="700" fill="#2c4f74">81 lab folders, five clusters: the 6 in blue hold no scored result yet</text>
+<text x="40" y="128" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="26" fill="#5b6878">Lines join the shared planted-chain testbed to the 6 benches built on its corpus.</text>
+<rect x="40.0" y="190" width="329.6" height="740" rx="12" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="2"/>
+<text x="56.0" y="226" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">Detection and the</text>
+<text x="56.0" y="254" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">planted-chain testbed</text>
+<text x="56.0" y="282" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">(14)</text>
+<rect x="70.0" y="304" width="285.6" height="38" rx="6" fill="#1f8fe0" stroke="#0f5f9e" stroke-width="1.5"/>
+<text x="80.0" y="330" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff">ocsf-semantic-testbed</text>
+<rect x="70.0" y="348" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="374" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">bench-a-context-collapse</text>
+<rect x="70.0" y="392" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="418" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-attack-coverage</text>
+<rect x="70.0" y="436" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="462" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-marimo-hunt</text>
+<rect x="70.0" y="480" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="506" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-sigma-detection</text>
+<rect x="70.0" y="524" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="550" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">edr-two-regime</text>
+<rect x="70.0" y="568" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="594" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">flattening-fidelity</text>
+<rect x="70.0" y="612" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="638" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-context-collapse-apt29</text>
+<rect x="70.0" y="656" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="682" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-data-health</text>
+<rect x="70.0" y="700" width="285.6" height="38" rx="6" fill="#1f8fe0" stroke="#0f5f9e" stroke-width="1.5"/>
+<text x="80.0" y="726" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff">ocsf-fsi-compliance</text>
+<rect x="70.0" y="744" width="285.6" height="38" rx="6" fill="#1f8fe0" stroke="#0f5f9e" stroke-width="1.5"/>
+<text x="80.0" y="770" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff">security-context-graph</text>
+<rect x="70.0" y="788" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="814" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">sigma-portability</text>
+<rect x="70.0" y="832" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="858" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">soc-query-shapes</text>
+<rect x="70.0" y="876" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="80.0" y="902" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">text-search-regex</text>
+<rect x="387.6" y="190" width="329.6" height="828" rx="12" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="2"/>
+<text x="403.6" y="226" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">Mapping, schema fidelity</text>
+<text x="403.6" y="254" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">and model arms (16)</text>
+<rect x="417.6" y="304" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="330" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-nl2sql-silenterror</text>
+<rect x="417.6" y="348" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="374" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-semantic-query</text>
+<rect x="417.6" y="392" width="285.6" height="38" rx="6" fill="#1f8fe0" stroke="#0f5f9e" stroke-width="1.5"/>
+<text x="427.6" y="418" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff">ai-analyst-preregs</text>
+<rect x="417.6" y="436" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="462" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">atlas-ocsf-observables</text>
+<rect x="417.6" y="480" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="506" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">d3fend-ocsf-ai-alignment</text>
+<rect x="417.6" y="524" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="550" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">m1-r1-blind-regrade</text>
+<rect x="417.6" y="568" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="594" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-1.9-rescore</text>
+<rect x="417.6" y="612" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="638" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-airgap-agent</text>
+<rect x="417.6" y="656" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="682" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-deterministic-mapper</text>
+<rect x="417.6" y="700" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="726" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-mapping-fidelity</text>
+<rect x="417.6" y="744" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="770" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-mapping-oracle</text>
+<rect x="417.6" y="788" width="285.6" height="38" rx="6" fill="#1f8fe0" stroke="#0f5f9e" stroke-width="1.5"/>
+<text x="427.6" y="814" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff">ontology-vs-schema-gate</text>
+<rect x="417.6" y="832" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="858" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">pipeline-normalization-fidelity</text>
+<rect x="417.6" y="876" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="902" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">sdpp-ingest-throughput</text>
+<rect x="417.6" y="920" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="946" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">spec-vs-emitted-integrity</text>
+<rect x="417.6" y="964" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="427.6" y="990" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">stream-complexity</text>
+<rect x="735.2" y="190" width="329.6" height="916" rx="12" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="2"/>
+<text x="751.2" y="226" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">Formats, readers and</text>
+<text x="751.2" y="254" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">lakehouse read/write</text>
+<text x="751.2" y="282" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">paths (18)</text>
+<rect x="765.2" y="304" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="330" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">clickhouse-vs-duckdb</text>
+<rect x="765.2" y="348" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="374" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">iceberg-compaction</text>
+<rect x="765.2" y="392" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="418" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-arrow-transport</text>
+<rect x="765.2" y="436" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="462" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-iceberg-metadata</text>
+<rect x="765.2" y="480" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="506" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-nested-type-fidelity</text>
+<rect x="765.2" y="524" width="285.6" height="38" rx="6" fill="#1f8fe0" stroke="#0f5f9e" stroke-width="1.5"/>
+<text x="775.2" y="550" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff">ocsf-parquet-determinism</text>
+<rect x="765.2" y="568" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="594" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-pruning-correctness</text>
+<rect x="765.2" y="612" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="638" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-read-scan</text>
+<rect x="765.2" y="656" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="682" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-storage-endurance</text>
+<rect x="765.2" y="700" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="726" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-temporal-null-coercion</text>
+<rect x="765.2" y="744" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="770" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-vortex-format</text>
+<rect x="765.2" y="788" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="814" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-write-contract</text>
+<rect x="765.2" y="832" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="858" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-write-inlining</text>
+<rect x="765.2" y="876" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="902" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-zorder-pruning</text>
+<rect x="765.2" y="920" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="946" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-zstd-dictionary</text>
+<rect x="765.2" y="964" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="990" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">parquet-checksum-integrity</text>
+<rect x="765.2" y="1008" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="1034" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">parquet-determinism-encryption</text>
+<rect x="765.2" y="1052" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="1078" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">parquet-library-matrix</text>
+<rect x="1082.8" y="190" width="329.6" height="872" rx="12" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="2"/>
+<text x="1098.8" y="226" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">Catalogs, engines,</text>
+<text x="1098.8" y="254" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">routing and cost (17)</text>
+<rect x="1112.8" y="304" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="330" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">bench-d-tiered-realization</text>
+<rect x="1112.8" y="348" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="374" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">concurrency-multiuser</text>
+<rect x="1112.8" y="392" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="418" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">cost-to-serve-retention</text>
+<rect x="1112.8" y="436" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="462" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">deterministic-routing-noncircular</text>
+<rect x="1112.8" y="480" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="506" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">deterministic-routing-sim</text>
+<rect x="1112.8" y="524" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="550" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">duckdb-edge-floor</text>
+<rect x="1112.8" y="568" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="594" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ducklake-catalog-failuremodes</text>
+<rect x="1112.8" y="612" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="638" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">engine-join-specialization</text>
+<rect x="1112.8" y="656" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="682" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">mv-rewrite-freshness</text>
+<rect x="1112.8" y="700" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="726" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-catalog-contention</text>
+<rect x="1112.8" y="744" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="770" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-format-planning</text>
+<rect x="1112.8" y="788" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="814" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-mv-acceleration</text>
+<rect x="1112.8" y="832" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="858" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-rls-overhead</text>
+<rect x="1112.8" y="876" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="902" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-streaming-cadence</text>
+<rect x="1112.8" y="920" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="946" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">polaris-catalog-dryrun</text>
+<rect x="1112.8" y="964" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="990" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">workload-interference</text>
+<rect x="1112.8" y="1008" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1122.8" y="1034" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">zeek-flagship-rerun</text>
+<rect x="1430.4" y="190" width="329.6" height="828" rx="12" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="2"/>
+<text x="1446.4" y="226" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">AI security (16)</text>
+<rect x="1460.4" y="304" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="330" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">agent-telemetry-retention</text>
+<rect x="1460.4" y="348" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="374" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">agent-toolcall-schemas</text>
+<rect x="1460.4" y="392" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="418" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ai-artifact-sbom</text>
+<rect x="1460.4" y="436" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="462" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">delegation-chain-query</text>
+<rect x="1460.4" y="480" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="506" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">mcp-manifest-drift</text>
+<rect x="1460.4" y="524" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="550" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t1-shadow-ai-discovery</text>
+<rect x="1460.4" y="568" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="594" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t2-platform-telemetry</text>
+<rect x="1460.4" y="612" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="638" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t3-guardrail-adaptive</text>
+<rect x="1460.4" y="656" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="682" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t4-interdiction</text>
+<rect x="1460.4" y="700" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="726" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t5-model-artifact-scanning</text>
+<rect x="1460.4" y="744" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="770" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t6-finetune-memorization</text>
+<rect x="1460.4" y="788" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="814" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t7-idp-delegation-logging</text>
+<rect x="1460.4" y="832" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="858" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t8a-mcp-before-after</text>
+<rect x="1460.4" y="876" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="902" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t8b-telemetry-injection</text>
+<rect x="1460.4" y="920" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="946" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t8c-trifecta-detection</text>
+<rect x="1460.4" y="964" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="1470.4" y="990" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">t9-pretooluse-hook-enforcement</text>
+<path d="M70.0,323.0 H56.0 V367.0 H70.0" fill="none" stroke="#5c8dc5" stroke-width="2.5"/>
+<circle cx="70.0" cy="367.0" r="4" fill="#5c8dc5"/>
+<path d="M70.0,323.0 H56.0 V411.0 H70.0" fill="none" stroke="#5c8dc5" stroke-width="2.5"/>
+<circle cx="70.0" cy="411.0" r="4" fill="#5c8dc5"/>
+<path d="M70.0,323.0 H56.0 V455.0 H70.0" fill="none" stroke="#5c8dc5" stroke-width="2.5"/>
+<circle cx="70.0" cy="455.0" r="4" fill="#5c8dc5"/>
+<path d="M70.0,323.0 H56.0 V499.0 H70.0" fill="none" stroke="#5c8dc5" stroke-width="2.5"/>
+<circle cx="70.0" cy="499.0" r="4" fill="#5c8dc5"/>
+<path d="M355.6,323.0 H403.6 V323.0 H417.6" fill="none" stroke="#5c8dc5" stroke-width="2.5"/>
+<circle cx="417.6" cy="323.0" r="4" fill="#5c8dc5"/>
+<path d="M355.6,323.0 H403.6 V367.0 H417.6" fill="none" stroke="#5c8dc5" stroke-width="2.5"/>
+<circle cx="417.6" cy="367.0" r="4" fill="#5c8dc5"/>
+<text x="40" y="1152" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="20" fill="#5b6878">Source: bench.yaml in each folder.</text>
+</svg>

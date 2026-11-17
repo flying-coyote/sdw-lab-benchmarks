@@ -1,15 +1,42 @@
+# Shared pins for the engine and fidelity benches that import lib/. Many bench folders carry their own
+# requirements.txt as well; install that one too before running such a bench.
+#
+# Note added 2026-11-17, no version changed: VERSION-CURRENCY-2026-06-14.md records chdb, pyarrow and
+# clickhouse-connect as bumped on 2026-06-14, but the pins below were never moved, and most of the
+# published results that use these packages ran on the pinned versions. The pins stay where they are
+# so a re-run reproduces those results; a bump means re-running the benches that depend on them.
+
 duckdb==1.5.3
+
+# chdb 4.1.8 is the version behind the published chDB results: the Parquet equality undercount
+# (clickhouse-vs-duckdb/results/results.json:6, correctness-divergence.json:10, scale_pin_repro.json:62,
+# multi-engine-correctness.json:611) and the June runs of parquet-checksum-integrity,
+# parquet-determinism-encryption and parquet-library-matrix (their results/results.json). The undercount
+# is fixed in 4.1.9 (clickhouse-vs-duckdb/results/RECONFIRMATION-2026-06-14.md:82), and the 2026-11-16
+# re-runs used 4.4.0 (parquet-checksum-integrity/results/rerun-2026-11-16-current.json:3;
+# delegation-chain-query/RESULTS.md:11 also ran 4.4.0). No results file in the tree records a full
+# bench run on 4.1.9 beyond that two-mechanism reconfirmation.
 chdb==4.1.8
 
 # multi-engine answer-equality probe (clickhouse-vs-duckdb/multi_engine_correctness.py)
 # in-process engines (distinct Parquet readers):
 datafusion==53.0.0
 polars==1.41.2
+# pyarrow 23.0.1 is the version recorded by the multi-engine probe (multi-engine-correctness.json:619)
+# and by the June parquet and nested/temporal results. The 2026-06-14 bump to 24.0.0 shows up only in
+# some later folders (ocsf-zorder-pruning/results/multifile_bloom.json:139, agent-telemetry-retention,
+# iceberg-compaction's 2026-11-16 manifest arm), and the 2026-11-16 "current" re-runs used 26.0.1
+# (for example parquet-checksum-integrity/results/rerun-2026-11-16-current.json). getdaft 0.7.14 below
+# wants pyarrow<24, per VERSION-CURRENCY-2026-06-14.md, so this pin also keeps the probe installable.
 pyarrow==23.0.1
 getdaft==0.7.14
 fastparquet==2026.5.0
 # clients for the containerized engines (Trino / ClickHouse-server / StarRocks / Dremio / Postgres):
 trino==0.337.0
+# clickhouse-connect 1.1.1 is the version recorded for the Zeek flagship runs
+# (zeek-flagship-rerun/results/env.json:14, results/REVALIDATION-2026-06-14.md:53). The 1.3.0 named in
+# VERSION-CURRENCY-2026-06-14.md appears only in text-search-regex/DESIGN-2026-06-15.md:108, a design
+# note, and no results file records a run on it.
 clickhouse-connect==1.1.1
 pymysql==2.2.8
 psycopg[binary]==3.3.4

@@ -1,0 +1,14 @@
+name: ocsf-parquet-determinism
+cluster: formats-and-lakehouse
+title: Does the same logical data written twice by DuckDB give the same Parquet file
+status: foundation
+tier: B
+claim_kind: measured
+verdict: SOUND
+prereg: none
+results: RESULTS.md
+reproduce: python ocsf-parquet-determinism/determinism_probe.py
+pins: none
+essay: /writing/detection/parquet-doesnt-hash
+superseded_by: none
+audited: 2026-11-17

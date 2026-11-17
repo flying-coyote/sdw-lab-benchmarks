@@ -1,0 +1,14 @@
+name: t6-finetune-memorization
+cluster: ai-security
+title: How many insertions a short secret needs before a LoRA fine-tune returns it
+status: published
+tier: unstated in RESULTS
+claim_kind: measured
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: python t6-finetune-memorization/gen_corpus.py then train.py then measure.py then summarize.py
+pins: requirements.txt
+essay: /writing/ai/fine-tuned-model-data-store
+superseded_by: none
+audited: 2026-11-17

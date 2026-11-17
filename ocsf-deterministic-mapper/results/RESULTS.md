@@ -37,3 +37,13 @@ model, with none of the invented paths. The lesson isn't "rules beat models"; it
 constraint in the harness* is doing the safety work, and a model is only safe to use behind the same
 constraint. Tier B; the alias table is generic (not tuned to the gold), so this is a fair schema-
 constrained baseline, not an upper bound on what a tuned deterministic mapper could cover.
+
+*(corrected 2026-11-17: two readings above are narrower than written. First, the 0.00 silent error is a
+property of the constraint, so it could not have come out otherwise, and the comparison it supports is
+safety, not accuracy. Second, "fair" overstates the alias baseline: `run.py` matches substrings, and a
+whole-token re-run of the same rules maps 43 fields with 18 correct
+(`alias-whole-token-check-2026-11-16.json`). The frontier leg has since run as a post-hoc re-score,
+`RESULTS-FRONTIER-CONSTRAINED-2026-11-16.md`: behind a full-schema reject wall the June frontier-proxy
+predictions keep 57 to 66% path-correctness at zero silent error, against 0.16 here, so "the harness, not
+the model" holds for the safety property and not for correctness above the phi3 tier. `run.py`
+regenerates this file and would drop this note; the same correction is in `../README.md`.)*

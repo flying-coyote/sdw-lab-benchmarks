@@ -1,0 +1,14 @@
+name: parquet-library-matrix
+cluster: formats-and-lakehouse
+title: Does each Parquet library decode each physical encoding correctly
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python parquet-library-matrix/run.py
+pins: requirements.txt
+essay: none
+superseded_by: none
+audited: 2026-11-17

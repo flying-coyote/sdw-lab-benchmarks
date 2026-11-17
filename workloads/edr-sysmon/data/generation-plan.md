@@ -37,7 +37,7 @@ Invoke-AtomicRedTeam executes techniques
         │  File System Activity (1001), Network Activity (4001),
         │  Module Activity (1005), Registry Key Activity (201001)
         │
-        ▼  Substrate ingest (ClickHouse / Iceberg / candidate-under-test)
+        ▼  Platform ingest (ClickHouse / Iceberg / candidate-under-test)
 ```
 
 ## Volume targets
@@ -58,7 +58,7 @@ The corpus itself (JSON event stream, OCSF-normalized) ships under NDA per the l
 
 ## ATT&CK coverage selection
 
-Atomic Red Team covers 261 ATT&CK techniques. For substrate benchmarking, **coverage breadth doesn't matter** — what matters is that the technique mix exercises representative event types:
+Atomic Red Team covers 261 ATT&CK techniques. For platform benchmarking, **coverage breadth doesn't matter** — what matters is that the technique mix exercises representative event types:
 
 - ≥3 techniques producing high `process_create` rates
 - ≥3 techniques producing high `file_write` rates
@@ -82,5 +82,5 @@ Other Sysmon event types map secondarily. Document mapping decisions per event t
 ## Caveats to document
 
 - SwiftOnSecurity config makes opinionated filtering choices — what's *not* in the corpus matters as much as what is; document the filter posture
-- Atomic Red Team techniques fire detection rules; the corpus is *not* threat-free — substrate teams should not use it for production rule-testing without understanding that
+- Atomic Red Team techniques fire detection rules; the corpus is *not* threat-free — platform teams should not use it for production rule-testing without understanding that
 - Replay scaling is synthetic — sustained 100K events/sec from replay does not equal sustained 100K events/sec from 100K real endpoints. The ingest path is what's being tested, not the endpoint population.

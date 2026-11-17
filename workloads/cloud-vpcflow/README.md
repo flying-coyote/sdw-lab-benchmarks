@@ -2,23 +2,23 @@
 
 **Status:** Spec only (2026-05-24) — workload scoped; full benchmark build gated on EDR archetype shipping first.
 
-**Confirmed:** Third substrate-benchmark archetype after NDR/Zeek and EDR/Sysmon. Per the 2026-05-24 SDW market-readiness plan, A9 sequencing is gated on A1 (EDR) shipping; spec is parallel-track so it's ready when the build slot opens.
+**Confirmed:** Third platform-benchmark archetype after NDR/Zeek and EDR/Sysmon. Per the 2026-05-24 SDW market-readiness plan, A9 sequencing is gated on A1 (EDR) shipping; spec is parallel-track so it's ready when the build slot opens.
 
 ## Workload archetype
 
-Cloud telemetry is the highest-volume and most heterogeneous of the data-source categories — three sub-shapes braided into one substrate problem:
+Cloud telemetry is the highest-volume and most heterogeneous of the data-source categories — three sub-shapes braided into one platform problem:
 
 - **Data-plane network** — VPC Flow Logs (AWS), NSG Flow (Azure), VPC Flow (GCP). Line-oriented flat records at line-rate. Densely segmented cloud networks can drive millions of flows/sec aggregated, dwarfing the NDR archetype's volume profile.
 - **Control plane** — CloudTrail (AWS), Activity Logs (Azure), Audit Logs (GCP). Nested JSON, bursty volume (deploy cycles, API-call storms), every API call is a record.
 - **Posture / runtime** — CNAPP findings (Wiz, Lacework, Orca, Prisma Cloud) and runtime detection (Falco). Continuously-evaluated drift state, not pure events.
 
-The data-generation driver is **Stratus Red Team** (Datadog, open-source — `github.com/DataDog/stratus-red-team`). It is the cloud-native analog to Atomic Red Team — adversary emulation against AWS, Azure, GCP, and Kubernetes control planes (27+ techniques as of recent count, Tier C — Datadog blog). Stratus runs in a sandbox cloud account; the resulting CloudTrail + VPC Flow output is exported, normalized to OCSF, and ingested by the substrate under test.
+The data-generation driver is **Stratus Red Team** (Datadog, open-source — `github.com/DataDog/stratus-red-team`). It is the cloud-native analog to Atomic Red Team — adversary emulation against AWS, Azure, GCP, and Kubernetes control planes (27+ techniques as of recent count, Tier C — Datadog blog). Stratus runs in a sandbox cloud account; the resulting CloudTrail + VPC Flow output is exported, normalized to OCSF, and ingested by the platform under test.
 
 **Scope decision:** AWS-first. The bulk of public cloud telemetry an architect deals with is AWS-shaped, Stratus Red Team has the deepest AWS technique coverage, and AWS Spot pricing makes the cost envelope tractable. Azure and GCP variants are future extensions, not part of this initial spec.
 
-## Representative substrate metric
+## Representative platform metric
 
-The substrate stress for cloud data is **streaming ingest at high cardinality combined with semi-structured JSON parsing performance**. This is distinct from the NDR archetype (analytical aggregates) and the EDR archetype (point lookups + tree joins) — it stresses the parts of the substrate the other two don't.
+The platform stress for cloud data is **streaming ingest at high cardinality combined with semi-structured JSON parsing performance**. This is distinct from the NDR archetype (analytical aggregates) and the EDR archetype (point lookups + tree joins) — it stresses the parts of the platform the other two don't.
 
 - Sustained ingest target: 100K events/sec mixing CloudTrail JSON + VPC Flow flat records
 - Cardinality dominated by `(account_id, region, principal_arn, resource_arn)` for control plane and `(src_ip, dst_ip, src_port, dst_port, action)` for data plane
@@ -33,7 +33,7 @@ The substrate stress for cloud data is **streaming ingest at high cardinality co
 Same lab-methodology principles as the EDR and NDR archetypes (see `~/project1/02-projects/securitydataworks/LAB.md`):
 
 - **Reproducibility first** — public methodology document; data-generation harness reproducible from open-source primitives (Stratus Red Team + a clean AWS sandbox account)
-- **Identical workload across candidates** — same query suite and event corpus against each substrate
+- **Identical workload across candidates** — same query suite and event corpus against each platform
 - **Documented caveats** — cloud-spend nondeterminism is a real caveat; record sandbox-account costs alongside benchmark numbers
 - **Vendor cooperation invited but not required**
 
@@ -68,7 +68,7 @@ When it is built, define the compose harness in this repo. Cloud-specific servic
 ## Out of scope
 
 - Azure and GCP variants — future extensions; spec covers AWS only
-- Posture / drift evaluation — CNAPP findings ingestion is interesting but stress-tests a different substrate axis (merge-on-read for continuous evaluation) and belongs in a separate archetype if pursued
+- Posture / drift evaluation — CNAPP findings ingestion is interesting but stress-tests a different platform axis (merge-on-read for continuous evaluation) and belongs in a separate archetype if pursued
 - Client-data POV runs — retired per 2026-05-18 decision in [`project_security_data_consulting_model.md`](../../../.claude/projects/-home-jerem-project1/memory/project_security_data_consulting_model.md)
 - Long-running cloud retention — runs are short-lived (hours); no ongoing sandbox accounts maintained
 
@@ -78,12 +78,12 @@ When it is built, define the compose harness in this repo. Cloud-specific servic
 
 1. Methodology lessons from the EDR build may want to retroactively reshape this spec (especially around OCSF normalization library structure, which both archetypes share)
 2. Cost-envelope discipline benefits from EDR run actuals before this archetype's larger cloud spend lands
-3. Substrate candidates that passed EDR may not be the same set that's interesting for cloud — selection economy matters when re-running a third time
+3. Platform candidates that passed EDR may not be the same set that's interesting for cloud — selection economy matters when re-running a third time
 
 ## References
 
 - Workload category brief: `~/project1/02-projects/securitydataworks/data-source-categories/cloud-web.md`
 - Cost envelope: `~/project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md`
-- Vendor universe context: `~/project1/02-projects/securitydataworks/vendor-tracking-2026.md` §I (cloud-native substrates), §X (Sentinel federation), §XIX (CNAPP)
+- Vendor universe context: `~/project1/02-projects/securitydataworks/vendor-tracking-2026.md` §I (cloud-native platforms), §X (Sentinel federation), §XIX (CNAPP)
 - Lab methodology principles: `~/project1/02-projects/securitydataworks/LAB.md`
 - Sibling archetypes: [`../edr-sysmon/README.md`](../edr-sysmon/README.md), the top-level Zeek/NDR work (planned move to `../ndr-zeek/`)

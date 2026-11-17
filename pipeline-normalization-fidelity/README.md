@@ -210,3 +210,69 @@ plus one scoring choice the pre-reg left open:
    severity on an error/failure record satisfies. If a future review wants a specific
    error→High mapping, change `_SEV_ERROR` in `gen_corpus.py` (one constant) and
    regenerate — the probe logic is value-driven and does not hard-code the magnitude.
+
+---
+
+## Current state and where the results are (added 2026-11-17; the pre-registration above is unchanged)
+
+*(corrected 2026-11-17: the "Status: AUTHORED, NOT RUN" section above was true on 2026-06-13 and is now
+stale. Four tool arms have run since, and `results/` exists.)*
+
+- **Tenzir arm, 2026-06-14.** `FINDINGS-2026-06-14.md` is the write-up and `results/RESULTS.md` the
+  scorer output: Zeek conn class 100%, field 80%, value 92%, `activity_id` 17%, and 0% coverage on
+  CloudTrail, Sysmon and auth because no usable shipped mapping exists for them on this corpus.
+- **Vector arm.** Recorded in `FINDINGS-2026-06-14.md` (Vector 0.56.0 ships no OCSF component).
+- **Cribl and Logstash arms, 2026-06-16.** `cribl/RESULTS-2026-06-16.md` (the community pack on its own
+  samples, not this corpus) and `logstash/RESULTS-2026-06-16.md` (neither edition ships an OCSF codec or
+  filter, so both score 0%).
+- **Erratum, 2026-11-15, and the corrected numbers.** The Zeek `activity_id` 17% is a gold-key artifact:
+  the gold pins Traffic (6) on every record (`gen_corpus.py` l.180-181), Tenzir derives the activity from
+  `conn_state`, and the two agree only on OTH, 16,702 of 100,000 records. The three "dropped" fields
+  landed on other valid OCSF paths with the source value intact. Both errata, appended to
+  `FINDINGS-2026-06-14.md` and `results/RESULTS.md`, state the mechanism; the corrected percentages come
+  from the pre-registered re-score in `../ocsf-1.9-rescore/RESULTS.md` section (a), which puts Tenzir
+  6.0.0 at field 100%, strict value 93.24%, information-preserving value 100% and accept-set activity
+  83.30% under an alternates-accepting gold (confirmatory: the alternates gold was written after seeing
+Tenzir's output). Read the June row through that file.
+
+## What would have made it fail
+
+The scorer is checked by a self-check that scores the gold's own mapping at 100% on every level, and
+a tool's emitted events can land anywhere, so the scores can fail. The weak point was the gold key,
+which credited only one path per field and pinned one activity value, so a faithful mapping that chose
+a different valid home scored as a loss; the re-score's alternates gold is the fix.
+
+## Pre-registration
+
+The first half of this README is the pre-registration (2026-06-10). It is not hashed, so whether it
+was frozen before the first scored run can be checked only against the git history. Its P1 to P5
+predictions are scored in `FINDINGS-2026-06-14.md` for the arms that ran.
+
+## Reproduce
+
+`python gen_corpus.py --check` and `python score.py --self-check` need no tool. The Tenzir arm is
+`tenzir/run_tenzir_arm.sh` (Docker, and the Community Library checked out at `671e049`), scored with
+`score.py --tool tenzir --mapping-artifact ... --emitted zeek_conn=<file>`. The Logstash arm is
+`logstash/run_logstash_arm.sh`. `score.py` overwrites `results/RESULTS.md` unless it is given
+`--no-write` or another `--results-dir`, which would drop the erratum appended to it.
+
+## Versions and pins
+
+- Tenzir 6.0.0 was pulled as `tenzir/tenzir:latest` (`tenzir/run_tenzir_arm.sh` l.11 and l.38) and its
+  version read with `version()`; the tag is not a digest, so a re-run of the script today pulls a
+  different release. The library is pinned by commit (`671e049`).
+- Vector 0.56.0 was run as `timberio/vector:latest-alpine` (`FINDINGS-2026-06-14.md` l.54), also a
+  floating tag.
+- Logstash images are pinned by version (`logstash-oss:7.10.2`, `logstash:8.17.0`), Cribl as
+  `cribl/cribl` 4.18.1 with the community pack at v0.5.1.
+- Python dependencies come from the root `requirements.txt`.
+
+## Evidence tier and limits
+
+Tier B: one host, a seeded synthetic corpus, four sources.
+
+## Corrections
+
+- 2026-11-15: errata in `FINDINGS-2026-06-14.md` and `results/RESULTS.md` (mechanism of the 17% and the
+  "dropped" fields).
+- 2026-11-17: this section, the stale status noted, the floating image tags listed.

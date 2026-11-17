@@ -1,0 +1,14 @@
+name: ocsf-catalog-contention
+cluster: catalogs-engines-cost
+title: Concurrent writers on one table with a Postgres catalog, DuckLake against Iceberg
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-catalog-contention/run.py
+pins: none (postgres:17-alpine floating tag; pyiceberg unpinned)
+essay: https://securitydataworks.com/writing/lakehouse/v4-vs-ducklake
+superseded_by: none
+audited: 2026-11-17

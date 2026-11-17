@@ -244,3 +244,37 @@ the run; every claim CV-gated). Consumers: H-ARCH-06 first lab evidence, H-ARCH-
 extension, Matrix Component 3 re-scoring, deck slides 10/15/16, the
 starrocks-clickhouse-pair reference (replaces the Tier-C anchor), task #13 asset
 realignment.
+
+---
+
+## Layout and audit notes (added 2026-11-17)
+
+Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+
+### Result, and whether it is measured
+
+Measured, one engine timed at a time, seven trials after a discarded warmup, every claim gated on the gap exceeding both arms' CV (largest per-query CV 17.7%), and every answer checked against a DuckDB oracle. StarRocks wins four of five TPC-H-derived joins; family sums are 7.21 s for StarRocks, 13.81 s for ClickHouse over Iceberg and 22.85 s for Trino (1.92× and 3.17×), and ClickHouse native times out on q5 while reading the same data through Iceberg answers in 1.35 s. The four SOC joins all finish between 0.07 s and 1.41 s on every arm (`results/raw_*.json`, `results/RESULTS.md`).
+
+### What would have made it fail
+
+A pairwise claim stands only when its gap exceeds both arms' CV (the claims gate in the pre-registration above), and every answer had to match the DuckDB oracle, so a StarRocks lead inside the noise, or a wrong answer from any arm, would have failed the ordering above.
+
+### Pre-registration
+
+The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+
+### Results
+
+Entry point `results/RESULTS.md`; data `results/raw_{starrocks,clickhouse_iceberg,clickhouse_native,trino}.json` and `results/comparison.json`. The `*_smoke.json` files are a pre-run smoke pass, and `raw_dremio*.json` are withholding notices.
+
+### Versions and pins
+
+`compose.yml` runs `starrocks/allin1-ubuntu:4.1-latest`, `clickhouse/clickhouse-server:latest`, `ghcr.io/projectnessie/nessie:latest`, `minio/minio:latest` and `minio/mc:latest`, with Trino pinned at 481 and Dremio at 26.0. RESULTS records ClickHouse 26.5.1.882 but StarRocks only as "4.1"; the later `deterministic-routing-noncircular` run on the same tag found 4.1.7.
+
+### Evidence tier and limits
+
+Tier B, one host, SF10 TPC-H-derived data (not audited, not comparable to published TPC-H results) and synthetic SOC tables. Single-store joins only; federation joins are out of scope.
+
+### Corrections
+
+None.

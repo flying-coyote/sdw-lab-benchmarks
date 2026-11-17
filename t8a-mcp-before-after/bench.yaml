@@ -1,0 +1,14 @@
+name: t8a-mcp-before-after
+cluster: ai-security
+title: What an MCP exchange leaves behind before and after the 2026-07-28 revision
+status: published
+tier: B
+claim_kind: measured
+verdict: SOUND
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: bash t8a-mcp-before-after/run_all.sh then analyze.py (runs/ is not committed)
+pins: requirements-v1.txt; requirements-v2.txt; requirements-v2-subarm.txt
+essay: /writing/ai/mcp-logs-moved
+superseded_by: none
+audited: 2026-11-17

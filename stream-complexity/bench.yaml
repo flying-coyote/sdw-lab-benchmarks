@@ -1,0 +1,14 @@
+name: stream-complexity
+cluster: mapping-and-models
+title: Operational complexity and freshness of batch vs streaming for one detection
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: PRE-REG-stream-complexity-2026-07-19.md; PRE-REG-stream-complexity-v2-2026-11-03.md; PRE-REG-stream-freshness-2026-11-06.md; PRE-REG-stream-complexity-risingwave-2026-11-07.md
+results: results/RESULTS-v3-risingwave-2026-11-07.md
+reproduce: bash stream-complexity/run_scored.sh
+pins: stream-complexity/requirements.txt
+essay: https://securitydataworks.com/writing/pipelines/streaming-vs-batch-measured
+superseded_by: none
+audited: 2026-11-17

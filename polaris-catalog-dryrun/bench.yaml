@@ -1,0 +1,14 @@
+name: polaris-catalog-dryrun
+cluster: catalogs-engines-cost
+title: Apache Polaris governance rehearsal, access control and audit events on open infrastructure
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: RESULTS-auditevents-2026-06-16.md
+reproduce: see README (docker run apache/polaris, then python polaris-catalog-dryrun/data_plane.py)
+pins: none (apache/polaris latest tag, ran as 1.5.0)
+essay: https://securitydataworks.com/writing/ai/delegation-logon-event
+superseded_by: none
+audited: 2026-11-17

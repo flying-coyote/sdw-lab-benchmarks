@@ -2,7 +2,7 @@
 
 **Status:** skeleton (2026-05-24). Queries to be authored during build phase.
 
-The query suite tests substrate adequacy across the three EDR-relevant access patterns: point lookup, process-tree traversal, and JOIN-driven enrichment.
+The query suite tests platform adequacy across the three EDR-relevant access patterns: point lookup, process-tree traversal, and JOIN-driven enrichment.
 
 ## Query families (planned)
 
@@ -36,7 +36,7 @@ LATERAL JOIN process events to a synthetic asset-inventory table (asset critical
 
 `GROUP BY host` over a rolling window, counting process-create events / image-load events / network-connect events to surface anomalous bursts. Tests time-window aggregation performance.
 
-### Family 5 — Substrate stress probes
+### Family 5 — Platform stress probes
 
 - Top-N by image-hash frequency across the entire corpus (large GROUP BY)
 - Sliding-window deduplication of `process_create` events
@@ -44,10 +44,10 @@ LATERAL JOIN process events to a synthetic asset-inventory table (asset critical
 
 ## Methodology constraints
 
-- **Identical workload across candidates** — same query text against each substrate; no per-candidate query rewrites without explicit annotation
+- **Identical workload across candidates** — same query text against each platform; no per-candidate query rewrites without explicit annotation
 - **Pin the corpus** — same OCSF-normalized event stream against each candidate
 - **Cold and warm runs** — measure both first-execution (cold) and steady-state (warm) latency
 
 ## Authoring schedule
 
-Queries will be authored as part of the L-effort build phase (post-spec). Skeleton serves as the contract between the data-generation plan and the substrate-evaluation plan.
+Queries will be authored as part of the L-effort build phase (post-spec). Skeleton serves as the contract between the data-generation plan and the platform-evaluation plan.

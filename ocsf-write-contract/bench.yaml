@@ -1,0 +1,14 @@
+name: ocsf-write-contract
+cluster: formats-and-lakehouse
+title: Iceberg file-write against DuckLake SQL-transaction commits for streaming OCSF ingest
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-write-contract/run.py
+pins: requirements.txt
+essay: /writing/lakehouse/write-pattern-is-architectural
+superseded_by: none
+audited: 2026-11-17

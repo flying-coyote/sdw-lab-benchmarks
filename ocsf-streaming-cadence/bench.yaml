@@ -1,0 +1,14 @@
+name: ocsf-streaming-cadence
+cluster: catalogs-engines-cost
+title: Streaming commit cadence, Iceberg file writes against DuckLake inlining
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-streaming-cadence/run.py
+pins: requirements.txt (duckdb only; pyiceberg unpinned)
+essay: https://securitydataworks.com/writing/lakehouse/write-pattern-is-architectural
+superseded_by: none
+audited: 2026-11-17

@@ -1,0 +1,14 @@
+name: d3fend-ocsf-ai-alignment
+cluster: mapping-and-models
+title: D3FEND AI artifact nouns graded against OCSF ai_* objects
+status: first-pass
+tier: not stated
+claim_kind: mixed
+verdict: CAVEAT
+prereg: METHOD.md
+results: RESULTS.md
+reproduce: python3 -I d3fend-ocsf-ai-alignment/build_table.py
+pins: d3fend-ocsf-ai-alignment/requirements.txt
+essay: https://securitydataworks.com/writing/ai/ocsf-ai-agent-objects
+superseded_by: none
+audited: 2026-11-17

@@ -130,6 +130,29 @@ artificial handicap.
 - Tier B, single WSL2 host, run on the Windows High Performance power plan per the
   repo methodology. Read `../BENCHMARKING-METHODOLOGY.md` before quoting a number.
 
+## Result
+
+Measured: events per second, wall-clock, peak RSS and CPU for five engines in two sink modes over a
+1,000,000-event Zeek `conn.log` corpus, three trials after a warmup, medians with CV (`results/RESULTS.md`,
+run 2026-06-08T16:01:11Z). The headline rows re-derive from `results/results.json` (for example Vector
+discard, 1,000,000 events over a median 8.31 s wall, gives 120,337 events/s). The numbers could have come
+out in any order, and each file-mode run is checked against the exact expected survivor count before a
+number is quoted.
+
+## What would have made it fail
+
+A survivor count that did not match the exact expected count fails the run for that engine and mode. For
+the daemon engines and Tenzir in `discard` mode the survivors are not written, so that check cannot be
+made and the column shows a dash, and those discard numbers rest on the engine having read to EOF;
+Vector's discard run still counts them and matches (619,777, `results/results.json`
+`engines.vector.modes.discard`). There is no baseline beyond the engines
+themselves, and the two timing shapes (stdin drain and tailing daemon) are compared across with care, as
+the README says.
+
+## Pre-registration
+
+None.
+
 ## Reproduce
 
 ```bash
@@ -158,7 +181,7 @@ configs/
   vector_file.toml           Vector: stdin json -> filter -> file (full route)
   otel_discard.yaml.tmpl      OTel: filelog -> json_parser -> filter -> nop
   otel_file.yaml.tmpl         OTel: filelog -> json_parser -> filter -> file
-  alloy_discard.alloy.tmpl    Alloy: filelog -> json_parser -> filter -> debug/basic
+  alloy_discard.alloy.tmpl    Alloy: filelog -> json_parser -> filter -> file exporter to /dev/null
   alloy_file.alloy.tmpl       Alloy: filelog -> json_parser -> filter -> file
   rsyslog_raw.conf.tmpl       rsyslog: imfile -> raw-line substring match -> omfile
   rsyslog_json.conf.tmpl      rsyslog: imfile -> mmjsonparse -> field filter -> omfile
@@ -170,3 +193,24 @@ _work/                       generated corpus + engine outputs + rendered config
 
 The `.tmpl` configs carry `__CORPUS__` / `__OUT__` / `__MODDIR__` / `__WORKDIR__` /
 `__STORAGE__` placeholders the harness fills per run into `_work/`.
+
+*(corrected 2026-11-17: the layout line for `alloy_discard.alloy.tmpl` said the discard sink was
+`debug/basic`; the template and the text above both route it through the file exporter to `/dev/null`.)*
+
+## Versions and pins
+
+Engine versions are recorded per row in `results/RESULTS.md` (Vector 0.40.0, Tenzir 6.0.0,
+otelcol-contrib 0.153.0, Alloy v1.16.3, rsyslog 8.2312.0), installed from release tarballs or the system
+package. The folder has no requirements file; `run.py` uses the root `requirements.txt` and the lab
+`.venv`. Cribl and the Splunk Universal Forwarder rows are documented references (Tier C), not runs.
+
+## Evidence tier and limits
+
+Tier B, single WSL2 host, warm cache only, default parallelism per engine. Tenzir 6.0.0 crashed on
+shutdown in some trials and its medians are over the successful trials (`crash_retries` in
+`results.json`).
+
+## Corrections
+
+- 2026-11-17: the Alloy layout line corrected; result, failure, pre-registration, pins and tier
+  sections added.

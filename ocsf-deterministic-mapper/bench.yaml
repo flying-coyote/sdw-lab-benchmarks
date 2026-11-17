@@ -1,0 +1,14 @@
+name: ocsf-deterministic-mapper
+cluster: mapping-and-models
+title: A schema-constrained alias mapper and models behind the same validator wall
+status: published
+tier: B
+claim_kind: mixed
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS-FRONTIER-CONSTRAINED-2026-11-16.md
+reproduce: python ocsf-deterministic-mapper/run.py && python ocsf-deterministic-mapper/frontier_behind_constraint_2026_11_16.py
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/ocsf/harness-not-the-model
+superseded_by: none
+audited: 2026-11-17

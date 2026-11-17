@@ -46,7 +46,7 @@ the ones to quote.**
 - 1-minute load per trial: arm C 0.11 to 1.45 (median 0.68), main 0.61 to 1.74 (median 0.88), arm B 0.67 to 1.99
   (median 0.85), against 11-15 peaks of 21.35 (main) and over 4 (19 arm-B trials). The per-cell gate (load at most 1.0,
   wait up to 120 s) waited in 4 arm-C cells (120 s total), 14 main-arm cells (480 s) and 10 arm-B cells (330 s); 45 of
-  417 run trials started above 1.0, at most 1.99; nothing else timed was running, so I attribute this to the bench's own
+  417 run trials started above 1.0, at most 1.99; nothing else timed was running, so this file attributes it to the bench's own
   previous cells, though the per-trial records do not identify the source.
 - chrony: arm-start readings were within 0.00004 s, but per-trial readings reached 1.38 s (arm C) and 1.41 s (main)
   slow, on 32 of 60 and 100 of 219 trials, the same WSL2 pattern as 11-15. Durations use the monotonic clock.
@@ -105,7 +105,7 @@ left files after exit; 32 of 114 killed main-arm trials did, the same count as 1
 The cells with high 11-15 CVs (H on Z at 256 MiB 15.0%, arm B S on U 11% to 19%, the 4-thread S-U and H-Z references 15% to
 18%) all moved by 28% or more, though several low-CV cells moved as much, so CV alone does not predict the size of the
 move. The five null-client cells (all about 0.2 ms) are left out of the table. One automated "changed" call, the null client at 64 MiB (0.3 ms to 0.2 ms), is a
-timer-resolution artefact on a sub-millisecond `SELECT 1` and I don't count it; the count of 19 above includes it, so
+timer-resolution artefact on a sub-millisecond `SELECT 1` and is not counted; the count of 19 above includes it, so
 18 cells are substantively changed.
 
 ## Deviations
@@ -150,7 +150,7 @@ in place:
   floor-cell memory added, as the addendum asks.
 - The "flagged cells moved most" sentence replaced; the null-client cells' omission from the table stated.
 - Cron overlap: the masking direction stated, and the tag carried to the quoted arm-B Z ratios and failed Z cells.
-- The load-above-1.0 attribution marked as my inference.
+- The load-above-1.0 attribution marked as an inference.
 - Draft-18 summary now includes S on Z.
 
 ## Corrections after independent verification (2026-11-16, second pass)

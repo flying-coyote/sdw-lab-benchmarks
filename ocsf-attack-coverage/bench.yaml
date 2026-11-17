@@ -1,0 +1,14 @@
+name: ocsf-attack-coverage
+cluster: detection
+title: Per-technique ATT&CK coverage from Sigma firing over the planted OCSF testbed
+status: first-pass
+tier: B
+claim_kind: mixed
+verdict: DEMONSTRATION
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-attack-coverage/gen_corpus.py && python ocsf-attack-coverage/run.py
+pins: requirements.txt
+essay: https://securitydataworks.com/writing/detection/measuring-detection-coverage
+superseded_by: none
+audited: 2026-11-17

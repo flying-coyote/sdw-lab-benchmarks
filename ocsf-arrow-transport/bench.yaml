@@ -1,0 +1,14 @@
+name: ocsf-arrow-transport
+cluster: formats-and-lakehouse
+title: How much faster does ADBC fetch an OCSF result set than a row-oriented JDBC client
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: PRE-REG-samruntime-duckdb-2026-07-04.md
+results: results/RESULTS.md
+reproduce: python ocsf-arrow-transport/run.py
+pins: requirements.txt
+essay: /writing/lakehouse/arrow-adbc
+superseded_by: none
+audited: 2026-11-17

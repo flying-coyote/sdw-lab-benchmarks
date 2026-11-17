@@ -1,0 +1,14 @@
+name: bench-d-tiered-realization
+cluster: catalogs-engines-cost
+title: Does a DuckLake-hot and Iceberg-cold split beat a single backend
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: PRE-REGISTRATION-integrating-2026-06-16.md
+results: RESULTS-integrating-2026-06-16.md
+reproduce: see README and STATUS-integrating-2026-06-16.md (runs inside the ejs-lab container)
+pins: none (pyiceberg unpinned; versions recorded in results JSON)
+essay: https://securitydataworks.com/writing/lakehouse/lock-in-moved-to-compaction
+superseded_by: none
+audited: 2026-11-17

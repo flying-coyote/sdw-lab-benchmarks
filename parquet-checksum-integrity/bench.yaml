@@ -1,0 +1,14 @@
+name: parquet-checksum-integrity
+cluster: formats-and-lakehouse
+title: Do Parquet readers verify page checksums after a one-byte flip
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: SOUND
+prereg: none
+results: results/RESULTS.md
+reproduce: python parquet-checksum-integrity/run.py
+pins: requirements.txt
+essay: /writing/detection/tamper-evident-security-data
+superseded_by: none
+audited: 2026-11-17

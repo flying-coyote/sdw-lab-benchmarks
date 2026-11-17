@@ -1,0 +1,14 @@
+name: mcp-manifest-drift
+cluster: ai-security
+title: MCP tool-manifest drift as a detection over OCSF with Sigma
+status: published
+tier: B
+claim_kind: mixed
+verdict: DEMONSTRATION
+prereg: PREREGISTRATION.md
+results: RESULTS.md; RESULTS-RELEASE-ARM-2026-11-16.md
+reproduce: python mcp-manifest-drift/snapshot.py live then detect.py then sigma_run.py a, b, c then score.py
+pins: requirements.txt; requirements-sqlite.txt; requirements-release-arm-2026-11-16.txt
+essay: /writing/ai/tool-poisoning-diff
+superseded_by: none
+audited: 2026-11-17

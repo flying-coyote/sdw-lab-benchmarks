@@ -110,3 +110,48 @@ docker stop zfr-opensearch && docker start zfr-clickhouse
 + CV-gated pairwise speedups), `results/RESULTS.md` (written after the run; every claim
 CV-gated). Consumers: H3-PERFORMANCE-01 re-tiering, /thesis + LAB.md + book ch01/07 number
 refresh, the four website pages citing the legacy 145×.
+
+---
+
+## Layout and audit notes (added 2026-11-17)
+
+Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+
+### Erratum to the pre-registration
+
+*(corrected 2026-11-17: Declared deviation 3 above gives `precision_threshold: 40000` on the cardinality aggregations; the code that ran uses 3000 (`queries.py:9,94`), which `results/RESULTS.md` also states. The terms `size` of 20000 is as written.)*
+
+### Result, and whether it is measured
+
+Measured, CV-gated and answer-checked. From `results/comparison.json`, the average of per-query medians is 2.854 s for OpenSearch 2.18.0, 0.282 s for ClickHouse over Iceberg and 0.061 s for ClickHouse native, so 10.1× and 46.8× over the OpenSearch baseline, with an open-format cost of 4.6× between the two ClickHouse arms. Per query, the hunting-shaped aggregations run 5.4× to 62× faster on the columnar arms, while OpenSearch wins the two index-served lookups. Per-query CVs run from 1.8% to 14.4%.
+
+### What would have made it fail
+
+The pairwise claims gate (gap above the larger CV) and the answer-equality check, both computed by `run_bench.py --compare`. Two caveats the RESULTS file states: `port_scan_detection` returns an empty set on this corpus, because the generator caps distinct ports per source at 10, so its timing is real work with hollow detection semantics; and sub-10 ms medians sit near the client's floor.
+
+### Pre-registration
+
+The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+
+### Results: which file to read, and which draw the published numbers come from
+
+- **Entry point: `results/RESULTS.md`.** Every published 46.8×, 10.1× and 5–62× figure comes from draw 1, the files directly under `results/` (`raw_*.json`, `comparison.json`, `env.json`), which ran on 2026-06-10 against OpenSearch 2.18.0.
+- `results/REVALIDATION-2026-06-14.md` documents draw 2, a full re-run four days later captured in `results_revalidation_2026-06-14/` by `revalidate.sh` (45.1× and 10.6×).
+- `FLAGSHIP-TRIPLE-BAND-2026-06-14.md` documents draw 3, captured in `results_revalidation3_2026-06-14/`. `draw3_proper.sh` restarts MinIO and Nessie, re-registers the Iceberg table and then calls `revalidate.sh`; its ClickHouse arms succeeded and its OpenSearch and Dremio arms did not, so `finish_draw3.sh` re-ran OpenSearch (and attempted Dremio) with readiness gating and re-captured the draw. The band across the three draws is 10.12×, 10.59× and 11.35× (baseline over ClickHouse-Iceberg) and 4.62×, 4.25× and 4.24× (open-format cost). That file labels all three OpenSearch columns 3.7.0, which is wrong for draws 1 and 2 (2.18.0); draw 3 records no version. A dated note at the top of that file says so.
+- `results_version_currency_2026-06-14/` holds one OpenSearch 3.7.0 pass compared against draw 1's ClickHouse arms (`comparison_os37_mixeddraw.json`); `VERSION-CURRENCY-2026-06-14.md` at the repository root reads it as no material change.
+- `results/NEEDLE-FINDINGS-2026-06-14.md` (`needle.py`, `results/needle.json`) covers point lookups, on OpenSearch 3.7.0.
+- `results/RESULTS-bm25-fulltext-2026-07-07.md` (`run_bm25_bench.py`, `results/bm25_execution.json`) covers full-text and ranked search; `bm25_execution_partial.json` is an earlier partial capture.
+- `results/starrocks_trino_arms.json` (`starrocks_trino_arms.py`) is not part of the flagship result. It ran StarRocks and Trino over a copy of the corpus on a different stack, divides by draw 1's 2.854 s OpenSearch time taken in a different session, and records medians with no CV and no answer check: StarRocks 0.343 s (8.3×) and Trino 0.795 s (3.6×).
+- `dremio-prior-art.md`, `dremio_arm.py` and `raw_dremio_iceberg.json` belong to the Dremio arm, whose measured results are withheld under that engine's benchmark-publication terms.
+
+### Versions and pins
+
+Draw 1 recorded ClickHouse 26.5.1.882, OpenSearch 2.18.0, pyiceberg 0.11.1, clickhouse-connect 1.1.1 and opensearch-py 3.2.0, with image digests (`results/env.json`). `compose.yml` has since moved OpenSearch to 3.7.0 and keeps ClickHouse, MinIO and Nessie on `:latest` (ClickHouse deliberately, with the version read back at run time), so running the compose file today does not reproduce the published baseline without pinning OpenSearch back to 2.18.0. pyiceberg and numpy are not pinned in the root `requirements.txt` and this folder has no requirements file of its own (other benches pin pyiceberg 0.11.1, for example `ocsf-iceberg-metadata/requirements.txt`, and numpy, for example `delegation-chain-query/requirements.txt`); opensearch-py and faker are not pinned in any requirements file in the repository. `revalidate.sh` refers to a `results_published_backup/` directory that is not in the tree.
+
+### Evidence tier and limits
+
+Tier B, one host, 10M synthetic Zeek connection rows, hot and warm cache only (no OS page-cache drop). The baseline is a bare OpenSearch index, not a SIEM product with its pipeline.
+
+### Corrections
+
+- 2026-11-17: erratum above (`precision_threshold`); dated notes added to `results/RESULTS.md` (engine-cold wording, the StarRocks and Trino file) and to `FLAGSHIP-TRIPLE-BAND-2026-06-14.md` (OpenSearch version labels).

@@ -39,7 +39,7 @@ Stratus Red Team executes techniques against sandbox account
         │     • API Activity (3005) for CloudTrail data events
         │     • Network Activity (4001) for VPC Flow Logs
         │
-        ▼  Substrate ingest (candidate under test)
+        ▼  Platform ingest (candidate under test)
 ```
 
 ## Volume targets
@@ -60,7 +60,7 @@ The captured corpus (CloudTrail JSON files, VPC Flow records, OCSF-normalized) s
 
 ## Stratus technique selection
 
-Stratus Red Team covers 27+ AWS techniques as of recent count, organized by ATT&CK tactic (initial access, persistence, lateral movement, defense evasion, etc.). For substrate benchmarking, technique mix matters more than threat coverage:
+Stratus Red Team covers 27+ AWS techniques as of recent count, organized by ATT&CK tactic (initial access, persistence, lateral movement, defense evasion, etc.). For platform benchmarking, technique mix matters more than threat coverage:
 
 - ≥3 techniques producing high-volume CloudTrail management events (e.g., `iam.create-admin-user`, `lambda.overwrite-code`)
 - ≥3 techniques exercising data-plane VPC Flow (techniques that establish meaningful east-west traffic — currently sparse in Stratus; may need to layer in a separate synthetic east-west traffic generator like `tcpkali` or AWS-native LoadGenerator)
@@ -73,7 +73,7 @@ Exact technique IDs per run captured in `results/run-manifests/`.
 VPC Flow is the volume driver in this archetype. Two augmentation paths to hit the 100K events/sec target without a real production workload:
 
 1. **Synthetic east-west traffic** — `tcpkali`, `iperf3`, or AWS-native LoadGenerator instances generating cross-AZ traffic in the sandbox; cheap when run for minutes, not hours
-2. **Replay augmentation** — record a small window of organic Stratus + synthetic traffic, replay at scale on the ingest side (the substrate doesn't know real-time vs. replay)
+2. **Replay augmentation** — record a small window of organic Stratus + synthetic traffic, replay at scale on the ingest side (the platform doesn't know real-time vs. replay)
 
 Replay augmentation is the default — cheaper and more reproducible. Synthetic traffic generation is reserved for capturing the *original* corpus.
 
@@ -93,7 +93,7 @@ This is the heaviest archetype on cost. The corpus generation step should be:
 
 - **Scoped to minutes, not hours** — Stratus + traffic generators run for a few minutes to capture the corpus; nothing left running
 - **Sandbox-account scoped** — Terraform tears down the entire VPC + IAM + S3 buckets after capture; no persistent footprint
-- **Captured once per benchmark cycle** — corpus is reused across all candidate substrates; not re-generated per candidate
+- **Captured once per benchmark cycle** — corpus is reused across all candidate platforms; not re-generated per candidate
 
 Per `results/cost-actuals.md` (TBD), log every run's actual AWS bill including charges that surface days later (CloudTrail data-event charges, GuardDuty if enabled, S3 transfer).
 
@@ -106,4 +106,4 @@ Per `results/cost-actuals.md` (TBD), log every run's actual AWS bill including c
 
 ## Provider alternative posture
 
-The corpus generation step requires AWS (Stratus targets AWS-native services). The *substrate-under-test* host does not — Hetzner bare-metal as the ingest host with corpus generated in AWS-sandbox and exported is the cost-reduced path. Provider commitment per [`../../../project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md`](../../../project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md) is to the envelope, not to AWS for the host.
+The corpus generation step requires AWS (Stratus targets AWS-native services). The *platform-under-test* host does not — Hetzner bare-metal as the ingest host with corpus generated in AWS-sandbox and exported is the cost-reduced path. Provider commitment per [`../../../project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md`](../../../project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md) is to the envelope, not to AWS for the host.

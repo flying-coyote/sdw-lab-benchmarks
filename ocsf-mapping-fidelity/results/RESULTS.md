@@ -46,6 +46,8 @@ Several of those are detection-relevant (the autonomous-system fields, the ISP/d
 
 Detection-breaking = a field a named detection needs that does not map cleanly (coerced or unmapped). Two detections survive clean — the result is *which* break, not that everything does.
 
+*(corrected 2026-11-17: "Two" was a fixed string in `run.py`; the data has 8 of 31 detections surviving clean (`results.json`, `survives_clean` true on 8 rows, and the table below marks the same 8 "all fields typed"). `run.py` now computes the count. Separately, the coverage table above is against the transcribed 1.8.0 subset; the strict full-schema re-score in `../../ocsf-1.9-rescore/RESULTS.md` section (b) puts the total at 146 typed, 33 coerced, 72 unmapped (58.17%), with Palo Alto at 44 / 8 / 31 (53.01%), because two PAN-OS `hw_info.model` targets do not exist in 1.8.0. A re-run of `run.py` regenerates this file and drops this note; the same correction is in `../README.md`.)*
+
 | detection | source | breaks on |
 |---|---|---|
 | Anonymizing-proxy / Tor login | okta | `securityContext.isProxy` (unmapped) |

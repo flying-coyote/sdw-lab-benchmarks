@@ -1,0 +1,14 @@
+name: t9-pretooluse-hook-enforcement
+cluster: ai-security
+title: Do PreToolUse hooks and permission rules hold across Claude Code settings layers
+status: published
+tier: B
+claim_kind: measured
+verdict: SOUND
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: python t9-pretooluse-hook-enforcement/run_cell.py CELL then analyze.py (Claude Code CLI and an isolated HOME required)
+pins: none (no requirements file; Claude Code 2.1.321 and mcp 2.3.0 named in RESULTS)
+essay: /writing/ai/decisions-for-a-moving-surface
+superseded_by: none
+audited: 2026-11-17

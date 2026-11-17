@@ -74,7 +74,7 @@ engines differ both are shown.
 | M0005 Access at Rest (4, 18) | rule | CS0076[2] | T0012 | by-construction | API access, no at-rest event |
 | | rule | CS0074[10] | T0025 | by-construction | enumeration output via callback; no model or training store touched |
 | | rule | CS0076[6] | T0048.004 | by-construction | an outcome, no event |
-| | mech | CS0068[0] | T0012 | **CAUGHT** | E3.datastore recall 0.67 (4/6: the gated-bucket list and reads; the two staging-repo creates are not on a gated- or train- bucket), precision 1.0 |
+| | mech | CS0068[0] | T0012 | **CAUGHT** | E3.datastore recall 0.67 (4/6: the gated-bucket list and reads; the two staging-repo creates are not on a gated- or train- bucket), precision 1.0 *(corrected 2026-11-17: this 1.0 is partly by construction, because the pre-committed E3 lookalike is approved identities on the same paths, so the background holds no non-approved reader that could produce a false positive; see What the table says)* |
 | | mech | CS0023[3] | T0035 | MISSED | E3.file 0 alerts: the reads are by `ray`, the cluster's own approved identity |
 | M0011 Restrict Library Loading (5, 14) | rule | CS0074[13] | T0050 | NOISY | E4 recall 1.0 (53/53), precision 0.33–0.35: 98–110 legitimate pip builds also load `setup.py` from `/tmp/pip-build-*` |
 | | rule | CS0074[2] | T0011 | MISSED | the payload is a script; every module it loads is allowlisted stdlib |

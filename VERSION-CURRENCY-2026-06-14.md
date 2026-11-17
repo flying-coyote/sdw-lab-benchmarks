@@ -7,9 +7,11 @@ tags: [version-currency, opensearch, chdb, fastparquet, answer-equality, parquet
 
 # Software version-currency pass — 2026-06-14
 
+*Status, 2026-11-17: the chdb, pyarrow and clickhouse-connect bumps listed below never reached the root `requirements.txt`, which still pins 4.1.8, 23.0.1 and 1.1.1, the versions most published results ran on; the comments there now say which results ran on which version, and some words below were changed with no finding altered.*
+
 Per the "ensure software versions are as updated as possible" directive: audited the benchmark
-stack against latest, updated where behind, and re-validated the literature-load-bearing
-results on the current software. Net: **the cited numbers hold on the updated stack, with one
+stack against latest, updated where behind, and re-validated the results the literature
+leans on, on the current software. Net: **the cited numbers hold on the updated stack, with one
 finding that moved — and it moved in the most instructive way.**
 
 ## Audit + updates
@@ -21,15 +23,15 @@ finding that moved — and it moved in the most instructive way.**
 **Updated to latest:** clickhouse-connect 1.1.1 → 1.3.0 · chdb 4.1.8 → **4.1.9**
 (chdb-core 26.3 → 26.5) · pyarrow 23.0.1 → 24.0.0 · pyiceberg-core 0.8.0 → 0.9.1.
 
-**Engine image bumped:** OpenSearch (the flagship foil) **2.18.0 → 3.7.0** — it was the one
-materially-stale component (2.18.0 was 17 months old). compose.yml now pins 3.7.0; the foil was
+**Engine image bumped:** OpenSearch (the flagship comparison baseline) **2.18.0 → 3.7.0** — it was the one
+materially-stale component (2.18.0 was 17 months old). compose.yml now pins 3.7.0; the baseline was
 re-loaded (10M docs, fresh index) and re-validated.
 
 (One known conflict from the bumps: `daft` 0.7.14 wants pyarrow<24 / fsspec<2026.3 — daft is
 only used by the clickhouse-vs-duckdb Phase-E 13-engine harness, not the flagship or the
 answer-eq mechanisms; pin pyarrow/fsspec back before re-running that specific harness.)
 
-## Flagship foil (OpenSearch 2.18.0 → 3.7.0): no material change
+## Flagship baseline (OpenSearch 2.18.0 → 3.7.0): no material change
 
 OpenSearch 3.7.0 performs essentially identically to 2.18.0 on the 5-query suite. The clean
 **same-draw** comparison (both 06-14, same machine state) is OS 2.18 **2.5816 s** vs OS 3.7
@@ -38,7 +40,7 @@ the 3.7 number looks ~11% faster, but that is the common-mode ~10% machine/page-
 flagship revalidation already documented across every engine — not a version effect.)
 
 So a current OpenSearch does **not** flatter or inflate the comparison: the two-regime multiples
-(~10× Iceberg / ~45× native over the foil, 06-14 same-draw) hold on the current foil. The
+(~10× Iceberg / ~45× native over the baseline, 06-14 same-draw) hold on the current baseline. The
 published numbers are not an artifact of a stale 2.18 index. Evidence:
 `zeek-flagship-rerun/results_version_currency_2026-06-14/`. Published 2.18 numbers stay canonical
 in `results/`; compose tracks 3.7.0 for future runs.
@@ -61,7 +63,7 @@ and moving. Detail: `clickhouse-vs-duckdb/results/RECONFIRMATION-2026-06-14.md`.
 
 ## Net for the literature
 
-- Flagship two-regime multiples: **hold on current software** (current foil, current engines).
+- Flagship two-regime multiples: **hold on current software** (current baseline, current engines).
 - Answer-equivalence: update the copy from a static "2 silently wrong" to the version-pinned,
   CI-justifying form — **2 caught; chDB fixed in 4.1.9; fastparquet still wrong on latest**.
 - All other heavily-cited benches were re-validated earlier today on the (already-current) stack.

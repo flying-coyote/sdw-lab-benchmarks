@@ -1,0 +1,14 @@
+name: ocsf-data-health
+cluster: detection
+title: Single-tool vs cross-tool recovery of asset state under an authored flaw model
+status: first-pass
+tier: B
+claim_kind: mixed
+verdict: DEMONSTRATION
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-data-health/run.py
+pins: requirements.txt
+essay: https://securitydataworks.com/writing/detection/cross-tool-assurance-gap
+superseded_by: none
+audited: 2026-11-17

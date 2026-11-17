@@ -2,13 +2,13 @@
 
 **Status:** skeleton (2026-05-24). Queries authored during build phase (gated on EDR shipping).
 
-The query suite tests substrate adequacy across the four cloud-relevant access patterns: streaming-ingest stress, cardinality-explosion aggregations, cross-plane correlation JOINs, and JSON-projection performance.
+The query suite tests platform adequacy across the four cloud-relevant access patterns: streaming-ingest stress, cardinality-explosion aggregations, cross-plane correlation JOINs, and JSON-projection performance.
 
 ## Query families (planned)
 
 ### Family 1 — Streaming-ingest stress (no query; ingest is the test)
 
-Sustained 100K mixed events/sec for ≥15 minutes. The substrate is asked to ingest, not to answer queries — measures whether the storage engine keeps up with the parse + normalize + write path under mixed VPC Flow + CloudTrail JSON.
+Sustained 100K mixed events/sec for ≥15 minutes. The platform is asked to ingest, not to answer queries — measures whether the storage engine keeps up with the parse + normalize + write path under mixed VPC Flow + CloudTrail JSON.
 
 Headline metric: sustained-rate ceiling at fixed CPU / memory budget.
 
@@ -41,7 +41,7 @@ JOIN network_activity n
 WHERE a.api_name LIKE 'AssumeRole%';
 ```
 
-Tests cross-table JOIN with temporal range condition. The substrate's join-planner quality on streaming-arrival tables is the axis being measured.
+Tests cross-table JOIN with temporal range condition. The platform's join-planner quality on streaming-arrival tables is the axis being measured.
 
 ### Family 4 — JSON projection under high-fanout request parameters
 
@@ -61,19 +61,19 @@ Tests JSON-path projection and schema-on-read efficiency. Engines without first-
 
 `GROUP BY principal_arn` over sliding windows, counting unusual API call rates per principal. Tests window-function performance and the engine's incremental-aggregation story.
 
-### Family 6 — Substrate stress probes
+### Family 6 — Platform stress probes
 
 - Top-N by `user_agent` across the entire corpus (large GROUP BY on a high-fanout field)
-- Cross-account JOIN against synthetic asset inventory (substrate's identity-resolution under partial information)
+- Cross-account JOIN against synthetic asset inventory (platform's identity-resolution under partial information)
 - Full-text search inside CloudTrail `error_message` field (semi-structured search at corpus scale)
 
 ## Methodology constraints
 
-- **Identical workload across candidates** — same query text against each substrate; per-candidate query rewrites require explicit annotation in the result manifest
+- **Identical workload across candidates** — same query text against each platform; per-candidate query rewrites require explicit annotation in the result manifest
 - **Pin the corpus** — same Stratus-generated CloudTrail + VPC Flow corpus against each candidate
 - **Cold and warm runs** — measure first-execution (cold) and steady-state (warm) latency
 - **Streaming-arrival semantics** — ingest is concurrent with query in some families; document whether each query runs against batch-loaded vs. streaming-arrived data
 
 ## Authoring schedule
 
-Queries authored as part of the L-effort build phase, after EDR archetype ships. Skeleton serves as the contract between data-generation plan and substrate-evaluation plan.
+Queries authored as part of the L-effort build phase, after EDR archetype ships. Skeleton serves as the contract between data-generation plan and platform-evaluation plan.

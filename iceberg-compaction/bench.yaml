@@ -1,0 +1,14 @@
+name: iceberg-compaction
+cluster: formats-and-lakehouse
+title: How much scan latency compaction recovers on a fragmented Iceberg security table
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/results.json
+reproduce: python iceberg-compaction/run.py 500
+pins: none
+essay: /writing/lakehouse/iceberg-maintenance
+superseded_by: none
+audited: 2026-11-17

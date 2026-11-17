@@ -1,0 +1,14 @@
+name: ocsf-zorder-pruning
+cluster: formats-and-lakehouse
+title: How many row groups do z-order, single-sort and unordered layouts let a selective OCSF query skip
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-zorder-pruning/run.py
+pins: none
+essay: /writing/lakehouse/lock-in-moved-to-compaction
+superseded_by: none
+audited: 2026-11-17

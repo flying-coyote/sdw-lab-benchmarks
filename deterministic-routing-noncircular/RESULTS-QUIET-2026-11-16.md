@@ -27,7 +27,7 @@ H2 stay falsified. What changed is everything the 11-15 run had pinned on StarRo
   So host contention is not needed to produce the 11-15 failures, and engine state is the leading explanation; the
   restarted engine carried 11-15's accumulated column statistics (an unrecorded `SHOW STATS META` reading), but the
   mechanism is untested. H3's change is therefore conditional on a warmed engine, and on a fresh engine, the
-  state the 11-15 main pass ran in, I would expect it to fail again.
+  state the 11-15 main pass ran in, the expectation is that it fails again.
 - **The hot cell tilted in the direction the 11-15 caveat predicted**, though the StarRocks container state (fresh on
   11-15, warmed quietly) is confounded with the load change, so this is consistent with the load tilt rather than a
   confirmation of it. 29 decisions changed strict winner (21 hot, 8 cold). In
@@ -45,13 +45,13 @@ H2 stay falsified. What changed is everything the 11-15 run had pinned on StarRo
   decisions, phi4 on none). **H9 holds uncontended:** phi4's median is 21.7 s (21.7x its 1 s threshold), agy's 31.5 s
   (15.7x its 2 s threshold), against a rule-stack median of 0.58 ms.
 
-S2's own cold accuracy fell from 0.738 to 0.679 as StarRocks took more cold wins, so the gap between the rules and always-StarRocks widened to 0.26. My reading, which is an opinion rather than a pre-registered test: the replication strengthens draft 20's lead (one front engine, plus a rule that keeps join-graph-risky queries off
+S2's own cold accuracy fell from 0.738 to 0.679 as StarRocks took more cold wins, so the gap between the rules and always-StarRocks widened to 0.26. One interpretation, which is an opinion rather than a pre-registered test: the replication strengthens draft 20's lead (one front engine, plus a rule that keeps join-graph-risky queries off
 native MergeTree) but it does not remove the 11-15 qualifier that StarRocks itself shares the cold cliff: a warmed StarRocks clears it, a fresh one does not. It does not rescue the
 shape map as a cliff guard.
 
 ## Data identity and replication gates
 
-- **Catalog.** Nessie is IN_MEMORY, so its catalog was empty after restart. I registered the 13 tables from the exact
+- **Catalog.** Nessie is IN_MEMORY, so its catalog was empty after restart. The run registered the 13 tables from the exact
   metadata files the 11-15 run recorded instead of reloading with `load.py` (`register_quiet.py`,
   `_work_quiet_2026-11-16/register_report.json`). Every table's location, metadata location and row count equals 11-15's
   and the pinned parquet's, and each resolves to its 11-15 snapshot.
@@ -146,16 +146,16 @@ restarted (created 2026-11-15T21:51:39Z, started 04:26:21Z), not freshly created
 allin1 container keeps its on-disk state across restarts.
 
 **Post-hoc fresh-engine probe (not pre-registered; run after verification, 08:21 to 08:23Z).** To test that rival
-explanation I created a second container from the same image (`drn-starrocks-fresh`, created 08:21:14Z, network alias
+explanation the run created a second container from the same image (`drn-starrocks-fresh`, created 08:21:14Z, network alias
 `starrocks`, 24g, the 11-15 container left untouched) after re-registering the same Iceberg metadata in Nessie (report
 identical to the 03:06Z one), gated at load 0.77, and ran `join_3to4_04` 5 times on fresh clients (08:21:59Z to 08:23:05Z, inside the 08:00 to
 08:30Z cron window, tagged `cron-overlap`; the errors are StarRocks-internal pool limits, so cron is an unlikely cause)
 (`sr_fresh_probe_posthoc.py`, `results/quiet-2026-11-16/sr_fresh_probe_posthoc.json`). **All 5 failed**: four with
 "Memory of query_pool exceed limit" (13.9 to 21.8 s) and the last with "Memory of process exceed limit ... try
 consume:8589934592" (33.1 s), the same 8 GiB allocation error as the 11-15 failures. That refutes the host-memory-pressure
-reading I gave before this probe. `SHOW STATS META` on the fresh engine afterwards (output not saved to any file) showed column statistics for only four
+reading this file gave before this probe. `SHOW STATS META` on the fresh engine afterwards (output not saved to any file) showed column statistics for only four
 tables, collected during the probe itself, while the 11-15 container holds statistics for all 13 tables collected on
-11-15 (21:53 to 21:58Z) and one more column during this morning's pass. My reading, Tier D, untested: StarRocks's
+11-15 (21:53 to 21:58Z) and one more column during this morning's pass. An untested interpretation (Tier D): StarRocks's
 automatic statistics collection on the Iceberg tables decides whether this q5-class join gets a plan that fits in memory,
 which fits the failure on the fresh 11-15 main pass but not cleanly the 11-15 restart, which failed its first execution
 after those statistics had been collected (21:53 to 21:58Z) and then succeeded twice; a first-query-after-restart effect
@@ -207,7 +207,7 @@ is an untested rival. Whatever the mechanism, the pre-registered StarRocks count
 
 Post-hoc, labelled: the fresh-engine StarRocks probe and the statistics reading (the earlier host-memory-pressure
 reading is withdrawn), and the per-direction
-breakdown of winner flips (the addendum asked for flips; the direction split is my addition).
+breakdown of winner flips (the addendum asked for flips; the direction split is an addition beyond it).
 
 ## Files (all new)
 
@@ -235,7 +235,7 @@ reproduced every scored number and changed no verdict. Applied above, in place:
 - H7 and H8 verdict lines now state n = 24 and that gemma4 scored n = 0; the headline says the agy H7 change is a truth
   shift (agy is 0.750 against the 11-15 truth, level with the rules there).
 - Headline: the replication wording now separates data identity from answer validity; S2's cold drop (0.738 to 0.679)
-  and the widened gap to always-StarRocks are stated; the draft-20 sentence is marked as my reading and conditioned on
+  and the widened gap to always-StarRocks are stated; the draft-20 sentence is marked as an interpretation and conditioned on
   the restart caveat.
 - Restart caveat: an allin1 restart keeps on-disk state. A post-hoc fresh-engine probe, run after verification, then
   failed 5 of 5, so H3 is now reported as holding on the warmed engine only, and the host-memory-pressure reading is

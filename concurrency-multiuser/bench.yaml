@@ -1,0 +1,14 @@
+name: concurrency-multiuser
+cluster: catalogs-engines-cost
+title: Many analysts at once on one host, QPS and latency as concurrent users grow
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: RESULTS-2026-06-15.md
+reproduce: python3 concurrency_bench.py ENGINE OUT.json; python3 shard_sweep.py
+pins: none (ejs stack images on latest tags; versions not recorded)
+essay: none
+superseded_by: none
+audited: 2026-11-17

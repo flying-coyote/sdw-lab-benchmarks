@@ -1,6 +1,8 @@
 # stream-complexity — batch vs streaming operational complexity
 
-Pre-registration (frozen, read first): `PRE-REG-stream-complexity-2026-07-19.md`. This
+Pre-registration (frozen, read first): `PRE-REG-stream-complexity-2026-07-19.md`. *(corrected
+2026-11-17: three later pre-registrations extend it, each with its own dated results file, listed under
+"Results and pre-registrations" below.)* This
 README is the "how to run it" companion; it does not restate the hypotheses,
 predictions, or honesty boundaries the pre-reg already states — read that file for
 the *why*, this one for the *how*.
@@ -21,27 +23,34 @@ Both implement: alert when a `(user, src_ip)` pair has ≥5 failed logins inside
 epoch-aligned 60-second tumbling window. `compare_answers.py` is the answer-equality
 gate — the pre-reg means it literally: a divergent run is not a scoreable run.
 
-## Image pins (verified 2026-07-19)
+## Results and pre-registrations (added 2026-11-17)
 
-| Image | Tag | Why this one |
-|---|---|---|
-| `apache/kafka` | `4.3.1` | Latest stable; Kafka 4.x is KRaft-only (no ZooKeeper mode to accidentally pick) |
-| `flink` | `2.2.1-scala_2.12-java11` | Latest Flink version whose `flink-sql-connector-kafka` build (`5.0.0-2.2`) is published on Maven Central — checked against the connector's own POM (`<flink.version>2.2.1</flink.version>`), not assumed |
-| `busybox` | `latest` | Two one-shot volume-ownership fixups only (see Gotchas) |
+| Run | Pre-registration | Results | Verdict as recorded |
+|---|---|---|---|
+| July, batch vs Kafka + Flink | `PRE-REG-stream-complexity-2026-07-19.md` | `results/RESULTS.md` | falsifier not triggered; P1 and P4 hold, P2 fails its 3× threshold (1.5×), P3 recovery correctness not cleanly measured |
+| v2, adds Feldera OSS and a containerised batch arm | `PRE-REG-stream-complexity-v2-2026-11-03.md` | `results/RESULTS-v2-2026-11-03.md` | the falsifier sits on a knife-edge that depends on rounding 1.50×, reported rather than resolved; confidence move staged for the owner |
+| Freshness sweep | `PRE-REG-stream-freshness-2026-11-06.md` | `results/RESULTS-freshness-2026-11-06.md` | SUPPORTED: P1 to P3 hold on both trials, P5 misses on two of three legs |
+| v3, RisingWave | `PRE-REG-stream-complexity-risingwave-2026-11-07.md` | `results/RESULTS-v3-risingwave-2026-11-07.md` | H-STREAMING-02 supported on direction, magnitude partly; RisingWave slowest on freshness and lost acknowledged inserts on engine-internal recoveries at 1× |
 
-`streaming/Dockerfile.flink` builds a local `smx-flink-kafka:2.2.1` image (base Flink
-image + the Kafka SQL connector jar, fetched from Maven Central at build time — not
-checked into the repo as a binary).
+The most recent file is v3; for the batch-versus-streaming freshness question the freshness sweep is the
+current read, and v2 supersedes July's real-time freshness framing (v2, "far smaller on a real clock").
 
-## `smx-` naming
+None of the four pre-registrations has a hash file. Each results file records the freeze as a lab commit
+(`177934e`, `1ae54f1`, `dbf7406`), and `HASH-MAP-2026-11-06.md` maps two of those to the rewritten commits
+on GitHub, so freeze-before-run can be checked only against the git history. The v2 pre-registration's
+frontmatter says `status: frozen` while a status line in its body still reads "DRAFT, not frozen", which
+the git history at `177934e` / `c52a726` would settle. The verdicts listed above are the files' own.
 
-Every container, network, and volume is prefixed `smx-` (declared quiet-box rule —
-this host also runs a `moar-*` stack that must never collide with this bench):
-`smx-kafka`, `smx-jobmanager`, `smx-taskmanager`, `smx-topic-init`,
-`smx-kafka-data-init`, `smx-flink-checkpoints-init`; network `smx-stream-net`;
-volumes `smx-kafka-data`, `smx-flink-checkpoints`. Compose project name `smx-stream`.
+## What would have made it fail
 
-## Running a trial
+The answer-equality gate (P5) fails a run whose two arms disagree with each other or with the
+independent reference alerts, and July's first scored attempt did fail it (22 of 30) before a harness fix;
+no complexity number is quoted from a divergent run. Each prediction has a frozen threshold and several
+missed (July P2, v2 P4 legs, freshness P5, v3 P4), so the outcomes are measured rather than constructed.
+The proxies (containers, config lines, recovery steps, seconds) are not dollars or on-call hours, and every
+arm is single-node on one host.
+
+## Reproduce: running a trial
 
 ```bash
 cd stream-complexity
@@ -111,6 +120,14 @@ from the script it describes), wall-clock-to-recovered, and a post-recovery
 comfortable wall-clock runway to land a kill mid-flight without racing the replay's
 own natural completion; `--warmup-s` (default 12) is how long each arm runs before
 the fault is injected.
+
+## `smx-` naming
+
+Every container, network, and volume is prefixed `smx-` (declared quiet-box rule —
+this host also runs a `moar-*` stack that must never collide with this bench):
+`smx-kafka`, `smx-jobmanager`, `smx-taskmanager`, `smx-topic-init`,
+`smx-kafka-data-init`, `smx-flink-checkpoints-init`; network `smx-stream-net`;
+volumes `smx-kafka-data`, `smx-flink-checkpoints`. Compose project name `smx-stream`.
 
 ## Cleanup
 
@@ -190,3 +207,39 @@ rm -f results/*.jsonl results/.stream_consumer_state.json
 Nothing else diverges: the detection semantics (≥5 failures, 60s tumbling,
 `(user, src_ip)` key), the answer-equality gate, and the three fault injections are
 implemented exactly as specified.
+
+## Image pins (verified 2026-07-19)
+
+| Image | Tag | Why this one |
+|---|---|---|
+| `apache/kafka` | `4.3.1` | Latest stable; Kafka 4.x is KRaft-only (no ZooKeeper mode to accidentally pick) |
+| `flink` | `2.2.1-scala_2.12-java11` | Latest Flink version whose `flink-sql-connector-kafka` build (`5.0.0-2.2`) is published on Maven Central — checked against the connector's own POM (`<flink.version>2.2.1</flink.version>`), not assumed |
+| `busybox` | `latest` | Two one-shot volume-ownership fixups only (see Gotchas) |
+
+*(corrected 2026-11-17: `streaming/docker-compose.yml` now pins both `busybox` services by digest,
+`busybox@sha256:fd8d9aa6…1a9715d`, the same local image the v2 run used, and the pin was added during
+that run (`results/RESULTS-v2-2026-11-03.md` deviation 5); the July image is not recorded. The `latest`
+row above is the July state.)*
+
+`streaming/Dockerfile.flink` builds a local `smx-flink-kafka:2.2.1` image (base Flink
+image + the Kafka SQL connector jar, fetched from Maven Central at build time — not
+checked into the repo as a binary).
+
+## Versions and pins
+
+`requirements.txt` pins the host-side Python packages. Images: `apache/kafka:4.3.1`, Flink 2.2.1 built
+locally as `smx-flink-kafka:2.2.1` from the official image plus the 5.0.0-2.2 Kafka connector fetched at
+build time, Feldera `0.375.0` and RisingWave `v3.1.1` pinned by digest, `busybox` by digest. The locally
+built Flink and containerised-batch images are tagged, not digest-pinned, and the connector jar is fetched
+from Maven Central at build time.
+
+## Evidence tier and limits
+
+Tier B, as each results file states: one host under Docker Desktop on WSL2, a synthetic seeded corpus, one
+detection shape. The v3 file records that this host's wall clock steps back about 2.6 s every 27 to 30 s,
+which bears on every latency figure from it.
+
+## Corrections
+
+- 2026-11-17: busybox pin and the later pre-registrations noted; the results table added; first-person
+  narration recast in the four results files.

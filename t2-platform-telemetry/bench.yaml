@@ -1,0 +1,14 @@
+name: t2-platform-telemetry
+cluster: ai-security
+title: Which security-relevant fields arrive in each AI platform's own telemetry
+status: published
+tier: unstated in RESULTS (vendor docs cited as Tier B)
+claim_kind: measured
+verdict: SOUND
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: see t2-platform-telemetry/README.md Reproduce (Claude Code CLI, Ollama and Docker required)
+pins: requirements.txt (stdlib only); otel/opentelemetry-collector-contrib:0.145.0
+essay: /writing/ai/who-gets-the-ai-logs
+superseded_by: none
+audited: 2026-11-17

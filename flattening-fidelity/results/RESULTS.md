@@ -14,6 +14,8 @@ tags: [ocsf, flattening-fidelity, detection-miss, grain-loss, timestamp, tier-b]
 
 All corpora are synthetic and generated deterministically. These are controlled measurements of a mechanism, not production telemetry.
 
+*(corrected 2026-11-17: each lossy number below follows from how its corpus was built. The absence miss is 100% by construction for the naive query and 0% for the NULL-aware query on the same flattened table; the coarse beacon F1 is 2 / (2 + decoy-to-beacon ratio); the floating recall is 1 minus the cross-zone fraction (200 chains with 108 cross-zone give 0.46, 1,000 with 501 give 0.499). `run.py` regenerates this file, so the correction is also in the README.)*
+
 ## 1. Absence-vs-NULL collapse → silent detection miss
 
 CloudTrail encodes "no MFA" as the *absence* of `mfaAuthenticated`. Flattening lowers that to a column where absent becomes NULL, so the naive translation `WHERE mfa = 'false'` matches nothing. Planted positives = privilege-escalation calls made without MFA.

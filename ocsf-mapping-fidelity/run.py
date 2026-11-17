@@ -132,9 +132,12 @@ def _write_markdown(results):
           "can hold them; the integration does not.\n")
 
     a("## Detections — which break, and on which field\n")
+    # Count computed, not hard-coded: the string used to say "Two" while the data has 8
+    # clean of 31 (corrected 2026-11-17).
+    n_clean = sum(1 for d in results["detections"] if d["survives_clean"])
     a("Detection-breaking = a field a named detection needs that does not map "
-      "cleanly (coerced or unmapped). Two detections survive clean — the result is "
-      "*which* break, not that everything does.\n")
+      f"cleanly (coerced or unmapped). {n_clean} of {len(results['detections'])} "
+      "detections survive clean — the result is *which* break, not that everything does.\n")
     a("| detection | source | breaks on |")
     a("|---|---|---|")
     for d in results["detections"]:

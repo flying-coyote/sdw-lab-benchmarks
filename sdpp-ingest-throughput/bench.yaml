@@ -1,0 +1,14 @@
+name: sdpp-ingest-throughput
+cluster: mapping-and-models
+title: Ingest, filter and emit throughput of open pipeline engines on one host
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python sdpp-ingest-throughput/run.py --n 1000000 --trials 3
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/pipelines/cribl-vs-tenzir
+superseded_by: none
+audited: 2026-11-17

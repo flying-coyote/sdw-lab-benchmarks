@@ -39,7 +39,42 @@ Each query is scored **correct** (truth recovered), **silent** (executed, return
 truth not recovered — the security-relevant failure), or **loud** (SQL errored or came
 back empty — operationally safer than a silent wrong answer, reported separately).
 
-## Run it
+*(corrected 2026-11-17: the State section above names `RESULTS-headtohead-2026-06-16.md` as canonical.
+Two later runs supersede it for the head-to-head. `RESULTS-v2-2026-06-17.md` re-ran it after removing the
+v1 confounds, under `BENCH-C-PREREGISTRATION-v2-rerun.md` and its implementation addendum, with the
+LLM arms at three Claude tiers: on the three compute-over-population tail queries no LLM arm was
+reliably correct (Opus text-to-SQL was correct on 3 of 24 tail query-trials, 0.125), text-to-SQL was
+silently wrong on 13, 15 and 12 of 24 tail query-trials at Haiku, Sonnet and Opus (0.54 / 0.625 / 0.50),
+GraphRAG on all 24 at every tier, and LLM-authored SPARQL went from loud at Haiku and Sonnet to silent
+at Opus (23 of 24, 0.96). Each tail rate is over three queries at 8 trials each
+(`results/v2_headtohead_haiku.json`, `v2_headtohead.json`, `v2_headtohead_opus.json`,
+`arms.<arm>.tail.trial_rates`). `RESULTS-v2.1-2026-06-17.md`, under the v2.1 arm extension, added an agentic
+self-correct arm, whose tail silent rate rose rather than fell, and a self-consistency vote, which
+missed the unanimous GraphRAG errors. Those two files are the current read.)*
+
+## What would have made it fail
+
+The planted answers come from the shared testbed's generator, and the models compose queries against it,
+so every LLM cell could have come out correct; none of the LLM outcomes is fixed by construction. The
+baselines are deterministic and were fixed before the run: an OWL2QL rewrite (OBDA, correct or refuses on
+what it can express) and a hand-curated SQL metrics layer (v2 addendum, item 3, which forbids gold
+constants). The metrics layer was curated by the author of the planted corpus, though, so its lookup
+correctness is a lower bar than an independent curator's would be. The weak point is
+size. The tail is three queries, each at 8 trials per cell, so a tail rate such as 0.96 is 23 of 24
+trials over three questions, and the 1.0 GraphRAG figure is three unanimous wrong answers repeated, not
+24 independent ones. All LLM arms are one model family.
+
+## Pre-registration
+
+Four files: `BENCH-C-PREREGISTRATION.md` (v1), `BENCH-C-PREREGISTRATION-v2-rerun.md`,
+`BENCH-C-PREREGISTRATION-v2-ADDENDUM-impl-decisions.md` and `BENCH-C-PREREGISTRATION-v2.1-arm-extension.md`.
+None carries a hash file or a frozen-at stamp, so freeze-before-run can be checked only against the git
+history. The verdicts in the v2 and v2.1 results match the falsifiers as written in those files (the
+graph-structure null confirmed; OBDA determinism-safety supported on its expressible set, which is two of
+eight queries; the v2.1 agentic falsifier did not fire because the silent rate rose). The v2 lookup class
+is recorded as confounded and its prediction as inconclusive, which is a declared deviation.
+
+## Reproduce
 
 ```bash
 # build Store F first (depends on the shared testbed corpus)
@@ -49,6 +84,21 @@ cd bench-a-context-collapse && python run.py && cd ..
 .venv/bin/python ocsf-semantic-query/run.py --model phi3:latest
 ```
 
+## Results
+
+- `RESULTS-v2-2026-06-17.md` and `RESULTS-v2.1-2026-06-17.md`: current.
+- `RESULTS-headtohead-2026-06-16.md`: the v1 head-to-head, superseded for the comparison by v2.
+- `results/RESULTS.md` and `results/results.json`: the first single-pass phi4 and OBDA arms (2026-06-05).
+- `results/v2_*.json`, `results/v2_1_*.json`, `results/headtohead_frontier.json`: machine-readable outputs.
+- `GRAPHRAG-READINESS.md`, `RUN-v2.md`: design and run notes.
+
+## Versions and pins
+
+Ontop CLI 5.5.0 with the DuckDB JDBC jar, fetched by `RUN-v2.md` at run time; DuckDB from the root
+`requirements.txt`. The v2 LLM arms are Claude Haiku, Sonnet and Opus through Claude Code at harness
+defaults, with no temperature or seed control; the first pass used Ollama `phi4:latest`. The folder has no
+requirements file of its own.
+
 ## Evidence tier
 
 Tier B — all three arms ran at the frontier (claude-opus-class proxy) with run-to-run
@@ -57,3 +107,8 @@ ceiling and the documented text-to-SQL silent-error literature (NL2KQL ~42% conf
 BIRD 81.67% vs 92.96% human) are the external anchors. Tier-A needs a second host (independent
 reproduction), the v2 re-run's confound removals (`BENCH-C-PREREGISTRATION-v2-rerun.md`), a
 published labeled query set, a named reviewer, and a non-toy scale.
+
+## Corrections
+
+- 2026-11-17: the current results named; construction, sample size and pre-registration notes added; one
+  first-person phrase recast in `RESULTS-headtohead-2026-06-16.md`.

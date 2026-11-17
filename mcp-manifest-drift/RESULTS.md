@@ -40,7 +40,7 @@ change rules, S1 (OCSF-native) and S2 (OCSF fingerprints compared against produc
 reason is structural, since `ai_capability` carries fingerprints and no description text, so a hidden
 instruction and a typo fix produce the identical OCSF signal. The body-aware rules, which read producer-computed
 fields that have to sit in `unmapped`, separate the two sets completely on this corpus (9 of 9 detected, 0 of 15
-benign fired), but I wrote both the poisonings and the rules, and the non-authored check (real release-to-release
+benign fired), but the same agent wrote both the poisonings and the rules, and the non-authored check (real release-to-release
 drift) did not run, so that 0 of 15 is an upper bound on how good the rules look, not an estimate of their field
 false-positive rate.
 
@@ -88,11 +88,11 @@ Each cell counts servers (of 3) where any event from that mutation matched. Sour
   - P1 (a rug-pull with no keyword markers) was caught only by S4, so the rug-pull detection rests on one
     length-sensitive heuristic.
 - **H5 real releases: not run.** The release arm (13 published versions of `server-filesystem` and
-  `server-everything` fetched and started via `npx`) was denied by the session's permission classifier, and I did
-  not try to route around it. This is the only arm that would have measured false positives on drift I did not
+  `server-everything` fetched and started via `npx`) was denied by the session's permission classifier, and the run did
+  not try to route around it. This is the only arm that would have measured false positives on drift the run agent did not
   write, so the body-aware 0 of 15 should not be quoted as a false-positive rate until it runs. Command to run it:
   `.venv/bin/python -I snapshot.py release && .venv/bin/python -I detect.py` (the release diffing in `detect.py`
-  is not yet written; the snapshotter is).
+  is not yet written; the snapshotter is). *(corrected 2026-11-17: the arm ran on 2026-11-16, a week after the H4 results were known and with a driver written after them, and is reported in `RESULTS-RELEASE-ARM-2026-11-16.md`. The composite S3, S4 or S5 fired on 1 of 11 real release transitions, an S4 similarity of 0.494 on a genuine capability change, so H5 as pre-registered is wrong. A correction in that file shows the replay ran every release on current transitive dependencies, so part of one transition's schema change is a replay artifact. The 0 of 15 above remains a count on authored edits only.)*
 - **H6 backend agreement: partly wrong.**
   - Path (a) DuckDB backend → DuckDB and path (b) SQLite backend → sqlite3 compiled all five rules (including
     `|fieldref`, `|lt` and a zero-width-character `|re`) and returned identical matched sets on every rule, both
@@ -148,12 +148,12 @@ only to "a few milliseconds", not to the second digit, which is what the CVs pre
 
 ## Limits
 
-- Mutations and rules are both mine (H4 circularity); n is 3 poisoned and 5 benign kinds over 3 servers.
+- Mutations and rules were both written by the run agent (H4 circularity); n is 3 poisoned and 5 benign kinds over 3 servers.
 - The non-authored benign arm (H5) did not run, so there is no field false-positive estimate.
 - A rug-pull that changes server code but not the manifest is invisible to any manifest differ.
 - One snapshot cadence (5 s), static servers; servers whose manifests legitimately change at runtime
   (`notifications/tools/list_changed`) were not tested.
-- The OCSF binding (Application Lifecycle 6002 + `ai_operation` profile) is my choice on `main` 1.10.0-dev; the
+- The OCSF binding (Application Lifecycle 6002 + `ai_operation` profile) is the run agent's choice on `main` 1.10.0-dev; the
   #1754 draft class may supersede it.
 - `schema_widened` was only partly exercised: none of the three target tools carried `enum`, `pattern`,
   `maxLength` or `format`, so P3 fired through two branches only (new unconstrained optional string,

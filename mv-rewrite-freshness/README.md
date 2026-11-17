@@ -97,3 +97,37 @@ essay's MV-layer section.
 
 Single host (Beelink 5800H, WSL2 48 GB/14t), Tier B. What travels is ordering and
 shape; absolute coordinates ride with the caveat every time they appear.
+
+---
+
+## Layout and audit notes (added 2026-11-17)
+
+Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+
+### Result, and whether it is measured
+
+The pre-registered comparison did not run. Dremio Reflections over the open Nessie and Iceberg path never reached a usable state on either read path tried (`DREMIO-ARM-FINDING-2026-06-15.md`), so predictions P1 to P5 above were never scored. What did run is one StarRocks asynchronous materialized view on a moving table: 2.0× faster than the base scan (12.0 ms against 24.2 ms, median of 7 with no CV recorded) and caught up 12.4 s after a 300,000-row append, with a 60 s refresh, the pre-registration's conditional 1-minute step, run without the 5-minute runs it was conditioned on (`results/starrocks_freshness.json`). The StarRocks half read the view by name (`SELECT ... FROM mv_live`, `starrocks_freshness.py:71`) and recorded no EXPLAIN, so it measures a direct MV read against a base aggregate and does not test transparent rewrite, nor confirm the base query was not itself rewritten onto the view. That is one view and one append, a characterization rather than a scored result.
+
+### What would have made it fail
+
+Nothing in what ran. The scored comparison, with its per-query EXPLAIN check and matched refresh budget, did not run, so none of P1 to P5 could fail; the StarRocks half had no pre-registered threshold to miss.
+
+### Pre-registration
+
+The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+
+### Results
+
+Entry point `RESULTS-2026-06-15.md`, with a dated note at the top; `DREMIO-ARM-FINDING-2026-06-15.md`; data `results/starrocks_freshness.json`. Scripts: `starrocks_freshness.py`, `dremio_reflection_probe.py`.
+
+### Versions and pins
+
+Dremio OSS 26.0 and StarRocks 4.1 on the ejs stack; the StarRocks patch version is not recorded.
+
+### Evidence tier and limits
+
+Tier B, one host, one view, one append.
+
+### Corrections
+
+- 2026-11-17: dated note added to `RESULTS-2026-06-15.md` stating that P1 to P5 were never scored and that the StarRocks half did not test transparent rewrite.

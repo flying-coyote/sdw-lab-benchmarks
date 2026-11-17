@@ -1,0 +1,14 @@
+name: ocsf-nested-type-fidelity
+cluster: formats-and-lakehouse
+title: Do engines return the same answer to nested OCSF struct and list predicates
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-nested-type-fidelity/run.py
+pins: requirements.txt
+essay: /writing/migration/same-detection-different-answer
+superseded_by: none
+audited: 2026-11-17

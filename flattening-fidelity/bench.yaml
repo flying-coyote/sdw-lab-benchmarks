@@ -1,0 +1,14 @@
+name: flattening-fidelity
+cluster: detection
+title: Which detections silently break when semi-structured logs are flattened or rolled up
+status: published
+tier: B
+claim_kind: demonstration
+verdict: DEMONSTRATION
+prereg: none
+results: results/RESULTS.md
+reproduce: python flattening-fidelity/run.py
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/ocsf/flattening-anti-pattern
+superseded_by: none
+audited: 2026-11-17

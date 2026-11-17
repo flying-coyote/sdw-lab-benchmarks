@@ -1,5 +1,7 @@
 # Z-order pruning — does multi-dimensional clustering of OCSF data improve selective queries?
 
+## What it measures
+
 A SOC analyst running `src_ip IN /24 AND time IN 1h` over a 20M-event lakehouse table
 should see most row groups pruned by statistics: those events sit in a well-defined
 region of the src_ip × time plane, so row groups that don't overlap that region can
@@ -69,7 +71,33 @@ DuckDB's Parquet reader actually skips row groups (not just whether the statisti
 it) and whether the skipped I/O dominates over other query costs at this scale.  A delta
 below the CV is not a real difference — state that.
 
-## Run it
+## Result (Tier B, 2,000,000 rows, 50,000-row groups, DuckDB 1.5.3, pyarrow 23.0.1)
+
+The expectation above was half right. On the two queries whose predicates include the single sort's key,
+single-sort pruned more than z-order (Q1 95.0% against 72.5% of row groups, Q2 97.5% against 65.0%), and
+on the two that do not, z-order was the only layout that pruned anything (Q3 15.0%, Q4 65.0%, against 0%
+for single-sort and unordered); z-order did not trail on the time-only Q4, it led
+([results/RESULTS.md](results/RESULTS.md)). Latency followed the pruning where the gap cleared the CV:
+single-sort beat z-order on Q1 and Q2 (3.7 against 4.8 ms, 2.7 against 5.8 ms), z-order's Q4 gain over
+unordered was claimable (5.9 against 11.1 ms) and its Q3 gain was not (the unordered baseline's CV was
+30.8%). Z-order cost 5.6× the single sort's write time (11,564 against 2,059 ms). So z-order buys
+pruning coverage across dimensions a single sort abandons and pays for it in depth on the sort's own
+column and in write time. Pruning counts are measured from footer statistics and are deterministic, and the
+row-group sensitivity leg reproduced them exactly; latencies are medians of 7 warm trials.
+
+## What would have made it fail
+
+The pruning comparison could have come out any way, and its expected direction on Q1 and Q2 did fail. The
+unordered layout is the baseline that prunes nothing, and answers are checked identical across the three
+layouts. The "real delta" column applies the methodology's CV rule to every latency claim.
+
+## Pre-registration
+
+None. No pre-registration file exists in this folder, and the expected-finding section is not dated
+separately from the results (both first appear in the same commit, 9eee851 on 2026-06-08), so it cannot be
+shown to predate the run and is not a frozen design.
+
+## Reproduce
 
 ```bash
 # activate the shared venv
@@ -90,7 +118,7 @@ Box must be IDLE (no concurrent DuckDB workloads) before running — see
 Use the High-Performance Windows power plan.  See `READINESS.md` for the exact
 pre-run checklist and expected runtime.
 
-## Caveats
+## Evidence tier and limits
 
 - Row-group size governs pruning granularity (stated in every result as `row_group_size`).
   The 50,000-row groups here are tighter than DuckDB's default 122,880; pruning is more
@@ -102,6 +130,34 @@ pre-run checklist and expected runtime.
 - Tier B, single machine (Beelink WSL2, High-Performance power plan).  Latency magnitudes
   are this host's; pruning ratios and the relative ordering of layouts transfer.
 - Answer equality is verified across all three layouts before results are written.
+
+## Results
+
+- [results/RESULTS.md](results/RESULTS.md) and `results/results.json` (2026-06-08), the within-file run,
+  rewritten by `run.py`.
+- [RESULTS-rowgroup-sensitivity-2026-06-15.md](RESULTS-rowgroup-sensitivity-2026-06-15.md), pruning at
+  122,880-row groups (z-order still the only layout pruning Q3 and Q4, at 11.8% and 47.1%).
+- [RESULTS-multifile-bloom-2026-06-15.md](RESULTS-multifile-bloom-2026-06-15.md) and
+  `results/multifile_bloom.json`, the eight-file and Bloom-filter legs (simulated cross-file pruning,
+  not a catalog scan).
+- [READINESS.md](READINESS.md), the pre-run checklist.
+
+## Versions and pins
+
+No requirements file; the commands above use a shared venv. `results/results.json` records DuckDB 1.5.3
+and pyarrow 23.0.1; the two 2026-06-15 legs record pyarrow 24.0.0. The root `requirements.txt` pins DuckDB
+1.5.3 and pyarrow 23.0.1.
+
+## Corrections
+
+- *(corrected 2026-11-17: the "Interpretation" paragraph in `results/RESULTS.md` says z-order's pruning
+  win is clearest on Q1, Q2 and Q3 and that z-order can lose on the time-only Q4; the table in the same
+  file shows the opposite on Q1, Q2 and Q4 (single-sort prunes more on Q1 and Q2, z-order alone prunes
+  Q4). That paragraph is template prose in `run.py`, which rewrites the file, so the Result section above
+  is the reading to use. The write-cost table in the same file lists the z-order key as the sort key of
+  the unordered layout, a rendering slip; the unordered file is in generator order.)*
+- *(2026-11-17: Result, failure condition, pre-registration, results and versions sections added; no
+  number changed.)*
 
 ## Hypothesis mapping
 

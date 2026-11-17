@@ -19,6 +19,9 @@ documented default (the published `+0.72` point) sits mid-ladder so it's locatab
 | heavy | 900s / 24 / 6 | +0.829 | +0.000 | +0.829 | False |
 | very_heavy | 3600s / 12 / 12 | +0.829 | +0.000 | +0.829 | False |
 
+*(corrected 2026-11-17: routine Δ is 0.000 at every setting by construction, since R1 to R6 read no
+coarsened field; "clean" here is not evidence that Store N is realistic.)*
+
 ## Reading
 
 The shape is flat-then-step, not smoothly rising, and that is the interesting part. The headline
@@ -31,7 +34,7 @@ careful pipeline that still flattens to a single store loses it, so tightening t
 the truncation cap a little doesn't buy it back. The step at the heavy end is the timing-tolerant
 queries (cross-source ordering and dwell) finally degrading once the rollup window grows large
 enough to perturb event order, which is exactly the evidence that survives light coarsening and
-fails heavy. The load-bearing check is that the routine set stays clean throughout — if a lazier
+fails heavy. The check this file relies on is that the routine set stays clean throughout — if a lazier
 store had degraded the routine queries too, that rung would be contaminated (`void`), and none are.
 Tier B, one synthetic chain; the magnitudes are testbed-specific, and the flat-then-step shape plus
 the clean control are the transferable findings.

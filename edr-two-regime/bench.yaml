@@ -1,0 +1,14 @@
+name: edr-two-regime
+cluster: detection
+title: Does the columnar-vs-index two-regime split hold on EDR/Sysmon data
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: RESULTS-2026-06-15.md
+reproduce: python edr-two-regime/edr_two_regime.py && python edr-two-regime/edr_heavy_scan_agg.py
+pins: root requirements.txt
+essay: none
+superseded_by: none
+audited: 2026-11-17

@@ -1,0 +1,14 @@
+name: ai-artifact-sbom
+cluster: ai-security
+title: Can SBOM and scanner tooling see model weights, MCP servers and agent extensions
+status: published
+tier: unstated in RESULTS
+claim_kind: measured
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: bash ai-artifact-sbom/build_fixtures.sh then run_scans.py then score.py (fixtures and tools not committed)
+pins: requirements.txt
+essay: /writing/ai/the-model-you-hold
+superseded_by: none
+audited: 2026-11-17

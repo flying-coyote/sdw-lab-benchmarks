@@ -1,0 +1,14 @@
+name: ocsf-nl2sql-silenterror
+cluster: mapping-and-models
+title: Where on the difficulty curve local-model NL2SQL returns a silent wrong answer
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-nl2sql-silenterror/run.py --models phi3:latest gemma4:26b
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/ai/reinvented-kimball
+superseded_by: none
+audited: 2026-11-17

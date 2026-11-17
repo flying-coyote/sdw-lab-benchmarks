@@ -9,14 +9,16 @@ tags: [methodology, benchmarking, config-parity, coefficient-of-variation, parqu
 
 A cross-cutting standard for every benchmark in this repo. It exists because of a concrete miss: the
 BENCH-E large-scan arm compared Apache Iceberg against DuckLake and found DuckLake read faster while
-using more storage — until a diagnostic (`ocsf-read-scan/config_probe.py`) showed the two write paths
+using more storage, until a diagnostic (`ocsf-read-scan/config_probe.py`) showed the two write paths
 used **different Parquet codecs and row-group sizes by default** (Iceberg via pyiceberg = ZSTD, 1M-row
-groups; DuckLake via DuckDB = Snappy, 122,880-row groups). The "format comparison" was confounded by
+groups; DuckLake via DuckDB = Snappy, 122,880-row groups), so the "format comparison" was confounded by
 compression and layout. This document is the rule set that prevents that class of error, drawn from the
-benchmarks that take methodology seriously — ClickBench, db-benchmarks.com, and benchANT — and scoped
-honestly to what a single WSL2 host can and cannot enforce.
+benchmarks that take methodology seriously (ClickBench, db-benchmarks.com and benchANT) and scoped
+honestly to what a single WSL2 host can and cannot enforce. A second miss, in November 2026, added the
+rule that comes before all the others, that a published result has to be capable of failing (§11), and
+the pre-registration protocol that goes with it (§12).
 
-## Decision — the standard we commit to
+## Decision: the standard we commit to
 
 One standard, stuck to: the **db-benchmarks rigor principles** (configuration parity, cold/hot,
 coefficient of variation, isolation) as the north star, with **ClickBench's reporting model** (cold +
@@ -32,6 +34,9 @@ no thermal drift. So the CPU-frequency variance that would otherwise justify a n
 resolved by a Windows-side power-plan setting; **we run benches on High Performance and do not need to
 leave WSL2.** Re-run `env_characterize.py` if the host or plan changes; if a future workload shows CV
 above its claimed delta there, escalate (native Linux boot, or a cloud fixed-frequency instance).
+*(Noted 2026-11-17: `env_characterize.py` prints its CV table and does not write a results file, and no
+file in the tree records the run behind the 5.8% → 0.8% and 19.8% → 2.7% figures, so those numbers
+cannot be re-derived from the repo; a re-run that saves its output would close that.)*
 
 ## Confidentiality: what never lands in this repo
 
@@ -115,7 +120,7 @@ host before that date:
 
 The in-container picture did not match the host one exactly: the v3 run logged the container wall clock
 stepping backwards about 2.6 s every 27 to 30 s, with a larger gap between monotonic and wall time than
-the host's 4%. I have not reconciled the two, and the likeliest reading is that more than one time
+the host's 4%. The two have not been reconciled, and the likeliest reading is that more than one time
 correction was acting on the shared kernel. After chrony, a 40 s check inside a container showed
 `/proc/uptime` and `date` advancing together (40 s each, at one-second resolution), and the host matched
 Windows to within a millisecond over 40 s, so treat the pre-2026-11-07 numbers as carrying a clock error
@@ -136,6 +141,15 @@ once it leaves the run, and a stamp is the only way a reader can tell a pre-chro
 one (owner ruling 2026-11-08, from grill bank 3B Q4). Back-stamping applies to the existing latency-bearing
 RESULTS files, with `ocsf-read-scan/` and the other pre-chrony timings done in the same pass; until a file
 is stamped, treat its absolute durations under §7a.
+
+*(Counted 2026-11-17: back-stamping has not happened yet. Of the 127 `RESULTS*.md` files outside the
+frozen `ontology-vs-schema-gate/` and the five copies kept under `verification/` or `verify/` subfolders,
+58 report at least one absolute duration or rate with a unit (ms, seconds, minutes, rows/s and the like),
+13 of those carry a rig stamp or record both the clock state and the power plan, and 45 carry neither.
+The count is a pattern match over the files, so it can miss a duration written without a unit and can
+count a file whose only duration is incidental. The 45 files and the exact pattern are listed in
+[`docs/AUDIT-2026-11-17-open-items.md`](docs/AUDIT-2026-11-17-open-items.md), and the per-bench audit adds
+the stamp where the run record allows it.)*
 
 ### 8. What remains genuinely ACKNOWLEDGED, not faked
 - **Non-invasive measurement** (benchANT: don't run the harness on the system under test). DuckDB is an
@@ -207,6 +221,52 @@ failure modes follow from that which CV over latency does not catch.
 Every quote above was re-checked on 2026-11-07 against the talk transcripts and decks, which are held
 locally rather than in this repo.
 
+### 11. A result must be able to fail (adopted 2026-11-17)
+Before any headline number is published, ask what outcome would have counted as failure and whether the
+harness could have produced it. The rule exists because of a published result that could not fail. The
+OCSF-to-D3FEND gate reported catching 231 of 231 injected mapping errors, and reading the code for the
+pre-registration of `ontology-vs-schema-gate/` (its `PREREGISTRATION.md`, section 2, item 3) showed that
+each corrupted class was asserted as a subclass of two artifacts the same file had declared disjoint, so
+the reasoner was bound to flag every one of them whatever the mapping had been; the figure confirmed that
+the reasoner ran and said nothing about its power to catch a real mistake, and the same section records
+that the corpus run never loaded D3FEND itself. Every headline number now answers five questions, and the
+bench README carries the answers.
+
+1. **What outcome would have counted as failure, and can the harness produce it?** If the scored quantity
+   is fixed by how the inputs were generated (a rule matching a value the generator planted, an error
+   asserted into classes the same file declares disjoint, a router scored against the table its rules were
+   written from), the result is a demonstration of a mechanism and is labelled as one, never as a rate.
+2. **Is there a baseline or negative control**, and is it one a competent practitioner would accept rather
+   than a strawman?
+3. **Are injected or planted positives the only positives?** If so, the result is reported as "N of N
+   injected cases flagged", and the words recall, catch rate and detects are not used without that
+   qualifier. A rate on natural positives (real errors in a real corpus, real attacks in public telemetry)
+   is reported separately and never pooled with the injected count.
+4. **Do the README, the RESULTS file and the results JSON agree**, with each other and with any later
+   re-score or post-hoc file in the folder?
+5. **Are the versions pinned, and are the pins the ones the result ran on?**
+
+The answer goes into the bench's `bench.yaml` as `claim_kind` (`measured`, `demonstration` or `mixed`),
+which the top-level index shows beside the status. A demonstration is still worth publishing, since an
+end-to-end mechanism that runs is useful evidence, as long as nobody reading it can mistake it for a rate.
+
+### 12. Pre-registration protocol (adopted 2026-11-17, from the November benches)
+A bench that tests a hypothesis with a threshold freezes its design before the first scored run, and the
+November benches settled on a protocol that this principle makes the default:
+- **Hash file.** A `.sha256` file beside the design lists the sha256 of the pre-registration and of every
+  input, rule or harness file whose content the verdict depends on, in `hash, two spaces, path` form, with
+  paths relative to the bench folder so a reader can verify it from a fresh clone.
+- **Frozen-at stamp.** The design records when it was frozen (a `frozen-at` line or a `prereg.frozen-at`
+  file), and a `clock-pre-run.txt` or equivalent records the start of the first scored run, so the order
+  is checkable from the files as well as from version-control history.
+- **Who froze it.** The design names who froze it, and says so plainly when it was frozen by an agent and
+  not reviewed by the owner, because that affects how much weight the pre-registration carries.
+- **Amendments below the hashed body.** A later change is appended under a dated heading below the
+  original text, never edited into it, so the hash of the original body still verifies; RESULTS declares
+  every deviation from the frozen design and checks each verdict against the frozen threshold.
+- **Never after the fact.** A bench without a pre-registration says "Pre-registration: none" in its README,
+  and no design is written or back-dated after the run it would govern.
+
 ## Reporting checklist (every comparative bench)
 - [ ] Per query: cold (if privileged) and hot-min, plus **median + CV over ≥3 trials**.
 - [ ] On-disk size, file count, row-group count, **and the footer-verified codec/row-group** per arm.
@@ -214,6 +274,8 @@ locally rather than in this repo.
 - [ ] Guest clock checked before the run (`chronyc tracking`, small `System time` offset; §7a).
 - [ ] Rig stamp at the top of any RESULTS file that reports an absolute duration (§7b).
 - [ ] Nothing from the three never-commit classes (client names, NDA-sourced numbers, private catalog-benchmark content).
+- [ ] The headline passes the five questions of §11, and `claim_kind` in `bench.yaml` says whether it is measured or a demonstration.
+- [ ] If the bench has a pre-registration, its hash verifies, its freeze precedes the first scored run on in-file evidence, and every deviation is declared (§12).
 - [ ] Relative ratios within a single hardware+tuning class (cross-class comparison is invalid).
 - [ ] Tier label, single-machine caveat, and the explicit list of what was held constant vs varied.
 - [ ] Logical answer-equality across arms.

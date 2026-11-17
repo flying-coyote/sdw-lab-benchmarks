@@ -1,0 +1,14 @@
+name: engine-join-specialization
+cluster: catalogs-engines-cost
+title: Multi-table joins on shared Iceberg across StarRocks, ClickHouse and Trino
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: README.md
+results: results/RESULTS.md
+reproduce: see README Run order (docker compose, then run_bench.py one engine at a time)
+pins: compose.yml (Trino 481 and Dremio 26.0 pinned; StarRocks, ClickHouse, Nessie and MinIO on latest tags)
+essay: https://securitydataworks.com/writing/engines/single-front-engine
+superseded_by: none
+audited: 2026-11-17

@@ -23,7 +23,7 @@ status: post-hoc, not pre-registered, not independently verified
 
 **Versions.** These are the resolved versions recorded in every pass file: DuckDB 1.5.3, pyarrow 23.0.1 and Python 3.12.3, the same as R2. They ran from a fresh venv, because R2's `.venv` is no longer on disk. The host was the Beelink (Ryzen 7 5800H, WSL2), with DuckDB's default thread count.
 
-**Corpus identity with R2.** I checked this two ways:
+**Corpus identity with R2.** This was checked two ways:
 
 - The regenerated layouts match R2's 1M sizes: L1 27,439,196 bytes, L2 58,221,187 and L3 30,860,739, which round to the 27.4, 58.2 and 30.9 MB in `RESULTS.md:124`.
 - The answers reproduce R2's formal answers on every query: 75; 566; agent-0000 and agent-0001 at 18; 5571; 138987 (`VERIFICATION.md:39`).
@@ -62,7 +62,7 @@ The floor is the fastest L3b trial over the slowest L1 trial; below 1 means the 
 - **Example 1 reproduces R2.** The L3/L1 ratios (5.4x to 23.1x) and L2/L1 ratios (6.9x to 39.7x) are inside or just past the three-pass ranges in `RESULTS.md` and `VERIFICATION.md`. L2 is again the slowest layout on every query.
 - **Example 2 erases most of the gap.** It types every column that Q1, Q3, Q4 and Q5 filter or group on, and on Q1, Q3 and Q5 it runs level with typed OCSF (1.00x to 1.09x, floors below 1).
 - **Q2 still pays.** It filters on the typed tool name, but it still parses the `unmapped` document for the `run_query` rows, so example 2 is 3.0x slower than L1 there, and the floor (1.44x) separates the two.
-- **Q4 is unexplained.** Example 2 ran 3.8x slower than L1 on Q4 in all four passes (19 to 22 ms against 5 to 6 ms). Both group typed `actor.session.uid` under a typed `status_id` filter, and the floor (0.16) does not separate them. I have not found the cause, and I would not quote Q4 for example 2 as anything stronger than "slower in this run".
+- **Q4 is unexplained.** Example 2 ran 3.8x slower than L1 on Q4 in all four passes (19 to 22 ms against 5 to 6 ms). Both group typed `actor.session.uid` under a typed `status_id` filter, and the floor (0.16) does not separate them. The cause has not been found, and Q4 should not be quoted for example 2 as anything stronger than "slower in this run".
 - **What this changes.** R2's query-time result is a property of AOS example 1. It is not a property of the AOS record that R2 counts (22 of 33 unmapped) and validates. Under example 2, the agent-context facts in `unmapped` (model, arguments, results, step) cost query time only when a hunt reaches into them.
 
 ## Limits

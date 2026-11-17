@@ -1,0 +1,14 @@
+name: bench-a-context-collapse
+cluster: detection
+title: Does coarse OCSF normalization degrade adversary queries more than routine ones (synthetic)
+status: first-pass
+tier: B
+claim_kind: mixed
+verdict: DEMONSTRATION
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-semantic-testbed/generate.py && cd bench-a-context-collapse && python run.py
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/ocsf/flattening-anti-pattern
+superseded_by: none
+audited: 2026-11-17

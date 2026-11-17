@@ -1,0 +1,14 @@
+name: deterministic-routing-sim
+cluster: catalogs-engines-cost
+title: June routing-rule simulation scored against the winners table it encodes
+status: superseded
+tier: B- / simulation
+claim_kind: demonstration
+verdict: DEMONSTRATION
+prereg: none
+results: RESULTS-2026-06-15.md
+reproduce: python3 deterministic-routing-sim/route_sim.py
+pins: none (sqlglot 30.11.0 recorded, not pinned)
+essay: https://securitydataworks.com/writing/engines/deterministic-query-routing
+superseded_by: deterministic-routing-noncircular
+audited: 2026-11-17

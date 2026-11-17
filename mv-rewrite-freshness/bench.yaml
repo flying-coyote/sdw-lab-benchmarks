@@ -1,0 +1,14 @@
+name: mv-rewrite-freshness
+cluster: catalogs-engines-cost
+title: Materialized-view rewrite at matched freshness, Dremio Reflections against StarRocks
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: README.md
+results: RESULTS-2026-06-15.md
+reproduce: python mv-rewrite-freshness/starrocks_freshness.py (ejs stack)
+pins: none (ejs stack images; StarRocks patch version not recorded)
+essay: none
+superseded_by: none
+audited: 2026-11-17

@@ -1,0 +1,14 @@
+name: ocsf-airgap-agent
+cluster: mapping-and-models
+title: An air-gapped agentic hunt with a local model over APT29 telemetry (not OCSF)
+status: first-pass
+tier: B mechanics, D capability
+claim_kind: demonstration
+verdict: DEMONSTRATION
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-airgap-agent/run.py
+pins: root requirements.txt
+essay: https://securitydataworks.com/writing/ai/frontier-refuses-forensics
+superseded_by: none
+audited: 2026-11-17

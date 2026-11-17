@@ -1,0 +1,14 @@
+name: ocsf-iceberg-metadata
+cluster: formats-and-lakehouse
+title: How scan planning grows with small Iceberg appends and what compaction recovers
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-iceberg-metadata/run.py
+pins: requirements.txt
+essay: none
+superseded_by: none
+audited: 2026-11-17

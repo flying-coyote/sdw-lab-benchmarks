@@ -58,7 +58,7 @@ hide most of what happened.
 
 ## Mechanism notes (checked on this host, not pre-registered)
 
-Two tokenizer behaviours explain part of the pattern, and I checked both directly against the pinned checkpoints.
+Two tokenizer behaviours explain part of the pattern, and both were checked directly against the pinned checkpoints.
 The `bert-base-uncased` WordPiece tokenizer in `jackhhao-jb` drops U+200B entirely, so a T7 string tokenizes
 identically to the original (10 tokens either way for the probe sentence in `transforms.py`), which is why its T7
 rows equal its T0 rows. The DeBERTa SentencePiece tokenizer instead maps each zero-width character to `[UNK]`
@@ -84,10 +84,10 @@ public sets pinned in `fixtures/MANIFEST.json` (seed 20261109). Wilson 95% inter
 | stability | A1, B1, B2 | T0, T1, three repeats | 455 items, 2,730 verdicts |
 
 Resume, not restart: the previous agent's chain (`run_all.sh` for the three models, launched under `nohup` at
-01:29Z) survived that agent's exit and was still running `deepset` when I picked the bench up at 02:59Z, so I let
-it run to completion and changed nothing in it. The protectai-v2 T0 pass comes from the stopped run 2
+01:29Z) survived that agent's exit and was still running `deepset` when the finishing agent picked the bench up at 02:59Z, so it was left to
+run to completion with nothing in it changed. The protectai-v2 T0 pass comes from the stopped run 2
 (`results/scores-protectai-v2-t0.jsonl`); every other model and cell came from the chain. After the chain
-finished at 04:02:56Z I ran `analyze.py` and then `verdicts.py`, both logged.
+finished at 04:02:56Z, `analyze.py` and then `verdicts.py` were run, both logged.
 
 Time and cost line: the stop rule measures the remaining two models against 120 minutes after the first model
 completes; `protectai-v2`'s chain finished at 02:23:49Z and `jackhhao-jb`'s at 04:02:56Z, so the remaining two took

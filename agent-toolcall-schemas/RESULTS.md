@@ -15,7 +15,7 @@ frozen 2026-11-09T22:58:56Z, frozen by agent before run; not owner-reviewed.
 DuckDB 1.5.3 (default threads = 14), pyarrow 23.0.1, Python 3.12.3, MCP Python SDK 2.3.0. Clock: chrony; `chronyc
 tracking` read 0.32 s slow at the start of the formal timing run (above the methodology's milliseconds target,
 probably still slewing) and 0.00003 s at the end. Every duration is from `time.perf_counter` (monotonic), so the
-offset does not enter the latencies, but I note it rather than hide it. **Isolation was violated**: other lab
+offset does not enter the latencies, but it is noted rather than hidden. **Isolation was violated**: other lab
 agents were running benches on the same host during the formal run (1-minute load average 25 at one check
 afterwards), so absolute times are inflated and noisy; the within-pass ratios are the claim. See Deviations.
 
@@ -99,7 +99,7 @@ branch record. The point worth keeping is that schema-valid and queryable are di
   above the "at least half" threshold.
 - **H2 supported.** On the six protocol-level facts (method, request id, protocol version, session, tool name,
   error indicator) OTel and OCSF main both type 6 of 6, and OTel has no typed attribute for the annotations or for a
-  schema fingerprint. OCSF main's `api.version` for the MCP protocol version is my judgment call; without it OCSF
+  schema fingerprint. OCSF main's `api.version` for the MCP protocol version is the run agent's judgment call; without it OCSF
   main types 5 of 6.
 - **H3 supported.** No schema types individual argument values: OCSF main and #1754 carry arguments and results as
   `json_t`, OTel as opt-in `any`, AOS in `unmapped`.
@@ -134,7 +134,7 @@ does not flip with scale.
 
 - **H4 supported** on the pooled medians: L3/L1 is 8.4x, 5.4x, 4.7x and 22.5x on Q1, Q3, Q4, Q5, every one above the
   3x prediction and each delta far outside the pooled CV. The prediction that the OTel map would sit between typed and
-  unmapped **failed**: L2 was the slowest layout on every query, 10.6x to 32.4x L1. My best explanation, which this run
+  unmapped **failed**: L2 was the slowest layout on every query, 10.6x to 32.4x L1. The run agent's best explanation, which this run
   did not test (the exploratory no-payload rewrite below was inconclusive), is that a lookup on a Parquet
   `MAP(VARCHAR, VARCHAR)` has to read the map's whole value column, which in L2 includes the opt-in argument and
   result payloads (23.9 MB of the 58.2 MB file), so every hunt probably pays to read the payloads even when it only
@@ -169,7 +169,7 @@ All three conclusions from the formal run hold here:
 
 The Q3 and Q4 ratios move a lot between the two runs (5.4x to 14.7x, 4.7x to 16.1x). That movement comes almost
 entirely from L1's millisecond-scale medians (24.5 to 8.2 ms on Q3), which are the numbers most exposed to
-contention. So I would quote these ratios as "roughly 5x to 16x" and not as a point estimate. The Q1 and Q5 ratios
+contention. So these ratios are better quoted as "roughly 5x to 16x" and not as a point estimate. The Q1 and Q5 ratios
 barely moved (8.4x/8.5x and 22.5x/21.6x). Raw data: `results/timing_rerun_n1000000_pass*.json`,
 `results/timing_rerun_summary.json`, `results/rerun_log.txt`.
 
@@ -178,7 +178,7 @@ barely moved (8.4x/8.5x and 22.5x/21.6x). Raw data: `results/timing_rerun_n10000
 `explore_l2_nopayload.py` rewrote L2 without the opt-in argument/result keys (the OTel default, since both are
 `opt_in`) to test whether payloads explain the map cost. It ran while the host load average was about 25, and its
 results (Q1 255 ms, Q3 747 ms, Q4 732 ms, Q5 775 ms, CV up to 48%) are slower than the formal L2 numbers, which is
-implausible on mechanics alone and most likely contention. I do not draw a conclusion from it; the file
+implausible on mechanics alone and most likely contention. No conclusion is drawn from it; the file
 (47.4 MB versus 58.2 MB) and the script stay in the directory, and the question stays open.
 
 ## Deviations from the pre-registration
@@ -187,11 +187,11 @@ implausible on mechanics alone and most likely contention. I do not draw a concl
    deleted and the formal run started from scratch with the same code.
 2. **Isolation.** Methodology §5 requires nothing heavy running during a timing pass. Sibling lab agents were running
    their own benches throughout (seen afterwards: load average 25, several `rerun_measure.py`, `run_planted.py`,
-   `grype` and `astro check` processes). I added load-average logging to `run_queries.py` and reran the 1M passes once
+   `grype` and `astro check` processes). Load-average logging was added to `run_queries.py` and the 1M passes were rerun once
    the 1-minute load fell below 4 (or after a ~9-minute wait), recorded above. The formal-run numbers stay as the
    pre-registered result.
 3. **HASHED class added.** The rubric did not anticipate OCSF carrying a fingerprint of a fact instead of the fact,
-   so I split it out from TYPED rather than count a hash as keeping the description.
+   so it is split out from TYPED rather than counting a hash as keeping the description.
 4. **AOS example 1 column added** as a sensitivity, because the AOS page's two examples disagree. The primary column
    follows example 2 as pre-registered; the L3 query layout follows example 1, also as pre-registered (tool name and
    session in `unmapped`).

@@ -1,0 +1,14 @@
+name: t5-model-artifact-scanning
+cluster: ai-security
+title: What modelscan, picklescan and fickling catch, miss and lose under rename or repack
+status: published
+tier: unstated in RESULTS
+claim_kind: measured
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: bash t5-model-artifact-scanning/build_variants.sh then run_scans.py then score.py (fixtures not committed)
+pins: requirements.txt; requirements.lock.txt; requirements.posthoc-numpy.lock.txt
+essay: /writing/ai/the-model-you-hold
+superseded_by: none
+audited: 2026-11-17

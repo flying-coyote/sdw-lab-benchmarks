@@ -1,0 +1,14 @@
+name: ocsf-context-collapse-apt29
+cluster: detection
+title: Context collapse with unmodified SigmaHQ rules on real APT29 telemetry
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: see README Reproduce (fetch OTRF APT29 day 1 and SigmaHQ, then prepare_corpus.py and run.py)
+pins: requirements.txt
+essay: https://securitydataworks.com/writing/ocsf/flattening-anti-pattern
+superseded_by: none
+audited: 2026-11-17

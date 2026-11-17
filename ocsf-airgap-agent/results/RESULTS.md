@@ -29,6 +29,8 @@ mirrored SigmaHQ rules on disk). H-PRACTITIONER-OWNED-AGENTIC-01.
 - External egress: **none — model weights local (Ollama), OCSF store local Parquet, Sigma ruleset a local clone; no component reaches the internet**.
 - the DuckDB tool is in-process here; an stdio MCP server exposes the identical tool over stdio (no socket), which is offline by construction — the air-gap property is the transport, demonstrated by the loopback-only ledger.
 
+*(corrected 2026-11-17: this ledger is a fixed statement that `run.py:161-168` writes on every run, not a record of observed traffic, so it could not have shown egress. Offline operation holds by design, since the only network call in `run.py` is to the local Ollama endpoint at `run.py:36` and the corpus and rules are local paths, but it was not measured, and "demonstrated, not asserted" in the Reading below overstates it. A no-route network namespace or a packet capture during the run would be the measurement. Because `run.py` regenerates this file, the bench README carries the same correction.)*
+
 ## Reading
 
 The buildability and air-gap mechanics are demonstrated, not asserted: the whole loop — weights, agent,

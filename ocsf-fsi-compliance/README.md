@@ -1,10 +1,31 @@
 # BENCH-F — FSI compliance-report (scaffold)
 
+## What it measures
+
 Does producing a SEC Reg SCI §1003(b) annual-review evidence package cost fewer human-hours
 on an Iceberg + catalog + time-travel lakehouse than on a schema-on-read SIEM + document
 store + manual export? The headline metric is **human-hours per review cycle**, which a
 machine can't measure — so this is a *scaffold*, not a completed benchmark. It builds
 everything around the human-hours measurement and leaves that to the operator.
+
+## Result
+
+No scored result. The human-hours headline is unmeasured (`results/results-template.json` holds `null`
+placeholders and the verdict `PENDING`). The automated timing in `results/results-automated-timing.json`
+is measured but weak as a comparison: the SIEM stand-in is a raw-JSONL scan rather than a SIEM with its
+native reporting, so the lakehouse arm's lead there (for example 0.0338 s against 0.3595 s on the
+lineage section) is mostly Parquet and SQL against a file scan, which the README already labels a proxy.
+
+## What would have made it fail
+
+The frozen decision rule in [REPORT-SPEC.md](REPORT-SPEC.md) (null below a 20% reduction, inconclusive at
+20 to 40% or a uniform gap) could fail the hypothesis once human-hours exist. The automated proxy has
+no failure condition stated, and with a file-scan stand-in it is unlikely to produce one.
+
+## Pre-registration
+
+[REPORT-SPEC.md](REPORT-SPEC.md), titled a frozen pre-registration and dated 2026-06-05, with no hash
+file; whether it was frozen before `timed_run.py` ran rests on the file's own statement.
 
 ## What's here
 
@@ -41,7 +62,7 @@ reproducible proxy, labelled as one, not validation of the ≥40% human-hours cl
 
 ## What's pending (the human-hours part)
 
-The human-hours headline needs both substrates built to comparable finish and the report
+The human-hours headline needs both stacks built to comparable finish and the report
 produced on each by a person under the same stopwatch — that carries the self-timed confound
 the spec is built around, and it is the Tier-A gate. `defensibility.score()` applies the
 decision rule once the per-section human-hours are filled into the template.
@@ -53,7 +74,17 @@ decision rule once the per-section human-hours are filled into the template.
 .venv/bin/python ocsf-fsi-compliance/defensibility.py    # template + lakehouse machine-checks
 ```
 
-## Evidence tier
+## Results
+
+- `results/results-template.json`: the human-hours template, unfilled.
+- `results/results-automated-timing.json`: the automated operator-elapsed proxy.
+
+## Versions and pins
+
+No `requirements.txt`; the scripts import `duckdb` from the root `requirements.txt` (`duckdb==1.5.3`).
+The timing JSON does not record the DuckDB version.
+
+## Evidence tier and limits
 
 Tier B at best, and self-timed synthetic — the weakest evidence in the lab, stated plainly.
 The regulatory text (§1003(b), §1005, 17a-4) is Tier A as a *requirement*; the human-hours
@@ -62,3 +93,8 @@ corpus, which is gated and is a paid engagement, kept distinct from this public 
 scaffold. This measures evidence-production effort, not regulatory sufficiency, and is not a
 migration recommendation (the §1002 evidence-integrity obligation cuts the other way on
 cutover risk).
+
+## Corrections
+
+- *(corrected 2026-11-17: sections added to say plainly that there is no scored result and that the
+  automated proxy's baseline is a file scan.)*

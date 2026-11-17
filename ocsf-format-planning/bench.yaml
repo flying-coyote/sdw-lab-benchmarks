@@ -1,0 +1,14 @@
+name: ocsf-format-planning
+cluster: catalogs-engines-cost
+title: Planning cost as a table fragments, Iceberg manifests against the DuckLake catalog
+status: published
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-format-planning/run.py
+pins: requirements.txt (duckdb only; pyiceberg unpinned)
+essay: https://securitydataworks.com/writing/lakehouse/write-pattern-is-architectural
+superseded_by: none
+audited: 2026-11-17

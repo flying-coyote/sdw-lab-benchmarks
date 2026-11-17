@@ -1,0 +1,14 @@
+name: atlas-ocsf-observables
+cluster: mapping-and-models
+title: Which realized ATLAS techniques reach an OCSF 1.9.0 field, and which planted rules fire
+status: published
+tier: B
+claim_kind: mixed
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: cd atlas-ocsf-observables && python -I join.py && python -I run_planted.py
+pins: atlas-ocsf-observables/requirements.txt
+essay: https://securitydataworks.com/writing/ai/atlas-missing-detection-column
+superseded_by: none
+audited: 2026-11-17

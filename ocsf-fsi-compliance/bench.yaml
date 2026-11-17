@@ -1,0 +1,14 @@
+name: ocsf-fsi-compliance
+cluster: detection
+title: Human-hours to produce a Reg SCI annual-review evidence package, lakehouse vs SIEM
+status: scaffold
+tier: B
+claim_kind: demonstration
+verdict: SCAFFOLD
+prereg: REPORT-SPEC.md
+results: results/results-template.json
+reproduce: python ocsf-fsi-compliance/gen_corpus.py && python ocsf-fsi-compliance/defensibility.py
+pins: root requirements.txt
+essay: none
+superseded_by: none
+audited: 2026-11-17

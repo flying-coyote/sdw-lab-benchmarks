@@ -1,0 +1,14 @@
+name: ocsf-storage-endurance
+cluster: formats-and-lakehouse
+title: Projected drive-writes-per-day for a compressed OCSF store, from measured compression and an assumed compaction pass
+status: first-pass
+tier: B
+claim_kind: mixed
+verdict: DEMONSTRATION
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-storage-endurance/run.py
+pins: requirements.txt
+essay: /writing/economics/endurance-premium-security-data
+superseded_by: none
+audited: 2026-11-17

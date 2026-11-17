@@ -1,0 +1,14 @@
+name: cost-to-serve-retention
+cluster: catalogs-engines-cost
+title: Measured storage bytes and list-price cost at retention, search index against lakehouse tiers
+status: published
+tier: B
+claim_kind: mixed
+verdict: CAVEAT
+prereg: README.md
+results: results/RESULTS.md
+reproduce: python cost-to-serve-retention/measure.py; python cost-to-serve-retention/cost_model.py
+pins: none (no requirements file; footprints reuse zeek-flagship-rerun loads)
+essay: https://securitydataworks.com/writing/economics/cost-to-serve-retention
+superseded_by: none
+audited: 2026-11-17

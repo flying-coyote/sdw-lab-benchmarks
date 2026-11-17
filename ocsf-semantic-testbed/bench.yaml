@@ -1,0 +1,14 @@
+name: ocsf-semantic-testbed
+cluster: detection
+title: Deterministic multi-source corpus with a planted APT29-style chain
+status: foundation
+tier: none
+claim_kind: demonstration
+verdict: CAVEAT
+prereg: none
+results: none
+reproduce: python ocsf-semantic-testbed/generate.py
+pins: root requirements.txt
+essay: none
+superseded_by: none
+audited: 2026-11-17

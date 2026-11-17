@@ -1,0 +1,14 @@
+name: ocsf-temporal-null-coercion
+cluster: formats-and-lakehouse
+title: Do NULL logic, type coercion and session time zones give the same answer across engines
+status: first-pass
+tier: B
+claim_kind: measured
+verdict: CAVEAT
+prereg: none
+results: results/RESULTS.md
+reproduce: python ocsf-temporal-null-coercion/run.py
+pins: requirements.txt
+essay: /writing/migration/same-detection-different-answer
+superseded_by: none
+audited: 2026-11-17

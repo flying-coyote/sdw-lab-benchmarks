@@ -13,7 +13,7 @@ status: written from the completed run; independently verified 2026-11-09 (VERIF
 On the 57 unsafe files in picklescan's `tests/data2` bypass set, modelscan 0.8.8 flagged 3, while fickling
 0.1.12 flagged 55 and picklescan 1.0.5 flagged 56 in single-file mode (circular, its own suite) and 55 in
 directory mode (`results/scores.json:321`, `:302`, `:357`, `:339`). modelscan did not miss those files by
-failing to open them, which is the part I think matters most for a defender: it scanned 48 of the 57 and
+failing to open them, which is probably the part that matters most for a defender: it scanned 48 of the 57 and
 returned clean with no errors, and skipped 6 (`results/scores.json:320`, `:322`). fickling's apparent breadth
 comes at a price, because at the pre-registered threshold it also flagged 11 of 18 benign base files,
 including all six real models in five formats (`results/scores.json:4467` onward; `results/score-stdout.txt:30-38`),
@@ -28,16 +28,16 @@ positives rests mostly on skipping 11 of the 18 benign files.
 
 ## Run status and how this was finished
 
-The task brief said the run stopped at scan 251 of 2,892. That was stale by the time I picked it up: the
+The task brief said the run stopped at scan 251 of 2,892. That was stale by the time the finishing agent picked it up: the
 runlog holds 2,892 rows (241 targets, 4 arms, 3 runs) and `logs/run_scans.log` ends with
 `done: 2892 scans`, so nothing needed resuming and no scan was re-run. The bench agent had exited before
-scoring; the existing `results/scores.json` was produced by the verifier. I re-ran
+scoring; the existing `results/scores.json` was produced by the verifier; the finishing agent re-ran
 `.venv/bin/python -I score.py` with the bench's own venv, and the output is byte-identical to the verifier's
 copy (checked with `cmp`), so the scoring is deterministic and the file now stands as bench output. Its stdout
 is saved as `results/score-stdout.txt`. The pre-registration hash matched `prereg.sha256`
-(`ebf91946...d4bc1b`) before I started and still matches. The labelled post-hoc E1 output in
+(`ebf91946...d4bc1b`) before scoring started and still matches. The labelled post-hoc E1 output in
 `results/posthoc/E1-numpy-2.2.6/` was produced by the verifier after fixing a `tr` range bug in `posthoc.sh`;
-I read it but did not re-run it. Cost: $0, local CPU, inside the pre-registered line.
+the finishing agent read it but did not re-run it. Cost: $0, local CPU, inside the pre-registered line.
 
 ## Method as run
 
@@ -101,15 +101,15 @@ A4-C1, a zip wrapping modelscan's PyTorch zip, was skipped by every arm (`:103`)
 nested zip.
 
 Identity in output: score.py's §6 regex (32-64-char hex, `pkg:`, `cpe:`, sha256 or digest) over every run-1
-raw output found zero hits (`results/scores.json:4743`). I repeated the search over all raw files from all
-three runs, with uppercase hex allowed, and also found zero.
+raw output found zero hits (`results/scores.json:4743`). A repeat of the search over all raw files from all
+three runs, with uppercase hex allowed, also found zero.
 
 Repeatability: 0 verdict flips and 0 harness failures across 3 runs of 964 (arm, target) cells
 (`results/score-stdout.txt:1`, `results/scores.json:4741-4742`).
 
 Timing (secondary, contended): per-run base-set totals fall run over run for every arm, for example modelscan
 90.2, 68.7 and 49.9 s with a 29% CV (`results/scores.json:4777`), which looks like cache warm-up on a loaded
-host, so I do not draw any cross-tool speed comparison from it.
+host, so no cross-tool speed comparison is drawn from it.
 
 ## Hypotheses against their pre-registered falsifiers
 

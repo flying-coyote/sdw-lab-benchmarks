@@ -1,0 +1,14 @@
+name: agent-telemetry-retention
+cluster: ai-security
+title: What a year of agent telemetry costs to keep with and without prompt text
+status: published
+tier: B for measured bytes, B and C for volume inputs, one D assumption
+claim_kind: measured
+verdict: CAVEAT
+prereg: PREREGISTRATION.md
+results: RESULTS.md
+reproduce: see the Commands block in agent-telemetry-retention/RESULTS.md
+pins: requirements.txt
+essay: /writing/ai/what-to-keep-when-the-agent-did-it
+superseded_by: none
+audited: 2026-11-17

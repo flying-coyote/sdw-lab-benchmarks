@@ -1,9 +1,11 @@
 # Cross-tool assurance gap (ocsf-data-health)
 
-A small, reproducible benchmark for one question that the rest of the practice
-rests on: **how much of a security estate's true state can any single tool tell
-you, versus the cross-tool view that merges them by freshness and authority — and
-how much does no tool cover at all?**
+## What it measures
+
+A small, reproducible benchmark for one question the rest of the practice rests on:
+**how much of an organisation's true asset state can any single security tool tell
+you, compared with a cross-tool view that merges the tools by freshness and authority,
+and how much does no tool cover at all?**
 
 It is the first-party measurement behind the four-layer **data-health framework**
 (source → flow → quality → cross-tool gap) — the productised "data quality /
@@ -11,11 +13,11 @@ assurance" deliverable the SDW Capability Matrix scores and the consulting sells
 Until now that framework's fourth layer, the *cross-tool gap*, was a thesis with
 no first-party benchmark. This repository runs the measurement.
 
-## What it measures
+### The corpus and the four measures
 
-A synthetic estate of **20,000 assets × 7 attributes = 140,000 ground-truth
-cells** whose *true* state is planted (known, because we generated it). Four
-source tools each observe the estate through a deterministic flaw model — a
+A synthetic environment of **20,000 assets × 7 attributes = 140,000 ground-truth
+cells** whose *true* state is planted (known, because the generator wrote it). Four
+source tools each observe the environment through a deterministic flaw model — a
 coverage gap, a staleness lag, an authority limit — the way real consoles do.
 Then four exact, set-based measures (no timings, no fuzzy matching):
 
@@ -45,13 +47,33 @@ sits on top of.
 | (3) residual assurance gap (no tool correct) | **24.4%** |
 | (4) lever gain (scored merge − naive authority merge) | **+25.1%** |
 
-The cross-tool merge recovers **75.6%** of the estate's true state against the
+The cross-tool merge recovers **75.6%** of the environment's true state against the
 best single tool's **47.7%** — the thesis claim made measurable: *assurance lives
 in the cross-tool view*. The remaining **24.4%** is the blind spot no tool covers
 correctly, and the freshness/confidence score is what produces the cross-tool
 result (a naive authority merge gets only 50.5%). Full per-attribute numbers in
 [`results/RESULTS.md`](results/RESULTS.md); machine-readable in
 [`results/results.json`](results/results.json).
+
+### Measured or by construction
+
+*(corrected 2026-11-17)* All four headline numbers are functions of the authored flaw model, and two of
+the three orderings the README calls robust follow from how that model assigns confidence. In
+`run.py:267-363` every reading that is wrong is also the lower-confidence reading on its cell: the
+CMDB's stale volatile values carry confidence 0.65 against EDR's always-correct 0.90 to 0.95, the IdP's
+owner reading is always correct, and a stale vulnerability count carries 0.55 against a fresh one's 0.88.
+So the scored merge picks a correct reading whenever any tool has one, and its recovery equals the
+any-tool-correct ceiling exactly: 75.62% recovered plus 24.38% residual is 100% at v1 and at all nine
+EXT-1 grid points (`results/results.json`, `parameter_sweep.points`), which is also why the half-life
+sweep is inert. Measures (2) and (3) are therefore one number, cross-tool recovery is at least the best
+single tool for any merge that reaches the ceiling, and the lever (4) is the ceiling minus the one
+alternative the code implements, a fixed-authority merge that trusts the stale CMDB. No merge in the code
+could have beaten the scored merge, because it already scores the maximum possible, and the sweep
+cannot invert the scored-over-naive ordering because it holds the confidence levels fixed
+(`run.py:149-169`). The numbers measure what the flaw model was set to produce; the test that could fail
+would give a high-confidence source some wrong readings. EXT-2's entity-resolution tax (-10.1%) is
+the one result here that comes from an algorithm doing something the generator did not decide in
+advance.
 
 ## Three extensions — the order's robustness, a harder entity, and the headline's variance
 
@@ -62,14 +84,16 @@ fold into the same build-twice determinism assert; the third (the seed sweep) ru
 beside the v1 path without touching it.
 
 **EXT-1 — parameter sweep (is the ORDER robust, not just the magnitude?)** The v1
-magnitudes are functions of the flaw-model parameters. We sweep the two that move
+magnitudes are functions of the flaw-model parameters. The sweep varies the two that drive
 them — a **staleness-window** multiplier on the CMDB's stale inventory (×0.6 /
 ×1.0 / ×1.4) and a **per-tool coverage** multiplier (×0.8 / ×1.0 / ×1.15) — across
 a 9-point grid and recompute all four measures at every cell. The three orderings
 the thesis rests on hold at **every** grid point: cross-tool > best-single
 (smallest margin +19.4%), residual > 0, scored merge > naive (smallest lever
 +17.0%), with cross-tool ranging 69.4–78.5% and the lever 17.0–28.6% as the
-parameters move. The **freshness half-life** is swept separately (7–90 days) and
+parameters move. *(corrected 2026-11-17: cross > best-single and scored > naive cannot invert in
+this sweep, which holds confidences fixed; see "Measured or by construction". Only residual > 0 is
+free to move.)* The **freshness half-life** is swept separately (7–90 days) and
 turns out **inert on this corpus** — the fresh source is also the higher-confidence
 one, so decay never flips a winner; that null is reported, not hidden.
 
@@ -127,10 +151,23 @@ construction.
 
 What the extensions add and do **not** add: EXT-1 shows the *ordering* is robust
 across a 3×3 staleness×coverage grid (it never inverts), not that the magnitudes
-are universal — they move, on purpose. EXT-2 shows a contested join key degrades
+are universal — they move, on purpose. *(corrected 2026-11-17: cross > best-single and scored >
+naive cannot invert in this sweep, which holds confidences fixed; see "Measured or by construction".
+Only residual > 0 is free to move.)* EXT-2 shows a contested join key degrades
 cross-tool recovery by a measurable amount (−10.1% here) and that entity
 resolution is therefore part of the assurance gap, not that any particular linker
 is optimal or that this is a real organisation's resolution accuracy.
+
+## What would have made it fail
+
+For measures (2) to (4), nothing the code could produce, for the reason above. For measure (1) and the
+residual gap, the values are the coverage and staleness fractions in `FlawParams` (`run.py:149-169`)
+applied to the planted truth. EXT-2 could have come out otherwise, since its linker resolves identities
+from key values without seeing `person_id`, and it under-merged 3,770 people.
+
+## Pre-registration
+
+None. No file in the folder records a design frozen before the run.
 
 ## Reproduce
 
@@ -166,3 +203,25 @@ Advances **H-CROSS-TOOL-ASSURANCE-01**: the four measures (single-tool recovery,
 cross-tool best-context recovery, residual gap, scored-merge lever) are the first-party
 Tier-B evidence for the cross-tool layer of the data-health framework. *(ID recorded
 2026-06-10 per the benchmark-alignment audit.)*
+
+## Results
+
+- [results/RESULTS.md](results/RESULTS.md) and [results/results.json](results/results.json): the entry point, including EXT-1 and EXT-2 (regenerated by `run.py`).
+- [results/seed_sweep.json](results/seed_sweep.json): EXT-3, 12 corpus re-draws.
+
+## Versions and pins
+
+`requirements.txt` pins `duckdb==1.5.3` and `pyarrow==23.0.1`.
+
+## Evidence tier and limits
+
+Tier B, synthetic, single host, as set out under "Honesty boundary" above. The flaw-model magnitudes are
+corpus parameters, two of the three orderings follow from construction under the EXT-1 sweep (see
+"Measured or by construction"), and EXT-2's entity-resolution tax is the result an algorithm produced
+rather than the generator.
+
+## Corrections
+
+- *(corrected 2026-11-17: the scored merge reaches the any-tool-correct ceiling by construction of the
+  confidence levels, so the cross-tool recovery and the lever measure the flaw model rather than the
+  merge; the opening paragraph was reworded.)*

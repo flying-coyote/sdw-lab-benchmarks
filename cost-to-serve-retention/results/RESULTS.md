@@ -7,6 +7,8 @@ tags: [cost-to-serve, retention, storage, aws, iceberg, opensearch]
 
 # RESULTS — the index pays twice: 4.2× the bytes at 3.5× the price
 
+*(corrected 2026-11-17: this file carries three different quantities and they should be cited apart. The measured layer is the byte footprint, which puts the OpenSearch index at 4.24× the bytes of the Iceberg table and 4.84× the bytes of cold Parquet (`measured_footprints.json`). The compounded multipliers, 14.8×, 16.9×, 96.7× and 5.4×, are those measured bytes priced at AWS us-east-1 list rates by `cost_model.py`, so they are modelled, and they compare a search index on block storage with lakehouse tiers on object storage, not a SIEM with S3. The 16.9× comes from the rounded ratios in `measured_footprints.json`; the exact byte counts give 16.82×. The desk 130–227× named under "Scope, honestly" is not computed anywhere in this folder, and the arithmetic given there ($3–10/GB over $0.023/GB) pencils to 130–435×, so "a measured storage floor of 15–97× under that same storage ratio" sets two different comparisons side by side rather than one under the other.)*
+
 **Measured layer: Tier B · single host · same sha256-pinned 10M-row Zeek conn corpus as
 `zeek-flagship-rerun` · 2026-06-10. Priced layer: AWS us-east-1 list, verified 2026-06-10
 against the live AWS rate-card feeds. The two layers are reported separately and must be

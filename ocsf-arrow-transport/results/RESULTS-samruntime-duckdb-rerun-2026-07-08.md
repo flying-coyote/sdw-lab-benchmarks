@@ -34,7 +34,7 @@ touched by this pass.
 
 All three containers were restarted and verified healthy before this note was written:
 `moar-lab-1` Up, `moar-minio-1` Up (healthy), `moar-iceberg-rest-1` Up (healthy). See
-`post-restart-docker-ps.txt` in the scratchpad bundle (path below).
+`post-restart-docker-ps.txt` in the scratchpad bundle (not in the repo).
 
 ## One pre-registered deviation from run 1
 
@@ -107,7 +107,9 @@ scratchpad bundle.
 
 ## Raw files (all in the scratchpad bundle unless noted)
 
-Scratchpad dir: `/tmp/claude-1000/-home-jerem-project1/3d08ac08-8431-4db7-afde-e1078486fc9a/scratchpad/bench/a2-duckdb/`
+Scratchpad dir: a session scratch directory on the run host, outside the repo. *(corrected 2026-11-17: the
+local path that stood here was removed; none of the files listed below except the results JSON is in the
+repo.)*
 
 - `pre-stop-docker-ps.txt` — docker ps + docker ps -a before stopping the moar-* containers
 - `pre-stop-system.txt` — free -h + uptime before stopping
