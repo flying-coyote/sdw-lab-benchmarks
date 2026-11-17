@@ -1,0 +1,28 @@
+{"arm": "O2", "item_id": "FX00-K1", "src_art": "UserAccount", "tgt_art": "Session", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX00-T", "src_art": "UserAccount", "tgt_art": "NetworkNode", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX00-R", "src_art": "UserAccount", "tgt_art": "UserAccount", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX00-INV", "src_art": "UserAccount", "tgt_art": "UserAccount", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX01-K1", "src_art": "UserAccount", "tgt_art": "File", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX01-T", "src_art": "UserAccount", "tgt_art": "Process", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX01-R", "src_art": "UserAccount", "tgt_art": "Process", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX01-INV", "src_art": "UserAccount", "tgt_art": "Process", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX02-T", "src_art": "NetworkNode", "tgt_art": "NetworkNode", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX02-R", "src_art": "NetworkNode", "tgt_art": "NetworkNode", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX02-INV", "src_art": "NetworkNode", "tgt_art": "NetworkNode", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX03-T", "src_art": "NetworkNode", "tgt_art": "NetworkNode", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX04-T", "src_art": "Process", "tgt_art": "NetworkNode", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX04-INV", "src_art": "Process", "tgt_art": "Process", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX05-K1", "src_art": "File", "tgt_art": "Process", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX05-T", "src_art": "File", "tgt_art": "Process", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX05-INV", "src_art": "File", "tgt_art": "File", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX06-K1", "src_art": "NetworkSession", "tgt_art": "UserAccount", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX06-T", "src_art": "NetworkSession", "tgt_art": "NetworkNode", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX06-INV", "src_art": "NetworkSession", "tgt_art": "Session", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX08-K1", "src_art": "NetworkSession", "tgt_art": "NetworkNode", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX08-T", "verdict": "abstain"}
+{"arm": "O2", "item_id": "FX08-INV", "src_art": "NetworkSession", "tgt_art": "NetworkSession", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX09-T", "verdict": "abstain"}
+{"arm": "O2", "item_id": "FX10-T", "src_art": "NetworkSession", "tgt_art": "NetworkNode", "verdict": "flag"}
+{"arm": "O2", "item_id": "FX11-T", "src_art": "NetworkNode", "tgt_art": "NetworkNode", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX11-R", "src_art": "NetworkNode", "tgt_art": "NetworkNode", "verdict": "pass"}
+{"arm": "O2", "item_id": "FX11-INV", "src_art": "NetworkNode", "tgt_art": "NetworkNode", "verdict": "pass"}

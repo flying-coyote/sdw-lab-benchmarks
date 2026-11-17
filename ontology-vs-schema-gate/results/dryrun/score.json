@@ -1,0 +1,518 @@
+{
+ "arms_present": [
+  "S1",
+  "S2",
+  "S3",
+  "O0",
+  "O1",
+  "O2"
+ ],
+ "e1": {
+  "S1": {
+   "K1": {
+    "eligible": 5,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 5,
+    "miss_abstain": 0,
+    "catch_rate": 0.0
+   },
+   "K2": {
+    "eligible": 0,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": null
+   },
+   "T": {
+    "eligible": 11,
+    "catches": 10,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 1,
+    "miss_abstain": 0,
+    "catch_rate": 90.91
+   },
+   "R": {
+    "eligible": 4,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 4,
+    "miss_abstain": 0,
+    "catch_rate": 0.0
+   },
+   "INV": {
+    "eligible": 8,
+    "catches": 8,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": 100.0
+   }
+  },
+  "S2": {
+   "K1": {
+    "eligible": 5,
+    "catches": 5,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": 100.0
+   },
+   "K2": {
+    "eligible": 0,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": null
+   },
+   "T": {
+    "eligible": 11,
+    "catches": 10,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 1,
+    "miss_abstain": 0,
+    "catch_rate": 90.91
+   },
+   "R": {
+    "eligible": 4,
+    "catches": 1,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 3,
+    "miss_abstain": 0,
+    "catch_rate": 25.0
+   },
+   "INV": {
+    "eligible": 8,
+    "catches": 8,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": 100.0
+   }
+  },
+  "S3": {
+   "K1": {
+    "eligible": 5,
+    "catches": 5,
+    "catches_where_original_also_flagged": 2,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": 100.0
+   },
+   "K2": {
+    "eligible": 0,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": null
+   },
+   "T": {
+    "eligible": 11,
+    "catches": 6,
+    "catches_where_original_also_flagged": 2,
+    "miss_judged": 3,
+    "miss_abstain": 2,
+    "catch_rate": 54.55
+   },
+   "R": {
+    "eligible": 4,
+    "catches": 1,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 3,
+    "miss_abstain": 0,
+    "catch_rate": 25.0
+   },
+   "INV": {
+    "eligible": 8,
+    "catches": 2,
+    "catches_where_original_also_flagged": 2,
+    "miss_judged": 6,
+    "miss_abstain": 0,
+    "catch_rate": 25.0
+   }
+  },
+  "O0": {
+   "K1": {
+    "eligible": 5,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 5,
+    "miss_abstain": 0,
+    "catch_rate": 0.0
+   },
+   "K2": {
+    "eligible": 0,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": null
+   },
+   "T": {
+    "eligible": 11,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 9,
+    "miss_abstain": 2,
+    "catch_rate": 0.0
+   },
+   "R": {
+    "eligible": 4,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 4,
+    "miss_abstain": 0,
+    "catch_rate": 0.0
+   },
+   "INV": {
+    "eligible": 8,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 8,
+    "miss_abstain": 0,
+    "catch_rate": 0.0
+   }
+  },
+  "O1": {
+   "K1": {
+    "eligible": 5,
+    "catches": 4,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 1,
+    "miss_abstain": 0,
+    "catch_rate": 80.0
+   },
+   "K2": {
+    "eligible": 0,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": null
+   },
+   "T": {
+    "eligible": 11,
+    "catches": 6,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 3,
+    "miss_abstain": 2,
+    "catch_rate": 54.55
+   },
+   "R": {
+    "eligible": 4,
+    "catches": 1,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 3,
+    "miss_abstain": 0,
+    "catch_rate": 25.0
+   },
+   "INV": {
+    "eligible": 8,
+    "catches": 1,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 7,
+    "miss_abstain": 0,
+    "catch_rate": 12.5
+   }
+  },
+  "O2": {
+   "K1": {
+    "eligible": 5,
+    "catches": 4,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 1,
+    "miss_abstain": 0,
+    "catch_rate": 80.0
+   },
+   "K2": {
+    "eligible": 0,
+    "catches": 0,
+    "catches_where_original_also_flagged": 0,
+    "miss_judged": 0,
+    "miss_abstain": 0,
+    "catch_rate": null
+   },
+   "T": {
+    "eligible": 11,
+    "catches": 6,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 3,
+    "miss_abstain": 2,
+    "catch_rate": 54.55
+   },
+   "R": {
+    "eligible": 4,
+    "catches": 1,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 3,
+    "miss_abstain": 0,
+    "catch_rate": 25.0
+   },
+   "INV": {
+    "eligible": 8,
+    "catches": 1,
+    "catches_where_original_also_flagged": 1,
+    "miss_judged": 7,
+    "miss_abstain": 0,
+    "catch_rate": 12.5
+   }
+  }
+ },
+ "e2": {
+  "n_labelled": 12,
+  "decoy_label_mismatches": [],
+  "n_unclear_excluded": 1,
+  "n_real_errors": 2,
+  "n_type_crossing_real_errors": 1,
+  "per_arm": {
+   "S1": {
+    "tc_real_caught": 0,
+    "real_caught": 1,
+    "false_alarms": 0,
+    "tc_real_abstain": 0
+   },
+   "S2": {
+    "tc_real_caught": 1,
+    "real_caught": 2,
+    "false_alarms": 0,
+    "tc_real_abstain": 0
+   },
+   "S3": {
+    "tc_real_caught": 1,
+    "real_caught": 1,
+    "false_alarms": 1,
+    "tc_real_abstain": 0
+   },
+   "O0": {
+    "tc_real_caught": 0,
+    "real_caught": 0,
+    "false_alarms": 0,
+    "tc_real_abstain": 0
+   },
+   "O1": {
+    "tc_real_caught": 1,
+    "real_caught": 1,
+    "false_alarms": 0,
+    "tc_real_abstain": 0
+   },
+   "O2": {
+    "tc_real_caught": 1,
+    "real_caught": 1,
+    "false_alarms": 0,
+    "tc_real_abstain": 0
+   }
+  },
+  "secondary_S2_adjudicated_kind": {
+   "tc_real_caught": 0,
+   "false_alarms": 0,
+   "n_with_adjudicated_kind": 0,
+   "unknown_kinds": [],
+   "o_arms": "not computed (no pre-registered OCSF-kind -> D3FEND-artifact map)"
+  },
+  "cohen_kappa": {
+   "n": 12,
+   "kappa": 1.0
+  }
+ },
+ "abstention_715": {
+  "S1": 0.0,
+  "S2": 16.67,
+  "S3": 25.0,
+  "O0": 25.0,
+  "O1": 25.0,
+  "O2": 25.0
+ },
+ "paired": {
+  "K1:O1-S2": {
+   "x_only": 0,
+   "y_only": 1,
+   "joint_n": 5,
+   "joint_rate_x": 80.0,
+   "joint_rate_y": 100.0,
+   "mcnemar_exact_p": 1.0
+  },
+  "K1:O1-S3": {
+   "x_only": 0,
+   "y_only": 1,
+   "joint_n": 5,
+   "joint_rate_x": 80.0,
+   "joint_rate_y": 100.0,
+   "mcnemar_exact_p": 1.0
+  },
+  "K1:O2-O1": {
+   "x_only": 0,
+   "y_only": 0,
+   "joint_n": 5,
+   "joint_rate_x": 80.0,
+   "joint_rate_y": 80.0,
+   "mcnemar_exact_p": 1.0
+  },
+  "K1:O1-S1": {
+   "x_only": 4,
+   "y_only": 0,
+   "joint_n": 5,
+   "joint_rate_x": 80.0,
+   "joint_rate_y": 0.0
+  },
+  "K1:S2-S1": {
+   "x_only": 5,
+   "y_only": 0,
+   "joint_n": 5,
+   "joint_rate_x": 100.0,
+   "joint_rate_y": 0.0
+  },
+  "K1:O1-O0": {
+   "x_only": 4,
+   "y_only": 0,
+   "joint_n": 5,
+   "joint_rate_x": 80.0,
+   "joint_rate_y": 0.0
+  },
+  "T:O1-S2": {
+   "x_only": 0,
+   "y_only": 4,
+   "joint_n": 9,
+   "joint_rate_x": 66.67,
+   "joint_rate_y": 88.89
+  },
+  "T:O1-S3": {
+   "x_only": 0,
+   "y_only": 0,
+   "joint_n": 9,
+   "joint_rate_x": 66.67,
+   "joint_rate_y": 66.67
+  },
+  "T:O2-O1": {
+   "x_only": 0,
+   "y_only": 0,
+   "joint_n": 9,
+   "joint_rate_x": 66.67,
+   "joint_rate_y": 66.67
+  },
+  "T:O1-S1": {
+   "x_only": 0,
+   "y_only": 4,
+   "joint_n": 9,
+   "joint_rate_x": 66.67,
+   "joint_rate_y": 88.89
+  },
+  "T:S2-S1": {
+   "x_only": 0,
+   "y_only": 0,
+   "joint_n": 11,
+   "joint_rate_x": 90.91,
+   "joint_rate_y": 90.91
+  },
+  "T:O1-O0": {
+   "x_only": 6,
+   "y_only": 0,
+   "joint_n": 9,
+   "joint_rate_x": 66.67,
+   "joint_rate_y": 0.0
+  },
+  "R:O1-S2": {
+   "x_only": 0,
+   "y_only": 0,
+   "joint_n": 4,
+   "joint_rate_x": 25.0,
+   "joint_rate_y": 25.0
+  },
+  "R:O1-S3": {
+   "x_only": 0,
+   "y_only": 0,
+   "joint_n": 4,
+   "joint_rate_x": 25.0,
+   "joint_rate_y": 25.0
+  },
+  "R:O2-O1": {
+   "x_only": 0,
+   "y_only": 0,
+   "joint_n": 4,
+   "joint_rate_x": 25.0,
+   "joint_rate_y": 25.0
+  },
+  "R:O1-S1": {
+   "x_only": 1,
+   "y_only": 0,
+   "joint_n": 4,
+   "joint_rate_x": 25.0,
+   "joint_rate_y": 0.0
+  },
+  "R:S2-S1": {
+   "x_only": 1,
+   "y_only": 0,
+   "joint_n": 4,
+   "joint_rate_x": 25.0,
+   "joint_rate_y": 0.0
+  },
+  "R:O1-O0": {
+   "x_only": 1,
+   "y_only": 0,
+   "joint_n": 4,
+   "joint_rate_x": 25.0,
+   "joint_rate_y": 0.0
+  },
+  "INV:O1-S2": {
+   "x_only": 0,
+   "y_only": 7,
+   "joint_n": 8,
+   "joint_rate_x": 12.5,
+   "joint_rate_y": 100.0
+  },
+  "INV:O1-S3": {
+   "x_only": 0,
+   "y_only": 1,
+   "joint_n": 8,
+   "joint_rate_x": 12.5,
+   "joint_rate_y": 25.0
+  },
+  "INV:O2-O1": {
+   "x_only": 0,
+   "y_only": 0,
+   "joint_n": 8,
+   "joint_rate_x": 12.5,
+   "joint_rate_y": 12.5
+  },
+  "INV:O1-S1": {
+   "x_only": 0,
+   "y_only": 7,
+   "joint_n": 8,
+   "joint_rate_x": 12.5,
+   "joint_rate_y": 100.0
+  },
+  "INV:S2-S1": {
+   "x_only": 0,
+   "y_only": 0,
+   "joint_n": 8,
+   "joint_rate_x": 100.0,
+   "joint_rate_y": 100.0
+  },
+  "INV:O1-O0": {
+   "x_only": 1,
+   "y_only": 0,
+   "joint_n": 8,
+   "joint_rate_x": 12.5,
+   "joint_rate_y": 0.0
+  }
+ },
+ "decision": {
+  "dK": -20.0,
+  "dK_joint": -20.0,
+  "dR": 0,
+  "dF": 0,
+  "verdict": "REFUTES",
+  "reading": null,
+  "note": "O1/O2 = D3FEND class names plus one authored disjointness axiom; O0 shown beside them"
+ },
+ "attribution": {
+  "O1_vs_S3_non_session_disagreements": [],
+  "O2_vs_O1_differences": [],
+  "O0_flags_corpus": 0,
+  "O0_flags_e1": 0,
+  "O1_flags_corpus": 2,
+  "O1_flags_e1": 12
+ }
+}

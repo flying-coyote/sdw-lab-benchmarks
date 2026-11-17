@@ -1,0 +1,52 @@
+schema,leaf_token,source_fields,doc_type,family,doc_url,fetch_date,evidence
+Zeek,*,id.*,wildcard,object,matrix-notation,2026-11-17,wildcard
+Zeek,actions,actions,Notice::ActionSet (set of Notice::Action enum),string,https://docs.zeek.org/en/master/scripts/base/frameworks/notice/main.zeek.html,2026-11-17,Actions applied to the notice
+Zeek,community_id,community_id,string,hash,https://docs.zeek.org/en/master/scripts/policy/protocols/conn/community-id-logging.zeek.html,2026-11-17,Adds community hash IDs to conn.log.
+Zeek,conn_state,conn_state,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,Connection state summary
+Zeek,dst,dst,addr,ip,https://docs.zeek.org/en/master/scripts/base/frameworks/notice/main.zeek.html,2026-11-17,Destination address
+Zeek,duration,duration,interval,float,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html ; https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html,2026-11-17,How long the connection lasted.
+Zeek,filename,filename,string,string,https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html,2026-11-17,Filename from the source
+Zeek,fuid,fuid,string,string,https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html ; https://docs.zeek.org/en/master/scripts/base/frameworks/notice/main.zeek.html,2026-11-17,Identifier for a single file
+Zeek,host,host,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Value of the HOST header
+Zeek,local_orig,local_orig,bool,boolean,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html ; https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html,2026-11-17,"T if the originator is local, F if remote."
+Zeek,local_resp,local_resp,bool,boolean,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,"T if the responder is local, F if remote."
+Zeek,md5,md5,string,hash,https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html,2026-11-17,MD5 digest of the contents
+Zeek,method,method,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,HTTP verb in the request
+Zeek,mime_type,mime_type,string,string,https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html,2026-11-17,MIME type from the strongest magic signature match
+Zeek,msg,msg,string,string,https://docs.zeek.org/en/master/scripts/base/frameworks/notice/main.zeek.html,2026-11-17,Human-readable message
+Zeek,name,name,string,string,https://docs.zeek.org/en/master/scripts/base/frameworks/notice/weird.zeek.html,2026-11-17,The name of the weird that occurred.
+Zeek,note,note,Notice::Type (enum),string,https://docs.zeek.org/en/master/scripts/base/frameworks/notice/main.zeek.html,2026-11-17,The notice type
+Zeek,notice,notice,bool,boolean,https://docs.zeek.org/en/master/scripts/base/frameworks/notice/weird.zeek.html,2026-11-17,whether this weird was also turned into a notice
+Zeek,orig+resp_bytes,orig+resp_bytes,,,,2026-11-17,not a documented field (derived/matrix expression); abstain
+Zeek,orig_*,id.orig_*,,object,matrix-notation,2026-11-17,wildcard
+Zeek,orig_bytes,orig_bytes,count,long,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,The number of payload bytes the originator sent.
+Zeek,orig_fuids,orig_fuids,vector of string,string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Ordered file unique IDs from the client
+Zeek,orig_h,id.orig_h,addr,ip,https://docs.zeek.org/en/master/scripts/base/init-bare.zeek.html,2026-11-17,The originator’s IP address.
+Zeek,orig_l2_addr,orig_l2_addr,string,mac,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,"Originator's link-layer address, if available"
+Zeek,orig_p,id.orig_p,port,port,https://docs.zeek.org/en/master/scripts/base/init-bare.zeek.html,2026-11-17,The originator’s port number.
+Zeek,orig_pkts,orig_pkts,count,long,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,Packets sent by the originator
+Zeek,proto,proto,transport_proto (enum),string,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html ; https://docs.zeek.org/en/master/scripts/base/frameworks/notice/main.zeek.html,2026-11-17,The transport layer protocol of the connection.
+Zeek,proxied,proxied,set[string],string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Headers that may indicate the request was proxied
+Zeek,referrer,referrer,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Value of the Referer header
+Zeek,request_body_len,request_body_len,count,long,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Uncompressed size of the data sent by the client
+Zeek,resp_*,id.resp_*,,object,matrix-notation,2026-11-17,wildcard
+Zeek,resp_bytes,resp_bytes,count,long,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,Payload bytes sent by the responder
+Zeek,resp_fuids,resp_fuids,vector of string,string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Ordered file unique IDs from the server
+Zeek,resp_h,id.resp_h,addr,ip,https://docs.zeek.org/en/master/scripts/base/init-bare.zeek.html,2026-11-17,The responder’s IP address.
+Zeek,resp_l2_addr,resp_l2_addr,string,mac,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,"Responder's link-layer address, if available"
+Zeek,resp_p,id.resp_p,port,port,https://docs.zeek.org/en/master/scripts/base/init-bare.zeek.html,2026-11-17,The responder’s port number.
+Zeek,resp_pkts,resp_pkts,count,long,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,Packets sent by the responder
+Zeek,response_body_len,response_body_len,count,long,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Uncompressed size of the data sent by the server
+Zeek,service,service,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,Comma-separated list of confirmed protocols
+Zeek,sha1,sha1,string,hash,https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html,2026-11-17,SHA1 digest of the contents
+Zeek,sha256,sha256,string,hash,https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html,2026-11-17,SHA256 digest of the contents
+Zeek,src,src,addr,ip,https://docs.zeek.org/en/master/scripts/base/frameworks/notice/main.zeek.html,2026-11-17,"Source address, used when no conn_id is available"
+Zeek,status_code,status_code,count,long,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Status code returned by the server
+Zeek,total_bytes,total_bytes,count,long,https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html,2026-11-17,Total bytes expected to make up the full file
+Zeek,ts,ts,time,timestamp,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html ; https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html ; https://docs.zeek.org/en/master/scripts/base/frameworks/files/main.zeek.html ; https://docs.zeek.org/en/master/scripts/base/frameworks/notice/main.zeek.html ; https://docs.zeek.org/en/master/scripts/base/frameworks/notice/weird.zeek.html,2026-11-17,This is the time of the first packet.
+Zeek,tunnel_parents,tunnel_parents,set[string],string,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,uid values of encapsulating parent connections
+Zeek,uid,uid,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html,2026-11-17,A unique identifier of the connection.
+Zeek,uri,uri,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,URI used in the request
+Zeek,user_agent,user_agent,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,User-Agent header value from the client
+Zeek,username,username,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Username if Basic auth was performed
+Zeek,version,version,string,string,https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html,2026-11-17,Version portion of the server's reply

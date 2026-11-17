@@ -1,0 +1,24 @@
+{
+ "read": "2026-11-17",
+ "base": "https://schema.ocsf.io/1.8.0/api",
+ "classes": [
+  "process_activity",
+  "file_activity",
+  "account_change"
+ ],
+ "method": "same as fetch_ocsf_1_8_0_full_2026_11_16.py (classes endpoint, indent=1, sort_keys)",
+ "api_version_endpoint_now": {
+  "version": "1.8.0"
+ },
+ "sha256": {
+  "class_process_activity.json": "c7dafa6d17de02119b60ce14df735a81ef1a4f2ed42c45cea61506f78e4d346b",
+  "class_file_activity.json": "e3b7e54b163022880baf4f591707df42060fe6517df62c579fa2b1943ed226ad",
+  "class_account_change.json": "0b23e3268e696fb78e6b5ea7ed0702fa299eacfe7b88f115c7ba1ab001d5b6f6",
+  "data_types.json": "9323ac82b3eb2de0920278fd7174ef33ff5b7af9ae43af7ee4d2ce2ce943d3bd"
+ },
+ "uid": {
+  "process_activity": 1007,
+  "file_activity": 1001,
+  "account_change": 3001
+ }
+}

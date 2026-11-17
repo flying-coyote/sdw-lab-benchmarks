@@ -1,0 +1,404 @@
+{
+ "schema": "Microsoft ASIM",
+ "leaf_tokens": {
+  "Ack": [
+   "Ack"
+  ],
+  "ActingProcess*": [
+   "ActingProcess*"
+  ],
+  "ActingProcessCommandLine": [
+   "ActingProcessCommandLine"
+  ],
+  "ActingProcessGuid": [
+   "ActingProcessGuid"
+  ],
+  "ActingProcessId": [
+   "ActingProcessId"
+  ],
+  "ActingProcessMD5": [
+   "ActingProcessMD5"
+  ],
+  "ActingProcessName": [
+   "ActingProcessName"
+  ],
+  "ActorUserId": [
+   "ActorUserId"
+  ],
+  "ActorUsername": [
+   "ActorUsername"
+  ],
+  "CommandLine": [
+   "CommandLine"
+  ],
+  "Dst*": [
+   "Dst*"
+  ],
+  "DstBytes": [
+   "DstBytes"
+  ],
+  "DstHostname": [
+   "DstHostname"
+  ],
+  "DstIpAddr": [
+   "DstIpAddr"
+  ],
+  "DstMacAddr": [
+   "DstMacAddr"
+  ],
+  "DstPackets": [
+   "DstPackets"
+  ],
+  "DstPortNumber": [
+   "DstPortNumber"
+  ],
+  "DstUsername": [
+   "DstUsername"
+  ],
+  "Dvc": [
+   "Dvc"
+  ],
+  "DvcAction": [
+   "DvcAction"
+  ],
+  "DvcHostname": [
+   "DvcHostname"
+  ],
+  "DvcId": [
+   "DvcId"
+  ],
+  "EventOriginalType": [
+   "EventOriginalType"
+  ],
+  "EventOriginalUid": [
+   "EventOriginalUid"
+  ],
+  "EventProduct": [
+   "EventProduct"
+  ],
+  "EventResult": [
+   "EventResult"
+  ],
+  "EventResultDetails": [
+   "EventResultDetails"
+  ],
+  "EventSeverity": [
+   "EventSeverity"
+  ],
+  "EventStartTime": [
+   "EventStartTime"
+  ],
+  "EventSubType": [
+   "EventSubType"
+  ],
+  "EventType": [
+   "EventType"
+  ],
+  "EventUid": [
+   "EventUid"
+  ],
+  "EventVendor": [
+   "EventVendor"
+  ],
+  "FileMD5": [
+   "FileMD5"
+  ],
+  "FileName": [
+   "FileName"
+  ],
+  "FilePath": [
+   "FilePath"
+  ],
+  "FileSHA256": [
+   "FileSHA256"
+  ],
+  "FileSize": [
+   "FileSize"
+  ],
+  "GroupId": [
+   "GroupId"
+  ],
+  "GroupName": [
+   "GroupName"
+  ],
+  "Guid": [
+   "Guid"
+  ],
+  "Hash": [
+   "Hash"
+  ],
+  "HttpContentFormat": [
+   "HttpContentFormat"
+  ],
+  "HttpContentType": [
+   "HttpContentType"
+  ],
+  "HttpCookie": [
+   "HttpCookie"
+  ],
+  "HttpHost": [
+   "HttpHost"
+  ],
+  "HttpReferrer": [
+   "HttpReferrer"
+  ],
+  "HttpRequestBodyBytes": [
+   "HttpRequestBodyBytes"
+  ],
+  "HttpRequestMethod": [
+   "HttpRequestMethod"
+  ],
+  "HttpRequestTime": [
+   "HttpRequestTime"
+  ],
+  "HttpRequestXff": [
+   "HttpRequestXff"
+  ],
+  "HttpResponseBodyBytes": [
+   "HttpResponseBodyBytes"
+  ],
+  "HttpResponseTime": [
+   "HttpResponseTime"
+  ],
+  "HttpStatusCode": [
+   "HttpStatusCode"
+  ],
+  "HttpUserAgent": [
+   "HttpUserAgent"
+  ],
+  "HttpVersion": [
+   "HttpVersion"
+  ],
+  "Id": [
+   "Id"
+  ],
+  "IpAddr": [
+   "IpAddr"
+  ],
+  "LastReportedTime": [
+   "LastReportedTime"
+  ],
+  "LogonMethod": [
+   "LogonMethod"
+  ],
+  "LogonProtocol": [
+   "LogonProtocol"
+  ],
+  "MFA": [
+   "MFA"
+  ],
+  "NetworkApplicationProtocol": [
+   "NetworkApplicationProtocol"
+  ],
+  "NetworkBytes": [
+   "NetworkBytes"
+  ],
+  "NetworkDirection": [
+   "NetworkDirection"
+  ],
+  "NetworkDuration": [
+   "NetworkDuration"
+  ],
+  "NetworkPackets": [
+   "NetworkPackets"
+  ],
+  "NetworkProtocol": [
+   "NetworkProtocol"
+  ],
+  "NetworkProtocolVersion": [
+   "NetworkProtocolVersion"
+  ],
+  "NetworkRuleName": [
+   "NetworkRuleName"
+  ],
+  "NetworkRuleNumber": [
+   "NetworkRuleNumber"
+  ],
+  "NetworkSessionId": [
+   "NetworkSessionId"
+  ],
+  "ParentProcessName": [
+   "ParentProcessName"
+  ],
+  "Process": [
+   "Process"
+  ],
+  "SHA1": [
+   "SHA1"
+  ],
+  "SHA256": [
+   "SHA256"
+  ],
+  "SHA512": [
+   "SHA512"
+  ],
+  "SID": [
+   "SID"
+  ],
+  "Src": [
+   "Src"
+  ],
+  "Src*": [
+   "Src*"
+  ],
+  "SrcBytes": [
+   "SrcBytes"
+  ],
+  "SrcDomain": [
+   "SrcDomain"
+  ],
+  "SrcHostname": [
+   "SrcHostname"
+  ],
+  "SrcIpAddr": [
+   "SrcIpAddr"
+  ],
+  "SrcMacAddr": [
+   "SrcMacAddr"
+  ],
+  "SrcNatIpAddr": [
+   "SrcNatIpAddr"
+  ],
+  "SrcPackets": [
+   "SrcPackets"
+  ],
+  "SrcPortNumber": [
+   "SrcPortNumber"
+  ],
+  "SrcUsername": [
+   "SrcUsername"
+  ],
+  "Target": [
+   "Target"
+  ],
+  "TargetAppName": [
+   "TargetAppName"
+  ],
+  "TargetFile*": [
+   "TargetFile*"
+  ],
+  "TargetFileCreationTime": [
+   "TargetFileCreationTime"
+  ],
+  "TargetFileDirectory": [
+   "TargetFileDirectory"
+  ],
+  "TargetFileExtension": [
+   "TargetFileExtension"
+  ],
+  "TargetFileMD5": [
+   "TargetFileMD5"
+  ],
+  "TargetFileMimeType": [
+   "TargetFileMimeType"
+  ],
+  "TargetFileName": [
+   "TargetFileName"
+  ],
+  "TargetFilePath": [
+   "TargetFilePath"
+  ],
+  "TargetFilePathType": [
+   "TargetFilePathType"
+  ],
+  "TargetFileSize": [
+   "TargetFileSize"
+  ],
+  "TargetHostname": [
+   "TargetHostname"
+  ],
+  "TargetIpAddr": [
+   "TargetIpAddr"
+  ],
+  "TargetProcess*": [
+   "TargetProcess*"
+  ],
+  "TargetProcessCommandLine": [
+   "TargetProcessCommandLine"
+  ],
+  "TargetProcessCurrentDirectory": [
+   "TargetProcessCurrentDirectory"
+  ],
+  "TargetProcessFileSize": [
+   "TargetProcessFileSize"
+  ],
+  "TargetProcessGuid": [
+   "TargetProcessGuid"
+  ],
+  "TargetProcessId": [
+   "TargetProcessId"
+  ],
+  "TargetProcessIntegrityLevel": [
+   "TargetProcessIntegrityLevel"
+  ],
+  "TargetProcessMD5": [
+   "TargetProcessMD5"
+  ],
+  "TargetProcessName": [
+   "TargetProcessName"
+  ],
+  "TargetProcessStatusCode": [
+   "TargetProcessStatusCode"
+  ],
+  "TargetUrl": [
+   "TargetUrl"
+  ],
+  "TargetUserId": [
+   "TargetUserId"
+  ],
+  "TargetUserIdType=SID": [
+   "TargetUserIdType=SID"
+  ],
+  "TargetUserType": [
+   "TargetUserType"
+  ],
+  "TargetUsername": [
+   "TargetUsername"
+  ],
+  "TcpFlagsSyn": [
+   "TcpFlagsSyn"
+  ],
+  "ThreatCategory": [
+   "ThreatCategory"
+  ],
+  "ThreatConfidence": [
+   "ThreatConfidence"
+  ],
+  "ThreatField": [
+   "ThreatField"
+  ],
+  "ThreatFilePath": [
+   "ThreatFilePath"
+  ],
+  "ThreatFirstReportedTime": [
+   "ThreatFirstReportedTime"
+  ],
+  "ThreatId": [
+   "ThreatId"
+  ],
+  "ThreatIpAddr": [
+   "ThreatIpAddr"
+  ],
+  "ThreatIsActive": [
+   "ThreatIsActive"
+  ],
+  "ThreatName": [
+   "ThreatName"
+  ],
+  "ThreatRiskLevel": [
+   "ThreatRiskLevel"
+  ],
+  "UPN": [
+   "UPN"
+  ],
+  "Url": [
+   "Url"
+  ],
+  "User": [
+   "User"
+  ],
+  "UserAgent": [
+   "UserAgent"
+  ]
+ }
+}

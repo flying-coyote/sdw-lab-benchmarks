@@ -1,0 +1,28 @@
+{"arm": "S1", "item_id": "FX00-K1", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX00-T", "reason": "type_family", "src_family": "string", "tgt_family": "ip", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX00-R", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX00-INV", "reason": "invalid_path", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX01-K1", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX01-T", "reason": "type_family", "src_family": "string", "tgt_family": "integer", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX01-R", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX01-INV", "reason": "invalid_path", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX02-T", "reason": "type_family", "src_family": "ip", "tgt_family": "port", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX02-R", "reason": null, "src_family": "ip", "tgt_family": "ip", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX02-INV", "reason": "invalid_path", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX03-T", "reason": null, "src_family": "ip", "tgt_family": "ip", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX04-T", "reason": "type_family", "src_family": "integer", "tgt_family": "ip", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX04-INV", "reason": "invalid_path", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX05-K1", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX05-T", "reason": "type_family", "src_family": "string", "tgt_family": "integer", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX05-INV", "reason": "invalid_path", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX06-K1", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX06-T", "reason": "type_family", "src_family": "string", "tgt_family": "ip", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX06-INV", "reason": "invalid_path", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX08-K1", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX08-T", "reason": "type_family", "src_family": "string", "tgt_family": "timestamp", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX08-INV", "reason": "invalid_path", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX09-T", "reason": "type_family", "src_family": "integer", "tgt_family": "timestamp", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX10-T", "reason": "type_family", "src_family": "float", "tgt_family": "ip", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX11-T", "reason": "type_family", "src_family": "ip", "tgt_family": "port", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX11-R", "reason": null, "src_family": "ip", "tgt_family": "ip", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX11-INV", "reason": "invalid_path", "verdict": "flag"}

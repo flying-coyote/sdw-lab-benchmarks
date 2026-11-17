@@ -1,0 +1,54 @@
+schema,leaf_token,source_fields,doc_type,family,doc_url,fetch_date,evidence
+Google UDM,*,intermediary.*;principal.*;src.*;target.*;target.file.*;target.process.*,,object,matrix-notation,2026-11-17,wildcard
+Google UDM,action,security_result.action,"SecurityResult.Action (enum, repeated)",string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Actions taken for the event.
+Google UDM,administrative_domain,principal.administrative_domain,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"Noun field, type string"
+Google UDM,application,target.application,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Name of an application or service.
+Google UDM,application_protocol,network.application_protocol,Network.ApplicationProtocol (enum),string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Application protocol in use.
+Google UDM,asset_id,.asset_id,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Asset ID; can serve as an entity indicator.
+Google UDM,category,security_result.category,"SecurityResult.SecurityCategory (enum, repeated)",string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Security category of the result.
+Google UDM,command_line,principal.process.command_line;target.process.command_line,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The command line command that created the process.
+Google UDM,description,.description,,,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Noun-level description field not found on fetched page (security_result.description is string); abstain
+Google UDM,direction,network.direction,Network.Direction (enum),string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Direction of traffic.
+Google UDM,email_addresses,principal.user.email_addresses,string (repeated),string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Email addresses of the user.
+Google UDM,event_timestamp,metadata.event_timestamp,google.protobuf.Timestamp,timestamp,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,GMT time the event was generated.
+Google UDM,event_type,metadata.event_type,Metadata.EventType (enum),string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Most specific event type.
+Google UDM,full_path,principal.process.file.full_path;target.file.full_path;target.process.file.full_path,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The full path identifying the location of the file on the system.
+Google UDM,hostname,.hostname;principal.hostname;target.hostname,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Client hostname or domain name.
+Google UDM,id,metadata.id,bytes,,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"Event ID for raw and normalized retrieval. Declared bytes, no matching family; abstain"
+Google UDM,ip,.ip;intermediary.ip;observer.ip;principal.ip;target.ip,string (repeated),ip,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,IP addresses tied to the connection. (observer.ip: IP addresses of the observer entity)
+Google UDM,ip_protocol,network.ip_protocol,Network.IpProtocol (enum),string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,IP protocol.
+Google UDM,mac,principal.mac;target.mac,string (repeated),mac,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,EUI-48 MAC addresses for the device.
+Google UDM,md5,principal.process.file.md5;target.file.md5;target.process.file.md5,string,hash,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"The MD5 hash of the file, as a hex-encoded string."
+Google UDM,method,network.http.method,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"The HTTP request method (e.g. ""GET"", ""POST"", ""PATCH"", ""DELETE"")."
+Google UDM,mime_type,target.file.mime_type,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The MIME (Multipurpose Internet Mail Extensions) type of the file
+Google UDM,name,.resource.name;target.resource.name,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The full name of the resource.
+Google UDM,parent_session_id,network.parent_session_id,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,ID of the parent session.
+Google UDM,pid,principal.process.parent_process.pid;target.process.pid,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The process ID. This field can be used as an entity indicator for process entities.
+Google UDM,port,principal.port;target.port,int32,integer,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Source or destination port.
+Google UDM,process,principal.process,Process,object,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Process information
+Google UDM,product_log_id,metadata.product_log_id,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Vendor-specific event identifier.
+Google UDM,product_name,metadata.product_name,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Name of the product.
+Google UDM,product_specific_process_id,principal.process.product_specific_process_id;target.process.product_specific_process_id,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,A product specific process id.
+Google UDM,received_bytes,network.received_bytes,uint64,long,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Bytes received.
+Google UDM,referral_url,network.http.referral_url,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The URL for the HTTP referer.
+Google UDM,response_code,network.http.response_code,int32,integer,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"The response status code, for example 200, 302, 404, or 500."
+Google UDM,rule_id,rule_id;security_result.rule_id,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Vendor-specific rule identifier. Documented only under security_result; no top-level rule_id in UDM Event
+Google UDM,rule_name,rule_name;security_result.rule_name,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Name of the security rule. Documented only under security_result; no top-level rule_name in UDM Event
+Google UDM,security_result,security_result,SecurityResult,object,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"message type holding action, category, summary, severity etc."
+Google UDM,sent_bytes,network.sent_bytes,uint64,long,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Bytes sent.
+Google UDM,session_duration,network.session_duration,Duration (seconds int64 + nanos int32),object,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Duration in seconds (int64) and nanoseconds (int32).
+Google UDM,session_id,network.session_id,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,ID of the session.
+Google UDM,severity,security_result.severity,SecurityResult.ProductSeverity (enum),string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Severity of the result.
+Google UDM,sha1,.sha1,string,hash,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"The SHA-1 hash of the file, as a hex-encoded string."
+Google UDM,sha256,.sha256,string,hash,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"The SHA256 hash of the file, as a hex-encoded string."
+Google UDM,size,target.file.size,uint64,long,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The size of the file in bytes.
+Google UDM,summary,security_result.summary,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Short summary of the result.
+Google UDM,threat_name,security_result.threat_name,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,Vendor-assigned threat classification.
+Google UDM,url,target.url,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The URL.
+Google UDM,user,principal.user,User,object,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,User information
+Google UDM,user_agent,network.http.user_agent,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"The User-Agent request header which includes the application type, operating system, software vendor or software version"
+Google UDM,user_display_name,principal.user.user_display_name,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"The display name of the user (e.g. ""John Locke"")."
+Google UDM,user_role,principal.user.user_role,User.Role (enumerated list),string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,System role for user. Deprecated: use attribute.roles.
+Google UDM,userid,principal.user.userid;target.user.userid,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The ID of the user. This field can be used as an entity indicator for user entities.
+Google UDM,vendor_name,vendor_name,,,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,"Not a top-level UDM Event field; appears only under metadata, type not confirmed; abstain"
+Google UDM,windows_sid,principal.user.windows_sid;target.user.windows_sid,string,string,https://docs.cloud.google.com/chronicle/docs/reference/udm-field-list,2026-11-17,The Microsoft Windows SID of the user.

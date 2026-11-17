@@ -1,0 +1,284 @@
+{
+ "_note": "SYNTHETIC FIXTURE ONLY: these counts and the verdict below exercise the code path and carry no evidential weight",
+ "e1_counts": {
+  "K1": {
+   "eligible": 5,
+   "ineligible": 7
+  },
+  "K2": {
+   "eligible": 0,
+   "ineligible": 12
+  },
+  "T": {
+   "eligible": 11,
+   "ineligible": 1
+  },
+  "R": {
+   "eligible": 4,
+   "ineligible": 8
+  },
+  "INV": {
+   "eligible": 8,
+   "ineligible": 4
+  },
+  "k_disagree_pairs": 0,
+  "seed": 20261117
+ },
+ "S1-corpus": {
+  "meta": {},
+  "flag": 2,
+  "pass": 10,
+  "abstain": 0
+ },
+ "S1-e1": {
+  "meta": {},
+  "flag": 18,
+  "pass": 10,
+  "abstain": 0
+ },
+ "S2-corpus": {
+  "meta": {},
+  "flag": 3,
+  "pass": 7,
+  "abstain": 2
+ },
+ "S2-e1": {
+  "meta": {},
+  "flag": 24,
+  "pass": 4,
+  "abstain": 0
+ },
+ "S3-corpus": {
+  "meta": {},
+  "flag": 3,
+  "pass": 6,
+  "abstain": 3
+ },
+ "S3-e1": {
+  "meta": {},
+  "flag": 14,
+  "pass": 12,
+  "abstain": 2
+ },
+ "O0-corpus": {
+  "meta": {
+   "rc": 0,
+   "n_unsat_total": 0,
+   "n_unsat_nonalign": 0
+  },
+  "flag": 0,
+  "pass": 9,
+  "abstain": 3
+ },
+ "O0-e1": {
+  "meta": {
+   "rc": 0,
+   "n_unsat_total": 0,
+   "n_unsat_nonalign": 0
+  },
+  "flag": 0,
+  "pass": 26,
+  "abstain": 2
+ },
+ "O1-corpus": {
+  "meta": {
+   "rc": 1,
+   "n_unsat_total": 2,
+   "n_unsat_nonalign": 0
+  },
+  "flag": 2,
+  "pass": 7,
+  "abstain": 3
+ },
+ "O1-e1": {
+  "meta": {
+   "rc": 1,
+   "n_unsat_total": 12,
+   "n_unsat_nonalign": 0
+  },
+  "flag": 12,
+  "pass": 14,
+  "abstain": 2
+ },
+ "O2-corpus": {
+  "meta": {
+   "rc": 1,
+   "n_unsat_total": 2,
+   "n_unsat_nonalign": 0
+  },
+  "flag": 2,
+  "pass": 7,
+  "abstain": 3
+ },
+ "O2-e1": {
+  "meta": {
+   "rc": 1,
+   "n_unsat_total": 12,
+   "n_unsat_nonalign": 0
+  },
+  "flag": 12,
+  "pass": 14,
+  "abstain": 2
+ },
+ "fixture_grid": {
+  "FX00": {
+   "note": "correct",
+   "S1": "pass",
+   "S2": "pass",
+   "S3": "pass",
+   "O0": "pass",
+   "O1": "pass",
+   "O2": "pass"
+  },
+  "FX01": {
+   "note": "kind crossing",
+   "S1": "pass",
+   "S2": "flag",
+   "S3": "flag",
+   "O0": "pass",
+   "O1": "flag",
+   "O2": "flag"
+  },
+  "FX02": {
+   "note": "correct",
+   "S1": "pass",
+   "S2": "pass",
+   "S3": "pass",
+   "O0": "pass",
+   "O1": "pass",
+   "O2": "pass"
+  },
+  "FX03": {
+   "note": "type crossing",
+   "S1": "flag",
+   "S2": "flag",
+   "S3": "abstain",
+   "O0": "abstain",
+   "O1": "abstain",
+   "O2": "abstain"
+  },
+  "FX04": {
+   "note": "correct",
+   "S1": "pass",
+   "S2": "pass",
+   "S3": "pass",
+   "O0": "pass",
+   "O1": "pass",
+   "O2": "pass"
+  },
+  "FX05": {
+   "note": "correct (process's file)",
+   "S1": "pass",
+   "S2": "pass",
+   "S3": "pass",
+   "O0": "pass",
+   "O1": "pass",
+   "O2": "pass"
+  },
+  "FX06": {
+   "note": "Session target",
+   "S1": "pass",
+   "S2": "pass",
+   "S3": "flag",
+   "O0": "pass",
+   "O1": "pass",
+   "O2": "pass"
+  },
+  "FX07": {
+   "note": "invalid path",
+   "S1": "flag",
+   "S2": "flag",
+   "S3": "flag",
+   "O0": "pass",
+   "O1": "flag",
+   "O2": "flag"
+  },
+  "FX08": {
+   "note": "correct",
+   "S1": "pass",
+   "S2": "pass",
+   "S3": "pass",
+   "O0": "pass",
+   "O1": "pass",
+   "O2": "pass"
+  },
+  "FX09": {
+   "note": "correct (declared enum cast)",
+   "S1": "pass",
+   "S2": "abstain",
+   "S3": "abstain",
+   "O0": "abstain",
+   "O1": "abstain",
+   "O2": "abstain"
+  },
+  "FX10": {
+   "note": "correct (float onto long)",
+   "S1": "pass",
+   "S2": "abstain",
+   "S3": "abstain",
+   "O0": "abstain",
+   "O1": "abstain",
+   "O2": "abstain"
+  },
+  "FX11": {
+   "note": "correct (real S1 table row)",
+   "S1": "pass",
+   "S2": "pass",
+   "S3": "pass",
+   "O0": "pass",
+   "O1": "pass",
+   "O2": "pass"
+  }
+ },
+ "score_decision": {
+  "dK": -20.0,
+  "dK_joint": -20.0,
+  "dR": 0,
+  "dF": 0,
+  "verdict": "REFUTES",
+  "reading": null,
+  "note": "O1/O2 = D3FEND class names plus one authored disjointness axiom; O0 shown beside them"
+ },
+ "score_e1_O1": {
+  "K1": {
+   "eligible": 5,
+   "catches": 4,
+   "catches_where_original_also_flagged": 1,
+   "miss_judged": 1,
+   "miss_abstain": 0,
+   "catch_rate": 80.0
+  },
+  "K2": {
+   "eligible": 0,
+   "catches": 0,
+   "catches_where_original_also_flagged": 0,
+   "miss_judged": 0,
+   "miss_abstain": 0,
+   "catch_rate": null
+  },
+  "T": {
+   "eligible": 11,
+   "catches": 6,
+   "catches_where_original_also_flagged": 1,
+   "miss_judged": 3,
+   "miss_abstain": 2,
+   "catch_rate": 54.55
+  },
+  "R": {
+   "eligible": 4,
+   "catches": 1,
+   "catches_where_original_also_flagged": 1,
+   "miss_judged": 3,
+   "miss_abstain": 0,
+   "catch_rate": 25.0
+  },
+  "INV": {
+   "eligible": 8,
+   "catches": 1,
+   "catches_where_original_also_flagged": 1,
+   "miss_judged": 7,
+   "miss_abstain": 0,
+   "catch_rate": 12.5
+  }
+ }
+}

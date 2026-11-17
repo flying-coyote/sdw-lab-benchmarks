@@ -1,0 +1,12 @@
+{"arm": "O0", "item_id": "FX00", "src_art": "UserAccount", "tgt_art": "UserAccount", "verdict": "pass"}
+{"arm": "O0", "item_id": "FX01", "src_art": "UserAccount", "tgt_art": "Process", "verdict": "pass"}
+{"arm": "O0", "item_id": "FX02", "src_art": "NetworkNode", "tgt_art": "NetworkNode", "verdict": "pass"}
+{"arm": "O0", "item_id": "FX03", "verdict": "abstain"}
+{"arm": "O0", "item_id": "FX04", "src_art": "Process", "tgt_art": "Process", "verdict": "pass"}
+{"arm": "O0", "item_id": "FX05", "src_art": "File", "tgt_art": "File", "verdict": "pass"}
+{"arm": "O0", "item_id": "FX06", "src_art": "NetworkSession", "tgt_art": "Session", "verdict": "pass"}
+{"arm": "O0", "item_id": "FX07", "src_art": "UserAccount", "tgt_art": "NetworkNode", "verdict": "pass"}
+{"arm": "O0", "item_id": "FX08", "src_art": "NetworkSession", "tgt_art": "NetworkSession", "verdict": "pass"}
+{"arm": "O0", "item_id": "FX09", "verdict": "abstain"}
+{"arm": "O0", "item_id": "FX10", "verdict": "abstain"}
+{"arm": "O0", "item_id": "FX11", "src_art": "NetworkNode", "tgt_art": "NetworkNode", "verdict": "pass"}

@@ -1,0 +1,24 @@
+{
+ "K1": {
+  "eligible": 5,
+  "ineligible": 7
+ },
+ "K2": {
+  "eligible": 0,
+  "ineligible": 12
+ },
+ "T": {
+  "eligible": 11,
+  "ineligible": 1
+ },
+ "R": {
+  "eligible": 4,
+  "ineligible": 8
+ },
+ "INV": {
+  "eligible": 8,
+  "ineligible": 4
+ },
+ "k_disagree_pairs": 0,
+ "seed": 20261117
+}

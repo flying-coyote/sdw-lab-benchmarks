@@ -1,0 +1,14 @@
+# fixture labels
+item_id,label,kind_crossing,source_kind_adjudicated
+FX00,correct,no,
+FX01,wrong,yes,
+FX02,correct,no,
+FX03,wrong,no,
+FX04,correct,no,
+FX05,correct,no,
+FX06,correct,no,
+FX07,wrong,unclear,
+FX08,correct,no,
+FX09,correct,no,
+FX10,correct,no,
+FX11,correct,no,

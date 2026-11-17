@@ -1,0 +1,189 @@
+{
+ "schema": "Google UDM",
+ "leaf_tokens": {
+  "*": [
+   "intermediary.*",
+   "principal.*",
+   "src.*",
+   "target.*",
+   "target.file.*",
+   "target.process.*"
+  ],
+  "action": [
+   "security_result.action"
+  ],
+  "administrative_domain": [
+   "principal.administrative_domain"
+  ],
+  "application": [
+   "target.application"
+  ],
+  "application_protocol": [
+   "network.application_protocol"
+  ],
+  "asset_id": [
+   ".asset_id"
+  ],
+  "category": [
+   "security_result.category"
+  ],
+  "command_line": [
+   "principal.process.command_line",
+   "target.process.command_line"
+  ],
+  "description": [
+   ".description"
+  ],
+  "direction": [
+   "network.direction"
+  ],
+  "email_addresses": [
+   "principal.user.email_addresses"
+  ],
+  "event_timestamp": [
+   "metadata.event_timestamp"
+  ],
+  "event_type": [
+   "metadata.event_type"
+  ],
+  "full_path": [
+   "principal.process.file.full_path",
+   "target.file.full_path",
+   "target.process.file.full_path"
+  ],
+  "hostname": [
+   ".hostname",
+   "principal.hostname",
+   "target.hostname"
+  ],
+  "id": [
+   "metadata.id"
+  ],
+  "ip": [
+   ".ip",
+   "intermediary.ip",
+   "observer.ip",
+   "principal.ip",
+   "target.ip"
+  ],
+  "ip_protocol": [
+   "network.ip_protocol"
+  ],
+  "mac": [
+   "principal.mac",
+   "target.mac"
+  ],
+  "md5": [
+   "principal.process.file.md5",
+   "target.file.md5",
+   "target.process.file.md5"
+  ],
+  "method": [
+   "network.http.method"
+  ],
+  "mime_type": [
+   "target.file.mime_type"
+  ],
+  "name": [
+   ".resource.name",
+   "target.resource.name"
+  ],
+  "parent_session_id": [
+   "network.parent_session_id"
+  ],
+  "pid": [
+   "principal.process.parent_process.pid",
+   "target.process.pid"
+  ],
+  "port": [
+   "principal.port",
+   "target.port"
+  ],
+  "process": [
+   "principal.process"
+  ],
+  "product_log_id": [
+   "metadata.product_log_id"
+  ],
+  "product_name": [
+   "metadata.product_name"
+  ],
+  "product_specific_process_id": [
+   "principal.process.product_specific_process_id",
+   "target.process.product_specific_process_id"
+  ],
+  "received_bytes": [
+   "network.received_bytes"
+  ],
+  "referral_url": [
+   "network.http.referral_url"
+  ],
+  "response_code": [
+   "network.http.response_code"
+  ],
+  "rule_id": [
+   "rule_id",
+   "security_result.rule_id"
+  ],
+  "rule_name": [
+   "rule_name",
+   "security_result.rule_name"
+  ],
+  "security_result": [
+   "security_result"
+  ],
+  "sent_bytes": [
+   "network.sent_bytes"
+  ],
+  "session_duration": [
+   "network.session_duration"
+  ],
+  "session_id": [
+   "network.session_id"
+  ],
+  "severity": [
+   "security_result.severity"
+  ],
+  "sha1": [
+   ".sha1"
+  ],
+  "sha256": [
+   ".sha256"
+  ],
+  "size": [
+   "target.file.size"
+  ],
+  "summary": [
+   "security_result.summary"
+  ],
+  "threat_name": [
+   "security_result.threat_name"
+  ],
+  "url": [
+   "target.url"
+  ],
+  "user": [
+   "principal.user"
+  ],
+  "user_agent": [
+   "network.http.user_agent"
+  ],
+  "user_display_name": [
+   "principal.user.user_display_name"
+  ],
+  "user_role": [
+   "principal.user.user_role"
+  ],
+  "userid": [
+   "principal.user.userid",
+   "target.user.userid"
+  ],
+  "vendor_name": [
+   "vendor_name"
+  ],
+  "windows_sid": [
+   "principal.user.windows_sid",
+   "target.user.windows_sid"
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+{"cell": "`fx.user.name`", "cls": "authentication", "item_id": "FX00", "note": "correct", "ocsf": "user.name", "schema": "Fixture", "source": "fx.user.name", "tid": "FX00"}
+{"cell": "`fx.user.name`", "cls": "process_activity", "item_id": "FX01", "note": "kind crossing", "ocsf": "process.name", "schema": "Fixture", "source": "fx.user.name", "tid": "FX01"}
+{"cell": "`fx.src.ip`", "cls": "network_activity", "item_id": "FX02", "note": "correct", "ocsf": "src_endpoint.ip", "schema": "Fixture", "source": "fx.src.ip", "tid": "FX02"}
+{"cell": "`fx.src.ip`", "cls": "network_activity", "item_id": "FX03", "note": "type crossing", "ocsf": "time", "schema": "Fixture", "source": "fx.src.ip", "tid": "FX03"}
+{"cell": "`fx.process.pid`", "cls": "process_activity", "item_id": "FX04", "note": "correct", "ocsf": "process.pid", "schema": "Fixture", "source": "fx.process.pid", "tid": "FX04"}
+{"cell": "`fx.file.path`", "cls": "process_activity", "item_id": "FX05", "note": "correct (process's file)", "ocsf": "process.file.path", "schema": "Fixture", "source": "fx.file.path", "tid": "FX05"}
+{"cell": "`fx.session.uid`", "cls": "authentication", "item_id": "FX06", "note": "Session target", "ocsf": "session.uid", "schema": "Fixture", "source": "fx.session.uid", "tid": "FX06"}
+{"cell": "`fx.user.name`", "cls": "network_activity", "item_id": "FX07", "note": "invalid path", "ocsf": "src_endpoint.no_such_attr", "schema": "Fixture", "source": "fx.user.name", "tid": "FX07"}
+{"cell": "`fx.conn.uid`", "cls": "network_activity", "item_id": "FX08", "note": "correct", "ocsf": "connection_info.uid", "schema": "Fixture", "source": "fx.conn.uid", "tid": "FX08"}
+{"cell": "`fx.evt.action` (enum)~", "cls": "authentication", "item_id": "FX09", "note": "correct (declared enum cast)", "ocsf": "activity_id", "schema": "Fixture", "source": "fx.evt.action", "tid": "FX09"}
+{"cell": "`fx.flow.duration`", "cls": "network_activity", "item_id": "FX10", "note": "correct (float onto long)", "ocsf": "duration", "schema": "Fixture", "source": "fx.flow.duration", "tid": "FX10"}
+{"cell": "`fx.zzz.ip`", "cls": "network_activity", "item_id": "FX11", "note": "correct (real S1 table row)", "ocsf": "src_endpoint.ip", "schema": "Elastic ECS", "source": "fx.zzz.ip", "tid": "FX11"}

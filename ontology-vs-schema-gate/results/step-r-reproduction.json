@@ -1,0 +1,51 @@
+{
+ "expected": {
+  "rows": 925,
+  "testable": 364,
+  "classes": 231,
+  "fired": 15,
+  "injected": 231,
+  "caught": 231
+ },
+ "got": {
+  "rows": 925,
+  "testable": 364,
+  "classes": 231,
+  "fired": 15,
+  "injected": 231,
+  "caught": 231
+ },
+ "robot_calls": [
+  {
+   "rc": 0,
+   "n_unsat": 0,
+   "stderr_says_unsatisfiable": false,
+   "stderr_tail": ""
+  },
+  {
+   "rc": 1,
+   "n_unsat": 15,
+   "stderr_says_unsatisfiable": true,
+   "stderr_tail": "R org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#M_OpenTelemetry__url_port\n2026-11-17 11:35:45,194 ERROR org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#M_Splunk_CIM__process_exec\n2026-11-17 11:35:45,194 ERROR org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#M_Splunk_CIM__process_hash\n"
+  },
+  {
+   "rc": 1,
+   "n_unsat": 231,
+   "stderr_says_unsatisfiable": true,
+   "stderr_tail": "   unsatisfiable: https://schema.ocsf.io/align#BAD_M_OpenTelemetry__process_parent_pid\n2026-11-17 11:35:46,347 ERROR org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#BAD_M_Elastic_ECS__process_parent_executable\n2026-11-17 11:35:46,348 ERROR org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#BAD_M_OpenTelemetry__client_address\n"
+  }
+ ],
+ "checks": {
+  "selfcheck_clean": true,
+  "robot_exit_codes_explained": true,
+  "fired_names_match_hub_fp_json": true,
+  "rows": true,
+  "testable": true,
+  "classes": true,
+  "fired": true,
+  "injected": true,
+  "caught": true
+ },
+ "pass": true,
+ "jar_sha256": "16a73c074f3df359a7338a84b4e0788785fe06117f931bb9796e9619ea776105"
+}

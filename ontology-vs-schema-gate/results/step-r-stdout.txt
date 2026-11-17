@@ -1,0 +1,77 @@
+[selfcheck] grounding+disjointness consistent? unsat=[]  (expect [])
+
+=== CORPUS (false-positive run) ===
+rows parsed: 925 | with target grounding: 533 | with confident source-type: 405 | testable (both): 364
+distinct testable mapping-classes: 231
+gate fired on (would-fail-build): 15  -> these are FALSE POSITIVES if the mapping is actually correct
+  FP? Elastic ECS    service.name                   -> dst_endpoint                 src=ServiceApplication vs target=NetworkNode
+  FP? Elastic ECS    url.port                       -> http_request.url.port        src=NetworkNode vs target=URL
+  FP? Google UDM     network.ip_protocol            -> connection_info.protocol_n   src=NetworkNode vs target=NetworkSession
+  FP? Google UDM     principal.*                    -> src_endpoint                 src=UserAccount vs target=NetworkNode
+  FP? Google UDM     principal.administrative_dom   -> src_endpoint.domain          src=UserAccount vs target=NetworkNode
+  FP? Google UDM     principal.mac                  -> src_endpoint.mac             src=UserAccount vs target=NetworkNode
+  FP? Google UDM     target.application             -> dst_endpoint                 src=ServiceApplication vs target=NetworkNode
+  FP? Google UDM     target.process.file.full_pat   -> process.name                 src=File vs target=Process
+  FP? OpenTelemetry  url.port                       -> http_request.url.port        src=NetworkNode vs target=URL
+  FP? Splunk CIM     app                            -> dst_endpoint                 src=ServiceApplication vs target=NetworkNode
+  FP? Splunk CIM     parent_process_path            -> actor.process.file.path      src=Process vs target=File
+  FP? Splunk CIM     process_exec                   -> process.file.name            src=Process vs target=File
+  FP? Splunk CIM     process_hash                   -> process.file.hashes[]        src=Process vs target=File
+  FP? Splunk CIM     process_path                   -> process.file.path            src=Process vs target=File
+  FP? Zeek           host                           -> http_request.url.text        src=NetworkNode vs target=URL
+
+=== INJECT (real-catch run) ===
+injected type-crossing corruptions: 231
+caught by the gate (unsatisfiable): 231  (100.0%)
+
+{
+ "expected": {
+  "rows": 925,
+  "testable": 364,
+  "classes": 231,
+  "fired": 15,
+  "injected": 231,
+  "caught": 231
+ },
+ "got": {
+  "rows": 925,
+  "testable": 364,
+  "classes": 231,
+  "fired": 15,
+  "injected": 231,
+  "caught": 231
+ },
+ "robot_calls": [
+  {
+   "rc": 0,
+   "n_unsat": 0,
+   "stderr_says_unsatisfiable": false,
+   "stderr_tail": ""
+  },
+  {
+   "rc": 1,
+   "n_unsat": 15,
+   "stderr_says_unsatisfiable": true,
+   "stderr_tail": "R org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#M_OpenTelemetry__url_port\n2026-11-17 11:35:45,194 ERROR org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#M_Splunk_CIM__process_exec\n2026-11-17 11:35:45,194 ERROR org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#M_Splunk_CIM__process_hash\n"
+  },
+  {
+   "rc": 1,
+   "n_unsat": 231,
+   "stderr_says_unsatisfiable": true,
+   "stderr_tail": "   unsatisfiable: https://schema.ocsf.io/align#BAD_M_OpenTelemetry__process_parent_pid\n2026-11-17 11:35:46,347 ERROR org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#BAD_M_Elastic_ECS__process_parent_executable\n2026-11-17 11:35:46,348 ERROR org.obolibrary.robot.ReasonerHelper -     unsatisfiable: https://schema.ocsf.io/align#BAD_M_OpenTelemetry__client_address\n"
+  }
+ ],
+ "checks": {
+  "selfcheck_clean": true,
+  "robot_exit_codes_explained": true,
+  "fired_names_match_hub_fp_json": true,
+  "rows": true,
+  "testable": true,
+  "classes": true,
+  "fired": true,
+  "injected": true,
+  "caught": true
+ },
+ "pass": true,
+ "jar_sha256": "16a73c074f3df359a7338a84b4e0788785fe06117f931bb9796e9619ea776105"
+}

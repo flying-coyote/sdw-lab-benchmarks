@@ -1,0 +1,134 @@
+schema,leaf_token,source_fields,doc_type,family,doc_url,fetch_date,evidence
+Microsoft ASIM,Ack,Ack,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,ActingProcess*,ActingProcess*,wildcard,object,matrix-notation,2026-11-17,wildcard leaf
+Microsoft ASIM,ActingProcessCommandLine,ActingProcessCommandLine,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The command line used to run the acting process.
+Microsoft ASIM,ActingProcessGuid,ActingProcessGuid,GUID (string),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,A generated unique identifier (GUID) of the acting process.
+Microsoft ASIM,ActingProcessId,ActingProcessId,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The process ID (PID) of the acting process.
+Microsoft ASIM,ActingProcessMD5,ActingProcessMD5,String,hash,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The MD5 hash of the acting process image file.
+Microsoft ASIM,ActingProcessName,ActingProcessName,string,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The name of the acting process.
+Microsoft ASIM,ActorUserId,ActorUserId,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,"A machine-readable, alphanumeric, unique representation of the Actor."
+Microsoft ASIM,ActorUsername,ActorUsername,Username (String),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,"The Actor username, including domain information when available."
+Microsoft ASIM,CommandLine,CommandLine,Alias (no type); aliased TargetProcessCommandLine is String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,Alias to TargetProcessCommandLine
+Microsoft ASIM,Dst*,Dst*,wildcard,object,matrix-notation,2026-11-17,wildcard leaf
+Microsoft ASIM,DstBytes,DstBytes,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The number of bytes sent from the destination to the source for the connection or session.
+Microsoft ASIM,DstHostname,DstHostname,Hostname (String),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,"The destination device hostname, excluding domain information."
+Microsoft ASIM,DstIpAddr,DstIpAddr,IP address,ip,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The IP address of the connection or session destination.
+Microsoft ASIM,DstMacAddr,DstMacAddr,MAC Address (String),mac,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The MAC address of the network interface used for the connection or session by the destination device.
+Microsoft ASIM,DstPackets,DstPackets,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The number of packets sent from the destination to the source for the connection or session.
+Microsoft ASIM,DstPortNumber,DstPortNumber,Integer,integer,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The destination IP port.
+Microsoft ASIM,DstUsername,DstUsername,Username (String),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,"The destination username, including domain information when available."
+Microsoft ASIM,Dvc,Dvc,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,A unique identifier of the device on which the event occurred or which reported the event
+Microsoft ASIM,DvcAction,DvcAction,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,"For reporting security systems, the action taken by the system, if applicable."
+Microsoft ASIM,DvcHostname,DvcHostname,Hostname,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,The hostname of the device on which the event occurred or which reported the event
+Microsoft ASIM,DvcId,DvcId,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,The unique ID of the device on which the event occurred or which reported the event
+Microsoft ASIM,EventOriginalType,EventOriginalType,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,"The original event type or ID, if provided by the source."
+Microsoft ASIM,EventOriginalUid,EventOriginalUid,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,"A unique ID of the original record, if provided by the source."
+Microsoft ASIM,EventProduct,EventProduct,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,The product generating the event.
+Microsoft ASIM,EventResult,EventResult,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,"One of the following values: Success, Partial, Failure, NA (Not Applicable)."
+Microsoft ASIM,EventResultDetails,EventResultDetails,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,Reason or details for the result reported in the EventResult field.
+Microsoft ASIM,EventSeverity,EventSeverity,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,"The severity of the event. Valid values are: Informational, Low, Medium, or High."
+Microsoft ASIM,EventStartTime,EventStartTime,Date/time,timestamp,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,The time when the event started.
+Microsoft ASIM,EventSubType,EventSubType,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,Describes a subdivision of the operation reported in the EventType field.
+Microsoft ASIM,EventType,EventType,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,Describes the operation reported by the record.
+Microsoft ASIM,EventUid,EventUid,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,"The unique ID of the record, as assigned by Microsoft Sentinel."
+Microsoft ASIM,EventVendor,EventVendor,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,The vendor of the product generating the event.
+Microsoft ASIM,FileMD5,FileMD5,MD5,hash,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,"For HTTP uploads, the MD5 hash of the uploaded file."
+Microsoft ASIM,FileName,FileName,String (Web); Alias (File),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,"For HTTP uploads, the name of the uploaded file."
+Microsoft ASIM,FilePath,FilePath,Alias (no type); aliased TargetFilePath is String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,Alias to the TargetFilePath field.
+Microsoft ASIM,FileSHA256,FileSHA256,SHA256,hash,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,"For HTTP uploads, the SHA256 hash of the uploaded file."
+Microsoft ASIM,FileSize,FileSize,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,"For HTTP uploads, the size in bytes of the uploaded file."
+Microsoft ASIM,GroupId,GroupId,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-user-management,2026-11-17,"A machine-readable, alphanumeric, unique representation of the group"
+Microsoft ASIM,GroupName,GroupName,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-user-management,2026-11-17,"The group name, including domain information when available"
+Microsoft ASIM,Guid,Guid,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,Hash,Hash,Alias (no type),hash,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,Alias to the best available hash for the target process.
+Microsoft ASIM,HttpContentFormat,HttpContentFormat,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The content format part of the HttpContentType
+Microsoft ASIM,HttpContentType,HttpContentType,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The HTTP Response content type header.
+Microsoft ASIM,HttpCookie,HttpCookie,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The content of the HTTP cookie header sent from the client to the server
+Microsoft ASIM,HttpHost,HttpHost,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The virtual web server the HTTP request has targeted.
+Microsoft ASIM,HttpReferrer,HttpReferrer,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The HTTP referrer header.
+Microsoft ASIM,HttpRequestBodyBytes,HttpRequestBodyBytes,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,"The size of the HTTP request body in bytes, not including headers."
+Microsoft ASIM,HttpRequestMethod,HttpRequestMethod,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The HTTP Method.
+Microsoft ASIM,HttpRequestTime,HttpRequestTime,Integer,integer,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,"The amount of time, in milliseconds, it took to send the request to the server"
+Microsoft ASIM,HttpRequestXff,HttpRequestXff,IP Address,ip,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The HTTP X-Forwarded-For header.
+Microsoft ASIM,HttpResponseBodyBytes,HttpResponseBodyBytes,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,"The size of the HTTP response body in bytes, not including headers."
+Microsoft ASIM,HttpResponseTime,HttpResponseTime,Integer,integer,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,"The amount of time, in milliseconds, it took to receive a response in the server"
+Microsoft ASIM,HttpStatusCode,HttpStatusCode,Alias (no type); aliased EventResultDetails is Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The HTTP Status Code. Alias to EventResultDetails.
+Microsoft ASIM,HttpUserAgent,HttpUserAgent,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The HTTP user agent header.
+Microsoft ASIM,HttpVersion,HttpVersion,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,The HTTP Request Version.
+Microsoft ASIM,Id,Id,string,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-common-fields,2026-11-17,"Property of AdditionalIds objects: An additional identifier included in the event, provided as a freeform string. Not a top-level event field."
+Microsoft ASIM,IpAddr,IpAddr,Alias (no type); aliased SrcIpAddr is IP address,ip,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,"If the event type is NetworkSession, Flow or L2NetworkSession, IpAddr is an alias to SrcIpAddr."
+Microsoft ASIM,LastReportedTime,LastReportedTime,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,LogonMethod,LogonMethod,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-authentication,2026-11-17,The method used to perform authentication.
+Microsoft ASIM,LogonProtocol,LogonProtocol,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-authentication,2026-11-17,The protocol used to perform authentication.
+Microsoft ASIM,MFA,MFA,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,NetworkApplicationProtocol,NetworkApplicationProtocol,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The application layer protocol used by the connection or session.
+Microsoft ASIM,NetworkBytes,NetworkBytes,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,Number of bytes sent in both directions.
+Microsoft ASIM,NetworkDirection,NetworkDirection,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The direction of the connection or session
+Microsoft ASIM,NetworkDuration,NetworkDuration,Integer,integer,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,"The amount of time, in milliseconds, for the completion of the network session or connection."
+Microsoft ASIM,NetworkPackets,NetworkPackets,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The number of packets sent in both directions.
+Microsoft ASIM,NetworkProtocol,NetworkProtocol,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The IP protocol used by the connection or session as listed in IANA protocol assignment
+Microsoft ASIM,NetworkProtocolVersion,NetworkProtocolVersion,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The version of NetworkProtocol.
+Microsoft ASIM,NetworkRuleName,NetworkRuleName,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The name or ID of the rule by which DvcAction was decided upon.
+Microsoft ASIM,NetworkRuleNumber,NetworkRuleNumber,Integer,integer,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The number of the rule by which DvcAction was decided upon.
+Microsoft ASIM,NetworkSessionId,NetworkSessionId,string,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The session identifier as reported by the reporting device.
+Microsoft ASIM,ParentProcessName,ParentProcessName,string,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The name of the parent process.
+Microsoft ASIM,Process,Process,Alias (no type); aliased TargetProcessName is string,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,Alias to the TargetProcessName
+Microsoft ASIM,SHA1,SHA1,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,SHA256,SHA256,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,SHA512,SHA512,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,SID,SID,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,Src,Src,"String (Authentication, User Management); Alias to SrcIpAddr (File Event)",ambiguous,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-authentication,2026-11-17,"Auth: 'A unique identifier of the source device. This field may alias the SrcDvcId, SrcHostname, or SrcIpAddr'; File: 'Alias to SrcIpAddr'"
+Microsoft ASIM,Src*,Src*,wildcard,object,matrix-notation,2026-11-17,wildcard leaf
+Microsoft ASIM,SrcBytes,SrcBytes,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The number of bytes sent from the source to the destination for the connection or session.
+Microsoft ASIM,SrcDomain,SrcDomain,Domain (String),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The domain of the source device.
+Microsoft ASIM,SrcHostname,SrcHostname,Hostname (String),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,"The source device hostname, excluding domain information."
+Microsoft ASIM,SrcIpAddr,SrcIpAddr,IP address,ip,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The IP address from which the connection or session originated.
+Microsoft ASIM,SrcMacAddr,SrcMacAddr,MAC Address (String),mac,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The MAC address of the network interface from which the connection or session originated.
+Microsoft ASIM,SrcNatIpAddr,SrcNatIpAddr,IP address,ip,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The original address of the source device if network address translation was used.
+Microsoft ASIM,SrcPackets,SrcPackets,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The number of packets sent from the source to the destination for the connection or session.
+Microsoft ASIM,SrcPortNumber,SrcPortNumber,Integer,integer,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The IP port from which the connection originated.
+Microsoft ASIM,SrcUsername,SrcUsername,Username (String),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,"The source username, including domain information when available."
+Microsoft ASIM,Target,Target,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,TargetAppName,TargetAppName,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-authentication,2026-11-17,The name of the application to which the authorization is required
+Microsoft ASIM,TargetFile*,TargetFile*,wildcard,object,matrix-notation,2026-11-17,wildcard leaf
+Microsoft ASIM,TargetFileCreationTime,TargetFileCreationTime,Date/Time,timestamp,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,The time at which the target file was created.
+Microsoft ASIM,TargetFileDirectory,TargetFileDirectory,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,The target file folder or location.
+Microsoft ASIM,TargetFileExtension,TargetFileExtension,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,The target file extension.
+Microsoft ASIM,TargetFileMD5,TargetFileMD5,MD5,hash,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,The MD5 hash of the target file.
+Microsoft ASIM,TargetFileMimeType,TargetFileMimeType,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,"The Mime, or Media, type of the target file."
+Microsoft ASIM,TargetFileName,TargetFileName,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,"The name of the target file, without a path or a location"
+Microsoft ASIM,TargetFilePath,TargetFilePath,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,"The full, normalized path of the target file"
+Microsoft ASIM,TargetFilePathType,TargetFilePathType,Enumerated,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,The type of TargetFilePath.
+Microsoft ASIM,TargetFileSize,TargetFileSize,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,The size of the target file in bytes.
+Microsoft ASIM,TargetHostname,TargetHostname,Hostname,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-authentication,2026-11-17,"The target device hostname, excluding domain information."
+Microsoft ASIM,TargetIpAddr,TargetIpAddr,IP Address,ip,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-authentication,2026-11-17,The IP address of the target device.
+Microsoft ASIM,TargetProcess*,TargetProcess*,wildcard,object,matrix-notation,2026-11-17,wildcard leaf
+Microsoft ASIM,TargetProcessCommandLine,TargetProcessCommandLine,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The command line used to run the target process.
+Microsoft ASIM,TargetProcessCurrentDirectory,TargetProcessCurrentDirectory,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The current directory in which the target process is executed.
+Microsoft ASIM,TargetProcessFileSize,TargetProcessFileSize,Long,long,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,Size of the file that ran the process responsible for the event.
+Microsoft ASIM,TargetProcessGuid,TargetProcessGuid,GUID (String),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,A generated unique identifier (GUID) of the target process.
+Microsoft ASIM,TargetProcessId,TargetProcessId,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The process ID (PID) of the target process.
+Microsoft ASIM,TargetProcessIntegrityLevel,TargetProcessIntegrityLevel,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,Every process has an integrity level that is represented in its token.
+Microsoft ASIM,TargetProcessMD5,TargetProcessMD5,MD5,hash,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The MD5 hash of the target process image file.
+Microsoft ASIM,TargetProcessName,TargetProcessName,string,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The name of the target process.
+Microsoft ASIM,TargetProcessStatusCode,TargetProcessStatusCode,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The exit code returned by the target process when terminated.
+Microsoft ASIM,TargetUrl,TargetUrl,URL (String),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,"When the operation is initiated using HTTP or HTTPS, the URL used."
+Microsoft ASIM,TargetUserId,TargetUserId,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,"A machine-readable, alphanumeric, unique representation of the target user."
+Microsoft ASIM,TargetUserIdType=SID,TargetUserIdType=SID,UserIdType (Enumerated); token is a field=value filter on TargetUserIdType,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The type of the ID stored in the TargetUserId field.
+Microsoft ASIM,TargetUserType,TargetUserType,UserType (Enumerated),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,The type of Actor [sic: target user]. See UserType.
+Microsoft ASIM,TargetUsername,TargetUsername,Username (String),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-process-event,2026-11-17,"The target username, including domain information when available."
+Microsoft ASIM,TcpFlagsSyn,TcpFlagsSyn,Boolean,boolean,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The TCP SYN Flag reported.
+Microsoft ASIM,ThreatCategory,ThreatCategory,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The category of the threat or malware identified in the network session.
+Microsoft ASIM,ThreatConfidence,ThreatConfidence,ConfidenceLevel (Integer),integer,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,"The confidence level of the threat identified, normalized to a value between 0 and a 100."
+Microsoft ASIM,ThreatField,ThreatField,"Enumerated (Network, File, Authentication); String (Process, User Management)",string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The field for which a threat was identified.
+Microsoft ASIM,ThreatFilePath,ThreatFilePath,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-file-event,2026-11-17,A file path for which a threat was identified.
+Microsoft ASIM,ThreatFirstReportedTime,ThreatFirstReportedTime,datetime,timestamp,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The first time the IP address or domain were identified as a threat.
+Microsoft ASIM,ThreatId,ThreatId,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The ID of the threat or malware identified in the network session.
+Microsoft ASIM,ThreatIpAddr,ThreatIpAddr,IP Address,ip,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,An IP address for which a threat was identified.
+Microsoft ASIM,ThreatIsActive,ThreatIsActive,Boolean,boolean,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,True if the threat identified is considered an active threat.
+Microsoft ASIM,ThreatName,ThreatName,String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The name of the threat or malware identified in the network session.
+Microsoft ASIM,ThreatRiskLevel,ThreatRiskLevel,RiskLevel (Integer),integer,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-network,2026-11-17,The risk level associated with the session. The level should be a number between 0 and 100.
+Microsoft ASIM,UPN,UPN,,,,,not found as a field in the fetched ASIM schema pages
+Microsoft ASIM,Url,Url,URL (String) (Web Session); Alias (File Event),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,"The HTTP request URL, including parameters."
+Microsoft ASIM,User,User,Username (String) (Authentication); Alias (others),string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-authentication,2026-11-17,Alias to the TargetUsername or to the TargetUserId if TargetUsername is not defined.
+Microsoft ASIM,UserAgent,UserAgent,Alias (no type); aliased HttpUserAgent is String,string,https://learn.microsoft.com/en-us/azure/sentinel/normalization-schema-web,2026-11-17,Alias to HttpUserAgent

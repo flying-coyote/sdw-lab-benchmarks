@@ -1,0 +1,265 @@
+{
+ "schema": "Elastic ECS",
+ "leaf_tokens": {
+  "*": [
+   "agent.*",
+   "destination.*",
+   "file.*",
+   "file.hash.*",
+   "host.*",
+   "observer.*",
+   "process.*",
+   "process.parent.*",
+   "process.user.*",
+   "server.*",
+   "source.*",
+   "threat.indicator.*"
+  ],
+  "@timestamp": [
+   "@timestamp"
+  ],
+  "accessed": [
+   "file.accessed"
+  ],
+  "action": [
+   "event.action"
+  ],
+  "address": [
+   "destination.address",
+   "server.address",
+   "source.address"
+  ],
+  "allowed": [
+   "allowed"
+  ],
+  "bytes": [
+   "destination.bytes",
+   "http.request.body.bytes",
+   "http.response.body.bytes",
+   "network.bytes",
+   "source.bytes"
+  ],
+  "category: malware": [
+   "event.category: malware"
+  ],
+  "code": [
+   "event.code"
+  ],
+  "command_line": [
+   "process.command_line",
+   "process.parent.command_line"
+  ],
+  "community_id": [
+   "network.community_id"
+  ],
+  "confidence": [
+   "threat.indicator.confidence"
+  ],
+  "created": [
+   "file.created"
+  ],
+  "description": [
+   "rule.description"
+  ],
+  "destination": [
+   "destination"
+  ],
+  "direction": [
+   "network.direction"
+  ],
+  "directory": [
+   "file.directory"
+  ],
+  "domain": [
+   "destination.domain",
+   "source.domain",
+   "url.domain",
+   "user.domain"
+  ],
+  "email": [
+   "user.email",
+   "user.target.email"
+  ],
+  "entity_id": [
+   "process.entity_id"
+  ],
+  "executable": [
+   "process.executable",
+   "process.parent.executable"
+  ],
+  "exit_code": [
+   "process.exit_code"
+  ],
+  "extension": [
+   "file.extension"
+  ],
+  "first_seen": [
+   "threat.indicator.first_seen"
+  ],
+  "full": [
+   "url.full"
+  ],
+  "full_name": [
+   "user.full_name"
+  ],
+  "hostname": [
+   "host.hostname"
+  ],
+  "iana_number": [
+   "network.iana_number"
+  ],
+  "id": [
+   "event.id",
+   "group.id",
+   "host.id",
+   "http.request.id",
+   "process.user.id",
+   "rule.id",
+   "threat.tactic.id",
+   "threat.technique.id",
+   "threat.technique.subtechnique.id",
+   "user.id",
+   "user.target.id"
+  ],
+  "ip": [
+   "client.ip",
+   "destination.ip",
+   "source.ip",
+   "source.nat.ip"
+  ],
+  "kind": [
+   "event.kind"
+  ],
+  "last_seen": [
+   "last_seen"
+  ],
+  "mac": [
+   "destination.mac",
+   "source.mac"
+  ],
+  "md5": [
+   "file.hash.md5",
+   "process.hash.md5"
+  ],
+  "method": [
+   "http.request.method"
+  ],
+  "mime_type": [
+   "file.mime_type",
+   "http.response.mime_type"
+  ],
+  "mtime": [
+   "file.mtime"
+  ],
+  "name": [
+   ".name",
+   "destination.user.name",
+   "file.name",
+   "group.name",
+   "process.name",
+   "process.user.name",
+   "rule.name",
+   "service.name",
+   "source.user.name",
+   "threat.software.name",
+   "user.effective.name",
+   "user.name",
+   "user.target.name"
+  ],
+  "original": [
+   "url.original",
+   "user_agent.original"
+  ],
+  "outcome": [
+   "event.outcome"
+  ],
+  "owner": [
+   "file.owner"
+  ],
+  "packets": [
+   "destination.packets",
+   "network.packets",
+   "source.packets"
+  ],
+  "path": [
+   "file.path",
+   "url.path"
+  ],
+  "pid": [
+   "process.parent.pid",
+   "process.pid"
+  ],
+  "port": [
+   ".port",
+   "destination.port",
+   "source.port",
+   "url.port"
+  ],
+  "protocol": [
+   "network.protocol"
+  ],
+  "provider": [
+   "event.provider"
+  ],
+  "query": [
+   "url.query"
+  ],
+  "reason": [
+   "event.reason"
+  ],
+  "referrer": [
+   "http.request.referrer"
+  ],
+  "risk_score": [
+   "event.risk_score"
+  ],
+  "risk_score_norm": [
+   "event.risk_score_norm"
+  ],
+  "scheme": [
+   "url.scheme"
+  ],
+  "server": [
+   "server"
+  ],
+  "severity": [
+   "event.severity"
+  ],
+  "sha1": [
+   "sha1"
+  ],
+  "sha256": [
+   "sha256"
+  ],
+  "size": [
+   "file.size"
+  ],
+  "start": [
+   "event.start",
+   "process.start"
+  ],
+  "status_code": [
+   "http.response.status_code"
+  ],
+  "transport": [
+   "network.transport"
+  ],
+  "type": [
+   "event.type",
+   "file.type",
+   "network.type"
+  ],
+  "type: denied": [
+   "event.type: denied"
+  ],
+  "uuid": [
+   "rule.uuid"
+  ],
+  "version": [
+   "http.version"
+  ],
+  "working_directory": [
+   "process.working_directory"
+  ]
+ }
+}

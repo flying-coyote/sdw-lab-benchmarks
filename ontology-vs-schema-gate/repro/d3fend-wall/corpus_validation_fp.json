@@ -1,0 +1,128 @@
+{
+ "rows": 925,
+ "testable": 364,
+ "fired": [
+  "M_Elastic_ECS__service_name",
+  "M_Elastic_ECS__url_port",
+  "M_Google_UDM__network_ip_protocol",
+  "M_Google_UDM__principal__",
+  "M_Google_UDM__principal_administrative_domain",
+  "M_Google_UDM__principal_mac",
+  "M_Google_UDM__target_application",
+  "M_Google_UDM__target_process_file_full_path",
+  "M_OpenTelemetry__url_port",
+  "M_Splunk_CIM__app",
+  "M_Splunk_CIM__parent_process_path",
+  "M_Splunk_CIM__process_exec",
+  "M_Splunk_CIM__process_hash",
+  "M_Splunk_CIM__process_path",
+  "M_Zeek__host"
+ ],
+ "fired_detail": [
+  {
+   "schema": "Elastic ECS",
+   "source": "service.name",
+   "ocsf": "dst_endpoint",
+   "src_art": "ServiceApplication",
+   "target_art": "NetworkNode"
+  },
+  {
+   "schema": "Elastic ECS",
+   "source": "url.port",
+   "ocsf": "http_request.url.port",
+   "src_art": "NetworkNode",
+   "target_art": "URL"
+  },
+  {
+   "schema": "Google UDM",
+   "source": "network.ip_protocol",
+   "ocsf": "connection_info.protocol_name",
+   "src_art": "NetworkNode",
+   "target_art": "NetworkSession"
+  },
+  {
+   "schema": "Google UDM",
+   "source": "principal.*",
+   "ocsf": "src_endpoint",
+   "src_art": "UserAccount",
+   "target_art": "NetworkNode"
+  },
+  {
+   "schema": "Google UDM",
+   "source": "principal.administrative_domain",
+   "ocsf": "src_endpoint.domain",
+   "src_art": "UserAccount",
+   "target_art": "NetworkNode"
+  },
+  {
+   "schema": "Google UDM",
+   "source": "principal.mac",
+   "ocsf": "src_endpoint.mac",
+   "src_art": "UserAccount",
+   "target_art": "NetworkNode"
+  },
+  {
+   "schema": "Google UDM",
+   "source": "target.application",
+   "ocsf": "dst_endpoint",
+   "src_art": "ServiceApplication",
+   "target_art": "NetworkNode"
+  },
+  {
+   "schema": "Google UDM",
+   "source": "target.process.file.full_path",
+   "ocsf": "process.name",
+   "src_art": "File",
+   "target_art": "Process"
+  },
+  {
+   "schema": "OpenTelemetry",
+   "source": "url.port",
+   "ocsf": "http_request.url.port",
+   "src_art": "NetworkNode",
+   "target_art": "URL"
+  },
+  {
+   "schema": "Splunk CIM",
+   "source": "app",
+   "ocsf": "dst_endpoint",
+   "src_art": "ServiceApplication",
+   "target_art": "NetworkNode"
+  },
+  {
+   "schema": "Splunk CIM",
+   "source": "parent_process_path",
+   "ocsf": "actor.process.file.path",
+   "src_art": "Process",
+   "target_art": "File"
+  },
+  {
+   "schema": "Splunk CIM",
+   "source": "process_exec",
+   "ocsf": "process.file.name",
+   "src_art": "Process",
+   "target_art": "File"
+  },
+  {
+   "schema": "Splunk CIM",
+   "source": "process_hash",
+   "ocsf": "process.file.hashes[]",
+   "src_art": "Process",
+   "target_art": "File"
+  },
+  {
+   "schema": "Splunk CIM",
+   "source": "process_path",
+   "ocsf": "process.file.path",
+   "src_art": "Process",
+   "target_art": "File"
+  },
+  {
+   "schema": "Zeek",
+   "source": "host",
+   "ocsf": "http_request.url.text",
+   "src_art": "NetworkNode",
+   "target_art": "URL"
+  }
+ ]
+}

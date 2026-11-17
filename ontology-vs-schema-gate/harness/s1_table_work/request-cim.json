@@ -1,0 +1,239 @@
+{
+ "schema": "Splunk CIM",
+ "leaf_tokens": {
+  "_time": [
+   "_time"
+  ],
+  "action": [
+   "action"
+  ],
+  "app": [
+   "app"
+  ],
+  "authentication_method": [
+   "authentication_method"
+  ],
+  "bytes": [
+   "bytes"
+  ],
+  "bytes_in": [
+   "bytes_in"
+  ],
+  "bytes_out": [
+   "bytes_out"
+  ],
+  "category": [
+   "category"
+  ],
+  "command": [
+   "command"
+  ],
+  "dest": [
+   "dest"
+  ],
+  "dest_ip": [
+   "dest_ip"
+  ],
+  "dest_mac": [
+   "dest_mac"
+  ],
+  "dest_nt_domain": [
+   "dest_nt_domain"
+  ],
+  "dest_port": [
+   "dest_port"
+  ],
+  "direction": [
+   "direction"
+  ],
+  "duration": [
+   "duration"
+  ],
+  "dvc": [
+   "dvc"
+  ],
+  "dvc_ip": [
+   "dvc_ip"
+  ],
+  "file_access_time": [
+   "file_access_time"
+  ],
+  "file_create_time": [
+   "file_create_time"
+  ],
+  "file_hash": [
+   "file_hash"
+  ],
+  "file_modify_time": [
+   "file_modify_time"
+  ],
+  "file_name": [
+   "file_name"
+  ],
+  "file_path": [
+   "file_path"
+  ],
+  "file_size": [
+   "file_size"
+  ],
+  "flow_id": [
+   "flow_id"
+  ],
+  "http_content_type": [
+   "http_content_type"
+  ],
+  "http_method": [
+   "http_method"
+  ],
+  "http_referrer": [
+   "http_referrer"
+  ],
+  "http_user_agent": [
+   "http_user_agent"
+  ],
+  "object": [
+   "object"
+  ],
+  "object_id": [
+   "object_id"
+  ],
+  "packets": [
+   "packets"
+  ],
+  "packets_in": [
+   "packets_in"
+  ],
+  "packets_out": [
+   "packets_out"
+  ],
+  "parent_process": [
+   "parent_process"
+  ],
+  "parent_process_id": [
+   "parent_process_id"
+  ],
+  "parent_process_name": [
+   "parent_process_name"
+  ],
+  "parent_process_path": [
+   "parent_process_path"
+  ],
+  "process": [
+   "process"
+  ],
+  "process_current_directory": [
+   "process_current_directory"
+  ],
+  "process_exec": [
+   "process_exec"
+  ],
+  "process_guid": [
+   "process_guid"
+  ],
+  "process_hash": [
+   "process_hash"
+  ],
+  "process_id": [
+   "process_id"
+  ],
+  "process_integrity_level": [
+   "process_integrity_level"
+  ],
+  "process_name": [
+   "process_name"
+  ],
+  "process_path": [
+   "process_path"
+  ],
+  "protocol": [
+   "protocol"
+  ],
+  "reason": [
+   "reason"
+  ],
+  "response_time": [
+   "response_time"
+  ],
+  "result": [
+   "result"
+  ],
+  "result_id": [
+   "result_id"
+  ],
+  "rule": [
+   "rule"
+  ],
+  "session_id": [
+   "session_id"
+  ],
+  "severity": [
+   "severity"
+  ],
+  "signature": [
+   "signature"
+  ],
+  "signature_id": [
+   "signature_id"
+  ],
+  "src": [
+   "src"
+  ],
+  "src_ip": [
+   "src_ip"
+  ],
+  "src_mac": [
+   "src_mac"
+  ],
+  "src_nt_domain": [
+   "src_nt_domain"
+  ],
+  "src_port": [
+   "src_port"
+  ],
+  "src_translated_ip": [
+   "src_translated_ip"
+  ],
+  "src_user": [
+   "src_user"
+  ],
+  "status": [
+   "status"
+  ],
+  "tcp_flag": [
+   "tcp_flag"
+  ],
+  "transport": [
+   "transport"
+  ],
+  "uri_path": [
+   "uri_path"
+  ],
+  "uri_query": [
+   "uri_query"
+  ],
+  "url": [
+   "url"
+  ],
+  "url_domain": [
+   "url_domain"
+  ],
+  "url_length": [
+   "url_length"
+  ],
+  "user": [
+   "user"
+  ],
+  "user_id": [
+   "user_id"
+  ],
+  "user_name": [
+   "user_name"
+  ],
+  "user_type": [
+   "user_type"
+  ],
+  "vendor_product": [
+   "vendor_product"
+  ]
+ }
+}

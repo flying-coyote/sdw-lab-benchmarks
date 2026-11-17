@@ -1,0 +1,12 @@
+{"arm": "S2", "item_id": "FX00", "s1": "pass", "s1_detail": {"reason": null, "src_family": "string", "tgt_family": "string"}, "src_kind": "user", "src_root": "user", "tgt_root": "user", "verdict": "pass"}
+{"arm": "S2", "item_id": "FX01", "s1": "pass", "s1_detail": {"reason": null, "src_family": "string", "tgt_family": "string"}, "src_kind": "user", "src_root": "user", "tgt_root": "process_entity", "verdict": "flag"}
+{"arm": "S2", "item_id": "FX02", "s1": "pass", "s1_detail": {"reason": null, "src_family": "ip", "tgt_family": "ip"}, "src_kind": "network_endpoint", "src_root": "endpoint", "tgt_root": "endpoint", "verdict": "pass"}
+{"arm": "S2", "item_id": "FX03", "s1": "flag", "s1_detail": {"reason": "type_family", "src_family": "ip", "tgt_family": "timestamp"}, "src_kind": "network_endpoint", "src_root": "endpoint", "tgt_root": null, "verdict": "flag"}
+{"arm": "S2", "item_id": "FX04", "s1": "pass", "s1_detail": {"reason": null, "src_family": "integer", "tgt_family": "integer"}, "src_kind": "process", "src_root": "process_entity", "tgt_root": "process_entity", "verdict": "pass"}
+{"arm": "S2", "item_id": "FX05", "s1": "pass", "s1_detail": {"reason": null, "src_family": "string", "tgt_family": "string"}, "src_kind": "file", "src_root": "file", "tgt_root": "file", "verdict": "pass"}
+{"arm": "S2", "item_id": "FX06", "s1": "pass", "s1_detail": {"reason": null, "src_family": "string", "tgt_family": "string"}, "src_kind": "session", "src_root": "session", "tgt_root": "session", "verdict": "pass"}
+{"arm": "S2", "item_id": "FX07", "s1": "flag", "s1_detail": {"reason": "invalid_path"}, "src_kind": "user", "src_root": "user", "tgt_root": null, "verdict": "flag"}
+{"arm": "S2", "item_id": "FX08", "s1": "pass", "s1_detail": {"reason": null, "src_family": "string", "tgt_family": "string"}, "src_kind": "network_connection_info", "src_root": "network_connection_info", "tgt_root": "network_connection_info", "verdict": "pass"}
+{"arm": "S2", "item_id": "FX09", "s1": "pass", "s1_detail": {"reason": null, "src_family": "integer", "tgt_family": "integer"}, "src_kind": null, "src_root": null, "tgt_root": null, "verdict": "abstain"}
+{"arm": "S2", "item_id": "FX10", "s1": "pass", "s1_detail": {"reason": null, "src_family": "float", "tgt_family": "long"}, "src_kind": null, "src_root": null, "tgt_root": null, "verdict": "abstain"}
+{"arm": "S2", "item_id": "FX11", "s1": "pass", "s1_detail": {"reason": null, "src_family": "ip", "tgt_family": "ip"}, "src_kind": "network_endpoint", "src_root": "endpoint", "tgt_root": "endpoint", "verdict": "pass"}

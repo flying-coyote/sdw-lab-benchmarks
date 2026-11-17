@@ -1,0 +1,158 @@
+{
+ "schema": "Zeek",
+ "leaf_tokens": {
+  "*": [
+   "id.*"
+  ],
+  "actions": [
+   "actions"
+  ],
+  "community_id": [
+   "community_id"
+  ],
+  "conn_state": [
+   "conn_state"
+  ],
+  "dst": [
+   "dst"
+  ],
+  "duration": [
+   "duration"
+  ],
+  "filename": [
+   "filename"
+  ],
+  "fuid": [
+   "fuid"
+  ],
+  "host": [
+   "host"
+  ],
+  "local_orig": [
+   "local_orig"
+  ],
+  "local_resp": [
+   "local_resp"
+  ],
+  "md5": [
+   "md5"
+  ],
+  "method": [
+   "method"
+  ],
+  "mime_type": [
+   "mime_type"
+  ],
+  "msg": [
+   "msg"
+  ],
+  "name": [
+   "name"
+  ],
+  "note": [
+   "note"
+  ],
+  "notice": [
+   "notice"
+  ],
+  "orig+resp_bytes": [
+   "orig+resp_bytes"
+  ],
+  "orig_*": [
+   "id.orig_*"
+  ],
+  "orig_bytes": [
+   "orig_bytes"
+  ],
+  "orig_fuids": [
+   "orig_fuids"
+  ],
+  "orig_h": [
+   "id.orig_h"
+  ],
+  "orig_l2_addr": [
+   "orig_l2_addr"
+  ],
+  "orig_p": [
+   "id.orig_p"
+  ],
+  "orig_pkts": [
+   "orig_pkts"
+  ],
+  "proto": [
+   "proto"
+  ],
+  "proxied": [
+   "proxied"
+  ],
+  "referrer": [
+   "referrer"
+  ],
+  "request_body_len": [
+   "request_body_len"
+  ],
+  "resp_*": [
+   "id.resp_*"
+  ],
+  "resp_bytes": [
+   "resp_bytes"
+  ],
+  "resp_fuids": [
+   "resp_fuids"
+  ],
+  "resp_h": [
+   "id.resp_h"
+  ],
+  "resp_l2_addr": [
+   "resp_l2_addr"
+  ],
+  "resp_p": [
+   "id.resp_p"
+  ],
+  "resp_pkts": [
+   "resp_pkts"
+  ],
+  "response_body_len": [
+   "response_body_len"
+  ],
+  "service": [
+   "service"
+  ],
+  "sha1": [
+   "sha1"
+  ],
+  "sha256": [
+   "sha256"
+  ],
+  "src": [
+   "src"
+  ],
+  "status_code": [
+   "status_code"
+  ],
+  "total_bytes": [
+   "total_bytes"
+  ],
+  "ts": [
+   "ts"
+  ],
+  "tunnel_parents": [
+   "tunnel_parents"
+  ],
+  "uid": [
+   "uid"
+  ],
+  "uri": [
+   "uri"
+  ],
+  "user_agent": [
+   "user_agent"
+  ],
+  "username": [
+   "username"
+  ],
+  "version": [
+   "version"
+  ]
+ }
+}

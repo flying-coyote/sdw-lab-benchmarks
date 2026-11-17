@@ -1,0 +1,151 @@
+{
+ "schema": "OpenTelemetry",
+ "leaf_tokens": {
+  "*": [
+   "destination.*",
+   "file.*",
+   "host.*",
+   "process.*",
+   "source.*"
+  ],
+  "Body": [
+   "Body"
+  ],
+  "EventName": [
+   "EventName"
+  ],
+  "Resource": [
+   "Resource"
+  ],
+  "SeverityNumber": [
+   "SeverityNumber"
+  ],
+  "SeverityText": [
+   "SeverityText"
+  ],
+  "Timestamp": [
+   "Timestamp"
+  ],
+  "accessed": [
+   "file.accessed"
+  ],
+  "address": [
+   "client.address",
+   "destination.address",
+   "server.address",
+   "source.address"
+  ],
+  "code": [
+   "process.exit.code"
+  ],
+  "command": [
+   "process.command"
+  ],
+  "command_line": [
+   "process.command_line"
+  ],
+  "created": [
+   "file.created"
+  ],
+  "direction": [
+   "network.io.direction"
+  ],
+  "directory": [
+   "file.directory"
+  ],
+  "domain": [
+   "url.domain"
+  ],
+  "extension": [
+   "file.extension"
+  ],
+  "full": [
+   "url.full"
+  ],
+  "id": [
+   "file.owner.id",
+   "process.real_user.id",
+   "session.id",
+   "user.id"
+  ],
+  "method": [
+   "http.request.method"
+  ],
+  "method_original": [
+   "method_original"
+  ],
+  "modified": [
+   "file.modified"
+  ],
+  "name": [
+   "file.name",
+   "file.owner.name",
+   "network.protocol.name",
+   "process.executable.name",
+   "process.real_user.name",
+   "process.user.name",
+   "user.name"
+  ],
+  "original": [
+   "user_agent.original"
+  ],
+  "owner": [
+   "process.owner"
+  ],
+  "parent_pid": [
+   "process.parent_pid"
+  ],
+  "path": [
+   "file.path",
+   "process.executable.path",
+   "url.path"
+  ],
+  "pid": [
+   "process.pid"
+  ],
+  "port": [
+   ".port",
+   "destination.port",
+   "source.port",
+   "url.port"
+  ],
+  "query": [
+   "url.query"
+  ],
+  "referer": [
+   "http.request.header.referer"
+  ],
+  "scheme": [
+   "url.scheme"
+  ],
+  "size": [
+   "file.size",
+   "http.request.body.size",
+   "http.response.body.size"
+  ],
+  "status_code": [
+   "http.response.status_code"
+  ],
+  "target_path": [
+   "file.symbolic_link.target_path"
+  ],
+  "time": [
+   "process.creation.time"
+  ],
+  "transport": [
+   "network.transport"
+  ],
+  "type": [
+   "network.type"
+  ],
+  "version": [
+   "network.protocol.version"
+  ],
+  "working_directory": [
+   "process.working_directory"
+  ],
+  "x-forwarded-for": [
+   "http.request.header.x-forwarded-for"
+  ]
+ }
+}

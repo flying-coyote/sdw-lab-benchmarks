@@ -1,0 +1,12 @@
+{"arm": "S1", "item_id": "FX00", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX01", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX02", "reason": null, "src_family": "ip", "tgt_family": "ip", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX03", "reason": "type_family", "src_family": "ip", "tgt_family": "timestamp", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX04", "reason": null, "src_family": "integer", "tgt_family": "integer", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX05", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX06", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX07", "reason": "invalid_path", "verdict": "flag"}
+{"arm": "S1", "item_id": "FX08", "reason": null, "src_family": "string", "tgt_family": "string", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX09", "reason": null, "src_family": "integer", "tgt_family": "integer", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX10", "reason": null, "src_family": "float", "tgt_family": "long", "verdict": "pass"}
+{"arm": "S1", "item_id": "FX11", "reason": null, "src_family": "ip", "tgt_family": "ip", "verdict": "pass"}
