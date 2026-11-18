@@ -24,7 +24,7 @@ The platform stress for EDR data is **ingest throughput at high cardinality comb
 
 ## Methodology summary
 
-This workload follows the practice's lab methodology principles (see `~/project1/02-projects/securitydataworks/LAB.md`):
+This workload follows the practice's lab methodology principles (kept in an internal planning document, not published here):
 
 - **Reproducibility first** — public methodology document; data-generation harness reproducible from open-source primitives (Sysmon + SwiftOnSecurity config + Atomic Red Team)
 - **Identical workload across candidates** — query suite and event corpus pinned before any platform candidate is run
@@ -33,7 +33,7 @@ This workload follows the practice's lab methodology principles (see `~/project1
 
 ## Public-language constraint
 
-Per [`project_benchmark_publication_strategy.md`](../../../.claude/projects/-home-jerem-project1/memory/project_benchmark_publication_strategy.md), the public methodology PDF does not name commercial vendors in comparative performance claims. Substitute "schema-on-read SIEM" for Splunk. Reference implementation stays NDA-gated (the leverage trio: PDF + NDA + named external reviewer).
+Under the practice's benchmark-publication policy, the public methodology PDF does not name commercial vendors in comparative performance claims. Substitute "schema-on-read SIEM" for Splunk. Reference implementation stays NDA-gated (the leverage trio: PDF + NDA + named external reviewer).
 
 ## Data generation plan
 
@@ -52,12 +52,9 @@ When it is built, define the compose harness in this repo. EDR-specific services
 ## Out of scope
 
 - This workload tests platform adequacy for EDR telemetry shape; it does not evaluate EDR detection quality
-- Client-data POV runs are out of scope per the retired POV-on-customer-data decision (2026-05-18; see [`project_security_data_consulting_model.md`](../../../.claude/projects/-home-jerem-project1/memory/project_security_data_consulting_model.md))
+- Client-data POV runs are out of scope per the retired POV-on-customer-data decision (2026-05-18, recorded internally)
 - Linux EDR (Wazuh-style agent telemetry) is a future extension; this workload is Windows / Sysmon only
 
 ## References
 
-- Workload category brief: `~/project1/02-projects/securitydataworks/data-source-categories/edr.md`
-- Cost envelope: `~/project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md` (EDR archetype line: ~$5–20 per run, up to $100 / quarter Q3 2026 budget line)
-- Vendor universe context: `~/project1/02-projects/securitydataworks/vendor-tracking-2026.md` §XII Telemetry Sources — EDR / XDR
-- Lab methodology principles: `~/project1/02-projects/securitydataworks/LAB.md`
+The workload category brief, the cost envelope (EDR archetype line: ~$5–20 per run, up to $100 / quarter Q3 2026 budget line), the vendor-universe notes (telemetry sources, EDR / XDR) and the lab methodology principles are internal planning documents and are not published in this repo. The cross-cutting rules that are public live in [`../../BENCHMARKING-METHODOLOGY.md`](../../BENCHMARKING-METHODOLOGY.md).

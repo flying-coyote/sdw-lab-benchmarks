@@ -106,4 +106,4 @@ Per `results/cost-actuals.md` (TBD), log every run's actual AWS bill including c
 
 ## Provider alternative posture
 
-The corpus generation step requires AWS (Stratus targets AWS-native services). The *platform-under-test* host does not — Hetzner bare-metal as the ingest host with corpus generated in AWS-sandbox and exported is the cost-reduced path. Provider commitment per [`../../../project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md`](../../../project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md) is to the envelope, not to AWS for the host.
+The corpus generation step requires AWS (Stratus targets AWS-native services). The *platform-under-test* host does not — Hetzner bare-metal as the ingest host with corpus generated in AWS-sandbox and exported is the cost-reduced path. Provider commitment under the practice's internal infrastructure cost envelope (not published here) is to the envelope, not to AWS for the host.

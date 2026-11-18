@@ -3,7 +3,7 @@ cluster: detection
 title: Deterministic multi-source corpus with a planted APT29-style chain
 status: foundation
 tier: none
-claim_kind: demonstration
+claim_kind: none
 verdict: CAVEAT
 prereg: none
 results: none

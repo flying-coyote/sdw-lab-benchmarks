@@ -58,7 +58,7 @@ caveat. Heavy runs are serialized (never co-run a timing bench, because it infla
    published as a win. Interchangeability holds for SQL portability and ~latency, but carries a
    *correctness* asterisk; the cross-engine answer-equality gate is essential, not ceremony. For
    security data a `count(*) WHERE` is a detection threshold or compliance figure, so silent-and-fast is
-   worse than slow-and-right. (Candidate upstream bug report — Jeremy to file with the reproduction.)
+   worse than slow-and-right. (The reproduction is a candidate for an upstream bug report.)
    *(Noted 2026-11-17: the undercount is version-bound. chDB 4.1.9 reads the same file correctly
    (`clickhouse-vs-duckdb/results/RECONFIRMATION-2026-06-14.md:82`), so the finding holds for 4.1.8, the
    version the June results ran on, and the correctness asterisk on interchangeability holds through the

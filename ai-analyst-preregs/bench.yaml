@@ -3,7 +3,7 @@ cluster: mapping-and-models
 title: Frozen designs for AI analyst over-triggering, zero-defense planting and inference cost
 status: frozen-design
 tier: not stated
-claim_kind: measured
+claim_kind: none
 verdict: SCAFFOLD
 prereg: R3.md; R9.md; R11.md
 results: RESULTS.md

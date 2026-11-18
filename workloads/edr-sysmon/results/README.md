@@ -9,7 +9,7 @@ Each benchmark run writes:
 - `run-manifests/<timestamp>.yaml` — run metadata: platform candidate, version, hardware, corpus version, ATT&CK technique set, OCSF normalizer version, ingest rate target, actual ingest rate observed
 - `query-latencies/<timestamp>.csv` — per-query cold/warm latencies + standard error
 - `ingest-throughput/<timestamp>.csv` — sustained throughput time series
-- `cost-actuals.md` — running log of actual cloud/local spend against the budget envelope in `~/project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md`
+- `cost-actuals.md` — running log of actual cloud/local spend against the practice's internal infrastructure cost envelope (not published here)
 
 ## Headline metrics
 

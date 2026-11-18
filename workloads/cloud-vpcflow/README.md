@@ -30,7 +30,7 @@ The platform stress for cloud data is **streaming ingest at high cardinality com
 
 ## Methodology summary
 
-Same lab-methodology principles as the EDR and NDR archetypes (see `~/project1/02-projects/securitydataworks/LAB.md`):
+Same lab-methodology principles as the EDR and NDR archetypes (kept in an internal planning document, not published here):
 
 - **Reproducibility first** — public methodology document; data-generation harness reproducible from open-source primitives (Stratus Red Team + a clean AWS sandbox account)
 - **Identical workload across candidates** — same query suite and event corpus against each platform
@@ -39,11 +39,11 @@ Same lab-methodology principles as the EDR and NDR archetypes (see `~/project1/0
 
 ## Public-language constraint
 
-Per [`project_benchmark_publication_strategy.md`](../../../.claude/projects/-home-jerem-project1/memory/project_benchmark_publication_strategy.md), public methodology does not name commercial vendors in comparative performance claims. Substitute "schema-on-read SIEM" for Splunk; if comparing against cloud-native security stacks (Sentinel, Chronicle, Security Lake), check each one's EULA / terms before naming in comparative claims.
+Under the practice's benchmark-publication policy, public methodology does not name commercial vendors in comparative performance claims. Substitute "schema-on-read SIEM" for Splunk; if comparing against cloud-native security stacks (Sentinel, Chronicle, Security Lake), check each one's EULA / terms before naming in comparative claims.
 
 ## Cost-envelope note
 
-This is the most cloud-spend-intensive archetype. Per `~/project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md`, the line item is:
+This is the most cloud-spend-intensive archetype. Per the practice's internal infrastructure cost envelope (not published here), the line item is:
 
 | Archetype | Est. $/run | Q3 2026 budget line |
 |---|---|---|
@@ -69,7 +69,7 @@ When it is built, define the compose harness in this repo. Cloud-specific servic
 
 - Azure and GCP variants — future extensions; spec covers AWS only
 - Posture / drift evaluation — CNAPP findings ingestion is interesting but stress-tests a different platform axis (merge-on-read for continuous evaluation) and belongs in a separate archetype if pursued
-- Client-data POV runs — retired per 2026-05-18 decision in [`project_security_data_consulting_model.md`](../../../.claude/projects/-home-jerem-project1/memory/project_security_data_consulting_model.md)
+- Client-data POV runs — retired per a 2026-05-18 decision, recorded internally
 - Long-running cloud retention — runs are short-lived (hours); no ongoing sandbox accounts maintained
 
 ## Sequencing dependency
@@ -82,8 +82,5 @@ When it is built, define the compose harness in this repo. Cloud-specific servic
 
 ## References
 
-- Workload category brief: `~/project1/02-projects/securitydataworks/data-source-categories/cloud-web.md`
-- Cost envelope: `~/project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md`
-- Vendor universe context: `~/project1/02-projects/securitydataworks/vendor-tracking-2026.md` §I (cloud-native platforms), §X (Sentinel federation), §XIX (CNAPP)
-- Lab methodology principles: `~/project1/02-projects/securitydataworks/LAB.md`
+- The workload category brief, the cost envelope, the vendor-universe notes (cloud-native platforms, Sentinel federation, CNAPP) and the lab methodology principles are internal planning documents and are not published in this repo; the public cross-cutting rules are in [`../../BENCHMARKING-METHODOLOGY.md`](../../BENCHMARKING-METHODOLOGY.md)
 - Sibling archetypes: [`../edr-sysmon/README.md`](../edr-sysmon/README.md), the top-level Zeek/NDR work (planned move to `../ndr-zeek/`)

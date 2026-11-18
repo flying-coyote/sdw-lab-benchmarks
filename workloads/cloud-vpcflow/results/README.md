@@ -9,7 +9,7 @@ Each run writes:
 - `run-manifests/<timestamp>.yaml` — run metadata: platform candidate + version, hardware, corpus version, Stratus technique set, OCSF normalizer version, ingest rate target, actual ingest rate observed, sandbox-account-ID (anonymized in public material), AWS region
 - `query-latencies/<timestamp>.csv` — per-query cold / warm latencies + standard error
 - `ingest-throughput/<timestamp>.csv` — sustained throughput time series at 1-second granularity
-- `cost-actuals.md` — running log of actual cloud spend per run, including delayed-surfacing AWS charges (data-event CloudTrail, GuardDuty if enabled, S3 transfer), reconciled against the $500–1,500/quarter envelope at `~/project1/02-projects/securitydataworks/lab/infrastructure-cost-envelope.md`
+- `cost-actuals.md` — running log of actual cloud spend per run, including delayed-surfacing AWS charges (data-event CloudTrail, GuardDuty if enabled, S3 transfer), reconciled against the practice's internal $500–1,500/quarter cost envelope (not published here)
 
 ## Headline metrics
 

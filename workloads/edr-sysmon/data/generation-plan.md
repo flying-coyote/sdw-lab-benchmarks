@@ -69,7 +69,7 @@ The exact technique IDs picked are noted in `results/run-manifests/` per run. Th
 
 ## OCSF mapping strategy
 
-Extend the existing `~/project1/02-projects/zeek-to-ocsf-mapping/` pattern. Build a sibling library — `sysmon-to-ocsf-mapping/` or generalize the existing one — that takes Sysmon JSON (from Winlogbeat) and emits OCSF-conformant records for the relevant classes:
+Extend the pattern of the existing internal Zeek-to-OCSF mapping library (not published in this repo). Build a sibling library — `sysmon-to-ocsf-mapping/` or generalize the existing one — that takes Sysmon JSON (from Winlogbeat) and emits OCSF-conformant records for the relevant classes:
 
 - Sysmon Event ID 1 (Process Create) → OCSF Process Activity (1007) `activity_id: 1 (Launch)`
 - Sysmon Event ID 11 (FileCreate) → OCSF File System Activity (1001) `activity_id: 1 (Create)`
