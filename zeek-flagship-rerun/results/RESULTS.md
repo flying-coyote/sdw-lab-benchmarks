@@ -118,7 +118,8 @@ Environment, image digests, and the Iceberg footer parity record: `env.json`.
   foil is a bare OpenSearch index, not a SIEM product with its pipeline overhead).
 - **Supersedes:** the bare 145× on every citing surface (thesis/research/engagements +
   pitch material). H3-PERFORMANCE-01 should re-tier on these numbers; the legacy result
-  stays in `~/splunk-db-connect-benchmark` as a historical single-run measurement.
+  stays in the older predecessor repository as a historical single-run measurement (repository
+  name generalized 2026-11-22).
 
 ---
 

@@ -3,7 +3,7 @@ cluster: detection
 title: Human-hours to produce a Reg SCI annual-review evidence package, lakehouse vs SIEM
 status: scaffold
 tier: B
-claim_kind: demonstration
+claim_kind: none
 verdict: SCAFFOLD
 prereg: REPORT-SPEC.md
 results: results/results-template.json

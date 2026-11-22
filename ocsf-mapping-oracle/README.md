@@ -46,8 +46,12 @@ rather than resolved; an independent frontier leg (needs an API key) closes it. 
 
 *(corrected 2026-11-17: this section predates three later results in the folder. A larger local model,
 gemma4:26b, is in `results/RESULTS.md` (silent error 0.18 under `schema`, 0.83 under `none`). A frontier
-proxy leg ran in June through Claude Code subagents rather than an API key, three blind runs of all 705
-prompts (`_frontier/REPLICATION-2026-06-14.md`: path-correct 57.6 / 67.2 / 68.5%), and that is one
+proxy leg ran in June through Claude Code subagents rather than an API key, three runs of all 705
+prompts (`_frontier/REPLICATION-2026-06-14.md`: path-correct 57.6 / 67.2 / 68.5%), described as blind in the
+June replication file, though gold-stripped inputs are archived for run 2 only and run 3's schema batch is
+excluded from the headline band in the 2026-11-16 re-score (57 to 66% behind the full-schema wall,
+`../ocsf-deterministic-mapper/results/RESULTS-FRONTIER-CONSTRAINED-2026-11-16.md`, correction 2; qualifier
+added 2026-11-22), and that is one
 model family, so the independent non-same-family leg is still open. And the silent-error metric itself
 was found to be subset-sensitive: the validator dropped the subset's deep-accept rule, so 24 of the 141
 gold paths sat outside the closure, and against the full OCSF 1.8.0 schema the frontier proxy's
@@ -94,7 +98,8 @@ from the root `requirements.txt` (`requests==2.34.2`).
 
 ## Evidence tier
 
-Tier B, and only the local leg. Single weak model, single-shot, temperature 0, a curated
+Tier B, and only the local leg (this paragraph describes the June local leg; the later frontier-proxy and
+gemma4 results are in the note above, added 2026-11-22). Single weak model, single-shot, temperature 0, a curated
 gold subset, exact-match path scoring that undercounts valid alternatives. The
 silent-error contrast is the readable signal at this tier; the magnitudes are
 model-and-subset-specific. For the full-corpus run, a seeded gold subset (about 100 hand-verified

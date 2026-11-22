@@ -244,8 +244,10 @@ a different valid home scored as a loss; the re-score's alternates gold is the f
 
 ## Pre-registration
 
-The first half of this README is the pre-registration (2026-06-10). It is not hashed, so whether it
-was frozen before the first scored run can be checked only against the git history. Its P1 to P5
+The first half of this README is the pre-registration (2026-06-10). It is not hashed, but the
+repository history shows it first committed in `fca81a1` (2026-06-10), four days before the first scored
+results file (`FINDINGS-2026-06-14.md`, `27f8537`, 2026-06-14); the README was edited in later commits
+(06-13 and 2026-11-17), so the frozen text is the README as committed in `fca81a1` (checked 2026-11-22). Its P1 to P5
 predictions are scored in `FINDINGS-2026-06-14.md` for the arms that ran.
 
 ## Reproduce

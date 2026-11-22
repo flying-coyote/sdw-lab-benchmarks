@@ -35,11 +35,21 @@ gate — the pre-reg means it literally: a divergent run is not a scoreable run.
 The most recent file is v3; for the batch-versus-streaming freshness question the freshness sweep is the
 current read, and v2 supersedes July's real-time freshness framing (v2, "far smaller on a real clock").
 
-None of the four pre-registrations has a hash file. Each results file records the freeze as a lab commit
-(`177934e`, `1ae54f1`, `dbf7406`), and `HASH-MAP-2026-11-06.md` maps two of those to the rewritten commits
-on GitHub, so freeze-before-run can be checked only against the git history. The v2 pre-registration's
-frontmatter says `status: frozen` while a status line in its body still reads "DRAFT, not frozen", which
-the git history at `177934e` / `c52a726` would settle. The verdicts listed above are the files' own.
+None of the four pre-registrations has a hash file, but the repository history shows each one committed
+before its scored results (checked 2026-11-22; hashes as on GitHub, with the pre-rewrite hashes that some
+files cite in parentheses, mapped in `HASH-MAP-2026-11-06.md`):
+
+- July: pre-registration `c683169` (2026-07-19 14:37 local) before results `4321ba8` (21:47 the same day);
+  July's `results/RESULTS.md` records no freeze commit.
+- v2: pre-registration `c52a726` (`177934e`; 2026-11-03 06:59) before results `270ece8` (10:50).
+- Freshness: pre-registration `80c81fc` (`1ae54f1`; 2026-11-06 04:33), with deviations D1 to D4 appended
+  by `b865764` (05:19), before results `cceb0f9` (09:53).
+- v3: pre-registration `dbf7406` (2026-11-07 00:59) before results `53924a2` (05:04).
+
+The v2 pre-registration's frontmatter says `status: frozen` while a status line in its body still reads
+"DRAFT, not frozen". The freeze commit `c52a726` already carried both lines and the file has not changed
+since, so the DRAFT line is leftover text inside the frozen file, not a sign of later editing. The
+verdicts listed above are the files' own.
 
 ## What would have made it fail
 

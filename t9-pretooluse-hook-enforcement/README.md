@@ -83,7 +83,7 @@ a feature does (`RESULTS.md`). Headless only, the managed tier unmeasured, no `P
 
 ## Corrections
 
-- 2026-11-09: verifier fixes are marked `[fixed per verify]` in `RESULTS.md`.
+- 2026-11-10 UTC (2026-11-09 local): verifier fixes are marked `[fixed per verify]` in `RESULTS.md`.
 - 2026-11-17: the `RESULTS.md` frontmatter status said "not yet independently verified" after `VERIFICATION.md` had
   been written; it now carries a dated correction. One absolute home-directory path in the Deviations section of
   `RESULTS.md` was replaced with a description of the same directory. This README was added.

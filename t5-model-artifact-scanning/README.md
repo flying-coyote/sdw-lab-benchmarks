@@ -26,8 +26,8 @@ text, not from this bench's judgment.
 
 `PREREGISTRATION.md`, frozen by agent before the run and not owner-reviewed. Its sha256 in `prereg.sha256`
 (`ebf91946…d4bc1b`) still matches, and `prereg.frozen-at` records 2026-11-10T00:58:58Z. The labels were frozen with
-it: `PREREGISTRATION.md` line 49 carries the sha256 of `labels.frozen.json` (`5490275f…a34a3`), which still matches,
-and `score.py` reads `labels.json`, which is byte-identical to `labels.frozen.json`. Every harness file was written
+it: `PREREGISTRATION.md` line 49 carries the sha256 of `labels.json` (`5490275f…a34a3`), which still matches that file and
+its byte-identical copy `labels.frozen.json`, and `score.py` reads `labels.json`. Every harness file was written
 after the freeze (Deviation 2 in `RESULTS.md`), and the verifier checked the verdict mapping in `run_scans.py` against
 the frozen table line by line. `fixture-sha256.txt` and `variants-sha256.txt` list absolute scratch paths for
 fixtures that are not in this repo, so those hashes can be checked only against a rebuilt fixture tree.
@@ -74,7 +74,7 @@ covers one host and one version of each tool. See Limits in `RESULTS.md`.
 
 ## Corrections
 
-- 2026-11-09: verifier fixes are marked `[fixed in verify]` in `RESULTS.md`.
+- 2026-11-10 UTC (2026-11-09 local): verifier fixes are marked `[fixed in verify]` in `RESULTS.md`.
 - 2026-11-17: seven passages of `RESULTS.md` that narrated the finishing agent's steps in the first person were
   recast in neutral voice, and "the part I think matters most" now reads "probably the part that matters most"; this
   README was restructured to the lab layout and records which label file the scorer reads.

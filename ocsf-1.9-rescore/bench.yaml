@@ -2,9 +2,9 @@ name: ocsf-1.9-rescore
 cluster: mapping-and-models
 title: Strict full-schema re-score of the C1 corpus and the Tenzir Zeek arm, carried to OCSF 1.9.0
 status: published
-tier: B
-claim_kind: measured
-verdict: SOUND
+tier: not stated
+claim_kind: mixed
+verdict: CAVEAT
 prereg: PREREGISTRATION.md
 results: RESULTS.md
 reproduce: see RESULTS.md Reproduce block, run from inside ocsf-1.9-rescore/

@@ -8,7 +8,7 @@ verdict: CAVEAT
 prereg: none
 results: results/RESULTS.md
 reproduce: python3 ocsf-mv-acceleration/run.py; python3 ocsf-mv-acceleration/crossover.py
-pins: requirements.txt
+pins: root requirements.txt (duckdb==1.5.3)
 essay: https://securitydataworks.com/writing/engines/materialized-views
 superseded_by: none
 audited: 2026-11-17

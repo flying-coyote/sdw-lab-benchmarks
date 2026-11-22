@@ -5,7 +5,10 @@ faithfully to the spec inherits the disagreement. This bench asks what that does
 the answer it supports is that in a positional format one disagreement shifts every field after it into
 a wrong-but-present value with nothing firing, while self-describing formats (key-value, JSON, a TSV with
 a `#fields` header) fail loudly on the one field that changed. It is the lab's evidence leg for
-H-SPEC-INTEGRITY-01, anchored on the PAN-OS field-shift case behind PAN-OS PR #294.
+H-SPEC-INTEGRITY-01, anchored on the PAN-OS field-shift case behind
+[PaloAltoNetworks/Splunk-Apps PR #294](https://github.com/PaloAltoNetworks/Splunk-Apps/pull/294), a pull
+request to the Palo Alto Networks Splunk app (link added 2026-11-22; the same URL is cited in
+`../ocsf-mapping-fidelity/schemas/palo_alto/PROVENANCE.md`).
 
 ## What it measures
 

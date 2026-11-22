@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1176" width="1800" height="1176" role="img" aria-labelledby="lm-title lm-desc">
-<title id="lm-title">81 lab folders in five clusters; 6 hold no scored result yet</title>
+<title id="lm-title">81 lab folders in five clusters; 5 hold no scored result yet</title>
 <desc id="lm-desc">Each column is one cluster of bench folders. The shared planted-chain testbed is connected to the 6 benches whose code reads its corpus. Folders highlighted in blue have a status of foundation, scaffold, spec or frozen design, so they hold no scored result to cite.</desc>
 <rect width="1800" height="1176" fill="#ffffff"/>
-<text x="40" y="78" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="46" font-weight="700" fill="#2c4f74">81 lab folders, five clusters: the 6 in blue hold no scored result yet</text>
+<text x="40" y="78" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="46" font-weight="700" fill="#2c4f74">81 lab folders, five clusters: the 5 in blue hold no scored result yet</text>
 <text x="40" y="128" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="26" fill="#5b6878">Lines join the shared planted-chain testbed to the 6 benches built on its corpus.</text>
 <rect x="40.0" y="190" width="329.6" height="740" rx="12" fill="#f4f6f8" stroke="#e2e6ea" stroke-width="2"/>
 <text x="56.0" y="226" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#2c4f74">Detection and the</text>
@@ -85,8 +85,8 @@
 <text x="775.2" y="462" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-iceberg-metadata</text>
 <rect x="765.2" y="480" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
 <text x="775.2" y="506" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-nested-type-fidelity</text>
-<rect x="765.2" y="524" width="285.6" height="38" rx="6" fill="#1f8fe0" stroke="#0f5f9e" stroke-width="1.5"/>
-<text x="775.2" y="550" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#ffffff">ocsf-parquet-determinism</text>
+<rect x="765.2" y="524" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
+<text x="775.2" y="550" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-parquet-determinism</text>
 <rect x="765.2" y="568" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>
 <text x="775.2" y="594" font-family="'DM Sans Variable','DM Sans',Helvetica,Arial,sans-serif" font-size="17" font-weight="400" fill="#2c4f74">ocsf-pruning-correctness</text>
 <rect x="765.2" y="612" width="285.6" height="38" rx="6" fill="#ffffff" stroke="#c9d3de" stroke-width="1.5"/>

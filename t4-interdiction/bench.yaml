@@ -7,7 +7,7 @@ claim_kind: mixed
 verdict: CAVEAT
 prereg: PREREGISTRATION.md
 results: RESULTS.md
-reproduce: python t4-interdiction/run.py (needs control_burndown_2026.10.json, not committed)
+reproduce: python t4-interdiction/run.py (needs the gitignored OCSF 1.9.0 schema tree under atlas-ocsf-observables/sources/ocsf-1.9.0/)
 pins: requirements.txt
 essay: /writing/ai/which-controls-cover-ai-systems
 superseded_by: none

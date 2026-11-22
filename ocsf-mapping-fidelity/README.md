@@ -34,7 +34,7 @@ attribute, where it crosses a boundary, and where it has no home but `unmapped`:
   array collapses to a scalar, an id/label is lost). Counts as lossy.
 - **`unmapped`** = no typed home; only `unmapped`/`raw_data` can carry it.
 
-*(corrected 2026-11-17: the table above is what `run.py` computes against the transcribed 1.8.0 subset, and it re-derives exactly from `results/results.json` (251 fields, 148 typed, 33 coerced, 70 unmapped, 58.96%). A later pre-registered re-score on a strict validator built from the full OCSF 1.8.0 export, in [`../ocsf-1.9-rescore/RESULTS.md`](../ocsf-1.9-rescore/RESULTS.md) section (b), found two PAN-OS targets that do not exist in 1.8.0 (`src_model` and `dst_model` to `*_endpoint.hw_info.model`, because `device_hw_info` has no `model` attribute) and one deprecated target (Zscaler `respcode` to `http_status`, deprecated since 1.1.0). Under that validator the total is 146 typed, 33 coerced and 72 unmapped, coverage 58.17% and lossy 41.83%, and Palo Alto moves from 46 / 8 / 29 (55%) to 44 / 8 / 31 (53.01%); the other five sources do not move. `mapping.py` has not been changed, so a re-run still prints the table above, and the replacement each record would need is listed in `../ocsf-1.9-rescore/results/proposed-mapping-changes.md`.)*
+*(corrected 2026-11-17: the table above is what `run.py` computes against the transcribed 1.8.0 subset, and it re-derives exactly from `results/results.json` (251 fields, 148 typed, 33 coerced, 70 unmapped, 58.96%). A later pre-registered re-score on a strict validator built from the full, profiles-applied OCSF 1.8.0 export, in [`../ocsf-1.9-rescore/RESULTS.md`](../ocsf-1.9-rescore/RESULTS.md) section (b), found two PAN-OS targets that do not exist in 1.8.0 (`src_model` and `dst_model` to `*_endpoint.hw_info.model`, because `device_hw_info` has no `model` attribute) and one deprecated target (Zscaler `respcode` to `http_status`, deprecated since 1.1.0). Under that validator the total is 146 typed, 33 coerced and 72 unmapped, coverage 58.17% and lossy 41.83%, and Palo Alto moves from 46 / 8 / 29 (55%) to 44 / 8 / 31 (53.01%); the other five sources do not move. `mapping.py` has not been changed, so a re-run still prints the table above, and the replacement each record would need is listed in `../ocsf-1.9-rescore/results/proposed-mapping-changes.md`.)* *(Added 2026-11-22: under the no-profile 1.8.0 export the same corpus scores 133 typed, 26 coerced and 92 unmapped, coverage 52.99%, with 22 invalid targets (`../ocsf-1.9-rescore/results/six-source-strict.json`, `1.8.0.noprofile`), which that RESULTS file's section (b) also discloses.)*
 
 Two findings, not one:
 
@@ -182,8 +182,8 @@ results/             results.json + RESULTS.md (generated)
 
 The scorer is standard-library Python and imports only `../lib/common.py` (which pulls `duckdb`
 from the root `requirements.txt`, pinned at `duckdb==1.5.3`). The OCSF target is the 1.8.0 subset
-transcribed in `schemas/ocsf/`, with provenance in `schemas/ocsf/PROVENANCE.md`. Vendor inventories
-are pinned by the dated sources in each `schemas/<source>/PROVENANCE.md`. Nothing here is unpinned.
+transcribed in `schemas/ocsf/`, with provenance in `schemas/ocsf/PROVENANCE.md`. The Python and schema inputs are pinned; vendor inventories are fixed by the dated documentation snapshots
+in each `schemas/<source>/PROVENANCE.md` (softened 2026-11-22 from "Nothing here is unpinned").
 
 ## Evidence tier and limits
 

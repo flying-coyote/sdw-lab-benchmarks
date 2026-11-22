@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """APT29 de-gamed BENCH-A — coarsening sensitivity sweep (added 2026-06-14,
-pre-registered in project1 BENCHMARK-BACKLOG.md as the B-CONTEXT P1 re-run).
+pre-registered in a private planning backlog (not in this repo) as the B-CONTEXT P1 re-run).
 
 The headline delta (adversary-tail − routine mean blinding recall-loss) was 0.1877
 at ONE documented coarsening setting (truncation cap 64 chars, rare-DNS < 3). This

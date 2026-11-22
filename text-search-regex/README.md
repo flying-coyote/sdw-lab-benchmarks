@@ -30,10 +30,14 @@ silently undercounts token-spanning regex is what transfers.
 
 Each arm's count could have disagreed with the planted truth, and two did: OpenSearch's regex count
 (3,159 of 7,946), and the substring arm, where both OpenSearch and ClickHouse brute scan returned 10,066
-against 10,064 planted (`results/synth_text.json`), most likely random blobs that happen to contain
-"B64". The generator draws 7,946 blobs of 52 characters, so about 50 three-character windows each with a
-1 in 64³ chance of spelling "B64" gives an expected 1.5 or so such blobs, which would mean the planted truth
-for that arm undercounts slightly rather than either engine overcounting. The baselines are fair in
+against 10,064 planted (`results/synth_text.json`). Regenerating the seeded corpus from
+`synth_text_bench.py` (`random.seed(13)`, 2M rows) reproduces the planted counts exactly and gives
+exactly two random base64 blobs that contain "B64", neither on a row that also carries the planted token,
+so 10,064 + 2 = 10,066 and the planted truth for that arm undercounts rather than either engine
+overcounting (confirmed 2026-11-22; the expected count from 7,946 blobs of 52 characters is about 1.5).
+The two arms ask slightly different questions, since the OpenSearch `*b64*` wildcard runs on lowercased
+tokens while ClickHouse `position()` is case-sensitive, but that did not change the count on this corpus,
+where the case-insensitive blob count is also two. The baselines are fair in
 the sense that each engine runs its own default way of answering the pattern; the RESULTS file
 notes that a `keyword` field or a custom analyzer would change OpenSearch's substring and regex
 behaviour, and that Hyperscan was tested with a single regex, which does not exercise its multi-pattern

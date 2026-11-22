@@ -11,8 +11,12 @@ is data files left behind.
 
 Inlining off, both DuckLake and Iceberg write **one data file per commit** (100 each; Iceberg also
 accumulates a manifest + metadata.json each time → 301 metadata files). Inlining on, DuckLake writes
-**0 data files** for the same stream — rows live in the catalog until a flush threshold — and the data is
-queryable after the last commit. That's the difference between "create tiny files, then compact" (the
+**0 data files** for the same stream — rows stay in the catalog until they are flushed explicitly
+(`ducklake_flush_inlined_data`), nothing in the run flushes them, and the data is queryable after the last
+commit. The row limit applies per insert, which is why 100 inserts of 200 rows leave 20,000 inlined rows
+under a 10,000-row limit (`results/results.json`). *(Corrected 2026-11-22: this said rows live in the
+catalog "until a flush threshold"; per the DuckLake documentation's Data Inlining page, flushing is a
+manual call, Tier B for what the feature does.)* That's the difference between "create tiny files, then compact" (the
 maintenance job measured in `ocsf-iceberg-metadata`) and not creating them. Full numbers in
 [results/RESULTS.md](results/RESULTS.md).
 

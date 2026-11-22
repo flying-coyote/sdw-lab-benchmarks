@@ -6,7 +6,7 @@
 
 ## Result, and whether it is measured
 
-Measured, with answers checked: every panel's view returns the same rows as its base query (`answers_agree: true`, `results/results.json`). Read speedups are 76.8× (class rollup), 53.6× (5-minute time series) and 45.3× (failed auth by user). Incremental maintenance is 2.9× cheaper than recompute on the 12-row class rollup and about even on the 2,000-row failed-auth view. The crossover sweep finds incremental maintenance first winning at a base-to-batch ratio of about 25:1 for the bounded view and never winning in the swept range for the unbounded one, whose view grows almost as large as the base (`results/crossover.json`). A large read speedup is expected from a view of 12 to 2,000 rows in place of 20 million, so the more informative results are the maintenance and crossover numbers.
+Measured, with answers checked: every panel's view returns the same rows as its base query (`answers_agree: true`, `results/results.json`). Read speedups are 76.8× (class rollup), 53.6× (5-minute time series) and 45.3× (failed auth by user). Incremental maintenance is 2.9× cheaper than recompute on the 12-row class rollup and about even on the 2,000-row failed-auth view. The crossover sweep finds incremental maintenance first winning at the 25:1 step for the bounded view, so the crossover lies between 5:1 and 25:1 on this sweep (reworded 2026-11-22 from "about 25:1") and never winning in the swept range for the unbounded one, whose view grows almost as large as the base (`results/crossover.json`). A large read speedup is expected from a view of 12 to 2,000 rows in place of 20 million, so the more informative results are the maintenance and crossover numbers.
 
 ## What would have made it fail
 

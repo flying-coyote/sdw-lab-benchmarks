@@ -12,7 +12,7 @@ an `observables[]` list of structs — and a real hunt filters on exactly those.
 data returns the SAME answer across engines, and how far nested access stays portable. One byte-identical Parquet
 file, explicit ground-truth counts, each engine given its fair best expression (probe-verified). Engines: pyarrow `23.0.1`, duckdb `1.5.3`, datafusion `53.0.0`, chdb `4.1.8`, polars `1.41.2`.
 
-The artifact is pinned (the [methodology](../BENCHMARKING-METHODOLOGY.md) rule): logical fingerprint
+The artifact is pinned (the [methodology](../../BENCHMARKING-METHODOLOGY.md) rule): logical fingerprint
 `10c8b03e4c8bcae971cc6aa829bddaaf`, 1000 rows in 1 row group(s), columns
 `time, class_uid, src_endpoint, dst_endpoint, observables`, sha256 `1718ddac89567358…`.
 

@@ -8,7 +8,7 @@ verdict: CAVEAT
 prereg: none
 results: results/RESULTS.md
 reproduce: python ocsf-streaming-cadence/run.py
-pins: requirements.txt (duckdb only; pyiceberg unpinned)
+pins: root requirements.txt (duckdb only; pyiceberg unpinned)
 essay: https://securitydataworks.com/writing/lakehouse/write-pattern-is-architectural
 superseded_by: none
 audited: 2026-11-17

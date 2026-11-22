@@ -3,7 +3,7 @@ type: benchmark-results
 title: "T9 results: PreToolUse hook and permission-rule enforcement in Claude Code 2.1.321 (headless)"
 created: 2026-11-09
 area: T9-pretooluse-hook-enforcement
-status: "complete (agent-run; independently verified 2026-11-09, VERIFIED-WITH-FIXES, see VERIFICATION.md and the [fixed per verify] marks below; corrected 2026-11-17 from 'not yet independently verified')"
+status: "complete (agent-run; independently verified 2026-11-10 UTC (VERIFICATION.md is dated 2026-11-09, the local date), VERIFIED-WITH-FIXES, see VERIFICATION.md and the [fixed per verify] marks below; corrected 2026-11-17 from 'not yet independently verified')"
 rig: "Beelink Ryzen 7 5800H, WSL2 (Linux 6.6.87.2-microsoft-standard-WSL2); Claude Code 2.1.321; model claude-haiku-5-5; mcp 2.3.0 (Python SDK); Python 3.12.3; node v22.23.4. No timing claims, so no power-plan or clock stamp needed (methodology §7b)."
 ---
 

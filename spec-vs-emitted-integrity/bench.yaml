@@ -6,8 +6,8 @@ tier: B
 claim_kind: mixed
 verdict: DEMONSTRATION
 prereg: none
-results: RESULTS-loghub-prevalence-2026-06-16.md
-reproduce: python3 spec-vs-emitted-integrity/realvendor_spec_vs_emitted.py
+results: RESULTS-2026-06-15.md; RESULTS-realvendor-2026-06-16.md; RESULTS-loghub-prevalence-2026-06-16.md
+reproduce: python3 spec-vs-emitted-integrity/spec_vs_emitted.py; python3 spec-vs-emitted-integrity/realvendor_spec_vs_emitted.py; python3 spec-vs-emitted-integrity/loghub-prevalence/loghub_prevalence.py (after the fetch in loghub-prevalence/FETCH.md)
 pins: none (standard library only)
 essay: https://securitydataworks.com/writing/detection/tamper-evident-security-data
 superseded_by: none

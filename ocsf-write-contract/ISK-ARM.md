@@ -69,5 +69,4 @@ never-write arm is pinned here, aligned to the two measured arms:
    public ISK performance claims are not folded into the headline; they are context, labelled as
    the claim under test, exactly as the C2/C1 benchmarks treat vendor claims.
 
-The coordination plan and the (Jeremy's-to-send) outreach drafts live in project1 at
-`02-projects/external-engagements/streambased-isk-coordination.md`.
+Vendor coordination is tracked outside this repository.

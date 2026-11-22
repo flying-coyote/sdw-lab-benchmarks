@@ -37,9 +37,9 @@ figures are counts of planted chains flagged.
 (`7703a4bb…a106d9`) still matches, and `.frozen` records 2026-11-10T00:54:01Z. The rules are named in the
 pre-registration with their literals (`/proc/self/environ`, `api03-`, the 20-call burst) but the rule files were
 written after the freeze, at 00:56Z by the run's own account, and `rules/` has no hash file, so "rules frozen before
-the corpus existed" rests on the pre-registration text, not on a hash. An unregistered one-seed probe ran at 01:01Z,
+the corpus existed" rests on the pre-registration text, not on a hash (`RESULTS.md`, Deviation 1). An unregistered one-seed probe ran at 01:01Z,
 before run 1, and `run.py` was edited afterwards to add the post-hoc `supplementary` block; both are declared
-(`RESULTS.md`, Deviations 1 and 2). `LEDGER-ROW.md` is index text for the lab's pre-registration ledger, kept
+(`RESULTS.md`, Deviation 2). `LEDGER-ROW.md` is index text for the lab's pre-registration ledger, kept
 outside this repo.
 
 ## Reproduce
@@ -56,7 +56,9 @@ The corpus is regenerated deterministically per seed and is gitignored. Rules ar
 through pySigma 2.0.3 and pySigma-backend-sqlite 2.1.1), with hand SQL in `run.py`. The post-hoc probes run as
 `mixed_case_probe_2026_11_16.py` and `corpus_case_check_2026_11_16.py`, which import `run.py` and `gen_corpus.py`
 read-only. Column paths are validated against the OCSF 1.9.0 schema JSON in
-`../atlas-ocsf-observables/sources/ocsf-1.9.0/` (read-only).
+`../atlas-ocsf-observables/sources/ocsf-1.9.0/` (read-only). That schema tree is gitignored and not committed, so
+`run.py` stops at `validate_columns()` until the directory is rebuilt from schema.ocsf.io/api/1.9.0, and
+`corpus_case_check_2026_11_16.py` skips that check for the same reason (noted 2026-11-22).
 
 Everything in the corpus is synthetic test fixture: reserved hostnames (`.invalid`, `.example`), a labelled fixture
 marker where the injected content would be, and a fixture string where the de-prefixed key would be. No real
@@ -92,7 +94,7 @@ credential shape would not trip. See Limits in `RESULTS.md`.
 
 ## Corrections
 
-- 2026-11-09: verifier fixes are marked `[fixed in verify]` in `RESULTS.md`.
+- 2026-11-10 UTC (2026-11-09 local): verifier fixes are marked `[fixed in verify]` in `RESULTS.md`.
 - 2026-11-17: `RESULTS.md` now carries a dated note in its headline saying that c2's recall of 1.0 follows from the
   plants and the rule, and pointing to the two 2026-11-16 case probes, which the file did not previously cite.
   First-person narration of the second run agent's steps was recast in neutral voice. This README was restructured

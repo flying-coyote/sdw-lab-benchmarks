@@ -13,7 +13,8 @@ the planted ground truth:
 - **text-to-SQL** — an LLM composes DuckDB SQL from the schema in context. *(RAN — frontier
   multi-trial; correct+stable on lookups, silently wrong on the adversary tail)*
 - **OBDA / Ontop** — OWL2QL virtual rewrite (SPARQL→SQL). *(RAN — `run_obda.py`; correct or
-  refusal-honest on its 3/8 OWL2QL-expressible coverage)*
+  refusal-honest on its 3/8 OWL2QL-expressible coverage in v1; v2 counts 2 of 8, because A8 falls outside
+  OWL2QL and A4 was excluded as ill-posed, per `RESULTS-v2-2026-06-17.md`; bridge added 2026-11-22)*
 - **GraphRAG (structured) + a flat_retrieval control** — retrieve a concept subgraph, LLM
   composes the query. *(RAN — `run_graphrag.py`; structure did not beat the flat control above
   run-to-run noise; retrieval was the binding constraint)*
@@ -29,7 +30,7 @@ data access is correct+stable on simple lookups but silently wrong on the
 aggregate/sequence/identity adversary tail (silent 0.49 overall / 0.84 on the tail, 0 correct);
 the graph-structure pre-registered null was not refuted (retrieval recall ~0.10 was the binding
 constraint, the one apparent win an A9 sameAs-index artifact); OBDA's defensible property is
-refusal-honesty on its 3/8 OWL2QL coverage, not same-question safety (the A4 "safer" reading was
+refusal-honesty on its 3/8 OWL2QL coverage (2 of 8 in v2), not same-question safety (the A4 "safer" reading was
 a confound — the template was fed the gold constant). Moves H-CONCEPT-GRAPH-03 to 3.5/5;
 H-CONCEPT-GRAPH-02 holds 2.5/5. A clean re-run is pre-registered
 (`BENCH-C-PREREGISTRATION-v2-rerun.md`): the adversary tail is compute-over-graph, not
@@ -68,8 +69,13 @@ trials over three questions, and the 1.0 GraphRAG figure is three unanimous wron
 
 Four files: `BENCH-C-PREREGISTRATION.md` (v1), `BENCH-C-PREREGISTRATION-v2-rerun.md`,
 `BENCH-C-PREREGISTRATION-v2-ADDENDUM-impl-decisions.md` and `BENCH-C-PREREGISTRATION-v2.1-arm-extension.md`.
-None carries a hash file or a frozen-at stamp, so freeze-before-run can be checked only against the git
-history. The verdicts in the v2 and v2.1 results match the falsifiers as written in those files (the
+None carries a hash file or a frozen-at stamp, and the repository history gives the order (checked
+2026-11-22): the v1 pre-registration (`6bdd7e6`, 2026-06-08) precedes the v1 results (`7ce124b`, 2026-06-16);
+the v2 pre-registration (`3d27f00`, 2026-06-17 02:55 local) and its addendum (`ad52df4`, 14:14) precede the
+v2 results (`45b6d17`, 15:53); and the v2.1 arm extension was first committed in `45b6d17` itself, 73 minutes
+before the v2.1 results (`83a7f76`, 17:06), so it was not committed separately ahead of the v2 run.
+`d224df6` (2026-06-18) later added seven lines of frontmatter to each of the three v2 files and changed no
+body text. The verdicts in the v2 and v2.1 results match the falsifiers as written in those files (the
 graph-structure null confirmed; OBDA determinism-safety supported on its expressible set, which is two of
 eight queries; the v2.1 agentic falsifier did not fire because the silent rate rose). The v2 lookup class
 is recorded as confounded and its prediction as inconclusive, which is a declared deviation.
@@ -105,7 +111,8 @@ Tier B — all three arms ran at the frontier (claude-opus-class proxy) with run
 variance, single machine, one planted chain, directional pilot (n=9). The OWL2QL recursion
 ceiling and the documented text-to-SQL silent-error literature (NL2KQL ~42% confidently-wrong,
 BIRD 81.67% vs 92.96% human) are the external anchors. Tier-A needs a second host (independent
-reproduction), the v2 re-run's confound removals (`BENCH-C-PREREGISTRATION-v2-rerun.md`), a
+reproduction), the v2 re-run's confound removals (`BENCH-C-PREREGISTRATION-v2-rerun.md`; noted 2026-11-22:
+that re-run has since run, on 2026-06-17, see `RESULTS-v2-2026-06-17.md`), a
 published labeled query set, a named reviewer, and a non-toy scale.
 
 ## Corrections

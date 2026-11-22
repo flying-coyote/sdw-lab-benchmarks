@@ -115,10 +115,22 @@ non-overlapping:
 
 ## Result
 
-Measured, not constructed: the model writes the SQL and the gold comes from the planted ground truth, a
-pinned corpus invariant or a human-written reference query, so every cell could have come out either way.
-Silent errors were rare (3 of 33 for phi3, 0 of 33 for gemma4:26b) and loud failures dominated (18 and
-15 of 33). The sample is small: 33 questions, one decode per question per model at temperature 0, 4 to 5
+The cells are measured, since the model writes the SQL and the gold comes from the planted ground truth,
+a pinned corpus invariant or a human-written reference query, so every cell could have come out either
+way. Silent errors were rare (3 of 33 for phi3, 0 of 33 for gemma4:26b) and loud failures dominated (18 and
+15 of 33).
+
+*(Corrected 2026-11-22: none of gemma4:26b's 15 loud rows in `results/results.json` is a well-formed query
+that errored or returned nothing. Eight have an empty `sql` string (B05, M03, J02, J04, A01, A02, A06, A08)
+and seven are degenerate generations (leaked channel tokens in B03, runaway repetition in B02 and T01,
+`rand(rand())` in B04, truncated text in B01, T03 and A04). `run.py` calls Ollama with `format: json` and a
+180 s timeout and returns an empty string on any exception (`compose_sql`), and the scorer counts that as
+loud, so a timeout or a JSON parse failure cannot be told apart from a model refusal. The gemma4 row
+therefore measures the harness's generation and extraction path at least as much as the model, and its
+0.00 silent rate should not be quoted. phi3's 18 loud rows are all non-empty SQL attempts, some with
+corrupted tokens, so that row reflects the model's output and stands. An owed re-run records the raw
+response and any exception per question and runs gemma4 without `format: json` or with thinking
+disabled.)* The sample is small: 33 questions, one decode per question per model at temperature 0, 4 to 5
 questions per difficulty tier, so a tier's silent rate moves by 0.20 to 0.25 with a single question.
 
 ## What would have made it fail
@@ -133,16 +145,18 @@ hashed and states no threshold.
 
 ## Reproduce
 
-This is a **readiness build**; the heavy eval has NOT been run (another benchmark
-holds the box). See [READINESS.md](READINESS.md) for the exact run-when-free commands,
-expected runtime, and which models must be present.
-
 *(corrected 2026-11-17: the eval has since run, and `results/RESULTS.md` and `results/results.json`
 hold it. phi3:latest answered 12 of 33 correctly, 3 silently wrong and 18 loudly wrong (silent-error
-rate 0.09); gemma4:26b answered 18 correctly, 0 silently wrong and 15 loudly wrong (0.00). The predicted
+rate 0.09); gemma4:26b answered 18 correctly, 0 silently wrong and 15 loudly wrong (0.00), though its loud
+rows are harness failures, as the 2026-11-22 note under Result says. The predicted
 mid-difficulty concentration did not show: phi3's three silent errors sit in `simple_filter` (2) and
 `group_by` (1), and both models failed loudly on all five adversary-tail questions. The RESULTS
-"Reading" poses that question without answering it, so this is the answer from its own table.)*
+"Reading" poses that question without answering it, so this is the answer from its own table. Moved
+above the readiness paragraph on 2026-11-22, which predates the run.)*
+
+This folder started as a readiness build, written while another benchmark held the box and before the
+eval ran. [READINESS.md](READINESS.md) keeps the run-when-free commands, expected runtime, and which
+models must be present.
 
 ```bash
 # light, anytime — no DuckDB, no LLM:

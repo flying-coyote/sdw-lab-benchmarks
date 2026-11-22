@@ -1,7 +1,7 @@
 name: ocsf-parquet-determinism
 cluster: formats-and-lakehouse
 title: Does the same logical data written twice by DuckDB give the same Parquet file
-status: foundation
+status: published
 tier: B
 claim_kind: measured
 verdict: SOUND

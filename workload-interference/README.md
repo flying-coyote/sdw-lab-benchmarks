@@ -120,7 +120,7 @@ dimension 2 gap (the scheduled:ad-hoc mix axis) and the program's §7 navigation
 
 ## Layout and audit notes (added 2026-11-17)
 
-Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+Everything above this line is the bench's pre-registration as committed in `f2b140c` and is left unchanged, including its wording (the text above the divider matches that commit apart from one blank line before the divider); errata go here, below it.
 
 ### Result, and whether it is measured
 
@@ -139,13 +139,13 @@ An arm that failed the null-load calibration gate (client-added latency under 5%
 
 ### Pre-registration
 
-The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+The text above the divider is the pre-registration. There is no hash file; by commit order it was committed (`f2b140c`, 2026-06-11T00:24Z) before the scored results (`fb254a9`, 2026-06-14), and the result files carry no run timestamp, so commit order is the only check (checked 2026-11-22).
 
 ### Results: which file to read
 
 - **Entry point: `INTERFERENCE-FINDINGS-2026-06-14.md`**, the hand-written findings, scorecard, extended ladder and reproduction, with a dated note at the top.
 - `PHASE-C-FINDINGS-2026-06-14.md` and `PHASE-C-SUMMARY.json`: the three-run knee reproduction tables.
-- `results/results.json`: every arm's full per-step curve and calibration.
+- `results/results.json`: every arm's full per-step curve and calibration; its `reproduced: false` flags predate the Phase C runs, and the three-run reproduction is recorded in `PHASE-C-SUMMARY.json` (noted 2026-11-22).
 - `results/RESULTS.md` is a scaffold that `run.py` regenerates for the last arm it ran (currently `starrocks_mv` only, with the scorecard left "TBD"); it is not the record of the bench, and a link that cites it for the per-step ladder should point to `results/results.json` or the findings file.
 
 ### Versions and pins

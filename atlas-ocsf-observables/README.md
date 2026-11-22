@@ -48,7 +48,10 @@ DuckDB.
 changed by one row after it, with the original map not kept. Each H verdict in `RESULTS.md` matches its
 frozen threshold on the numbers given (H1 refuted at 55.5% against "fewer than half"; H2 holds at 85.2%
 against 70%; H4 holds at 2 / 5 / 1 against "at most 5 DETECTED, at least 1 NOISY, at least 1 MISSED";
-H5 refuted on DuckDB). The rest of the freeze-before-run order needs the git history to confirm.
+H5 refuted on DuckDB). The pre-registration and the results entered version control in the same commit
+(`7301388`), so commit order cannot confirm the freeze, and the order rests on the hash file and the file
+times recorded in `VERIFICATION.md` (reworded 2026-11-22: this used to defer to the git history, which
+cannot answer it).
 
 ## Reproduce
 
@@ -63,10 +66,17 @@ cd atlas-ocsf-observables
 
 The join needs the ATLAS v2026.10 YAML, an incident-to-technique edge list and a clone of the
 `atlas-d3fend-crosswalk` dataset at commit `66b7726`, all hashed in `results/observables.json`. Their
-locations are absolute paths on the lab host set at `join.py` l.10-12, so a fresh clone has to point
-those three constants at its own copies before the join will run. The 2026-11-16
-supplement's 48-incident re-weight reads a researcher-mapped CSV that is not in this repository, so that
-part of the supplement cannot be reproduced from a clone.
+locations are absolute paths on the lab host set at `join.py` l.10-13, four constants including a local
+OCSF 1.8.0 schema clone (`OCSF18`, used later in `join.py`; if it is absent the 1.8.0 set comes back empty
+and `observables.json` changes), so a fresh clone has to point all four at its own copies before the join
+will run. The 2026-11-16 supplement's 48-incident re-weight reads a researcher-mapped CSV that is not in
+this repository, and `split_attack.py` l.5 reads `attack_refs.csv`, also not in this repository, so that
+part of the supplement and the 85.2% / 33.9% supplementary split cannot be reproduced from a clone.
+`../m1-r1-blind-regrade/` inherits the same paths through `recompute.py` importing `join.py`.
+
+`ocsf_reach.py` also needs the per-item OCSF 1.9.0 class and object files, which are gitignored (see
+below); without them it used to write an empty reach over `results/ocsf_reach.json`, and since 2026-11-22
+it stops with an error instead.
 
 ## Results
 
@@ -82,7 +92,12 @@ part of the supplement cannot be reproduced from a clone.
 
 `requirements.txt` pins every package (duckdb 1.5.3, pySigma 2.0.3, pySigma-backend-sqlite 2.1.1,
 PyYAML 6.0.3 and their dependencies). OCSF 1.9.0 objects and classes were fetched from schema.ocsf.io on
-2026-11-09 and are checked in under `sources/`. The supplement ran under PyYAML 6.0.1 because the
+2026-11-09, but only the class and object index listings (`sources/ocsf-1.9.0-classes.json`,
+`sources/ocsf-1.9.0-objects.json`) and `sources/FETCHED_AT.txt` are checked in. The per-item files that
+`ocsf_reach.py` and `join.py` read (`sources/ocsf-1.9.0{,-noprofile}/{classes,objects}/*.json`) are
+excluded by `.gitignore` and must be re-fetched with the GET step in `RESULTS.md` (schema.ocsf.io/api/1.9.0,
+with and without `?profiles=`) before `ocsf_reach.py` is run (corrected 2026-11-22: this said the objects
+and classes were checked in). The supplement ran under PyYAML 6.0.1 because the
 original `.venv` was gone; its gate reproduces the original numbers exactly.
 
 ## Evidence tier and limits

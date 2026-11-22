@@ -115,7 +115,7 @@ refresh, the four website pages citing the legacy 145×.
 
 ## Layout and audit notes (added 2026-11-17)
 
-Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+Everything above this line is the bench's pre-registration as committed in `05ddf47` and is left unchanged, including its wording (the text above the divider matches that commit apart from one blank line before the divider); errata go here, below it.
 
 ### Erratum to the pre-registration
 
@@ -123,7 +123,7 @@ Everything above this line is the bench's pre-registration as committed and is l
 
 ### Result, and whether it is measured
 
-Measured, CV-gated and answer-checked. From `results/comparison.json`, the average of per-query medians is 2.854 s for OpenSearch 2.18.0, 0.282 s for ClickHouse over Iceberg and 0.061 s for ClickHouse native, so 10.1× and 46.8× over the OpenSearch baseline, with an open-format cost of 4.6× between the two ClickHouse arms. Per query, the hunting-shaped aggregations run 5.4× to 62× faster on the columnar arms, while OpenSearch wins the two index-served lookups. Per-query CVs run from 1.8% to 14.4%.
+Measured and answer-checked, with each per-query pair CV-gated. From `results/comparison.json`, the average of per-query medians is 2.854 s for OpenSearch 2.18.0, 0.282 s for ClickHouse over Iceberg and 0.061 s for ClickHouse native, so 10.1× and 46.8× over the OpenSearch baseline, with an open-format cost of 4.6× between the two ClickHouse arms. One query carries that average: `port_scan_detection` is 13.07 s of the 14.27 s OpenSearch total (92%, `results/raw_opensearch.json`), and without it the same averages give 2.5× (Iceberg) and 12.7× (native). Its answer check compares two empty sets (see below), so the per-query table is the result to cite and the average is a summary of it; the CV gate applies to the per-query pairs, not to the average (added 2026-11-22). Per query, the hunting-shaped aggregations run 5.4× to 62× faster on the columnar arms, while OpenSearch wins the two index-served lookups. Per-query CVs run from 1.8% to 14.4%.
 
 ### What would have made it fail
 
@@ -131,7 +131,7 @@ The pairwise claims gate (gap above the larger CV) and the answer-equality check
 
 ### Pre-registration
 
-The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+The text above the divider is the pre-registration. There is no hash file, but the repository history confirms the order: the pre-registration was committed in `05ddf47` at 2026-06-10T09:25:47Z, 15 minutes before the first scored arm started (`started_unix` 09:41:02Z in `results/raw_opensearch.json`) (checked 2026-11-22).
 
 ### Results: which file to read, and which draw the published numbers come from
 

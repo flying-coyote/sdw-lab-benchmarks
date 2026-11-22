@@ -3,7 +3,7 @@ cluster: detection
 title: Concept graph joining OCSF, D3FEND, ATT&CK and controls with per-edge provenance
 status: foundation
 tier: none
-claim_kind: measured
+claim_kind: none
 verdict: CAVEAT
 prereg: none
 results: results/reconcile.json

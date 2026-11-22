@@ -196,7 +196,7 @@ an `observables[]` list of structs — and a real hunt filters on exactly those.
 data returns the SAME answer across engines, and how far nested access stays portable. One byte-identical Parquet
 file, explicit ground-truth counts, each engine given its fair best expression (probe-verified). Engines: {env}.
 
-The artifact is pinned (the [methodology](../BENCHMARKING-METHODOLOGY.md) rule): logical fingerprint
+The artifact is pinned (the [methodology](../../BENCHMARKING-METHODOLOGY.md) rule): logical fingerprint
 `{a['logical_fingerprint']}`, {a['n_rows']} rows in {a['n_row_groups']} row group(s), columns
 `{', '.join(a['columns'])}`, sha256 `{a['bytes_sha256'][:16]}…`.
 

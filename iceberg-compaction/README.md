@@ -2,7 +2,7 @@
 
 ## What it measures
 
-Built 2026-06-14, pre-registered in project1 `BENCHMARK-BACKLOG.md` as the P1 one-arm
+Built 2026-06-14, pre-registered in a private planning backlog (not in this repo) as the P1 one-arm
 extension of the `zeek-flagship-rerun` corpus. It answers one question with a first-party,
 CV-gated number: **when a streaming security table fragments into many small files, how much
 scan latency does compaction recover?**
@@ -58,8 +58,9 @@ pyiceberg's default append writes one manifest per commit, so the 500-file table
 manifests, and rewriting the manifests alone, with all 500 data files still in place, recovered 5.08× on
 `count_all`, 2.97× on `protocol_distribution`, 2.15× on `long_duration_scan` and 1.41× on
 `bytes_by_source` (re-derived from `results/manifest_arm_2026-11-16.json`, `shape_b_zeek_500`). In
-log-ratio terms the manifest rewrite accounts for 41% to 62% of each query's recovery and the data-file
-reduction for the rest, so "file-count reduction only" below should read "manifest and data-file
+log-ratio terms the manifest rewrite accounts for 41% to 61% of each query's recovery and the data-file
+reduction for the rest (as a share of milliseconds saved it is about 51% to 84%, so the attribution
+depends on the measure; corrected 2026-11-22 from "41% to 62%"), so "file-count reduction only" below should read "manifest and data-file
 reduction together". The same holds for the sort-clustered arm below, whose 500 fragmented appends were
 written the same way (`run_sorted.py:54`), so its 500-file-to-4-file ratios (6.0× and 2.0×) also include
 the manifest effect, and only its sorted-against-unsorted comparison (about 1.7×) isolates layout. A table written by Iceberg Java, which merges manifests by default above 100, would
@@ -117,7 +118,7 @@ everywhere.)
   selective queries, recovering more than measured here. This bench isolates the small-file
   penalty alone, which is the lower bound. *(corrected 2026-11-17: the 2026-11-16 manifest arm shows the
   measured recovery is not the file-count effect alone, because each of the 500 appends also wrote its
-  own manifest, and manifests account for roughly 41% to 62% of it; see the attribution note above.)*
+  own manifest, and manifests account for roughly 41% to 61% of it in log-ratio terms (about 51% to 84% of milliseconds saved); see the attribution note above.)*
 - **Does NOT cover** the unsourced $/day spot-compute cost or the FTE-burden figures the
   untangle also softened — those want named-operator published numbers, not a single-host bench.
 

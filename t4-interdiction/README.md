@@ -51,10 +51,14 @@ sha256sum -c results/PREREG.sha256
 ```
 
 The inputs are the ATLAS v2026.10 YAML (sha256 `ac41ee9f…e142d`), `control_burndown_2026.10.json` and the OCSF 1.9.0
-dump under `../atlas-ocsf-observables/sources/ocsf-1.9.0`. The first two are not in this repo, and
-`extract_mappings.py` and `select_steps.py` read the ATLAS YAML from a hard-coded path outside it, so the orientation
-step needs that path edited; `run.py` itself works from `results/selected_steps.json` and `results/mappings_top12.json`,
-which are committed. The generated corpora (`corpus/<seed>/`) are not committed and regenerate deterministically.
+per-class and per-object JSON tree under `../atlas-ocsf-observables/sources/ocsf-1.9.0/`, and none of the three is in
+this repo. `extract_mappings.py` and `select_steps.py` read the ATLAS YAML from a hard-coded path outside it, so the
+orientation step needs that path edited. `run.py` works from `results/selected_steps.json` and
+`results/mappings_top12.json`, which are committed, but it also needs the OCSF tree, because `gen_corpus.py` checks every
+column through `ocsf_fields.resolve()` at import; that tree (fetched from schema.ocsf.io/api/1.9.0 on
+2026-11-09T23:02Z per `../atlas-ocsf-observables/sources/FETCHED_AT.txt`) is gitignored, so neither `ocsf_fields.py`
+nor `run.py` runs from a clean clone until the directory is rebuilt (corrected 2026-11-22: this paragraph used to
+imply the OCSF dump was in the repo). The generated corpora (`corpus/<seed>/`) are not committed and regenerate deterministically.
 
 ## Results
 
@@ -80,7 +84,7 @@ checks that follow the mitigation text literally without tuning. See Limits in `
 
 ## Corrections
 
-- 2026-11-09: five verifier edits in `RESULTS.md`, marked there, including that 14 of the 22 rule slots are marginal
+- 2026-11-10 UTC (2026-11-09 local): five verifier edits in `RESULTS.md`, marked there, including that 14 of the 22 rule slots are marginal
   steps and 8 are reach-only.
 - 2026-11-17: the per-control table row for E3 now carries the partly-by-construction note next to its precision of
   1.0; this README was added.

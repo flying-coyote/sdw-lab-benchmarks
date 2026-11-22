@@ -12,8 +12,10 @@ layouts (typed OCSF, an OTel attributes map, AOS `unmapped` JSON) in DuckDB.
 
 Over a 33-fact inventory per call, OCSF main typed 24 facts against AOS's 11 (8 under AOS example 1), and AOS put 9 of
 the 12 agent- and tool-specific facts in `unmapped` under example 2; no schema typed individual argument values
-(`RESULTS.md`, H1 to H3). At a million calls the AOS `unmapped` layout ran 4.7x to 22.5x slower than typed OCSF on four
-hunts and the OTel map layout 10.6x to 32.4x, while on disk the unmapped layout was only 1.13x larger, so the cost of
+(`RESULTS.md`, H1 to H3). At a million calls the AOS `unmapped` layout ran several times slower than typed OCSF on four
+hunts: Q1 about 8.4x and Q5 about 22x in both the formal run and a lower-load rerun, and Q3 and Q4 roughly 5x to 16x
+across the two, a spread `RESULTS.md` attributes to contention on single-digit-millisecond baselines. The OTel map
+layout ran 10.6x to 32.4x in the formal run and swings the same way (27.6x and 33.2x on Q3 and Q4 in the rerun), while on disk the unmapped layout was only 1.13x larger, so the cost of
 the unmapped shape lands at query time (`RESULTS.md`, Part 2 and H4 to H5). The loss table is a mapping judgment
 made by the run agent against pinned upstream schema files, including one call it names as its own (OCSF main's
 `api.version` for the MCP protocol version), while the timings are measured, and the within-pass ratios are the
@@ -32,13 +34,13 @@ control because arguments are JSON in every layout.
 `PREREGISTRATION.md`, frozen by agent before the run and not owner-reviewed. Its sha256 in `PREREGISTRATION.sha256`
 (`eddf6816…0183`) still matches, with freeze time 2026-11-09T22:58:56Z. The committed capture and timing files carry
 monotonic clocks but no wall-clock stamp, so freeze-before-run rests on the verifier's check in `VERIFICATION.md`
-(section 1). Six deviations are listed in `RESULTS.md`, the last four of them logged by the verifier rather than by
-the run.
+(section 1). Six deviations are listed in `RESULTS.md`; the sixth collects four items (a to d) that the verifier logged and
+the run had not.
 
 ## Reproduce
 
 ```
-python3 -m venv .venv && .venv/bin/pip install mcp==2.3.0 duckdb==1.5.3 pyarrow==23.0.1 pyyaml
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python capture.py
 .venv/bin/python map_schemas.py && .venv/bin/python validate_ocsf.py
 for p in 0 1 2; do .venv/bin/python run_queries.py 100000 $p; done

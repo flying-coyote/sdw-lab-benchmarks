@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """B-COMPACT — does compacting a fragmented Iceberg security table recover scan latency?
-(built 2026-06-14, pre-registered in project1 BENCHMARK-BACKLOG.md as the P1 one-arm extension.)
+(built 2026-06-14, pre-registered in a private planning backlog (not in this repo) as the P1 one-arm extension.)
 
 The `iceberg-maintenance.astro` essay carried the compaction claim directionally ("a 3-to-5x
 improvement, depending on partition layout and query shape") after the 2026-06-13 untangle found

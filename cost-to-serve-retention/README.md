@@ -89,7 +89,7 @@ packet payloads) would compress less still; this EDR corpus is a moderate case, 
 
 ## Layout and audit notes (added 2026-11-17)
 
-Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+Lines 1 to 48 above are the pre-registration as committed in `314b11a`; the second-corpus section (lines 49 to 78) and the two added Run lines are post-run additions of 2026-06-13 and 06-14 (`efe04d1`, `705606e`), so the blob at `314b11a` is the frozen reference. Errata go here, below it. *(Corrected 2026-11-22: this said everything above the line was the pre-registration as committed and unchanged.)*
 
 ### Result, and whether it is measured
 
@@ -101,11 +101,11 @@ Three different quantities come out of this folder, and they should be cited apa
 
 ### What would have made it fail
 
-The byte layer is a measurement on a pinned corpus, so any realization could have stored more or fewer bytes than expected. The priced layer cannot fail in the same sense: once the byte ratios and list prices are fixed, the multiples follow arithmetically, which is why they are labelled modelled here. A second and third corpus (EDR process creation, and a high-entropy corpus) show how far the Parquet compression ratio against raw JSON moves with the data: 8.5× for flat Zeek, 7.94× for EDR and 2.57× for high-entropy payloads at zstd defaults (`results/second_corpus.json`, `results/high_entropy.json`). No search index was built for the second and third corpora, so the index-over-lakehouse ratio is measured on Zeek only.
+The byte layer is a measurement on a pinned corpus, so any realization could have stored more or fewer bytes than expected. Three of the five footprints (OpenSearch, ClickHouse LZ4, Iceberg), though, were measured by the zeek flagship run before this design was committed, as the pre-registration table states: the `zeek-flagship-rerun/results/load_*.json` files were committed in `e224cc1` at 09:48Z, three minutes before the pre-registration commit `314b11a` at 09:51Z. So the 4.24× byte ratio and the 14.8× and 5.4× multiples were computable at freeze time and are a pre-registered presentation of existing measurements; only the ZSTD(22) and cold-Parquet footprints, and so 16.9× and 96.7×, were measured after the freeze (added 2026-11-22). The priced layer cannot fail in the same sense: once the byte ratios and list prices are fixed, the multiples follow arithmetically, which is why they are labelled modelled here. A second and third corpus (EDR process creation, and a high-entropy corpus) show how far the Parquet compression ratio against raw JSON moves with the data: 8.5× for flat Zeek, 7.94× for EDR and 2.57× for high-entropy payloads at zstd defaults (`results/second_corpus.json`, `results/high_entropy.json`). No search index was built for the second and third corpora, so the index-over-lakehouse ratio is measured on Zeek only.
 
 ### Pre-registration
 
-The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+The pre-registration is the README blob at `314b11a` (lines 1 to 48 of the text above, plus the Run block without its two added lines). There is no hash file; it was committed at 2026-06-10T09:51:07Z, before the scored commit `c671b5f` (10:31Z the same day) (checked 2026-11-22).
 
 ### Results
 

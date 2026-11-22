@@ -43,7 +43,7 @@ audited: 2026-11-17
 - `title` is the "what it measures" cell, one line phrased as the question the bench answers.
 - `status` takes one of: `published`, `first-pass`, `scaffold`, `spec`, `foundation`, `superseded`, `frozen-design`.
 - `tier` is copied from the bench's own docs and is not changed by an audit; a tier that looks too high is raised with the owner instead. Where the docs give no tier, write `not stated`, with a parenthetical note if one helps (`not stated (vendor docs cited as Tier B)`); the generator folds older spellings such as `unstated in RESULTS` or `none` into `not stated`.
-- `claim_kind` takes one of: `measured`, `demonstration`, `mixed`, `none`. Use `none` for a folder with nothing scored yet (a foundation corpus, a scaffold, a frozen design).
+- `claim_kind` takes one of: `measured`, `demonstration`, `mixed`, `none`. Use `none` for a folder with nothing scored yet (a foundation corpus, a build checked by reconciliation asserts, a scaffold, a frozen design).
 - `verdict` takes the primary verdict from the 2026-11-17 audit vocabulary (`SOUND`, `CAVEAT`, `DEMONSTRATION`, `CANNOT-FAIL`, `DRIFTED`, `SUPERSEDED`, `SCAFFOLD`). A bench whose `CANNOT-FAIL` or `DRIFTED` finding was corrected in the folder records the post-correction state and notes the correction in its README.
 - `prereg` takes `none` or every pre-registration and addendum file in the folder, separated by `; `. A bench whose plan was fixed in a design, method or spec document, or in a section of its README, may name that file here, and the README says it is weaker than a hashed pre-registration. Each entry is a bare path relative to the bench folder; an annotation such as "pre-registration section, unhashed" goes in a `#` comment line, because `--strict` fails on any entry that is not an existing path.
 - `results` is the entry-point results file, relative to the bench folder (several entries separated by `; ` are allowed).
@@ -52,9 +52,9 @@ audited: 2026-11-17
 - `essay` and `superseded_by` take a path, a URL or `none`.
 - `audited` is the date of the last audit pass that checked the file against the code and data.
 
-The generator expects 81 rows: the 80 bench folders plus `ontology-vs-schema-gate/`, whose files are all
-frozen, so it cannot receive a `bench.yaml` and is written by the generator as a fixed row (`status:
-frozen-design`, cluster `mapping-and-models`). `lib/`, `charts/`, `scripts/`, `workloads/` and `docs/`
+The generator expects 81 rows: the 80 bench folders plus `ontology-vs-schema-gate/`, whose pre-registration is frozen and whose row is fixed in the generator
+until the scored run lands (`status: frozen-design`, cluster `mapping-and-models`); harness and results
+files have been added to that folder since the freeze without touching the hashed ones. `lib/`, `charts/`, `scripts/`, `workloads/` and `docs/`
 are skipped by name and described by hand under the table. A folder without a `bench.yaml` gets a marked
 "not yet described" row, so a missing file shows up in the index instead of hiding the bench.
 
@@ -88,7 +88,7 @@ RESULTS file, the same correction also goes in the README, because a later re-ru
 
 ## Pre-registration files
 
-A pre-registration is never written or edited after the scored run it governs. The protocol for new ones
+A pre-registration is never written after the scored run it governs, and its hashed body is never changed. The protocol for new ones
 (hash file, frozen-at stamp, who froze it, amendments appended below the hashed body) is principle 12 of
 [`BENCHMARKING-METHODOLOGY.md`](../BENCHMARKING-METHODOLOGY.md), and principle 11 sets out the
 construction test each headline number is checked against.

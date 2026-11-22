@@ -67,6 +67,6 @@ not reported. Dremio arm result numbers are withheld under its benchmark-publica
 ## Net
 
 The flagship's two-regime core is now **3×-validated** (ClickHouse native + Iceberg + OpenSearch
-foil), with stable multiples. The "validate the key Splunk-vs-ClickHouse number" ask is met for the
+foil), with stable multiples. The "validate the key SIEM-vs-ClickHouse number" ask (vendor name generalized 2026-11-22) is met for the
 part the literature leans on — the columnar-vs-foil multiple and the regime split — and the
 absolute-ms drift is bounded and explained.

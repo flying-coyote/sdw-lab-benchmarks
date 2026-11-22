@@ -43,8 +43,11 @@ adjudication grades wrong (`results/alias-wrong-but-valid-adjudicated-2026-11-16
 "fair" overstates it. `run.py` l.30 matches substrings of the whole field name, so `ts` fires on
 `packets` and CrowdStrike's `event.` envelope sends 18 fields to `metadata.event_code`, and a
 whole-token re-run of the same rules (`alias_whole_token_check_2026_11_16.py`,
-`results/alias-whole-token-check-2026-11-16.json`) maps 43 fields with 18 correct and 17 still
-valid-but-wrong. Read the 0.16 as a crude, weak baseline rather than what alias mapping can do.)* Tier B. Complements
+`results/alias-whole-token-check-2026-11-16.json`) maps 43 fields with 18 correct (0.13 of 141, against
+0.16), so stricter matching lowers path-correct and coverage and raises precision among mapped fields from
+0.24 to 0.42; 17 of the 60 adjudicated-wrong mappings persist. The 0.16 is one crude table's score, with
+about five hits owed to substring accidents, and nothing here shows what a tuned alias table would reach.
+(Tail reworded 2026-11-22: it used to read as though cleaner matching would score higher.))* Tier B. Complements
 BENCH-B (ocsf-mapping-oracle) — same task, the harness side of the comparison.
 
 ## Hypothesis mapping
@@ -107,5 +110,11 @@ model and one frontier model family; the "schema" prompt condition was a partial
 
 ## Corrections
 
+- 2026-11-22: `run.py` took the first model in `../ocsf-mapping-oracle/results/results.json`, which became the
+  frontier proxy once that leg landed there, so between then and this fix a re-run would have written the frontier
+  proxy's cells under the phi3 label. It now reads `phi3:latest` by key; a scratch re-run reproduces the committed
+  `results/results.json` byte for byte. `run.py` still regenerates `results/RESULTS.md` from its template, so a
+  re-run drops the frontmatter and the hand-added 2026-11-17 and 2026-11-22 notes in that file either way. The alias-baseline correction's tail was
+  also turned the right way round (whole-token matching lowers path-correct and raises precision).
 - 2026-11-17: the frontier sentence replaced with what the 2026-11-16 re-score found; the
   "fair baseline" claim qualified; the silent-error zero labelled as a property of the constraint.

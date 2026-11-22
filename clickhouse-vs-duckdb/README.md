@@ -73,15 +73,23 @@ The undercount was observed on chDB 4.1.8, whose embedded ClickHouse reported 26
 the bug report (`CHDB-UPSTREAM-BUG-REPORT.md`; `results/results.json` records the wrapper version only), and it is filed upstream as chdb-io/chdb#587. On 2026-06-14 the
 four-probe mechanism script ran clean on chDB 4.1.9, whose engine moved to the 26.5 line
 ([`results/RECONFIRMATION-2026-06-14.md`](results/RECONFIRMATION-2026-06-14.md); no results JSON was
-kept for that run), so the finding is bound to 4.1.8. The root `requirements.txt` pins 4.1.8, the wrapper
-the defect was observed on, though whether a fresh install reproduces it depends on the chdb-core it
-resolves (see below). The twelve-engine scorecard in
+kept for that run), so the finding is bound to 4.1.8. The defect sits in `chdb-core`, the package that carries the engine:
+`chdb` 4.1.8 (PyPI upload 2026-05-22) requires `chdb-core>=26.1.0`, `chdb-core` 26.3.0 (uploaded
+2026-05-11) was the newest core until 26.5.0 on 2026-06-08, and `chdb` 4.1.9 (2026-06-09) requires
+`chdb-core>=26.5.0`, so "fixed in 4.1.9" holds because 4.1.9 forces a 26.5 or later core. The root
+`requirements.txt` now pins `chdb==4.1.8` together with `chdb-core==26.3.0`, and a fresh venv with
+those two pins reports engine 26.3.9.1 and reproduces the undercount in `mechanism_chdb_bloom.py`
+(re-run 2026-11-22: default reader returns 5,092 against a truth of 5,099 for `user42`, and the older
+reader and `bloom_filter_push_down=0` are correct). The twelve-engine scorecard in
 [`results/MULTI-ENGINE-CORRECTNESS.md`](results/MULTI-ENGINE-CORRECTNESS.md) was run once, on the June
 versions, and found ten of twelve engines correct on every cell, chDB's v3 reader and fastparquet
 wrong; it was not re-run on 4.1.9, so a count of one wrong reader on current versions rests on the
-four-probe re-check alone. Note also that a later `pip install chdb==4.1.8` may resolve a newer
-`chdb-core` (the 2026-11-16 re-runs elsewhere in the lab got chdb-core 26.11.1), so pinning the wrapper
-alone does not pin the engine the bug lived in.
+four-probe re-check alone. Pinning the wrapper alone does not pin the engine the bug lived in: any
+`pip install chdb==4.1.8` after 2026-06-08 without the core pin resolves a fixed core (the 2026-11-16
+re-runs elsewhere in the lab got chdb-core 26.11.1), which is why the core pin was added on 2026-11-22.
+The 2026-11-16 "june-pins" venvs predate that pin, so their chDB legs ran a later core
+(`../parquet-checksum-integrity/results/rerun-2026-11-16-june-pins.json` records chdb-core 26.11.1) and
+keep their "wrapper only" caveats.
 
 ## What would have made it fail
 
@@ -146,10 +154,13 @@ This is **Tier B**, and the result is bounded — read
 - **1–10M rows is below where MergeTree's storage/index design and ClickHouse's
   distributed scale-out pay off.** Neither engine was hand-tuned (defaults, no
   skip indexes, no pragmas).
-- **This does not contradict the 145× ClickHouse-vs-Splunk result** (a real
-  ClickHouse *server* against a schema-on-read SIEM on Zeek data, at a different
-  scale) or the matrix's ClickHouse archetype score. Different comparison,
-  different scale; they sit beside each other.
+- **This does not contradict the lab's ClickHouse-server result on Zeek data**
+  (`../zeek-flagship-rerun/`: a ClickHouse server against an OpenSearch 2.18.0
+  schema-on-read baseline on 10M Zeek records, native 46.8× and Iceberg 10.1× on the
+  five-query average, which one query dominates; that run supersedes the legacy 145×
+  figure) or the matrix's ClickHouse archetype score. Different comparison,
+  different scale; they sit beside each other. *(Reworded 2026-11-22: this bullet
+  cited the superseded legacy figure and named the commercial SIEM behind it.)*
 - Latencies are wall-clock medians on one machine — the *shape* of the win, not
   the milliseconds. The results record 14 vCPU on WSL2; no rig stamp (power plan and clock state,
   methodology §7b) was recorded for these runs, so absolute durations fall under §7a.

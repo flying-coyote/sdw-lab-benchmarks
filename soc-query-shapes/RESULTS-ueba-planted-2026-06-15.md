@@ -61,8 +61,8 @@ corpus. (Detection correctness, by contrast, is identical across both — the en
 ## Caveats (Tier B)
 
 - Single host, one synthetic corpus, one coarsening of "anomaly." The 5 UEBA chance-FPs are a property of
-  the synthetic noise + threshold, not a detection defect; a real estate's FP rate depends on baseline
-  variance and the Z cutoff.
+  the synthetic noise + threshold, not a detection defect; a real environment's FP rate depends on baseline
+  variance and the Z cutoff. *(Wording edited 2026-11-22.)*
 - The latency numbers are this-corpus-only (868k) and are NOT comparable to the 10.3M soc.conn draw; the
   inversion is neither re-confirmed nor refuted at 10.3M here — it is shown not to generalize to 868k.
 - Spike Z (~4.8) and decoy Z (~1.6) are planted well clear of the 3.0 threshold so the flagged set is

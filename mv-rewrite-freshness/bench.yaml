@@ -1,6 +1,6 @@
 name: mv-rewrite-freshness
 cluster: catalogs-engines-cost
-title: Materialized-view rewrite at matched freshness, Dremio Reflections against StarRocks
+title: One StarRocks async materialized view read by name, 2.0x and 12.4 s catch-up; the pre-registered Dremio comparison did not run
 status: first-pass
 tier: B
 claim_kind: measured

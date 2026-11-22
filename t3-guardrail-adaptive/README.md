@@ -5,9 +5,9 @@
 What a vendor claim like "blocks prompt injection" can mean in measured terms: three small open
 prompt-injection and jailbreak classifiers (Protect AI DeBERTa v2, deepset DeBERTa, jackhhao BERT jailbreak
 classifier) run on CPU against public, citable attack and benign sets (deepset prompt-injections, Lakera
-Gandalf, in-the-wild jailbreaks, NotInject, Dolly, JBB benign), untransformed and under nine documented input
-transformations from the literature (character spacing, Base64, ROT13, leetspeak, upper-casing, vowel removal,
-zero-width characters, Cyrillic homoglyphs). Detection rate, false-positive rate, the drop under each
+Gandalf, in-the-wild jailbreaks, NotInject, Dolly, JBB benign), untransformed and under eight pre-registered input
+transformations from the literature, six of which ran (character spacing, Base64, ROT13, leetspeak, upper-casing and
+zero-width characters; vowel removal and Cyrillic homoglyphs were dropped under the stop rule). Detection rate, false-positive rate, the drop under each
 transform, Wilson and paired-bootstrap 95% intervals, truncation share, determinism.
 
 Meta Prompt Guard 2 was named in the brief and is not here, because its repos are gated and this host has no Hugging
@@ -79,3 +79,6 @@ strings only, and capped A3 and B4 cells that lean toward the lowest source indi
 - 2026-11-17: three passages of `RESULTS.md` that narrated the finishing agent's steps in the first person were
   recast in neutral voice with no change of substance; this README was restructured to the lab layout and now records
   the prefix-hash check on the amended pre-registration and the uncommitted `COMMANDS.log` and fixture manifest.
+- 2026-11-22: the opening said "nine documented input transformations"; the pre-registration defines eight (T1 to T8,
+  the ninth being the untransformed baseline) and six ran, as `RESULTS.md` line 105 already noted, so the sentence now
+  says so.

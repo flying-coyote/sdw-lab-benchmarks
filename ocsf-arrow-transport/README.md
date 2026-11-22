@@ -48,7 +48,7 @@ pre-registered.
 
 ```bash
 # fetch the DuckDB JDBC driver once, point DUCKDB_JDBC_JAR at it
-curl -sL -o duckdb_jdbc.jar https://repo1.maven.org/maven2/org/duckdb/duckdb_jdbc/1.1.3/duckdb_jdbc-1.1.3.jar
+curl -sL -o duckdb_jdbc.jar https://repo1.maven.org/maven2/org/duckdb/duckdb_jdbc/1.5.3.0/duckdb_jdbc-1.5.3.0.jar
 pip install -r ocsf-arrow-transport/requirements.txt
 DUCKDB_JDBC_JAR=$PWD/duckdb_jdbc.jar python ocsf-arrow-transport/run.py
 python ocsf-arrow-transport/transport_same_runtime_duckdb.py    # same-runtime leg, run-1 harness
@@ -77,9 +77,12 @@ so dated corrections also live here.
 
 `requirements.txt` pins DuckDB 1.5.3, adbc_driver_manager 1.11.0 and jaydebeapi 1.2.3; `pyarrow` is
 unpinned. `results/results.json` records only DuckDB 1.5.3. The JDBC driver version is not recorded in any
-results file. The command above fetches `duckdb_jdbc` 1.1.3, which embeds DuckDB 1.1.3, so if that jar was
-the one used, the JDBC arm ran an older DuckDB engine than the ADBC arm, a parity gap (methodology
-principle 1) the results do not declare. `m3_type_fidelity.py` imports `adbc_driver_flightsql`,
+results file. The jar kept at the harness default path on the run host (`.jars/duckdb_jdbc.jar` at the
+repository root, gitignored, modified 2026-06-05, the run date, sha256 `e00a3729…f4a6`) carries manifest
+`Bundle-Version: 1.5.3.0`, matching the ADBC arm's DuckDB 1.5.3, so the evidence on the host points to
+engine parity; this was recorded after the fact, not at run time. The 1.1.3 URL that stood in the command
+above was stale and now fetches 1.5.3.0 (corrected 2026-11-22: this paragraph used to warn of a possible
+1.1.3-versus-1.5.3 parity gap). `m3_type_fidelity.py` imports `adbc_driver_flightsql`,
 `clickhouse_connect` and a container-local `ejs_clients` module, none of them in the requirements file.
 
 ## Evidence tier and limits
@@ -91,6 +94,7 @@ H-ARROW-SECURITY-STACK-01.
 
 ## Corrections
 
+- *(corrected 2026-11-22: `results/RESULTS.md` still said "roughly 40×", "~276×", "~5–10×", "~234×" and "~40–50×" in its prose; it now carries the figures from `results/results.json`, and the `run.py` template interpolates them instead of hard-coding them, so a re-run keeps them consistent. The JDBC driver note under Versions and pins was also corrected.)*
 - *(corrected 2026-11-17: this README said 5.0× at 100k rows and 9.6× at 1M; `results/results.json` and
   `results/RESULTS.md` both say 6.3× and 8.1×, so the headline above now reads ~6–8× and the old figures
   have no results file behind them. The bridge figure appeared as ~276× here and ~234× in RESULTS.md's

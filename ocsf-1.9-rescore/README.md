@@ -45,7 +45,9 @@ would make it 100%.
 `938eb121…589a5844` and the alternates gold's `8eda2514…2390e5` both verify against
 `results/PREREG.sha256` (checked 2026-11-17). On in-file evidence the freeze precedes the Tenzir
 walk-back, which `results/tenzir-v6.22.0-walkback.txt` stamps as starting at 20:08:57Z; the order of the
-other scripts' first scored runs is not stamped in the files and needs the git history to confirm.
+other scripts' first scored runs is not stamped in the files, and the pre-registration and the results
+entered version control in the same commit (`aa918db`), so commit order cannot confirm the freeze either;
+it rests on the hash file and the file times in `VERIFICATION.md` (reworded 2026-11-22).
 Deviations are listed in `RESULTS.md` and one more was added after verification (G1 ran the imported June
 scorer).
 
@@ -77,7 +79,7 @@ scripts and the lab `.venv` (root `requirements.txt`) for the two that import `s
 
 ## Evidence tier and limits
 
-Tier B: single host, synthetic seeded corpus for the Zeek arm, documented field sets for the six-source
+No tier is stated in the folder; the evidence is single host, synthetic seeded corpus for the Zeek arm, documented field sets for the six-source
 corpus, two Okta event types for the IAM arm. Agent-run and agent-frozen, independently verified, not
 owner-reviewed. The Sysmon shaping judgement in section (d) is disclosed and unscored as fidelity.
 
@@ -86,5 +88,8 @@ owner-reviewed. The Sysmon shaping judgement in section (d) is disclosed and uns
 - 2026-11-15: verification corrections, listed at the end of `RESULTS.md`.
 - 2026-11-17: H8a's by-construction status stated in `RESULTS.md`; first-person narration recast; this
   README added.
+- 2026-11-22: the 2026-11-17 audit had written `tier: B`, though no file in the folder stated a tier, so the
+  index now reads `not stated` (a Tier B proposal is for the owner), and `claim_kind` and `verdict` now read
+  `mixed` and `CAVEAT` to match the Result section (H1 to H4 confirmatory and H8a by construction).
 - 2026-11-17 (review): the Result no longer calls the headline numbers measured rather than constructed;
   it says H1 to H4 are confirmatory and names the blind hypotheses.

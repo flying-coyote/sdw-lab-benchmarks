@@ -85,7 +85,7 @@
     "trino"
   ],
   "ueba_inverts_flat": true,
-  "rare_inverts_flat": true,
+  "rare_inverts_flat": false,
   "ueba_zscore_answer_equal": true,
   "rare_dest_answer_equal": true
 }

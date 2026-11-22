@@ -38,13 +38,25 @@ build remains the open Tier-A gate.
 The headline is measured. It re-derives from `results/results.json`: adversary-tail mean recall-loss
 0.3477 over 29 fired rules minus routine 0.16 over 25 gives 0.1877.
 
+*(Noted 2026-11-22: the gap is directional on 54 rules and is not significant at conventional levels.
+Nine of 29 adversary-tail rules went blind against 4 of 25 routine rules, which gives a Fisher exact
+p of about 0.22 two-sided (0.17 one-sided), and a permutation test on the clipped mean recall-loss
+(seed 1, 200,000 shuffles over `results/results.json` `scored`) gives a one-sided p of about 0.07.
+Most of the blinded adversary rules rest on 1 to 3 Store F matches each. The truncation sweep below
+shows the sign holding at five caps on the same 54 rules, which is a sensitivity check and not an
+independent replication, so "replicates" above means the direction recurs on real telemetry with
+nothing lab-authored, not that the size of the gap is established. "Routine" in this bench means a
+SigmaHQ rule tagged outside APT29's technique set (for example PsExec or Reflection.Assembly rules),
+which is a different construct from the routine SOC queries in BENCH-A, so the two controls are not
+the same thing.)*
+
 ## What would have made it fail
 
 Either class could have lost more or less recall than the other, and the routine class did move: 4 of
 its 25 fired rules went blind and its mean recall-loss is 0.16, which is the difference from the
 synthetic BENCH-A, whose routine control cannot move under its coarsening (see
 `../bench-a-context-collapse/README.md`). This is why this bench carries the stronger evidence for
-H-OCSF-CONTEXT-COLLAPSE-01 and is the one to quote for the headline. The baseline is Store F, the same
+H-OCSF-CONTEXT-COLLAPSE-01, as the test in which the control could move. The baseline is Store F, the same
 telemetry kept at full fidelity. Two limits travel with it: 465 of the 2,276 compiled rules raised an
 execution error and only 54 fired on Store F (`results/results.json`, `stats`), so the comparison rests
 on 54 rules; and the coarsening knobs, though documented, were chosen by the lab.
@@ -116,12 +128,17 @@ numbers. To reproduce exactly: pin the SigmaHQ rule-set to a specific commit rat
 of the benchmark date. *(corrected 2026-11-17: this sentence used to point to `results/RESULTS.md` for
 the commit hash logged at run time; neither `results/RESULTS.md` nor `results/results.json` records a
 SigmaHQ commit, so the exact rule set is not recoverable from the repo and a re-clone may shift the
-fired-rule counts.)* For byte-stable reproduction of a future run, replace the `git clone --depth 1` step
+fired-rule counts.)* *(Added 2026-11-22, recorded after the fact and not at run time: the gitignored
+local clone at `_work/sigma` on the run host is a shallow clone created 2026-06-06 04:23 local time,
+the day of the results commit, at SigmaHQ commit `994da16651194500b607a3007186c29779e1f961`, and the
+bench's two rule globs over it return 2,853 files, equal to `results.json` `stats.rule_files`. That is
+probably the rule set the run used; a re-run at that commit reproducing 54 fired rules and 0.1877 would
+confirm it.)* For byte-stable reproduction of a future run, replace the `git clone --depth 1` step
 below with a pinned commit and record it:
 
 ```bash
 git clone https://github.com/SigmaHQ/sigma _work/sigma
-git -C _work/sigma checkout <commit-hash-from-results>
+git -C _work/sigma checkout 994da16651194500b607a3007186c29779e1f961   # probable run commit, see note above
 ```
 
 ## Reproduce

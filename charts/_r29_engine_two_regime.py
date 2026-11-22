@@ -1,5 +1,5 @@
 """
-benchmark-8-engine.png — the engine two-regime chart (replaces the stale 145×/Splunk table).
+benchmark-8-engine.png — the engine two-regime chart (replaces the stale legacy 145× table; vendor name generalized 2026-11-22).
 
 Data: zeek-flagship-rerun, draw-1 (canonical published draw), triple-validated 2026-06-14.
 Average of per-query medians across the 5 standardized scan/aggregate queries, vs the

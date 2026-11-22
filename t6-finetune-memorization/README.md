@@ -87,7 +87,7 @@ See Limits in `RESULTS.md`.
 
 ## Corrections
 
-- 2026-11-09: verifier fixes are marked `[fixed in verify]` in `RESULTS.md`.
+- 2026-11-10 UTC (2026-11-09 local): verifier fixes are marked `[fixed in verify]` in `RESULTS.md`.
 - 2026-11-17: this README was restructured to the lab layout, with no change to the existing method text.
 
 ## Safety and scope

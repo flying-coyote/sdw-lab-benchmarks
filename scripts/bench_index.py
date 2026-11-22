@@ -29,17 +29,17 @@ END = "<!-- BENCH-INDEX:END -->"
 # Shared folders described by hand under the table, never indexed as benches.
 SKIP = {"lib", "charts", "scripts", "workloads", "docs"}
 
-# The frozen gate cannot receive a bench.yaml (every file in it is frozen), so its row is fixed here.
+# The frozen gate's pre-registration is frozen, so its row is fixed here until the scored run lands.
 FROZEN = {
     "ontology-vs-schema-gate": {
         "name": "ontology-vs-schema-gate",
         "cluster": "mapping-and-models",
-        "title": "Schema-only pipeline vs an ontology-backed gate on the 925-row OCSF crosswalk corpus (design frozen, nothing scored)",
+        "title": "Schema-only pipeline vs an ontology-backed gate on the 925-row OCSF crosswalk corpus (design frozen, step R reproduced, no arm scored)",
         "status": "frozen-design",
         "tier": "B (design)",
         "claim_kind": "none",
         "prereg": "PREREGISTRATION.md; HARNESS-ADDENDUM.md",
-        "results": "none",
+        "results": "results/step-r-reproduction.json",
     }
 }
 

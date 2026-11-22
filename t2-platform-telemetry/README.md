@@ -4,7 +4,7 @@
 
 One scripted agent session (a prompt, one file-read tool call, one model response) run against the AI
 platforms that can be measured on this host, scored on which fields a security team would want actually
-arrive in the platform's own telemetry, and compared with what four more platforms document they emit.
+arrive in the platform's own telemetry, and compared with what five more platforms document they emit (Vertex AI was planned as a measured arm and did not run).
 
 | arm | what | state |
 | --- | --- | --- |
@@ -76,8 +76,9 @@ collector image is pinned by tag (`otel/opentelemetry-collector-contrib:0.145.0`
 ## Evidence tier and limits
 
 `RESULTS.md` gives no single tier letter for the measured arms; it treats vendor documentation as Tier B for what a
-product does. One host, three trials per configuration, one version of each product, and two of the six documented
-platforms checked only against their own documentation. See Limits in `RESULTS.md`.
+product does. One host, three trials per configuration, one version of each product, and six documented columns (five
+platforms) that rest only on the vendors' own documentation, the ChatGPT Enterprise column on a public announcement
+and search snippets because its help article is login-gated (corrected 2026-11-22: this said "two of the six"). See Limits in `RESULTS.md`.
 
 ## Corrections
 

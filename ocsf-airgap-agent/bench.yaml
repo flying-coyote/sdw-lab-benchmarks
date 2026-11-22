@@ -1,6 +1,6 @@
 name: ocsf-airgap-agent
 cluster: mapping-and-models
-title: An air-gapped agentic hunt with a local model over APT29 telemetry (not OCSF)
+title: A local-model agentic hunt over APT29 telemetry (not OCSF), offline by design and not observed
 status: first-pass
 tier: B mechanics, D capability
 claim_kind: demonstration

@@ -173,6 +173,12 @@ def render_md(res):
                       f"{t[n]['adbc_speedup_vs_python_jdbc']}× |" for n in t)
     erows = "\n".join(f"| {c} | {e[c]['file_bytes']/1e6:.1f} | {e[c]['compression_ratio_vs_uncompressed']}× | "
                       f"{e[c]['scan_median_ms']:.0f} |" for c in e)
+    # prose figures come from the same results (interpolated 2026-11-22; they were hard-coded before)
+    ks = sorted(t, key=int); lo, hi = t[ks[0]], t[ks[-1]]
+    lab = lambda n: f"{int(n) // 1_000_000}M" if int(n) >= 1_000_000 else f"{int(n) // 1000}k"
+    lab_lo, lab_hi = lab(ks[0]), lab(ks[-1])
+    br_lo = lo["jdbc_python_jpype_median_ms"] / lo["jdbc_native_jvm_median_ms"]
+    br_hi = hi["jdbc_python_jpype_median_ms"] / hi["jdbc_native_jvm_median_ms"]
     edge = "\n".join(f"- **{k}**: {'OK' if v['ok'] else 'ERROR — ' + v.get('error','')}" for k, v in ec.items())
     return f"""# Arrow transport — ADBC vs JDBC, + Parquet encoding (results)
 
@@ -187,9 +193,10 @@ Latencies are machine-specific medians, not constants. ODBC is a pending third l
 
 The honest columnar-vs-row advantage is **ADBC vs native-JVM JDBC** — single digits, not hundreds:
 ADBC returns Arrow record batches with no per-row marshaling, where JDBC deserializes row by row. The
-Python/JPype JDBC column is the cautionary one: running JDBC through the Python bridge inflates the gap by
-roughly 40× (the per-row JNI crossing), which is why the first pass's ~276× was overstated — that number
-measured the bridge, not the transport. A cross-runtime caveat remains and is stated plainly: ADBC here is
+Python/JPype JDBC column is the cautionary one: running JDBC through the Python bridge makes JDBC about {br_lo:.0f}×
+slower at {lab_lo} rows and {br_hi:.0f}× slower at {lab_hi} than a native Java client over the same driver (the per-row JNI
+crossing), which is why the first pass's bridge-based figure was overstated — that number measured the
+bridge, not the transport. A cross-runtime caveat remains and is stated plainly: ADBC here is
 Python-Arrow and the native JDBC is Java-rows, so the ratio is the columnar-vs-row paradigm difference in
 each one's idiomatic runtime, not a single-language isolation. Row counts matched across transports.
 
@@ -211,10 +218,11 @@ happy path:
 
 The columnar transport wins on bulk analytical fetches because it returns Arrow record batches
 with no per-row marshaling, and the win scales with result-set size — but the honest magnitude is
-**single digits (~5–10×), not hundreds**. The native-JVM JDBC baseline added here is what de-inflates
-the first pass: running JDBC through the Python/JPype bridge had reported ~234× at a million rows, but
-that measured the per-row JNI crossing of the bridge, not the transport — a native Java JDBC client over
-the same driver is ~40–50× faster than the Python path, leaving ADBC ~5–10× ahead of *it*. That
+**single digits ({lo['adbc_speedup_vs_native_jdbc']}× at {lab_lo} rows, {hi['adbc_speedup_vs_native_jdbc']}× at {lab_hi}), not hundreds**. The native-JVM JDBC baseline added here
+is what de-inflates the first pass: through the Python/JPype bridge ADBC leads by {lo['adbc_speedup_vs_python_jdbc']:.0f}× at {lab_lo} and {hi['adbc_speedup_vs_python_jdbc']:.0f}× at
+{lab_hi} rows, but that measures the per-row JNI crossing of the bridge, not the transport — a native
+Java JDBC client over the same driver is about {br_lo:.0f}× ({lab_lo}) and {br_hi:.0f}× ({lab_hi}) faster than the Python path,
+leaving ADBC {lo['adbc_speedup_vs_native_jdbc']}× and {hi['adbc_speedup_vs_native_jdbc']}× ahead of *it*. That
 remaining gap is the real columnar-vs-row advantage. The one caveat left is cross-runtime: ADBC here is
 Python-Arrow and the native JDBC is Java-rows, so the ratio is the paradigm difference in each one's
 idiomatic runtime, not a single-language isolation. The edge-case battery (HUGEINT, DECIMAL, microsecond

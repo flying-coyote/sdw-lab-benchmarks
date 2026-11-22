@@ -35,10 +35,17 @@ bytes written to a device were observed.
 
 ## What would have made it fail
 
-The projection would have crossed 1 DWPD at 5 TB a day on a 4 TB drive if the compression ratio had come
-out below 2.5 (5 × 2.0 / 2.5 / 4 = 1.0), so the one measured input could have moved the conclusion. The factor of 2 could
-not, because the harness sets it. A realized-DWPD measurement from drive counters on a live ingest path
-is the test that could fail on its own, and it has not been run.
+Less could have failed than the fixed-drive projection suggests. That projection ignores retention: at
+5 TB a day and 4.62× the drive receives about 1.08 TB of stored data a day, so a 4 TB drive is full in under
+four days. With capacity sized to hold R days of retained data, DWPD = (2.0 × daily stored) / (R × daily
+stored) = 2.0 / R whatever the compression ratio (about 0.07 at 30 days), so the under-1-DWPD conclusion
+follows from any retention longer than about two days plus the single-compaction assumption, and the
+measured 4.62× cannot move it once retention is in the model. The measured ratio remains the storage-sizing
+input it is. What could falsify the conclusion is rewrite frequency (repeated compaction, deletes, replicas,
+write-ahead log and catalog writes), which the harness fixes at one pass, and a realized-DWPD measurement
+from drive counters on a live ingest path is the test that could fail on its own; it has not been run.
+*(Rewritten 2026-11-22: this paragraph said the projection would have crossed 1 DWPD at 5 TB a day on a
+4 TB drive below a 2.5× ratio, a case no real system reaches once retention is counted.)*
 
 ## Pre-registration
 

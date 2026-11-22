@@ -12,9 +12,11 @@ folder keeps its name because pages link to it.
 
 ## What it measures
 
-- Whether the stack assembles from on-host parts. Offline operation holds by design rather than by
-  measurement: the only network call in `run.py` is to `OLLAMA = "http://localhost:11434/api/chat"`
-  (`run.py:36`, called at `run.py:76`), and the corpus and Sigma rules are local paths (`run.py:39-40`).
+- Whether the stack assembles from on-host parts. `run.py` itself makes one network call, to the local
+  Ollama endpoint `OLLAMA = "http://localhost:11434/api/chat"` (`run.py:36`, called at `run.py:76`), and the
+  corpus and Sigma rules are local paths (`run.py:39-40`); the Ollama daemon's own traffic was not
+  constrained or observed, and the model pull in Reproduce needs the network once, so offline operation is
+  by design for `run.py` and is not shown for the stack as a whole (scoped 2026-11-22).
   The "what phoned home" ledger in the results is a fixed statement that `run.py:161-168` writes on every
   run, not an observation of traffic.
 - Task success on one hunt (find the first suspicious executable and the account it ran under), the step

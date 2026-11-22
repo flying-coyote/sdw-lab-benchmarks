@@ -6,8 +6,8 @@ tier: B for the mechanism, D for benign-session judgments
 claim_kind: demonstration
 verdict: DEMONSTRATION
 prereg: PREREGISTRATION.md
-results: RESULTS.md
-reproduce: python t8c-trifecta-detection/run.py
+results: RESULTS.md; RESULTS-CORPUS-CASE-CHECK-2026-11-16.md; RESULTS-MIXED-CASE-PROBE-2026-11-16.md
+reproduce: python t8c-trifecta-detection/run.py (needs the gitignored OCSF 1.9.0 schema tree)
 pins: requirements.txt
 essay: /writing/detection/detecting-the-lethal-trifecta
 superseded_by: none

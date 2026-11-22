@@ -7,8 +7,15 @@ differentiate the backends? Three realizations of the hot-tier write:
 
 - **file-write** — classic Iceberg: a new data file, a manifest, and a fresh
   `metadata.json` on every commit. *(measured, via pyiceberg + a local SQL catalog)*
-- **SQL-transaction** — DuckLake: an ACID transaction against a catalog that inlines small
-  batches. *(measured, via the DuckDB `ducklake` extension)*
+- **SQL-transaction** — DuckLake: an ACID transaction against a catalog. *(measured, via the
+  DuckDB `ducklake` extension)* The catalog can inline small batches when a row limit is set, but
+  this arm attaches without `DATA_INLINING_ROW_LIMIT` (`run.py`, `run_ducklake`), and each commit
+  wrote one Parquet data file (50 files for 50 commits in `results/results.json`), so the storage and
+  one-file-per-commit figures are not inlining figures; inlining is shown separately in
+  `../ocsf-write-inlining/`. Current DuckLake documentation describes inlining as on by default with a
+  row limit of 10, so a re-run on a newer extension would still not inline 100-row commits, though the
+  extension version used here is not recorded. *(Corrected 2026-11-22: this bullet said the catalog
+  "inlines small batches", which the measured arm did not do.)*
 - **never-write** — Streambased ISK: producing to Kafka is the write. *(pending: vendor-
   published, seed-stage, no independent deployment to measure — recorded, not estimated)*
 

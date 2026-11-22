@@ -139,7 +139,7 @@ python ocsf-read-scan/cold_cache_scan.py               # default 20M rows
 python ocsf-read-scan/cold_cache_scan.py --rows 50000000
 ```
 
-Eviction is judged from the measured cold/warm ratio itself (1.55× on the largest query), not from an
+Eviction is judged from the measured cold/warm ratio itself (1.55×, the largest ratio, on the Iceberg `filtered` query), not from an
 independent check of the page cache, and on WSL2 the Windows host can still hold the file in its own
 cache after the guest evicts it, so "cold" here means guest-cold.
 
@@ -211,7 +211,11 @@ scale in the 1B validation runs, 3 to 5 elsewhere). No RESULTS file in this fold
   pyiceberg size to the tenth. So "pyiceberg 212.4 MB, topn_src 381 ms, smallest and fastest" compares 11M
   rows with 20M, and the whole pyiceberg table is 386.1 MB, the largest of the four writers. Among the three
   rows that do read the full table, the read spread on topn_src is PyArrow default 708.1 ms against DuckDB
-  628.9 ms, 1.13×, and the size spread is 365.1 against 228.3 MB, 1.60×. The arm checks no answers across
+  628.9 ms, 1.13×, and the size spread is 365.1 against 228.3 MB, 1.60×. The two PyArrow rows wrote the same size (365.1 MB) and
+the same `src_ip` encoding (`PLAIN+RLE+RLE_DICTIONARY`) in `results/writer-read-lever.json`, so the
+dictionary-forced arm is not a distinct treatment, the valid comparison is DuckDB against PyArrow, and the
+6% gap between the two PyArrow rows (708.1 against 668.8 ms) is run-to-run spread rather than an encoding
+effect (added 2026-11-22). The arm checks no answers across
   writers, which is why this passed. The script, its JSON and the chart built from it are left as they are
   until the arm is re-run with every pyiceberg file read and answers compared;
   `results/WRITER-READ-LEVER.md` carries the same note.)*

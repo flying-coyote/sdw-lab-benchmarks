@@ -102,7 +102,7 @@ shape; absolute coordinates ride with the caveat every time they appear.
 
 ## Layout and audit notes (added 2026-11-17)
 
-Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+Everything above this line is the bench's pre-registration as committed in `fca81a1` and is left unchanged, including its wording (the text above the divider matches that commit apart from one blank line before the divider); errata go here, below it.
 
 ### Result, and whether it is measured
 
@@ -114,7 +114,7 @@ Nothing in what ran. The scored comparison, with its per-query EXPLAIN check and
 
 ### Pre-registration
 
-The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+The text above the divider is the pre-registration. There is no hash file; by commit order it was committed (`fca81a1`, 2026-06-10 local) before the results (`2b91c17`, 2026-06-14 local), and the result files carry no run timestamp, so commit order is the only check (checked 2026-11-22).
 
 ### Results
 

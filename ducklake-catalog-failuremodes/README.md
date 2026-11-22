@@ -1,6 +1,6 @@
 # DuckLake catalog failure modes (BENCH-E)
 
-Built 2026-06-14, pre-registered in project1 `BENCHMARK-BACKLOG.md` as BENCH-E. It tests a
+Built 2026-06-14, pre-registered in a private planning backlog (not in this repo) as BENCH-E. It tests a
 narrow, falsifiable question raised by the Iceberg-V4-vs-DuckLake metadata work: the DuckLake
 vendor pitch leads with planning speed and a 105× streaming claim, but the catalog layer that
 makes that speed possible carries its own correctness and operability bugs. This bench does not

@@ -19,6 +19,9 @@ def load(d, kind):
 
 def reach(d, exclude_wrappers):
     objs, classes = load(d, "objects"), load(d, "classes")
+    if not objs or not classes:  # guard added 2026-11-22: an empty tree would overwrite results/ocsf_reach.json
+        raise SystemExit(f"no OCSF 1.9.0 per-item JSON under sources/{d}/{{classes,objects}}/; "
+                         "re-fetch it (RESULTS.md, Commands) before running")
     res = collections.defaultdict(dict)
     for c in classes.values():
         uid = c.get("uid")

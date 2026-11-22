@@ -16,7 +16,13 @@ duckdb==1.5.3
 # re-runs used 4.4.0 (parquet-checksum-integrity/results/rerun-2026-11-16-current.json:3;
 # delegation-chain-query/RESULTS.md:11 also ran 4.4.0). No results file in the tree records a full
 # bench run on 4.1.9 beyond that two-mechanism reconfirmation.
+# Added 2026-11-22: the defect lives in chdb-core, not the wrapper. chdb 4.1.8 (PyPI upload 2026-05-22)
+# requires chdb-core>=26.1.0, chdb-core 26.3.0 (2026-05-11) was the newest core until 26.5.0 (2026-06-08),
+# and chdb 4.1.9 requires chdb-core>=26.5.0, so without this pin a fresh install resolves a fixed core.
+# A fresh venv with these two pins reports engine 26.3.9.1 and reproduces the undercount in
+# clickhouse-vs-duckdb/mechanism_chdb_bloom.py (re-run 2026-11-22).
 chdb==4.1.8
+chdb-core==26.3.0
 
 # multi-engine answer-equality probe (clickhouse-vs-duckdb/multi_engine_correctness.py)
 # in-process engines (distinct Parquet readers):

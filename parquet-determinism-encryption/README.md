@@ -44,7 +44,9 @@ control that shows the read path is identical. Arm B as run in June could only s
 the key fail, which is what encryption is for, so it could not test portability; the 2026-11-16 with-keys
 run is the arm that could have shown every engine reading the file, and it found that, given the key,
 pyarrow, DuckDB and Polars 2.1.0 read a pyarrow-written file, only DuckDB reads a DuckDB-written one, and the
-DataFusion Python wheel and chDB read neither (no decryption setting was found in either).
+DataFusion Python wheel and chDB read neither (DataFusion accepts a decryption key as a table option, but the
+published Python wheel is built with Parquet encryption disabled; chDB exposes no decryption setting; reworded
+2026-11-22 to match `RESULTS-PME-WITH-KEYS-2026-11-16.md`).
 
 ## Pre-registration
 

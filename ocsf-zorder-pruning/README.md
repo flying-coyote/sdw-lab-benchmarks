@@ -2,13 +2,15 @@
 
 ## What it measures
 
-A SOC analyst running `src_ip IN /24 AND time IN 1h` over a 20M-event lakehouse table
+A SOC analyst running `src_ip IN /24 AND time IN 1h` over a large lakehouse table (the bench's corpus is 2,000,000 rows)
 should see most row groups pruned by statistics: those events sit in a well-defined
 region of the src_ip × time plane, so row groups that don't overlap that region can
 be skipped entirely. SINGLE_SORT by src_ip gives tight src_ip ranges per row group but
 scattered time ranges, so the time predicate can't help. UNORDERED gives neither.
 Z-order (Morton code over src_ip_int × dst_port × time_bucket) places multi-dimensionally
-nearby events together, so the conjunction prunes more row groups than either alternative.
+nearby events together, so the expectation was that the conjunction prunes more row groups than either
+alternative. *(Noted 2026-11-22: that was the expectation, and the measured Q1 went the other way, with
+single-sort pruning 95.0% of row groups against z-order's 72.5%; see Result.)*
 
 This bench measures how much.
 

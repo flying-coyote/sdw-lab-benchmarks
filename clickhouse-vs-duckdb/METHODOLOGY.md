@@ -93,9 +93,13 @@ These are the lines you must not let the result cross:
   ordering and indexing, and ClickHouse's distributed scale-out, engage at much
   larger data and on selective primary-key lookups. Neither engine was
   hand-tuned — defaults, no skip indexes, no pragmas.
-- **This does not contradict the Lab's other ClickHouse evidence.** The 145×
-  number is a real ClickHouse *server* against *Splunk* (a schema-on-read SIEM)
-  on 10M Zeek records — a columnar-vs-SIEM comparison at a different scale. The
+- **This does not contradict the Lab's other ClickHouse evidence.** The current
+  figure is a real ClickHouse *server* against an OpenSearch 2.18.0 schema-on-read
+  baseline on 10M Zeek records (`../zeek-flagship-rerun/`, native 46.8× and Iceberg
+  10.1× on the five-query average), a columnar-vs-index comparison at a different
+  scale that supersedes the legacy 145× figure. *(Corrected 2026-11-22: this
+  paragraph cited the legacy figure and named the commercial SIEM behind it; the
+  rerun replaced that figure for every surface that cites it.)* The
   Capability Matrix scores ClickHouse top for the dashboard-serving archetype on
   that large-scale latency value. C3 is columnar-vs-columnar, embedded, mid-scale.
   Different comparison, different scale; the results sit beside each other, not

@@ -249,7 +249,7 @@ realignment.
 
 ## Layout and audit notes (added 2026-11-17)
 
-Everything above this line is the bench's pre-registration as committed and is left unchanged, including its wording; errata go here, below it. Whether the text above was committed before the first scored run can only be checked against the repository history.
+The pre-registration is the README as committed in `6cbe21a`; it was amended before scoring (`9256b23`, a declared build deviation) and edited after the run in `c00084d` (wording, 2026-06-16) and `147682e` (a vantage note, 2026-07-04), so the text above this line is not byte-identical to the frozen design and the blob at `6cbe21a` is the frozen reference. Errata go here, below it. *(Corrected 2026-11-22: this said everything above the line was the pre-registration as committed and unchanged.)*
 
 ### Result, and whether it is measured
 
@@ -261,7 +261,7 @@ A pairwise claim stands only when its gap exceeds both arms' CV (the claims gate
 
 ### Pre-registration
 
-The text above the divider is the pre-registration. There is no hash file, so the freeze cannot be verified without repository history.
+The pre-registration is the README blob at `6cbe21a`, with `9256b23` as the declared pre-score amendment. There is no hash file; by commit order it was committed (`6cbe21a`, 2026-06-10T13:36Z) before the scored results (`e613c58`, 15:09Z the same day), and the result files carry no run timestamp, so commit order is the only check (checked 2026-11-22).
 
 ### Results
 

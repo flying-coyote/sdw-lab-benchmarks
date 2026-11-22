@@ -13,7 +13,7 @@ catch). Those three are the only claims this bench makes.
 
 **3/8 techniques detected; 1 noisy; 4 missed.**
 
-*(corrected 2026-11-17: the three DETECTED rows and the NOISY row use rules byte-identical to `../ocsf-sigma-detection/rules/`, which key on values the testbed generator planted, so they show the compile-and-execute round trip and are not a recall. The four MISSED rows had no rule run and are an inventory count. T1048 is not a technique with no positive to catch: the testbed's 30 exfiltration events are tagged T1048 in the API Activity table (`gen_corpus.py:50-51`), and the map binds T1048 to class 4001 with no rule. `run.py` regenerates this file, so the correction is also in the README.)*
+*(corrected 2026-11-17: the three DETECTED rows and the NOISY row use rules byte-identical to `../../ocsf-sigma-detection/rules/`, which key on values the testbed generator planted, so they show the compile-and-execute round trip and are not a recall. The four MISSED rows had no rule run and are an inventory count. T1048 is not a technique with no positive to catch: the testbed's 30 exfiltration events are tagged T1048 in the API Activity table (`gen_corpus.py:50-51`), and the map binds T1048 to class 4001 with no rule. `run.py` regenerates this file, so the correction is also in the README.)*
 
 | stage | ATT&CK | OCSF class | rule | state | matches | FPs | precision |
 |---|---|---|---|---|---|---|---|

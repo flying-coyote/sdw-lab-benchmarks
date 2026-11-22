@@ -9,7 +9,7 @@ tags: [benchmark-campaign, tracker, run-backlog, iceberg, ducklake, ocsf]
 
 > *Status, 2026-11-17.* This is the record of the June 2026 high-performance campaign (R0 to R9 and the
 > Phase E follow-ups added on 2026-06-06), kept as written in June apart from the dated notes below, which
-> were added after every number in it was re-derived against the bench results it cites, and punctuation
+> were added after every number that cites a bench results file was re-derived against it, and punctuation
 > and wording edits made on 2026-11-17 that change no number or finding. It is not a map
 > of the current lab, which has grown well past these runs; the generated index in
 > [`README.md`](README.md) is that map. The read-together narrative is [`SYNTHESIS.md`](SYNTHESIS.md).
@@ -44,6 +44,8 @@ caveat. Heavy runs are serialized (never co-run a timing bench, because it infla
    bytes/SHA non-deterministic; integrity workflows must hash logical content, not file bytes.
 6. **"WSL2 needs a native-Linux host for clean benchmarks."** No, since the Windows High-Performance power
    plan drops CV 5.8%→0.8% (sustained) and 19.8%→2.7% (short). A power-plan setting, not a migration.
+   *(Noted 2026-11-22: no file in the tree records the run behind these two figures; see the note in
+   BENCHMARKING-METHODOLOGY.md.)*
 7. **"Compression choice is a storage decision."** It's also a read-latency lever (~5–13%, Snappy
    decompresses cheaper) and a determinism lever (order-sensitive encoding).
 8. **"Context-collapse imposes a uniform fidelity tax on detection."** No, because it splits into two distinct
@@ -200,9 +202,10 @@ Added 2026-06-06 from the post-R8 review. Resource-light unless noted; each maps
   resolving H-ICEBERG-INTERFACE-01's "not-unconditional" caution to a spill-regime caveat.
   *(corrected 2026-11-17: the isolation ran at 100M rows, not 1B, and did not reproduce the 1.30×; the
   bench's own reading (`ocsf-read-scan/results/TOPN-ISOLATION.md:27`) says the 1.30× "did not reappear at
-  this scale, consistent with it being a 1B-specific spill effect". So at 100M the gap tracks spill (0.93×
-  without, 1.15× with, both at CV 2 to 6%), and attributing R8's 1B figure to the memory cap and drvfs
-  spill is the likeliest explanation, not a measured one, since no run isolated drvfs.)*
+  this scale, consistent with it being a 1B-specific spill effect". At 100M the bench reads both caps as
+  parity (0.93× without spill, 1.15× with, at CV 2 to 6%), so attributing R8's 1B figure to the memory cap
+  and drvfs spill is the likeliest explanation and not a measured one, since no run isolated drvfs.
+  (Reworded 2026-11-22: this note said the 100M gap "tracks spill", a reading the bench did not make.)*
 - [x] **Broader Parquet-writer encoding comparison — DONE (T2.6, `ocsf-read-scan/writer_read_lever.py`)**:
   one OCSF table (20M) written by DuckDB, PyArrow (default + dict-forced), and pyiceberg at a matched
   codec/row-group, read by the same engine. The writer's encoding **is** a read lever, moving the

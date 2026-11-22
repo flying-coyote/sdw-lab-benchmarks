@@ -112,8 +112,12 @@ flagged: read those medians loosely. The other cells are under 15%.
 3. **Scans split roughly in half, in ratio terms.** On the 500-append Zeek table, rewriting manifests
    alone recovered 5.1x on `count(*)`, 3.0x on the full aggregation, 2.15x on the selective filter and
    1.4x on the group-by sum; full compaction recovered 21.6x, 6.5x, 3.5x and 2.3x. In log-ratio terms
-   the manifest rewrite accounts for 41% to 62% of each query's compaction recovery (count 53%, full
-   aggregation 59%, selective filter 62%, group-by sum 41%), and the data-file reduction for the rest. The compacted table was still the fastest on
+   the manifest rewrite accounts for 41% to 61% of each query's compaction recovery (count 53%, full
+   aggregation 58%, selective filter 61%, group-by sum 41%), and the data-file reduction for the rest.
+   *(Corrected 2026-11-22: these read 59% and 62% for the middle two queries and 41% to 62% overall;
+   recomputed from the raw medians in `results/manifest_arm_2026-11-16.json`, `shape_b_zeek_500`. As a share
+   of milliseconds saved rather than of the log ratio, the manifest rewrite accounts for 84%, 78%, 75% and
+   51%, so the attribution depends on which measure is used.)* The compacted table was still the fastest on
    every query; the review's scratch observation that a merged-manifest 500-file table beat the single
    file did not reproduce here.
 4. **The compaction ratios reproduce the 2026-06-14 receipt** (21.6 / 6.5 / 3.5 / 2.3x here against

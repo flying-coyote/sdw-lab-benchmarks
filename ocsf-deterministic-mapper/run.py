@@ -109,7 +109,7 @@ def run():
     llm = {}
     if os.path.exists(bpath):
         bj = json.load(open(bpath))
-        m = next(iter(bj["models"].values()))
+        m = bj["models"]["phi3:latest"]  # by key: the oracle now carries several models (fixed 2026-11-22)
         llm = {c: {"silent_error_rate": m["cells"][c]["silent_error_rate"],
                    "path_correct": m["cells"][c]["path_correct"]} for c in m["cells"]}
     return {"benchmark": "ocsf-deterministic-mapper", "evidence_tier": "B",

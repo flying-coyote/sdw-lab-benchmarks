@@ -71,7 +71,7 @@ alternative the code implements, a fixed-authority merge that trusts the stale C
 could have beaten the scored merge, because it already scores the maximum possible, and the sweep
 cannot invert the scored-over-naive ordering because it holds the confidence levels fixed
 (`run.py:149-169`). The numbers measure what the flaw model was set to produce; the test that could fail
-would give a high-confidence source some wrong readings. EXT-2's entity-resolution tax (-10.1%) is
+would give a high-confidence source some wrong readings. EXT-2's entity-resolution tax, 10.1 percentage points (96.3% to 86.2%, a 10.5% relative drop), is
 the one result here that comes from an algorithm doing something the generator did not decide in
 advance.
 
@@ -104,7 +104,7 @@ gap).** v1 assets share one clean key. Identities do not: HR keys on
 records are the same human* before it can recover an attribute. Over 12,000
 planted identities × 5 attributes, a clean-key oracle (the asset-style join)
 recovers **96.3%**; resolving identity from the disagreeing key *values* only and
-then merging recovers **86.2%** — a **−10.1%** entity-resolution tax, the part of
+then merging recovers **86.2%** — a **10.1-percentage-point** entity-resolution tax, the part of
 the assurance gap that is *join*, not *coverage*. A naive "just pick `employee_id`"
 single-key join collapses to **60.0%**.
 
@@ -154,7 +154,7 @@ across a 3×3 staleness×coverage grid (it never inverts), not that the magnitud
 are universal — they move, on purpose. *(corrected 2026-11-17: cross > best-single and scored >
 naive cannot invert in this sweep, which holds confidences fixed; see "Measured or by construction".
 Only residual > 0 is free to move.)* EXT-2 shows a contested join key degrades
-cross-tool recovery by a measurable amount (−10.1% here) and that entity
+cross-tool recovery by a measurable amount (10.1 percentage points here) and that entity
 resolution is therefore part of the assurance gap, not that any particular linker
 is optimal or that this is a real organisation's resolution accuracy.
 

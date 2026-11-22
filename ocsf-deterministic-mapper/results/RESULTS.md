@@ -42,7 +42,10 @@ constrained baseline, not an upper bound on what a tuned deterministic mapper co
 property of the constraint, so it could not have come out otherwise, and the comparison it supports is
 safety, not accuracy. Second, "fair" overstates the alias baseline: `run.py` matches substrings, and a
 whole-token re-run of the same rules maps 43 fields with 18 correct
-(`alias-whole-token-check-2026-11-16.json`). The frontier leg has since run as a post-hoc re-score,
+(`alias-whole-token-check-2026-11-16.json`), 0.13 of 141 against 0.16, so stricter matching lowers
+path-correct and coverage and raises precision among mapped fields from 0.24 to 0.42; the 0.16 is one crude
+table's score, about five of its hits owed to substring accidents, and nothing here shows what a tuned alias
+table would reach (clause added 2026-11-22). The frontier leg has since run as a post-hoc re-score,
 `RESULTS-FRONTIER-CONSTRAINED-2026-11-16.md`: behind a full-schema reject wall the June frontier-proxy
 predictions keep 57 to 66% path-correctness at zero silent error, against 0.16 here, so "the harness, not
 the model" holds for the safety property and not for correctness above the phi3 tier. `run.py`

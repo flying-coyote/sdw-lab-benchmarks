@@ -33,10 +33,15 @@ survive", so Store N was built knowing at least one routine query, R4.)*
 deltas are all 0.0. Full numbers, per-mechanism breakdown, and the cost of fidelity are in
 [results/RESULTS.md](results/RESULTS.md).
 
-Whether the number is measured or follows from construction is split by half. The adversary
-half is measured in the sense that the queries ran and lost what Store N dropped, though which
-query loses what is set by the generator (the C2 domain is resolved exactly once, so any rare-DNS
-filter removes it). The routine half follows from construction: none of the six routine queries
+Whether the number is measured or follows from construction is split by half, and neither half is
+fully measured. The adversary half is a demonstration that each named mechanism removes the answer
+to the query written against it: each adversary query is tagged with the one mechanism it was
+written to hit, and which query loses what is set by the generator (the C2 domain is resolved
+exactly once, so any rare-DNS filter removes it). Five of the ten adversary deltas are exactly 1.0
+(A1, A2, A4, A8, A10) because each of those queries needs a field Store N removes outright, so the
++0.719 measures the battery's design more than the knob values; the partial deltas (A3 0.095, A5
+0.6, A6 0.993, A7 0.003, A9 0.5) are the ones the store's data determined (`results/results.json`;
+reworded 2026-11-22, this used to call the adversary half "measured"). The routine half follows from construction: none of the six routine queries
 reads a field any Store N mechanism changes, so its 0.000 could not have come out otherwise
 (next section). *(corrected 2026-11-17: the README used to say the routine control at 0.000 shows
 the adversary degradation "is a property of what coarse normalization drops, not of a store
@@ -45,8 +50,12 @@ field.)*
 
 ## What would have made it fail
 
-The adversary half could have come out lower; the dose-response sweep shows it moves from +0.719
-to +0.829 as the knobs tighten, and two adversary queries (A3 ordering, A7 dwell) barely degrade.
+The adversary half barely depends on the knobs. In `results/DOSE-RESPONSE.md` the lightest setting
+(60 s / 256 / 2) gives the same +0.719 as the documented default, and only the heavy settings move it,
+to +0.829, so loosening the knobs did not lower the floor; the partial deltas listed above, and the
+two adversary queries that barely degrade (A3 ordering, A7 dwell), are where the result could move
+(reworded 2026-11-22: this used to say the adversary half "could have come out lower" and cite the
+sweep as showing it).
 The routine control could not have failed under these knobs. Store N keeps every auth, process
 and API row, so R1, R3 and R6 are exact counts; R2 asks for the top 20 of the 12 destination
 ports the generator draws (`../ocsf-semantic-testbed/generate.py:84`) and is answered on Store N
@@ -59,8 +68,9 @@ which is what the code predicts.
 for the same hypothesis, because there the routine class could fail and partly did: unmodified
 SigmaHQ rules over real APT29 telemetry, split by each rule's own ATT&CK tags, give a routine
 recall-loss of 0.16 (4 of 25 routine rules went blind) against 0.348 for the adversary tail, a
-gap of +0.188. Quote that bench for the headline; this one is the mechanism demonstration on a
-corpus whose answers are known.
+gap of +0.188 (directional, not significant at conventional levels on 54 rules; see the note in that
+README). That bench is the test in which the control could move; this one is the mechanism
+demonstration on a corpus whose answers are known.
 
 ## Pre-registration
 

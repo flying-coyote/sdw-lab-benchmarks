@@ -52,10 +52,16 @@ governance bridge runs through ATT&CK (or through the shared 800-53 hop).
 This is a build with reconciliation asserts rather than a scored experiment. Every figure in the
 reconciliation table below is a count over the public D3FEND v1.4.0 ontology, the D3FEND Wall tables
 and (with `--with-scf`) the SCF Sankey, and the build hard-fails if a count differs from its expected
-value, which is how it caught the 25-versus-27 OCSF class drift. The counts are measured; what the
+value, which is how it caught the 25-versus-27 OCSF class drift. The counts are computed from those public
+sources (the index lists the folder with `claim_kind: none`, since nothing here is a scored experiment); what the
 graph cannot do is say a defense detects anything, since its largest edge class (6,085 of 7,618 deduped
 edges in the committed spine, by `(src, dst, rel)`) is the intent-blind `artifact_cooccurrence`
-inference. The committed spine `results/edges.json` holds 20,588 raw edge rows, which dedup to 7,618.
+inference. The committed spine `results/edges.json` holds 20,588 raw edge rows, of which 12,970 are
+byte-identical duplicates of another row, so the distinct edge count is 7,618. The hop counts in
+`results/reconcile.json` are raw-row counts and the asserts pass on them: `hop3_observes_edges` is 4,676
+raw rows but 130 distinct edges, `in_tactic` is 4,676 rows for 461 distinct, and `total_edges` is the
+raw 20,588. *(Noted 2026-11-22; deduplicating in `scg.py` before counting and re-baselining the asserts
+is an owed code fix.)*
 
 ## Pre-registration
 
@@ -132,8 +138,8 @@ chain leans on an intent-blind `artifact_cooccurrence` edge (the largest edge cl
 7,618), so a weak inference can't be laundered into a confident claim. This is the same
 transparency point the essay makes, made operable.
 
-Registered in `~/project1/.claude/mcp.json` as `scg` (runs on system `python3`, which needs
-the `mcp` package). Paired with the global `security-context-graph` reasoning skill. Empirical
+Can be registered as an MCP server named `scg` (runs on system `python3`, which needs the `mcp`
+package). Paired with the global `security-context-graph` reasoning skill. Empirical
 caveat carried into the server's own docstring: the SDW Lab benchmarks (2026-06-08) found
 conceptual grounding ~inert versus a schema-validity check, and graph structure helping a
 retrieval answer on only 1 of 9 queries — so the server's job is honest navigation with
@@ -154,7 +160,7 @@ python3 test_scg_mcp.py            # offline smoke test (no MCP client needed)
 ## Results
 
 - `results/reconcile.json`, `results/nodes.json`, `results/edges.json`, `results/fingerprint.txt`: the public spine (1,442 nodes).
-- `results/reconcile-with-scf.json`: aggregate statistics of the local SCF build (3,305 nodes, 56,294 raw edge rows); the SCF node and edge files are not committed, under the licence gate above.
+- `results/reconcile-with-scf.json`: aggregate statistics of the local SCF build (3,305 nodes, 56,294 raw edge rows, counted the same raw way as the public spine's, so they may include duplicates; the distinct count cannot be derived from committed files); the SCF node and edge files are not committed, under the licence gate above.
 
 ## Versions and pins
 

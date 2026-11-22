@@ -41,8 +41,7 @@ cannot be re-derived from the repo; a re-run that saves its output would close t
 ## Confidentiality: what never lands in this repo
 
 This repo is public, and a private, NDA-gated catalog benchmark exists alongside it, so the line between
-them is written here rather than left to memory (owner ruling 2026-11-08, from the 2026-07 grill bank 3B
-Q5). Three classes are never committed to this repo, in a results file, a README, a commit message, a
+them is written here rather than left to memory (rule adopted 2026-11-08). Three classes are never committed to this repo, in a results file, a README, a commit message, a
 fixture or a code comment:
 - **Client names**, and any detail specific enough to identify a client engagement (environment sizes,
   vendor stacks, incident dates). Anonymize to a role or sector, or leave it out.
@@ -138,7 +137,7 @@ offset checked" or "pre-2026-11-07, timesyncd: absolute durations read about 4% 
 error of unknown sign (§7a)". Results that report only correctness, answer equality, sizes, counts or
 within-run ratios do not need one. The stamp exists because the §7a clock error is invisible in a number
 once it leaves the run, and a stamp is the only way a reader can tell a pre-chrony timing from a corrected
-one (owner ruling 2026-11-08, from grill bank 3B Q4). Back-stamping applies to the existing latency-bearing
+one (rule adopted 2026-11-08). Back-stamping applies to the existing latency-bearing
 RESULTS files, with `ocsf-read-scan/` and the other pre-chrony timings done in the same pass; until a file
 is stamped, treat its absolute durations under §7a.
 
@@ -147,9 +146,14 @@ frozen `ontology-vs-schema-gate/` and the five copies kept under `verification/`
 58 report at least one absolute duration or rate with a unit (ms, seconds, minutes, rows/s and the like),
 13 of those carry a rig stamp or record both the clock state and the power plan, and 45 carry neither.
 The count is a pattern match over the files, so it can miss a duration written without a unit and can
-count a file whose only duration is incidental. The 45 files and the exact pattern are listed in
+count a file whose only duration is incidental. The 45 files are listed, and the pattern described in words, in
 [`docs/AUDIT-2026-11-17-open-items.md`](docs/AUDIT-2026-11-17-open-items.md), and the per-bench audit adds
-the stamp where the run record allows it.)*
+the stamp where the run record allows it.)* *(Noted 2026-11-22: the script that produced this count is
+not in the repository, and a pattern match described only in words can be reimplemented with different
+results, so the count cannot be reproduced exactly from this repository until a counting script is
+committed. Fourteen of the 45
+files were first committed after the rule was adopted on 2026-11-08, so the gap is not only in older
+files.)*
 
 ### 8. What remains genuinely ACKNOWLEDGED, not faked
 - **Non-invasive measurement** (benchANT: don't run the harness on the system under test). DuckDB is an
@@ -246,7 +250,8 @@ bench README carries the answers.
    re-score or post-hoc file in the folder?
 5. **Are the versions pinned, and are the pins the ones the result ran on?**
 
-The answer goes into the bench's `bench.yaml` as `claim_kind` (`measured`, `demonstration` or `mixed`),
+The answer goes into the bench's `bench.yaml` as `claim_kind` (`measured`, `demonstration`, `mixed`, or
+`none` where nothing is scored yet),
 which the top-level index shows beside the status. A demonstration is still worth publishing, since an
 end-to-end mechanism that runs is useful evidence, as long as nobody reading it can mistake it for a rate.
 
@@ -255,14 +260,20 @@ A bench that tests a hypothesis with a threshold freezes its design before the f
 November benches settled on a protocol that this principle makes the default:
 - **Hash file.** A `.sha256` file beside the design lists the sha256 of the pre-registration and of every
   input, rule or harness file whose content the verdict depends on, in `hash, two spaces, path` form, with
-  paths relative to the bench folder so a reader can verify it from a fresh clone.
+  paths relative to the bench folder so a reader can verify it from a fresh clone. Where an amendment was
+  appended into the hashed file, verify the body by hashing the lines above the amendment heading (for
+  example `head -n 201 t3-guardrail-adaptive/PREREGISTRATION.md | sha256sum`, which matches the recorded
+  hash where `sha256sum -c` on the whole file fails; noted 2026-11-22).
 - **Frozen-at stamp.** The design records when it was frozen (a `frozen-at` line or a `prereg.frozen-at`
   file), and a `clock-pre-run.txt` or equivalent records the start of the first scored run, so the order
-  is checkable from the files as well as from version-control history.
+  is checkable from the in-file stamps. Where the design and its first results were committed together,
+  version-control history cannot show the order (true of 15 of the 20 November folders with a
+  `PREREGISTRATION.md`), so new benches commit the frozen design before the scored run (reworded
+  2026-11-22).
 - **Who froze it.** The design names who froze it, and says so plainly when it was frozen by an agent and
   not reviewed by the owner, because that affects how much weight the pre-registration carries.
 - **Amendments below the hashed body.** A later change is appended under a dated heading below the
-  original text, never edited into it, so the hash of the original body still verifies; RESULTS declares
+  original text, never edited into the hashed body, so the hash of the original body still verifies; RESULTS declares
   every deviation from the frozen design and checks each verdict against the frozen threshold.
 - **Never after the fact.** A bench without a pre-registration says "Pre-registration: none" in its README,
   and no design is written or back-dated after the run it would govern.
@@ -274,7 +285,7 @@ November benches settled on a protocol that this principle makes the default:
 - [ ] Guest clock checked before the run (`chronyc tracking`, small `System time` offset; §7a).
 - [ ] Rig stamp at the top of any RESULTS file that reports an absolute duration (§7b).
 - [ ] Nothing from the three never-commit classes (client names, NDA-sourced numbers, private catalog-benchmark content).
-- [ ] The headline passes the five questions of §11, and `claim_kind` in `bench.yaml` says whether it is measured or a demonstration.
+- [ ] The headline passes the five questions of §11, and `claim_kind` in `bench.yaml` says whether it is measured, a demonstration, mixed, or `none` (nothing scored yet).
 - [ ] If the bench has a pre-registration, its hash verifies, its freeze precedes the first scored run on in-file evidence, and every deviation is declared (§12).
 - [ ] Relative ratios within a single hardware+tuning class (cross-class comparison is invalid).
 - [ ] Tier label, single-machine caveat, and the explicit list of what was held constant vs varied.
