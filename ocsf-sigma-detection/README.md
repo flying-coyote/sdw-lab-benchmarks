@@ -120,3 +120,4 @@ window-drop mechanism, not the Store F counts.
   written for them, a round-trip demonstration and not a recall; the earlier README called the
   precision split "the real SOC noise problem" measured, where the precisions follow from the
   generator's planted values and background port weights.)*
+- *(noted 2026-11-22: the EvidenceForge arm's files still carry lab-host paths, a session scratch path in `evidenceforge-arm/results/results.json` l.3 and `results/RESULTS.md` l.3 and the local EvidenceForge clone path in `results.json` l.8, `run_arm.py` l.230, `normalize_to_ocsf.py` l.69 and `scenario.pinned.yaml` l.3; the 2026-11-22 path cleanup did not reach them, and replacing them with repo-relative placeholders and regenerating the results is staged, with the frozen PRE-REG file left as committed.)*

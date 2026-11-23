@@ -80,7 +80,7 @@ kept for that run), so the finding is bound to 4.1.8. The defect sits in `chdb-c
 `requirements.txt` now pins `chdb==4.1.8` together with `chdb-core==26.3.0`, and a fresh venv with
 those two pins reports engine 26.3.9.1 and reproduces the undercount in `mechanism_chdb_bloom.py`
 (re-run 2026-11-22: default reader returns 5,092 against a truth of 5,099 for `user42`, and the older
-reader and `bloom_filter_push_down=0` are correct). The twelve-engine scorecard in
+reader and `bloom_filter_push_down=0` are correct; that run kept no output, so the same run repeated on 2026-11-23 is kept with its `pip freeze` in [`results/RECONFIRMATION-PIN-2026-11-23.md`](results/RECONFIRMATION-PIN-2026-11-23.md), with the same counts). The twelve-engine scorecard in
 [`results/MULTI-ENGINE-CORRECTNESS.md`](results/MULTI-ENGINE-CORRECTNESS.md) was run once, on the June
 versions, and found ten of twelve engines correct on every cell, chDB's v3 reader and fastparquet
 wrong; it was not re-run on 4.1.9, so a count of one wrong reader on current versions rests on the

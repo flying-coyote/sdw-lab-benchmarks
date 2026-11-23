@@ -20,7 +20,8 @@ duckdb==1.5.3
 # requires chdb-core>=26.1.0, chdb-core 26.3.0 (2026-05-11) was the newest core until 26.5.0 (2026-06-08),
 # and chdb 4.1.9 requires chdb-core>=26.5.0, so without this pin a fresh install resolves a fixed core.
 # A fresh venv with these two pins reports engine 26.3.9.1 and reproduces the undercount in
-# clickhouse-vs-duckdb/mechanism_chdb_bloom.py (re-run 2026-11-22).
+# clickhouse-vs-duckdb/mechanism_chdb_bloom.py (re-run 2026-11-22; output and pip freeze of the 2026-11-23
+# repeat in clickhouse-vs-duckdb/results/RECONFIRMATION-PIN-2026-11-23.md).
 chdb==4.1.8
 chdb-core==26.3.0
 

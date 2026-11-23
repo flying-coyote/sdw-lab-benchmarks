@@ -34,7 +34,7 @@ Tier B, single host (ejs).
   3.2% CV, so claimable. *(corrected 2026-11-17: 3.2 is StarRocks' UEBA-over-flat ratio (`over_flat_x` in
   `results/ueba_rare.json`), not a CV. The UEBA CVs are 16.0% (StarRocks) and 15.0%
   (ClickHouse-Iceberg) over 5 trials; the 82% gap, 0.3775 / 0.2071 = 1.82, still clears them.)* This is the headline: the regime *does* reorder the leaders.
-- **rare-value:** ClickHouse keeps the lead on the high-cardinality `count(DISTINCT)`, and the
+- **rare-value:** ClickHouse keeps the lead on the high-cardinality `count(DISTINCT)` (1.2552 s against 1.3034 s, a 3.8% lead inside ClickHouse-Iceberg's 8.9% CV, so the order is not claimable; noted 2026-11-22), and the
   StarRocks-overtakes-ClickHouse top-of-ranking inversion seen in UEBA does NOT recur here.
 
 ## What it means

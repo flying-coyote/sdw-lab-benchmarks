@@ -264,4 +264,4 @@ lib/  charts/  scripts/  workloads/   shared folders, described above
 index above is the current map of the lab. Those two records use the June labels: BENCH-A is
 `bench-a-context-collapse/`, BENCH-B `ocsf-mapping-oracle/`, BENCH-C `ocsf-semantic-query/`, BENCH-D
 `ocsf-write-contract/`, BENCH-E `ocsf-read-scan/` and BENCH-F `ocsf-fsi-compliance/` (the later
-`bench-d-tiered-realization/` also calls itself BENCH-D in its own files).
+`bench-d-tiered-realization/` also calls itself BENCH-D, and `ducklake-catalog-failuremodes/` BENCH-E, in their own files).

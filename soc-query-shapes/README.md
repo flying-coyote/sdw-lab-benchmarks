@@ -84,8 +84,8 @@ container, its compose file and the `soc.conn` load are not in this repo.
 ## Versions and pins
 
 No `requirements.txt`. The scripts import `pyarrow` and `pyiceberg` inside the container, unpinned here,
-and the results files do not record engine versions for this run. Same-date files record only
-ClickHouse 26.5.1; the nearest dated record of all three engines is the 2026-06-23 lakehouse-engines arm
+and the results files do not record engine versions for this run. Same-date files record
+ClickHouse 26.5.1 and StarRocks 4.1 (no patch level) and no Trino version; the nearest dated record of all three engines is the 2026-06-23 lakehouse-engines arm
 (`../ocsf-sigma-detection/RESULTS-lakehouse-engines-4-7-2026-06-23.md`, ClickHouse 26.5.1.882, Trino 481,
 StarRocks 4.1.1), eight days later (corrected 2026-11-22).
 

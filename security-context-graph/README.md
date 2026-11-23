@@ -179,3 +179,4 @@ copies (see "Versions and pins").
 ## Corrections
 
 - *(corrected 2026-11-17: the with-SCF node count is 3,305 in the committed reconcile file, not 3,284.)*
+- *(noted 2026-11-22: the `sources` blocks in `results/reconcile.json` l.139-145 and `results/reconcile-with-scf.json` l.182-188 still carry the private working-copy paths written out in full; the 2026-11-22 cleanup fixed only the one path in this README, and writing placeholders in `scg.py` and regenerating both files is staged.)*

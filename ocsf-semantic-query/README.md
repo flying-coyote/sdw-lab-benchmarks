@@ -70,7 +70,7 @@ trials over three questions, and the 1.0 GraphRAG figure is three unanimous wron
 Four files: `BENCH-C-PREREGISTRATION.md` (v1), `BENCH-C-PREREGISTRATION-v2-rerun.md`,
 `BENCH-C-PREREGISTRATION-v2-ADDENDUM-impl-decisions.md` and `BENCH-C-PREREGISTRATION-v2.1-arm-extension.md`.
 None carries a hash file or a frozen-at stamp, and the repository history gives the order (checked
-2026-11-22): the v1 pre-registration (`6bdd7e6`, 2026-06-08) precedes the v1 results (`7ce124b`, 2026-06-16);
+2026-11-22): the v1 pre-registration (`6bdd7e6`, 2026-06-08 17:46 local) was committed eleven minutes before the first scored flat-versus-structured output (`5bc07a0`, 17:57) and eight days before the head-to-head results file (`7ce124b`, 2026-06-16), so commit order holds but with a margin too small to show the run started after the freeze, and the text-to-SQL arm's first-pass results (`a35cd28`, 2026-06-05) predate it and were not pre-registered;
 the v2 pre-registration (`3d27f00`, 2026-06-17 02:55 local) and its addendum (`ad52df4`, 14:14) precede the
 v2 results (`45b6d17`, 15:53); and the v2.1 arm extension was first committed in `45b6d17` itself, 73 minutes
 before the v2.1 results (`83a7f76`, 17:06), so it was not committed separately ahead of the v2 run.

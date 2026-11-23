@@ -20,10 +20,11 @@ trade-off that hypothesis tracks.
 
 ### Result, and whether it is measured
 
-Measured. 200 commits per cadence on three write contracts; Iceberg writes 200 data files at every cadence and the inline arm writes none, and the inline arm's running count stays exact while the stream writes. Iceberg commit p95 stays near 132 to 136 ms whatever the batch size. The `storage_bytes` and `catalog_bytes`
-recorded for the two DuckLake arms in `results/results.json` are the size of the `.ducklake` catalog file before
+Measured. 200 commits per cadence on three write contracts; Iceberg writes 200 data files at every cadence and the inline arm writes none, and the inline arm's running count stays exact while the stream writes. Iceberg commit p95 stays near 132 to 136 ms whatever the batch size. In `results/results.json`, `catalog_bytes`
+for both DuckLake arms, and `storage_bytes` for the inline arm, are the size of the `.ducklake` catalog file before
 any checkpoint (12,288 bytes at every cadence, with 1,000 to 100,000 rows held inline), because `run.py` sizes
-only that file and never checkpoints, so they undercount what the catalog holds and are not a footprint; the file
+only that file and never checkpoints, so they undercount what the catalog holds and are not a footprint; the
+no-inline arm's `storage_bytes` (184,920 to 2,205,069) is that same uncheckpointed catalog plus its 200 data files. The file
 counts are exact (noted 2026-11-22; a re-run should checkpoint or count the write-ahead log).
 
 ### What would have made it fail

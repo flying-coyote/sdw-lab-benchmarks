@@ -56,7 +56,7 @@ hosts + planted anomalies vs the flagship's flow mix), so the two differ on scal
 non-reproduction can't be cleanly attributed to either alone. The honest read: the inversion is
 **scale/corpus-specific to the 10.3M soc.conn run, not a general "StarRocks wins UEBA" property** — it
 stands as measured at its scope, and this leg says it does not generalize down to 868k on a different
-corpus. (Detection correctness, by contrast, is identical across both — the engines agree on the answer.)
+corpus. (Detection correctness, by contrast, is identical across both — the engines agree on the answer.) *(corrected 2026-11-22: the 0.0675 s against 0.0872 s order is a 29% gap inside ClickHouse-Iceberg's 30.4% CV in `results/ueba_planted.json`, so this leg neither reproduces nor refutes the inversion; 'does not reproduce' and 'does not generalize' overstate it.)*
 
 ## Caveats (Tier B)
 
@@ -64,7 +64,7 @@ corpus. (Detection correctness, by contrast, is identical across both — the en
   the synthetic noise + threshold, not a detection defect; a real environment's FP rate depends on baseline
   variance and the Z cutoff. *(Wording edited 2026-11-22.)*
 - The latency numbers are this-corpus-only (868k) and are NOT comparable to the 10.3M soc.conn draw; the
-  inversion is neither re-confirmed nor refuted at 10.3M here — it is shown not to generalize to 868k.
+  inversion is neither re-confirmed nor refuted at 10.3M here — it is shown not to generalize to 868k. *(corrected 2026-11-22: the 0.0675 s against 0.0872 s order is a 29% gap inside ClickHouse-Iceberg's 30.4% CV in `results/ueba_planted.json`, so this leg neither reproduces nor refutes the inversion; 'does not reproduce' and 'does not generalize' overstate it.)*
 - Spike Z (~4.8) and decoy Z (~1.6) are planted well clear of the 3.0 threshold so the flagged set is
   robust to cross-engine float differences — which is *why* answer-equality holds; a borderline planting
   would test float-portability harder (a separate question).
