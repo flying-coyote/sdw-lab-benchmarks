@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.patches import Patch
 
-# Source: clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md
-# 12 Parquet readers (shared-bytes) + 2 controls, 24 cells each = 8 probe values x 3 predicates (=, IN, LIKE).
+# Source: clickhouse-vs-duckdb/results/MULTI-ENGINE-CORRECTNESS.md:38-50 (scorecard) and :58+ (per-value table)
+# 12 engines (11 Parquet readers + postgres, which reads the loaded corpus, MULTI-ENGINE-CORRECTNESS.md:50) + 2 controls, 24 cells each = 8 probe values x 3 predicates (=, IN, LIKE).
 # Every cell checked against generator ground truth. Pass = correct count; fail = silent wrong answer.
-# 10 of 12 readers pass all 24; chdb_parquet 11/24; fastparquet 0/24.
+# 10 of 12 engines pass all 24; chDB 4.1.9 fixed its defect (RECONFIRMATION-2026-06-14.md:82); chdb_parquet 11/24; fastparquet 0/24.
 # (One additional shared-bytes reader passed all 24 but is withheld here under that engine's
 #  benchmark-publication terms.)
 # Divergence map from the per-value table: which (value,predicate) cells each failer got WRONG.
@@ -67,16 +67,18 @@ M = np.array(rows)
 nrow, ncol = M.shape
 
 fig, ax = cs.canvas(
-    "10 of 12 Parquet readers agree on the answer; 2 are silently wrong.",
-    "Same byte-identical Parquet file (10M rows, 814 row groups — the structure that reproduces the failure "
-    "the C3 gate caught at 100M rows), 24 count(*) WHERE cells per reader, every count checked "
+    "10 of 12 engines agree on the answer; 2 Parquet readers are silently wrong.",
+    "11 engines read one byte-identical Parquet file (10M rows in 814 row groups, the R3 trigger structure) and Postgres "
+    "answers from the same corpus loaded into its own tables; 24 count(*) WHERE cells per engine, every count checked "
     "against ground truth. Red = a silently wrong count returned with no error. The passers are named as "
-    "loudly as the failers: this is concentrated, not universal.",
+    "loudly as the failers, because the failure sits in two readers and the other ten agree.",
     source="sdw-lab-benchmarks/clickhouse-vs-duckdb",
-    tier="Tier B · single host · ground-truth-verified · version-bound (chDB 4.1.8, fastparquet 2026.5.0)",
-    figsize=(12.2, 6.2), bottom=0.255, top=0.75)
+    tier="Tier B · single host · ground-truth-verified · version-bound (chDB 4.1.8, fixed in 4.1.9; fastparquet 2026.5.0)",
+    figsize=(12.2, 6.6), bottom=0.27, top=0.70)
 
-green = cs.GOOD
+# correct cells are light grey rather than green so the encoding survives red-green colour blindness
+# (light vs dark red by luminance); the 11/24 and 0/24 tallies carry the result in text as well
+green = cs.CONTEXT
 red = cs.BAD
 cmap_arr = np.empty(M.shape + (3,))
 for i in range(nrow):
@@ -114,16 +116,16 @@ ax.text(-0.5, -1.0, "the 2 silently wrong readers", ha="left", va="bottom",
 
 # value-group labels just below the predicate ticks
 for gi, v in enumerate(values):
-    ax.text(gi * 3 + 1, nrow + 0.05, v, ha="center", va="top",
+    ax.text(gi * 3 + 1, nrow + 0.45, v, ha="center", va="top",
             fontsize=8.0, color=cs.MUTED, family=cs.MONO, rotation=0)
 
 ax.set_xlim(-0.5, ncol + 1.1)
-ax.set_xlabel("8 user_name values  x  3 predicates ( = · IN · LIKE )  =  24 count(*) WHERE cells per reader",
+ax.set_xlabel("8 user_name values  x  3 predicates ( = · IN · LIKE )  =  24 count(*) WHERE cells per engine",
               fontsize=10, labelpad=30)
 
 legend = [Patch(facecolor=green, label="correct count"),
           Patch(facecolor=red, label="silently wrong (no error raised)")]
-ax.legend(handles=legend, loc="upper left", bbox_to_anchor=(0.0, -0.42),
+ax.legend(handles=legend, loc="upper left", bbox_to_anchor=(0.0, -0.30),
           ncol=2, frameon=False, fontsize=9.5)
 
 cs.save(fig, "out/13-reader-answer-equivalence.png")

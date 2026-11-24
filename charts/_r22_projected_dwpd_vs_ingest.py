@@ -1,7 +1,7 @@
 import chartstyle as cs
 import matplotlib.pyplot as plt
 
-# Source: ocsf-storage-endurance/results/RESULTS.md + results.json
+# Source: ocsf-storage-endurance/results/RESULTS.md:18 (write amp), :27-32 (DWPD table), :34-35 (tiers) + results.json
 # Measured write amplification 0.4325 (compression 4.62x, compaction 2.0x).
 # Projected DWPD (drive-writes-per-day) vs daily raw ingest, 4 TB and 8 TB drives.
 # Reference tiers: read-intensive drive ~1.0 DWPD, write-intensive tier ~10.0 DWPD.
@@ -12,8 +12,9 @@ READ_TIER = 1.0
 WRITE_TIER = 10.0
 
 fig, ax = cs.canvas(
-    "Security telemetry never spends the endurance NVMe vendors sell.",
-    "Projected drive-writes-per-day vs daily raw ingest — even at 5 TB/day the workload stays an order of magnitude under a read-intensive drive.",
+    "Projected telemetry writes stay far below the endurance NVMe vendors sell.",
+    "Projected drive-writes-per-day vs daily raw ingest. Even at 5 TB/day on a 4 TB drive the workload\n"
+    "projects to 0.54 DWPD, about half a read-intensive drive's rating and a twentieth of the write-intensive tier.",
     source="sdw-lab-benchmarks/ocsf-storage-endurance",
     tier="Tier B · single-host · write-amp 0.4325 MEASURED, DWPD a re-runnable PROJECTION (Tier-A gate: realized-DWPD run)",
     figsize=(8.8, 4.9), bottom=0.16, top=0.80)

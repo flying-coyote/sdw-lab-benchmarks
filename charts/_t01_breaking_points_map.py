@@ -11,23 +11,33 @@ as the reader's likely origin, not a destination.
 Every coordinate is from the transition-point program's measured atlas
 (project1 transition-point-program-2026-06-10.md §2–§3, each number
 spot-checked against its source RESULTS file):
-- 10M: index hunt-shape crosses 10 s (port_scan 13.07 s vs 0.93 s Iceberg, 62×)
-  while index-shaped lookups stay ms — zeek-flagship-rerun/results/RESULTS.md
-- 100M: per-workload winner crossover on the 4-engine matrix; Trino
+- 10M: index hunt-shape crosses 10 s (port_scan 13.071 s on the index; ClickHouse native 0.211 s = 62×,
+  ClickHouse over Iceberg 0.925 s = 14×) while index-shaped lookups stay ms
+  — zeek-flagship-rerun/results/RESULTS.md:38 (corrected 2026-11-23: the label used to pair 62× with Iceberg)
+- 100M: per-workload winner crossover on the 4-engine matrix (ClickHouse takes the count(*) full scan,
+  DuckDB keeps needle, group-by and distinct, so the winner splits rather than flipping wholesale); Trino
   high-cardinality distinct hard-error (988.80 MB per-node default ceiling);
   chDB 4.1.8 silent undercount (49 rows short, no error, chdb-io/chdb#587)
-  — H-ARCH-02-evidence.md, clickhouse-vs-duckdb CORRECTNESS-DIVERGENCE.md
+  — hub H-ARCH-02-evidence.md:24-35 (unpublished ./moar sweep, harness in security-data-that-works),
+  clickhouse-vs-duckdb/results/CORRECTNESS-DIVERGENCE.md:50
 - 1B (DuckDB over Iceberg/DuckLake): filtered scan 407–445 ms; subnet_rollup
   19.4–21.4 s; topn_src 79–91 s (graceful crossing, engine spills + finishes)
   — ocsf-read-scan/results/LARGE-SCAN.md
 - C1–C16 at 10M scan-aggregate: no arm crosses 10 s; DuckDB p95 57→689 ms
-  graceful-linear — H-ARCH-02-evidence.md
+  graceful-linear — hub H-ARCH-02-evidence.md:41 and transition-point-program-2026-06-10.md:124-127
+  (unpublished ./moar concurrency_sweep.py run, 2026-06-07)
 - ch_native q5: stats-less layout + 6-table join → DNF >300 s; same engine
   over Iceberg 1.35 s — engine-join-specialization/results/RESULTS.md
 - Retention: no knee — 14.8× compounded gap (4.2× bytes × 3.5× $/byte),
   ~$95K/mo per TB/day at 7 yr — cost-to-serve-retention/results/RESULTS.md
-- Ingest: Iceberg ~133 ms/commit floor (~7.5 commits/s); DuckLake 3.9× at
-  5-row commits — ocsf-streaming-cadence/results/RESULTS.md
+- Ingest: Iceberg commit p50 66 ms, p95 133 ms, flat across 5/50/500-row batches (p95 133/132/136 ms);
+  200 commits in 14.38 s wall = ~14 commits/s (corrected 2026-11-23: the chip used to say "~7.5 commits/s",
+  which is 1/p95); DuckLake 3.9× at 5-row commits — ocsf-streaming-cadence/results/RESULTS.md:18-20 and
+  results.json rungs[0].iceberg
+- Detection freshness (added 2026-11-23): for a 60 s windowed rule a 5 s micro-batch lands within about
+  a second of Kafka + Flink (raw median gaps 0.95 s and 0.76 s) — stream-complexity/results/
+  RESULTS-freshness-2026-11-06.md, P1. Replaces the chip's earlier "unmeasured" lag line.
+- On-chart text uses colons and commas in place of em-dashes (site rule, 2026-11-23).
 """
 import os
 import sys
@@ -61,13 +71,17 @@ def _step_glyph(ax, x, y, color, scale=1.0):
 def build_map():
     fig, ax = cs.canvas(
         "Architectures fail at an edge, not at a row count",
-        "Every measured edge except the cliffs gives warning — the signal to watch is on each edge. "
+        "Every measured edge except the cliffs gives warning, and each edge has a signal to watch. "
         "One host; what travels is ordering and shape.",
-        source="transition-point program 2026-06-10 · sdw-lab-benchmarks: zeek-flagship-rerun, H-ARCH-02, "
-               "ocsf-read-scan, engine-join-specialization, cost-to-serve-retention, ocsf-streaming-cadence",
+        source="sdw-lab-benchmarks: zeek-flagship-rerun, clickhouse-vs-duckdb, ocsf-read-scan, "
+               "engine-join-specialization, cost-to-serve-retention, ocsf-streaming-cadence, stream-complexity",
+        tier="Tier B · one host",
         figsize=(12.5, 6.6), top=0.85, bottom=0.12,
     )
     fig.subplots_adjust(left=0.065, right=0.775)
+    fig.text(0.012, 0.004, "C1–C16 concurrency and the 100M four-engine crossover: single-host sweeps run with the "
+             "security-data-that-works ./moar harness; results not yet published",
+             fontsize=8, family=cs.MONO, color=cs.MUTED, ha="left", va="bottom")
 
     ax.set_xscale("log")
     ax.set_xlim(8e5, 4e9)
@@ -89,48 +103,48 @@ def build_map():
 
     # Edge 1 — the single-node ceiling band, shape-dependent 100M -> 1B
     ax.axvspan(1e8, 1e9, color=cs.ACCENT2, alpha=0.16, zorder=0)
-    ax.text(2.9e8, 20.5, "EDGE — SINGLE-NODE CEILING", fontsize=8.5, family=cs.MONO,
+    ax.text(2.9e8, 20.5, "EDGE: SINGLE-NODE CEILING", fontsize=8.5, family=cs.MONO,
             color=cs.ACCENT, ha="center", va="top", fontweight="bold")
     ax.text(2.9e8, 19.4, "shape-dependent, 100M→1B", fontsize=8, color=cs.BODY,
             ha="center", va="top", family=SANS_FB)
     _slope_glyph(ax, 1.6e8, 12.2, cs.ACCENT)
-    ax.text(3.4e8, 11.8, "graceful — the tail\ngrows first (quarters)", fontsize=8,
+    ax.text(3.4e8, 11.8, "graceful: the tail\ngrows first (quarters)", fontsize=8,
             color=cs.ACCENT, ha="center", va="top", family=SANS_FB, style="italic")
 
     ax.text(1.8e9, 20.5, "SINGLE-HOST OLAP", fontsize=8.5, family=cs.MONO,
             color=cs.MUTED, ha="center", va="top", fontweight="bold")
-    ax.text(1.8e9, 19.4, "ClickHouse · StarRocks\nTrino · Dremio", fontsize=8,
+    ax.text(1.8e9, 19.4, "ClickHouse · StarRocks\nTrino", fontsize=8,
             color=cs.MUTED, ha="center", va="top", family=SANS_FB)
 
     # Distributed lane — honestly unmeasured (dashed right edge)
     ax.axvline(3.4e9, color=cs.MUTED, lw=1.4, ls=(0, (4, 4)), zorder=2)
-    ax.text(3.05e9, 13.0, "distributed cluster —\nzero lab data by design;\nthe map ends honestly",
+    ax.text(3.05e9, 13.0, "distributed cluster:\nzero lab data by design,\nso the map ends here",
             fontsize=8, color=cs.MUTED, ha="right", va="center", style="italic", family=SANS_FB)
 
     # Edge 2 — concurrency knee (top band): beyond C16 at this per-query weight
     ax.axhspan(16, 21, color=cs.ACCENT2, alpha=0.10, zorder=0)
     ax.plot([8e5, 4e9], [16, 16], color=cs.ACCENT2, lw=1.2, ls=(0, (5, 3)))
     _slope_glyph(ax, 1.15e6, 16.3, cs.ACCENT, scale=0.7)
-    ax.text(2.6e6, 17.9, "EDGE — concurrency knee: beyond C16 at this per-query weight\n"
-                         "(DuckDB p95 57→689 ms with throughput flat — no arm crosses 10 s in range)",
+    ax.text(2.6e6, 17.9, "EDGE: concurrency knee beyond C16 at this per-query weight\n"
+                         "(DuckDB p95 57→689 ms with throughput flat; no arm crosses 10 s in range)",
             fontsize=8, color=cs.BODY, ha="left", va="top", family=SANS_FB)
 
     # ---- measured marks ----------------------------------------------------
     ax.plot(1e7, 1.0, marker="o", ms=11, mfc="white", mec=cs.BAD, mew=2.2, zorder=7)
-    ax.annotate("your likely origin:\nschema-on-read index —\nhunt-shaped aggregation crosses\n"
-                "10 s at 10M (13.07 s, 62× vs\nIceberg); lookups stay ms",
+    ax.annotate("your likely origin:\nschema-on-read index, where\nhunt-shaped aggregation crosses\n"
+                "10 s at 10M (13.07 s: 62× vs native\nClickHouse, 14× vs ClickHouse\non Iceberg); lookups stay ms",
                 (1e7, 1.0), xytext=(1.15e6, 4.2), fontsize=8, color=cs.BAD,
                 family=SANS_FB, ha="left", va="bottom",
                 arrowprops=dict(arrowstyle="-", color=cs.BAD, lw=0.9, alpha=0.7))
 
     ax.plot(1e8, 2.6, marker="o", ms=7, color=cs.ACCENT, zorder=7)
-    ax.annotate("100M crossover: per-workload winner flips to the\nservers; Trino distinct hard-errors (config ceiling)",
-                (1e8, 2.6), xytext=(1.5e8, 0.6), fontsize=8, color=cs.BODY,
-                family=SANS_FB, ha="left", va="bottom",
+    ax.annotate("100M crossover: the per-workload\nwinner splits (ClickHouse takes the\nfull scan); Trino distinct\nhard-errors (config ceiling)",
+                (1e8, 2.6), xytext=(8.6e7, 0.45), fontsize=8, color=cs.BODY,
+                family=SANS_FB, ha="right", va="bottom",
                 arrowprops=dict(arrowstyle="-", color=cs.MUTED, lw=0.8, alpha=0.7))
 
     ax.plot(1e9, 1.0, marker="o", ms=7, color=cs.ACCENT, zorder=7)
-    ax.annotate("1B DuckDB: filtered scan 407–445 ms · top-N 79–91 s\n(spills and finishes — graceful)",
+    ax.annotate("1B DuckDB: filtered scan 407–445 ms · top-N 79–91 s\n(spills and finishes, so graceful)",
                 (1e9, 1.0), xytext=(8e8, 3.6), fontsize=8, color=cs.BODY,
                 family=SANS_FB, ha="center", va="bottom",
                 arrowprops=dict(arrowstyle="-", color=cs.MUTED, lw=0.8, alpha=0.7))
@@ -138,33 +152,35 @@ def build_map():
     # ---- hazards inside regions (cliffs are layout decisions) --------------
     ax.plot(4e7, 10.6, marker="X", ms=12, color=cs.BAD, zorder=8)
     _step_glyph(ax, 5.3e7, 10.0, cs.BAD, scale=0.9)
-    ax.text(3.2e7, 11.6, "CLIFF — a layout decision, not a scale threshold:\n"
+    ax.text(3.2e7, 12.5, "CLIFF: a layout decision, not a scale threshold:\n"
                          "stats-less native layout + 6-table join → DNF >300 s;\n"
                          "the same engine over Iceberg answers in 1.35 s. No warning.",
             fontsize=8, color=cs.BAD, ha="center", va="bottom", family=SANS_FB)
 
     ax.plot(1.1e8, 7.4, marker="X", ms=9, color=cs.WARN, zorder=8)
-    ax.text(1.35e8, 8.6, "SILENT-WRONG — chDB 4.1.8 returns a count\n"
+    ax.text(1.35e8, 8.6, "SILENT-WRONG: chDB 4.1.8 returns a count\n"
                          "49 rows short at 100M, no error raised;\n"
                          "only an answer-equality gate sees it",
             fontsize=8, color=cs.WARN, ha="left", va="top", family=SANS_FB)
 
     # ---- right-rail chips (retention / ingest are budget-line edges) -------
     chips = [
-        ("RETENTION", "no knee in the curve — the edge is\n"
+        ("RETENTION", "no knee in the curve; the edge is\n"
                       "where the linear gap crosses your\n"
                       "budget: index-on-gp3 vs warm-Iceberg-\n"
                       "on-S3 is 14.8× compounded\n"
                       "(~$95K/mo per TB/day at 7 yr)"),
-        ("INGEST", "commit-path floor, not a curve:\n"
-                   "Iceberg ~133 ms fixed per-commit\n"
-                   "(~7.5 commits/s); DuckLake inlines\n"
-                   "3.9× more at 5-row commits. Lag vs\n"
-                   "detection SLO: unmeasured (§6 next)"),
+        ("INGEST", "commit cost stays flat as batches\n"
+                   "grow: Iceberg commit p50 ~66 ms,\n"
+                   "p95 ~133 ms (~14 commits/s);\n"
+                   "DuckLake inlines 3.9× more rows/s\n"
+                   "at 5-row commits. Alert lag, one\n"
+                   "60 s windowed rule: 5 s micro-\n"
+                   "batch within ~1 s of Flink"),
         ("ONE-HOST ANCHOR", "all coordinates: Beelink 5800H,\n"
                             "WSL2 48 GB/14t, Tier B.\n"
                             "What travels is ordering and\n"
-                            "shape — locate yourself with\n"
+                            "shape: locate yourself with\n"
                             "your own numbers"),
     ]
     y0 = 0.78
@@ -183,9 +199,11 @@ def build_ribbon():
     """1D degradation ribbon for deck slide 16 + the campaign feed crop."""
     _s = cs.FEED_SCALE if cs.FEED_SCALE > 0 else 1.0
     fig, ax = cs.canvas(
-        "Where it breaks — the measured edges, in order",
+        "Where it breaks: the measured edges, in order",
         "Slope glyph = graceful (the tail warns you, quarters ahead) · step glyph = cliff (no warning). One host, Tier B.",
-        source="transition-point program 2026-06-10 · sdw-lab-benchmarks (six suites; every coordinate source-cited)",
+        source="sdw-lab-benchmarks: zeek-flagship-rerun, clickhouse-vs-duckdb, ocsf-read-scan, "
+               "engine-join-specialization; 100M crossover from an unpublished ./moar sweep",
+        tier="Tier B · one host",
         figsize=(11.2, 3.4), top=0.76, bottom=0.30,
     )
     fig.subplots_adjust(left=0.045, right=0.975)
@@ -195,7 +213,7 @@ def build_ribbon():
     ax.set_yticks([])
     ax.set_xticks([1e6, 1e7, 1e8, 1e9])
     ax.set_xticklabels(["1M", "10M", "100M", "1B"], family=SANS_FB)
-    ax.set_xlabel("hot data scale (events, log) — concurrency, retention, and ingest edges ride the rail below",
+    ax.set_xlabel("hot data scale (events, log)",
                   family=SANS_FB, fontsize=10 * _s)
     ax.grid(False)
     for s in ("left", "top", "right"):
@@ -205,10 +223,10 @@ def build_ribbon():
     ax.plot([8e5, 9e9], [5, 5], color=cs.GRID, lw=5, solid_capstyle="round", zorder=1)
 
     events = [
-        (1e7, "10M — index hunt-edge", "hunting-shaped aggregation crosses 10 s\n(13.07 s vs 0.93 s Iceberg, 62×);\nlookup-shaped work stays ms", cs.BAD, "slope"),
-        (1e8, "100M — crossover + hazards", "per-workload winner flips to the servers;\nTrino distinct hard-errors (config ceiling);\nchDB counts 49 rows short, silently", cs.ACCENT, "slope"),
-        (1e9, "1B — single-node ceiling", "DuckDB top-N 79–91 s (graceful);\nfilters still 407–445 ms —\nshape-dependent edge", cs.ACCENT, "slope"),
-        (6.5e9, "beyond — unmeasured", "zero lab data by design;\nthe ribbon ends honestly", cs.MUTED, None),
+        (1e7, "10M: index hunt-edge", "hunting-shaped aggregation crosses 10 s\n(13.07 s; 62× vs native ClickHouse,\n14× vs ClickHouse on Iceberg);\nlookup-shaped work stays ms", cs.BAD, "slope"),
+        (1e8, "100M: crossover + hazards", "per-workload winner splits (ClickHouse\ntakes the full scan); Trino distinct\nhard-errors (config ceiling); chDB\ncounts 49 rows short, silently", cs.ACCENT, "step"),
+        (1e9, "1B: single-node ceiling", "DuckDB top-N 79–91 s (graceful);\nfilters still 407–445 ms,\na shape-dependent edge", cs.ACCENT, "slope"),
+        (6.5e9, "beyond: unmeasured", "zero lab data by design,\nso the ribbon ends here", cs.MUTED, None),
     ]
     for x, head, body, col, glyph in events:
         ax.plot([x, x], [4.0, 6.0], color=col, lw=2.4, zorder=3)
@@ -219,6 +237,11 @@ def build_ribbon():
                 family=SANS_FB, linespacing=1.3)
         if glyph == "slope":
             _slope_glyph(ax, x * 1.12, 5.4, col, scale=0.55)
+        elif glyph == "step":
+            _step_glyph(ax, x * 1.12, 5.4, col, scale=0.55)
+
+    # step glyph ahead of the cliff caveat, so the subtitle's "step glyph = cliff" has a drawn referent
+    _step_glyph(ax, 1.3e6, 8.45, cs.BAD, scale=0.55)
 
     # the cliff caveat box (layout, not scale — it can ambush anywhere on the rail)
     ax.text(1.65e6, 9.6, "and one CLIFF that is a layout decision, not a scale threshold: "
