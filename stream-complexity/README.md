@@ -31,6 +31,7 @@ gate — the pre-reg means it literally: a divergent run is not a scoreable run.
 | v2, adds Feldera OSS and a containerised batch arm | `PRE-REG-stream-complexity-v2-2026-11-03.md` | `results/RESULTS-v2-2026-11-03.md` | the falsifier sits on a knife-edge that depends on rounding 1.50×, reported rather than resolved; confidence move staged for the owner |
 | Freshness sweep | `PRE-REG-stream-freshness-2026-11-06.md` | `results/RESULTS-freshness-2026-11-06.md` | SUPPORTED: P1 to P3 hold on both trials, P5 misses on two of three legs |
 | v3, RisingWave | `PRE-REG-stream-complexity-risingwave-2026-11-07.md` | `results/RESULTS-v3-risingwave-2026-11-07.md` | H-STREAMING-02 supported on direction, magnitude partly; RisingWave slowest on freshness and lost acknowledged inserts on engine-internal recoveries at 1× |
+| v4, Spark 4.3 Real-Time Mode | `PRE-REG-stream-complexity-spark-rtm-2026-11-25.md` | not run | pre-registered 2026-11-25; blocker: no Iceberg Spark runtime for 4.3 as of 2026-11-25 (design does not need one; subject to change) |
 
 The most recent file is v3; for the batch-versus-streaming freshness question the freshness sweep is the
 current read, and v2 supersedes July's real-time freshness framing (v2, "far smaller on a real clock").

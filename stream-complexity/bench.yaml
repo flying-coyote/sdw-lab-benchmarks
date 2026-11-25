@@ -5,7 +5,7 @@ status: published
 tier: B
 claim_kind: measured
 verdict: CAVEAT
-prereg: PRE-REG-stream-complexity-2026-07-19.md; PRE-REG-stream-complexity-v2-2026-11-03.md; PRE-REG-stream-freshness-2026-11-06.md; PRE-REG-stream-complexity-risingwave-2026-11-07.md
+prereg: PRE-REG-stream-complexity-2026-07-19.md; PRE-REG-stream-complexity-v2-2026-11-03.md; PRE-REG-stream-freshness-2026-11-06.md; PRE-REG-stream-complexity-risingwave-2026-11-07.md; PRE-REG-stream-complexity-spark-rtm-2026-11-25.md
 results: results/RESULTS-v3-risingwave-2026-11-07.md
 reproduce: bash stream-complexity/run_scored.sh
 pins: stream-complexity/requirements.txt
